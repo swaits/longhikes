@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "uinta-highline"
+name = "Uinta Highline Trail"
+short_name = "UHT"
+country = "US"
+regions = ["UT"]
+length_km = 167
+length_note = "104 mi published"
+tier = "regional"
+designation = "USFS trail #078, High Uintas Wilderness (Ashley and Uinta-Wasatch-Cache National Forests)"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "USDA Forest Service (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/13716825"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 13716825."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "The USFS National Forest System trails layer (EDW_TrailNFSPublish_01) should hold it as trail #078, but a search for HIGHLINE with number 078 found nothing; not resolved. No named-route layer."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 13716825
+note = "Verified."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "USFS Ashley National Forest"
+note = "No trail emblem exists. The file removed on 2026-11-08 was the USDA symbol (the Department of Agriculture's agency mark, not the trail's). The map draws the trail name only."
+logo_file = ""
+logo_owner = "USFS Ashley National Forest"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 166.6
+difference_percent = -0.2
+parts = 1
+note = "24 ways, 166.6 km in 1 part, 0.2% short of 167 km."

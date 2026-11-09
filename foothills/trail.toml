@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "foothills"
+name = "Foothills Trail"
+short_name = "FHT"
+country = "US"
+regions = ["SC", "NC"]
+length_km = 122
+length_note = "76 mi"
+tier = "regional"
+designation = "Foothills Trail Conservancy"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Foothills Trail Conservancy (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/4572989"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 4572989."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM 4572989. An ArcGIS item under a university account (WCU, 2022) exists; provenance unknown."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 4572989
+note = "Downloaded 2026-11-08; release.txt has the relation version and timestamp."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://foothillstrail.org/"
+contact = "Foothills Trail Conservancy"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = "shield.png"
+logo_owner = "Foothills Trail Conservancy"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 116.3
+difference_percent = -4.7
+parts = 3
+note = "169 ways in 3 parts, 116.3 km, 4.7% short of 122 km."

@@ -1,0 +1,47 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "california-coastal"
+name = "California Coastal Trail"
+short_name = "CCT"
+country = "US"
+regions = ["CA"]
+length_km = 1931
+length_note = "about 1,200 mi planned"
+tier = "regional"
+designation = "State of California trail (Coastal Commission, State Coastal Conservancy)"
+wave = "held"
+wave_note = "Held: mostly road and sidewalk."
+
+[source]
+status = "found"
+publisher = "California Coastal Commission; Coastal Trails Alliance"
+url = "https://services9.arcgis.com/wwVnNW92ZHUIr0V0/arcgis/rest/services/California_Coastal_Trail_April_2021/FeatureServer"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes. The Commission layer is dated April 2021; the Alliance item was updated 2026-10-20 ('Credit Required for Use')."
+format = "ArcGIS FeatureServer"
+crs = "not read"
+licence = "none-stated"
+licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
+attribution = "California Coastal Commission; State Coastal Conservancy; Coastal Trails Alliance"
+osm_only = false
+mainline = "Planned and existing parts mixed; the layer marks status. A large share is road and sidewalk."
+source_checked = "2026-11-08"
+redistributable = false
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No line is included. Found by search; not downloaded. Large road share; inclusion undecided."
+
+[osm]
+relation = 0
+note = "Not searched."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://www.coastal.ca.gov/"
+contact = "California Coastal Commission"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = ""
+logo_owner = "California Coastal Commission"
+
+[verification]
+verified = false
+note = "Found by search; not downloaded. Large road share; inclusion undecided."

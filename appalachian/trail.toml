@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "appalachian"
+name = "Appalachian National Scenic Trail"
+short_name = "AT"
+country = "US"
+regions = ["GA", "NC", "TN", "VA", "WV", "MD", "PA", "NJ", "NY", "CT", "MA", "VT", "NH", "ME"]
+length_km = 3537
+length_note = "2,198 mi published by the Appalachian Trail Conservancy"
+tier = "national"
+designation = "National Scenic Trail (1968)"
+wave = 1
+inclusion = "nst-unconditional"
+
+[source]
+status = "verified"
+publisher = "National Park Service Appalachian NST and Appalachian Trail Conservancy"
+url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/ANST_Centerline/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes"
+format = "ArcGIS FeatureServer layer (query as GeoJSON or Esri JSON, 2,000 rows a page)"
+crs = "EPSG:3857 (ask for outSR=4326)"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09). The service credits the National Park Service Appalachian National Scenic Trail and the Appalachian Trail Conservancy (2023); the Conservancy's share is not separately licensed in the service."
+attribution = "National Park Service Appalachian National Scenic Trail & Appalachian Trail Conservancy"
+osm_only = false
+mainline = "One layer, 3,027 features, all 'Official A.T. Route'. No alternates or side trails in the layer; one stray 'Webcliff' feature to filter by name."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "National Park Service Appalachian NST and Appalachian Trail Conservancy"
+line_file = "line.geojson"
+
+[osm]
+relation = 156553
+note = "OSM super-relation 156553 plus 13 per-state relations; not needed."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://appalachiantrail.org/"
+contact = "Appalachian Trail Conservancy (appalachiantrail.org); NPS Appalachian NST office"
+note = "ATC owns registered marks; its brand guidelines cover volunteers and one-time uses only, no general licence found. The official emblem of a National Scenic Trail is a federal insignia (18 U.S.C. 701; Federal Register notices of 2000-03-28 cover Ice Age, North Country and Natchez Trace; status for the others not confirmed). Use needs the administering agency's permission."
+logo_file = "shield.svg"
+logo_owner = "Appalachian Trail Conservancy (appalachiantrail.org); NPS Appalachian NST office"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 3481.1
+difference_percent = -1.6
+parts = 1
+note = "3029 features join into 1 continuous line; 1.6% short of 3,537 km."

@@ -1,0 +1,51 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "ice-age"
+name = "Ice Age National Scenic Trail"
+short_name = "IAT"
+country = "US"
+regions = ["WI"]
+length_km = 1931
+length_note = "about 1,200 mi planned; fewer built"
+tier = "national"
+designation = "National Scenic Trail (1980)"
+wave = 1
+inclusion = "nst-unconditional"
+
+[source]
+status = "verified"
+publisher = "Ice Age Trail Alliance for the National Park Service"
+url = "https://services.arcgis.com/EeCmkqXss9GYEKIZ/arcgis/rest/services/IAT_Segments_CR/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (last edit 2026-10-28)."
+format = "ArcGIS FeatureServer layer, 258 features (max 1,000 a page)"
+crs = "EPSG:3071 (Wisconsin Transverse Mercator; ask for outSR=4326)"
+licence = "none-stated"
+licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
+attribution = "Ice Age Trail Alliance, National Park Service"
+osm_only = false
+mainline = "Layer holds 'existing sections and unsigned connecting routes' together. A 'Status' column tells them apart; confirm the values with the Alliance."
+source_checked = "2026-11-08"
+redistributable = false
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+
+[osm]
+relation = 0
+note = "OSM maps the trail as about 200 per-segment relations. Messy; not a good source."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://iceagetrail.org/"
+contact = "Ice Age Trail Alliance (iceagetrail.org); NPS"
+note = "Federal Register notice of 2000-03-28 established the Ice Age marker as federal insignia; use needs NPS permission. The Alliance has its own marks."
+logo_file = "shield.png"
+logo_owner = "Ice Age Trail Alliance (iceagetrail.org); NPS"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 1130.9
+difference_percent = -41.4
+parts = 99
+note = "Built segments only, by design: Status Ice Age Trail gives 1,130.9 km in 99 parts; Connecting Route (857.9 km of road walks) is in alternates.geojson. Together 1,988.8 km against 1,931 km planned. The trail is not yet fully built, so 99 parts is the honest shape. Kept in wave 1 as an NST (unconditional)."

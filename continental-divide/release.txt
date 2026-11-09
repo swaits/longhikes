@@ -1,0 +1,7 @@
+continental-divide
+
+Source: https://services8.arcgis.com/WyuHwdftppQLa5KO/arcgis/rest/services/Continental_Divide_Trail_2/FeatureServer/0
+Licence: CC-BY (see trail.toml and SOURCES.md in this repository)
+Attribution: Continental Divide Trail Coalition
+Source read: 2026-11-08
+Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

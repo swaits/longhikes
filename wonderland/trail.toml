@@ -1,0 +1,51 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "wonderland"
+name = "Wonderland Trail"
+short_name = "WT"
+country = "US"
+regions = ["WA"]
+length_km = 150
+length_note = "93 mi published"
+tier = "regional"
+designation = "NPS trail, Mount Rainier National Park"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "National Park Service (Mount Rainier National Park) publishes the trail; the NPS Public Trails layer holds only part of the loop"
+url = "https://www.openstreetmap.org/relation/4111743"
+discovery = "osm-relation-version: Overpass `rel(4111743); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes (relation v66, edited 2026-09-30)."
+format = "OpenStreetMap route relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 4111743."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+decision = "included-named"
+decision_text = "Included with its name and logo. The line is from OpenStreetMap."
+mainline = "One relation: the whole loop. No alternates."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 4111743
+note = "OSM relation 4111743."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "NPS Mount Rainier National Park"
+note = "No trail emblem exists. The file removed on 2026-11-08 was the generic NPS arrowhead (the agency mark, not the trail's), fetched from an NPS park page. The map draws the trail name only."
+logo_file = ""
+logo_owner = "NPS Mount Rainier National Park"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 139.2
+difference_percent = -7.2
+parts = 1
+note = "Measured on the OSM relation: 139.2 km in 1 part, 7.2% short of 150 km."

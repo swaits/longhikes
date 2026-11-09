@@ -1,0 +1,47 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "iditarod"
+name = "Iditarod National Historic Trail"
+short_name = "INHT"
+country = "US"
+regions = ["AK"]
+length_km = 3701
+length_note = "about 2,300 mi winter route"
+tier = "deferred"
+designation = "National Historic Trail (1978)"
+wave = "held"
+wave_note = "Deferred tier."
+
+[source]
+status = "found"
+publisher = "Bureau of Land Management"
+url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/Iditarod_National_Historic_Trail_BLM_Official_Temp/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (edit 2023-04-03)."
+format = "ArcGIS FeatureServer, 26 features"
+crs = "EPSG:3857"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09)."
+attribution = "Bureau of Land Management (Kevin Keeler)"
+osm_only = false
+mainline = "Historic route; connecting routes and the dog-sled route are not in the layer."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No line is included. Metadata read; not downloaded. Deferred: Alaska is outside the first coverage order and the route is a winter trail."
+
+[osm]
+relation = 17946723
+note = "OSM 17946723."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://www.blm.gov/"
+contact = "BLM Alaska"
+note = "NHT logos are protected federal marks."
+logo_file = ""
+logo_owner = "BLM Alaska"
+
+[verification]
+verified = false
+note = "Metadata read; not downloaded. Deferred: Alaska is outside the first coverage order and the route is a winter trail."

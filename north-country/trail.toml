@@ -1,0 +1,51 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "north-country"
+name = "North Country National Scenic Trail"
+short_name = "NCT"
+country = "US"
+regions = ["ND", "MN", "WI", "MI", "OH", "PA", "NY", "VT"]
+length_km = 7403
+length_note = "4,600 mi published"
+tier = "national"
+designation = "National Scenic Trail (1980)"
+wave = 1
+inclusion = "nst-unconditional"
+
+[source]
+status = "verified"
+publisher = "North Country Trail Association for the National Park Service"
+url = "https://services2.arcgis.com/UfGVyqUm4GHa2zrj/arcgis/rest/services/nct_public/FeatureServer/2"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (last edit 2026-11-01)."
+format = "ArcGIS FeatureServer layer, 4,102 features (max 1,000 a page)"
+crs = "EPSG:26916 (UTM 16N; ask for outSR=4326)"
+licence = "none-stated"
+licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
+attribution = "North Country Trail Association; National Park Service"
+osm_only = false
+mainline = "'data_type' and 'trail_type' columns tell footpath from 'NCT (on-road)' (1,088 features on public roads). Keep both, mark road walk."
+source_checked = "2026-11-08"
+redistributable = false
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+
+[osm]
+relation = 11140515
+note = "OSM has per-state relations (11140512-11140515, 11491081, 13334245, 11140000, 8417747)."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://northcountrytrail.org/"
+contact = "North Country Trail Association (northcountrytrail.org); NPS"
+note = "Federal Register notice of 2000-03-28 established the North Country marker as federal insignia; use needs NPS permission."
+logo_file = "shield.png"
+logo_owner = "North Country Trail Association (northcountrytrail.org); NPS"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 7356.1
+difference_percent = -0.6
+parts = 8
+note = "4101 features in 8 parts, 7,356.1 km, 0.6% short of 7,403 km; road walks are flagged in the source and are included."

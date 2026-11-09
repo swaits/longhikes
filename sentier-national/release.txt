@@ -1,0 +1,7 @@
+sentier-national
+
+Source: https://www.openstreetmap.org/relation/7300742
+Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
+Attribution: OpenStreetMap contributors (ODbL)
+Source read: 2026-11-08
+Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

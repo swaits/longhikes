@@ -1,0 +1,51 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "lone-star"
+name = "Lone Star Hiking Trail"
+short_name = "LSHT"
+country = "US"
+regions = ["TX"]
+length_km = 155
+length_note = "96 mi"
+tier = "regional"
+designation = "Lone Star Hiking Trail Club; Sam Houston National Forest"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Lone Star Hiking Trail Club (publishes the trail; no open line found)"
+url = "https://www.openstreetmap.org/relation/7014936"
+discovery = "osm-relation-version: Overpass `rel(7014936); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes (relation v14, edited 2026-01-31)."
+format = "OpenStreetMap route relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 7014936."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+decision = "included-named"
+decision_text = "Included with its name and logo. The line is from OpenStreetMap."
+mainline = "One relation, tagged distance 155 km: the whole main line. No alternates."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 7014936
+note = "Found by a name search on 2026-11-08: relation 7014936 'Lone Star Hiking Trail' (rwn, distance tag 155 km). Downloaded; release.txt has the version."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Lone Star Hiking Trail Club"
+note = "No trail emblem exists. The file removed on 2026-11-08 was the USDA symbol (the Department of Agriculture's agency mark, not the trail's). The map draws the trail name only."
+logo_file = ""
+logo_owner = "Lone Star Hiking Trail Club"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 151.8
+difference_percent = -2.1
+parts = 1
+note = "The record names no source; OSM relation 7014936 (found by name search) gives 151.8 km in 1 part, 2.1% short of 155 km. The relation id is not yet in the record."

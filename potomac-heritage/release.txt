@@ -1,0 +1,7 @@
+potomac-heritage
+
+Source: https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/POHE_Trail_Centerline_(Public_NPMap_Builder)_/FeatureServer/0
+Licence: us-gov-public-domain (see trail.toml and SOURCES.md in this repository)
+Attribution: National Park Service, Potomac Heritage National Scenic Trail
+Source read: 2026-11-08
+Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

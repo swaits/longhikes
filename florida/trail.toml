@@ -1,0 +1,51 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "florida"
+name = "Florida National Scenic Trail"
+short_name = "FNST"
+country = "US"
+regions = ["FL"]
+length_km = 2414
+length_note = "about 1,500 mi published"
+tier = "national"
+designation = "National Scenic Trail (1983)"
+wave = 1
+inclusion = "nst-unconditional"
+
+[source]
+status = "verified"
+publisher = "Florida Trail Association with the USDA Forest Service Southern Region"
+url = "https://services9.arcgis.com/soy9dtLUh5hYXg8U/arcgis/rest/services/FNST%20Master/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (last edit 2026-11-03)."
+format = "ArcGIS FeatureServer layer, 745 features"
+crs = "EPSG:3857 (ask for outSR=4326)"
+licence = "none-stated"
+licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
+attribution = "Florida Trail Association; USDA Forest Service Southern Region"
+osm_only = false
+mainline = "'FNST_Rank' and 'Designatio' columns carry designated trail versus connector status; confirm values with the Association."
+source_checked = "2026-11-08"
+redistributable = false
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+
+[osm]
+relation = 14480287
+note = "OSM splits it into 5 regional relations (14480287-14480290, 14480373)."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://floridatrail.org/"
+contact = "Florida Trail Association (floridahikes.org); USFS Region 8"
+note = "No logo policy found. The official emblem of a National Scenic Trail is a federal insignia (18 U.S.C. 701; Federal Register notices of 2000-03-28 cover Ice Age, North Country and Natchez Trace; status for the others not confirmed). Use needs the administering agency's permission."
+logo_file = "shield.png"
+logo_owner = "Florida Trail Association (floridahikes.org); USFS Region 8"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 2387.9
+difference_percent = -1.1
+parts = 8
+note = "Designatio Trail plus Connector is the thru line: 2,387.9 km in 8 parts, -1.1% over 2,414 km. Side Trail and Spur Trail features (137.7 km) are in alternates.geojson. The earlier 51 parts counted every designation together."

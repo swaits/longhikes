@@ -1,0 +1,51 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "tahoe-rim"
+name = "Tahoe Rim Trail"
+short_name = "TRT"
+country = "US"
+regions = ["CA", "NV"]
+length_km = 266
+length_note = "165 mi published"
+tier = "regional"
+designation = "Tahoe Rim Trail Association trail on USFS and state land"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Tahoe Rim Trail Association (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/3094865"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 3094865."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+decision = "included-named"
+decision_text = "Included with its name and logo. The line is from OpenStreetMap."
+mainline = "OSM 3094865 is the whole loop. TRTA access, connector and spur sections are in alternates.geojson."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 3094865
+note = "Downloaded 2026-11-08 (); release.txt has the relation version and timestamp."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://tahoerimtrail.org/"
+contact = "Tahoe Rim Trail Association"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = "shield.svg"
+logo_owner = "Tahoe Rim Trail Association"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 269.9
+difference_percent = 1.5
+parts = 1
+note = "OSM relation 3094865 gives 269.9 km in 1 part, +1.5% over 266 km: the whole loop. The TRTA ArcGIS layer was dropped: its Main Trail geometry is truncated (3 of 8 segments measure far below their Length_Mi). TRTA access and spur sections stay in alternates.geojson."

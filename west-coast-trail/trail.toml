@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "west-coast-trail"
+name = "West Coast Trail"
+short_name = "WCT"
+country = "CA"
+regions = ["BC"]
+length_km = 75
+length_note = "75 km published"
+tier = "short"
+designation = "Parks Canada, Pacific Rim National Park Reserve"
+wave = "held"
+
+[source]
+status = "osm-only"
+publisher = "Parks Canada (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/6955341"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 6955341."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM 6955341, with 28 'alternative' member ways kept apart from the main ways. Parks Canada's open Trails layer (Open Government Licence - Canada) does not hold this trail (1,349 features, a handful of parks)."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No line is included. OSM relation: 229 main ways, 1 part, 75.9 km (+1.2%). The 28 'alternative' ways are separate, good for mainline versus alternate."
+
+[osm]
+relation = 6955341
+note = "Verified."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://parks.canada.ca/pn-np/bc/pacificrim"
+contact = "Parks Canada"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = ""
+logo_owner = "Parks Canada"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 75.9
+difference_percent = 1.2
+parts = 1
+note = "OSM relation: 229 main ways, 1 part, 75.9 km (+1.2%). The 28 'alternative' ways are separate, good for mainline versus alternate."

@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "palmetto"
+name = "Palmetto Trail"
+short_name = "PT"
+country = "US"
+regions = ["SC"]
+length_km = 800
+length_note = "about 500 mi"
+tier = "regional"
+designation = "Palmetto Conservation Foundation"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Palmetto Conservation Foundation (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/5385288"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 5385288."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM carries about 27 passage relations."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "OSM passages give 554.3 km in 9 parts against 800 km (500 mi) planned. The Palmetto Trail is not finished: built passages are what is mapped, and gaps are unbuilt, not unmapped. Kept as built segments, like the Ice Age pattern."
+
+[osm]
+relation = 5385288
+note = "One of 27 passages."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://palmettoconservation.org/"
+contact = "Palmetto Conservation Foundation"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = "shield.svg"
+logo_owner = "Palmetto Conservation Foundation"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 554.3
+difference_percent = -30.7
+parts = 9
+note = "OSM passages give 554.3 km in 9 parts against 800 km (500 mi) planned. The Palmetto Trail is not finished: built passages are what is mapped, and gaps are unbuilt, not unmapped. Kept as built segments, like the Ice Age pattern."

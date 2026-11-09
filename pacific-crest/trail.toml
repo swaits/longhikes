@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "pacific-crest"
+name = "Pacific Crest National Scenic Trail"
+short_name = "PCT"
+country = "US"
+regions = ["CA", "OR", "WA"]
+length_km = 4265
+length_note = "2,650 mi published by the Pacific Crest Trail Association"
+tier = "national"
+designation = "National Scenic Trail (1968)"
+wave = 1
+inclusion = "nst-unconditional"
+
+[source]
+status = "verified"
+publisher = "Pacific Crest Trail Association (PCTA)"
+url = "https://services5.arcgis.com/ZldHa25efPFpMmfB/ArcGIS/rest/services/PCTA_Centerline/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes. PCTA updates the line once a year, early in the year (last edit 2026-01-06)."
+format = "ArcGIS FeatureServer layer, one feature (a 35 MB GeoJSON when asked for all vertices); PCTA also offers file downloads at pcta.org/discover-the-trail/maps/pct-data/"
+crs = "EPSG:4326"
+licence = "CC-BY-4.0"
+licence_text = "Creative Commons Attribution 4.0 International (CC BY 4.0). The Pacific Crest Trail Association states: 'All of the data accessed through this page are licensed under the Creative Commons Attribution 4.0 International License.' (https://www.pcta.org/discover-the-trail/maps/pct-data/, read 2026-11-09). Credit: Pacific Crest Trail Association."
+attribution = "Pacific Crest Trail Association (CC BY 4.0). Say that the line was reshaped."
+osm_only = false
+mainline = "One feature, the main line. No alternates or connectors in this layer (PCTA publishes those separately)."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "Pacific Crest Trail Association (PCTA)"
+line_file = "line.geojson"
+
+[osm]
+relation = 1225378
+note = "OSM has 1225378 plus about 30 section relations; not needed."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://www.pcta.org/"
+contact = "Pacific Crest Trail Association (pcta.org); USFS Pacific Crest NST office"
+note = "No public logo-use policy found. The PCTA name and logo are its marks. The official emblem of a National Scenic Trail is a federal insignia (18 U.S.C. 701; Federal Register notices of 2000-03-28 cover Ice Age, North Country and Natchez Trace; status for the others not confirmed). Use needs the administering agency's permission."
+logo_file = "shield.png"
+logo_owner = "Pacific Crest Trail Association (pcta.org); USFS Pacific Crest NST office"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 4271.3
+difference_percent = 0.1
+parts = 1
+note = "One feature, one line, 4,271.3 km, +0.1% over 4,265 km."

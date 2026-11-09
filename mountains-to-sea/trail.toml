@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "mountains-to-sea"
+name = "Mountains-to-Sea Trail"
+short_name = "MST-NC"
+country = "US"
+regions = ["NC"]
+length_km = 1890
+length_note = "about 1,175 mi planned"
+tier = "regional"
+designation = "North Carolina State Trail; Friends of the Mountains-to-Sea Trail"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "North Carolina Division of Parks and Recreation; Friends of the Mountains-to-Sea Trail (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/1395404"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 1395404."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM 1395404 (network nwn) plus 24 segment relations. A state source was not found in this pass."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 1395404
+note = "Downloaded 2026-11-08; release.txt has the relation version and timestamp."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://mountainstoseatrail.org/wp-content/uploads/2016/11/MST-white-logo.png"
+contact = "Friends of the Mountains-to-Sea Trail"
+note = "The Friends' own mark, from its site: the ridge line, surf and 'Friends of the Mountains-to-Sea Trail / North Carolina', 217x111 PNG. The site serves this standing mark in white on a transparent ground; it may need a plate behind it on the map."
+logo_file = "shield.png"
+logo_owner = "Friends of the Mountains-to-Sea Trail"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 1923.0
+difference_percent = 1.7
+parts = 9
+note = "The foot line (ways with a highway tag) gives 1,923.0 km, +1.7% over 1,890 km. The Neuse and Yadkin river paddle route and the Cedar Island ferry (377.2 km, ways with no highway tag) are in alternates.geojson. The earlier +21.7% counted the paddle route as foot line. line.osm still holds the whole relation as served."

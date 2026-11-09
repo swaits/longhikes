@@ -1,0 +1,53 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "ganaraska"
+name = "Ganaraska Hiking Trail"
+short_name = "GHT"
+country = "CA"
+regions = ["ON"]
+length_km = 500
+length_note = "about 500 km with side trails"
+tier = "regional"
+designation = "Ganaraska Hiking Trail Association"
+wave = "held"
+wave_note = "Held: the only line, OSM relation 3696751, covers the eastern half only (238.4 km, ending near Barrie) and does not reach Glen Huron. The Association sells a guidebook but publishes no open line. What would fix it: a line from the Ganaraska Hiking Trail Association, or complete OSM mapping of the western clubs sections."
+
+[source]
+status = "osm-only"
+publisher = "Ganaraska Hiking Trail Association (publishes the trail; no open line found)"
+url = "https://www.openstreetmap.org/relation/3696751"
+discovery = "osm-relation-version: Overpass `rel(3696751); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes (relation v96, edited 2026-09-29)."
+format = "OpenStreetMap route relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 3696751."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+decision = "included-named"
+decision_text = "Included with its name and logo. The line is from OpenStreetMap."
+mainline = "One relation. It covers the eastern half and ends near Barrie; the western sections to Glen Huron are not mapped."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "OSM relation 3696751 gives 238.4 km in 7 parts and ends near Barrie; it does not reach the Glen Huron terminus. The 500 km published figure includes branch trails. No usable whole line found on 2026-11-08. Held."
+
+[osm]
+relation = 3696751
+note = "Found by a name search on 2026-11-08: relation 3696751 'Ganaraska Trail' (rwn). Downloaded; release.txt has the version."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://ganaraska-hiking-trail.org/wp-content/uploads/2016/01/cropped-GanaraskaLogo-e1452359706312-192x192.jpg"
+contact = "Ganaraska Hiking Trail Association"
+note = "Ganaraska Hiking Trail Association logo (the G arrow mark), from the Association's own site ganaraska-hiking-trail.org, converted from JPEG."
+logo_file = "shield.png"
+logo_owner = "Ganaraska Hiking Trail Association"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 238.4
+difference_percent = -52.3
+parts = 7
+note = "OSM relation 3696751 gives 238.4 km in 7 parts and ends near Barrie; it does not reach the Glen Huron terminus. The 500 km published figure includes branch trails. No usable whole line found on 2026-11-08. Held."

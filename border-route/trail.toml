@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "border-route"
+name = "Border Route Trail"
+short_name = "BRT"
+country = "US"
+regions = ["MN"]
+length_km = 105
+length_note = "65 mi"
+tier = "regional"
+designation = "Boundary Waters trail, Superior National Forest"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Border Route Trail Association (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/5996078"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 5996078."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "Single OSM relation 5996078 (105 km tag)."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 5996078
+note = "Downloaded 2026-11-08; release.txt has the relation version and timestamp."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://borderroutetrail.org/"
+contact = "Border Route Trail Association"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = "shield.png"
+logo_owner = "Border Route Trail Association"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 106.3
+difference_percent = 1.2
+parts = 1
+note = "43 ways give one continuous line, 106.3 km, +1.2% over 105 km."

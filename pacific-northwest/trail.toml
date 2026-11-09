@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "pacific-northwest"
+name = "Pacific Northwest National Scenic Trail"
+short_name = "PNT"
+country = "US"
+regions = ["MT", "ID", "WA"]
+length_km = 1931
+length_note = "1,200 mi published"
+tier = "national"
+designation = "National Scenic Trail (2009)"
+wave = 1
+inclusion = "nst-unconditional"
+
+[source]
+status = "verified"
+publisher = "USDA Forest Service, Pacific Northwest Region (Region 6)"
+url = "https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/Pacific_Northwest_National_Scenic_Trail/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes. This layer was last edited 2017-04-04, so it is stale; the Pacific Northwest Trail Association (pnt.org) holds newer data and is the party to ask."
+format = "ArcGIS FeatureServer layer, 456 features"
+crs = "EPSG:3857 (ask for outSR=4326)"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09)."
+attribution = "USDA Forest Service, Pacific Northwest Region"
+osm_only = false
+mainline = "Single route layer; 'Layer' and 'SEGMENT' columns say road, trail or beach. No alternates."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "USDA Forest Service, Pacific Northwest Region (Region 6)"
+line_file = "line.geojson"
+
+[osm]
+relation = 11225405
+note = "OSM relation 11225405 (1,931 km tag), maintained against PNTA data."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://www.fs.usda.gov/pnt/"
+contact = "Pacific Northwest Trail Association (pnt.org); USFS Region 6"
+note = "No logo policy found. The official emblem of a National Scenic Trail is a federal insignia (18 U.S.C. 701; Federal Register notices of 2000-03-28 cover Ice Age, North Country and Natchez Trace; status for the others not confirmed). Use needs the administering agency's permission."
+logo_file = "shield.png"
+logo_owner = "Pacific Northwest Trail Association (pnt.org); USFS Region 6"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 1962.0
+difference_percent = 1.6
+parts = 4
+note = "464 features in 4 parts, 1,962.0 km, +1.6% over 1,931 km. The layer was last edited in 2017."

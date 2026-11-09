@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "colorado-trail"
+name = "Colorado Trail"
+short_name = "CT"
+country = "US"
+regions = ["CO"]
+length_km = 782
+length_note = "486 mi published (Colorado Trail Foundation), Denver to Durango"
+tier = "regional"
+designation = "Colorado Trail Foundation trail, most of it on National Forest System land"
+wave = 1
+wave_note = "USFS public domain for 727 km (95%) and OpenStreetMap (ODbL) for the 38 km the Forest Service does not publish, in 17 named stretches: Waterton Canyon (Denver Water), Chalk Creek, Monarch Pass, near Twin Lakes, near Rico, and the Durango end."
+
+[source]
+status = "verified"
+publisher = "USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+discovery = "arcgis-query-hash: GET <url>/query with the recorded where clauses (trail_no '1776' named COLORADO, and ' - CO.TRAIL'), hash the answer body and count its rows; fetch again when either changes"
+format = "ArcGIS MapServer layer, queried in three parts: trail_no = '1776' AND trail_name = 'COLORADO' (90 features), trail_name LIKE '%CO.TRAIL%' (36), and the locally named segments matched by shape (50); outSR=4326, f=geojson. OSM relations 19469031, 19467582, 19469030 and 3823497 read through Overpass."
+crs = "USFS stores Web Mercator (ask for outSR=4326); OSM is EPSG:4326"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09). Part of the line (about 38 km) is from OpenStreetMap and is ODbL 1.0: © OpenStreetMap contributors (https://www.openstreetmap.org/copyright)."
+attribution = "USDA Forest Service; OpenStreetMap contributors (ODbL)"
+osm_only = false
+mainline = "Main line = the Forest Service segments wherever the layer has them, joined through the OSM relations. Collegiate East (OSM 19467582) is the main route through the Sawatch; Collegiate West (OSM 3823497) is the alternate in alternates.geojson. The USFS segments are named 'COLORADO' (no 1776) east of Monarch Pass and '<place> - CO.TRAIL' or a local trail name (CDNST, SUMMIT, SKYLINE) west of it."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment"
+line_file = "line.geojson"
+
+[osm]
+relation = 19469031
+note = "19469031 Waterton Canyon to Twin Lakes (287.3 km) and 19469030 Durango to Monarch Pass (356.2 km), joined by 19467582 Collegiate East (124.5 km); 3823497 Collegiate West (127.8 km) is the alternate. Downloaded 2026-11-08; release.txt has the versions."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Colorado Trail Foundation"
+note = "No logo file found: coloradotrail.org blocks automated fetches (403) and its store shows the triangular CT logo only in product photos. Retried 2026-11-08 with a browser identifier: the site answers HTTP 403 to every request (SiteDistrict WAF), its Instagram hides the profile picture from anonymous clients, and Commons has no file naming the Foundation."
+logo_file = ""
+logo_owner = "Colorado Trail Foundation"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 765.6
+difference_percent = -2.1
+parts = 1
+note = "The Forest Service segments plus the OSM relations give 765.6 km in 1 part, 2.1% short of 782 km: USFS 727.2 km (95%) and OSM 38.4 km in 17 short stretches, the largest Chalk Creek 7.8 km, Rico 5.6 km, Waterton Canyon 5.2 km and Monarch Pass 4.7 km. Earlier OSM-only measure was 643.8 km: the two big relations stop at Twin Lakes and Monarch Pass and do not include the Collegiate East between them."

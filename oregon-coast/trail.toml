@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "oregon-coast"
+name = "Oregon Coast Trail"
+short_name = "OCT"
+country = "US"
+regions = ["OR"]
+length_km = 650
+length_note = "about 400 mi"
+tier = "regional"
+designation = "Oregon Parks and Recreation Department trail"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Oregon Parks and Recreation Department (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/8310290"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 8310290."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OPRD layers exist (services, facilities); no line layer found yet. Much of it is beach and road walking."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 8310290
+note = "OSM relation 8310290."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Oregon Parks and Recreation Department"
+note = "No logo file found: the official OCT logo exists on Oregon State Parks merchandise, but only through a third-party shop, which was not used. Retried 2026-11-08: the Oregon State Parks OCT page carries only the agency logo, and the Oregon Coast Trail Foundation's site has no emblem file."
+logo_file = ""
+logo_owner = "Oregon Parks and Recreation Department"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 675.5
+difference_percent = 3.9
+parts = 3
+note = "948 ways in 3 parts, 675.5 km, +3.9% over 650 km."

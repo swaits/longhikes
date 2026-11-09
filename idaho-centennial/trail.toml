@@ -1,0 +1,52 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "idaho-centennial"
+name = "Idaho Centennial Trail"
+short_name = "ICT"
+country = "US"
+regions = ["ID"]
+length_km = 1448
+length_note = "about 900 mi published"
+tier = "regional"
+designation = "State of Idaho trail"
+wave = 1
+
+[source]
+status = "verified"
+publisher = "Idaho Department of Parks and Recreation"
+url = "https://services1.arcgis.com/CNPdEkvnGl65jCX8/arcgis/rest/services/Idaho_Centennial_Trail_(Official_Route)_view/FeatureServer/52"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (item updated 2026-09-10)."
+format = "ArcGIS FeatureServer view, layer 52, 3 features"
+crs = "EPSG:3857 (ask for outSR=4326)"
+licence = "none-stated"
+licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
+attribution = "Idaho Department of Parks and Recreation"
+osm_only = false
+decision = "included-named"
+decision_text = "Publisher's GIS data is not licensed for redistribution; line taken from no source, and no line is included. The trail is listed with its name and logo."
+mainline = "3 named features: 'Idaho Centennial Trail' (main, 918 mi), '... (Sawtooth Alternate)' (77 mi), '... (Central Wilderness Alternate)' (292 mi). Cleanly separated by name."
+source_checked = "2026-11-08"
+redistributable = false
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+
+[osm]
+relation = 19215740
+note = "OSM 10758083 covers the west half only."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Idaho Department of Parks and Recreation"
+note = "No trail logo file found: Idaho Parks and Recreation publishes the agency logo, not an Idaho Centennial Trail emblem. Retried 2026-11-08: idahoparks.org is a scripted site that exposes no logo file, the State of Idaho's ArcGIS item thumbnail is a map preview, and Idaho Trails Association and Commons have no ICT emblem."
+logo_file = ""
+logo_owner = "Idaho Department of Parks and Recreation"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 1477.8
+difference_percent = 2.1
+parts = 12
+note = "The main feature joins into 12 parts, 1,477.8 km, +2.1% over 1,448 km. alternates.geojson holds the Sawtooth and Central Wilderness alternates (595.7 km)."

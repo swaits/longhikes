@@ -1,0 +1,7 @@
+john-muir
+
+Source: https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0
+Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
+Attribution: OpenStreetMap contributors (ODbL)
+Source read: 2026-11-08
+Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

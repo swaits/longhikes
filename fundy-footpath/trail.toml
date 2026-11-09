@@ -1,0 +1,47 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "fundy-footpath"
+name = "Fundy Footpath"
+short_name = "FF"
+country = "CA"
+regions = ["NB"]
+length_km = 41
+length_note = "41 km"
+tier = "short"
+designation = "Fundy Footpath, New Brunswick"
+wave = "held"
+wave_note = "Held with the short tier; at 41 km it is below the 60 km the maintainers named, so it is flagged as undecided."
+
+[source]
+status = "osm-only"
+publisher = "Fundy Footpath Inc. (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/4077806"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 4077806."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM 4077806."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No line is included. Not downloaded. Under 60 km; kept as an open question."
+
+[osm]
+relation = 4077806
+note = "Not downloaded."
+
+[shield]
+status = "use-real-logo"
+logo_source = ""
+contact = "Fundy Footpath Inc."
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = ""
+logo_owner = "Fundy Footpath Inc."
+
+[verification]
+verified = false
+note = "Not downloaded. Under 60 km; kept as an open question."

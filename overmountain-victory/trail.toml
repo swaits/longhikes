@@ -1,0 +1,47 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "overmountain-victory"
+name = "Overmountain Victory National Historic Trail"
+short_name = "OVNHT"
+country = "US"
+regions = ["VA", "TN", "NC", "SC"]
+length_km = 540
+length_note = "about 330 mi, mostly roads"
+tier = "deferred"
+designation = "National Historic Trail (1980)"
+wave = "held"
+wave_note = "Deferred tier: mostly roads."
+
+[source]
+status = "found"
+publisher = "National Park Service"
+url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/Overmountain_Victory_National_Historic_Trail_Official_Temp/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (edit 2025-05-30)."
+format = "ArcGIS FeatureServer, 43 features"
+crs = "EPSG:26917"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09)."
+attribution = "National Park Service"
+osm_only = false
+mainline = "Designated route as in the 1982 plan."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No line is included. Metadata read; not downloaded. Deferred: mostly roads."
+
+[osm]
+relation = 3087601
+note = "OSM 3087601."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://www.nps.gov/ovvi/index.htm"
+contact = "NPS"
+note = "NHT logos are protected federal marks."
+logo_file = ""
+logo_owner = "NPS"
+
+[verification]
+verified = false
+note = "Metadata read; not downloaded. Deferred: mostly roads."

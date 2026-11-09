@@ -1,0 +1,47 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "nez-perce"
+name = "Nez Perce (Nee-Me-Poo) National Historic Trail"
+short_name = "NPNHT"
+country = "US"
+regions = ["OR", "ID", "MT", "WY"]
+length_km = 1883
+length_note = "about 1,170 mi route, partly road"
+tier = "deferred"
+designation = "National Historic Trail (1986)"
+wave = "held"
+wave_note = "Deferred tier: partly a road route."
+
+[source]
+status = "found"
+publisher = "USDA Forest Service Region 1"
+url = "https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/R01_NezPerceNeeMePoo_NationalHistoricTrail_Centerline/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (edit 2024-09-28)."
+format = "ArcGIS FeatureServer, 532 features"
+crs = "ESRI:102039"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09)."
+attribution = "USDA Forest Service Region 1 Trails and Land Status Programs"
+osm_only = false
+mainline = "Public route, interim route and researched historic locations in one layer, split by 'TRAIL_TYPE' and 'OverallTrailComposition'."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No line is included. Metadata read; not downloaded. Deferred: auto-tour style route in part."
+
+[osm]
+relation = 0
+note = "Not searched."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://www.fs.usda.gov/npnht/"
+contact = "NPS/USFS National Trails"
+note = "NHT logos are protected federal marks; use needs the administrator's approval (NPS NHT pages)."
+logo_file = ""
+logo_owner = "NPS/USFS National Trails"
+
+[verification]
+verified = false
+note = "Metadata read; not downloaded. Deferred: auto-tour style route in part."

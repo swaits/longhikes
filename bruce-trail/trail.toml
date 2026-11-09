@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "bruce-trail"
+name = "Bruce Trail"
+short_name = "BT-ON"
+country = "CA"
+regions = ["ON"]
+length_km = 890
+length_note = "about 890 km main trail plus 400 km side trails"
+tier = "regional"
+designation = "Bruce Trail Conservancy; oldest and longest marked trail in Canada"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Bruce Trail Conservancy (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/3375262"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 3375262."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM carries 9 section relations (rwn) and 8 side-trail relations (lcn), cleanly separated. Bruce County hosts a segments layer whose contact is a Conservancy cartographer; licence not stated."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 3375262
+note = "Section relations 2551527, 3375262, 3444639, 3444701, 3445408, 3444722, 3445414, 3460438..."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://brucetrail.org/"
+contact = "Bruce Trail Conservancy"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = "shield.png"
+logo_owner = "Bruce Trail Conservancy"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 878.0
+difference_percent = -1.3
+parts = 6
+note = "Nine rwn section relations joined into 6 parts, 878.0 km, 1.3% short of 890 km."

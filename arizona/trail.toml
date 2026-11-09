@@ -1,0 +1,51 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "arizona"
+name = "Arizona National Scenic Trail"
+short_name = "AZT"
+country = "US"
+regions = ["AZ"]
+length_km = 1287
+length_note = "800 mi published"
+tier = "national"
+designation = "National Scenic Trail (2009)"
+wave = 1
+inclusion = "nst-unconditional"
+
+[source]
+status = "verified"
+publisher = "Arizona Trail Association (AZTA)"
+url = "https://services3.arcgis.com/IKBBLZOXy58PXgpl/ArcGIS/rest/services/Arizona_National_Scenic_Trail_Feature_Layers_view/FeatureServer/3"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (last edit 2026-09-04)."
+format = "ArcGIS FeatureServer view, layer 3, 44 passages (max 1,000 a page)"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
+attribution = "Arizona Trail Association"
+osm_only = false
+mainline = "44 'Passage' features (01 to 43 plus extras). Some are bypasses; the layer does not mark which. Ask AZTA how to pick the main line."
+source_checked = "2026-11-08"
+redistributable = false
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+
+[osm]
+relation = 2804113
+note = "OSM relation 2804113 (distance tag 1,234 km)."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://aztrail.org/"
+contact = "Arizona Trail Association (aztrail.org); USFS Region 3"
+note = "No logo policy found. The official emblem of a National Scenic Trail is a federal insignia (18 U.S.C. 701; Federal Register notices of 2000-03-28 cover Ice Age, North Country and Natchez Trace; status for the others not confirmed). Use needs the administering agency's permission."
+logo_file = "shield.png"
+logo_owner = "Arizona Trail Association (aztrail.org); USFS Region 3"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 1345.9
+difference_percent = 4.6
+parts = 6
+note = "53 passage features join into 6 parts. The source does not mark bypasses, so +4.6% over over 1,287 km includes alternates."

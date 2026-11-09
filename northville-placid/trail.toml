@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "northville-placid"
+name = "Northville-Placid Trail"
+short_name = "NPT"
+country = "US"
+regions = ["NY"]
+length_km = 220
+length_note = "138 mi"
+tier = "regional"
+designation = "Adirondack Mountain Club; New York DEC"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Adirondack Mountain Club; NY DEC (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/4286650"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 4286650."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM 4286650."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 4286650
+note = "Downloaded 2026-11-08; release.txt has the relation version and timestamp."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://www.adk.org/"
+contact = "Adirondack Mountain Club"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = "shield.svg"
+logo_owner = "Adirondack Mountain Club"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 221.0
+difference_percent = 0.5
+parts = 1
+note = "148 ways, 221.0 km in 1 part, +0.5% over 220 km."

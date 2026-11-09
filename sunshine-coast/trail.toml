@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "sunshine-coast"
+name = "Sunshine Coast Trail"
+short_name = "SCT"
+country = "CA"
+regions = ["BC"]
+length_km = 180
+length_note = "180 km published"
+tier = "regional"
+designation = "Powell River Sunshine Coast Trail Society (Recreation Sites and Trails BC)"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Sunshine Coast Trail Society (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/7406716"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 7406716."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM 7406716. The provincial recreation trail layer (FTEN_REC_TRAILS_SVW) is licensed 'Access Only', not open."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 7406716
+note = "Verified."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://sunshinecoasttrail.com/"
+contact = "Sunshine Coast Trail Society"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = "shield.png"
+logo_owner = "Sunshine Coast Trail Society"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 197.3
+difference_percent = 9.6
+parts = 2
+note = "210 ways in 2 parts, 197.3 km, +9.6% over 180 km."

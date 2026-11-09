@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "new-england"
+name = "New England National Scenic Trail"
+short_name = "NET"
+country = "US"
+regions = ["CT", "MA"]
+length_km = 378
+length_note = "235 mi published"
+tier = "national"
+designation = "National Scenic Trail (2009)"
+wave = 1
+inclusion = "nst-unconditional"
+
+[source]
+status = "verified"
+publisher = "National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club"
+url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/NEEN_BND_NationalScenicTrailCenterline_ln/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (data edit 2023-04-07, schema edit 2025-05-27)."
+format = "ArcGIS FeatureServer layer, 1 multi-line feature"
+crs = "EPSG:4326"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09). The service is a National Park Service service produced with partner associations; the partners' share is not separately licensed in the service."
+attribution = "National Park Service; Connecticut Forest & Park Association; Appalachian Mountain Club"
+osm_only = false
+mainline = "One feature, the whole route. The route in New Hampshire (Metacomet-Monadnock) is not included."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club"
+line_file = "line.geojson"
+
+[osm]
+relation = 3672563
+note = "OSM relation 3672563."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://newenglandtrail.org/wp-content/uploads/2019/12/net-logo.png"
+contact = "NPS New England NST; Connecticut Forest & Park Association; Appalachian Mountain Club"
+note = "Official New England NST emblem (the same art NPS publishes at nps.gov/neen/getinvolved/traillogo.htm; Federal Register notice June 2021). Fetched from the trail's partner site newenglandtrail.org. The generic NPS arrowhead previously here was removed. Federal insignia (18 U.S.C. 701)."
+logo_file = "shield.png"
+logo_owner = "NPS New England NST; Connecticut Forest & Park Association; Appalachian Mountain Club"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 379.4
+difference_percent = 0.4
+parts = 6
+note = "One multi-line feature, 379.4 km in 6 parts, +0.4% over 378 km."

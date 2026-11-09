@@ -1,0 +1,52 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "long-path"
+name = "Long Path"
+short_name = "LP"
+country = "US"
+regions = ["NJ", "NY"]
+length_km = 576
+length_note = "about 358 mi published by the New York-New Jersey Trail Conference"
+tier = "regional"
+designation = "New York-New Jersey Trail Conference"
+wave = 1
+
+[source]
+status = "found"
+publisher = "New York-New Jersey Trail Conference (an ArcGIS item 'Long Path' under an ArcGIS account, 2025; provenance not confirmed)"
+url = "https://services7.arcgis.com/G1WTEJ6UVRUTvh9C/arcgis/rest/services/Long_Path_2023/FeatureServer"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes"
+format = "ArcGIS FeatureServer"
+crs = "not read"
+licence = "none-stated"
+licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
+attribution = "New York-New Jersey Trail Conference"
+osm_only = false
+decision = "included-named"
+decision_text = "Publisher's GIS data is not licensed for redistribution; line taken from no source, and no line is included. The trail is listed with its name and logo."
+mainline = "Not read."
+source_checked = "2026-11-08"
+redistributable = false
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+
+[osm]
+relation = 0
+note = "OSM has 8 relations matching 'Long Path'; not sorted."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://www.nynjtc.org/long-path"
+contact = "New York-New Jersey Trail Conference"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = "shield.png"
+logo_owner = "New York-New Jersey Trail Conference"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 565.5
+difference_percent = -1.8
+parts = 1
+note = "Sections 1 to 36 (New York City to Thacher State Park) give 565.5 km in 1 part, -1.8% over 576 km (358 mi, NYNJTC). Sections 37 to 40, the Adirondack extension beyond the published terminus (102.7 km), are in alternates.geojson. The earlier +16.1% counted the extension as main line."

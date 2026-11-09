@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "john-muir"
+name = "John Muir Trail"
+short_name = "JMT"
+country = "US"
+regions = ["CA"]
+length_km = 340
+length_note = "211 mi published"
+tier = "regional"
+designation = "USFS and NPS trail, shares the PCT for about 150 mi"
+wave = 1
+
+[source]
+status = "found"
+publisher = "No single publisher: NPS Yosemite and Sequoia-Kings Canyon, USFS Inyo and Sierra National Forests"
+url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read the layer's last edit date, when it exposes one (and the feature count); fetch again when either changes; plus OSM version for the whole route"
+format = "NPS Public Trails (ArcGIS), filter TRLNAME LIKE '%John Muir%' (73 pieces); USFS National Forest System trails layer for the forest parts"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 1244828."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "NPS covers only the park parts. OSM relation 1244828 is the only whole-trail line (verified)."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 1244828
+note = "Verified against 340 km."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "USFS Inyo National Forest; NPS"
+note = "No trail emblem exists. The file removed on 2026-11-08 was the generic NPS arrowhead (the agency mark, not the trail's), fetched from an NPS park page. The map draws the trail name only."
+logo_file = ""
+logo_owner = "USFS Inyo National Forest; NPS"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 335.8
+difference_percent = -1.2
+parts = 1
+note = "Measured on the OSM relation: 335.8 km in 1 part, 1.2% short of 340 km."

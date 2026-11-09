@@ -1,0 +1,47 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "oregon-desert"
+name = "Oregon Desert Trail"
+short_name = "ODT"
+country = "US"
+regions = ["OR"]
+length_km = 1200
+length_note = "about 750 mi published"
+tier = "regional"
+designation = "Oregon Natural Desert Association route; no formal designation"
+wave = "held"
+wave_note = "Held: an association route with no formal designation."
+
+[source]
+status = "osm-only"
+publisher = "Oregon Natural Desert Association (ONDA) (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/10702483"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 10702483."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM 10702483 (local network). ONDA publishes GPS tracks at onda.org (Trail Resources) and warns copies elsewhere are not approved; terms not stated."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No line is included. Not downloaded. Could be an author-style route (see excluded list); undecided."
+
+[osm]
+relation = 10702483
+note = "Not downloaded."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://onda.org/oregon-desert-trail/"
+contact = "Oregon Natural Desert Association"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = ""
+logo_owner = "Oregon Natural Desert Association"
+
+[verification]
+verified = false
+note = "Not downloaded. Could be an author-style route (see excluded list); undecided."

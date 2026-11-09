@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "pinhoti"
+name = "Pinhoti Trail"
+short_name = "PIN"
+country = "US"
+regions = ["AL", "GA"]
+length_km = 540
+length_note = "about 335 mi"
+tier = "regional"
+designation = "Pinhoti Trail Alliance; part of the Great Eastern Trail"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Pinhoti Trail Alliance (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/1642836"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 1642836."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM 1642836. An ArcGIS item 'The Pinhoti Trail' exists under a university account (Jacksonville State, 2022); provenance unknown, not used."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 1642836
+note = "Downloaded 2026-11-08; release.txt has the relation version and timestamp."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://alabamatrailsfoundation.org/wp-content/uploads/2022/02/trails-foundation-logo.png"
+contact = "Alabama Trails Foundation (the Pinhoti's Alabama maintainer); Georgia Pinhoti Trail Association"
+note = "The Pinhoti Trail Alliance's old domain, pinhotitrail.org, now redirects to a parked landing page (checked 2026-11-08), and no Pinhoti-specific emblem survives on an official site or Commons. This is the Alabama Trails Foundation's own mark, from its site: the Pinhoti is the Foundation's first Primary Project and current maintainer. 864x504 PNG."
+logo_file = "shield.png"
+logo_owner = "Alabama Trails Foundation (the Pinhoti's Alabama maintainer); Georgia Pinhoti Trail Association"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 537.1
+difference_percent = -0.5
+parts = 1
+note = "226 ways, 537.1 km in 1 part, 0.5% short of 540 km."

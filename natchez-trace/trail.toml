@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "natchez-trace"
+name = "Natchez Trace National Scenic Trail"
+short_name = "NATT"
+country = "US"
+regions = ["MS", "AL", "TN"]
+length_km = 105
+length_note = "about 65 mi of foot trail built (of 450 mi planned)"
+tier = "national"
+designation = "National Scenic Trail (1983)"
+wave = 1
+inclusion = "nst-unconditional"
+
+[source]
+status = "found"
+publisher = "National Park Service, Natchez Trace Parkway"
+url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/NATT_TRANS_NSTTrail/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes. Last edited 2017-08-16, so stale."
+format = "ArcGIS FeatureServer layer, 28 features"
+crs = "EPSG:4326"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09)."
+attribution = "National Park Service, Natchez Trace Parkway"
+osm_only = false
+mainline = "One layer of trail sections; no alternates."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "National Park Service, Natchez Trace Parkway"
+line_file = "line.geojson"
+
+[osm]
+relation = 18963604
+note = "OSM relation 18963604 and two section relations."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://www.govinfo.gov/content/pkg/FR-2000-03-28/pdf/00-7563.pdf"
+contact = "NPS Natchez Trace Parkway"
+note = "Official Natchez Trace NST emblem, from the Federal Register notice of 2000-03-28 (65 FR 16414) that prescribes it as the official trail marker. Black-and-white as published there. The generic NPS arrowhead previously here was removed. Federal insignia (18 U.S.C. 701)."
+logo_file = "shield.png"
+logo_owner = "NPS Natchez Trace Parkway"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 117.9
+difference_percent = 12.3
+parts = 9
+note = "NST foot sections only: the NPS layer without its Natchez Trace Parkway (on-road) feature gives 117.9 km in 9 parts against about 105 km (65 mi) of foot trail built. The 715.0 km parkway road feature is in alternates.geojson and is not drawn as trail. The 65 mi figure is approximate; the NPS layer is the authoritative NST line. Kept as an NST (unconditional)."

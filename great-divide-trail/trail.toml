@@ -1,0 +1,52 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "great-divide-trail"
+name = "Great Divide Trail"
+short_name = "GDT"
+country = "CA"
+regions = ["AB", "BC"]
+length_km = 1130
+length_note = "about 700 mi"
+tier = "regional"
+designation = "Great Divide Trail Association"
+wave = 1
+
+[source]
+status = "found"
+publisher = "Great Divide Trail Association (account 'GreatDivideTrail', public map)"
+url = "https://services3.arcgis.com/C81OzXdcmAdhlUpR/arcgis/rest/services/Amiga_Public_WFL1/FeatureServer/2"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (edit 2025-06-13)."
+format = "ArcGIS FeatureServer layer 'Trails', 98 features, 'Trail_Type' column"
+crs = "EPSG:3857"
+licence = "none-stated"
+licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
+attribution = "Great Divide Trail Association"
+osm_only = false
+decision = "included-named"
+decision_text = "Publisher's GIS data is not licensed for redistribution; line taken from no source, and no line is included. The trail is listed with its name and logo."
+mainline = "'Trail_Type' 0 is the main line; 1 and 2 are alternates and access trails, in alternates.geojson. The CDT line also carries one feature labelled 'Great Divide Trail'."
+source_checked = "2026-11-08"
+redistributable = false
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+
+[osm]
+relation = 8139599
+note = "OSM 8139599 is a super-relation of about 35 sub-relations ('GDT ecc'...)."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://greatdividetrail.com/"
+contact = "Great Divide Trail Association"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = "shield.png"
+logo_owner = "Great Divide Trail Association"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 1106.8
+difference_percent = -2.1
+parts = 1
+note = "Trail_Type 0 in the association layer is the main line: 1,106.8 km in 1 part, -2.1% over 1,130 km. Trail_Type 1 and 2 (alternates and access trails, 1,277.7 km) are in alternates.geojson. The earlier +111% measured all three types together."

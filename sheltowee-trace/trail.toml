@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "sheltowee-trace"
+name = "Sheltowee Trace National Recreation Trail"
+short_name = "STT"
+country = "US"
+regions = ["KY", "TN"]
+length_km = 515
+length_note = "about 320 mi"
+tier = "regional"
+designation = "National Recreation Trail, Daniel Boone National Forest"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "USDA Forest Service, Daniel Boone National Forest; Sheltowee Trace Association (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/12041542"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 12041542."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM has 38 per-section relations (for example 12041542). One ArcGIS item 'Sheltowee Trace' exists under an unrelated account (an ArcGIS account); provenance unknown, not used."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 12041542
+note = "38 section relations."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://sheltowee.org/"
+contact = "Sheltowee Trace Association; USFS"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = "shield.png"
+logo_owner = "Sheltowee Trace Association; USFS"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 442.8
+difference_percent = -14.0
+parts = 1
+note = "The 38 section relations join into 1 continuous line, 442.8 km. That is -14.0% against the 515 km in this record and further against the 343 mi (552 km) the Association listed in 2025 after extensions: OSM misses road-walk links and the newest extension. No better open line found (the one ArcGIS item is under an unrelated account). Kept as the best available line, with the gap recorded."

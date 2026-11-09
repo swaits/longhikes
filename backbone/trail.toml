@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "backbone"
+name = "Backbone Trail"
+short_name = "BBT"
+country = "US"
+regions = ["CA"]
+length_km = 108
+length_note = "67 mi published"
+tier = "regional"
+designation = "Santa Monica Mountains National Recreation Area trail"
+wave = 1
+
+[source]
+status = "found"
+publisher = "National Park Service, Santa Monica Mountains NRA"
+url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read the layer's last edit date, when it exposes one (and the feature count); fetch again when either changes"
+format = "ArcGIS FeatureServer, filter TRLNAME LIKE '%Backbone%' (50 pieces)"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 2748910."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "Pieces only; not checked for completeness."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 2748910
+note = "OSM 2748910."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "NPS Santa Monica Mountains NRA"
+note = "No trail emblem exists. The file removed on 2026-11-08 was the generic NPS arrowhead (the agency mark, not the trail's), fetched from an NPS park page. The map draws the trail name only."
+logo_file = ""
+logo_owner = "NPS Santa Monica Mountains NRA"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 107.3
+difference_percent = -0.6
+parts = 2
+note = "Measured on the OSM relation: 107.3 km in 2 parts, 0.6% short of 108 km."

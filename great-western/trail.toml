@@ -1,0 +1,47 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "great-western"
+name = "Great Western Trail"
+short_name = "GWT"
+country = "US"
+regions = ["AZ", "UT", "ID", "WY", "MT"]
+length_km = 4800
+length_note = "about 3,000 mi planned"
+tier = "regional"
+designation = "USFS and BLM multi-use route designated by association"
+wave = "held"
+wave_note = "Held: a motor route, not a walking trail."
+
+[source]
+status = "found"
+publisher = "Arizona State Parks for the Arizona part; no whole-trail publisher found"
+url = "https://services2.arcgis.com/gdcQ6sUWKP8qwBmV/arcgis/rest/services/GWT_Alignment_Public_View/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes"
+format = "ArcGIS FeatureServer view, 30 features, Arizona only"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
+attribution = "Arizona State Parks and Trails"
+osm_only = false
+mainline = "Arizona part only; other states have no matching source found."
+source_checked = "2026-11-08"
+redistributable = false
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No line is included. Arizona layer downloaded: 30 features, 822 mi (1,323 km), 3 parts. No whole-trail length to check against. Multi-use motor route, not a footpath: inclusion undecided."
+
+[osm]
+relation = 17325994
+note = "OSM relation 17325994 and 8643138 (Arizona)."
+
+[shield]
+status = "use-real-logo"
+logo_source = ""
+contact = "Great Western Trail Association"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = ""
+logo_owner = "Great Western Trail Association"
+
+[verification]
+verified = false
+note = "Arizona layer downloaded: 30 features, 822 mi (1,323 km), 3 parts. No whole-trail length to check against. Multi-use motor route, not a footpath: inclusion undecided."

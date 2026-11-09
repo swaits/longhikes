@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "continental-divide"
+name = "Continental Divide National Scenic Trail"
+short_name = "CDT"
+country = "US"
+regions = ["NM", "CO", "WY", "ID", "MT"]
+length_km = 4989
+length_note = "about 3,100 mi published"
+tier = "national"
+designation = "National Scenic Trail (1978)"
+wave = 1
+inclusion = "nst-unconditional"
+
+[source]
+status = "verified"
+publisher = "Continental Divide Trail Coalition (CDTC)"
+url = "https://services8.arcgis.com/WyuHwdftppQLa5KO/arcgis/rest/services/Continental_Divide_Trail_2/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (last edit 2026-11-05)."
+format = "ArcGIS FeatureServer layer, 7 features"
+crs = "not stated in the layer (ask for outSR=4326)"
+licence = "CC-BY"
+licence_text = "The source item's licence field reads 'CC BY' (version not stated). Treated here as Creative Commons Attribution; credit: Continental Divide Trail Coalition. The version should be confirmed with the Coalition before reuse that needs a named version. Source: https://services8.arcgis.com/WyuHwdftppQLa5KO/arcgis/rest/services/Continental_Divide_Trail_2/FeatureServer/0 (read 2026-11-09)."
+attribution = "Continental Divide Trail Coalition"
+osm_only = false
+mainline = "'Label' separates 'CDT Primary Route' (4 features), 'CDT Chief Mountain Route' and 'CDT Tonahutu Creek Route' (alternates), and one feature labelled 'Great Divide Trail' (the Canadian link; belongs to the GDT record)."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "Continental Divide Trail Coalition (CDTC)"
+line_file = "line.geojson"
+
+[osm]
+relation = 921198
+note = "OSM has relation 921198 (4,988 km) and four state sections."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://continentaldividetrail.org/"
+contact = "Continental Divide Trail Coalition (continentaldividetrail.org); USFS CDNST administrator"
+note = "No logo policy found. The official emblem of a National Scenic Trail is a federal insignia (18 U.S.C. 701; Federal Register notices of 2000-03-28 cover Ice Age, North Country and Natchez Trace; status for the others not confirmed). Use needs the administering agency's permission."
+logo_file = "shield.png"
+logo_owner = "Continental Divide Trail Coalition (continentaldividetrail.org); USFS CDNST administrator"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 4891.2
+difference_percent = -2.0
+parts = 1
+note = "The 'CDT Primary Route' features join into 1 line, 4,891.2 km, 2.0% short of 4,989 km. alternates.geojson holds the Chief Mountain and Tonahutu routes and the one feature labelled Great Divide Trail (57.5 km)."

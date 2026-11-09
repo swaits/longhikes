@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "teton-crest"
+name = "Teton Crest Trail"
+short_name = "TCT-WY"
+country = "US"
+regions = ["WY"]
+length_km = 64
+length_note = "about 40 mi"
+tier = "short"
+designation = "Grand Teton National Park and Caribou-Targhee National Forest"
+wave = "held"
+
+[source]
+status = "osm-only"
+publisher = "National Park Service; USFS (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/3895101"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 3895101."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM 3895101. The NPS national layer holds only 4 pieces (5.4 km)."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No line is included. The NPS national layer has only 5.4 km of the 64 km: not usable as a source."
+
+[osm]
+relation = 3895101
+note = "Not downloaded."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://www.nps.gov/grte/index.htm"
+contact = "NPS Grand Teton"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = ""
+logo_owner = "NPS Grand Teton"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 5.4
+difference_percent = -91.6
+parts = 2
+note = "The NPS national layer has only 5.4 km of the 64 km: not usable as a source."

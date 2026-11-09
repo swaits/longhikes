@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "sentier-international-appalaches"
+name = "Sentier international des Appalaches (International Appalachian Trail, Quebec and New Brunswick)"
+short_name = "IAT-CA"
+country = "CA"
+regions = ["QC", "NB"]
+length_km = 1177
+length_note = "about 650 km in Quebec (SIA-QC) plus about 527 km in New Brunswick; Maine section not in this record"
+tier = "regional"
+designation = "Sentier international des Appalaches; International Appalachian Trail"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Sentier international des Appalaches (Québec); IAT New Brunswick (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/9318808"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 9318808."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM 9318808 plus six SIA section relations; New Brunswick 6544824."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 9318808
+note = "Downloaded 2026-11-08; release.txt has the relation version and timestamp."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://www.sia-iat.com/"
+contact = "Sentier international des Appalaches"
+note = "International Appalachian Trail logo (mountain mark) from SIA-IAT Quebec's own site sia-iat.com. The trail's GR A1 blaze is a separate red-and-white mark."
+logo_file = "shield.png"
+logo_owner = "Sentier international des Appalaches"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 1164.3
+difference_percent = -1.1
+parts = 2
+note = "Quebec (9318808) and New Brunswick (6544824) together: 1,164.3 km in 2 parts, -1.1% against 1,177 km (650 km Quebec plus 527 km New Brunswick). The earlier +16.4% used a 1,000 km published figure that understates New Brunswick."

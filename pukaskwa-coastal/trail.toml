@@ -1,0 +1,46 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "pukaskwa-coastal"
+name = "Pukaskwa Coastal Hiking Trail"
+short_name = "PCHT"
+country = "CA"
+regions = ["ON"]
+length_km = 60
+length_note = "60 km"
+tier = "short"
+designation = "Parks Canada, Pukaskwa National Park"
+wave = "held"
+
+[source]
+status = "osm-only"
+publisher = "Parks Canada (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/15361195"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 15361195."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM 15361195."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No line is included. Not downloaded."
+
+[osm]
+relation = 15361195
+note = "Not downloaded."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://parks.canada.ca/pn-np/on/pukaskwa"
+contact = "Parks Canada"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = ""
+logo_owner = "Parks Canada"
+
+[verification]
+verified = false
+note = "Not downloaded."

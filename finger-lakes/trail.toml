@@ -1,0 +1,51 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "finger-lakes"
+name = "Finger Lakes Trail"
+short_name = "FLT"
+country = "US"
+regions = ["NY"]
+length_km = 950
+length_note = "about 590 mi with branches"
+tier = "regional"
+designation = "Finger Lakes Trail Conference; the North Country NST follows it in NY"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Finger Lakes Trail Conference (publishes the trail; the North Country Trail Association hosts its line as 'agol_flt')"
+url = "https://www.openstreetmap.org/relation/12725656"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when any of the four region relations changes (v13 to v20, edited 2026-01-20 to 2026-09-06)."
+format = "OpenStreetMap route relations, four regions, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 12725656."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+decision = "included-named"
+decision_text = "Included with its name and logo. The line is from OpenStreetMap."
+mainline = "Four region relations: Allegany (12725656), Western Finger Lakes (12725657), Eastern Finger Lakes (12725658) and Catskill (12725661). The two spur relations (Lick Brook, Buttermilk Falls) are in alternates.geojson."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 12725656
+note = "Four region relations are the line: 12725656 Allegany, 12725657 Western Finger Lakes, 12725658 Eastern Finger Lakes, 12725661 Catskill. Two spur relations (11285669 Lick Brook, 11285670 Buttermilk Falls) are in alternates.geojson. Downloaded 2026-11-08; release.txt has the versions."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://fingerlakestrail.org/wp-content/uploads/2017/02/finger-lakes-trail-logo-small.png"
+contact = "Finger Lakes Trail Conference"
+note = "The Conference's own mark, from its site: the yellow octagon with dark-green firs and 'FT / FINGER LAKES TRAIL', 82x96 PNG."
+logo_file = "shield.png"
+logo_owner = "Finger Lakes Trail Conference"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 921.1
+difference_percent = -3.0
+parts = 2
+note = "The NCT-hosted layer holds only the segments the North Country Trail shares (628.9 km); the four OSM region relations are the whole Finger Lakes Trail and are used here: 921.1 km, 3.0% short of 950 km. The layer extract is kept as source-fragment.geojson."

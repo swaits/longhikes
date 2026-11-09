@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "potomac-heritage"
+name = "Potomac Heritage National Scenic Trail"
+short_name = "POHE"
+country = "US"
+regions = ["DC", "MD", "VA", "PA"]
+length_km = 1448
+length_note = "about 900 mi network, per the NPS"
+tier = "national"
+designation = "National Scenic Trail (1983)"
+wave = 1
+inclusion = "nst-unconditional"
+
+[source]
+status = "found"
+publisher = "National Park Service, Potomac Heritage NST"
+url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/POHE_Trail_Centerline_(Public_NPMap_Builder)_/FeatureServer/0"
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (last edit 2026-11-06)."
+format = "ArcGIS FeatureServer layer, 703 features"
+crs = "EPSG:4269"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09)."
+attribution = "National Park Service, Potomac Heritage National Scenic Trail"
+osm_only = false
+mainline = "Mixed: 'TRSTATUS' marks existing versus proposed; only existing belongs on the map."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "National Park Service, Potomac Heritage NST"
+line_file = "line.geojson"
+
+[osm]
+relation = 0
+note = "Not searched."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://npshistory.com/publications/pohe/route-marking-graphic-id-2015.pdf"
+contact = "NPS Potomac Heritage NST"
+note = "Official Potomac Heritage NST emblem, extracted from the NPS Route Marking and Graphic Identity Guide (2015), page The Trail Marker (Logo); the logo is a Federal mark published in the Federal Register (2001). The generic NPS arrowhead previously here was removed. Use needs the trail administrator's written permission per the guide."
+logo_file = "shield.png"
+logo_owner = "NPS Potomac Heritage NST"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 1380.9
+difference_percent = -4.6
+parts = 46
+note = "'Existing' segments only: 1,380.9 km in 46 parts, 4.6% short of 1,448 km. alternates.geojson holds the planned and proposed segments (219.6 km)."

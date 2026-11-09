@@ -1,0 +1,49 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "east-coast-trail"
+name = "East Coast Trail (Newfoundland)"
+short_name = "ECT"
+country = "CA"
+regions = ["NL"]
+length_km = 336
+length_note = "336 km published (30 paths)"
+tier = "regional"
+designation = "East Coast Trail Association"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "East Coast Trail Association (publishes the trail; no open geometry found)"
+url = "https://www.openstreetmap.org/relation/2199386"
+discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 2199386."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM 2199386."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 2199386
+note = "Verified."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://eastcoasttrail.com/"
+contact = "East Coast Trail Association"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = "shield.png"
+logo_owner = "East Coast Trail Association"
+
+[verification]
+verified = true
+date = "2026-11-08"
+measured_km = 315.8
+difference_percent = -6.0
+parts = 4
+note = "552 ways in 4 parts, 315.8 km, 6.0% short of 336 km."

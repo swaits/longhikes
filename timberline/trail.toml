@@ -1,0 +1,46 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "timberline"
+name = "Timberline Trail (Mount Hood)"
+short_name = "TLT"
+country = "US"
+regions = ["OR"]
+length_km = 64
+length_note = "about 40 mi"
+tier = "short"
+designation = "USFS trail #600, Mount Hood National Forest"
+wave = "held"
+
+[source]
+status = "found"
+publisher = "USDA Forest Service, Mount Hood National Forest"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+discovery = "arcgis-layer-edit-date on the EDW layer"
+format = "USFS National Forest System trails (already ingested as fs_trail), trail number 600"
+crs = "EPSG:3857"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09)."
+attribution = "USDA Forest Service"
+osm_only = false
+mainline = "Trail number 600 pieces."
+source_checked = "2026-11-08"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No line is included. Not downloaded."
+
+[osm]
+relation = 0
+note = "No relation matched the name."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://www.fs.usda.gov/mthood/"
+contact = "USFS Mount Hood National Forest"
+note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_file = ""
+logo_owner = "USFS Mount Hood National Forest"
+
+[verification]
+verified = false
+note = "Not downloaded."

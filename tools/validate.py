@@ -5,12 +5,15 @@ Python 3 standard library only. Run from anywhere:
     python3 tools/validate.py
 Prints "OK <n> trails" and exits 0, or prints one error per line and exits 1.
 """
+import sys
+
+sys.dont_write_bytecode = True
+
 import importlib.util
 import json
 import math
 import os
 import re
-import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAX_BYTES = 50 * 1024 * 1024

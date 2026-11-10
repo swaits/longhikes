@@ -19,7 +19,9 @@ The second command must print `OK <n> trails`.
 
 ## Add a trail
 
-A trail belongs here when it meets the inclusion rule in README.md: a named, continuous walking route, or a named loop, of at least 50 miles (80 km) (a few well-known routes of 60-80 km are also listed), that a land agency or trail association designates, maintains and publishes as one trail, in the United States or Canada. Routes whose creators choose not to publish a track are not added.
+A trail belongs here when it meets the inclusion rule in README.md: a named, continuous walking route, or a named loop, of at least 50 miles (80 km) (a few well-known routes of 60-80 km are also listed), in the United States or Canada. It is either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a person-defined route: a high route, a traverse or a loop that a person or a small group worked out and published.
+
+A person-defined route whose creator chooses not to publish a track is still added, as a record with no line, pointing to where the route is got from its creator. No line for it is included from any source, OpenStreetMap included. The rule is in README.md, section "Inclusion rule"; the fields are in docs/schema.md.
 
 To add one:
 
@@ -42,4 +44,4 @@ To add one:
 
 - Plain, short English. No sales talk.
 - Records state facts and sources. If a term comes from a source page, quote the sentence and give the page in `source.licence_text` or SOURCES.md.
-- Do not add personal names or email addresses, local file paths, or notes about how a change was produced.
+- Do not add personal names or email addresses, local file paths, or notes about how a change was produced. This is about contributors and about how a change was made. The published name of a route's creator, or of a guide's author, is a fact about the route and belongs in the record (`route.creator`, `guide.author`).

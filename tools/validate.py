@@ -22,6 +22,8 @@ ALLOWED_LICENCES = {
     "CC-BY-NC-ND-4.0", "none-stated", "restricted", "unknown",
 }
 DATA_LICENCES = {"us-gov-public-domain", "CC-BY-4.0", "CC-BY", "ODbL-1.0"}
+LINE_POLICIES = {"open", "sold", "withheld", "unclear"}
+NO_LINE_POLICIES = {"sold", "withheld", "unclear"}
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 spec = importlib.util.spec_from_file_location(
@@ -195,6 +197,66 @@ def main():
             errors.append(f"{tid}: missing required field osm.relation")
         if not rec.get("verification", {}).get("verified") in (True, False):
             errors.append(f"{tid}: missing required field verification.verified")
+
+        kind = rec.get("kind")
+        route = rec.get("route")
+        guides = rec.get("guide")
+        if kind is not None and kind != "route":
+            errors.append(f"{tid}: kind must be \"route\" when present, not {kind!r}")
+        if kind == "route":
+            if not isinstance(route, dict):
+                errors.append(f"{tid}: kind is \"route\" but there is no [route] table")
+                route = {}
+            if not str(route.get("creator", "")).strip():
+                errors.append(f"{tid}: route.creator is missing")
+            policy = route.get("line_policy")
+            if policy not in LINE_POLICIES:
+                errors.append(
+                    f"{tid}: route.line_policy must be one of "
+                    f"{', '.join(sorted(LINE_POLICIES))}, not {policy!r}")
+            if (str(route.get("creator_words", "")).strip()
+                    and not str(route.get("creator_words_url", "")).strip()):
+                errors.append(
+                    f"{tid}: route.creator_words is present but "
+                    "route.creator_words_url is missing")
+            if not isinstance(guides, list) or not guides:
+                errors.append(f"{tid}: kind is \"route\" but there is no [[guide]] table")
+            else:
+                for i, g in enumerate(guides, 1):
+                    for field in ("title", "author", "access", "url"):
+                        if not str(g.get(field, "")).strip():
+                            errors.append(f"{tid}: guide {i} is missing {field}")
+                    if g.get("access") not in ("free", "purchase"):
+                        errors.append(
+                            f"{tid}: guide {i} access must be \"free\" or \"purchase\", "
+                            f"not {g.get('access')!r}")
+                    if not str(g.get("url", "")).startswith(("https://", "http://")):
+                        errors.append(f"{tid}: guide {i} url must be an http(s) URL")
+                    if (str(g.get("price", "")).strip()
+                            and not DATE_RE.match(str(g.get("price_checked", "")))):
+                        errors.append(
+                            f"{tid}: guide {i} has a price but no price_checked date "
+                            "(YYYY-MM-DD)")
+            if policy in NO_LINE_POLICIES:
+                if src.get("line_file"):
+                    errors.append(
+                        f"{tid}: line_policy is {policy}, so source.line_file must be empty")
+                for name in ("line.geojson", "alternates.geojson"):
+                    if os.path.isfile(os.path.join(tdir, name)):
+                        errors.append(
+                            f"{tid}: line_policy is {policy}, so {name} must not be present")
+                if osm.get("relation"):
+                    errors.append(
+                        f"{tid}: line_policy is {policy}, so osm.relation must be 0")
+                if not str(src.get("line_absent_reason", "")).strip():
+                    errors.append(
+                        f"{tid}: line_policy is {policy}, so source.line_absent_reason "
+                        "must say why no line is included")
+        else:
+            if route is not None:
+                errors.append(f"{tid}: [route] table present but kind is not \"route\"")
+            if guides:
+                errors.append(f"{tid}: [[guide]] present but kind is not \"route\"")
 
     for dirpath, dirnames, filenames in os.walk(ROOT):
         if ".git" in dirpath:

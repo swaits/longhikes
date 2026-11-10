@@ -19,19 +19,29 @@ except ModuleNotFoundError:  # Python < 3.11: minimal fallback for this repo's T
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BEGIN = "<!-- BEGIN TRAIL TABLE -->"
 END = "<!-- END TRAIL TABLE -->"
+COUNT_BEGIN = "<!-- BEGIN COUNTS -->"
+COUNT_END = "<!-- END COUNTS -->"
+ROUTE_BEGIN = "<!-- BEGIN ROUTE TABLE -->"
+ROUTE_END = "<!-- END ROUTE TABLE -->"
+DESIGNATED = "designated"
 
 
 def load_toml(path):
     if tomllib is not None:
         with open(path, "rb") as f:
             return tomllib.load(f)
-    rec, section = {}, None
+    rec, table = {}, None
     for raw in open(path, encoding="utf-8"):
         line = raw.strip()
         if not line or line.startswith("#"):
             continue
+        if line.startswith("[[") and line.endswith("]]"):
+            # array of tables, for example [[guide]]
+            table = {}
+            rec.setdefault(line[2:-2].strip(), []).append(table)
+            continue
         if line.startswith("[") and line.endswith("]"):
-            section = rec.setdefault(line[1:-1], {})
+            table = rec.setdefault(line[1:-1].strip(), {})
             continue
         key, _, val = line.partition("=")
         val = val.strip()
@@ -46,7 +56,7 @@ def load_toml(path):
                 out = int(val)
             except ValueError:
                 out = float(val)
-        (section if section is not None else rec)[key.strip()] = out
+        (table if table is not None else rec)[key.strip()] = out
     return rec
 
 
@@ -64,17 +74,25 @@ def load_trails(root=ROOT):
     return trails
 
 
+def trail_kind(t):
+    return t.get("kind") or DESIGNATED
+
+
+def line_policy(t):
+    return t.get("route", {}).get("line_policy", "") if trail_kind(t) == "route" else ""
+
+
 def csv_text(trails):
     buf = io.StringIO()
     w = csv.writer(buf, lineterminator="\n")
     w.writerow(["id", "name", "country", "regions", "length_km", "status",
-                "line_source", "licence"])
+                "line_source", "licence", "kind", "line_policy"])
     for t in trails:
         src = t.get("source", {})
         status = "included" if src.get("line_file") else "record-only"
         w.writerow([t["id"], t["name"], t["country"], ";".join(t.get("regions", [])),
                     t["length_km"], status, src.get("line_source", ""),
-                    src.get("licence", "")])
+                    src.get("licence", ""), trail_kind(t), line_policy(t)])
     return buf.getvalue()
 
 
@@ -146,13 +164,20 @@ def index_geojson_text(trails, root=ROOT):
                 new_geom = {"type": "MultiLineString", "coordinates": parts}
             else:
                 continue
+            props = {"id": t["id"], "name": t["name"], "kind": trail_kind(t)}
+            if trail_kind(t) == "route":
+                props["line_policy"] = line_policy(t)
             features.append({
                 "type": "Feature",
-                "properties": {"id": t["id"], "name": t["name"]},
+                "properties": props,
                 "geometry": new_geom,
             })
     fc = {"type": "FeatureCollection", "features": features}
     return json.dumps(fc, ensure_ascii=False, separators=(",", ":")) + "\n"
+
+
+def _cell(value):
+    return str(value).replace("|", "\\|")
 
 
 def readme_table(trails):
@@ -161,24 +186,75 @@ def readme_table(trails):
         "| --- | --- | --- | --- | ---: | --- | --- |",
     ]
     for t in trails:
+        if trail_kind(t) != DESIGNATED:
+            continue
         src = t.get("source", {})
         line = "yes" if src.get("line_file") else "no (record only)"
         regions = ", ".join(t.get("regions", []))
-        name = str(t["name"]).replace("|", "\\|")
         lines.append(
-            f"| {t['id']} | {name} | {t['country']} | {regions} | {t['length_km']} | {line} | {src.get('licence','')} |"
+            f"| {t['id']} | {_cell(t['name'])} | {t['country']} | {regions} | "
+            f"{t['length_km']} | {line} | {src.get('licence','')} |"
         )
     return "\n".join(lines)
+
+
+def first_guide(t):
+    guides = t.get("guide") or []
+    if not guides:
+        return ""
+    g = guides[0]
+    title = _cell(g.get("title", ""))
+    url = g.get("url", "")
+    access = g.get("access", "")
+    return f"[{title}]({url}) ({access})" if url else f"{title} ({access})"
+
+
+def readme_route_table(trails):
+    lines = [
+        "| ID | Route | Country | States / provinces | Length (km) | Creator | Line policy | Line | First guide |",
+        "| --- | --- | --- | --- | ---: | --- | --- | --- | --- |",
+    ]
+    for t in trails:
+        if trail_kind(t) != "route":
+            continue
+        src = t.get("source", {})
+        line = "yes" if src.get("line_file") else "no"
+        regions = ", ".join(t.get("regions", []))
+        lines.append(
+            f"| {t['id']} | {_cell(t['name'])} | {t['country']} | {regions} | "
+            f"{t['length_km']} | {_cell(t.get('route', {}).get('creator', ''))} | "
+            f"{line_policy(t)} | {line} | {first_guide(t)} |"
+        )
+    return "\n".join(lines)
+
+
+def counts_line(trails):
+    total = len(trails)
+    with_line = sum(1 for t in trails if t.get("source", {}).get("line_file"))
+    routes = [t for t in trails if trail_kind(t) == "route"]
+    routes_with_line = sum(1 for t in routes if t.get("source", {}).get("line_file"))
+    return (
+        f"{total} records, {with_line} with a line, {total - with_line} records only. "
+        f"Of these, {len(routes)} are person-defined routes: {routes_with_line} with a line "
+        f"and {len(routes) - routes_with_line} records only."
+    )
+
+
+def replace_block(text, begin, end, body, path):
+    if begin not in text or end not in text:
+        raise SystemExit(f"README markers {begin!r} and {end!r} not found in {path}")
+    before, rest = text.split(begin, 1)
+    _, after = rest.split(end, 1)
+    return before + begin + "\n\n" + body + "\n\n" + end + after
 
 
 def render_readme(readme_path, trails):
     with open(readme_path, encoding="utf-8") as f:
         text = f.read()
-    if BEGIN not in text or END not in text:
-        raise SystemExit(f"README trail-table markers not found in {readme_path}")
-    before, rest = text.split(BEGIN, 1)
-    _, after = rest.split(END, 1)
-    return before + BEGIN + "\n\n" + readme_table(trails) + "\n\n" + END + after
+    text = replace_block(text, COUNT_BEGIN, COUNT_END, counts_line(trails), readme_path)
+    text = replace_block(text, BEGIN, END, readme_table(trails), readme_path)
+    text = replace_block(text, ROUTE_BEGIN, ROUTE_END, readme_route_table(trails), readme_path)
+    return text
 
 
 def main():

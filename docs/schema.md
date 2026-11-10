@@ -32,13 +32,14 @@ line_file = "line.geojson"
 | --- | --- | --- | --- |
 | `id` | string | Stable identifier. Equals the directory name. Never changes. | `"long-trail"` |
 | `name` | string | The trail's own name. | `"Long Trail (Vermont)"` |
-| `short_name` | string | Abbreviation, as carried on the trail's shield. | `"LT"` |
+| `short_name` | string | Abbreviation, as carried on the trail's shield, or the short form of a route's name where it has no shield. | `"LT"` |
 | `country` | string | `US` or `CA`. | `"US"` |
 | `regions` | array of strings | State, province or territory codes crossed. | `["VT"]` |
 | `length_km` | integer | Published length in kilometres. A check value, not measured from the line. | `438` |
 | `length_note` | string | Where the published length comes from. | `"272 mi published"` |
-| `tier` | string | `national` (US National Scenic Trail), `regional` (80 km or more), `short` (well-known, 60-80 km), `deferred`, or `candidate`. | `"regional"` |
-| `designation` | string | What makes it a long trail: statute, agency or association. | `"National Scenic Trail (1968)"` |
+| `kind` | string, where present | `"route"` for a person-defined route: one that a person or a small group worked it out and published. Absent means a designated trail: one that a land agency or a trail association designates. | `"route"` |
+| `tier` | string | `national` (US National Scenic Trail), `regional` (80 km or more), `short` (well-known, 60-80 km), `deferred`, or `candidate`. The tiers apply to routes as well. | `"regional"` |
+| `designation` | string | What makes it a long trail: statute, agency or association, or for a route the person and year it was published. | `"National Scenic Trail (1968)"` |
 | `wave` | integer or string | `1` for trails in the first set; `"held"` where listing is undecided. | `1` |
 | `wave_note` | string, where present | Why a held trail is held. | `"Held: no usable whole line exists."` |
 | `inclusion` | string, where present | `nst-unconditional` for every National Scenic Trail; `candidate-decision-pending` for a candidate. Absent otherwise. | `"nst-unconditional"` |
@@ -96,6 +97,36 @@ line_file = "line.geojson"
 | `difference_percent` | number, where verified | Measured length minus published length, as a percent of published length. | `-8.5` |
 | `parts` | integer, where verified | Pieces left after joining line ends within 100 m. | `1` |
 | `note` | string | What was found, including failures and gaps. | `"389.5 km in 12 parts against 480 km planned."` |
+
+## `[route]`: the creator and the line policy
+
+Present only when `kind = "route"`. A route is a high route, a traverse or a loop of linked trails that a person or a small group worked out and published.
+
+| Field | Type | Meaning | Example |
+| --- | --- | --- | --- |
+| `creator` | string | The person, people or group who worked the route out. | `"Steve Roper"` |
+| `year` | integer, where known | The year the route was first published or first walked, as the source states it. Absent when no page read states one. | `1970` |
+| `line_policy` | string | `open` (the creator publishes the line freely), `sold` (the route is got by buying a guide or map set), `withheld` (the creator chooses not to publish a line), or `unclear` (not settled). | `"sold"` |
+| `creator_words` | string, where found | The creator's own words on sharing the line, quoted exactly. | `"There is no route, so you must create one on your own."` |
+| `creator_words_url` | string, where `creator_words` is present | The page the words were read on. | `"https://andrewskurka.com/adventures/great-western-loop/route-description/"` |
+| `creator_words_by` | string, where the words are another person's | Whose words `creator_words` quotes, when they are not the creator's. | `"Andrew Skurka"` |
+| `note` | string, where present | Anything else about the route's lines: when it was first walked, what it links, what is still missing. | `"The guidebook's maps are the line."` |
+
+## `[[guide]]`: where the route is got from
+
+An array of tables, one per guide, and at least one for every route. A guide is the book, map set or page that gives the route.
+
+| Field | Type | Meaning | Example |
+| --- | --- | --- | --- |
+| `title` | string | The guide's title or the page's name. | `"Sierra High Route, 2nd Edition"` |
+| `author` | string | Who wrote or published it. | `"Steve Roper"` |
+| `access` | string | `"free"` or `"purchase"`. | `"purchase"` |
+| `url` | string | The creator's or publisher's own page for the guide. | `"https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"` |
+| `format` | string | What the guide is: book, map set, web page, GPX file, and so on. | `"book"` |
+| `price` | string, where known | The price exactly as the page states it, with the date read in `price_checked`. | `"$24.95"` |
+| `price_checked` | string (date), where `price` is present | Date the price was read, `YYYY-MM-DD`. | `"2026-11-10"` |
+| `publisher` | string, where known | The publisher, where it is not the author. | `"Mountaineers Books"` |
+| `isbn` | string, where known | The book's ISBN. | `"978-0-89886-506-6"` |
 
 ## Files beside the record
 

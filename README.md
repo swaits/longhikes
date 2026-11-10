@@ -6,15 +6,27 @@ A public dataset of long-distance hiking trails in the United States and Canada:
 
 This is a dataset, not a guide. Each record says what the trail is, how long it is, where its line came from, and under what terms that line may be used. It is not a navigation product: lines vary in quality, some trails are unfinished, and some records have no line at all. Check a trail's own record before using its line.
 
-The counts at this release: 104 trail records, 84 with a line, 20 records only.
+The counts at this release:
+
+<!-- BEGIN COUNTS -->
+
+104 records, 84 with a line, 20 records only. Of these, 0 are person-defined routes: 0 with a line and 0 records only.
+
+<!-- END COUNTS -->
 
 ## Inclusion rule
 
-A long trail here is a named, continuous walking route, or a named loop, of at least 50 miles (80 km), that a land agency or a trail association designates, maintains and publishes as one trail, in the United States or Canada. The floor is 50 miles because that is about what multi-day wilderness backpacking takes. A small number of well-known multi-day trails between 60 km and 80 km are also listed.
+A long trail here is a named, continuous walking route, or a named loop, of at least 50 miles (80 km), in the United States or Canada: either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a person-defined route as described below. The floor is 50 miles because that is about what multi-day wilderness backpacking takes. A small number of well-known multi-day trails between 60 km and 80 km are also listed.
 
 Every United States National Scenic Trail is listed. Other trails are listed when they meet the rule above.
 
-Some routes are left out on purpose. A few route creators choose not to publish a track for their route, because finding the way is part of the route. Those routes are not listed here, and no line for them is included, out of respect for that choice. Routes whose creators do publish a track are not affected by this rule.
+Person-defined routes are listed too, at the same 50-mile floor. A person-defined route is one that a person or a small group worked out and published: a high route, a traverse, or a loop of linked trails. Its record names the creator and says where the route is got from the creator: the guidebook, map set or page, and whether it is free or sold. Whether a line is included follows the creator's choice:
+
+- The creator sells the route, or chooses not to publish a line: the record has no line. No line is included from any source, OpenStreetMap included.
+- The creator publishes the line freely: a line is included only where the creator's terms allow passing it on, or where OpenStreetMap carries the route as a route relation. Otherwise the record points to the creator's own download.
+- Not settled: the record has no line until it is.
+
+A creator who wants a record changed or removed can ask; see NOTICE.md.
 
 A trail may be listed as a record only, with no line, when no line for it may be shared. The record says why.
 
@@ -131,6 +143,17 @@ A trail may be listed as a record only, with no line, when no line for it may be
 
 <!-- END TRAIL TABLE -->
 
+## Person-defined routes
+
+Routes that a person or a small group worked out and published. The record says who made the route, where it is got from, and whether the creator shares the line. See the inclusion rule above.
+
+<!-- BEGIN ROUTE TABLE -->
+
+| ID | Route | Country | States / provinces | Length (km) | Creator | Line policy | Line | First guide |
+| --- | --- | --- | --- | ---: | --- | --- | --- | --- |
+
+<!-- END ROUTE TABLE -->
+
 ## Layout
 
 One directory per trail. The directory name is the trail's stable `id` and never changes.
@@ -159,7 +182,7 @@ SOURCES.md      each distinct source, its terms, and the trails that use it
 
 - Read a trail: open its `trail.toml`. The `[source]` section says where the line came from and under what terms it may be used.
 - Read all trails at once: use `trails.csv`, or `index.geojson` for a map overview.
-- Check the data: run `python3 tools/validate.py`. It prints `OK 104 trails` when all records pass.
+- Check the data: run `python3 tools/validate.py`. It prints `OK <n> trails` when all records pass.
 - Rebuild the generated files after editing a record: run `python3 tools/build_index.py`.
 
 Follow the licence in each record. Lines from OpenStreetMap need the credit "© OpenStreetMap contributors" and stay under the ODbL. Lines from United States federal agencies are public domain in the United States. Other lines carry the credit named in their record.

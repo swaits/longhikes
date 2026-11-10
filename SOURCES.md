@@ -48,6 +48,14 @@ Used by: 1 record (The Great Trail), record only.
 
 Terms: Creative Commons Attribution-NonCommercial-NoDerivatives 4.0, as stated on the source item (read 2026-11-09; source page in the record). Those terms do not allow commercial use or derivatives, so no line from this source is included.
 
+## Person-defined routes (creator's own pages, no line included)
+
+Used by: the person-defined routes (`kind = "route"`). Each record names its creator and the guide the route is got from, in its `[[guide]]` tables, and `route.line_policy` says whether the creator shares the line.
+
+Terms found: none. No route creator's page read on 2026-11-10 states a licence for the route's line. The record says where the line may be got from the creator, and `source.line_absent_reason` says why no line is included here: the route is sold as a guide, the creator withholds the line, the question is not settled, or the creator offers a download with no licence that allows passing it on. Where OpenStreetMap carries the route as a route relation and the creator publishes the line freely, the line comes from OpenStreetMap under the terms above.
+
+Page: the creator's or publisher's own page for the guide, given in each record's first `[[guide]]` and quoted in `route.creator_words_url` where the creator's words are quoted.
+
 ## Every record's source
 
 

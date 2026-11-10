@@ -1,0 +1,62 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "great-western-divide-loop"
+name = "Sequoia Great Western Divide Loop"
+short_name = "GWDL"
+country = "US"
+regions = ["CA"]
+length_km = 93
+length_note = "58 mi, per the creator"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Brian Lucido, 2013); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Brian Lucido (publishes the route)"
+publisher_url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
+url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.brianlucido.com/sequoia-great-western-divide-loop/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for the loop was found on 2026-11-10, and the creator's terms for passing the line on are not stated."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The creator publishes the line for download; no licence that allows passing it on is stated. Get it from the creator's page."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-10."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Brian Lucido"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Brian Lucido"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Brian Lucido"
+year = 2013
+line_policy = "open"
+creator_words = "To Export GPX files, click on the three horizontal bars in the upper right hand corner of the map and select Export selected map data…"
+creator_words_url = "https://web.archive.org/web/20240811101341/https://www.brianlucido.com/sequoia-great-western-divide-loop/"
+note = "A loop from Crescent Meadow in Sequoia National Park, along the High Sierra Trail past Bearpaw and Hamilton Lakes, over Precipice Lake and Black Rock Pass, and back by Redwood Meadow; all on trail. Published 26 September 2013 and updated 21 August 2021."
+
+[[guide]]
+title = "Sequoia Great Western Divide Loop route page"
+author = "Brian Lucido"
+access = "free"
+url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
+format = "web page with an exportable route map (GPX)"

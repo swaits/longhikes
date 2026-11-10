@@ -1,0 +1,62 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "great-colorado-route"
+name = "Great Colorado Route"
+short_name = "GCR"
+country = "US"
+regions = ["CO"]
+length_km = 3219
+length_note = "2,000 mi, per the site"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Donovan \"Iceman\" Rice, 2026); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Donovan \"Iceman\" Rice (publishes the route)"
+publisher_url = "https://www.greatcoloradoroute.com"
+url = "https://www.greatcoloradoroute.com/route"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.greatcoloradoroute.com/route, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and the site states no licence that allows passing the line on."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The creator publishes the line for download; no licence that allows passing it on is stated. Get it from the creator's page."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-10."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Donovan \"Iceman\" Rice"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Donovan \"Iceman\" Rice"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Donovan \"Iceman\" Rice"
+year = 2026
+line_policy = "open"
+creator_words = "The Great Colorado Route GPX is available for free download. Though donations are by no means expected, any donation ... is greatly appreciated"
+creator_words_url = "https://www.greatcoloradoroute.com/route"
+note = "Across Colorado in 32 sections, with off-trail travel and scrambling, and 364,000 feet of gain. The data came from the creator's 2026 thru-hike scouting. The site's terms of use say the GPS files are provided for informational purposes only, and state no reuse licence."
+
+[[guide]]
+title = "Great Colorado Route route page and GPX"
+author = "Donovan \"Iceman\" Rice"
+access = "free"
+url = "https://www.greatcoloradoroute.com/route"
+format = "GPX and an interactive CalTopo map"

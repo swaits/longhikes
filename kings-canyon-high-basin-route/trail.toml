@@ -1,0 +1,61 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "kings-canyon-high-basin-route"
+name = "Kings Canyon High Basin Route"
+short_name = "KCHBR"
+country = "US"
+regions = ["CA"]
+length_km = 200
+length_note = "124 mi, per the product page"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Andrew Skurka); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Andrew Skurka (publishes the route)"
+publisher_url = "https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/"
+url = "https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the line is in the guide."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is sold as a guide whose complete topographic map set is the line, and no track is published. Get the line from the Kings Canyon High Basin Route Guide."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's creator does not publish a line."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Andrew Skurka"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Andrew Skurka"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Andrew Skurka"
+line_policy = "sold"
+note = "A loop around the upper watershed of the Kings River in Sequoia and Kings Canyon, from Lodgepole to Road's End, two-thirds off-trail over 16 passes. The guide is a guidebook, route descriptions, data sheets and a complete topographic map set; no GPX is listed."
+
+[[guide]]
+title = "Kings Canyon High Basin Route Guide"
+author = "Andrew Skurka"
+access = "purchase"
+url = "https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/"
+format = "PDF guidebook, data sheets, complete topographic map set"
+price = "$25.00"
+price_checked = "2026-11-10"

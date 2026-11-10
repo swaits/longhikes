@@ -1,0 +1,61 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "tahoe-yosemite-trail"
+name = "Tahoe–Yosemite Trail"
+short_name = "TYT"
+country = "US"
+regions = ["CA"]
+length_km = 299
+length_note = "186 mi, per the encyclopedia article"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Thomas Winnett, 1970); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+url = "https://shop.adventurewithkeen.com/wilderness-press/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://shop.adventurewithkeen.com/wilderness-press/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the line is the book's maps."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route's line is in a bought guidebook, and no creator track was found. Get the line from the book The Tahoe–Yosemite Trail."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's creator does not publish a line."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Thomas Winnett"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Thomas Winnett"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Thomas Winnett"
+year = 1970
+line_policy = "sold"
+note = "From Meeks Bay on Lake Tahoe to Tuolumne Meadows, mixing maintained trail, road walks, unmaintained trail and cross-country. Winnett's book first appeared in 1970 and ran to five editions, the last in 1987; the route stayed unofficial."
+
+[[guide]]
+title = "The Tahoe–Yosemite Trail"
+author = "Thomas Winnett"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/wilderness-press/"
+format = "book; the publisher's Wilderness Press page, as the book's own page was not found"
+publisher = "Wilderness Press"
+isbn = "0-89997-084-2"

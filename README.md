@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-104 records, 84 with a line, 20 records only. Of these, 0 are person-defined routes: 0 with a line and 0 records only.
+138 records, 85 with a line, 53 records only. Of these, 34 are person-defined routes: 1 with a line and 33 records only.
 
 <!-- END COUNTS -->
 
@@ -151,6 +151,40 @@ Routes that a person or a small group worked out and published. The record says 
 
 | ID | Route | Country | States / provinces | Length (km) | Creator | Line policy | Line | First guide |
 | --- | --- | --- | --- | ---: | --- | --- | --- | --- |
+| beartooth-high-route | Beartooth High Route | US | MT, WY | 145 | Wilderness Mindset | sold | no | [Beartooth High Route Map Pack](https://wildernessmindset.com/product/beartooth-high-route-map-pack/) (purchase) |
+| big-seki-loop | Big SEKI Loop | US | CA | 249 | Amy and James (Doing Miles) | open | yes | [Big SEKI Loop Route Guide](https://doingmiles.com/route-big-seki-loop/) (free) |
+| blue-mountains-trail | Blue Mountains Trail | US | OR | 853 | Greater Hells Canyon Council | open | no | [Blue Mountains Trail Caltopo maps and Databook](https://www.hellscanyon.org/blue-mountains-trail/maps) (free) |
+| brooks-range-traverse | Brooks Range Traverse | US | AK | 1609 | Luc Mehl and Sarah Histand | open | no | [Brooks Range Traverse trip reports](https://thingstolucat.com/brooks-range-traverse/) (free) |
+| chinese-wall-circuit | The Chinese Wall Circuit | US | MT | 127 | Wilderness Mindset | open | no | [The Chinese Wall Circuit route page](https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/) (free) |
+| circle-of-solitude | Circle of Solitude | US | CA | 109 | Mike White | unclear | no | [Kings Canyon National Park](https://shop.adventurewithkeen.com/wilderness-press/) (purchase) |
+| deseret-hiking-route | Deseret Hiking Route | US | UT | 1609 | Kevin "LarryBoy" DeVries | open | no | [A Complete Guide to the Deseret Hiking Route](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) (free) |
+| desert-trail | Desert Trail | US | CA, NV, OR | 2552 | Desert Trail Association, with the route scouted by Russel Pengely, D. W. "Old Creosote" Tomer and Steve Tabor | unclear | no | [Desert Trail site](https://deserttrail.net) (free) |
+| eastern-continental-trail | Eastern Continental Trail | US | FL, AL, GA, TN, NC, VA, WV, MD, PA, NJ, NY, CT, MA, VT, NH, ME, QC, NB, NL | 7081 | M. J. Eberhart (trail name Nimblewill Nomad) | open | no | [Eastern Continental Trail Guide, 2010 (archived)](https://nimblewillnomad.com/books/) (free) |
+| great-basin-trail | Great Basin Trail | US | NV | 1931 | Ryan "Dirtmonger" Sylva | unclear | no | [Great Basin Trail article](https://www.gossamergear.com/blogs/our-blog/great-basin-trail) (free) |
+| great-colorado-route | Great Colorado Route | US | CO | 3219 | Donovan "Iceman" Rice | open | no | [Great Colorado Route route page and GPX](https://www.greatcoloradoroute.com/route) (free) |
+| great-plains-trail | Great Plains Trail | US | SK, ND, SD, NE, TX | 3540 | Steve Myers (Great Plains Trail Alliance) | open | no | [Great Plains Trail map](https://www.greatplainstrail.org/gpt-map/) (free) |
+| great-western-divide-loop | Sequoia Great Western Divide Loop | US | CA | 93 | Brian Lucido | open | no | [Sequoia Great Western Divide Loop route page](https://www.brianlucido.com/sequoia-great-western-divide-loop/) (free) |
+| great-western-loop | Great Western Loop | US | AZ, NM, CO, WY, ID, MT, CA, OR, WA | 11064 | Andrew Skurka and Ryan Jordan | withheld | no | [Great Western Loop route description](https://andrewskurka.com/adventures/great-western-loop/route-description/) (free) |
+| hayduke-trail | Hayduke Trail | US | UT, AZ | 1287 | Joe Mitchell and Mike Coronella | sold | no | [The Hayduke Trail: A Guide to the Backcountry Hiking Trail on the Colorado Plateau](https://uofupress.com/books/the-hayduke-trail/) (purchase) |
+| hot-springs-trail | Hot Springs Trail | US | CA, OR, ID | 3896 | Aria Zoner | sold | no | [The Hot Springs Trail: Official Guidebook](https://www.amazon.com/Hot-Springs-Trail-Official-Guidebook/dp/1505613922) (purchase) |
+| kings-canyon-high-basin-route | Kings Canyon High Basin Route | US | CA | 200 | Andrew Skurka | sold | no | [Kings Canyon High Basin Route Guide](https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/) (purchase) |
+| mogollon-rim-trail | Mogollon Rim Trail | US | AZ, NM | 805 | Brett Tucker ("Blisterfree") | sold | no | [Mogollon Rim Trail Mapset & Resource Bundle](https://www.simblissity.net/mogollon-rim-trail-mapset.shtml) (purchase) |
+| northern-new-mexico-loop | Northern New Mexico Loop | US | NM | 805 | Brett Tucker ("Blisterfree") and collaborators | sold | no | [Northern New Mexico Loop Mapset & Resource Bundle](https://simblissity.net/northern-nm-loop-mapset.shtml) (purchase) |
+| pfiffner-traverse | Pfiffner Traverse | US | CO | 124 | Andrew Skurka | sold | no | [Pfiffner Traverse Guide](https://andrewskurka.com/product/pfiffner-traverse-guide-maps/) (purchase) |
+| route-in-between | Route In Between | US | AZ, UT, ID | 4344 | Kevin "LarryBoy" DeVries | open | no | [A Complete Guide to the Deseret Hiking Route](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) (free) |
+| sawtooth-wilderness-high-route | Sawtooth Wilderness High Route | US | ID | 143 | the author of the SeekingLost blog | open | no | [Sawtooth Wilderness High Route trip report and GPX](https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/) (free) |
+| sea-to-sea-route | Sea-to-Sea Route | US | ND, MN, WI, MI, OH, PA, NY, VT, MT, ID, WA | 12513 | Ron Strickland | open | no | [Sea-to-Sea Route overview and route description](https://andrewskurka.com/adventures/sea-to-sea-route/overview/) (free) |
+| sierra-grand-traverse | Sierra Grand Traverse | US | CA | 322 | John and Monica Chapman | sold | no | [Sierra Grand Traverse: An Epic Route Across the Range of Light](https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light) (purchase) |
+| sierra-high-route | Sierra High Route | US | CA | 314 | Steve Roper | sold | no | [Sierra High Route, 2nd Edition: Traversing Timberline Country](https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country) (purchase) |
+| sky-islands-traverse | Sky Islands Traverse | US | AZ | 837 | Brett Tucker ("Blisterfree") | withheld | no | [Sky Islands Traverse page](http://simblissity.net/skit.shtml) (free) |
+| southern-sierra-high-route | Southern Sierra High Route | US | CA | 161 | Alan Dixon and Don Wilson | open | no | [Southern Sierra High Route (SoSHR) guide](http://www.adventurealan.com/southern-sierra-high-route-soshr-guide/) (free) |
+| tahoe-yosemite-trail | Tahoe–Yosemite Trail | US | CA | 299 | Thomas Winnett | sold | no | [The Tahoe–Yosemite Trail](https://shop.adventurewithkeen.com/wilderness-press/) (purchase) |
+| trans-adirondack-route | Trans Adirondack Route | US | NY | 391 | Erik Schlimmer | sold | no | [Blue Line to Blue Line, with a map set](https://erikschlimmer.com/books-sale-/) (purchase) |
+| vagabond-loop | Vagabond Loop | US | AZ, UT, CO, NM | 5632 | Ryan "Dirtmonger" Sylva | open | no | [Vagabond Loop route description (archived)](https://web.archive.org/web/2020/http://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html) (free) |
+| wasatch-traverse | Wasatch Traverse | US | UT | 455 | Liz Thomas | open | no | [Wasatch Traverse overview](https://www.eathomas.com/other-long-trails/wasatchoverview) (free) |
+| wind-river-high-route-dixon-wilson | Wind River High Route (Dixon and Wilson line) | US | WY | 129 | Alan Dixon and Don Wilson | open | no | [Wind River High Route guide](https://www.adventurealan.com/wind-river-high-route/) (free) |
+| wind-river-high-route-skurka | Wind River High Route (Skurka guide) | US | WY | 156 | Andrew Skurka | sold | no | [Wind River Range High Route Guide](https://andrewskurka.com/product/wind-river-high-route-guide/) (purchase) |
+| yosemite-high-route | Yosemite High Route | US | CA | 261 | Andrew Skurka | sold | no | [Yosemite High Route Guide](https://andrewskurka.com/product/yosemite-high-route-guide/) (purchase) |
 
 <!-- END ROUTE TABLE -->
 

@@ -1,0 +1,67 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "sierra-grand-traverse"
+name = "Sierra Grand Traverse"
+short_name = "SGT"
+country = "US"
+regions = ["CA"]
+length_km = 322
+length_note = "200 mi and 41 passes, per the guidebook's description in the article"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (John and Monica Chapman, 2023); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "John and Monica Chapman (publishes the route)"
+publisher_url = "https://www.john.chapman.name/pub-sierra.html"
+url = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the line is the book's maps."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is sold as a guidebook whose maps and elevation profiles are the line, and no track is published. Get the line from Sierra Grand Traverse."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's creator does not publish a line."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "John and Monica Chapman"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "John and Monica Chapman"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "John and Monica Chapman"
+year = 2023
+line_policy = "sold"
+creator_words = "Our hope is to inspire people who do track walking to get off the track and explore more of the wilderness."
+creator_words_url = "https://www.insidehook.com/travel/sierra-grand-traverse-new-hiking-trail-california"
+creator_words_by = "John Chapman"
+note = "From Tuolumne Meadows to Horseshoe Meadows, mostly off the Pacific Crest Trail, over 41 passes. The authors set out in 2019 and took three years of research; the book was published on 15 March 2023 and its maps and elevation profiles are the line."
+
+[[guide]]
+title = "Sierra Grand Traverse: An Epic Route Across the Range of Light"
+author = "John and Monica Chapman"
+access = "purchase"
+url = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
+format = "book with topographic maps and elevation profiles"
+price = "$24.95"
+price_checked = "2026-11-10"
+publisher = "Mountaineers Books"
+isbn = "978-1-68051-618-0"

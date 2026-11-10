@@ -1,0 +1,62 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "deseret-hiking-route"
+name = "Deseret Hiking Route"
+short_name = "DHR"
+country = "US"
+regions = ["UT"]
+length_km = 1609
+length_note = "about 1,000 mi, per the creator"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Kevin \"LarryBoy\" DeVries, 2019); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Kevin \"LarryBoy\" DeVries (publishes the route)"
+publisher_url = "http://www.lbhikes.com/2019/12/dhr.html"
+url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and the materials are sent on a condition."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The creator gives the maps and GPX free after proof of a day of manual trail maintenance, and states no licence that allows passing the line on. Get it from the guide page."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-10."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Kevin \"LarryBoy\" DeVries"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Kevin \"LarryBoy\" DeVries"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Kevin \"LarryBoy\" DeVries"
+year = 2019
+line_policy = "open"
+creator_words = "My goal with the DHR was not only to piece together a beautiful route, but one that I could responsibly share with others."
+creator_words_url = "http://www.lbhikes.com/2019/12/dhr.html"
+note = "About 1,000 miles through Utah from the Arizona border to Alturas Lake Creek in Idaho, half on singletrack, much on dirt road, with cross-country and paved sections; it links the Arizona Trail and the Idaho Centennial Trail. The creator walked it in 2019."
+
+[[guide]]
+title = "A Complete Guide to the Deseret Hiking Route"
+author = "Kevin \"LarryBoy\" DeVries"
+access = "free"
+url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
+format = "guide, maps, data book and GPX, sent after proof of a day of trail work"

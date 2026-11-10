@@ -1,0 +1,69 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "sea-to-sea-route"
+name = "Sea-to-Sea Route"
+short_name = "C2C"
+country = "US"
+regions = ["ND", "MN", "WI", "MI", "OH", "PA", "NY", "VT", "MT", "ID", "WA"]
+length_km = 12513
+length_note = "7,775 mi walked by Andrew Skurka; the route itself is described as a 7,800-mile network"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Ron Strickland, 1996); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Ron Strickland (publishes the route)"
+publisher_url = "https://andrewskurka.com/adventures/sea-to-sea-route/"
+url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://andrewskurka.com/adventures/sea-to-sea-route/overview/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the route is a network of published trails."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is a network of existing published trails with no whole line of its own, and no C2C line or GPX was found. The overview page is where the route is described."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-10."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Ron Strickland"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Ron Strickland"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Ron Strickland"
+year = 1996
+line_policy = "open"
+creator_words = "The Sea-to-Sea Route (C2C) is a 7,800-mile network of existing long-distance hiking trails that spans almost continuously between the Atlantic and Pacific Oceans, with the exception of an 800-mile gap in North Dakota and Montana along the Missouri River and a less formidable 30-mile gap in Vermont."
+creator_words_url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
+note = "A network of existing long-distance trails, with an 800-mile gap in North Dakota and Montana and a 30-mile gap in Vermont, joining the North Country, Pacific Northwest and other trails. Ron Strickland started thinking about it in 1996; Andrew Skurka made the first thru-hike from August 2004 to July 2005."
+
+[[guide]]
+title = "Sea-to-Sea Route overview and route description"
+author = "Andrew Skurka"
+access = "free"
+url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
+format = "web pages"
+
+[[guide]]
+title = "Great Western Loop and Sea-to-Sea Route Slideshows"
+author = "Andrew Skurka"
+access = "purchase"
+url = "https://andrewskurka.com/product/slideshows-on-disk-great-western-loop-and-sea-to-sea-route/"
+format = "slideshow on disk (not a route line)"

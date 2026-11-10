@@ -1,0 +1,71 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "sierra-high-route"
+name = "Sierra High Route"
+short_name = "SHR"
+country = "US"
+regions = ["CA"]
+length_km = 314
+length_note = "195 mi, per Mountaineers Books"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Steve Roper); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Steve Roper (publishes the route)"
+publisher_url = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
+url = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the line is in the guidebook."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route's line is sold as a guidebook and map set, and no track is published, deliberately. Get the line from the Sierra High Route guidebook."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's creator does not publish a line."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Steve Roper"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Steve Roper"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Steve Roper"
+line_policy = "sold"
+creator_words = "No, there is not, intentionally. I would encourage you to ask yourself whether you need or want one. If you need one, the SHR is probably not the right route for you."
+creator_words_url = "https://andrewskurka.com/adventures/sierra-high-route/maps-mapping/"
+creator_words_by = "Andrew Skurka"
+note = "Roper conceived and pioneered the route; the guidebook's second edition is dated April 1997, and the first edition is not dated on the pages read. The words quoted are Andrew Skurka's, not Roper's; Roper's own statement on tracks was not found."
+
+[[guide]]
+title = "Sierra High Route, 2nd Edition: Traversing Timberline Country"
+author = "Steve Roper"
+access = "purchase"
+url = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
+format = "book"
+publisher = "Mountaineers Books"
+isbn = "978-0-89886-506-6"
+
+[[guide]]
+title = "Sierra High Route Mapset & Databook"
+author = "Andrew Skurka"
+access = "purchase"
+url = "https://andrewskurka.com/product/sierra-high-route-map-set-databook/"
+format = "map set with breadcrumbs (not a continuous line)"

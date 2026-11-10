@@ -1,0 +1,62 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "trans-adirondack-route"
+name = "Trans Adirondack Route"
+short_name = "TAR"
+country = "US"
+regions = ["NY"]
+length_km = 391
+length_note = "242.7 mi, per the creator"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Erik Schlimmer, 2010); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Erik Schlimmer (publishes the route)"
+publisher_url = "https://erikschlimmer.com/tar-1"
+url = "https://erikschlimmer.com/books-sale-/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://erikschlimmer.com/books-sale-/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the line is in the book and map set."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is sold as a book and map set, and no track is offered. Get the line from Blue Line to Blue Line."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's creator does not publish a line."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Erik Schlimmer"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Erik Schlimmer"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Erik Schlimmer"
+year = 2010
+line_policy = "sold"
+creator_words = "Purchase Blue Line to Blue Line and the map set on the Merch page and thru-hike it."
+creator_words_url = "https://erikschlimmer.com/tar-1"
+note = "199.3 miles of trails, 33.0 miles of roads and 10.4 miles of cross-country, per the creator, across the Adirondack Park from its south blue line to its north one."
+
+[[guide]]
+title = "Blue Line to Blue Line, with a map set"
+author = "Erik Schlimmer"
+access = "purchase"
+url = "https://erikschlimmer.com/books-sale-/"
+format = "book and map set"

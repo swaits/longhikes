@@ -1,0 +1,62 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "desert-trail"
+name = "Desert Trail"
+short_name = "DT"
+country = "US"
+regions = ["CA", "NV", "OR"]
+length_km = 2552
+length_note = "1,586 mi, plus a 637-mile northern extension to Canada, per the association"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Desert Trail Association, 1972); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Desert Trail Association, with the route scouted by Russel Pengely, D. W. \"Old Creosote\" Tomer and Steve Tabor (publishes the route)"
+publisher_url = "https://deserttrail.net"
+url = "https://deserttrail.net"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://deserttrail.net, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; no map or guide is offered, and whether the creator shares one is not settled."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "Whether the creator shares the line is not settled: the official page offers no map, GPX or guide, and states no position. The site is where the route is described."
+
+[osm]
+relation = 0
+note = "Not recorded: whether the creator shares the line is not settled."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Desert Trail Association, with the route scouted by Russel Pengely, D. W. \"Old Creosote\" Tomer and Steve Tabor"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Desert Trail Association, with the route scouted by Russel Pengely, D. W. \"Old Creosote\" Tomer and Steve Tabor"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Desert Trail Association, with the route scouted by Russel Pengely, D. W. \"Old Creosote\" Tomer and Steve Tabor"
+year = 1972
+line_policy = "unclear"
+creator_words = "The information on this website will provide you with as much practical information as we can - the rest will rely on your preparation, experience and judgment."
+creator_words_url = "https://deserttrail.net"
+note = "There is no trail and no signs: a desert route from the Mexican border through California, Nevada and Oregon, with a 637-mile northern extension to Canada. The association dissolved in 2020 and the site is now run by Desert Survivors, which offers no map, GPX or guide."
+
+[[guide]]
+title = "Desert Trail site"
+author = "Desert Survivors (the site's present keeper)"
+access = "free"
+url = "https://deserttrail.net"
+format = "web page; no map, GPX or guide offered"

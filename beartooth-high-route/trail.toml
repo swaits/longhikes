@@ -1,0 +1,63 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "beartooth-high-route"
+name = "Beartooth High Route"
+short_name = "BHR"
+country = "US"
+regions = ["MT", "WY"]
+length_km = 145
+length_note = "90 mi, per the map pack page"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Wilderness Mindset); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Mindset (publishes the route)"
+publisher_url = "https://wildernessmindset.com/beartooth-high-route/"
+url = "https://wildernessmindset.com/product/beartooth-high-route-map-pack/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://wildernessmindset.com/product/beartooth-high-route-map-pack/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the track is in the sold map pack."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is sold as a map pack that includes its GPX track. Get the line from the Beartooth High Route Map Pack."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's creator does not publish a line."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Wilderness Mindset"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Wilderness Mindset"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Wilderness Mindset"
+line_policy = "sold"
+creator_words = "This route is meant to be more of a guideline than a strict path to follow."
+creator_words_url = "https://wildernessmindset.com/beartooth-high-route/"
+note = "Across the Beartooth Range of Montana and Wyoming, staying as high on the plateau as is hikeable, almost entirely off-trail over boulder fields. The route page is written in the first person and names no person; the site sells the guide."
+
+[[guide]]
+title = "Beartooth High Route Map Pack"
+author = "Wilderness Mindset"
+access = "purchase"
+url = "https://wildernessmindset.com/product/beartooth-high-route-map-pack/"
+format = "PDF map set, route description, data set with campsites, GPX"
+price = "$20.00"
+price_checked = "2026-11-10"

@@ -1,0 +1,62 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "southern-sierra-high-route"
+name = "Southern Sierra High Route"
+short_name = "SoSHR"
+country = "US"
+regions = ["CA"]
+length_km = 161
+length_note = "about 100 mi, per the creators"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Alan Dixon and Don Wilson, 2014); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Alan Dixon and Don Wilson (publishes the route)"
+publisher_url = "http://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
+url = "http://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (http://www.adventurealan.com/southern-sierra-high-route-soshr-guide/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and the creators' terms for passing the line on are not stated."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The creators publish the line for download; no licence that allows passing it on is stated. Get it from the creators' page."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-10."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Alan Dixon and Don Wilson"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Alan Dixon and Don Wilson"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Alan Dixon and Don Wilson"
+year = 2014
+line_policy = "open"
+creator_words = "Like Roper with the SHR, we do not claim to be the first or even hundredth people to hike any portion of this route. We stand on the shoulders of many generations of rugged and adventurous travelers in the Range of Light. We simply chained together existing high passes, summits, and trails pioneered by others to create a much longer route."
+creator_words_url = "http://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
+note = "From the Palisades south past Mount Whitney and the Whitney Crest to Cottonwood Lakes, a southern extension of Roper's Sierra High Route; only 20 miles are on the John Muir Trail."
+
+[[guide]]
+title = "Southern Sierra High Route (SoSHR) guide"
+author = "Alan Dixon and Don Wilson"
+access = "free"
+url = "http://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
+format = "web route description with waypoints and timetable PDF"

@@ -9,15 +9,21 @@ baker,Baker Trail,US,PA,216,included,OpenStreetMap,ODbL-1.0,designated,
 bartram,Bartram Trail,US,GA;NC,180,included,OpenStreetMap,ODbL-1.0,designated,
 batona,Batona Trail,US,NJ,80,included,OpenStreetMap,ODbL-1.0,designated,
 bay-circuit,Bay Circuit Trail,US,MA,370,included,OpenStreetMap,ODbL-1.0,designated,
+beartooth-high-route,Beartooth High Route,US,MT;WY,145,record-only,none (no line included),none-stated,route,sold
 benton-mackaye,Benton MacKaye Trail,US,GA;TN;NC,463,included,OpenStreetMap,ODbL-1.0,designated,
+big-seki-loop,Big SEKI Loop,US,CA,249,included,OpenStreetMap,ODbL-1.0,route,open
+blue-mountains-trail,Blue Mountains Trail,US,OR,853,record-only,none (no line included),none-stated,route,open
 border-route,Border Route Trail,US,MN,105,included,OpenStreetMap,ODbL-1.0,designated,
 brazeau-loop,Brazeau Loop,CA,AB,81,record-only,none (no line included),none-stated,designated,
+brooks-range-traverse,Brooks Range Traverse,US,AK,1609,record-only,none (no line included),none-stated,route,open
 bruce-trail,Bruce Trail,CA,ON,890,included,OpenStreetMap,ODbL-1.0,designated,
 buckeye,Buckeye Trail,US,OH,2250,included,OpenStreetMap,ODbL-1.0,designated,
 california-coastal,California Coastal Trail,US,CA,1931,record-only,none (no line included),none-stated,designated,
 canol,Canol Heritage Trail,CA,NT,371,included,OpenStreetMap,ODbL-1.0,designated,
 centennial-sd,Centennial Trail,US,SD,179,included,OpenStreetMap,ODbL-1.0,designated,
 chesapeake-ohio-canal,Chesapeake and Ohio Canal Towpath,US,MD;DC;WV,297,record-only,none (no line included),none-stated,designated,
+chinese-wall-circuit,The Chinese Wall Circuit,US,MT,127,record-only,none (no line included),none-stated,route,open
+circle-of-solitude,Circle of Solitude,US,CA,109,record-only,none (no line included),none-stated,route,unclear
 cohos,Cohos Trail,US,NH,270,included,OpenStreetMap,ODbL-1.0,designated,
 colorado-trail,Colorado Trail,US,CO,782,included,"USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment",us-gov-public-domain,designated,
 continental-divide,Continental Divide National Scenic Trail,US,NM;CO;WY;ID;MT,4989,included,Continental Divide Trail Coalition (CDTC),CC-BY,designated,
@@ -25,27 +31,38 @@ corvallis-to-the-sea,Corvallis-to-the-Sea Trail,US,OR,97,included,OpenStreetMap,
 cranberry-lake-50,Cranberry Lake 50,US,NY,80,included,OpenStreetMap,ODbL-1.0,designated,
 cross-vermont,Cross Vermont Trail,US,VT,145,included,OpenStreetMap,ODbL-1.0,designated,
 cumberland-trail,Cumberland Trail,US,TN,480,included,OpenStreetMap,ODbL-1.0,designated,
+deseret-hiking-route,Deseret Hiking Route,US,UT,1609,record-only,none (no line included),none-stated,route,open
+desert-trail,Desert Trail,US,CA;NV;OR,2552,record-only,none (no line included),none-stated,route,unclear
 donut-hole,Donut Hole Trail,US,PA,152,included,OpenStreetMap,ODbL-1.0,designated,
 east-coast-trail,East Coast Trail (Newfoundland),CA,NL,336,included,OpenStreetMap,ODbL-1.0,designated,
+eastern-continental-trail,Eastern Continental Trail,US,FL;AL;GA;TN;NC;VA;WV;MD;PA;NJ;NY;CT;MA;VT;NH;ME;QC;NB;NL,7081,record-only,none (no line included),none-stated,route,open
 finger-lakes,Finger Lakes Trail,US,NY,950,included,OpenStreetMap,ODbL-1.0,designated,
 florida,Florida National Scenic Trail,US,FL,2414,included,OpenStreetMap,ODbL-1.0,designated,
 foothills,Foothills Trail,US,SC;NC,122,included,OpenStreetMap,ODbL-1.0,designated,
 fundy-footpath,Fundy Footpath,CA,NB,41,record-only,none (no line included),ODbL-1.0,designated,
 ganaraska,Ganaraska Hiking Trail,CA,ON,500,included,OpenStreetMap,ODbL-1.0,designated,
 grand-enchantment,Grand Enchantment Trail,US,AZ;NM,1239,record-only,none (no line included),ODbL-1.0,designated,
+great-basin-trail,Great Basin Trail,US,NV,1931,record-only,none (no line included),none-stated,route,unclear
+great-colorado-route,Great Colorado Route,US,CO,3219,record-only,none (no line included),none-stated,route,open
 great-divide-trail,Great Divide Trail,CA,AB;BC,1130,included,OpenStreetMap,ODbL-1.0,designated,
 great-eastern,Great Eastern Trail,US,AL;GA;TN;KY;VA;WV;MD;PA;NY,3200,record-only,none (no line included),ODbL-1.0,designated,
+great-plains-trail,Great Plains Trail,US,SK;ND;SD;NE;TX,3540,record-only,none (no line included),none-stated,route,open
 great-trail,The Great Trail (Trans Canada Trail),CA,all provinces and territories,28000,record-only,none (no line included),CC-BY-NC-ND-4.0,designated,
 great-western,Great Western Trail,US,AZ;UT;ID;WY;MT,4800,record-only,none (no line included),none-stated,designated,
+great-western-divide-loop,Sequoia Great Western Divide Loop,US,CA,93,record-only,none (no line included),none-stated,route,open
+great-western-loop,Great Western Loop,US,AZ;NM;CO;WY;ID;MT;CA;OR;WA,11064,record-only,none (no line included),none-stated,route,withheld
+hayduke-trail,Hayduke Trail,US,UT;AZ,1287,record-only,none (no line included),none-stated,route,sold
 high-sierra,High Sierra Trail,US,CA,116,included,OpenStreetMap,ODbL-1.0,designated,
 highlands,Highlands Trail,US,NJ;NY;PA;CT,290,included,OpenStreetMap,ODbL-1.0,designated,
 horse-shoe,Horse-Shoe Trail,US,PA,225,included,OpenStreetMap,ODbL-1.0,designated,
+hot-springs-trail,Hot Springs Trail,US,CA;OR;ID,3896,record-only,none (no line included),none-stated,route,sold
 ice-age,Ice Age National Scenic Trail,US,WI,1931,included,OpenStreetMap,ODbL-1.0,designated,
 idaho-centennial,Idaho Centennial Trail,US,ID,1448,included,OpenStreetMap,ODbL-1.0,designated,
 iditarod,Iditarod National Historic Trail,US,AK,3701,record-only,none (no line included),us-gov-public-domain,designated,
 island-walk,The Island Walk,CA,PE,700,included,OpenStreetMap,ODbL-1.0,designated,
 john-muir,John Muir Trail,US,CA,340,included,OpenStreetMap,ODbL-1.0,designated,
 kekekabic,Kekekabic Trail,US,MN,66,record-only,none (no line included),ODbL-1.0,designated,
+kings-canyon-high-basin-route,Kings Canyon High Basin Route,US,CA,200,record-only,none (no line included),none-stated,route,sold
 la-cloche,La Cloche Silhouette Trail,CA,ON,80,included,OpenStreetMap,ODbL-1.0,designated,
 laurel-highlands,Laurel Highlands Hiking Trail,US,PA,113,included,OpenStreetMap,ODbL-1.0,designated,
 lone-star,Lone Star Hiking Trail,US,TX,155,included,OpenStreetMap,ODbL-1.0,designated,
@@ -58,6 +75,7 @@ mattabesett,Mattabesett Trail,US,CT,105,included,OpenStreetMap,ODbL-1.0,designat
 metacomet-monadnock,Metacomet-Monadnock Trail,US,CT;MA;NH,185,included,OpenStreetMap,ODbL-1.0,designated,
 mid-state,Mid State Trail,US,PA,515,included,OpenStreetMap,ODbL-1.0,designated,
 midstate-ma,Midstate Trail (Massachusetts),US,MA,148,included,OpenStreetMap,ODbL-1.0,designated,
+mogollon-rim-trail,Mogollon Rim Trail,US,AZ;NM,805,record-only,none (no line included),none-stated,route,sold
 monadnock-sunapee,Monadnock-Sunapee Greenway,US,NH,80,included,OpenStreetMap,ODbL-1.0,designated,
 mountains-to-sea,Mountains-to-Sea Trail,US,NC,1890,included,OpenStreetMap,ODbL-1.0,designated,
 natchez-trace,Natchez Trace National Scenic Trail,US,MS;AL;TN,105,included,"National Park Service, Natchez Trace Parkway",us-gov-public-domain,designated,
@@ -66,6 +84,7 @@ nez-perce,Nez Perce (Nee-Me-Poo) National Historic Trail,US,OR;ID;MT;WY,1883,rec
 north-boundary,North Boundary Trail,CA,AB,159,record-only,none (no line included),none-stated,designated,
 north-country,North Country National Scenic Trail,US,ND;MN;WI;MI;OH;PA;NY;VT,7403,included,OpenStreetMap,ODbL-1.0,designated,
 north-south,North-South Trail,US,RI,125,included,OpenStreetMap,ODbL-1.0,designated,
+northern-new-mexico-loop,Northern New Mexico Loop,US,NM,805,record-only,none (no line included),none-stated,route,sold
 northville-placid,Northville-Placid Trail,US,NY,220,included,OpenStreetMap,ODbL-1.0,designated,
 oak-ridges,Oak Ridges Trail,CA,ON,270,included,OpenStreetMap,ODbL-1.0,designated,
 oregon-coast,Oregon Coast Trail,US,OR,650,included,OpenStreetMap,ODbL-1.0,designated,
@@ -77,29 +96,44 @@ ozark-trail,Ozark Trail (Missouri),US,MO,630,included,OpenStreetMap,ODbL-1.0,des
 pacific-crest,Pacific Crest National Scenic Trail,US,CA;OR;WA,4265,included,Pacific Crest Trail Association (PCTA),CC-BY-4.0,designated,
 pacific-northwest,Pacific Northwest National Scenic Trail,US,MT;ID;WA,1931,included,"USDA Forest Service, Pacific Northwest Region (Region 6)",us-gov-public-domain,designated,
 palmetto,Palmetto Trail,US,SC,800,included,OpenStreetMap,ODbL-1.0,designated,
+pfiffner-traverse,Pfiffner Traverse,US,CO,124,record-only,none (no line included),none-stated,route,sold
 pinhoti,Pinhoti Trail,US,AL;GA,540,included,OpenStreetMap,ODbL-1.0,designated,
 potomac-heritage,Potomac Heritage National Scenic Trail,US,DC;MD;VA;PA,1448,included,"National Park Service, Potomac Heritage NST",us-gov-public-domain,designated,
 pukaskwa-coastal,Pukaskwa Coastal Hiking Trail,CA,ON,60,record-only,none (no line included),ODbL-1.0,designated,
 quehanna,Quehanna Trail,US,PA,119,included,OpenStreetMap,ODbL-1.0,designated,
 rideau-trail,Rideau Trail,CA,ON,387,included,OpenStreetMap,ODbL-1.0,designated,
 river-to-river,River to River Trail,US,IL,257,included,OpenStreetMap,ODbL-1.0,designated,
+route-in-between,Route In Between,US,AZ;UT;ID,4344,record-only,none (no line included),none-stated,route,open
+sawtooth-wilderness-high-route,Sawtooth Wilderness High Route,US,ID,143,record-only,none (no line included),none-stated,route,open
+sea-to-sea-route,Sea-to-Sea Route,US,ND;MN;WI;MI;OH;PA;NY;VT;MT;ID;WA,12513,record-only,none (no line included),none-stated,route,open
 sentier-international-appalaches,"Sentier international des Appalaches (International Appalachian Trail, Quebec and New Brunswick)",CA,QC;NB,1177,included,OpenStreetMap,ODbL-1.0,designated,
 sentier-national,Sentier National (Quebec),CA,QC,1500,included,OpenStreetMap,ODbL-1.0,designated,
 sheltowee-trace,Sheltowee Trace National Recreation Trail,US,KY;TN,515,included,OpenStreetMap,ODbL-1.0,designated,
+sierra-grand-traverse,Sierra Grand Traverse,US,CA,322,record-only,none (no line included),none-stated,route,sold
+sierra-high-route,Sierra High Route,US,CA,314,record-only,none (no line included),none-stated,route,sold
+sky-islands-traverse,Sky Islands Traverse,US,AZ,837,record-only,none (no line included),none-stated,route,withheld
 south-boundary,South Boundary Trail,CA,AB,121,record-only,none (no line included),none-stated,designated,
+southern-sierra-high-route,Southern Sierra High Route,US,CA,161,record-only,none (no line included),none-stated,route,open
 standing-stone,Standing Stone Trail,US,PA,137,included,OpenStreetMap,ODbL-1.0,designated,
 sunapee-ragged-kearsarge,Sunapee-Ragged-Kearsarge Greenway,US,NH,121,included,OpenStreetMap,ODbL-1.0,designated,
 sunshine-coast,Sunshine Coast Trail,CA,BC,180,included,OpenStreetMap,ODbL-1.0,designated,
 superior-hiking,Superior Hiking Trail,US,MN,499,included,OpenStreetMap,ODbL-1.0,designated,
 susquehannock,Susquehannock Trail System,US,PA,135,included,OpenStreetMap,ODbL-1.0,designated,
 tahoe-rim,Tahoe Rim Trail,US,CA;NV,266,included,OpenStreetMap,ODbL-1.0,designated,
+tahoe-yosemite-trail,Tahoe–Yosemite Trail,US,CA,299,record-only,none (no line included),none-stated,route,sold
 teton-crest,Teton Crest Trail,US,WY,64,record-only,none (no line included),ODbL-1.0,designated,
 timberline,Timberline Trail (Mount Hood),US,OR,64,record-only,none (no line included),us-gov-public-domain,designated,
+trans-adirondack-route,Trans Adirondack Route,US,NY,391,record-only,none (no line included),none-stated,route,sold
 traversee-charlevoix,Traversée de Charlevoix,CA,QC,105,included,OpenStreetMap,ODbL-1.0,designated,
 tuscarora,Tuscarora Trail,US,PA;MD;VA;WV,406,included,OpenStreetMap,ODbL-1.0,designated,
 uinta-highline,Uinta Highline Trail,US,UT,167,included,OpenStreetMap,ODbL-1.0,designated,
+vagabond-loop,Vagabond Loop,US,AZ;UT;CO;NM,5632,record-only,none (no line included),none-stated,route,open
 vancouver-island,Vancouver Island Trail,CA,BC,800,included,OpenStreetMap,ODbL-1.0,designated,
 voyageur,Voyageur Trail,CA,ON,1100,included,OpenStreetMap,ODbL-1.0,designated,
+wasatch-traverse,Wasatch Traverse,US,UT,455,record-only,none (no line included),none-stated,route,open
 waskahegan,Waskahegan Trail,CA,AB,309,record-only,none (no line included),none-stated,designated,
 west-coast-trail,West Coast Trail,CA,BC,75,record-only,none (no line included),ODbL-1.0,designated,
+wind-river-high-route-dixon-wilson,Wind River High Route (Dixon and Wilson line),US,WY,129,record-only,none (no line included),none-stated,route,open
+wind-river-high-route-skurka,Wind River High Route (Skurka guide),US,WY,156,record-only,none (no line included),none-stated,route,sold
 wonderland,Wonderland Trail,US,WA,150,included,OpenStreetMap,ODbL-1.0,designated,
+yosemite-high-route,Yosemite High Route,US,CA,261,record-only,none (no line included),none-stated,route,sold

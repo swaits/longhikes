@@ -1,0 +1,59 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "eastern-continental-trail"
+name = "Eastern Continental Trail"
+short_name = "ECT"
+country = "US"
+regions = ["FL", "AL", "GA", "TN", "NC", "VA", "WV", "MD", "PA", "NJ", "NY", "CT", "MA", "VT", "NH", "ME", "QC", "NB", "NL"]
+length_km = 7081
+length_note = "4,400 mi, not including the water gaps around Newfoundland"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (M. J. Eberhart); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "M. J. Eberhart (trail name Nimblewill Nomad), who publishes the route"
+publisher_url = "https://nimblewillnomad.com/books/"
+url = "https://nimblewillnomad.com/books/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://nimblewillnomad.com/books/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the route is a link-up of published trails."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is a link-up of published trails with no whole line of its own: OpenStreetMap carries only two of its roadwalk segments, 55.0 km in south Florida and 344.3 km in Alabama. Each linked trail's own record here has its line."
+
+[osm]
+relation = 0
+note = "Not recorded: relations 20066136 (South Florida roadwalk) and 20068411 (Alabama roadwalk) are two roadwalk segments of it, 55.0 km and 344.3 km, not the route."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "M. J. Eberhart (trail name Nimblewill Nomad)"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "M. J. Eberhart (trail name Nimblewill Nomad)"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "M. J. Eberhart (trail name Nimblewill Nomad)"
+line_policy = "open"
+note = "From Key West, Florida, to Belle Isle, Newfoundland, stringing together the Florida Keys Overseas Heritage Trail, the Florida Trail, a road walk through Alabama, the Pinhoti, the Benton MacKaye, the Appalachian Trail and the International Appalachian Trail. His 2010 Eastern Continental Trail Guide is archived, and nothing is for sale on his books page."
+
+[[guide]]
+title = "Eastern Continental Trail Guide, 2010 (archived)"
+author = "M. J. Eberhart (Nimblewill Nomad)"
+access = "free"
+url = "https://nimblewillnomad.com/books/"
+format = "guide, archived; his books page is the page to ask on"

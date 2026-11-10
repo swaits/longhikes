@@ -1,0 +1,62 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "brooks-range-traverse"
+name = "Brooks Range Traverse"
+short_name = "BRT"
+country = "US"
+regions = ["AK"]
+length_km = 1609
+length_note = "about 1,000 mi in three parts, per the trip reports: 400 mi (Gates of the Arctic, 2016), 275 mi (Arctic Refuge, 2017) and 325 mi (western Brooks, 2019)"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Luc Mehl and Sarah Histand, 2016); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Luc Mehl and Sarah Histand (publishes the route)"
+publisher_url = "https://thingstolucat.com/brooks-range-traverse/"
+url = "https://thingstolucat.com/brooks-range-traverse/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://thingstolucat.com/brooks-range-traverse/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and no track file was found."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The creator publishes detailed route descriptions and maps but no track file, and states no licence for passing a line on. Get the route from the trip reports."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-10."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Luc Mehl and Sarah Histand"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Luc Mehl and Sarah Histand"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Luc Mehl and Sarah Histand"
+year = 2016
+line_policy = "open"
+creator_words = "The Brooks Range, from Kivalina to Kaktovik, in three parts."
+creator_words_url = "https://thingstolucat.com/brooks-range-traverse/"
+note = "From Kivalina to Kaktovik in three parts, walked in 2016, 2017 and 2019, with friends on the first two legs. Hiking and packrafting: much of it is float. The trip reports give routes, maps and photos, but no GPX link."
+
+[[guide]]
+title = "Brooks Range Traverse trip reports"
+author = "Luc Mehl"
+access = "free"
+url = "https://thingstolucat.com/brooks-range-traverse/"
+format = "web trip reports, route descriptions and maps"

@@ -1,0 +1,62 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "sawtooth-wilderness-high-route"
+name = "Sawtooth Wilderness High Route"
+short_name = "SWHR"
+country = "US"
+regions = ["ID"]
+length_km = 143
+length_note = "89 mi planned, per the trip report; the hike recorded was 67 mi (108 km)"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (the author of the SeekingLost blog, 2017); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "the author of the SeekingLost blog (publishes the route)"
+publisher_url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
+url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and the creator's terms for passing the line on are not stated."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The creator publishes the line for download; no licence that allows passing it on is stated. Get it from the creator's page."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-10. Five relations match \"Sawtooth\", and none is this route."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "the author of the SeekingLost blog"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "the author of the SeekingLost blog"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "the author of the SeekingLost blog"
+year = 2017
+line_policy = "open"
+creator_words = "Download GPX file of this hike"
+creator_words_url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
+note = "Planned as 89 miles with over 50 miles off-trail from Tin Cup Trailhead; the hike recorded in August 2017 was 67 miles. The 89-mile plan is not published as a track."
+
+[[guide]]
+title = "Sawtooth Wilderness High Route trip report and GPX"
+author = "the author of the SeekingLost blog"
+access = "free"
+url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
+format = "web trip report with a GPX download and a CalTopo map"

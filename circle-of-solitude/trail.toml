@@ -1,0 +1,59 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "circle-of-solitude"
+name = "Circle of Solitude"
+short_name = "CoS"
+country = "US"
+regions = ["CA"]
+length_km = 109
+length_note = "about 68 mi, per the route description; another figure on the same page gives 71.4 mi"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Mike White); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+url = "https://shop.adventurewithkeen.com/wilderness-press/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://shop.adventurewithkeen.com/wilderness-press/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; whether the creator shares one is not settled."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "Whether the creator shares the line is not settled: no page of the author's or the publisher's for the book was found. The route is described in the guidebook Kings Canyon National Park."
+
+[osm]
+relation = 0
+note = "Not recorded: whether the creator shares the line is not settled."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Mike White"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Mike White"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Mike White"
+line_policy = "unclear"
+note = "A loop from Road's End in Kings Canyon that circles the Great Western Divide and the Kings-Kern Divide by Avalanche Pass, Colby Pass and Forester Pass. Mike White named and described it in his Wilderness Press guide; no page of the author's was found, and no statement about a track."
+
+[[guide]]
+title = "Kings Canyon National Park"
+author = "Mike White"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/wilderness-press/"
+format = "book; the publisher's Wilderness Press page, as the book's own page was not found"
+publisher = "Wilderness Press"

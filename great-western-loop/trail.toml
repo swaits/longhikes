@@ -1,0 +1,69 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "great-western-loop"
+name = "Great Western Loop"
+short_name = "GWL"
+country = "US"
+regions = ["AZ", "NM", "CO", "WY", "ID", "MT", "CA", "OR", "WA"]
+length_km = 11064
+length_note = "6,875 mi, per Andrew Skurka's route description"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Andrew Skurka and Ryan Jordan, 2006); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Andrew Skurka and Ryan Jordan (publishes the route)"
+publisher_url = "https://andrewskurka.com/adventures/great-western-loop/"
+url = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://andrewskurka.com/adventures/great-western-loop/route-description/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the creator publishes none."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The creator chooses not to publish a line, and says so: there is no route, so it must be made on your own. The route is described in the free route description on his page."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's creator does not publish a line."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Andrew Skurka and Ryan Jordan"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Andrew Skurka and Ryan Jordan"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Andrew Skurka and Ryan Jordan"
+year = 2006
+line_policy = "withheld"
+creator_words = "There is no route, so you must create one on your own."
+creator_words_url = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+note = "Conceived in spring 2006 by Skurka and Ryan Jordan, named by Demetri Coupounas, and hiked by Skurka in 2007. It links the Pacific Crest, Pacific Northwest, Continental Divide, Grand Enchantment and Arizona trails."
+
+[[guide]]
+title = "Great Western Loop route description"
+author = "Andrew Skurka"
+access = "free"
+url = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+format = "web page: route description, itinerary, gear lists"
+
+[[guide]]
+title = "Great Western Loop and Sea-to-Sea Route Slideshows"
+author = "Andrew Skurka"
+access = "purchase"
+url = "https://andrewskurka.com/product/slideshows-on-disk-great-western-loop-and-sea-to-sea-route/"
+format = "slideshow on disk (not a route line)"

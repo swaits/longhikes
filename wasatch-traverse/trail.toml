@@ -1,0 +1,61 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "wasatch-traverse"
+name = "Wasatch Traverse"
+short_name = "WT"
+country = "US"
+regions = ["UT"]
+length_km = 455
+length_note = "283 mi as mapped, per the creator, who estimated between 250 and 300"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Liz Thomas); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Liz Thomas (publishes the route)"
+publisher_url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
+url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.eathomas.com/other-long-trails/wasatchoverview, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and no track is offered."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The creator publishes the route description and invites replication, but offers no track and states no licence for passing a line on. The overview is where the route is described."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-10."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Liz Thomas"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Liz Thomas"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Liz Thomas"
+line_policy = "open"
+creator_words = "As with all the routes I walk, what inspires me is the idea that with more planning and research, this can be an amazing trip that someone would want to replicate."
+creator_words_url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
+note = "The length of the Wasatch Range in Utah, from the Wellsville Wilderness to the southwest side of the Mt. Nebo Wilderness, on trails, off-trail, jeep roads and paved roads, with 85,000 feet of gain. Route beta and maps came from Jeremy Howlett; the page lists the paper maps she used and offers no track."
+
+[[guide]]
+title = "Wasatch Traverse overview"
+author = "Liz Thomas"
+access = "free"
+url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
+format = "web route overview with statistics and a map list"

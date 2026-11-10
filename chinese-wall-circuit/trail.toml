@@ -1,0 +1,61 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "chinese-wall-circuit"
+name = "The Chinese Wall Circuit"
+short_name = "CWC"
+country = "US"
+regions = ["MT"]
+length_km = 127
+length_note = "79 mi, per the page, 14 mi of it off-trail"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Wilderness Mindset); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Mindset (publishes the route)"
+publisher_url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/"
+url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for the loop was found on 2026-11-10, and no GPX is offered."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is published as a description and map with no GPX and no licence that allows passing a line on. Get it from the route page."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-10."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Wilderness Mindset"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Wilderness Mindset"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Wilderness Mindset"
+line_policy = "open"
+creator_words = "This route first takes you under the wall on the Continental Divide Trail, then back along the top of the wall completely off-trail."
+creator_words_url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/"
+note = "A loop in the Bob Marshall Wilderness, Montana, under the 12-mile Chinese Wall on the Continental Divide Trail and back along the top of the wall. The route page is written in the first person and names no person; no GPX link was seen on it."
+
+[[guide]]
+title = "The Chinese Wall Circuit route page"
+author = "Wilderness Mindset"
+access = "free"
+url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/"
+format = "web route description and interactive map"

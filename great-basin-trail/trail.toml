@@ -1,0 +1,62 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "great-basin-trail"
+name = "Great Basin Trail"
+short_name = "GBT"
+country = "US"
+regions = ["NV"]
+length_km = 1931
+length_note = "nearly 1,200 mi, per the creator"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Ryan \"Dirtmonger\" Sylva, 2019); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Ryan \"Dirtmonger\" Sylva (publishes the route)"
+publisher_url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
+url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.gossamergear.com/blogs/our-blog/great-basin-trail, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; no developer-published map or GPX was found."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "Whether the creator shares the line is not settled: no map or GPX of his was found, and his own site no longer resolves. The article is where the route is described."
+
+[osm]
+relation = 0
+note = "Not recorded: whether the creator shares the line is not settled."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Ryan \"Dirtmonger\" Sylva"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Ryan \"Dirtmonger\" Sylva"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Ryan \"Dirtmonger\" Sylva"
+year = 2019
+line_policy = "unclear"
+creator_words = "I developed the GBT in late 2019 as a passion project looking for the most isolated place I could find in the Lower 48 states."
+creator_words_url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
+note = "Through the Great Basin of Nevada, south and west across the basin-and-range, linking remote ranges, canyons and desert plateaus. The article written by the creator offers no map or GPX, and his own site no longer resolves."
+
+[[guide]]
+title = "Great Basin Trail article"
+author = "Ryan \"Dirtmonger\" Sylva"
+access = "free"
+url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
+format = "web article; no map or GPX offered"

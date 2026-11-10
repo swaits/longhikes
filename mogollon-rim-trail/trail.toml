@@ -1,0 +1,61 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "mogollon-rim-trail"
+name = "Mogollon Rim Trail"
+short_name = "MRT"
+country = "US"
+regions = ["AZ", "NM"]
+length_km = 805
+length_note = "500 mi, per the mapset page"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Brett Tucker); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Brett Tucker (\"Blisterfree\"), who publishes the route"
+publisher_url = "https://www.simblissity.net/mogollon-rim-trail-mapset.shtml"
+url = "https://www.simblissity.net/mogollon-rim-trail-mapset.shtml"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.simblissity.net/mogollon-rim-trail-mapset.shtml, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the tracks are part of a sold bundle."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route's GPS tracks are part of a sold bundle. Get the line from the Mogollon Rim Trail Mapset & Resource Bundle."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's creator does not publish a line."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Brett Tucker (\"Blisterfree\")"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Brett Tucker (\"Blisterfree\")"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Brett Tucker (\"Blisterfree\")"
+line_policy = "sold"
+creator_words = "Meticulously researched and field-verified, this all-inclusive digital resource contains everything needed for experienced long-distance hikers to traverse the new Mogollon Rim Trail long distance hiking route across Arizona's famed Rim Country."
+creator_words_url = "https://www.simblissity.net/mogollon-rim-trail-mapset.shtml"
+note = "Across Arizona's Rim Country from near Cottonwood to Alma, New Mexico, crossing the Arizona Trail near Pine and meeting the Grand Enchantment Trail at its eastern end. The mapset is field-verified by the route's developers."
+
+[[guide]]
+title = "Mogollon Rim Trail Mapset & Resource Bundle"
+author = "Brett Tucker"
+access = "purchase"
+url = "https://www.simblissity.net/mogollon-rim-trail-mapset.shtml"
+format = "PDF mapset, data book, town guide, GPS tracks"

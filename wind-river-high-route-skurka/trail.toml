@@ -1,0 +1,63 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "wind-river-high-route-skurka"
+name = "Wind River High Route (Skurka guide)"
+short_name = "WRHR"
+country = "US"
+regions = ["WY"]
+length_km = 156
+length_note = "97 mi, per the product page"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Andrew Skurka); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Andrew Skurka (publishes the route)"
+publisher_url = "https://andrewskurka.com/product/wind-river-high-route-guide/"
+url = "https://andrewskurka.com/product/wind-river-high-route-guide/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://andrewskurka.com/product/wind-river-high-route-guide/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the creator withholds the recommended line."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is sold as a guide and its recommended line is withheld, so the GPX sold with it has no track. Get the line from the Wind River Range High Route Guide."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's creator does not publish a line."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Andrew Skurka"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Andrew Skurka"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Andrew Skurka"
+line_policy = "sold"
+creator_words = "Intentionally, I did not draw a specific line of travel on the map — I didn't want to steal your fun by telling you exactly where to go."
+creator_words_url = "https://andrewskurka.com/product/wind-river-high-route-guide/"
+note = "One of two routes with this name. The GPX sold with the guide does not include a track for the recommended route; the page does not date the first definition."
+
+[[guide]]
+title = "Wind River Range High Route Guide"
+author = "Andrew Skurka"
+access = "purchase"
+url = "https://andrewskurka.com/product/wind-river-high-route-guide/"
+format = "PDF guidebook, PDF map set, datasheets, limited GPX"
+price = "$25.00"
+price_checked = "2026-11-10"

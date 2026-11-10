@@ -1,0 +1,61 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "wind-river-high-route-dixon-wilson"
+name = "Wind River High Route (Dixon and Wilson line)"
+short_name = "WRHR-DW"
+country = "US"
+regions = ["WY"]
+length_km = 129
+length_note = "about 80 mi, per the creators"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Alan Dixon and Don Wilson); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Alan Dixon and Don Wilson (publishes the route)"
+publisher_url = "https://www.adventurealan.com/wind-river-high-route/"
+url = "https://www.adventurealan.com/wind-river-high-route/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.adventurealan.com/wind-river-high-route/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and the creators' terms for passing the line on are not stated."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The creators publish the line for download; no licence that allows passing it on is stated. Get it from the creators' page."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-10."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Alan Dixon and Don Wilson"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Alan Dixon and Don Wilson"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Alan Dixon and Don Wilson"
+line_policy = "open"
+creator_words = "We include map sets, text description/instructions for the route, travel logistics, and other information to enable the reader to plan and accomplish the trip on their own."
+creator_words_url = "https://www.adventurealan.com/trip-guides/"
+note = "From Green River Lakes to Big Sandy, near the Continental Divide crest through the Cirque of the Towers, with nine passes and six of them off-trail. The page was revised in January 2016 after two seasons of trips."
+
+[[guide]]
+title = "Wind River High Route guide"
+author = "Alan Dixon and Don Wilson"
+access = "free"
+url = "https://www.adventurealan.com/wind-river-high-route/"
+format = "PDF mapset and route description, waypoints and timetable PDF"

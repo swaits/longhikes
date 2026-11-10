@@ -1,0 +1,62 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "route-in-between"
+name = "Route In Between"
+short_name = "RIB"
+country = "US"
+regions = ["AZ", "UT", "ID"]
+length_km = 4344
+length_note = "no total is stated on the route's page; 4,344 km (about 2,700 mi) is the sum of the three trails it links (Arizona 1,287 km, Deseret 1,609 km, Idaho Centennial 1,448 km)"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Kevin \"LarryBoy\" DeVries, 2019); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Kevin \"LarryBoy\" DeVries (publishes the route)"
+publisher_url = "http://www.lbhikes.com/2019/12/dhr.html"
+url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; only the middle third has a creator line."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "Only the middle third has a creator line, in the Deseret Hiking Route guide; the two end trails are published separately and have their own records here. Get the middle section from the guide page."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-10."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Kevin \"LarryBoy\" DeVries"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Kevin \"LarryBoy\" DeVries"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Kevin \"LarryBoy\" DeVries"
+year = 2019
+line_policy = "open"
+creator_words = "The combined AZT-DHR-ICT (collectively, the Route In Between, or RIB) offers hikers the opportunity to walk from Mexico to Canada through oft-overlooked terrain."
+creator_words_url = "http://www.lbhikes.com/2019/12/dhr.html"
+note = "A link-up of the Arizona Trail, the Deseret Hiking Route and the Idaho Centennial Trail, from Mexico to Canada through Arizona, Utah and Idaho. The creator walked it in 2019; only the middle third has a creator line."
+
+[[guide]]
+title = "A Complete Guide to the Deseret Hiking Route"
+author = "Kevin \"LarryBoy\" DeVries"
+access = "free"
+url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
+format = "guide, maps, data book and GPX for the middle section, sent after proof of a day of trail work"

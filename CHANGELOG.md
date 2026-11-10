@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-10 - 34 person-defined routes added
+
+- 34 person-defined routes added as records, each with its creator, the guide or page it is got from (free or for sale), and the creator's words on sharing the line.
+- 1 has a line, from OpenStreetMap under the ODbL: the Big SEKI Loop (relation 11628437), 251.2 km against the published 249 km. 33 have no line, each saying why: 13 are sold as a guide, 2 are withheld by the creator, 3 are not settled, and 15 are open but have no licence that allows passing the line on and no OpenStreetMap route relation.
+- The Vancouver Island Trail is already listed as `vancouver-island`, an association's trail with a line, and is unchanged.
+- 138 records now; 85 ship a line and 53 are records only.
+
 ## 2026-11-10 - Person-defined routes added to the rule and the schema
 
 - The inclusion rule now lists person-defined routes as well as designated trails: high routes, traverses and loops that a person or a small group worked out and published, at the same 50-mile floor. See README.md, section "Inclusion rule".

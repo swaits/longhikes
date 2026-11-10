@@ -1,0 +1,62 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "blue-mountains-trail"
+name = "Blue Mountains Trail"
+short_name = "BMT"
+country = "US"
+regions = ["OR"]
+length_km = 853
+length_note = "530 mi, per the council"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Greater Hells Canyon Council, 2021); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Greater Hells Canyon Council (publishes the route)"
+publisher_url = "https://bluemountainstrail.org"
+url = "https://www.hellscanyon.org/blue-mountains-trail/maps"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.hellscanyon.org/blue-mountains-trail/maps, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and the maps are sent only after a signed waiver."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The council sends the maps and databook free after a signed waiver, and states no licence that allows passing the line on. Ask the council for it through its maps page."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-10. Two bicycle relations with similar names are other routes."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Greater Hells Canyon Council"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Greater Hells Canyon Council"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Greater Hells Canyon Council"
+year = 2021
+line_policy = "open"
+creator_words = "To obtain a copy of the Caltopo maps and Databook, please complete the waiver we request everyone to sign by clicking on the button below."
+creator_words_url = "https://www.hellscanyon.org/blue-mountains-trail/maps"
+note = "A 530-mile spiral through northeast Oregon from Wallowa Lake State Park near Joseph to John Day, linking seven wilderness areas and a national recreation area. Launched publicly in 2021."
+
+[[guide]]
+title = "Blue Mountains Trail Caltopo maps and Databook"
+author = "Greater Hells Canyon Council"
+access = "free"
+url = "https://www.hellscanyon.org/blue-mountains-trail/maps"
+format = "CalTopo maps and a databook, sent after a signed waiver"

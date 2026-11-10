@@ -1,0 +1,63 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "yosemite-high-route"
+name = "Yosemite High Route"
+short_name = "YHR"
+country = "US"
+regions = ["CA"]
+length_km = 261
+length_note = "125 to 162 mi for a thru-hike, per the guide; the core route is 94 mi (151 km)"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Andrew Skurka); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Andrew Skurka (publishes the route)"
+publisher_url = "https://andrewskurka.com/product/yosemite-high-route-guide/"
+url = "https://andrewskurka.com/product/yosemite-high-route-guide/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://andrewskurka.com/product/yosemite-high-route-guide/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the creator withholds the recommended line."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is sold as a guide and the recommended line is deliberately not drawn on its maps. Get the line from the Yosemite High Route Guide."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's creator does not publish a line."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Andrew Skurka"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Andrew Skurka"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Andrew Skurka"
+line_policy = "sold"
+creator_words = "A recommended line of travel has NOT been drawn onto the maps. Hey, I didn't want to steal your fun by telling you exactly where to go."
+creator_words_url = "https://andrewskurka.com/product/yosemite-high-route-guide/"
+note = "A route around the upper headwaters of the Tuolumne and Merced Rivers inside Yosemite National Park; the core route is 94 miles, 70 percent of it off-trail. The guide's status is dated January 2022; the first definition is not dated."
+
+[[guide]]
+title = "Yosemite High Route Guide"
+author = "Andrew Skurka"
+access = "purchase"
+url = "https://andrewskurka.com/product/yosemite-high-route-guide/"
+format = "PDF guidebook, annotated map set, datasheets, rudimentary GPX"
+price = "$25.00"
+price_checked = "2026-11-10"

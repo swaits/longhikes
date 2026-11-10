@@ -1,0 +1,65 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "hayduke-trail"
+name = "Hayduke Trail"
+short_name = "HT"
+country = "US"
+regions = ["UT", "AZ"]
+length_km = 1287
+length_note = "800 mi, per the creator's site and the publisher"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Joe Mitchell and Mike Coronella, 2005); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Joe Mitchell and Mike Coronella (publishes the route)"
+publisher_url = "https://www.hayduketrail.org"
+url = "https://uofupress.com/books/the-hayduke-trail/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://uofupress.com/books/the-hayduke-trail/, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the detailed line is in the guidebook."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is sold as a guidebook; the site publishes free section overview maps only, and no line is included. Get the line from The Hayduke Trail guidebook."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's creator does not publish a line."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Joe Mitchell and Mike Coronella"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Joe Mitchell and Mike Coronella"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Joe Mitchell and Mike Coronella"
+year = 2005
+line_policy = "sold"
+creator_words = "This website is meant to be the official source for information about the Hayduke Trail for those seeking to tackle it in sections and for thru-hikers alike. Inside you will find a wealth of maps, brief section descriptions, thru-hiker resupply strategy, the current condition and rating of water sources and links to other very useful, information-based websites."
+creator_words_url = "https://www.hayduketrail.org"
+note = "From Arches to Zion across the Colorado Plateau, linking six national parks, partly off-trail. The site publishes free section overview maps; the detailed maps and route description are in the guidebook, whose copyright is 2005."
+
+[[guide]]
+title = "The Hayduke Trail: A Guide to the Backcountry Hiking Trail on the Colorado Plateau"
+author = "Joe Mitchell and Mike Coronella"
+access = "purchase"
+url = "https://uofupress.com/books/the-hayduke-trail/"
+format = "book"
+price = "$19.95"
+price_checked = "2026-11-10"
+isbn = "9780874808131"

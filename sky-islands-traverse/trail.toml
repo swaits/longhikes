@@ -1,0 +1,62 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "sky-islands-traverse"
+name = "Sky Islands Traverse"
+short_name = "SIT"
+country = "US"
+regions = ["AZ"]
+length_km = 837
+length_note = "520 mi, per the creator"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Brett Tucker, 2011); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Brett Tucker (\"Blisterfree\"), who publishes the route"
+publisher_url = "http://simblissity.net/skit.shtml"
+url = "http://simblissity.net/skit.shtml"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (http://simblissity.net/skit.shtml, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No line is included; the creator has taken the detail down."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The creator has taken the detail down and asks people not to follow the exact layout; no line is included. The route is described on the creator's page."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's creator does not publish a line."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Brett Tucker (\"Blisterfree\")"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Brett Tucker (\"Blisterfree\")"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Brett Tucker (\"Blisterfree\")"
+year = 2011
+line_policy = "withheld"
+creator_words = "We're not actively encouraging others to hike the exact route layout as described, and are less interested in fielding specific questions about planning and hiking it. On a route as undeveloped as this, your hike should be your decision and responsibility, and this information should only serve as a catalyst for having a rewarding and ultimately unique journey."
+creator_words_url = "http://simblissity.net/skit.shtml"
+note = "Through ten sky-island ranges of southeast Arizona, from the Dragoons to the Chiricahuas. The creator walked it in spring 2010 and published the description in March 2011; the detailed information has been withdrawn."
+
+[[guide]]
+title = "Sky Islands Traverse page"
+author = "Brett Tucker (\"Blisterfree\")"
+access = "free"
+url = "http://simblissity.net/skit.shtml"
+format = "web page; the detailed information is withdrawn"

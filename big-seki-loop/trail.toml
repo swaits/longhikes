@@ -1,0 +1,66 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "big-seki-loop"
+name = "Big SEKI Loop"
+short_name = "BSL"
+country = "US"
+regions = ["CA"]
+length_km = 249
+length_note = "about 155 mi, per the creators"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Amy and James of Doing Miles, 2013); no agency or association"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Amy and James (Doing Miles) (publishes the route)"
+publisher_url = "https://doingmiles.com/route-big-seki-loop/"
+url = "https://www.openstreetmap.org/relation/11628437"
+discovery = "osm-relation-version: Overpass `rel(11628437); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 11628437."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 11628437: one route relation, main ways only."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 11628437
+note = "Downloaded 2026-11-10; 57 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Amy and James (Doing Miles)"
+note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+logo_file = ""
+logo_owner = "Amy and James (Doing Miles)"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 251.2
+difference_percent = 0.9
+parts = 1
+note = "OSM relation 11628437, 57 ways: 251.2 km in 1 part, 0.9% over the published 249 km."
+
+[route]
+creator = "Amy and James (Doing Miles)"
+year = 2013
+line_policy = "open"
+creator_words = "We mapped, walked, and developed the Big SEKI Loop (BSL) as a long on-trail hike for people to consider as an alternative to the JMT."
+creator_words_url = "https://doingmiles.com/route-big-seki-loop/"
+note = "A loop in Sequoia and Kings Canyon National Parks, entirely on maintained trail, offered as a quieter alternative to the John Muir Trail. The design was completed in 2013 and first published on Backpackinglight.com in February of that year."
+
+[[guide]]
+title = "Big SEKI Loop Route Guide"
+author = "Amy and James (Doing Miles)"
+access = "free"
+url = "https://doingmiles.com/route-big-seki-loop/"
+format = "web route guide with a CalTopo map"

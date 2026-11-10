@@ -6,7 +6,7 @@ A public dataset of long-distance hiking trails in the United States and Canada:
 
 This is a dataset, not a guide. Each record says what the trail is, how long it is, where its line came from, and under what terms that line may be used. It is not a navigation product: lines vary in quality, some trails are unfinished, and some records have no line at all. Check a trail's own record before using its line.
 
-The counts at this release: 64 trail records, 49 with a line, 15 records only.
+The counts at this release: 104 trail records, 84 with a line, 20 records only.
 
 ## Inclusion rule
 
@@ -24,19 +24,33 @@ A trail may be listed as a record only, with no line, when no line for it may be
 
 | ID | Trail | Country | States / provinces | Length (km) | Line | Licence |
 | --- | --- | --- | --- | ---: | --- | --- |
+| alexander-mackenzie | Alexander MacKenzie Heritage Trail | CA | BC | 420 | yes | ODbL-1.0 |
 | allegheny-trail | Allegheny Trail | US | WV | 530 | yes | ODbL-1.0 |
 | appalachian | Appalachian National Scenic Trail | US | GA, NC, TN, VA, WV, MD, PA, NJ, NY, CT, MA, VT, NH, ME | 3537 | yes | us-gov-public-domain |
 | arizona | Arizona National Scenic Trail | US | AZ | 1287 | yes | ODbL-1.0 |
+| avon | Avon Trail | CA | ON | 130 | yes | ODbL-1.0 |
 | backbone | Backbone Trail | US | CA | 108 | yes | ODbL-1.0 |
+| baker | Baker Trail | US | PA | 216 | yes | ODbL-1.0 |
+| bartram | Bartram Trail | US | GA, NC | 180 | yes | ODbL-1.0 |
+| batona | Batona Trail | US | NJ | 80 | yes | ODbL-1.0 |
+| bay-circuit | Bay Circuit Trail | US | MA | 370 | yes | ODbL-1.0 |
 | benton-mackaye | Benton MacKaye Trail | US | GA, TN, NC | 463 | yes | ODbL-1.0 |
 | border-route | Border Route Trail | US | MN | 105 | yes | ODbL-1.0 |
+| brazeau-loop | Brazeau Loop | CA | AB | 81 | no (record only) | none-stated |
 | bruce-trail | Bruce Trail | CA | ON | 890 | yes | ODbL-1.0 |
 | buckeye | Buckeye Trail | US | OH | 2250 | yes | ODbL-1.0 |
 | california-coastal | California Coastal Trail | US | CA | 1931 | no (record only) | none-stated |
+| canol | Canol Heritage Trail | CA | NT | 371 | yes | ODbL-1.0 |
+| centennial-sd | Centennial Trail | US | SD | 179 | yes | ODbL-1.0 |
+| chesapeake-ohio-canal | Chesapeake and Ohio Canal Towpath | US | MD, DC, WV | 297 | no (record only) | none-stated |
 | cohos | Cohos Trail | US | NH | 270 | yes | ODbL-1.0 |
 | colorado-trail | Colorado Trail | US | CO | 782 | yes | us-gov-public-domain |
 | continental-divide | Continental Divide National Scenic Trail | US | NM, CO, WY, ID, MT | 4989 | yes | CC-BY |
+| corvallis-to-the-sea | Corvallis-to-the-Sea Trail | US | OR | 97 | yes | ODbL-1.0 |
+| cranberry-lake-50 | Cranberry Lake 50 | US | NY | 80 | yes | ODbL-1.0 |
+| cross-vermont | Cross Vermont Trail | US | VT | 145 | yes | ODbL-1.0 |
 | cumberland-trail | Cumberland Trail | US | TN | 480 | yes | ODbL-1.0 |
+| donut-hole | Donut Hole Trail | US | PA | 152 | yes | ODbL-1.0 |
 | east-coast-trail | East Coast Trail (Newfoundland) | CA | NL | 336 | yes | ODbL-1.0 |
 | finger-lakes | Finger Lakes Trail | US | NY | 950 | yes | ODbL-1.0 |
 | florida | Florida National Scenic Trail | US | FL | 2414 | yes | ODbL-1.0 |
@@ -48,24 +62,40 @@ A trail may be listed as a record only, with no line, when no line for it may be
 | great-eastern | Great Eastern Trail | US | AL, GA, TN, KY, VA, WV, MD, PA, NY | 3200 | no (record only) | ODbL-1.0 |
 | great-trail | The Great Trail (Trans Canada Trail) | CA | all provinces and territories | 28000 | no (record only) | CC-BY-NC-ND-4.0 |
 | great-western | Great Western Trail | US | AZ, UT, ID, WY, MT | 4800 | no (record only) | none-stated |
+| high-sierra | High Sierra Trail | US | CA | 116 | yes | ODbL-1.0 |
+| highlands | Highlands Trail | US | NJ, NY, PA, CT | 290 | yes | ODbL-1.0 |
+| horse-shoe | Horse-Shoe Trail | US | PA | 225 | yes | ODbL-1.0 |
 | ice-age | Ice Age National Scenic Trail | US | WI | 1931 | yes | ODbL-1.0 |
 | idaho-centennial | Idaho Centennial Trail | US | ID | 1448 | yes | ODbL-1.0 |
 | iditarod | Iditarod National Historic Trail | US | AK | 3701 | no (record only) | us-gov-public-domain |
+| island-walk | The Island Walk | CA | PE | 700 | yes | ODbL-1.0 |
 | john-muir | John Muir Trail | US | CA | 340 | yes | ODbL-1.0 |
 | kekekabic | Kekekabic Trail | US | MN | 66 | no (record only) | ODbL-1.0 |
+| la-cloche | La Cloche Silhouette Trail | CA | ON | 80 | yes | ODbL-1.0 |
+| laurel-highlands | Laurel Highlands Hiking Trail | US | PA | 113 | yes | ODbL-1.0 |
 | lone-star | Lone Star Hiking Trail | US | TX | 155 | yes | ODbL-1.0 |
 | long-path | Long Path | US | NJ, NY | 576 | yes | ODbL-1.0 |
 | long-trail | Long Trail (Vermont) | US | VT | 438 | yes | ODbL-1.0 |
+| loyalsock | Loyalsock Trail | US | PA | 95 | yes | ODbL-1.0 |
+| maah-daah-hey | Maah Daah Hey Trail | US | ND | 232 | yes | ODbL-1.0 |
+| mason-dixon | Mason-Dixon Trail | US | PA, MD, DE | 311 | yes | ODbL-1.0 |
+| mattabesett | Mattabesett Trail | US | CT | 105 | yes | ODbL-1.0 |
 | metacomet-monadnock | Metacomet-Monadnock Trail | US | CT, MA, NH | 185 | yes | ODbL-1.0 |
 | mid-state | Mid State Trail | US | PA | 515 | yes | ODbL-1.0 |
+| midstate-ma | Midstate Trail (Massachusetts) | US | MA | 148 | yes | ODbL-1.0 |
+| monadnock-sunapee | Monadnock-Sunapee Greenway | US | NH | 80 | yes | ODbL-1.0 |
 | mountains-to-sea | Mountains-to-Sea Trail | US | NC | 1890 | yes | ODbL-1.0 |
 | natchez-trace | Natchez Trace National Scenic Trail | US | MS, AL, TN | 105 | yes | us-gov-public-domain |
 | new-england | New England National Scenic Trail | US | CT, MA | 378 | yes | us-gov-public-domain |
 | nez-perce | Nez Perce (Nee-Me-Poo) National Historic Trail | US | OR, ID, MT, WY | 1883 | no (record only) | us-gov-public-domain |
+| north-boundary | North Boundary Trail | CA | AB | 159 | no (record only) | none-stated |
 | north-country | North Country National Scenic Trail | US | ND, MN, WI, MI, OH, PA, NY, VT | 7403 | yes | ODbL-1.0 |
+| north-south | North-South Trail | US | RI | 125 | yes | ODbL-1.0 |
 | northville-placid | Northville-Placid Trail | US | NY | 220 | yes | ODbL-1.0 |
+| oak-ridges | Oak Ridges Trail | CA | ON | 270 | yes | ODbL-1.0 |
 | oregon-coast | Oregon Coast Trail | US | OR | 650 | yes | ODbL-1.0 |
 | oregon-desert | Oregon Desert Trail | US | OR | 1200 | no (record only) | ODbL-1.0 |
+| ouachita | Ouachita National Recreation Trail | US | AR, OK | 359 | yes | ODbL-1.0 |
 | overmountain-victory | Overmountain Victory National Historic Trail | US | VA, TN, NC, SC | 540 | no (record only) | us-gov-public-domain |
 | ozark-highlands | Ozark Highlands Trail | US | AR | 435 | yes | ODbL-1.0 |
 | ozark-trail | Ozark Trail (Missouri) | US | MO | 630 | yes | ODbL-1.0 |
@@ -75,17 +105,27 @@ A trail may be listed as a record only, with no line, when no line for it may be
 | pinhoti | Pinhoti Trail | US | AL, GA | 540 | yes | ODbL-1.0 |
 | potomac-heritage | Potomac Heritage National Scenic Trail | US | DC, MD, VA, PA | 1448 | yes | us-gov-public-domain |
 | pukaskwa-coastal | Pukaskwa Coastal Hiking Trail | CA | ON | 60 | no (record only) | ODbL-1.0 |
+| quehanna | Quehanna Trail | US | PA | 119 | yes | ODbL-1.0 |
 | rideau-trail | Rideau Trail | CA | ON | 387 | yes | ODbL-1.0 |
+| river-to-river | River to River Trail | US | IL | 257 | yes | ODbL-1.0 |
 | sentier-international-appalaches | Sentier international des Appalaches (International Appalachian Trail, Quebec and New Brunswick) | CA | QC, NB | 1177 | yes | ODbL-1.0 |
 | sentier-national | Sentier National (Quebec) | CA | QC | 1500 | yes | ODbL-1.0 |
 | sheltowee-trace | Sheltowee Trace National Recreation Trail | US | KY, TN | 515 | yes | ODbL-1.0 |
+| south-boundary | South Boundary Trail | CA | AB | 121 | no (record only) | none-stated |
+| standing-stone | Standing Stone Trail | US | PA | 137 | yes | ODbL-1.0 |
+| sunapee-ragged-kearsarge | Sunapee-Ragged-Kearsarge Greenway | US | NH | 121 | yes | ODbL-1.0 |
 | sunshine-coast | Sunshine Coast Trail | CA | BC | 180 | yes | ODbL-1.0 |
 | superior-hiking | Superior Hiking Trail | US | MN | 499 | yes | ODbL-1.0 |
+| susquehannock | Susquehannock Trail System | US | PA | 135 | yes | ODbL-1.0 |
 | tahoe-rim | Tahoe Rim Trail | US | CA, NV | 266 | yes | ODbL-1.0 |
 | teton-crest | Teton Crest Trail | US | WY | 64 | no (record only) | ODbL-1.0 |
 | timberline | Timberline Trail (Mount Hood) | US | OR | 64 | no (record only) | us-gov-public-domain |
+| traversee-charlevoix | Traversée de Charlevoix | CA | QC | 105 | yes | ODbL-1.0 |
+| tuscarora | Tuscarora Trail | US | PA, MD, VA, WV | 406 | yes | ODbL-1.0 |
 | uinta-highline | Uinta Highline Trail | US | UT | 167 | yes | ODbL-1.0 |
+| vancouver-island | Vancouver Island Trail | CA | BC | 800 | yes | ODbL-1.0 |
 | voyageur | Voyageur Trail | CA | ON | 1100 | yes | ODbL-1.0 |
+| waskahegan | Waskahegan Trail | CA | AB | 309 | no (record only) | none-stated |
 | west-coast-trail | West Coast Trail | CA | BC | 75 | no (record only) | ODbL-1.0 |
 | wonderland | Wonderland Trail | US | WA | 150 | yes | ODbL-1.0 |
 
@@ -119,7 +159,7 @@ SOURCES.md      each distinct source, its terms, and the trails that use it
 
 - Read a trail: open its `trail.toml`. The `[source]` section says where the line came from and under what terms it may be used.
 - Read all trails at once: use `trails.csv`, or `index.geojson` for a map overview.
-- Check the data: run `python3 tools/validate.py`. It prints `OK 64 trails` when all records pass.
+- Check the data: run `python3 tools/validate.py`. It prints `OK 104 trails` when all records pass.
 - Rebuild the generated files after editing a record: run `python3 tools/build_index.py`.
 
 Follow the licence in each record. Lines from OpenStreetMap need the credit "© OpenStreetMap contributors" and stay under the ODbL. Lines from United States federal agencies are public domain in the United States. Other lines carry the credit named in their record.

@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "vancouver-island"
+name = "Vancouver Island Trail"
+short_name = "VIT"
+country = "CA"
+regions = ["BC"]
+length_km = 800
+length_note = "nearly 800 km, from the Vancouver Island Trail Association page"
+tier = "regional"
+designation = "Vancouver Island Trail Association"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Vancouver Island Trail Association (publishes the trail; no open geometry found)"
+publisher_url = "https://www.vancouverislandtrail.ca/"
+url = "https://www.openstreetmap.org/relation/12038457"
+discovery = "osm-relation-version: Overpass `rel(12038457); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 12038457."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 12038457: the whole route, main ways only. The 33 ways with a side role are in alternates.geojson."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 12038457
+note = "Downloaded 2026-11-10; 1008 ways in the main line and 33 in alternates. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Vancouver Island Trail Association"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Vancouver Island Trail Association"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 733.1
+difference_percent = -8.4
+parts = 7
+note = "OSM relation 12038457, 1008 ways: 733.1 km in 7 parts, 8.4% short of the published 800 km. The 33 ways with a side role are in alternates.geojson. The pieces do not all join: OpenStreetMap is missing the connectors between them."

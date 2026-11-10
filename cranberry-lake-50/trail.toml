@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "cranberry-lake-50"
+name = "Cranberry Lake 50"
+short_name = "CL50"
+country = "US"
+regions = ["NY"]
+length_km = 80
+length_note = "50 mi, from the Cranberry Lake 50 page"
+tier = "regional"
+designation = "Cranberry Lake 50 volunteer trail crew"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Cranberry Lake 50 volunteer trail crew (publishes the loop; no open geometry found)"
+publisher_url = "https://cranberrylake50.org/"
+url = "https://www.openstreetmap.org/relation/7580730"
+discovery = "osm-relation-version: Overpass `rel(7580730); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 7580730."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 7580730: the 50-mile loop around Cranberry Lake."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 7580730
+note = "Downloaded 2026-11-10; 38 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Cranberry Lake 50 volunteer trail crew"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Cranberry Lake 50 volunteer trail crew"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 78.4
+difference_percent = -1.9
+parts = 1
+note = "OSM relation 7580730, 38 ways: 78.4 km in 1 part, 1.9% short of the published 80 km."

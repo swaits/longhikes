@@ -1,0 +1,46 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "chesapeake-ohio-canal"
+name = "Chesapeake and Ohio Canal Towpath"
+short_name = "C&O"
+country = "US"
+regions = ["MD", "DC", "WV"]
+length_km = 297
+length_note = "184.5 mi, from the Chesapeake and Ohio Canal National Historical Park page"
+tier = "regional"
+designation = "National Park Service, Chesapeake and Ohio Canal National Historical Park"
+wave = 1
+
+[source]
+status = "none"
+publisher = "National Park Service, Chesapeake and Ohio Canal National Historical Park (publishes the trail; no open geometry found)"
+publisher_url = "https://www.nps.gov/choh/planyourvisit/hiking.htm"
+url = "https://www.nps.gov/choh/planyourvisit/hiking.htm"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No line is included, so no source licence applies to a line. This record names the publisher and the page its facts were read on (https://www.nps.gov/choh/planyourvisit/hiking.htm, read 2026-11-10)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation covers the whole towpath; relation 9185394 is a short piece near Washington. The towpath is mapped as individual ways."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No OpenStreetMap route relation for the trail was found, and the publisher serves no line that may be passed on. The record is kept without a line."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-10."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "National Park Service"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "National Park Service"
+
+[verification]
+verified = false
+note = "No line to measure."

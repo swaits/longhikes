@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "highlands"
+name = "Highlands Trail"
+short_name = "HT"
+country = "US"
+regions = ["NJ", "NY", "PA", "CT"]
+length_km = 290
+length_note = "over 180 mi, from the New York-New Jersey Trail Conference page"
+tier = "regional"
+designation = "New York-New Jersey Trail Conference"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "New York-New Jersey Trail Conference (publishes the trail; no open geometry found)"
+publisher_url = "https://nynjtc.org/highlands-trail"
+url = "https://www.openstreetmap.org/relation/6335422"
+discovery = "osm-relation-version: Overpass `rel(6335422); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 6335422."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 6335422: the main line. Other relations of the same name hold short pieces. The 1 ways with a side role are in alternates.geojson."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 6335422
+note = "Downloaded 2026-11-10; 491 ways in the main line and 1 in alternates. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "New York-New Jersey Trail Conference"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "New York-New Jersey Trail Conference"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 277.3
+difference_percent = -4.4
+parts = 3
+note = "OSM relation 6335422, 491 ways: 277.3 km in 3 parts, 4.4% short of the published 290 km. The 1 ways with a side role are in alternates.geojson. The pieces do not all join: OpenStreetMap is missing the connectors between them."

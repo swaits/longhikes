@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "midstate-ma"
+name = "Midstate Trail (Massachusetts)"
+short_name = "MST"
+country = "US"
+regions = ["MA"]
+length_km = 148
+length_note = "92 mi, from the Midstate Trail Committee page"
+tier = "regional"
+designation = "Midstate Trail Committee"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Midstate Trail Committee (publishes the trail; no open geometry found)"
+publisher_url = "https://www.midstatetrail.org/"
+url = "https://www.openstreetmap.org/relation/5503042"
+discovery = "osm-relation-version: Overpass `rel(5503042); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 5503042."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 5503042: one route relation, main ways only."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 5503042
+note = "Downloaded 2026-11-10; 257 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Midstate Trail Committee"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Midstate Trail Committee"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 150.0
+difference_percent = 1.4
+parts = 1
+note = "OSM relation 5503042, 257 ways: 150.0 km in 1 part, 1.4% more than the published 148 km."

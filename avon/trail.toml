@@ -1,0 +1,51 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "avon"
+name = "Avon Trail"
+short_name = "AT"
+country = "CA"
+regions = ["ON"]
+length_km = 130
+length_note = "130 km, from the Avon Trail Association page"
+tier = "regional"
+designation = "Avon Trail Association"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Avon Trail Association (publishes the trail; no open geometry found)"
+publisher_url = "https://avontrail.ca/"
+url = "https://www.openstreetmap.org/relation/3442182"
+discovery = "osm-relation-version: Overpass `rel(3442182); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 3442182."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 3442182: one route relation, main ways only."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "The measured line is 26% longer than the published 130 km. The relation carries 460 ways with no side-trail roles, so the difference is either reroutes or side paths mapped into the route. The whole relation is kept."
+
+[osm]
+relation = 3442182
+note = "Downloaded 2026-11-10; 460 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Avon Trail Association"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Avon Trail Association"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 163.8
+difference_percent = 26.0
+parts = 6
+note = "OSM relation 3442182, 460 ways: 163.8 km in 6 parts, 26.0% more than the published 130 km. The pieces do not all join: OpenStreetMap is missing the connectors between them."

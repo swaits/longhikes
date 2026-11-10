@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "north-south"
+name = "North-South Trail"
+short_name = "NST"
+country = "US"
+regions = ["RI"]
+length_km = 125
+length_note = "77 mi, from the Rhode Island DEM trail data"
+tier = "regional"
+designation = "Rhode Island Department of Environmental Management"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Rhode Island Department of Environmental Management (publishes the trail; no open geometry found)"
+publisher_url = "https://dem.ri.gov/"
+url = "https://www.openstreetmap.org/relation/11102215"
+discovery = "osm-relation-version: Overpass `rel(11102215); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 11102215."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 11102215: one route relation, main ways only."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 11102215
+note = "Downloaded 2026-11-10; 197 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Rhode Island Department of Environmental Management"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Rhode Island Department of Environmental Management"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 121.4
+difference_percent = -2.9
+parts = 2
+note = "OSM relation 11102215, 197 ways: 121.4 km in 2 parts, 2.9% short of the published 125 km."

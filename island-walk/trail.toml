@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "island-walk"
+name = "The Island Walk"
+short_name = "IW"
+country = "CA"
+regions = ["PE"]
+length_km = 700
+length_note = "700 km, from the Island Walk PEI page"
+tier = "regional"
+designation = "Island Walk PEI Inc."
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Island Walk PEI Inc. (publishes the route; no open geometry found)"
+publisher_url = "https://theislandwalk.ca/"
+url = "https://www.openstreetmap.org/relation/12307947"
+discovery = "osm-relation-version: Overpass `rel(12307947); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 12307947."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 12307947: the whole 700 km loop around Prince Edward Island."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 12307947
+note = "Downloaded 2026-11-10; 586 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Island Walk PEI Inc."
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Island Walk PEI Inc."
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 655.0
+difference_percent = -6.4
+parts = 4
+note = "OSM relation 12307947, 586 ways: 655.0 km in 4 parts, 6.4% short of the published 700 km. The pieces do not all join: OpenStreetMap is missing the connectors between them."

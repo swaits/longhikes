@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "cross-vermont"
+name = "Cross Vermont Trail"
+short_name = "CVT"
+country = "US"
+regions = ["VT"]
+length_km = 145
+length_note = "a little over 90 mi, from the Cross Vermont Trail Association page"
+tier = "regional"
+designation = "Cross Vermont Trail Association"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Cross Vermont Trail Association (publishes the trail; no open geometry found)"
+publisher_url = "https://crossvermont.org/our_trail/index.php"
+url = "https://www.openstreetmap.org/relation/2750828"
+discovery = "osm-relation-version: Overpass `rel(2750828); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 2750828."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 2750828: the route as mapped in OpenStreetMap, where it is tagged as a bicycle route; main ways only."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 2750828
+note = "Downloaded 2026-11-10; 275 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Cross Vermont Trail Association"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Cross Vermont Trail Association"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 142.2
+difference_percent = -1.9
+parts = 1
+note = "OSM relation 2750828, 275 ways: 142.2 km in 1 part, 1.9% short of the published 145 km."

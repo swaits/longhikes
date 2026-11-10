@@ -1,0 +1,51 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "alexander-mackenzie"
+name = "Alexander MacKenzie Heritage Trail"
+short_name = "AMHT"
+country = "CA"
+regions = ["BC"]
+length_km = 420
+length_note = "420 km, from the BC Geographical Names record"
+tier = "regional"
+designation = "Heritage trail under the Heritage Conservation Act (1987); forest recreation trail under the Forest Act (1987)"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Province of British Columbia (BC Geographical Names record; no open geometry found)"
+publisher_url = "https://apps.gov.bc.ca/pub/bcgnws/names/68161.html"
+url = "https://www.openstreetmap.org/relation/2654551"
+discovery = "osm-relation-version: Overpass `rel(2654551); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 2654551."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 2654551: one route relation, main ways only."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "The published 420 km is the whole heritage corridor, which includes road and water sections; about 300 km of it is trail. The mapped trail is 322.4 km in 8 pieces. The line is kept as mapped."
+
+[osm]
+relation = 2654551
+note = "Downloaded 2026-11-10; 28 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Province of British Columbia"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Province of British Columbia"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 322.4
+difference_percent = -23.2
+parts = 8
+note = "OSM relation 2654551, 28 ways: 322.4 km in 8 parts, 23.2% short of the published 420 km. The pieces do not all join: OpenStreetMap is missing the connectors between them."

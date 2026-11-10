@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "batona"
+name = "Batona Trail"
+short_name = "BT"
+country = "US"
+regions = ["NJ"]
+length_km = 80
+length_note = "50 mi, from the trail map published by the Pinelands Preservation Alliance"
+tier = "regional"
+designation = "Batona Hiking Club; New Jersey State Park Service"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Batona Hiking Club (publishes the trail with the New Jersey State Park Service; no open geometry found)"
+publisher_url = "https://batona.wildapricot.org/"
+url = "https://www.openstreetmap.org/relation/4129027"
+discovery = "osm-relation-version: Overpass `rel(4129027); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 4129027."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 4129027: one route relation, main ways only."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 4129027
+note = "Downloaded 2026-11-10; 100 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Batona Hiking Club"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Batona Hiking Club"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 84.8
+difference_percent = 6.0
+parts = 1
+note = "OSM relation 4129027, 100 ways: 84.8 km in 1 part, 6.0% more than the published 80 km."

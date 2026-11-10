@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "laurel-highlands"
+name = "Laurel Highlands Hiking Trail"
+short_name = "LHHT"
+country = "US"
+regions = ["PA"]
+length_km = 113
+length_note = "70.1 mi, from the Keystone Trails Association page"
+tier = "regional"
+designation = "Keystone Trails Association; built and managed by the Pennsylvania Department of Conservation and Natural Resources"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Keystone Trails Association (publishes the trail; no open geometry found)"
+publisher_url = "https://www.kta-hike.org/laurel-highlands-hiking-trail.html"
+url = "https://www.openstreetmap.org/relation/7192246"
+discovery = "osm-relation-version: Overpass `rel(7192246); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 7192246."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 7192246: one route relation, main ways only."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 7192246
+note = "Downloaded 2026-11-10; 95 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Pennsylvania Department of Conservation and Natural Resources"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Pennsylvania Department of Conservation and Natural Resources"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 120.6
+difference_percent = 6.7
+parts = 13
+note = "OSM relation 7192246, 95 ways: 120.6 km in 13 parts, 6.7% more than the published 113 km. The pieces do not all join: OpenStreetMap is missing the connectors between them."

@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "sunapee-ragged-kearsarge"
+name = "Sunapee-Ragged-Kearsarge Greenway"
+short_name = "SRKG"
+country = "US"
+regions = ["NH"]
+length_km = 121
+length_note = "75 mi, from the Sunapee-Ragged-Kearsarge Greenway Coalition page"
+tier = "regional"
+designation = "Sunapee-Ragged-Kearsarge Greenway Coalition"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Sunapee-Ragged-Kearsarge Greenway Coalition (publishes the trail; no open geometry found)"
+publisher_url = "https://www.srkg.org/"
+url = "https://www.openstreetmap.org/relation/17943086"
+discovery = "osm-relation-version: Overpass `rel(17943086); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 17943086."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 17943086: the 75-mile loop."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 17943086
+note = "Downloaded 2026-11-10; 182 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Sunapee-Ragged-Kearsarge Greenway Coalition"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Sunapee-Ragged-Kearsarge Greenway Coalition"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 119.9
+difference_percent = -0.9
+parts = 1
+note = "OSM relation 17943086, 182 ways: 119.9 km in 1 part, 0.9% short of the published 121 km."

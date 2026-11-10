@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "standing-stone"
+name = "Standing Stone Trail"
+short_name = "SST"
+country = "US"
+regions = ["PA"]
+length_km = 137
+length_note = "85 mi, from the Standing Stone Trail Club page"
+tier = "regional"
+designation = "Standing Stone Trail Club"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Standing Stone Trail Club (publishes the trail; no open geometry found)"
+publisher_url = "https://www.standingstonetrail.org/"
+url = "https://www.openstreetmap.org/relation/11360008"
+discovery = "osm-relation-version: Overpass `rel(11360008); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 11360008."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 11360008: the main line, south end at the Tuscarora Trail to the north end at the Mid State Trail."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 11360008
+note = "Downloaded 2026-11-10; 78 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Standing Stone Trail Club"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Standing Stone Trail Club"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 122.3
+difference_percent = -10.7
+parts = 2
+note = "OSM relation 11360008, 78 ways: 122.3 km in 2 parts, 10.7% short of the published 137 km."

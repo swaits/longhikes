@@ -1,0 +1,51 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "bay-circuit"
+name = "Bay Circuit Trail"
+short_name = "BCT"
+country = "US"
+regions = ["MA"]
+length_km = 370
+length_note = "more than 230 mi, from the Bay Circuit Alliance and Appalachian Mountain Club page"
+tier = "regional"
+designation = "Appalachian Mountain Club with the Bay Circuit Alliance"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Appalachian Mountain Club (leads the trail's partners; no open geometry found)"
+publisher_url = "https://www.baycircuit.org/about/"
+url = "https://www.openstreetmap.org/relation/12779888"
+discovery = "osm-relation-version: Overpass `rel(12779888); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 12779888."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 12779888: a super route whose members are the trail's own relations; every member way is included once."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "The published figure of more than 230 miles counts the whole greenway, including parts that are still road walks. OpenStreetMap maps the dedicated trail in 14 pieces, 296.9 km in all. The line is kept as mapped."
+
+[osm]
+relation = 12779888
+note = "Downloaded 2026-11-10; 1162 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Appalachian Mountain Club"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Appalachian Mountain Club"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 296.9
+difference_percent = -19.8
+parts = 14
+note = "OSM relation 12779888, 1162 ways: 296.9 km in 14 parts, 19.8% short of the published 370 km. The pieces do not all join: OpenStreetMap is missing the connectors between them."

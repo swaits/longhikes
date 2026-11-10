@@ -1,0 +1,50 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "maah-daah-hey"
+name = "Maah Daah Hey Trail"
+short_name = "MDHT"
+country = "US"
+regions = ["ND"]
+length_km = 232
+length_note = "144 mi, from the Dakota Prairie Grasslands page"
+tier = "regional"
+designation = "USDA Forest Service, Dakota Prairie Grasslands"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "USDA Forest Service, Dakota Prairie Grasslands (publishes the trail; no open geometry found)"
+publisher_url = "https://www.fs.usda.gov/r01/dpg/recreation/trails/maah-daah-hey-trail"
+url = "https://www.openstreetmap.org/relation/11562289"
+discovery = "osm-relation-version: Overpass `rel(11562289); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 11562289."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 11562289: one route relation, main ways only."
+source_checked = "2026-11-10"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 11562289
+note = "Downloaded 2026-11-10; 65 ways in the main line. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "USDA Forest Service, Dakota Prairie Grasslands"
+note = "No logo is included. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "USDA Forest Service, Dakota Prairie Grasslands"
+
+[verification]
+verified = true
+date = "2026-11-10"
+measured_km = 232.4
+difference_percent = 0.2
+parts = 1
+note = "OSM relation 11562289, 65 ways: 232.4 km in 1 part, 0.2% more than the published 232 km."

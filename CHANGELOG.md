@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-10 - Floor lowered to 50 miles, and 40 trails added
+
+- The inclusion rule is now 50 miles (80 km) instead of 100 km, in README.md, CONTRIBUTING.md and the tier definitions in docs/schema.md. The reason is the owner's: "It's basically multi day wilderness backpacking."
+- 40 designated trails added, each with its steward, the page the length was read on, and its designation. 35 have a line built from the trail's OpenStreetMap route relation; 5 are records only, with the reason stated, because OpenStreetMap has no route relation for them.
+- The new trails cover Pennsylvania (10), New England and New York (8), New Jersey and the Highlands (2), the southern Appalachians and the Ozarks (3), the Mid-Atlantic (1), the northern plains and the Black Hills (2), California and Oregon (2), and Canada (12).
+- 104 trail records now; 84 ship a line and 20 are records only.
+
 ## 2026-11-09 - Lines for nine trails from OpenStreetMap
 
 - Added lines from OpenStreetMap (ODbL-1.0) for nine trails that shipped as records only: Arizona, Florida, Ice Age, North Country, Great Divide Trail, Idaho Centennial, Long Path, Mid State and Superior Hiking. Each record names its relation, the measured length and the gap from the published length.

@@ -6,7 +6,7 @@ A line is included in this repository only when its source's terms allow redistr
 
 ## OpenStreetMap (ODbL-1.0)
 
-Used by: 32 trails with an included line, and part of the Colorado Trail line (about 38 km; the rest is United States Forest Service data). Also named as the recorded source for 8 record-only trails, where no line was downloaded or none was usable.
+Used by: 41 trails with an included line, and part of the Colorado Trail line (about 38 km; the rest is United States Forest Service data). Also named as the recorded source for 8 record-only trails, where no line was downloaded or none was usable.
 
 Quoted terms: "You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors."
 
@@ -38,9 +38,9 @@ Page: https://services8.arcgis.com/WyuHwdftppQLa5KO/arcgis/rest/services/Contine
 
 ## Publishers with no stated licence (no line included)
 
-Used by: 11 records, none with an included line: Arizona Trail Association; Florida Trail Association with the USDA Forest Service Southern Region; Great Divide Trail Association; Ice Age Trail Alliance for the National Park Service; Idaho Department of Parks and Recreation; New York-New Jersey Trail Conference (Long Path item); Mid State Trail Association; North Country Trail Association for the National Park Service; North Country Trail Association as host of the Superior Hiking Trail line; California Coastal Commission with the Coastal Trails Alliance; Arizona State Parks (Great Western, Arizona part only).
+Used by: 2 records, none with an included line: California Coastal Commission with the Coastal Trails Alliance; Arizona State Parks (Great Western, Arizona part only).
 
-Terms found: no licence stated on the items, and no licence found on the publishers' pages when read on 2026-11-09. The items carry disclaimers only. A disclaimer is not a licence, so these publishers' lines are not redistributed here. Each record's `source.url` is the page to ask for the line, and `source.line_absent_reason` states this reason.
+Terms found: no licence stated on the items, and no licence found on the publishers' pages when read on 2026-11-09. The items carry disclaimers only. A disclaimer is not a licence, so these publishers' lines are not redistributed here. Each record's `source.url` is the page to ask for the line, and `source.line_absent_reason` states this reason. Nine more records that were listed here had a line added from OpenStreetMap on 2026-11-09; their publishers' own lines are still not used, and each record keeps the publisher and its page in `source.publisher` and `source.publisher_url`.
 
 ## Trans Canada Trail (CC-BY-NC-ND-4.0)
 
@@ -54,7 +54,7 @@ Terms: Creative Commons Attribution-NonCommercial-NoDerivatives 4.0, as stated o
 | --- | --- | --- | --- | --- |
 | allegheny-trail | West Virginia Scenic Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1772789) | ODbL-1.0 | line |
 | appalachian | National Park Service Appalachian NST and Appalachian Trail Conservancy | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/ANST_Centerline/FeatureServer/0) | us-gov-public-domain | line |
-| arizona | Arizona Trail Association (AZTA) | [source page](https://services3.arcgis.com/IKBBLZOXy58PXgpl/ArcGIS/rest/services/Arizona_National_Scenic_Trail_Feature_Layers_view/FeatureServer/3) | none-stated | record only |
+| arizona | Arizona Trail Association (AZTA) | [source page](https://www.openstreetmap.org/relation/2804113) | ODbL-1.0 | line |
 | backbone | National Park Service, Santa Monica Mountains NRA | [source page](https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0) | ODbL-1.0 | line |
 | benton-mackaye | Benton MacKaye Trail Association (publishes the trail); the only other line, a Blue Ridge Forever ArcGIS item (2017), is restricted | [source page](https://www.openstreetmap.org/relation/1675439) | ODbL-1.0 | line |
 | border-route | Border Route Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/5996078) | ODbL-1.0 | line |
@@ -67,30 +67,30 @@ Terms: Creative Commons Attribution-NonCommercial-NoDerivatives 4.0, as stated o
 | cumberland-trail | Tennessee State Parks (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13968933) | ODbL-1.0 | line |
 | east-coast-trail | East Coast Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2199386) | ODbL-1.0 | line |
 | finger-lakes | Finger Lakes Trail Conference (publishes the trail; the North Country Trail Association hosts its line as 'agol_flt') | [source page](https://www.openstreetmap.org/relation/12725656) | ODbL-1.0 | line |
-| florida | Florida Trail Association with the USDA Forest Service Southern Region | [source page](https://services9.arcgis.com/soy9dtLUh5hYXg8U/arcgis/rest/services/FNST%20Master/FeatureServer/0) | none-stated | record only |
+| florida | Florida Trail Association with the USDA Forest Service Southern Region | [source page](https://www.openstreetmap.org/relation/14480287) | ODbL-1.0 | line |
 | foothills | Foothills Trail Conservancy (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4572989) | ODbL-1.0 | line |
 | fundy-footpath | Fundy Footpath Inc. (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4077806) | ODbL-1.0 | record only |
 | ganaraska | Ganaraska Hiking Trail Association (publishes the trail; no open line found) | [source page](https://www.openstreetmap.org/relation/3696751) | ODbL-1.0 | line |
 | grand-enchantment | simBLISSity Ultralight Designs (publishes the route, mapset and guidebook; no open geometry) | [source page](https://www.openstreetmap.org/relation/4485206) | ODbL-1.0 | record only |
-| great-divide-trail | Great Divide Trail Association (account 'GreatDivideTrail', public map) | [source page](https://services3.arcgis.com/C81OzXdcmAdhlUpR/arcgis/rest/services/Amiga_Public_WFL1/FeatureServer/2) | none-stated | record only |
+| great-divide-trail | Great Divide Trail Association (account 'GreatDivideTrail', public map) | [source page](https://www.openstreetmap.org/relation/8139599) | ODbL-1.0 | line |
 | great-eastern | Great Eastern Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/11364314) | ODbL-1.0 | record only |
 | great-trail | Trans Canada Trail (account 'mappingtct') | [source page](https://services2.arcgis.com/rDdKyyk7uludsLpI/arcgis/rest/services/ExploreTheMap_EN_2022/FeatureServer/15) | CC-BY-NC-ND-4.0 | record only |
 | great-western | Arizona State Parks for the Arizona part; no whole-trail publisher found | [source page](https://services2.arcgis.com/gdcQ6sUWKP8qwBmV/arcgis/rest/services/GWT_Alignment_Public_View/FeatureServer/0) | none-stated | record only |
-| ice-age | Ice Age Trail Alliance for the National Park Service | [source page](https://services.arcgis.com/EeCmkqXss9GYEKIZ/arcgis/rest/services/IAT_Segments_CR/FeatureServer/0) | none-stated | record only |
-| idaho-centennial | Idaho Department of Parks and Recreation | [source page](https://services1.arcgis.com/CNPdEkvnGl65jCX8/arcgis/rest/services/Idaho_Centennial_Trail_(Official_Route)_view/FeatureServer/52) | none-stated | record only |
+| ice-age | Ice Age Trail Alliance for the National Park Service | [source page](https://www.openstreetmap.org/relation/2381423) | ODbL-1.0 | line |
+| idaho-centennial | Idaho Department of Parks and Recreation | [source page](https://www.openstreetmap.org/relation/10758083) | ODbL-1.0 | line |
 | iditarod | Bureau of Land Management | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/Iditarod_National_Historic_Trail_BLM_Official_Temp/FeatureServer/0) | us-gov-public-domain | record only |
 | john-muir | No single publisher: NPS Yosemite and Sequoia-Kings Canyon, USFS Inyo and Sierra National Forests | [source page](https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0) | ODbL-1.0 | line |
 | kekekabic | Kekekabic Trail Club; USFS (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/10831114) | ODbL-1.0 | record only |
 | lone-star | Lone Star Hiking Trail Club (publishes the trail; no open line found) | [source page](https://www.openstreetmap.org/relation/7014936) | ODbL-1.0 | line |
-| long-path | New York-New Jersey Trail Conference (an ArcGIS item 'Long Path' under an ArcGIS account, 2025; provenance not confirmed) | [source page](https://services7.arcgis.com/G1WTEJ6UVRUTvh9C/arcgis/rest/services/Long_Path_2023/FeatureServer) | none-stated | record only |
+| long-path | New York-New Jersey Trail Conference (an ArcGIS item 'Long Path' under an ArcGIS account, 2025; provenance not confirmed) | [source page](https://www.openstreetmap.org/relation/919642) | ODbL-1.0 | line |
 | long-trail | Green Mountain Club (publishes the trail); its ArcGIS 'TRAIL_MASTER' line is restricted | [source page](https://www.openstreetmap.org/relation/391736) | ODbL-1.0 | line |
 | metacomet-monadnock | Appalachian Mountain Club (publishes the New Hampshire part); the National Park Service carries the Metacomet section in the New England NST line | [source page](https://www.openstreetmap.org/relation/2317544) | ODbL-1.0 | line |
-| mid-state | Mid State Trail Association (an ArcGIS item under an ArcGIS account, 2019; provenance not confirmed) | [source page](https://services3.arcgis.com/QhHiDuPJvXaEOuSa/arcgis/rest/services/MidState_Trail/FeatureServer) | none-stated | record only |
+| mid-state | Mid State Trail Association (an ArcGIS item under an ArcGIS account, 2019; provenance not confirmed) | [source page](https://www.openstreetmap.org/relation/1022044) | ODbL-1.0 | line |
 | mountains-to-sea | North Carolina Division of Parks and Recreation; Friends of the Mountains-to-Sea Trail (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1395404) | ODbL-1.0 | line |
 | natchez-trace | National Park Service, Natchez Trace Parkway | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/NATT_TRANS_NSTTrail/FeatureServer/0) | us-gov-public-domain | line |
 | new-england | National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/NEEN_BND_NationalScenicTrailCenterline_ln/FeatureServer/0) | us-gov-public-domain | line |
 | nez-perce | USDA Forest Service Region 1 | [source page](https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/R01_NezPerceNeeMePoo_NationalHistoricTrail_Centerline/FeatureServer/0) | us-gov-public-domain | record only |
-| north-country | North Country Trail Association for the National Park Service | [source page](https://services2.arcgis.com/UfGVyqUm4GHa2zrj/arcgis/rest/services/nct_public/FeatureServer/2) | none-stated | record only |
+| north-country | North Country Trail Association for the National Park Service | [source page](https://www.openstreetmap.org/relation/11140515) | ODbL-1.0 | line |
 | northville-placid | Adirondack Mountain Club; NY DEC (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4286650) | ODbL-1.0 | line |
 | oregon-coast | Oregon Parks and Recreation Department (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/8310290) | ODbL-1.0 | line |
 | oregon-desert | Oregon Natural Desert Association (ONDA) (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/10702483) | ODbL-1.0 | record only |
@@ -108,7 +108,7 @@ Terms: Creative Commons Attribution-NonCommercial-NoDerivatives 4.0, as stated o
 | sentier-national | Fédération québécoise de la marche (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7300742) | ODbL-1.0 | line |
 | sheltowee-trace | USDA Forest Service, Daniel Boone National Forest; Sheltowee Trace Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/12041542) | ODbL-1.0 | line |
 | sunshine-coast | Sunshine Coast Trail Society (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7406716) | ODbL-1.0 | line |
-| superior-hiking | North Country Trail Association (hosts the Superior Hiking Trail Association's line) | [source page](https://services2.arcgis.com/UfGVyqUm4GHa2zrj/arcgis/rest/services/agol_sht_public/FeatureServer/1) | none-stated | record only |
+| superior-hiking | North Country Trail Association (hosts the Superior Hiking Trail Association's line) | [source page](https://www.openstreetmap.org/relation/1612587) | ODbL-1.0 | line |
 | tahoe-rim | Tahoe Rim Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3094865) | ODbL-1.0 | line |
 | teton-crest | National Park Service; USFS (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3895101) | ODbL-1.0 | record only |
 | timberline | USDA Forest Service, Mount Hood National Forest | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | record only |

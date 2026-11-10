@@ -6,7 +6,7 @@ A public dataset of long-distance hiking trails in the United States and Canada:
 
 This is a dataset, not a guide. Each record says what the trail is, how long it is, where its line came from, and under what terms that line may be used. It is not a navigation product: lines vary in quality, some trails are unfinished, and some records have no line at all. Check a trail's own record before using its line.
 
-The counts at this release: 64 trail records, 40 with a line, 24 records only.
+The counts at this release: 64 trail records, 49 with a line, 15 records only.
 
 ## Inclusion rule
 
@@ -26,7 +26,7 @@ A trail may be listed as a record only, with no line, when no line for it may be
 | --- | --- | --- | --- | ---: | --- | --- |
 | allegheny-trail | Allegheny Trail | US | WV | 530 | yes | ODbL-1.0 |
 | appalachian | Appalachian National Scenic Trail | US | GA, NC, TN, VA, WV, MD, PA, NJ, NY, CT, MA, VT, NH, ME | 3537 | yes | us-gov-public-domain |
-| arizona | Arizona National Scenic Trail | US | AZ | 1287 | no (record only) | none-stated |
+| arizona | Arizona National Scenic Trail | US | AZ | 1287 | yes | ODbL-1.0 |
 | backbone | Backbone Trail | US | CA | 108 | yes | ODbL-1.0 |
 | benton-mackaye | Benton MacKaye Trail | US | GA, TN, NC | 463 | yes | ODbL-1.0 |
 | border-route | Border Route Trail | US | MN | 105 | yes | ODbL-1.0 |
@@ -39,30 +39,30 @@ A trail may be listed as a record only, with no line, when no line for it may be
 | cumberland-trail | Cumberland Trail | US | TN | 480 | yes | ODbL-1.0 |
 | east-coast-trail | East Coast Trail (Newfoundland) | CA | NL | 336 | yes | ODbL-1.0 |
 | finger-lakes | Finger Lakes Trail | US | NY | 950 | yes | ODbL-1.0 |
-| florida | Florida National Scenic Trail | US | FL | 2414 | no (record only) | none-stated |
+| florida | Florida National Scenic Trail | US | FL | 2414 | yes | ODbL-1.0 |
 | foothills | Foothills Trail | US | SC, NC | 122 | yes | ODbL-1.0 |
 | fundy-footpath | Fundy Footpath | CA | NB | 41 | no (record only) | ODbL-1.0 |
 | ganaraska | Ganaraska Hiking Trail | CA | ON | 500 | yes | ODbL-1.0 |
 | grand-enchantment | Grand Enchantment Trail | US | AZ, NM | 1239 | no (record only) | ODbL-1.0 |
-| great-divide-trail | Great Divide Trail | CA | AB, BC | 1130 | no (record only) | none-stated |
+| great-divide-trail | Great Divide Trail | CA | AB, BC | 1130 | yes | ODbL-1.0 |
 | great-eastern | Great Eastern Trail | US | AL, GA, TN, KY, VA, WV, MD, PA, NY | 3200 | no (record only) | ODbL-1.0 |
 | great-trail | The Great Trail (Trans Canada Trail) | CA | all provinces and territories | 28000 | no (record only) | CC-BY-NC-ND-4.0 |
 | great-western | Great Western Trail | US | AZ, UT, ID, WY, MT | 4800 | no (record only) | none-stated |
-| ice-age | Ice Age National Scenic Trail | US | WI | 1931 | no (record only) | none-stated |
-| idaho-centennial | Idaho Centennial Trail | US | ID | 1448 | no (record only) | none-stated |
+| ice-age | Ice Age National Scenic Trail | US | WI | 1931 | yes | ODbL-1.0 |
+| idaho-centennial | Idaho Centennial Trail | US | ID | 1448 | yes | ODbL-1.0 |
 | iditarod | Iditarod National Historic Trail | US | AK | 3701 | no (record only) | us-gov-public-domain |
 | john-muir | John Muir Trail | US | CA | 340 | yes | ODbL-1.0 |
 | kekekabic | Kekekabic Trail | US | MN | 66 | no (record only) | ODbL-1.0 |
 | lone-star | Lone Star Hiking Trail | US | TX | 155 | yes | ODbL-1.0 |
-| long-path | Long Path | US | NJ, NY | 576 | no (record only) | none-stated |
+| long-path | Long Path | US | NJ, NY | 576 | yes | ODbL-1.0 |
 | long-trail | Long Trail (Vermont) | US | VT | 438 | yes | ODbL-1.0 |
 | metacomet-monadnock | Metacomet-Monadnock Trail | US | CT, MA, NH | 185 | yes | ODbL-1.0 |
-| mid-state | Mid State Trail | US | PA | 515 | no (record only) | none-stated |
+| mid-state | Mid State Trail | US | PA | 515 | yes | ODbL-1.0 |
 | mountains-to-sea | Mountains-to-Sea Trail | US | NC | 1890 | yes | ODbL-1.0 |
 | natchez-trace | Natchez Trace National Scenic Trail | US | MS, AL, TN | 105 | yes | us-gov-public-domain |
 | new-england | New England National Scenic Trail | US | CT, MA | 378 | yes | us-gov-public-domain |
 | nez-perce | Nez Perce (Nee-Me-Poo) National Historic Trail | US | OR, ID, MT, WY | 1883 | no (record only) | us-gov-public-domain |
-| north-country | North Country National Scenic Trail | US | ND, MN, WI, MI, OH, PA, NY, VT | 7403 | no (record only) | none-stated |
+| north-country | North Country National Scenic Trail | US | ND, MN, WI, MI, OH, PA, NY, VT | 7403 | yes | ODbL-1.0 |
 | northville-placid | Northville-Placid Trail | US | NY | 220 | yes | ODbL-1.0 |
 | oregon-coast | Oregon Coast Trail | US | OR | 650 | yes | ODbL-1.0 |
 | oregon-desert | Oregon Desert Trail | US | OR | 1200 | no (record only) | ODbL-1.0 |
@@ -80,7 +80,7 @@ A trail may be listed as a record only, with no line, when no line for it may be
 | sentier-national | Sentier National (Quebec) | CA | QC | 1500 | yes | ODbL-1.0 |
 | sheltowee-trace | Sheltowee Trace National Recreation Trail | US | KY, TN | 515 | yes | ODbL-1.0 |
 | sunshine-coast | Sunshine Coast Trail | CA | BC | 180 | yes | ODbL-1.0 |
-| superior-hiking | Superior Hiking Trail | US | MN | 499 | no (record only) | none-stated |
+| superior-hiking | Superior Hiking Trail | US | MN | 499 | yes | ODbL-1.0 |
 | tahoe-rim | Tahoe Rim Trail | US | CA, NV | 266 | yes | ODbL-1.0 |
 | teton-crest | Teton Crest Trail | US | WY | 64 | no (record only) | ODbL-1.0 |
 | timberline | Timberline Trail (Mount Hood) | US | OR | 64 | no (record only) | us-gov-public-domain |

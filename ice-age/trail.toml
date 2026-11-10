@@ -13,26 +13,27 @@ wave = 1
 inclusion = "nst-unconditional"
 
 [source]
-status = "verified"
+status = "osm-only"
 publisher = "Ice Age Trail Alliance for the National Park Service"
-url = "https://services.arcgis.com/EeCmkqXss9GYEKIZ/arcgis/rest/services/IAT_Segments_CR/FeatureServer/0"
-discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (last edit 2026-10-28)."
-format = "ArcGIS FeatureServer layer, 258 features (max 1,000 a page)"
-crs = "EPSG:3071 (Wisconsin Transverse Mercator; ask for outSR=4326)"
-licence = "none-stated"
-licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
-attribution = "Ice Age Trail Alliance, National Park Service"
-osm_only = false
-mainline = "Layer holds 'existing sections and unsigned connecting routes' together. A 'Status' column tells them apart; confirm the values with the Alliance."
-source_checked = "2026-11-08"
-redistributable = false
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+publisher_url = "https://services.arcgis.com/EeCmkqXss9GYEKIZ/arcgis/rest/services/IAT_Segments_CR/FeatureServer/0"
+url = "https://www.openstreetmap.org/relation/2381423"
+discovery = "osm-relation-version: Overpass `rel(2381423); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap super-relation 2381423 with its 219 sub-relations, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 2381423. The publisher's own line is not licensed for redistribution and is not used."
+attribution = "© OpenStreetMap contributors"
+osm_only = true
+mainline = "Super-relation 2381423 holds 138 segment relations in the main role; the 81 relations marked 'connection' (the connecting routes and road walks between segments) are in alternates.geojson."
+source_checked = "2026-11-09"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "The trail is not finished: OpenStreetMap's segment relations map the built trail, 1,141.0 km in 89 parts against 1,931 km (about 1,200 mi) planned. The connection relations, 872.5 km of connecting route and road walk, are in alternates.geojson."
 
 [osm]
-relation = 0
-note = "OSM maps the trail as about 200 per-segment relations. Messy; not a good source."
+relation = 2381423
+note = "Super-relation 2381423 with 219 sub-relations; 138 in the main role and 81 marked 'connection'. Downloaded 2026-11-09."
 
 [shield]
 status = "use-real-logo"
@@ -44,8 +45,8 @@ logo_owner = "Ice Age Trail Alliance (iceagetrail.org); NPS"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 1130.9
-difference_percent = -41.4
-parts = 99
-note = "Built segments only, by design: Status Ice Age Trail gives 1,130.9 km in 99 parts; Connecting Route (857.9 km of road walks) is in alternates.geojson. Together 1,988.8 km against 1,931 km planned. The trail is not yet fully built, so 99 parts is the honest shape. Kept in wave 1 as an NST (unconditional)."
+date = "2026-11-09"
+measured_km = 1141.0
+difference_percent = -40.9
+parts = 89
+note = "The built segments give 1,141.0 km in 89 parts, 40.9% short of 1,931 km planned. The 81 'connection' relations (872.5 km) are in alternates.geojson."

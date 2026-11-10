@@ -1,0 +1,7 @@
+idaho-centennial
+
+Source: https://www.openstreetmap.org/relation/10758083 (with 19215740)
+Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
+Attribution: © OpenStreetMap contributors
+Source read: 2026-11-09
+Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

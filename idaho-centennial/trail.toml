@@ -12,28 +12,29 @@ designation = "State of Idaho trail"
 wave = 1
 
 [source]
-status = "verified"
+status = "osm-only"
 publisher = "Idaho Department of Parks and Recreation"
-url = "https://services1.arcgis.com/CNPdEkvnGl65jCX8/arcgis/rest/services/Idaho_Centennial_Trail_(Official_Route)_view/FeatureServer/52"
-discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (item updated 2026-09-10)."
-format = "ArcGIS FeatureServer view, layer 52, 3 features"
-crs = "EPSG:3857 (ask for outSR=4326)"
-licence = "none-stated"
-licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
-attribution = "Idaho Department of Parks and Recreation"
-osm_only = false
+publisher_url = "https://services1.arcgis.com/CNPdEkvnGl65jCX8/arcgis/rest/services/Idaho_Centennial_Trail_(Official_Route)_view/FeatureServer/52"
+url = "https://www.openstreetmap.org/relation/10758083"
+discovery = "osm-relation-version: Overpass `rel(10758083,19215740); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "Two OpenStreetMap route relations (10758083 and 19215740), read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 10758083. The publisher's own line is not licensed for redistribution and is not used."
+attribution = "© OpenStreetMap contributors"
+osm_only = true
+mainline = "OpenStreetMap holds no whole-trail relation. 10758083 'Idaho Centennial Trail (West)' is the west half; 19215740 adds a short piece at Upper Priest Lake. Both are in line.geojson; no alternates are mapped."
 decision = "included-named"
-decision_text = "Publisher's GIS data is not licensed for redistribution; line taken from no source, and no line is included. The trail is listed with its name and logo."
-mainline = "3 named features: 'Idaho Centennial Trail' (main, 918 mi), '... (Sawtooth Alternate)' (77 mi), '... (Central Wilderness Alternate)' (292 mi). Cleanly separated by name."
-source_checked = "2026-11-08"
-redistributable = false
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+decision_text = "Included with its name and logo. The line is from OpenStreetMap."
+source_checked = "2026-11-09"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "OpenStreetMap holds less than half the trail: relation 10758083 ('Idaho Centennial Trail (West)') and the short relation 19215740 give 292.5 km in 5 parts, 79.8% short of 1,448 km (about 900 mi). No whole-trail relation is mapped."
 
 [osm]
-relation = 19215740
-note = "OSM 10758083 covers the west half only."
+relation = 10758083
+note = "10758083 is the west half and 19215740 a short piece at Upper Priest Lake; 83 ways in all. Downloaded 2026-11-09."
 
 [shield]
 status = "logo-not-found"
@@ -45,8 +46,8 @@ logo_owner = "Idaho Department of Parks and Recreation"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 1477.8
-difference_percent = 2.1
-parts = 12
-note = "The main feature joins into 12 parts, 1,477.8 km, +2.1% over 1,448 km. alternates.geojson holds the Sawtooth and Central Wilderness alternates (595.7 km)."
+date = "2026-11-09"
+measured_km = 292.5
+difference_percent = -79.8
+parts = 5
+note = "OpenStreetMap holds the west half only: 292.5 km in 5 parts, 79.8% short of 1,448 km."

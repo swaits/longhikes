@@ -13,26 +13,26 @@ wave = 1
 inclusion = "nst-unconditional"
 
 [source]
-status = "verified"
+status = "osm-only"
 publisher = "North Country Trail Association for the National Park Service"
-url = "https://services2.arcgis.com/UfGVyqUm4GHa2zrj/arcgis/rest/services/nct_public/FeatureServer/2"
-discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (last edit 2026-11-01)."
-format = "ArcGIS FeatureServer layer, 4,102 features (max 1,000 a page)"
-crs = "EPSG:26916 (UTM 16N; ask for outSR=4326)"
-licence = "none-stated"
-licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
-attribution = "North Country Trail Association; National Park Service"
-osm_only = false
-mainline = "'data_type' and 'trail_type' columns tell footpath from 'NCT (on-road)' (1,088 features on public roads). Keep both, mark road walk."
-source_checked = "2026-11-08"
-redistributable = false
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+publisher_url = "https://services2.arcgis.com/UfGVyqUm4GHa2zrj/arcgis/rest/services/nct_public/FeatureServer/2"
+url = "https://www.openstreetmap.org/relation/11140515"
+discovery = "osm-relation-version: Overpass `rel(11140512,11140513,11140514,11140515,11491081,13334245,11140000,8417747); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "Eight OpenStreetMap per-state route relations, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 11140515. The publisher's own line is not licensed for redistribution and is not used."
+attribution = "© OpenStreetMap contributors"
+osm_only = true
+mainline = "Eight per-state relations make the route: 13334245 North Dakota, 11140514 Minnesota, 11140512 Wisconsin, 11140515 Michigan, 11140513 Ohio, 11491081 Pennsylvania, 11140000 New York and 8417747 Vermont. The six ways marked 'alternative' are in alternates.geojson."
+source_checked = "2026-11-09"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
 
 [osm]
 relation = 11140515
-note = "OSM has per-state relations (11140512-11140515, 11491081, 13334245, 11140000, 8417747)."
+note = "Eight state relations downloaded 2026-11-09; 7,749 main ways and 6 ways marked 'alternative'."
 
 [shield]
 status = "use-real-logo"
@@ -44,8 +44,8 @@ logo_owner = "North Country Trail Association (northcountrytrail.org); NPS"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 7356.1
-difference_percent = -0.6
-parts = 8
-note = "4101 features in 8 parts, 7,356.1 km, 0.6% short of 7,403 km; road walks are flagged in the source and are included."
+date = "2026-11-09"
+measured_km = 7679.8
+difference_percent = 3.7
+parts = 2
+note = "The eight state relations give 7,679.8 km in 2 parts, 3.7% over 7,403 km. Road walks are included, as OpenStreetMap maps them. Six ways marked 'alternative' (3.1 km) are in alternates.geojson."

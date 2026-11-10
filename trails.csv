@@ -1,7 +1,7 @@
 id,name,country,regions,length_km,status,line_source,licence
 allegheny-trail,Allegheny Trail,US,WV,530,included,OpenStreetMap,ODbL-1.0
 appalachian,Appalachian National Scenic Trail,US,GA;NC;TN;VA;WV;MD;PA;NJ;NY;CT;MA;VT;NH;ME,3537,included,National Park Service Appalachian NST and Appalachian Trail Conservancy,us-gov-public-domain
-arizona,Arizona National Scenic Trail,US,AZ,1287,record-only,none (no line included),none-stated
+arizona,Arizona National Scenic Trail,US,AZ,1287,included,OpenStreetMap,ODbL-1.0
 backbone,Backbone Trail,US,CA,108,included,OpenStreetMap,ODbL-1.0
 benton-mackaye,Benton MacKaye Trail,US,GA;TN;NC,463,included,OpenStreetMap,ODbL-1.0
 border-route,Border Route Trail,US,MN,105,included,OpenStreetMap,ODbL-1.0
@@ -14,30 +14,30 @@ continental-divide,Continental Divide National Scenic Trail,US,NM;CO;WY;ID;MT,49
 cumberland-trail,Cumberland Trail,US,TN,480,included,OpenStreetMap,ODbL-1.0
 east-coast-trail,East Coast Trail (Newfoundland),CA,NL,336,included,OpenStreetMap,ODbL-1.0
 finger-lakes,Finger Lakes Trail,US,NY,950,included,OpenStreetMap,ODbL-1.0
-florida,Florida National Scenic Trail,US,FL,2414,record-only,none (no line included),none-stated
+florida,Florida National Scenic Trail,US,FL,2414,included,OpenStreetMap,ODbL-1.0
 foothills,Foothills Trail,US,SC;NC,122,included,OpenStreetMap,ODbL-1.0
 fundy-footpath,Fundy Footpath,CA,NB,41,record-only,none (no line included),ODbL-1.0
 ganaraska,Ganaraska Hiking Trail,CA,ON,500,included,OpenStreetMap,ODbL-1.0
 grand-enchantment,Grand Enchantment Trail,US,AZ;NM,1239,record-only,none (no line included),ODbL-1.0
-great-divide-trail,Great Divide Trail,CA,AB;BC,1130,record-only,none (no line included),none-stated
+great-divide-trail,Great Divide Trail,CA,AB;BC,1130,included,OpenStreetMap,ODbL-1.0
 great-eastern,Great Eastern Trail,US,AL;GA;TN;KY;VA;WV;MD;PA;NY,3200,record-only,none (no line included),ODbL-1.0
 great-trail,The Great Trail (Trans Canada Trail),CA,all provinces and territories,28000,record-only,none (no line included),CC-BY-NC-ND-4.0
 great-western,Great Western Trail,US,AZ;UT;ID;WY;MT,4800,record-only,none (no line included),none-stated
-ice-age,Ice Age National Scenic Trail,US,WI,1931,record-only,none (no line included),none-stated
-idaho-centennial,Idaho Centennial Trail,US,ID,1448,record-only,none (no line included),none-stated
+ice-age,Ice Age National Scenic Trail,US,WI,1931,included,OpenStreetMap,ODbL-1.0
+idaho-centennial,Idaho Centennial Trail,US,ID,1448,included,OpenStreetMap,ODbL-1.0
 iditarod,Iditarod National Historic Trail,US,AK,3701,record-only,none (no line included),us-gov-public-domain
 john-muir,John Muir Trail,US,CA,340,included,OpenStreetMap,ODbL-1.0
 kekekabic,Kekekabic Trail,US,MN,66,record-only,none (no line included),ODbL-1.0
 lone-star,Lone Star Hiking Trail,US,TX,155,included,OpenStreetMap,ODbL-1.0
-long-path,Long Path,US,NJ;NY,576,record-only,none (no line included),none-stated
+long-path,Long Path,US,NJ;NY,576,included,OpenStreetMap,ODbL-1.0
 long-trail,Long Trail (Vermont),US,VT,438,included,OpenStreetMap,ODbL-1.0
 metacomet-monadnock,Metacomet-Monadnock Trail,US,CT;MA;NH,185,included,OpenStreetMap,ODbL-1.0
-mid-state,Mid State Trail,US,PA,515,record-only,none (no line included),none-stated
+mid-state,Mid State Trail,US,PA,515,included,OpenStreetMap,ODbL-1.0
 mountains-to-sea,Mountains-to-Sea Trail,US,NC,1890,included,OpenStreetMap,ODbL-1.0
 natchez-trace,Natchez Trace National Scenic Trail,US,MS;AL;TN,105,included,"National Park Service, Natchez Trace Parkway",us-gov-public-domain
 new-england,New England National Scenic Trail,US,CT;MA,378,included,National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club,us-gov-public-domain
 nez-perce,Nez Perce (Nee-Me-Poo) National Historic Trail,US,OR;ID;MT;WY,1883,record-only,none (no line included),us-gov-public-domain
-north-country,North Country National Scenic Trail,US,ND;MN;WI;MI;OH;PA;NY;VT,7403,record-only,none (no line included),none-stated
+north-country,North Country National Scenic Trail,US,ND;MN;WI;MI;OH;PA;NY;VT,7403,included,OpenStreetMap,ODbL-1.0
 northville-placid,Northville-Placid Trail,US,NY,220,included,OpenStreetMap,ODbL-1.0
 oregon-coast,Oregon Coast Trail,US,OR,650,included,OpenStreetMap,ODbL-1.0
 oregon-desert,Oregon Desert Trail,US,OR,1200,record-only,none (no line included),ODbL-1.0
@@ -55,7 +55,7 @@ sentier-international-appalaches,"Sentier international des Appalaches (Internat
 sentier-national,Sentier National (Quebec),CA,QC,1500,included,OpenStreetMap,ODbL-1.0
 sheltowee-trace,Sheltowee Trace National Recreation Trail,US,KY;TN,515,included,OpenStreetMap,ODbL-1.0
 sunshine-coast,Sunshine Coast Trail,CA,BC,180,included,OpenStreetMap,ODbL-1.0
-superior-hiking,Superior Hiking Trail,US,MN,499,record-only,none (no line included),none-stated
+superior-hiking,Superior Hiking Trail,US,MN,499,included,OpenStreetMap,ODbL-1.0
 tahoe-rim,Tahoe Rim Trail,US,CA;NV,266,included,OpenStreetMap,ODbL-1.0
 teton-crest,Teton Crest Trail,US,WY,64,record-only,none (no line included),ODbL-1.0
 timberline,Timberline Trail (Mount Hood),US,OR,64,record-only,none (no line included),us-gov-public-domain

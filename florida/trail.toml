@@ -13,26 +13,26 @@ wave = 1
 inclusion = "nst-unconditional"
 
 [source]
-status = "verified"
+status = "osm-only"
 publisher = "Florida Trail Association with the USDA Forest Service Southern Region"
-url = "https://services9.arcgis.com/soy9dtLUh5hYXg8U/arcgis/rest/services/FNST%20Master/FeatureServer/0"
-discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (last edit 2026-11-03)."
-format = "ArcGIS FeatureServer layer, 745 features"
-crs = "EPSG:3857 (ask for outSR=4326)"
-licence = "none-stated"
-licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
-attribution = "Florida Trail Association; USDA Forest Service Southern Region"
-osm_only = false
-mainline = "'FNST_Rank' and 'Designatio' columns carry designated trail versus connector status; confirm values with the Association."
-source_checked = "2026-11-08"
-redistributable = false
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+publisher_url = "https://services9.arcgis.com/soy9dtLUh5hYXg8U/arcgis/rest/services/FNST%20Master/FeatureServer/0"
+url = "https://www.openstreetmap.org/relation/14480287"
+discovery = "osm-relation-version: Overpass `rel(14480287,14480288,14480289,14480290,14480373); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "Five OpenStreetMap regional route relations (14480287 to 14480290 and 14480373), read through Overpass with all member ways and nested relations"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 14480287. The publisher's own line is not licensed for redistribution and is not used."
+attribution = "© OpenStreetMap contributors"
+osm_only = true
+mainline = "Five regional relations make the thru route: 14480287 Panhandle, 14480288 Northern, 14480289 Central, 14480290 Southern and 14480373 Disconnected Trails. Ways marked 'alternative', 'excursion' or 'approach', and the nested side relations 16774782 (high-water alternate) and 19804593 (Orange Blaze connector), are in alternates.geojson."
+source_checked = "2026-11-09"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
 
 [osm]
 relation = 14480287
-note = "OSM splits it into 5 regional relations (14480287-14480290, 14480373)."
+note = "Relations 14480287, 14480288, 14480289, 14480290 and 14480373 downloaded 2026-11-09; 2,082 main ways and 326 alternate ways."
 
 [shield]
 status = "use-real-logo"
@@ -44,8 +44,8 @@ logo_owner = "Florida Trail Association (floridahikes.org); USFS Region 8"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 2387.9
-difference_percent = -1.1
-parts = 8
-note = "Designatio Trail plus Connector is the thru line: 2,387.9 km in 8 parts, -1.1% over 2,414 km. Side Trail and Spur Trail features (137.7 km) are in alternates.geojson. The earlier 51 parts counted every designation together."
+date = "2026-11-09"
+measured_km = 2338.7
+difference_percent = -3.1
+parts = 6
+note = "The five regional relations give 2,338.7 km in 6 parts, 3.1% short of 2,414 km. Alternates, excursions and approaches (326 ways, 248.0 km) are in alternates.geojson."

@@ -49,6 +49,7 @@ line_file = "line.geojson"
 | --- | --- | --- | --- |
 | `status` | string | `verified` (downloaded and measured), `found` (source located, not downloaded), `osm-only` (only an OpenStreetMap relation), or `none`. | `"osm-only"` |
 | `publisher` | string | Who publishes the line. | `"Green Mountain Club"` |
+| `publisher_url` | string, where present | The publisher's own page for the trail, kept when the included line comes from another source. | `"https://www.greenmountainclub.org/"` |
 | `url` | string | Where to ask for the line: a layer or relation page, never a dated file name. | `"https://www.openstreetmap.org/relation/391736"` |
 | `discovery` | string | How to tell whether the source has a newer release. | `"osm-relation-version: ..."` |
 | `format` | string | What the source serves and how it is paged. | `"OpenStreetMap route relation"` |

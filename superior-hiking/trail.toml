@@ -12,28 +12,28 @@ designation = "Superior Hiking Trail Association; also the North Country NST her
 wave = 1
 
 [source]
-status = "verified"
+status = "osm-only"
 publisher = "North Country Trail Association (hosts the Superior Hiking Trail Association's line)"
-url = "https://services2.arcgis.com/UfGVyqUm4GHa2zrj/arcgis/rest/services/agol_sht_public/FeatureServer/1"
-discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes. Last edited 2024-01-17."
-format = "ArcGIS FeatureServer layer, 272 features"
-crs = "EPSG:26916 (UTM 16N)"
-licence = "none-stated"
-licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
-attribution = "Superior Hiking Trail Association; North Country Trail Association"
-osm_only = false
+publisher_url = "https://services2.arcgis.com/UfGVyqUm4GHa2zrj/arcgis/rest/services/agol_sht_public/FeatureServer/1"
+url = "https://www.openstreetmap.org/relation/1612587"
+discovery = "osm-relation-version: Overpass `rel(1612587); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation 1612587, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 1612587. The publisher's own line is not licensed for redistribution and is not used."
+attribution = "© OpenStreetMap contributors"
+osm_only = true
+mainline = "OSM 1612587 'Superior Hiking Trail' (275 mi distance tag): the whole trail in the main role. No alternates are mapped."
 decision = "included-named"
-decision_text = "Publisher's GIS data is not licensed for redistribution; line taken from no source, and no line is included. The trail is listed with its name and logo."
-mainline = "'trail_type' is 'Foot Path' for 263 features, 'Public Road' for 1, none/Unknown for 8."
-source_checked = "2026-11-08"
-redistributable = false
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+decision_text = "Included with its name and logo. The line is from OpenStreetMap."
+source_checked = "2026-11-09"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
 
 [osm]
 relation = 1612587
-note = "OSM 1612587 (275 mi)."
+note = "Relation 1612587, 515 ways. Downloaded 2026-11-09."
 
 [shield]
 status = "use-real-logo"
@@ -45,8 +45,8 @@ logo_owner = "Superior Hiking Trail Association"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 483.4
-difference_percent = -3.1
-parts = 3
-note = "272 features in 3 parts, 483.4 km, 3.1% short of 499 km."
+date = "2026-11-09"
+measured_km = 478.1
+difference_percent = -4.2
+parts = 2
+note = "OSM 1612587, 515 ways: 478.1 km in 2 parts, 4.2% short of 499 km."

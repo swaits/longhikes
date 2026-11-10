@@ -12,28 +12,29 @@ designation = "New York-New Jersey Trail Conference"
 wave = 1
 
 [source]
-status = "found"
+status = "osm-only"
 publisher = "New York-New Jersey Trail Conference (an ArcGIS item 'Long Path' under an ArcGIS account, 2025; provenance not confirmed)"
-url = "https://services7.arcgis.com/G1WTEJ6UVRUTvh9C/arcgis/rest/services/Long_Path_2023/FeatureServer"
-discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes"
-format = "ArcGIS FeatureServer"
-crs = "not read"
-licence = "none-stated"
-licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
-attribution = "New York-New Jersey Trail Conference"
-osm_only = false
+publisher_url = "https://services7.arcgis.com/G1WTEJ6UVRUTvh9C/arcgis/rest/services/Long_Path_2023/FeatureServer"
+url = "https://www.openstreetmap.org/relation/919642"
+discovery = "osm-relation-version: Overpass `rel(919642); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation 919642 with its six section sub-relations, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 919642. The publisher's own line is not licensed for redistribution and is not used."
+attribution = "© OpenStreetMap contributors"
+osm_only = true
+mainline = "OSM 919642 'Long Path' plus its six section sub-relations (20970921, 20970941, 20977688, 21172472, 21188552, 21371252), all in the main role. No alternates are mapped."
 decision = "included-named"
-decision_text = "Publisher's GIS data is not licensed for redistribution; line taken from no source, and no line is included. The trail is listed with its name and logo."
-mainline = "Not read."
-source_checked = "2026-11-08"
-redistributable = false
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+decision_text = "Included with its name and logo. The line is from OpenStreetMap."
+source_checked = "2026-11-09"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "OpenStreetMap measures 674.0 km against the 576 km (about 358 mi) the Trail Conference publishes to Thacher State Park: the relation carries on past the published terminus over the Adirondack extension, about 108 km, and that extension is not marked as a side route. The line is kept whole."
 
 [osm]
-relation = 0
-note = "OSM has 8 relations matching 'Long Path'; not sorted."
+relation = 919642
+note = "Relation 919642 with six section sub-relations; 923 ways. Downloaded 2026-11-09."
 
 [shield]
 status = "use-real-logo"
@@ -45,8 +46,8 @@ logo_owner = "New York-New Jersey Trail Conference"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 565.5
-difference_percent = -1.8
-parts = 1
-note = "Sections 1 to 36 (New York City to Thacher State Park) give 565.5 km in 1 part, -1.8% over 576 km (358 mi, NYNJTC). Sections 37 to 40, the Adirondack extension beyond the published terminus (102.7 km), are in alternates.geojson. The earlier +16.1% counted the extension as main line."
+date = "2026-11-09"
+measured_km = 674.0
+difference_percent = 17.0
+parts = 2
+note = "OSM 919642 and its sections give 674.0 km in 2 parts, 17.0% over 576 km."

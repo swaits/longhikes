@@ -1,0 +1,7 @@
+north-country
+
+Source: https://www.openstreetmap.org/relation/11140512 (with 11140513, 11140514, 11140515, 11491081, 13334245, 11140000, 8417747)
+Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
+Attribution: © OpenStreetMap contributors
+Source read: 2026-11-09
+Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

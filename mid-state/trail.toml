@@ -9,32 +9,31 @@ length_km = 515
 length_note = "about 320 mi"
 tier = "regional"
 designation = "Pennsylvania DCNR trail, Mid State Trail Association"
-wave = "held"
-wave_note = "Held: no usable whole line exists. The association ArcGIS layer mst-main_9-11 (2019, data from 2011) covers only sections 8 to 15 in central Pennsylvania (169.9 km of 527 km), and no OSM hiking route relation for the Mid State Trail was found on 2026-11-08. What would fix it: a current whole-trail line from the Mid State Trail Association or DCNR, or an OSM route relation."
+wave = 1
 
 [source]
-status = "found"
+status = "osm-only"
 publisher = "Mid State Trail Association (an ArcGIS item under an ArcGIS account, 2019; provenance not confirmed)"
-url = "https://services3.arcgis.com/QhHiDuPJvXaEOuSa/arcgis/rest/services/MidState_Trail/FeatureServer"
-discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes"
-format = "ArcGIS FeatureServer"
-crs = "not read"
-licence = "none-stated"
-licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
-attribution = "Mid State Trail Association"
-osm_only = false
+publisher_url = "https://services3.arcgis.com/QhHiDuPJvXaEOuSa/arcgis/rest/services/MidState_Trail/FeatureServer"
+url = "https://www.openstreetmap.org/relation/1022044"
+discovery = "osm-relation-version: Overpass `rel(1022044); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation 1022044, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 1022044. The publisher's own line is not licensed for redistribution and is not used."
+attribution = "© OpenStreetMap contributors"
+osm_only = true
+mainline = "OSM 1022044 'Mid-State Trail' (Pennsylvania, 513 km distance tag): the whole route in the main role. No alternates are mapped."
 decision = "included-named"
-decision_text = "Publisher's GIS data is not licensed for redistribution; line taken from no source, and no line is included. The trail is listed with its name and logo."
-mainline = "Not read."
-source_checked = "2026-11-08"
-redistributable = false
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+decision_text = "Included with its name and logo. The line is from OpenStreetMap."
+source_checked = "2026-11-09"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
 
 [osm]
-relation = 0
-note = "Not searched."
+relation = 1022044
+note = "Relation 1022044, 471 ways. Downloaded 2026-11-09."
 
 [shield]
 status = "logo-not-found"
@@ -46,8 +45,8 @@ logo_owner = "Mid State Trail Association"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 169.9
-difference_percent = -67.0
-parts = 2
-note = "The mst-main_9-11 layer covers sections 8 to 15 only (centre of the trail, lat 40.7 to 41.35): 169.9 km of the 527 km (327 mi) trail. No OSM route relation found by name search over Pennsylvania on 2026-11-08. Held."
+date = "2026-11-09"
+measured_km = 516.4
+difference_percent = 0.3
+parts = 3
+note = "OSM 1022044 gives 516.4 km in 3 parts, 0.3% over 515 km. Ten node members (guideposts) are not part of the line."

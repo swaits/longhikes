@@ -13,26 +13,26 @@ wave = 1
 inclusion = "nst-unconditional"
 
 [source]
-status = "verified"
+status = "osm-only"
 publisher = "Arizona Trail Association (AZTA)"
-url = "https://services3.arcgis.com/IKBBLZOXy58PXgpl/ArcGIS/rest/services/Arizona_National_Scenic_Trail_Feature_Layers_view/FeatureServer/3"
-discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes (last edit 2026-09-04)."
-format = "ArcGIS FeatureServer view, layer 3, 44 passages (max 1,000 a page)"
+publisher_url = "https://services3.arcgis.com/IKBBLZOXy58PXgpl/ArcGIS/rest/services/Arizona_National_Scenic_Trail_Feature_Layers_view/FeatureServer/3"
+url = "https://www.openstreetmap.org/relation/2804113"
+discovery = "osm-relation-version: Overpass `rel(2804113); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation 2804113, read through Overpass with all member ways"
 crs = "EPSG:4326"
-licence = "none-stated"
-licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
-attribution = "Arizona Trail Association"
-osm_only = false
-mainline = "44 'Passage' features (01 to 43 plus extras). Some are bypasses; the layer does not mark which. Ask AZTA how to pick the main line."
-source_checked = "2026-11-08"
-redistributable = false
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "Publisher's GIS data is not licensed for redistribution; line would be taken from the publisher, and no OpenStreetMap line was held for this trail, so no line is included."
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 2804113. The publisher's own line is not licensed for redistribution and is not used."
+attribution = "© OpenStreetMap contributors"
+osm_only = true
+mainline = "OSM relation 2804113: 551 route ways in the main role (one repeated); the 47 ways marked 'alternative' are in alternates.geojson."
+source_checked = "2026-11-09"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
 
 [osm]
 relation = 2804113
-note = "OSM relation 2804113 (distance tag 1,234 km)."
+note = "Downloaded 2026-11-09; 550 main ways and 47 ways marked 'alternative'. release.txt has the source and date."
 
 [shield]
 status = "use-real-logo"
@@ -44,8 +44,8 @@ logo_owner = "Arizona Trail Association (aztrail.org); USFS Region 3"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 1345.9
-difference_percent = 4.6
-parts = 6
-note = "53 passage features join into 6 parts. The source does not mark bypasses, so +4.6% over over 1,287 km includes alternates."
+date = "2026-11-09"
+measured_km = 1255.1
+difference_percent = -2.5
+parts = 3
+note = "OSM relation 2804113, 550 ways: 1,255.1 km in 3 parts, 2.5% short of 1,287 km. The 47 ways marked 'alternative' (52.6 km) are in alternates.geojson."

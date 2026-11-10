@@ -10,7 +10,7 @@ The counts at this release: 64 trail records, 49 with a line, 15 records only.
 
 ## Inclusion rule
 
-A long trail here is a named, continuous walking route, or a named loop, of at least 100 km, that a land agency or a trail association designates, maintains and publishes as one trail, in the United States or Canada. A small number of well-known multi-day trails between 60 km and 100 km are also listed.
+A long trail here is a named, continuous walking route, or a named loop, of at least 50 miles (80 km), that a land agency or a trail association designates, maintains and publishes as one trail, in the United States or Canada. The floor is 50 miles because that is about what multi-day wilderness backpacking takes. A small number of well-known multi-day trails between 60 km and 80 km are also listed.
 
 Every United States National Scenic Trail is listed. Other trails are listed when they meet the rule above.
 

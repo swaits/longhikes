@@ -37,7 +37,7 @@ line_file = "line.geojson"
 | `regions` | array of strings | State, province or territory codes crossed. | `["VT"]` |
 | `length_km` | integer | Published length in kilometres. A check value, not measured from the line. | `438` |
 | `length_note` | string | Where the published length comes from. | `"272 mi published"` |
-| `tier` | string | `national` (US National Scenic Trail), `regional` (100 km or more), `short` (well-known, 60-100 km), `deferred`, or `candidate`. | `"regional"` |
+| `tier` | string | `national` (US National Scenic Trail), `regional` (80 km or more), `short` (well-known, 60-80 km), `deferred`, or `candidate`. | `"regional"` |
 | `designation` | string | What makes it a long trail: statute, agency or association. | `"National Scenic Trail (1968)"` |
 | `wave` | integer or string | `1` for trails in the first set; `"held"` where listing is undecided. | `1` |
 | `wave_note` | string, where present | Why a held trail is held. | `"Held: no usable whole line exists."` |

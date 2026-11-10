@@ -19,7 +19,7 @@ The second command must print `OK <n> trails`.
 
 ## Add a trail
 
-A trail belongs here when it meets the inclusion rule in README.md: a named, continuous walking route, or a named loop, of at least 100 km (a few well-known routes of 60-100 km are also listed), that a land agency or trail association designates, maintains and publishes as one trail, in the United States or Canada. Routes whose creators choose not to publish a track are not added.
+A trail belongs here when it meets the inclusion rule in README.md: a named, continuous walking route, or a named loop, of at least 50 miles (80 km) (a few well-known routes of 60-80 km are also listed), that a land agency or trail association designates, maintains and publishes as one trail, in the United States or Canada. Routes whose creators choose not to publish a track are not added.
 
 To add one:
 

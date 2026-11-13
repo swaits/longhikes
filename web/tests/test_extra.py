@@ -150,7 +150,7 @@ class ExtraPagesTest(unittest.TestCase):
             self.assertEqual(scale.count('class="len__mi"'), 3, rel)
         self.assertNotIn('class="route-item"', read_out("routes/index.html"))
         co = read_out("regions/us-co/index.html")
-        self.assertIn('<a href="/?region=US-CO&amp;line=1">With a line</a>', co)
+        self.assertIn('<a href="/?region=US-CO&amp;line=1">With a track</a>', co)
 
     def test_routes_page_rows_carry_their_guides(self):
         doc = read_out("routes/index.html")
@@ -188,8 +188,11 @@ class ExtraPagesTest(unittest.TestCase):
     def test_sources_page_counts_measured_lines(self):
         page = read_out("sources/index.html")
         measured = sum(1 for r in self.records if r.get("verification", {}).get("verified"))
-        self.assertIn(f"<dt>Line measured</dt><dd>{measured}<", page)
+        self.assertIn(f"<dt>Track measured</dt><dd>{measured}<", page)
         self.assertIn("<dt>Source status: OpenStreetMap only</dt>", page)
+        # a record's "none (no line included)" is shown in words, not as the raw value
+        self.assertIn("<td>None (no track included)</td>", page)
+        self.assertNotIn("none (no line included)", page)
         self.assertEqual(page.count('<th scope="col">Trails and routes</th>'), 2)
         self.assertNotRegex(page, r'<td><a href="/trails/[^"]+/">[^<]*</a>, <a')
 
@@ -200,7 +203,7 @@ class ExtraPagesTest(unittest.TestCase):
         for lic in {r["source"]["licence"] for r in lines}:
             n = sum(1 for r in lines if r["source"]["licence"] == lic)
             label = html.escape(words.label(words.LICENCES, lic), quote=True)
-            self.assertIn(f"Lines licensed {label}: {n} record", page, lic)
+            self.assertIn(f"Tracks licensed {label}: {n} record", page, lic)
         for name in ("trails.json", "overview.geojson"):
             self.assertRegex(page, rf'<a href="/data/{re.escape(name)}">')
         for name in ("all-gpx.zip", "all-geojson.zip"):

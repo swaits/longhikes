@@ -63,9 +63,10 @@ def record_text(text, cls=""):
 
 
 def restates_no_line(value):
-    """True for record values that only say there is no line ("none (no line included)")."""
+    """True for record values that only say there is no track ("none (no line included)")."""
     text = str(value or "").strip().lower()
-    return text.startswith(("none (no line", "no line included", "no line to measure"))
+    return text.startswith(("none (no line", "no line included", "no line to measure",
+                            "none (no track", "no track included", "no track to measure"))
 
 
 def region_names(rec):
@@ -135,20 +136,20 @@ def tally(rec):
     items = [("Published length", words.length(rec["length_km"], "stack", rec["derived"]["length_mi"]), note)]
     if v.get("verified") and "measured_km" in v:
         diff = v.get("difference_percent", 0)
-        items.append(("Measured line", words.length(v["measured_km"], "stack", measured=True),
+        items.append(("Measured track", words.length(v["measured_km"], "stack", measured=True),
                       f"{words.fmt_percent(diff)} against published"))
     else:
-        items.append(("Measured line", Markup('<span class="tally__none">Not measured</span>'),
-                      "No line was downloaded and measured"))
+        items.append(("Measured track", Markup('<span class="tally__none">Not measured</span>'),
+                      "No track was downloaded and measured"))
     if common.has_line(rec):
         text = "In the dataset, partial" if common.line_short(rec) else "In the dataset"
         link = Markup(f'<a href="#download">{esc(text)}</a>') if rec["derived"].get("downloads") else text
-        items.append(("Line", link, "Licence: " + common.licence_label(rec)))
+        items.append(("Track", link, "Licence: " + common.licence_label(rec)))
     else:
-        items.append(("Line", "Record only", "The reason is given below"))
+        items.append(("Track", "Record only", "The reason is given below"))
     if common.is_route(rec):
         p = common.policy(rec)
-        items.append(("Line policy", words.label(words.POLICIES, p), words.meaning(words.POLICIES, p)))
+        items.append(("Track policy", words.label(words.POLICIES, p), words.meaning(words.POLICIES, p)))
     else:
         t = rec.get("tier", "")
         items.append(("Tier", words.label(words.TIERS, t), words.meaning(words.TIERS, t)))
@@ -163,7 +164,7 @@ def map_figure(rec):
     src = rec["source"]
     has_alt = "alternates" in rec["derived"]["files"]
     route = common.is_route(rec)
-    legend = f'<li>{common.SWATCH_ROUTE if route else common.SWATCH_LINE}Main line</li>'
+    legend = f'<li>{common.SWATCH_ROUTE if route else common.SWATCH_LINE}Main track</li>'
     if has_alt:
         legend += f"<li>{common.SWATCH_ALT}Alternates and connectors</li>"
     bbox = rec["derived"].get("map_bbox") or rec["derived"].get("bbox")
@@ -175,13 +176,13 @@ def map_figure(rec):
     <div class="map" role="region" aria-label="Map of the {esc(rec["name"])}">
       <div class="map__fallback"></div>
       <div class="map__canvas"></div>
-      <p class="map__status" role="status">The map needs JavaScript. Download the line from this page.</p>
+      <p class="map__status" role="status">The map needs JavaScript. Download the GPX or GeoJSON file from this page.</p>
     </div>
     <span class="mapfig__corner mapfig__corner--se" aria-hidden="true"></span>
   </div>
   <figcaption class="mapfig__caption">
     <ul class="legend" aria-label="Legend">{legend}</ul>
-    <p>Line: {esc(src.get("line_source", ""))}, read {esc(src.get("source_checked", ""))}, drawn simplified to 30&nbsp;m. Credit: {esc(credit)} Base map: OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.</p>
+    <p>Track: {esc(src.get("line_source", ""))}, read {esc(src.get("source_checked", ""))}, drawn simplified to 30&nbsp;m. Credit: {esc(credit)} Base map: OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.</p>
   </figcaption>
 </figure>"""
 
@@ -197,12 +198,12 @@ def empty_frame(rec):
     if common.is_route(rec):
         p = common.policy(rec)
         titles = {
-            "open": "Get the line from the creator",
-            "sold": "The line is sold as a guide",
-            "withheld": "The creator does not publish a line",
-            "unclear": "Whether the line may be shared is not settled",
+            "open": "Get the track from the creator",
+            "sold": "The track is sold as a guide",
+            "withheld": "The creator does not publish a track",
+            "unclear": "Whether the track may be shared is not settled",
         }
-        title = titles.get(p, "No line in this dataset")
+        title = titles.get(p, "No track in this dataset")
         rule = words.POLICIES.get(p, ("", "", ""))[2]
         if p == "open" and free_guides(rec):
             g = free_guides(rec)[0]
@@ -213,9 +214,9 @@ def empty_frame(rec):
         elif len(rec.get("guide", [])) > 1:
             actions.append('<a class="button button--link" href="#guides-title">All guides</a>')
     else:
-        title = "No line in this dataset"
+        title = "No track in this dataset"
         reason = common.absent_reason_short(rec)
-        rule = "A trail may be listed as a record only, with no line, when no line for it may be shared. The record says why."
+        rule = "A trail may be listed as a record only, with no track, when no track for it may be shared. The record says why."
         if src.get("publisher_url"):
             actions.append(f'<a class="button button--link" href="{esc(src["publisher_url"])}">'
                            f'Publisher&rsquo;s page {common.ICON_EXTERNAL}</a>')
@@ -225,7 +226,7 @@ def empty_frame(rec):
     actions_html = f'<p class="cluster">{"".join(actions)}</p>' if actions else ""
     return f"""<figure class="mapfig mapfig--empty detail__map" aria-labelledby="noline-title">
   <div class="mapfig__frame">
-    <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true">No line in this dataset</span>
+    <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true">No track in this dataset</span>
     <div class="map map--empty">
       <div class="map__message">
         <p class="kicker">Record only</p>
@@ -237,7 +238,7 @@ def empty_frame(rec):
     </div>
     <span class="mapfig__corner mapfig__corner--se" aria-hidden="true">Nothing drawn</span>
   </div>
-  <figcaption class="mapfig__caption"><p>No map is drawn: the dataset holds no line for this {"route" if common.is_route(rec) else "trail"}, and does not guess one.</p></figcaption>
+  <figcaption class="mapfig__caption"><p>No map is drawn: the dataset holds no track for this {"route" if common.is_route(rec) else "trail"}, and does not guess one.</p></figcaption>
 </figure>"""
 
 
@@ -251,7 +252,7 @@ def ordered_downloads(items):
 
 def download_group(rec, label, swatch, note, items, gid):
     """One group of download buttons. GPX comes first and is the primary button. Each
-    link's accessible name starts with the group: "Main line: GPX, 1.1 MB"."""
+    link's accessible name starts with the group: "Main track: GPX, 1.1 MB"."""
     buttons = "".join(
         f'<a class="button{" button--primary" if d["format"] == "GPX" else ""}" '
         f'href="/trails/{esc(rec["id"])}/{esc(d["file"])}" download="{esc(d["file"])}">'
@@ -265,17 +266,17 @@ def download_group(rec, label, swatch, note, items, gid):
 
 
 def partial_notice(rec):
-    """The notice above the buttons when the line differs from the published length
+    """The notice above the buttons when the track differs from the published length
     by more than 15%: the record's own numbers, then its length_gap_note."""
     if not common.line_differs(rec):
         return ""
     v = rec["verification"]
     diff = v["difference_percent"]
-    head = "Partial line" if diff < 0 else "Longer than the published length"
+    head = "Partial track" if diff < 0 else "Longer than the published length"
     gap = rec["source"].get("length_gap_note", "")
     return f"""<div class="notice notice--partial">
       <h3>{head}</h3>
-      <p>The line in the dataset measures {esc(words.fmt_km1(v["measured_km"]))}&nbsp;km against a published {esc(words.fmt_km(rec["length_km"]))}&nbsp;km ({esc(words.fmt_percent(diff))}).</p>
+      <p>The track in the dataset measures {esc(words.fmt_km1(v["measured_km"]))}&nbsp;km against a published {esc(words.fmt_km(rec["length_km"]))}&nbsp;km ({esc(words.fmt_percent(diff))}).</p>
       {f"<p>{common.rich(gap)}</p>" if gap else ""}
     </div>"""
 
@@ -294,7 +295,7 @@ def downloads_panel(rec):
             parts = v.get("parts")
             note = (f"{words.fmt_km1(v['measured_km'])} km measured"
                     + (f" in {parts} part{'s' if parts != 1 else ''}" if parts else "") + f" · {note}")
-        groups.append(download_group(rec, "Main line", common.SWATCH_ROUTE if common.is_route(rec) else common.SWATCH_LINE,
+        groups.append(download_group(rec, "Main track", common.SWATCH_ROUTE if common.is_route(rec) else common.SWATCH_LINE,
                                      note, main, "dl-main"))
     alts = [d for d in downloads if d["role"] == "alternates"]
     if alts:
@@ -305,7 +306,7 @@ def downloads_panel(rec):
         name = EXTRACT_SOURCES.get(key, key)
         # No swatch: extracts are not drawn on the map.
         groups.append(download_group(rec, f"Extract: {name}", "",
-                                     "The line as this source serves it, before the sources were combined",
+                                     "The track as this source serves it, before the sources were combined",
                                      [d], f"dl-x{i}"))
     licence = src.get("licence", "")
     licence_html = esc(words.label(words.LICENCES, licence))
@@ -313,16 +314,16 @@ def downloads_panel(rec):
         licence_html = ext_link(words.LICENCE_URLS[licence], words.label(words.LICENCES, licence))
     if "ODbL" in src.get("attribution", "") and licence != "ODbL-1.0":
         licence_html = Markup(f'{licence_html}; OpenStreetMap parts {ext_link(words.LICENCE_URLS["ODbL-1.0"], "ODbL 1.0")}')
-    osm_note = ("<p class=\"note\">Lines from OpenStreetMap need the credit &ldquo;&copy;&nbsp;OpenStreetMap contributors&rdquo; "
+    osm_note = ("<p class=\"note\">Tracks from OpenStreetMap need the credit &ldquo;&copy;&nbsp;OpenStreetMap contributors&rdquo; "
                 "and stay under the ODbL (share-alike).</p>") if "ODbL" in src.get("attribution", "") + licence else ""
     release = (f'<p class="note"><a href="/trails/{esc(rec["id"])}/release.txt">release.txt</a>: '
-               f"the source, licence and date the line files came from.</p>"
+               f"the source, licence and date the track files came from.</p>"
                if rec["derived"].get("release") else "")
     return f"""<section class="panel" id="download" aria-labelledby="download-title">
-  <h2 class="panel__head" id="download-title">Download the line</h2>
+  <h2 class="panel__head" id="download-title">Download GPX and GeoJSON</h2>
   <div class="panel__body">
     {partial_notice(rec)}
-    <p class="note">GPX is simplified to 5&nbsp;m for devices. GeoJSON is the full-resolution line as published in this dataset. Neither carries elevation.</p>
+    <p class="note">GPX is simplified to 5&nbsp;m for devices. GeoJSON is the full-resolution track as published in this dataset. Neither carries elevation.</p>
     <ul class="downloads">{"".join(groups)}</ul>
     <div class="credit">
       <p class="credit__label" id="credit-label">Credit the source</p>
@@ -398,7 +399,7 @@ def links_panel(rec):
         add(f"https://www.openstreetmap.org/relation/{osm['relation']}",
             f"OpenStreetMap relation {osm['relation']}", f"The {kind} as mapped in OpenStreetMap")
     if src.get("url"):
-        what = "Where the included line came from" if common.has_line(rec) else "Where to ask for the line"
+        what = "Where the included track came from" if common.has_line(rec) else "Where to ask for the track"
         title = "OpenStreetMap" if host(src["url"]).endswith("openstreetmap.org") else (publisher or host(src["url"]))
         add(src["url"], title, what)
     for g in rec.get("guide", []):
@@ -413,7 +414,7 @@ def links_panel(rec):
         add(sh["logo_source"], owner, "The page the logo was taken from")
     add(f"/trails/{rec['id']}/trail.toml", "trail.toml", "The record itself, as data")
     if rec["derived"].get("release"):
-        add(f"/trails/{rec['id']}/release.txt", "release.txt", "Source, licence and date of the line files")
+        add(f"/trails/{rec['id']}/release.txt", "release.txt", "Source, licence and date of the track files")
 
     def describe(url, whats):
         text = "; ".join([whats[0]] + [w[:1].lower() + w[1:] for w in whats[1:]])
@@ -435,7 +436,7 @@ def policy_scale(current):
         here = ' aria-current="true"' if p == current else ""
         mark = '<span class="policy-scale__here">This route</span>' if p == current else ""
         items.append(f'<li{here}>{common.policy_chip(p)}<span>{esc(short)}. {esc(rule)}</span>{mark}</li>')
-    return Markup(f'<ol class="policy-scale" aria-label="Line policies for person-defined routes">{"".join(items)}</ol>')
+    return Markup(f'<ol class="policy-scale" aria-label="Track policies for person-defined routes">{"".join(items)}</ol>')
 
 
 def route_block(rec):
@@ -445,7 +446,7 @@ def route_block(rec):
         fact("Creator", r.get("creator", "")),
         fact("First published", str(r["year"])) if r.get("year") else
         fact("First published", "Not recorded", "No page read states a year"),
-        fact("Line policy", words.label(words.POLICIES, p), words.meaning(words.POLICIES, p)),
+        fact("Track policy", words.label(words.POLICIES, p), words.meaning(words.POLICIES, p)),
     ]
     quote = ""
     if r.get("creator_words"):
@@ -497,7 +498,7 @@ def record_block(rec):
     rows += [
         Markup(f'<div><dt>Where</dt><dd>{where}</dd></div>'),
         Markup(f'<div><dt>Published length</dt><dd>{words.length(rec["length_km"], "inline", rec["derived"]["length_mi"])}'
-               f'<small>{esc(rec.get("length_note", ""))}. A check value, not measured from the line.</small></dd></div>'),
+               f'<small>{esc(rec.get("length_note", ""))}. A check value, not measured from the track.</small></dd></div>'),
         fact("Short name", rec.get("short_name", "")),
         fact("Record ID", Markup(code(rec["id"])), "Stable: the directory name, never changed"),
     ]
@@ -510,7 +511,7 @@ def gauge(diff):
     off = "low" if diff < GAUGE_MIN else "high" if diff > GAUGE_MAX else ""
     inside = abs(diff) <= GAUGE_LIMIT
     side = "shorter than" if diff < 0 else "longer than" if diff > 0 else "the same as"
-    label = (f"Measured line is {abs(diff):.1f} percent {side} the published length, "
+    label = (f"Measured track is {abs(diff):.1f} percent {side} the published length, "
              f"{'inside' if inside else 'outside'} the 15 percent limit.")
     mark_text = words.fmt_percent(diff) + (" (off the scale)" if off else "")
     ticks = (GAUGE_MIN, -GAUGE_LIMIT, 0, GAUGE_LIMIT, GAUGE_MAX)  # placed by .gauge__tick--N in style.css
@@ -536,7 +537,7 @@ def verification_block(rec):
     gap = src.get("length_gap_note", "")
     if gap and common.line_differs(rec) and rec["derived"].get("downloads"):
         # The download panel's notice carries the note, beside the files it is about.
-        gap_html = '<p class="note">Why the lengths differ: see the notice in <a href="#download">Download the line</a>.</p>'
+        gap_html = '<p class="note">Why the lengths differ: see the notice in <a href="#download">Download GPX and GeoJSON</a>.</p>'
     elif gap:
         gap_html = f'<div class="notice"><h3>Why the lengths differ</h3><p>{common.rich(gap)}</p></div>'
     else:
@@ -546,17 +547,17 @@ def verification_block(rec):
         parts = v.get("parts")
         compare = f"""<dl class="compare">
   <div><dt>Published</dt><dd>{words.length(rec["length_km"], "stack", rec["derived"]["length_mi"])}</dd></div>
-  <div><dt>Measured</dt><dd>{words.length(v["measured_km"], "stack", measured=True)}<small>geodesic, from the line</small></dd></div>
+  <div><dt>Measured</dt><dd>{words.length(v["measured_km"], "stack", measured=True)}<small>geodesic, from the track</small></dd></div>
   <div><dt>Difference</dt><dd>{esc(words.fmt_percent(diff))}<small>measured minus published</small></dd></div>
   <div><dt>Parts</dt><dd>{esc(parts if parts is not None else "Not recorded")}<small>pieces left after joining ends within 100 m</small></dd></div>
 </dl>"""
         content = Markup(compare) + gauge(diff) + record_text(v.get("note", "")) + Markup(gap_html)
         extra = Markup(f' <span class="tag">Checked {esc(v.get("date", ""))}</span>') if v.get("date") else ""
-        verified_row = facts(fact("Measured", "Yes", "The line was downloaded and measured"))
+        verified_row = facts(fact("Measured", "Yes", "The track was downloaded and measured"))
         return block("verify-title", "Verification", verified_row + content, extra)
     if not common.has_line(rec) and restates_no_line(v.get("note", "")) and not gap:
-        return ""  # "No line to measure": the record only restates that there is no line
-    rows = facts(fact("Measured", "No", "No line was downloaded and measured"))
+        return ""  # "No line to measure": the record only restates that there is no track
+    rows = facts(fact("Measured", "No", "No track was downloaded and measured"))
     return block("verify-title", "Verification", rows + record_text(v.get("note", "")) + Markup(gap_html))
 
 
@@ -568,30 +569,30 @@ def source_block(rec):
     licence_value = words.label(words.LICENCES, licence)
     licence_html = (ext_link(words.LICENCE_URLS[licence], licence_value) if licence in words.LICENCE_URLS
                     else esc(licence_value))
-    source_help = '<small>Where to ask for the line: a layer or relation page</small>' if line else ""
+    source_help = '<small>Where to ask for the track: a layer or relation page</small>' if line else ""
 
     def keep(value):
-        """Rows of a record with no line are left out when they only restate that."""
+        """Rows of a record with no track are left out when they only restate that."""
         return line or not restates_no_line(value)
 
     rows = [
-        fact("Line in this dataset", src.get("line_file"), "The main line file of the record") if line else "",
+        fact("Track in this dataset", src.get("line_file"), "The main track file of the record") if line else "",
         fact("Source status", words.label(words.SOURCE_STATUS, status), words.meaning(words.SOURCE_STATUS, status)),
         fact("Publisher", src.get("publisher", "")),
         Markup(f'<div><dt>Publisher&rsquo;s page</dt><dd>{ext_link(src["publisher_url"])}</dd></div>') if src.get("publisher_url") else "",
         Markup(f'<div><dt>Source</dt><dd>{ext_link(src["url"])}{source_help}</dd></div>') if src.get("url") else "",
-        fact("Line source", src.get("line_source", "")) if keep(src.get("line_source")) else "",
+        fact("Track source", src.get("line_source", "")) if keep(src.get("line_source")) else "",
         fact("Format", src.get("format", "")) if keep(src.get("format")) else "",
-        fact("Main line", src.get("mainline", ""), "How the main line is told apart from alternates, connectors and side trails"),
+        fact("Main track", src.get("mainline", ""), "How the main track is told apart from alternates, connectors and side trails"),
         fact("Coordinates", src.get("crs", ""), "What the source stores; published files are longitude/latitude (EPSG:4326)") if line else "",
         Markup(f'<div><dt>Licence</dt><dd>{licence_html}</dd></div>'),
         fact("Credit", common.credit_text(src.get("attribution", "")), "The credit line to show, as the source asks")
         if keep(src.get("attribution")) else "",
         fact("May be passed on", yes_no(src.get("redistributable")),
-             "The source's terms allow its line to be passed on" if src.get("redistributable") else
-             "The source's terms do not allow its line to be passed on") if line else "",
+             "The source's terms allow its track to be passed on" if src.get("redistributable") else
+             "The source's terms do not allow its track to be passed on") if line else "",
         fact("OpenStreetMap only", yes_no(src.get("osm_only")),
-             "OpenStreetMap is the only source of the included line" if src.get("osm_only") else "") if line else "",
+             "OpenStreetMap is the only source of the included track" if src.get("osm_only") else "") if line else "",
         fact("Source checked", src.get("source_checked", "")),
         fact("Newer release?", src["discovery"], "How to tell whether the source has a newer release") if src.get("discovery") else "",
     ]
@@ -707,7 +708,7 @@ def description(rec):
     kind = "person-defined route" if common.is_route(rec) else "long trail"
     text = f"{rec['name']}: a {km} km ({mi} mi) {kind} in {where}. "
     if common.has_line(rec):
-        text += "Download its line as GeoJSON or GPX, with the source, licence and credit."
+        text += "Download its track as GPX or GeoJSON, with the source, licence and credit."
     else:
         text += "Record only: " + common.absent_reason_short(rec)
     return text if len(text) <= 300 else text[:297].rsplit(" ", 1)[0] + "…"

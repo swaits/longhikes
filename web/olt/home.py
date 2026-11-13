@@ -78,14 +78,14 @@ def entry(rec, *, level=3, extra=""):
     if common.has_line(rec):
         partial_note = (f'<p class="entry__partial">{esc(common.partial_short_text(rec))}</p>'
                         if partial else "")
-        line = (f'<span class="line__status">{common.SWATCH_ROUTE if route else common.SWATCH_LINE}Line{policy}</span>'
+        line = (f'<span class="line__status">{common.SWATCH_ROUTE if route else common.SWATCH_LINE}Track{policy}</span>'
                 f'{partial_note}'
                 f'<span class="line__detail">GeoJSON, GPX</span>'
                 f'<span class="line__detail">{esc(common.short_source(rec))} &middot; {esc(common.licence_label(rec))}</span>')
         note = ""
     else:
         line = f'<span class="line__status">{common.SWATCH_NONE}Record only{policy}</span>'
-        note = (f'\n  <p class="entry__note"><span class="vh">Why there is no line: </span>'
+        note = (f'\n  <p class="entry__note"><span class="vh">Why there is no track: </span>'
                 f'{esc(common.absent_reason_short(rec))}</p>')
     regions = " ".join(words.region_key(c, rec["country"]) for c in rec.get("regions", []))
     search = " ".join([rec["name"], rec.get("short_name", ""), rec["id"]]
@@ -108,7 +108,7 @@ def entry(rec, *, level=3, extra=""):
   </div>
   <dl class="entry__facts">
     <div class="entry__length"><dt>Length</dt><dd>{words.length(rec["length_km"], "stack", rec["derived"]["length_mi"])}<span class="loglen" style="--km: {rec["length_km"]}" aria-hidden="true"></span></dd></div>
-    <div class="entry__line"><dt>Line</dt><dd class="line line--{"yes" if common.has_line(rec) else "no"}">{line}</dd></div>
+    <div class="entry__line"><dt>Track</dt><dd class="line line--{"yes" if common.has_line(rec) else "no"}">{line}</dd></div>
   </dl>{note}{extra}
 </li>"""
 
@@ -154,7 +154,7 @@ def finder_form(c, steps=LENGTH_STEPS):
   <div class="field">
     <label class="check">
       <input type="checkbox" name="line">
-      <span class="check__text">Has a downloadable line <span class="check__count">{c["line"]}</span></span>
+      <span class="check__text">Has a downloadable track <span class="check__count">{c["line"]}</span></span>
       <span class="check__hint">GeoJSON and GPX. The other {c["record_only"]} are records only.</span>
     </label>
   </div>
@@ -197,7 +197,7 @@ def finder_form(c, steps=LENGTH_STEPS):
           <span class="check__text">Person-defined routes <span class="check__count">{c["route"]}</span></span>
           <span class="check__hint">Worked out and published by a person or a small group</span>
         </label>
-        <label class="field__label field__label--sub" for="policy">Route line policy</label>
+        <label class="field__label field__label--sub" for="policy">Route track policy</label>
         <select class="select" id="policy" name="policy"><option value="">Any</option>{policy_opts}</select>
       </fieldset>
       <div class="field">
@@ -228,7 +228,7 @@ def list_head():
     return f"""<div class="list-head" aria-hidden="true">
         <span>Trail</span>
         <span>Length<span class="list-head__scale">{"".join(ticks)}</span></span>
-        <span>Line</span>
+        <span>Track</span>
       </div>"""
 
 
@@ -251,9 +251,9 @@ SORT_SELECT = """<label class="results-sort">Sort
 
 def key():
     return f"""<ul class="key" aria-label="Key to the list">
-        <li>{common.SWATCH_LINE}Line in the dataset</li>
+        <li>{common.SWATCH_LINE}Track in the dataset</li>
         <li>{common.SWATCH_NONE}Record only; the note says why</li>
-        <li>Route line policy:
+        <li>Route track policy:
           {common.policy_chip("open")} {common.policy_chip("sold")} {common.policy_chip("withheld")} {common.policy_chip("unclear")}
         </li>
       </ul>"""
@@ -309,21 +309,21 @@ def render(records, site):
     recs = sorted(records, key=sort_name)
     total = c["total"]
     lede = (f"A record for each of {total} long trails and routes, as a rule 50 miles (80&nbsp;km) or more: "
-            "what it is, how long it is, who publishes it, and on what terms its line may be passed on. "
-            "Where the terms allow, download the line as GeoJSON or GPX.")
+            "what it is, how long it is, who publishes it, and on what terms its track may be passed on. "
+            "Where the terms allow, download the track as GPX or GeoJSON.")
     return f"""<section class="hero" aria-labelledby="hero-title">
   <div class="container hero__inner">
     <p class="kicker">A public dataset &middot; United States and Canada</p>
     <h1 id="hero-title">{esc(site.tagline)}</h1>
     <p class="hero__lede">{lede}</p>
-    <p class="hero__caveat">This is a dataset, not a navigation product. Lines vary in quality, some trails are unfinished, and some records have no line at all; each of those says why.</p>
+    <p class="hero__caveat">This is a dataset, not a navigation product. Tracks vary in quality, some trails are unfinished, and some records have no track at all; each of those says why.</p>
     <p><a class="button button--primary hero__cta" href="#q">Find a trail</a></p>
     <div class="hero__counts">
       <dl class="tally">
         <div><dt>Records</dt><dd>{total}</dd></div>
         <div><dt><a href="/?kind=designated">Designated trails</a></dt><dd>{c["designated"]}</dd></div>
         <div><dt><a href="/?kind=route">Person-defined routes</a></dt><dd>{c["route"]}</dd></div>
-        <div><dt>{common.SWATCH_LINE}<a href="/?line=1">With a line</a></dt><dd>{c["line"]}</dd></div>
+        <div><dt>{common.SWATCH_LINE}<a href="/?line=1">With a track</a></dt><dd>{c["line"]}</dd></div>
         <div><dt>{common.SWATCH_NONE}Records only</dt><dd>{c["record_only"]}</dd></div>
       </dl>
       <div class="ratio" aria-hidden="true"><span class="ratio__line" style="--n: {c["line"]}"></span><span class="ratio__none" style="--n: {c["record_only"]}"></span></div>
@@ -334,13 +334,13 @@ def render(records, site):
 <section class="section" aria-labelledby="map-title">
   <div class="container">
     <div class="section-head">
-      <h2 id="map-title">Every line in the dataset</h2>
-      <p>{c["line"]} lines, simplified for display. Select a line for its name.</p>
+      <h2 id="map-title">Every track in the dataset</h2>
+      <p>{c["line"]} tracks, simplified for display. Select a trail on the map for its name.</p>
     </div>
     <figure class="mapfig" data-map="overview" data-src="/data/overview.geojson"{overview_bbox(records)}>
       <div class="mapfig__frame">
         <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
-        <div class="map" role="region" aria-label="Map of every line in the dataset">
+        <div class="map" role="region" aria-label="Map of every track in the dataset">
           <div class="map__fallback"></div>
           <div class="map__canvas"></div>
           <p class="map__status" role="status">The map needs JavaScript. The list below has every record.</p>
@@ -352,7 +352,7 @@ def render(records, site):
           <li>{common.SWATCH_LINE}Designated trail</li>
           <li>{common.SWATCH_ROUTE}Person-defined route</li>
         </ul>
-        <p>Lines are simplified to about 750&nbsp;m here; each keeps the credit and licence named on its page. Base map: OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.</p>
+        <p>Tracks are simplified to about 750&nbsp;m here; each keeps the credit and licence named on its page. Base map: OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.</p>
       </figcaption>
     </figure>
   </div>
@@ -362,7 +362,7 @@ def render(records, site):
   <div class="container finder__grid">
     <div class="finder__head section-head">
       <h2 id="finder-title">Find a trail</h2>
-      <p>Search, then narrow by country, region, length, kind and line</p>
+      <p>Search, then narrow by country, region, length, kind and track</p>
     </div>
     {finder_form(c, length_steps(records))}
     {results(recs, finder=True)}

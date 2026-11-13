@@ -330,10 +330,10 @@
     function fail(reason) {
       if (entry.ready) return;
       host.dataset.state = 'fallback';
-      status.textContent = 'Base map unavailable (' + reason + '). The line is drawn on a plain graticule.';
+      status.textContent = 'Base map unavailable (' + reason + '). The track is drawn on a plain graticule.';
     }
 
-    status.textContent = 'Loading the line…';
+    status.textContent = 'Loading the track…';
     var dataReady = fetch(fig.dataset.src, { credentials: 'same-origin' })
       .then(function (r) {
         if (!r.ok) throw new Error(r.status);
@@ -357,7 +357,7 @@
       })
       .catch(function () {
         host.dataset.state = 'error';
-        status.textContent = 'The line data did not load. Downloads on this page are unaffected.';
+        status.textContent = 'The track data did not load. Downloads on this page are unaffected.';
         return null;
       });
 

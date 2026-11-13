@@ -148,7 +148,7 @@ def sources_page(records, site, repo_root):
         return sum(1 for r in recs if r.get("verification", {}).get("verified"))
 
     n_measured = measured(records)
-    status_cells = (f'<div><dt>Line measured</dt><dd>{n_measured}<small>Records whose line was '
+    status_cells = (f'<div><dt>Track measured</dt><dd>{n_measured}<small>Records whose track was '
                     f'downloaded and measured (verification), whatever its source</small></dd></div>')
     for key in ("verified", "osm-only", "found", "none"):
         recs = by_status.get(key, [])
@@ -168,31 +168,37 @@ def sources_page(records, site, repo_root):
                      f'<td class="num">{lines}</td><td>{_record_links(recs)}</td></tr>')
         return rows
 
+    def source_label(k):
+        # A record with no track holds a value such as "none (no line included)"; say it in words.
+        if str(k).strip().lower().startswith(("none (no line", "none (no track")):
+            return "None (no track included)"
+        return esc(k)
+
     def lic_label(k):
         return Markup(f'{esc(words.label(words.LICENCES, k))} <code class="raw">{esc(k)}</code>')
 
     head = ('<thead><tr><th scope="col">{0}</th><th scope="col">Records</th>'
-            '<th scope="col">With a line</th><th scope="col">Trails and routes</th></tr></thead>')
+            '<th scope="col">With a track</th><th scope="col">Trails and routes</th></tr></thead>')
     computed = f"""<div class="container section">
   <div class="section-head"><h2 id="sources-at-a-glance">At a glance</h2>
   <p>Counted from the {len(records)} records. Each trail page names its own source, licence and credit.
-  The source status says where a line was looked for; whether it was measured is counted separately.</p></div>
+  The source status says where a track was looked for; whether it was measured is counted separately.</p></div>
   <dl class="tally">{status_cells}</dl>
   {f'<p class="note">Other source status values: {esc(", ".join(map(str, other)))}.</p>' if other else ""}
   <div class="doc-block"><h3>By licence</h3><div class="table-wrap"><table>
   {head.format("Licence")}
   <tbody>{group_rows(by_licence, lic_label)}</tbody></table></div></div>
-  <div class="doc-block"><h3>By line source</h3><div class="table-wrap"><table>
-  {head.format("Line source")}
-  <tbody>{group_rows(by_source, esc)}</tbody></table></div></div>
+  <div class="doc-block"><h3>By track source</h3><div class="table-wrap"><table>
+  {head.format("Track source")}
+  <tbody>{group_rows(by_source, source_label)}</tbody></table></div></div>
 </div>"""
     doc_html = render_doc(read_doc(repo_root, "SOURCES.md"), site, drop_h1=True)
     body = (f'<div class="page-head"><div class="container"><header class="titleblock">'
             f'<div class="titleblock__text"><p class="kicker">Provenance</p><h1>Sources</h1>'
-            f'<p class="page-head__lede">Where the lines come from, and the terms each source states.</p>'
+            f'<p class="page-head__lede">Where the tracks come from, and the terms each source states.</p>'
             f'</div></header></div></div>{computed}'
             f'<div class="container section"><div class="prose doc">{doc_html}</div></div>')
-    return "Sources", "Where each trail line comes from: licences, line sources and source terms.", Markup(body)
+    return "Sources", "Where each trail track comes from: licences, track sources and source terms.", Markup(body)
 
 
 def logos_page(records, site, repo_root):
@@ -259,14 +265,14 @@ def _size(out_dir, relpath):
 # The bulk files on /data/: (name, what it holds, offered as a download).
 # trails.json and overview.geojson are what the pages fetch; a browser shows them.
 BULK_FILES = (
-    ("trails.csv", "One row per trail: id, name, country, regions, length, kind, line policy and status.", True),
+    ("trails.csv", "One row per trail: id, name, country, regions, length, kind, track policy and status.", True),
     ("trails.json", "Every record in full, as JSON, with the derived fields the site builds.", False),
-    ("index.geojson", "Every included line, simplified to about 100 m, with id and name.", True),
-    ("overview.geojson", "Every included line simplified to about 750 m for the overview map, "
+    ("index.geojson", "Every included track, simplified to about 100 m, with id and name.", True),
+    ("overview.geojson", "Every included track simplified to about 750 m for the overview map, "
                          "with id, name, kind, country and length.", False),
-    ("all-gpx.zip", "Every GPX file (main lines and alternates, simplified to 5 m), as <id>/<file>, "
+    ("all-gpx.zip", "Every GPX file (main tracks and alternates, simplified to 5 m), as <id>/<file>, "
                     "with each trail's release.txt, trails.csv, SOURCES.md and a README.", True),
-    ("all-geojson.zip", "Every full-resolution GeoJSON main line and alternates file, as <id>/<file>, "
+    ("all-geojson.zip", "Every full-resolution GeoJSON main track and alternates file, as <id>/<file>, "
                         "with each trail's release.txt, trails.csv, SOURCES.md and a README.", True),
 )
 
@@ -280,7 +286,7 @@ def _licence_text_url(licence, repo_root):
 
 
 def line_licence_rows(records, repo_root):
-    """(what, terms, text URL) for each licence the included lines carry, from the records."""
+    """(what, terms, text URL) for each licence the included tracks carry, from the records."""
     by_licence = _group_by([r for r in records if common.has_line(r)],
                            lambda r: r.get("source", {}).get("licence", "") or "unknown")
     rows = []
@@ -288,7 +294,7 @@ def line_licence_rows(records, repo_root):
         recs = by_licence[lic]
         label = words.label(words.LICENCES, lic)
         n = len(recs)
-        what = f"Lines licensed {esc(label)}: {n} record{'s' if n != 1 else ''}"
+        what = f"Tracks licensed {esc(label)}: {n} record{'s' if n != 1 else ''}"
         if n <= 3:
             links = ", ".join(f'<a href="{esc(common.trail_path(r))}">{common.name(r)}</a>' for r in recs)
             what += f" ({links})"
@@ -306,13 +312,13 @@ def data_page(records, site, repo_root, out_dir):
         rows += (f'<tr><td><a href="/data/{esc(name)}"{dl}>/data/{esc(name)}</a></td>'
                  f'<td>{esc(what)}</td><td class="num">{esc(_size(out_dir, "data/" + name))}</td></tr>')
     per_trail = [
-        ("<id>.geojson", "The main line at full resolution, as published in the dataset."),
-        ("<id>.gpx", "The main line simplified to 5 m, for GPS devices. No elevation."),
-        ("<id>-alternates.geojson / .gpx", "Alternate and connector lines, where the source serves them separately."),
-        ("<id>-<source>.geojson", "One source's own extract, where a line combines sources."),
-        ("map.json", "The line simplified to 30 m for the trail page map (GeoJSON)."),
+        ("<id>.geojson", "The main track at full resolution, as published in the dataset."),
+        ("<id>.gpx", "The main track simplified to 5 m, for GPS devices. No elevation."),
+        ("<id>-alternates.geojson / .gpx", "Alternate and connector tracks, where the source serves them separately."),
+        ("<id>-<source>.geojson", "One source's own extract, where a track combines sources."),
+        ("map.json", "The track simplified to 30 m for the trail page map (GeoJSON)."),
         ("trail.toml", "The record itself: source, licence, verification, logo and route details."),
-        ("release.txt", "The source, licence and date the line files came from, where a line is included."),
+        ("release.txt", "The source, licence and date the track files came from, where a track is included."),
         ("shield.svg / shield.png", "The trail logo, where one is included. Not licensed; see Logos."),
         ("shield-thumb.png", "A copy of a PNG logo no larger than 256 px, for the lists."),
     ]
@@ -320,8 +326,8 @@ def data_page(records, site, repo_root, out_dir):
     lic_rows = [
         ("Records, documents and compiled index", "CC0-1.0 (public domain)", '/licences/LICENSE'),
         ("Tools in tools/", "MIT", '/licences/MIT.txt'),
-        ("Each trail line", "Keeps its source's terms, stated in its record; see Sources", '/sources/'),
-        ("Lines from OpenStreetMap", "ODbL-1.0; credit © OpenStreetMap contributors", '/licences/ODbL-1.0.txt'),
+        ("Each trail track", "Keeps its source's terms, stated in its record; see Sources", '/sources/'),
+        ("Tracks from OpenStreetMap", "ODbL-1.0; credit © OpenStreetMap contributors", '/licences/ODbL-1.0.txt'),
         *line_licence_rows(records, repo_root),
         ("Trail logos", "Not licensed; belong to their holders, shown only to identify each trail", '/logos/'),
     ]
@@ -334,7 +340,7 @@ def data_page(records, site, repo_root, out_dir):
   <div class="section-head"><h2>Bulk downloads</h2><p>{len(records)} records. Sizes are this build's.</p></div>
   <div class="table-wrap"><table><thead><tr><th scope="col">File</th><th scope="col">What it holds</th><th scope="col">Size</th></tr></thead>
   <tbody>{rows}</tbody></table></div>
-  <p class="prose">Each line in the archives keeps its source&rsquo;s terms and needs its source&rsquo;s
+  <p class="prose">Each track in the archives keeps its source&rsquo;s terms and needs its source&rsquo;s
   credit, as given in the trail&rsquo;s release.txt; trails.csv gives each record&rsquo;s licence too.</p>
   <div class="doc-block"><h2>Per-trail files</h2>
   <p class="prose">Every record has a stable directory. Replace <code>&lt;id&gt;</code> with a record id
@@ -342,7 +348,7 @@ def data_page(records, site, repo_root, out_dir):
   <code>/trails/&lt;id&gt;/&lt;id&gt;.gpx</code>, <code>/trails/&lt;id&gt;/&lt;id&gt;-alternates.geojson</code> (and <code>.gpx</code>),
   <code>/trails/&lt;id&gt;/map.json</code>, <code>/trails/&lt;id&gt;/trail.toml</code> and
   <code>/trails/&lt;id&gt;/release.txt</code>. The trail page is <code>/trails/&lt;id&gt;/</code>.
-  Line files exist only where the record includes a line; the record says why when it does not.</p>
+  Track files exist only where the record includes a track; the record says why when it does not.</p>
   <div class="table-wrap"><table><thead><tr><th scope="col">File under /trails/&lt;id&gt;/</th><th scope="col">What it holds</th></tr></thead>
   <tbody>{prow}</tbody></table></div></div>
   <div class="doc-block"><h2>Licences</h2>

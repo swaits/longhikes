@@ -27,9 +27,9 @@ LENGTH_LIMIT = 15.0
 
 
 def line_differs(rec):
-    """True when the record has a line, the line was measured, and the measured
+    """True when the record has a track, the track was measured, and the measured
     length differs from the published length by more than 15%. The one test of
-    a partial line used by every page."""
+    a partial track used by every page."""
     v = rec.get("verification", {})
     diff = v.get("difference_percent")
     return bool(has_line(rec) and v.get("verified") and diff is not None
@@ -37,15 +37,15 @@ def line_differs(rec):
 
 
 def line_short(rec):
-    """line_differs, and the measured line is the shorter: the line is partial."""
+    """line_differs, and the measured track is the shorter: the track is partial."""
     return line_differs(rec) and rec["verification"]["difference_percent"] < 0
 
 
 def partial_short_text(rec):
-    """The short form for lists: "Line measures 2.0 km of 1,100 km published"."""
+    """The short form for lists: "Track measures 2.0 km of 1,100 km published"."""
     v = rec["verification"]
     word = "of" if v["difference_percent"] < 0 else "against"
-    return (f"Line measures {words.fmt_km1(v['measured_km'])} km {word} "
+    return (f"Track measures {words.fmt_km1(v['measured_km'])} km {word} "
             f"{words.fmt_km(rec['length_km'])} km published")
 
 
@@ -96,7 +96,7 @@ def designated_year(rec):
 
 
 def short_source(rec):
-    """A short name for where the included line came from, for lists."""
+    """A short name for where the included track came from, for lists."""
     src = rec.get("source", {})
     if src.get("osm_only"):
         name = "OpenStreetMap"
@@ -124,9 +124,9 @@ def rich(text):
 
 
 def absent_reason_short(rec):
-    """line_absent_reason without the opening "No line is included." (the status already says so)."""
+    """line_absent_reason without the opening "No line is included." or "No track is included." (the status already says so)."""
     reason = rec.get("source", {}).get("line_absent_reason", "")
-    return re.sub(r"^No line is included\.\s*", "", reason) or reason
+    return re.sub(r"^No (?:line|track) is included\.\s*", "", reason) or reason
 
 
 def regions_html(rec, linked=False):
@@ -147,7 +147,7 @@ def regions_html(rec, linked=False):
 
 
 def tags(rec, with_policy=True):
-    """Kind, tier and listing tags, and (with_policy) the line policy of a route."""
+    """Kind, tier and listing tags, and (with_policy) the track policy of a route."""
     out = []
     if is_route(rec):
         out.append('<span class="tag tag--route">Person-defined route</span>')
@@ -167,8 +167,8 @@ def tags(rec, with_policy=True):
 
 def policy_chip(value):
     lab, short = words.label(words.POLICIES, value), words.meaning(words.POLICIES, value)
-    return Markup(f'<span class="policy policy--{esc(value)}" title="Line policy: {esc(short)}">'
-                  f'<span class="vh">Line policy: </span>{esc(lab)}</span>')
+    return Markup(f'<span class="policy policy--{esc(value)}" title="Track policy: {esc(short)}">'
+                  f'<span class="vh">Track policy: </span>{esc(lab)}</span>')
 
 
 def logo_img(rec, alt, eager=False):

@@ -66,15 +66,15 @@ def footer(site):
   <div class="container site-footer__grid">
     <div class="site-footer__about">
       <a class="wordmark" href="/"><span class="wordmark__blaze" aria-hidden="true"></span>{esc(site.name)}</a>
-      <p>A dataset, not a navigation product: lines vary in quality, some trails are unfinished, and some records have no line at all. Check a trail&rsquo;s own record before using its line.</p>
-      <p>The records are public domain (CC0-1.0). Each line keeps the terms of its source, named on its page. Lines from OpenStreetMap are &copy;&nbsp;OpenStreetMap contributors, under the ODbL. Logos belong to their holders and are shown only to identify each trail.</p>
+      <p>A dataset, not a navigation product: tracks vary in quality, some trails are unfinished, and some records have no track at all. Check a trail&rsquo;s own record before using its track.</p>
+      <p>The records are public domain (CC0-1.0). Each track keeps the terms of its source, named on its page. Tracks from OpenStreetMap are &copy;&nbsp;OpenStreetMap contributors, under the ODbL. Logos belong to their holders and are shown only to identify each trail.</p>
     </div>
     <nav aria-labelledby="footer-data">
       <h2 id="footer-data">Data</h2>
       <ul>
         <li><a href="/data/">About the data and downloads</a></li>
         <li><a href="/data/trails.csv">trails.csv</a>: one row per trail</li>
-        <li><a href="/data/index.geojson">index.geojson</a>: every line, simplified</li>
+        <li><a href="/data/index.geojson">index.geojson</a>: every track, simplified</li>
         <li><a href="/sources/">Sources and their terms</a></li>
       </ul>
     </nav>

@@ -249,12 +249,12 @@ def build_trail(rec, out_dir, code_mtime, force, stats):
                                   "Simplified to 5 m, 6 decimals", "GPX"))
     if "alternates" in files:
         downloads.append(download(tdir, f"{tid}-alternates.geojson", "alternates",
-                                  "Alternate and connector lines, full resolution", "GeoJSON"))
+                                  "Alternate and connector tracks, full resolution", "GeoJSON"))
         downloads.append(download(tdir, f"{tid}-alternates.gpx", "alternates",
-                                  "Alternate and connector lines, simplified to 5 m", "GPX"))
+                                  "Alternate and connector tracks, simplified to 5 m", "GPX"))
     for source in files.get("extracts", {}):
         downloads.append(download(tdir, f"{tid}-{source}.geojson", "extract",
-                                  f"Line as served by source '{source}', full resolution", "GeoJSON"))
+                                  f"Track as served by source '{source}', full resolution", "GeoJSON"))
     return downloads, cache or {}
 
 
@@ -336,28 +336,28 @@ def archive_readme(name):
     if ext == ".gpx":
         what = "simplified to 5 m"
         resolution = ("The GPX files are simplified to 5 m, with coordinates to 6 decimal places.\n"
-                      "The full-resolution lines are in all-geojson.zip.\n")
+                      "The full-resolution tracks are in all-geojson.zip.\n")
     else:
         what = "full resolution"
-        resolution = ("The GeoJSON files are the full-resolution lines, as published in this dataset.\n"
+        resolution = ("The GeoJSON files are the full-resolution tracks, as published in this dataset.\n"
                       "The simplified GPX files (5 m) are in all-gpx.zip.\n")
-    rows = [(f"<id>/<id>{ext}", f"the main line, {what}"),
-            (f"<id>/<id>-alternates{ext}", f"alternate and connector lines, {what}, where the\n"
+    rows = [(f"<id>/<id>{ext}", f"the main track, {what}"),
+            (f"<id>/<id>-alternates{ext}", f"alternate and connector tracks, {what}, where the\n"
                                             "source serves them separately"),
-            ("<id>/release.txt", "the source, licence and date the line files came from")]
+            ("<id>/release.txt", "the source, licence and date the track files came from")]
     width = max(len(p) for p, _ in rows) + 3
     files = ""
     for path, what_it_is in rows:
         files += "  " + path.ljust(width) + what_it_is.replace("\n", "\n" + " " * (width + 2)) + "\n"
-    return (f"{site_name() or 'Long trails'}: every {kind} line\n\n"
-            "For each trail or route whose record includes a line:\n\n"
+    return (f"{site_name() or 'Long trails'}: every track, as {kind}\n\n"
+            "For each trail or route whose record includes a track:\n\n"
             f"{files}\n"
             "and at the top:\n\n"
             "  trails.csv    one row per record, with its licence\n"
             "  SOURCES.md    each source, its terms, and the trails that use it\n\n"
-            "Terms. Each line keeps its source's terms and needs its source's credit, as\n"
+            "Terms. Each track keeps its source's terms and needs its source's credit, as\n"
             "given in its <id>/release.txt (the Licence and Attribution lines) and in\n"
-            "trails.csv (the licence column). Lines from OpenStreetMap are\n"
+            "trails.csv (the licence column). Tracks from OpenStreetMap are\n"
             "© OpenStreetMap contributors, under the ODbL. The records themselves are\n"
             "public domain (CC0-1.0).\n\n"
             f"{resolution}")

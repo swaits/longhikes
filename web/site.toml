@@ -6,7 +6,7 @@
 name = "Long Hikes"
 
 # One line under the name: the home page <title> and the default meta description.
-tagline = "Long-distance hiking trails of the United States and Canada, with their lines where they may be shared"
+tagline = "Long-distance hiking trails of the United States and Canada, with their tracks where they may be shared"
 
 # Absolute origin of the deployed site, without a trailing slash, for example
 # "https://example.org". When set, every page gets a canonical link. Empty: none.

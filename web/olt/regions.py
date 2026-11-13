@@ -62,12 +62,12 @@ def _bbox_attr(recs):
 def _region_map(recs, title):
     ids = [r["id"] for r in recs if "line" in r["derived"]["files"]]
     if not ids:
-        return ('<p class="note">No downloadable line in this region yet, so there is '
+        return ('<p class="note">No downloadable track in this region yet, so there is '
                 'nothing to draw. The records below say why.</p>')
     return f"""<figure class="mapfig" data-map="overview" data-src="/data/overview.geojson" data-ids="{esc(" ".join(ids))}"{_bbox_attr(recs)}>
   <div class="mapfig__frame">
     <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
-    <div class="map" role="region" aria-label="Map of lines in {esc(title)}">
+    <div class="map" role="region" aria-label="Map of tracks in {esc(title)}">
       <div class="map__fallback"></div><div class="map__canvas"></div>
       <p class="map__status" role="status">The map needs JavaScript. The list below has every record.</p>
     </div>
@@ -76,7 +76,7 @@ def _region_map(recs, title):
   <figcaption class="mapfig__caption">
     <ul class="legend" aria-label="Legend"><li>{common.SWATCH_LINE}Designated trail</li>
     <li>{common.SWATCH_ROUTE}Person-defined route</li></ul>
-    <p>{len(ids)} line{"s" if len(ids) != 1 else ""} in this region, simplified for display. Select a line for its name.</p>
+    <p>{len(ids)} track{"s" if len(ids) != 1 else ""} in this region, simplified for display. Select a trail on the map for its name.</p>
   </figcaption>
 </figure>"""
 
@@ -108,7 +108,7 @@ def regions_index_page(records, site):
         blocks += f"""<div class="doc-block"><h2 id="{esc(country.lower())}">{esc(words.COUNTRIES[country])}</h2>
   <p class="prose">{n_country} records name at least one {unit}. Each is counted once, whichever
   country it is filed under.</p>
-  <div class="table-wrap"><table><thead><tr><th scope="col">State, province or territory</th><th scope="col">Records</th><th scope="col">With a downloadable line</th></tr></thead>
+  <div class="table-wrap"><table><thead><tr><th scope="col">State, province or territory</th><th scope="col">Records</th><th scope="col">With a downloadable track</th></tr></thead>
   <tbody>{rows}</tbody></table></div>{extra}</div>"""
     body = f"""<div class="page-head"><div class="container"><header class="titleblock">
   <div class="titleblock__text"><p class="kicker">Browse</p><h1>Regions</h1>
@@ -117,7 +117,7 @@ def regions_index_page(records, site):
   </div></header>
   <dl class="tally">{tally}</dl></div></div>
 <div class="container section">{blocks}</div>"""
-    return "Regions", "Long trails by state, province and territory, with counts of records and lines.", Markup(body)
+    return "Regions", "Long trails by state, province and territory, with counts of records and tracks.", Markup(body)
 
 
 def region_page(slug, records, site):
@@ -137,7 +137,7 @@ def region_page(slug, records, site):
         n = by_slug[same[idx + 1]]
         neighbours.append(f'<a href="{esc(region_path(n["code"], n["country"]))}">{esc(n["name"])} →</a>')
     nav = " · ".join(neighbours)
-    with_line = (f'<a href="/?region={esc(key)}&amp;line=1">With a line</a>' if lines else "With a line")
+    with_line = (f'<a href="/?region={esc(key)}&amp;line=1">With a track</a>' if lines else "With a track")
     body = f"""<div class="page-head"><div class="container">
   <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/regions/">Regions</a></li>
   <li><a href="/regions/#{esc(info["country"].lower())}">{esc(words.COUNTRIES[info["country"]])}</a></li>
@@ -145,14 +145,14 @@ def region_page(slug, records, site):
   <header class="titleblock"><div class="titleblock__text">
   <p class="kicker">{esc(words.COUNTRIES[info["country"]])} · {esc(info["code"])}</p>
   <h1>{esc(info["name"])}</h1>
-  <p class="page-head__lede">{len(recs)} record{"s" if len(recs) != 1 else ""}, {lines} with a downloadable line.</p>
+  <p class="page-head__lede">{len(recs)} record{"s" if len(recs) != 1 else ""}, {lines} with a downloadable track.</p>
   </div></header>
   <dl class="tally"><div><dt>Records</dt><dd>{len(recs)}</dd></div>
   <div><dt>{common.SWATCH_LINE}{with_line}</dt><dd>{lines}</dd></div>
   <div><dt>{common.SWATCH_NONE}Records only</dt><dd>{len(recs) - lines}</dd></div></dl>
 </div></div>
 <div class="container section">
-  <div class="section-head"><h2>Lines in {esc(info["name"])}</h2><p>Only lines in this region are drawn.</p></div>
+  <div class="section-head"><h2>Tracks in {esc(info["name"])}</h2><p>Only tracks in this region are drawn.</p></div>
   {_region_map(recs, info["name"])}
 </div>
 <div class="container section">
@@ -198,7 +198,7 @@ def routes_page(records, site, repo_root):
     for key in ("open", "sold", "withheld", "unclear"):
         lab, short, rule = words.POLICIES[key]
         policy_items += f'<li>{common.policy_chip(key)}<span>{esc(short)}. {esc(rule)}</span></li>'
-    policies = Markup(f'<ol class="policy-scale" aria-label="The four line policies">{policy_items}</ol>')
+    policies = Markup(f'<ol class="policy-scale" aria-label="The four track policies">{policy_items}</ol>')
 
     routes = [r for r in records if common.is_route(r)]
     by_creator = collections.defaultdict(list)
@@ -212,9 +212,9 @@ def routes_page(records, site, repo_root):
   <p class="page-head__lede">{len(routes)} routes worked out and published by a person or a small group.</p>
   </div></header></div></div>
 <div class="container section"><div class="prose doc">{intro}</div>
-<h2 class="doc-block">The four line policies</h2>{policies}
+<h2 class="doc-block">The four track policies</h2>{policies}
 <p class="prose"><a href="/?kind=route">See the routes in the trail finder</a>, or read a route below.</p></div>
 <div class="container section"><div class="section-head"><h2>Routes by creator</h2>
 <p>Each route links to its record; its guides link out to the creator's or publisher's page.</p></div>
 {home.results(groups=groups)}</div>"""
-    return "Routes", f"{len(routes)} person-defined routes by creator, with line policies and guides.", Markup(body)
+    return "Routes", f"{len(routes)} person-defined routes by creator, with track policies and guides.", Markup(body)

@@ -53,10 +53,10 @@ KINDS = {
               "Worked out and published by a person or a small group: a high route, a traverse or a loop of linked trails"),
 }
 SOURCE_STATUS = {
-    "verified": ("Verified", "The line was downloaded from the source and measured"),
+    "verified": ("Verified", "The track was downloaded from the source and measured"),
     "found": ("Found", "The source was located but not downloaded"),
     "osm-only": ("OpenStreetMap only", "The only source is an OpenStreetMap route relation"),
-    "none": ("None", "No source of a line"),
+    "none": ("None", "No source of a track"),
 }
 LICENCES = {
     "us-gov-public-domain": "US public domain",
@@ -75,15 +75,15 @@ LICENCE_URLS = {
     "CC-BY-NC-ND-4.0": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
 }
 POLICIES = {
-    "open": ("Open", "The creator publishes the line freely",
-             "A line is included only where the creator's terms allow passing it on, or where "
+    "open": ("Open", "The creator publishes the track freely",
+             "A track is included only where the creator's terms allow passing it on, or where "
              "OpenStreetMap carries the route as a route relation. Otherwise get it from the creator."),
     "sold": ("Sold", "The route is got by buying a guide or map set",
-             "No line is included from any source, OpenStreetMap included."),
-    "withheld": ("Withheld", "The creator chooses not to publish a line",
-                 "No line is included from any source, OpenStreetMap included."),
-    "unclear": ("Unclear", "Whether the creator shares the line is not settled",
-                "No line is included until it is settled."),
+             "No track is included from any source, OpenStreetMap included."),
+    "withheld": ("Withheld", "The creator chooses not to publish a track",
+                 "No track is included from any source, OpenStreetMap included."),
+    "unclear": ("Unclear", "Whether the creator shares the track is not settled",
+                "No track is included until it is settled."),
 }
 SHIELD_STATUS = {
     "use-real-logo": ("Logo in use", "The trail has a logo"),

@@ -167,7 +167,7 @@ class BuiltSiteTest(unittest.TestCase):
                     self.fail(f"{rec['id']}: {field} = {value!r} not on the page")
 
     def test_partial_line_notice_and_row_note_for_exactly_the_partial_records(self):
-        """Decided from the TOML alone: a line, measured, more than 15% from the published length."""
+        """Decided from the TOML alone: a track, measured, more than 15% from the published length."""
         expected = set()
         for rec in self.records:
             with open(os.path.join(ROOT, rec["id"], "trail.toml"), "rb") as f:
@@ -192,7 +192,7 @@ class BuiltSiteTest(unittest.TestCase):
             short = rec["id"] in expected and rec["verification"]["difference_percent"] < 0
             self.assertEqual("In the dataset, partial" in page, short, rec["id"])
             if rec["derived"]["has_line"]:
-                self.assertRegex(page, r'<dt>Line</dt><dd><a href="#download">In the dataset', rec["id"])
+                self.assertRegex(page, r'<dt>Track</dt><dd><a href="#download">In the dataset', rec["id"])
         rows_seen = set()
         for path in html_files(OUT):
             with open(path, encoding="utf-8") as f:
@@ -204,7 +204,7 @@ class BuiltSiteTest(unittest.TestCase):
                 self.assertEqual(row.count('class="entry__partial"'), 1 if tid in expected else 0, f"{rel}: {tid}")
                 if tid in expected:
                     rows_seen.add(tid)
-                    self.assertRegex(page_text(row), r"Line measures [\d,.]+ km (of|against) [\d,]+ km published")
+                    self.assertRegex(page_text(row), r"Track measures [\d,.]+ km (of|against) [\d,]+ km published")
             entries = len(re.findall(r'<li class="entry" ', doc))
             partial_rows = len(re.findall(r'<li class="entry" [^>]*data-partial="yes"', doc))
             self.assertEqual(doc.count('class="entry__partial"'), partial_rows, rel)
@@ -268,15 +268,16 @@ class BuiltSiteTest(unittest.TestCase):
         for rec in self.records:
             page = self.pages[rec["id"]]
             main = page_text(page[page.index('<div class="detail__main">'):page.index('<details class="rawrecord">')])
-            helper = "Where to ask for the line: a layer or relation page"
+            helper = "Where to ask for the track: a layer or relation page"
             if rec["derived"]["has_line"]:
                 self.assertEqual(helper in main, bool(rec["source"].get("url")), rec["id"])
                 continue
             self.assertNotIn(helper, main, rec["id"])
-            for gone in ("none (no line included)", "None (no line included)", "No line to measure", "None recorded"):
+            for gone in ("none (no line included)", "None (no line included)", "No line to measure", "None recorded",
+                         "none (no track included)", "None (no track included)", "No track to measure"):
                 self.assertNotIn(gone, main, rec["id"])
-            for row in ("Coordinates", "May be passed on", "OpenStreetMap only", "Line source",
-                        "Line in this dataset", "Why there is no line"):
+            for row in ("Coordinates", "May be passed on", "OpenStreetMap only", "Line source", "Track source",
+                        "Line in this dataset", "Track in this dataset", "Why there is no line", "Why there is no track"):
                 self.assertNotIn(f"<dt>{row}</dt>", page, rec["id"])
             if not rec["derived"]["files"].get("shield"):
                 logo = re.search(r'<h2 id="logo-title">Logo</h2>(.*?)</section>', page, re.S).group(1)

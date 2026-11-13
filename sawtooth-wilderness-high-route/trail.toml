@@ -20,15 +20,15 @@ url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-au
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and the creator's terms for passing the line on are not stated."
+mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and the creator's terms for passing the track on are not stated."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creator publishes the line for download; no licence that allows passing it on is stated. Get it from the creator's page."
+line_absent_reason = "The creator publishes the track for download; no licence that allows passing it on is stated. Get it from the creator's page."
 
 [osm]
 relation = 0

@@ -19,19 +19,19 @@ url = "https://shop.adventurewithkeen.com/wilderness-press/"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://shop.adventurewithkeen.com/wilderness-press/, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://shop.adventurewithkeen.com/wilderness-press/, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No line is included; the line is the book's maps."
+mainline = "No track is included; the track is the book's maps."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The route's line is in a bought guidebook, and no creator track was found. Get the line from the book The Tahoe–Yosemite Trail."
+line_absent_reason = "The route's track is in a bought guidebook, and no creator GPX was found. Get the track from the book The Tahoe–Yosemite Trail."
 
 [osm]
 relation = 0
-note = "Not recorded: the route's creator does not publish a line."
+note = "Not recorded: the route's creator does not publish a track."
 
 [shield]
 status = "no-logo-exists"

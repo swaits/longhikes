@@ -20,7 +20,7 @@ url = "https://www.hellscanyon.org/blue-mountains-trail/maps"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.hellscanyon.org/blue-mountains-trail/maps, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://www.hellscanyon.org/blue-mountains-trail/maps, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
 mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and the maps are sent only after a signed waiver."
@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The council sends the maps and databook free after a signed waiver, and states no licence that allows passing the line on. Ask the council for it through its maps page."
+line_absent_reason = "The council sends the maps and databook free after a signed waiver, and states no licence that allows passing the track on. Ask the council for it through its maps page."
 
 [osm]
 relation = 0

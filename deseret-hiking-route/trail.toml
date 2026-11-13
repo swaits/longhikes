@@ -20,7 +20,7 @@ url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
 mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and the materials are sent on a condition."
@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creator gives the maps and GPX free after proof of a day of manual trail maintenance, and states no licence that allows passing the line on. Get it from the guide page."
+line_absent_reason = "The creator gives the maps and GPX free after proof of a day of manual trail maintenance, and states no licence that allows passing the track on. Get it from the guide page."
 
 [osm]
 relation = 0

@@ -20,15 +20,15 @@ url = "https://www.adventurealan.com/wind-river-high-route/"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.adventurealan.com/wind-river-high-route/, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://www.adventurealan.com/wind-river-high-route/, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and the creators' terms for passing the line on are not stated."
+mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and the creators' terms for passing the track on are not stated."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creators publish the line for download; no licence that allows passing it on is stated. Get it from the creators' page."
+line_absent_reason = "The creators publish the track for download; no licence that allows passing it on is stated. Get it from the creators' page."
 
 [osm]
 relation = 0

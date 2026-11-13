@@ -1,16 +1,16 @@
 # Open Long Trails
 
-A public dataset of long-distance hiking trails in the United States and Canada: one directory per trail, with a written record, the trail's line where it may be shared, and the trail's logo where one exists. First compiled for the PHRP route planner.
+A public dataset of long-distance hiking trails in the United States and Canada: one directory per trail, with a written record, the trail's track where it may be shared, and the trail's logo where one exists. First compiled for the PHRP route planner.
 
 ## What this is, and what it is not
 
-This is a dataset, not a guide. Each record says what the trail is, how long it is, where its line came from, and under what terms that line may be used. It is not a navigation product: lines vary in quality, some trails are unfinished, and some records have no line at all. Check a trail's own record before using its line.
+This is a dataset, not a guide. Each record says what the trail is, how long it is, where its track came from, and under what terms that track may be used. It is not a navigation product: tracks vary in quality, some trails are unfinished, and some records have no track at all. Check a trail's own record before using its track.
 
 The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-138 records, 85 with a line, 53 records only. Of these, 34 are person-defined routes: 1 with a line and 33 records only.
+138 records, 85 with a track, 53 records only. Of these, 34 are person-defined routes: 1 with a track and 33 records only.
 
 <!-- END COUNTS -->
 
@@ -20,21 +20,21 @@ A long trail here is a named, continuous walking route, or a named loop, of at l
 
 Every United States National Scenic Trail is listed. Other trails are listed when they meet the rule above.
 
-Person-defined routes are listed too, at the same 50-mile floor. A person-defined route is one that a person or a small group worked out and published: a high route, a traverse, or a loop of linked trails. Its record names the creator and says where the route is got from the creator: the guidebook, map set or page, and whether it is free or sold. Whether a line is included follows the creator's choice:
+Person-defined routes are listed too, at the same 50-mile floor. A person-defined route is one that a person or a small group worked out and published: a high route, a traverse, or a loop of linked trails. Its record names the creator and says where the route is got from the creator: the guidebook, map set or page, and whether it is free or sold. Whether a track is included follows the creator's choice:
 
-- The creator sells the route, or chooses not to publish a line: the record has no line. No line is included from any source, OpenStreetMap included.
-- The creator publishes the line freely: a line is included only where the creator's terms allow passing it on, or where OpenStreetMap carries the route as a route relation. Otherwise the record points to the creator's own download.
-- Not settled: the record has no line until it is.
+- The creator sells the route, or chooses not to publish a track: the record has no track. No track is included from any source, OpenStreetMap included.
+- The creator publishes the track freely: a track is included only where the creator's terms allow passing it on, or where OpenStreetMap carries the route as a route relation. Otherwise the record points to the creator's own download.
+- Not settled: the record has no track until it is.
 
 A creator who wants a record changed or removed can ask; see NOTICE.md.
 
-A trail may be listed as a record only, with no line, when no line for it may be shared. The record says why.
+A trail may be listed as a record only, with no track, when no track for it may be shared. The record says why.
 
 ## Trails
 
 <!-- BEGIN TRAIL TABLE -->
 
-| ID | Trail | Country | States / provinces | Length (km) | Line | Licence |
+| ID | Trail | Country | States / provinces | Length (km) | Track | Licence |
 | --- | --- | --- | --- | ---: | --- | --- |
 | alexander-mackenzie | Alexander MacKenzie Heritage Trail | CA | BC | 420 | yes | ODbL-1.0 |
 | allegheny-trail | Allegheny Trail | US | WV | 530 | yes | ODbL-1.0 |
@@ -145,11 +145,11 @@ A trail may be listed as a record only, with no line, when no line for it may be
 
 ## Person-defined routes
 
-Routes that a person or a small group worked out and published. The record says who made the route, where it is got from, and whether the creator shares the line. See the inclusion rule above.
+Routes that a person or a small group worked out and published. The record says who made the route, where it is got from, and whether the creator shares the track. See the inclusion rule above.
 
 <!-- BEGIN ROUTE TABLE -->
 
-| ID | Route | Country | States / provinces | Length (km) | Creator | Line policy | Line | First guide |
+| ID | Route | Country | States / provinces | Length (km) | Creator | Line policy | Track | First guide |
 | --- | --- | --- | --- | ---: | --- | --- | --- | --- |
 | beartooth-high-route | Beartooth High Route | US | MT, WY | 145 | Wilderness Mindset | sold | no | [Beartooth High Route Map Pack](https://wildernessmindset.com/product/beartooth-high-route-map-pack/) (purchase) |
 | big-seki-loop | Big SEKI Loop | US | CA | 249 | Amy and James (Doing Miles) | open | yes | [Big SEKI Loop Route Guide](https://doingmiles.com/route-big-seki-loop/) (free) |
@@ -194,39 +194,39 @@ One directory per trail. The directory name is the trail's stable `id` and never
 
 ```text
 <id>/trail.toml            the record (see docs/schema.md)
-<id>/line.geojson          the main line, where one may be shared
-<id>/alternates.geojson    alternate and connector lines, where the source serves them separately
-<id>/line-<source>.geojson one source's own extract, where a line combines sources
-<id>/release.txt           the source, licence and date the line files came from
+<id>/line.geojson          the main track, where one may be shared
+<id>/alternates.geojson    alternate and connector tracks, where the source serves them separately
+<id>/line-<source>.geojson one source's own extract, where a track combines sources
+<id>/release.txt           the source, licence and date the track files came from
 <id>/shield.svg            the trail's logo, where one exists (SVG preferred)
 <id>/shield.png            the trail's logo, where no SVG exists
 ```
 
-In the published copy, GeoJSON coordinates are rounded to 6 decimal places (about 0.1 m) and written as compact JSON. Geometry is otherwise as the source served it. Raw download files that were only used to build a line (for example raw OpenStreetMap XML extracts) are not included; the record names the source and relation they came from.
+In the published copy, GeoJSON coordinates are rounded to 6 decimal places (about 0.1 m) and written as compact JSON. Geometry is otherwise as the source served it. Raw download files that were only used to build a track (for example raw OpenStreetMap XML extracts) are not included; the record names the source and relation they came from.
 
 Top-level generated files:
 
 ```text
 trails.csv      one row per trail (built by tools/build_index.py)
-index.geojson   every included line, simplified to about 100 m, with id and name
+index.geojson   every included track, simplified to about 100 m, with id and name
 SOURCES.md      each distinct source, its terms, and the trails that use it
 ```
 
 ## How to use it
 
-- Read a trail: open its `trail.toml`. The `[source]` section says where the line came from and under what terms it may be used.
+- Read a trail: open its `trail.toml`. The `[source]` section says where the track came from and under what terms it may be used.
 - Read all trails at once: use `trails.csv`, or `index.geojson` for a map overview.
 - Check the data: run `python3 tools/validate.py`. It prints `OK <n> trails` when all records pass.
 - Rebuild the generated files after editing a record: run `python3 tools/build_index.py`.
 
-Follow the licence in each record. Lines from OpenStreetMap need the credit "© OpenStreetMap contributors" and stay under the ODbL. Lines from United States federal agencies are public domain in the United States. Other lines carry the credit named in their record.
+Follow the licence in each record. Tracks from OpenStreetMap need the credit "© OpenStreetMap contributors" and stay under the ODbL. Tracks from United States federal agencies are public domain in the United States. Other tracks carry the credit named in their record.
 
 ## Licences
 
 The records, documents and compiled index in this repository are dedicated to the public domain under CC0-1.0 (see LICENSE).
 The tools in `tools/` are under the MIT licence (see LICENSES/MIT.txt).
-Each trail's line keeps the terms of its source, stated in that trail's record (see SOURCES.md).
-Lines from OpenStreetMap are © OpenStreetMap contributors, under the ODbL (see LICENSES/ODbL-1.0.txt).
+Each trail's track keeps the terms of its source, stated in that trail's record (see SOURCES.md).
+Tracks from OpenStreetMap are © OpenStreetMap contributors, under the ODbL (see LICENSES/ODbL-1.0.txt).
 Trail logos are not covered by any of these licences; see NOTICE.md.
 
 ## Logos
@@ -235,7 +235,7 @@ Logos are included only to identify each trail. They belong to their holders, ar
 
 ## Report an error
 
-Open an issue, or send a patch, with: the trail's `id`, what is wrong, and where the correct information can be checked (a source page, a map, or a measured line). Corrections to a line should name the source the corrected line came from and its licence. See CONTRIBUTING.md for how to correct a record, add a trail, or refresh a trail from its source.
+Open an issue, or send a patch, with: the trail's `id`, what is wrong, and where the correct information can be checked (a source page, a map, or a measured track). Corrections to a track should name the source the corrected track came from and its licence. See CONTRIBUTING.md for how to correct a record, add a trail, or refresh a trail from its source.
 
 ## Sources
 

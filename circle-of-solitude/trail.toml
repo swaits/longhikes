@@ -19,19 +19,19 @@ url = "https://shop.adventurewithkeen.com/wilderness-press/"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://shop.adventurewithkeen.com/wilderness-press/, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://shop.adventurewithkeen.com/wilderness-press/, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No line is included; whether the creator shares one is not settled."
+mainline = "No track is included; whether the creator shares one is not settled."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "Whether the creator shares the line is not settled: no page of the author's or the publisher's for the book was found. The route is described in the guidebook Kings Canyon National Park."
+line_absent_reason = "Whether the creator shares the track is not settled: no page of the author's or the publisher's for the book was found. The route is described in the guidebook Kings Canyon National Park."
 
 [osm]
 relation = 0
-note = "Not recorded: whether the creator shares the line is not settled."
+note = "Not recorded: whether the creator shares the track is not settled."
 
 [shield]
 status = "no-logo-exists"

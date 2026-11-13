@@ -20,19 +20,19 @@ url = "https://deserttrail.net"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://deserttrail.net, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://deserttrail.net, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No line is included; no map or guide is offered, and whether the creator shares one is not settled."
+mainline = "No track is included; no map or guide is offered, and whether the creator shares one is not settled."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "Whether the creator shares the line is not settled: the official page offers no map, GPX or guide, and states no position. The site is where the route is described."
+line_absent_reason = "Whether the creator shares the track is not settled: the official page offers no map, GPX or guide, and states no position. The site is where the route is described."
 
 [osm]
 relation = 0
-note = "Not recorded: whether the creator shares the line is not settled."
+note = "Not recorded: whether the creator shares the track is not settled."
 
 [shield]
 status = "no-logo-exists"

@@ -19,7 +19,7 @@ url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-bac
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the publisher and the page its facts were read on (https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
 mainline = "No OpenStreetMap route relation was found for the Jasper trail; the two relations named North Boundary Trail are other trails, in Connecticut and on the Alberta-Montana border."
@@ -27,7 +27,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No OpenStreetMap route relation for the trail was found, and the publisher serves no line that may be passed on. The record is kept without a line."
+line_absent_reason = "No OpenStreetMap route relation for the trail was found, and the publisher serves no track that may be passed on. The record is kept without a track."
 
 [osm]
 relation = 0

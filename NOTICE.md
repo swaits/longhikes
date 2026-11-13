@@ -4,7 +4,7 @@
 
 The files `shield.svg` and `shield.png` in the trail directories are the logos and marks of the trails they identify. Each logo belongs to the holder named in that trail's record (`shield.logo_owner` in `trail.toml`, with where the art was taken from in `shield.logo_source`).
 
-The logos are included only to identify each trail. They are not covered by this repository's licences (CC0-1.0 for the records and documents, MIT for the tools, or the source licences that cover the lines). No right to use a logo for any other purpose is given or implied.
+The logos are included only to identify each trail. They are not covered by this repository's licences (CC0-1.0 for the records and documents, MIT for the tools, or the source licences that cover the tracks). No right to use a logo for any other purpose is given or implied.
 
 Some logos are official emblems of United States National Scenic or Historic Trails. Those emblems are federal insignia; this repository's use of them is for identification only.
 
@@ -16,4 +16,4 @@ The same applies to a person-defined route. A route's creator can ask for its re
 
 ## Data
 
-Lines keep the terms of their sources. See each trail's record and SOURCES.md. In particular, lines from OpenStreetMap are © OpenStreetMap contributors and are available under the Open Database License (ODbL): https://www.openstreetmap.org/copyright
+Tracks keep the terms of their sources. See each trail's record and SOURCES.md. In particular, tracks from OpenStreetMap are © OpenStreetMap contributors and are available under the Open Database License (ODbL): https://www.openstreetmap.org/copyright

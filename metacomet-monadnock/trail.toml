@@ -13,17 +13,17 @@ wave = 1
 
 [source]
 status = "osm-only"
-publisher = "Appalachian Mountain Club (publishes the New Hampshire part); the National Park Service carries the Metacomet section in the New England NST line"
+publisher = "Appalachian Mountain Club (publishes the New Hampshire part); the National Park Service carries the Metacomet section in the New England NST track"
 url = "https://www.openstreetmap.org/relation/2317544"
 discovery = "osm-relation-version: Overpass `rel(2317544); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes (relation v130, edited 2026-07-04)."
 format = "OpenStreetMap route relation, read through Overpass or a Geofabrik extract"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 2317544."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 2317544."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
 decision = "included-named"
-decision_text = "Included with its name and logo. The line is from OpenStreetMap."
+decision_text = "Included with its name and logo. The track is from OpenStreetMap."
 mainline = "One relation: the whole trail from the Connecticut line to Mount Monadnock. No alternates."
 source_checked = "2026-11-08"
 redistributable = true

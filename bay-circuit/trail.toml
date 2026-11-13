@@ -20,7 +20,7 @@ discovery = "osm-relation-version: Overpass `rel(12779888); out meta;` (version 
 format = "OpenStreetMap route relation, read through Overpass with all member ways"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 12779888."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 12779888."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
 mainline = "OSM relation 12779888: a super route whose members are the trail's own relations; every member way is included once."
@@ -28,11 +28,11 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "The published figure of more than 230 miles counts the whole greenway, including parts that are still road walks. OpenStreetMap maps the dedicated trail in 14 pieces, 296.9 km in all. The line is kept as mapped."
+length_gap_note = "The published figure of more than 230 miles counts the whole greenway, including parts that are still road walks. OpenStreetMap maps the dedicated trail in 14 pieces, 296.9 km in all. The track is kept as mapped."
 
 [osm]
 relation = 12779888
-note = "Downloaded 2026-11-10; 1162 ways in the main line. release.txt has the source and date."
+note = "Downloaded 2026-11-10; 1162 ways in the main track. release.txt has the source and date."
 
 [shield]
 status = "logo-not-found"

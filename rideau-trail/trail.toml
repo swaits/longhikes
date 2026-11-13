@@ -19,7 +19,7 @@ discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and ti
 format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 7675635."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 7675635."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
 mainline = "OSM 7675635 (super-relation) over Ottawa, Central and Kingston sections. An ArcGIS item under 'an ArcGIS account' (2021) exists; provenance unknown."
@@ -27,7 +27,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "The three main sections (Ottawa, Central, Kingston) give 325.3 km in 1 part, -15.9% against 387 km. The 14 local blue side loops (108.8 km) are in alternates.geojson and are not part of the published length. Road links between sections are under-mapped in OSM. Kept as the best available line."
+length_gap_note = "The three main sections (Ottawa, Central, Kingston) give 325.3 km in 1 part, -15.9% against 387 km. The 14 local blue side loops (108.8 km) are in alternates.geojson and are not part of the published length. Road links between sections are under-mapped in OSM. Kept as the best available track."
 
 [osm]
 relation = 7675635
@@ -47,4 +47,4 @@ date = "2026-11-08"
 measured_km = 325.3
 difference_percent = -15.9
 parts = 1
-note = "The three main sections (Ottawa, Central, Kingston) give 325.3 km in 1 part, -15.9% against 387 km. The 14 local blue side loops (108.8 km) are in alternates.geojson and are not part of the published length. Road links between sections are under-mapped in OSM. Kept as the best available line."
+note = "The three main sections (Ottawa, Central, Kingston) give 325.3 km in 1 part, -15.9% against 387 km. The 14 local blue side loops (108.8 km) are in alternates.geojson and are not part of the published length. Road links between sections are under-mapped in OSM. Kept as the best available track."

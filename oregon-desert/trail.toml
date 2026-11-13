@@ -20,7 +20,7 @@ discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and ti
 format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 10702483."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 10702483."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
 mainline = "OSM 10702483 (local network). ONDA publishes GPS tracks at onda.org (Trail Resources) and warns copies elsewhere are not approved; terms not stated."
@@ -28,7 +28,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No line is included. Not downloaded. Could be an author-style route (see excluded list); undecided."
+line_absent_reason = "No track is included. Not downloaded. Could be an author-style route (see excluded list); undecided."
 
 [osm]
 relation = 10702483

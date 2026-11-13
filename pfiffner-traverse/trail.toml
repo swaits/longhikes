@@ -20,19 +20,19 @@ url = "https://andrewskurka.com/product/pfiffner-traverse-guide-maps/"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://andrewskurka.com/product/pfiffner-traverse-guide-maps/, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://andrewskurka.com/product/pfiffner-traverse-guide-maps/, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No line is included; the creator withholds the recommended line."
+mainline = "No track is included; the creator withholds the recommended track."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The route is sold as a guide whose recommended line is deliberately not drawn. Get the line from the Pfiffner Traverse Guide."
+line_absent_reason = "The route is sold as a guide whose recommended track is deliberately not drawn. Get the track from the Pfiffner Traverse Guide."
 
 [osm]
 relation = 0
-note = "Not recorded: the route's creator does not publish a line."
+note = "Not recorded: the route's creator does not publish a track."
 
 [shield]
 status = "no-logo-exists"

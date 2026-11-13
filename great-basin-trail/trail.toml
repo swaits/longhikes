@@ -20,19 +20,19 @@ url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.gossamergear.com/blogs/our-blog/great-basin-trail, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://www.gossamergear.com/blogs/our-blog/great-basin-trail, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No line is included; no developer-published map or GPX was found."
+mainline = "No track is included; no developer-published map or GPX was found."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "Whether the creator shares the line is not settled: no map or GPX of his was found, and his own site no longer resolves. The article is where the route is described."
+line_absent_reason = "Whether the creator shares the track is not settled: no map or GPX of his was found, and his own site no longer resolves. The article is where the route is described."
 
 [osm]
 relation = 0
-note = "Not recorded: whether the creator shares the line is not settled."
+note = "Not recorded: whether the creator shares the track is not settled."
 
 [shield]
 status = "no-logo-exists"

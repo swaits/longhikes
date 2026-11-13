@@ -20,19 +20,19 @@ url = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-tr
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No line is included; the line is in the guidebook."
+mainline = "No track is included; the track is in the guidebook."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The route's line is sold as a guidebook and map set, and no track is published, deliberately. Get the line from the Sierra High Route guidebook."
+line_absent_reason = "The route's track is sold as a guidebook and map set, and no GPX is published, deliberately. Get the track from the Sierra High Route guidebook."
 
 [osm]
 relation = 0
-note = "Not recorded: the route's creator does not publish a line."
+note = "Not recorded: the route's creator does not publish a track."
 
 [shield]
 status = "no-logo-exists"
@@ -68,4 +68,4 @@ title = "Sierra High Route Mapset & Databook"
 author = "Andrew Skurka"
 access = "purchase"
 url = "https://andrewskurka.com/product/sierra-high-route-map-set-databook/"
-format = "map set with breadcrumbs (not a continuous line)"
+format = "map set with breadcrumbs (not a continuous track)"

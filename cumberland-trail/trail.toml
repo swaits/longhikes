@@ -19,7 +19,7 @@ discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and ti
 format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 13968933."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 13968933."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
 mainline = "OSM 13968933."
@@ -27,7 +27,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "Partly unbuilt, by design: 389.5 km in 12 parts against 480 km planned (300 mi). About 220 mi is built; the OSM line follows built segments plus some planned corridor. Kept: it is the best whole-corridor line that exists."
+length_gap_note = "Partly unbuilt, by design: 389.5 km in 12 parts against 480 km planned (300 mi). About 220 mi is built; the OSM track follows built segments plus some planned corridor. Kept: it is the best whole-corridor track that exists."
 
 [osm]
 relation = 13968933
@@ -47,4 +47,4 @@ date = "2026-11-08"
 measured_km = 389.5
 difference_percent = -18.9
 parts = 12
-note = "Partly unbuilt, by design: 389.5 km in 12 parts against 480 km planned (300 mi). About 220 mi is built; the OSM line follows built segments plus some planned corridor. Kept: it is the best whole-corridor line that exists."
+note = "Partly unbuilt, by design: 389.5 km in 12 parts against 480 km planned (300 mi). About 220 mi is built; the OSM track follows built segments plus some planned corridor. Kept: it is the best whole-corridor track that exists."

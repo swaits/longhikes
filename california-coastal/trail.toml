@@ -20,7 +20,7 @@ discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dat
 format = "ArcGIS FeatureServer"
 crs = "not read"
 licence = "none-stated"
-licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's line is not redistributed here."
+licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's track is not redistributed here."
 attribution = "California Coastal Commission; State Coastal Conservancy; Coastal Trails Alliance"
 osm_only = false
 mainline = "Planned and existing parts mixed; the layer marks status. A large share is road and sidewalk."
@@ -28,7 +28,7 @@ source_checked = "2026-11-08"
 redistributable = false
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No line is included. Found by search; not downloaded. Large road share; inclusion undecided."
+line_absent_reason = "No track is included. Found by search; not downloaded. Large road share; inclusion undecided."
 
 [osm]
 relation = 0

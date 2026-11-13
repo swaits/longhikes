@@ -28,7 +28,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No line is included. Metadata read; not downloaded. Deferred: Alaska is outside the first coverage order and the route is a winter trail."
+line_absent_reason = "No track is included. Metadata read; not downloaded. Deferred: Alaska is outside the first coverage order and the route is a winter trail."
 
 [osm]
 relation = 17946723

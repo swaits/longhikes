@@ -21,7 +21,7 @@ discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and ti
 format = "OpenStreetMap relation, read through Overpass or a Geogabrik extract"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 4485206."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 4485206."
 attribution = "OpenStreetMap contributors (ODbL); route by simBLISSity Ultralight Designs"
 osm_only = true
 mainline = "One OSM relation for the whole route; no alternates recorded."
@@ -29,7 +29,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No line is included. Not downloaded. Moved here from the excluded list on review, 2026-11-08: the creator publishes an official mapset with GPS tracks, so the reason for excluding author routes (a track withheld on purpose) does not apply."
+line_absent_reason = "No track is included. Not downloaded. Moved here from the excluded list on review, 2026-11-08: the creator publishes an official mapset with GPS tracks, so the reason for excluding author routes (a track withheld on purpose) does not apply."
 
 [osm]
 relation = 4485206

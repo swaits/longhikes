@@ -20,19 +20,19 @@ url = "https://www.simblissity.net/mogollon-rim-trail-mapset.shtml"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.simblissity.net/mogollon-rim-trail-mapset.shtml, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://www.simblissity.net/mogollon-rim-trail-mapset.shtml, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No line is included; the tracks are part of a sold bundle."
+mainline = "No track is included; it is part of a sold bundle."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The route's GPS tracks are part of a sold bundle. Get the line from the Mogollon Rim Trail Mapset & Resource Bundle."
+line_absent_reason = "The route's GPS tracks are part of a sold bundle. Get the track from the Mogollon Rim Trail Mapset & Resource Bundle."
 
 [osm]
 relation = 0
-note = "Not recorded: the route's creator does not publish a line."
+note = "Not recorded: the route's creator does not publish a track."
 
 [shield]
 status = "no-logo-exists"

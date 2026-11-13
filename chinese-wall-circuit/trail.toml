@@ -20,7 +20,7 @@ url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circui
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
 mainline = "No OpenStreetMap route relation for the loop was found on 2026-11-10, and no GPX is offered."
@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The route is published as a description and map with no GPX and no licence that allows passing a line on. Get it from the route page."
+line_absent_reason = "The route is published as a description and map with no GPX and no licence that allows passing a track on. Get it from the route page."
 
 [osm]
 relation = 0

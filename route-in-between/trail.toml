@@ -20,15 +20,15 @@ url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No line is included; only the middle third has a creator line."
+mainline = "No track is included; only the middle third has a creator track."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "Only the middle third has a creator line, in the Deseret Hiking Route guide; the two end trails are published separately and have their own records here. Get the middle section from the guide page."
+line_absent_reason = "Only the middle third has a creator track, in the Deseret Hiking Route guide; the two end trails are published separately and have their own records here. Get the middle section from the guide page."
 
 [osm]
 relation = 0
@@ -52,7 +52,7 @@ year = 2019
 line_policy = "open"
 creator_words = "The combined AZT-DHR-ICT (collectively, the Route In Between, or RIB) offers hikers the opportunity to walk from Mexico to Canada through oft-overlooked terrain."
 creator_words_url = "http://www.lbhikes.com/2019/12/dhr.html"
-note = "A link-up of the Arizona Trail, the Deseret Hiking Route and the Idaho Centennial Trail, from Mexico to Canada through Arizona, Utah and Idaho. The creator walked it in 2019; only the middle third has a creator line."
+note = "A link-up of the Arizona Trail, the Deseret Hiking Route and the Idaho Centennial Trail, from Mexico to Canada through Arizona, Utah and Idaho. The creator walked it in 2019; only the middle third has a creator track."
 
 [[guide]]
 title = "A Complete Guide to the Deseret Hiking Route"

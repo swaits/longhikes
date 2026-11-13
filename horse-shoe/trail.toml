@@ -20,7 +20,7 @@ discovery = "osm-relation-version: Overpass `rel(1596895); out meta;` (version a
 format = "OpenStreetMap route relation, read through Overpass with all member ways"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 1596895."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 1596895."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
 mainline = "OSM relation 1596895: one route relation, main ways only."
@@ -31,7 +31,7 @@ line_file = "line.geojson"
 
 [osm]
 relation = 1596895
-note = "Downloaded 2026-11-10; 429 ways in the main line. release.txt has the source and date."
+note = "Downloaded 2026-11-10; 429 ways in the main track. release.txt has the source and date."
 
 [shield]
 status = "logo-not-found"

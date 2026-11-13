@@ -19,7 +19,7 @@ discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read the layer's las
 format = "ArcGIS FeatureServer, filter TRLNAME LIKE '%Backbone%' (50 pieces)"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 2748910."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 2748910."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
 mainline = "Pieces only; not checked for completeness."

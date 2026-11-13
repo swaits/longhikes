@@ -10,7 +10,7 @@ length_note = "about 330 mi"
 tier = "regional"
 designation = "West Virginia Scenic Trails Association"
 wave = "held"
-wave_note = "Held: no usable whole line exists. OSM holds about 50 km of the 530 km trail in fragment relations, and the West Virginia Scenic Trails Association publishes no open line. What would fix it: a line from the Association, or complete OSM route mapping."
+wave_note = "Held: no usable whole track exists. OSM holds about 50 km of the 530 km trail in fragment relations, and the West Virginia Scenic Trails Association publishes no open track. What would fix it: a track from the Association, or complete OSM route mapping."
 
 [source]
 status = "osm-only"
@@ -20,7 +20,7 @@ discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and ti
 format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 1772789."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 1772789."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
 mainline = "OSM 1772789."
@@ -28,7 +28,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "OSM holds only fragment relations (28.8 km in the named relation, 21.1 km more in alternates), about 50 km of 530 km. No usable whole line found on 2026-11-08. Held."
+length_gap_note = "OSM holds only fragment relations (28.8 km in the named relation, 21.1 km more in alternates), about 50 km of 530 km. No usable whole track found on 2026-11-08. Held."
 
 [osm]
 relation = 1772789
@@ -48,4 +48,4 @@ date = "2026-11-08"
 measured_km = 28.8
 difference_percent = -94.6
 parts = 1
-note = "OSM holds only fragment relations (28.8 km in the named relation, 21.1 km more in alternates), about 50 km of 530 km. No usable whole line found on 2026-11-08. Held."
+note = "OSM holds only fragment relations (28.8 km in the named relation, 21.1 km more in alternates), about 50 km of 530 km. No usable whole track found on 2026-11-08. Held."

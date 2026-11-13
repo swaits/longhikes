@@ -16,14 +16,14 @@ inclusion = "nst-unconditional"
 status = "verified"
 publisher = "Pacific Crest Trail Association (PCTA)"
 url = "https://services5.arcgis.com/ZldHa25efPFpMmfB/ArcGIS/rest/services/PCTA_Centerline/FeatureServer/0"
-discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes. PCTA updates the line once a year, early in the year (last edit 2026-01-06)."
+discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes. PCTA updates the track once a year, early in the year (last edit 2026-01-06)."
 format = "ArcGIS FeatureServer layer, one feature (a 35 MB GeoJSON when asked for all vertices); PCTA also offers file downloads at pcta.org/discover-the-trail/maps/pct-data/"
 crs = "EPSG:4326"
 licence = "CC-BY-4.0"
 licence_text = "Creative Commons Attribution 4.0 International (CC BY 4.0). The Pacific Crest Trail Association states: 'All of the data accessed through this page are licensed under the Creative Commons Attribution 4.0 International License.' (https://www.pcta.org/discover-the-trail/maps/pct-data/, read 2026-11-09). Credit: Pacific Crest Trail Association."
 attribution = "Pacific Crest Trail Association (CC BY 4.0). Say that the line was reshaped."
 osm_only = false
-mainline = "One feature, the main line. No alternates or connectors in this layer (PCTA publishes those separately)."
+mainline = "One feature, the main track. No alternates or connectors in this layer (PCTA publishes those separately)."
 source_checked = "2026-11-08"
 redistributable = true
 line_source = "Pacific Crest Trail Association (PCTA)"
@@ -47,4 +47,4 @@ date = "2026-11-08"
 measured_km = 4271.3
 difference_percent = 0.1
 parts = 1
-note = "One feature, one line, 4,271.3 km, +0.1% over 4,265 km."
+note = "One feature, one track, 4,271.3 km, +0.1% over 4,265 km."

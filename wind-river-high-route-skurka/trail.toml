@@ -20,19 +20,19 @@ url = "https://andrewskurka.com/product/wind-river-high-route-guide/"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://andrewskurka.com/product/wind-river-high-route-guide/, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://andrewskurka.com/product/wind-river-high-route-guide/, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No line is included; the creator withholds the recommended line."
+mainline = "No track is included; the creator withholds the recommended track."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The route is sold as a guide and its recommended line is withheld, so the GPX sold with it has no track. Get the line from the Wind River Range High Route Guide."
+line_absent_reason = "The route is sold as a guide and its recommended track is withheld, so the GPX sold with it has none. Get the track from the Wind River Range High Route Guide."
 
 [osm]
 relation = 0
-note = "Not recorded: the route's creator does not publish a line."
+note = "Not recorded: the route's creator does not publish a track."
 
 [shield]
 status = "no-logo-exists"

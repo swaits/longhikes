@@ -20,15 +20,15 @@ url = "https://nimblewillnomad.com/books/"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://nimblewillnomad.com/books/, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://nimblewillnomad.com/books/, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No line is included; the route is a link-up of published trails."
+mainline = "No track is included; the route is a link-up of published trails."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The route is a link-up of published trails with no whole line of its own: OpenStreetMap carries only two of its roadwalk segments, 55.0 km in south Florida and 344.3 km in Alabama. Each linked trail's own record here has its line."
+line_absent_reason = "The route is a link-up of published trails with no whole track of its own: OpenStreetMap carries only two of its roadwalk segments, 55.0 km in south Florida and 344.3 km in Alabama. Each linked trail's own record here has its track."
 
 [osm]
 relation = 0

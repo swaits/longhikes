@@ -20,7 +20,7 @@ discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dat
 format = "ArcGIS FeatureServer, 6,022 features"
 crs = "EPSG:3857"
 licence = "CC-BY-NC-ND-4.0"
-licence_text = "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0. Those terms do not allow commercial use or derivatives, so no line from this source is included. The trail is listed as a record only."
+licence_text = "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0. Those terms do not allow commercial use or derivatives, so no track from this source is included. The trail is listed as a record only."
 attribution = "Trans Canada Trail"
 osm_only = false
 mainline = "One network; each trail has 'ID_Trail', 'Name_Trail' and a surface column. Mostly multi-use, with long road and paddling parts."
@@ -28,7 +28,7 @@ source_checked = "2026-11-08"
 redistributable = false
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No line is included. Not downloaded because of the licence. Deferred: network of local trails, not a footpath; licence blocks."
+line_absent_reason = "No track is included. Not downloaded because of the licence. Deferred: network of local trails, not a footpath; licence blocks."
 
 [osm]
 relation = 1642822

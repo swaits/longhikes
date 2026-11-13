@@ -20,7 +20,7 @@ url = "https://www.greatplainstrail.org/gpt-map/"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.greatplainstrail.org/gpt-map/, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://www.greatplainstrail.org/gpt-map/, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
 mainline = "No OpenStreetMap route relation for the route was found; the alliance publishes an online map with no GPX."
@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The alliance publishes the route as an online map with no GPX and no licence that allows passing the line on, and the OpenStreetMap relation of this name is a 0.46-mile path in Missouri, not this route. Get the line from the alliance's map page."
+line_absent_reason = "The alliance publishes the route as an online map with no GPX and no licence that allows passing the track on, and the OpenStreetMap relation of this name is a 0.46-mile path in Missouri, not this route. Get the track from the alliance's map page."
 
 [osm]
 relation = 0

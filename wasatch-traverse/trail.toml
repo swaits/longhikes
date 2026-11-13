@@ -20,7 +20,7 @@ url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.eathomas.com/other-long-trails/wasatchoverview, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://www.eathomas.com/other-long-trails/wasatchoverview, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
 mainline = "No OpenStreetMap route relation for the route was found on 2026-11-10, and no track is offered."
@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creator publishes the route description and invites replication, but offers no track and states no licence for passing a line on. The overview is where the route is described."
+line_absent_reason = "The creator publishes the route description and invites replication, but offers no track and states no licence for passing it on. The overview is where the route is described."
 
 [osm]
 relation = 0

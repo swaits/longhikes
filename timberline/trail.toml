@@ -27,7 +27,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No line is included. Not downloaded."
+line_absent_reason = "No track is included. Not downloaded."
 
 [osm]
 relation = 0

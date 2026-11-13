@@ -20,19 +20,19 @@ url = "https://andrewskurka.com/adventures/great-western-loop/route-description/
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://andrewskurka.com/adventures/great-western-loop/route-description/, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://andrewskurka.com/adventures/great-western-loop/route-description/, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No line is included; the creator publishes none."
+mainline = "No track is included; the creator publishes none."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creator chooses not to publish a line, and says so: there is no route, so it must be made on your own. The route is described in the free route description on his page."
+line_absent_reason = "The creator chooses not to publish a track, and says so: there is no route, so it must be made on your own. The route is described in the free route description on his page."
 
 [osm]
 relation = 0
-note = "Not recorded: the route's creator does not publish a line."
+note = "Not recorded: the route's creator does not publish a track."
 
 [shield]
 status = "no-logo-exists"
@@ -66,4 +66,4 @@ title = "Great Western Loop and Sea-to-Sea Route Slideshows"
 author = "Andrew Skurka"
 access = "purchase"
 url = "https://andrewskurka.com/product/slideshows-on-disk-great-western-loop-and-sea-to-sea-route/"
-format = "slideshow on disk (not a route line)"
+format = "slideshow on disk (not a route track)"

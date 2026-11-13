@@ -20,19 +20,19 @@ url = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-ro
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No line is included, so no source licence applies to a line. This record names the creator and the page its facts were read on (https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light, read 2026-11-10)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "No line is included; the line is the book's maps."
+mainline = "No track is included; the track is the book's maps."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The route is sold as a guidebook whose maps and elevation profiles are the line, and no track is published. Get the line from Sierra Grand Traverse."
+line_absent_reason = "The route is sold as a guidebook whose maps and elevation profiles are the track, and no GPX is published. Get the track from Sierra Grand Traverse."
 
 [osm]
 relation = 0
-note = "Not recorded: the route's creator does not publish a line."
+note = "Not recorded: the route's creator does not publish a track."
 
 [shield]
 status = "no-logo-exists"
@@ -53,7 +53,7 @@ line_policy = "sold"
 creator_words = "Our hope is to inspire people who do track walking to get off the track and explore more of the wilderness."
 creator_words_url = "https://www.insidehook.com/travel/sierra-grand-traverse-new-hiking-trail-california"
 creator_words_by = "John Chapman"
-note = "From Tuolumne Meadows to Horseshoe Meadows, mostly off the Pacific Crest Trail, over 41 passes. The authors set out in 2019 and took three years of research; the book was published on 15 March 2023 and its maps and elevation profiles are the line."
+note = "From Tuolumne Meadows to Horseshoe Meadows, mostly off the Pacific Crest Trail, over 41 passes. The authors set out in 2019 and took three years of research; the book was published on 15 March 2023 and its maps and elevation profiles are the track."
 
 [[guide]]
 title = "Sierra Grand Traverse: An Epic Route Across the Range of Light"

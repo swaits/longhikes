@@ -47,4 +47,4 @@ date = "2026-11-08"
 measured_km = 117.9
 difference_percent = 12.3
 parts = 9
-note = "NST foot sections only: the NPS layer without its Natchez Trace Parkway (on-road) feature gives 117.9 km in 9 parts against about 105 km (65 mi) of foot trail built. The 715.0 km parkway road feature is in alternates.geojson and is not drawn as trail. The 65 mi figure is approximate; the NPS layer is the authoritative NST line. Kept as an NST (unconditional)."
+note = "NST foot sections only: the NPS layer without its Natchez Trace Parkway (on-road) feature gives 117.9 km in 9 parts against about 105 km (65 mi) of foot trail built. The 715.0 km parkway road feature is in alternates.geojson and is not drawn as trail. The 65 mi figure is approximate; the NPS layer is the authoritative NST track. Kept as an NST (unconditional)."

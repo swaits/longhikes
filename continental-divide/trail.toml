@@ -47,4 +47,4 @@ date = "2026-11-08"
 measured_km = 4891.2
 difference_percent = -2.0
 parts = 1
-note = "The 'CDT Primary Route' features join into 1 line, 4,891.2 km, 2.0% short of 4,989 km. alternates.geojson holds the Chief Mountain and Tonahutu routes and the one feature labelled Great Divide Trail (57.5 km)."
+note = "The 'CDT Primary Route' features join into 1 track, 4,891.2 km, 2.0% short of 4,989 km. alternates.geojson holds the Chief Mountain and Tonahutu routes and the one feature labelled Great Divide Trail (57.5 km)."

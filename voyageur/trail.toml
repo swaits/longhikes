@@ -10,7 +10,7 @@ length_note = "about 1,100 km planned"
 tier = "regional"
 designation = "Voyageur Trail Association"
 wave = "held"
-wave_note = "Held: no usable whole line exists. OSM relation 18529238 holds 2 ways (2.0 km) of about 1,100 km planned, and the Voyageur Trail Association publishes no open line. What would fix it: a line from the Association, or OSM mapping of the built sections."
+wave_note = "Held: no usable whole track exists. OSM relation 18529238 holds 2 ways (2.0 km) of about 1,100 km planned, and the Voyageur Trail Association publishes no open track. What would fix it: a track from the Association, or OSM mapping of the built sections."
 
 [source]
 status = "osm-only"
@@ -20,7 +20,7 @@ discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and ti
 format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 18529238."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 18529238."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
 mainline = "OSM 18529238 plus section relations."
@@ -28,7 +28,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "OSM relation 18529238 holds 2 ways, 2.0 km, against about 1,100 km planned. No usable whole line found in OSM or from the Association on 2026-11-08. Held."
+length_gap_note = "OSM relation 18529238 holds 2 ways, 2.0 km, against about 1,100 km planned. No usable whole track found in OSM or from the Association on 2026-11-08. Held."
 
 [osm]
 relation = 18529238
@@ -48,4 +48,4 @@ date = "2026-11-08"
 measured_km = 2.0
 difference_percent = -99.8
 parts = 1
-note = "OSM relation 18529238 holds 2 ways, 2.0 km, against about 1,100 km planned. No usable whole line found in OSM or from the Association on 2026-11-08. Held."
+note = "OSM relation 18529238 holds 2 ways, 2.0 km, against about 1,100 km planned. No usable whole track found in OSM or from the Association on 2026-11-08. Held."

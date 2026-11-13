@@ -20,7 +20,7 @@ discovery = "osm-relation-version: Overpass `rel(2654551); out meta;` (version a
 format = "OpenStreetMap route relation, read through Overpass with all member ways"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The line included here is from OpenStreetMap, relation 2654551."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 2654551."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
 mainline = "OSM relation 2654551: one route relation, main ways only."
@@ -28,11 +28,11 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "The published 420 km is the whole heritage corridor, which includes road and water sections; about 300 km of it is trail. The mapped trail is 322.4 km in 8 pieces. The line is kept as mapped."
+length_gap_note = "The published 420 km is the whole heritage corridor, which includes road and water sections; about 300 km of it is trail. The mapped trail is 322.4 km in 8 pieces. The track is kept as mapped."
 
 [osm]
 relation = 2654551
-note = "Downloaded 2026-11-10; 28 ways in the main line. release.txt has the source and date."
+note = "Downloaded 2026-11-10; 28 ways in the main track. release.txt has the source and date."
 
 [shield]
 status = "logo-not-found"

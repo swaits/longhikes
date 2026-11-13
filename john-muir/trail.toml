@@ -19,10 +19,10 @@ discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read the layer's las
 format = "NPS Public Trails (ArcGIS), filter TRLNAME LIKE '%John Muir%' (73 pieces); USFS National Forest System trails layer for the forest parts"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The line included here is from OpenStreetMap, relation 1244828."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 1244828."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "NPS covers only the park parts. OSM relation 1244828 is the only whole-trail line (verified)."
+mainline = "NPS covers only the park parts. OSM relation 1244828 is the only whole-trail track (verified)."
 source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"

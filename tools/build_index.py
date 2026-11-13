@@ -182,7 +182,7 @@ def _cell(value):
 
 def readme_table(trails):
     lines = [
-        "| ID | Trail | Country | States / provinces | Length (km) | Line | Licence |",
+        "| ID | Trail | Country | States / provinces | Length (km) | Track | Licence |",
         "| --- | --- | --- | --- | ---: | --- | --- |",
     ]
     for t in trails:
@@ -211,7 +211,7 @@ def first_guide(t):
 
 def readme_route_table(trails):
     lines = [
-        "| ID | Route | Country | States / provinces | Length (km) | Creator | Line policy | Line | First guide |",
+        "| ID | Route | Country | States / provinces | Length (km) | Creator | Line policy | Track | First guide |",
         "| --- | --- | --- | --- | ---: | --- | --- | --- | --- |",
     ]
     for t in trails:
@@ -234,8 +234,8 @@ def counts_line(trails):
     routes = [t for t in trails if trail_kind(t) == "route"]
     routes_with_line = sum(1 for t in routes if t.get("source", {}).get("line_file"))
     return (
-        f"{total} records, {with_line} with a line, {total - with_line} records only. "
-        f"Of these, {len(routes)} are person-defined routes: {routes_with_line} with a line "
+        f"{total} records, {with_line} with a track, {total - with_line} records only. "
+        f"Of these, {len(routes)} are person-defined routes: {routes_with_line} with a track "
         f"and {len(routes) - routes_with_line} records only."
     )
 

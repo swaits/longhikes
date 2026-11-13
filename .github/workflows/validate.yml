@@ -26,3 +26,15 @@ jobs:
       # and the build only copies those thumbnails (see web/olt/thumbs.py).
       - run: python3 -m unittest discover -s web/tests
       - run: python3 web/build.py --out _site
+
+  # Netlify builds the site from this repository when asked to. Asking only
+  # after both jobs above pass means a broken record or page is never deployed.
+  deploy:
+    needs: [validate, site]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'swaits/longhikes'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask Netlify to build and publish main
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK"

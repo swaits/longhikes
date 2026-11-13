@@ -11,5 +11,18 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: "3.12"
       - run: python3 tools/validate.py
+
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Standard library only: no packages to install, and no ImageMagick.
+      # web/tools/make_thumbs.py is a manual tool; web/thumbs/ is committed
+      # and the build only copies those thumbnails (see web/olt/thumbs.py).
+      - run: python3 -m unittest discover -s web/tests
+      - run: python3 web/build.py --out _site

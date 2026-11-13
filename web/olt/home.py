@@ -311,12 +311,19 @@ def render(records, site):
     lede = (f"A record for each of {total} long trails and routes, as a rule 50 miles (80&nbsp;km) or more: "
             "what it is, how long it is, who publishes it, and on what terms its track may be passed on. "
             "Where the terms allow, download the track as GPX or GeoJSON.")
+    contribute = ""
+    if site.repo_url:
+        contribute = (f'<p class="hero__caveat">Something wrong, or a trail missing? '
+                      f'<a href="{esc(site.correction_url())}">Report a problem</a> or '
+                      f'<a href="{esc(site.new_trail_url)}">suggest a trail</a>; '
+                      f'the records are text files <a href="{esc(site.repo_url)}">anyone can fix or add to</a>.</p>')
     return f"""<section class="hero" aria-labelledby="hero-title">
   <div class="container hero__inner">
     <p class="kicker">A public dataset &middot; United States and Canada</p>
     <h1 id="hero-title">{esc(site.tagline)}</h1>
     <p class="hero__lede">{lede}</p>
     <p class="hero__caveat">This is a dataset, not a navigation product. Tracks vary in quality, some trails are unfinished, and some records have no track at all; each of those says why.</p>
+    {contribute}
     <p><a class="button button--primary hero__cta" href="#q">Find a trail</a></p>
     <div class="hero__counts">
       <dl class="tally">

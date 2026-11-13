@@ -60,8 +60,11 @@ def header(path, site):
 
 
 def footer(site):
-    report = (f'<li><a href="{esc(site.issues_url)}">Report an error in a record</a></li>'
-              if site.issues_url else "")
+    report = ""
+    if site.repo_url:
+        report = (f'<li><a href="{esc(site.correction_url())}">Report an error in a record</a></li>'
+                  f'<li><a href="{esc(site.new_trail_url)}">Suggest a trail</a></li>'
+                  f'<li><a href="{esc(site.repo_url)}">Fix or add a trail</a></li>')
     return Markup(f"""<footer class="site-footer">
   <div class="container site-footer__grid">
     <div class="site-footer__about">

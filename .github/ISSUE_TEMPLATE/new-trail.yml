@@ -1,0 +1,83 @@
+name: Suggest a trail
+description: A trail or route that is missing
+title: "New trail: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a trail or route. You do not need to use git:
+        fill in this form and a maintainer can add the record.
+
+        The inclusion rule (see README.md): a named, continuous walking route,
+        or a named loop, of at least 50 miles (80 km) — a few well-known
+        multi-day trails of 60–80 km are also listed — in the United States or
+        Canada. It is either a trail that a land agency or a trail association
+        designates, maintains and publishes as one trail, or a person-defined
+        route that a person or a small group worked out and published (a high
+        route, a traverse, or a loop of linked trails).
+
+        A trail can be listed as a record only, with no track, when no track
+        for it may be shared. A track is included only where its source's
+        terms allow it to be passed on.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: The trail's or route's published name.
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: Where is it?
+      description: Country, and the states, provinces or territories it passes through.
+    validations:
+      required: true
+  - type: input
+    id: length
+    attributes:
+      label: Length
+      description: The published length, in miles or kilometres, and where that figure comes from if you know it. The floor is 50 miles (80 km), apart from a few well-known trails of 60–80 km.
+      placeholder: "e.g. 120 miles (193 km)"
+    validations:
+      required: true
+  - type: input
+    id: steward
+    attributes:
+      label: Steward or creator
+      description: The land agency or trail association that designates, maintains and publishes it as one trail — or, for a person-defined route, the person or small group who worked it out and published it.
+    validations:
+      required: true
+  - type: input
+    id: official-page
+    attributes:
+      label: Official page
+      description: The steward's or creator's own page for the trail or route (for a route, where it is got from the creator — the guidebook, map set or page, and whether it is free or sold).
+      placeholder: "https://"
+    validations:
+      required: true
+  - type: dropdown
+    id: track-exists
+    attributes:
+      label: Is there a track?
+      description: A GPX, GeoJSON or other track of the route published by the steward or creator, or an OpenStreetMap route relation.
+      options:
+        - "Yes"
+        - "No"
+        - "I don't know"
+    validations:
+      required: false
+  - type: textarea
+    id: track-terms
+    attributes:
+      label: Track terms
+      description: If there is a track, where is it, and on what terms may it be passed on? A track is included only where its source's terms allow passing it on. For a person-defined route whose creator sells the route or chooses not to publish a track, the record will hold no track and will point to the creator instead.
+    validations:
+      required: false
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything else that would help (optional).
+    validations:
+      required: false

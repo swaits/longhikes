@@ -653,8 +653,18 @@ def correction_block(rec, site):
   <h3>If you made this route</h3>
   <p>A route&rsquo;s creator can ask for its record to be corrected or removed, and the record will be corrected or removed. Say which route: {code(rec["id"])}. See <a href="/about/">About</a>.</p>
 </div>""")
-    if site.issues_url:
-        parts.append(f"""<p class="prose">Found an error? <a href="{esc(site.issues_url)}">Open an issue</a> with the record ID ({code(rec["id"])}), what is wrong, and where the correct information can be checked: a source page, a map, or a measured line.</p>""")
+    if site.is_github:
+        report = esc(site.correction_url(rec["id"], rec.get("name", "")))
+        edit = esc(site.edit_url(rec["id"]))
+        history = esc(site.history_url(rec["id"]))
+        parts.append(f"""<p class="prose">This record is a text file anyone can correct. Please say where a correction can be checked: a source page, a map, or a measured track.</p>
+<ul class="linklist">
+  <li><a href="{report}">Report a problem</a><small>No git needed: a short form, with this record ({code(rec["id"])}) filled in</small></li>
+  <li><a href="{edit}">Edit this record</a><small>The record file (trail.toml) on GitHub</small></li>
+  <li><a href="{history}">History</a><small>Changes to this record on GitHub</small></li>
+</ul>""")
+    elif site.repo_url:
+        parts.append(f"""<p class="prose">Found an error? Report it in the <a href="{esc(site.repo_url)}">source repository</a>, with the record ID ({code(rec["id"])}), what is wrong, and where the correct information can be checked: a source page, a map, or a measured track.</p>""")
     if not parts:
         return ""
     return block("correct-title", "Corrections", Markup("".join(parts)))

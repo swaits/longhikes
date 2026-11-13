@@ -17,7 +17,7 @@ WEB = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(WEB)
 sys.path.insert(0, WEB)
 
-from olt import layout, pages, records, site, trail, words  # noqa: E402
+from olt import home, layout, pages, records, site, trail, words  # noqa: E402
 
 OUT = os.path.join(WEB, ".cache", "test-site")
 
@@ -411,6 +411,56 @@ class RenderUnitTest(unittest.TestCase):
     def test_report_links_need_repo_url(self):
         self.assertNotIn("/issues", layout.footer(site.Site("N", "T")))
         self.assertIn("https://example.org/repo/issues", layout.footer(site.Site("N", "T", repo_url="https://example.org/repo")))
+
+    def test_trail_correction_links_github(self):
+        gh = site.Site("N", "T", repo_url="https://github.com/swaits/longhikes")
+        _, _, body, _ = trail.render(sample_record("A & B Trail"), gh)
+        plain = html.unescape(body)
+        self.assertIn("Report a problem", plain)
+        self.assertIn("https://github.com/swaits/longhikes/issues/new?"
+                      "template=correction.yml&title=Correction%3A+A+%26+B+Trail+%28x%29&trail=x", plain)
+        self.assertIn("Edit this record", plain)
+        self.assertIn("https://github.com/swaits/longhikes/edit/main/x/trail.toml", plain)
+        self.assertIn("History", plain)
+        self.assertIn("https://github.com/swaits/longhikes/commits/main/x", plain)
+
+    def test_trail_correction_links_github_branch(self):
+        gh = site.Site("N", "T", repo_url="https://github.com/o/r/", repo_branch="dev")
+        block = html.unescape(trail.correction_block(sample_record("X Trail"), gh))
+        self.assertIn("https://github.com/o/r/edit/dev/x/trail.toml", block)
+        self.assertIn("https://github.com/o/r/commits/dev/x", block)
+
+    def test_trail_correction_links_non_github_fall_back_to_repo(self):
+        other = site.Site("N", "T", repo_url="https://example.org/repo")
+        block = html.unescape(trail.correction_block(sample_record("X Trail"), other))
+        self.assertIn('href="https://example.org/repo"', block)
+        self.assertNotIn("template=correction.yml", block)
+        self.assertNotIn("/edit/", block)
+        self.assertNotIn("/commits/", block)
+        self.assertNotIn("Edit this record", block)
+
+    def test_trail_correction_links_empty_repo_url(self):
+        block = trail.correction_block(sample_record("X Trail"), site.Site("N", "T"))
+        self.assertEqual(block, "")
+        self.assertNotIn("github.com", layout.footer(site.Site("N", "T")))
+        self.assertNotIn("Suggest a trail", layout.footer(site.Site("N", "T")))
+
+    def test_footer_and_home_contribute_links_github(self):
+        gh = site.Site("N", "T", repo_url="https://github.com/swaits/longhikes")
+        footer = html.unescape(layout.footer(gh))
+        self.assertIn("Fix or add a trail", footer)
+        self.assertIn('href="https://github.com/swaits/longhikes"', footer)
+        self.assertIn("Suggest a trail", footer)
+        self.assertIn("https://github.com/swaits/longhikes/issues/new?template=new-trail.yml", footer)
+        body = html.unescape(home.render([sample_record("X Trail")], gh))
+        self.assertIn("https://github.com/swaits/longhikes/issues/new?template=new-trail.yml", body)
+
+    def test_footer_contribute_links_non_github_have_no_github_forms(self):
+        other = site.Site("N", "T", repo_url="https://example.org/repo")
+        footer = html.unescape(layout.footer(other))
+        self.assertIn('href="https://example.org/repo"', footer)
+        self.assertNotIn("template=", footer)
+        self.assertNotIn("github.com", footer)
 
     def test_render_site_on_a_synthetic_record(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -14,7 +14,11 @@ base_url = "https://longhikes.org"
 
 # Home of the source repository, for example "https://github.com/owner/repo".
 # When set, pages link to it for reporting an error. Empty: those links are left out.
-repo_url = ""
+# This repository is public on GitHub; that is where issues and pull requests happen.
+repo_url = "https://github.com/swaits/longhikes"
+
+# Default branch of the source repository, for edit/history/blob links.
+repo_branch = "main"
 
 # Where to write to the maintainers (a contact page or a mailto: address), for
 # logo removal requests and other questions. When this or repo_url is set, the

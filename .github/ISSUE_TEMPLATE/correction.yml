@@ -1,0 +1,49 @@
+name: Correction
+description: A record is wrong or out of date
+title: "Correction: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping correct this dataset. You do not need to use git:
+        fill in this form and a maintainer can make the change.
+
+        Every record is a text file, `<id>/trail.toml`. A correction needs a
+        source it can be checked against, so please give one below.
+  - type: input
+    id: trail
+    attributes:
+      label: Trail
+      description: The record id (shown on the trail's page, for example `arizona`), or the trail's name.
+      placeholder: "arizona"
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong?
+      description: The fact, length, link, track, licence or other detail that is wrong or out of date.
+    validations:
+      required: true
+  - type: textarea
+    id: should
+    attributes:
+      label: What should it be?
+      description: The corrected information, as exactly as you can give it.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Where can it be checked?
+      description: A source page, map or other page where the correct information can be checked. For a corrected track, name where the track came from and its licence as well.
+      placeholder: "https://"
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything else that would help (optional).
+    validations:
+      required: false

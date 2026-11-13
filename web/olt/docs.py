@@ -54,7 +54,7 @@ def _classify(href, site):
     if key.startswith("licenses/") and key.endswith(".txt"):
         return "/licences/" + norm.split("/", 1)[1] + (f"#{frag}" if frag else "")
     if site.repo_url:
-        return f"{site.repo_url}/blob/main/{norm}" + (f"#{frag}" if frag else "")
+        return site.blob_url(norm) + (f"#{frag}" if frag else "")
     return None
 
 
@@ -228,7 +228,7 @@ def logos_page(records, site, repo_root):
   <div class="titleblock__text"><p class="kicker">Marks</p><h1>Logos</h1>
   <p class="page-head__lede">Logos are shown only to identify each trail. They belong to their holders.</p>
   </div></header></div></div>
-<div class="container section"><div class="prose doc">{notice_html}</div></div>
+<div class="container section"><div class="prose doc">{notice_html}{f'<p><a href="{esc(site.removal_url)}">Ask for a track or logo to be removed, or its credit changed</a>.</p>' if site.is_github else ""}</div></div>
 <div class="container section"><div class="section-head"><h2>Every logo in the dataset</h2>
 <p>{len(with_logo)} records include a logo file.</p></div>
 <ul class="logo-grid">{cards}</ul>
@@ -246,7 +246,11 @@ def about_page(records, site, repo_root):
                                           "How to use it", "Report an error", "Licences", "Sources"]), site)
     contrib = render_doc(read_doc(repo_root, "CONTRIBUTING.md"), site, heading_offset=1)
     extra = ""
-    if site.issues_url:
+    if site.repo_url and site.is_github:
+        extra = (f'<p><a href="{esc(site.correction_url())}">Report a problem</a> with a record, or '
+                 f'<a href="{esc(site.new_trail_url)}">suggest a trail</a> that is missing: '
+                 f'short forms, no git needed. Or fix or add a trail yourself in the source repository.</p>')
+    elif site.issues_url:
         extra = f'<p><a href="{esc(site.issues_url)}">Open an issue</a> to report an error.</p>'
     if site.repo_url:
         extra += f'<p>Source repository: <a href="{esc(site.repo_url)}">{esc(site.repo_url)}</a>.</p>'

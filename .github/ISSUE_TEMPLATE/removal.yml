@@ -1,0 +1,58 @@
+name: Removal or credit request
+description: Ask for a track or logo to be removed or replaced, or its credit changed
+title: "Removal: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For stewards, route creators and rights holders. If you want a track
+        or a logo removed or replaced, or its credit changed, please say so
+        here and it will be acted on: the file will be removed or replaced
+        and the record updated to say so. Logos are shown only to identify
+        each trail and belong to their holders. A route's creator can also
+        ask for the route's record to be corrected or removed.
+
+        Issues in this repository are public, so please do not post a
+        private email address or phone number here unless you are content
+        for it to be public.
+  - type: input
+    id: trail
+    attributes:
+      label: Trail
+      description: The record id (shown on the trail's page, for example `arizona`), or the trail's name.
+      placeholder: "arizona"
+    validations:
+      required: true
+  - type: input
+    id: relation
+    attributes:
+      label: Who are you in relation to the trail?
+      description: For example the trail's steward, the route's creator, the logo's holder, or the track's publisher.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is the request about?
+      options:
+        - "A track"
+        - "A logo"
+        - "A credit"
+        - "The record itself"
+        - "Something else"
+    validations:
+      required: false
+  - type: textarea
+    id: request
+    attributes:
+      label: What should be removed or changed?
+      description: Say which file or credit, and what you would like done — removed, replaced, or credited differently (and with what wording). If you can, give the page that states your terms.
+    validations:
+      required: true
+  - type: input
+    id: contact
+    attributes:
+      label: How may we contact you?
+      description: Replies to this issue reach you through GitHub. Say here only if you would prefer another way, and only with details you are content to have public.
+    validations:
+      required: false

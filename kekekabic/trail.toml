@@ -34,10 +34,10 @@ relation = 10831114
 note = "Not downloaded."
 
 [shield]
-status = "use-real-logo"
+status = "logo-not-found"
 logo_source = ""
 contact = "Kekekabic Trail Club"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "No logo file found: the Kekekabic Trail Club is now the Kekekabic chapter of the North Country Trail Association, and the chapter's page (https://northcountrytrail.org/trail/minnesota/kek/, where kek.org forwards) shows only the Association's own logo and the North Country NST emblem, neither of which is this trail's. Checked 2026-11-13."
 logo_file = ""
 logo_owner = "Kekekabic Trail Club"
 

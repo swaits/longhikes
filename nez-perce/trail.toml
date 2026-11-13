@@ -36,11 +36,11 @@ note = "Not searched."
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://www.fs.usda.gov/npnht/"
-contact = "NPS/USFS National Trails"
-note = "NHT logos are protected federal marks; use needs the administrator's approval (NPS NHT pages)."
-logo_file = ""
-logo_owner = "NPS/USFS National Trails"
+logo_source = "https://www.fs.usda.gov/sites/nfs/files/trails/nez-perce-nht/image/Nez%20Perce%20NHT%20Logo%20Color%20RGB_0.png"
+contact = "USDA Forest Service, Nez Perce (Nee-Me-Poo) National Historic Trail"
+note = "Official Nez Perce (Nee-Me-Poo) National Historic Trail emblem (two riders on horseback in a rounded triangle), 775x753 PNG with transparency, from the Forest Service's own trail page, https://www.fs.usda.gov/npnht/ (now fs.usda.gov/trails/nez-perce-nht), where it is captioned 'NPNHT Logo. (USDA-USFS)'. That page states no terms for the emblem. The NPS pages for other National Historic Trails say trail logos are protected federal marks that need the administrator's permission. For identification only; see NOTICE.md."
+logo_file = "shield.png"
+logo_owner = "USDA Forest Service, Nez Perce (Nee-Me-Poo) National Historic Trail"
 
 [verification]
 verified = false

@@ -36,10 +36,10 @@ note = "Several relations."
 
 [shield]
 status = "use-real-logo"
-logo_source = ""
+logo_source = "https://www.greateasterntrail.net/wp-content/themes/greateasterntrail/images/logo.png"
 contact = "Great Eastern Trail Association"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
-logo_file = ""
+note = "The Association's own mark (a green compass star around a cream ring with 'Great Eastern Trail'), the header logo of greateasterntrail.net, 298x299 PNG on a white ground. The home page says: 'The logo of the Great Eastern Trail was adopted by the Great Eastern Trail Association in 2007, and has been in continuous use ever since. It is posted on many places on the 1800-mile trail.' No logo policy found on the home page; no other page was read."
+logo_file = "shield.png"
 logo_owner = "Great Eastern Trail Association"
 
 [verification]

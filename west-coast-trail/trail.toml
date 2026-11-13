@@ -34,10 +34,10 @@ relation = 6955341
 note = "Verified."
 
 [shield]
-status = "use-real-logo"
-logo_source = "https://parks.canada.ca/pn-np/bc/pacificrim"
+status = "no-logo-exists"
+logo_source = ""
 contact = "Parks Canada"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "No trail emblem found: Parks Canada's West Coast Trail page (https://parks.canada.ca/pn-np/bc/pacificrim/activ/sco-wct) and the Pacific Rim activities page show photographs and the Parks Canada mark only, the agency's mark and not the trail's. No file is included. Checked 2026-11-13."
 logo_file = ""
 logo_owner = "Parks Canada"
 

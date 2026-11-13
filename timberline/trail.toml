@@ -34,10 +34,10 @@ relation = 0
 note = "No relation matched the name."
 
 [shield]
-status = "use-real-logo"
-logo_source = "https://www.fs.usda.gov/mthood/"
+status = "no-logo-exists"
+logo_source = ""
 contact = "USFS Mount Hood National Forest"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "No trail emblem found: the Forest Service's Timberline Trail #600 page (https://www.fs.usda.gov/r06/mthood/recreation/trails/timberline-trail-600) carries only the USDA and Forest Service marks, which are the agency's and not the trail's, and a web search found no Timberline Trail association or emblem. No file is included. Checked 2026-11-13."
 logo_file = ""
 logo_owner = "USFS Mount Hood National Forest"
 

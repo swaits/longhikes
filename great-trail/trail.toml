@@ -36,10 +36,10 @@ note = "Several incomplete relations."
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://thegreattrail.ca/"
+logo_source = "https://tctrail.ca/wp-content/themes/tctrailv2/includes/images/tct-horizontal-tm-logo-blue-en.png"
 contact = "Trans Canada Trail"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
-logo_file = ""
+note = "Trans Canada Trail's own logo (a maple leaf with a winding path and 'Trans Canada Trail / Sentier Transcanadien', marked TM/MC), the header logo of tctrail.ca, 562x120 PNG with transparency. thegreattrail.ca now forwards to tctrail.ca, where the trail is called the Trans Canada Trail. Terms of use, https://tctrail.ca/terms-conditions/: 'the Trans Canada Trail logo and other Trans Canada Trail logos and product and service names are the exclusive trademarks of, and are owned by, Trans Canada Trail, and you may not use or display such trademarks in any manner without Trans Canada Trail's prior written permission.'"
+logo_file = "shield.png"
 logo_owner = "Trans Canada Trail"
 
 [verification]

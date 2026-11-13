@@ -36,11 +36,11 @@ note = "Not downloaded."
 
 [shield]
 status = "use-real-logo"
-logo_source = ""
-contact = "Fundy Footpath Inc."
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
-logo_file = ""
-logo_owner = "Fundy Footpath Inc."
+logo_source = "https://fundyhikingtrails.com/wp-content/uploads/2026/03/9.27.2024_66f6cda0a5f396.74160518-Edited.png"
+contact = "Fundy Hiking Trail Association"
+note = "The Fundy Footpath roundel (navy, with a hiker on a winding path and 'Fundy Footpath / Sentier Pedestre Fundy'), 709x709 PNG with transparency, from the Association's own site fundyhikingtrails.com, which maintains the Fundy Footpath and the Dobson Trail. The site uses this file only as the share image of its home page (https://fundyhikingtrails.com/), not on a page; its Fundy Footpath page shows a stock illustration. Footer: '\u00a9 2026 Fundy Hiking Trail Association \u00b7 All rights reserved.' No logo or shield policy found on the home page or the Fundy Footpath page."
+logo_file = "shield.png"
+logo_owner = "Fundy Hiking Trail Association"
 
 [verification]
 verified = false

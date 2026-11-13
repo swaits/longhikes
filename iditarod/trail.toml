@@ -35,10 +35,10 @@ relation = 17946723
 note = "OSM 17946723."
 
 [shield]
-status = "use-real-logo"
-logo_source = "https://www.blm.gov/"
+status = "logo-not-found"
+logo_source = ""
 contact = "BLM Alaska"
-note = "NHT logos are protected federal marks."
+note = "No logo file found: the BLM's Iditarod National Historic Trail page (https://www.blm.gov/programs/national-conservation-lands/national-scenic-and-historic-trails/iditarod), its Visit page, the Alaska FAQ sheet and the 2018 brochure show the BLM mark, photographs and the trail's name set in type, with no trail emblem file; the page's media thumbnail is a photograph. Checked 2026-11-13. An official marker may exist in BLM Alaska's materials that these pages do not offer as a file."
 logo_file = ""
 logo_owner = "BLM Alaska"
 

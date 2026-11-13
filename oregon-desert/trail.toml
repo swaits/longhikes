@@ -35,10 +35,10 @@ relation = 10702483
 note = "Not downloaded."
 
 [shield]
-status = "use-real-logo"
-logo_source = "https://onda.org/oregon-desert-trail/"
+status = "logo-not-found"
+logo_source = ""
 contact = "Oregon Natural Desert Association"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "No standalone logo file found: the trail has an emblem (a pronghorn in a rounded shield, 'Oregon Desert Trail'), but ONDA publishes it only on the cover of its guidebook (https://onda.org/wp-content/uploads/2017/10/ODT_guidebook_cover.png, shown on https://onda.org/regions/oregon-desert-trail/plan-a-trip/), set under a photograph and above ONDA's own logo. Cropping it out would make a different image, so it is not included. The trail page, plan-a-trip page, press page, guides page and stories page offer no emblem file. Checked 2026-11-13."
 logo_file = ""
 logo_owner = "Oregon Natural Desert Association"
 

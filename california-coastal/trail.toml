@@ -36,10 +36,10 @@ note = "Not searched."
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://www.coastal.ca.gov/"
+logo_source = "https://documents.coastal.ca.gov/assets/ca-coastal-trail/trail-logo.jpg"
 contact = "California Coastal Commission"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
-logo_file = ""
+note = "The California Coastal Trail's own mark (a blue roundel with a white wave and the words 'California Coastal Trail'), from the Commission's California Coastal Trail page, https://www.coastal.ca.gov/coastal-trail/, which tells visitors to look for it on completed segments. Published there as a 548x548 JPEG on a white ground, converted to PNG. The page does not name the holder and states no terms for the logo."
+logo_file = "shield.png"
 logo_owner = "California Coastal Commission"
 
 [verification]

@@ -36,11 +36,11 @@ note = "OSM 3087601."
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://www.nps.gov/ovvi/index.htm"
-contact = "NPS"
-note = "NHT logos are protected federal marks."
-logo_file = ""
-logo_owner = "NPS"
+logo_source = "https://www.nps.gov/ovvi/learn/management/images/No-background-LOGO.png"
+contact = "NPS Overmountain Victory National Historic Trail"
+note = "Official Overmountain Victory National Historic Trail emblem (a militiaman with a rifle and '1780' in a rounded triangle), 250x268 PNG with transparency, from the NPS trail page 'Laws & Policies', https://www.nps.gov/ovvi/learn/management/lawsandpolicies.htm, headed 'The Official Trail Marker'. That page says: 'the trail logo is a protected federal insignia under 18 U.S.C. \u00a7 701 and is a federally-owned trademark either under common law or 15 U.S.C. \u00a7\u00a7 1051-1129. The trail logo cannot be used without the permission of the Superintendent, Overmountain Victory National Historic Trail, National Park Service.' For identification only; see NOTICE.md."
+logo_file = "shield.png"
+logo_owner = "NPS Overmountain Victory National Historic Trail"
 
 [verification]
 verified = false

@@ -35,10 +35,10 @@ relation = 17325994
 note = "OSM relation 17325994 and 8643138 (Arizona)."
 
 [shield]
-status = "use-real-logo"
+status = "logo-not-found"
 logo_source = ""
 contact = "Great Western Trail Association"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "No logo file found: the Association's own sites did not give one. https://www.gwt.org presents a certificate that does not match its name (the connection was not forced), and http://www.gwt.org and http://www.greatwesterntrail.org forward to Facebook pages, which were not used. gwtrail.com is the site of the Colorado Great Western Trail Authority, apparently a separate local trail. Checked 2026-11-13."
 logo_file = ""
 logo_owner = "Great Western Trail Association"
 

@@ -37,10 +37,10 @@ note = "OSM relation 4485206. The creator's own mapset with GPS tracks is at sim
 
 [shield]
 status = "use-real-logo"
-logo_source = ""
+logo_source = "https://simblissity.net/images/GET/get%20monogram1_small.JPG"
 contact = "simBLISSity Ultralight Designs"
-note = "No formal emblem found; the route's own wordmark is on the creator's site."
-logo_file = ""
+note = "The route's own monogram (a triangle over a mountain photograph), shown beside the route's name on the creator's Grand Enchantment Trail page, https://simblissity.net/get/. Published there only as a small 97x90 JPEG, converted to PNG; the page's banner (the name set over a photograph) was not used. Footer: 'Copyright \u00a9 2026 simBLISSity Ultralight Designs'. No logo policy found on that page."
+logo_file = "shield.png"
 logo_owner = "simBLISSity Ultralight Designs"
 
 [verification]

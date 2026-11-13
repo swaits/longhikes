@@ -34,10 +34,10 @@ relation = 3895101
 note = "Not downloaded."
 
 [shield]
-status = "use-real-logo"
-logo_source = "https://www.nps.gov/grte/index.htm"
+status = "no-logo-exists"
+logo_source = ""
 contact = "NPS Grand Teton"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "No trail emblem found: the NPS Grand Teton National Park home page (https://www.nps.gov/grte/index.htm) shows only the NPS arrowhead, the agency's mark and not the trail's, and the Grand Teton National Park Foundation's trail-renewal page showed no emblem file. A web search found no Teton Crest Trail marker design. No file is included. Checked 2026-11-13."
 logo_file = ""
 logo_owner = "NPS Grand Teton"
 

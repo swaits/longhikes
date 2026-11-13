@@ -34,10 +34,10 @@ relation = 15361195
 note = "Not downloaded."
 
 [shield]
-status = "use-real-logo"
-logo_source = "https://parks.canada.ca/pn-np/on/pukaskwa"
+status = "no-logo-exists"
+logo_source = ""
 contact = "Parks Canada"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "No trail emblem found: Parks Canada's Pukaskwa National Park pages (https://parks.canada.ca/pn-np/on/pukaskwa and its hiking page) show no Coastal Hiking Trail emblem. The only mark there is Parks Canada's own, the agency's mark and not the trail's, so no file is included. Checked 2026-11-13."
 logo_file = ""
 logo_owner = "Parks Canada"
 

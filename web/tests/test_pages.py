@@ -424,6 +424,17 @@ class RenderUnitTest(unittest.TestCase):
         self.assertIn("History", plain)
         self.assertIn("https://github.com/swaits/longhikes/commits/main/x", plain)
 
+    def test_logo_source_without_a_logo_file_is_not_called_taken_from(self):
+        # A record can name where its logo is held without including the logo.
+        rec = sample_record("X Trail")
+        rec["shield"] = {"status": "use-real-logo", "logo_source": "https://holder.example/", "contact": "Holder",
+                         "note": "No policy found.", "logo_file": "", "logo_owner": "Holder & Co"}
+        _, _, body, _ = trail.render(rec, site.Site("N", "T"))
+        self.assertIn('href="https://holder.example/"', body)
+        self.assertNotIn("logo was taken from", body)
+        self.assertIn("the logo is not included here", body)
+        self.assertIn("The trail has a logo, held by Holder &amp; Co, but no copy of it is in this dataset.", body)
+
     def test_trail_correction_links_github_branch(self):
         gh = site.Site("N", "T", repo_url="https://github.com/o/r/", repo_branch="dev")
         block = html.unescape(trail.correction_block(sample_record("X Trail"), gh))

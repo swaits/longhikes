@@ -411,7 +411,10 @@ def links_panel(rec):
         add(words_url, by or host(words_url), "Where the quoted words were read")
     if _is_url(sh.get("logo_source")):
         owner = sh.get("logo_owner") or sh.get("contact") or host(sh["logo_source"])
-        add(sh["logo_source"], owner, "The page the logo was taken from")
+        # Only a record with a logo file took its logo from that page; without
+        # one the page is merely where the holder shows it.
+        add(sh["logo_source"], owner, "The page the logo was taken from" if common.shield_url(rec)
+            else "The logo holder's site; the logo is not included here")
     add(f"/trails/{rec['id']}/trail.toml", "trail.toml", "The record itself, as data")
     if rec["derived"].get("release"):
         add(f"/trails/{rec['id']}/release.txt", "release.txt", "Source, licence and date of the track files")
@@ -623,8 +626,14 @@ def logo_block(rec):
         lead = {"no-logo-exists": "No logo", "logo-not-found": "Logo not found",
                 "use-real-logo": "Logo not included"}.get(status, "No logo file")
         note = sh.get("note", "")
+        # "use-real-logo" without a file: the trail has a logo, but no copy is here.
+        why = ""
+        if status == "use-real-logo":
+            holder = sh.get("logo_owner") or sh.get("contact") or ""
+            why = (f" The trail has a logo{', held by ' + str(esc(holder)) if holder else ''}, "
+                   "but no copy of it is in this dataset.")
         return block("logo-title", "Logo", Markup(
-            f'<p class="record-text"><strong>{esc(lead)}.</strong>{" " + common.rich(note) if note else ""}</p>'))
+            f'<p class="record-text"><strong>{esc(lead)}.</strong>{why}{" " + common.rich(note) if note else ""}</p>'))
     rows = [
         fact("Status", words.label(words.SHIELD_STATUS, status), words.meaning(words.SHIELD_STATUS, status)),
         fact("Holder", sh.get("logo_owner", "")) if sh.get("logo_owner") else "",

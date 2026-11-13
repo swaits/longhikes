@@ -1,0 +1,38 @@
+name: Mirror to forge
+
+# The maintainer's own forge (git.swaits.com) holds the primary repository and
+# this GitHub repository mirrors it. Pull requests are merged here, so every
+# push to main is passed on to the forge. A push that came from the forge is
+# already there and changes nothing. The push is never forced: if the two have
+# diverged this job fails and a person sorts it out.
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: mirror-to-forge
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  mirror:
+    if: github.repository == 'swaits/longhikes'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Push main to the forge
+        env:
+          FORGE_SSH_KEY: ${{ secrets.FORGE_SSH_KEY }}
+          FORGE_KNOWN_HOSTS: ${{ secrets.FORGE_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d "$HOME/.ssh"
+          printf '%s\n' "$FORGE_SSH_KEY" > "$HOME/.ssh/forge_key"
+          chmod 600 "$HOME/.ssh/forge_key"
+          printf '%s\n' "$FORGE_KNOWN_HOSTS" > "$HOME/.ssh/forge_known_hosts"
+          export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/forge_key -o IdentitiesOnly=yes -o UserKnownHostsFile=$HOME/.ssh/forge_known_hosts -o StrictHostKeyChecking=yes"
+          git push ssh://git@git.swaits.com:2222/swaits/longhikes.git "$GITHUB_SHA:refs/heads/main"

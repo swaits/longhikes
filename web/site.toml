@@ -1,0 +1,31 @@
+# Site-wide settings for the generated pages. Read by web/olt/site.py.
+#
+# The site's display name appears only here: every page, title and footer
+# takes it from `name`, so a rename is a one-line change.
+
+name = "Long Hikes"
+
+# One line under the name: the home page <title> and the default meta description.
+tagline = "Long-distance hiking trails of the United States and Canada, with their lines where they may be shared"
+
+# Absolute origin of the deployed site, without a trailing slash, for example
+# "https://example.org". When set, every page gets a canonical link. Empty: none.
+base_url = "https://longhikes.org"
+
+# Home of the source repository, for example "https://github.com/owner/repo".
+# When set, pages link to it for reporting an error. Empty: those links are left out.
+repo_url = ""
+
+# Where to write to the maintainers (a contact page or a mailto: address), for
+# logo removal requests and other questions. When this or repo_url is set, the
+# About and Logos pages link the documents' "open an issue" and "write to the
+# maintainers" wording to it. Empty: the documents' wording is left as it is.
+contact_url = ""
+
+# Language of record names that are not English, by record id (a BCP 47 tag).
+# Every place a page shows one of these names as text marks it with lang="..",
+# so screen readers pronounce it in that language.
+[name_lang]
+traversee-charlevoix = "fr"
+sentier-national = "fr"
+sentier-international-appalaches = "fr"

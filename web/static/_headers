@@ -1,0 +1,94 @@
+# Netlify response headers. web/build.py copies web/static/ verbatim into the
+# publish root, so this file is deployed as _site/_headers.
+#
+# Syntax and wildcard rules (checked 2026-11-10):
+#   https://docs.netlify.com/manage/routing/headers/
+# Wildcards (*) are allowed anywhere inside a path segment ("*.gpx" is valid)
+# and match any characters; every rule whose path matches a request applies.
+# Trail downloads live at /trails/<id>/<name>, one directory below /trails/,
+# so both segments are matched explicitly rather than relying on * to span the
+# slash.
+#
+# No two rules set the same header for the same path: when rules overlap,
+# Netlify applies all of them, so each header is set by one rule only
+# (web/tests/test_headers.py checks this against the built site).
+
+# Security headers for every response. No inline scripts or style elements:
+# pages load same-origin scripts and styles, MapLibre runs from blob: workers,
+# map images are self/data:/blob:, fonts are self-hosted, and tiles, glyphs and
+# sprites are fetched from OpenFreeMap (connect-src). style-src-attr allows
+# style="" attributes, which the pages use only to carry data to CSS (--km for
+# the length strip, --n for the ratio bar, --pos for the verification gauge).
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; worker-src 'self' blob:; child-src 'self' blob:; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://tiles.openfreemap.org; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+
+# Site data. Matched by file type, not /data/*, so the pages under /data/
+# (/data/, /data/schema/, /data/changelog/) revalidate like every other page.
+# overview.geojson and trails.json are fetched by page scripts; index.geojson,
+# trails.csv and the two archives are downloads.
+/data/*.json
+  Cache-Control: public, max-age=300, must-revalidate
+
+/data/*.geojson
+  Cache-Control: public, max-age=300, must-revalidate
+
+/data/*.csv
+  Cache-Control: public, max-age=300, must-revalidate
+
+/data/*.zip
+  Content-Type: application/zip
+  Content-Disposition: attachment
+  Cache-Control: public, max-age=300, must-revalidate
+
+/data/overview.geojson
+  Content-Type: application/geo+json
+
+/data/trails.json
+  Content-Type: application/json
+
+/data/index.geojson
+  Content-Type: application/geo+json
+  Content-Disposition: attachment
+
+/data/trails.csv
+  Content-Type: text/csv; charset=utf-8
+  Content-Disposition: attachment
+
+# HTML revalidates before reuse. Netlify's default for static assets is already
+# "public, max-age=0, must-revalidate" (which also covers clean URLs served
+# from index.html); this makes the intent explicit for .html requests.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Self-hosted MapLibre CSS/JS is not fingerprinted yet, so keep it short.
+/assets/*
+  Cache-Control: public, max-age=300, must-revalidate
+
+# Trail downloads: correct media types and a download disposition.
+/trails/*/*.gpx
+  Content-Type: application/gpx+xml
+  Content-Disposition: attachment
+  Cache-Control: public, max-age=3600
+
+/trails/*/*.geojson
+  Content-Type: application/geo+json
+  Content-Disposition: attachment
+  Cache-Control: public, max-age=3600
+
+# Map geometry for the trail pages: fetched by page scripts, never a download.
+/trails/*/map.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=300, must-revalidate
+
+# Record and release notes: shown in the browser, not downloaded.
+/trails/*/trail.toml
+  Content-Type: text/plain; charset=utf-8
+
+/trails/*/release.txt
+  Content-Type: text/plain; charset=utf-8
+
+# Licence texts (LICENSE has no extension): shown in the browser as text.
+/licences/*
+  Content-Type: text/plain; charset=utf-8

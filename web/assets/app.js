@@ -1,0 +1,796 @@
+/* Site script, served at /assets/app.js (deferred). Vanilla JS, no build step.
+
+   1. Preferences: theme and length order (saved in localStorage; applied early by prefs.js)
+   2. Maps: .mapfig[data-map] figures. Data is fetched from data-src (same origin);
+      lines are drawn on a plain graticule first, then on an OpenFreeMap base map
+      when MapLibre and WebGL are available.
+   3. Trail finder (home page): search, filters, sort, URL query state, map/list highlight
+   4. Copy-credit buttons
+
+   Every page works without this script: the list holds every record and each map
+   frame keeps its size, border and caption. */
+(function () {
+  'use strict';
+
+  var root = document.documentElement;
+  var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  var KM_PER_MI = 1.609344;
+  var fmt = new Intl.NumberFormat('en-US');
+
+  /* 1. Preferences ----------------------------------------------------------- */
+
+  function readPref(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+  function writePref(key, value) {
+    try {
+      if (value) localStorage.setItem(key, value);
+      else localStorage.removeItem(key);
+    } catch (e) { /* storage blocked: the choice lasts for this page only */ }
+  }
+
+  function isDark() {
+    var t = root.dataset.theme;
+    return t ? t === 'dark' : darkQuery.matches;
+  }
+  function milesFirst() { return root.dataset.units === 'mi'; }
+
+  function setTheme(value) {
+    if (value === 'light' || value === 'dark') root.dataset.theme = value;
+    else delete root.dataset.theme;
+    writePref('lh-theme', value === 'light' || value === 'dark' ? value : null);
+    document.dispatchEvent(new Event('olt:theme'));
+  }
+
+  function setUnits(value) {
+    if (value === 'mi') root.dataset.units = 'mi';
+    else delete root.dataset.units;
+    writePref('lh-units', value === 'mi' ? 'mi' : null);
+    syncRadios('input[name="units"], input[name="units-list"]', value === 'mi' ? 'mi' : 'km');
+    document.dispatchEvent(new Event('olt:units'));
+  }
+
+  function syncRadios(selector, value) {
+    document.querySelectorAll(selector).forEach(function (input) { input.checked = input.value === value; });
+  }
+
+  syncRadios('input[name="theme"]', readPref('lh-theme') || 'auto');
+  syncRadios('input[name="units"], input[name="units-list"]', milesFirst() ? 'mi' : 'km');
+  document.querySelectorAll('input[name="theme"]').forEach(function (input) {
+    input.addEventListener('change', function () { if (input.checked) setTheme(input.value); });
+  });
+  document.querySelectorAll('input[name="units"], input[name="units-list"]').forEach(function (input) {
+    input.addEventListener('change', function () { if (input.checked) setUnits(input.value); });
+  });
+  darkQuery.addEventListener('change', function () {
+    if (!root.dataset.theme) document.dispatchEvent(new Event('olt:theme'));
+  });
+
+  /* A length in both units, in the reader's order: "1,287 km (800 mi)". */
+  function lengthText(km) {
+    var k = fmt.format(km) + ' km';
+    var m = fmt.format(Math.round(km / KM_PER_MI)) + ' mi';
+    return milesFirst() ? m + ' (' + k + ')' : k + ' (' + m + ')';
+  }
+
+  /* Resolve a colour token (light-dark() included) to an rgb() string. */
+  var probe = null;
+  function token(name) {
+    if (!probe) {
+      probe = document.createElement('span');
+      probe.hidden = true;
+      document.body.appendChild(probe);
+    }
+    probe.style.color = 'var(' + name + ')';
+    return getComputedStyle(probe).color;
+  }
+
+  /* 2. Maps ------------------------------------------------------------------- */
+
+  var STYLE_URL = 'https://tiles.openfreemap.org/styles/positron';
+
+  function linesOf(feature) {
+    var g = feature.geometry || {};
+    if (g.type === 'LineString') return [g.coordinates];
+    return g.type === 'MultiLineString' ? g.coordinates : [];
+  }
+
+  function bboxOf(fc) {
+    if (fc.bbox && fc.bbox.length === 4) return fc.bbox;
+    var b = [180, 90, -180, -90];
+    fc.features.forEach(function (f) {
+      linesOf(f).forEach(function (line) {
+        line.forEach(function (p) {
+          if (p[0] < b[0]) b[0] = p[0];
+          if (p[1] < b[1]) b[1] = p[1];
+          if (p[0] > b[2]) b[2] = p[0];
+          if (p[1] > b[3]) b[3] = p[1];
+        });
+      });
+    });
+    return b;
+  }
+
+  function bboxOfFeature(feature) {
+    var b = [180, 90, -180, -90];
+    var seen = false;
+    linesOf(feature).forEach(function (line) {
+      line.forEach(function (p) {
+        seen = true;
+        if (p[0] < b[0]) b[0] = p[0];
+        if (p[1] < b[1]) b[1] = p[1];
+        if (p[0] > b[2]) b[2] = p[0];
+        if (p[1] > b[3]) b[3] = p[1];
+      });
+    });
+    return seen ? b : null;
+  }
+
+  function mercY(lat) { return Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360)); }
+  function invMercY(y) { return (360 / Math.PI) * Math.atan(Math.exp(y)) - 90; }
+
+  function dms(value, pos, neg) {
+    var a = Math.abs(value);
+    var d = Math.floor(a);
+    var m = Math.round((a - d) * 60);
+    if (m === 60) { d += 1; m = 0; }
+    return d + '°' + (m < 10 ? '0' : '') + m + '′' + (value >= 0 ? pos : neg);
+  }
+
+  /* Lines on a plain graticule (Web Mercator), no tiles. Returns the drawn extent. */
+  function drawFallback(host, fc, bbox, routeMain) {
+    var rect = host.getBoundingClientRect();
+    var W = Math.max(Math.round(rect.width), 280);
+    var H = Math.max(Math.round(rect.height), 180);
+    var pad = 28;
+    var rad = Math.PI / 180;
+    var cx = (bbox[0] + bbox[2]) / 2;
+    var y0 = mercY(bbox[1]);
+    var y1 = mercY(bbox[3]);
+    var cy = (y0 + y1) / 2;
+    var k = Math.min((W - 2 * pad) / Math.max((bbox[2] - bbox[0]) * rad, 1e-6),
+                     (H - 2 * pad) / Math.max(y1 - y0, 1e-6));
+    function x(lon) { return W / 2 + (lon - cx) * rad * k; }
+    function y(lat) { return H / 2 - (mercY(lat) - cy) * k; }
+    var ext = { w: cx - W / 2 / k / rad, e: cx + W / 2 / k / rad, n: invMercY(cy + H / 2 / k), s: invMercY(cy - H / 2 / k) };
+
+    var span = Math.max(ext.e - ext.w, ext.n - ext.s);
+    var step = [0.25, 0.5, 1, 2, 5, 10, 15].filter(function (s) { return span / s <= 9; })[0] || 20;
+    var grat = '';
+    for (var lon = Math.ceil(ext.w / step) * step; lon <= ext.e; lon += step) grat += 'M' + x(lon).toFixed(1) + ' 0V' + H;
+    for (var lat = Math.ceil(ext.s / step) * step; lat <= ext.n; lat += step) grat += 'M0 ' + y(lat).toFixed(1) + 'H' + W;
+
+    var ns = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    function path(cls, d, id) {
+      var p = document.createElementNS(ns, 'path');
+      p.setAttribute('class', cls);
+      p.setAttribute('d', d);
+      if (id) p.setAttribute('data-id', id);
+      svg.appendChild(p);
+    }
+    path('fallback__grat', grat);
+    var drawn = fc.features.map(function (f) {
+      var d = linesOf(f).map(function (line) {
+        return 'M' + line.map(function (p) { return x(p[0]).toFixed(1) + ' ' + y(p[1]).toFixed(1); }).join('L');
+      }).join('');
+      var p = f.properties || {};
+      var mod = p.role === 'alternate' ? ' fallback__line--alternate'
+        : (p.kind === 'route' || (routeMain && p.role === 'main')) ? ' fallback__line--route' : '';
+      return { d: d, mod: mod, id: p.id || '' };
+    });
+    drawn.forEach(function (l) { path('fallback__casing', l.d, l.id); });
+    drawn.forEach(function (l) { path('fallback__line' + l.mod, l.d, l.id); });
+    host.replaceChildren(svg);
+    return ext;
+  }
+
+  function webglAvailable() {
+    try {
+      var c = document.createElement('canvas');
+      return !!(c.getContext('webgl2') || c.getContext('webgl'));
+    } catch (e) { return false; }
+  }
+
+  /* Night version of the Positron base map: invert lightness, keep hue. */
+  var COLOR_PROPS = ['background-color', 'fill-color', 'fill-outline-color', 'line-color', 'text-color', 'text-halo-color'];
+  var ctx2d = null;
+
+  function parseColor(str) {
+    if (typeof str !== 'string' || !/^(#|rgb|hsl)/i.test(str.trim())) return null;
+    if (!ctx2d) ctx2d = document.createElement('canvas').getContext('2d');
+    ctx2d.fillStyle = '#000';
+    ctx2d.fillStyle = str;
+    var v = ctx2d.fillStyle;
+    var m;
+    if (v.charAt(0) === '#') return [parseInt(v.slice(1, 3), 16), parseInt(v.slice(3, 5), 16), parseInt(v.slice(5, 7), 16), 1];
+    if ((m = v.match(/rgba?\(([^)]+)\)/))) {
+      var parts = m[1].split(',').map(Number);
+      return [parts[0], parts[1], parts[2], parts.length > 3 ? parts[3] : 1];
+    }
+    return null;
+  }
+
+  function toHsl(r, g, b) {
+    r /= 255; g /= 255; b /= 255;
+    var max = Math.max(r, g, b), min = Math.min(r, g, b), l = (max + min) / 2, h = 0, s = 0;
+    if (max !== min) {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      h = max === r ? (g - b) / d + (g < b ? 6 : 0) : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+      h *= 60;
+    }
+    return [h, s, l];
+  }
+
+  function nightColor(value, prop, layerId) {
+    if (Array.isArray(value)) return value.map(function (v) { return nightColor(v, prop, layerId); });
+    if (value && typeof value === 'object') {
+      var out = {};
+      Object.keys(value).forEach(function (k) { out[k] = nightColor(value[k], prop, layerId); });
+      return out;
+    }
+    var c = parseColor(value);
+    if (!c) return value;
+    if (layerId === 'water') return 'hsla(205, 22%, 6%, ' + c[3] + ')';
+    var hsl = toHsl(c[0], c[1], c[2]);
+    var l = prop === 'text-color' ? 0.92 - hsl[2] * 0.55 : 0.07 + (1 - hsl[2]) * 0.55;
+    return 'hsla(' + hsl[0].toFixed(0) + ', ' + (hsl[1] * 80).toFixed(0) + '%, ' + (l * 100).toFixed(1) + '%, ' + c[3] + ')';
+  }
+
+  function tintBasemap(map, originals) {
+    var dark = isDark();
+    map.getStyle().layers.forEach(function (layer) {
+      if (layer.id.indexOf('olt-') === 0) return;
+      COLOR_PROPS.forEach(function (prop) {
+        var key = layer.id + '|' + prop;
+        if (!(key in originals)) {
+          try { originals[key] = map.getPaintProperty(layer.id, prop); } catch (e) { originals[key] = undefined; }
+        }
+        var orig = originals[key];
+        if (orig === undefined) return;
+        try { map.setPaintProperty(layer.id, prop, dark ? nightColor(orig, prop, layer.id) : orig); } catch (e) { /* no such property */ }
+      });
+    });
+  }
+
+  function layerDefs(kind, routeMain) {
+    if (kind === 'overview') {
+      return [
+        { id: 'olt-casing', color: '--casing', width: [3, 4, 9, 9] },
+        { id: 'olt-hi', color: '--ink', width: [3, 7, 9, 11], filter: ['==', ['get', 'id'], ''] },
+        { id: 'olt-line', color: '--trail', width: [3, 1.6, 9, 4], filter: ['!=', ['get', 'kind'], 'route'], hit: true },
+        { id: 'olt-route', color: '--route', width: [3, 1.6, 9, 4], dash: [1.6, 1.1], filter: ['==', ['get', 'kind'], 'route'], hit: true }
+      ];
+    }
+    return [
+      { id: 'olt-casing', color: '--casing', width: [5, 4, 12, 8] },
+      { id: 'olt-alt', color: '--trail', width: [5, 1.5, 12, 3], dash: [2, 1.6], filter: ['==', ['get', 'role'], 'alternate'] },
+      { id: 'olt-main', color: routeMain ? '--route' : '--trail', width: [5, 2.5, 12, 5],
+        dash: routeMain ? [2, 1.2] : null, filter: ['==', ['get', 'role'], 'main'] }
+    ];
+  }
+
+  /* Trail lines go under the base map's labels, as on a printed map. */
+  function addLineLayers(map, fc, defs) {
+    var firstLabel = map.getStyle().layers.filter(function (l) { return l.type === 'symbol'; })[0];
+    map.addSource('olt', { type: 'geojson', data: fc });
+    defs.forEach(function (def) {
+      var layer = {
+        id: def.id,
+        type: 'line',
+        source: 'olt',
+        layout: { 'line-join': 'round', 'line-cap': def.dash ? 'butt' : 'round' },
+        paint: {
+          'line-color': token(def.color),
+          'line-width': ['interpolate', ['linear'], ['zoom'], def.width[0], def.width[1], def.width[2], def.width[3]]
+        }
+      };
+      if (def.dash) layer.paint['line-dasharray'] = def.dash;
+      if (def.filter) layer.filter = def.filter;
+      map.addLayer(layer, firstLabel && firstLabel.id);
+    });
+  }
+
+  var maps = [];
+  var mapStarters = [];
+
+  function initMap(fig) {
+    var host = fig.querySelector('.map');
+    var fallback = host.querySelector('.map__fallback');
+    var status = host.querySelector('.map__status');
+    var nw = fig.querySelector('.mapfig__corner--nw');
+    var se = fig.querySelector('.mapfig__corner--se');
+    var kind = fig.dataset.map;
+    var routeMain = fig.dataset.route === 'yes';
+    var defs = layerDefs(kind, routeMain);
+    var onlyIds = (fig.dataset.ids || '').trim().split(/\s+/).filter(Boolean);
+    var entry = { kind: kind, map: null, fc: null, defs: defs, fallback: fallback,
+                  visibleIds: onlyIds.length ? onlyIds : null, ready: false,
+                  mapStarted: false, fullBounds: null, boundsById: null };
+    maps.push(entry);
+
+    var bbox = (fig.dataset.bbox || '').split(',').map(Number);
+    if (bbox.length !== 4 || bbox.some(isNaN)) bbox = null;
+
+    function corners(ext) {
+      if (nw) nw.textContent = dms(ext.n, 'N', 'S') + ' ' + dms(ext.w, 'E', 'W');
+      if (se) se.textContent = dms(ext.s, 'N', 'S') + ' ' + dms(ext.e, 'E', 'W');
+    }
+    function redrawFallback() {
+      if (!entry.ready && entry.fc) {
+        corners(drawFallback(fallback, entry.fc, bbox || bboxOf(entry.fc), routeMain));
+        if (entry.visibleIds) setVisible(entry, entry.visibleIds);
+      }
+    }
+    function fail(reason) {
+      if (entry.ready) return;
+      host.dataset.state = 'fallback';
+      status.textContent = 'Base map unavailable (' + reason + '). The line is drawn on a plain graticule.';
+    }
+
+    status.textContent = 'Loading the line…';
+    var dataReady = fetch(fig.dataset.src, { credentials: 'same-origin' })
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      })
+      .then(function (fc) {
+        entry.fc = fc;
+        bbox = bbox || bboxOf(fc);
+        entry.fullBounds = bbox.slice();
+        if (kind === 'overview') {
+          entry.boundsById = {};
+          fc.features.forEach(function (f) {
+            var id = (f.properties || {}).id;
+            var fb = id && bboxOfFeature(f);
+            if (fb) entry.boundsById[id] = fb;
+          });
+        }
+        if (!entry.ready && entry.mapStarted && window.maplibregl) status.textContent = 'Loading the base map…';
+        redrawFallback();
+        return fc;
+      })
+      .catch(function () {
+        host.dataset.state = 'error';
+        status.textContent = 'The line data did not load. Downloads on this page are unaffected.';
+        return null;
+      });
+
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(redrawFallback, 150);
+    });
+
+    /* The MapLibre half of the map. Everything above (the fetch and the
+       fallback drawing) runs as soon as this script does; this part waits
+       until MapLibre is present (see startMaps below), because the page loads
+       this script before the MapLibre script. If it never arrives the
+       fallback drawing stays and fail() says why. */
+    function startMapLibre() {
+      if (!window.maplibregl) { dataReady.then(function (fc) { if (fc) fail('the map library did not load'); }); return; }
+      if (!webglAvailable()) { dataReady.then(function (fc) { if (fc) fail('WebGL is off in this browser'); }); return; }
+      if (!entry.ready && entry.fc) status.textContent = 'Loading the base map…';
+
+      var options = {
+        container: host.querySelector('.map__canvas'),
+        style: STYLE_URL,
+        attributionControl: { compact: true },
+        cooperativeGestures: true,
+        dragRotate: false,
+        pitchWithRotate: false,
+        touchPitch: false
+      };
+      if (bbox) {
+        options.bounds = [[bbox[0], bbox[1]], [bbox[2], bbox[3]]];
+        options.fitBoundsOptions = { padding: 32 };
+      }
+      var map = new maplibregl.Map(options);
+      entry.map = map;
+      map.touchZoomRotate.disableRotation();
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+      var scale = new maplibregl.ScaleControl({ unit: milesFirst() ? 'imperial' : 'metric', maxWidth: 110 });
+      map.addControl(scale, 'bottom-left');
+      document.addEventListener('olt:units', function () {
+        scale.setUnit(milesFirst() ? 'imperial' : 'metric');
+      });
+
+      /* A narrow frame has no room for the open attribution beside the scale
+         bar; keep it behind its button there, resizing included. */
+      function collapseAttribution() {
+        if (host.clientWidth >= 560) return;
+        host.querySelectorAll('.maplibregl-ctrl-attrib').forEach(function (el) {
+          el.classList.remove('maplibregl-compact-show');
+          el.removeAttribute('open');
+        });
+      }
+      map.on('resize', collapseAttribution);
+
+      var originals = {};
+      var timer = setTimeout(function () { fail('tiles did not load'); }, 15000);
+      map.on('error', function () { if (!map.isStyleLoaded()) fail('the map style did not load'); });
+
+      var styleReady = new Promise(function (resolve) { map.on('load', resolve); });
+      Promise.all([dataReady, styleReady]).then(function (results) {
+        var fc = results[0];
+        if (!fc) return;
+        clearTimeout(timer);
+        tintBasemap(map, originals);
+        addLineLayers(map, fc, defs);
+        if (!bbox) {
+          bbox = bboxOf(fc);
+          entry.fullBounds = bbox.slice();
+          map.fitBounds([[bbox[0], bbox[1]], [bbox[2], bbox[3]]], { padding: 32, animate: false });
+        }
+        entry.ready = true;
+        host.dataset.state = 'ready';
+        status.textContent = '';
+        collapseAttribution();
+        if (entry.visibleIds) setVisible(entry, entry.visibleIds);
+        if (kind === 'overview') wireOverview(map, defs);
+        mapCorners();
+      });
+
+      function mapCorners() {
+        var b = map.getBounds();
+        corners({ w: b.getWest(), e: b.getEast(), n: b.getNorth(), s: b.getSouth() });
+      }
+      map.on('moveend', function () { if (entry.ready) mapCorners(); });
+      document.addEventListener('olt:theme', function () {
+        if (!entry.ready) return;
+        tintBasemap(map, originals);
+        defs.forEach(function (def) { map.setPaintProperty(def.id, 'line-color', token(def.color)); });
+      });
+    }
+
+    mapStarters.push(function () {
+      if (entry.mapStarted) return;
+      entry.mapStarted = true;
+      startMapLibre();
+    });
+  }
+
+  function startMaps() {
+    mapStarters.forEach(function (start) { start(); });
+  }
+
+  function entryFor(id) {
+    return document.querySelector('.entry[data-id="' + (window.CSS && CSS.escape ? CSS.escape(id) : id) + '"]');
+  }
+
+  function highlight(id) {
+    maps.forEach(function (m) {
+      if (m.map && m.ready && m.map.getLayer('olt-hi')) m.map.setFilter('olt-hi', ['==', ['get', 'id'], id || '']);
+    });
+    document.querySelectorAll('.entry.is-highlit').forEach(function (li) { li.classList.remove('is-highlit'); });
+    if (id) {
+      var li = entryFor(id);
+      if (li) li.classList.add('is-highlit');
+    }
+  }
+
+  function wireOverview(map, defs) {
+    var popup = new maplibregl.Popup({ closeButton: true, maxWidth: '18rem' });
+    defs.filter(function (d) { return d.hit; }).forEach(function (def) {
+      map.on('mousemove', def.id, function (e) {
+        map.getCanvas().style.cursor = 'pointer';
+        highlight(e.features[0].properties.id);
+      });
+      map.on('mouseleave', def.id, function () {
+        map.getCanvas().style.cursor = '';
+        highlight('');
+      });
+      map.on('click', def.id, function (e) {
+        var p = e.features[0].properties;
+        var box = document.createElement('div');
+        var a = document.createElement('a');
+        a.href = '/trails/' + encodeURIComponent(p.id) + '/';
+        a.textContent = p.name;
+        var meta = document.createElement('p');
+        meta.textContent = lengthText(Number(p.length_km)) + (p.kind === 'route' ? ' · person-defined route' : '');
+        box.appendChild(a);
+        box.appendChild(meta);
+        popup.setLngLat(e.lngLat).setDOMContent(box).addTo(map);
+      });
+    });
+  }
+
+  /* Fit the overview map to the lines still shown; when every line is shown
+     again that is the full extent the map opened at. */
+  function fitToVisible(entry, ids) {
+    var map = entry.map;
+    if (!map || !entry.ready || entry.kind !== 'overview' || !entry.boundsById) return;
+    var union = null;
+    var shown = 0;
+    var total = Object.keys(entry.boundsById).length;
+    ids.forEach(function (id) {
+      var b = entry.boundsById[id];
+      if (!b) return;
+      shown += 1;
+      union = union
+        ? [Math.min(union[0], b[0]), Math.min(union[1], b[1]), Math.max(union[2], b[2]), Math.max(union[3], b[3])]
+        : b.slice();
+    });
+    if (!union) return;
+    var target = shown >= total && entry.fullBounds ? entry.fullBounds : union;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    map.fitBounds([[target[0], target[1]], [target[2], target[3]]],
+      { padding: 32, maxZoom: 11, animate: !reduceMotion });
+  }
+
+  function setVisible(entry, ids) {
+    entry.visibleIds = ids;
+    var set = {};
+    ids.forEach(function (id) { set[id] = true; });
+    entry.fallback.querySelectorAll('[data-id]').forEach(function (path) {
+      path.style.display = set[path.getAttribute('data-id')] ? '' : 'none';
+    });
+    var map = entry.map;
+    if (!map || !entry.ready) return;
+    var inSet = ['in', ['get', 'id'], ['literal', ids]];
+    entry.defs.forEach(function (def) {
+      if (def.id === 'olt-hi') return;
+      map.setFilter(def.id, def.filter ? ['all', def.filter, inSet] : inSet);
+    });
+    fitToVisible(entry, ids);
+  }
+
+  /* Fetch the line data and draw the fallback at once; start MapLibre now if
+     it is already here, and otherwise when the page has loaded (the deferred
+     MapLibre script follows this one). The finder and the other controls
+     below never wait for it. */
+  document.querySelectorAll('.mapfig[data-map]').forEach(initMap);
+  if (window.maplibregl || document.readyState === 'complete') startMaps();
+  else window.addEventListener('load', startMaps);
+
+  /* 3. Trail finder (home page) ------------------------------------------------ */
+
+  function initFinder(form) {
+    var list = document.getElementById('entries');
+    var items = Array.prototype.slice.call(list.querySelectorAll('.entry'));
+    var count = document.getElementById('results-count');
+    var empty = document.getElementById('empty-state');
+    var active = form.querySelector('.filters__active');
+    var lenHint = document.getElementById('len-hint');
+    var listHead = document.querySelector('.list-head');
+    var el = form.elements;
+    var sort = document.getElementById('sort');
+    var more = form.querySelector('.filters__more');
+    var total = items.length;
+
+    /* The count is the one live region. Keep it quiet through the first
+       application below so nothing is announced on load, and write to it
+       only when its text changes. The length hint is a description of the
+       length fields, not a live region of its own. */
+    if (count) count.setAttribute('aria-live', 'off');
+    if (lenHint) {
+      lenHint.removeAttribute('aria-live');
+      lenHint.removeAttribute('role');
+      [el.min, el.max].forEach(function (field) {
+        if (!field) return;
+        var described = (field.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
+        if (described.indexOf('len-hint') === -1) described.push('len-hint');
+        field.setAttribute('aria-describedby', described.join(' '));
+      });
+    }
+
+    function setText(node, text) {
+      if (node && node.textContent !== text) node.textContent = text;
+    }
+
+    function hasOption(select, value) {
+      return Array.prototype.some.call(select.options, function (o) { return o.value === value; });
+    }
+
+    function read() {
+      var min = Number(el.min.value) || 0;
+      var max = Number(el.max.value) || Infinity;
+      var swapped = min > max;
+      if (swapped) { var keep = min; min = max; max = keep; }
+      return {
+        q: el.q.value.trim(),
+        words: el.q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),
+        country: el.country.value,
+        region: el.region.value,
+        min: min,
+        max: max,
+        swapped: swapped,
+        designated: el.designated.checked,
+        route: el.route.checked,
+        line: el.line.checked,
+        policy: el.policy.value,
+        tier: el.tier.value
+      };
+    }
+
+    function matches(li, s) {
+      var d = li.dataset;
+      if (s.words.some(function (w) { return d.search.indexOf(w) === -1; })) return false;
+      if (s.country !== 'all') {
+        var countries = (d.countries || d.country || '').split(/\s+/).filter(Boolean);
+        if (countries.indexOf(s.country) === -1) return false;
+      }
+      if (s.region) {
+        var regions = d.regions.split(' ');
+        if (regions.indexOf(s.region) === -1 && regions.indexOf(s.region.slice(0, 2) + '-*') === -1) return false;
+      }
+      var km = Number(d.km);
+      if (km < s.min || km > s.max) return false;
+      if (d.kind === 'route' ? !s.route : !s.designated) return false;
+      if (s.line && d.line !== 'yes') return false;
+      if (s.policy && d.policy !== s.policy) return false;
+      if (s.tier && d.tier !== s.tier) return false;
+      return true;
+    }
+
+    function lengthLabel(km) {
+      var k = fmt.format(km) + ' km';
+      var m = fmt.format(Math.round(km / KM_PER_MI)) + ' mi';
+      return milesFirst() ? m + ' · ' + k : k + ' · ' + m;
+    }
+
+    function describeLength(s) {
+      var text;
+      if (!s.min && s.max === Infinity) text = 'Any length.';
+      else if (!s.min) text = 'Up to ' + lengthText(s.max) + '.';
+      else if (s.max === Infinity) text = 'From ' + lengthText(s.min) + ' up.';
+      else text = 'From ' + lengthText(s.min) + ' to ' + lengthText(s.max) + '.';
+      if (s.swapped) text += ' Shortest and longest were swapped.';
+      return text;
+    }
+
+    function relabelLengths() {
+      form.querySelectorAll('select[data-length-options] option').forEach(function (o) {
+        if (o.value) o.textContent = lengthLabel(Number(o.value));
+      });
+      setText(lenHint, describeLength(read()));
+    }
+
+    /* URL query <-> form. Only values that differ from the defaults are written. */
+    function toQuery(s) {
+      var p = new URLSearchParams();
+      if (s.q) p.set('q', s.q);
+      if (s.country !== 'all') p.set('country', s.country);
+      if (s.region) p.set('region', s.region);
+      if (s.min) p.set('min', String(s.min));
+      if (s.max !== Infinity) p.set('max', String(s.max));
+      if (s.designated !== s.route) p.set('kind', s.designated ? 'designated' : 'route');
+      else if (!s.designated) p.set('kind', 'none');
+      if (s.line) p.set('line', '1');
+      if (s.policy) p.set('policy', s.policy);
+      if (s.tier) p.set('tier', s.tier);
+      if (sort.value !== 'name') p.set('sort', sort.value);
+      return p.toString();
+    }
+
+    function fromQuery() {
+      var p = new URLSearchParams(window.location.search);
+      el.q.value = p.get('q') || '';
+      var country = p.get('country');
+      syncRadios('#finder-form input[name="country"]', country === 'US' || country === 'CA' ? country : 'all');
+      ['region', 'min', 'max', 'policy', 'tier'].forEach(function (name) {
+        var v = p.get(name) || '';
+        el[name].value = hasOption(el[name], v) ? v : '';
+      });
+      var kind = p.get('kind');
+      el.designated.checked = kind !== 'route' && kind !== 'none';
+      el.route.checked = kind !== 'designated' && kind !== 'none';
+      el.line.checked = p.get('line') === '1';
+      var s = p.get('sort') || 'name';
+      sort.value = hasOption(sort, s) ? s : 'name';
+      limitRegions();
+    }
+
+    function limitRegions() {
+      var c = el.country.value;
+      el.region.querySelectorAll('optgroup').forEach(function (g) { g.disabled = c !== 'all' && g.dataset.country !== c; });
+      if (el.region.value && c !== 'all' && el.region.value.slice(0, 2) !== c) el.region.value = '';
+    }
+
+    function applySort() {
+      var key = sort.value;
+      items.slice().sort(function (a, b) {
+        if (key === 'long') return Number(b.dataset.km) - Number(a.dataset.km);
+        if (key === 'short') return Number(a.dataset.km) - Number(b.dataset.km);
+        return a.dataset.name.localeCompare(b.dataset.name);
+      }).forEach(function (li) { list.appendChild(li); });
+    }
+
+    function apply(updateUrl) {
+      var s = read();
+      var shown = [];
+      items.forEach(function (li) {
+        var ok = matches(li, s);
+        li.hidden = !ok;
+        if (ok) shown.push(li.dataset.id);
+      });
+      if (count && count.textContent !== shown.length + ' of ' + total + ' records') {
+        count.innerHTML = '';
+        var strong = document.createElement('strong');
+        strong.textContent = String(shown.length);
+        count.appendChild(strong);
+        count.appendChild(document.createTextNode(' of ' + total + ' records'));
+      }
+      empty.hidden = shown.length > 0;
+      if (listHead) listHead.hidden = shown.length === 0;
+      setText(lenHint, describeLength(s));
+
+      var n = (s.words.length ? 1 : 0) + (s.country !== 'all' ? 1 : 0) + (s.region ? 1 : 0) +
+        (s.min ? 1 : 0) + (s.max !== Infinity ? 1 : 0) + (!s.designated ? 1 : 0) + (!s.route ? 1 : 0) +
+        (s.line ? 1 : 0) + (s.policy ? 1 : 0) + (s.tier ? 1 : 0);
+      active.textContent = n ? n + ' active' : '';
+
+      maps.forEach(function (m) { if (m.kind === 'overview') setVisible(m, shown); });
+      if (updateUrl) {
+        var q = toQuery(s);
+        window.history.replaceState(null, '', (q ? '?' + q : window.location.pathname) + window.location.hash);
+      }
+    }
+
+    form.querySelectorAll('input[name="country"]').forEach(function (r) { r.addEventListener('change', limitRegions); });
+    form.addEventListener('input', function () { apply(true); });
+    form.addEventListener('change', function () { apply(true); });
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+    form.addEventListener('reset', function () {
+      setTimeout(function () {
+        el.region.querySelectorAll('optgroup').forEach(function (g) { g.disabled = false; });
+        apply(true);
+      }, 0);
+    });
+    document.querySelectorAll('[data-reset]').forEach(function (b) {
+      b.addEventListener('click', function () { form.reset(); el.q.focus(); });
+    });
+    sort.addEventListener('change', function () { applySort(); apply(true); });
+    document.addEventListener('olt:units', relabelLengths);
+
+    items.forEach(function (li) {
+      li.addEventListener('mouseenter', function () { highlight(li.dataset.id); });
+      li.addEventListener('mouseleave', function () { highlight(''); });
+      li.addEventListener('focusin', function () { highlight(li.dataset.id); });
+      li.addEventListener('focusout', function () { highlight(''); });
+    });
+
+    fromQuery();
+    relabelLengths();
+    applySort();
+    apply(false);
+    /* The count can announce from here on; the first application is done. */
+    setTimeout(function () { if (count) count.removeAttribute('aria-live'); }, 0);
+    /* The folded filters arrive closed; open them only where the filters
+       have their own column (the finder's wide layout), and leave them
+       closed on narrow screens. */
+    if (more && window.matchMedia('(min-width: 70rem)').matches) more.open = true;
+    window.addEventListener('popstate', function () { fromQuery(); applySort(); apply(false); });
+  }
+
+  var finder = document.getElementById('finder-form');
+  if (finder) initFinder(finder);
+
+  /* 4. Copy a required credit ------------------------------------------------ */
+
+  document.querySelectorAll('[data-copy]').forEach(function (button) {
+    var target = document.querySelector(button.dataset.copy);
+    var done = document.querySelector(button.dataset.copyStatus);
+    if (!target) return;
+    button.hidden = false;
+    button.addEventListener('click', function () {
+      var text = target.textContent.trim();
+      function ok() { if (done) done.textContent = 'Copied: ' + text; }
+      function manual() {
+        var range = document.createRange();
+        range.selectNodeContents(target);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        if (done) done.textContent = 'Selected. Press Ctrl+C or ⌘C to copy.';
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, manual);
+      else manual();
+    });
+  });
+})();

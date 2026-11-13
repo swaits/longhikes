@@ -1,0 +1,181 @@
+"""Plain words for the record's coded values, and number formatting.
+
+Every coded value in docs/schema.md that a page shows has a label here, with
+a one-line meaning taken from the schema or the README.
+"""
+from .markup import Markup, esc
+
+KM_PER_MI = 1.609344
+
+COUNTRIES = {"US": "United States", "CA": "Canada"}
+
+US_STATES = {
+    "AK": "Alaska", "AL": "Alabama", "AR": "Arkansas", "AZ": "Arizona", "CA": "California",
+    "CO": "Colorado", "CT": "Connecticut", "DC": "District of Columbia", "DE": "Delaware",
+    "FL": "Florida", "GA": "Georgia", "HI": "Hawaii", "IA": "Iowa", "ID": "Idaho", "IL": "Illinois",
+    "IN": "Indiana", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "MA": "Massachusetts",
+    "MD": "Maryland", "ME": "Maine", "MI": "Michigan", "MN": "Minnesota", "MO": "Missouri",
+    "MS": "Mississippi", "MT": "Montana", "NC": "North Carolina", "ND": "North Dakota",
+    "NE": "Nebraska", "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico", "NV": "Nevada",
+    "NY": "New York", "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PA": "Pennsylvania",
+    "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee",
+    "TX": "Texas", "UT": "Utah", "VA": "Virginia", "VT": "Vermont", "WA": "Washington",
+    "WI": "Wisconsin", "WV": "West Virginia", "WY": "Wyoming",
+}
+CA_PROVINCES = {
+    "AB": "Alberta", "BC": "British Columbia", "MB": "Manitoba", "NB": "New Brunswick",
+    "NL": "Newfoundland and Labrador", "NS": "Nova Scotia", "NT": "Northwest Territories",
+    "NU": "Nunavut", "ON": "Ontario", "PE": "Prince Edward Island", "QC": "Quebec",
+    "SK": "Saskatchewan", "YT": "Yukon",
+}
+ALL_CANADA = "all provinces and territories"
+
+# (label, meaning). Meanings follow docs/schema.md and README.md.
+TIERS = {
+    "national": ("National Scenic Trail", "A United States National Scenic Trail"),
+    "regional": ("Regional", "A long trail of 80 km (50 mi) or more"),
+    "short": ("Short", "A well-known multi-day trail of 60 to 80 km"),
+    "deferred": ("Deferred", "Listed, but something about it is not settled; the record's note says what"),
+    "candidate": ("Candidate", "Listing not yet decided"),
+}
+WAVES = {
+    "1": ("First set", "In the first set of trails"),
+    "held": ("Held", "Listed, but something about it is not settled"),
+}
+INCLUSION = {
+    "nst-unconditional": ("Listed unconditionally", "Every National Scenic Trail is listed"),
+    "candidate-decision-pending": ("Candidate", "The decision to list it is pending"),
+}
+KINDS = {
+    "designated": ("Designated trail",
+                   "Designated, maintained and published as one trail by a land agency or a trail association"),
+    "route": ("Person-defined route",
+              "Worked out and published by a person or a small group: a high route, a traverse or a loop of linked trails"),
+}
+SOURCE_STATUS = {
+    "verified": ("Verified", "The line was downloaded from the source and measured"),
+    "found": ("Found", "The source was located but not downloaded"),
+    "osm-only": ("OpenStreetMap only", "The only source is an OpenStreetMap route relation"),
+    "none": ("None", "No source of a line"),
+}
+LICENCES = {
+    "us-gov-public-domain": "US public domain",
+    "CC-BY-4.0": "CC BY 4.0",
+    "CC-BY": "CC BY",
+    "ODbL-1.0": "ODbL 1.0",
+    "CC-BY-NC-ND-4.0": "CC BY-NC-ND 4.0",
+    "none-stated": "None stated",
+    "restricted": "Restricted",
+    "unknown": "Unknown",
+}
+LICENCE_URLS = {
+    "us-gov-public-domain": "https://www.usa.gov/government-works",
+    "CC-BY-4.0": "https://creativecommons.org/licenses/by/4.0/",
+    "ODbL-1.0": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "CC-BY-NC-ND-4.0": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+}
+POLICIES = {
+    "open": ("Open", "The creator publishes the line freely",
+             "A line is included only where the creator's terms allow passing it on, or where "
+             "OpenStreetMap carries the route as a route relation. Otherwise get it from the creator."),
+    "sold": ("Sold", "The route is got by buying a guide or map set",
+             "No line is included from any source, OpenStreetMap included."),
+    "withheld": ("Withheld", "The creator chooses not to publish a line",
+                 "No line is included from any source, OpenStreetMap included."),
+    "unclear": ("Unclear", "Whether the creator shares the line is not settled",
+                "No line is included until it is settled."),
+}
+SHIELD_STATUS = {
+    "use-real-logo": ("Logo in use", "The trail has a logo"),
+    "no-logo-exists": ("No logo", "No logo exists for this trail"),
+    "logo-not-found": ("Logo not found", "No logo file was found"),
+}
+ACCESS = {"free": "Free", "purchase": "Purchase"}
+DECISIONS = {"included-named": "Included with its name"}
+
+
+def label(table, key):
+    """The label for a coded value; the raw value itself when the table has none."""
+    entry = table.get(str(key))
+    return entry[0] if isinstance(entry, tuple) else (entry or str(key))
+
+
+def meaning(table, key):
+    entry = table.get(str(key))
+    return entry[1] if isinstance(entry, tuple) else ""
+
+
+def region_name(code):
+    if code == ALL_CANADA:
+        return "All provinces and territories"
+    return US_STATES.get(code) or CA_PROVINCES.get(code) or code
+
+
+def region_country(code):
+    """"US" or "CA" for a state, province or territory code; "CA" for all of Canada; "" when unknown."""
+    if code == ALL_CANADA or code in CA_PROVINCES:
+        return "CA"
+    if code in US_STATES:
+        return "US"
+    return ""
+
+
+def region_key(code, country):
+    """Filter value for a region: "US-AZ", "CA-ON"; "CA-*" for all of Canada."""
+    if code == ALL_CANADA:
+        return "CA-*"
+    if code in CA_PROVINCES:
+        return f"CA-{code}"
+    if code in US_STATES:
+        return f"US-{code}"
+    return f"{country}-{code}"
+
+
+def fmt_int(n):
+    return f"{int(round(n)):,}"
+
+
+def fmt_km(km):
+    """1287 -> "1,287"; 1255.1 -> "1,255.1"."""
+    if float(km).is_integer():
+        return f"{int(km):,}"
+    return f"{km:,.1f}"
+
+
+def fmt_km1(km):
+    """A measured length, always with one decimal: 2.0 -> "2.0", 1141 -> "1,141.0"."""
+    return f"{float(km):,.1f}"
+
+
+def km_to_mi(km):
+    return km / KM_PER_MI
+
+
+def fmt_percent(p):
+    """-2.5 -> "−2.5%" (true minus sign), 0.9 -> "+0.9%", 0 -> "0.0%"."""
+    if p == 0:
+        return "0.0%"
+    sign = "+" if p > 0 else "−"
+    return f"{sign}{abs(p):.1f}%"
+
+
+def fmt_bytes(n):
+    if n >= 1_000_000:
+        return f"{n / 1_000_000:.1f} MB"
+    if n >= 1_000:
+        return f"{round(n / 1_000):,} KB"
+    return f"{n} B"
+
+
+def length(km, style="inline", mi=None, measured=False):
+    """A length in both units. The reader's unit preference decides the order (CSS).
+
+    style "inline": "1,287 km (800 mi)"; "stack": large first unit over small second.
+    measured: a measured length, always written with its one decimal ("2.0 km").
+    """
+    mi = km_to_mi(km) if mi is None else mi
+    km_text = f"{fmt_km1(km) if measured else fmt_km(km)} km"
+    whole = float(km).is_integer() and not measured
+    mi_text = f"{fmt_int(mi)} mi" if whole or mi >= 100 else f"{mi:,.1f} mi"
+    return Markup(f'<span class="len len--{style}"><span class="len__km">{esc(km_text)}</span>'
+                  f'<span class="len__mi">{esc(mi_text)}</span></span>')

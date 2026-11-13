@@ -1,0 +1,405 @@
+"""Document-backed pages: /sources/, /logos/, /about/, /data/ and sub-pages.
+
+Markdown goes through olt.md; relative links are rewritten to site pages.
+Repository paths with no site page become repository links when repo_url
+is set, and plain text otherwise (never a dead link).
+"""
+import collections
+import os
+import re
+
+from . import common, md, words
+from .markup import Markup, esc
+
+REAL_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
+def read_doc(repo_root, relpath):
+    """Read a repository document, falling back to this checkout's copy."""
+    for base in (repo_root, REAL_ROOT):
+        path = os.path.join(base, *relpath.split("/"))
+        if os.path.isfile(path):
+            with open(path, encoding="utf-8") as f:
+                return f.read()
+    return ""
+
+
+_PAGE_MAP = {
+    "docs/schema.md": "/data/schema/",
+    "schema.md": "/data/schema/",
+    "notice.md": "/logos/",
+    "sources.md": "/sources/",
+    "contributing.md": "/about/",
+    "changelog.md": "/data/changelog/",
+    "readme.md": "/about/",
+    "license": "/licences/LICENSE",
+    "trails.csv": "/data/trails.csv",
+    "trails.json": "/data/trails.json",
+    "index.geojson": "/data/index.geojson",
+    "overview.geojson": "/data/overview.geojson",
+}
+
+
+def _classify(href, site):
+    """Site href for a Markdown destination, or None to drop the link."""
+    if not href or href.startswith(("#", "/", "http://", "https://", "mailto:", "tel:")):
+        return href
+    path, _, frag = href.partition("#")
+    norm = path[2:] if path.startswith("./") else path
+    while norm.startswith("../"):
+        norm = norm[3:]
+    key = norm.lower()
+    if key in _PAGE_MAP:
+        return _PAGE_MAP[key] + (f"#{frag}" if frag else "")
+    if key.startswith("licenses/") and key.endswith(".txt"):
+        return "/licences/" + norm.split("/", 1)[1] + (f"#{frag}" if frag else "")
+    if site.repo_url:
+        return f"{site.repo_url}/blob/main/{norm}" + (f"#{frag}" if frag else "")
+    return None
+
+
+def make_link_rewrite(site):
+    """md.render link_rewrite: the site href, or None (md.py then keeps the link's text only)."""
+    return lambda href: _classify(href, site)
+
+
+def _link_text(html, phrase, url):
+    """Link each occurrence of phrase in the text of html (not inside a tag or an existing link)."""
+    out, depth = [], 0
+    for part in re.split(r"(<[^>]*>)", html):
+        if part.startswith("<"):
+            if re.match(r"<a[\s>]", part):
+                depth += 1
+            elif part.startswith("</a"):
+                depth = max(0, depth - 1)
+        elif depth == 0 and phrase in part:
+            part = part.replace(phrase, f'<a href="{esc(url)}">{phrase}</a>')
+        out.append(part)
+    return "".join(out)
+
+
+def link_requests(html, site):
+    """Link the documents' own words asking readers to open an issue or to write
+    to the maintainers, when site.toml says where (repo_url, contact_url).
+    The wording is left as the documents have it; with neither set, nothing changes."""
+    issue = site.issues_url or site.contact_url
+    contact = site.contact_url or site.repo_url
+    if issue:
+        for phrase in ("Open an issue", "open an issue", "opening an issue"):
+            html = _link_text(html, phrase, issue)
+    if contact:
+        for phrase in ("writing to the repository maintainers", "write to the repository maintainers"):
+            html = _link_text(html, phrase, contact)
+    return Markup(html)
+
+
+def render_doc(text, site, *, heading_offset=0, drop_h1=False):
+    """Render Markdown to HTML with rewritten links and scrollable tables."""
+    if drop_h1:
+        text = re.sub(r"\A# [^\n]*\n+", "", text, count=1)
+    html = md.render(text, heading_offset=heading_offset,
+                     link_rewrite=make_link_rewrite(site))
+    html = html.replace("<table>", '<div class="table-wrap"><table>')
+    html = html.replace("</table>", "</table></div>")
+    return Markup(html)
+
+
+def sections_map(text):
+    return dict(md.split_sections(text, level=2))
+
+
+def render_sections(text, site, titles, *, level=2):
+    """Render named level-2 sections only, each under its own heading."""
+    found = sections_map(text) if level == 2 else {}
+    out = []
+    for title in titles:
+        body = found.get(title)
+        if body is None:
+            continue
+        out.append(md.render(f"## {title}\n\n{body}", link_rewrite=make_link_rewrite(site)))
+    html = "\n".join(out)
+    html = html.replace("<table>", '<div class="table-wrap"><table>')
+    html = html.replace("</table>", "</table></div>")
+    return Markup(html)
+
+
+def _record_links(recs):
+    """The records as a link list, one name per line."""
+    return Markup('<ul class="linklist">' + "".join(
+        f'<li><a href="{esc(common.trail_path(r))}">{common.name(r)}</a></li>' for r in recs) + "</ul>")
+
+
+def _group_by(records, keyfn):
+    groups = collections.defaultdict(list)
+    for r in records:
+        groups[keyfn(r)].append(r)
+    for recs in groups.values():
+        recs.sort(key=lambda r: r["name"].lower())
+    return groups
+
+
+def sources_page(records, site, repo_root):
+    """(title, description, body) for /sources/."""
+    by_licence = _group_by(records, lambda r: r.get("source", {}).get("licence", "") or "unknown")
+    by_source = _group_by(records, lambda r: r.get("source", {}).get("line_source", "") or "none (no line included)")
+    by_status = _group_by(records, lambda r: r.get("source", {}).get("status", "") or "none")
+
+    def measured(recs):
+        return sum(1 for r in recs if r.get("verification", {}).get("verified"))
+
+    n_measured = measured(records)
+    status_cells = (f'<div><dt>Line measured</dt><dd>{n_measured}<small>Records whose line was '
+                    f'downloaded and measured (verification), whatever its source</small></dd></div>')
+    for key in ("verified", "osm-only", "found", "none"):
+        recs = by_status.get(key, [])
+        k = measured(recs)
+        of_these = (f"; {k} of these measured" if k and k < len(recs) else
+                    "; all measured" if k and k == len(recs) and key != "verified" else "")
+        status_cells += (f'<div><dt>Source status: {esc(words.label(words.SOURCE_STATUS, key))}</dt>'
+                         f'<dd>{len(recs)}<small>{esc(words.meaning(words.SOURCE_STATUS, key))}{esc(of_these)}</small></dd></div>')
+    other = [k for k in by_status if k not in ("verified", "osm-only", "found", "none")]
+
+    def group_rows(groups, label_of):
+        rows = ""
+        for key in sorted(groups, key=lambda k: (-len(groups[k]), str(k).lower())):
+            recs = groups[key]
+            lines = sum(1 for r in recs if common.has_line(r))
+            rows += (f'<tr><td>{label_of(key)}</td><td class="num">{len(recs)}</td>'
+                     f'<td class="num">{lines}</td><td>{_record_links(recs)}</td></tr>')
+        return rows
+
+    def lic_label(k):
+        return Markup(f'{esc(words.label(words.LICENCES, k))} <code class="raw">{esc(k)}</code>')
+
+    head = ('<thead><tr><th scope="col">{0}</th><th scope="col">Records</th>'
+            '<th scope="col">With a line</th><th scope="col">Trails and routes</th></tr></thead>')
+    computed = f"""<div class="container section">
+  <div class="section-head"><h2 id="sources-at-a-glance">At a glance</h2>
+  <p>Counted from the {len(records)} records. Each trail page names its own source, licence and credit.
+  The source status says where a line was looked for; whether it was measured is counted separately.</p></div>
+  <dl class="tally">{status_cells}</dl>
+  {f'<p class="note">Other source status values: {esc(", ".join(map(str, other)))}.</p>' if other else ""}
+  <div class="doc-block"><h3>By licence</h3><div class="table-wrap"><table>
+  {head.format("Licence")}
+  <tbody>{group_rows(by_licence, lic_label)}</tbody></table></div></div>
+  <div class="doc-block"><h3>By line source</h3><div class="table-wrap"><table>
+  {head.format("Line source")}
+  <tbody>{group_rows(by_source, esc)}</tbody></table></div></div>
+</div>"""
+    doc_html = render_doc(read_doc(repo_root, "SOURCES.md"), site, drop_h1=True)
+    body = (f'<div class="page-head"><div class="container"><header class="titleblock">'
+            f'<div class="titleblock__text"><p class="kicker">Provenance</p><h1>Sources</h1>'
+            f'<p class="page-head__lede">Where the lines come from, and the terms each source states.</p>'
+            f'</div></header></div></div>{computed}'
+            f'<div class="container section"><div class="prose doc">{doc_html}</div></div>')
+    return "Sources", "Where each trail line comes from: licences, line sources and source terms.", Markup(body)
+
+
+def logos_page(records, site, repo_root):
+    """(title, description, body) for /logos/."""
+    notice_html = link_requests(render_sections(read_doc(repo_root, "NOTICE.md"), site,
+                                                ["Logos and marks", "Removal"]), site)
+    with_logo = [r for r in sorted(records, key=lambda r: r["name"].lower())
+                 if "shield" in r["derived"]["files"]]
+    cards = ""
+    for r in with_logo:
+        sh = r.get("shield", {})
+        src = sh.get("logo_source", "")
+        if src.startswith(("http://", "https://")):
+            src_html = Markup(f'<a href="{esc(src)}">{esc(src)}</a>')
+        elif src:
+            src_html = esc(src)
+        else:
+            src_html = Markup("Not recorded")
+        cards += f"""<li class="logo-card">
+  {common.plate(r, size="lg", link=True, alt="")}
+  <div><h3><a href="{esc(common.trail_path(r))}">{common.name(r)}</a></h3>
+  <dl class="facts"><div><dt>Holder</dt><dd>{esc(sh.get("logo_owner", "") or "Not recorded")}</dd></div>
+  <div><dt>Taken from</dt><dd>{src_html}</dd></div></dl></div>
+</li>"""
+    counts = collections.Counter(r.get("shield", {}).get("status", "") for r in records)
+    body = f"""<div class="page-head"><div class="container"><header class="titleblock">
+  <div class="titleblock__text"><p class="kicker">Marks</p><h1>Logos</h1>
+  <p class="page-head__lede">Logos are shown only to identify each trail. They belong to their holders.</p>
+  </div></header></div></div>
+<div class="container section"><div class="prose doc">{notice_html}</div></div>
+<div class="container section"><div class="section-head"><h2>Every logo in the dataset</h2>
+<p>{len(with_logo)} records include a logo file.</p></div>
+<ul class="logo-grid">{cards}</ul>
+<p class="note">No logo file is included for the other records: {counts["no-logo-exists"]} are recorded as
+having no logo (<code class="raw">no-logo-exists</code>) and {counts["logo-not-found"]} as
+logo not found (<code class="raw">logo-not-found</code>).</p></div>"""
+    return "Logos", "Trail logos, their holders, and how a holder can ask for removal.", Markup(body)
+
+
+def about_page(records, site, repo_root):
+    """(title, description, body) for /about/."""
+    readme = read_doc(repo_root, "README.md")
+    main = link_requests(render_sections(readme, site,
+                                         ["What this is, and what it is not", "Inclusion rule",
+                                          "How to use it", "Report an error", "Licences", "Sources"]), site)
+    contrib = render_doc(read_doc(repo_root, "CONTRIBUTING.md"), site, heading_offset=1)
+    extra = ""
+    if site.issues_url:
+        extra = f'<p><a href="{esc(site.issues_url)}">Open an issue</a> to report an error.</p>'
+    if site.repo_url:
+        extra += f'<p>Source repository: <a href="{esc(site.repo_url)}">{esc(site.repo_url)}</a>.</p>'
+    body = f"""<div class="page-head"><div class="container"><header class="titleblock">
+  <div class="titleblock__text"><p class="kicker">The project</p><h1>About {esc(site.name)}</h1>
+  <p class="page-head__lede">{esc(site.tagline)}.</p></div></header></div></div>
+<div class="container section"><div class="prose doc">{main}{extra}{contrib}</div></div>"""
+    return "About", f"What {site.name} is and is not, the inclusion rule, licences and how to contribute.", Markup(body)
+
+
+def _size(out_dir, relpath):
+    path = os.path.join(out_dir, *relpath.split("/"))
+    return words.fmt_bytes(os.path.getsize(path)) if os.path.isfile(path) else "—"
+
+
+# The bulk files on /data/: (name, what it holds, offered as a download).
+# trails.json and overview.geojson are what the pages fetch; a browser shows them.
+BULK_FILES = (
+    ("trails.csv", "One row per trail: id, name, country, regions, length, kind, line policy and status.", True),
+    ("trails.json", "Every record in full, as JSON, with the derived fields the site builds.", False),
+    ("index.geojson", "Every included line, simplified to about 100 m, with id and name.", True),
+    ("overview.geojson", "Every included line simplified to about 750 m for the overview map, "
+                         "with id, name, kind, country and length.", False),
+    ("all-gpx.zip", "Every GPX file (main lines and alternates, simplified to 5 m), as <id>/<file>, "
+                    "with each trail's release.txt, trails.csv, SOURCES.md and a README.", True),
+    ("all-geojson.zip", "Every full-resolution GeoJSON main line and alternates file, as <id>/<file>, "
+                        "with each trail's release.txt, trails.csv, SOURCES.md and a README.", True),
+)
+
+
+def _licence_text_url(licence, repo_root):
+    """Where to read a licence: the copy under /licences/, else the licence's own page, else /sources/."""
+    for base in (repo_root, REAL_ROOT):
+        if os.path.isfile(os.path.join(base, "LICENSES", f"{licence}.txt")):
+            return f"/licences/{licence}.txt"
+    return words.LICENCE_URLS.get(licence, "/sources/")
+
+
+def line_licence_rows(records, repo_root):
+    """(what, terms, text URL) for each licence the included lines carry, from the records."""
+    by_licence = _group_by([r for r in records if common.has_line(r)],
+                           lambda r: r.get("source", {}).get("licence", "") or "unknown")
+    rows = []
+    for lic in sorted(by_licence, key=lambda k: (-len(by_licence[k]), k.lower())):
+        recs = by_licence[lic]
+        label = words.label(words.LICENCES, lic)
+        n = len(recs)
+        what = f"Lines licensed {esc(label)}: {n} record{'s' if n != 1 else ''}"
+        if n <= 3:
+            links = ", ".join(f'<a href="{esc(common.trail_path(r))}">{common.name(r)}</a>' for r in recs)
+            what += f" ({links})"
+        what = Markup(what)
+        terms = Markup(f'{esc(label)} <code class="raw">{esc(lic)}</code>; credit as named in each record and its release.txt')
+        rows.append((what, terms, _licence_text_url(lic, repo_root)))
+    return rows
+
+
+def data_page(records, site, repo_root, out_dir):
+    """(title, description, body) for /data/."""
+    rows = ""
+    for name, what, download in BULK_FILES:
+        dl = f' download="{esc(name)}"' if download else ""
+        rows += (f'<tr><td><a href="/data/{esc(name)}"{dl}>/data/{esc(name)}</a></td>'
+                 f'<td>{esc(what)}</td><td class="num">{esc(_size(out_dir, "data/" + name))}</td></tr>')
+    per_trail = [
+        ("<id>.geojson", "The main line at full resolution, as published in the dataset."),
+        ("<id>.gpx", "The main line simplified to 5 m, for GPS devices. No elevation."),
+        ("<id>-alternates.geojson / .gpx", "Alternate and connector lines, where the source serves them separately."),
+        ("<id>-<source>.geojson", "One source's own extract, where a line combines sources."),
+        ("map.json", "The line simplified to 30 m for the trail page map (GeoJSON)."),
+        ("trail.toml", "The record itself: source, licence, verification, logo and route details."),
+        ("release.txt", "The source, licence and date the line files came from, where a line is included."),
+        ("shield.svg / shield.png", "The trail logo, where one is included. Not licensed; see Logos."),
+        ("shield-thumb.png", "A copy of a PNG logo no larger than 256 px, for the lists."),
+    ]
+    prow = "".join(f'<tr><td><code>{esc(n)}</code></td><td>{esc(w)}</td></tr>' for n, w in per_trail)
+    lic_rows = [
+        ("Records, documents and compiled index", "CC0-1.0 (public domain)", '/licences/LICENSE'),
+        ("Tools in tools/", "MIT", '/licences/MIT.txt'),
+        ("Each trail line", "Keeps its source's terms, stated in its record; see Sources", '/sources/'),
+        ("Lines from OpenStreetMap", "ODbL-1.0; credit © OpenStreetMap contributors", '/licences/ODbL-1.0.txt'),
+        *line_licence_rows(records, repo_root),
+        ("Trail logos", "Not licensed; belong to their holders, shown only to identify each trail", '/logos/'),
+    ]
+    lrow = "".join(f'<tr><td>{esc(a)}</td><td>{esc(b)}</td><td><a href="{esc(c)}">{esc(c)}</a></td></tr>'
+                   for a, b, c in lic_rows)
+    body = f"""<div class="page-head"><div class="container"><header class="titleblock">
+  <div class="titleblock__text"><p class="kicker">Downloads</p><h1>Data</h1>
+  <p class="page-head__lede">Bulk files, the stable per-trail URLs, and the licences.</p></div></header></div></div>
+<div class="container section">
+  <div class="section-head"><h2>Bulk downloads</h2><p>{len(records)} records. Sizes are this build's.</p></div>
+  <div class="table-wrap"><table><thead><tr><th scope="col">File</th><th scope="col">What it holds</th><th scope="col">Size</th></tr></thead>
+  <tbody>{rows}</tbody></table></div>
+  <p class="prose">Each line in the archives keeps its source&rsquo;s terms and needs its source&rsquo;s
+  credit, as given in the trail&rsquo;s release.txt; trails.csv gives each record&rsquo;s licence too.</p>
+  <div class="doc-block"><h2>Per-trail files</h2>
+  <p class="prose">Every record has a stable directory. Replace <code>&lt;id&gt;</code> with a record id
+  (for example <code>long-trail</code>): <code>/trails/&lt;id&gt;/&lt;id&gt;.geojson</code>,
+  <code>/trails/&lt;id&gt;/&lt;id&gt;.gpx</code>, <code>/trails/&lt;id&gt;/&lt;id&gt;-alternates.geojson</code> (and <code>.gpx</code>),
+  <code>/trails/&lt;id&gt;/map.json</code>, <code>/trails/&lt;id&gt;/trail.toml</code> and
+  <code>/trails/&lt;id&gt;/release.txt</code>. The trail page is <code>/trails/&lt;id&gt;/</code>.
+  Line files exist only where the record includes a line; the record says why when it does not.</p>
+  <div class="table-wrap"><table><thead><tr><th scope="col">File under /trails/&lt;id&gt;/</th><th scope="col">What it holds</th></tr></thead>
+  <tbody>{prow}</tbody></table></div></div>
+  <div class="doc-block"><h2>Licences</h2>
+  <div class="table-wrap"><table><thead><tr><th scope="col">What</th><th scope="col">Terms</th><th scope="col">Text</th></tr></thead>
+  <tbody>{lrow}</tbody></table></div>
+  <p class="prose">Licence texts: <a href="/licences/LICENSE">CC0-1.0 (LICENSE)</a>,
+  <a href="/licences/CC0-1.0.txt">CC0-1.0.txt</a>, <a href="/licences/MIT.txt">MIT.txt</a>,
+  <a href="/licences/CC-BY-4.0.txt">CC-BY-4.0.txt</a>, <a href="/licences/ODbL-1.0.txt">ODbL-1.0.txt</a>.</p></div>
+  <div class="doc-block"><h2>Reference</h2><ul class="linklist doc-links">
+  <li><a href="/data/schema/">Record schema</a><small>Every field of trail.toml</small></li>
+  <li><a href="/data/changelog/">Changelog</a><small>What changed, release by release</small></li>
+  <li><a href="/sources/">Sources</a><small>Each source, its terms and the trails that use it</small></li>
+  </ul></div>
+</div>"""
+    return "Data", "Bulk downloads, stable per-trail file URLs, the record schema and licences.", Markup(body)
+
+
+def schema_page(site, repo_root):
+    doc_html = render_doc(read_doc(repo_root, "docs/schema.md"), site, drop_h1=True)
+    body = f"""<div class="page-head"><div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/data/">Data</a></li>
+  <li aria-current="page">Record schema</li></ol></nav>
+  <header class="titleblock"><div class="titleblock__text"><p class="kicker">Reference</p>
+  <h1>Record schema</h1></div></header></div></div>
+<div class="container section"><div class="prose doc">{doc_html}</div></div>"""
+    return "Record schema", "Every field of a trail record (trail.toml) and what it means.", Markup(body)
+
+
+def changelog_page(site, repo_root):
+    doc_html = render_doc(read_doc(repo_root, "CHANGELOG.md"), site, drop_h1=True)
+    body = f"""<div class="page-head"><div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/data/">Data</a></li>
+  <li aria-current="page">Changelog</li></ol></nav>
+  <header class="titleblock"><div class="titleblock__text"><p class="kicker">Reference</p>
+  <h1>Changelog</h1></div></header></div></div>
+<div class="container section"><div class="prose doc">{doc_html}</div></div>"""
+    return "Changelog", "What changed in the dataset, release by release.", Markup(body)
+
+
+def copy_licences(out_dir, repo_root):
+    """Copy LICENSE and LICENSES/*.txt to /licences/. Returns file names copied."""
+    import shutil
+    dest = os.path.join(out_dir, "licences")
+    os.makedirs(dest, exist_ok=True)
+    copied = []
+    for base in (repo_root, REAL_ROOT):
+        lic = os.path.join(base, "LICENSE")
+        if os.path.isfile(lic):
+            shutil.copyfile(lic, os.path.join(dest, "LICENSE"))
+            copied.append("LICENSE")
+            break
+    for base in (repo_root, REAL_ROOT):
+        d = os.path.join(base, "LICENSES")
+        if os.path.isdir(d):
+            for name in sorted(os.listdir(d)):
+                if name.endswith(".txt"):
+                    shutil.copyfile(os.path.join(d, name), os.path.join(dest, name))
+                    copied.append(name)
+            break
+    return copied

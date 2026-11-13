@@ -1,0 +1,24 @@
+# Netlify configuration for the Long Hikes static site.
+#
+# Python version selection (checked 2026-11-10). Netlify's build docs say the
+# version comes from the PYTHON_VERSION environment variable, a runtime.txt
+# file (version only, x.y, no trailing newline), or a Pipfile. A
+# `.python-version` file is NOT a Netlify mechanism:
+#   https://docs.netlify.com/build/configure-builds/manage-dependencies/#python
+# The current build image is Ubuntu 24.04 and supports any official Python
+# version, default 3.x:
+#   https://docs.netlify.com/build/configure-builds/available-software-at-build-time/
+#
+# Pin 3.12: web/build.py needs tomllib (Python >= 3.11), and 3.12 is the Python
+# shipped with Ubuntu 24.04, so the build does not have to fetch an interpreter.
+# Setting it here (rather than in runtime.txt) keeps the pin beside the command.
+[build]
+  command = "python3 web/build.py --out _site"
+  publish = "_site"
+
+[build.environment]
+  PYTHON_VERSION = "3.12"
+
+# Response headers come from web/static/_headers, which web/build.py copies to
+# _site/_headers on every build. Syntax (checked 2026-11-10):
+#   https://docs.netlify.com/manage/routing/headers/

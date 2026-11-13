@@ -100,7 +100,7 @@ The field and file names keep the word "line" (`line.geojson`, `line_file`, `lin
 | `parts` | integer, where verified | Pieces left after joining track ends within 100 m. | `1` |
 | `note` | string | What was found, including failures and gaps. | `"389.5 km in 12 parts against 480 km planned."` |
 
-## `[route]`: the creator and the line policy
+## `[route]`: the creator and the track policy
 
 Present only when `kind = "route"`. A route is a high route, a traverse or a loop of linked trails that a person or a small group worked out and published.
 

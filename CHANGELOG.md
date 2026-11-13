@@ -11,7 +11,7 @@
 
 - The inclusion rule now lists person-defined routes as well as designated trails: high routes, traverses and loops that a person or a small group worked out and published, at the same 50-mile floor. See README.md, section "Inclusion rule".
 - The rule follows the creator's choice. Where the creator sells the route or chooses not to publish a track, the record has no track and no track is included from any source, OpenStreetMap included. Where the creator publishes the track freely, a track is included only where the creator's terms allow it or where OpenStreetMap carries the route as a relation.
-- New record fields in docs/schema.md: `kind`, the `[route]` table (creator, year, line policy, the creator's words) and the `[[guide]]` array (what the route is got from, free or for sale, with price, publisher and ISBN where known).
+- New record fields in docs/schema.md: `kind`, the `[route]` table (creator, year, track policy, the creator's words) and the `[[guide]]` array (what the route is got from, free or for sale, with price, publisher and ISBN where known).
 - tools/validate.py checks the new fields and the track rule. tools/build_index.py carries `kind` and `line_policy` into trails.csv and index.geojson, and the README gets a second generated table for routes.
 - NOTICE.md says a route's creator can ask for a record to be corrected or removed.
 

@@ -2,6 +2,14 @@
 
 Thank you for helping correct or extend this dataset. Please keep changes small: one trail per change where you can.
 
+## How to send a change
+
+Issues and pull requests are taken at https://github.com/swaits/longhikes. That repository mirrors the maintainer's own; a change accepted there reaches both.
+
+- You do not need git to report something. Every trail's page on https://longhikes.org has a "Report a problem" link that opens a short form, and the repository's issue forms cover a wrong record, a missing trail, and a request from a steward or creator to remove or re-credit a track or a logo.
+- To fix a record yourself, use "Edit this record" on the trail's page, or edit `<id>/trail.toml` in a fork, and open a pull request. Say where each changed fact can be checked.
+- Every pull request is checked automatically by `tools/validate.py` and the site's tests. A person still reviews it, most of all where a track is added or changed.
+
 ## Correct a trail
 
 1. Edit only that trail's directory.

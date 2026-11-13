@@ -401,12 +401,12 @@ class RealDocumentsTest(unittest.TestCase):
 
     def test_readme_headings(self):
         top = md.headings(read_doc("README.md"))[0]
-        self.assertEqual(top, (1, "Open Long Trails", "open-long-trails"))
+        self.assertEqual(top, (1, "Long Hikes", "long-hikes"))
 
     def test_readme_offset(self):
         html = md.render(read_doc("README.md"), heading_offset=1)
         self.assertNotIn("<h1", html)
-        self.assertIn('<h2 id="open-long-trails">Open Long Trails</h2>', html)
+        self.assertIn('<h2 id="long-hikes">Long Hikes</h2>', html)
 
     def test_rewrite_called_for_every_real_link(self):
         seen = []

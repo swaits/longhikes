@@ -1,6 +1,6 @@
-# Open Long Trails
+# Long Hikes
 
-A public dataset of long-distance hiking trails in the United States and Canada: one directory per trail, with a written record, the trail's track where it may be shared, and the trail's logo where one exists. First compiled for the PHRP route planner.
+A public dataset of long-distance hiking trails in the United States and Canada: one directory per trail, with a written record, the trail's track where it may be shared, and the trail's logo where one exists. First compiled for the PHRP route planner. The site built from it is at https://longhikes.org.
 
 ## What this is, and what it is not
 
@@ -149,7 +149,7 @@ Routes that a person or a small group worked out and published. The record says 
 
 <!-- BEGIN ROUTE TABLE -->
 
-| ID | Route | Country | States / provinces | Length (km) | Creator | Line policy | Track | First guide |
+| ID | Route | Country | States / provinces | Length (km) | Creator | Track policy | Track | First guide |
 | --- | --- | --- | --- | ---: | --- | --- | --- | --- |
 | beartooth-high-route | Beartooth High Route | US | MT, WY | 145 | Wilderness Mindset | sold | no | [Beartooth High Route Map Pack](https://wildernessmindset.com/product/beartooth-high-route-map-pack/) (purchase) |
 | big-seki-loop | Big SEKI Loop | US | CA | 249 | Amy and James (Doing Miles) | open | yes | [Big SEKI Loop Route Guide](https://doingmiles.com/route-big-seki-loop/) (free) |
@@ -235,7 +235,7 @@ Logos are included only to identify each trail. They belong to their holders, ar
 
 ## Report an error
 
-Open an issue, or send a patch, with: the trail's `id`, what is wrong, and where the correct information can be checked (a source page, a map, or a measured track). Corrections to a track should name the source the corrected track came from and its licence. See CONTRIBUTING.md for how to correct a record, add a trail, or refresh a trail from its source.
+Open an issue or a pull request at https://github.com/swaits/longhikes, with: the trail's `id`, what is wrong, and where the correct information can be checked (a source page, a map, or a measured track). Corrections to a track should name the source the corrected track came from and its licence. See CONTRIBUTING.md for how to correct a record, add a trail, or refresh a trail from its source.
 
 ## Sources
 

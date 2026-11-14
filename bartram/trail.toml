@@ -48,3 +48,24 @@ measured_km = 164.2
 difference_percent = -8.8
 parts = 1
 note = "OSM relation 9955138, 138 ways: 164.2 km in 1 part, 8.8% short of the published 180 km."
+
+[hike]
+summary = "The Bartram Trail is a footpath in the Blue Ridge of Georgia and North Carolina, running from Russell Bridge to Cheoah Bald. It has steep climbs and descents, rocky ground and many stream crossings. Spring and fall are the most pleasant seasons to walk it."
+official_url = "https://www.fs.usda.gov/r08/northcarolina/recreation/trails/bartram-trail"
+start = "Russell Bridge, Georgia"
+end = "Cheoah Bald, North Carolina"
+shape = "point-to-point"
+season = "Spring and fall"
+months = [3, 4, 5, 9, 10, 11]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r08/northcarolina/recreation/trails/bartram-trail"
+publisher = "USDA Forest Service, National Forests in North Carolina"
+facts = ["official_url", "summary", "end", "shape"]
+
+[[hike.source]]
+url = "https://blueridgebartram.org/"
+publisher = "Blue Ridge Bartram Trail Conservancy"
+facts = ["summary", "start", "season", "months", "travel"]

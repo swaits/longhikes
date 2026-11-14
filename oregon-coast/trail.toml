@@ -47,3 +47,24 @@ measured_km = 675.5
 difference_percent = 3.9
 parts = 3
 note = "948 ways in 3 parts, 675.5 km, +3.9% over 650 km."
+
+[hike]
+summary = "The Oregon Coast Trail follows the Oregon coastline, crossing sandy beaches, forest-shaded corridors, majestic headlands and 28 coastal towns. Most of the route is on the beach, some segments wind through state parks or public lands, and about a tenth of it is on the shoulders of highways and city streets."
+official_url = "https://stateparks.oregon.gov/index.cfm?do=v.page&id=95"
+start = "the mouth of the Columbia River, Oregon"
+end = "the California border"
+shape = "point-to-point"
+terrain = ["coast", "forest"]
+travel = "trail-and-road"
+caution = "Completing the trail takes planning: some sections need challenging scrambles, pre-planned supply drops and an understanding of tides."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://stateparks.oregon.gov/index.cfm?do=v.page&id=95"
+publisher = "Oregon Parks and Recreation Department"
+facts = ["official_url", "summary", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://stateparks.oregon.gov/?do=park.profile&parkId=193"
+publisher = "Oregon Parks and Recreation Department"
+facts = ["summary", "start", "end", "shape", "caution"]

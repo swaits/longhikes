@@ -51,3 +51,24 @@ measured_km = 674.0
 difference_percent = 17.0
 parts = 2
 note = "OSM 919642 and its sections give 674.0 km in 2 parts, 17.0% over 576 km."
+
+[hike]
+summary = "The Long Path is a long-distance trail that stretches from the George Washington Bridge in New York City to the rugged wilderness of upstate New York. The New York-New Jersey Trail Conference has led its protection for over 50 years and publishes maps and a section guide for it."
+official_url = "https://nynjtc.org/long-path"
+start = "George Washington Bridge, New York City"
+end = "the Adirondacks, upstate New York"
+shape = "point-to-point"
+high_point = "Slide Mountain"
+high_point_m = 1274
+travel = "trail"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://nynjtc.org/long-path"
+publisher = "New York-New Jersey Trail Conference"
+facts = ["official_url", "summary", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://www.nynjtc.org/lp-section-18/"
+publisher = "New York-New Jersey Trail Conference"
+facts = ["high_point"]

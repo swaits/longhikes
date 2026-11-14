@@ -48,3 +48,35 @@ measured_km = 733.1
 difference_percent = -8.4
 parts = 7
 note = "OSM relation 12038457, 1008 ways: 733.1 km in 7 parts, 8.4% short of the published 800 km. The 33 ways with a side role are in alternates.geojson. The pieces do not all join: OpenStreetMap is missing the connectors between them."
+
+[hike]
+summary = "The Vancouver Island Trail runs the length of Vancouver Island in British Columbia from Victoria in the south to Cape Scott on the northern tip. The association calls it a living trail that changes with weather, water levels and human activity, passing through the traditional territories of many Indigenous Peoples. A through hike should be planned at five weeks or more."
+official_url = "https://vancouverislandtrail.ca/the-trail/about-the-vit/"
+start = "Anderson Hill, Victoria, British Columbia"
+end = "Cape Scott, British Columbia"
+shape = "point-to-point"
+terrain = ["coast", "forest"]
+season = "Mid-June to October"
+months = [6, 7, 8, 9, 10]
+days = [30, 60]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://vancouverislandtrail.ca/the-trail/about-the-vit/"
+publisher = "Vancouver Island Trail Association"
+facts = ["summary", "official_url", "end", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://vancouverislandtrail.ca/"
+publisher = "Vancouver Island Trail Association"
+facts = ["summary", "start", "terrain"]
+
+[[hike.source]]
+url = "https://vancouverislandtrail.ca/thru-hiking/"
+publisher = "Vancouver Island Trail Association"
+facts = ["summary", "season", "months"]
+
+[[hike.source]]
+url = "https://vancouverislandtrail.ca/faqs/"
+publisher = "Vancouver Island Trail Association"
+facts = ["season", "months", "days"]

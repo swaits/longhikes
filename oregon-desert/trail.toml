@@ -28,7 +28,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. Not downloaded. Could be an author-style route (see excluded list); undecided."
+line_absent_reason = "No track has been added for this trail yet."
 
 [osm]
 relation = 10702483
@@ -45,3 +45,23 @@ logo_owner = "Oregon Natural Desert Association"
 [verification]
 verified = false
 note = "Not downloaded. Could be an author-style route (see excluded list); undecided."
+
+[hike]
+summary = "The Oregon Desert Trail is a route of about 750 miles across Oregon's high desert, from outside Bend in the west to Lake Owyhee State Park in the east. It links existing hiking trails, old jeep tracks and wagon roads with cross-country travel, and water can be very limited. Hart Mountain, Steens Mountain and the Owyhee Canyonlands are among its highlights."
+official_url = "https://onda.org/regions/oregon-desert-trail/"
+start = "Outside Bend, Oregon"
+end = "Lake Owyhee State Park, Oregon"
+shape = "point-to-point"
+terrain = ["desert"]
+travel = "some-cross-country"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://onda.org/regions/oregon-desert-trail/"
+publisher = "Oregon Natural Desert Association"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://onda.org/regions/oregon-desert-trail/plan-a-trip/"
+publisher = "Oregon Natural Desert Association"
+facts = ["summary", "terrain"]

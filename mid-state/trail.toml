@@ -50,3 +50,24 @@ measured_km = 516.4
 difference_percent = 0.3
 parts = 3
 note = "OSM 1022044 gives 516.4 km in 3 parts, 0.3% over 515 km. Ten node members (guideposts) are not part of the track."
+
+[hike]
+summary = "The Mid State Trail stretches from near Flintstone, Maryland, through the center of Pennsylvania to the New York State line just north of Cowanesque Lake, crossing four regions from south to north. Its keepers call it the wildest footpath in Pennsylvania, and it runs along high ridgelines, deeply wooded plateau and rural low hills."
+official_url = "https://hike-mst.org/"
+start = "Near Flintstone, Maryland"
+end = "New York State line, just north of Cowanesque Lake, Pennsylvania"
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "trail"
+caution = "Several sections are closed to hikers during fall and winter hunting seasons; the association posts current closures in its section updates."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://hike-mst.org/index.php/the-trail"
+publisher = "Mid State Trail Association"
+facts = ["official_url", "summary", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://hike-mst.org/"
+publisher = "Mid State Trail Association"
+facts = ["summary", "terrain", "caution"]

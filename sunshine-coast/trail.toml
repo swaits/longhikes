@@ -47,3 +47,30 @@ measured_km = 197.3
 difference_percent = 9.6
 parts = 2
 note = "210 ways in 2 parts, 197.3 km, +9.6% over 180 km."
+
+[hike]
+summary = "The Sunshine Coast Trail stretches from Sarah Point in Desolation Sound to Saltery Bay on British Columbia's upper Sunshine Coast. It traverses coastal shorelines, creeks and lakes, old growth forest and panoramic mountaintops near Powell River. The society that built it maintains 14 free huts along the way."
+official_url = "https://sunshinecoasttrail.com/"
+start = "Sarah Point, British Columbia"
+end = "Saltery Bay, British Columbia"
+shape = "point-to-point"
+terrain = ["coast", "forest", "lakes"]
+travel = "trail"
+high_point = "Mount Troubridge"
+high_point_m = 1300
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://sunshinecoasttrail.com/"
+publisher = "Sunshine Coast Trail (qathet Parks and Wilderness Society)"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://sunshinecoasttrail.com/plan-your-hike/things-to-consider/"
+publisher = "Sunshine Coast Trail (qathet Parks and Wilderness Society)"
+facts = ["summary"]
+
+[[hike.source]]
+url = "https://sunshinecoasttrail.com/plan-your-hike/multi-day-routes/"
+publisher = "Sunshine Coast Trail (qathet Parks and Wilderness Society)"
+facts = ["high_point"]

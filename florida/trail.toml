@@ -49,3 +49,38 @@ measured_km = 2338.7
 difference_percent = -3.1
 parts = 6
 note = "The five regional relations give 2,338.7 km in 6 parts, 3.1% short of 2,414 km. Alternates, excursions and approaches (326 ways, 248.0 km) are in alternates.geojson."
+
+[hike]
+summary = "The Florida National Scenic Trail runs the length of Florida, from Big Cypress National Preserve in the south to Gulf Islands National Seashore on the Panhandle coast. It crosses cypress swamp, prairie, pinelands and sand beaches. It is the only subtropical National Scenic Trail in the nation."
+official_url = "https://floridatrail.org/explore-the-florida-trail/"
+start = "Big Cypress National Preserve, Florida"
+end = "Gulf Islands National Seashore, Florida"
+shape = "point-to-point"
+days = [60, 90]
+season = "Late October to April"
+months = [10, 11, 12, 1, 2, 3, 4]
+terrain = ["prairie", "coast"]
+travel = "trail"
+permit = "Backcountry camping in Big Cypress National Preserve needs a permit."
+caution = "In Big Cypress, large sections of the trail are under standing water for much of the year."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://floridatrail.org/explore-the-florida-trail/"
+publisher = "Florida Trail Association"
+facts = ["official_url", "summary", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://www.nps.gov/places/florida-national-scenic-trail-southern-terminus.htm"
+publisher = "National Park Service"
+facts = ["summary", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://floridatrail.org/faqs/"
+publisher = "Florida Trail Association"
+facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://floridatrail.org/thru-hike/"
+publisher = "Florida Trail Association"
+facts = ["days"]

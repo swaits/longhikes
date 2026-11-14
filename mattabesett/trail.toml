@@ -48,3 +48,26 @@ measured_km = 95.3
 difference_percent = -9.2
 parts = 1
 note = "OSM relation 2971739, 139 ways: 95.3 km in 1 part, 9.2% short of the published 105 km."
+
+[hike]
+summary = "The Mattabesett Trail is a blue-blazed trail in central Connecticut that runs in a large horseshoe from River Road in Middletown to the Berlin Turnpike in Berlin. Its eastern sections hold high ledges and bald knobs with views of the Connecticut River, and its western sections offer some of the finest ridge walking and cliff views in the state on the southern end of the traprock ridges. It is one of the trails that make up the New England National Scenic Trail."
+official_url = "https://ctwoodlands.org/trails/mattabesett-trail"
+start = "River Road, Middletown, Connecticut"
+end = "Berlin Turnpike, Berlin, Connecticut"
+shape = "point-to-point"
+season = "Spring and fall; summers tend to be humid and buggy and winters cold and icy"
+months = [3, 4, 5, 9, 10, 11]
+terrain = ["forest"]
+travel = "trail"
+caution = "Hunting is permitted in state forests and other properties the trail crosses; wear orange during hunting season."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://ctwoodlands.org/trails/mattabesett-trail"
+publisher = "Connecticut Forest and Park Association"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://newenglandtrail.org/thru-hiking/"
+publisher = "New England Trail"
+facts = ["season", "months"]

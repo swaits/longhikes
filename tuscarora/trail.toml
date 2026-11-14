@@ -48,3 +48,18 @@ measured_km = 381.7
 difference_percent = -6.0
 parts = 1
 note = "OSM relation 10449263, 261 ways: 381.7 km in 1 part, 6.0% short of the published 406 km."
+
+[hike]
+summary = "The Tuscarora Trail is a long alternate to the Appalachian Trail through the Ridge and Valley Appalachians of Virginia, West Virginia, Maryland and Pennsylvania. It leaves the Appalachian Trail near Mathews Arm in Shenandoah National Park and rejoins it atop Blue Mountain south of Duncannon. The Potomac Appalachian Trail Club describes a mix of remote wilderness, pastures, small towns and country back roads."
+official_url = "https://www.patc.net/tuscarora-trail"
+start = "Appalachian Trail near Mathews Arm Campground, Shenandoah National Park, Virginia"
+end = "Appalachian Trail atop Blue Mountain near Duncannon, Pennsylvania"
+shape = "point-to-point"
+terrain = ["forest", "farmland"]
+travel = "trail-and-road"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.patc.net/tuscarora-trail"
+publisher = "Potomac Appalachian Trail Club"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]

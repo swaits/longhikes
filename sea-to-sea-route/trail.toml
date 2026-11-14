@@ -67,3 +67,15 @@ author = "Andrew Skurka"
 access = "purchase"
 url = "https://andrewskurka.com/product/slideshows-on-disk-great-western-loop-and-sea-to-sea-route/"
 format = "slideshow on disk (not a route track)"
+
+[hike]
+summary = "The Sea-to-Sea Route is a network of existing long-distance hiking trails spanning almost continuously between the Atlantic and Pacific Oceans. Ron Strickland began developing the idea in 1996, and Andrew Skurka made its first thru-hike in 2004 and 2005."
+official_url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
+shape = "network"
+unfinished = "An 800-mile gap in North Dakota and Montana along the Missouri River and a 30-mile gap in Vermont interrupt the network."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
+publisher = "Andrew Skurka"
+facts = ["summary", "official_url", "shape", "unfinished"]

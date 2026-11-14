@@ -189,7 +189,7 @@ def readme_table(trails):
         if trail_kind(t) != DESIGNATED:
             continue
         src = t.get("source", {})
-        line = "yes" if src.get("line_file") else "no (record only)"
+        line = "yes" if src.get("line_file") else "no"
         regions = ", ".join(t.get("regions", []))
         lines.append(
             f"| {t['id']} | {_cell(t['name'])} | {t['country']} | {regions} | "
@@ -234,9 +234,9 @@ def counts_line(trails):
     routes = [t for t in trails if trail_kind(t) == "route"]
     routes_with_line = sum(1 for t in routes if t.get("source", {}).get("line_file"))
     return (
-        f"{total} records, {with_line} with a track, {total - with_line} records only. "
-        f"Of these, {len(routes)} are person-defined routes: {routes_with_line} with a track "
-        f"and {len(routes) - routes_with_line} records only."
+        f"{total} trails, {with_line} with a track and {total - with_line} with no track included. "
+        f"Of these, {len(routes)} are routes: {routes_with_line} with a track "
+        f"and {len(routes) - routes_with_line} without."
     )
 
 
@@ -273,7 +273,7 @@ def main():
         f.write(readme_data)
     with_line = sum(1 for t in trails if t.get("source", {}).get("line_file"))
     print(f"Wrote trails.csv, index.geojson and README table: "
-          f"{len(trails)} trails, {with_line} with a line.")
+          f"{len(trails)} trails, {with_line} with a track.")
     return 0
 
 

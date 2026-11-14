@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The alliance publishes the route as an online map with no GPX and no licence that allows passing the track on, and the OpenStreetMap relation of this name is a 0.46-mile path in Missouri, not this route. Get the track from the alliance's map page."
+line_absent_reason = "The alliance publishes the route as an online map with no GPX and no licence that allows passing the track on. Get the track from the alliance's map page."
 
 [osm]
 relation = 0
@@ -59,3 +59,27 @@ author = "Great Plains Trail Alliance"
 access = "free"
 url = "https://www.greatplainstrail.org/gpt-map/"
 format = "online map"
+
+[hike]
+summary = "The Great Plains Trail runs north to south through the shortgrass prairies of the Great Plains, from Grassland National Park on the Canada border to the summit of Guadalupe Peak in Texas. It links three national parks, three national monuments, ten national forests and grasslands and fifteen state parks, and much of the way is on public back roads. Bison, pronghorn and prairie songbirds are common sights."
+official_url = "https://www.greatplainstrail.org/about-the-trail/"
+start = "Grassland National Park, on the Canada-United States border"
+end = "Guadalupe Peak, Guadalupe Mountains National Park, Texas"
+shape = "point-to-point"
+season = "Spring and fall"
+months = [3, 4, 5, 9, 10, 11]
+terrain = ["prairie"]
+travel = "trail-and-road"
+unfinished = "The trail is still being established: the current route links existing trails and public back roads, and new trail is to be built on public lands over time."
+caution = "Public roads carry the route for large stretches, and much of the land beside them is private."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.greatplainstrail.org/about-the-trail/"
+publisher = "Great Plains Trail Alliance"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "unfinished", "caution"]
+
+[[hike.source]]
+url = "https://www.greatplainstrail.org/great-plains-trail-newsletter-for-july-2022/"
+publisher = "Great Plains Trail Alliance"
+facts = ["season", "months"]

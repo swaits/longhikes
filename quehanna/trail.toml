@@ -48,3 +48,17 @@ measured_km = 119.9
 difference_percent = 0.7
 parts = 2
 note = "OSM relation 7236114, 42 ways: 119.9 km in 2 parts, 0.7% more than the published 119 km."
+
+[hike]
+summary = "The Quehanna Trail is a loop through state forests in north-central Pennsylvania, with much of it in the Quehanna Wild Area. Cross-connector trails make shorter sub-loops, and hikers may see elk."
+official_url = "https://www.kta-hike.org/quehanna-trail.html"
+start = "Parker Dam State Park, Pennsylvania"
+shape = "loop"
+terrain = ["forest"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.kta-hike.org/quehanna-trail.html"
+publisher = "Keystone Trails Association"
+facts = ["summary", "official_url", "start", "shape", "terrain", "travel"]

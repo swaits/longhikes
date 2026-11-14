@@ -48,3 +48,24 @@ measured_km = 350.3
 difference_percent = -2.4
 parts = 1
 note = "OSM relation 3838499, 69 ways: 350.3 km in 1 part, 2.4% short of the published 359 km."
+
+[hike]
+summary = "The Ouachita National Recreation Trail stretches through the Ouachita Mountains of Arkansas and Oklahoma, from Talimena State Park through Queen Wilhelmina State Park to Pinnacle Mountain State Park near Little Rock. It is a non-motorized single-track trail, open only to foot traffic and partly to mountain bikes, running mostly through the Ouachita National Forest and crossing the Flatside and Upper Kiamichi wildernesses, with shelters for overnight camping along the way."
+official_url = "https://www.friendsoftheouachita.org/about-the-ot"
+start = "Talimena State Park, Oklahoma"
+end = "Pinnacle Mountain State Park, near Little Rock, Arkansas"
+shape = "point-to-point"
+high_point_m = 792
+terrain = ["forest"]
+travel = "trail"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.friendsoftheouachita.org/about-the-ot"
+publisher = "Friends of the Ouachita Trail"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r08/ouachita/recreation/trails/ouachita-national-recreation-trail"
+publisher = "USDA Forest Service, Ouachita National Forest"
+facts = ["high_point"]

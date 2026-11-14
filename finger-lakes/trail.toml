@@ -49,3 +49,17 @@ measured_km = 921.1
 difference_percent = -3.0
 parts = 2
 note = "The NCT-hosted layer holds only the segments the North Country Trail shares (628.9 km); the four OSM region relations are the whole Finger Lakes Trail and are used here: 921.1 km, 3.0% short of 950 km. The layer extract is kept as source-fragment.geojson."
+
+[hike]
+summary = "The Finger Lakes Trail crosses southern New York from the Pennsylvania border in Allegany State Park to the Long Path and Slide Mountain in the Catskills. Branch trails reach Niagara Falls, the Genesee River valley and the central Finger Lakes. It is a primitive footpath, and some sections close during hunting seasons."
+official_url = "https://fingerlakestrail.org/"
+start = "Allegany State Park, New York"
+end = "Slide Mountain, Catskills, New York"
+shape = "network"
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://fingerlakestrail.org/"
+publisher = "Finger Lakes Trail Conference"
+facts = ["official_url", "summary", "start", "end", "shape", "travel"]

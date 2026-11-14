@@ -50,3 +50,23 @@ measured_km = 372.6
 difference_percent = -40.9
 parts = 1
 note = "The continuous thru route is what is mapped: 372.6 km in 1 part. The 630 km (390 mi) published figure is the whole Ozark Trail system including disconnected sections; the linked thru backbone is about 230 mi (370 km), which the track matches. Planned extensions and disconnected sections are not in this relation. Kept."
+
+[hike]
+summary = "The Ozark Trail winds through the Missouri Ozarks in sections that are meant one day to run from St. Louis to the Arkansas border. A thru-hike follows the contiguous backbone from Onondaga Cave State Park south to the Eleven Point Western trailhead."
+official_url = "https://ozarktrail.com/thru-hiking/"
+start = "Onondaga Cave State Park, Missouri"
+end = "Eleven Point Western trailhead, Missouri"
+shape = "point-to-point"
+travel = "trail"
+unfinished = "The St. Louis to Arkansas border route is not complete; about 230 miles form the contiguous thru-hike backbone."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://ozarktrail.com/thru-hiking/"
+publisher = "Ozark Trail Association"
+facts = ["official_url", "summary", "start", "end", "shape", "unfinished"]
+
+[[hike.source]]
+url = "https://ozarktrail.com/faq-items/what-is-the-ozark-trail/"
+publisher = "Ozark Trail Association"
+facts = ["summary", "travel", "unfinished"]

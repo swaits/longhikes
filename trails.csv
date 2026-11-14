@@ -35,7 +35,7 @@ deseret-hiking-route,Deseret Hiking Route,US,UT,1609,record-only,none (no line i
 desert-trail,Desert Trail,US,CA;NV;OR,2552,record-only,none (no line included),none-stated,route,unclear
 donut-hole,Donut Hole Trail,US,PA,152,included,OpenStreetMap,ODbL-1.0,designated,
 east-coast-trail,East Coast Trail (Newfoundland),CA,NL,336,included,OpenStreetMap,ODbL-1.0,designated,
-eastern-continental-trail,Eastern Continental Trail,US,FL;AL;GA;TN;NC;VA;WV;MD;PA;NJ;NY;CT;MA;VT;NH;ME;QC;NB;NL,7081,record-only,none (no line included),none-stated,route,open
+eastern-continental-trail,Eastern Continental Trail,US,FL;AL;GA;TN;NC;VA;WV;MD;PA;NJ;NY;CT;MA;VT;NH;ME;QC;NB,7081,record-only,none (no line included),none-stated,route,open
 finger-lakes,Finger Lakes Trail,US,NY,950,included,OpenStreetMap,ODbL-1.0,designated,
 florida,Florida National Scenic Trail,US,FL,2414,included,OpenStreetMap,ODbL-1.0,designated,
 foothills,Foothills Trail,US,SC;NC,122,included,OpenStreetMap,ODbL-1.0,designated,
@@ -133,7 +133,7 @@ voyageur,Voyageur Trail,CA,ON,1100,included,OpenStreetMap,ODbL-1.0,designated,
 wasatch-traverse,Wasatch Traverse,US,UT,455,record-only,none (no line included),none-stated,route,open
 waskahegan,Waskahegan Trail,CA,AB,309,record-only,none (no line included),none-stated,designated,
 west-coast-trail,West Coast Trail,CA,BC,75,record-only,none (no line included),ODbL-1.0,designated,
-wind-river-high-route-dixon-wilson,Wind River High Route (Dixon and Wilson line),US,WY,129,record-only,none (no line included),none-stated,route,open
+wind-river-high-route-dixon-wilson,Wind River High Route (Dixon and Wilson),US,WY,129,record-only,none (no line included),none-stated,route,open
 wind-river-high-route-skurka,Wind River High Route (Skurka guide),US,WY,156,record-only,none (no line included),none-stated,route,sold
 wonderland,Wonderland Trail,US,WA,150,included,OpenStreetMap,ODbL-1.0,designated,
 yosemite-high-route,Yosemite High Route,US,CA,261,record-only,none (no line included),none-stated,route,sold

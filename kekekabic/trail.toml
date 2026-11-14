@@ -27,7 +27,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. Not downloaded."
+line_absent_reason = "No track has been added for this trail yet."
 
 [osm]
 relation = 10831114
@@ -44,3 +44,32 @@ logo_owner = "Kekekabic Trail Club"
 [verification]
 verified = false
 note = "Not downloaded."
+
+[hike]
+summary = "The Kekekabic Trail is a primitive trail across the heart of the Boundary Waters Canoe Area Wilderness in northern Minnesota, from Snowbank Lake near Ely to the Gunflint Trail. Most of it lies within the wilderness, and the Forest Service recommends map and compass skills for it."
+official_url = "https://www.fs.usda.gov/r09/superior/recreation/trails/kekekabic-trail-west"
+start = "Snowbank Lake trailhead, near Ely, Minnesota"
+end = "Kekekabic trailhead on the Gunflint Trail, Minnesota"
+shape = "point-to-point"
+season = "All year"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+terrain = ["forest", "lakes"]
+travel = "trail"
+permit = "A permit is required to enter the Boundary Waters Canoe Area Wilderness; the west trailhead is entry point 74."
+caution = "The trail is primitive and remote, with brushy regrowth and little signing in places; most of it lies within the Boundary Waters Canoe Area Wilderness."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r09/superior/recreation/trails/kekekabic-trail-west"
+publisher = "USDA Forest Service, Superior National Forest"
+facts = ["official_url", "summary", "start", "shape", "season", "months", "permit", "caution", "travel"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r09/superior/recreation/trails/kekekabic-trail-east"
+publisher = "USDA Forest Service, Superior National Forest"
+facts = ["end", "summary"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r09/superior/recreation/groups/north-country-national-scenic-trail"
+publisher = "USDA Forest Service, Superior National Forest"
+facts = ["summary", "terrain"]

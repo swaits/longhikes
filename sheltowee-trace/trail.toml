@@ -47,3 +47,30 @@ measured_km = 442.8
 difference_percent = -14.0
 parts = 1
 note = "The 38 section relations join into 1 continuous track, 442.8 km. That is -14.0% against the 515 km in this record and further against the 343 mi (552 km) the Association listed in 2025 after extensions: OSM misses road-walk links and the newest extension. No better open track found (the one ArcGIS item is under an unrelated account). Kept as the best available track, with the gap recorded."
+
+[hike]
+summary = "The Sheltowee Trace runs the length of the Daniel Boone National Forest in Kentucky into the Big South Fork country of Tennessee. It passes Cave Run Lake, Red River Gorge, Natural Bridge and Cumberland Falls along the way."
+official_url = "https://sheltoweetrace.org/trace"
+start = "Rowan County, Kentucky"
+end = "Big South Fork National River and Recreation Area, Scott County, Tennessee"
+shape = "point-to-point"
+terrain = ["forest", "lakes"]
+travel = "trail"
+permit = "Backcountry camping in Daniel Boone National Forest is free and needs no permit, but Big South Fork National Recreation Area charges for backcountry camping permits."
+days = [21, 25]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://sheltoweetrace.org/trace"
+publisher = "Sheltowee Trace Association"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://sheltoweetrace.org/passes-and-permits"
+publisher = "Sheltowee Trace Association"
+facts = ["permit"]
+
+[[hike.source]]
+url = "https://sheltoweetrace.org/thru-hikers"
+publisher = "Sheltowee Trace Association"
+facts = ["days"]

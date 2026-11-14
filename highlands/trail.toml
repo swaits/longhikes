@@ -48,3 +48,18 @@ measured_km = 277.3
 difference_percent = -4.4
 parts = 3
 note = "OSM relation 6335422, 491 ways: 277.3 km in 3 parts, 4.4% short of the published 290 km. The 1 ways with a side role are in alternates.geojson. The pieces do not all join: OpenStreetMap is missing the connectors between them."
+
+[hike]
+summary = "The Highlands Trail runs across the New Jersey and New York Highlands, connecting the Delaware and Hudson rivers, with continuations into Pennsylvania and Connecticut. It is a connected footpath through rolling forest and rugged ridgelines, built and maintained by the New York-New Jersey Trail Conference with public land managers."
+official_url = "https://nynjtc.org/highlands-trail"
+start = "Delaware River, New Jersey"
+end = "Hudson River, New York"
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://nynjtc.org/highlands-trail"
+publisher = "New York-New Jersey Trail Conference"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"]

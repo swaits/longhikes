@@ -51,3 +51,23 @@ measured_km = 292.5
 difference_percent = -79.8
 parts = 5
 note = "OpenStreetMap holds the west half only: 292.5 km in 5 parts, 79.8% short of 1,448 km."
+
+[hike]
+summary = "The Idaho Centennial Trail is the state trail of Idaho, running from Murphy Hot Springs on the Nevada border north through mountains and high desert to the state's northern boundary. It crosses 11 national forests and about 100 miles of Bureau of Land Management land, climbing and dropping between 2,500 and 9,000 feet through sagebrush desert, alpine meadows, cedar forests and six major river canyons."
+official_url = "https://idpr-data-idaho.hub.arcgis.com/datasets/idaho::idaho-centennial-trail-official-route/about"
+start = "Murphy Hot Springs, on the Idaho-Nevada border"
+end = "the northern boundary of Idaho, at the Canadian border"
+shape = "point-to-point"
+terrain = ["desert", "alpine", "forest"]
+caution = "Only a few people have completed the trail; the Bureau of Land Management notes the challenge and time commitment involved."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://idpr-data-idaho.hub.arcgis.com/datasets/idaho::idaho-centennial-trail-official-route/about"
+publisher = "Idaho Department of Parks and Recreation"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://muleapi.blm.gov/visit/idaho-centennial-roadtrail"
+publisher = "Bureau of Land Management"
+facts = ["summary", "caution"]

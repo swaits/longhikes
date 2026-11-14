@@ -48,3 +48,18 @@ measured_km = 325.4
 difference_percent = 4.6
 parts = 4
 note = "OSM relation 1820324, 691 ways: 325.4 km in 4 parts, 4.6% more than the published 311 km. The pieces do not all join: OpenStreetMap is missing the connectors between them."
+
+[hike]
+summary = "The Mason-Dixon Trail connects the Appalachian Trail with the Brandywine Trail, starting at Whiskey Springs in Cumberland County, Pennsylvania, following the Susquehanna River to Havre de Grace, Maryland, then running through Delaware and ending at Chadds Ford, Pennsylvania, on the Brandywine River. It is a system of trails, often sharing its path with other trails through parks and game lands."
+official_url = "https://masondixontrail.wixsite.com/mdts"
+start = "Whiskey Springs, on the Appalachian Trail, Cumberland County, Pennsylvania"
+end = "Chadds Ford, Pennsylvania, on the Brandywine River"
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://masondixontrail.wixsite.com/mdts"
+publisher = "Mason-Dixon Trail System"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"]

@@ -48,3 +48,39 @@ measured_km = 120.6
 difference_percent = 6.7
 parts = 13
 note = "OSM relation 7192246, 95 ways: 120.6 km in 13 parts, 6.7% more than the published 113 km. The pieces do not all join: OpenStreetMap is missing the connectors between them."
+
+[hike]
+summary = "The Laurel Highlands Hiking Trail stretches along Laurel Mountain from the Youghiogheny River at Ohiopyle State Park to the Conemaugh Gorge near Johnstown. It is the main feature of Laurel Ridge State Park, traversing state parks, state forests, state game lands and private lands, and is a major segment of the Potomac Heritage National Scenic Trail."
+official_url = "https://www.pa.gov/agencies/dcnr/recreation/what-to-do/hiking/laurel-highlands-hiking-trail"
+start = "Ohiopyle State Park, Pennsylvania"
+end = "Conemaugh Gorge near Johnstown, Pennsylvania"
+shape = "point-to-point"
+days = [8, 8]
+high_point = "Seven Springs"
+high_point_m = 903
+season = "All year"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+terrain = ["forest"]
+travel = "trail"
+permit = "No permit is needed for day use; overnight hikers must reserve shelter areas in advance and pay a per-night fee."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.pa.gov/agencies/dcnr/recreation/what-to-do/hiking/laurel-highlands-hiking-trail"
+publisher = "Pennsylvania Department of Conservation and Natural Resources"
+facts = ["official_url", "summary", "start", "end", "shape", "season", "months", "terrain", "permit"]
+
+[[hike.source]]
+url = "https://trails.dcnr.pa.gov/Trails/Trail/TrailView?trailKey=90"
+publisher = "Pennsylvania Department of Conservation and Natural Resources"
+facts = ["summary", "travel", "shape"]
+
+[[hike.source]]
+url = "https://events.dcnr.pa.gov/event/laurel-highlands-hiking-trail-thru-hike"
+publisher = "Pennsylvania Department of Conservation and Natural Resources"
+facts = ["days"]
+
+[[hike.source]]
+url = "https://elibrary.dcnr.pa.gov/GetDocument?docId=1743399&DocName=LARI_ParkMap.pdf"
+publisher = "Pennsylvania Department of Conservation and Natural Resources"
+facts = ["high_point"]

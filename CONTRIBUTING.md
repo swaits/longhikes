@@ -6,7 +6,7 @@ Thank you for helping correct or extend this dataset. Please keep changes small:
 
 Issues and pull requests are taken at https://github.com/swaits/longhikes. That repository mirrors the maintainer's own, https://git.swaits.com/swaits/longhikes; a change accepted on GitHub is passed on to it automatically.
 
-- You do not need git to report something. Every trail's page on https://longhikes.org has a "Report a problem" link that opens a short form, and the repository's issue forms cover a wrong record, a missing trail, and a request from a steward or creator to remove or re-credit a track or a logo.
+- You do not need git to report something. Every trail's page on https://longhikes.org has a "Report a problem" link that opens a short form, and the repository's issue forms cover a wrong record, a missing trail, and a request from a steward or author to remove or re-credit a track or a logo.
 - To fix a record yourself, use "Edit this record" on the trail's page, or edit `<id>/trail.toml` in a fork, and open a pull request. Say where each changed fact can be checked.
 - Every pull request is checked automatically by `tools/validate.py` and the site's tests. A person still reviews it, most of all where a track is added or changed.
 
@@ -27,9 +27,9 @@ The second command must print `OK <n> trails`.
 
 ## Add a trail
 
-A trail belongs here when it meets the inclusion rule in README.md: a named, continuous walking route, or a named loop, of at least 50 miles (80 km) (a few well-known routes of 60-80 km are also listed), in the United States or Canada. It is either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a person-defined route: a high route, a traverse or a loop that a person or a small group worked out and published.
+A trail belongs here when it meets the inclusion rule in README.md: a named, continuous walking route, or a named loop, of at least 50 miles (80 km) (a few well-known routes of 60-80 km are also listed), in the United States or Canada. It is either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a route: a high route, a traverse or a loop of linked trails that a hiker or a small group worked out and published.
 
-A person-defined route whose creator chooses not to publish a track is still added, as a record with no track, pointing to where the route is got from its creator. No track for it is included from any source, OpenStreetMap included. The rule is in README.md, section "Inclusion rule"; the fields are in docs/schema.md.
+A route whose author chooses not to publish a track is still added, with no track included, pointing to where the route is got from. No track for it is included from any source, OpenStreetMap included. The rule is in README.md, section "Inclusion rule"; the fields are in docs/schema.md.
 
 To add one:
 
@@ -52,4 +52,4 @@ To add one:
 
 - Plain, short English. No sales talk.
 - Records state facts and sources. If a term comes from a source page, quote the sentence and give the page in `source.licence_text` or SOURCES.md.
-- Do not add personal names or email addresses, local file paths, or notes about how a change was produced. This is about contributors and about how a change was made. The published name of a route's creator, or of a guide's author, is a fact about the route and belongs in the record (`route.creator`, `guide.author`).
+- Do not add personal names or email addresses, local file paths, or notes about how a change was produced. This is about contributors and about how a change was made. The published name of a route's author, or of a guide's author, is a fact about the route and belongs in the record (`route.creator`, `guide.author`).

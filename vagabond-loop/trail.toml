@@ -6,7 +6,7 @@ short_name = "VL"
 country = "US"
 regions = ["AZ", "UT", "CO", "NM"]
 length_km = 5632
-length_note = "approximately 3,500 mi, per Cam Honan's write-up; the creator's own page gives no mileage"
+length_note = "approximately 3,500 mi, per Cam Honan's write-up; the author's own page gives no mileage"
 kind = "route"
 tier = "regional"
 designation = "Person-defined route (Ryan \"Dirtmonger\" Sylva, 2013); no agency or association"
@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track or map is offered on the creator's page, and no licence is stated; the loop is a link-up of four published trails. The archived page is where it is described."
+line_absent_reason = "No track or map is offered on the author's page, and no licence is stated; the loop is a link-up of four published trails. The archived page is where it is described."
 
 [osm]
 relation = 0
@@ -50,7 +50,7 @@ note = "No line to measure."
 creator = "Ryan \"Dirtmonger\" Sylva"
 year = 2013
 line_policy = "open"
-note = "A loop through the Southwest and Rockies connecting the Arizona Trail, the Hayduke Trail, the Colorado Trail and the Grand Enchantment Trail. The creator set out on 4 April 2013; his page carries a description and no track, and the domain no longer resolves."
+note = "A loop through the Southwest and Rockies connecting the Arizona Trail, the Hayduke Trail, the Colorado Trail and the Grand Enchantment Trail. The author set out on 4 April 2013; his page carries a description and no track, and the domain no longer resolves."
 
 [[guide]]
 title = "Vagabond Loop route description (archived)"
@@ -58,3 +58,16 @@ author = "Ryan \"Dirtmonger\" Sylva"
 access = "free"
 url = "https://web.archive.org/web/2020/http://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
 format = "web page, archived; the domain no longer resolves"
+
+[hike]
+summary = "The Vagabond Loop is Ryan \"Dirtmonger\" Sylva's circuit of the Four Corners country in the American Southwest. It ties together the Arizona Trail, the Hayduke Trail, a Moab to Albuquerque connection using the Colorado Trail, and the Grand Enchantment Trail into one circle. The author walked it in 2013 starting on the Arizona Trail at the Mexican border."
+official_url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+start = "Mexican border on the Arizona Trail, Arizona"
+shape = "loop"
+terrain = ["desert"]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+publisher = "Ryan \"Dirtmonger\" Sylva"
+facts = ["summary", "official_url", "start", "shape", "terrain"]

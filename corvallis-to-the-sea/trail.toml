@@ -48,3 +48,31 @@ measured_km = 95.4
 difference_percent = -1.6
 parts = 1
 note = "OSM relation 14706511, 75 ways: 95.4 km in 1 part, 1.6% short of the published 97 km."
+
+[hike]
+summary = "The Corvallis-to-the-Sea Trail links the Willamette Valley with the Pacific Ocean, from Corvallis to Ona Beach in Oregon. It runs through deep forest and is described by its keepers as very difficult. Drinking water is scarce all year."
+official_url = "https://c2ctrail.org/"
+start = "Corvallis, Oregon"
+end = "Ona Beach, Oregon"
+shape = "point-to-point"
+days = [5, 6]
+terrain = ["forest"]
+travel = "trail"
+permit = "A free permit from Starker Forests, got in person, is required for two road sections of the trail."
+caution = "The trail is described as very difficult, and drinking water is scarce all year."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://c2ctrail.org/"
+publisher = "Corvallis-to-the-Sea Trail"
+facts = ["official_url", "summary", "terrain"]
+
+[[hike.source]]
+url = "https://c2ctrail.org/frequently-asked-questions/"
+publisher = "Corvallis-to-the-Sea Trail"
+facts = ["summary", "start", "end", "shape", "days", "travel", "caution"]
+
+[[hike.source]]
+url = "https://c2ctrail.org/hiking-the-trail/permits-rules-precautions/"
+publisher = "Corvallis-to-the-Sea Trail"
+facts = ["permit"]

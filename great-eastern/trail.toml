@@ -28,7 +28,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. Not downloaded. Could be dropped as a composite of trails already on the list."
+line_absent_reason = "No track has been added for this trail yet."
 
 [osm]
 relation = 11385238
@@ -45,3 +45,18 @@ logo_owner = "Great Eastern Trail Association"
 [verification]
 verified = false
 note = "Not downloaded. Could be dropped as a composite of trails already on the list."
+
+[hike]
+summary = "The Great Eastern Trail links existing trails into a long footpath through the Appalachian Mountains, from Alabama to the Finger Lakes Trail in New York. It crosses nine states and is meant to be a non-motorized hiking trail. The linking is not finished, and new trail is still needed where there are gaps."
+official_url = "https://www.greateasterntrail.net/about-us/"
+start = "Alabama"
+end = "Finger Lakes Trail, New York"
+shape = "point-to-point"
+travel = "trail"
+unfinished = "The trail is made of existing trails that are still being linked, and new trail is needed where gaps remain."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.greateasterntrail.net/about-us/"
+publisher = "Great Eastern Trail Association"
+facts = ["official_url", "summary", "start", "end", "shape", "travel", "unfinished"]

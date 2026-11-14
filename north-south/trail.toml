@@ -48,3 +48,21 @@ measured_km = 121.4
 difference_percent = -2.9
 parts = 2
 note = "OSM relation 11102215, 197 ways: 121.4 km in 2 parts, 2.9% short of the published 125 km."
+
+[hike]
+summary = "The North-South Trail is a hiking trail that runs through the state of Rhode Island, crossing state parks and management areas on land of many owners. Its route takes in upland forest of mixed red and white oak, beech, maple and white pine."
+official_url = "https://www.rigis.org/datasets/north-south-trail"
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.rigis.org/datasets/north-south-trail"
+publisher = "Rhode Island Geographic Information System"
+facts = ["official_url", "summary", "shape", "travel"]
+
+[[hike.source]]
+url = "https://dem.ri.gov/sites/g/files/xkgbur861/files/programs/bnatres/fishwild/pdf/wrisum21.pdf"
+publisher = "Rhode Island Department of Environmental Management"
+facts = ["summary", "terrain"]

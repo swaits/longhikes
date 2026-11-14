@@ -47,3 +47,35 @@ measured_km = 1923.0
 difference_percent = 1.7
 parts = 9
 note = "The foot track (ways with a highway tag) gives 1,923.0 km, +1.7% over 1,890 km. The Neuse and Yadkin river paddle route and the Cedar Island ferry (377.2 km, ways with no highway tag) are in alternates.geojson. The earlier +21.7% counted the paddle route as foot track. line.osm still holds the whole relation as served."
+
+[hike]
+summary = "The Mountains-to-Sea Trail stretches across North Carolina from the Great Smoky Mountains to the Outer Banks, taking in mountain vistas, rolling Piedmont farms, hardwood and pine forests, coastal swamps, lighthouses, sand dunes and miles of seashore. About 720 miles are on natural surface or greenway trail, with connecting back roads and two optional paddle routes knitting the finished sections together."
+official_url = "https://mountainstoseatrail.org/"
+start = "Kuwohi (Clingmans Dome), Great Smoky Mountains, North Carolina"
+end = "Jockey's Ridge, the Outer Banks, North Carolina"
+shape = "point-to-point"
+days = [90, 120]
+season = "Spring through fall: hikers starting early in the year walk west from the coast, and those starting in summer or fall walk east from Kuwohi"
+months = [4, 5, 6, 7, 8, 9, 10]
+high_point = "Mount Mitchell"
+high_point_m = 2037
+terrain = ["forest", "farmland", "coast"]
+travel = "trail-and-road"
+permit = "No permit is needed for walking; backcountry camping permits are required year-round in Great Smoky Mountains National Park and on weekends and holidays from May 1 to October 31 in the Linville Gorge Wilderness."
+caution = "About 700 miles of the route is on trail and the rest follows connecting back roads and bicycle routes, with optional paddle routes on the Yadkin and Neuse rivers."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://mountainstoseatrail.org/"
+publisher = "Friends of the Mountains-to-Sea Trail"
+facts = ["official_url", "summary", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://mountainstoseatrail.org/the-trail/faqs/"
+publisher = "Friends of the Mountains-to-Sea Trail"
+facts = ["summary", "start", "end", "days", "season", "months", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://mountainstoseatrail.org/segment/3/"
+publisher = "Friends of the Mountains-to-Sea Trail"
+facts = ["high_point"]

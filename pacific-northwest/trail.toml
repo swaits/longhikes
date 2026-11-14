@@ -48,3 +48,36 @@ measured_km = 1962.0
 difference_percent = 1.6
 parts = 4
 note = "464 features in 4 parts, 1,962.0 km, +1.6% over 1,931 km. The layer was last edited in 2017."
+
+[hike]
+summary = "The Pacific Northwest Trail runs east to west from Chief Mountain in Glacier National Park, Montana, to Cape Alava in Olympic National Park, Washington. It crosses mountain ranges and river valleys through seven national forests and three national parks. Thru-hikers usually start around early July."
+official_url = "https://www.pnt.org/pnta/know-before-you-go/plan-your-trip/"
+start = "Chief Mountain, Glacier National Park, Montana"
+end = "Cape Alava, Olympic National Park, Washington"
+shape = "point-to-point"
+days = [65, 65]
+terrain = ["forest", "alpine", "coast"]
+permit = "There is no permit for the whole trail; backcountry permits are needed for overnight stays in Glacier, North Cascades and Olympic National Parks."
+season = "Mid-June to mid-September"
+months = [6, 7, 8, 9]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.pnt.org/pnta/about-us/media-room/"
+publisher = "Pacific Northwest Trail Association"
+facts = ["summary", "start", "end", "shape", "days", "terrain"]
+
+[[hike.source]]
+url = "https://www.pnt.org/pnta/know-before-you-go/plan-your-trip/"
+publisher = "Pacific Northwest Trail Association"
+facts = ["official_url"]
+
+[[hike.source]]
+url = "https://www.pnt.org/backcountry-permits/"
+publisher = "Pacific Northwest Trail Association"
+facts = ["permit", "start"]
+
+[[hike.source]]
+url = "https://www.pnt.org/pnta/know-before-you-go/plan-your-trip/climate-weather/"
+publisher = "Pacific Northwest Trail Association"
+facts = ["season", "months"]

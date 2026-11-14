@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creators publish the track for download; no licence that allows passing it on is stated. Get it from the creators' page."
+line_absent_reason = "The authors publish the track for download; no licence that allows passing it on is stated. Get it from the authors' page."
 
 [osm]
 relation = 0
@@ -60,3 +60,22 @@ author = "Alan Dixon and Don Wilson"
 access = "free"
 url = "http://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
 format = "web route description with waypoints and timetable PDF"
+
+[hike]
+summary = "The Southern Sierra High Route traverses the highest part of California's Sierra Nevada from the South Lake trailhead near Bishop to Cottonwood Lakes. It extends the Sierra High Route south past Mount Whitney, crossing the Sierra crest eight times over many high passes. Most of it is off-trail or on unmaintained trails."
+official_url = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
+start = "South Lake trailhead near Bishop, California"
+end = "Cottonwood Lakes trailhead, California"
+shape = "point-to-point"
+high_point = "Mount Whitney"
+high_point_m = 4421
+terrain = ["alpine", "lakes"]
+travel = "mostly-cross-country"
+permit = "A wilderness permit from the Inyo National Forest for the South Lake entry is required, with the option to travel through the Mount Whitney Zone selected."
+days = [5, 6]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
+publisher = "Alan Dixon and Don Wilson (Adventure Alan)"
+facts = ["summary", "official_url", "start", "end", "shape", "high_point", "terrain", "travel", "permit", "days"]

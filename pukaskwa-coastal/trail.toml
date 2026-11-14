@@ -27,7 +27,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. Not downloaded."
+line_absent_reason = "No track has been added for this trail yet."
 
 [osm]
 relation = 15361195
@@ -44,3 +44,24 @@ logo_owner = "Parks Canada"
 [verification]
 verified = false
 note = "Not downloaded."
+
+[hike]
+summary = "The Coastal Hiking Trail follows the Lake Superior shore in Pukaskwa National Park, Ontario. It climbs steep coastline, crosses sandy and cobblestone beaches, and passes through rugged boreal forest. Parks Canada describes it as a difficult wilderness backpack."
+official_url = "https://parks.canada.ca/pn-np/on/pukaskwa/activ/experience/arriere-back"
+shape = "point-to-point"
+season = "May 15 to October 14"
+months = [5, 6, 7, 8, 9, 10]
+terrain = ["coast", "forest"]
+travel = "trail"
+permit = "A reserved backcountry camping permit from Parks Canada is needed, with registration and a mandatory orientation at the park kiosk in Hattie Cove before starting."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/on/pukaskwa/activ/experience/arriere-back"
+publisher = "Parks Canada"
+facts = ["summary", "official_url", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/on/pukaskwa/activ/camping/arriere-back"
+publisher = "Parks Canada"
+facts = ["season", "months", "permit"]

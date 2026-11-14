@@ -48,3 +48,38 @@ measured_km = 765.6
 difference_percent = -2.1
 parts = 1
 note = "The Forest Service segments plus the OSM relations give 765.6 km in 1 part, 2.1% short of 782 km: USFS 727.2 km (95%) and OSM 38.4 km in 17 short stretches, the largest Chalk Creek 7.8 km, Rico 5.6 km, Waterton Canyon 5.2 km and Monarch Pass 4.7 km. Earlier OSM-only measure was 643.8 km: the two big relations stop at Twin Lakes and Monarch Pass and do not include the Collegiate East between them."
+
+[hike]
+summary = "The Colorado Trail runs from Waterton Canyon near Denver to Durango, across high mountain country and several national forests and wilderness areas. It crosses more than eight mountain ranges, including the San Juan Mountains. Most people who hike all of it take four to six weeks."
+official_url = "https://coloradotrail.org/"
+start = "Waterton Canyon, near Denver, Colorado"
+end = "Durango, Colorado"
+shape = "point-to-point"
+days = [28, 42]
+season = "July to September"
+months = [7, 8, 9]
+high_point = "Below Coney Summit"
+high_point_m = 4048
+terrain = ["alpine"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.colorado.com/articles/hiking-colorado-trail"
+publisher = "Colorado Tourism Office"
+facts = ["summary", "start", "end", "shape", "days", "terrain"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r02/psicc/recreation/trails/colorado-trail-1776-segment-1-waterton-canyon"
+publisher = "USDA Forest Service, Pike and San Isabel National Forests"
+facts = ["official_url", "start", "travel"]
+
+[[hike.source]]
+url = "https://coloradotrail.org/season-for-the-colorado-trail"
+publisher = "Colorado Trail Foundation"
+facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://coloradotrail.org/"
+publisher = "Colorado Trail Foundation"
+facts = ["high_point"]

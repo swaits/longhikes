@@ -47,3 +47,26 @@ measured_km = 166.6
 difference_percent = -0.2
 parts = 1
 note = "24 ways, 166.6 km in 1 part, 0.2% short of 167 km."
+
+[hike]
+summary = "The Uinta Highline Trail traverses the Uinta Range in Utah from east to west, mostly above 10,000 feet in the High Uintas Wilderness. It crosses many rocky passes between the trailhead on Highway 191 and Hayden Pass on the Mirror Lake Highway. Lakes lie in the basins below the passes."
+official_url = "https://www.fs.usda.gov/r04/uinta-wasatch-cache/recreation/trails/highline-trail-105"
+start = "Highline Trailhead on Highway 191, Utah"
+end = "Hayden Pass on the Mirror Lake Highway, Utah"
+shape = "point-to-point"
+high_point_m = 3871
+terrain = ["alpine", "lakes", "forest"]
+travel = "trail"
+season = "Late July to early September"
+months = [7, 8, 9]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r04/uinta-wasatch-cache/recreation/trails/highline-trail-105"
+publisher = "USDA Forest Service, Uinta-Wasatch-Cache National Forest"
+facts = ["summary", "official_url", "start", "end", "shape", "high_point", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.visitutah.com/articles/backpacking-high-uintas"
+publisher = "Utah Office of Tourism"
+facts = ["season", "months"]

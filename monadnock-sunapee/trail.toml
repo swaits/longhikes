@@ -48,3 +48,27 @@ measured_km = 75.8
 difference_percent = -5.2
 parts = 1
 note = "OSM relation 3888871, 62 ways: 75.8 km in 1 part, 5.2% short of the published 80 km."
+
+[hike]
+summary = "The Monadnock-Sunapee Greenway is a hiking trail linking Grand Monadnock with Mount Sunapee, winding along the Monadnock Highlands that divide the Connecticut and Merrimack river drainages in southwestern New Hampshire. Five shelters and a tent campsite are spaced along it, and the terrain is rolling to moderate."
+official_url = "https://www.msgtc.org/"
+start = "Mount Monadnock, New Hampshire"
+end = "Mount Sunapee, New Hampshire"
+shape = "point-to-point"
+days = [3, 4]
+high_point = "Mount Monadnock"
+high_point_m = 965
+terrain = ["forest"]
+travel = "trail"
+caution = "Much of the trail crosses private land under revocable agreements; camping is allowed only at designated sites and no fires are permitted."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.msgtc.org/about/"
+publisher = "Monadnock-Sunapee Greenway Trail Club"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "high_point", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.nhstateparks.org/NHStateParks/media/NHStateParks/PDFs/Maps/monadnock-hiking-map_info_3-2026-combined.pdf"
+publisher = "New Hampshire Division of Parks and Recreation"
+facts = ["high_point"]

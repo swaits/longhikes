@@ -48,3 +48,24 @@ measured_km = 73.7
 difference_percent = -7.9
 parts = 1
 note = "OSM relation 14141941, 36 ways: 73.7 km in 1 part, 7.9% short of the published 80 km."
+
+[hike]
+summary = "The La Cloche Silhouette Trail is a loop in Killarney Provincial Park, a wilderness landscape of the La Cloche Mountains' white quartzite ridges, the pink granite coast of Georgian Bay and more than fifty exceptionally clear sapphire lakes. The park was created after the Group of Seven painters campaigned for it."
+official_url = "https://www.ontarioparks.ca/park/killarney"
+start = "George Lake Campground, Ontario"
+shape = "loop"
+days = [7, 10]
+terrain = ["forest", "lakes"]
+travel = "trail"
+permit = "Backcountry campsites along the trail are reserved through Ontario Parks."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.ontarioparks.ca/park/killarney"
+publisher = "Ontario Parks"
+facts = ["official_url", "summary", "shape", "terrain", "travel", "permit"]
+
+[[hike.source]]
+url = "https://www.ontarioparks.ca/park/killarney/activities"
+publisher = "Ontario Parks"
+facts = ["start", "days"]

@@ -48,3 +48,24 @@ measured_km = 195.5
 difference_percent = 9.2
 parts = 1
 note = "OSM relation 7330792, 200 ways: 195.5 km in 1 part, 9.2% more than the published 179 km."
+
+[hike]
+summary = "The Centennial Trail crosses the Black Hills of South Dakota, from Bear Butte State Park to Wind Cave National Park. It was built to mark the state's hundredth anniversary. Hikers, backpackers, horse riders and mountain bikers share it."
+official_url = "https://www.fs.usda.gov/r02/blackhills/recreation/centennial-trailheads-trail-89-central-hills"
+start = "Bear Butte State Park, South Dakota"
+end = "Wind Cave National Park, South Dakota"
+shape = "point-to-point"
+high_point_m = 1707
+travel = "trail"
+permit = "Rules for backcountry camping, permits and overnight parking vary by agency, so check with each one."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r02/blackhills/recreation/centennial-trailheads-trail-89-central-hills"
+publisher = "USDA Forest Service, Black Hills National Forest"
+facts = ["official_url", "summary", "start", "end", "shape", "travel", "permit"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r02/blackhills/recreation/non-motorized-trail-brochures"
+publisher = "USDA Forest Service, Black Hills National Forest"
+facts = ["high_point"]

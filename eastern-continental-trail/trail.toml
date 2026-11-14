@@ -4,9 +4,9 @@ id = "eastern-continental-trail"
 name = "Eastern Continental Trail"
 short_name = "ECT"
 country = "US"
-regions = ["FL", "AL", "GA", "TN", "NC", "VA", "WV", "MD", "PA", "NJ", "NY", "CT", "MA", "VT", "NH", "ME", "QC", "NB", "NL"]
+regions = ["FL", "AL", "GA", "TN", "NC", "VA", "WV", "MD", "PA", "NJ", "NY", "CT", "MA", "VT", "NH", "ME", "QC", "NB"]
 length_km = 7081
-length_note = "4,400 mi, not including the water gaps around Newfoundland"
+length_note = "4,400 mi, the author's own itinerary total"
 kind = "route"
 tier = "regional"
 designation = "Person-defined route (M. J. Eberhart); no agency or association"
@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The route is a link-up of published trails with no whole track of its own: OpenStreetMap carries only two of its roadwalk segments, 55.0 km in south Florida and 344.3 km in Alabama. Each linked trail's own record here has its track."
+line_absent_reason = "The route is a link-up of published trails with no whole track of its own: OpenStreetMap carries only two of its roadwalk segments, 55.0 km in south Florida and 344.3 km in Alabama. Each linked trail is listed here with its own track."
 
 [osm]
 relation = 0
@@ -49,7 +49,7 @@ note = "No line to measure."
 [route]
 creator = "M. J. Eberhart (trail name Nimblewill Nomad)"
 line_policy = "open"
-note = "From Key West, Florida, to Belle Isle, Newfoundland, stringing together the Florida Keys Overseas Heritage Trail, the Florida Trail, a road walk through Alabama, the Pinhoti, the Benton MacKaye, the Appalachian Trail and the International Appalachian Trail. His 2010 Eastern Continental Trail Guide is archived, and nothing is for sale on his books page."
+note = "From Key West, Florida, to Cap Gaspé, Quebec, stringing together the Florida Keys Overseas Heritage Trail, the Florida Trail, a road walk through Alabama, the Pinhoti, the Benton MacKaye, the Appalachian Trail and the International Appalachian Trail. His 2010 Eastern Continental Trail Guide is archived, and nothing is for sale on his books page."
 
 [[guide]]
 title = "Eastern Continental Trail Guide, 2010 (archived)"
@@ -57,3 +57,23 @@ author = "M. J. Eberhart (Nimblewill Nomad)"
 access = "free"
 url = "https://nimblewillnomad.com/books/"
 format = "guide, archived; his books page is the page to ask on"
+
+[hike]
+summary = "The Eastern Continental Trail is a route of about 4,400 miles that M. J. Eberhart, who goes by Nimblewill Nomad, walked in 1998 from the Florida Keys to northern Quebec. It crosses 16 states and two Canadian provinces. His book is the only written account of a thru-hike of it."
+official_url = "https://nimblewillnomad.com/books/"
+start = "Florida Keys, Florida"
+end = "Cap Gaspé (Forillon), Quebec"
+shape = "point-to-point"
+days = [300, 300]
+travel = "trail-and-road"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://nimblewillnomad.com/books/"
+publisher = "M. J. Eberhart (Nimblewill Nomad)"
+facts = ["official_url", "summary", "start", "shape"]
+
+[[hike.source]]
+url = "https://nimblewillnomad.com/odyssey-00-01-journal-entries-1/"
+publisher = "M. J. Eberhart (Nimblewill Nomad)"
+facts = ["end", "days", "travel"]

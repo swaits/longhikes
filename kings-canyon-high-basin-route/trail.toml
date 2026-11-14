@@ -59,3 +59,40 @@ url = "https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/"
 format = "PDF guidebook, data sheets, complete topographic map set"
 price = "$25.00"
 price_checked = "2026-11-10"
+
+[hike]
+summary = "The Kings Canyon High Basin Route wraps around the upper watershed of the Kings River in the High Sierra, entirely within Kings Canyon National Park. Two-thirds of it is committing off-trail travel or long-abandoned trail, and it averages 725 vertical feet of change per mile between 6,000 and 12,400 feet."
+official_url = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/"
+start = "Lodgepole, Sequoia National Park"
+end = "Road's End, Kings Canyon National Park"
+shape = "point-to-point"
+days = [9, 10]
+season = "August and September are the most reliable months; June and July bring high water, lingering snowfields and mosquitoes"
+months = [8, 9]
+high_point = "Longley Pass"
+high_point_m = 3790
+terrain = ["alpine", "lakes", "canyon"]
+travel = "mostly-cross-country"
+permit = "Overnight hikers get wilderness permits from Sequoia and Kings Canyon National Park; Road's End is a wilderness permit station."
+caution = "The route is not officially recognized by the National Park Service and has no signage or blazing anywhere along it."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/"
+publisher = "Andrew Skurka"
+facts = ["official_url", "summary", "shape", "days", "high_point", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/trailheads-transportation/"
+publisher = "Andrew Skurka"
+facts = ["start", "end", "permit", "summary"]
+
+[[hike.source]]
+url = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/scheduling-considerations/"
+publisher = "Andrew Skurka"
+facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/route-description/"
+publisher = "Andrew Skurka"
+facts = ["high_point"]

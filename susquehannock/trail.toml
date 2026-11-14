@@ -48,3 +48,16 @@ measured_km = 130.5
 difference_percent = -3.3
 parts = 2
 note = "OSM relation 13079897, 65 ways: 130.5 km in 2 parts, 3.3% short of the published 135 km."
+
+[hike]
+summary = "The Susquehannock Trail System is a blazed loop through Potter and Clinton counties in north-central Pennsylvania. Much of it follows old Civilian Conservation Corps fire trails, with a secluded stretch through the Hammersley Wild Area. Two crossover trails make shorter loops."
+official_url = "https://stc-hike.org/"
+shape = "loop"
+terrain = ["forest"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://stc-hike.org/"
+publisher = "Susquehannock Trail Club"
+facts = ["summary", "official_url", "shape", "terrain", "travel"]

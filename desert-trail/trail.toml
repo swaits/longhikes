@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "Whether the creator shares the track is not settled: the official page offers no map, GPX or guide, and states no position. The site is where the route is described."
+line_absent_reason = "Whether the route's author shares the track is not settled: the official page offers no map, GPX or guide, and states no position. The site is where the route is described."
 
 [osm]
 relation = 0
@@ -60,3 +60,19 @@ author = "Desert Survivors (the site's present keeper)"
 access = "free"
 url = "https://deserttrail.net"
 format = "web page; no map, GPX or guide offered"
+
+[hike]
+summary = "The Desert Trail is a route of about 1,586 miles from the Mexican border through the deserts of California, Nevada and Oregon, with a 637-mile northern extension to Canada. It was scouted by the Desert Trail Association and now has no trail on the ground and no signs to follow, so hikers navigate it by map. Water sources are few and far between."
+official_url = "https://deserttrail.net"
+start = "Mexican border, California"
+end = "Highway 78, central Oregon"
+shape = "point-to-point"
+terrain = ["desert"]
+travel = "mostly-cross-country"
+caution = "There is no trail on the ground and no signs: the route is found by map and experience, and water sources are few and far between."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://deserttrail.net"
+publisher = "Desert Survivors (the route's present keeper)"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "caution"]

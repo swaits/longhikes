@@ -48,3 +48,18 @@ measured_km = 142.2
 difference_percent = -1.9
 parts = 1
 note = "OSM relation 2750828, 275 ways: 142.2 km in 1 part, 1.9% short of the published 145 km."
+
+[hike]
+summary = "The Cross Vermont Trail crosses Vermont from the Connecticut River to Lake Champlain. About half of it is on bike paths, rail trails and quiet country roads, and the rest is still on busier roads. The surface ranges from paved to gravel to grass."
+official_url = "https://crossvermont.org/our_trail/index.php"
+start = "Connecticut River, Vermont"
+end = "Lake Champlain, Vermont"
+shape = "point-to-point"
+travel = "trail-and-road"
+unfinished = "About half the route is still on busier roads, and the association is building more trail toward a complete off-road route across the state."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://crossvermont.org/our_trail/index.php"
+publisher = "Cross Vermont Trail Association"
+facts = ["official_url", "summary", "start", "end", "shape", "travel", "unfinished"]

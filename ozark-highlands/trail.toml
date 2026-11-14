@@ -47,3 +47,26 @@ measured_km = 373.8
 difference_percent = -14.1
 parts = 3
 note = "68 ways in 3 parts, 373.8 km, -14.1% against 435 km (270 mi). The 270 mi figure includes the planned extension toward Missouri and the Ozark Trail link, which is not built; the built main track is what OSM holds. Kept with that note."
+
+[hike]
+summary = "The Ozark Highlands Trail runs across northern Arkansas from Lake Fort Smith toward the Missouri border north of Norfork Lake. It crosses the Boston Mountains and the Buffalo River country, rugged forested Ozark terrain. Fall through spring are its peak seasons."
+official_url = "https://ozarkhighlandstrail.com/trail/"
+start = "Lake Fort Smith State Park, Arkansas"
+end = "Missouri border north of Norfork Lake, Arkansas"
+shape = "point-to-point"
+terrain = ["forest", "lakes"]
+travel = "some-cross-country"
+unfinished = "About 290 miles have been built of the planned 325 miles, with gaps in the Lower Buffalo Wilderness and near Norfork Lake."
+season = "October to early June"
+months = [10, 11, 12, 1, 2, 3, 4, 5]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://ozarkhighlandstrail.com/trail/"
+publisher = "Ozark Highlands Trail Association"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "unfinished"]
+
+[[hike.source]]
+url = "https://ozarkhighlandstrail.com/faq/"
+publisher = "Ozark Highlands Trail Association"
+facts = ["season", "months"]

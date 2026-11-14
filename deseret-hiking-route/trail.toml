@@ -6,7 +6,7 @@ short_name = "DHR"
 country = "US"
 regions = ["UT"]
 length_km = 1609
-length_note = "about 1,000 mi, per the creator"
+length_note = "about 1,000 mi, per the author"
 kind = "route"
 tier = "regional"
 designation = "Person-defined route (Kevin \"LarryBoy\" DeVries, 2019); no agency or association"
@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creator gives the maps and GPX free after proof of a day of manual trail maintenance, and states no licence that allows passing the track on. Get it from the guide page."
+line_absent_reason = "The author gives the maps and GPX free after proof of a day of manual trail maintenance, and states no licence that allows passing the track on. Get it from the guide page."
 
 [osm]
 relation = 0
@@ -52,7 +52,7 @@ year = 2019
 line_policy = "open"
 creator_words = "My goal with the DHR was not only to piece together a beautiful route, but one that I could responsibly share with others."
 creator_words_url = "http://www.lbhikes.com/2019/12/dhr.html"
-note = "About 1,000 miles through Utah from the Arizona border to Alturas Lake Creek in Idaho, half on singletrack, much on dirt road, with cross-country and paved sections; it links the Arizona Trail and the Idaho Centennial Trail. The creator walked it in 2019."
+note = "About 1,000 miles through Utah from the Arizona border to Alturas Lake Creek in Idaho, half on singletrack, much on dirt road, with cross-country and paved sections; it links the Arizona Trail and the Idaho Centennial Trail. The author walked it in 2019."
 
 [[guide]]
 title = "A Complete Guide to the Deseret Hiking Route"
@@ -60,3 +60,19 @@ author = "Kevin \"LarryBoy\" DeVries"
 access = "free"
 url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
 format = "guide, maps, data book and GPX, sent after proof of a day of trail work"
+
+[hike]
+summary = "The Deseret Hiking Route runs about 1,000 miles through Utah, from the Arizona border to Alturas Lake Creek in Idaho. It is about half singletrack and 40 percent dirt road, with short cross-country and paved sections. It passes Paria Canyon, Bryce Canyon National Park, the Wasatch Mountains and the Pioneer Mountains."
+official_url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
+start = "Stateline Trailhead, Utah-Arizona border"
+end = "Alturas Lake Creek, Idaho"
+shape = "point-to-point"
+terrain = ["canyon", "alpine"]
+travel = "trail-and-road"
+caution = "The route is unmarked and not designated by any state or federal agency, and about 40 percent of it is dirt road."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
+publisher = "Kevin DeVries (LarryBoy)"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "caution"]

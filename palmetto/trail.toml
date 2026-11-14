@@ -48,3 +48,24 @@ measured_km = 554.3
 difference_percent = -30.7
 parts = 9
 note = "OSM passages give 554.3 km in 9 parts against 800 km (500 mi) planned. The Palmetto Trail is not finished: built passages are what is mapped, and gaps are unbuilt, not unmapped. Kept as built segments, like the Ice Age pattern."
+
+[hike]
+summary = "The Palmetto Trail crosses South Carolina from the Blue Ridge Mountains to the Intracoastal Waterway at Awendaw. It is built as passages through mountains, sandhills, piedmont, forests and swamps, and through towns including the state capital."
+official_url = "https://www.palmettotrail.org/about/the-palmetto-trail"
+start = "Oconee State Park, South Carolina"
+end = "Awendaw, South Carolina"
+shape = "point-to-point"
+terrain = ["forest", "lakes", "coast"]
+travel = "trail"
+unfinished = "More than 400 miles are open in 32 passages toward a planned 500 miles."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.palmettotrail.org/about/the-palmetto-trail"
+publisher = "Palmetto Conservation Foundation"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "unfinished"]
+
+[[hike.source]]
+url = "https://www.palmettotrail.org/updates/post/from-the-mountains-to-the-sea"
+publisher = "Palmetto Conservation Foundation"
+facts = ["summary", "unfinished", "terrain"]

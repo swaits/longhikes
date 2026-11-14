@@ -48,3 +48,17 @@ measured_km = 147.4
 difference_percent = -3.0
 parts = 2
 note = "OSM relation 13780803, 134 ways: 147.4 km in 2 parts, 3.0% short of the published 152 km."
+
+[hike]
+summary = "The Donut Hole Trail is a backpacking trail in north-central Pennsylvania that runs from the village of Jericho to Farrandsville, near Lock Haven. It passes through Kettle Creek and Hyner Run State Parks and shares part of its path with the Susquehannock Trail System. It is described as remote and challenging, with steep climbs and unbridged stream crossings."
+official_url = "https://www.kta-hike.org/donut-hole-trail.html"
+start = "Jericho, Pennsylvania"
+end = "Farrandsville, near Lock Haven, Pennsylvania"
+shape = "point-to-point"
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.kta-hike.org/donut-hole-trail.html"
+publisher = "Keystone Trails Association"
+facts = ["official_url", "summary", "start", "end", "shape", "travel"]

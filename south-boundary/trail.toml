@@ -27,7 +27,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No OpenStreetMap route relation for the trail was found, and the publisher serves no track that may be passed on. The record is kept without a track."
+line_absent_reason = "No track is included. OpenStreetMap has no route relation for the trail, and the publisher allows no track to be passed on."
 
 [osm]
 relation = 0
@@ -44,3 +44,28 @@ logo_owner = "Parks Canada"
 [verification]
 verified = false
 note = "No line to measure."
+
+[hike]
+summary = "The South Boundary Trail is a remote wilderness route in Jasper National Park, Alberta, recommended only for experienced backpackers. It follows the Brazeau, Southesk and Cairn river valleys over Cairn Pass and Rocky Pass, past glacially fed rivers."
+official_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/south-boundary"
+start = "Nigel Creek trailhead, Jasper National Park, Alberta"
+end = "Rocky Pass trailhead, Alberta"
+shape = "point-to-point"
+days = [7, 10]
+season = "The trail can be hiked late into the season, to early October; the Brazeau and Poboktan portions are closed from November 1 to May 15 for caribou conservation"
+months = [7, 8, 9, 10]
+terrain = ["alpine", "forest"]
+travel = "trail"
+permit = "A Parks Canada backcountry camping permit is mandatory for all overnight trips."
+caution = "Parks Canada says the trail may be overgrown and difficult to find in places, most creeks and rivers are not bridged, and fords can be dangerous or impassable at high water."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/south-boundary"
+publisher = "Parks Canada"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://pcweb2.azureedge.net/-/media/pn-np/ab/jasper/WET4/pdf/activ/guides-maps/backcountry-guide/south-boundary/South-boundary-backcountry-guide_Eng_2025.pdf"
+publisher = "Parks Canada, Jasper National Park"
+facts = ["season", "months"]

@@ -28,7 +28,7 @@ source_checked = "2026-11-08"
 redistributable = false
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. Not downloaded because of the licence. Deferred: network of local trails, not a footpath; licence blocks."
+line_absent_reason = "No track is included: the trail's licence does not allow its data to be passed on."
 
 [osm]
 relation = 1642822
@@ -45,3 +45,19 @@ logo_owner = "Trans Canada Trail"
 [verification]
 verified = false
 note = "Not downloaded because of the licence. Deferred: network of local trails, not a footpath; licence blocks."
+
+[hike]
+summary = "The Trans Canada Trail is the longest multi-use trail system in the world, a network that reaches every province and territory and connects all three of Canada's coastlines. Each section is managed locally and supports different activities, among them walking, cycling, paddling, horseback riding, cross-country skiing and snowmobiling."
+official_url = "https://tctrail.ca/"
+shape = "network"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://tctrail.ca/"
+publisher = "Trans Canada Trail"
+facts = ["official_url", "summary", "shape"]
+
+[[hike.source]]
+url = "https://tctrail.ca/about/"
+publisher = "Trans Canada Trail"
+facts = ["summary", "shape"]

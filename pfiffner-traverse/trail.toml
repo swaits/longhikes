@@ -61,3 +61,25 @@ url = "https://andrewskurka.com/product/pfiffner-traverse-guide-maps/"
 format = "planning information, route descriptions, data sheets, annotated topographic map set"
 price = "$25.00"
 price_checked = "2026-11-10"
+
+[hike]
+summary = "The Pfiffner Traverse follows the Continental Divide and the crest of Colorado's Front Range between Trail Ridge Road and Berthoud Pass. It passes through Rocky Mountain National Park and the Indian Peaks and James Peak Wilderness Areas, staying high with five 13,000-foot peaks. About forty percent of it is off-trail."
+official_url = "https://andrewskurka.com/adventures/pfiffner-traverse-colorado-rockies/"
+start = "Trail Ridge Road, Colorado"
+end = "Berthoud Pass, Colorado"
+shape = "point-to-point"
+days = [6, 10]
+terrain = ["alpine", "forest", "lakes"]
+travel = "some-cross-country"
+permit = "The Rocky Mountain National Park portion requires use of designated backcountry campsites, arranged through the park permit system described in the guide."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://andrewskurka.com/adventures/pfiffner-traverse-colorado-rockies/"
+publisher = "Andrew Skurka"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://andrewskurka.com/product/pfiffner-traverse-guide-maps/"
+publisher = "Andrew Skurka"
+facts = ["summary", "start", "end", "permit"]

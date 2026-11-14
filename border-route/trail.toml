@@ -47,3 +47,30 @@ measured_km = 106.3
 difference_percent = 1.2
 parts = 1
 note = "43 ways give one continuous track, 106.3 km, +1.2% over 105 km."
+
+[hike]
+summary = "The Border Route Trail is a wilderness hiking trail along the Minnesota and Ontario border, inside the Boundary Waters Canoe Area Wilderness in northeast Minnesota. It connects to the Kekekabic and Superior Hiking Trails. Volunteers planned and built it, and the trail can be faint in places."
+official_url = "https://borderroutetrail.org/"
+start = "Kekekabic Trail junction, Minnesota"
+end = "Superior Hiking Trail junction, Minnesota"
+shape = "point-to-point"
+terrain = ["forest", "lakes"]
+travel = "trail"
+permit = "A Boundary Waters Canoe Area Wilderness permit is required to enter."
+caution = "Sections of the trail can be obscured or blocked by downed trees, so carry a compass and map or GPS."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://borderroutetrail.org/"
+publisher = "Border Route Trail Association"
+facts = ["official_url", "summary", "shape"]
+
+[[hike.source]]
+url = "https://borderroutetrail.org/about-the-trail"
+publisher = "Border Route Trail Association"
+facts = ["start", "end", "terrain"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r09/superior/recreation/trails/border-route-trail"
+publisher = "USDA Forest Service, Superior National Forest"
+facts = ["summary", "shape", "travel", "permit", "caution"]

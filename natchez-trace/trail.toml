@@ -48,3 +48,22 @@ measured_km = 117.9
 difference_percent = 12.3
 parts = 9
 note = "NST foot sections only: the NPS layer without its Natchez Trace Parkway (on-road) feature gives 117.9 km in 9 parts against about 105 km (65 mi) of foot trail built. The 715.0 km parkway road feature is in alternates.geojson and is not drawn as trail. The 65 mi figure is approximate; the NPS layer is the authoritative NST track. Kept as an NST (unconditional)."
+
+[hike]
+summary = "The Natchez Trace National Scenic Trail is made up of five separate sections of hiking and equestrian trail, together a little over 60 miles, running roughly parallel to the 444-mile Natchez Trace Parkway from Natchez, Mississippi, to south of Nashville, Tennessee. The sections cross wetlands, swamps and hardwood forest, and parts follow the sunken Old Natchez Trace."
+official_url = "https://www.nps.gov/natt/index.htm"
+shape = "network"
+terrain = ["forest"]
+travel = "trail"
+unfinished = "The trail consists of five separate sections, together just over 60 miles; they do not join, and the parkway road carries travelers between them."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.nps.gov/natt/index.htm"
+publisher = "National Park Service"
+facts = ["official_url", "summary", "shape", "terrain", "unfinished"]
+
+[[hike.source]]
+url = "https://www.nps.gov/natt/planyourvisit/hiking.htm"
+publisher = "National Park Service"
+facts = ["summary", "unfinished", "travel"]

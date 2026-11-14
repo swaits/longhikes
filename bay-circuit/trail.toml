@@ -49,3 +49,23 @@ measured_km = 296.9
 difference_percent = -19.8
 parts = 14
 note = "OSM relation 12779888, 1162 ways: 296.9 km in 14 parts, 19.8% short of the published 370 km. The pieces do not all join: OpenStreetMap is missing the connectors between them."
+
+[hike]
+summary = "The Bay Circuit Trail is a multi-use trail in an arc around Boston, from the mouth of the Merrimack River to Kingston Bay in eastern Massachusetts. It passes through dozens of towns and can be reached by the Boston area's transit lines. The trail is not yet finished, and the Appalachian Mountain Club and its partners are closing the last gaps."
+official_url = "https://www.baycircuit.org/"
+start = "Mouth of the Merrimack River, Massachusetts"
+end = "Kingston Bay, Massachusetts"
+shape = "point-to-point"
+travel = "trail"
+unfinished = "More than 230 miles are dedicated across 37 cooperating towns, and the final gaps are still being closed."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.baycircuit.org/"
+publisher = "Bay Circuit Alliance"
+facts = ["official_url", "summary", "travel"]
+
+[[hike.source]]
+url = "https://www.baycircuit.org/about/"
+publisher = "Bay Circuit Alliance"
+facts = ["summary", "start", "end", "shape", "unfinished"]

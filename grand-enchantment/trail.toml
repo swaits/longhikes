@@ -6,7 +6,7 @@ short_name = "GET"
 country = "US"
 regions = ["AZ", "NM"]
 length_km = 1239
-length_note = "over 770 mi published by the route's creator"
+length_note = "over 770 mi published by the route's author"
 tier = "candidate"
 designation = "Author-published route (the route's creator, simBLISSity Ultralight Designs, 2003); no agency or association"
 wave = "held"
@@ -29,7 +29,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. Not downloaded. Moved here from the excluded list on review, 2026-11-08: the creator publishes an official mapset with GPS tracks, so the reason for excluding author routes (a track withheld on purpose) does not apply."
+line_absent_reason = "No track is included. The route's author publishes an official mapset with GPS tracks; it has not been added here."
 
 [osm]
 relation = 4485206
@@ -46,3 +46,33 @@ logo_owner = "simBLISSity Ultralight Designs"
 [verification]
 verified = false
 note = "Not downloaded. Moved here from the excluded list on review, 2026-11-08: the creator publishes an official mapset with GPS tracks, so the reason for excluding author routes (a track withheld on purpose) does not apply."
+
+[hike]
+summary = "The Grand Enchantment Trail is a route of over 770 miles from the edge of Phoenix in Arizona to the edge of Albuquerque in New Mexico. It crosses desert, volcanic ranges, canyons and forested sky-island mountains, and passes through the Gila Wilderness. About half is foot trail, and the rest is dirt road and some cross-country travel."
+official_url = "http://www.simblissity.net/get-about.shtml"
+start = "First Water Trailhead, Superstition Mountains, Arizona"
+end = "Albuquerque, New Mexico"
+shape = "point-to-point"
+season = "Spring or autumn"
+months = [3, 4, 5, 9, 10, 11]
+high_point = "Mogollon Baldy"
+high_point_m = 3283
+terrain = ["desert", "forest", "canyon"]
+travel = "some-cross-country"
+permit = "No permit is needed in the Forest Service wilderness areas, but Aravaipa Canyon requires a recreation permit."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "http://www.simblissity.net/get-about.shtml"
+publisher = "Brett Tucker (simBLISSity Ultralight Designs)"
+facts = ["official_url", "summary", "shape", "high_point", "travel", "permit"]
+
+[[hike.source]]
+url = "http://www.simblissity.net/get_route_description.shtml"
+publisher = "Brett Tucker (simBLISSity Ultralight Designs)"
+facts = ["summary", "start", "end", "high_point", "terrain", "travel"]
+
+[[hike.source]]
+url = "http://www.simblissity.net/get_faq.shtml"
+publisher = "Brett Tucker (simBLISSity Ultralight Designs)"
+facts = ["season", "months"]

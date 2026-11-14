@@ -50,3 +50,30 @@ measured_km = 1141.0
 difference_percent = -40.9
 parts = 89
 note = "The built segments give 1,141.0 km in 89 parts, 40.9% short of 1,931 km planned. The 81 'connection' relations (872.5 km) are in alternates.geojson."
+
+[hike]
+summary = "The Ice Age Trail is a thousand-mile footpath across Wisconsin that traces the landscape left by the last continental glacier, from Interstate State Park at St. Croix Falls to Potawatomi State Park at Sturgeon Bay. It crosses some of the state's most beautiful natural areas and leads hikers right down the main streets of Wisconsin communities. The trail is managed by a partnership of the National Park Service, the Wisconsin Department of Natural Resources and the Ice Age Trail Alliance."
+official_url = "https://www.iceagetrail.org/explore/explore-the-trail/ice-age-trail/"
+start = "Interstate State Park, St. Croix Falls, Wisconsin"
+end = "Potawatomi State Park, Sturgeon Bay, Wisconsin"
+shape = "point-to-point"
+terrain = ["forest", "prairie", "lakes"]
+travel = "trail-and-road"
+unfinished = "The trail is about half complete: nearly 700 miles are yellow-blazed Ice Age Trail, and about 500 miles of unmarked connecting routes, mostly on quiet country roads, link the blazed segments."
+caution = "Primitive camping is not permitted on many segments, so overnight plans vary widely from night to night."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.iceagetrail.org/explore/explore-the-trail/ice-age-trail/"
+publisher = "Ice Age Trail Alliance"
+facts = ["official_url", "summary", "start", "end", "shape", "unfinished"]
+
+[[hike.source]]
+url = "https://www.iceagetrail.org/thousand-miler-faq/"
+publisher = "Ice Age Trail Alliance"
+facts = ["travel", "unfinished", "caution"]
+
+[[hike.source]]
+url = "https://www.nps.gov/iatr/index.htm"
+publisher = "National Park Service"
+facts = ["summary", "terrain"]

@@ -49,3 +49,20 @@ measured_km = 2371.8
 difference_percent = 5.4
 parts = 1
 note = "The super-relation and its 4495 ways join into 1 continuous loop, 2,371.8 km, +5.4% over 2,250 km. The ODNR service still needs a token; OSM is the track used."
+
+[hike]
+summary = "The Buckeye Trail is a continuous loop around the state of Ohio, with no beginning or end. It links forests, farmland, parks, small towns and historic sites in every corner of the state. Volunteers of the Buckeye Trail Association keep it open."
+official_url = "https://www.buckeyetrail.org/"
+shape = "loop"
+terrain = ["forest", "farmland"]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.buckeyetrail.org/"
+publisher = "Buckeye Trail Association"
+facts = ["official_url", "summary", "shape"]
+
+[[hike.source]]
+url = "https://www.buckeyetrail.org/about"
+publisher = "Buckeye Trail Association"
+facts = ["summary", "shape", "terrain"]

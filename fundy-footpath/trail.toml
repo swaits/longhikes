@@ -28,7 +28,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. Not downloaded. Under 60 km; kept as an open question."
+line_absent_reason = "No track has been added for this trail yet."
 
 [osm]
 relation = 4077806
@@ -45,3 +45,36 @@ logo_owner = "Fundy Hiking Trail Association"
 [verification]
 verified = false
 note = "Not downloaded. Under 60 km; kept as an open question."
+
+[hike]
+summary = "The Fundy Footpath is a coastal wilderness trek in New Brunswick that runs between the Big Salmon River near St. Martins and Fundy National Park. It follows the longest undeveloped stretch of coastline on the eastern seaboard. It is steep and demanding, and it has remote river valleys and tidal crossings."
+official_url = "http://www.fundyhikingtrails.com"
+start = "Big Salmon River, near St. Martins, New Brunswick"
+end = "Fundy National Park, New Brunswick"
+shape = "point-to-point"
+days = [4, 5]
+terrain = ["coast"]
+travel = "trail"
+permit = "Both ends need entry permits and fees: Fundy Trail Provincial Park entry at St. Martins, and Fundy National Park entry plus a backcountry campsite reservation made before the hike."
+caution = "The trail is very difficult, with steep terrain and tidal river crossings that can be dangerous."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "http://www.fundyhikingtrails.com"
+publisher = "Fundy Hiking Trail Association"
+facts = ["official_url", "summary", "caution"]
+
+[[hike.source]]
+url = "https://fundyhikingtrails.com/fundy-footpath/fundy-footpath-faq/"
+publisher = "Fundy Hiking Trail Association"
+facts = ["permit"]
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/nb/fundy/visit/sentiers-trails/goose"
+publisher = "Parks Canada, Fundy National Park"
+facts = ["summary", "start", "end", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://www.fundytrailparkway.com/en/parks/35/fundy-trail-provincial-park"
+publisher = "Fundy Trail Parkway"
+facts = ["start", "end", "days", "travel", "caution"]

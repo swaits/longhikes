@@ -21,7 +21,7 @@ format = "ArcGIS FeatureServer layer, one feature (a 35 MB GeoJSON when asked fo
 crs = "EPSG:4326"
 licence = "CC-BY-4.0"
 licence_text = "Creative Commons Attribution 4.0 International (CC BY 4.0). The Pacific Crest Trail Association states: 'All of the data accessed through this page are licensed under the Creative Commons Attribution 4.0 International License.' (https://www.pcta.org/discover-the-trail/maps/pct-data/, read 2026-11-09). Credit: Pacific Crest Trail Association."
-attribution = "Pacific Crest Trail Association (CC BY 4.0). Say that the line was reshaped."
+attribution = "Pacific Crest Trail Association (CC BY 4.0). Say that the track was reshaped."
 osm_only = false
 mainline = "One feature, the main track. No alternates or connectors in this layer (PCTA publishes those separately)."
 source_checked = "2026-11-08"
@@ -48,3 +48,31 @@ measured_km = 4271.3
 difference_percent = 0.1
 parts = 1
 note = "One feature, one track, 4,271.3 km, +0.1% over 4,265 km."
+
+[hike]
+summary = "The Pacific Crest Trail runs from the Mexican border to the Canadian border along the mountain ranges of California, Oregon and Washington. It crosses desert, the granite High Sierra, volcanic Cascade peaks and wet northern forest. Its highest point, Forester Pass in the Sierra Nevada, is above 13,000 feet."
+official_url = "https://www.fs.usda.gov/trails/pacific-crest-nst"
+start = "Campo, California"
+end = "Monument 78 at the Canadian border, Washington"
+shape = "point-to-point"
+high_point = "Forester Pass"
+high_point_m = 4017
+terrain = ["desert", "alpine", "forest"]
+travel = "trail"
+permit = "Wilderness permits are needed in most of the wilderness areas the trail crosses, and the Pacific Crest Trail Association issues one permit for trips of 500 or more continuous miles."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/trails/pacific-crest-nst"
+publisher = "USDA Forest Service"
+facts = ["official_url", "summary"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/trails/pacific-crest-nst/about-trail"
+publisher = "USDA Forest Service"
+facts = ["summary", "permit", "travel"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/trails/pacific-crest-nst/geographic-areas"
+publisher = "USDA Forest Service"
+facts = ["summary", "start", "end", "shape", "high_point", "terrain"]

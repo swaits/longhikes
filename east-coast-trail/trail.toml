@@ -47,3 +47,30 @@ measured_km = 315.8
 difference_percent = -6.0
 parts = 4
 note = "552 ways in 4 parts, 315.8 km, 6.0% short of 336 km."
+
+[hike]
+summary = "The East Coast Trail is a network of wilderness coastal paths on the Avalon Peninsula of Newfoundland, running south to Cappahayden. It passes towering cliffs, headlands, sea stacks and deep fjords. It is free to hike, and a charity maintains it."
+official_url = "https://www.newfoundlandlabrador.com/plan-and-book/attractions/210995"
+start = "Topsail Beach, Newfoundland"
+end = "Cappahayden, Newfoundland"
+shape = "network"
+season = "April to November"
+months = [4, 5, 6, 7, 8, 9, 10, 11]
+terrain = ["coast"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.newfoundlandlabrador.com/plan-and-book/attractions/210995"
+publisher = "Government of Newfoundland and Labrador, tourism"
+facts = ["official_url", "summary", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://eastcoasttrail.com/"
+publisher = "East Coast Trail Association"
+facts = ["start", "end"]
+
+[[hike.source]]
+url = "https://eastcoasttrail.com/preparing-to-hike/"
+publisher = "East Coast Trail Association"
+facts = ["season", "months"]

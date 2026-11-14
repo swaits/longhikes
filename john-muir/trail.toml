@@ -47,3 +47,29 @@ measured_km = 335.8
 difference_percent = -1.2
 parts = 1
 note = "Measured on the OSM relation: 335.8 km in 1 part, 1.2% short of 340 km."
+
+[hike]
+summary = "The John Muir Trail is a world-famous trail stretching from Yosemite Valley to Mount Whitney, the highest point in the contiguous United States. It overlaps the Pacific Crest Trail for most of its length as it crosses the High Sierra."
+official_url = "https://www.nps.gov/yose/planyourvisit/jmt.htm"
+start = "Yosemite Valley, California"
+end = "Mount Whitney, California"
+shape = "point-to-point"
+days = [19, 22]
+season = "July to September"
+months = [7, 8, 9]
+high_point = "Mount Whitney"
+high_point_m = 4421
+terrain = ["alpine", "lakes"]
+travel = "trail"
+permit = "One wilderness permit from Yosemite covers the whole hike; a daily exit quota of 45 hikers over Donohue Pass limits entry."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.nps.gov/yose/planyourvisit/jmt.htm"
+publisher = "National Park Service, Yosemite National Park"
+facts = ["official_url", "summary", "start", "end", "shape", "high_point", "travel", "permit"]
+
+[[hike.source]]
+url = "https://www.cicerone.co.uk/products/hiking-the-john-muir-trail"
+publisher = "Cicerone Press"
+facts = ["days", "season", "months", "high_point", "terrain"]

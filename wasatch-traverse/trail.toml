@@ -6,7 +6,7 @@ short_name = "WT"
 country = "US"
 regions = ["UT"]
 length_km = 455
-length_note = "283 mi as mapped, per the creator, who estimated between 250 and 300"
+length_note = "283 mi as mapped, per the author, who estimated between 250 and 300"
 kind = "route"
 tier = "regional"
 designation = "Person-defined route (Liz Thomas); no agency or association"
@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creator publishes the route description and invites replication, but offers no track and states no licence for passing it on. The overview is where the route is described."
+line_absent_reason = "The author publishes the route description and invites replication, but offers no track and states no licence for passing it on. The overview is where the route is described."
 
 [osm]
 relation = 0
@@ -59,3 +59,20 @@ author = "Liz Thomas"
 access = "free"
 url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
 format = "web route overview with statistics and a map list"
+
+[hike]
+summary = "The Wasatch Traverse follows the length of Utah's Wasatch Range from the Wellsville Wilderness in the north to the southwest side of the Mount Nebo Wilderness. Liz Thomas worked out the route from trails, off-trail sections, jeep roads and paved roads, with about 85,000 feet of climbing. Almost none of its trails are signed for the traverse."
+official_url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
+start = "Wellsville Wilderness, Utah"
+end = "Southwest side of the Mt. Nebo Wilderness, Utah"
+shape = "point-to-point"
+terrain = ["alpine", "forest"]
+travel = "some-cross-country"
+caution = "The off-trail sections range from straightforward scrambling to heavy bushwhacking, and detailed maps and a compass are essential."
+days = [11, 11]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
+publisher = "Liz Thomas"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution", "days"]

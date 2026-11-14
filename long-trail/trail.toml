@@ -49,3 +49,34 @@ measured_km = 400.9
 difference_percent = -8.5
 parts = 1
 note = "OSM relation 391736, 153 ways: 400.9 km in 1 part, 8.5% short of 438 km (272 mi). The Club's own track measured 418.1 km (4.5% short) but is restricted; it was dropped. OSM does not reach the published mileage."
+
+[hike]
+summary = "The Long Trail runs the length of Vermont along the Green Mountains, from the Massachusetts border to the Canadian border. It passes over Mount Mansfield, the state's highest peak, and more than 70 free shelters and campsites are along the way."
+official_url = "https://www.greenmountainclub.org/the-long-trail/"
+start = "Massachusetts border, Vermont"
+end = "Journey's End, at the Canadian border"
+shape = "point-to-point"
+days = [20, 30]
+season = "July to September"
+months = [7, 8, 9]
+high_point = "Mount Mansfield"
+high_point_m = 1340
+terrain = ["forest"]
+travel = "trail"
+permit = "Individual hikers need no permit, though some groups need a special-use permit from the Green Mountain National Forest or the Vermont Department of Forests, Parks and Recreation."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.greenmountainclub.org/the-long-trail/"
+publisher = "Green Mountain Club"
+facts = ["official_url", "summary", "start", "end", "shape", "high_point", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.greenmountainclub.org/hiking/thru-hike-long-trail-vermont/"
+publisher = "Green Mountain Club"
+facts = ["days", "season", "months", "permit", "end"]
+
+[[hike.source]]
+url = "https://greenmountainclub.org/hikes/sunset-ridge-to-mansfield-summit-the-chin/"
+publisher = "Green Mountain Club"
+facts = ["high_point"]

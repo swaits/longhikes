@@ -61,3 +61,22 @@ url = "https://wildernessmindset.com/product/beartooth-high-route-map-pack/"
 format = "PDF map set, route description, data set with campsites, GPX"
 price = "$20.00"
 price_checked = "2026-11-10"
+
+[hike]
+summary = "The Beartooth High Route is a 90-mile route across the Beartooth Range of Montana and Wyoming. It stays high on the plateau and is almost entirely off-trail, with a lot of boulder hopping above 10,000 feet. Its author suggests planning on no more than ten miles a day."
+official_url = "https://wildernessmindset.com/beartooth-high-route/"
+start = "Beartooth Highway, east end"
+end = "Rabbit Gulch Trailhead"
+shape = "point-to-point"
+days = [10, 10]
+season = "Late July through September"
+months = [8, 9]
+high_point_m = 3558
+terrain = ["alpine"]
+travel = "mostly-cross-country"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://wildernessmindset.com/beartooth-high-route/"
+publisher = "Wilderness Mindset"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "months", "high_point", "terrain", "travel"]

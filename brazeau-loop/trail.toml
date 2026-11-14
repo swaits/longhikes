@@ -27,7 +27,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No OpenStreetMap route relation for the trail was found, and the publisher serves no track that may be passed on. The record is kept without a track."
+line_absent_reason = "No track is included. OpenStreetMap has no route relation for the trail, and the publisher allows no track to be passed on."
 
 [osm]
 relation = 0
@@ -44,3 +44,25 @@ logo_owner = "Parks Canada"
 [verification]
 verified = false
 note = "No line to measure."
+
+[hike]
+summary = "The Brazeau Loop is a backcountry loop in Jasper National Park in Alberta. It is a demanding high-elevation trail that crosses three mountain passes and needs several river fords. The passes can hold snow until July."
+official_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas"
+shape = "loop"
+days = [5, 5]
+high_point_m = 2492
+season = "Early July to mid-September, when the alpine trails are typically free of snow"
+months = [7, 8, 9]
+terrain = ["alpine"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas"
+publisher = "Parks Canada, Jasper National Park"
+facts = ["official_url", "summary", "shape", "days", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://pcweb2.azureedge.net/-/media/pn-np/ab/jasper/WET4/pdf/visit/depliants-brochures/ete-summer/Backcountry-Guide-ENG-2019.pdf"
+publisher = "Parks Canada, Jasper National Park"
+facts = ["season", "months", "high_point"]

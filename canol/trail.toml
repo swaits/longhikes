@@ -48,3 +48,23 @@ measured_km = 369.9
 difference_percent = -0.3
 parts = 1
 note = "OSM relation 13591414, 7 ways: 369.9 km in 1 part, 0.3% short of the published 371 km. The 1 ways with a side role are in alternates.geojson."
+
+[hike]
+summary = "The Canol Heritage Trail follows an abandoned Second World War pipeline route from Norman Wells in the Northwest Territories to the Yukon border, across the Mackenzie Mountains. It is a remote, challenging trek. Overgrowth and washouts sometimes force hikers off the old route, and four river crossings need a packraft."
+official_url = "https://www.nwtparks.ca/find-a-park/canol-heritage-trail"
+start = "Norman Wells, Northwest Territories"
+end = "Yukon border, Northwest Territories"
+shape = "point-to-point"
+days = [14, 21]
+season = "Mid-May to September"
+months = [5, 6, 7, 8, 9]
+terrain = ["alpine"]
+travel = "some-cross-country"
+permit = "Backcountry camping on the trail needs no reservation."
+caution = "Overgrowth and washouts sometimes force hikers off the trail to find their way back to it, and four river crossings need a packraft."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.nwtparks.ca/find-a-park/canol-heritage-trail"
+publisher = "Northwest Territories Parks"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]

@@ -48,3 +48,22 @@ measured_km = 78.4
 difference_percent = -1.9
 parts = 1
 note = "OSM relation 7580730, 38 ways: 78.4 km in 1 part, 1.9% short of the published 80 km."
+
+[hike]
+summary = "The Cranberry Lake 50 is a loop of about 50 miles around Cranberry Lake in the Adirondacks of New York. It passes old-growth forest, backcountry ponds and glaciated country, with campsites along the way. Most people walk it clockwise in the warmer months."
+official_url = "https://cranberrylake50.org/"
+shape = "loop"
+days = [3, 5]
+terrain = ["forest", "lakes"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://cranberrylake50.org/"
+publisher = "Cranberry Lake 50"
+facts = ["official_url", "summary", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://cranberrylake50.org/faq/"
+publisher = "Cranberry Lake 50"
+facts = ["days"]

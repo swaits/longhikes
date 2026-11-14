@@ -47,3 +47,24 @@ measured_km = 221.0
 difference_percent = 0.5
 parts = 1
 note = "148 ways, 221.0 km in 1 part, +0.5% over 220 km."
+
+[hike]
+summary = "The Northville-Placid Trail is a continuous wilderness footpath through the Adirondacks, from Waterfront Park in the village of Northville to Averyville Road in Lake Placid. Cut in 1922 and now maintained by the New York State Department of Environmental Conservation with a chapter of the Adirondack Mountain Club, all but a few of its miles run through one of the great wilderness areas of the eastern United States."
+official_url = "https://albany.adk.org/about-our-chapter/northville-placid-trail/"
+start = "Waterfront Park, Northville, New York"
+end = "Averyville Road, Lake Placid, New York"
+shape = "point-to-point"
+days = [8, 11]
+terrain = ["forest", "lakes"]
+travel = "trail"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://albany.adk.org/about-our-chapter/northville-placid-trail/"
+publisher = "Adirondack Mountain Club, Albany-Schenectady Chapter"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://dec.ny.gov/places-to-go/maps/northville-placid-trail-map-blue-mountain"
+publisher = "New York State Department of Environmental Conservation"
+facts = ["summary"]

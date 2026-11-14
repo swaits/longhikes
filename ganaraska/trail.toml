@@ -51,3 +51,16 @@ measured_km = 238.4
 difference_percent = -52.3
 parts = 7
 note = "OSM relation 3696751 gives 238.4 km in 7 parts and ends near Barrie; it does not reach the Glen Huron terminus. The 500 km published figure includes branch trails. No usable whole track found on 2026-11-08. Held."
+
+[hike]
+summary = "The Ganaraska Hiking Trail runs across southern Ontario from Port Hope on Lake Ontario to the Bruce Trail near Collingwood. Side trails reach Wasaga Beach and Midland. Local clubs lead hikes on it through the year."
+official_url = "https://www.ganaraska-hiking-trail.org/"
+start = "Port Hope, Ontario"
+end = "Bruce Trail, near Collingwood, Ontario"
+shape = "point-to-point"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.ganaraska-hiking-trail.org/"
+publisher = "Ganaraska Hiking Trail Association"
+facts = ["official_url", "summary", "start", "end", "shape"]

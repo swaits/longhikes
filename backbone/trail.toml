@@ -47,3 +47,34 @@ measured_km = 107.3
 difference_percent = -0.6
 parts = 2
 note = "Measured on the OSM relation: 107.3 km in 2 parts, 0.6% short of 108 km."
+
+[hike]
+summary = "The Backbone Trail crosses the Santa Monica Mountains near Los Angeles, from Will Rogers State Historic Park to Point Mugu State Park. It follows ridges and wooded canyons through chaparral and oak woodland, with views of the ocean and the inland valleys. Parts of it are old animal paths and parts are former fire roads."
+official_url = "https://www.nps.gov/samo/planyourvisit/backbonetrail.htm"
+start = "Will Rogers State Historic Park, California"
+end = "Point Mugu State Park, California"
+shape = "point-to-point"
+season = "Late winter to early spring"
+months = [2, 3, 4]
+high_point = "Sandstone Peak, by a short spur trail"
+high_point_m = 948
+terrain = ["canyon", "coast"]
+travel = "trail"
+permit = "No permit is needed to hike the trail; only groups of 50 or more need one."
+caution = "Because overnight camping options are few and far apart, the National Park Service does not recommend through-hiking the trail in one go."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.nps.gov/samo/planyourvisit/backbonetrail.htm"
+publisher = "National Park Service"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://www.nps.gov/samo/planyourvisit/aboutthebbt.htm"
+publisher = "National Park Service"
+facts = ["summary", "start", "end", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.nps.gov/samo/planyourvisit/bbt-faqs.htm"
+publisher = "National Park Service"
+facts = ["season", "months", "high_point", "permit", "caution"]

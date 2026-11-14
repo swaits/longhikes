@@ -48,3 +48,19 @@ measured_km = 389.5
 difference_percent = -18.9
 parts = 12
 note = "Partly unbuilt, by design: 389.5 km in 12 parts against 480 km planned (300 mi). About 220 mi is built; the OSM track follows built segments plus some planned corridor. Kept: it is the best whole-corridor track that exists."
+
+[hike]
+summary = "The Cumberland Trail is a Tennessee state park trail planned to run more than 300 miles from Cumberland Gap to Lookout Mountain. It follows high ridges and deep gorges along the eastern edge of the Cumberland Plateau. Much of it is built and open, and the rest is still being completed."
+official_url = "https://friendsofthecumberlandtrail.org/land-culture-and-history-of-the-cumberland-trail/"
+start = "Cumberland Gap, Tennessee"
+end = "Lookout Mountain, Tennessee"
+shape = "point-to-point"
+terrain = ["canyon"]
+travel = "trail"
+unfinished = "About 208.9 miles are completed, of more than 300 planned."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://friendsofthecumberlandtrail.org/land-culture-and-history-of-the-cumberland-trail/"
+publisher = "Friends of the Cumberland Trail"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "unfinished"]

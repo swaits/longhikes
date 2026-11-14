@@ -48,3 +48,21 @@ measured_km = 232.4
 difference_percent = 0.2
 parts = 1
 note = "OSM relation 11562289, 65 ways: 232.4 km in 1 part, 0.2% more than the published 232 km."
+
+[hike]
+summary = "The Maah Daah Hey Trail is a non-motorized trail through the badlands of the Little Missouri National Grassland, from Burning Coal Vein Campground south of Medora to the CCC Campground south of Watford City. It crosses rolling prairies, clay buttes, rugged canyons and steep rocky terrain with views of the Little Missouri River."
+official_url = "https://www.fs.usda.gov/r01/dpg/recreation/trails/maah-daah-hey-trail"
+start = "Burning Coal Vein Campground, south of Medora, North Dakota"
+end = "CCC Campground, south of Watford City, North Dakota"
+shape = "point-to-point"
+season = "All year"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+terrain = ["prairie", "canyon"]
+travel = "trail"
+caution = "Water is scarce: the Forest Service campgrounds with water are 18 or more miles apart, and the trail association keeps eight seasonal water caches."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r01/dpg/recreation/trails/maah-daah-hey-trail"
+publisher = "USDA Forest Service, Dakota Prairie Grasslands"
+facts = ["official_url", "summary", "start", "end", "shape", "season", "months", "terrain", "travel", "caution"]

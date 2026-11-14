@@ -27,7 +27,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. OSM relation: 229 main ways, 1 part, 75.9 km (+1.2%). The 28 'alternative' ways are separate, good for mainline versus alternate."
+line_absent_reason = "No track has been added for this trail yet."
 
 [osm]
 relation = 6955341
@@ -48,3 +48,22 @@ measured_km = 75.9
 difference_percent = 1.2
 parts = 1
 note = "OSM relation: 229 main ways, 1 part, 75.9 km (+1.2%). The 28 'alternative' ways are separate, good for mainline versus alternate."
+
+[hike]
+summary = "The West Coast Trail runs 75 kilometres through Pacific Rim National Park Reserve in British Columbia, from Pachena Bay in the north to Gordon River in the south. Most people take six to eight days, and every campsite space must be reserved. Hikers climb long, steep ladders along the way."
+official_url = "https://parks.canada.ca/pn-np/bc/pacificrim/activ/sco-wct"
+start = "Pachena Bay, British Columbia"
+end = "Gordon River, British Columbia"
+shape = "point-to-point"
+days = [6, 8]
+season = "May to September"
+months = [5, 6, 7, 8, 9]
+terrain = ["coast", "forest"]
+travel = "trail"
+permit = "A Parks Canada backcountry use permit with a reservation is needed, even for a day hike, along with a national park entry pass."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/bc/pacificrim/activ/sco-wct"
+publisher = "Parks Canada"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "permit"]

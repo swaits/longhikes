@@ -27,7 +27,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "Whether the creator shares the track is not settled: no page of the author's or the publisher's for the book was found. The route is described in the guidebook Kings Canyon National Park."
+line_absent_reason = "Whether the route's author shares the track is not settled: no page of the author's or the publisher's for the book was found. The route is described in the guidebook Kings Canyon National Park."
 
 [osm]
 relation = 0

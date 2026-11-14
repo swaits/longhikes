@@ -2,6 +2,6 @@ pacific-crest
 
 Source: https://services5.arcgis.com/ZldHa25efPFpMmfB/ArcGIS/rest/services/PCTA_Centerline/FeatureServer/0
 Licence: CC-BY-4.0 (see trail.toml and SOURCES.md in this repository)
-Attribution: Pacific Crest Trail Association (CC BY 4.0). Say that the line was reshaped.
+Attribution: Pacific Crest Trail Association (CC BY 4.0). Say that the track was reshaped.
 Source read: 2026-11-08
 Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

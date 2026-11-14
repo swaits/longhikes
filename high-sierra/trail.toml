@@ -49,3 +49,27 @@ measured_km = 77.4
 difference_percent = -33.3
 parts = 1
 note = "OSM relation 1714300, 22 ways: 77.4 km in 1 part, 33.3% short of the published 116 km."
+
+[hike]
+summary = "The High Sierra Trail leads from Crescent Meadow in Sequoia National Park over the Great Western Divide at Kaweah Gap and down to the Kern River canyon, joining the John Muir Trail for the climb to Mount Whitney. It starts in giant sequoia forest, crosses alpine country above the treeline and ends with a descent to Whitney Portal."
+official_url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
+start = "Crescent Meadow, Sequoia National Park"
+end = "Whitney Portal, California"
+shape = "point-to-point"
+days = [6, 7]
+high_point = "Mount Whitney"
+high_point_m = 4421
+terrain = ["forest", "alpine", "canyon"]
+travel = "trail"
+permit = "A wilderness permit for the High Sierra Trail is required, and only a High Sierra Trail permit is valid for the stretch between Seven Mile Hill and Kaweah Gap."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
+publisher = "National Park Service, Sequoia and Kings Canyon National Parks"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "high_point", "terrain", "travel", "permit"]
+
+[[hike.source]]
+url = "https://www.nps.gov/seki/planyourvisit/whitney.htm"
+publisher = "National Park Service, Sequoia and Kings Canyon National Parks"
+facts = ["high_point"]

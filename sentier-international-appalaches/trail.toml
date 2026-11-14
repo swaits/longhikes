@@ -6,7 +6,7 @@ short_name = "IAT-CA"
 country = "CA"
 regions = ["QC", "NB"]
 length_km = 1177
-length_note = "about 650 km in Quebec (SIA-QC) plus about 527 km in New Brunswick; Maine section not in this record"
+length_note = "about 650 km in Quebec (SIA-QC) plus about 527 km in New Brunswick; the Maine section is not included here"
 tier = "regional"
 designation = "Sentier international des Appalaches; International Appalachian Trail"
 wave = 1
@@ -47,3 +47,25 @@ measured_km = 1164.3
 difference_percent = -1.1
 parts = 2
 note = "Quebec (9318808) and New Brunswick (6544824) together: 1,164.3 km in 2 parts, -1.1% against 1,177 km (650 km Quebec plus 527 km New Brunswick). The earlier +16.4% used a 1,000 km published figure that understates New Brunswick."
+
+[hike]
+summary = "The Sentier international des Appalaches listed here runs from Perth-Andover in New Brunswick to Forillon National Park in Quebec. It crosses Mount Carleton Provincial Park, then in Quebec passes through the Matapédia valley, the Chic-Choc summits of the Parc de la Gaspésie, and along the sea from village to village. Country ranges from farmland to forest to sea cliffs."
+official_url = "https://www.sia-iat.com/a-propos-du-sia?lang=en"
+start = "Perth-Andover, New Brunswick"
+end = "Forillon National Park, Quebec"
+shape = "point-to-point"
+season = "Mid-June to the end of October"
+months = [6, 7, 8, 9, 10]
+terrain = ["farmland", "forest", "coast"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.sia-iat.com/a-propos-du-sia?lang=en"
+publisher = "Sentier international des Appalaches (Québec)"
+facts = ["summary", "official_url", "end", "shape", "season", "months", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://tourismnewbrunswick.ca/listing/international-appalachian-trail-tide-head-perth-andover"
+publisher = "Tourism New Brunswick"
+facts = ["summary", "start", "terrain"]

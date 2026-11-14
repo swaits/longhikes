@@ -48,3 +48,34 @@ measured_km = 84.8
 difference_percent = 6.0
 parts = 1
 note = "OSM relation 4129027, 100 ways: 84.8 km in 1 part, 6.0% more than the published 80 km."
+
+[hike]
+summary = "The Batona Trail is a long trail through the New Jersey Pinelands that links three state forests: Brendan T. Byrne, Wharton and Bass River. The land is relatively flat with some low hills, mostly pine and oak forest with lowland wetlands. Its name is short for Back to Nature."
+official_url = "https://batona.wildapricot.org/"
+start = "Brendan T. Byrne State Forest, New Jersey"
+end = "Bass River State Forest, New Jersey"
+shape = "point-to-point"
+high_point = "Apple Pie Hill"
+terrain = ["forest"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://batona.wildapricot.org/"
+publisher = "Batona Hiking Club"
+facts = ["official_url"]
+
+[[hike.source]]
+url = "https://dep.nj.gov/wp-content/uploads/parksandforests/Wharton-Trails.pdf"
+publisher = "New Jersey State Park Service"
+facts = ["summary", "terrain"]
+
+[[hike.source]]
+url = "https://dep.nj.gov/wp-content/uploads/parksandforests/BassRiver-Trails.pdf"
+publisher = "New Jersey State Park Service"
+facts = ["summary", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://dep.nj.gov/wp-content/uploads/parksandforests/docs/sps/batona-map-2026.pdf"
+publisher = "New Jersey State Park Service"
+facts = ["high_point"]

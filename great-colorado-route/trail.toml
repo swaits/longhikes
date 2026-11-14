@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creator publishes the track for download; no licence that allows passing it on is stated. Get it from the creator's page."
+line_absent_reason = "The author publishes the track for download; no licence that allows passing it on is stated. Get it from the author's page."
 
 [osm]
 relation = 0
@@ -52,7 +52,7 @@ year = 2026
 line_policy = "open"
 creator_words = "The Great Colorado Route GPX is available for free download. Though donations are by no means expected, any donation ... is greatly appreciated"
 creator_words_url = "https://www.greatcoloradoroute.com/route"
-note = "Across Colorado in 32 sections, with off-trail travel and scrambling, and 364,000 feet of gain. The data came from the creator's 2026 thru-hike scouting. The site's terms of use say the GPS files are provided for informational purposes only, and state no reuse licence."
+note = "Across Colorado in 32 sections, with off-trail travel and scrambling, and 364,000 feet of gain. The data came from the author's 2026 thru-hike scouting. The site's terms of use say the GPS files are provided for informational purposes only, and state no reuse licence."
 
 [[guide]]
 title = "Great Colorado Route route page and GPX"
@@ -60,3 +60,26 @@ author = "Donovan \"Iceman\" Rice"
 access = "free"
 url = "https://www.greatcoloradoroute.com/route"
 format = "GPX and an interactive CalTopo map"
+
+[hike]
+summary = "The Great Colorado Route is a 32-section route across Colorado that mixes a high route with a traditional thru-hike. It links high alpine passes, remote wilderness and deep canyons, and includes 13 fourteeners. Its author calls it demanding by design."
+official_url = "https://www.greatcoloradoroute.com"
+start = "Black Canyon of the Gunnison National Park, Colorado"
+shape = "loop"
+days = [135, 135]
+season = "May to October, depending on the section"
+months = [5, 6, 7, 8, 9, 10]
+terrain = ["alpine", "canyon"]
+travel = "some-cross-country"
+caution = "The route needs sustained route-finding, off-trail travel and scrambling."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.greatcoloradoroute.com"
+publisher = "Donovan Rice (Iceman)"
+facts = ["official_url", "summary", "days", "season", "months", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.greatcoloradoroute.com/route"
+publisher = "Donovan Rice (Iceman)"
+facts = ["start", "shape"]

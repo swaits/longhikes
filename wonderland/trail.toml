@@ -49,3 +49,36 @@ measured_km = 139.2
 difference_percent = -7.2
 parts = 1
 note = "Measured on the OSM relation: 139.2 km in 1 part, 7.2% short of 150 km."
+
+[hike]
+summary = "The Wonderland Trail is a loop of about 93 miles that goes all the way around Mount Rainier in Washington. It can be hiked as a full loop or in sections, and it climbs and descends about 27,000 feet in total. Hikers on a full circuit may camp only at designated camps."
+official_url = "https://www.nps.gov/mora/planyourvisit/the-wonderland-trail.htm"
+start = "Longmire, Washington"
+shape = "loop"
+days = [10, 14]
+season = "Mid-July to October"
+months = [7, 8, 9, 10]
+terrain = ["alpine", "forest"]
+travel = "trail"
+permit = "Mount Rainier National Park requires a wilderness permit for all overnight camping; reservations are encouraged, and an early-access lottery opens each February."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.nps.gov/mora/planyourvisit/the-wonderland-trail.htm"
+publisher = "National Park Service, Mount Rainier National Park"
+facts = ["official_url", "summary", "start", "shape", "season", "months", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.nps.gov/mora/planyourvisit/wilderness-permit.htm"
+publisher = "National Park Service, Mount Rainier National Park"
+facts = ["permit"]
+
+[[hike.source]]
+url = "https://www.nps.gov/mora/faqs.htm"
+publisher = "National Park Service, Mount Rainier National Park"
+facts = ["days"]
+
+[[hike.source]]
+url = "https://www.nps.gov/mora/planyourvisit/upload/Wonderland-Trail-7-26_508.pdf"
+publisher = "National Park Service, Mount Rainier National Park"
+facts = ["days"]

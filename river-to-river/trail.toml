@@ -48,3 +48,24 @@ measured_km = 256.8
 difference_percent = -0.1
 parts = 2
 note = "OSM relation 4645742, 230 ways: 256.8 km in 2 parts, 0.1% short of the published 257 km."
+
+[hike]
+summary = "The River to River Trail spans southern Illinois from the Ohio River to the Mississippi River, mostly in the Shawnee National Forest. It passes upland forests, wetlands, grasslands and bluffs, including designated wilderness areas and state parks. Some segments follow roads or cross private land where allowed."
+official_url = "https://www.fs.usda.gov/r09/shawnee/recreation/trails/river-river-trail"
+start = "Ohio River, Illinois"
+end = "Mississippi River, Illinois"
+shape = "point-to-point"
+terrain = ["forest", "prairie"]
+season = "All year"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r09/shawnee/recreation/trails/river-river-trail"
+publisher = "USDA Forest Service, Shawnee National Forest"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "season", "months"]
+
+[[hike.source]]
+url = "https://rivertorivertrail.net/home/trail-information/"
+publisher = "River to River Trail Society"
+facts = ["summary"]

@@ -50,7 +50,7 @@ note = "No line to measure."
 creator = "Aria Zoner"
 year = 2016
 line_policy = "sold"
-note = "From Santa Barbara, California, to the Canadian border in Idaho, visiting 100 wild or resort hot springs, with road, trail and trailless ridge sections. The creator hiked it in 2016 in 110 days and wrote the guidebook."
+note = "From Santa Barbara, California, to the Canadian border in Idaho, visiting 100 wild or resort hot springs, with road, trail and trailless ridge sections. The author hiked it in 2016 in 110 days and wrote the guidebook."
 
 [[guide]]
 title = "The Hot Springs Trail: Official Guidebook"
@@ -58,3 +58,19 @@ author = "Aria Zoner"
 access = "purchase"
 url = "https://www.amazon.com/Hot-Springs-Trail-Official-Guidebook/dp/1505613922"
 format = "book"
+
+[hike]
+summary = "The Hot Springs Trail is a route from Santa Barbara, California, to the Canadian border in Idaho that links 100 wild and resort hot spring areas. It is mainly a hiking trail with official mountain biking and whitewater rafting options, and it mixes roads, trails and trail-less ridge running."
+official_url = "https://outsideways.com/routes/us/hot-springs-trail/"
+start = "Santa Barbara, California"
+end = "the Canadian border, Idaho"
+shape = "point-to-point"
+days = [110, 110]
+terrain = ["alpine", "lakes"]
+travel = "some-cross-country"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://outsideways.com/routes/us/hot-springs-trail/"
+publisher = "Aria Zoner"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "terrain", "travel"]

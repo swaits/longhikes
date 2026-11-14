@@ -48,3 +48,28 @@ measured_km = 325.3
 difference_percent = -15.9
 parts = 1
 note = "The three main sections (Ottawa, Central, Kingston) give 325.3 km in 1 part, -15.9% against 387 km. The 14 local blue side loops (108.8 km) are in alternates.geojson and are not part of the published length. Road links between sections are under-mapped in OSM. Kept as the best available track."
+
+[hike]
+summary = "The Rideau Trail links Kingston and Ottawa in Ontario in the general area of the Rideau Canal. Orange triangle blazes mark the main route, with side, connector and loop trails marked in blue. Through hikers face sparse overnight accommodation along much of the way."
+official_url = "https://www.rideautrail.org/discover-the-trail/"
+start = "Kingston, Ontario"
+end = "Ottawa, Ontario"
+shape = "point-to-point"
+caution = "Many parts of the trail network close during the Ontario fall hunting season, and overnight accommodation is sparse along much of the trail."
+days = [9, 16]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.rideautrail.org/discover-the-trail/"
+publisher = "Rideau Trail Association"
+facts = ["summary", "official_url", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://www.rideautrail.org/hiking/through-hikes/"
+publisher = "Rideau Trail Association"
+facts = ["summary", "caution"]
+
+[[hike.source]]
+url = "https://www.rideautrail.org/discover-the-trail/faq/"
+publisher = "Rideau Trail Association"
+facts = ["days"]

@@ -49,3 +49,24 @@ measured_km = 151.8
 difference_percent = -2.1
 parts = 1
 note = "The record names no source; OSM relation 7014936 (found by name search) gives 151.8 km in 1 part, 2.1% short of 155 km. The relation id is not yet in the record."
+
+[hike]
+summary = "The Lone Star Hiking Trail is a footpath-only route meandering across the breadth of the Sam Houston National Forest in East Texas, from near Richards east to near Cleveland. The main trail is joined by loop trails, the land is relatively flat with some wet areas, and the southern portion follows an old railroad tramway."
+official_url = "https://www.fs.usda.gov/r08/texas/recreation/trails/lone-star-hiking-trail"
+start = "Near Richards, Texas"
+end = "Near Cleveland, Texas"
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "trail"
+permit = "No fee or permit is required."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r08/texas/recreation/trails/lone-star-hiking-trail"
+publisher = "USDA Forest Service, Sam Houston National Forest"
+facts = ["official_url", "summary", "terrain", "permit", "end"]
+
+[[hike.source]]
+url = "https://lonestartrail.org/content.aspx?club_id=738078&module_id=676893&page_id=22"
+publisher = "Lone Star Hiking Trail Club"
+facts = ["summary", "start", "end", "shape", "travel"]

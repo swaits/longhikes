@@ -59,3 +59,26 @@ author = "Brett Tucker"
 access = "purchase"
 url = "https://www.simblissity.net/mogollon-rim-trail-mapset.shtml"
 format = "PDF mapset, data book, town guide, GPS tracks"
+
+[hike]
+summary = "The Mogollon Rim Trail is a route across Arizona's Rim Country, from the Parsons Trailhead outside Cottonwood through Sedona's redrock country, the Highline Trail, the White Mountains and the Blue Range to the New Mexico border, where it joins the Grand Enchantment Trail near Alma. It strings together recreation trails, quiet forest roads and cross-country travel through canyons, mesas, ponderosa forest and desert."
+official_url = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
+start = "Parsons Trailhead, near Cottonwood, Arizona"
+end = "Alma, New Mexico"
+shape = "point-to-point"
+terrain = ["forest", "canyon", "desert"]
+travel = "some-cross-country"
+season = "Spring and fall: April to May before the country dries out, and September to October after the monsoon and before winter returns"
+months = [4, 5, 9, 10]
+caution = "The route mixes trail, forest road and cross-country travel, and its author describes it as a hike for very experienced walkers."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
+publisher = "Brett Tucker (Blisterfree)"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "season", "months", "caution"]
+
+[[hike.source]]
+url = "https://www.simblissity.net/mogollon-rim-trail-mapset.shtml"
+publisher = "Brett Tucker, Simblissity Ultralight Designs"
+facts = ["summary"]

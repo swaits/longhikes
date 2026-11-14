@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "Only the middle third has a creator track, in the Deseret Hiking Route guide; the two end trails are published separately and have their own records here. Get the middle section from the guide page."
+line_absent_reason = "Only the middle third has a track from its author, in the Deseret Hiking Route guide; the two end trails are published separately and are each listed here with their own tracks. Get the middle section from the guide page."
 
 [osm]
 relation = 0
@@ -52,7 +52,7 @@ year = 2019
 line_policy = "open"
 creator_words = "The combined AZT-DHR-ICT (collectively, the Route In Between, or RIB) offers hikers the opportunity to walk from Mexico to Canada through oft-overlooked terrain."
 creator_words_url = "http://www.lbhikes.com/2019/12/dhr.html"
-note = "A link-up of the Arizona Trail, the Deseret Hiking Route and the Idaho Centennial Trail, from Mexico to Canada through Arizona, Utah and Idaho. The creator walked it in 2019; only the middle third has a creator track."
+note = "A link-up of the Arizona Trail, the Deseret Hiking Route and the Idaho Centennial Trail, from Mexico to Canada through Arizona, Utah and Idaho. The author walked it in 2019; only the middle third has a track from him."
 
 [[guide]]
 title = "A Complete Guide to the Deseret Hiking Route"
@@ -60,3 +60,19 @@ author = "Kevin \"LarryBoy\" DeVries"
 access = "free"
 url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
 format = "guide, maps, data book and GPX for the middle section, sent after proof of a day of trail work"
+
+[hike]
+summary = "The Route In Between links the Arizona Trail, the author's Deseret Hiking Route through Utah, and the Idaho Centennial Trail for a Mexico to Canada walk. The middle route passes Paria Canyon and Bryce Canyon country and the Wasatch and Pioneer Mountains. Its author calls it rougher around the edges than the established long trails."
+official_url = "https://www.lbhikes.com/2019/12/dhr.html"
+start = "United States-Mexico border, Arizona"
+end = "Canada-United States border, Idaho"
+shape = "point-to-point"
+terrain = ["canyon", "alpine"]
+travel = "some-cross-country"
+caution = "The middle Deseret Hiking Route portion is completely unmarked and is not designated by any state or federal agency."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.lbhikes.com/2019/12/dhr.html"
+publisher = "Kevin \"LarryBoy\" DeVries (LB Hikes)"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution"]

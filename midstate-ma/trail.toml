@@ -48,3 +48,24 @@ measured_km = 150.0
 difference_percent = 1.4
 parts = 1
 note = "OSM relation 5503042, 257 ways: 150.0 km in 1 part, 1.4% more than the published 148 km."
+
+[hike]
+summary = "The Midstate Trail is a scenic footpath in Worcester County, 45 miles west of Boston, running from the Rhode Island border across the gentle hills of central Massachusetts to the New Hampshire border, where it connects to the Wapack Trail. The trail committee calls it highly accessible and easy to hike."
+official_url = "https://www.midstatetrail.org/"
+start = "Rhode Island border, Massachusetts"
+end = "New Hampshire border, Massachusetts, connecting to the Wapack Trail"
+shape = "point-to-point"
+high_point = "Mount Wachusett"
+high_point_m = 611
+travel = "trail"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.midstatetrail.org/"
+publisher = "Midstate Trail Committee"
+facts = ["official_url", "summary", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://www.midstatetrail.org/about-the-midstate-trail/old-growth-forest/"
+publisher = "Midstate Trail Committee"
+facts = ["high_point"]

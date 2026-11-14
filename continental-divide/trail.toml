@@ -48,3 +48,33 @@ measured_km = 4891.2
 difference_percent = -2.0
 parts = 1
 note = "The 'CDT Primary Route' features join into 1 track, 4,891.2 km, 2.0% short of 4,989 km. alternates.geojson holds the Chief Mountain and Tonahutu routes and the one feature labelled Great Divide Trail (57.5 km)."
+
+[hike]
+summary = "The Continental Divide Trail runs along the spine of the Rocky Mountains from the Mexican border in New Mexico to the Canadian border in Montana, through Colorado, Wyoming and Idaho. It crosses remote, challenging country, and many alternate routes exist. About 160 miles of the trail are still incomplete."
+official_url = "https://cdtcoalition.org/"
+start = "Mexican border, New Mexico"
+end = "Canadian border, Montana"
+shape = "point-to-point"
+days = [150, 210]
+high_point = "Grays Peak"
+high_point_m = 4352
+terrain = ["alpine"]
+travel = "trail"
+permit = "No single permit covers the whole trail; permits are needed area by area, for example in Glacier and Yellowstone National Parks and on Blackfeet land."
+unfinished = "About 160 miles of the trail are still incomplete."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://cdtcoalition.org/"
+publisher = "Continental Divide Trail Coalition"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "unfinished"]
+
+[[hike.source]]
+url = "https://cdtcoalition.org/explore-the-trail/thruhiking/"
+publisher = "Continental Divide Trail Coalition"
+facts = ["summary", "days", "permit", "travel"]
+
+[[hike.source]]
+url = "https://cdtcoalition.org/colorado-14ers-on-the-cdt/"
+publisher = "Continental Divide Trail Coalition"
+facts = ["high_point"]

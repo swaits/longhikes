@@ -48,3 +48,19 @@ measured_km = 1380.9
 difference_percent = -4.6
 parts = 46
 note = "'Existing' segments only: 1,380.9 km in 46 parts, 4.6% short of 1,448 km. alternates.geojson holds the planned and proposed segments (219.6 km)."
+
+[hike]
+summary = "The Potomac Heritage National Scenic Trail is an evolving network of trails in the Potomac River corridor through the District of Columbia, Maryland, Pennsylvania and Virginia. Its segments link places of natural and historical interest along the river, rather than forming one single footpath."
+official_url = "https://www.nps.gov/pohe/index.htm"
+shape = "network"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.nps.gov/pohe/index.htm"
+publisher = "National Park Service"
+facts = ["summary", "official_url", "shape"]
+
+[[hike.source]]
+url = "https://www.nps.gov/pohe/learn/index.htm"
+publisher = "National Park Service"
+facts = ["summary", "shape"]

@@ -27,7 +27,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. The NPS national layer has only 5.4 km of the 64 km: not usable as a source."
+line_absent_reason = "No track has been added for this trail yet."
 
 [osm]
 relation = 3895101
@@ -48,3 +48,24 @@ measured_km = 5.4
 difference_percent = -91.6
 parts = 2
 note = "The NPS national layer has only 5.4 km of the 64 km: not usable as a source."
+
+[hike]
+summary = "The Teton Crest Trail is a point to point route along the crest of the Teton Range in Wyoming, starting outside Grand Teton National Park at Phillips Pass and ending at String Lake. The park service says it climbs over 9,000 feet and is best enjoyed over multiple days. Camping zones along it fill almost every night from late July through early September."
+official_url = "https://www.nps.gov/grte/planyourvisit/backcountryroutesandzones.htm"
+start = "Phillips Pass, Wyoming"
+end = "String Lake, Grand Teton National Park, Wyoming"
+shape = "point-to-point"
+terrain = ["alpine", "lakes"]
+travel = "trail"
+permit = "Permits are required for all overnight stays in the backcountry of Grand Teton National Park, obtained through recreation.gov or a permit office."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.nps.gov/grte/planyourvisit/backcountryroutesandzones.htm"
+publisher = "National Park Service"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.nps.gov/grte/planyourvisit/back.htm"
+publisher = "National Park Service"
+facts = ["permit", "terrain"]

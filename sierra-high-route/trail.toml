@@ -69,3 +69,18 @@ author = "Andrew Skurka"
 access = "purchase"
 url = "https://andrewskurka.com/product/sierra-high-route-map-set-databook/"
 format = "map set with breadcrumbs (not a continuous track)"
+
+[hike]
+summary = "The Sierra High Route is Steve Roper's timberline route through California's High Sierra from Kings Canyon National Park to northern Yosemite. It follows a general direction but no particular trail through the sub-alpine country. Its guidebook leads hikers point to point and favours cross-country travel over maintained trails."
+official_url = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
+start = "Kings Canyon National Park, California"
+end = "Northern Yosemite National Park, California"
+shape = "point-to-point"
+terrain = ["alpine", "lakes"]
+travel = "mostly-cross-country"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
+publisher = "Mountaineers Books"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]

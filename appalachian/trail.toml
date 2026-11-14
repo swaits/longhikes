@@ -48,3 +48,44 @@ measured_km = 3481.1
 difference_percent = -1.6
 parts = 1
 note = "3029 features join into 1 continuous track; 1.6% short of 3,537 km."
+
+[hike]
+summary = "The Appalachian Trail follows the Appalachian Mountains from Springer Mountain in Georgia to Katahdin in Maine. It is mostly forested ridge and valley, with open ground above the treeline in places. Most people who walk all of it take five to seven months."
+official_url = "https://www.nps.gov/appa/index.htm"
+start = "Springer Mountain, Georgia"
+end = "Katahdin, Maine"
+shape = "point-to-point"
+days = [150, 210]
+season = "Northbound hikes start late February to early April"
+months = [2, 3, 4]
+high_point = "Kuwohi (Clingmans Dome)"
+high_point_m = 2019
+terrain = ["forest", "alpine"]
+travel = "trail"
+permit = "There is no permit for the whole trail; permits are needed only in Great Smoky Mountains National Park, Shenandoah National Park and Baxter State Park."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.nps.gov/appa/index.htm"
+publisher = "National Park Service"
+facts = ["official_url", "summary"]
+
+[[hike.source]]
+url = "https://appalachiantrail.org/experience/hike-the-trail/at-basics/"
+publisher = "Appalachian Trail Conservancy"
+facts = ["summary", "start", "end", "shape", "season", "months", "travel"]
+
+[[hike.source]]
+url = "https://appalachiantrail.org/explore/hike-the-a-t/thru-hiking/"
+publisher = "Appalachian Trail Conservancy"
+facts = ["summary", "days", "months"]
+
+[[hike.source]]
+url = "https://appalachiantrail.org/experience/hike-the-trail/day-hiking-backpacking/14-state-challenge/"
+publisher = "Appalachian Trail Conservancy"
+facts = ["high_point"]
+
+[[hike.source]]
+url = "https://appalachiantrail.org/explore/faqs/"
+publisher = "Appalachian Trail Conservancy"
+facts = ["permit", "terrain"]

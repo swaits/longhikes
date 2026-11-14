@@ -48,3 +48,29 @@ measured_km = 655.0
 difference_percent = -6.4
 parts = 4
 note = "OSM relation 12307947, 586 ways: 655.0 km in 4 parts, 6.4% short of the published 700 km. The pieces do not all join: OpenStreetMap is missing the connectors between them."
+
+[hike]
+summary = "The Island Walk is a loop around Prince Edward Island through 32 sections, passing through the island's two cities, Charlottetown and Summerside, and many small communities. Just over half of it is on the Confederation Trail and red clay roads, with most of the rest on the shoulders of quiet secondary roads, and it is not technically difficult."
+official_url = "https://theislandwalk.ca/"
+shape = "loop"
+days = [32, 32]
+season = "May to October"
+months = [5, 6, 7, 8, 9, 10]
+terrain = ["coast"]
+travel = "trail-and-road"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://theislandwalk.ca/come-back-different/about-the-island-walk/"
+publisher = "Island Walk PEI Inc."
+facts = ["official_url", "summary", "shape", "days", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://theislandwalk.ca/"
+publisher = "Island Walk PEI Inc."
+facts = ["summary", "shape"]
+
+[[hike.source]]
+url = "https://theislandwalk.ca/partner/"
+publisher = "Island Walk PEI Inc."
+facts = ["season", "months"]

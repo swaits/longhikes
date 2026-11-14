@@ -6,7 +6,7 @@ short_name = "HT"
 country = "US"
 regions = ["UT", "AZ"]
 length_km = 1287
-length_note = "800 mi, per the creator's site and the publisher"
+length_note = "800 mi, per the author's site and the publisher"
 kind = "route"
 tier = "regional"
 designation = "Person-defined route (Joe Mitchell and Mike Coronella, 2005); no agency or association"
@@ -63,3 +63,34 @@ format = "book"
 price = "$19.95"
 price_checked = "2026-11-10"
 isbn = "9780874808131"
+
+[hike]
+summary = "The Hayduke Trail is an extremely challenging backcountry route linking six national parks of the Colorado Plateau, from Arches to Zion across southern Utah and northern Arizona. It lies entirely on public land, taking in Canyonlands, Capitol Reef, Bryce Canyon and Grand Canyon as well as the wild country between them. It is named for a character in Edward Abbey's novel The Monkey Wrench Gang."
+official_url = "https://www.hayduketrail.org"
+start = "Arches National Park, Utah"
+end = "Weeping Wall, Zion National Park, Utah"
+shape = "point-to-point"
+season = "Spring and fall"
+months = [3, 4, 5, 9, 10, 11]
+high_point = "Mount Ellen (South Summit)"
+high_point_m = 3481
+terrain = ["desert", "canyon"]
+travel = "mostly-cross-country"
+permit = "Permits are needed from each national park and monument the route crosses, among them Arches, Canyonlands, Capitol Reef, Grand Canyon and Zion."
+caution = "The route is largely off-trail and unsigned, and its creators warn that only very experienced desert backpackers in peak condition should attempt it."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.hayduketrail.org"
+publisher = "Joe Mitchell and Mike Coronella"
+facts = ["official_url", "summary", "terrain", "end"]
+
+[[hike.source]]
+url = "https://www.hayduketrail.org/TheRoute.html"
+publisher = "Joe Mitchell and Mike Coronella"
+facts = ["summary", "start", "end", "shape", "travel", "permit", "caution", "high_point"]
+
+[[hike.source]]
+url = "https://www.nps.gov/cany/planyourvisit/hayduke.htm"
+publisher = "National Park Service, Canyonlands National Park"
+facts = ["season", "months"]

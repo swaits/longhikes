@@ -61,3 +61,30 @@ url = "https://andrewskurka.com/product/yosemite-high-route-guide/"
 format = "PDF guidebook, annotated map set, datasheets, rudimentary GPX"
 price = "$25.00"
 price_checked = "2026-11-10"
+
+[hike]
+summary = "The Yosemite High Route explores the upper headwaters of the Tuolumne and Merced Rivers in Yosemite National Park, California. Its core runs from Grace Meadow near the park's northern boundary to the base of Quartzite Peak at the Merced River, through remote canyons, alpine areas and lake basins. Seventy percent of the core is off-trail, between 8,000 and 11,000 feet."
+official_url = "https://andrewskurka.com/adventures/yosemite-high-route/"
+start = "Grace Meadow, Yosemite National Park, California"
+end = "Base of Quartzite Peak at the Merced River, Yosemite National Park, California"
+shape = "point-to-point"
+days = [7, 14]
+terrain = ["alpine", "lakes", "forest"]
+travel = "mostly-cross-country"
+permit = "A Yosemite wilderness permit is required year-round for any overnight stay in the Yosemite Wilderness."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://andrewskurka.com/adventures/yosemite-high-route/"
+publisher = "Andrew Skurka"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://andrewskurka.com/product/yosemite-high-route-guide/"
+publisher = "Andrew Skurka"
+facts = ["summary"]
+
+[[hike.source]]
+url = "https://www.nps.gov/yose/planyourvisit/wildpermits.htm"
+publisher = "National Park Service"
+facts = ["permit"]

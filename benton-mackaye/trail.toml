@@ -49,3 +49,34 @@ measured_km = 450.4
 difference_percent = -2.7
 parts = 1
 note = "OSM relation 1675439, 302 ways: 450.4 km in 1 part, 2.7% short of 463 km. The earlier Blue Ridge Forever track measured 436.6 km but its item licence is restricted; it was dropped."
+
+[hike]
+summary = "The Benton MacKaye Trail starts on Springer Mountain in Georgia, shared with the Appalachian Trail, and runs north through Tennessee and North Carolina to Big Creek in the Great Smoky Mountains. It follows mountain ridges and crosses many streams, and about a third of it lies in designated Wilderness. It is the longest trail in the national park."
+official_url = "https://www.bmta.org/"
+start = "Springer Mountain, Georgia"
+end = "Big Creek, Great Smoky Mountains National Park, North Carolina"
+shape = "point-to-point"
+high_point = "Mount Sterling"
+high_point_m = 1781
+days = [21, 28]
+season = "Spring or autumn"
+months = [4, 5, 9, 10]
+terrain = ["forest"]
+travel = "trail"
+permit = "Backcountry camping in Great Smoky Mountains National Park needs a permit and an advance reservation."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.bmta.org/"
+publisher = "Benton MacKaye Trail Association"
+facts = ["official_url", "summary", "travel"]
+
+[[hike.source]]
+url = "https://www.bmta.org/discover-the-trail"
+publisher = "Benton MacKaye Trail Association"
+facts = ["summary", "start", "end", "shape", "high_point", "permit"]
+
+[[hike.source]]
+url = "https://bmta.org/blog/thru-hiking-the-benton-mackaye-trail-embrace-the-wilderness"
+publisher = "Benton MacKaye Trail Association"
+facts = ["days", "season", "months", "terrain"]

@@ -9,6 +9,7 @@ import sys
 
 sys.dont_write_bytecode = True
 
+import datetime
 import importlib.util
 import json
 import math
@@ -25,6 +26,20 @@ DATA_LICENCES = {"us-gov-public-domain", "CC-BY-4.0", "CC-BY", "ODbL-1.0"}
 LINE_POLICIES = {"open", "sold", "withheld", "unclear"}
 NO_LINE_POLICIES = {"sold", "withheld", "unclear"}
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+HIKE_SHAPES = {"point-to-point", "loop", "network"}
+HIKE_TERRAIN = {"alpine", "forest", "desert", "coast", "prairie", "canyon", "tundra",
+                "lakes", "farmland"}
+HIKE_FACTS = {"summary", "official_url", "start", "end", "shape", "days", "season",
+              "high_point", "high_point_m", "terrain", "permit", "unfinished", "caution",
+              "months", "travel"}
+HIKE_TRAVEL = {"trail", "trail-and-road", "some-cross-country", "mostly-cross-country"}
+HIKE_KEYS = HIKE_FACTS | {"checked"}
+ELEVATION_KEYS = {"highest", "lowest", "ascent_m", "descent_m", "track_km", "published_km",
+                  "coverage", "parts", "orientation", "profile", "part_starts_km", "source"}
+ELEVATION_REQUIRED = ELEVATION_KEYS - {"part_starts_km"}
+ELEVATION_SOURCE_REQUIRED = ("model", "attribution", "zoom", "sample_spacing_m", "smoothing",
+                             "computed")
+ELEVATION_ORIENTATIONS = {"south-to-north", "west-to-east"}
 
 spec = importlib.util.spec_from_file_location(
     "build_index", os.path.join(ROOT, "tools", "build_index.py"))
@@ -85,6 +100,222 @@ def check_geometry(geom, where, errors):
         if gtype in ("LineString", "MultiLineString"):
             length += haversine_km(part)
     return length
+
+
+def check_hike(tid, rec, errors):
+    """Check the optional [hike] table and its [[hike.source]] tables."""
+    hike = rec.get("hike")
+    if hike is None:
+        return
+    if not isinstance(hike, dict):
+        errors.append(f"{tid}: hike must be a table")
+        return
+
+    def text(name):
+        value = hike[name]
+        if not isinstance(value, str) or not value.strip():
+            errors.append(f"{tid}: hike.{name} must be a non-empty string")
+            return False
+        return True
+
+    for name in sorted(set(hike) - HIKE_KEYS - {"source"}):
+        errors.append(f"{tid}: hike.{name} is not a known field")
+    for name in ("summary", "official_url", "start", "end", "season", "high_point",
+                 "permit", "unfinished", "caution"):
+        if name in hike:
+            text(name)
+    if "official_url" in hike and not str(hike["official_url"]).startswith(("https://", "http://")):
+        errors.append(f"{tid}: hike.official_url must be an http(s) URL")
+    if "shape" in hike and hike["shape"] not in HIKE_SHAPES:
+        errors.append(
+            f"{tid}: hike.shape must be one of {', '.join(sorted(HIKE_SHAPES))}, "
+            f"not {hike['shape']!r}")
+    if "days" in hike:
+        days = hike["days"]
+        ints = (isinstance(days, list) and len(days) == 2
+                and all(isinstance(d, int) and not isinstance(d, bool) and d > 0 for d in days))
+        if not ints:
+            errors.append(f"{tid}: hike.days must be two positive integers [fewest, most]")
+        elif days[0] > days[1]:
+            errors.append(f"{tid}: hike.days {days} has the fewest days after the most")
+    if "travel" in hike and hike["travel"] not in HIKE_TRAVEL:
+        errors.append(
+            f"{tid}: hike.travel must be one of {', '.join(sorted(HIKE_TRAVEL))}, "
+            f"not {hike['travel']!r}")
+    if "months" in hike:
+        months = hike["months"]
+        ok = (isinstance(months, list) and months
+              and all(isinstance(m, int) and not isinstance(m, bool) and 1 <= m <= 12
+                      for m in months))
+        if not ok:
+            errors.append(f"{tid}: hike.months must be a list of month numbers from 1 to 12")
+        elif len(set(months)) != len(months):
+            errors.append(f"{tid}: hike.months repeats a month")
+    if "high_point_m" in hike:
+        metres = hike["high_point_m"]
+        if (not isinstance(metres, int) or isinstance(metres, bool)
+                or not -100 <= metres <= 6200):
+            errors.append(f"{tid}: hike.high_point_m must be an integer from -100 to 6200")
+    if "terrain" in hike:
+        terrain = hike["terrain"]
+        if not isinstance(terrain, list) or not 1 <= len(terrain) <= 3:
+            errors.append(f"{tid}: hike.terrain must be a list of one to three words")
+        else:
+            for word in terrain:
+                if word not in HIKE_TERRAIN:
+                    errors.append(
+                        f"{tid}: hike.terrain word {word!r} is not one of "
+                        f"{', '.join(sorted(HIKE_TERRAIN))}")
+            if len(set(terrain)) != len(terrain):
+                errors.append(f"{tid}: hike.terrain repeats a word")
+    if not DATE_RE.match(str(hike.get("checked", ""))):
+        errors.append(f"{tid}: hike.checked must be a date (YYYY-MM-DD)")
+    else:
+        try:
+            datetime.date.fromisoformat(hike["checked"])
+        except ValueError:
+            errors.append(f"{tid}: hike.checked {hike['checked']!r} is not a real date")
+
+    sources = hike.get("source")
+    covered = set()
+    if not isinstance(sources, list) or not sources:
+        errors.append(f"{tid}: hike is present but there is no [[hike.source]] table")
+        sources = []
+    for i, s in enumerate(sources, 1):
+        if not isinstance(s, dict):
+            errors.append(f"{tid}: hike source {i} must be a table")
+            continue
+        for name in sorted(set(s) - {"url", "publisher", "facts"}):
+            errors.append(f"{tid}: hike source {i} has unknown field {name}")
+        if not str(s.get("url", "")).startswith(("https://", "http://")):
+            errors.append(f"{tid}: hike source {i} url must be an http(s) URL")
+        if not str(s.get("publisher", "")).strip():
+            errors.append(f"{tid}: hike source {i} is missing publisher")
+        facts = s.get("facts")
+        if not isinstance(facts, list) or not facts:
+            errors.append(f"{tid}: hike source {i} facts must be a non-empty list")
+            continue
+        for fact in facts:
+            if fact not in HIKE_FACTS:
+                errors.append(f"{tid}: hike source {i} names {fact!r}, which is not a hike field")
+            elif fact == "high_point":
+                covered.update(("high_point", "high_point_m"))
+            else:
+                covered.add(fact)
+    for name in sorted(set(hike) & HIKE_KEYS - {"checked"}) if sources else []:
+        if name not in covered:
+            errors.append(f"{tid}: hike.{name} is not named in the facts of any hike source")
+
+
+def check_elevation(tid, tdir, rec, errors):
+    """Check <id>/elevation.json where it is present."""
+    path = os.path.join(tdir, "elevation.json")
+    if not os.path.isfile(path):
+        return
+    where = f"{tid}/elevation.json"
+    try:
+        with open(path, encoding="utf-8") as f:
+            doc = json.load(f)
+    except Exception as e:  # noqa: BLE001
+        errors.append(f"{where}: does not parse: {e}")
+        return
+    if not isinstance(doc, dict):
+        errors.append(f"{where}: top level must be an object")
+        return
+    if not os.path.isfile(os.path.join(tdir, "line.geojson")):
+        errors.append(f"{where}: present but the trail has no track (line.geojson)")
+    for name in sorted(ELEVATION_REQUIRED - set(doc)):
+        errors.append(f"{where}: missing {name}")
+    for name in sorted(set(doc) - ELEVATION_KEYS):
+        errors.append(f"{where}: {name} is not a known field")
+
+    def number(value, low, high):
+        return (isinstance(value, (int, float)) and not isinstance(value, bool)
+                and low <= value <= high)
+
+    points = {}
+    for name in ("highest", "lowest"):
+        p = doc.get(name)
+        if name not in doc:
+            continue
+        if not isinstance(p, dict) or set(p) != {"m", "lon", "lat"}:
+            errors.append(f"{where}: {name} must hold m, lon and lat")
+            continue
+        if not number(p["m"], -500, 9000):
+            errors.append(f"{where}: {name}.m must be a number from -500 to 9000 metres")
+        if not number(p["lon"], -180, 180) or not number(p["lat"], -90, 90):
+            errors.append(f"{where}: {name} has a longitude or latitude out of range")
+        points[name] = p["m"]
+    if len(points) == 2 and number(points["highest"], -500, 9000) and number(points["lowest"], -500, 9000):
+        if points["highest"] < points["lowest"]:
+            errors.append(f"{where}: highest {points['highest']} is below lowest {points['lowest']}")
+    for name in ("ascent_m", "descent_m"):
+        if name in doc and not number(doc[name], 0, 2_000_000):
+            errors.append(f"{where}: {name} must be a number from 0 to 2000000")
+    track_km = doc.get("track_km")
+    if "track_km" in doc and not number(track_km, 0.01, 100_000):
+        errors.append(f"{where}: track_km must be a positive number of kilometres")
+        track_km = None
+    published = doc.get("published_km")
+    if "published_km" in doc:
+        if published != rec.get("length_km"):
+            errors.append(f"{where}: published_km {published!r} is not the record's length_km "
+                          f"{rec.get('length_km')!r}")
+        elif published and track_km and "coverage" in doc:
+            if not number(doc["coverage"], 0, 10) or abs(doc["coverage"] - track_km / published) > 0.01:
+                errors.append(f"{where}: coverage {doc['coverage']!r} is not track_km / published_km")
+    parts = doc.get("parts")
+    if "parts" in doc and (not isinstance(parts, int) or isinstance(parts, bool) or parts < 1):
+        errors.append(f"{where}: parts must be a whole number of 1 or more")
+        parts = None
+    if doc.get("orientation") not in ELEVATION_ORIENTATIONS and "orientation" in doc:
+        errors.append(f"{where}: orientation must be one of "
+                      f"{', '.join(sorted(ELEVATION_ORIENTATIONS))}")
+    if "part_starts_km" in doc:
+        starts = doc["part_starts_km"]
+        if (not isinstance(starts, list) or not all(number(x, 0, 100_000) for x in starts)
+                or starts != sorted(starts)
+                or (parts is not None and len(starts) != parts - 1)):
+            errors.append(f"{where}: part_starts_km must be a list, never decreasing, with one "
+                          "entry for each part after the first")
+    elif parts and parts > 1:
+        errors.append(f"{where}: {parts} parts but no part_starts_km")
+
+    profile = doc.get("profile")
+    if "profile" in doc:
+        ok = (isinstance(profile, list) and 2 <= len(profile) <= 1500
+              and all(isinstance(p, list) and len(p) == 2 and number(p[0], 0, 100_000)
+                      and number(p[1], -500, 9000) for p in profile))
+        if not ok:
+            errors.append(f"{where}: profile must be 2 to 1500 [distance_km, elevation_m] pairs")
+        else:
+            dists = [p[0] for p in profile]
+            starts = doc.get("part_starts_km") if isinstance(doc.get("part_starts_km"), list) else []
+            # distances increase; the first point of a later part may repeat the
+            # distance of the point before it (the gap between two parts)
+            if any(b < a or (b == a and b not in starts) for a, b in zip(dists, dists[1:])):
+                errors.append(f"{where}: profile distances must increase")
+            if track_km and dists[-1] > track_km + 0.1:
+                errors.append(f"{where}: profile runs past track_km")
+            if len(points) == 2:
+                top, bottom = max(p[1] for p in profile), min(p[1] for p in profile)
+                if top > points["highest"] + 1 or bottom < points["lowest"] - 1:
+                    errors.append(f"{where}: profile lies outside the highest and lowest points")
+
+    src = doc.get("source")
+    if "source" in doc:
+        if not isinstance(src, dict):
+            errors.append(f"{where}: source must be an object")
+        else:
+            for name in ELEVATION_SOURCE_REQUIRED:
+                if src.get(name) in (None, ""):
+                    errors.append(f"{where}: source.{name} is missing")
+            if not isinstance(src.get("zoom"), int) or not 0 <= src.get("zoom", -1) <= 15:
+                errors.append(f"{where}: source.zoom must be a whole number from 0 to 15")
+            if not number(src.get("sample_spacing_m"), 1, 1000):
+                errors.append(f"{where}: source.sample_spacing_m must be a number of metres")
+            if not DATE_RE.match(str(src.get("computed", ""))):
+                errors.append(f"{where}: source.computed must be a date (YYYY-MM-DD)")
 
 
 def main():
@@ -257,6 +488,9 @@ def main():
                 errors.append(f"{tid}: [route] table present but kind is not \"route\"")
             if guides:
                 errors.append(f"{tid}: [[guide]] present but kind is not \"route\"")
+
+        check_hike(tid, rec, errors)
+        check_elevation(tid, tdir, rec, errors)
 
     for dirpath, dirnames, filenames in os.walk(ROOT):
         if ".git" in dirpath:

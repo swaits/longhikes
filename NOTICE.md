@@ -17,3 +17,13 @@ The same applies to a person-defined route. A route's creator can ask for its re
 ## Data
 
 Tracks keep the terms of their sources. See each trail's record and SOURCES.md. In particular, tracks from OpenStreetMap are © OpenStreetMap contributors and are available under the Open Database License (ODbL): https://www.openstreetmap.org/copyright
+
+## Elevation
+
+The files `elevation.json` in the trail directories are computed from each trail's track and the Terrain Tiles open elevation data (https://registry.opendata.aws/terrain-tiles/), which Mapzen made from several public sources. The data is used under the terms it states (https://github.com/tilezen/joerd/blob/master/docs/attribution.md, read 2026-11-13). Each `elevation.json` carries the credit in its `source.attribution`, and a page that shows elevation from these files shows it too:
+
+- United States 3DEP (formerly NED) and global GMTED2010 and SRTM terrain data courtesy of the U.S. Geological Survey.
+- Canada terrain data contains information licensed under the Open Government Licence - Canada.
+- ArcticDEM terrain data DEM(s) were created from DigitalGlobe, Inc., imagery and funded under National Science Foundation awards 1043681, 1559691, and 1542736.
+- Global ETOPO1 terrain data U.S. National Oceanic and Atmospheric Administration.
+- Terrain Tiles was accessed from https://registry.opendata.aws/terrain-tiles.

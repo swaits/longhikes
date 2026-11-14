@@ -6,7 +6,7 @@ short_name = "GWDL"
 country = "US"
 regions = ["CA"]
 length_km = 93
-length_note = "58 mi, per the creator"
+length_note = "58 mi, per the author"
 kind = "route"
 tier = "regional"
 designation = "Person-defined route (Brian Lucido, 2013); no agency or association"
@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creator publishes the track for download; no licence that allows passing it on is stated. Get it from the creator's page."
+line_absent_reason = "The author publishes the track for download; no licence that allows passing it on is stated. Get it from the author's page."
 
 [osm]
 relation = 0
@@ -60,3 +60,15 @@ author = "Brian Lucido"
 access = "free"
 url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
 format = "web page with an exportable route map (GPX)"
+
+[hike]
+summary = "The Sequoia Great Western Divide Loop is a backpacking loop from Crescent Meadow in Sequoia National Park that crosses the Great Western Divide at Kaweah Gap, past Precipice Lake and the Hamilton Lakes. The walk starts in giant sequoia forest and reaches alpine country above the treeline on the divide."
+official_url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
+start = "Crescent Meadow, Sequoia National Park"
+terrain = ["forest", "alpine"]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
+publisher = "National Park Service, Sequoia and Kings Canyon National Parks"
+facts = ["official_url", "summary", "start", "terrain"]

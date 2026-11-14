@@ -27,7 +27,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The route's track is in a bought guidebook, and no creator GPX was found. Get the track from the book The Tahoe–Yosemite Trail."
+line_absent_reason = "The route's track is in a guidebook for sale, and no GPX from its author was found. Get the track from the book The Tahoe–Yosemite Trail."
 
 [osm]
 relation = 0
@@ -59,3 +59,24 @@ url = "https://shop.adventurewithkeen.com/wilderness-press/"
 format = "book; the publisher's Wilderness Press page, as the book's own page was not found"
 publisher = "Wilderness Press"
 isbn = "0-89997-084-2"
+
+[hike]
+summary = "The Tahoe-Yosemite Trail is Thomas Winnett's route through California's Sierra Nevada from Meeks Bay at Lake Tahoe to Tuolumne Meadows in Yosemite National Park. It links maintained trails with road walks, unmaintained trail and cross-country travel. The route stayed unofficial."
+official_url = "https://shop.adventurewithkeen.com/wilderness-press/"
+start = "Meeks Bay, Lake Tahoe, California"
+end = "Tuolumne Meadows, Yosemite National Park, California"
+shape = "point-to-point"
+terrain = ["alpine", "forest", "lakes"]
+travel = "some-cross-country"
+caution = "The route is unofficial; the Forest Service describes even its northernmost part at Meeks Bay as the unofficial Tahoe-Yosemite Trail."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/wilderness-press/"
+publisher = "Wilderness Press (AdventureKEEN)"
+facts = ["summary", "official_url"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/recarea/ltbmu/recreation/camping-cabins/recarea/?recid=11826&actid=50"
+publisher = "USDA Forest Service, Lake Tahoe Basin Management Unit"
+facts = ["summary", "start", "end", "shape", "terrain", "travel", "caution"]

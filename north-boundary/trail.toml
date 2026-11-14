@@ -27,7 +27,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No OpenStreetMap route relation for the trail was found, and the publisher serves no track that may be passed on. The record is kept without a track."
+line_absent_reason = "No track is included. OpenStreetMap has no route relation for the trail, and the publisher allows no track to be passed on."
 
 [osm]
 relation = 0
@@ -44,3 +44,23 @@ logo_owner = "Parks Canada"
 [verification]
 verified = false
 note = "No line to measure."
+
+[hike]
+summary = "The North Boundary Trail is a remote wilderness route along the northern edge of Jasper National Park, from Rock Lake over Snake Indian Pass and down the Smoky River to Mount Robson Provincial Park in British Columbia. It is recommended only for backpackers with significant backcountry experience, and the final stretch joins the popular Berg Lake trail."
+official_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary"
+start = "Rock Lake, Alberta"
+end = "Berg Lake trailhead, Mount Robson Provincial Park, British Columbia"
+shape = "point-to-point"
+days = [7, 10]
+season = "Best travelled in the later part of the summer, and it can be hiked into early October; the trail is closed from November 1 to May 15 for caribou conservation"
+months = [7, 8, 9, 10]
+terrain = ["forest", "alpine", "lakes"]
+travel = "trail"
+permit = "A backcountry camping permit, reserved through Parks Canada, is mandatory for all overnight trips."
+caution = "Many creeks and rivers are not bridged, and fords can be dangerous or impassable in high water; the trail may be overgrown and hard to find in places."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary"
+publisher = "Parks Canada, Jasper National Park"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]

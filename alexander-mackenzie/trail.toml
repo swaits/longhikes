@@ -49,3 +49,24 @@ measured_km = 322.4
 difference_percent = -23.2
 parts = 8
 note = "OSM relation 2654551, 28 ways: 322.4 km in 8 parts, 23.2% short of the published 420 km. The pieces do not all join: OpenStreetMap is missing the connectors between them."
+
+[hike]
+summary = "The Alexander MacKenzie Heritage Trail follows the old Nuxalk-Carrier route across British Columbia from the Fraser River north of Quesnel to the Bella Coola Valley. It crosses the Interior Plateau and Tweedsmuir Provincial Park, where parts are isolated. The trail is unmarked, and most of it is not maintained."
+official_url = "https://bcparks.ca/tweedsmuir-park/hiking/"
+start = "Fraser and Blackwater Rivers confluence, north of Quesnel, British Columbia"
+end = "Bella Coola Valley, British Columbia"
+shape = "point-to-point"
+days = [25, 30]
+travel = "trail"
+caution = "The trail is unmarked, and outside a few cleared sections in Tweedsmuir Park it has not been maintained."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://apps.gov.bc.ca/pub/bcgnws/names/68161.html"
+publisher = "Province of British Columbia (BC Geographical Names)"
+facts = ["summary", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://bcparks.ca/tweedsmuir-park/hiking/"
+publisher = "BC Parks"
+facts = ["official_url", "summary", "days", "caution"]

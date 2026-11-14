@@ -47,3 +47,31 @@ measured_km = 254.3
 difference_percent = -5.8
 parts = 2
 note = "251 ways in 2 parts, 254.3 km, 5.8% short of 270 km."
+
+[hike]
+summary = "The Cohos Trail runs north through New Hampshire from southern Crawford Notch to the Canadian border at Pittsburg, through the White Mountains and the Great North Woods. It crosses steep cliffs, boreal forest and bogs, and parts follow old farm lanes and logging roads. There are no resupply points for a long stretch in the north."
+official_url = "https://www.cohostrail.org/"
+start = "Crawford Notch, New Hampshire"
+end = "Canadian border, Pittsburg, New Hampshire"
+shape = "point-to-point"
+high_point = "Mount Washington"
+high_point_m = 1917
+days = [9, 14]
+terrain = ["forest", "alpine"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.cohostrail.org/"
+publisher = "Cohos Trail Association"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://www.cohostrail.org/through-hike/"
+publisher = "Cohos Trail Association"
+facts = ["summary", "start", "end", "days"]
+
+[[hike.source]]
+url = "https://www.cohostrail.org/the-trail/"
+publisher = "Cohos Trail Association"
+facts = ["summary", "high_point", "terrain", "travel"]

@@ -47,3 +47,27 @@ measured_km = 537.1
 difference_percent = -0.5
 parts = 1
 note = "226 ways, 537.1 km in 1 part, 0.5% short of 540 km."
+
+[hike]
+summary = "The Pinhoti Trail is a Southern Appalachian long-distance trail through Alabama and Georgia. It begins at Flagg Mountain in Alabama, in montane longleaf pine forest, and links in Georgia to the Benton MacKaye Trail toward Springer Mountain."
+official_url = "https://www.alabamaforeverwild.com/weogufka-state-forest-addition-terminus-pinhoti-trail"
+start = "Flagg Mountain, Alabama"
+end = "Benton MacKaye Trail, Georgia"
+shape = "point-to-point"
+terrain = ["forest"]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.alabamaforeverwild.com/weogufka-state-forest-addition-terminus-pinhoti-trail"
+publisher = "Alabama Forever Wild Land Trust"
+facts = ["official_url", "summary", "start"]
+
+[[hike.source]]
+url = "https://alabamatrailsfoundation.org/flagg/"
+publisher = "Alabama Trails Foundation"
+facts = ["summary", "start", "terrain"]
+
+[[hike.source]]
+url = "https://cavespring.ga.gov/attractions/trails-(pinhoti%2C-silver-comet%2C-trail-of-tears-and-more)"
+publisher = "City of Cave Spring, Georgia"
+facts = ["summary", "end", "shape", "terrain"]

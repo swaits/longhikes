@@ -48,3 +48,28 @@ measured_km = 788.8
 difference_percent = -47.4
 parts = 32
 note = "OSM gives 788.8 km in 32 parts. Rando Quebec now describes the Sentier national au Quebec as about 1,830 km in nine regions (2024), so the 1,500 km in this record is also out of date, and much of the network is local built segments that are not yet one continuous mapped track in OSM. Kept as built segments; no whole-track source found."
+
+[hike]
+summary = "Le Sentier national au Québec runs from Gatineau to the tip of Forillon National Park in the Gaspésie, crossing nine tourist regions of Quebec. Rando Québec describes it as the longest nature trail in Quebec for hiking, snowshoeing and Nordic skiing. It links national and regional parks and other recreational sites."
+official_url = "https://www.randoquebec.ca/sentier-national-au-quebec/"
+start = "Gatineau, Quebec"
+end = "Parc national Forillon, Quebec"
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.randoquebec.ca/sentier-national-au-quebec/"
+publisher = "Rando Québec"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.bonjourquebec.com/en-ca/listing/to-see-and-do/sentier-national-au-quebec-snq/0o0y"
+publisher = "Bonjour Québec"
+facts = ["summary", "start", "shape"]
+
+[[hike.source]]
+url = "https://www.sepaq.com/pq/mot/index.dot?language_id=1"
+publisher = "Sépaq"
+facts = ["summary", "terrain"]

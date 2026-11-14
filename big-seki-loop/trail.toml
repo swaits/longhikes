@@ -64,3 +64,23 @@ author = "Amy and James (Doing Miles)"
 access = "free"
 url = "https://doingmiles.com/route-big-seki-loop/"
 format = "web route guide with a CalTopo map"
+
+[hike]
+summary = "The Big SEKI Loop is a high Sierra Nevada loop in Sequoia and Kings Canyon National Parks that starts and ends at Roads End in Kings Canyon. It crosses several high passes and shares about 58 miles with the John Muir Trail. Its authors offer it as a quieter alternative to the John Muir Trail."
+official_url = "https://doingmiles.com/route-big-seki-loop/"
+start = "Roads End, Cedar Grove, Kings Canyon National Park, California"
+shape = "loop"
+days = [7, 12]
+season = "Late August and September"
+months = [8, 9]
+high_point = "Forester Pass"
+high_point_m = 4017
+terrain = ["alpine"]
+travel = "trail"
+permit = "One permit covers the whole trip and is issued for an entry date and trailhead; a clockwise start at Roads End uses a Copper Creek permit."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://doingmiles.com/route-big-seki-loop/"
+publisher = "Amy and James (Doing Miles)"
+facts = ["official_url", "summary", "start", "shape", "days", "season", "months", "high_point", "terrain", "travel", "permit"]

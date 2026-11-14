@@ -47,3 +47,35 @@ measured_km = 116.3
 difference_percent = -4.7
 parts = 3
 note = "169 ways in 3 parts, 116.3 km, 4.7% short of 122 km."
+
+[hike]
+summary = "The Foothills Trail is a long backpacking trail through the mountains of upstate South Carolina and western North Carolina. It reaches many waterfalls and has trailheads at Table Rock State Park and Oconee State Park among others. Through-hikers should plan on five to ten days."
+official_url = "https://foothillstrail.org/"
+start = "Table Rock State Park, South Carolina"
+end = "Oconee State Park, South Carolina"
+shape = "point-to-point"
+days = [5, 10]
+high_point = "Sassafras Mountain"
+high_point_m = 1083
+terrain = ["forest"]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://foothillstrail.org/"
+publisher = "Foothills Trail Conservancy"
+facts = ["official_url", "summary"]
+
+[[hike.source]]
+url = "https://foothillstrail.org/trail-overview/"
+publisher = "Foothills Trail Conservancy"
+facts = ["summary", "days", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://foothillstrail.org/fht-faqs/"
+publisher = "Foothills Trail Conservancy"
+facts = ["terrain"]
+
+[[hike.source]]
+url = "https://dnr.sc.gov/news/yr2015/feb12/feb12_sassafras.html"
+publisher = "South Carolina Department of Natural Resources"
+facts = ["high_point"]

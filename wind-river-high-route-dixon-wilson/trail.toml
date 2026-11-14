@@ -1,12 +1,12 @@
 # Long-trail record. Field meanings: docs/schema.md in this repository.
 
 id = "wind-river-high-route-dixon-wilson"
-name = "Wind River High Route (Dixon and Wilson line)"
+name = "Wind River High Route (Dixon and Wilson)"
 short_name = "WRHR-DW"
 country = "US"
 regions = ["WY"]
 length_km = 129
-length_note = "about 80 mi, per the creators"
+length_note = "about 80 mi, per the authors"
 kind = "route"
 tier = "regional"
 designation = "Person-defined route (Alan Dixon and Don Wilson); no agency or association"
@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creators publish the track for download; no licence that allows passing it on is stated. Get it from the creators' page."
+line_absent_reason = "The authors publish the track for download; no licence that allows passing it on is stated. Get it from their page."
 
 [osm]
 relation = 0
@@ -59,3 +59,22 @@ author = "Alan Dixon and Don Wilson"
 access = "free"
 url = "https://www.adventurealan.com/wind-river-high-route/"
 format = "PDF mapset and route description, waypoints and timetable PDF"
+
+[hike]
+summary = "Alan Dixon and Don Wilson's Wind River High Route runs from the Green River Lakes trailhead in Wyoming generally southeast along the Continental Divide to the Big Sandy trailhead. It crosses the Divide four times and passes through the Cirque of the Towers, staying above 10,000 feet for days. Its authors recommend late summer."
+official_url = "https://www.adventurealan.com/wind-river-high-route-guide/"
+start = "Green River Lakes Trailhead, Wyoming"
+end = "Big Sandy Trailhead, Wyoming"
+shape = "point-to-point"
+days = [7, 7]
+terrain = ["alpine", "lakes"]
+travel = "some-cross-country"
+caution = "Six of its nine passes are off-trail, with a few short Class 3 and 4 sections and one glacier crossing."
+season = "Late summer"
+months = [8, 9]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.adventurealan.com/wind-river-high-route-guide/"
+publisher = "Alan Dixon and Don Wilson (Adventure Alan)"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "terrain", "travel", "caution", "season", "months"]

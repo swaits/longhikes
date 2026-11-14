@@ -6,7 +6,7 @@ short_name = "SIT"
 country = "US"
 regions = ["AZ"]
 length_km = 837
-length_note = "520 mi, per the creator"
+length_note = "520 mi, per the author"
 kind = "route"
 tier = "regional"
 designation = "Person-defined route (Brett Tucker, 2011); no agency or association"
@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creator has taken the detail down and asks people not to follow the exact layout; no track is included. The route is described on the creator's page."
+line_absent_reason = "The author has taken the detail down and asks people not to follow the exact layout; no track is included. The route is described on the author's page."
 
 [osm]
 relation = 0
@@ -52,7 +52,7 @@ year = 2011
 line_policy = "withheld"
 creator_words = "We're not actively encouraging others to hike the exact route layout as described, and are less interested in fielding specific questions about planning and hiking it. On a route as undeveloped as this, your hike should be your decision and responsibility, and this information should only serve as a catalyst for having a rewarding and ultimately unique journey."
 creator_words_url = "http://simblissity.net/skit.shtml"
-note = "Through ten sky-island ranges of southeast Arizona, from the Dragoons to the Chiricahuas. The creator walked it in spring 2010 and published the description in March 2011; the detailed information has been withdrawn."
+note = "Through ten sky-island ranges of southeast Arizona, from the Dragoons to the Chiricahuas. The author walked it in spring 2010 and published the description in March 2011; the detailed information has been withdrawn."
 
 [[guide]]
 title = "Sky Islands Traverse page"
@@ -60,3 +60,19 @@ author = "Brett Tucker (\"Blisterfree\")"
 access = "free"
 url = "http://simblissity.net/skit.shtml"
 format = "web page; the detailed information is withdrawn"
+
+[hike]
+summary = "The Sky Islands Traverse makes a circuitous journey across ten forest-clad mountain ranges of southeast Arizona, separated by grassland and desert valleys. It runs from the Dragoon Mountains through ranges including the Huachucas, Santa Catalinas and Pinalenos to Silver Peak above Portal. It uses the Arizona and Grand Enchantment Trails in part, other trails and roads, and occasional cross-country stretches."
+official_url = "https://simblissity.net/skit.shtml"
+start = "Dragoon Mountains, Arizona"
+end = "Silver Peak above Portal, Arizona"
+shape = "point-to-point"
+terrain = ["desert", "forest", "canyon"]
+travel = "some-cross-country"
+caution = "Since 2023 its author has withdrawn the detailed route information and does not encourage hiking the exact layout, saying fires and floods have reclaimed many miles of trail."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://simblissity.net/skit.shtml"
+publisher = "Brett Tucker (Simblissity)"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution"]

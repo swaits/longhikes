@@ -48,3 +48,25 @@ measured_km = 122.3
 difference_percent = -10.7
 parts = 2
 note = "OSM relation 11360008, 78 ways: 122.3 km in 2 parts, 10.7% short of the published 137 km."
+
+[hike]
+summary = "The Standing Stone Trail connects the Tuscarora Trail in the south to the Mid State Trail in the north through Pennsylvania's ridge and valley country. Northbound it passes Cowans Gap and Greenwood Furnace State Parks and several natural areas. It is also part of the Great Eastern Trail."
+official_url = "https://www.standingstonetrail.org/"
+start = "Tuscarora Trail near Cowans Gap State Park, Pennsylvania"
+end = "Mid State Trail near Greenwood Furnace State Park, Pennsylvania"
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "trail"
+high_point = "Greenwood fire tower"
+high_point_m = 725
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.standingstonetrail.org/"
+publisher = "Standing Stone Trail Club"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.standingstonetrail.org/about"
+publisher = "Standing Stone Trail Club"
+facts = ["high_point"]

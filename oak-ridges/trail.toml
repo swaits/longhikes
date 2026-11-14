@@ -48,3 +48,24 @@ measured_km = 254.4
 difference_percent = -5.8
 parts = 2
 note = "OSM relation 4287243, 368 ways: 254.4 km in 2 parts, 5.8% short of the published 270 km. The 11 ways with a side role are in alternates.geojson."
+
+[hike]
+summary = "The Oak Ridges Trail is a walking route along the Oak Ridges Moraine, from the Bruce Trail at Glen Haffy Conservation Area east of Caledon through forested tracts, conservation areas and country road allowances to the Castleton and Warkworth area of Northumberland County. It is marked with white blazes and maintained by Oak Ridges Trail Association volunteers."
+official_url = "https://www.oakridgestrail.org/"
+start = "Glen Haffy Conservation Area, near Caledon, Ontario"
+end = "Castleton or Warkworth, Northumberland County, Ontario"
+shape = "point-to-point"
+terrain = ["forest", "farmland"]
+travel = "trail-and-road"
+caution = "There are no overnight accommodations on the trail and camping is not permitted."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.oakridgestrail.org/end-to-end-hike/"
+publisher = "Oak Ridges Trail Association"
+facts = ["official_url", "summary", "shape", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.oakridgestrail.org/chapters/"
+publisher = "Oak Ridges Trail Association"
+facts = ["summary", "start", "end", "terrain"]

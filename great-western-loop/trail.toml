@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creator chooses not to publish a track, and says so: there is no route, so it must be made on your own. The route is described in the free route description on his page."
+line_absent_reason = "The author chooses not to publish a track, and says so: there is no route, so it must be worked out on your own. The route is described in the free route description on his page."
 
 [osm]
 relation = 0
@@ -67,3 +67,37 @@ author = "Andrew Skurka"
 access = "purchase"
 url = "https://andrewskurka.com/product/slideshows-on-disk-great-western-loop-and-sea-to-sea-route/"
 format = "slideshow on disk (not a route track)"
+
+[hike]
+summary = "The Great Western Loop links the Pacific Crest, Pacific Northwest, Continental Divide, Grand Enchantment and Arizona trails together with a trail-less stretch through the Sonoran and Mojave Deserts into one circuit of the American West. It passes through 12 national parks and more than 75 wilderness areas, and there is nothing official about it."
+official_url = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+shape = "loop"
+days = [208, 208]
+high_point = "Forester Pass"
+high_point_m = 4017
+terrain = ["desert", "alpine", "forest"]
+travel = "some-cross-country"
+season = "Spring through early fall: the deserts are crossed early, and the high country must be entered as early as the snowpack allows and left before the first winter storms"
+months = [4, 5, 6, 7, 8, 9, 10]
+caution = "The route has no official termini and no published track; between the Grand Canyon and the Pacific Crest Trail each hiker must make their own route."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://andrewskurka.com/adventures/great-western-loop/overview/"
+publisher = "Andrew Skurka"
+facts = ["summary", "shape", "high_point", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+publisher = "Andrew Skurka"
+facts = ["official_url", "summary", "high_point", "terrain", "caution"]
+
+[[hike.source]]
+url = "https://andrewskurka.com/adventures/great-western-loop/itinerary-final/"
+publisher = "Andrew Skurka"
+facts = ["season", "months", "summary"]
+
+[[hike.source]]
+url = "https://andrewskurka.com/slideshow-great-western-loop-6875-miles-around-the-american-west/"
+publisher = "Andrew Skurka"
+facts = ["days"]

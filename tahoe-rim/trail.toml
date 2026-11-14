@@ -49,3 +49,35 @@ measured_km = 269.9
 difference_percent = 1.5
 parts = 1
 note = "OSM relation 3094865 gives 269.9 km in 1 part, +1.5% over 266 km: the whole loop. The TRTA ArcGIS layer was dropped: its Main Trail geometry is truncated (3 of 8 segments measure far below their Length_Mi). TRTA access and spur sections stay in alternates.geojson."
+
+[hike]
+summary = "The Tahoe Rim Trail is a loop of about 165 miles around the ridgelines of the Lake Tahoe Basin. Most thru-hikers go clockwise. Its highest point, Relay Peak, is just over 10,300 feet."
+official_url = "https://tahoerimtrail.org/"
+shape = "loop"
+high_point = "Relay Peak"
+high_point_m = 3151
+days = [15, 15]
+terrain = ["alpine", "forest", "lakes"]
+travel = "trail"
+permit = "Only the Desolation Wilderness section needs a permit: a free day-use permit from the trailhead, or an overnight permit from recreation.gov."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://tahoerimtrail.org/"
+publisher = "Tahoe Rim Trail Association"
+facts = ["official_url"]
+
+[[hike.source]]
+url = "https://tahoerimtrail.org/thru-hike/"
+publisher = "Tahoe Rim Trail Association"
+facts = ["summary", "shape", "high_point", "terrain", "travel", "days"]
+
+[[hike.source]]
+url = "https://tahoerimtrail.org/backpacking-thru-hiking/"
+publisher = "Tahoe Rim Trail Association"
+facts = ["summary", "shape", "permit"]
+
+[[hike.source]]
+url = "https://tahoerimtrail.org/day-hiking/peaks-vistas/"
+publisher = "Tahoe Rim Trail Association"
+facts = ["terrain"]

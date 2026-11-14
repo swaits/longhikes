@@ -49,3 +49,36 @@ measured_km = 183.9
 difference_percent = -0.6
 parts = 2
 note = "Measured on the OSM relation: 183.9 km in 2 parts, 0.6% short of 185 km."
+
+[hike]
+summary = "The Metacomet-Monadnock Trail runs from the Connecticut line in Massachusetts north across the state to the summit of Mount Monadnock in New Hampshire. Its New Hampshire part continues the New England Trail's corridor for 18 miles to the mountain, and the whole way follows the traprock ridge country of the Metacomet range."
+official_url = "https://mmtrailnh.org/"
+start = "the Connecticut-Massachusetts border"
+end = "Mount Monadnock, Jaffrey, New Hampshire"
+shape = "point-to-point"
+season = "Spring and fall; summers tend to be humid and buggy and winters cold and icy"
+months = [3, 4, 5, 9, 10, 11]
+high_point = "Mount Monadnock"
+high_point_m = 965
+travel = "trail"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://mmtrailnh.org/"
+publisher = "New Hampshire Metacomet-Monadnock Trail"
+facts = ["official_url", "summary", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://newenglandtrail.org/thru-hiking/"
+publisher = "New England Trail"
+facts = ["summary", "end", "season", "months", "high_point"]
+
+[[hike.source]]
+url = "https://www.nhstateparks.org/NHStateParks/media/NHStateParks/PDFs/Maps/monadnock-hiking-map_info_3-2026-combined.pdf"
+publisher = "New Hampshire Division of Parks and Recreation"
+facts = ["high_point"]
+
+[[hike.source]]
+url = "https://ctwoodlands.org/trails/metacomet-trail"
+publisher = "Connecticut Forest and Park Association"
+facts = ["start", "summary"]

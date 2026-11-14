@@ -59,3 +59,25 @@ author = "Brett Tucker"
 access = "purchase"
 url = "https://simblissity.net/northern-nm-loop-mapset.shtml"
 format = "PDF mapset, data book, GPS tracks and waypoints"
+
+[hike]
+summary = "The Northern New Mexico Loop starts and ends at Santa Fe Plaza, touring the Jemez Mountains, the Continental Divide and the Sangre de Cristo Mountains on a clockwise circuit of northern New Mexico. It crosses sere deserts, lush boreal forest and lofty alpine terrain, uncovering the human history and cultural diversity of the region."
+official_url = "https://simblissity.net/northern-nm-loop-mapset.shtml"
+start = "Santa Fe Plaza, Santa Fe, New Mexico"
+shape = "loop"
+terrain = ["desert", "alpine", "forest"]
+travel = "some-cross-country"
+season = "Late spring to early summer, and again from early September into autumn: clockwise from Santa Fe in spring, counter-clockwise in autumn"
+months = [5, 6, 9, 10]
+caution = "Two unbridged fords of the Rio Grande are required, except in times of high water, when the hiker must detour widely to avoid them."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://simblissity.net/northern-nm-loop-mapset.shtml"
+publisher = "Brett Tucker, Simblissity Ultralight Designs"
+facts = ["official_url", "summary", "start", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://blisterfree.wordpress.com/2023/03/24/northern-new-mexico-loop-2023-edition/"
+publisher = "Brett Tucker (Blisterfree)"
+facts = ["summary", "start", "travel", "season", "months", "caution", "terrain"]

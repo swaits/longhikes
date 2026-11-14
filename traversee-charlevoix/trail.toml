@@ -48,3 +48,21 @@ measured_km = 92.5
 difference_percent = -11.9
 parts = 1
 note = "OSM relation 8082269, 74 ways: 92.5 km in 1 part, 11.9% short of the published 105 km."
+
+[hike]
+summary = "La Traversée de Charlevoix is a marked wilderness thru-hike in the Charlevoix backcountry of Quebec, run with booked cabins or campsites each night. It crosses varied ecosystems between the Zec des Martres and Mont Grand-Fonds. The operator describes it as a route for seasoned hikers."
+official_url = "https://www.traverseedecharlevoix.qc.ca/en/hiking/the-complete-crossing"
+start = "Zec des Martres, Quebec"
+end = "Mont Grand-Fonds, Quebec"
+shape = "point-to-point"
+days = [6, 7]
+season = "Late May to late October"
+months = [6, 7, 8, 9, 10]
+travel = "trail"
+permit = "Booking in advance is mandatory, with check-in and registration at the visitor centre on route 381 before starting."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.traverseedecharlevoix.qc.ca/en/hiking/the-complete-crossing"
+publisher = "La Traversée de Charlevoix"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "months", "travel", "permit"]

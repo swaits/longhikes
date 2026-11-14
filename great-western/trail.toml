@@ -28,7 +28,7 @@ source_checked = "2026-11-08"
 redistributable = false
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. Arizona layer downloaded: 30 features, 822 mi (1,323 km), 3 parts. No whole-trail length to check against. Multi-use motor route, not a footpath: inclusion undecided."
+line_absent_reason = "No track is included: no publisher offers a track for the whole route, and much of the route is a motorized corridor rather than a walking trail."
 
 [osm]
 relation = 17325994
@@ -45,3 +45,24 @@ logo_owner = "Great Western Trail Association"
 [verification]
 verified = false
 note = "Arizona layer downloaded: 30 features, 822 mi (1,323 km), 3 parts. No whole-trail length to check against. Multi-use motor route, not a footpath: inclusion undecided."
+
+[hike]
+summary = "The Great Western Trail is a multi-use corridor running north to south from Canada to Mexico through Arizona, Utah, Idaho, Wyoming and Montana. Over much of its length it is a set of parallel trails and dirt roads serving motorized and non-motorized users, and the Arizona portion is primarily a motorized route."
+official_url = "https://www.fs.usda.gov/r03/kaibab/recreation/trails/great-western-trail-150"
+start = "the Canada border"
+end = "the Mexico border"
+shape = "network"
+terrain = ["forest", "prairie"]
+travel = "trail-and-road"
+caution = "Much of the route, especially in Arizona, is shared with off-highway vehicles; hikers and riders must stay alert to traffic."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r03/kaibab/recreation/trails/great-western-trail-150"
+publisher = "USDA Forest Service, Kaibab National Forest"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://experience.arcgis.com/experience/3cedb0cd33c949969d585a79fe256186/page/Page"
+publisher = "Arizona State Parks and Trails"
+facts = ["terrain", "summary"]

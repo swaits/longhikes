@@ -28,7 +28,7 @@ source_checked = "2026-11-08"
 redistributable = false
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. Found by search; not downloaded. Large road share; inclusion undecided."
+line_absent_reason = "No track has been added for this trail yet."
 
 [osm]
 relation = 0
@@ -45,3 +45,16 @@ logo_owner = "California Coastal Commission"
 [verification]
 verified = false
 note = "Found by search; not downloaded. Large road share; inclusion undecided."
+
+[hike]
+summary = "The California Coastal Trail is a connected public trail system planned to run the length of the California coast. It uses beaches, bluff tops, hillsides, paved paths and sidewalks, and sometimes a road shoulder where nothing else is possible. About 70 percent has been built so far."
+official_url = "https://www.coastal.ca.gov/coastal-trail/"
+terrain = ["coast"]
+travel = "trail-and-road"
+unfinished = "About 70 percent, roughly 875 miles, has been built along a coastline of about 1,230 miles."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.coastal.ca.gov/coastal-trail/"
+publisher = "California Coastal Commission"
+facts = ["official_url", "summary", "terrain", "travel", "unfinished"]

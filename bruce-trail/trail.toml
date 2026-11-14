@@ -47,3 +47,24 @@ measured_km = 878.0
 difference_percent = -1.3
 parts = 6
 note = "Nine rwn section relations joined into 6 parts, 878.0 km, 1.3% short of 890 km."
+
+[hike]
+summary = "The Bruce Trail runs along the Niagara Escarpment in Ontario, from Niagara to Tobermory. Side trails branch off the main trail. Most people walk it in sections over months or years, and the trail's volunteers keep working to protect the land it crosses."
+official_url = "https://brucetrail.org/explore-the-trail/"
+start = "Niagara, Ontario"
+end = "Tobermory, Ontario"
+shape = "point-to-point"
+days = [30, 30]
+travel = "trail"
+permit = "Parking reservations are needed at some parks, and camping is allowed only at designated sites, often by reservation."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://brucetrail.org/explore-the-trail/"
+publisher = "Bruce Trail Conservancy"
+facts = ["official_url", "summary", "start", "end", "shape", "travel", "permit", "days"]
+
+[[hike.source]]
+url = "https://www.brucetrail.org/"
+publisher = "Bruce Trail Conservancy"
+facts = ["summary"]

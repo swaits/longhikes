@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creator publishes detailed route descriptions and maps but no track file, and states no licence for passing it on. Get the route from the trip reports."
+line_absent_reason = "The author publishes detailed route descriptions and maps but no track file, and states no licence for passing it on. Get the route from the trip reports."
 
 [osm]
 relation = 0
@@ -60,3 +60,29 @@ author = "Luc Mehl"
 access = "free"
 url = "https://thingstolucat.com/brooks-range-traverse/"
 format = "web trip reports, route descriptions and maps"
+
+[hike]
+summary = "The Brooks Range Traverse crosses northern Alaska from Kivalina to Kaktovik, in three parts walked in 2016, 2017 and 2019. It runs over tundra, ridges and granite country with no trail, and the walking is joined by long river stretches floated in packrafts."
+official_url = "https://thingstolucat.com/brooks-range-traverse/"
+start = "Kivalina, Alaska"
+end = "Kaktovik, Alaska"
+shape = "point-to-point"
+terrain = ["tundra", "alpine"]
+travel = "mostly-cross-country"
+caution = "There is almost no trail, and much of the route is floated by packraft, so it needs packrafting skills as well as route-finding."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://thingstolucat.com/brooks-range-traverse/"
+publisher = "Luc Mehl"
+facts = ["official_url", "summary", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://thingstolucat.com/gates-of-the-arctic-traverse/"
+publisher = "Luc Mehl"
+facts = ["summary", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://thingstolucat.com/arctic-refuge-traverse/"
+publisher = "Luc Mehl"
+facts = ["summary", "terrain", "travel", "caution"]

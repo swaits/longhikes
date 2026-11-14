@@ -6,7 +6,7 @@ short_name = "TAR"
 country = "US"
 regions = ["NY"]
 length_km = 391
-length_note = "242.7 mi, per the creator"
+length_note = "242.7 mi, per the author"
 kind = "route"
 tier = "regional"
 designation = "Person-defined route (Erik Schlimmer, 2010); no agency or association"
@@ -52,7 +52,7 @@ year = 2010
 line_policy = "sold"
 creator_words = "Purchase Blue Line to Blue Line and the map set on the Merch page and thru-hike it."
 creator_words_url = "https://erikschlimmer.com/tar-1"
-note = "199.3 miles of trails, 33.0 miles of roads and 10.4 miles of cross-country, per the creator, across the Adirondack Park from its south blue line to its north one."
+note = "199.3 miles of trails, 33.0 miles of roads and 10.4 miles of cross-country, per the author, across the Adirondack Park from its south blue line to its north one."
 
 [[guide]]
 title = "Blue Line to Blue Line, with a map set"
@@ -60,3 +60,18 @@ author = "Erik Schlimmer"
 access = "purchase"
 url = "https://erikschlimmer.com/books-sale-/"
 format = "book and map set"
+
+[hike]
+summary = "The Trans Adirondack Route crosses the whole Adirondack Park in New York from its southern blue line to its northern one. Erik Schlimmer's route links trails, roads and a little cross-country travel through river valleys, deep wilderness and a few small communities. Its author reports that only about half of attempted thru-hikes succeed."
+official_url = "https://erikschlimmer.com/tar-1"
+start = "Southern blue line of Adirondack Park, New York"
+end = "Northern blue line of Adirondack Park, New York"
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "some-cross-country"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://erikschlimmer.com/tar-1"
+publisher = "Erik Schlimmer"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]

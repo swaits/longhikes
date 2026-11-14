@@ -27,7 +27,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No OpenStreetMap route relation for the trail was found, and the publisher serves no track that may be passed on. The record is kept without a track."
+line_absent_reason = "No track is included. OpenStreetMap has no route relation for the trail, and the publisher allows no track to be passed on."
 
 [osm]
 relation = 0
@@ -44,3 +44,34 @@ logo_owner = "National Park Service"
 [verification]
 verified = false
 note = "No line to measure."
+
+[hike]
+summary = "The Chesapeake and Ohio Canal towpath follows the Potomac River from Georgetown in Washington, DC, to Cumberland in western Maryland. It is the path beside the old canal, with locks, lockhouses and a tunnel along the way. Hiker-biker campsites are spaced along it from Swains Lock to Cumberland."
+official_url = "https://www.nps.gov/choh/planyourvisit/hiking.htm"
+start = "Georgetown, Washington, DC"
+end = "Cumberland, Maryland"
+shape = "point-to-point"
+season = "All year"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.nps.gov/choh/planyourvisit/hiking.htm"
+publisher = "National Park Service"
+facts = ["official_url", "summary", "travel"]
+
+[[hike.source]]
+url = "https://www.nps.gov/choh/planyourvisit/conditions.htm"
+publisher = "National Park Service"
+facts = ["summary", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://www.nps.gov/choh/index.htm"
+publisher = "National Park Service"
+facts = ["summary"]
+
+[[hike.source]]
+url = "https://www.nps.gov/thingstodo/bike-the-c-o-canal-towpath.htm"
+publisher = "National Park Service"
+facts = ["season", "months"]

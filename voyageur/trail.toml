@@ -49,3 +49,19 @@ measured_km = 2.0
 difference_percent = -99.8
 parts = 1
 note = "OSM relation 18529238 holds 2 ways, 2.0 km, against about 1,100 km planned. No usable whole track found in OSM or from the Association on 2026-11-08. Held."
+
+[hike]
+summary = "The Voyageur Trail is a work in progress along the northern Ontario shores of Lake Huron and Lake Superior, from Sudbury through Sault Ste. Marie toward Thunder Bay. Local clubs maintain the built sections of wilderness-style footpath. The association's vision is one continuous trail of some 1,100 kilometres."
+official_url = "https://www.voyageurtrail.ca/"
+start = "Sudbury, Ontario"
+end = "Thunder Bay, Ontario"
+shape = "point-to-point"
+terrain = ["coast", "forest", "lakes"]
+travel = "trail"
+unfinished = "The continuous Sudbury to Thunder Bay trail is still the association's vision; at present member clubs maintain separate built sections."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.voyageurtrail.ca/"
+publisher = "Voyageur Trail Association"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "unfinished"]

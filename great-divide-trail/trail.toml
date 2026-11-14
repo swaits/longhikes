@@ -50,3 +50,44 @@ measured_km = 1129.5
 difference_percent = 0.0
 parts = 2
 note = "The sections give 1,129.5 km in 2 parts, 0.0% against 1,130 km. Every sub-relation is part of the main track; no alternates are mapped."
+
+[hike]
+summary = "The Great Divide Trail follows the Continental Divide through Alberta and British Columbia, from Waterton Lakes National Park at the United States border to Kakwa Lake. It crosses the Divide no fewer than 30 times. Parts follow signed park trails, and other parts are unofficial or unmaintained routes that need route-finding."
+official_url = "https://greatdividetrail.com/"
+start = "Waterton Lakes National Park, Alberta"
+end = "Kakwa Lake, British Columbia"
+shape = "point-to-point"
+days = [56, 56]
+high_point = "Near Owen Creek (Section E)"
+high_point_m = 2585
+season = "July to mid-September"
+months = [7, 8, 9]
+terrain = ["alpine", "forest"]
+travel = "some-cross-country"
+permit = "Backcountry permits and reservations are needed for the national park campgrounds (from Parks Canada), reservations for three provincial parks, and an Alberta Public Lands Camping Pass for random camping in parts of Alberta."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://greatdividetrail.com/"
+publisher = "Great Divide Trail Association"
+facts = ["official_url", "summary", "start"]
+
+[[hike.source]]
+url = "https://greatdividetrail.com/get-to-know-the-gdt/"
+publisher = "Great Divide Trail Association"
+facts = ["summary", "end", "shape", "high_point", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://greatdividetrail.com/ufaq/how-long-does-it-take-to-hike-the-entire-trail/"
+publisher = "Great Divide Trail Association"
+facts = ["days"]
+
+[[hike.source]]
+url = "https://greatdividetrail.com/trip-planning-resources/permits/"
+publisher = "Great Divide Trail Association"
+facts = ["permit"]
+
+[[hike.source]]
+url = "https://greatdividetrail.com/go-hiking/trip-planning-resources/"
+publisher = "Great Divide Trail Association"
+facts = ["season", "months"]

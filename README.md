@@ -10,25 +10,25 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-138 records, 85 with a track, 53 records only. Of these, 34 are person-defined routes: 1 with a track and 33 records only.
+138 trails, 85 with a track and 53 with no track included. Of these, 34 are routes: 1 with a track and 33 without.
 
 <!-- END COUNTS -->
 
 ## Inclusion rule
 
-A long trail here is a named, continuous walking route, or a named loop, of at least 50 miles (80 km), in the United States or Canada: either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a person-defined route as described below. The floor is 50 miles because that is about what multi-day wilderness backpacking takes. A small number of well-known multi-day trails between 60 km and 80 km are also listed.
+A long trail here is a named, continuous walking route, or a named loop, of at least 50 miles (80 km), in the United States or Canada: either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a route, as described below. The floor is 50 miles because that is about what multi-day wilderness backpacking takes. A small number of well-known multi-day trails between 60 km and 80 km are also listed.
 
 Every United States National Scenic Trail is listed. Other trails are listed when they meet the rule above.
 
-Person-defined routes are listed too, at the same 50-mile floor. A person-defined route is one that a person or a small group worked out and published: a high route, a traverse, or a loop of linked trails. Its record names the creator and says where the route is got from the creator: the guidebook, map set or page, and whether it is free or sold. Whether a track is included follows the creator's choice:
+Routes are listed too, at the same 50-mile floor. A route is a trail that a hiker worked out and published: a high route, a traverse, or a loop of linked trails. Its record names the author and says where the route is got from: the guidebook, map set or page, and whether it is free or sold. Whether a track is included follows the author's choice:
 
-- The creator sells the route, or chooses not to publish a track: the record has no track. No track is included from any source, OpenStreetMap included.
-- The creator publishes the track freely: a track is included only where the creator's terms allow passing it on, or where OpenStreetMap carries the route as a route relation. Otherwise the record points to the creator's own download.
+- The author sells the route, or chooses not to publish a track: the record has no track. No track is included from any source, OpenStreetMap included.
+- The author publishes the track freely: a track is included only where the author's terms allow passing it on, or where OpenStreetMap carries the route as a route relation. Otherwise the record points to the author's own download.
 - Not settled: the record has no track until it is.
 
-A creator who wants a record changed or removed can ask; see NOTICE.md.
+An author who wants a record changed or removed can ask; see NOTICE.md.
 
-A trail may be listed as a record only, with no track, when no track for it may be shared. The record says why.
+A trail may be listed with no track included, when no track for it may be shared. The record says why.
 
 ## Trails
 
@@ -48,13 +48,13 @@ A trail may be listed as a record only, with no track, when no track for it may 
 | bay-circuit | Bay Circuit Trail | US | MA | 370 | yes | ODbL-1.0 |
 | benton-mackaye | Benton MacKaye Trail | US | GA, TN, NC | 463 | yes | ODbL-1.0 |
 | border-route | Border Route Trail | US | MN | 105 | yes | ODbL-1.0 |
-| brazeau-loop | Brazeau Loop | CA | AB | 81 | no (record only) | none-stated |
+| brazeau-loop | Brazeau Loop | CA | AB | 81 | no | none-stated |
 | bruce-trail | Bruce Trail | CA | ON | 890 | yes | ODbL-1.0 |
 | buckeye | Buckeye Trail | US | OH | 2250 | yes | ODbL-1.0 |
-| california-coastal | California Coastal Trail | US | CA | 1931 | no (record only) | none-stated |
+| california-coastal | California Coastal Trail | US | CA | 1931 | no | none-stated |
 | canol | Canol Heritage Trail | CA | NT | 371 | yes | ODbL-1.0 |
 | centennial-sd | Centennial Trail | US | SD | 179 | yes | ODbL-1.0 |
-| chesapeake-ohio-canal | Chesapeake and Ohio Canal Towpath | US | MD, DC, WV | 297 | no (record only) | none-stated |
+| chesapeake-ohio-canal | Chesapeake and Ohio Canal Towpath | US | MD, DC, WV | 297 | no | none-stated |
 | cohos | Cohos Trail | US | NH | 270 | yes | ODbL-1.0 |
 | colorado-trail | Colorado Trail | US | CO | 782 | yes | us-gov-public-domain |
 | continental-divide | Continental Divide National Scenic Trail | US | NM, CO, WY, ID, MT | 4989 | yes | CC-BY |
@@ -67,22 +67,22 @@ A trail may be listed as a record only, with no track, when no track for it may 
 | finger-lakes | Finger Lakes Trail | US | NY | 950 | yes | ODbL-1.0 |
 | florida | Florida National Scenic Trail | US | FL | 2414 | yes | ODbL-1.0 |
 | foothills | Foothills Trail | US | SC, NC | 122 | yes | ODbL-1.0 |
-| fundy-footpath | Fundy Footpath | CA | NB | 41 | no (record only) | ODbL-1.0 |
+| fundy-footpath | Fundy Footpath | CA | NB | 41 | no | ODbL-1.0 |
 | ganaraska | Ganaraska Hiking Trail | CA | ON | 500 | yes | ODbL-1.0 |
-| grand-enchantment | Grand Enchantment Trail | US | AZ, NM | 1239 | no (record only) | ODbL-1.0 |
+| grand-enchantment | Grand Enchantment Trail | US | AZ, NM | 1239 | no | ODbL-1.0 |
 | great-divide-trail | Great Divide Trail | CA | AB, BC | 1130 | yes | ODbL-1.0 |
-| great-eastern | Great Eastern Trail | US | AL, GA, TN, KY, VA, WV, MD, PA, NY | 3200 | no (record only) | ODbL-1.0 |
-| great-trail | The Great Trail (Trans Canada Trail) | CA | all provinces and territories | 28000 | no (record only) | CC-BY-NC-ND-4.0 |
-| great-western | Great Western Trail | US | AZ, UT, ID, WY, MT | 4800 | no (record only) | none-stated |
+| great-eastern | Great Eastern Trail | US | AL, GA, TN, KY, VA, WV, MD, PA, NY | 3200 | no | ODbL-1.0 |
+| great-trail | The Great Trail (Trans Canada Trail) | CA | all provinces and territories | 28000 | no | CC-BY-NC-ND-4.0 |
+| great-western | Great Western Trail | US | AZ, UT, ID, WY, MT | 4800 | no | none-stated |
 | high-sierra | High Sierra Trail | US | CA | 116 | yes | ODbL-1.0 |
 | highlands | Highlands Trail | US | NJ, NY, PA, CT | 290 | yes | ODbL-1.0 |
 | horse-shoe | Horse-Shoe Trail | US | PA | 225 | yes | ODbL-1.0 |
 | ice-age | Ice Age National Scenic Trail | US | WI | 1931 | yes | ODbL-1.0 |
 | idaho-centennial | Idaho Centennial Trail | US | ID | 1448 | yes | ODbL-1.0 |
-| iditarod | Iditarod National Historic Trail | US | AK | 3701 | no (record only) | us-gov-public-domain |
+| iditarod | Iditarod National Historic Trail | US | AK | 3701 | no | us-gov-public-domain |
 | island-walk | The Island Walk | CA | PE | 700 | yes | ODbL-1.0 |
 | john-muir | John Muir Trail | US | CA | 340 | yes | ODbL-1.0 |
-| kekekabic | Kekekabic Trail | US | MN | 66 | no (record only) | ODbL-1.0 |
+| kekekabic | Kekekabic Trail | US | MN | 66 | no | ODbL-1.0 |
 | la-cloche | La Cloche Silhouette Trail | CA | ON | 80 | yes | ODbL-1.0 |
 | laurel-highlands | Laurel Highlands Hiking Trail | US | PA | 113 | yes | ODbL-1.0 |
 | lone-star | Lone Star Hiking Trail | US | TX | 155 | yes | ODbL-1.0 |
@@ -99,16 +99,16 @@ A trail may be listed as a record only, with no track, when no track for it may 
 | mountains-to-sea | Mountains-to-Sea Trail | US | NC | 1890 | yes | ODbL-1.0 |
 | natchez-trace | Natchez Trace National Scenic Trail | US | MS, AL, TN | 105 | yes | us-gov-public-domain |
 | new-england | New England National Scenic Trail | US | CT, MA | 378 | yes | us-gov-public-domain |
-| nez-perce | Nez Perce (Nee-Me-Poo) National Historic Trail | US | OR, ID, MT, WY | 1883 | no (record only) | us-gov-public-domain |
-| north-boundary | North Boundary Trail | CA | AB | 159 | no (record only) | none-stated |
+| nez-perce | Nez Perce (Nee-Me-Poo) National Historic Trail | US | OR, ID, MT, WY | 1883 | no | us-gov-public-domain |
+| north-boundary | North Boundary Trail | CA | AB | 159 | no | none-stated |
 | north-country | North Country National Scenic Trail | US | ND, MN, WI, MI, OH, PA, NY, VT | 7403 | yes | ODbL-1.0 |
 | north-south | North-South Trail | US | RI | 125 | yes | ODbL-1.0 |
 | northville-placid | Northville-Placid Trail | US | NY | 220 | yes | ODbL-1.0 |
 | oak-ridges | Oak Ridges Trail | CA | ON | 270 | yes | ODbL-1.0 |
 | oregon-coast | Oregon Coast Trail | US | OR | 650 | yes | ODbL-1.0 |
-| oregon-desert | Oregon Desert Trail | US | OR | 1200 | no (record only) | ODbL-1.0 |
+| oregon-desert | Oregon Desert Trail | US | OR | 1200 | no | ODbL-1.0 |
 | ouachita | Ouachita National Recreation Trail | US | AR, OK | 359 | yes | ODbL-1.0 |
-| overmountain-victory | Overmountain Victory National Historic Trail | US | VA, TN, NC, SC | 540 | no (record only) | us-gov-public-domain |
+| overmountain-victory | Overmountain Victory National Historic Trail | US | VA, TN, NC, SC | 540 | no | us-gov-public-domain |
 | ozark-highlands | Ozark Highlands Trail | US | AR | 435 | yes | ODbL-1.0 |
 | ozark-trail | Ozark Trail (Missouri) | US | MO | 630 | yes | ODbL-1.0 |
 | pacific-crest | Pacific Crest National Scenic Trail | US | CA, OR, WA | 4265 | yes | CC-BY-4.0 |
@@ -116,36 +116,36 @@ A trail may be listed as a record only, with no track, when no track for it may 
 | palmetto | Palmetto Trail | US | SC | 800 | yes | ODbL-1.0 |
 | pinhoti | Pinhoti Trail | US | AL, GA | 540 | yes | ODbL-1.0 |
 | potomac-heritage | Potomac Heritage National Scenic Trail | US | DC, MD, VA, PA | 1448 | yes | us-gov-public-domain |
-| pukaskwa-coastal | Pukaskwa Coastal Hiking Trail | CA | ON | 60 | no (record only) | ODbL-1.0 |
+| pukaskwa-coastal | Pukaskwa Coastal Hiking Trail | CA | ON | 60 | no | ODbL-1.0 |
 | quehanna | Quehanna Trail | US | PA | 119 | yes | ODbL-1.0 |
 | rideau-trail | Rideau Trail | CA | ON | 387 | yes | ODbL-1.0 |
 | river-to-river | River to River Trail | US | IL | 257 | yes | ODbL-1.0 |
 | sentier-international-appalaches | Sentier international des Appalaches (International Appalachian Trail, Quebec and New Brunswick) | CA | QC, NB | 1177 | yes | ODbL-1.0 |
 | sentier-national | Sentier National (Quebec) | CA | QC | 1500 | yes | ODbL-1.0 |
 | sheltowee-trace | Sheltowee Trace National Recreation Trail | US | KY, TN | 515 | yes | ODbL-1.0 |
-| south-boundary | South Boundary Trail | CA | AB | 121 | no (record only) | none-stated |
+| south-boundary | South Boundary Trail | CA | AB | 121 | no | none-stated |
 | standing-stone | Standing Stone Trail | US | PA | 137 | yes | ODbL-1.0 |
 | sunapee-ragged-kearsarge | Sunapee-Ragged-Kearsarge Greenway | US | NH | 121 | yes | ODbL-1.0 |
 | sunshine-coast | Sunshine Coast Trail | CA | BC | 180 | yes | ODbL-1.0 |
 | superior-hiking | Superior Hiking Trail | US | MN | 499 | yes | ODbL-1.0 |
 | susquehannock | Susquehannock Trail System | US | PA | 135 | yes | ODbL-1.0 |
 | tahoe-rim | Tahoe Rim Trail | US | CA, NV | 266 | yes | ODbL-1.0 |
-| teton-crest | Teton Crest Trail | US | WY | 64 | no (record only) | ODbL-1.0 |
-| timberline | Timberline Trail (Mount Hood) | US | OR | 64 | no (record only) | us-gov-public-domain |
+| teton-crest | Teton Crest Trail | US | WY | 64 | no | ODbL-1.0 |
+| timberline | Timberline Trail (Mount Hood) | US | OR | 64 | no | us-gov-public-domain |
 | traversee-charlevoix | Traversée de Charlevoix | CA | QC | 105 | yes | ODbL-1.0 |
 | tuscarora | Tuscarora Trail | US | PA, MD, VA, WV | 406 | yes | ODbL-1.0 |
 | uinta-highline | Uinta Highline Trail | US | UT | 167 | yes | ODbL-1.0 |
 | vancouver-island | Vancouver Island Trail | CA | BC | 800 | yes | ODbL-1.0 |
 | voyageur | Voyageur Trail | CA | ON | 1100 | yes | ODbL-1.0 |
-| waskahegan | Waskahegan Trail | CA | AB | 309 | no (record only) | none-stated |
-| west-coast-trail | West Coast Trail | CA | BC | 75 | no (record only) | ODbL-1.0 |
+| waskahegan | Waskahegan Trail | CA | AB | 309 | no | none-stated |
+| west-coast-trail | West Coast Trail | CA | BC | 75 | no | ODbL-1.0 |
 | wonderland | Wonderland Trail | US | WA | 150 | yes | ODbL-1.0 |
 
 <!-- END TRAIL TABLE -->
 
-## Person-defined routes
+## Routes
 
-Routes that a person or a small group worked out and published. The record says who made the route, where it is got from, and whether the creator shares the track. See the inclusion rule above.
+A route is a trail that a hiker worked out and published. The record names the author, says where the route is got from, and whether the author shares the track. See the inclusion rule above.
 
 <!-- BEGIN ROUTE TABLE -->
 
@@ -159,7 +159,7 @@ Routes that a person or a small group worked out and published. The record says 
 | circle-of-solitude | Circle of Solitude | US | CA | 109 | Mike White | unclear | no | [Kings Canyon National Park](https://shop.adventurewithkeen.com/wilderness-press/) (purchase) |
 | deseret-hiking-route | Deseret Hiking Route | US | UT | 1609 | Kevin "LarryBoy" DeVries | open | no | [A Complete Guide to the Deseret Hiking Route](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) (free) |
 | desert-trail | Desert Trail | US | CA, NV, OR | 2552 | Desert Trail Association, with the route scouted by Russel Pengely, D. W. "Old Creosote" Tomer and Steve Tabor | unclear | no | [Desert Trail site](https://deserttrail.net) (free) |
-| eastern-continental-trail | Eastern Continental Trail | US | FL, AL, GA, TN, NC, VA, WV, MD, PA, NJ, NY, CT, MA, VT, NH, ME, QC, NB, NL | 7081 | M. J. Eberhart (trail name Nimblewill Nomad) | open | no | [Eastern Continental Trail Guide, 2010 (archived)](https://nimblewillnomad.com/books/) (free) |
+| eastern-continental-trail | Eastern Continental Trail | US | FL, AL, GA, TN, NC, VA, WV, MD, PA, NJ, NY, CT, MA, VT, NH, ME, QC, NB | 7081 | M. J. Eberhart (trail name Nimblewill Nomad) | open | no | [Eastern Continental Trail Guide, 2010 (archived)](https://nimblewillnomad.com/books/) (free) |
 | great-basin-trail | Great Basin Trail | US | NV | 1931 | Ryan "Dirtmonger" Sylva | unclear | no | [Great Basin Trail article](https://www.gossamergear.com/blogs/our-blog/great-basin-trail) (free) |
 | great-colorado-route | Great Colorado Route | US | CO | 3219 | Donovan "Iceman" Rice | open | no | [Great Colorado Route route page and GPX](https://www.greatcoloradoroute.com/route) (free) |
 | great-plains-trail | Great Plains Trail | US | SK, ND, SD, NE, TX | 3540 | Steve Myers (Great Plains Trail Alliance) | open | no | [Great Plains Trail map](https://www.greatplainstrail.org/gpt-map/) (free) |
@@ -182,7 +182,7 @@ Routes that a person or a small group worked out and published. The record says 
 | trans-adirondack-route | Trans Adirondack Route | US | NY | 391 | Erik Schlimmer | sold | no | [Blue Line to Blue Line, with a map set](https://erikschlimmer.com/books-sale-/) (purchase) |
 | vagabond-loop | Vagabond Loop | US | AZ, UT, CO, NM | 5632 | Ryan "Dirtmonger" Sylva | open | no | [Vagabond Loop route description (archived)](https://web.archive.org/web/2020/http://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html) (free) |
 | wasatch-traverse | Wasatch Traverse | US | UT | 455 | Liz Thomas | open | no | [Wasatch Traverse overview](https://www.eathomas.com/other-long-trails/wasatchoverview) (free) |
-| wind-river-high-route-dixon-wilson | Wind River High Route (Dixon and Wilson line) | US | WY | 129 | Alan Dixon and Don Wilson | open | no | [Wind River High Route guide](https://www.adventurealan.com/wind-river-high-route/) (free) |
+| wind-river-high-route-dixon-wilson | Wind River High Route (Dixon and Wilson) | US | WY | 129 | Alan Dixon and Don Wilson | open | no | [Wind River High Route guide](https://www.adventurealan.com/wind-river-high-route/) (free) |
 | wind-river-high-route-skurka | Wind River High Route (Skurka guide) | US | WY | 156 | Andrew Skurka | sold | no | [Wind River Range High Route Guide](https://andrewskurka.com/product/wind-river-high-route-guide/) (purchase) |
 | yosemite-high-route | Yosemite High Route | US | CA | 261 | Andrew Skurka | sold | no | [Yosemite High Route Guide](https://andrewskurka.com/product/yosemite-high-route-guide/) (purchase) |
 

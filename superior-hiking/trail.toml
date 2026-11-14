@@ -50,3 +50,38 @@ measured_km = 478.1
 difference_percent = -4.2
 parts = 2
 note = "OSM 1612587, 515 ways: 478.1 km in 2 parts, 4.2% short of 499 km."
+
+[hike]
+summary = "The Superior Hiking Trail tours Lake Superior's North Shore in Minnesota from south of Duluth to near the Canadian border. It climbs to rock outcroppings and cliffs above the lake and descends along rivers and inland lakes cut into ancient volcanic rock. The association provides 94 free backcountry campsites."
+official_url = "https://superiorhiking.org/thru-hiking/"
+start = "Minnesota-Wisconsin border south of Duluth, Minnesota"
+end = "270-degree Overlook near the Canadian border, Minnesota"
+shape = "point-to-point"
+days = [14, 28]
+high_point_m = 557
+terrain = ["forest", "lakes", "coast"]
+travel = "trail"
+permit = "No permits, fees or reservations are needed for the trail association's campsites, though state park campsites on the route require a paid reservation."
+season = "June to September"
+months = [6, 7, 8, 9]
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://superiorhiking.org/thru-hiking/"
+publisher = "Superior Hiking Trail Association"
+facts = ["official_url", "end", "shape", "days"]
+
+[[hike.source]]
+url = "https://superiorhiking.org/know-before-you-go/"
+publisher = "Superior Hiking Trail Association"
+facts = ["summary", "start", "high_point", "terrain", "travel", "permit"]
+
+[[hike.source]]
+url = "https://superiorhiking.org/plan-your-adventure/"
+publisher = "Superior Hiking Trail Association"
+facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://www.exploreminnesota.com/outdoors/hiking/superior-hiking-trail"
+publisher = "Explore Minnesota"
+facts = ["season", "months"]

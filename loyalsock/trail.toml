@@ -48,3 +48,25 @@ measured_km = 93.4
 difference_percent = -1.7
 parts = 1
 note = "OSM relation 3134579, 107 ways: 93.4 km in 1 part, 1.7% short of the published 95 km. The 31 ways with a side role are in alternates.geojson."
+
+[hike]
+summary = "The Loyalsock Trail is an end-to-end trail through the Loyalsock State Forest in northern Pennsylvania, from PA Route 87 north of Montoursville to Mead Road near Laporte, with the remainder on private land. It is marked with yellow discs bearing red LT letters and is maintained by the Alpine Club of Williamsport, whose guidebook describes rough terrain."
+official_url = "https://alpineclubofwilliamsport.com/loyalsock-trail-information/"
+start = "PA Route 87, north of Montoursville, Pennsylvania"
+end = "Mead Road, near Laporte, Pennsylvania"
+shape = "point-to-point"
+high_point_m = 652
+terrain = ["forest"]
+travel = "trail"
+caution = "Fires are banned along parts of the trail and during the spring fire season, and the club advises hikers to stay off the trail during bear and deer season, which runs about three weeks from the Monday before Thanksgiving."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://alpineclubofwilliamsport.com/loyalsock-trail-information/"
+publisher = "Alpine Club of Williamsport"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://alpineclubofwilliamsport.com/history-of-the-loyalsock-trail/"
+publisher = "Alpine Club of Williamsport"
+facts = ["high_point"]

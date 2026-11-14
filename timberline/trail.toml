@@ -27,7 +27,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. Not downloaded."
+line_absent_reason = "No track has been added for this trail yet."
 
 [osm]
 relation = 0
@@ -44,3 +44,27 @@ logo_owner = "USFS Mount Hood National Forest"
 [verification]
 verified = false
 note = "Not downloaded."
+
+[hike]
+summary = "The Timberline Trail circumnavigates Mount Hood in Oregon at or near tree line, entering the Mount Hood Wilderness. Built mainly by the Civilian Conservation Corps in the 1930s, it passes vistas, waterfalls, alpine meadows and west side Cascade forests. It climbs in and out of glacially fed drainages the whole way around."
+official_url = "https://www.fs.usda.gov/r06/mthood/recreation/trails/timberline-trail-600"
+start = "Timberline Lodge, Oregon"
+shape = "loop"
+days = [3, 4]
+season = "July to October"
+months = [7, 8, 9, 10]
+terrain = ["alpine", "forest"]
+travel = "trail"
+permit = "Free, self-issued wilderness permits are required from May 15 to October 15 when provided at a portal, and some trailheads require a day use fee."
+caution = "The Forest Service says most hikers find the fast-moving river crossings the most challenging part of the trail, and several major crossings have no bridges."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r06/mthood/recreation/trails/timberline-trail-600"
+publisher = "USDA Forest Service, Mt. Hood National Forest"
+facts = ["summary", "official_url", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://traveloregon.com/things-to-do/outdoor-recreation/4-day-backpacking-trip-on-oregons-timberline-trail/"
+publisher = "Travel Oregon"
+facts = ["start", "days"]

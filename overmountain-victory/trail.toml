@@ -28,7 +28,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. Metadata read; not downloaded. Deferred: mostly roads."
+line_absent_reason = "No track has been added for this trail yet."
 
 [osm]
 relation = 3087601
@@ -45,3 +45,22 @@ logo_owner = "NPS Overmountain Victory National Historic Trail"
 [verification]
 verified = false
 note = "Metadata read; not downloaded. Deferred: mostly roads."
+
+[hike]
+summary = "The Overmountain Victory National Historic Trail is a 330-mile route through Virginia, Tennessee, North Carolina and South Carolina tracing the march of the Patriot militia to the pivotal Battle of Kings Mountain in 1780. It offers more than 80 miles of walkable trail near the probable historic route, linked by a commemorative motor route on existing state highways."
+official_url = "https://www.nps.gov/ovvi/index.htm"
+shape = "network"
+terrain = ["forest"]
+travel = "trail-and-road"
+unfinished = "The walking trail is a network of disconnected sections owned and managed by their landowners; the full 330-mile route between them is followed by the commemorative motor route on existing roads."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.nps.gov/ovvi/index.htm"
+publisher = "National Park Service"
+facts = ["official_url", "summary", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://www.nps.gov/ovvi/planyourvisit/outdooractivities.htm"
+publisher = "National Park Service"
+facts = ["summary", "unfinished", "travel"]

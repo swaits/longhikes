@@ -49,3 +49,32 @@ measured_km = 1255.1
 difference_percent = -2.5
 parts = 3
 note = "OSM relation 2804113, 550 ways: 1,255.1 km in 3 parts, 2.5% short of 1,287 km. The 47 ways marked 'alternative' (52.6 km) are in alternates.geojson."
+
+[hike]
+summary = "The Arizona National Scenic Trail crosses Arizona from the Mexico border to the Utah border. It passes through desert, high forest and the Grand Canyon, and is divided into 43 numbered passages. Most people walk it in the spring or the fall to avoid desert heat and mountain snow."
+official_url = "https://aztrail.org/"
+start = "Mexico border, Arizona"
+end = "Utah border, Arizona"
+shape = "point-to-point"
+days = [43, 60]
+season = "Northbound hikes start in February or March; southbound hikes start in mid-September or October"
+months = [2, 3, 9, 10]
+terrain = ["desert", "forest"]
+travel = "trail"
+permit = "Permits are generally not required for a hike along the whole trail, but overnight camping needs a permit in some places, such as Saguaro and Grand Canyon National Parks."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://aztrail.org/passages"
+publisher = "Arizona Trail Association"
+facts = ["official_url", "summary", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/trails/arizona-nst/about-trail/faqs"
+publisher = "USDA Forest Service"
+facts = ["summary", "days", "season", "months", "terrain", "travel", "permit"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/trails/arizona-nst/plan-visit"
+publisher = "USDA Forest Service"
+facts = ["season", "months", "days"]

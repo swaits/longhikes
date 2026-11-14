@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The creator publishes the track for download; no licence that allows passing it on is stated. Get it from the creator's page."
+line_absent_reason = "The author publishes the track for download; no licence that allows passing it on is stated. Get it from the author's page."
 
 [osm]
 relation = 0
@@ -60,3 +60,19 @@ author = "the author of the SeekingLost blog"
 access = "free"
 url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
 format = "web trip report with a GPX download and a CalTopo map"
+
+[hike]
+summary = "This Sawtooth Wilderness high route loops from the Tin Cup Trailhead at Pettit Lake in Idaho, staying as high as possible among the range's lakes and passes. The author planned most of it off-trail. The published hike in August 2017 covered part of the planned route in eight days."
+official_url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
+start = "Tin Cup Trailhead at Pettit Lake, Idaho"
+shape = "loop"
+terrain = ["alpine", "lakes"]
+travel = "mostly-cross-country"
+permit = "A free wilderness permit is obtained by self-registration at the trailhead, and there is no fee to access the Sawtooth Wilderness."
+caution = "The planned route was about 89 miles with over 50 miles off-trail; the hike its author recorded covered 67 miles."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
+publisher = "Seeking Lost (the route's creator)"
+facts = ["summary", "official_url", "start", "shape", "terrain", "travel", "permit", "caution"]

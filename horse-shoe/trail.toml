@@ -48,3 +48,17 @@ measured_km = 229.2
 difference_percent = 1.9
 parts = 1
 note = "OSM relation 1596895, 429 ways: 229.2 km in 1 part, 1.9% more than the published 225 km."
+
+[hike]
+summary = "The Horse-Shoe Trail is a hiking and equestrian trail across southeastern Pennsylvania, starting in Valley Forge National Historical Park and ending at the Appalachian Trail. It crosses Montgomery, Chester, Berks, Lancaster, Lebanon and Dauphin counties and is maintained by the Horse-Shoe Trail Conservancy, a volunteer group founded in 1935."
+official_url = "https://cart.hstrail.org/"
+start = "Valley Forge National Historical Park, Pennsylvania"
+end = "the Appalachian Trail, Dauphin County, Pennsylvania"
+shape = "point-to-point"
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://cart.hstrail.org/"
+publisher = "Horse-Shoe Trail Conservancy"
+facts = ["official_url", "summary", "start", "end", "shape", "travel"]

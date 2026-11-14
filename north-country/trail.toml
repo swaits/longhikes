@@ -49,3 +49,33 @@ measured_km = 7679.8
 difference_percent = 3.7
 parts = 2
 note = "The eight state relations give 7,679.8 km in 2 parts, 3.7% over 7,403 km. Road walks are included, as OpenStreetMap maps them. Six ways marked 'alternative' (3.1 km) are in alternates.geojson."
+
+[hike]
+summary = "The North Country National Scenic Trail crosses the northern United States from Lake Sakakawea in North Dakota to Crown Point, New York, linking scenic, natural, historic and cultural areas across a great variety of northern landscapes. It is a footpath by design, built and maintained primarily by volunteers, and some sections run along roads."
+official_url = "https://www.nps.gov/noco/index.htm"
+start = "Crown Point, New York"
+end = "Lake Sakakawea State Park, North Dakota"
+shape = "point-to-point"
+terrain = ["forest", "prairie", "lakes"]
+travel = "trail-and-road"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.nps.gov/noco/index.htm"
+publisher = "National Park Service"
+facts = ["official_url", "summary", "terrain", "shape"]
+
+[[hike.source]]
+url = "https://www.nps.gov/noco/faqs.htm"
+publisher = "National Park Service"
+facts = ["summary", "start", "end"]
+
+[[hike.source]]
+url = "https://northcountrytrail.org/the-trail/hike-resources/"
+publisher = "North Country Trail Association"
+facts = ["travel"]
+
+[[hike.source]]
+url = "https://northcountrytrail.org/the-trail/trail-maps/"
+publisher = "North Country Trail Association"
+facts = ["terrain", "summary"]

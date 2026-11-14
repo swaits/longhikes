@@ -48,3 +48,24 @@ measured_km = 214.4
 difference_percent = -0.7
 parts = 2
 note = "OSM relation 9078832, 196 ways: 214.4 km in 2 parts, 0.7% short of the published 216 km."
+
+[hike]
+summary = "The Baker Trail is a hiking and backpacking trail north of Pittsburgh that runs through western Pennsylvania to Forest County. It follows forest paths and old jeep trails as well as paved and dirt roads, through woods, farmland and river valleys. Much of it crosses private land."
+official_url = "https://rachelcarsontrails.org/trails/baker-trail"
+start = "Schenley, Pennsylvania"
+end = "Muzette Road, near Vowinckel, Pennsylvania"
+shape = "point-to-point"
+terrain = ["forest", "farmland"]
+travel = "trail-and-road"
+caution = "Most of the trail is on private land, and camping and fires are allowed only at the designated shelters."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://rachelcarsontrails.org/trails/baker-trail"
+publisher = "Rachel Carson Trails Conservancy"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://rachelcarsontrails.org/"
+publisher = "Rachel Carson Trails Conservancy"
+facts = ["summary"]

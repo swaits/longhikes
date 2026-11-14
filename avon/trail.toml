@@ -49,3 +49,23 @@ measured_km = 163.8
 difference_percent = 26.0
 parts = 6
 note = "OSM relation 3442182, 460 ways: 163.8 km in 6 parts, 26.0% more than the published 130 km. The pieces do not all join: OpenStreetMap is missing the connectors between them."
+
+[hike]
+summary = "The Avon Trail follows the Avon River and its streams through southwestern Ontario, from St. Marys to Conestogo. It crosses gently rolling farmland and is mostly off road, with a few stretches on back roads and through small towns. Fourteen side trails branch off it."
+official_url = "https://avontrail.ca/"
+start = "St. Marys, Ontario"
+end = "Conestogo, Ontario"
+shape = "point-to-point"
+terrain = ["farmland"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://avontrail.ca/"
+publisher = "Avon Trail Association"
+facts = ["official_url", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://avontrail.ca/about/"
+publisher = "Avon Trail Association"
+facts = ["summary", "start", "end", "terrain", "travel"]

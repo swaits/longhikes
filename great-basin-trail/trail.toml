@@ -6,7 +6,7 @@ short_name = "GBT"
 country = "US"
 regions = ["NV"]
 length_km = 1931
-length_note = "nearly 1,200 mi, per the creator"
+length_note = "nearly 1,200 mi, per the author"
 kind = "route"
 tier = "regional"
 designation = "Person-defined route (Ryan \"Dirtmonger\" Sylva, 2019); no agency or association"
@@ -28,7 +28,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "Whether the creator shares the track is not settled: no map or GPX of his was found, and his own site no longer resolves. The article is where the route is described."
+line_absent_reason = "Whether the route's author shares the track is not settled: no map or GPX of his was found, and his own site no longer resolves. The article is where the route is described."
 
 [osm]
 relation = 0
@@ -52,7 +52,7 @@ year = 2019
 line_policy = "unclear"
 creator_words = "I developed the GBT in late 2019 as a passion project looking for the most isolated place I could find in the Lower 48 states."
 creator_words_url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
-note = "Through the Great Basin of Nevada, south and west across the basin-and-range, linking remote ranges, canyons and desert plateaus. The article written by the creator offers no map or GPX, and his own site no longer resolves."
+note = "Through the Great Basin of Nevada, south and west across the basin-and-range, linking remote ranges, canyons and desert plateaus. The article written by its author offers no map or GPX, and his own site no longer resolves."
 
 [[guide]]
 title = "Great Basin Trail article"
@@ -60,3 +60,17 @@ author = "Ryan \"Dirtmonger\" Sylva"
 access = "free"
 url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
 format = "web article; no map or GPX offered"
+
+[hike]
+summary = "The Great Basin Trail is a route of nearly 1,200 miles that its author worked out as a loop around the heart of the Great Basin, wholly within Nevada. It mixes cross-country travel, bushwhacking, remote dirt roads and good singletrack. Water is scarce and far apart."
+official_url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
+shape = "loop"
+terrain = ["desert"]
+travel = "some-cross-country"
+caution = "Water is scarce and far apart, and much of the route is unmarked, with cross-country sections."
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
+publisher = "Ryan Sylva (Dirtmonger), on the Gossamer Gear blog"
+facts = ["official_url", "summary", "shape", "terrain", "travel", "caution"]

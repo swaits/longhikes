@@ -48,3 +48,16 @@ measured_km = 119.9
 difference_percent = -0.9
 parts = 1
 note = "OSM relation 17943086, 182 ways: 119.9 km in 1 part, 0.9% short of the published 121 km."
+
+[hike]
+summary = "The Sunapee Ragged Kearsarge Greenway is a circle of trails in central New Hampshire encircling the Lake Sunapee area. Its coalition calls it a 75-mile emerald necklace with minimally developed access to the region's mountains, lakes and historic sites."
+official_url = "https://www.srkg.org/"
+shape = "loop"
+terrain = ["forest", "lakes"]
+travel = "trail"
+checked = "2026-11-13"
+
+[[hike.source]]
+url = "https://www.srkg.org/"
+publisher = "Sunapee-Ragged-Kearsarge Greenway Coalition"
+facts = ["summary", "official_url", "shape", "terrain", "travel"]

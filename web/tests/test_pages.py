@@ -190,9 +190,13 @@ class BuiltSiteTest(unittest.TestCase):
                               f"{rec['length_km']:,} km ({words.fmt_percent(v['difference_percent'])})", text)
                 self.assertIn(re.sub(r"\s+", " ", rec["source"]["length_gap_note"]), text, rec["id"])
             short = rec["id"] in expected and rec["verification"]["difference_percent"] < 0
-            self.assertEqual("In the dataset, partial" in page, short, rec["id"])
+            glance = page[page.index('<section class="glance'):page.index("</section>", page.index('<section class="glance'))]
+            self.assertEqual("Partial GPX to download here" in glance, short, rec["id"])
             if rec["derived"]["has_line"]:
-                self.assertRegex(page, r'<dt>Track</dt><dd><a href="#download">In the dataset', rec["id"])
+                self.assertRegex(glance, r'<dt>GPX</dt><dd><a href="#download">(Partial )?GPX to download here</a>', rec["id"])
+                # the partial warning is in view, outside "About this data"
+                if rec["id"] in expected:
+                    self.assertLess(page.index("notice--partial"), page.index('<details class="about-data"'), rec["id"])
         rows_seen = set()
         for path in html_files(OUT):
             with open(path, encoding="utf-8") as f:
@@ -257,17 +261,20 @@ class BuiltSiteTest(unittest.TestCase):
     def test_no_raw_tokens_in_the_main_flow(self):
         for rec in self.records:
             page = self.pages[rec["id"]]
-            main = page[page.index('<div class="detail__main">'):page.index('<details class="rawrecord">')]
+            top = page[page.index('<main id="main">'):page.index('<details class="about-data"')]
+            self.assertNotIn('<code class="raw">', top, rec["id"])
+            main = page[page.index('<div class="about-data__body'):page.index('<details class="rawrecord">')]
             codes = set(html.unescape(c) for c in re.findall(r'<code class="raw">(.*?)</code>', main))
             self.assertLessEqual(codes, {rec["id"]}, rec["id"])
-            # main-column sections are not landmarks; the aside panels are
+            # "About this data" sections are not landmarks; the glance and the aside panels are
             self.assertNotIn('<section class="block" aria-labelledby', page, rec["id"])
-            self.assertIn('<section class="panel" aria-labelledby="links-title">', page, rec["id"])
+            self.assertIn('<section class="glance detail__glance" aria-labelledby="glance-title">', page, rec["id"])
+            self.assertIn('<h2 id="links-title">Links</h2>', main, rec["id"])
 
     def test_record_without_a_line_says_so_once(self):
         for rec in self.records:
             page = self.pages[rec["id"]]
-            main = page_text(page[page.index('<div class="detail__main">'):page.index('<details class="rawrecord">')])
+            main = page_text(page[page.index('<div class="about-data__body'):page.index('<details class="rawrecord">')])
             helper = "Where to ask for the track: a layer or relation page"
             if rec["derived"]["has_line"]:
                 self.assertEqual(helper in main, bool(rec["source"].get("url")), rec["id"])
@@ -481,9 +488,9 @@ class RenderUnitTest(unittest.TestCase):
                 f.write('id = "x"\n')
             rec = sample_record(name="A & B")
             n = pages.render_site([rec], out, repo, site=site.Site("N", "T"))
-            # trail page + home + 404 + regions index + 1 region + routes,
-            # sources, logos, about, data, schema, changelog
-            self.assertEqual(n, 12)
+            # trail page + home + 404 + places hub + 1 place + lists hub + routes,
+            # sources, logos, about, data, schema, changelog (no list holds MIN_SIZE trails)
+            self.assertEqual(n, 13)
             with open(os.path.join(out, "trails", "x", "index.html"), encoding="utf-8") as f:
                 self.assertIn("A &amp; B", f.read())
             with open(os.path.join(out, "index.html"), encoding="utf-8") as f:

@@ -5,9 +5,9 @@ To add a page (see also docs in pages.py):
     from olt.layout import layout, page_head, write_page
     from olt.markup import esc
 
-    body = page_head("Regions", kicker="Browse", lede="Trails by state, province and territory.")
+    body = page_head("Places", lede="Trails by state and province.")
     body += f'<div class="container prose">...{esc(some_text)}...</div>'
-    html = layout("Regions", body, path="/regions/", description="Long trails by region.")
+    html = layout("Places", body, path="/regions/", description="Long trails by place.")
     write_page(out_dir, "/regions/", html)
 
 `path` is the page's own site path; it sets the canonical link (when
@@ -23,13 +23,14 @@ from .markup import Markup, attrs, esc, json_block
 
 NAV = (
     ("Trails", "/"),
-    ("Regions", "/regions/"),
-    ("Routes", "/routes/"),
-    ("Sources", "/sources/"),
-    ("Logos", "/logos/"),
+    ("Places", "/regions/"),
     ("About", "/about/"),
-    ("Data", "/data/"),
 )
+# Pages with no header item of their own, and the item they sit under. The
+# lists (Routes among them) are part of Trails; the dataset pages are part of
+# About and are linked from the About hub and the footer.
+NAV_PARENT = {"/trails/": "/", "/lists/": "/", "/routes/": "/",
+              "/sources/": "/about/", "/logos/": "/about/", "/data/": "/about/"}
 
 FONT_PRELOADS = (
     "/assets/fonts/source-serif-4-latin.woff2",
@@ -41,9 +42,11 @@ MAPLIBRE_JS = "/assets/vendor/maplibre-gl/maplibre-gl.js"
 
 def _current(path, href):
     """True when the nav item href is the section the page at path belongs to."""
-    if href == "/":
-        return path == "/" or path.startswith("/trails/")
-    return path.startswith(href)
+    if href == "/" and path == "/":
+        return True
+    if any(path.startswith(p) and parent == href for p, parent in NAV_PARENT.items()):
+        return True
+    return href != "/" and path.startswith(href)
 
 
 def header(path, site):
@@ -62,30 +65,32 @@ def header(path, site):
 def footer(site):
     report = ""
     if site.repo_url:
-        report = (f'<li><a href="{esc(site.correction_url())}">Report an error in a record</a></li>'
+        report = (f'<li><a href="{esc(site.correction_url())}">Report a problem</a></li>'
                   f'<li><a href="{esc(site.new_trail_url)}">Suggest a trail</a></li>'
                   f'<li><a href="{esc(site.repo_url)}">Fix or add a trail</a></li>')
     return Markup(f"""<footer class="site-footer">
   <div class="container site-footer__grid">
     <div class="site-footer__about">
       <a class="wordmark" href="/"><span class="wordmark__blaze" aria-hidden="true"></span>{esc(site.name)}</a>
-      <p>A dataset, not a navigation product: tracks vary in quality, some trails are unfinished, and some records have no track at all. Check a trail&rsquo;s own record before using its track.</p>
-      <p>The records are public domain (CC0-1.0). Each track keeps the terms of its source, named on its page. Tracks from OpenStreetMap are &copy;&nbsp;OpenStreetMap contributors, under the ODbL. Logos belong to their holders and are shown only to identify each trail.</p>
+      <p>Not for navigation: tracks vary in quality, some trails are unfinished, and some have no GPX here. Check a trail&rsquo;s own maps before you go.</p>
+      <p>The trail data is public domain (CC0-1.0). Each track keeps the terms of its source, named on its page. Tracks from OpenStreetMap are &copy;&nbsp;OpenStreetMap contributors, under the ODbL. Logos belong to their holders and are shown only to identify each trail.</p>
     </div>
-    <nav aria-labelledby="footer-data">
-      <h2 id="footer-data">Data</h2>
+    <nav aria-labelledby="footer-browse">
+      <h2 id="footer-browse">Trails</h2>
       <ul>
-        <li><a href="/data/">About the data and downloads</a></li>
-        <li><a href="/data/trails.csv">trails.csv</a>: one row per trail</li>
-        <li><a href="/data/index.geojson">index.geojson</a>: every track, simplified</li>
-        <li><a href="/sources/">Sources and their terms</a></li>
+        <li><a href="/">Every trail</a></li>
+        <li><a href="/regions/">Places</a></li>
+        <li><a href="/lists/">Lists</a></li>
+        <li><a href="/routes/">Routes</a></li>
       </ul>
     </nav>
     <nav aria-labelledby="footer-project">
-      <h2 id="footer-project">Project</h2>
+      <h2 id="footer-project">About</h2>
       <ul>
         <li><a href="/about/">About {esc(site.name)}</a></li>
-        <li><a href="/logos/">Logos and removal requests</a></li>
+        <li><a href="/data/">Data and downloads</a></li>
+        <li><a href="/sources/">Sources and their terms</a></li>
+        <li><a href="/logos/">Logos</a></li>
         {report}
       </ul>
     </nav>
@@ -99,10 +104,10 @@ def footer(site):
         </div>
       </fieldset>
       <fieldset class="field">
-        <legend>Lengths</legend>
+        <legend>Units</legend>
         <div class="seg">
-          <label><input type="radio" name="units" value="km" checked><span>km first</span></label>
-          <label><input type="radio" name="units" value="mi"><span>miles first</span></label>
+          <label><input type="radio" name="units" value="km" checked><span>km and m first</span></label>
+          <label><input type="radio" name="units" value="mi"><span>mi and ft first</span></label>
         </div>
       </fieldset>
     </div>

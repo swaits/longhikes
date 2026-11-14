@@ -13,7 +13,7 @@ ROOT = os.path.dirname(WEB)
 sys.path.insert(0, WEB)
 
 import serve  # noqa: E402
-from olt import docs, home, records, regions as regions_mod, seo, site, words  # noqa: E402
+from olt import common, docs, facets, home, records, regions as regions_mod, seo, site, words  # noqa: E402
 
 OUT = os.path.join(WEB, ".cache", "test-site")
 
@@ -83,7 +83,7 @@ class ExtraPagesTest(unittest.TestCase):
 
     def test_no_dead_internal_links_in_added_pages(self):
         import re
-        for rel in ("regions/index.html", "routes/index.html", "sources/index.html",
+        for rel in ("regions/index.html", "routes/index.html", "lists/index.html", "sources/index.html",
                     "logos/index.html", "about/index.html", "data/index.html",
                     "data/schema/index.html", "data/changelog/index.html"):
             html = read_out(rel)
@@ -107,39 +107,31 @@ class ExtraPagesTest(unittest.TestCase):
         self.assertIn('href="/regions/us-vt/"', page)
 
 
-    def test_country_and_region_counts_match_the_regions_pages(self):
+    def test_where_counts_match_the_place_pages(self):
         home_doc = read_out("index.html")
-        index = read_out("regions/index.html")
-        by_slug, canada_wide = regions_mod.collect_regions(self.records)
-        for country, label in (("US", "United States"), ("CA", "Canada")):
-            shown = int(re.search(rf'value="{country}"><span>{label} \((\d+)\)</span>', home_doc).group(1))
-            on_index = int(re.search(rf'data-country-count="{country}">(\d+)<', index).group(1))
-            listed = set()
-            for slug, info in by_slug.items():
-                if info["country"] == country:
-                    listed |= set(entry_ids(read_out(f"regions/{slug}/index.html")))
-            if country == "CA":
-                listed |= {r["id"] for r in canada_wide}
-            self.assertEqual(shown, on_index, country)
-            self.assertEqual(shown, len(listed), country)
-            # every row of those records says it touches the country
-            for tid in listed:
-                attrs = re.search(rf'<li class="entry" data-id="{tid}"([^>]*)>', home_doc).group(1)
-                self.assertIn(country, re.search(r'data-countries="([^"]*)"', attrs).group(1).split(), tid)
-        self.assertIn('data-countries="US CA"', re.search(
-            r'<li class="entry" data-id="eastern-continental-trail"[^>]*>', home_doc).group(0))
-        self.assertIn('data-countries="US CA"', re.search(
-            r'<li class="entry" data-id="great-plains-trail"[^>]*>', home_doc).group(0))
-        # each region option's count is the number of records on that region's page
-        for value, n in re.findall(r'<option value="((?:US|CA)-[A-Z]{2})">[^<(]+\((\d+)\)</option>', home_doc):
+        by_slug, across = regions_mod.collect_regions(self.records)
+        # each state or province option's count is the number of trails on its place page
+        found = re.findall(r'<option value="((?:US|CA)-[A-Z]{2})">[^<(]+\((\d+)\)</option>', home_doc)
+        self.assertEqual({v for v, _ in found}, {i["key"] for i in by_slug.values()})
+        for value, n in found:
             page = read_out(f"regions/{value.lower()}/index.html")
             self.assertEqual(int(n), len(entry_ids(page)), value)
-        canada = re.search(r'<option value="CA-\*">All provinces and territories \((\d+)\)</option>', home_doc)
-        self.assertEqual(int(canada.group(1)), len(canada_wide))
-        self.assertIn('href="/?region=CA-*"', index)
+            # and the rows that say they are there
+            self.assertEqual(int(n), len(re.findall(rf'data-where="[^"]*\b{value}\b', home_doc)), value)
+        for country, label in (("US", "United States"), ("CA", "Canada")):
+            n = int(re.search(rf'<option value="{country}">{label} \((\d+)\)</option>', home_doc).group(1))
+            self.assertEqual(n, sum(1 for r in self.records if country in common.countries(r)), country)
+        for g, name, _ in facets.PLACE_GROUPS:
+            m = re.search(rf'<option value="g:{g}">All of {re.escape(name)} \((\d+)\)</option>', home_doc)
+            n = sum(1 for r in self.records if g in facets.place_groups(r))
+            self.assertEqual(int(m.group(1)) if m else 0, n, g)
+        self.assertTrue(across)
+        self.assertIn('id="across-canada"', read_out("regions/index.html"))
+        self.assertIn('id="canada-wide"', read_out("regions/index.html"))  # the old anchor still lands
 
     def test_list_pages_share_the_home_list(self):
-        for rel in ("index.html", "regions/us-co/index.html", "routes/index.html"):
+        for rel in ("index.html", "regions/us-co/index.html", "routes/index.html",
+                    "lists/national-scenic-trails/index.html"):
             doc = read_out(rel)
             results = doc[doc.index('<div class="results">'):]
             for part in ('<div class="list-head" aria-hidden="true">', '<ol class="entries"',
@@ -148,9 +140,9 @@ class ExtraPagesTest(unittest.TestCase):
             scale = re.search(r'<div class="list-head".*?</div>', results, re.S).group(0)
             self.assertEqual(scale.count('class="len__km"'), 3, rel)
             self.assertEqual(scale.count('class="len__mi"'), 3, rel)
+            for name in ("Length", "Time", "GPX"):
+                self.assertIn(f"<span>{name}", scale, rel)
         self.assertNotIn('class="route-item"', read_out("routes/index.html"))
-        co = read_out("regions/us-co/index.html")
-        self.assertIn('<a href="/?region=US-CO&amp;line=1">With a track</a>', co)
 
     def test_routes_page_rows_carry_their_guides(self):
         doc = read_out("routes/index.html")
@@ -160,18 +152,35 @@ class ExtraPagesTest(unittest.TestCase):
             row = re.search(rf'<li class="entry" data-id="{r["id"]}".*?\n</li>', doc, re.S).group(0)
             for g in r["guide"]:
                 self.assertIn(f'href="{html.escape(g["url"], quote=True)}"', row, r["id"])
+        # says what a route is, in the one definition, and no longer explains track policies
+        self.assertIn(html.escape(facets.ROUTE_DEFINITION, quote=True), doc)
+        self.assertNotIn("track policies", doc.lower())
+        self.assertNotIn("policy-scale", doc)
 
     def test_home_finder_layout(self):
         doc = read_out("index.html")
         form = doc[doc.index('<form class="filters"'):doc.index("</form>")]
         self.assertIn('<details class="filters__more">', form)
         self.assertNotIn("filters__more\" open", form)
-        # the line checkbox comes straight after the search field, outside the details
-        self.assertLess(form.index('name="line"'), form.index("<details"))
-        self.assertLess(form.index('id="q"'), form.index('name="line"'))
-        self.assertIn('<a class="button button--primary hero__cta" href="#q">Find a trail</a>', doc)
-        self.assertIn("No records match these filters.", doc)
-        steps = [int(v) for v in re.findall(r'<option value="(\d+)">', form[form.index('id="max"'):])]
+        self.assertIn("No trails match these filters.", doc)
+        more = form[form.index('<details class="filters__more">'):]
+        first = form[:form.index('<details class="filters__more">')]
+        # the first-rank filters in view, Walking, Shape and GPX behind "More"
+        for name in ("q", "where", "min", "max", "time", "kind"):
+            self.assertIn(f'name="{name}"', first, name)
+        for name in ("gpx",):
+            self.assertIn(f'name="{name}"', more, name)
+        for name, key in (("month", "season"), ("terrain", "terrain")):
+            self.assertEqual(f'name="{name}"' in first, facets.offered(self.records, key), name)
+        for name, key in (("walking", "walking"), ("shape", "shape")):
+            self.assertEqual(f'name="{name}"' in more, facets.offered(self.records, key), name)
+        # no dataset filters
+        for name in ("tier", "policy", "designated", "line", "country", "region"):
+            self.assertNotIn(f'name="{name}"', form, name)
+        # the map is in the tool, beside the list it filters
+        main = doc[doc.index('<div class="finder__main">'):]
+        self.assertLess(main.index('data-map="overview"'), main.index('<ol class="entries" id="entries">'))
+        steps = [int(v) for v in re.findall(r'<option value="(\d+)">', form[form.index('id="max"'):form.index("</select>", form.index('id="max"'))])]
         self.assertGreaterEqual(steps[-1], max(r["length_km"] for r in self.records))
         self.assertEqual(home.length_steps(self.records)[:11], list(home.LENGTH_STEPS))
 
@@ -193,7 +202,7 @@ class ExtraPagesTest(unittest.TestCase):
         # a record's "none (no line included)" is shown in words, not as the raw value
         self.assertIn("<td>None (no track included)</td>", page)
         self.assertNotIn("none (no line included)", page)
-        self.assertEqual(page.count('<th scope="col">Trails and routes</th>'), 2)
+        self.assertEqual(page.count('<th scope="col">Trails</th>'), 2)
         self.assertNotRegex(page, r'<td><a href="/trails/[^"]+/">[^<]*</a>, <a')
 
     def test_data_page_licences_from_the_records(self):

@@ -47,10 +47,11 @@ INCLUSION = {
     "candidate-decision-pending": ("Candidate", "The decision to list it is pending"),
 }
 KINDS = {
-    "designated": ("Designated trail",
-                   "Designated, maintained and published as one trail by a land agency or a trail association"),
-    "route": ("Person-defined route",
-              "Worked out and published by a person or a small group: a high route, a traverse or a loop of linked trails"),
+    "designated": ("Official trail",
+                   "Looked after as one trail by a land agency or a trail association"),
+    "route": ("Route",
+              "A trail that a hiker worked out and published. No agency or association looks after it "
+              "as one trail, and there may be no signs for it"),
 }
 SOURCE_STATUS = {
     "verified": ("Verified", "The track was downloaded from the source and measured"),
@@ -75,14 +76,14 @@ LICENCE_URLS = {
     "CC-BY-NC-ND-4.0": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
 }
 POLICIES = {
-    "open": ("Open", "The creator publishes the track freely",
-             "A track is included only where the creator's terms allow passing it on, or where "
-             "OpenStreetMap carries the route as a route relation. Otherwise get it from the creator."),
+    "open": ("Open", "The author publishes the track freely",
+             "A track is included only where the author's terms allow passing it on, or where "
+             "OpenStreetMap carries the route as a route relation. Otherwise get it from the author."),
     "sold": ("Sold", "The route is got by buying a guide or map set",
              "No track is included from any source, OpenStreetMap included."),
-    "withheld": ("Withheld", "The creator chooses not to publish a track",
+    "withheld": ("Withheld", "The author chooses not to publish a track",
                  "No track is included from any source, OpenStreetMap included."),
-    "unclear": ("Unclear", "Whether the creator shares the track is not settled",
+    "unclear": ("Unclear", "Whether the author shares the track is not settled",
                 "No track is included until it is settled."),
 }
 SHIELD_STATUS = {
@@ -179,3 +180,65 @@ def length(km, style="inline", mi=None, measured=False):
     mi_text = f"{fmt_int(mi)} mi" if whole or mi >= 100 else f"{mi:,.1f} mi"
     return Markup(f'<span class="len len--{style}"><span class="len__km">{esc(km_text)}</span>'
                   f'<span class="len__mi">{esc(mi_text)}</span></span>')
+
+
+# Hiker facts ([hike] table) -------------------------------------------------
+
+M_PER_FT = 0.3048
+
+TERRAIN = {
+    "alpine": "Alpine", "forest": "Forest", "desert": "Desert", "coast": "Coast",
+    "prairie": "Prairie", "canyon": "Canyon", "tundra": "Tundra", "lakes": "Lakes",
+    "farmland": "Farmland",
+}
+# The [hike] fields a [[hike.source]] may name in `facts`, in plain words.
+HIKE_FACTS = {
+    "summary": "description", "official_url": "official site", "start": "start", "end": "end",
+    "shape": "shape", "days": "time", "season": "season", "months": "season", "travel": "walking", "high_point": "high point",
+    "high_point_m": "high point elevation", "terrain": "terrain", "permit": "permits",
+    "unfinished": "unfinished sections", "caution": "caution",
+}
+
+def _plural(n, unit):
+    return f"{n} {unit}" if n == 1 else f"{n} {unit}s"
+
+
+def fmt_days(days):
+    """Usual time to walk a trail in one go, in a unit a person would use.
+
+    [4, 6] -> "4 to 6 days"; [14, 21] -> "2 to 3 weeks"; [150, 210] -> "5 to 7 months".
+    Days up to 14, weeks up to 9 weeks (63 days), months beyond. One value, or both
+    ends the same after rounding: "5 days", "about 3 weeks". "" for no value.
+    """
+    if isinstance(days, (int, float)):
+        days = [days]
+    days = [d for d in (days or []) if isinstance(d, (int, float)) and d > 0]
+    if not days:
+        return ""
+    lo, hi = min(days), max(days)
+    if hi <= 14:
+        unit, a, b = "day", round(lo), round(hi)
+    elif hi <= 63:
+        unit, a, b = "week", max(1, round(lo / 7)), max(1, round(hi / 7))
+    else:
+        unit, a, b = "month", max(1, round(lo / 30.44)), max(1, round(hi / 30.44))
+    if a == b:
+        return _plural(a, unit) if unit == "day" else "about " + _plural(a, unit)
+    return f"{a} to {b} {unit}s"
+
+
+def elevation(m, style="inline"):
+    """An elevation in metres and feet; the reader's unit preference decides the order,
+    with the same len__km / len__mi pair as lengths: "2,025 m (6,644 ft)".
+    style "stack" sets the first unit large over the second, as lengths do."""
+    ft = m / M_PER_FT
+    return Markup(f'<span class="len len--{style}"><span class="len__km">{esc(fmt_int(m))} m</span>'
+                  f'<span class="len__mi">{esc(fmt_int(ft))} ft</span></span>')
+
+
+def join_names(names):
+    """["a"] -> "a"; ["a", "b"] -> "a and b"; ["a", "b", "c"] -> "a, b and c"."""
+    names = list(names)
+    if len(names) <= 1:
+        return "".join(names)
+    return ", ".join(names[:-1]) + " and " + names[-1]

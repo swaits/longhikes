@@ -8,7 +8,7 @@ import os
 import re
 import urllib.parse
 
-from . import common, words
+from . import common, elevation, facets, hike, words
 from .markup import Markup, esc
 
 EXTRACT_SOURCES = {"osm": "OpenStreetMap", "usfs": "USDA Forest Service", "nps": "National Park Service"}
@@ -70,18 +70,15 @@ def restates_no_line(value):
 
 
 def region_names(rec):
-    """The regions for the title block, each linked to its region page."""
-    regions = rec.get("regions", [])
-    if len(regions) <= 3:
-        parts = []
-        for code_ in regions:
-            if code_ == words.ALL_CANADA:
-                href = "/regions/#canada-wide"
-            else:
-                href = f"/regions/{words.region_key(code_, rec['country']).lower()}/"
-            parts.append(f'<a href="{esc(href)}">{esc(words.region_name(code_))}</a>')
-        return Markup(", ".join(parts))
-    return common.regions_html(rec, linked=True)
+    """The states and provinces for the glance, each linked to its place page; codes when there are many."""
+    keys = facets.place_keys(rec)
+    parts = []
+    for key in keys:
+        name = facets.place_name(key)
+        text = esc(name) if len(keys) <= 3 or key == facets.ACROSS_CANADA else \
+            Markup(f'<abbr title="{esc(name)}">{esc(key.split("-", 1)[1])}</abbr>')
+        parts.append(f'<a href="{esc(facets.place_path(key))}">{text}</a>')
+    return Markup((", " if len(keys) <= 3 else " ").join(parts))
 
 
 _ORG_CUT = re.compile(r", who |, with | publishes |; (?=[a-z])| \((?=[a-z])| \((?=[^)]*geometry)")
@@ -96,66 +93,198 @@ def org_name(text):
 
 # Page head ------------------------------------------------------------------
 
+def kind_word(rec):
+    return "route" if common.is_route(rec) else "trail"
+
+
+def place_text(rec):
+    """Where it is, for a sentence: "in Oregon, United States", "across 14 states of the
+    United States", "across 9 states and provinces of the United States and Canada"."""
+    codes = rec.get("regions", [])
+    countries = [words.COUNTRIES.get(c, c) for c in common.countries(rec)] or \
+        [words.COUNTRIES.get(rec["country"], rec["country"])]
+    country = words.join_names(countries)
+    if words.ALL_CANADA in codes or not codes:
+        return f"across {country}" if words.ALL_CANADA in codes else f"in {country}"
+    if len(codes) > 3:
+        unit = {"United States": "states", "Canada": "provinces and territories"}.get(country, "states and provinces")
+        the = words.join_names(("the " + c) if c == "United States" else c for c in countries)
+        return f"across {len(codes)} {unit} of {the}"
+    return f"in {words.join_names(words.region_name(c) for c in codes)}, {country}"
+
+
+def fallback_lede(rec):
+    """A one-sentence description built from the record, for a record without a [hike] summary."""
+    length_html = words.length(rec["length_km"], "inline", rec["derived"]["length_mi"])
+    return Markup(f"A {kind_word(rec)} of {length_html} {esc(place_text(rec))}.")
+
+
+def lead_line(rec):
+    """Who made or designated it: "Route by Steve Roper, 1970", or the trail's designation."""
+    if common.is_route(rec):
+        return facets.route_by(rec)
+    return rec.get("designation", "")
+
+
+def route_definition():
+    """What a route is, one tap away from the Kind line of a route's page (no script needed)."""
+    return Markup(f'<details class="define"><summary>What is a route?</summary>'
+                  f'<p>{esc(facets.ROUTE_DEFINITION)} <a href="/routes/">Every route</a>.</p></details>')
+
+
+def official_link(rec):
+    """(url, label) of the trail's own page: the [hike] official site, else the
+    publisher's page for the trail, else a route's free guide; None when the record has none."""
+    url = hike.official_url(rec)
+    if url:
+        return url, "Official site"
+    src = rec.get("source", {})
+    if src.get("publisher_url"):
+        who = org_name(src.get("publisher", ""))
+        return src["publisher_url"], (f"{who} website" if who else "The trail's website")
+    if common.is_route(rec):
+        for g in rec.get("guide", []):
+            if g.get("url"):
+                return g["url"], "The route's guide"
+    return None
+
+
 def page_head(rec):
     route = common.is_route(rec)
-    country = words.COUNTRIES.get(rec["country"], rec["country"])
-    crumbs = [f'<li><a href="/">Trails</a></li>',
-              f'<li><a href="/?country={esc(rec["country"])}">{esc(country)}</a></li>']
-    if route:
-        crumbs.append('<li><a href="/?kind=route">Person-defined routes</a></li>')
+    crumbs = ['<li><a href="/regions/">Places</a></li>']
+    keys = facets.place_keys(rec)
+    groups = facets.place_groups(rec)
+    if keys and keys[0] in facets.GROUP_OF:
+        g = facets.GROUP_OF[keys[0]]
+        crumbs.append(f'<li><a href="/regions/#{esc(g)}">{esc(facets.GROUP_NAME[g])}</a></li>')
+        crumbs.append(f'<li><a href="{esc(facets.place_path(keys[0]))}">{esc(facets.place_name(keys[0]))}</a></li>')
+    elif groups:
+        crumbs.append(f'<li><a href="/regions/#across-canada">{esc(facets.ACROSS_CANADA_NAME)}</a></li>')
     crumbs.append(f'<li aria-current="page">{common.name(rec)}</li>')
-    if route:
-        r = rec["route"]
-        lead = "By " + r["creator"] + (f", {r['year']}" if r.get("year") else "")
-    else:
-        lead = rec.get("designation", "")
-    sub = f'{esc(lead)} &middot; {region_names(rec)}, {esc(country)}'
     has_plate = bool(common.shield_url(rec))
     plate = common.plate(rec, size="lg", link=True, eager=True) if has_plate else ""
+    summary = hike.summary(rec)
+    lede = common.rich(summary) if summary else fallback_lede(rec)
+    actions = []
+    official = official_link(rec)
+    if official:
+        actions.append(f'<a class="button button--link" href="{esc(official[0])}">{esc(official[1])} {common.ICON_EXTERNAL}</a>')
+    if rec["derived"].get("downloads"):
+        actions.append(f'<a class="button button--primary" href="#download">{common.ICON_DOWNLOAD}Download the GPX</a>')
+    else:
+        actions.append(f'<a class="button button--quiet" href="#track">GPX: {esc(facets.GPX_STATUS[facets.gpx(rec)])}</a>')
+    tag_html = common.badges(rec)
+    kicker = f'<p class="cluster">{tag_html}</p>' if tag_html else ""
+    lead = lead_line(rec)
+    define = route_definition() if route else ""
     return f"""<div class="page-head">
   <div class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{"".join(crumbs)}</ol></nav>
     <header class="titleblock{" titleblock--with-plate" if has_plate else ""}">
       {plate}
       <div class="titleblock__text">
-        <p class="cluster">{common.tags(rec)}</p>
+        {kicker}
         <h1>{common.name(rec)} <span class="titleblock__abbr">{esc(rec.get("short_name", ""))}</span></h1>
-        <p class="titleblock__sub">{sub}</p>
+        {f'<p class="titleblock__sub">{common.rich(lead)}</p>' if lead else ""}
+        {define}
       </div>
     </header>
-    {tally(rec)}
+    <p class="trail-lede">{lede}</p>
+    <p class="cluster trail-actions">{"".join(actions)}</p>
   </div>
 </div>"""
 
 
-def tally(rec):
-    v = rec.get("verification", {})
-    note = rec.get("length_note", "")
-    if note.replace(",", "") in (f"{rec['length_km']} km", f"{rec['length_km']} km published"):
-        note = ""  # the note only repeats the number
-    items = [("Published length", words.length(rec["length_km"], "stack", rec["derived"]["length_mi"]), note)]
-    if v.get("verified") and "measured_km" in v:
-        diff = v.get("difference_percent", 0)
-        items.append(("Measured track", words.length(v["measured_km"], "stack", measured=True),
-                      f"{words.fmt_percent(diff)} against published"))
+def glance_row(label, value, note="", wide=False):
+    note_html = f"<small>{note if isinstance(note, Markup) else esc(note)}</small>" if note else ""
+    value_html = value if isinstance(value, Markup) else esc(value)
+    return Markup(f'<div{" class=\"glance__wide\"" if wide else ""}><dt>{esc(label)}</dt>'
+                  f'<dd>{value_html}{note_html}</dd></div>')
+
+
+def glance(rec):
+    """The hiker's facts at a glance, under the attribute names every page uses."""
+    h = hike.table(rec)
+    rows = [glance_row(facets.LENGTH, words.length(rec["length_km"], "stack", rec["derived"]["length_mi"]))]
+    rows.append(glance_row(facets.TIME, facets.time_text(rec), facets.estimate_note(rec)))
+    season = facets.season_text(rec)
+    if season:
+        rows.append(glance_row(facets.SEASON, season))
+    if facets.walking(rec):
+        rows.append(glance_row(facets.WALKING, facets.WALKING_VALUES[facets.walking(rec)]))
+    elev = elevation.get(rec)
+    if h.get("high_point") or h.get("high_point_m"):
+        # A named, sourced high point is better than a computed number.
+        value = Markup(esc(h.get("high_point", "")))
+        if h.get("high_point_m"):
+            value = Markup(f'{value}{"<br>" if h.get("high_point") else ""}{words.elevation(h["high_point_m"])}')
+        rows.append(glance_row("High point", value))
+    elif elev:
+        rows.append(glance_row("High point", words.elevation(elev["highest"]["m"]),
+                               elevation.COMPUTED_NOTE))
+    if elev:
+        low = elev["lowest"]
+        low_note = ("Sea level. " if elevation.is_sea_level(low) else "") + elevation.COMPUTED_NOTE
+        rows.append(glance_row("Low point", words.elevation(low["m"]), low_note))
+        climb = Markup(str(words.elevation(elev["ascent_m"])))
+        if elevation.show_descent(elev):
+            climb = Markup(f'{climb}<br>Descent: {words.elevation(elev["descent_m"])}')
+        if facets.shape(rec) == "loop":
+            climb_note = elevation.COMPUTED_NOTE
+        else:
+            climb_note = f"Computed from the track, {elevation.direction_words(elev)}."
+        rows.append(glance_row("Climb", climb, climb_note))
+    ends = hike.ends(rec)
+    if ends:
+        label, text = ends
+        if isinstance(text, tuple):
+            text = Markup(f'{esc(text[0])}<span class="glance__to"> to </span>{esc(text[1])}')
+        if facets.shape(rec):
+            text = Markup(f'<strong>{esc(facets.SHAPES[facets.shape(rec)])}.</strong> {esc(text) if not isinstance(text, Markup) else text}')
+            label = facets.SHAPE
+        rows.append(glance_row(label, text, wide=True))
+    elif facets.shape(rec):
+        rows.append(glance_row(facets.SHAPE, facets.SHAPES[facets.shape(rec)]))
+    terrain = facets.terrain(rec)
+    if terrain:
+        rows.append(glance_row(facets.TERRAIN, ", ".join(words.TERRAIN[t] for t in terrain), wide=True))
+    if h.get("permit"):
+        rows.append(glance_row("Permits", common.sentence(h["permit"]), wide=True))
+    country = " and ".join(words.COUNTRIES.get(c, c) for c in common.countries(rec))
+    rows.append(glance_row(facets.WHERE, Markup(f'{region_names(rec)}, {esc(country)}'), wide=True))
+    status = facets.gpx(rec)
+    if facets.gpx_here(rec):
+        text = facets.GPX_STATUS[status]
+        value = Markup(f'<a href="#download">{esc(text)}</a>') if rec["derived"].get("downloads") else text
+        note = common.partial_short_text(rec) if common.line_differs(rec) else ""
     else:
-        items.append(("Measured track", Markup('<span class="tally__none">Not measured</span>'),
-                      "No track was downloaded and measured"))
-    if common.has_line(rec):
-        text = "In the dataset, partial" if common.line_short(rec) else "In the dataset"
-        link = Markup(f'<a href="#download">{esc(text)}</a>') if rec["derived"].get("downloads") else text
-        items.append(("Track", link, "Licence: " + common.licence_label(rec)))
-    else:
-        items.append(("Track", "Record only", "The reason is given below"))
-    if common.is_route(rec):
-        p = common.policy(rec)
-        items.append(("Track policy", words.label(words.POLICIES, p), words.meaning(words.POLICIES, p)))
-    else:
-        t = rec.get("tier", "")
-        items.append(("Tier", words.label(words.TIERS, t), words.meaning(words.TIERS, t)))
-    cells = "".join(f'<div><dt>{esc(a)}</dt><dd>{esc(b)}{f"<small>{esc(c)}</small>" if c else ""}</dd></div>'
-                    for a, b, c in items)
-    return Markup(f'<dl class="tally tally--trail">{cells}</dl>')
+        value = Markup(f'<a href="#track">{esc(facets.GPX_STATUS[status])}</a>')
+        note = ""
+    rows.append(glance_row(facets.GPX, value, note, wide=True))
+    halves = [i for i, r in enumerate(rows) if 'class="glance__wide"' not in r]
+    if len(halves) % 2:  # an odd one out takes the full width rather than leave a gap beside it
+        i = halves[-1]
+        rows[i] = Markup(rows[i].replace("<div>", '<div class="glance__wide">', 1))
+    caution = ""
+    if h.get("caution"):
+        caution = f'<p class="glance__warn"><strong>Know before you go.</strong> {common.rich(common.sentence(h["caution"]))}</p>'
+    unfinished = ""
+    if h.get("unfinished"):
+        unfinished = f'<p class="glance__warn"><strong>Not finished.</strong> {common.rich(common.sentence(h["unfinished"]))}</p>'
+    missing = [name for name, have in ((facets.SEASON, season), (facets.TERRAIN, terrain),
+                                       (facets.WALKING, facets.walking(rec))) if not have]
+    pending = ""
+    if missing:
+        names = words.join_names([missing[0]] + [m.lower() for m in missing[1:]])
+        verb = "is" if len(missing) == 1 else "are"
+        pending = f'<p class="note">{esc(names)} {verb} not on file for this trail yet.</p>'
+    elev_caveat = elevation.coverage_caveat(elev) if elev else ""
+    elev_note = f'<p class="note">{esc(elev_caveat)}</p>' if elev_caveat else ""
+    return f"""<section class="glance detail__glance" aria-labelledby="glance-title">
+  <h2 class="glance__title" id="glance-title">At a glance</h2>
+  <dl class="glance__facts">{"".join(rows)}</dl>
+  {unfinished}{caution}{elev_note}{pending}
+</section>"""
 
 
 # Map or empty frame ---------------------------------------------------------
@@ -187,25 +316,65 @@ def map_figure(rec):
 </figure>"""
 
 
+def elevation_figure(rec):
+    """The elevation profile under the map, drawn as SVG at build time. With too
+    many parts (olt/elevation.py) there is no line to draw in walking order, so
+    the section says that and states the figures instead."""
+    elev = elevation.get(rec)
+    if not elev:
+        return ""
+    loop = facets.shape(rec) == "loop"
+    sentence = elevation.summary_sentence(elev, loop)
+    caveat = elevation.coverage_caveat(elev)
+    caveat_html = f'<p class="note">{esc(caveat)}</p>' if caveat else ""
+    if not elevation.show_profile(elev):
+        return f"""<section class="elev detail__profile" aria-labelledby="elevation-title">
+  <h2 class="elev__title" id="elevation-title">Elevation profile</h2>
+  <div class="elev__body">
+    <p>{esc(elevation.parts_caveat(elev))}</p>
+    <p>{esc(sentence)}</p>
+    {caveat_html}
+  </div>
+</section>"""
+    parts = elev.get("parts") or 1
+    breaks = (f" The line breaks where the track does: it has {parts} parts, and no climb "
+              "is counted across a gap.") if parts > 1 else ""
+    return f"""<section class="elev detail__profile" aria-labelledby="elevation-title">
+  <h2 class="elev__title" id="elevation-title">Elevation profile</h2>
+  <figure class="elev__figure">
+    {elevation.profile_svg(elev, loop)}
+    <figcaption><p>{esc(sentence)}{esc(breaks)}</p>{caveat_html}</figcaption>
+  </figure>
+</section>"""
+
+
 def free_guides(rec):
     return [g for g in rec.get("guide", []) if g.get("access") == "free"]
 
 
+ROUTE_NO_GPX = {
+    # GPX status -> (heading, what this site does about it)
+    "free": ("Get the GPX from its author",
+             "A GPX is included here only where the author's terms allow passing it on, or where "
+             "OpenStreetMap maps the route. Otherwise the author's own page is the place to get it."),
+    "sold": ("The author sells the route as a guide",
+             "No GPX is included here from any source, OpenStreetMap included, so the author's work is respected."),
+    "unpublished": ("The author does not publish a track",
+                    "No GPX is included here from any source, OpenStreetMap included, so the author's choice is respected."),
+    "elsewhere": ("No GPX here",
+                  "No GPX is included here until it is clear that the author allows it."),
+}
+
+
 def empty_frame(rec):
+    """The map frame of a trail with no GPX here: why, and where to get one."""
     src = rec["source"]
     reason = src.get("line_absent_reason", "")
     actions = []
+    status = facets.gpx(rec)
     if common.is_route(rec):
-        p = common.policy(rec)
-        titles = {
-            "open": "Get the track from the creator",
-            "sold": "The track is sold as a guide",
-            "withheld": "The creator does not publish a track",
-            "unclear": "Whether the track may be shared is not settled",
-        }
-        title = titles.get(p, "No track in this dataset")
-        rule = words.POLICIES.get(p, ("", "", ""))[2]
-        if p == "open" and free_guides(rec):
+        title, rule = ROUTE_NO_GPX.get(status, ROUTE_NO_GPX["elsewhere"])
+        if status == "free" and free_guides(rec):
             g = free_guides(rec)[0]
             actions.append(f'<a class="button button--primary" href="{esc(g["url"])}">'
                            f'{esc(g["title"])} {common.ICON_EXTERNAL}</a>')
@@ -214,31 +383,42 @@ def empty_frame(rec):
         elif len(rec.get("guide", [])) > 1:
             actions.append('<a class="button button--link" href="#guides-title">All guides</a>')
     else:
-        title = "No track in this dataset"
+        title = "No GPX here"
         reason = common.absent_reason_short(rec)
-        rule = "A trail may be listed as a record only, with no track, when no track for it may be shared. The record says why."
-        if src.get("publisher_url"):
-            actions.append(f'<a class="button button--link" href="{esc(src["publisher_url"])}">'
-                           f'Publisher&rsquo;s page {common.ICON_EXTERNAL}</a>')
-        elif src.get("url"):
+        rule = "A trail is listed without a GPX when no track for it may be passed on."
+        official = official_link(rec)
+        if official:
+            actions.append(f'<a class="button button--link" href="{esc(official[0])}">'
+                           f'{esc(official[1])} {common.ICON_EXTERNAL}</a>')
+        places = [official[1][:1].lower() + official[1][1:] if official[1] == "Official site"
+                  else "the " + official[1]] if official else []
+        if src.get("url") and (not official or src["url"] != official[0]):
+            osm = host(src["url"]).endswith("openstreetmap.org")
+            label = "See it on OpenStreetMap" if osm else "Where to ask for the track"
+            places.append("OpenStreetMap, where the trail is mapped" if osm else "the track's source")
             actions.append(f'<a class="button button--link" href="{esc(src["url"])}">'
-                           f'The source {common.ICON_EXTERNAL}</a>')
+                           f'{esc(label)} {common.ICON_EXTERNAL}</a>')
+        if places:
+            places[0] = places[0].replace("official site", "the official site")
+            lead = f"For a track, try {words.join_names(places)}."
+            reason = Markup(f'{esc(lead)}</p><p class="note"><strong>Why there is none here:</strong> '
+                            f'{common.rich(reason)}')
     actions_html = f'<p class="cluster">{"".join(actions)}</p>' if actions else ""
-    return f"""<figure class="mapfig mapfig--empty detail__map" aria-labelledby="noline-title">
+    return f"""<figure class="mapfig mapfig--empty detail__map" id="track" aria-labelledby="noline-title">
   <div class="mapfig__frame">
-    <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true">No track in this dataset</span>
+    <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true">No GPX here</span>
     <div class="map map--empty">
       <div class="map__message">
-        <p class="kicker">Record only</p>
+        <p class="kicker">GPX: {esc(facets.GPX_STATUS[status])}</p>
         <h2 id="noline-title">{esc(title)}</h2>
-        <p>{common.rich(reason)}</p>
+        <p class="map__reason">{reason if isinstance(reason, Markup) else common.rich(reason)}</p>
         <p class="note">{esc(rule)}</p>
         {actions_html}
       </div>
     </div>
     <span class="mapfig__corner mapfig__corner--se" aria-hidden="true">Nothing drawn</span>
   </div>
-  <figcaption class="mapfig__caption"><p>No map is drawn: the dataset holds no track for this {"route" if common.is_route(rec) else "trail"}, and does not guess one.</p></figcaption>
+  <figcaption class="mapfig__caption"><p>No map is drawn: there is no track for this trail here, and the site does not guess one.</p></figcaption>
 </figure>"""
 
 
@@ -368,7 +548,7 @@ def guides_panel(rec):
   <h2 class="panel__head" id="guides-title">Where to get the route</h2>
   <div class="panel__body">
     <ul class="guides">{cards}</ul>
-    <p class="note">Links go to the creator&rsquo;s or publisher&rsquo;s own page for each guide.</p>
+    <p class="note">Links go to the author&rsquo;s or publisher&rsquo;s own page for each guide.</p>
   </div>
 </section>"""
 
@@ -377,7 +557,7 @@ def _is_url(value):
     return isinstance(value, str) and value.startswith(("http://", "https://"))
 
 
-def links_panel(rec):
+def links_block(rec):
     """Every link the record holds, each titled with the organisation or person the
     record names for it, with the host name and what the link is as secondary text."""
     src = rec["source"]
@@ -424,10 +604,7 @@ def links_panel(rec):
         return f"{host(url)} · {text}" if _is_url(url) else text
 
     lis = "".join(f'<li>{ext_link(u, t)}<small>{esc(describe(u, w))}</small></li>' for u, (t, w) in items.items())
-    return f"""<section class="panel" aria-labelledby="links-title">
-  <h2 class="panel__head" id="links-title">Links</h2>
-  <div class="panel__body"><ul class="linklist">{lis}</ul></div>
-</section>"""
+    return block("links-title", "Links", Markup(f'<ul class="linklist">{lis}</ul>'))
 
 
 # Main column ----------------------------------------------------------------
@@ -439,14 +616,14 @@ def policy_scale(current):
         here = ' aria-current="true"' if p == current else ""
         mark = '<span class="policy-scale__here">This route</span>' if p == current else ""
         items.append(f'<li{here}>{common.policy_chip(p)}<span>{esc(short)}. {esc(rule)}</span>{mark}</li>')
-    return Markup(f'<ol class="policy-scale" aria-label="Track policies for person-defined routes">{"".join(items)}</ol>')
+    return Markup(f'<ol class="policy-scale" aria-label="Track policies for routes">{"".join(items)}</ol>')
 
 
 def route_block(rec):
     r = rec["route"]
     p = r.get("line_policy", "")
     rows = [
-        fact("Creator", r.get("creator", "")),
+        fact("Author", r.get("creator", ""), "Who worked the route out (route.creator)"),
         fact("First published", str(r["year"])) if r.get("year") else
         fact("First published", "Not recorded", "No page read states a year"),
         fact("Track policy", words.label(words.POLICIES, p), words.meaning(words.POLICIES, p)),
@@ -454,8 +631,8 @@ def route_block(rec):
     quote = ""
     if r.get("creator_words"):
         by = r.get("creator_words_by") or r.get("creator", "")
-        not_creator = ('<span class="tag tag--quiet">Not the creator&rsquo;s words</span>'
-                       if r.get("creator_words_by") else '<span class="tag tag--quiet">The creator&rsquo;s words</span>')
+        not_creator = ('<span class="tag tag--quiet">Not the author&rsquo;s words</span>'
+                       if r.get("creator_words_by") else '<span class="tag tag--quiet">The author&rsquo;s words</span>')
         url = r.get("creator_words_url", "")
         quote = f"""<figure class="quote">
   <blockquote{f' cite="{esc(url)}"' if url else ""}><p>{esc(r["creator_words"])}</p></blockquote>
@@ -488,7 +665,9 @@ def record_block(rec):
     country = words.COUNTRIES.get(rec["country"], rec["country"])
     names = ", ".join(words.region_name(c) for c in rec.get("regions", []) if c != words.ALL_CANADA)
     names_html = f' <span class="muted">({esc(names)})</span>' if names else ""
-    where = Markup(f'{common.regions_html(rec, linked=True)}{names_html}, {esc(country)}')
+    codes = Markup(" ".join(f'<a href="{esc(facets.place_path(k))}">{esc(k.split("-", 1)[1] if k != facets.ACROSS_CANADA else facets.ACROSS_CANADA_NAME)}</a>'
+                            for k in facets.place_keys(rec)))
+    where = Markup(f'{codes}{names_html}, {esc(country)}')
     rows = [
         fact("Kind", words.label(words.KINDS, k), words.meaning(words.KINDS, k)),
         fact("Designation", rec.get("designation", "")),
@@ -562,6 +741,85 @@ def verification_block(rec):
         return ""  # "No line to measure": the record only restates that there is no track
     rows = facts(fact("Measured", "No", "No track was downloaded and measured"))
     return block("verify-title", "Verification", rows + record_text(v.get("note", "")) + Markup(gap_html))
+
+
+def _coord(point):
+    lat, lon = point.get("lat"), point.get("lon")
+    if isinstance(lat, (int, float)) and isinstance(lon, (int, float)):
+        return f"At {lat:.5f}, {lon:.5f} (latitude, longitude)"
+    return ""
+
+
+def _fmt_number(value):
+    if isinstance(value, float) and value.is_integer():
+        return f"{int(value):,}"
+    return f"{value:,}" if isinstance(value, (int, float)) else str(value)
+
+
+def elevation_block(rec):
+    """How the elevation figures were computed, the model's credit, and every value."""
+    elev = elevation.get(rec)
+    if not elev:
+        return ""
+    src = elev.get("source") or {}
+    model = src.get("model", "")
+    loop = facets.shape(rec) == "loop"
+    direction = elevation.direction_words(elev)
+    climb_note = elevation.COMPUTED_NOTE if loop else \
+        f"Computed from the track, {direction}. Walking the other way swaps climb and descent."
+    low_note = _coord(elev["lowest"])
+    if elevation.is_sea_level(elev["lowest"]):
+        low_note = ("Sea level. " + low_note).strip()
+    coverage = elev.get("coverage")
+    coverage_text = (f"{coverage:.3f} ({elevation.coverage_percent(elev)} of the published length)"
+                     if isinstance(coverage, (int, float)) else str(coverage))
+    starts = elev.get("part_starts_km") or []
+    rows = [
+        fact("Highest point on the track", words.elevation(elev["highest"]["m"]), _coord(elev["highest"])),
+        fact("Lowest point on the track", words.elevation(elev["lowest"]["m"]), low_note),
+        fact("Total climb", words.elevation(elev["ascent_m"]), climb_note),
+        fact("Total descent", words.elevation(elev["descent_m"]), climb_note),
+        fact("Length sampled", words.length(elev["track_km"], "inline", measured=True),
+             "The length of the track, not the published length"),
+        fact("Published length", words.length(elev["published_km"], "inline")),
+        fact("Coverage", coverage_text, elevation.coverage_caveat(elev) or
+             "Length sampled divided by the published length"),
+        fact("Parts", str(elev.get("parts", "")),
+             "Pieces left after joining track ends within 100 m, counted for the elevation sampling. "
+             "It can differ from the count under Verification, which was made with another joining rule. "
+             "No climb is counted across a gap."),
+    ]
+    if starts:
+        rows.append(fact("Part starts", ", ".join(words.fmt_km1(s) for s in starts) + " km",
+                         "The distance along the profile where each part after the first begins"))
+    if not elevation.show_profile(elev):
+        rows.append(fact("Profile", "Not drawn", elevation.parts_caveat(elev)))
+    rows += [
+        fact("Elevation model", model) if model else "",
+        Markup(f'<div><dt>Model page</dt><dd>{ext_link(src["url"])}</dd></div>') if src.get("url") else "",
+        fact("Model credit", src.get("attribution", ""), "The credit to show, as the model gives it")
+        if src.get("attribution") else "",
+        fact("Tiles", f"Zoom {_fmt_number(src['zoom'])}, about {_fmt_number(src['ground_m_per_pixel_at_40n'])} m "
+                      "per cell at 40 degrees north")
+        if src.get("zoom") is not None and src.get("ground_m_per_pixel_at_40n") is not None else "",
+        fact("Sampling", f"Every {_fmt_number(src['sample_spacing_m'])} m along the track")
+        if src.get("sample_spacing_m") is not None else "",
+        fact("Smoothing", src.get("smoothing", "")) if src.get("smoothing") else "",
+        fact("Computed", str(src["computed"])) if src.get("computed") else "",
+        fact("Method version", str(src["method_version"])) if src.get("method_version") is not None else "",
+    ]
+    spacing = src.get("sample_spacing_m")
+    sampled = (f"A point was taken every {_fmt_number(spacing)} m along each part of the track, "
+               "and its elevation was read from the model. ") if spacing is not None else ""
+    smoothing = src.get("smoothing", "")
+    method = (f"These figures were computed from the trail&rsquo;s track and {esc(model)}, "
+              f"not read from a page about the trail. {esc(sampled)}"
+              + (f"Smoothing and counting: {esc(smoothing.rstrip('.').lower()[:1] + smoothing.rstrip('.')[1:])}."
+                 if smoothing else ""))
+    limits = src.get("limits", "")
+    limits_html = (f'<h3 class="block__sub">Limits</h3>{record_text(limits)}') if limits else ""
+    content = Markup(f'<p class="record-text">{method}</p>') + facts(*rows) + Markup(limits_html)
+    return block("elevation-data-title", "Elevation", content)
 
 
 def source_block(rec):
@@ -660,7 +918,7 @@ def correction_block(rec, site):
     if common.is_route(rec):
         parts.append(f"""<div class="notice">
   <h3>If you made this route</h3>
-  <p>A route&rsquo;s creator can ask for its record to be corrected or removed, and the record will be corrected or removed. Say which route: {code(rec["id"])}. See <a href="/about/">About</a>.</p>
+  <p>The author of a route can ask for its record to be corrected or removed, and the record will be corrected or removed. Say which route: {code(rec["id"])}. See <a href="/about/">About</a>.</p>
 </div>""")
     if site.is_github:
         report = esc(site.correction_url(rec["id"], rec.get("name", "")))
@@ -677,6 +935,50 @@ def correction_block(rec, site):
     if not parts:
         return ""
     return block("correct-title", "Corrections", Markup("".join(parts)))
+
+
+def hike_sources_block(rec):
+    """Where the hiker facts at the top of the page were read."""
+    h = hike.table(rec)
+    if not h:
+        return ""
+    items = ""
+    for src in hike.sources(rec):
+        url = src.get("url", "")
+        who = src.get("publisher") or (host(url) if url else "Source")
+        facts_ = [words.HIKE_FACTS.get(f, f) for f in src.get("facts", [])]
+        what = ("For " + words.join_names(facts_)) if facts_ else ""
+        link = ext_link(url, who) if url else esc(who)
+        detail = " · ".join(x for x in (host(url) if url else "", what) if x)
+        items += f"<li>{link}{f'<small>{esc(detail)}</small>' if detail else ''}</li>"
+    body = f'<ul class="linklist">{items}</ul>' if items else \
+        '<p class="record-text">The record names no page for these facts.</p>'
+    checked = f'<p class="note">Checked {esc(h["checked"])}.</p>' if h.get("checked") else ""
+    return block("hike-title", "Where the hiking facts come from", Markup(body + checked))
+
+
+def about_data(rec, site):
+    """Everything about where the page's data comes from: collapsed, below the hiker's part."""
+    blocks = ((route_block(rec) if common.is_route(rec) else "") + record_block(rec) + hike_sources_block(rec)
+              + verification_block(rec) + elevation_block(rec) + source_block(rec) + osm_block(rec) + logo_block(rec)
+              + links_block(rec) + correction_block(rec, site) + raw_record(rec))
+    return f"""<details class="about-data" id="about-data">
+  <summary><h2 id="about-data-title">About this data</h2>
+  <span class="about-data__hint">Where the track and the facts come from, licence, checks, the logo, corrections, and every field of the record</span></summary>
+  <div class="about-data__body detail__main">
+    {blocks}
+  </div>
+</details>"""
+
+
+def page_foot(rec, site):
+    """The plain lines under the hiker's part: not for navigation, and how to report a problem."""
+    report = ""
+    if site.repo_url:
+        report = (f' Something wrong on this page? '
+                  f'<a href="{esc(site.correction_url(rec["id"], rec.get("name", "")))}">Report a problem</a>.')
+    return (f'<p class="page-foot">Not for navigation: check the trail&rsquo;s own maps '
+            f'and current conditions before you go.{report}</p>')
 
 
 def flatten(obj, prefix=""):
@@ -719,35 +1021,82 @@ def raw_record(rec):
 # The page -------------------------------------------------------------------
 
 def description(rec):
-    km = words.fmt_km(rec["length_km"])
-    mi = words.fmt_int(rec["derived"]["length_mi"])
-    where = ", ".join(words.region_name(c) for c in rec.get("regions", [])[:3])
-    if len(rec.get("regions", [])) > 3:
-        where += " and more"
-    kind = "person-defined route" if common.is_route(rec) else "long trail"
-    text = f"{rec['name']}: a {km} km ({mi} mi) {kind} in {where}. "
-    if common.has_line(rec):
-        text += "Download its track as GPX or GeoJSON, with the source, licence and credit."
+    one = hike.one_line(rec)
+    if one:
+        text = one
     else:
-        text += "Record only: " + common.absent_reason_short(rec)
+        km = words.fmt_km(rec["length_km"])
+        mi = words.fmt_int(rec["derived"]["length_mi"])
+        text = f"{rec['name']}: a {kind_word(rec)} of {km} km ({mi} mi) {place_text(rec)}."
+    text += (" Download its GPX here." if common.has_line(rec)
+             else " Where to get its GPX.")
     return text if len(text) <= 300 else text[:297].rsplit(" ", 1)[0] + "…"
 
 
-def render(rec, site):
-    """Return (title, description, body HTML, needs_map) for one record."""
+# Ways onward ------------------------------------------------------------------
+
+ONWARD_MAX = 6
+
+
+def _onward_list(title, recs, more_href, more_text, heading_id):
+    items = "".join(
+        f'<li><a href="{esc(common.trail_path(r))}">{common.name(r)}</a>'
+        f'<span class="onward__len">{words.length(r["length_km"], "short", r["derived"]["length_mi"])}'
+        f'{" · Route" if common.is_route(r) else ""}</span></li>'
+        for r in recs[:ONWARD_MAX])
+    more = (f'<p class="onward__more"><a href="{esc(more_href)}">{esc(more_text)}</a></p>'
+            if more_href else "")
+    return (f'<section class="onward__part" aria-labelledby="{heading_id}">'
+            f'<h3 id="{heading_id}">{esc(title)}</h3><ul class="onward__list">{items}</ul>{more}</section>')
+
+
+def onward(rec, records):
+    """Ways onward at the foot of the page: other trails in the same state or province
+    (up to three of them), and for a route, other routes by the same author."""
+    if not records:
+        return ""
+    others = [r for r in records if r["id"] != rec["id"]]
+    parts = []
+    for i, key in enumerate(k for k in facets.place_keys(rec) if k != facets.ACROSS_CANADA):
+        if i >= 3:
+            break
+        here = sorted((r for r in others if key in facets.place_keys(r)), key=lambda r: -r["length_km"])
+        if not here:
+            continue
+        name = facets.place_name(key)
+        more = (facets.place_path(key), f"All {len(here) + 1} trails in {name}") if len(here) > ONWARD_MAX else \
+            (facets.place_path(key), f"{name} on the map")
+        parts.append(_onward_list(f"More in {name}", here, more[0], more[1], f"onward-{key.lower()}"))
+    who = facets.author(rec)
+    if who:
+        same = sorted((r for r in others if facets.author(r) == who), key=lambda r: -r["length_km"])
+        if same:
+            parts.append(_onward_list(f"More routes by {who}", same, "/routes/", "Every route", "onward-author"))
+    if not parts:
+        return ""
+    return (f'<nav class="onward" aria-labelledby="onward-title"><h2 id="onward-title">Where next</h2>'
+            f'<div class="onward__grid">{"".join(parts)}</div></nav>')
+
+
+def render(rec, site, records=None):
+    """Return (title, description, body HTML, needs_map) for one trail.
+    records: every trail, for the ways onward at the foot (left out when None)."""
     has_map = common.has_line(rec)
-    aside = downloads_panel(rec) + guides_panel(rec) + links_panel(rec)
-    main = (route_block(rec) if common.is_route(rec) else "") + record_block(rec) + verification_block(rec) \
-        + source_block(rec) + osm_block(rec) + logo_block(rec) + correction_block(rec, site) + raw_record(rec)
+    aside = downloads_panel(rec) + guides_panel(rec)
+    aside_html = (f'<aside class="detail__aside" aria-label="{"Downloads" if has_map else "Where to get the route"}">'
+                  f'{aside}</aside>') if aside else ""
+    profile = elevation_figure(rec)
     body = f"""{page_head(rec)}
-<div class="container detail">
+<div class="container detail{"" if aside else " detail--no-aside"}{"" if has_map else " detail--no-map"}{" detail--with-profile" if profile else ""}">
+  {glance(rec)}
   {map_figure(rec) if has_map else empty_frame(rec)}
-  <aside class="detail__aside" aria-label="{"Downloads and links" if has_map else "Where to get it, and links"}">
-    {aside}
-  </aside>
-  <div class="detail__main">
-    {main}
-  </div>
+  {profile}
+  {aside_html}
+</div>
+<div class="container trail-more">
+  {onward(rec, records)}
+  {page_foot(rec, site)}
+  {about_data(rec, site)}
 </div>"""
     return rec["name"], description(rec), body, has_map
 

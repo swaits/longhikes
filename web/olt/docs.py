@@ -8,7 +8,7 @@ import collections
 import os
 import re
 
-from . import common, md, words
+from . import common, elevation, facets, md, words
 from .markup import Markup, esc
 
 REAL_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -178,7 +178,23 @@ def sources_page(records, site, repo_root):
         return Markup(f'{esc(words.label(words.LICENCES, k))} <code class="raw">{esc(k)}</code>')
 
     head = ('<thead><tr><th scope="col">{0}</th><th scope="col">Records</th>'
-            '<th scope="col">With a track</th><th scope="col">Trails and routes</th></tr></thead>')
+            '<th scope="col">With a track</th><th scope="col">Trails</th></tr></thead>')
+    elev_models = {}
+    for r in records:
+        src = (elevation.get(r) or {}).get("source") or {}
+        if src.get("attribution"):
+            key = (src.get("model", ""), src.get("url", ""), src["attribution"])
+            elev_models[key] = elev_models.get(key, 0) + 1
+    elev_credit = ""
+    if elev_models:
+        items = ""
+        for (model, url, attribution), n in sorted(elev_models.items()):
+            model_html = (f'<a href="{esc(url)}">{esc(model)}</a>' if url else esc(model)) if model else "The elevation model"
+            items += (f'<p>{model_html}, used for {n} trail{"s" if n != 1 else ""}.</p>'
+                      f'<p>{esc(attribution)}</p>')
+        elev_credit = (f'<div class="doc-block"><h3>Elevation model</h3>'
+                       f'<p>The elevation figures and profiles on the trail pages were computed '
+                       f'from each track and this model. Its credit, as it gives it:</p>{items}</div>')
     computed = f"""<div class="container section">
   <div class="section-head"><h2 id="sources-at-a-glance">At a glance</h2>
   <p>Counted from the {len(records)} records. Each trail page names its own source, licence and credit.
@@ -191,10 +207,11 @@ def sources_page(records, site, repo_root):
   <div class="doc-block"><h3>By track source</h3><div class="table-wrap"><table>
   {head.format("Track source")}
   <tbody>{group_rows(by_source, source_label)}</tbody></table></div></div>
+  {elev_credit}
 </div>"""
     doc_html = render_doc(read_doc(repo_root, "SOURCES.md"), site, drop_h1=True)
-    body = (f'<div class="page-head"><div class="container"><header class="titleblock">'
-            f'<div class="titleblock__text"><p class="kicker">Provenance</p><h1>Sources</h1>'
+    body = (f'<div class="page-head"><div class="container">{BREAD}<li aria-current="page">Sources</li></ol></nav><header class="titleblock">'
+            f'<div class="titleblock__text"><h1>Sources</h1>'
             f'<p class="page-head__lede">Where the tracks come from, and the terms each source states.</p>'
             f'</div></header></div></div>{computed}'
             f'<div class="container section"><div class="prose doc">{doc_html}</div></div>')
@@ -224,8 +241,8 @@ def logos_page(records, site, repo_root):
   <div><dt>Taken from</dt><dd>{src_html}</dd></div></dl></div>
 </li>"""
     counts = collections.Counter(r.get("shield", {}).get("status", "") for r in records)
-    body = f"""<div class="page-head"><div class="container"><header class="titleblock">
-  <div class="titleblock__text"><p class="kicker">Marks</p><h1>Logos</h1>
+    body = f"""<div class="page-head"><div class="container">{BREAD}<li aria-current="page">Logos</li></ol></nav><header class="titleblock">
+  <div class="titleblock__text"><h1>Logos</h1>
   <p class="page-head__lede">Logos are shown only to identify each trail. They belong to their holders.</p>
   </div></header></div></div>
 <div class="container section"><div class="prose doc">{notice_html}{f'<p><a href="{esc(site.removal_url)}">Ask for a track or logo to be removed, or its credit changed</a>.</p>' if site.is_github else ""}</div></div>
@@ -238,27 +255,121 @@ logo not found (<code class="raw">logo-not-found</code>).</p></div>"""
     return "Logos", "Trail logos, their holders, and how a holder can ask for removal.", Markup(body)
 
 
+BREAD = Markup('<nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/about/">About</a></li>')
+
+ABOUT_PARTS = (
+    # (anchor or path, title, what it is)
+    ("#what-this-is", "What this is", "A guide to the long trails, built from an open dataset"),
+    ("#how-trails-are-chosen", "How trails are chosen", "The rule, and what held, deferred and candidate mean"),
+    ("#when-a-gpx-is-included", "When a GPX is included", "Whose tracks may be passed on, and routes' authors' terms"),
+    ("/data/", "Data and downloads", "Every trail and track in bulk, the per-trail files and the licences"),
+    ("/sources/", "Sources and their terms", "Where each track comes from, and the terms each source states"),
+    ("/logos/", "Logos", "Each trail's logo, who holds it, and how to ask for removal"),
+    ("/data/schema/", "Record schema", "Every field of a trail's record (trail.toml) and what it means"),
+    ("/data/changelog/", "Changelog", "What changed, release by release"),
+    ("#correct-or-add", "Correct or add a trail", "Report a problem, suggest a trail, or edit the data"),
+)
+
+
+def _count_line(records, key, value):
+    return sum(1 for r in records if str(r.get(key, "")) == value)
+
+
 def about_page(records, site, repo_root):
-    """(title, description, body) for /about/."""
+    """(title, description, body) for /about/: the hub for the project and the dataset."""
     readme = read_doc(repo_root, "README.md")
-    main = link_requests(render_sections(readme, site,
-                                         ["What this is, and what it is not", "Inclusion rule",
-                                          "How to use it", "Report an error", "Licences", "Sources"]), site)
+    found = sections_map(readme)
+
+    def quoted(title, heading):
+        body = found.get(title)
+        if body is None:
+            return ""
+        return link_requests(render_doc(f"### {heading}\n\n{body}", site), site)
+
+    what = quoted("What this is, and what it is not", "The dataset’s own words")
+    rule = quoted("Inclusion rule", "The rule as the dataset states it")
+    rest = link_requests(render_sections(readme, site, ["How to use it", "Licences", "Report an error"]), site)
     contrib = render_doc(read_doc(repo_root, "CONTRIBUTING.md"), site, heading_offset=1)
-    extra = ""
+    cards = "".join(
+        f'<li><a href="{esc(href)}">{esc(title)}</a><small>{esc(what_)}</small></li>'
+        for href, title, what_ in ABOUT_PARTS)
+    n = len(records)
+    routes = sum(1 for r in records if common.is_route(r))
+    tiers = collections.Counter(r.get("tier", "") for r in records)
+    held = _count_line(records, "wave", "held")
+    tier_rows = "".join(
+        f'<tr><td>{esc(words.label(words.TIERS, t))} <code class="raw">{esc(t)}</code></td>'
+        f'<td>{esc(words.meaning(words.TIERS, t))}.</td><td class="num">{tiers[t]}</td></tr>'
+        for t in ("national", "regional", "short", "deferred", "candidate") if tiers[t])
+    policies = collections.Counter(common.policy(r) for r in records if common.is_route(r))
+    policy_rows = "".join(
+        f'<tr><td>{common.policy_chip(p)}</td><td>{esc(words.POLICIES[p][1])}. {esc(words.POLICIES[p][2])}</td>'
+        f'<td class="num">{policies[p]}</td></tr>'
+        for p in ("open", "sold", "withheld", "unclear") if policies[p])
+    lines = sum(1 for r in records if common.has_line(r))
+    forms = ""
     if site.repo_url and site.is_github:
-        extra = (f'<p><a href="{esc(site.correction_url())}">Report a problem</a> with a record, or '
-                 f'<a href="{esc(site.new_trail_url)}">suggest a trail</a> that is missing: '
-                 f'short forms, no git needed. Or fix or add a trail yourself in the source repository.</p>')
+        forms = (f'<ul class="linklist">'
+                 f'<li><a href="{esc(site.correction_url())}">Report a problem</a><small>A short form, no git needed. '
+                 f'Every trail page also has its own link, with the trail filled in.</small></li>'
+                 f'<li><a href="{esc(site.new_trail_url)}">Suggest a trail</a><small>A short form for a trail that is missing</small></li>'
+                 f'<li><a href="{esc(site.removal_url)}">Ask for a track or logo to be removed</a><small>For the holder of a track or a logo</small></li>'
+                 f'<li><a href="{esc(site.repo_url)}">Edit the data yourself</a><small>The source repository: one text file per trail</small></li>'
+                 f'</ul>')
     elif site.issues_url:
-        extra = f'<p><a href="{esc(site.issues_url)}">Open an issue</a> to report an error.</p>'
-    if site.repo_url:
-        extra += f'<p>Source repository: <a href="{esc(site.repo_url)}">{esc(site.repo_url)}</a>.</p>'
+        forms = f'<p><a href="{esc(site.issues_url)}">Open an issue</a> to report an error.</p>'
     body = f"""<div class="page-head"><div class="container"><header class="titleblock">
-  <div class="titleblock__text"><p class="kicker">The project</p><h1>About {esc(site.name)}</h1>
-  <p class="page-head__lede">{esc(site.tagline)}.</p></div></header></div></div>
-<div class="container section"><div class="prose doc">{main}{extra}{contrib}</div></div>"""
-    return "About", f"What {site.name} is and is not, the inclusion rule, licences and how to contribute.", Markup(body)
+  <div class="titleblock__text"><h1>About {esc(site.name)}</h1>
+  <p class="page-head__lede">{esc(site.tagline)}. Everything about the project and the data behind it is here.</p></div></header>
+  <nav class="about-hub" aria-label="About this site"><ul class="linklist about-hub__list">{cards}</ul></nav>
+</div></div>
+<div class="container section"><div class="prose doc">
+<section aria-labelledby="what-this-is"><h2 id="what-this-is">What this is</h2>
+<p>{esc(site.name)} lists {n} long-distance trails in the United States and Canada: where each one goes,
+how long it is and takes, when to walk it, and where to get its track. It is built, page by page, from an
+open dataset of one text file per trail. Everything a page says about a trail comes from that file.
+{f'The dataset is kept in a <a href="{esc(site.repo_url)}">public repository</a>, where anyone can propose a change.' if site.repo_url else ""}</p>
+<p>The dataset calls each trail a <em>record</em>, and the pages under About use its terms. The rest of the
+site calls them trails.</p>
+{what}
+</section>
+
+<section aria-labelledby="how-trails-are-chosen"><h2 id="how-trails-are-chosen">How trails are chosen</h2>
+<p>A trail is listed when it is a named, continuous walk, or a named loop, of at least 80&nbsp;km (50&nbsp;miles)
+in the United States or Canada. It is either an official trail, looked after as one trail by a land agency or
+a trail association, or a route: {esc(facets.ROUTE_DEFINITION[0].lower() + facets.ROUTE_DEFINITION[1:])}
+{routes} of the {n} trails are routes. Every National Scenic Trail is listed, and a few well-known multi-day
+trails between 60 and 80&nbsp;km.</p>
+<p>Each record has a <em>tier</em>, which says why it is listed. A record can also be <em>held</em>: listed,
+but with something about it not yet settled, which its note says.</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Tier</th><th scope="col">What it means</th><th scope="col">Records</th></tr></thead>
+<tbody>{tier_rows}<tr><td>Held <code class="raw">wave = "held"</code></td><td>{esc(words.meaning(words.WAVES, "held"))}. Any tier can be held.</td><td class="num">{held}</td></tr></tbody></table></div>
+<p>These states are for keeping the dataset. They are not shown when browsing trails, and they do not change
+what a trail page says about walking it. Each trail page shows its own under &ldquo;About this data&rdquo;.</p>
+{rule}
+</section>
+
+<section aria-labelledby="when-a-gpx-is-included"><h2 id="when-a-gpx-is-included">When a GPX is included</h2>
+<p>A track is included, as GPX and GeoJSON, only where its source&rsquo;s terms allow passing it on.
+{lines} of the {n} trails have one. Where there is none, the trail&rsquo;s page says why and where to look.
+Each track keeps its source&rsquo;s terms; the credit and licence are shown beside every map and download.</p>
+<p>A route&rsquo;s track follows its author&rsquo;s choice. The dataset records that choice as the route&rsquo;s
+<em>track policy</em>:</p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Track policy</th><th scope="col">What it means here</th><th scope="col">Routes</th></tr></thead>
+<tbody>{policy_rows}</tbody></table></div>
+<p>The author of a route who wants its record changed or removed can ask; see <a href="/logos/">Logos</a> for how,
+or use the links below.</p>
+</section>
+
+<section aria-labelledby="correct-or-add"><h2 id="correct-or-add">Correct or add a trail</h2>
+<p>Every trail page has a &ldquo;Report a problem&rdquo; link. Please say where a correction can be checked:
+a source page, a map, or a measured track.</p>
+{forms}
+{rest}
+{contrib}
+</section>
+</div></div>"""
+    return "About", f"What {site.name} is, how trails are chosen, the data and its sources, and how to correct or add a trail.", Markup(body)
 
 
 def _size(out_dir, relpath):
@@ -337,8 +448,8 @@ def data_page(records, site, repo_root, out_dir):
     ]
     lrow = "".join(f'<tr><td>{esc(a)}</td><td>{esc(b)}</td><td><a href="{esc(c)}">{esc(c)}</a></td></tr>'
                    for a, b, c in lic_rows)
-    body = f"""<div class="page-head"><div class="container"><header class="titleblock">
-  <div class="titleblock__text"><p class="kicker">Downloads</p><h1>Data</h1>
+    body = f"""<div class="page-head"><div class="container">{BREAD}<li aria-current="page">Data</li></ol></nav><header class="titleblock">
+  <div class="titleblock__text"><h1>Data and downloads</h1>
   <p class="page-head__lede">Bulk files, the stable per-trail URLs, and the licences.</p></div></header></div></div>
 <div class="container section">
   <div class="section-head"><h2>Bulk downloads</h2><p>{len(records)} records. Sizes are this build's.</p></div>
@@ -373,7 +484,7 @@ def data_page(records, site, repo_root, out_dir):
 def schema_page(site, repo_root):
     doc_html = render_doc(read_doc(repo_root, "docs/schema.md"), site, drop_h1=True)
     body = f"""<div class="page-head"><div class="container">
-  <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/data/">Data</a></li>
+  {BREAD}<li><a href="/data/">Data</a></li>
   <li aria-current="page">Record schema</li></ol></nav>
   <header class="titleblock"><div class="titleblock__text"><p class="kicker">Reference</p>
   <h1>Record schema</h1></div></header></div></div>
@@ -384,7 +495,7 @@ def schema_page(site, repo_root):
 def changelog_page(site, repo_root):
     doc_html = render_doc(read_doc(repo_root, "CHANGELOG.md"), site, drop_h1=True)
     body = f"""<div class="page-head"><div class="container">
-  <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/data/">Data</a></li>
+  {BREAD}<li><a href="/data/">Data</a></li>
   <li aria-current="page">Changelog</li></ol></nav>
   <header class="titleblock"><div class="titleblock__text"><p class="kicker">Reference</p>
   <h1>Changelog</h1></div></header></div></div>

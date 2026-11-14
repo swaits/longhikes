@@ -4,7 +4,7 @@
 For checking pages under the production Content-Security-Policy (Netlify
 applies _headers in production; plain `python3 -m http.server` does not).
 
-    python3 web/serve.py [--dir _site] [--port 8000]
+    python3 web/serve.py [--dir _site] [--port 8000] [--bind 127.0.0.1]
 """
 import argparse
 import functools
@@ -74,11 +74,13 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--dir", default=os.path.join(root, "_site"))
     ap.add_argument("--port", type=int, default=8000)
+    ap.add_argument("--bind", default="127.0.0.1",
+                    help="address to listen on; 0.0.0.0 lets other devices on the network reach it")
     args = ap.parse_args()
     Handler.rules = parse_headers(os.path.join(args.dir, "_headers"))
     handler = functools.partial(Handler, directory=args.dir)
-    with http.server.ThreadingHTTPServer(("127.0.0.1", args.port), handler) as httpd:
-        print(f"serving {args.dir} at http://127.0.0.1:{args.port}/ with {len(Handler.rules)} header rules")
+    with http.server.ThreadingHTTPServer((args.bind, args.port), handler) as httpd:
+        print(f"serving {args.dir} at http://{args.bind}:{args.port}/ with {len(Handler.rules)} header rules")
         httpd.serve_forever()
 
 

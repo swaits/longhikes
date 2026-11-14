@@ -8,6 +8,9 @@ writes:
     /trails/<id>/index.html     one page per record
     /trails/<id>/trail.toml     the raw record; release.txt beside it where the trail has one
     /trails/<id>/shield-thumb.png  the list-size copy of a PNG logo (olt/thumbs.py)
+    /regions/, /regions/<slug>/ Places: the hub and one page per state or province
+    /lists/, /lists/<key>/      the lists shown today (olt/browse.py); /routes/ is the Routes list
+    /about/ and the pages under it: /data/, /data/schema/, /data/changelog/, /sources/, /logos/
     /404.html                   not found
 
 Adding a page elsewhere (regions, sources, ...): build its body as HTML,
@@ -18,7 +21,7 @@ import json
 import os
 import shutil
 
-from . import docs, home, layout, regions, seo, site as site_settings, thumbs, trail
+from . import browse, docs, home, layout, regions, seo, site as site_settings, thumbs, trail
 
 WEB_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS_DIR = os.path.join(WEB_DIR, "assets")
@@ -55,14 +58,14 @@ def copy_record_files(rec, out_dir, repo_root):
 
 def not_found_page(site):
     body = layout.page_head("Page not found", kicker="404",
-                            lede="There is no page at this address. Search the trails and routes by name instead.")
+                            lede="There is no page at this address. Search the trails by name instead.")
     body += """<div class="container section">
   <form class="notfound-search" action="/" method="get" role="search">
-    <label class="field__label" for="notfound-q">Search the trails and routes</label>
-    <input class="input" id="notfound-q" name="q" type="search" placeholder="Name, abbreviation or creator" autocomplete="off" spellcheck="false">
+    <label class="field__label" for="notfound-q">Search the trails</label>
+    <input class="input" id="notfound-q" name="q" type="search" placeholder="Name, abbreviation or author of a route" autocomplete="off" spellcheck="false">
     <button class="button button--primary" type="submit">Search</button>
   </form>
-  <p class="prose"><a href="/">Find a trail</a> on the home page, or browse <a href="/regions/">by region</a>.</p>
+  <p class="prose"><a href="/">Find a trail</a> on the home page, or browse by <a href="/regions/">place</a>.</p>
 </div>"""
     return layout.layout("Page not found", body, path="/404.html", site=site)
 
@@ -78,7 +81,7 @@ def render_site(records, out_dir, repo_root, site=None):
     for rec in records:
         copy_record_files(rec, out_dir, repo_root)
         thumbs.prepare(rec, out_dir, repo_root)
-        title, description, body, needs_map = trail.render(rec, site)
+        title, description, body, needs_map = trail.render(rec, site, records)
         path = f"/trails/{rec['id']}/"
         layout.write_page(out_dir, path, layout.layout(title, body, path=path, description=description,
                                                       maps=needs_map, site=site))
@@ -104,8 +107,19 @@ def render_site(records, out_dir, repo_root, site=None):
         path = f"/regions/{slug}/"
         region_paths.append(path)
         add(path, t, d, b, maps=needs_map)
-    t, d, b = regions.routes_page(records, site, repo_root)
-    add("/routes/", t, d, b)
+    list_paths = []
+    shown = browse.shown(records)
+    for lst, recs in shown:
+        if lst.key == "routes":
+            continue  # /routes/ below, built whether or not the list is shown
+        t, d, b, needs_map = regions.list_page(lst, recs, len(records), site)
+        path = browse.path(lst)
+        list_paths.append(path)
+        add(path, t, d, b, maps=needs_map)
+    t, d, b = regions.lists_index_page(records, site)
+    add("/lists/", t, d, b)
+    t, d, b, needs_map = regions.routes_page(records, site, repo_root)
+    add("/routes/", t, d, b, maps=needs_map)
     t, d, b = docs.sources_page(records, site, repo_root)
     add("/sources/", t, d, b)
     t, d, b = docs.logos_page(records, site, repo_root)
@@ -119,6 +133,6 @@ def render_site(records, out_dir, repo_root, site=None):
     t, d, b = docs.changelog_page(site, repo_root)
     add("/data/changelog/", t, d, b)
     docs.copy_licences(out_dir, repo_root)
-    seo.write_seo_files(out_dir, seo.all_paths(records, region_paths), site)
-    print(f"pages written {pages}: {len(records)} trail pages, home, 404, regions, routes, docs")
+    seo.write_seo_files(out_dir, seo.all_paths(records, region_paths + ["/lists/"] + list_paths), site)
+    print(f"pages written {pages}: {len(records)} trail pages, home, 404, places, lists, about")
     return pages

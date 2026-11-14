@@ -1,180 +1,137 @@
-"""Region pages (/regions/, /regions/<slug>/) and the routes page (/routes/).
+"""Places (/regions/, /regions/<state or province>/), lists (/lists/, /lists/<key>/) and
+the Routes list (/routes/).
 
-Both list records with home.results(), the same list the home page shows.
+Every page lists trails with home.results(), the same rows the home page shows.
+The section is called Places; its pages keep their /regions/ URLs.
 """
 import collections
 
-from . import common, docs, home, words
+from . import browse, common, facets, home, words
 from .markup import Markup, esc
-
-# The /regions/ anchor and the finder's region key for records that name all of Canada.
-CANADA_WIDE_ID = "canada-wide"
-CANADA_WIDE_KEY = words.region_key(words.ALL_CANADA, "CA")  # "CA-*"
-
-
-def region_country(code):
-    return words.region_country(code) if code != words.ALL_CANADA else ""
-
-
-def region_slug(code, fallback_country=""):
-    return words.region_key(code, region_country(code) or fallback_country).lower()
-
-
-def region_path(code, fallback_country=""):
-    return f"/regions/{region_slug(code, fallback_country)}/"
 
 
 def collect_regions(records):
-    """slug -> {code, country, name, records}; plus Canada-wide records separately."""
+    """slug -> {key, code, country, name, group, records} for every state and province a
+    trail names; plus the trails that name all of Canada, separately."""
     by_slug = {}
-    canada_wide = []
+    across = []
     for r in records:
-        for code in r.get("regions", []):
-            if code == words.ALL_CANADA:
-                canada_wide.append(r)
+        for key in facets.place_keys(r):
+            if key == facets.ACROSS_CANADA:
+                across.append(r)
                 continue
-            country = region_country(code) or r["country"]
-            slug = region_slug(code, r["country"])
-            info = by_slug.setdefault(slug, {"code": code, "country": country,
-                                             "name": words.region_name(code), "records": []})
+            slug = key.lower()
+            country, code = key.split("-", 1)
+            info = by_slug.setdefault(slug, {"key": key, "code": code, "country": country,
+                                             "name": facets.place_name(key),
+                                             "group": facets.GROUP_OF.get(key, ""), "records": []})
             if all(x["id"] != r["id"] for x in info["records"]):
                 info["records"].append(r)
     for info in by_slug.values():
         info["records"].sort(key=home.sort_name)
-    canada_wide.sort(key=home.sort_name)
-    return by_slug, canada_wide
+    across.sort(key=home.sort_name)
+    return by_slug, across
 
 
-def country_records(records, country):
-    """Every record that touches a country: listed on one of its region pages, or Canada-wide."""
-    return [r for r in records if country in common.countries(r)]
+def group_records(records, group):
+    return [r for r in records if group in facets.place_groups(r)]
 
 
-def _bbox_attr(recs):
-    boxes = [r["derived"]["bbox"] for r in recs if r["derived"].get("bbox")]
-    if not boxes:
-        return ""
-    box = [min(b[0] for b in boxes), min(b[1] for b in boxes),
-           max(b[2] for b in boxes), max(b[3] for b in boxes)]
-    return f' data-bbox="{",".join(f"{v:.4f}" for v in box)}"'
+def _gpx_count(recs):
+    return sum(1 for r in recs if facets.gpx_here(r))
 
 
-def _region_map(recs, title):
-    ids = [r["id"] for r in recs if "line" in r["derived"]["files"]]
-    if not ids:
-        return ('<p class="note">No downloadable track in this region yet, so there is '
-                'nothing to draw. The records below say why.</p>')
-    return f"""<figure class="mapfig" data-map="overview" data-src="/data/overview.geojson" data-ids="{esc(" ".join(ids))}"{_bbox_attr(recs)}>
-  <div class="mapfig__frame">
-    <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
-    <div class="map" role="region" aria-label="Map of tracks in {esc(title)}">
-      <div class="map__fallback"></div><div class="map__canvas"></div>
-      <p class="map__status" role="status">The map needs JavaScript. The list below has every record.</p>
-    </div>
-    <span class="mapfig__corner mapfig__corner--se" aria-hidden="true"></span>
-  </div>
-  <figcaption class="mapfig__caption">
-    <ul class="legend" aria-label="Legend"><li>{common.SWATCH_LINE}Designated trail</li>
-    <li>{common.SWATCH_ROUTE}Person-defined route</li></ul>
-    <p>{len(ids)} track{"s" if len(ids) != 1 else ""} in this region, simplified for display. Select a trail on the map for its name.</p>
-  </figcaption>
-</figure>"""
+def _plural(n, word="trail"):
+    return f"{n} {word}{'' if n == 1 else 's'}"
 
 
 def regions_index_page(records, site):
-    by_slug, canada_wide = collect_regions(records)
+    """(title, description, body) for /regions/: the Places hub."""
+    by_slug, across = collect_regions(records)
     blocks = ""
-    tally = '<div><dt>Records</dt><dd>' + str(len(records)) + '</dd></div>'
-    for country in ("US", "CA"):
-        n_country = len(country_records(records, country))
-        tally += (f'<div><dt><a href="#{esc(country.lower())}">{esc(words.COUNTRIES[country])}</a></dt>'
-                  f'<dd data-country-count="{esc(country)}">{n_country}</dd></div>')
-        infos = sorted((i for i in by_slug.values() if i["country"] == country),
-                       key=lambda i: i["name"].lower())
-        rows = ""
-        for info in infos:
-            lines = sum(1 for r in info["records"] if common.has_line(r))
-            rows += (f'<tr><td><a href="{esc(region_path(info["code"], country))}">{esc(info["name"])}</a> '
-                     f'<code class="raw">{esc(info["code"])}</code></td>'
-                     f'<td class="num">{len(info["records"])}</td><td class="num">{lines}</td></tr>')
-        extra = ""
-        if country == "CA" and canada_wide:
-            links = ", ".join(f'<a href="{esc(common.trail_path(r))}">{common.name(r)}</a>' for r in canada_wide)
-            extra = (f'<div class="doc-block" id="{CANADA_WIDE_ID}"><h3>All provinces and territories</h3>'
-                     f'<p class="prose">These records name <em>all provinces and territories</em> rather than '
-                     f'one province, so they have no single region page and are not counted under each '
-                     f'province: {links}. <a href="/?region={esc(CANADA_WIDE_KEY)}">Open in the trail finder</a>.</p></div>')
-        unit = "state" if country == "US" else "province or territory, or all of them"
-        blocks += f"""<div class="doc-block"><h2 id="{esc(country.lower())}">{esc(words.COUNTRIES[country])}</h2>
-  <p class="prose">{n_country} records name at least one {unit}. Each is counted once, whichever
-  country it is filed under.</p>
-  <div class="table-wrap"><table><thead><tr><th scope="col">State, province or territory</th><th scope="col">Records</th><th scope="col">With a downloadable track</th></tr></thead>
-  <tbody>{rows}</tbody></table></div>{extra}</div>"""
+    jump = []
+    for g, name, keys in facets.PLACE_GROUPS:
+        infos = sorted((by_slug[k.lower()] for k in keys if k.lower() in by_slug), key=lambda i: i["name"])
+        if not infos:
+            continue
+        recs = group_records(records, g)
+        jump.append(f'<li><a href="#{esc(g)}">{esc(name)} <span class="chips__n">{len(recs)}</span></a></li>')
+        rows = "".join(
+            f'<li><a href="{esc(facets.place_path(i["key"]))}">{esc(i["name"])}</a>'
+            f'<span class="places__n">{_plural(len(i["records"]))}</span></li>'
+            for i in infos)
+        blocks += f"""<section class="places__group" aria-labelledby="{esc(g)}">
+  <h2 id="{esc(g)}">{esc(name)}</h2>
+  <p class="places__sum">{_plural(len(recs))}, {_gpx_count(recs)} with a GPX here.
+  <a href="/?where=g:{esc(g)}">See them with the filters</a></p>
+  <ul class="places__list">{rows}</ul>
+</section>"""
+    if across:
+        links = ", ".join(f'<a href="{esc(common.trail_path(r))}">{common.name(r)}</a>' for r in across)
+        jump.append(f'<li><a href="#across-canada">{facets.ACROSS_CANADA_NAME} <span class="chips__n">{len(across)}</span></a></li>')
+        blocks += f"""<section class="places__group" aria-labelledby="across-canada">
+  <h2 id="across-canada"><span id="canada-wide"></span>{facets.ACROSS_CANADA_NAME}</h2>
+  <p class="places__sum">{_plural(len(across))} that {"crosses" if len(across) == 1 else "cross"} the whole country rather than one province: {links}.
+  {"It is" if len(across) == 1 else "They are"} counted in every Canadian group, and on no single province&rsquo;s page.</p>
+</section>"""
+    n_us = sum(1 for r in records if "US" in common.countries(r))
+    n_ca = sum(1 for r in records if "CA" in common.countries(r))
     body = f"""<div class="page-head"><div class="container"><header class="titleblock">
-  <div class="titleblock__text"><p class="kicker">Browse</p><h1>Regions</h1>
-  <p class="page-head__lede">Every state, province and territory a record names. A record that
-  crosses several regions appears on each region's page, under the country that region belongs to.</p>
+  <div class="titleblock__text"><h1>Places</h1>
+  <p class="page-head__lede">The {len(records)} trails by state and province, grouped into parts of the
+  United States ({n_us}) and Canada ({n_ca}). A trail that crosses several states is on each one&rsquo;s page.</p>
   </div></header>
-  <dl class="tally">{tally}</dl></div></div>
-<div class="container section">{blocks}</div>"""
-    return "Regions", "Long trails by state, province and territory, with counts of records and tracks.", Markup(body)
+  <ul class="chips" aria-label="Jump to a part of the country">{"".join(jump)}</ul></div></div>
+<div class="container section places">{blocks}</div>"""
+    return "Places", "Long trails by state and province, grouped into parts of the United States and Canada.", Markup(body)
 
 
 def region_page(slug, records, site):
+    """(title, description, body, needs_map) for /regions/<slug>/: the trails in one state or province."""
     by_slug, _ = collect_regions(records)
     info = by_slug[slug]
     recs = info["records"]
-    lines = sum(1 for r in recs if common.has_line(r))
-    key = words.region_key(info["code"], info["country"])
-    same = sorted((s for s, i in by_slug.items() if i["country"] == info["country"]),
-                  key=lambda s: by_slug[s]["name"].lower())
-    idx = same.index(slug)
-    neighbours = []
-    if idx > 0:
-        p = by_slug[same[idx - 1]]
-        neighbours.append(f'<a href="{esc(region_path(p["code"], p["country"]))}">← {esc(p["name"])}</a>')
-    if idx + 1 < len(same):
-        n = by_slug[same[idx + 1]]
-        neighbours.append(f'<a href="{esc(region_path(n["code"], n["country"]))}">{esc(n["name"])} →</a>')
-    nav = " · ".join(neighbours)
-    with_line = (f'<a href="/?region={esc(key)}&amp;line=1">With a track</a>' if lines else "With a track")
+    key = info["key"]
+    group = info["group"]
+    group_name = facets.GROUP_NAME.get(group, "")
+    country = words.COUNTRIES[info["country"]]
+    n_gpx = _gpx_count(recs)
+    crumbs = '<li><a href="/regions/">Places</a></li>'
+    if group:
+        crumbs += f'<li><a href="/regions/#{esc(group)}">{esc(group_name)}</a></li>'
+    siblings = []
+    if group:
+        _, _, keys = next(x for x in facets.PLACE_GROUPS if x[0] == group)
+        for k in sorted(keys, key=facets.place_name):
+            if k != key and k.lower() in by_slug:
+                siblings.append(f'<a href="{esc(facets.place_path(k))}">{esc(facets.place_name(k))}</a>')
+    nav = (f'<nav class="region-nav" aria-label="Elsewhere in {esc(group_name)}">Elsewhere in {esc(group_name)}: '
+           f'{" · ".join(siblings)}</nav>') if siblings else ""
     body = f"""<div class="page-head"><div class="container">
-  <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/regions/">Regions</a></li>
-  <li><a href="/regions/#{esc(info["country"].lower())}">{esc(words.COUNTRIES[info["country"]])}</a></li>
-  <li aria-current="page">{esc(info["name"])}</li></ol></nav>
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{crumbs}<li aria-current="page">{esc(info["name"])}</li></ol></nav>
   <header class="titleblock"><div class="titleblock__text">
-  <p class="kicker">{esc(words.COUNTRIES[info["country"]])} · {esc(info["code"])}</p>
+  <p class="kicker">{esc(group_name + " · " if group_name else "")}{esc(country)}</p>
   <h1>{esc(info["name"])}</h1>
-  <p class="page-head__lede">{len(recs)} record{"s" if len(recs) != 1 else ""}, {lines} with a downloadable track.</p>
+  <p class="page-head__lede">{_plural(len(recs))} in {esc(info["name"])}, {n_gpx} with a GPX here.
+  <a href="/?where={esc(key)}">Narrow them with the filters</a>.</p>
   </div></header>
-  <dl class="tally"><div><dt>Records</dt><dd>{len(recs)}</dd></div>
-  <div><dt>{common.SWATCH_LINE}{with_line}</dt><dd>{lines}</dd></div>
-  <div><dt>{common.SWATCH_NONE}Records only</dt><dd>{len(recs) - lines}</dd></div></dl>
 </div></div>
-<div class="container section">
-  <div class="section-head"><h2>Tracks in {esc(info["name"])}</h2><p>Only tracks in this region are drawn.</p></div>
-  {_region_map(recs, info["name"])}
-</div>
-<div class="container section">
-  <div class="section-head"><h2>Trails and routes in {esc(info["name"])}</h2>
-  <p><a href="/?region={esc(key)}">Open these in the trail finder</a> to search and filter them.</p></div>
+<div class="container section place">
+  {home.overview_map(recs, f"Map of the trails in {info['name']}")}
   {home.results(recs)}
-  <nav class="region-nav" aria-label="Neighbouring regions"><a href="/regions/">All regions</a>{f' · {nav}' if nav else ""}</nav>
+  {nav}
 </div>"""
     title = info["name"]
-    return title, f"{len(recs)} long trails and routes in {info['name']}, {words.COUNTRIES[info['country']]}.", Markup(body), bool(lines)
+    desc = f"{_plural(len(recs))} in {info['name']}, {country}: length, time and where to get the GPX."
+    return title, desc, Markup(body), n_gpx >= home.MAP_MIN
 
 
 def route_guides(rec):
-    """A route's guides, placed last in its list row on /routes/."""
+    """A route's guides, compact, placed last in its row on /routes/."""
     items = ""
     for g in rec.get("guide", []):
         access = g.get("access", "")
-        price = ""
-        if g.get("price"):
-            price = f' · {esc(g["price"])}'
-            if g.get("price_checked"):
-                price += f' (read {esc(g["price_checked"])})'
+        price = f' · {esc(g["price"])}' if g.get("price") else ""
         fmt = f' · {esc(g["format"])}' if g.get("format") else ""
         items += (f'<li><a href="{esc(g.get("url", ""))}">{esc(g.get("title", ""))}</a>'
                   f' <span class="access access--{esc(access)}">{esc(words.ACCESS.get(access, access))}</span>'
@@ -185,36 +142,84 @@ def route_guides(rec):
             f'<ul class="route-guides">{items}</ul></div>')
 
 
-def routes_page(records, site, repo_root):
-    """(title, description, body) for /routes/."""
-    readme = docs.sections_map(docs.read_doc(repo_root, "README.md"))
-    inc = readme.get("Inclusion rule", "")
-    paras = [p for p in inc.split("\n\n") if "Person-defined rout" in p and "at the same 50-mile floor" in p]
-    bullets = [p for p in inc.split("\n\n") if "The creator sells" in p]
-    explainer = "\n\n".join(paras + bullets) or readme.get("Person-defined routes", "")
-    intro = docs.render_doc("## What a person-defined route is\n\n" + explainer, site)
-
-    policy_items = ""
-    for key in ("open", "sold", "withheld", "unclear"):
-        lab, short, rule = words.POLICIES[key]
-        policy_items += f'<li>{common.policy_chip(key)}<span>{esc(short)}. {esc(rule)}</span></li>'
-    policies = Markup(f'<ol class="policy-scale" aria-label="The four track policies">{policy_items}</ol>')
-
-    routes = [r for r in records if common.is_route(r)]
-    by_creator = collections.defaultdict(list)
+def routes_page(records, site, repo_root=None):
+    """(title, description, body, needs_map) for /routes/: the Routes list."""
+    routes = [r for r in records if facets.kind(r) == "route"]
+    by_author = collections.defaultdict(list)
     for r in routes:
-        by_creator[r.get("route", {}).get("creator", "") or "Unknown"].append(r)
-    groups = [(esc(creator), sorted(by_creator[creator], key=home.sort_name), route_guides)
-              for creator in sorted(by_creator, key=str.lower)]
-
-    body = f"""<div class="page-head"><div class="container"><header class="titleblock">
-  <div class="titleblock__text"><p class="kicker">Person-defined routes</p><h1>Routes</h1>
-  <p class="page-head__lede">{len(routes)} routes worked out and published by a person or a small group.</p>
+        by_author[facets.author(r) or "Author not named"].append(r)
+    groups = [(f"By {esc(a)}", sorted(by_author[a], key=home.sort_name), route_guides)
+              for a in sorted(by_author, key=str.lower)]
+    n_gpx = _gpx_count(routes)
+    body = f"""<div class="page-head"><div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Trails</a></li>
+  <li><a href="/lists/">Lists</a></li><li aria-current="page">Routes</li></ol></nav>
+  <header class="titleblock"><div class="titleblock__text"><p class="kicker">A list</p><h1>Routes</h1>
+  <p class="page-head__lede" id="what-is-a-route">{esc(facets.ROUTE_DEFINITION)}</p>
   </div></header></div></div>
-<div class="container section"><div class="prose doc">{intro}</div>
-<h2 class="doc-block">The four track policies</h2>{policies}
-<p class="prose"><a href="/?kind=route">See the routes in the trail finder</a>, or read a route below.</p></div>
-<div class="container section"><div class="section-head"><h2>Routes by creator</h2>
-<p>Each route links to its record; its guides link out to the creator's or publisher's page.</p></div>
-{home.results(groups=groups)}</div>"""
-    return "Routes", f"{len(routes)} person-defined routes by creator, with track policies and guides.", Markup(body)
+<div class="container section">
+  <div class="prose">
+  <p>Every other trail on this site is an official trail. Being a route says who looks after it, not
+  how rough it is: some routes are on maintained trail all the way, and some official trails have
+  long road walks. The Walking line on each trail&rsquo;s page says what the walking is.</p>
+  <p>{_plural(len(routes), "route")}, by {len(by_author)} authors. {n_gpx} {"has" if n_gpx == 1 else "have"} a GPX here; for the rest,
+  each route&rsquo;s page says whether its author gives the track away, sells it, or does not publish it.
+  <a href="/?kind=route">Narrow them with the filters</a>.</p>
+  </div>
+</div>
+<div class="container section">
+  {home.overview_map(routes, "Map of the routes with a GPX here")}
+  {home.results(groups=groups, routes_list=True)}
+  <nav class="region-nav" aria-label="Other lists"><a href="/lists/">All lists</a> · <a href="/">Every trail</a></nav>
+</div>"""
+    return "Routes", f"{_plural(len(routes), 'route')} in the United States and Canada, by author, with their guides.", Markup(body), n_gpx >= home.MAP_MIN
+
+
+def list_page(lst, recs, total, site):
+    """(title, description, body, needs_map) for /lists/<key>/."""
+    n_gpx = _gpx_count(recs)
+    rule = (f"Lists are picked out by rule from each trail&rsquo;s facts, so they change as trails are added "
+            f"or corrected. A list is shown when it has at least {browse.MIN_SIZE} trails and no more than "
+            f"{round(browse.MAX_SHARE * 100)}% of the {total}.")
+    body = f"""<div class="page-head"><div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Trails</a></li>
+  <li><a href="/lists/">Lists</a></li><li aria-current="page">{esc(lst.title)}</li></ol></nav>
+  <header class="titleblock"><div class="titleblock__text">
+  <p class="kicker">A list</p>
+  <h1>{esc(lst.title)}</h1>
+  <p class="page-head__lede">{esc(lst.blurb)} {_plural(len(recs))}, {n_gpx} with a GPX here.</p>
+  </div></header>
+</div></div>
+<div class="container section">
+  {home.overview_map(recs, f"Map of the trails in the list {lst.title}")}
+  {home.results(recs)}
+  <p class="finder__foot">{rule}</p>
+  <nav class="region-nav" aria-label="Other lists"><a href="/lists/">All lists</a> · <a href="/">Every trail</a></nav>
+</div>"""
+    return lst.title, f"{lst.title}: {lst.blurb}", Markup(body), n_gpx >= home.MAP_MIN
+
+
+def lists_index_page(records, site):
+    """(title, description, body) for /lists/: every list shown today, with a few of its trails."""
+    cards = []
+    for lst, recs in browse.shown(records):
+        sample = "".join(
+            f'<li><a href="{esc(common.trail_path(r))}">{common.name(r)}</a> '
+            f'<span class="shelf__len">{words.length(r["length_km"], "short", r["derived"]["length_mi"])}</span></li>'
+            for r in recs[:4])
+        cards.append(f"""<li class="shelf">
+        <h2 class="shelf__title"><a href="{esc(browse.path(lst))}">{esc(lst.title)}</a> <span class="shelf__count">{len(recs)}</span></h2>
+        <p class="shelf__blurb">{esc(lst.blurb)}</p>
+        <ul class="shelf__items">{sample}</ul>
+        <p class="shelf__more"><a href="{esc(browse.path(lst))}">See all {len(recs)}<span class="vh">: {esc(lst.title)}</span></a></p>
+      </li>""")
+    body = f"""<div class="page-head"><div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Trails</a></li><li aria-current="page">Lists</li></ol></nav>
+  <header class="titleblock"><div class="titleblock__text"><h1>Lists</h1>
+  <p class="page-head__lede">Ready-made selections of the {len(records)} trails, a way to start. Each is
+  picked out by rule from what each trail&rsquo;s page says, so a list grows as trails are added.</p>
+  </div></header></div></div>
+<div class="container section"><ul class="shelves">{"".join(cards)}</ul>
+<p class="finder__foot">A list is shown when it has at least {browse.MIN_SIZE} trails and no more than
+{round(browse.MAX_SHARE * 100)}% of all of them. To combine conditions, use the filters on <a href="/">the home page</a>.</p></div>"""
+    return "Lists", "Ready-made lists of long trails: National Scenic Trails, routes, loops, the longest and more.", Markup(body)

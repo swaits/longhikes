@@ -2,6 +2,8 @@
 import os
 import tomllib
 
+from . import elevation
+
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SHIELD_NAMES = ("shield.svg", "shield.png")
 
@@ -50,6 +52,7 @@ def load_record(root, tid):
         "has_line": bool(rec.get("source", {}).get("line_file")),
         "length_mi": int(round(length_km / 1.609344)),
         "files": find_files(root, tid, rec),
+        "elevation": elevation.load_file(root, tid),
         "status": trail_status(rec),
     }
     return rec

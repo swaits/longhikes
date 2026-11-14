@@ -129,39 +129,15 @@ def absent_reason_short(rec):
     return re.sub(r"^No (?:line|track) is included\.\s*", "", reason) or reason
 
 
-def regions_html(rec, linked=False):
-    """Region codes with their names; optionally each linked to the filtered list."""
-    parts = []
-    for code in rec.get("regions", []):
-        name = words.region_name(code)
-        if code == words.ALL_CANADA:
-            text = Markup(esc(name))
-            href = "/regions/#canada-wide"
-        else:
-            text = Markup(f'<abbr title="{esc(name)}">{esc(code)}</abbr>')
-            href = f"/regions/{words.region_key(code, rec['country']).lower()}/"
-        if linked:
-            text = Markup(f'<a href="{esc(href)}">{text}</a>')
-        parts.append(text)
-    return Markup(" ".join(parts))
-
-
-def tags(rec, with_policy=True):
-    """Kind, tier and listing tags, and (with_policy) the track policy of a route."""
+def badges(rec, *, route_tag=True):
+    """The badges a hiker needs on a row or a trail page: Route (linked to what a route is)
+    and National Scenic Trail. An official trail has no badge for its kind.
+    route_tag=False leaves the Route badge out (the Routes list, where every row is one)."""
     out = []
-    if is_route(rec):
-        out.append('<span class="tag tag--route">Person-defined route</span>')
-    elif rec.get("tier") == "national":
+    if route_tag and is_route(rec):
+        out.append('<a class="tag tag--route" href="/routes/">Route</a>')
+    if rec.get("tier") == "national":
         out.append('<span class="tag tag--nst">National Scenic Trail</span>')
-    else:
-        out.append('<span class="tag">Designated trail</span>')
-    tier = rec.get("tier")
-    if tier in ("short", "deferred", "candidate"):
-        out.append(f'<span class="tag tag--quiet">{esc(words.label(words.TIERS, tier))}</span>')
-    if str(rec.get("wave")) == "held":
-        out.append('<span class="tag tag--quiet">Held</span>')
-    if is_route(rec) and with_policy:
-        out.append(policy_chip(policy(rec)))
     return Markup("".join(out))
 
 

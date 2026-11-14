@@ -1,0 +1,310 @@
+"""The attributes a hiker sees for a trail, each with one name used on every page.
+
+    Where    the states and provinces, grouped into places (PLACE_GROUPS)
+    Length   length_km
+    Time     [hike].days as a source states it, else an estimate from the length
+    Season   [hike].months (the phrase on the trail page is [hike].season)
+    Terrain  [hike].terrain
+    Kind     official trail, or route (the [route] table)
+    Walking  [hike].travel
+    Shape    [hike].shape
+    GPX      one status per trail, from the track and, for a route, its author's terms
+    Designation  National Scenic Trail (tier "national"), shown as a badge
+
+Every value here is computed from the records by rule. Nothing names a trail.
+The dataset's own terms (tier, wave, source status, track policy) are not
+attributes a hiker filters by; they stay in "About this data" on each trail
+page and on the pages under About.
+"""
+import math
+
+from . import common, hike, words
+
+# Facet names, exactly as every page shows them.
+WHERE, LENGTH, TIME, SEASON, TERRAIN, KIND, WALKING, SHAPE, GPX = (
+    "Where", "Length", "Time", "Season", "Terrain", "Kind", "Walking", "Shape", "GPX")
+
+# A facet a trail may have no value for is offered as a filter only when at
+# least this share of all trails has a value.
+COVERAGE_MIN = 1 / 3
+
+# Where ----------------------------------------------------------------------
+
+# (key, name, [region keys]). Every state, province and territory code is in
+# exactly one group (test_facets checks it against words.US_STATES and
+# words.CA_PROVINCES, and against every code the records use).
+PLACE_GROUPS = (
+    ("west-coast", "West Coast", ["US-WA", "US-OR", "US-CA", "US-HI"]),
+    ("mountain-west", "Mountain West", ["US-ID", "US-MT", "US-WY", "US-NV", "US-UT", "US-CO"]),
+    ("southwest", "Southwest", ["US-AZ", "US-NM", "US-TX", "US-OK"]),
+    ("midwest", "Midwest", ["US-ND", "US-SD", "US-NE", "US-KS", "US-MN", "US-IA", "US-MO",
+                            "US-WI", "US-IL", "US-MI", "US-IN", "US-OH"]),
+    ("south", "South", ["US-AR", "US-LA", "US-MS", "US-AL", "US-TN", "US-KY", "US-GA",
+                        "US-FL", "US-SC", "US-NC"]),
+    ("mid-atlantic", "Mid-Atlantic", ["US-NY", "US-NJ", "US-PA", "US-DE", "US-MD", "US-DC",
+                                      "US-VA", "US-WV"]),
+    ("new-england", "New England", ["US-CT", "US-RI", "US-MA", "US-VT", "US-NH", "US-ME"]),
+    ("north", "Alaska and the North", ["US-AK", "CA-YT", "CA-NT", "CA-NU"]),
+    ("western-canada", "Western Canada", ["CA-BC", "CA-AB", "CA-SK", "CA-MB"]),
+    ("central-canada", "Central Canada", ["CA-ON", "CA-QC"]),
+    ("atlantic-canada", "Atlantic Canada", ["CA-NB", "CA-NS", "CA-PE", "CA-NL"]),
+)
+GROUP_OF = {key: g for g, _, keys in PLACE_GROUPS for key in keys}
+GROUP_NAME = {g: name for g, name, _ in PLACE_GROUPS}
+# A trail that names "all provinces and territories" crosses Canada: it is in
+# every Canadian group, but on no single province's page.
+ACROSS_CANADA = "CA-*"
+ACROSS_CANADA_NAME = "Across Canada"
+
+
+def place_keys(rec):
+    """The trail's states and provinces as keys ("US-AZ", "CA-ON", "CA-*"), in record order."""
+    out = []
+    for code in rec.get("regions", []):
+        key = words.region_key(code, rec["country"])
+        if key not in out:
+            out.append(key)
+    return out
+
+
+def place_groups(rec):
+    """The place groups a trail is in, in PLACE_GROUPS order."""
+    keys = set(place_keys(rec))
+    found = {GROUP_OF[k] for k in keys if k in GROUP_OF}
+    if ACROSS_CANADA in keys:
+        found |= {GROUP_OF[k] for k in GROUP_OF if k.startswith("CA-")}
+    return [g for g, _, _ in PLACE_GROUPS if g in found]
+
+
+def place_name(key):
+    """"US-AZ" -> "Arizona"; "CA-*" -> "Across Canada"."""
+    if key == ACROSS_CANADA:
+        return ACROSS_CANADA_NAME
+    return words.region_name(key.split("-", 1)[1])
+
+
+def place_path(key):
+    """The page of a state or province (the /regions/ URLs are kept)."""
+    if key == ACROSS_CANADA:
+        return "/regions/#across-canada"
+    return f"/regions/{key.lower()}/"
+
+
+def where_tokens(rec):
+    """Every Where value a trail matches: its countries, states and provinces, and groups."""
+    return common.countries(rec) + place_keys(rec) + ["g:" + g for g in place_groups(rec)]
+
+
+# Time -----------------------------------------------------------------------
+
+PACE_KM = (20, 30)              # km a day on trail
+PACE_KM_CROSS = (12, 20)        # km a day where much of it is cross-country
+CROSS_COUNTRY = ("some-cross-country", "mostly-cross-country")
+
+# (key, label, most days). A trail falls in the band of the middle of its range.
+TIME_BANDS = (
+    ("week", "A week or less", 7),
+    ("two-weeks", "One to two weeks", 14),
+    ("month", "Two to four weeks", 28),
+    ("months", "One to three months", 91),
+    ("long", "More than three months", math.inf),
+)
+TIME_LABEL = {k: label for k, label, _ in TIME_BANDS}
+
+
+def pace(rec):
+    return PACE_KM_CROSS if hike.table(rec).get("travel") in CROSS_COUNTRY else PACE_KM
+
+
+def time_days(rec):
+    """(fewest, most, estimated): the days to walk it all. As a source states it in
+    [hike].days; otherwise estimated from the length at pace(rec) km a day."""
+    stated = hike.table(rec).get("days")
+    if isinstance(stated, (int, float)):
+        stated = [stated]
+    stated = [d for d in (stated or []) if isinstance(d, (int, float)) and d > 0]
+    if stated:
+        return min(stated), max(stated), False
+    slow, fast = pace(rec)
+    km = rec["length_km"]
+    return max(1, math.ceil(km / fast)), max(1, math.ceil(km / slow)), True
+
+
+def time_band(rec):
+    lo, hi, _ = time_days(rec)
+    mid = (lo + hi) / 2
+    for key, _, most in TIME_BANDS:
+        if mid <= most:
+            return key
+    return TIME_BANDS[-1][0]
+
+
+def time_text(rec):
+    """"5 to 7 months"; "About 2 to 3 weeks" when estimated."""
+    lo, hi, est = time_days(rec)
+    text = words.fmt_days([lo, hi])
+    if est and not text.startswith("about"):
+        text = "about " + text
+    return text[:1].upper() + text[1:]
+
+
+def estimate_note(rec):
+    """Says how an estimated time was worked out; "" when a source states it."""
+    if not time_days(rec)[2]:
+        return ""
+    slow, fast = pace(rec)
+    mi = f"{round(slow / words.KM_PER_MI)} to {round(fast / words.KM_PER_MI)} mi"
+    return f"Estimated from the length, at {slow} to {fast} km ({mi}) a day."
+
+
+# Season ---------------------------------------------------------------------
+
+MONTHS = ("January", "February", "March", "April", "May", "June", "July", "August",
+          "September", "October", "November", "December")
+
+
+def months(rec):
+    m = hike.table(rec).get("months")
+    return sorted({x for x in (m or []) if isinstance(x, int) and 1 <= x <= 12})
+
+
+def season_text(rec):
+    """The phrase on the trail page: [hike].season, else built from the months."""
+    phrase = (hike.table(rec).get("season") or "").strip()
+    if phrase:
+        return phrase[:1].upper() + phrase[1:]
+    ms = months(rec)
+    if not ms:
+        return ""
+    if len(ms) == 12:
+        return "All year"
+    return words.join_names(MONTHS[m - 1] for m in ms)
+
+
+# Terrain, Walking, Shape ----------------------------------------------------
+
+TERRAIN_VALUES = words.TERRAIN
+WALKING_VALUES = {
+    "trail": "On trail",
+    "trail-and-road": "Trail and road",
+    "some-cross-country": "Some cross-country",
+    "mostly-cross-country": "Mostly cross-country",
+}
+WALKING_HINT = {
+    "trail": "On built or maintained trail all or nearly all the way",
+    "trail-and-road": "Trail, with long stretches on roads",
+    "some-cross-country": "Mostly trail or road, with stretches that have no trail",
+    "mostly-cross-country": "No trail for most of the way",
+}
+SHAPES = {"point-to-point": "End to end", "loop": "Loop", "network": "Network"}
+
+
+def terrain(rec):
+    return hike.terrain(rec)
+
+
+def walking(rec):
+    v = hike.table(rec).get("travel", "")
+    return v if v in WALKING_VALUES else ""
+
+
+def shape(rec):
+    v = hike.shape(rec)
+    return v if v in SHAPES else ""
+
+
+# Kind -----------------------------------------------------------------------
+
+KINDS = {"trail": "Official trail", "route": "Route"}
+ROUTE_DEFINITION = ("A route is a trail that a hiker worked out and published. No agency or "
+                    "association looks after it as one trail, and there may be no signs for it.")
+
+
+def kind(rec):
+    return "route" if common.is_route(rec) else "trail"
+
+
+def route_by(rec):
+    """"Route by Andrew Skurka, 2018"; "" for an official trail."""
+    if not common.is_route(rec):
+        return ""
+    r = rec.get("route", {})
+    who = r.get("creator", "")
+    if not who:
+        return "Route"
+    return f"Route by {who}" + (f", {r['year']}" if r.get("year") else "")
+
+
+def author(rec):
+    return rec.get("route", {}).get("creator", "") if common.is_route(rec) else ""
+
+
+def is_national(rec):
+    return rec.get("tier") == "national"
+
+
+# GPX ------------------------------------------------------------------------
+
+GPX_STATUS = {
+    "here": "GPX to download here",
+    "partial": "Partial GPX to download here",
+    "free": "Free from its author",
+    "sold": "Sold by its author",
+    "unpublished": "Not published",
+    "elsewhere": "Not here, see the official site",
+}
+# The short form in a list row.
+GPX_SHORT = {
+    "here": "GPX here",
+    "partial": "Partial GPX here",
+    "free": "Free from its author",
+    "sold": "Sold by its author",
+    "unpublished": "Not published",
+    "elsewhere": "See the official site",
+}
+
+
+def gpx(rec):
+    """The trail's one GPX status (a key of GPX_STATUS)."""
+    if common.has_line(rec):
+        return "partial" if common.line_short(rec) else "here"
+    if common.is_route(rec):
+        return {"open": "free", "sold": "sold", "withheld": "unpublished"}.get(common.policy(rec), "elsewhere")
+    return "elsewhere"
+
+
+def gpx_here(rec):
+    return gpx(rec) in ("here", "partial")
+
+
+# Coverage -------------------------------------------------------------------
+
+# facet key -> (name, the trail's values: a list, empty when it has none)
+OPTIONAL = {
+    "season": (SEASON, months),
+    "terrain": (TERRAIN, terrain),
+    "walking": (WALKING, lambda r: [walking(r)] if walking(r) else []),
+    "shape": (SHAPE, lambda r: [shape(r)] if shape(r) else []),
+}
+# The noun for "12 trails have no ... on file".
+MISSING_NOUN = {"season": "season", "terrain": "terrain", "walking": "walking", "shape": "shape"}
+
+
+def coverage(records, key):
+    """(trails with a value, trails without) for an optional facet."""
+    fn = OPTIONAL[key][1]
+    have = sum(1 for r in records if fn(r))
+    return have, len(records) - have
+
+
+def offered(records, key):
+    """True when the facet is offered as a filter: at least COVERAGE_MIN of trails have a value."""
+    have, _ = coverage(records, key)
+    return bool(records) and have >= COVERAGE_MIN * len(records)
+
+
+def missing_text(n, key):
+    """"12 trails have no season on file."; "" for none."""
+    if not n:
+        return ""
+    return f"{n} trail{'s' if n != 1 else ''} {'has' if n == 1 else 'have'} no {MISSING_NOUN[key]} on file."

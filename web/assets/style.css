@@ -730,7 +730,7 @@ code.raw {
 .hero {
   position: relative;
   overflow: hidden;
-  padding-block: var(--space-7) var(--space-6);
+  padding-block: var(--space-7) var(--space-5);
 }
 /* Decorative contour lines (not real terrain), faded toward the text */
 .hero::before {
@@ -759,21 +759,22 @@ code.raw {
 .finder__grid {
   display: grid;
   gap: var(--space-5) var(--space-6);
-  grid-template-areas: "head" "filters" "results";
+  grid-template-areas: "filters" "main" "notes";
   grid-template-columns: minmax(0, 1fr);
 }
-.finder__head { grid-area: head; }
 .filters { grid-area: filters; }
-.results { grid-area: results; container: results / inline-size; }
-@media (min-width: 70rem) {
+.finder__main { grid-area: main; display: grid; gap: var(--space-5); align-content: start; min-inline-size: 0; }
+.results { container: results / inline-size; }
+.finder__notes { grid-area: notes; display: grid; gap: var(--space-2); }
+@media (min-width: 64rem) {
   .finder__grid {
-    grid-template-areas: "head head" "filters results";
-    grid-template-columns: 17rem minmax(0, 1fr);
+    grid-template-areas: "filters main" ". notes";
+    grid-template-columns: 18rem minmax(0, 1fr);
   }
 }
 /* Sticky only when the viewport can hold the whole form, so no part of it is
    trapped in a nested scroll box or cut off below the fold. */
-@media (min-width: 70rem) and (min-height: 70rem) {
+@media (min-width: 64rem) and (min-height: 70rem) {
   .filters { position: sticky; inset-block-start: var(--space-4); align-self: start; }
 }
 
@@ -909,7 +910,7 @@ code.raw {
 /* Without JavaScript the list is complete and readable; the controls that need it are hidden. */
 html:not(.js) .filters,
 html:not(.js) .results-tools { display: none; }
-html:not(.js) .finder__grid { grid-template-areas: "head" "results"; grid-template-columns: minmax(0, 1fr); }
+html:not(.js) .finder__grid { grid-template-areas: "main" "notes"; grid-template-columns: minmax(0, 1fr); }
 
 /* Trail list: a gazetteer. One row per record. The list is its own inline-size
    container (named as the results wrapper is) so rows take the column layout
@@ -1003,7 +1004,7 @@ html:not(.js) .finder__grid { grid-template-areas: "head" "results"; grid-templa
 .line { display: grid; gap: 0.125rem; }
 .line__status {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: var(--space-1) var(--space-2);
   font: 600 var(--step-0)/1.3 var(--font-sans);
@@ -1037,7 +1038,7 @@ html:not(.js) .finder__grid { grid-template-areas: "head" "results"; grid-templa
 /* Column head, shown when rows are laid out as columns */
 .list-head, .list-head[hidden] { display: none; }
 
-@container results (min-width: 50rem) {
+@container results (min-width: 66rem) {
   .entry {
     --plate-w: 7rem;
     grid-template-columns: var(--plate-w) minmax(0, 1fr) auto;
@@ -1047,8 +1048,8 @@ html:not(.js) .finder__grid { grid-template-areas: "head" "results"; grid-templa
   }
   .entry__plate { aspect-ratio: 5 / 3; }
   .entry__facts {
-    grid-template-columns: 10rem 11rem;
-    gap: var(--space-5);
+    grid-template-columns: 9.5rem 6rem 7rem 6.5rem;
+    gap: var(--space-4);
     padding-block-start: 0;
     border-block-start: 0;
   }
@@ -1058,7 +1059,7 @@ html:not(.js) .finder__grid { grid-template-areas: "head" "results"; grid-templa
 
   .list-head {
     display: grid;
-    grid-template-columns: 7rem minmax(0, 1fr) 10rem 11rem;
+    grid-template-columns: 7rem minmax(0, 1fr) 9.5rem 6rem 7rem 6.5rem;
     column-gap: var(--space-5);
     padding: 0 var(--space-2) var(--space-2);
     color: var(--ink-2);
@@ -1136,20 +1137,35 @@ html:not(.js) .finder__grid { grid-template-areas: "head" "results"; grid-templa
    the viewport, so it scrolls with the page rather than sticking. */
 .detail {
   display: grid;
-  gap: var(--space-6) var(--space-6);
+  gap: var(--space-5) var(--space-6);
   grid-template-columns: minmax(0, 1fr);
-  grid-template-areas: "map" "aside" "main";
+  grid-template-areas: "glance" "map" "aside";
+  align-items: start;
 }
+.detail--with-profile { grid-template-areas: "glance" "map" "profile" "aside"; }
+.detail__glance { grid-area: glance; min-inline-size: 0; }
 .detail__map { grid-area: map; min-inline-size: 0; }
-.detail__main { grid-area: main; min-inline-size: 0; margin-block-start: var(--space-4); }
+.detail__profile { grid-area: profile; min-inline-size: 0; }
+.detail__main { min-inline-size: 0; }
 .detail__aside { grid-area: aside; min-inline-size: 0; }
 .detail__aside > * + * { margin-block-start: var(--space-5); }
 @media (min-width: 64rem) {
   .detail {
     grid-template-columns: minmax(0, 1fr) 22rem;
     grid-template-rows: auto 1fr;
-    grid-template-areas: "map aside" "main aside";
+    grid-template-areas: "map glance" "map aside";
   }
+  .detail--no-aside { grid-template-areas: "map glance" "map ."; }
+  .detail--with-profile { grid-template-rows: auto 1fr auto; grid-template-areas: "map glance" "map aside" "profile profile"; }
+  .detail--with-profile.detail--no-aside { grid-template-areas: "map glance" "map ." "profile profile"; }
+  /* The map fills the height of the column beside it, so a long column of
+     facts and downloads leaves no empty space under the map. */
+  .detail__map { align-self: stretch; display: flex; flex-direction: column; }
+  .detail__map > .mapfig__frame { flex: 1 1 auto; display: flex; flex-direction: column; }
+  .detail__map .map { flex: 1 1 auto; aspect-ratio: auto; min-block-size: 30rem; }
+  /* With no track there is no map to stretch: the notice keeps its own height. */
+  .detail--no-map .detail__map { align-self: start; }
+  .detail--no-map .detail__map .map { flex: 0 0 auto; min-block-size: 22rem; }
 }
 
 .block + .block { margin-block-start: var(--space-7); }
@@ -1436,6 +1452,14 @@ td .linklist a { font-weight: 400; }
 .route-item { padding: var(--space-4); background: var(--surface); border: 1px solid var(--rule-strong); }
 .route-item h4 { font-family: var(--font-serif); font-size: var(--step-1); }
 .route-item__meta { margin-block-start: var(--space-2); font: 400 var(--step--1)/1.5 var(--font-sans); color: var(--ink-2); }
+/* A route's guides in its list row: one compact line under the name, not a
+   column of their own. */
+.entry__guides { grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 var(--space-3); align-items: baseline; }
+.entry__guides .route-item__guides-label { margin-block-start: 0; }
+.entry__guides .route-guides { display: grid; gap: var(--space-1); margin-block-start: 0; padding: 0; list-style: none; }
+@container results (min-width: 66rem) {
+  .entry__guides { grid-column: 2 / -1; }
+}
 .route-item__guides-label { margin-block-start: var(--space-3); font: 600 var(--step--2)/1.3 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
 .route-guides { margin-block-start: var(--space-1); padding-inline-start: 1.2rem; font: 400 var(--step--1)/1.5 var(--font-sans); }
 .route-guides li + li { margin-block-start: var(--space-1); }
@@ -1488,3 +1512,310 @@ td .linklist a { font-weight: 400; }
 }
 .notfound-search .field__label { grid-column: 1 / -1; }
 .notfound-search .input { min-inline-size: 0; }
+
+/* 11. Hiker pages: the top of a trail page, collections ------------------- */
+
+.trail-lede { max-inline-size: 46rem; font-size: var(--step-1); line-height: 1.5; text-wrap: pretty; }
+.trail-actions { margin-block-start: var(--space-4); }
+.page-head .titleblock { margin-block-end: var(--space-4); }
+
+/* At a glance: the hiker's facts, a legend box like the panels */
+.glance { border: 1px solid var(--ink); background: var(--surface); }
+.glance__title {
+  padding: var(--space-2) var(--space-4);
+  background: var(--ink);
+  color: var(--paper);
+  font: 600 var(--step--1)/1.3 var(--font-sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.glance__facts {
+  --len-size: var(--step-2);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--space-4);
+  padding: var(--space-1) var(--space-4) var(--space-3);
+}
+.glance__facts > div { padding-block: var(--space-3); border-block-start: 1px dotted var(--rule-strong); min-inline-size: 0; }
+.glance__facts > div:first-child,
+.glance__facts > div:nth-child(2):not(.glance__wide) { border-block-start: 0; }
+.glance__wide { grid-column: 1 / -1; }
+.glance dt {
+  color: var(--ink-2);
+  font: 600 var(--step--2)/1.3 var(--font-sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.glance dd { margin: var(--space-1) 0 0; font: 500 var(--step-0)/1.4 var(--font-sans); overflow-wrap: anywhere; }
+.glance dd small { display: block; margin-block-start: var(--space-1); color: var(--ink-2); font: 400 var(--step--1)/1.4 var(--font-sans); }
+.glance__to { color: var(--ink-2); }
+.glance__warn {
+  margin: 0 var(--space-4) var(--space-4);
+  padding: var(--space-2) var(--space-3);
+  background: var(--highlight);
+  border-inline-start: 3px solid var(--route);
+  font: 400 var(--step--1)/1.45 var(--font-sans);
+}
+.glance > .note { padding: 0 var(--space-4) var(--space-4); }
+
+/* Elevation profile: a legend box like the glance, the line drawn as SVG */
+.elev { border: 1px solid var(--ink); background: var(--surface); }
+.elev__title {
+  padding: var(--space-2) var(--space-4);
+  background: var(--ink);
+  color: var(--paper);
+  font: 600 var(--step--1)/1.3 var(--font-sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.elev__body { padding: var(--space-4); font: 400 var(--step-0)/1.5 var(--font-sans); }
+.elev__body > * + * { margin-block-start: var(--space-3); }
+.elev__figure { padding: var(--space-3) var(--space-4) var(--space-4); }
+.elev__figure figcaption { margin-block-start: var(--space-2); color: var(--ink-2); font: 400 var(--step--1)/1.5 var(--font-sans); }
+.elev__figure figcaption > * + * { margin-block-start: var(--space-2); }
+.elev-profile { display: block; inline-size: 100%; block-size: auto; }
+.elev-profile text { fill: var(--ink-2); font-family: var(--font-sans); }
+.elev-profile__tick { font-size: 12px; font-variant-numeric: tabular-nums; }
+.elev-profile__axis { font-size: 12px; font-weight: 600; }
+.elev-profile__grid { stroke: var(--rule); stroke-width: 1; }
+.elev-profile__frame { stroke: var(--rule-strong); stroke-width: 1; }
+.elev-profile__line { fill: none; stroke: var(--trail); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.elev-profile__mark { fill: var(--surface); stroke: var(--trail); stroke-width: 2; }
+/* One axis system at a time, by the reader's unit preference */
+.elev-profile .len__mi { display: none; }
+:root[data-units="mi"] .elev-profile .len__mi { display: inline; }
+:root[data-units="mi"] .elev-profile .len__km { display: none; }
+
+/* Below the hiker's part: the plain foot line, then "About this data" */
+.trail-more { padding-block: var(--space-6) var(--space-7); }
+.page-foot {
+  max-inline-size: var(--measure);
+  margin-block-end: var(--space-5);
+  color: var(--ink-2);
+  font: 400 var(--step--1)/1.5 var(--font-sans);
+}
+.about-data { border: 1px solid var(--rule-strong); background: var(--surface); }
+.about-data > summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-1) var(--space-4);
+  align-items: center;
+  padding: var(--space-4) var(--space-5);
+  cursor: pointer;
+  list-style: none;
+}
+.about-data > summary::-webkit-details-marker { display: none; }
+.about-data > summary h2 { font-size: var(--step-2); }
+.about-data__hint { grid-column: 1; color: var(--ink-2); font: 400 var(--step--1)/1.45 var(--font-sans); }
+.about-data > summary::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  inline-size: 0.6rem;
+  block-size: 0.6rem;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: translateY(-25%) rotate(45deg);
+}
+.about-data[open] > summary::after { transform: translateY(25%) rotate(-135deg); }
+.about-data > summary:focus-visible { outline-offset: -5px; }
+.about-data__body { max-inline-size: 54rem; padding: var(--space-5); border-block-start: 1px solid var(--rule); }
+.about-data__body > .rawrecord { margin-block-start: var(--space-7); }
+
+/* Home: collections ("Ways in") and states */
+.mapfig--wide { --map-ratio: 2 / 1; }
+@media (max-width: 40rem) { .mapfig--wide { --map-ratio: 1 / 1; } }
+.shelves {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  gap: var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+.shelf {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--ink);
+  border-block-start-width: 4px;
+}
+.shelf__title { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-3); font-size: var(--step-1); line-height: 1.25; }
+.shelf__title a { color: var(--ink); text-decoration-color: var(--rule-strong); }
+.shelf__count { color: var(--ink-2); font: 600 var(--step--1)/1 var(--font-sans); font-variant-numeric: tabular-nums; }
+.shelf__blurb { color: var(--ink-2); font: 400 var(--step--1)/1.45 var(--font-sans); }
+.shelf__items { padding: 0; list-style: none; font: 400 var(--step--1)/1.35 var(--font-sans); }
+.shelf__items li { display: flex; justify-content: space-between; gap: var(--space-3); padding-block: 0.3rem; border-block-start: 1px dotted var(--rule); }
+.shelf__items a { color: var(--ink); }
+.shelf__len { flex: none; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.shelf__more { font: 600 var(--step--1)/1.3 var(--font-sans); }
+/* One unit only in a card row, the reader's */
+.len--short .len__mi { display: none; }
+:root[data-units="mi"] .len--short .len__mi { display: inline; }
+:root[data-units="mi"] .len--short .len__km { display: none; }
+
+.region-chips { margin-block-start: var(--space-6); }
+.region-chips h3 { margin-block-end: var(--space-3); font-size: var(--step-1); }
+.chips { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0; list-style: none; }
+.chips a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-block-size: 2.75rem;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font: 500 var(--step--1)/1.2 var(--font-sans);
+  text-decoration: none;
+}
+.chips a:hover { border-color: var(--ink); }
+.chips__n { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+
+.entry__days { display: block; margin-block-start: var(--space-1); color: var(--ink-2); font: 400 var(--step--1)/1.3 var(--font-sans); }
+.finder__foot { max-inline-size: var(--measure); color: var(--ink-2); font: 400 var(--step--1)/1.5 var(--font-sans); }
+.filters__reset { padding-block-start: var(--space-4) !important; }
+/* Narrow screens: a card is its title, count and rule; the trail names are on its page. */
+@media (max-width: 40rem) {
+  .shelf { grid-template-rows: auto; padding: var(--space-3) var(--space-4); }
+  .shelf__items, .shelf__more { display: none; }
+}
+
+/* 12. Catalogue, places, lists, onward ---------------------------------------- */
+
+.hero--short { padding-block: var(--space-6) var(--space-4); }
+.hero--short .hero__inner { gap: var(--space-4); }
+.lists-row { display: grid; gap: var(--space-2); }
+.lists-row__title { font: 600 var(--step--2)/1.3 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.section--finder { padding-block-start: var(--space-4); }
+.filters__first { display: grid; gap: var(--space-4); padding: 0 var(--space-4) var(--space-4); }
+.filters__first .field + .field { padding-block-start: var(--space-4); border-block-start: 1px dotted var(--rule-strong); }
+.filters__form .field + .field { padding-block-start: var(--space-4); border-block-start: 1px dotted var(--rule-strong); }
+@media (min-width: 40rem) and (max-width: 63.99rem) {
+  .filters__first { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-5); }
+  .filters__first .field:nth-child(2) { padding-block-start: 0; border-block-start: 0; }
+}
+.pills { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.pills .check { grid-template-columns: auto auto; padding: 0.15rem var(--space-2); border: 1px solid var(--rule-strong); border-radius: 999px; }
+.pills .check:has(input:checked) { border-color: var(--ink); background: var(--sunken); }
+.filter-missing { padding: var(--space-2); border-inline-start: 3px solid var(--route); background: var(--hatch-fill); color: var(--ink); }
+.filter-missing[hidden] { display: none; }
+.seg span { text-align: center; }
+a.tag { text-decoration: none; }
+a.tag:hover { background: var(--sunken); }
+.entry__by { color: var(--ink); font: 500 var(--step--1)/1.35 var(--font-sans); }
+.entry__time dd { font: 500 var(--step-0)/1.3 var(--font-sans); }
+.entry__est { display: block; color: var(--ink-2); font: 400 var(--step--2)/1.3 var(--font-sans); letter-spacing: 0.04em; text-transform: uppercase; }
+.results__group { margin-block: var(--space-6) var(--space-2); font-size: var(--step-1); }
+
+/* "What is a route?" beside the Kind line of a route's page */
+.define { font: 400 var(--step--1)/1.45 var(--font-sans); color: var(--ink-2); }
+.define > summary { inline-size: fit-content; color: var(--link); cursor: pointer; text-decoration: underline; text-underline-offset: 0.16em; }
+.define > p { max-inline-size: 40rem; margin-block-start: var(--space-2); padding: var(--space-2) var(--space-3); border-inline-start: 3px solid var(--route); background: var(--surface); color: var(--ink); }
+
+/* Ways onward at the foot of a trail page */
+.onward { margin-block-end: var(--space-6); }
+.onward > h2 { margin-block-end: var(--space-4); font-size: var(--step-2); }
+.onward__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: var(--space-4); }
+.onward__part { padding: var(--space-4); background: var(--surface); border: 1px solid var(--rule-strong); border-block-start: 3px solid var(--ink); }
+.onward__part h3 { margin-block-end: var(--space-2); font-size: var(--step-0); }
+.onward__list { padding: 0; list-style: none; font: 400 var(--step--1)/1.35 var(--font-sans); }
+.onward__list li { display: flex; justify-content: space-between; gap: var(--space-3); padding-block: 0.35rem; border-block-start: 1px dotted var(--rule); }
+.onward__list li:first-child { border-block-start: 0; }
+.onward__list a { color: var(--ink); }
+.onward__len { flex: none; color: var(--ink-2); font-variant-numeric: tabular-nums; display: inline-flex; gap: 0.3em; }
+.onward__more { margin-block-start: var(--space-2); font: 600 var(--step--1)/1.3 var(--font-sans); }
+
+/* Places hub */
+.places { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); gap: var(--space-5); }
+.places__group { padding: var(--space-4); background: var(--surface); border: 1px solid var(--ink); border-block-start-width: 4px; }
+.places__group h2 { font-size: var(--step-2); }
+.places__sum { margin-block: var(--space-2) var(--space-3); color: var(--ink-2); font: 400 var(--step--1)/1.45 var(--font-sans); }
+.places__list { padding: 0; list-style: none; font: 400 var(--step-0)/1.35 var(--font-sans); }
+.places__list li { display: flex; justify-content: space-between; gap: var(--space-3); padding-block: 0.4rem; border-block-start: 1px dotted var(--rule); }
+.places__list li:first-child { border-block-start: 0; }
+.places__n { flex: none; color: var(--ink-2); font-size: var(--step--1); font-variant-numeric: tabular-nums; }
+.page-head .chips { margin-block-start: var(--space-2); }
+.place > * + * { margin-block-start: var(--space-6); }
+
+/* About hub */
+.about-hub__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); gap: 0 var(--space-5); max-inline-size: none; }
+.about-hub__list li, .about-hub__list li:first-child { padding-block: var(--space-2); border-block-start: 0; border-block-end: 1px dotted var(--rule-strong); }
+.doc section > * + * { margin-block-start: var(--space-4); }
+.doc section + section { margin-block-start: var(--space-7); }
+
+.filters__panel > summary {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-2) var(--space-4); min-block-size: 2.75rem;
+  border-block: 1px solid var(--ink);
+  font: 600 var(--step--1)/1.3 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase;
+  cursor: pointer; list-style: none;
+}
+.filters__panel > summary::-webkit-details-marker { display: none; }
+.filters__panel > summary::after {
+  content: ""; margin-inline-start: auto; inline-size: 0.5rem; block-size: 0.5rem;
+  border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-25%) rotate(45deg);
+}
+.filters__panel[open] > summary::after { transform: translateY(25%) rotate(-135deg); }
+.filters__panel[open] > summary { margin-block-end: var(--space-4); }
+.filters__count:not(:empty) { padding: 0 var(--space-2); border-radius: 999px; background: var(--ink); color: var(--paper); letter-spacing: 0.02em; text-transform: none; }
+@media (min-width: 64rem) {
+  .filters__panel > summary { display: none; }
+}
+
+/* The trail list where there is no room for columns (a phone, or beside the
+   filters on a laptop): a compact card, not a table folded in on itself. Name, one or two lines of description, the place, then the facts on
+   one wrapping line ("420 km · About 4 weeks · Partial GPX here"). The labels,
+   the length strip, the second unit and the boxed notes are for wide rows; the
+   trail's own page has all of it. */
+@container results (max-width: 65.99rem) {
+  /* With the statuses written out in each card, the list needs no key. */
+  .key { display: none; }
+  .entry {
+    --plate-w: 3.75rem;
+    grid-template-areas: "plate body" ". facts" ". note";
+    gap: var(--space-2) var(--space-3);
+    padding: var(--space-4) 0;
+  }
+  .entry__desc { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; }
+  .entry__facts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0;
+    /* Each fact carries its dot in its own left padding, and the row is pulled
+       left by that padding and clipped, so a fact that starts a line shows no dot. */
+    margin-inline-start: -1.1em;
+    clip-path: inset(0 0 0 1.1em);
+    padding-block-start: 0;
+    border-block-start: 0;
+    font: 400 var(--step--1)/1.5 var(--font-sans);
+    color: var(--ink);
+  }
+  .entry__facts > div { position: relative; display: inline-flex; align-items: baseline; padding-inline-start: 1.1em; }
+  .entry__facts > div::before { content: "\00B7"; position: absolute; inset-inline-start: 0.4em; color: var(--ink-2); }
+  .entry__facts dt { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .entry__facts dd { margin: 0; font: inherit; }
+  .entry__facts .len--stack { display: inline; }
+  :root:not([data-units="mi"]) .entry__facts .len--stack .len__km,
+  :root[data-units="mi"] .entry__facts .len--stack .len__mi { font: 600 var(--step--1)/1.5 var(--font-sans); }
+  :root:not([data-units="mi"]) .entry__facts .len--stack .len__mi,
+  :root[data-units="mi"] .entry__facts .len--stack .len__km { display: none; }
+  .entry__facts .loglen,
+  .entry__facts .swatch,
+  .entry__facts .line__detail,
+  .entry__facts .entry__partial,
+  .entry__facts > .entry__climb { display: none; }
+  .entry__time dd { font: inherit; }
+  .entry__facts .entry__est { display: inline; margin-inline-start: 0.35em; }
+  .entry__facts .line { display: inline; }
+  .entry__facts .line__status { display: inline; font: inherit; }
+  .entry__guides { grid-column: 2 / -1; grid-template-columns: minmax(0, 1fr); }
+}
+/* A wider card has room for a larger logo. */
+@container results (min-width: 34rem) and (max-width: 65.99rem) {
+  .entry { --plate-w: 6rem; gap: var(--space-2) var(--space-4); }
+}
+.line__status .swatch { flex: none; }

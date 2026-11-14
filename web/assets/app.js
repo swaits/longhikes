@@ -7,7 +7,7 @@
    3. Trail finder (home page): search, filters, sort, URL query state, map/list highlight
    4. Copy-credit buttons
 
-   Every page works without this script: the list holds every record and each map
+   Every page works without this script: the list holds every trail and each map
    frame keeps its size, border and caption. */
 (function () {
   'use strict';
@@ -492,7 +492,7 @@
         a.href = '/trails/' + encodeURIComponent(p.id) + '/';
         a.textContent = p.name;
         var meta = document.createElement('p');
-        meta.textContent = lengthText(Number(p.length_km)) + (p.kind === 'route' ? ' · person-defined route' : '');
+        meta.textContent = lengthText(Number(p.length_km)) + (p.kind === 'route' ? ' · Route' : '');
         box.appendChild(a);
         box.appendChild(meta);
         popup.setLngLat(e.lngLat).setDOMContent(box).addTo(map);
@@ -527,6 +527,14 @@
     entry.visibleIds = ids;
     var set = {};
     ids.forEach(function (id) { set[id] = true; });
+    /* Without the base map, the plain drawing is redrawn on the tracks still
+       shown, so the map shows what the filters leave at a useful scale. */
+    if (!entry.ready && entry.fc && entry.kind === 'overview') {
+      var sub = entry.fc.features.filter(function (f) { return set[(f.properties || {}).id]; });
+      var whole = sub.length === entry.fc.features.length;
+      if (sub.length) drawFallback(entry.fallback, whole ? entry.fc : { type: 'FeatureCollection', features: sub },
+        whole && entry.fullBounds ? entry.fullBounds : bboxOf({ features: sub }), false);
+    }
     entry.fallback.querySelectorAll('[data-id]').forEach(function (path) {
       path.style.display = set[path.getAttribute('data-id')] ? '' : 'none';
     });
@@ -548,7 +556,17 @@
   if (window.maplibregl || document.readyState === 'complete') startMaps();
   else window.addEventListener('load', startMaps);
 
-  /* 3. Trail finder (home page) ------------------------------------------------ */
+  /* 3. Trail finder (home page) ------------------------------------------------
+     The filters are the attributes every page names: Where, Length, Time,
+     Season, Terrain, Kind, Walking, Shape and GPX. Each row carries its values
+     as data-* attributes (olt/home.py entry()). A filter on a facet that a
+     trail has no value for leaves that trail out, and the note under the
+     filter (data-missing) says how many trails have no value on file. */
+
+  var MULTI = ['time', 'terrain', 'walking', 'shape', 'gpx'];
+  var MORE = ['walking', 'shape', 'gpx'];
+  /* Addresses from before the site had these filters still work. */
+  var OLD_POLICY = { open: 'free', sold: 'sold', withheld: 'unpublished', unclear: 'elsewhere' };
 
   function initFinder(form) {
     var list = document.getElementById('entries');
@@ -584,7 +602,18 @@
     }
 
     function hasOption(select, value) {
-      return Array.prototype.some.call(select.options, function (o) { return o.value === value; });
+      return !!select && Array.prototype.some.call(select.options, function (o) { return o.value === value; });
+    }
+
+    function boxes(name) {
+      return Array.prototype.slice.call(form.querySelectorAll('input[type="checkbox"][name="' + name + '"]'));
+    }
+    function checked(name) {
+      return boxes(name).filter(function (b) { return b.checked; }).map(function (b) { return b.value; });
+    }
+    function radio(name) {
+      var r = form.querySelector('input[name="' + name + '"]:checked');
+      return r ? r.value : '';
     }
 
     function read() {
@@ -592,39 +621,36 @@
       var max = Number(el.max.value) || Infinity;
       var swapped = min > max;
       if (swapped) { var keep = min; min = max; max = keep; }
-      return {
+      var s = {
         q: el.q.value.trim(),
         words: el.q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),
-        country: el.country.value,
-        region: el.region.value,
+        where: el.where.value,
         min: min,
         max: max,
         swapped: swapped,
-        designated: el.designated.checked,
-        route: el.route.checked,
-        line: el.line.checked,
-        policy: el.policy.value,
-        tier: el.tier.value
+        month: el.month ? el.month.value : '',
+        kind: radio('kind')
       };
+      MULTI.forEach(function (name) { s[name] = checked(name); });
+      return s;
     }
+
+    function words(value) { return (value || '').split(' ').filter(Boolean); }
+    function anyOf(chosen, value) { return !chosen.length || chosen.indexOf(value) !== -1; }
 
     function matches(li, s) {
       var d = li.dataset;
       if (s.words.some(function (w) { return d.search.indexOf(w) === -1; })) return false;
-      if (s.country !== 'all') {
-        var countries = (d.countries || d.country || '').split(/\s+/).filter(Boolean);
-        if (countries.indexOf(s.country) === -1) return false;
-      }
-      if (s.region) {
-        var regions = d.regions.split(' ');
-        if (regions.indexOf(s.region) === -1 && regions.indexOf(s.region.slice(0, 2) + '-*') === -1) return false;
-      }
+      if (s.where && words(d.where).indexOf(s.where) === -1) return false;
       var km = Number(d.km);
       if (km < s.min || km > s.max) return false;
-      if (d.kind === 'route' ? !s.route : !s.designated) return false;
-      if (s.line && d.line !== 'yes') return false;
-      if (s.policy && d.policy !== s.policy) return false;
-      if (s.tier && d.tier !== s.tier) return false;
+      if (!anyOf(s.time, d.time)) return false;
+      if (s.month && words(d.months).indexOf(s.month) === -1) return false;
+      if (s.terrain.length && !words(d.terrain).some(function (t) { return s.terrain.indexOf(t) !== -1; })) return false;
+      if (s.kind && d.kind !== s.kind) return false;
+      if (s.walking.length && !anyOf(s.walking, d.walking)) return false;
+      if (s.shape.length && !anyOf(s.shape, d.shape)) return false;
+      if (!anyOf(s.gpx, d.gpx)) return false;
       return true;
     }
 
@@ -655,15 +681,12 @@
     function toQuery(s) {
       var p = new URLSearchParams();
       if (s.q) p.set('q', s.q);
-      if (s.country !== 'all') p.set('country', s.country);
-      if (s.region) p.set('region', s.region);
+      if (s.where) p.set('where', s.where);
       if (s.min) p.set('min', String(s.min));
       if (s.max !== Infinity) p.set('max', String(s.max));
-      if (s.designated !== s.route) p.set('kind', s.designated ? 'designated' : 'route');
-      else if (!s.designated) p.set('kind', 'none');
-      if (s.line) p.set('line', '1');
-      if (s.policy) p.set('policy', s.policy);
-      if (s.tier) p.set('tier', s.tier);
+      if (s.month) p.set('month', s.month);
+      if (s.kind) p.set('kind', s.kind);
+      MULTI.forEach(function (name) { if (s[name].length) p.set(name, s[name].join(',')); });
       if (sort.value !== 'name') p.set('sort', sort.value);
       return p.toString();
     }
@@ -671,25 +694,26 @@
     function fromQuery() {
       var p = new URLSearchParams(window.location.search);
       el.q.value = p.get('q') || '';
-      var country = p.get('country');
-      syncRadios('#finder-form input[name="country"]', country === 'US' || country === 'CA' ? country : 'all');
-      ['region', 'min', 'max', 'policy', 'tier'].forEach(function (name) {
+      var where = p.get('where') || p.get('region') || '';
+      if (!where && (p.get('country') === 'US' || p.get('country') === 'CA')) where = p.get('country');
+      el.where.value = hasOption(el.where, where) ? where : '';
+      ['min', 'max', 'month'].forEach(function (name) {
+        if (!el[name]) return;
         var v = p.get(name) || '';
         el[name].value = hasOption(el[name], v) ? v : '';
       });
-      var kind = p.get('kind');
-      el.designated.checked = kind !== 'route' && kind !== 'none';
-      el.route.checked = kind !== 'designated' && kind !== 'none';
-      el.line.checked = p.get('line') === '1';
+      var kind = p.get('kind') || '';
+      if (kind === 'designated') kind = 'trail';
+      syncRadios('#finder-form input[name="kind"]', kind === 'trail' || kind === 'route' ? kind : '');
+      var lists = {};
+      MULTI.forEach(function (name) { lists[name] = (p.get(name) || '').split(',').filter(Boolean); });
+      if (p.get('line') === '1' && !lists.gpx.length) lists.gpx = ['here', 'partial'];
+      if (p.get('policy') && OLD_POLICY[p.get('policy')] && !lists.gpx.length) lists.gpx = [OLD_POLICY[p.get('policy')]];
+      MULTI.forEach(function (name) {
+        boxes(name).forEach(function (b) { b.checked = lists[name].indexOf(b.value) !== -1; });
+      });
       var s = p.get('sort') || 'name';
       sort.value = hasOption(sort, s) ? s : 'name';
-      limitRegions();
-    }
-
-    function limitRegions() {
-      var c = el.country.value;
-      el.region.querySelectorAll('optgroup').forEach(function (g) { g.disabled = c !== 'all' && g.dataset.country !== c; });
-      if (el.region.value && c !== 'all' && el.region.value.slice(0, 2) !== c) el.region.value = '';
     }
 
     function applySort() {
@@ -697,6 +721,13 @@
       items.slice().sort(function (a, b) {
         if (key === 'long') return Number(b.dataset.km) - Number(a.dataset.km);
         if (key === 'short') return Number(a.dataset.km) - Number(b.dataset.km);
+        if (key === 'quick') return Number(a.dataset.days) - Number(b.dataset.days) || Number(a.dataset.km) - Number(b.dataset.km);
+        if (key === 'climb') {
+          /* Most climb first; a trail with no computed climb goes last. */
+          var ac = a.dataset.climb === '' ? -1 : Number(a.dataset.climb);
+          var bc = b.dataset.climb === '' ? -1 : Number(b.dataset.climb);
+          return bc - ac || a.dataset.name.localeCompare(b.dataset.name);
+        }
         return a.dataset.name.localeCompare(b.dataset.name);
       }).forEach(function (li) { list.appendChild(li); });
     }
@@ -709,21 +740,27 @@
         li.hidden = !ok;
         if (ok) shown.push(li.dataset.id);
       });
-      if (count && count.textContent !== shown.length + ' of ' + total + ' records') {
+      var noun = total === 1 ? ' trail' : ' trails';
+      if (count && count.textContent !== shown.length + ' of ' + total + noun) {
         count.innerHTML = '';
         var strong = document.createElement('strong');
         strong.textContent = String(shown.length);
         count.appendChild(strong);
-        count.appendChild(document.createTextNode(' of ' + total + ' records'));
+        count.appendChild(document.createTextNode(' of ' + total + noun));
       }
       empty.hidden = shown.length > 0;
       if (listHead) listHead.hidden = shown.length === 0;
       setText(lenHint, describeLength(s));
 
-      var n = (s.words.length ? 1 : 0) + (s.country !== 'all' ? 1 : 0) + (s.region ? 1 : 0) +
-        (s.min ? 1 : 0) + (s.max !== Infinity ? 1 : 0) + (!s.designated ? 1 : 0) + (!s.route ? 1 : 0) +
-        (s.line ? 1 : 0) + (s.policy ? 1 : 0) + (s.tier ? 1 : 0);
-      active.textContent = n ? n + ' active' : '';
+      /* Say how many trails a filter leaves out for having no value on file. */
+      var on = { season: !!s.month, terrain: s.terrain.length > 0, walking: s.walking.length > 0, shape: s.shape.length > 0 };
+      form.querySelectorAll('[data-missing]').forEach(function (note) { note.hidden = !on[note.dataset.missing]; });
+
+      var n = MORE.reduce(function (sum, name) { return sum + (s[name].length ? 1 : 0); }, 0);
+      active.textContent = n ? n + ' on' : '';
+      var all = (s.where ? 1 : 0) + (s.min ? 1 : 0) + (s.max !== Infinity ? 1 : 0) + (s.month ? 1 : 0) + (s.kind ? 1 : 0) +
+        (s.time.length ? 1 : 0) + (s.terrain.length ? 1 : 0) + n;
+      setText(form.querySelector('.filters__count'), all ? all + ' on' : '');
 
       maps.forEach(function (m) { if (m.kind === 'overview') setVisible(m, shown); });
       if (updateUrl) {
@@ -732,16 +769,10 @@
       }
     }
 
-    form.querySelectorAll('input[name="country"]').forEach(function (r) { r.addEventListener('change', limitRegions); });
     form.addEventListener('input', function () { apply(true); });
     form.addEventListener('change', function () { apply(true); });
     form.addEventListener('submit', function (e) { e.preventDefault(); });
-    form.addEventListener('reset', function () {
-      setTimeout(function () {
-        el.region.querySelectorAll('optgroup').forEach(function (g) { g.disabled = false; });
-        apply(true);
-      }, 0);
-    });
+    form.addEventListener('reset', function () { setTimeout(function () { apply(true); }, 0); });
     document.querySelectorAll('[data-reset]').forEach(function (b) {
       b.addEventListener('click', function () { form.reset(); el.q.focus(); });
     });
@@ -761,17 +792,35 @@
     apply(false);
     /* The count can announce from here on; the first application is done. */
     setTimeout(function () { if (count) count.removeAttribute('aria-live'); }, 0);
-    /* The folded filters arrive closed; open them only where the filters
-       have their own column (the finder's wide layout), and leave them
-       closed on narrow screens. */
-    if (more && window.matchMedia('(min-width: 70rem)').matches) more.open = true;
+    /* The filters behind "More" stay folded, unless the address already sets one. */
+    var s0 = read();
+    if (more && MORE.some(function (name) { return s0[name].length; })) more.open = true;
+    /* On a narrow screen the filters fold behind their heading, so the trails
+       come first; they stay open when the address already sets one. */
+    var panel = form.querySelector('.filters__panel');
+    var firstOn = s0.where || s0.min || s0.max !== Infinity || s0.month || s0.kind || s0.time.length || s0.terrain.length;
+    if (panel && window.matchMedia('(max-width: 63.99rem)').matches && !firstOn) panel.open = false;
     window.addEventListener('popstate', function () { fromQuery(); applySort(); apply(false); });
   }
 
   var finder = document.getElementById('finder-form');
   if (finder) initFinder(finder);
 
-  /* 4. Copy a required credit ------------------------------------------------ */
+  /* 4. A link to a part of the page inside a closed <details> (About this data)
+     opens it, so the target is shown rather than hidden. */
+  function revealHash() {
+    var id = decodeURIComponent(window.location.hash.slice(1));
+    var target = id && document.getElementById(id);
+    var opened = false;
+    for (var el = target; el; el = el.parentElement) {
+      if (el.tagName === 'DETAILS' && !el.open) { el.open = true; opened = true; }
+    }
+    if (opened) target.scrollIntoView();
+  }
+  window.addEventListener('hashchange', revealHash);
+  if (window.location.hash) revealHash();
+
+  /* 5. Copy a required credit ------------------------------------------------ */
 
   document.querySelectorAll('[data-copy]').forEach(function (button) {
     var target = document.querySelector(button.dataset.copy);

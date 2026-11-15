@@ -1,5 +1,6 @@
 /* Runs in <head>, before first paint: marks that JavaScript runs, and applies the
-   reader's saved theme and length order. Saved by app.js (footer switches). */
+   reader's saved theme, length order and base map. Saved by app.js (the footer
+   switches, and the Outdoor / Plain switch on a trail map). */
 (function () {
   'use strict';
   var root = document.documentElement;
@@ -7,7 +8,9 @@
   try {
     var theme = localStorage.getItem('lh-theme');
     var units = localStorage.getItem('lh-units');
+    var basemap = localStorage.getItem('lh-basemap');
     if (theme === 'light' || theme === 'dark') root.dataset.theme = theme;
     if (units === 'km') root.dataset.units = 'km';  /* anything else, an old 'mi' included, is miles */
+    if (basemap === 'plain') root.dataset.basemap = 'plain';  /* anything else is the outdoor map */
   } catch (e) { /* storage blocked: defaults apply */ }
 })();

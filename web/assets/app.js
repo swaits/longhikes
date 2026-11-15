@@ -1,9 +1,11 @@
 /* Site script, served at /assets/app.js (deferred). Vanilla JS, no build step.
 
-   1. Preferences: theme and length order (saved in localStorage; applied early by prefs.js)
+   1. Preferences: theme, length order and base map (saved in localStorage; applied
+      early by prefs.js)
    2. Maps: .mapfig[data-map] figures. Data is fetched from data-src (same origin);
       lines are drawn on a plain graticule first, then on an OpenFreeMap base map
-      when MapLibre and WebGL are available.
+      when MapLibre and WebGL are available. A trail page's map (data-outdoor) is
+      an outdoor map, with relief and contours, and a switch to the plain one.
    3. Trail finder (home page): search, filters, sort, URL query state, map/list highlight
    4. Copy-credit buttons
 
@@ -50,6 +52,16 @@
     document.dispatchEvent(new Event('olt:units'));
   }
 
+  /* The base map of the trail maps: 'outdoor' (the default) or 'plain'. */
+  function basemapChoice() { return root.dataset.basemap === 'plain' ? 'plain' : 'outdoor'; }
+
+  function setBasemap(value) {
+    if (value === 'plain') root.dataset.basemap = 'plain';
+    else delete root.dataset.basemap;
+    writePref('lh-basemap', value === 'plain' ? 'plain' : null);
+    document.dispatchEvent(new Event('olt:basemap'));
+  }
+
   function syncRadios(selector, value) {
     document.querySelectorAll(selector).forEach(function (input) { input.checked = input.value === value; });
   }
@@ -88,6 +100,137 @@
   /* 2. Maps ------------------------------------------------------------------- */
 
   var STYLE_URL = 'https://tiles.openfreemap.org/styles/positron';
+
+  /* The outdoor base map of a trail page: the style named by the figure's
+     data-outdoor (web/assets/map/outdoor.json), with relief from its olt-dem
+     elevation source and contour lines made in the browser by maplibre-contour
+     (window.mlcontour, loaded after MapLibre on trail pages only). Each layer
+     carries its own dark-theme paint (metadata "olt:dark") and its layout for
+     a reader who puts km and m first (metadata "olt:km"); the contour steps for
+     each unit are in the style's metadata "olt:contours". Relief and contours
+     are extras: they stay hidden until the map is ready, so a slow or blocked
+     elevation host never holds the map up, and their errors never fail it. */
+  var ELEVATION = { 'olt-dem': true, 'olt-contours': true };
+  var outdoorStyles = {};
+  var demSource;
+
+  function fetchOutdoor(url) {
+    if (!outdoorStyles[url]) {
+      outdoorStyles[url] = fetch(url, { credentials: 'same-origin' })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          return r.json();
+        })
+        .catch(function () { return null; });
+    }
+    return outdoorStyles[url];
+  }
+
+  /* One elevation tile source for the page, shared by the relief and the
+     contours; null when the add-on is missing (relief only, then). */
+  function contourSource(dem) {
+    if (demSource !== undefined) return demSource;
+    demSource = null;
+    if (window.mlcontour && window.mlcontour.DemSource) {
+      try {
+        demSource = new window.mlcontour.DemSource({
+          url: dem.tiles[0], encoding: dem.encoding, maxzoom: dem.maxzoom, worker: true, timeoutMs: 10000
+        });
+        demSource.setupMaplibre(window.maplibregl);
+      } catch (e) { demSource = null; }
+    }
+    return demSource;
+  }
+
+  function contourUrl(base) {
+    var opts = base.metadata['olt:contours'][milesFirst() ? 'ft' : 'm'];
+    return demSource.contourProtocolUrl({ multiplier: opts.multiplier, thresholds: opts.thresholds });
+  }
+
+  function assign(target, values) {
+    Object.keys(values).forEach(function (k) { target[k] = values[k]; });
+    return target;
+  }
+
+  /* The style to hand MapLibre: the file in the reader's theme and units, its
+     elevation tiles fetched through the add-on when it is here. */
+  function outdoorStyle(base, hideElevation) {
+    var style = JSON.parse(JSON.stringify(base));
+    var dark = isDark();
+    var km = !milesFirst();
+    var dem = style.sources['olt-dem'];
+    var contours = dem ? contourSource(dem) : null;
+    if (contours) {
+      dem.tiles = [contours.sharedDemProtocolUrl];
+      style.sources['olt-contours'].tiles = [contourUrl(base)];
+    } else {
+      delete style.sources['olt-contours'];
+      style.layers = style.layers.filter(function (layer) { return layer.source !== 'olt-contours'; });
+    }
+    style.layers.forEach(function (layer) {
+      var meta = layer.metadata || {};
+      if (dark && meta['olt:dark']) layer.paint = assign(layer.paint || {}, meta['olt:dark']);
+      if (km && meta['olt:km']) layer.layout = assign(layer.layout || {}, meta['olt:km']);
+      if (hideElevation && ELEVATION[layer.source]) layer.layout = assign(layer.layout || {}, { visibility: 'none' });
+    });
+    return style;
+  }
+
+  /* A theme or units change on a live outdoor map: the same metadata, set
+     layer by layer (MapLibre skips a value that is already set). */
+  function restyleOutdoor(map, base) {
+    var dark = isDark();
+    var km = !milesFirst();
+    base.layers.forEach(function (layer) {
+      if (!map.getLayer(layer.id)) return;
+      var night = (layer.metadata || {})['olt:dark'] || {};
+      var metric = (layer.metadata || {})['olt:km'] || {};
+      Object.keys(night).forEach(function (prop) {
+        map.setPaintProperty(layer.id, prop, dark ? night[prop] : (layer.paint || {})[prop]);
+      });
+      Object.keys(metric).forEach(function (prop) {
+        map.setLayoutProperty(layer.id, prop, km ? metric[prop] : (layer.layout || {})[prop]);
+      });
+    });
+  }
+
+  function showElevation(map) {
+    map.getStyle().layers.forEach(function (layer) {
+      if (ELEVATION[layer.source]) map.setLayoutProperty(layer.id, 'visibility', 'visible');
+    });
+  }
+
+  /* The Outdoor / Plain switch: a MapLibre control of two toggle buttons, top
+     left, clear of the zoom buttons, the scale bar and the credits. */
+  function basemapControl() {
+    var box;
+    function sync() {
+      var choice = basemapChoice();
+      box.querySelectorAll('button').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.dataset.basemap === choice ? 'true' : 'false');
+      });
+    }
+    return {
+      sync: sync,
+      onAdd: function () {
+        box = document.createElement('div');
+        box.className = 'maplibregl-ctrl maplibregl-ctrl-group basemap-switch';
+        box.setAttribute('role', 'group');
+        box.setAttribute('aria-label', 'Base map');
+        [['outdoor', 'Outdoor'], ['plain', 'Plain']].forEach(function (pair) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.dataset.basemap = pair[0];
+          b.textContent = pair[1];
+          b.addEventListener('click', function () { if (basemapChoice() !== pair[0]) setBasemap(pair[0]); });
+          box.appendChild(b);
+        });
+        sync();
+        return box;
+      },
+      onRemove: function () { if (box.parentNode) box.parentNode.removeChild(box); }
+    };
+  }
 
   function linesOf(feature) {
     var g = feature.geometry || {};
@@ -311,7 +454,9 @@
     }
     if (kind === 'sketch') {
       var col = routeMain ? '--route' : '--trail';
+      /* A pale band under the dots lifts them off relief and contours. */
       return [
+        { id: 'olt-sketch-halo', color: '--casing', width: [5, 6, 12, 9], opacity: 0.6, filter: IS_SKETCH },
         { id: 'olt-sketch', color: col, width: [5, 3, 12, 5], dash: [0, 2], cap: 'round', filter: IS_SKETCH },
         { id: 'olt-sketch-points', type: 'circle', stroke: col, strokeWidth: 2.5, radius: [5, 5, 12, 8], filter: IS_SKETCH }
       ];
@@ -329,9 +474,10 @@
     return token(def.stroke || '--trail');
   }
 
-  /* Trail lines go under the base map's labels, as on a printed map. */
+  /* Trail lines go under the base map's labels, as on a printed map (and over
+     the contour labels, which sit with their lines below the water). */
   function addLineLayers(map, fc, defs) {
-    var firstLabel = map.getStyle().layers.filter(function (l) { return l.type === 'symbol'; })[0];
+    var firstLabel = map.getStyle().layers.filter(function (l) { return l.type === 'symbol' && !ELEVATION[l.source]; })[0];
     map.addSource('olt', { type: 'geojson', data: fc });
     defs.forEach(function (def) {
       var layer;
@@ -357,6 +503,7 @@
           }
         };
         if (def.dash) layer.paint['line-dasharray'] = def.dash;
+        if (def.opacity) layer.paint['line-opacity'] = def.opacity;
       }
       if (def.filter) layer.filter = def.filter;
       map.addLayer(layer, firstLabel && firstLabel.id);
@@ -376,6 +523,9 @@
     var routeMain = fig.dataset.route === 'yes';
     var defs = layerDefs(kind, routeMain);
     var onlyIds = (fig.dataset.ids || '').trim().split(/\s+/).filter(Boolean);
+    /* A trail page's map: fetch its outdoor style now, beside the track data. */
+    var outdoorUrl = kind === 'overview' ? '' : (fig.dataset.outdoor || '');
+    if (outdoorUrl) fetchOutdoor(outdoorUrl);
     var entry = { kind: kind, map: null, fc: null, defs: defs, fallback: fallback,
                   visibleIds: onlyIds.length ? onlyIds : null, ready: false,
                   mapStarted: false, fullBounds: null, boundsById: null };
@@ -450,10 +600,22 @@
       if (!window.maplibregl) { dataReady.then(function (fc) { if (fc) fail('the map library did not load'); }); return; }
       if (!webglAvailable()) { dataReady.then(function (fc) { if (fc) fail('WebGL is off in this browser'); }); return; }
       if (!entry.ready && entry.fc) status.textContent = 'Loading the base map…';
+      var timer = setTimeout(function () { fail('tiles did not load'); }, 15000);
+      if (outdoorUrl) fetchOutdoor(outdoorUrl).then(function (base) { createMap(base, timer); });
+      else createMap(null, timer);
+    }
 
+    /* base: the outdoor style of a trail map, or null for a map with the plain
+       style only (the overview maps, or when the style file did not load). */
+    function createMap(base, timer) {
+      var current = base && basemapChoice() === 'outdoor' ? 'outdoor' : 'plain';
+      var contourMiles = milesFirst();  /* the units the contour tiles are made in */
+      var settled = false;              /* the current style is loaded and dressed */
+      var styleGen = 0;
+      var switcher = null;
       var options = {
         container: host.querySelector('.map__canvas'),
-        style: STYLE_URL,
+        style: current === 'outdoor' ? outdoorStyle(base, true) : STYLE_URL,
         attributionControl: { compact: true },
         cooperativeGestures: true,
         dragRotate: false,
@@ -472,6 +634,7 @@
       map.addControl(scale, 'bottom-left');
       document.addEventListener('olt:units', function () {
         scale.setUnit(milesFirst() ? 'imperial' : 'metric');
+        if (settled && current === 'outdoor') restyle();
       });
 
       /* A narrow frame has no room for the open attribution beside the scale
@@ -486,29 +649,79 @@
       map.on('resize', collapseAttribution);
 
       var originals = {};
-      var timer = setTimeout(function () { fail('tiles did not load'); }, 15000);
-      map.on('error', function () { if (!map.isStyleLoaded()) fail('the map style did not load'); });
+      map.on('error', function (e) {
+        if (e && e.sourceId && ELEVATION[e.sourceId]) return;  /* no relief or contours here: the map stands */
+        if (!map.isStyleLoaded()) fail('the map style did not load');
+      });
+
+      /* The outdoor style in the reader's theme and units; contour tiles are
+         remade only when the units change. */
+      function restyle() {
+        restyleOutdoor(map, base);
+        var source = map.getSource('olt-contours');
+        if (source && demSource && contourMiles !== milesFirst()) {
+          contourMiles = milesFirst();
+          source.setTiles([contourUrl(base)]);
+        }
+      }
+
+      /* A freshly loaded base map: the theme, then the trail on top. */
+      function dress() {
+        if (current === 'plain') {
+          originals = {};
+          tintBasemap(map, originals);
+        } else {
+          restyle();
+        }
+        addLineLayers(map, entry.fc, defs);
+      }
 
       var styleReady = new Promise(function (resolve) { map.on('load', resolve); });
       Promise.all([dataReady, styleReady]).then(function (results) {
         var fc = results[0];
         if (!fc) return;
         clearTimeout(timer);
-        tintBasemap(map, originals);
-        addLineLayers(map, fc, defs);
+        dress();
         if (!bbox) {
           bbox = bboxOf(fc);
           entry.fullBounds = bbox.slice();
           map.fitBounds([[bbox[0], bbox[1]], [bbox[2], bbox[3]]], { padding: 32, animate: false });
         }
         entry.ready = true;
+        settled = true;
         host.dataset.state = 'ready';
         status.textContent = '';
         collapseAttribution();
         if (entry.visibleIds) setVisible(entry, entry.visibleIds);
         if (kind === 'overview') wireOverview(map, defs);
+        if (current === 'outdoor') showElevation(map);
+        if (base) {
+          switcher = basemapControl();
+          map.addControl(switcher, 'top-left');
+        }
         mapCorners();
       });
+
+      /* Outdoor <-> Plain. setStyle drops every added layer, so the trail is
+         drawn again on the new style, with the theme, the units and the
+         visible-ids filter; the camera stays where the reader left it. */
+      function applyBasemap() {
+        if (switcher) switcher.sync();
+        var want = base && basemapChoice() === 'outdoor' ? 'outdoor' : 'plain';
+        if (!entry.ready || want === current) return;
+        current = want;
+        settled = false;
+        var gen = ++styleGen;
+        if (want === 'outdoor') contourMiles = milesFirst();
+        map.setStyle(want === 'outdoor' ? outdoorStyle(base, false) : STYLE_URL, { diff: false });
+        map.once('style.load', function () {
+          if (gen !== styleGen) return;  /* a later switch replaced this style */
+          dress();
+          if (entry.visibleIds) setVisible(entry, entry.visibleIds);
+          settled = true;
+        });
+      }
+      if (base) document.addEventListener('olt:basemap', applyBasemap);
 
       function mapCorners() {
         var b = map.getBounds();
@@ -516,8 +729,9 @@
       }
       map.on('moveend', function () { if (entry.ready) mapCorners(); });
       document.addEventListener('olt:theme', function () {
-        if (!entry.ready) return;
-        tintBasemap(map, originals);
+        if (!entry.ready || !settled) return;  /* a style still loading is dressed in the new theme */
+        if (current === 'outdoor') restyle();
+        else tintBasemap(map, originals);
         defs.forEach(function (def) {
           if (def.type === 'circle') {
             map.setPaintProperty(def.id, 'circle-color', token('--casing'));

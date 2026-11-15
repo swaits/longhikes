@@ -9,6 +9,7 @@ import re
 import urllib.parse
 
 from . import common, elevation, facets, hike, words
+from .layout import OUTDOOR_STYLE
 from .markup import Markup, esc
 
 EXTRACT_SOURCES = {"osm": "OpenStreetMap", "usfs": "USDA Forest Service", "nps": "National Park Service"}
@@ -307,7 +308,7 @@ def map_figure(rec):
     bbox = rec["derived"].get("map_bbox") or rec["derived"].get("bbox")
     bbox_attr = f' data-bbox="{",".join(str(v) for v in bbox)}"' if bbox else ""
     credit = common.sentence(common.credit_text(src.get("attribution", "")))
-    return f"""<figure class="mapfig mapfig--detail detail__map" data-map="trail" data-src="/trails/{esc(rec["id"])}/map.json" data-route="{"yes" if route else "no"}"{bbox_attr}>
+    return f"""<figure class="mapfig mapfig--detail detail__map" data-map="trail" data-src="/trails/{esc(rec["id"])}/map.json" data-route="{"yes" if route else "no"}"{bbox_attr} data-outdoor="{OUTDOOR_STYLE}">
   <div class="mapfig__frame">
     <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
     <div class="map" role="region" aria-label="Map of the {esc(rec["name"])}">
@@ -319,7 +320,7 @@ def map_figure(rec):
   </div>
   <figcaption class="mapfig__caption">
     <ul class="legend" aria-label="Legend">{legend}</ul>
-    <p>Track: {esc(src.get("line_source", ""))}, read {esc(src.get("source_checked", ""))}, drawn simplified to 30&nbsp;m. Credit: {esc(credit)} Base map: OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.</p>
+    <p>Track: {esc(src.get("line_source", ""))}, read {esc(src.get("source_checked", ""))}, drawn simplified to 30&nbsp;m. Credit: {esc(credit)} {common.TRAIL_MAP_CREDIT}</p>
   </figcaption>
 </figure>"""
 
@@ -476,7 +477,7 @@ def sketch_figure(rec):
             legend_text = "No GPX here: start only"
     _title, status, reason, rule, actions_html = _no_gpx_parts(rec)
     reason_html = reason if isinstance(reason, Markup) else common.rich(reason)
-    return f"""<figure class="mapfig mapfig--detail detail__map" id="track" data-map="sketch" data-src="/trails/{esc(rec["id"])}/sketch.json" data-route="{"yes" if route else "no"}"{bbox_attr}>
+    return f"""<figure class="mapfig mapfig--detail detail__map" id="track" data-map="sketch" data-src="/trails/{esc(rec["id"])}/sketch.json" data-route="{"yes" if route else "no"}"{bbox_attr} data-outdoor="{OUTDOOR_STYLE}">
   <div class="mapfig__frame">
     <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
     <div class="map" role="region" aria-label="Map showing the start and end of the {esc(rec["name"])}; no GPX here">
@@ -493,7 +494,7 @@ def sketch_figure(rec):
     <p>{reason_html}</p>
     <p class="note">{esc(rule)}</p>
     {actions_html}
-    <p>Base map: OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.</p>
+    <p>{common.TRAIL_MAP_CREDIT}</p>
     </div>
   </figcaption>
 </figure>"""

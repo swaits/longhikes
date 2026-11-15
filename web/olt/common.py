@@ -183,6 +183,30 @@ def plate(rec, *, size="", link=False, eager=False, alt=None):
     return Markup(f'<div class="{cls} plate--none" aria-hidden="true"><span>{inner}</span></div>')
 
 
+# Map credits. The base map is OpenFreeMap on every map. The trail maps add
+# relief and contours drawn from the Terrain Tiles elevation data: their credit
+# is the one tools/elevation.py gives (ATTRIBUTION; test_pages checks the two
+# agree), plus Mexico, which the maps near the border show.
+BASE_MAP_CREDIT = Markup("OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.")
+ELEVATION_CREDIT = (
+    "Terrain Tiles, accessed from https://registry.opendata.aws/terrain-tiles. "
+    "United States 3DEP (formerly NED) and global GMTED2010 and SRTM terrain data "
+    "courtesy of the U.S. Geological Survey. Canada terrain data contains "
+    "information licensed under the Open Government Licence - Canada. ArcticDEM "
+    "terrain data DEM(s) were created from DigitalGlobe, Inc., imagery and funded "
+    "under National Science Foundation awards 1043681, 1559691, and 1542736. "
+    "Global ETOPO1 terrain data U.S. National Oceanic and Atmospheric "
+    "Administration."
+)
+MAP_ELEVATION_CREDIT = ELEVATION_CREDIT + " Mexico terrain data source: INEGI, Continental relief, 2016."
+# The trail maps' own caption line: the full credit of everything they can draw.
+TRAIL_MAP_CREDIT = Markup(f"Base map: {BASE_MAP_CREDIT} Relief and contours: {esc(MAP_ELEVATION_CREDIT)}")
+# The site footer's short form; the elevation figures on every list come from the same data.
+FOOTER_MAP_CREDIT = Markup(
+    f"Base maps: {BASE_MAP_CREDIT} Elevation, relief and contours: Terrain Tiles, with data courtesy of "
+    "the U.S. Geological Survey, NOAA, ArcticDEM and INEGI; Canada terrain data under the Open Government "
+    "Licence - Canada. The full credit is under each trail map.")
+
 SWATCH_LINE = Markup('<span class="swatch swatch--line" aria-hidden="true"></span>')
 SWATCH_ROUTE = Markup('<span class="swatch swatch--route" aria-hidden="true"></span>')
 SWATCH_ALT = Markup('<span class="swatch swatch--alt" aria-hidden="true"></span>')

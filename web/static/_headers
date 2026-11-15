@@ -14,15 +14,19 @@
 # (web/tests/test_headers.py checks this against the built site).
 
 # Security headers for every response. No inline scripts or style elements:
-# pages load same-origin scripts and styles, MapLibre runs from blob: workers,
-# map images are self/data:/blob:, fonts are self-hosted, and tiles, glyphs and
-# sprites are fetched from OpenFreeMap (connect-src). style-src-attr allows
-# style="" attributes, which the pages use only to carry data to CSS (--km for
-# the length strip, --n for the ratio bar, --pos for the verification gauge).
+# pages load same-origin scripts and styles, MapLibre and the contour add-on
+# run from blob: workers, map images are self/data:/blob:, fonts are
+# self-hosted, and tiles, glyphs and sprites are fetched from OpenFreeMap
+# (connect-src). The trail maps' relief and contours fetch elevation tiles
+# (Terrain Tiles on AWS) with fetch(), from the page or the add-on's worker,
+# which keeps this policy: connect-src allows that one path only, not all of
+# s3.amazonaws.com. style-src-attr allows style="" attributes, which the
+# pages use only to carry data to CSS (--km for the length strip, --n for the
+# ratio bar, --pos for the verification gauge).
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; worker-src 'self' blob:; child-src 'self' blob:; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://tiles.openfreemap.org; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; worker-src 'self' blob:; child-src 'self' blob:; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://tiles.openfreemap.org https://s3.amazonaws.com/elevation-tiles-prod/terrarium/; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
 
 # Site data. Matched by file type, not /data/*, so the pages under /data/
 # (/data/, /data/schema/, /data/changelog/) revalidate like every other page.

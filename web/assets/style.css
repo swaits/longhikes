@@ -704,6 +704,22 @@ body:has(.hero--home) .site-header .wordmark { visibility: hidden; }
   :root:not([data-theme="light"]) .maplibregl-ctrl-icon,
   :root:not([data-theme="light"]) .maplibregl-ctrl-attrib-button { filter: invert(1); }
 }
+/* The Outdoor / Plain switch of a trail map (app.js basemapControl): two toggle
+   buttons side by side, top left, the pressed one in ink like a .seg choice. */
+.maplibregl-ctrl-group.basemap-switch { display: flex; }
+.maplibregl-ctrl-group.basemap-switch button {
+  inline-size: auto; block-size: auto; width: auto; height: auto;
+  min-block-size: 29px;
+  padding: 0 var(--space-2);
+  color: var(--ink-2);
+  font: 500 0.75rem/1 var(--font-sans);
+}
+.maplibregl-ctrl-group.basemap-switch button + button { border-block-start: 0; border-inline-start: 1px solid var(--rule); }
+.maplibregl-ctrl-group.basemap-switch button[aria-pressed="true"]:not(:disabled) { background: var(--ink); color: var(--paper); font-weight: 600; }
+.maplibregl-ctrl-group.basemap-switch button[aria-pressed="true"]:focus-visible { outline-color: var(--paper); }
+@media (pointer: coarse) {
+  .maplibregl-ctrl-group.basemap-switch button { min-block-size: 2.75rem; padding: 0 var(--space-3); }
+}
 .maplibregl-ctrl-scale {
   background: color-mix(in srgb, var(--surface) 88%, transparent) !important;
   border-color: var(--ink) !important;

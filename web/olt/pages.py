@@ -84,7 +84,7 @@ def render_site(records, out_dir, repo_root, site=None):
         title, description, body, needs_map = trail.render(rec, site, records)
         path = f"/trails/{rec['id']}/"
         layout.write_page(out_dir, path, layout.layout(title, body, path=path, description=description,
-                                                      maps=needs_map, site=site))
+                                                      maps=needs_map, outdoor=needs_map, site=site))
         pages += 1
     dataset = seo.dataset_jsonld(records, site)
     body = home.render(records, site)

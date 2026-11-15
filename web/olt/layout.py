@@ -18,7 +18,7 @@ scripts or styles (the Content-Security-Policy forbids them).
 import json
 import os
 
-from . import site as site_settings
+from . import common, site as site_settings
 from .markup import Markup, attrs, esc, json_block
 
 NAV = (
@@ -38,6 +38,11 @@ FONT_PRELOADS = (
 )
 MAPLIBRE_CSS = "/assets/vendor/maplibre-gl/maplibre-gl.css"
 MAPLIBRE_JS = "/assets/vendor/maplibre-gl/maplibre-gl.js"
+# The outdoor map of the trail pages: its style, named on each trail map figure
+# (data-outdoor) for app.js to fetch, and the contour add-on (maplibre-contour),
+# loaded on those pages only (layout(outdoor=True)).
+OUTDOOR_STYLE = "/assets/map/outdoor.json"
+CONTOUR_JS = "/assets/vendor/maplibre-contour/maplibre-contour.js"
 
 
 def _current(path, href):
@@ -113,7 +118,7 @@ def footer(site):
     </div>
   </div>
   <div class="site-footer__base">
-    <div class="container">Base maps: OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.</div>
+    <div class="container">{common.FOOTER_MAP_CREDIT}</div>
   </div>
 </footer>""")
 
@@ -124,7 +129,8 @@ def _ld_json_block(obj):
     return Markup(f'<script type="application/ld+json">{text}</script>')
 
 
-def layout(title, body, *, path, description="", maps=False, scripts=(), data=None, site=None, jsonld=None, og_type="website"):
+def layout(title, body, *, path, description="", maps=False, outdoor=False, scripts=(), data=None, site=None,
+           jsonld=None, og_type="website"):
     """Return a complete HTML document.
 
     title        the page's own title ("Arizona National Scenic Trail"); the site
@@ -133,6 +139,8 @@ def layout(title, body, *, path, description="", maps=False, scripts=(), data=No
     path         the page's site path, e.g. "/regions/" (canonical link, nav state).
     description  meta description; defaults to the site tagline.
     maps         True to load MapLibre (pages with a .mapfig[data-map]).
+    outdoor      True as well on a page whose map is an outdoor map (a trail
+                 page): loads the contour add-on after MapLibre, deferred.
     scripts      extra same-origin script URLs, loaded with defer after app.js.
     data         optional object, embedded as <script type="application/json" id="page-data">.
     site         settings (olt.site.Site); defaults to web/site.toml.
@@ -187,6 +195,8 @@ def layout(title, body, *, path, description="", maps=False, scripts=(), data=No
     head.append('<script src="/assets/app.js" defer></script>')
     if maps:
         head.append(f'<script src="{MAPLIBRE_JS}" defer></script>')
+        if outdoor:
+            head.append(f'<script src="{CONTOUR_JS}" defer></script>')
     head += [f'<script src="{esc(s)}" defer></script>' for s in scripts]
     data_block = json_block(data, "page-data") if data is not None else ""
     return f"""<!doctype html>

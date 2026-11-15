@@ -1,6 +1,7 @@
 """Tests for the added pages: regions, routes, sources, logos, about, data, SEO files,
 the bulk archives and the response headers."""
 import html
+import json
 import os
 import re
 import subprocess
@@ -333,6 +334,20 @@ class HeadersTest(unittest.TestCase):
         font_src = re.search(r"font-src ([^;]*)", csp).group(1)
         self.assertEqual(font_src.strip(), "'self'")
         self.assertIn("https://tiles.openfreemap.org", re.search(r"connect-src ([^;]*)", csp).group(1))
+
+    def test_elevation_tiles_allowed_by_their_path_only(self):
+        """The outdoor map fetches Terrain Tiles (fetch() in the page or the
+        contour add-on's blob: worker): connect-src names that one path."""
+        csp = self.headers("/trails/john-muir/").get("content-security-policy", "")
+        self.assertEqual(csp, self.headers("/").get("content-security-policy", ""))
+        connect = re.search(r"connect-src ([^;]*)", csp).group(1).split()
+        self.assertEqual(connect, ["'self'", "https://tiles.openfreemap.org",
+                                   "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/"])
+        self.assertIn("worker-src 'self' blob:", csp)
+        self.assertIn("img-src 'self' data: blob:;", csp)
+        with open(os.path.join(WEB, "assets", "map", "outdoor.json"), encoding="utf-8") as f:
+            dem = json.load(f)["sources"]["olt-dem"]["tiles"][0]
+        self.assertTrue(dem.startswith(connect[2]), dem)
 
 
 class SeoTest(unittest.TestCase):

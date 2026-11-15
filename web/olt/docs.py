@@ -384,7 +384,9 @@ BULK_FILES = (
     ("trails.json", "Every record in full, as JSON, with the derived fields the site builds.", False),
     ("index.geojson", "Every included track, simplified to about 100 m, with id and name.", True),
     ("overview.geojson", "Every included track simplified to about 750 m for the overview map, "
-                         "with id, name, kind, country and length.", False),
+                         "with id, name, kind, country and length. A trail with no track but a known "
+                         "start or end appears marked as a sketch: a straight line between the two, "
+                         "or one point alone. A sketch is not a track.", False),
     ("all-gpx.zip", "Every GPX file (main tracks and alternates, simplified to 5 m), as <id>/<file>, "
                     "with each trail's release.txt, trails.csv, SOURCES.md and a README.", True),
     ("all-geojson.zip", "Every full-resolution GeoJSON main track and alternates file, as <id>/<file>, "
@@ -432,6 +434,7 @@ def data_page(records, site, repo_root, out_dir):
         ("<id>-alternates.geojson / .gpx", "Alternate and connector tracks, where the source serves them separately."),
         ("<id>-<source>.geojson", "One source's own extract, where a track combines sources."),
         ("map.json", "The track simplified to 30 m for the trail page map (GeoJSON)."),
+        ("sketch.json", "Start and end points only, for the trail page map where there is no track (GeoJSON). Not a track."),
         ("trail.toml", "The record itself: source, licence, verification, logo and route details."),
         ("release.txt", "The source, licence and date the track files came from, where a track is included."),
         ("shield.svg / shield.png", "The trail logo, where one is included. Not licensed; see Logos."),

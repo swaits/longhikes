@@ -296,7 +296,9 @@ class BuiltSiteTest(unittest.TestCase):
             page = self.pages[rec["id"]]
             if rec["derived"]["has_line"] or rec["derived"]["kind"] != "route":
                 continue
-            frame = page[page.index('<figure class="mapfig mapfig--empty'):page.index("</figure>")]
+            # The hatched frame, or the map of a trail drawn from its start and end.
+            start = re.search(r'<figure class="mapfig (?:mapfig--empty|[^"]*"[^>]* data-map="sketch")', page).start()
+            frame = page[start:page.index("</figure>", start)]
             self.assertEqual(">All guides<" in frame, len(rec.get("guide", [])) > 1
                              and rec["route"]["line_policy"] == "open"
                              and any(g.get("access") == "free" for g in rec["guide"]), rec["id"])

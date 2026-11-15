@@ -95,17 +95,28 @@
     return g.type === 'MultiLineString' ? g.coordinates : [];
   }
 
+  function pointsOf(feature) {
+    var g = feature.geometry || {};
+    if (g.type === 'Point') return [g.coordinates];
+    return g.type === 'MultiPoint' ? g.coordinates : [];
+  }
+
+  function allCoords(feature) {
+    var out = [];
+    linesOf(feature).forEach(function (line) { line.forEach(function (p) { out.push(p); }); });
+    pointsOf(feature).forEach(function (p) { out.push(p); });
+    return out;
+  }
+
   function bboxOf(fc) {
     if (fc.bbox && fc.bbox.length === 4) return fc.bbox;
     var b = [180, 90, -180, -90];
     fc.features.forEach(function (f) {
-      linesOf(f).forEach(function (line) {
-        line.forEach(function (p) {
-          if (p[0] < b[0]) b[0] = p[0];
-          if (p[1] < b[1]) b[1] = p[1];
-          if (p[0] > b[2]) b[2] = p[0];
-          if (p[1] > b[3]) b[3] = p[1];
-        });
+      allCoords(f).forEach(function (p) {
+        if (p[0] < b[0]) b[0] = p[0];
+        if (p[1] < b[1]) b[1] = p[1];
+        if (p[0] > b[2]) b[2] = p[0];
+        if (p[1] > b[3]) b[3] = p[1];
       });
     });
     return b;
@@ -114,16 +125,22 @@
   function bboxOfFeature(feature) {
     var b = [180, 90, -180, -90];
     var seen = false;
-    linesOf(feature).forEach(function (line) {
-      line.forEach(function (p) {
-        seen = true;
-        if (p[0] < b[0]) b[0] = p[0];
-        if (p[1] < b[1]) b[1] = p[1];
-        if (p[0] > b[2]) b[2] = p[0];
-        if (p[1] > b[3]) b[3] = p[1];
-      });
+    allCoords(feature).forEach(function (p) {
+      seen = true;
+      if (p[0] < b[0]) b[0] = p[0];
+      if (p[1] < b[1]) b[1] = p[1];
+      if (p[0] > b[2]) b[2] = p[0];
+      if (p[1] > b[3]) b[3] = p[1];
     });
     return seen ? b : null;
+  }
+
+  /* A single sketch point has no span; give it about a county of ground. */
+  function ensureSpan(bbox) {
+    var b = bbox.slice();
+    if (b[2] - b[0] < 0.02) { var cx = (b[0] + b[2]) / 2; b[0] = cx - 0.25; b[2] = cx + 0.25; }
+    if (b[3] - b[1] < 0.02) { var cy = (b[1] + b[3]) / 2; b[1] = cy - 0.18; b[3] = cy + 0.18; }
+    return b;
   }
 
   function mercY(lat) { return Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360)); }
@@ -139,6 +156,7 @@
 
   /* Lines on a plain graticule (Web Mercator), no tiles. Returns the drawn extent. */
   function drawFallback(host, fc, bbox, routeMain) {
+    bbox = ensureSpan(bbox);
     var rect = host.getBoundingClientRect();
     var W = Math.max(Math.round(rect.width), 280);
     var H = Math.max(Math.round(rect.height), 180);
@@ -179,12 +197,27 @@
         return 'M' + line.map(function (p) { return x(p[0]).toFixed(1) + ' ' + y(p[1]).toFixed(1); }).join('L');
       }).join('');
       var p = f.properties || {};
-      var mod = p.role === 'alternate' ? ' fallback__line--alternate'
-        : (p.kind === 'route' || (routeMain && p.role === 'main')) ? ' fallback__line--route' : '';
-      return { d: d, mod: mod, id: p.id || '' };
-    });
-    drawn.forEach(function (l) { path('fallback__casing', l.d, l.id); });
+      var isRoute = p.kind === 'route' || (routeMain && (p.role === 'main' || p.sketch));
+      var mod = p.sketch ? ' fallback__line--sketch' + (isRoute ? ' fallback__line--sketch-route' : '')
+        : p.role === 'alternate' ? ' fallback__line--alternate'
+        : isRoute ? ' fallback__line--route' : '';
+      return { d: d, mod: mod, id: p.id || '', sketch: !!p.sketch };
+    }).filter(function (l) { return l.d; });
+    drawn.filter(function (l) { return !l.sketch; }).forEach(function (l) { path('fallback__casing', l.d, l.id); });
     drawn.forEach(function (l) { path('fallback__line' + l.mod, l.d, l.id); });
+    fc.features.forEach(function (f) {
+      var p = f.properties || {};
+      var ringCls = 'fallback__ring' + ((p.kind === 'route' || routeMain) ? ' fallback__ring--route' : '');
+      pointsOf(f).forEach(function (pt) {
+        var c = document.createElementNS(ns, 'circle');
+        c.setAttribute('class', ringCls);
+        c.setAttribute('cx', x(pt[0]).toFixed(1));
+        c.setAttribute('cy', y(pt[1]).toFixed(1));
+        c.setAttribute('r', '4');
+        if (p.id) c.setAttribute('data-id', p.id);
+        svg.appendChild(c);
+      });
+    });
     host.replaceChildren(svg);
     return ext;
   }
@@ -258,13 +291,29 @@
     });
   }
 
+  /* Track features carry no sketch property at all, so has/!has is the
+     type-safe test (a != against true would compare boolean with null). */
+  var NOT_SKETCH = ['!', ['has', 'sketch']];
+  var IS_SKETCH = ['has', 'sketch'];
+
   function layerDefs(kind, routeMain) {
     if (kind === 'overview') {
       return [
-        { id: 'olt-casing', color: '--casing', width: [3, 4, 9, 9] },
+        { id: 'olt-casing', color: '--casing', width: [3, 4, 9, 9], filter: NOT_SKETCH },
         { id: 'olt-hi', color: '--ink', width: [3, 7, 9, 11], filter: ['==', ['get', 'id'], ''] },
-        { id: 'olt-line', color: '--trail', width: [3, 1.6, 9, 4], filter: ['!=', ['get', 'kind'], 'route'], hit: true },
-        { id: 'olt-route', color: '--route', width: [3, 1.6, 9, 4], dash: [1.6, 1.1], filter: ['==', ['get', 'kind'], 'route'], hit: true }
+        { id: 'olt-hi-point', type: 'circle', stroke: '--ink', strokeWidth: 3, radius: [3, 5, 9, 9], filter: ['==', ['get', 'id'], ''] },
+        { id: 'olt-line', color: '--trail', width: [3, 1.6, 9, 4], filter: ['all', NOT_SKETCH, ['!=', ['get', 'kind'], 'route']], hit: true },
+        { id: 'olt-route', color: '--route', width: [3, 1.6, 9, 4], dash: [1.6, 1.1], filter: ['all', NOT_SKETCH, ['==', ['get', 'kind'], 'route']], hit: true },
+        { id: 'olt-sketch', color: '--trail', width: [3, 2, 9, 3.5], dash: [0, 2], cap: 'round', filter: ['all', IS_SKETCH, ['!=', ['get', 'kind'], 'route']], hit: true },
+        { id: 'olt-sketch-route', color: '--route', width: [3, 2, 9, 3.5], dash: [0, 2], cap: 'round', filter: ['all', IS_SKETCH, ['==', ['get', 'kind'], 'route']], hit: true },
+        { id: 'olt-sketch-points', type: 'circle', strokeByKind: true, strokeWidth: 2, radius: [3, 3, 9, 6], filter: IS_SKETCH, hit: true }
+      ];
+    }
+    if (kind === 'sketch') {
+      var col = routeMain ? '--route' : '--trail';
+      return [
+        { id: 'olt-sketch', color: col, width: [5, 3, 12, 5], dash: [0, 2], cap: 'round', filter: IS_SKETCH },
+        { id: 'olt-sketch-points', type: 'circle', stroke: col, strokeWidth: 2.5, radius: [5, 5, 12, 8], filter: IS_SKETCH }
       ];
     }
     return [
@@ -275,22 +324,40 @@
     ];
   }
 
+  function circleStroke(def) {
+    if (def.strokeByKind) return ['match', ['get', 'kind'], 'route', token('--route'), token('--trail')];
+    return token(def.stroke || '--trail');
+  }
+
   /* Trail lines go under the base map's labels, as on a printed map. */
   function addLineLayers(map, fc, defs) {
     var firstLabel = map.getStyle().layers.filter(function (l) { return l.type === 'symbol'; })[0];
     map.addSource('olt', { type: 'geojson', data: fc });
     defs.forEach(function (def) {
-      var layer = {
-        id: def.id,
-        type: 'line',
-        source: 'olt',
-        layout: { 'line-join': 'round', 'line-cap': def.dash ? 'butt' : 'round' },
-        paint: {
-          'line-color': token(def.color),
-          'line-width': ['interpolate', ['linear'], ['zoom'], def.width[0], def.width[1], def.width[2], def.width[3]]
-        }
-      };
-      if (def.dash) layer.paint['line-dasharray'] = def.dash;
+      var layer;
+      if (def.type === 'circle') {
+        layer = {
+          id: def.id, type: 'circle', source: 'olt',
+          paint: {
+            'circle-radius': ['interpolate', ['linear'], ['zoom'], def.radius[0], def.radius[1], def.radius[2], def.radius[3]],
+            'circle-color': token('--casing'),
+            'circle-stroke-color': circleStroke(def),
+            'circle-stroke-width': def.strokeWidth || 2
+          }
+        };
+      } else {
+        layer = {
+          id: def.id,
+          type: 'line',
+          source: 'olt',
+          layout: { 'line-join': 'round', 'line-cap': def.cap || (def.dash ? 'butt' : 'round') },
+          paint: {
+            'line-color': token(def.color),
+            'line-width': ['interpolate', ['linear'], ['zoom'], def.width[0], def.width[1], def.width[2], def.width[3]]
+          }
+        };
+        if (def.dash) layer.paint['line-dasharray'] = def.dash;
+      }
       if (def.filter) layer.filter = def.filter;
       map.addLayer(layer, firstLabel && firstLabel.id);
     });
@@ -318,8 +385,10 @@
     if (bbox.length !== 4 || bbox.some(isNaN)) bbox = null;
 
     function corners(ext) {
-      if (nw) nw.textContent = dms(ext.n, 'N', 'S') + ' ' + dms(ext.w, 'E', 'W');
-      if (se) se.textContent = dms(ext.s, 'N', 'S') + ' ' + dms(ext.e, 'E', 'W');
+      /* A wide map of Alaska reaches past 180°: name that longitude as the east one it is. */
+      var wrap = function (lon) { return ((lon + 540) % 360) - 180; };
+      if (nw) nw.textContent = dms(ext.n, 'N', 'S') + ' ' + dms(wrap(ext.w), 'E', 'W');
+      if (se) se.textContent = dms(ext.s, 'N', 'S') + ' ' + dms(wrap(ext.e), 'E', 'W');
     }
     function redrawFallback() {
       if (!entry.ready && entry.fc) {
@@ -330,10 +399,11 @@
     function fail(reason) {
       if (entry.ready) return;
       host.dataset.state = 'fallback';
-      status.textContent = 'Base map unavailable (' + reason + '). The track is drawn on a plain graticule.';
+      status.textContent = 'Base map unavailable (' + reason + '). ' +
+        (kind === 'sketch' ? 'The start and end are drawn on a plain graticule.' : 'The track is drawn on a plain graticule.');
     }
 
-    status.textContent = 'Loading the track…';
+    status.textContent = kind === 'sketch' ? 'Loading the map…' : 'Loading the track…';
     var dataReady = fetch(fig.dataset.src, { credentials: 'same-origin' })
       .then(function (r) {
         if (!r.ok) throw new Error(r.status);
@@ -348,7 +418,11 @@
           fc.features.forEach(function (f) {
             var id = (f.properties || {}).id;
             var fb = id && bboxOfFeature(f);
-            if (fb) entry.boundsById[id] = fb;
+            if (!fb) return;
+            var prev = entry.boundsById[id];
+            entry.boundsById[id] = prev
+              ? [Math.min(prev[0], fb[0]), Math.min(prev[1], fb[1]), Math.max(prev[2], fb[2]), Math.max(prev[3], fb[3])]
+              : fb;
           });
         }
         if (!entry.ready && entry.mapStarted && window.maplibregl) status.textContent = 'Loading the base map…';
@@ -444,7 +518,14 @@
       document.addEventListener('olt:theme', function () {
         if (!entry.ready) return;
         tintBasemap(map, originals);
-        defs.forEach(function (def) { map.setPaintProperty(def.id, 'line-color', token(def.color)); });
+        defs.forEach(function (def) {
+          if (def.type === 'circle') {
+            map.setPaintProperty(def.id, 'circle-color', token('--casing'));
+            map.setPaintProperty(def.id, 'circle-stroke-color', circleStroke(def));
+          } else {
+            map.setPaintProperty(def.id, 'line-color', token(def.color));
+          }
+        });
       });
     }
 
@@ -465,7 +546,9 @@
 
   function highlight(id) {
     maps.forEach(function (m) {
-      if (m.map && m.ready && m.map.getLayer('olt-hi')) m.map.setFilter('olt-hi', ['==', ['get', 'id'], id || '']);
+      if (!m.map || !m.ready) return;
+      if (m.map.getLayer('olt-hi')) m.map.setFilter('olt-hi', ['==', ['get', 'id'], id || '']);
+      if (m.map.getLayer('olt-hi-point')) m.map.setFilter('olt-hi-point', ['==', ['get', 'id'], id || '']);
     });
     document.querySelectorAll('.entry.is-highlit').forEach(function (li) { li.classList.remove('is-highlit'); });
     if (id) {
@@ -495,6 +578,15 @@
         meta.textContent = lengthText(Number(p.length_km)) + (p.kind === 'route' ? ' · Route' : '');
         box.appendChild(a);
         box.appendChild(meta);
+        if (p.sketch) {
+          var g = e.features[0].geometry || {};
+          var pointOnly = (g.type === 'MultiPoint' && g.coordinates.length === 1) || g.type === 'Point';
+          var note = document.createElement('p');
+          note.textContent = pointOnly
+            ? 'No GPX here. The ring only marks one end of it; it is not the trail\u2019s path.'
+            : 'No GPX here. The dotted line only joins the start and the end; it is not the trail\u2019s path.';
+          box.appendChild(note);
+        }
         popup.setLngLat(e.lngLat).setDOMContent(box).addTo(map);
       });
     });
@@ -542,7 +634,7 @@
     if (!map || !entry.ready) return;
     var inSet = ['in', ['get', 'id'], ['literal', ids]];
     entry.defs.forEach(function (def) {
-      if (def.id === 'olt-hi') return;
+      if (def.id.indexOf('olt-hi') === 0) return;
       map.setFilter(def.id, def.filter ? ['all', def.filter, inSet] : inSet);
     });
     fitToVisible(entry, ids);
@@ -555,6 +647,133 @@
   document.querySelectorAll('.mapfig[data-map]').forEach(initMap);
   if (window.maplibregl || document.readyState === 'complete') startMaps();
   else window.addEventListener('load', startMaps);
+
+  /* 2b. Sorting every list of trails -----------------------------------------
+     The same orders as facets.SORTS in Python, over the rows' data-*
+     attributes. The "Sort by" select is the one control for keyboard and
+     screen-reader users (the column-head buttons are aria-hidden pointer
+     shortcuts that always agree with it); each new order is announced in
+     the [data-sort-status] live region. ?sort=<key> is written with
+     replaceState when the order is not the page's default, and honoured
+     on load and on back/forward. */
+
+  var SORT_KEYS = { 'name': 1, 'name-desc': 1, 'length-desc': 1, 'length-asc': 1,
+                    'time-asc': 1, 'time-desc': 1, 'climb-desc': 1, 'climb-asc': 1 };
+  var SORT_OLD = { 'long': 'length-desc', 'short': 'length-asc', 'quick': 'time-asc', 'climb': 'climb-desc' };
+  var SORT_COLUMN = { 'name': 'name', 'name-desc': 'name', 'length-desc': 'length', 'length-asc': 'length',
+                      'time-asc': 'time', 'time-desc': 'time', 'climb-desc': 'climb', 'climb-asc': 'climb' };
+  var SORT_ARROW = { 'name': '↑', 'name-desc': '↓', 'length-desc': '↓', 'length-asc': '↑',
+                     'time-asc': '↑', 'time-desc': '↓', 'climb-desc': '↓', 'climb-asc': '↑' };
+  var COLUMN_PRIMARY = { 'name': 'name', 'length': 'length-desc', 'time': 'time-asc', 'climb': 'climb-desc' };
+  var COLUMN_TOGGLE = { 'name': 'name-desc', 'name-desc': 'name', 'length-desc': 'length-asc', 'length-asc': 'length-desc',
+                        'time-asc': 'time-desc', 'time-desc': 'time-asc', 'climb-desc': 'climb-asc', 'climb-asc': 'climb-desc' };
+
+  function normalizeSortKey(value, dflt) {
+    if (SORT_KEYS[value]) return value;
+    if (SORT_OLD[value]) return SORT_OLD[value];
+    return SORT_KEYS[dflt] ? dflt : 'name';
+  }
+  function cmpStr(a, b) { return a < b ? -1 : a > b ? 1 : 0; }
+  function cmpNum(a, b) { return a < b ? -1 : a > b ? 1 : 0; }
+
+  function compareEntries(a, b, key) {
+    key = normalizeSortKey(key, 'name');
+    var an = a.dataset.name || '', bn = b.dataset.name || '';
+    if (key === 'name') return cmpStr(an, bn);
+    if (key === 'name-desc') return cmpStr(bn, an);
+    if (key === 'climb-desc' || key === 'climb-asc') {
+      var ac = a.dataset.climb === '' || a.dataset.climb == null ? null : Number(a.dataset.climb);
+      var bc = b.dataset.climb === '' || b.dataset.climb == null ? null : Number(b.dataset.climb);
+      if (ac === null || bc === null) {
+        if (ac === null && bc === null) return cmpStr(an, bn);
+        return ac === null ? 1 : -1;
+      }
+      return (key === 'climb-desc' ? cmpNum(bc, ac) : cmpNum(ac, bc)) || cmpStr(an, bn);
+    }
+    var av = Number(key.indexOf('length') === 0 ? a.dataset.km : a.dataset.days);
+    var bv = Number(key.indexOf('length') === 0 ? b.dataset.km : b.dataset.days);
+    return (key.slice(-5) === '-desc' ? cmpNum(bv, av) : cmpNum(av, bv)) || cmpStr(an, bn);
+  }
+
+  function sortEntriesIn(root, key) {
+    root.querySelectorAll('ol.entries').forEach(function (list) {
+      Array.prototype.slice.call(list.querySelectorAll('.entry'))
+        .sort(function (a, b) { return compareEntries(a, b, key); })
+        .forEach(function (li) { list.appendChild(li); });
+    });
+  }
+
+  function defaultSortOf(root) {
+    return normalizeSortKey(root && root.dataset ? root.dataset.defaultSort : '', 'name');
+  }
+
+  function syncSortHeads(root, key) {
+    root.querySelectorAll('[data-sort-col]').forEach(function (btn) {
+      var active = SORT_COLUMN[key] === btn.dataset.sortCol;
+      btn.classList.toggle('is-active', active);
+      var arrow = btn.querySelector('[data-arrow]');
+      if (arrow) arrow.textContent = active ? SORT_ARROW[key] : '↕';
+    });
+  }
+
+  function announceSort(root, key) {
+    if (!root) return;
+    var status = root.querySelector('[data-sort-status]');
+    var select = root.querySelector('[data-sort-select]');
+    if (!status || !select) return;
+    var label = key;
+    Array.prototype.forEach.call(select.options, function (o) { if (o.value === key) label = o.textContent; });
+    var text = 'Sorted by ' + label + '.';
+    if (status.textContent !== text) status.textContent = text;
+  }
+
+  function applySortUI(root, key, announce) {
+    key = normalizeSortKey(key, defaultSortOf(root));
+    sortEntriesIn(root, key);
+    var select = root.querySelector('[data-sort-select]');
+    if (select && select.value !== key) select.value = key;
+    syncSortHeads(root, key);
+    if (announce) announceSort(root, key);
+    return key;
+  }
+
+  function nextSortForColumn(col, current) {
+    current = normalizeSortKey(current, 'name');
+    return SORT_COLUMN[current] === col ? COLUMN_TOGGLE[current] : COLUMN_PRIMARY[col];
+  }
+
+  function wireSortHeads(root, getKey, setKey) {
+    root.querySelectorAll('[data-sort-col]').forEach(function (btn) {
+      btn.addEventListener('click', function () { setKey(nextSortForColumn(btn.dataset.sortCol, getKey())); });
+    });
+  }
+
+  function sortFromUrl(root) {
+    return normalizeSortKey(new URLSearchParams(window.location.search).get('sort'), defaultSortOf(root));
+  }
+
+  function replaceSortInUrl(root, key) {
+    var p = new URLSearchParams(window.location.search);
+    if (key === defaultSortOf(root)) p.delete('sort'); else p.set('sort', key);
+    var q = p.toString();
+    window.history.replaceState(null, '', (q ? '?' + q : window.location.pathname) + window.location.hash);
+  }
+
+  function initSortableLists() {
+    document.querySelectorAll('.results[data-sortable]').forEach(function (root) {
+      if (root.querySelector('#entries')) return; /* the finder wires its own list */
+      var select = root.querySelector('[data-sort-select]');
+      var current = defaultSortOf(root);
+      function setSort(key, updateUrl, announce) {
+        current = applySortUI(root, key, announce);
+        if (updateUrl) replaceSortInUrl(root, current);
+      }
+      if (select) select.addEventListener('change', function () { setSort(select.value, true, true); });
+      wireSortHeads(root, function () { return current; }, function (k) { setSort(k, true, true); });
+      setSort(sortFromUrl(root), false, false);
+      window.addEventListener('popstate', function () { setSort(sortFromUrl(root), false, false); });
+    });
+  }
 
   /* 3. Trail finder (home page) ------------------------------------------------
      The filters are the attributes every page names: Where, Length, Time,
@@ -575,9 +794,11 @@
     var empty = document.getElementById('empty-state');
     var active = form.querySelector('.filters__active');
     var lenHint = document.getElementById('len-hint');
-    var listHead = document.querySelector('.list-head');
+    var resultsRoot = list.closest('.results');
+    var listHead = resultsRoot ? resultsRoot.querySelector('.list-head') : document.querySelector('.list-head');
     var el = form.elements;
     var sort = document.getElementById('sort');
+    var defaultSort = defaultSortOf(resultsRoot);
     var more = form.querySelector('.filters__more');
     var total = items.length;
 
@@ -687,7 +908,7 @@
       if (s.month) p.set('month', s.month);
       if (s.kind) p.set('kind', s.kind);
       MULTI.forEach(function (name) { if (s[name].length) p.set(name, s[name].join(',')); });
-      if (sort.value !== 'name') p.set('sort', sort.value);
+      if (sort.value !== defaultSort) p.set('sort', sort.value);
       return p.toString();
     }
 
@@ -712,24 +933,11 @@
       MULTI.forEach(function (name) {
         boxes(name).forEach(function (b) { b.checked = lists[name].indexOf(b.value) !== -1; });
       });
-      var s = p.get('sort') || 'name';
-      sort.value = hasOption(sort, s) ? s : 'name';
+      sort.value = normalizeSortKey(p.get('sort'), defaultSort);
     }
 
     function applySort() {
-      var key = sort.value;
-      items.slice().sort(function (a, b) {
-        if (key === 'long') return Number(b.dataset.km) - Number(a.dataset.km);
-        if (key === 'short') return Number(a.dataset.km) - Number(b.dataset.km);
-        if (key === 'quick') return Number(a.dataset.days) - Number(b.dataset.days) || Number(a.dataset.km) - Number(b.dataset.km);
-        if (key === 'climb') {
-          /* Most climb first; a trail with no computed climb goes last. */
-          var ac = a.dataset.climb === '' ? -1 : Number(a.dataset.climb);
-          var bc = b.dataset.climb === '' ? -1 : Number(b.dataset.climb);
-          return bc - ac || a.dataset.name.localeCompare(b.dataset.name);
-        }
-        return a.dataset.name.localeCompare(b.dataset.name);
-      }).forEach(function (li) { list.appendChild(li); });
+      if (resultsRoot) applySortUI(resultsRoot, sort.value, false);
     }
 
     function apply(updateUrl) {
@@ -776,7 +984,10 @@
     document.querySelectorAll('[data-reset]').forEach(function (b) {
       b.addEventListener('click', function () { form.reset(); el.q.focus(); });
     });
-    sort.addEventListener('change', function () { applySort(); apply(true); });
+    sort.addEventListener('change', function () { applySort(); apply(true); announceSort(resultsRoot, sort.value); });
+    if (resultsRoot) wireSortHeads(resultsRoot, function () { return sort.value; }, function (k) {
+      sort.value = k; applySort(); apply(true); announceSort(resultsRoot, sort.value);
+    });
     document.addEventListener('olt:units', relabelLengths);
 
     items.forEach(function (li) {
@@ -805,6 +1016,7 @@
 
   var finder = document.getElementById('finder-form');
   if (finder) initFinder(finder);
+  initSortableLists();
 
   /* 4. A link to a part of the page inside a closed <details> (About this data)
      opens it, so the target is shown rather than hidden. */

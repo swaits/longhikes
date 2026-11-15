@@ -30,8 +30,9 @@ class List:
     title: str
     blurb: str
     test: Callable[[dict], bool]
-    # Order within the list: longest first unless a list says otherwise.
-    order: Callable[[dict], object] = lambda r: -r["length_km"]
+    # The order the list opens in, a key of facets.SORTS. Name order unless
+    # the list is defined by an order (the longest, the shortest, a week).
+    sort: str = "name"
 
 
 def _mi(km):
@@ -42,10 +43,6 @@ def _band(key):
     return lambda r: facets.time_band(r) == key
 
 
-def _days(r):
-    return facets.time_days(r)[1]
-
-
 LISTS = (
     List("national-scenic-trails", "National Scenic Trails",
          "The long trails the United States Congress has named National Scenic Trails.",
@@ -54,16 +51,16 @@ LISTS = (
          lambda r: facets.kind(r) == "route"),
     List("longest", "The longest",
          f"Trails of {LONG_KM:,} km ({_mi(LONG_KM)} mi) or more.",
-         lambda r: r["length_km"] >= LONG_KM),
+         lambda r: r["length_km"] >= LONG_KM, sort="length-desc"),
     List("under-100-km", f"Under {SHORT_KM} km",
          f"Trails shorter than {SHORT_KM} km ({_mi(SHORT_KM)} mi).",
-         lambda r: r["length_km"] < SHORT_KM, order=lambda r: r["length_km"]),
+         lambda r: r["length_km"] < SHORT_KM, sort="length-asc"),
     List("a-week-or-less", "A week or less",
          "Trails most people walk in a week or less, as a source states it or as estimated from the length.",
-         _band("week"), order=_days),
+         _band("week"), sort="time-asc"),
     List("one-to-two-weeks", "One to two weeks",
          "Trails that take one to two weeks, as a source states it or as estimated from the length.",
-         _band("two-weeks"), order=_days),
+         _band("two-weeks"), sort="time-asc"),
     List("loops", "Loops", "Trails that finish where they start.",
          lambda r: facets.shape(r) == "loop"),
     List("with-gpx", "With a GPX to download",
@@ -84,7 +81,7 @@ LISTS = (
 
 
 def members(lst, records):
-    return sorted((r for r in records if lst.test(r)), key=lambda r: (lst.order(r), r["name"]))
+    return facets.sort_records([r for r in records if lst.test(r)], lst.sort)
 
 
 def is_shown(n, total):

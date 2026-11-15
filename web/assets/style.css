@@ -417,6 +417,9 @@ code.raw {
   border: 1px solid var(--rule-strong);
   background: var(--hatch-fill);
 }
+.swatch--sketch {
+  background: radial-gradient(circle at center, var(--ink-2) 1.7px, transparent 1.8px) 0 50% / 7px 100% repeat-x;
+}
 
 /* Logo plate: a light sign board so every logo reads as drawn */
 .plate {
@@ -630,6 +633,10 @@ code.raw {
 .fallback__line { stroke: var(--trail); stroke-width: 2.25; fill: none; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
 .fallback__line--route { stroke: var(--route); stroke-dasharray: 5 3; }
 .fallback__line--alternate { stroke-width: 1.5; stroke-dasharray: 4 3; }
+.fallback__line--sketch { stroke-width: 2.5; stroke-dasharray: 0.1 5; stroke-linecap: round; }
+.fallback__line--sketch-route { stroke: var(--route); }
+.fallback__ring { fill: var(--casing); stroke: var(--trail); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.fallback__ring--route { stroke: var(--route); }
 
 .mapfig__caption {
   display: flex;
@@ -644,6 +651,11 @@ code.raw {
 .mapfig__caption strong { color: var(--ink); font-weight: 600; }
 .legend { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); padding: 0; list-style: none; }
 .legend li { display: inline-flex; align-items: center; gap: var(--space-2); }
+/* Under a map of many trails the legend keeps a row to itself, however short it is. */
+.mapfig[data-map="overview"] .legend { flex-basis: 100%; }
+.mapfig__caption--sketch { align-items: start; }
+.sketch-note { display: grid; gap: var(--space-2); max-inline-size: 42rem; }
+.sketch-note .cluster { margin-block-start: var(--space-1); }
 
 /* Empty frame: the record has no line, so nothing is drawn */
 .map--empty {
@@ -889,8 +901,14 @@ code.raw {
 }
 .results-count { font: 400 var(--step-0)/1.3 var(--font-sans); color: var(--ink-2); }
 .results-count strong { color: var(--ink); font-size: var(--step-2); font-weight: 600; font-variant-numeric: tabular-nums; }
-.results-sort { display: flex; align-items: center; gap: var(--space-2); font: 600 var(--step--2) var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; }
-.results-sort .select { inline-size: auto; min-block-size: 2.75rem; letter-spacing: 0; text-transform: none; font-weight: 400; }
+.results-sort { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); font: 500 var(--step-0)/1.3 var(--font-sans); color: var(--ink); }
+.results-sort__label { font-weight: 600; }
+.results-sort .select { inline-size: auto; min-block-size: 2.75rem; font-weight: 500; }
+@media (max-width: 40rem) {
+  .results-tools { flex-basis: 100%; }
+  .results-sort { flex: 1 1 100%; }
+  .results-sort .select { flex: 1 1 auto; }
+}
 .key {
   display: flex;
   flex-wrap: wrap;
@@ -911,6 +929,8 @@ code.raw {
 html:not(.js) .filters,
 html:not(.js) .results-tools { display: none; }
 html:not(.js) .finder__grid { grid-template-areas: "main" "notes"; grid-template-columns: minmax(0, 1fr); }
+html:not(.js) .list-head__sort { cursor: default; }
+html:not(.js) .list-head__arrow { display: none; }
 
 /* Trail list: a gazetteer. One row per record. The list is its own inline-size
    container (named as the results wrapper is) so rows take the column layout
@@ -1068,6 +1088,17 @@ html:not(.js) .finder__grid { grid-template-areas: "main" "notes"; grid-template
     text-transform: uppercase;
   }
   .list-head > :first-child { grid-column: 2; }
+  .list-head__sort {
+    display: inline-flex; align-items: baseline; gap: var(--space-1);
+    margin: 0; padding: var(--space-1) 0; border: 0; background: none;
+    color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit;
+    cursor: pointer;
+  }
+  .list-head__plain { padding-block: var(--space-1); }
+  .list-head__sort:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 0.16em; }
+  .list-head__sort.is-active { color: var(--ink); }
+  .list-head__arrow { color: var(--ink-2); font-size: 1.25em; line-height: 1; letter-spacing: 0; }
+  .list-head__sort.is-active .list-head__arrow { color: var(--trail); }
   .list-head__scale { position: relative; display: block; block-size: 1em; margin-block-start: var(--space-1); font: 400 0.6875rem/1 var(--font-mono); letter-spacing: 0; text-transform: none; }
   .list-head__scale > span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
   .list-head__scale > span:nth-child(1) { inset-inline-start: 10.8%; }

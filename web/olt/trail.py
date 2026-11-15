@@ -366,8 +366,9 @@ ROUTE_NO_GPX = {
 }
 
 
-def empty_frame(rec):
-    """The map frame of a trail with no GPX here: why, and where to get one."""
+def _no_gpx_parts(rec):
+    """(title, status, reason, rule, actions_html): why there is no GPX here
+    and where to get one, for the empty frame and the sketch map alike."""
     src = rec["source"]
     reason = src.get("line_absent_reason", "")
     actions = []
@@ -404,6 +405,12 @@ def empty_frame(rec):
             reason = Markup(f'{esc(lead)}</p><p class="note"><strong>Why there is none here:</strong> '
                             f'{common.rich(reason)}')
     actions_html = f'<p class="cluster">{"".join(actions)}</p>' if actions else ""
+    return title, status, reason, rule, actions_html
+
+
+def empty_frame(rec):
+    """The map frame of a trail with no GPX here and no known start or end point."""
+    title, status, reason, rule, actions_html = _no_gpx_parts(rec)
     return f"""<figure class="mapfig mapfig--empty detail__map" id="track" aria-labelledby="noline-title">
   <div class="mapfig__frame">
     <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true">No GPX here</span>
@@ -419,6 +426,68 @@ def empty_frame(rec):
     <span class="mapfig__corner mapfig__corner--se" aria-hidden="true">Nothing drawn</span>
   </div>
   <figcaption class="mapfig__caption"><p>No map is drawn: there is no track for this trail here, and the site does not guess one.</p></figcaption>
+</figure>"""
+
+
+def sketch_figure(rec):
+    """A real map for a trail with no track but a known start or end: a dotted
+    straight line between the two, or one ring. It says plainly that the line only
+    joins the start and the end, and keeps the words about where to get a track."""
+    points = hike.sketch_points(rec)
+    box = hike.sketch_bbox(points, pad=True)
+    bbox_attr = f' data-bbox="{",".join(str(v) for v in box)}"' if box else ""
+    route = common.is_route(rec)
+    h = hike.table(rec)
+    start = h.get("start") if isinstance(h.get("start"), str) else ""
+    end = h.get("end") if isinstance(h.get("end"), str) else ""
+    start, end = start.strip(), end.strip()
+    if len(points) == 2:
+        if start and end:
+            where = (f"The dotted line runs straight from {esc(start)} to {esc(end)}. "
+                     "It only joins the start and the end; that is not the trail&rsquo;s path.")
+        elif start:
+            where = (f"The dotted line runs straight from {esc(start)} to where it ends. "
+                     "It only joins the start and the end; that is not the trail&rsquo;s path.")
+        else:
+            where = ("The dotted line runs straight between its start and its end. "
+                     "It only joins the two; that is not the trail&rsquo;s path.")
+        legend_text = "No GPX here: start and end only"
+    else:
+        if hike.sketch_end(rec) == "end":
+            where = (f"The ring marks {esc(end)}, where it ends. " if end else "The ring marks where it ends. ")
+            where += "No position is on file for the start, so no line is drawn."
+            legend_text = "No GPX here: end only"
+        elif h.get("shape") == "loop":
+            where = (f"The ring marks {esc(start)}, where the loop starts and ends. " if start
+                     else "The ring marks where the loop starts and ends. ")
+            where += "It shows where the trail is, not its path."
+            legend_text = "No GPX here: start only"
+        else:
+            where = (f"The ring marks {esc(start)}, where it starts. " if start else "The ring marks where it starts. ")
+            where += "No position is on file for the end, so no line is drawn."
+            legend_text = "No GPX here: start only"
+    _title, status, reason, rule, actions_html = _no_gpx_parts(rec)
+    reason_html = reason if isinstance(reason, Markup) else common.rich(reason)
+    return f"""<figure class="mapfig mapfig--detail detail__map" id="track" data-map="sketch" data-src="/trails/{esc(rec["id"])}/sketch.json" data-route="{"yes" if route else "no"}"{bbox_attr}>
+  <div class="mapfig__frame">
+    <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
+    <div class="map" role="region" aria-label="Map showing the start and end of the {esc(rec["name"])}; no GPX here">
+      <div class="map__fallback"></div>
+      <div class="map__canvas"></div>
+      <p class="map__status" role="status">The map needs JavaScript. The ends of the trail are named below it.</p>
+    </div>
+    <span class="mapfig__corner mapfig__corner--se" aria-hidden="true"></span>
+  </div>
+  <figcaption class="mapfig__caption mapfig__caption--sketch">
+    <ul class="legend" aria-label="Legend"><li>{common.SWATCH_SKETCH}{esc(legend_text)}</li></ul>
+    <div class="sketch-note">
+    <p><strong>No GPX here.</strong> {where}</p>
+    <p>{reason_html}</p>
+    <p class="note">{esc(rule)}</p>
+    {actions_html}
+    <p>Base map: OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.</p>
+    </div>
+  </figcaption>
 </figure>"""
 
 
@@ -1081,15 +1150,17 @@ def onward(rec, records):
 def render(rec, site, records=None):
     """Return (title, description, body HTML, needs_map) for one trail.
     records: every trail, for the ways onward at the foot (left out when None)."""
-    has_map = common.has_line(rec)
+    has_track = common.has_line(rec)
+    sketch = hike.sketch_points(rec) if not has_track else []
+    has_map = has_track or bool(sketch)
     aside = downloads_panel(rec) + guides_panel(rec)
-    aside_html = (f'<aside class="detail__aside" aria-label="{"Downloads" if has_map else "Where to get the route"}">'
+    aside_html = (f'<aside class="detail__aside" aria-label="{"Downloads" if has_track else "Where to get the route"}">'
                   f'{aside}</aside>') if aside else ""
     profile = elevation_figure(rec)
     body = f"""{page_head(rec)}
 <div class="container detail{"" if aside else " detail--no-aside"}{"" if has_map else " detail--no-map"}{" detail--with-profile" if profile else ""}">
   {glance(rec)}
-  {map_figure(rec) if has_map else empty_frame(rec)}
+  {map_figure(rec) if has_track else sketch_figure(rec) if sketch else empty_frame(rec)}
   {profile}
   {aside_html}
 </div>

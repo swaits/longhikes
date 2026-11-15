@@ -238,13 +238,13 @@ class CatalogueTest(unittest.TestCase):
         row_none = home.entry(rec_with(None))
         self.assertIn('data-climb=""', row_none)
         self.assertNotIn("<dt>Climb</dt>", row_none)
-        self.assertIn('<option value="climb">Most climb first</option>', home.SORT_SELECT)
+        self.assertIn('<option value="climb-desc">Climb, most first</option>', home.SORT_SELECT)
+        self.assertIn('<option value="climb-asc">Climb, least first</option>', home.SORT_SELECT)
         with open(os.path.join(WEB, "assets", "app.js"), encoding="utf-8") as f:
             js = f.read()
-        self.assertIn("key === 'climb'", js)
-        # a trail with no computed climb sorts last, not first
-        self.assertIn("a.dataset.climb === '' ? -1", js)
-        self.assertIn("return bc - ac", js)
+        self.assertIn("'climb-desc'", js)
+        # a trail with no computed climb sorts last in both climb orders
+        self.assertIn("ac === null ? 1 : -1", js)
 
 
 class RoutesListTest(unittest.TestCase):

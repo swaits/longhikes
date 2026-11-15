@@ -123,7 +123,7 @@ def region_page(slug, records, site):
 </div>"""
     title = info["name"]
     desc = f"{_plural(len(recs))} in {info['name']}, {country}: length, time and where to get the GPX."
-    return title, desc, Markup(body), n_gpx >= home.MAP_MIN
+    return title, desc, Markup(body), home.has_overview_map(recs)
 
 
 def route_guides(rec):
@@ -172,7 +172,7 @@ def routes_page(records, site, repo_root=None):
   {home.results(groups=groups, routes_list=True)}
   <nav class="region-nav" aria-label="Other lists"><a href="/lists/">All lists</a> · <a href="/">Every trail</a></nav>
 </div>"""
-    return "Routes", f"{_plural(len(routes), 'route')} in the United States and Canada, by author, with their guides.", Markup(body), n_gpx >= home.MAP_MIN
+    return "Routes", f"{_plural(len(routes), 'route')} in the United States and Canada, by author, with their guides.", Markup(body), home.has_overview_map(routes)
 
 
 def list_page(lst, recs, total, site):
@@ -192,11 +192,11 @@ def list_page(lst, recs, total, site):
 </div></div>
 <div class="container section">
   {home.overview_map(recs, f"Map of the trails in the list {lst.title}")}
-  {home.results(recs)}
+  {home.results(recs, default_sort=lst.sort)}
   <p class="finder__foot">{rule}</p>
   <nav class="region-nav" aria-label="Other lists"><a href="/lists/">All lists</a> · <a href="/">Every trail</a></nav>
 </div>"""
-    return lst.title, f"{lst.title}: {lst.blurb}", Markup(body), n_gpx >= home.MAP_MIN
+    return lst.title, f"{lst.title}: {lst.blurb}", Markup(body), home.has_overview_map(recs)
 
 
 def lists_index_page(records, site):

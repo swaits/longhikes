@@ -17,8 +17,10 @@ attributes a hiker filters by; they stay in "About this data" on each trail
 page and on the pages under About.
 """
 import math
+import re
+from functools import cmp_to_key
 
-from . import common, hike, words
+from . import common, elevation, hike, words
 
 # Facet names, exactly as every page shows them.
 WHERE, LENGTH, TIME, SEASON, TERRAIN, KIND, WALKING, SHAPE, GPX = (
@@ -308,3 +310,85 @@ def missing_text(n, key):
     if not n:
         return ""
     return f"{n} trail{'s' if n != 1 else ''} {'has' if n == 1 else 'have'} no {MISSING_NOUN[key]} on file."
+
+
+# Sorting ----------------------------------------------------------------------
+# The one definition of each list order. app.js holds the same orders over the
+# rows' data-* attributes; test_sorting checks the two agree.
+
+SORTS = (
+    ("name", "Name, A to Z"),
+    ("name-desc", "Name, Z to A"),
+    ("length-desc", "Length, longest first"),
+    ("length-asc", "Length, shortest first"),
+    ("time-asc", "Time, quickest first"),
+    ("time-desc", "Time, slowest first"),
+    ("climb-desc", "Climb, most first"),
+    ("climb-asc", "Climb, least first"),
+)
+SORT_LABEL = dict(SORTS)
+# Keys older addresses used, still honoured.
+OLD_SORTS = {"long": "length-desc", "short": "length-asc",
+             "quick": "time-asc", "climb": "climb-desc"}
+
+
+def sort_name(rec):
+    return re.sub(r"^The ", "", rec["name"]).lower()
+
+
+def normalize_sort(key, default="name"):
+    """A sort key from SORTS: key itself, its modern spelling, else default."""
+    if key in SORT_LABEL:
+        return key
+    if key in OLD_SORTS:
+        return OLD_SORTS[key]
+    return default if default in SORT_LABEL else "name"
+
+
+def row_climb_m(rec):
+    """The climb a list row may show and sort by, in metres, or None.
+
+    A climb from a track that covers only part of the trail, or more than
+    the trail, would mislead in a list, so it counts as no climb here.
+    """
+    elev = elevation.get(rec)
+    if elev and elevation.coverage_kind(elev):
+        return None
+    return elev["ascent_m"] if elev else None
+
+
+def sort_values(rec):
+    """(name, km, days, climb) exactly as the row's data-* attributes carry them."""
+    return (sort_name(rec), rec["length_km"], time_days(rec)[1], row_climb_m(rec))
+
+
+def _cmp(a, b):
+    return (a > b) - (a < b)
+
+
+def compare_values(va, vb, key):
+    """Order two sort_values tuples under key. Ties fall back to name;
+    a trail with no climb goes last in both climb orders."""
+    key = normalize_sort(key)
+    if key == "name":
+        return _cmp(va[0], vb[0])
+    if key == "name-desc":
+        return _cmp(vb[0], va[0])
+    if key.startswith("climb"):
+        ca, cb = va[3], vb[3]
+        if ca is None or cb is None:
+            if ca is None and cb is None:
+                return _cmp(va[0], vb[0])
+            return 1 if ca is None else -1
+        order = _cmp(cb, ca) if key == "climb-desc" else _cmp(ca, cb)
+        return order or _cmp(va[0], vb[0])
+    i = 1 if key.startswith("length") else 2
+    order = _cmp(vb[i], va[i]) if key.endswith("-desc") else _cmp(va[i], vb[i])
+    return order or _cmp(va[0], vb[0])
+
+
+def sort_records(records, key="name"):
+    """The records in the order key names, as a new list."""
+    key = normalize_sort(key)
+    values = {id(r): sort_values(r) for r in records}
+    return sorted(records, key=cmp_to_key(lambda a, b: compare_values(values[id(a)], values[id(b)], key)))

@@ -19,7 +19,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 
-from olt import geo, records  # noqa: E402
+from olt import geo, hike, records  # noqa: E402
 
 GPX_TOL_M = 5.0
 MAP_TOL_M = 30.0
@@ -27,6 +27,7 @@ OVERVIEW_TOL_M = 750.0
 # Source files whose change means every trail's output is stale.
 CODE_FILES = [os.path.join(HERE, "build.py"),
               os.path.join(HERE, "olt", "geo.py"),
+              os.path.join(HERE, "olt", "hike.py"),
               os.path.join(HERE, "olt", "records.py")]
 # Incremental-build cache, deliberately outside the publish directory.
 CACHE_DIR = os.path.join(HERE, ".cache")
@@ -92,7 +93,26 @@ def multiline_feature(parts, props):
             "geometry": {"type": "MultiLineString", "coordinates": parts}}
 
 
-def trail_outputs(tid, files):
+def sketch_features(rec):
+    """GeoJSON features sketching a trail with no track from its start and
+    end points, or the one on file: a straight LineString when both are known, and a MultiPoint
+    for the rings at the ends. Marked sketch, never a track: no download,
+    no GPX status and no elevation ever come from these."""
+    points = hike.sketch_points(rec)
+    if not points:
+        return []
+    props = {"id": rec["id"], "name": rec["name"], "kind": rec["derived"]["kind"],
+             "country": rec["country"], "length_km": rec["length_km"], "sketch": True}
+    features = []
+    if len(points) == 2:
+        features.append({"type": "Feature", "properties": dict(props),
+                         "geometry": {"type": "LineString", "coordinates": points}})
+    features.append({"type": "Feature", "properties": dict(props),
+                     "geometry": {"type": "MultiPoint", "coordinates": points}})
+    return features
+
+
+def trail_outputs(tid, files, rec=None):
     """Names of the data files written into _site/trails/<id>/ for these files."""
     names = []
     if "line" in files:
@@ -103,6 +123,8 @@ def trail_outputs(tid, files):
         names.append(f"{tid}-{src}.geojson")
     if "line" in files or "alternates" in files:
         names.append("map.json")
+    if rec is not None and "line" not in files and hike.sketch_points(rec):
+        names.append("sketch.json")
     if "shield" in files:
         names.append(os.path.basename(files["shield"]))
     return names
@@ -111,7 +133,7 @@ def trail_outputs(tid, files):
 def is_data_file(name):
     """Files this script owns in a trail's output directory (the pages step's
     index.html, trail.toml and release.txt are not among them)."""
-    return name == "map.json" or name.endswith((".geojson", ".gpx")) or name in records.SHIELD_NAMES
+    return name in ("map.json", "sketch.json") or name.endswith((".geojson", ".gpx")) or name in records.SHIELD_NAMES
 
 
 def remove_stale(tdir, expected):
@@ -134,7 +156,7 @@ def read_cache(cache_path):
 def up_to_date(rec, files, tdir, cache_path, code_mtime):
     """True when the outputs are complete, newer than the sources, and the cache
     records exactly the set of outputs this record now calls for."""
-    names = trail_outputs(rec["id"], files)
+    names = trail_outputs(rec["id"], files, rec)
     cache = read_cache(cache_path)
     if cache is None or cache.get("outputs") != sorted(names):
         return False
@@ -183,7 +205,7 @@ def build_trail(rec, out_dir, code_mtime, force, stats):
     if rec["derived"]["has_line"] and "line" not in files:
         warn(f"{tid}: the record names a line file ({src.get('line_file')}) "
              f"but it is missing; treated as having no line")
-    names = trail_outputs(tid, files)
+    names = trail_outputs(tid, files, rec)
     cache = {}
 
     if not names:
@@ -223,10 +245,15 @@ def build_trail(rec, out_dir, code_mtime, force, stats):
             box = geo.merge_bbox([geo.bbox(m["geometry"]["coordinates"]) for m in maps])
             fc = {"type": "FeatureCollection", "bbox": box, "features": maps}
             write_json(os.path.join(tdir, "map.json"), fc, stats)
+        sketches = sketch_features(rec) if "line" not in files else []
+        if sketches:
+            box = hike.sketch_bbox(hike.sketch_points(rec), pad=True)
+            write_json(os.path.join(tdir, "sketch.json"),
+                       {"type": "FeatureCollection", "bbox": box, "features": sketches}, stats)
         if "shield" in files:
             name = os.path.basename(files["shield"])
             copy_file(os.path.join(ROOT, files["shield"]), os.path.join(tdir, name), stats)
-        names = trail_outputs(tid, files)
+        names = trail_outputs(tid, files, rec)
         cache = dict(cache, outputs=sorted(names), creator=gpx_creator())
         if names:
             with open(cache_path, "w", encoding="utf-8") as f:
@@ -271,10 +298,12 @@ def read_main_map_parts(tdir):
 
 
 def overview_geojson(recs, out_dir):
-    """One MultiLineString per included trail, simplified from the 30 m map line."""
+    """One MultiLineString per included trail, simplified from the 30 m map line.
+    A trail with no track but a known start or end appears as sketch features."""
     features = []
     for rec in recs:
         if "line" not in rec["derived"]["files"]:
+            features.extend(sketch_features(rec))
             continue
         parts = read_main_map_parts(os.path.join(out_dir, "trails", rec["id"]))
         parts = geo.join_parts(parts)  # many trails are thousands of short parts

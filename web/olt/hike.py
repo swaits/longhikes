@@ -3,6 +3,7 @@
 Every field is optional, and most records have no [hike] table at all, so
 every function here returns "" (or an empty list) when its field is missing.
 """
+import math
 import re
 
 from . import words
@@ -93,3 +94,71 @@ def ends(rec):
 
 def sources(rec):
     return [s for s in table(rec).get("source", []) if isinstance(s, dict)]
+
+
+def _lonlat(value):
+    """A [lon, lat] pair as floats, or None when it is missing or not a place on Earth."""
+    if not isinstance(value, (list, tuple)) or len(value) < 2:
+        return None
+    lon, lat = value[0], value[1]
+    if isinstance(lon, bool) or isinstance(lat, bool):
+        return None
+    if not isinstance(lon, (int, float)) or not isinstance(lat, (int, float)):
+        return None
+    lon, lat = float(lon), float(lat)
+    if not (-180.0 <= lon <= 180.0 and -90.0 <= lat <= 90.0):
+        return None
+    return [lon, lat]
+
+
+def start_point(rec):
+    """[lon, lat] of the place named in [hike].start, or None."""
+    return _lonlat(table(rec).get("start_lonlat"))
+
+
+def end_point(rec):
+    """[lon, lat] of the place named in [hike].end, or None. A loop has none."""
+    return _lonlat(table(rec).get("end_lonlat"))
+
+
+def sketch_points(rec):
+    """The points a map may sketch for a trail with no track: [start, end]
+    when both are on file, or the one that is. Empty when the trail has a
+    track or neither point (see sketch_end for which end a lone point is).
+
+    A sketch is only ever these points. It is never a track: nothing here
+    feeds a download, a GPX status or an elevation figure.
+    """
+    derived = rec.get("derived", {})
+    if derived.get("has_line") or "line" in derived.get("files", {}):
+        return []
+    points = [p for p in (start_point(rec), end_point(rec)) if p]
+    return points[:1] if len(points) == 2 and points[0] == points[1] else points
+
+
+def sketch_end(rec):
+    """"start" or "end": which end a one-point sketch marks. "" otherwise."""
+    if len(sketch_points(rec)) != 1:
+        return ""
+    return "start" if start_point(rec) else "end"
+
+
+def sketch_bbox(points, *, pad=False):
+    """[min lon, min lat, max lon, max lat] of sketch points, or None.
+
+    pad: widen for framing a map. One point gets about a county of ground;
+    two points get a margin around the pair.
+    """
+    if not points:
+        return None
+    box = [min(p[0] for p in points), min(p[1] for p in points),
+           max(p[0] for p in points), max(p[1] for p in points)]
+    if not pad:
+        return box
+    if len(points) == 1:
+        lat_pad = 0.35
+        lon_pad = 0.35 / max(math.cos(math.radians(points[0][1])), 0.25)
+    else:
+        lat_pad = max((box[3] - box[1]) * 0.12, 0.05)
+        lon_pad = max((box[2] - box[0]) * 0.12, 0.05)
+    return [box[0] - lon_pad, box[1] - lat_pad, box[2] + lon_pad, box[3] + lat_pad]

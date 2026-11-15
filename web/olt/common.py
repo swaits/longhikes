@@ -180,6 +180,8 @@ SWATCH_LINE = Markup('<span class="swatch swatch--line" aria-hidden="true"></spa
 SWATCH_ROUTE = Markup('<span class="swatch swatch--route" aria-hidden="true"></span>')
 SWATCH_ALT = Markup('<span class="swatch swatch--alt" aria-hidden="true"></span>')
 SWATCH_NONE = Markup('<span class="swatch swatch--none" aria-hidden="true"></span>')
+# A trail with no track, sketched from its start (and end) points only.
+SWATCH_SKETCH = Markup('<span class="swatch swatch--sketch" aria-hidden="true"></span>')
 
 ICON_DOWNLOAD = Markup('<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">'
                        '<path d="M8 1.5v9M4 7l4 4 4-4M2.5 14.5h11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>')

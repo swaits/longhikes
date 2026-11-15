@@ -133,15 +133,17 @@ class ExtraPagesTest(unittest.TestCase):
         for rel in ("index.html", "regions/us-co/index.html", "routes/index.html",
                     "lists/national-scenic-trails/index.html"):
             doc = read_out(rel)
-            results = doc[doc.index('<div class="results">'):]
+            results = doc[doc.index('<div class="results"'):]
             for part in ('<div class="list-head" aria-hidden="true">', '<ol class="entries"',
-                         'name="units-list"', '<ul class="key"'):
+                         'name="units-list"', '<ul class="key"', "Sort by", 'data-sort-select'):
                 self.assertIn(part, results, f"{rel}: {part}")
             scale = re.search(r'<div class="list-head".*?</div>', results, re.S).group(0)
             self.assertEqual(scale.count('class="len__km"'), 3, rel)
             self.assertEqual(scale.count('class="len__mi"'), 3, rel)
-            for name in ("Length", "Time", "GPX"):
-                self.assertIn(f"<span>{name}", scale, rel)
+            for name in ("Length", "Time", "GPX", "Climb"):
+                self.assertIn(name, scale, rel)
+            for col in ("name", "length", "time", "climb"):
+                self.assertIn(f'data-sort-col="{col}"', scale, rel)
         self.assertNotIn('class="route-item"', read_out("routes/index.html"))
 
     def test_routes_page_rows_carry_their_guides(self):

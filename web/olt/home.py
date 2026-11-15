@@ -6,9 +6,8 @@ attributes in olt/facets.py, under the same names the trail pages use.
 """
 import collections
 import math
-import re
 
-from . import browse, common, elevation, facets, hike, words
+from . import browse, common, facets, hike, words
 from .markup import Markup, esc
 
 # Length range choices (km) for the filters. length_steps() adds a top step
@@ -51,16 +50,19 @@ def counts(records):
 
 
 def overview_bbox(records):
-    """data-bbox attribute: the extent of every track, so the map opens on it before the data loads."""
+    """data-bbox attribute: the extent of every track and sketch, so the map opens on it before the data loads."""
     boxes = [r["derived"]["bbox"] for r in records if r["derived"].get("bbox")]
+    for r in records:
+        box = hike.sketch_bbox(hike.sketch_points(r))
+        if box:
+            boxes.append(box)
     if not boxes:
         return ""
     box = [min(b[0] for b in boxes), min(b[1] for b in boxes), max(b[2] for b in boxes), max(b[3] for b in boxes)]
     return f' data-bbox="{",".join(f"{v:.4f}" for v in box)}"'
 
 
-def sort_name(rec):
-    return re.sub(r"^The ", "", rec["name"]).lower()
+sort_name = facets.sort_name
 
 
 # A row ------------------------------------------------------------------------
@@ -111,15 +113,13 @@ def entry(rec, *, level=3, extra="", routes_list=False):
     lo, hi, est = facets.time_days(rec)
     search = " ".join([rec["name"], rec.get("short_name", ""), rec["id"], facets.author(rec)]).lower()
     abbr_cls = "entry__abbr" if common.shield_url(rec) else "entry__abbr vh"
-    elev = elevation.get(rec)
-    # A climb worked out from a track that covers only part of the trail, or more
-    # than the trail, would mislead in a list; the trail's own page gives it with
-    # its caveat.
-    if elev and elevation.coverage_kind(elev):
-        elev = None
+    # The climb a row may show and sort by (facets.row_climb_m): none when the
+    # track covers too little or too much of the trail, so data-climb is empty
+    # in exactly the cases where the row hides its climb.
+    climb_m = facets.row_climb_m(rec)
     data = {
         "id": rec["id"], "where": " ".join(facets.where_tokens(rec)), "km": rec["length_km"],
-        "climb": elev["ascent_m"] if elev else "",
+        "climb": climb_m if climb_m is not None else "",
         "days": hi, "time": facets.time_band(rec), "months": " ".join(map(str, facets.months(rec))),
         "terrain": " ".join(facets.terrain(rec)), "kind": facets.kind(rec), "walking": facets.walking(rec),
         "shape": facets.shape(rec), "gpx": facets.gpx(rec), "name": sort_name(rec), "search": search.strip(),
@@ -134,8 +134,8 @@ def entry(rec, *, level=3, extra="", routes_list=False):
     desc = entry_desc(rec)
     desc_html = f'\n    <p class="entry__desc">{esc(desc)}</p>' if desc else ""
     time_html = esc(facets.time_text(rec)) + (' <small class="entry__est">estimate</small>' if est else "")
-    climb_html = (f'\n    <div class="entry__climb"><dt>Climb</dt><dd>{words.elevation(elev["ascent_m"], "stack")}'
-                  f'<small class="entry__est">computed</small></dd></div>') if elev else ""
+    climb_html = (f'\n    <div class="entry__climb"><dt>Climb</dt><dd>{words.elevation(climb_m, "stack")}'
+                  f'<small class="entry__est">computed</small></dd></div>') if climb_m is not None else ""
     return f"""<li class="entry"{attrs}>
   {common.plate(rec)}
   <div class="entry__body">{kicker}
@@ -296,21 +296,48 @@ def finder_form(records, c=None, steps=None):
 SCALE_KM = (100, 1000, 10000)
 
 
-def list_head():
-    """The column head over a list. The scale ticks follow the reader's unit preference
-    with the same len__km / len__mi pair the lengths use."""
+# Sort column of each sort key, and the arrow for its direction in the head.
+_SORT_COLUMN = {"name": "name", "name-desc": "name", "length-desc": "length",
+                "length-asc": "length", "time-asc": "time", "time-desc": "time",
+                "climb-desc": "climb", "climb-asc": "climb"}
+_SORT_ARROW = {"name": "↑", "name-desc": "↓", "length-desc": "↓", "length-asc": "↑",
+               "time-asc": "↑", "time-desc": "↓", "climb-desc": "↓", "climb-asc": "↑"}
+
+
+def _head_button(col, label, sort_key, extra=""):
+    active = _SORT_COLUMN[sort_key] == col
+    arrow = _SORT_ARROW[sort_key] if active else "↕"
+    cls = "list-head__sort is-active" if active else "list-head__sort"
+    return (f'<span><button type="button" class="{cls}" data-sort-col="{col}" tabindex="-1">'
+            f'{esc(label)} <span class="list-head__arrow" data-arrow aria-hidden="true">{arrow}</span>'
+            f'</button>{extra}</span>')
+
+
+def list_head(sort_key="name"):
+    """The column head over a list: Trail, Length, Time and Climb are sort
+    buttons; GPX is not sortable. The scale ticks follow the reader's unit
+    preference with the same len__km / len__mi pair the lengths use.
+
+    The head stays aria-hidden with its buttons out of the tab order on
+    purpose: the "Sort by" select in the results head is the one sort
+    control for keyboard and screen-reader users, and app.js announces
+    each new order beside it. The buttons are a pointer shortcut that
+    always agrees with the select.
+    """
+    sort_key = facets.normalize_sort(sort_key)
     ticks = []
     for i, km in enumerate(SCALE_KM):
         unit = " km" if i == len(SCALE_KM) - 1 else ""
         mi_unit = " mi" if i == len(SCALE_KM) - 1 else ""
         ticks.append(f'<span><span class="len__km">{km:,}{unit}</span>'
                      f'<span class="len__mi">{words.fmt_int(words.km_to_mi(km))}{mi_unit}</span></span>')
+    scale = f'<span class="list-head__scale">{"".join(ticks)}</span>'
     return f"""<div class="list-head" aria-hidden="true">
-        <span>Trail</span>
-        <span>{facets.LENGTH}<span class="list-head__scale">{"".join(ticks)}</span></span>
-        <span>{facets.TIME}</span>
-        <span>{facets.GPX}</span>
-        <span>Climb</span>
+        {_head_button("name", "Trail", sort_key)}
+        {_head_button("length", facets.LENGTH, sort_key, scale)}
+        {_head_button("time", facets.TIME, sort_key)}
+        <span class="list-head__plain">{facets.GPX}</span>
+        {_head_button("climb", "Climb", sort_key)}
       </div>"""
 
 
@@ -322,15 +349,22 @@ UNITS_TOGGLE = """<fieldset class="results-units">
             </div>
           </fieldset>"""
 
-SORT_SELECT = """<label class="results-sort">Sort
-            <select class="select" id="sort" name="sort">
-              <option value="name">Name, A to Z</option>
-              <option value="long">Longest first</option>
-              <option value="short">Shortest first</option>
-              <option value="quick">Quickest first</option>
-              <option value="climb">Most climb first</option>
+def sort_select(default_sort="name"):
+    """The one sort control of every list of trails, with the page's
+    default order selected. Hidden without JavaScript (style.css):
+    it cannot work then, and the HTML is already in the default order."""
+    default_sort = facets.normalize_sort(default_sort)
+    options = "".join(
+        f'\n              <option value="{esc(k)}"{" selected" if k == default_sort else ""}>{esc(label)}</option>'
+        for k, label in facets.SORTS)
+    return f"""<label class="results-sort"><span class="results-sort__label">Sort by</span>
+            <select class="select" id="sort" name="sort" data-sort-select>{options}
             </select>
-          </label>"""
+          </label>
+          <span class="vh" data-sort-status aria-live="polite"></span>"""
+
+
+SORT_SELECT = sort_select()
 
 
 def key(official=True):
@@ -342,16 +376,24 @@ def key(official=True):
       </ul>"""
 
 
-def results(recs=None, *, finder=False, groups=None, routes_list=False):
+def results(recs=None, *, finder=False, groups=None, routes_list=False, default_sort="name"):
     """The list of trails, as every page shows it: div.results > head, key, list head, ol.entries.
 
-    finder: the home page's list, driven by the filters (live count, sort, empty state).
+    Every list carries the same "Sort by" control. The rows are written in
+    default_sort order (a key of facets.SORTS), so the page is right with
+    JavaScript off; app.js reorders in place and keeps ?sort= in the address.
+
+    finder: the home page's list, driven by the filters (live count, empty state).
     groups: [(heading, trails, extra_fn)] to list the trails under level-3 headings;
+    sorting is within each group and the groups keep their order.
     extra_fn(rec) gives HTML placed last in each row.
     routes_list: passed to entry() for the Routes list (see there).
     """
+    default_sort = facets.normalize_sort(default_sort)
     if groups is None:
         groups = [(None, recs, None)]
+    groups = [(heading, facets.sort_records(list(items), default_sort), extra_fn)
+              for heading, items, extra_fn in groups]
     total = sum(len(g[1]) for g in groups)
     shown = [r for g in groups for r in g[1]]
     only_routes = bool(shown) and all(facets.kind(r) == "route" for r in shown)
@@ -368,7 +410,6 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False):
     if finder:
         count = (f'<p class="results-count" id="results-count" role="status">'
                  f'<strong>{total}</strong> of {total} {noun}</p>')
-        tools = SORT_SELECT + "\n          " + UNITS_TOGGLE
         empty = """
       <div class="empty-state" id="empty-state" hidden>
         <p><strong>No trails match these filters.</strong></p>
@@ -376,9 +417,9 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False):
       </div>"""
     else:
         count = f'<p class="results-count"><strong>{total}</strong> {noun}</p>'
-        tools = UNITS_TOGGLE
         empty = ""
-    return Markup(f"""<div class="results">
+    tools = sort_select(default_sort) + "\n          " + UNITS_TOGGLE
+    return Markup(f"""<div class="results" data-sortable data-default-sort="{esc(default_sort)}">
       <div class="results-head">
         {count}
         <div class="results-tools">
@@ -386,28 +427,70 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False):
         </div>
       </div>
       {key(official=not only_routes)}
-      {list_head()}{lists}{empty}
+      {list_head(default_sort)}{lists}{empty}
     </div>""")
 
 
-# A map of a selection is drawn only when it has at least this many tracks.
+# A map of a selection is drawn only when it has at least this many things
+# to draw: a track, or a sketch from a start or end point (hike.sketch_points).
 MAP_MIN = 3
 
 
+def track_ids(recs):
+    return [r["id"] for r in recs if "line" in r["derived"]["files"]]
+
+
+def sketch_records(recs):
+    """Trails with no track that a map can sketch from their start or end point."""
+    return [r for r in recs if hike.sketch_points(r)]
+
+
+def drawable_ids(recs):
+    """Ids a map of these trails can draw, by track or by sketch, in order."""
+    tracks = set(track_ids(recs))
+    return [r["id"] for r in recs if r["id"] in tracks or hike.sketch_points(r)]
+
+
 def overview_map(recs, label, *, wide=False, scope=""):
-    """The map of the given trails' tracks (the overview geometry, limited to their ids
-    unless every trail is shown). "" when none of them has a track."""
-    ids = [r["id"] for r in recs if "line" in r["derived"]["files"]]
+    """The map of the given trails (the overview geometry, limited to their ids
+    unless every trail is shown). A note instead when too little can be drawn."""
+    ids = drawable_ids(recs)
     if not ids:
-        return Markup('<p class="note">None of these trails has a GPX here, so there is no track to draw. '
-                      'Each trail&rsquo;s page says where to get one.</p>')
+        return Markup('<p class="note">None of these trails has a GPX here or a known start or end, '
+                      'so there is nothing to draw. Each trail&rsquo;s page says where to get a GPX.</p>')
     if len(ids) < MAP_MIN and scope != "all":
         names = words.join_names(f'<a href="{esc(common.trail_path(r))}">{common.name(r)}</a>'
                                  for r in recs if r["id"] in ids)
-        return Markup(f'<p class="note">Only {names} {"has" if len(ids) == 1 else "have"} a GPX here, '
-                      'so no map of them all is drawn. Each trail&rsquo;s page says where to get a track.</p>')
+        return Markup(f'<p class="note">Only {names} {"has" if len(ids) == 1 else "have"} a GPX here '
+                      'or a known start or end, so no map of them all is drawn. '
+                      'Each trail&rsquo;s page says where to get a track.</p>')
     ids_attr = "" if scope == "all" else f' data-ids="{esc(" ".join(ids))}"'
-    n = len(ids)
+    n = len(track_ids(recs))
+    sketches = sketch_records(recs)
+    # The legend names only what this map draws; the home page's map, which the
+    # filters change, names every kind.
+    drawn = [r for r in recs if r["id"] in set(ids)]
+    legend = []
+    if scope == "all" or any(not common.is_route(r) for r in drawn):
+        legend.append(f"<li>{common.SWATCH_LINE}Official trail</li>")
+    if scope == "all" or any(common.is_route(r) for r in drawn):
+        legend.append(f"<li>{common.SWATCH_ROUTE}Route</li>")
+    if sketches:
+        legend.append(f"<li>{common.SWATCH_SKETCH}No GPX here: start and end only</li>")
+    legend = "\n      ".join(legend)
+    sentences = []
+    if n:
+        sentences.append(f'{n} track{"s" if n != 1 else ""}, simplified for display. Select one for its name.')
+    else:
+        sentences.append("Select one for its name.")
+    if sketches:
+        s = len(sketches)
+        sentences.append(f'{s} trail{"s" if s != 1 else ""} with no GPX here '
+                         f'{"are" if s != 1 else "is"} shown as a dotted straight line between '
+                         'their start and end, or a ring where only one end is known. '
+                         'That is not the trail&rsquo;s path.')
+    sentences.append("Each trail&rsquo;s page names its source, credit and licence. "
+                     "Base map: OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.")
     return Markup(f"""<figure class="mapfig{" mapfig--wide" if wide else ""}" data-map="overview" data-src="/data/overview.geojson"{ids_attr}{overview_bbox(recs)}>
   <div class="mapfig__frame">
     <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
@@ -420,12 +503,17 @@ def overview_map(recs, label, *, wide=False, scope=""):
   </div>
   <figcaption class="mapfig__caption">
     <ul class="legend" aria-label="Legend">
-      <li>{common.SWATCH_LINE}Official trail</li>
-      <li>{common.SWATCH_ROUTE}Route</li>
+      {legend}
     </ul>
-    <p>{n} track{"s" if n != 1 else ""}, simplified for display. Select one for its name. Each trail&rsquo;s page names its source, credit and licence. Base map: OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.</p>
+    <p>{" ".join(sentences)}</p>
   </figcaption>
 </figure>""")
+
+
+def has_overview_map(recs, scope=""):
+    """True when overview_map would draw a map of these trails (needs the map library)."""
+    n = len(drawable_ids(recs))
+    return n > 0 and (scope == "all" or n >= MAP_MIN)
 
 
 def lists_row(records):

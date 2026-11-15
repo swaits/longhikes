@@ -3,7 +3,7 @@
 id = "finger-lakes"
 name = "Finger Lakes Trail"
 short_name = "FLT"
-short_name_url = "https://fingerlakestrail.org/"
+short_name_url = "https://dec.ny.gov/places/otselic-state-forest"
 country = "US"
 regions = ["NY"]
 length_km = 950

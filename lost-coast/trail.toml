@@ -1,0 +1,72 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "lost-coast"
+name = "Lost Coast Trail"
+short_name = "LCT"
+country = "US"
+regions = ["CA"]
+length_km = 80
+length_note = "more than 50 mi from Usal Beach to the Mattole River, per California State Parks; the Bureau of Land Management gives its northern section as 24.6 mi and its southern section as 9 mi, then 19 more mi through Sinkyone Wilderness State Park"
+tier = "regional"
+designation = "Bureau of Land Management (King Range National Conservation Area) and California State Parks (Sinkyone Wilderness State Park); State Parks also calls its part the California Coastal Trail's most difficult section"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Bureau of Land Management and California State Parks (publish the trail; no open geometry found)"
+publisher_url = "https://www.blm.gov/visit/lost-coast-trail"
+url = "https://www.openstreetmap.org/relation/6125620"
+discovery = "osm-relation-version: Overpass `rel(6125620); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 6125620. The BLM's own trail data (GTLF layers) was searched and does not hold the beach sections, and State Parks data states no licence."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 6125620: one route relation, 23 ways, all main."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 6125620
+note = "Downloaded 2026-11-14; 23 ways in the main track and none in alternates. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Bureau of Land Management, King Range National Conservation Area"
+note = "No logo is included. The BLM and State Parks pages for the trail were read for a trail logo and none was found."
+logo_file = ""
+logo_owner = "Bureau of Land Management"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 85.2
+difference_percent = 6.5
+parts = 2
+note = "OSM relation 6125620, 23 ways: 85.2 km in 2 parts (40.5 km and 44.7 km), 6.5% over the 80 km (50 mi) that State Parks gives as a minimum. The gap between the parts lies near Shelter Cove, between the BLM's northern and southern sections. No agency page gives one total for the whole trail."
+
+[hike]
+summary = "The Lost Coast Trail follows a remote stretch of the northern California coast, from Usal Beach in Sinkyone Wilderness State Park north to the mouth of the Mattole River in the King Range National Conservation Area. The northern part is largely a beach walk, and the southern part climbs more through the coastal hills. The Bureau of Land Management manages the King Range sections and California State Parks the Sinkyone sections."
+official_url = "https://www.blm.gov/visit/lost-coast-trail"
+start = "Usal Beach, Sinkyone Wilderness State Park, California"
+end = "Mattole River mouth, King Range National Conservation Area, California"
+shape = "point-to-point"
+terrain = ["coast"]
+travel = "trail"
+permit = "Overnight camping on the King Range sections needs a Backcountry Permit, booked through Recreation.gov; Sinkyone Wilderness State Park has its own rules for camping."
+caution = "On the northern section the BLM tells hikers to research the tides before booking a permit."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.blm.gov/visit/lost-coast-trail"
+publisher = "Bureau of Land Management"
+facts = ["official_url", "summary", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://www.parks.ca.gov/?page_id=28158"
+publisher = "California State Parks"
+facts = ["summary", "start", "end", "shape", "terrain", "travel"]

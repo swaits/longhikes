@@ -1,0 +1,7 @@
+north-umpqua
+
+Source: https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0 (Forest Service segments) and https://gis.blm.gov/arcgis/rest/services/transportation/BLM_Natl_GTLF_Public_Display/MapServer/7 (BLM segments)
+Licence: us-gov-public-domain (see trail.toml and SOURCES.md in this repository)
+Attribution: USDA Forest Service; Bureau of Land Management
+Source read: 2026-11-14
+Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

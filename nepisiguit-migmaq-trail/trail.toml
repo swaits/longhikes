@@ -1,0 +1,81 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "nepisiguit-migmaq-trail"
+name = "Sentier Nepisiguit Mi'gmaq Trail"
+short_name = "SNMT"
+country = "CA"
+regions = ["NB"]
+length_km = 150
+length_note = "150 km, from the Sentier Nepisiguit Mi'gmaq Trail association's Mission and History and Hiking Basics pages"
+tier = "regional"
+designation = "Sentier Nepisiguit Mi'gmaq Trail Inc."
+wave = 1
+
+[source]
+status = "none"
+publisher = "Sentier Nepisiguit Mi'gmaq Trail Inc. (publishes the trail)"
+publisher_url = "https://migmaqtrail.ca/"
+url = "https://migmaqtrail.ca/discover.php"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://migmaqtrail.ca/discover.php, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "OpenStreetMap relation 13656926 'Sentier Nepisiguit Mi'gmaq Trail' (network rwn) exists; it was not measured or downloaded because the Overpass servers did not answer."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included yet. The association sells a map and guidebook and states no licence for a track. OpenStreetMap relation 13656926 is the trail, but the download failed on 2026-11-14 because Overpass did not answer. Run python3 tools/osm_track.py 13656926 --id nepisiguit-migmaq-trail to add it."
+
+[osm]
+relation = 13656926
+note = "Relation 13656926 found by name search on 2026-11-14; the download from Overpass failed (no answer), so it is not measured."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Sentier Nepisiguit Mi'gmaq Trail Inc."
+note = "The association's site shows a turtle logo, the mark on the trail's signs. No logo is included here and no logo policy was found. Ask the association before using its mark."
+logo_file = ""
+logo_owner = "Sentier Nepisiguit Mi'gmaq Trail Inc."
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Sentier Nepisiguit Mi'gmaq Trail is a single-track hiking trail in northern New Brunswick. It follows the Nepisiguit River from Daly Point Nature Reserve at Bathurst to the Appalachian mountains of Mount Carleton Provincial Park. It symbolises the route the Mi'gmaq used between coastal summer camps and winter hunting grounds, and it is marked in both directions with turtle-logo signs."
+official_url = "https://migmaqtrail.ca/discover.php"
+start = "Daly Point Nature Reserve, Bathurst, New Brunswick"
+end = "Mount Carleton Provincial Park, New Brunswick"
+start_lonlat = [-65.626, 47.636]
+shape = "point-to-point"
+days = [6, 12]
+season = "June to October"
+months = [6, 7, 8, 9, 10]
+travel = "trail"
+permit = "Multi-day and thru hikers must register, which costs a fee, and carry their hiking pass; day hikers need not register."
+caution = "Most of the trail is remote wilderness without telephone or internet service, and open fires are not permitted."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://migmaqtrail.ca/mission-history.php"
+publisher = "Sentier Nepisiguit Mi'gmaq Trail Inc."
+facts = ["summary", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://migmaqtrail.ca/discover.php"
+publisher = "Sentier Nepisiguit Mi'gmaq Trail Inc."
+facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "travel"]
+
+[[hike.source]]
+url = "https://migmaqtrail.ca/hiking-basics.php"
+publisher = "Sentier Nepisiguit Mi'gmaq Trail Inc."
+facts = ["start", "end", "permit", "caution", "travel"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/DARPA"
+publisher = "Natural Resources Canada (Canadian Geographical Names)"
+facts = ["start_lonlat"]

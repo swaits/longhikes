@@ -1,0 +1,72 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "north-umpqua"
+name = "North Umpqua Trail"
+short_name = "NUT"
+country = "US"
+regions = ["OR"]
+length_km = 127
+length_note = "79 mi, as both the Forest Service (trail #1414 page) and the Bureau of Land Management (North Umpqua Wild and Scenic River page) state it"
+tier = "regional"
+designation = "Forest Service trail #1414 (Umpqua National Forest), with Bureau of Land Management segments at its west end"
+wave = 1
+
+[source]
+status = "found"
+publisher = "USDA Forest Service (National Forest System trails) and Bureau of Land Management (Ground Transportation Linear Features)"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+discovery = "arcgis-query-hash: GET <url>/query with where trail_no = '1414' AND trail_name = 'NORTH UMPQUA' AND admin_org IN ('061503','061506') on the Forest Service layer, and ROUTE_PRMRY_NM = 'North Umpqua Trail' on layer 7 of https://gis.blm.gov/arcgis/rest/services/transportation/BLM_Natl_GTLF_Public_Display/MapServer (outSR=4326, f=geojson); hash each answer body and count its rows; fetch again when either changes. 6 and 4 features on 2026-11-14."
+format = "Two ArcGIS MapServer layers, outSR=4326, f=geojson: Forest Service layer 0 (6 features) and BLM layer 7 (4 features)"
+crs = "EPSG:4326"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09). Both layers are federal government works."
+attribution = "USDA Forest Service; Bureau of Land Management"
+osm_only = false
+mainline = "Forest Service features with trail number 1414 and name NORTH UMPQUA in the two Forest Service administrative units (061503 and 061506) that carry it, plus the four features that BLM names North Umpqua Trail. A feature numbered 1414 in Colorado (unit 021202) and a 0.4 mi trailhead access feature are other things and are left out."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "USDA Forest Service (EDW National Forest System trails) and Bureau of Land Management (GTLF)"
+line_file = "line.geojson"
+
+[osm]
+relation = 0
+note = "No route relation named for the North Umpqua Trail was found in the area on 2026-11-14. The Forest Service and BLM publish the trail's track."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Umpqua National Forest"
+note = "No logo is included. The Forest Service's pages for the trail show no trail logo."
+logo_file = ""
+logo_owner = "USDA Forest Service"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 123.7
+difference_percent = -2.6
+parts = 2
+note = "Forest Service layer (6 features, 107.1 km) and BLM layer (4 features, 16.7 km): 123.7 km in 2 parts, 2.6% short of 127 km (79 mi)."
+
+[hike]
+summary = "The North Umpqua Trail follows the North Umpqua River through southwest Oregon, from Bureau of Land Management land east through the Umpqua National Forest and into the Fremont-Winema National Forest. It is divided into segments that can be walked one at a time. Part of it runs through the Mount Thielsen Wilderness, and it passes the source of the river at Maidu Lake."
+official_url = "https://www.fs.usda.gov/r06/umpqua/recreation/groups/north-umpqua-trail-1414"
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "trail"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r06/umpqua/recreation/groups/north-umpqua-trail-1414"
+publisher = "USDA Forest Service, Umpqua National Forest"
+facts = ["official_url", "summary", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r06/umpqua/recreation/trails/north-umpqua-trail-maidu-segment"
+publisher = "USDA Forest Service, Umpqua National Forest"
+facts = ["summary", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.blm.gov/visit/north-umpqua-wild-and-scenic-river"
+publisher = "Bureau of Land Management"
+facts = ["summary", "terrain", "travel"]

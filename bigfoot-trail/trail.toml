@@ -1,0 +1,108 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "bigfoot-trail"
+name = "Bigfoot Trail"
+short_name = "BFT"
+country = "US"
+regions = ["CA", "OR"]
+length_km = 579
+length_note = "360 mi, per the Bigfoot Trail Alliance"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (proposed by Michael Kauffmann, 2009), promoted and maintained by the Bigfoot Trail Alliance; no agency designation"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Bigfoot Trail Alliance (publishes the route)"
+publisher_url = "https://www.bigfoottrail.org/"
+url = "https://www.bigfoottrail.org/route/guidebook/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on (https://www.bigfoottrail.org/ and https://www.bigfoottrail.org/route/guidebook/, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the route is got from the Alliance's mapset, which is sold."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The Alliance sells the route as a 52-page mapset, printed or as a PDF, and states no licence that allows passing a track on. No track is included from any source. Get the route from the Alliance's mapset."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is sold, so no track is taken from any source."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Bigfoot Trail Alliance"
+note = "No logo is included. No logo was found on the Alliance's home page when read on 2026-11-14. Ask the Alliance before using any mark."
+logo_file = ""
+logo_owner = "Bigfoot Trail Alliance"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Michael Kauffmann"
+year = 2009
+line_policy = "sold"
+creator_words = "The Bigfoot Trail was originally proposed by Michael Kauffmann in 2009 as a suggested route to navigate the Klamath Mountains from south to north as well as a long-trail to introduce nature lovers to the biodiversity of the Klamath Mountains region."
+creator_words_url = "https://www.bigfoottrail.org/"
+creator_words_by = "Bigfoot Trail Alliance"
+note = "The Alliance, a non-profit, now promotes the route, organises volunteer and seasonal crews that work on it, and sells the mapset. Its route page calls it a proposed long-distance hiking route that connects existing trails, backcountry roads and public lands, and says it is not continuously maintained or consistently marked."
+
+[[guide]]
+title = "Bigfoot Trail Mapset: Printed"
+author = "Bigfoot Trail Alliance"
+access = "purchase"
+url = "https://www.bigfoottrail.org/product/bigfoot-trail-mapset-printed/"
+format = "52-page printed map set with mile-by-mile descriptions, updated May 2023"
+price = "$40.00"
+price_checked = "2026-11-14"
+publisher = "Bigfoot Trail Alliance"
+
+[[guide]]
+title = "Bigfoot Trail Mapset: Digital"
+author = "Bigfoot Trail Alliance"
+access = "purchase"
+url = "https://www.bigfoottrail.org/product/bigfoot-trail-mapset-digital/"
+format = "52-page PDF map set with mile-by-mile descriptions, updated 2023"
+price = "$20.00"
+price_checked = "2026-11-14"
+publisher = "Bigfoot Trail Alliance"
+
+[hike]
+summary = "The Bigfoot Trail is a long route through the Klamath Mountains of northwest California and, briefly, southwest Oregon. It runs from the Yolla Bolly-Middle Eel Wilderness north to the Pacific Ocean near Crescent City, through six wilderness areas, and is known for the many conifer species it passes. It is a rough route, not a continuously maintained trail."
+official_url = "https://www.bigfoottrail.org/"
+start = "Ides Cove, Yolla Bolly-Middle Eel Wilderness, California"
+end = "The Pacific Ocean near Crescent City, California"
+end_lonlat = [-124.202, 41.756]
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "trail-and-road"
+caution = "About 100 miles of the route are on seldom-used Forest Service roads, and some trail sections have gone unmaintained for years, so map and compass skills are needed."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.bigfoottrail.org/"
+publisher = "Bigfoot Trail Alliance"
+facts = ["official_url", "summary", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.bigfoottrail.org/route/"
+publisher = "Bigfoot Trail Alliance"
+facts = ["summary", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.bigfoottrail.org/route/trail-regions/"
+publisher = "Bigfoot Trail Alliance"
+facts = ["start", "end", "terrain"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/277494"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

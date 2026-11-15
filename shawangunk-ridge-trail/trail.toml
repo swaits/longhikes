@@ -1,0 +1,66 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "shawangunk-ridge-trail"
+name = "Shawangunk Ridge Trail"
+short_name = "SRT"
+country = "US"
+regions = ["NJ", "NY"]
+length_km = 114
+length_note = "71 mi, from the New York-New Jersey Trail Conference page"
+tier = "regional"
+designation = "New York-New Jersey Trail Conference (initiated 1989)"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "New York-New Jersey Trail Conference (publishes the trail)"
+publisher_url = "https://secure.nynjtc.org/node/874"
+url = "https://www.openstreetmap.org/relation/3934864"
+discovery = "osm-relation-version: Overpass `rel(3934864); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: ‘You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.’ (https://www.openstreetmap.org/copyright, read 2026-11-14). The track included here is from OpenStreetMap, relation 3934864."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 3934864 (Shawangunk Ridge Trail, operator New York-New Jersey Trail Conference): one route relation of 131 main ways; none has a side role. The relation shares ways with the Long Path relation, which is a separate record here (`long-path`)."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 3934864
+note = "Relation 3934864 'Shawangunk Ridge Trail' (version 81, 2026-09-08). Downloaded 2026-11-14; release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://www.nynjtc.org/"
+contact = "New York-New Jersey Trail Conference"
+note = "The Trail Conference's home page shows its own logo. No logo of the trail is included here. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "New York-New Jersey Trail Conference"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 106.1
+difference_percent = -6.9
+parts = 2
+note = "OSM relation 3934864, 131 ways: 106.1 km in 2 parts, 6.9% short of the published 114 km."
+
+[hike]
+summary = "The Shawangunk Ridge Trail starts at the Appalachian Trail in High Point State Park in New Jersey and runs north along the Shawangunk Ridge in New York to Mohonk Preserve. It crosses Sam's Point Preserve and Minnewaska State Park, and uses some local roads and old rail beds. It shares about 34 miles with the Long Path."
+official_url = "https://secure.nynjtc.org/node/874"
+start = "High Point State Park, New Jersey"
+end = "Mohonk Preserve, New York"
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "trail"
+unfinished = "The Trail Conference calls the trail a work in progress: it is blazed to Mountain Rest Road near Mohonk Mountain House, and local roads lead on from there."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://secure.nynjtc.org/node/874"
+publisher = "New York-New Jersey Trail Conference"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "unfinished"]

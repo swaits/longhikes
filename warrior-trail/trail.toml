@@ -1,0 +1,73 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "warrior-trail"
+name = "Warrior Trail"
+short_name = "WT"
+country = "US"
+regions = ["PA", "WV"]
+length_km = 108
+length_note = "67 mi, from the Greene County Tourist Promotion Agency page"
+tier = "regional"
+designation = "Warrior Trail Association (formed 1966)"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Warrior Trail Association (publishes the trail; no site of its own found, the Association is on Facebook)"
+publisher_url = "https://visitgreene.org/?p=1265"
+url = "https://visitgreene.org/?p=1265"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the pages its facts were read on (read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation was found for the trail."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. The Warrior Trail Association has no site of its own, no track with a stated licence was found, and OpenStreetMap has no route relation for the trail. The Association's trail guide and maps are got from the Association by mail, and the Greene County tourism office has maps."
+
+[osm]
+relation = 0
+note = "No route relation was found by a name search in the area on 2026-11-14."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://visitgreene.org/?p=1265"
+contact = "Warrior Trail Association"
+note = "The Association has no site of its own that was found; the Greene County tourism page that describes the trail shows that agency's logo. No logo of the trail is included here. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Warrior Trail Association"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Warrior Trail crosses the ridges of Greene County in southwestern Pennsylvania and runs on into the northern panhandle of West Virginia. It goes from Greensboro on the Monongahela River to Moundsville on the Ohio River. It is marked with yellow blazes and red mileposts, and nearly all of it is on private land."
+official_url = "https://visitgreene.org/?p=1265"
+start = "Greensboro, Pennsylvania"
+end = "Moundsville, West Virginia"
+start_lonlat = [-79.913, 39.791]
+end_lonlat = [-80.743, 39.92]
+shape = "point-to-point"
+terrain = ["farmland"]
+caution = "The trail passes through private property, and walkers are asked to be courteous to the landowners and the volunteers who maintain it."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://visitgreene.org/?p=1265"
+publisher = "Greene County Tourist Promotion Agency"
+facts = ["official_url", "summary", "start", "end", "shape", "caution"]
+
+[[hike.source]]
+url = "https://kta-hike.org/warrior-trail.html"
+publisher = "Keystone Trails Association"
+facts = ["summary", "terrain"]
+
+[[hike.source]]
+url = "https://www.usgs.gov/us-board-on-geographic-names/domestic-names"
+publisher = "U.S. Geological Survey, Geographic Names Information System (GNIS 1176170 Greensboro, PA; 1543607 Moundsville, WV)"
+facts = ["start_lonlat", "end_lonlat"]

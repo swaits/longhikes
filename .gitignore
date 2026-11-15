@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 _site/
 web/.cache/
+
+# Local mirrors of other sites, for reference only. Their content is not ours to publish.
+/sources/
+/references/

@@ -1,0 +1,96 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "lowest-to-highest-route"
+name = "Lowest to Highest Route"
+short_name = "L2H"
+country = "US"
+regions = ["CA"]
+length_km = 209
+length_note = "about 130 mi, per the author's page"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Brett Tucker and partner, simBLISSity Ultralight Designs); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "simBLISSity Ultralight Designs (Brett Tucker and partner; publish the route)"
+publisher_url = "http://simblissity.net/L2H.shtml"
+url = "http://simblissity.net/L2H.shtml"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (http://simblissity.net/L2H.shtml, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the author states no terms for passing the navigation bundle on. No OpenStreetMap route relation with this name was found on 2026-11-14."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The authors offer the navigation bundle for free trial through a Google Drive folder, with an optional purchase, and state no terms for passing the GPS data on. No track is included. Get the bundle from the page."
+
+[osm]
+relation = 0
+note = "No route relation named Lowest to Highest Route was found in a name search on 2026-11-14."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Brett Tucker (\"Blisterfree\") and partner, simBLISSity Ultralight Designs"
+note = "The authors' site shows the simBLISSity Ultralight Designs logo in its header. No logo is included here and no logo policy was found. Ask the authors before using their mark."
+logo_file = ""
+logo_owner = "Brett Tucker (\"Blisterfree\") and partner, simBLISSity Ultralight Designs"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Brett Tucker (\"Blisterfree\") and partner, simBLISSity Ultralight Designs"
+line_policy = "open"
+creator_words = "We've opted to make it available to try for free"
+creator_words_url = "http://simblissity.net/L2H.shtml"
+note = "From Badwater in Death Valley to the summit of Mount Whitney, avoiding the paved race route. The page lists the L2H Navigation Bundle at $9.95 USD and asks readers to consider buying it to support updates. The page names the company, not a person; the blog at blisterfree.wordpress.com names Brett Tucker as its author. No year is stated for the route."
+
+[[guide]]
+title = "L2H Navigation Bundle"
+author = "simBLISSity Ultralight Designs"
+access = "free"
+url = "http://simblissity.net/L2H.shtml"
+format = "Google Drive folder with maps and GPS data; free to try, optional purchase"
+price = "$9.95 USD"
+price_checked = "2026-11-14"
+
+[hike]
+summary = "The Lowest to Highest Route runs about 130 miles from Badwater in Death Valley to the summit of Mount Whitney. It is unmarked and mostly off pavement, on old mining roads, 4WD tracks, cross-country travel and some foot trails. It crosses the Panamint Range, the Inyo Mountains and the Sierra Nevada."
+official_url = "http://simblissity.net/L2H.shtml"
+start = "Badwater, Death Valley National Park, California"
+end = "Summit of Mount Whitney, California"
+start_lonlat = [-116.826, 36.25]
+end_lonlat = [-118.292, 36.579]
+shape = "point-to-point"
+days = [7, 14]
+season = "September and October"
+months = [9, 10]
+high_point = "Mount Whitney"
+high_point_m = 4421
+terrain = ["desert", "alpine"]
+travel = "some-cross-country"
+permit = "A Mount Whitney Zone permit from Recreation.gov is needed for the summit; from early November to late April the zone has no entry limits."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "http://simblissity.net/L2H.shtml"
+publisher = "simBLISSity Ultralight Designs (the route's authors)"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "high_point", "terrain", "travel", "permit"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q799720"
+publisher = "Wikidata (CC0)"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q235539"
+publisher = "Wikidata (CC0)"
+facts = ["end_lonlat"]

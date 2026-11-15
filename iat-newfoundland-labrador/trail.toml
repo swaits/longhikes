@@ -1,0 +1,73 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "iat-newfoundland-labrador"
+name = "International Appalachian Trail, Newfoundland and Labrador"
+short_name = "IAT NL"
+country = "CA"
+regions = ["NL"]
+length_km = 750
+length_note = "750 km (450 mi), the chapter's stated goal for the extension from Port aux Basques to Crow Head, from the IATNL About page; the IAT/SIA council gives 743 km"
+tier = "regional"
+designation = "International Appalachian Trail Newfoundland and Labrador (chapter of the International Appalachian Trail)"
+wave = "held"
+wave_note = "Held: the chapter's own pages describe a thru-hiker route from Port aux Basques to Crow Head and give 750 km as its goal, but the route is made largely of T'Railway sections, gravel logging roads and highways, is described by the chapter as an extension it aims to build, and no track is included. The Quebec and New Brunswick part is the record sentier-international-appalaches."
+
+[source]
+status = "none"
+publisher = "International Appalachian Trail Newfoundland and Labrador (publishes the trail)"
+publisher_url = "https://iatnl.org/"
+url = "https://iatnl.org/thru-hikers/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://iatnl.org/thru-hikers/, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "OpenStreetMap relation 15695142 'International Appalachian Trail (Newfoundland)' exists; it was not downloaded for this record because the route is held (see wave_note)."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. The chapter's thru-hiker page offers a GPS track, but states no licence for it, and the record is held. OpenStreetMap relation 15695142 exists and was not downloaded. The track is offered on https://iatnl.org/thru-hikers/."
+
+[osm]
+relation = 15695142
+note = "Relation 15695142 'International Appalachian Trail (Newfoundland)' (route=hiking, network iwn) was found by name search on 2026-11-14. Not downloaded or measured."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "International Appalachian Trail Newfoundland and Labrador"
+note = "The chapter's site iatnl.org shows a logo in its header. No logo is included here and no logo policy was found. Ask the chapter before using its mark."
+logo_file = ""
+logo_owner = "International Appalachian Trail Newfoundland and Labrador"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The International Appalachian Trail in Newfoundland is a thru-hiker route from Port aux Basques north along the island's west coast to Crow Head, at the tip of the Great Northern Peninsula. It joins sections of the Newfoundland T'Railway, gravel logging roads and secondary highways, and backcountry trails and routes branch from it."
+official_url = "https://iatnl.org/thru-hikers/"
+start = "Port aux Basques, Newfoundland"
+end = "Crow Head, Newfoundland"
+start_lonlat = [-59.135, 47.596]
+shape = "point-to-point"
+travel = "trail-and-road"
+unfinished = "The chapter's stated goal is a 750 km extension of the trail; as of 2023 it is made of T'Railway sections, gravel logging roads, backcountry trails and routes, and secondary highways."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://iatnl.org/thru-hikers/"
+publisher = "International Appalachian Trail Newfoundland and Labrador"
+facts = ["summary", "official_url", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://iatnl.org/about/"
+publisher = "International Appalachian Trail Newfoundland and Labrador"
+facts = ["summary", "unfinished"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/AADVG"
+publisher = "Natural Resources Canada (Canadian Geographical Names)"
+facts = ["start_lonlat"]

@@ -1,0 +1,95 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "basin-and-range-trail"
+name = "Basin and Range Trail"
+short_name = "BRT"
+country = "US"
+regions = ["NV"]
+length_km = 1754
+length_note = "1,090 mi, per the author's page (the page lists version 2.0 at 1,091 mi)"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Eric Poulin, 2020); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Eric Poulin (publishes the route)"
+publisher_url = "https://seekinglost.com/basin-and-range-trail/"
+url = "https://basinandrangetrail.com/shop/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://basinandrangetrail.com/shop/, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the GPX file is sold with the planning kit. No OpenStreetMap route relation with this name was found on 2026-11-14."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is sold as a planning kit with GPX file, maps and guidebook; no track is included. Get the kit from basinandrangetrail.com."
+
+[osm]
+relation = 0
+note = "No route relation named Basin and Range Trail was found in a name search on 2026-11-14."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Eric Poulin"
+note = "No logo is included; a person-defined route has no emblem. Ask the author before using any mark."
+logo_file = ""
+logo_owner = "Eric Poulin"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Eric Poulin"
+year = 2020
+line_policy = "sold"
+creator_words = "The GPX file and PDF maps are FREE for those who join the Basin and Range Trail facebook group, or available for purchase using the first link."
+creator_words_url = "https://seekinglost.com/basin-and-range-trail/"
+note = "A route through Nevada's Basin and Range country, mostly cross-country and on 4x4 roads. The author's page says the kit is free to those who join the trail's Facebook group; the shop page says that offer is for a limited time and for hikers considering a thru-hike. Neither page states terms for passing a track on."
+
+[[guide]]
+title = "Basin and Range Trail Planning Kit (guidebook, GPX, maps, waypoints, water chart)"
+author = "Eric Poulin"
+access = "purchase"
+url = "https://basinandrangetrail.com/shop/"
+format = "guidebook, GPX file, PDF maps, waypoint sheet and water chart"
+price = "$55.00"
+price_checked = "2026-11-14"
+
+[hike]
+summary = "The Basin and Range Trail is a route of about 1,090 miles through Nevada's Basin and Range country. Most of it is cross-country or on 4x4 roads. It begins at Ely and its author says it ends at Wheeler Peak."
+official_url = "https://seekinglost.com/basin-and-range-trail/"
+start = "Ely, Nevada"
+end = "Baker, Nevada"
+start_lonlat = [-114.877, 39.253]
+end_lonlat = [-114.123, 39.013]
+shape = "point-to-point"
+days = [45, 55]
+season = "May to July"
+months = [5, 6, 7]
+terrain = ["desert"]
+travel = "some-cross-country"
+caution = "About 35 percent of the route is cross-country and 35 percent is on 4x4 roads, and no public transport serves Ely."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://seekinglost.com/basin-and-range-trail/"
+publisher = "Eric Poulin (the route's author)"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q844042"
+publisher = "Wikidata (CC0)"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q2513075"
+publisher = "Wikidata (CC0)"
+facts = ["end_lonlat"]

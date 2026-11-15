@@ -1,0 +1,65 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "itijjagiaq-trail"
+name = "Itijjagiaq Trail"
+short_name = "IT"
+country = "CA"
+regions = ["NU"]
+length_km = 120
+length_note = "120 km, from the Nunavut Parks page for Katannilik Territorial Park"
+tier = "regional"
+designation = "Government of Nunavut, Nunavut Parks (Katannilik Territorial Park)"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Nunavut Parks (Government of Nunavut) (publishes the trail)"
+publisher_url = "https://nunavutparks.com/nunavut_parks/katannilik-territorial-park/"
+url = "https://nunavutparks.com/nunavut_parks/katannilik-territorial-park/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://nunavutparks.com/nunavut_parks/katannilik-territorial-park/, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for this trail was found when searched."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. The Nunavut Parks page gives no track and no licence for one, and OpenStreetMap has no route relation for the trail. Ask the park staff at Kimmirut."
+
+[osm]
+relation = 0
+note = "No OpenStreetMap route relation for this trail was found when searched on 2026-11-14 (Overpass name search over Canada)."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Nunavut Parks"
+note = "The Nunavut Parks page shows an image of partner logos in its footer and no logo of the trail. No logo is included here."
+logo_file = ""
+logo_owner = "Nunavut Parks"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Itijjagiaq Trail runs from Frobisher Bay to the hamlet of Kimmirut, through Katannilik Territorial Park. Its name means the trail over the land. Skiers, snowmobilers, dog teams and hikers use it, and cabins along it can serve as emergency shelter."
+official_url = "https://nunavutparks.com/nunavut_parks/katannilik-territorial-park/"
+start = "Frobisher Bay, Nunavut"
+end = "Kimmirut, Nunavut"
+end_lonlat = [-69.872, 62.847]
+shape = "point-to-point"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://nunavutparks.com/nunavut_parks/katannilik-territorial-park/"
+publisher = "Nunavut Parks (Government of Nunavut)"
+facts = ["summary", "official_url", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/OAUDP"
+publisher = "Natural Resources Canada (Canadian Geographical Names)"
+facts = ["end_lonlat"]

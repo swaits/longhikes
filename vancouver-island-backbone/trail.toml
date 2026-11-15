@@ -1,0 +1,92 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "vancouver-island-backbone"
+name = "Vancouver Island Backbone"
+short_name = "VIB"
+country = "CA"
+regions = ["BC"]
+length_km = 300
+length_note = "over 300 km (200 mi), per the author's guide (1996)"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Philip Stone, 1996 guide); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Philip Stone, Alpine Pacific Images (publishes the route)"
+publisher_url = "https://www.wildisle.ca/backbone/index.html"
+url = "https://www.wildisle.ca/backbone/index.html"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://www.wildisle.ca/backbone/index.html, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the author's guide holds the route as text and maps, and no GPS file was found. No OpenStreetMap route relation with this name was found on 2026-11-14."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The author publishes a free download of the guide, but no track file, and the guide forbids copying without written permission. Get the route from the guide."
+
+[osm]
+relation = 0
+note = "No route relation named Vancouver Island Backbone was found in a name search on 2026-11-14."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Philip Stone"
+note = "No logo is included; a person-defined route has no emblem. Ask the author before using any mark."
+logo_file = ""
+logo_owner = "Philip Stone"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Philip Stone"
+year = 1996
+line_policy = "open"
+creator_words = "No part of this book may be reproduced or transmitted in any form by any means, electronic or mechanical, including photocopying and recording, or by any information storage or retrieval system without written permission from the author, except for brief passages quoted in a review."
+creator_words_url = "https://www.wildisle.ca/downloads/books/Van_Isle_Backbone_Guide.pdf"
+note = "A wilderness route up the interior of Vancouver Island in eight sections, from the Beaufort Range near Port Alberni to the Nimpkish River at Port McNeill. The first edition is out of print and its PDF is offered as a free download. The site calls the guide a little out of date. It is a different route from the Vancouver Island Trail (record vancouver-island)."
+
+[[guide]]
+title = "Hiking Guide to the Vancouver Island Backbone"
+author = "Philip Stone"
+access = "free"
+url = "https://www.wildisle.ca/backbone/index.html"
+format = "PDF of the 1996 first edition (free download)"
+publisher = "Alpine Pacific Images"
+isbn = "0-9680766-1-0"
+
+[hike]
+summary = "The Vancouver Island Backbone is a wilderness route of over 300 km along the mountainous interior of Vancouver Island, from south to north. It links trails, alpine ridges, logging roads, river valleys and lakes. It is a route and not a trail: no trail was cut or marked for it."
+official_url = "https://www.wildisle.ca/backbone/index.html"
+start = "Stamp Falls Park near Port Alberni, British Columbia"
+end = "Port McNeill, British Columbia"
+end_lonlat = [-127.086, 50.591]
+shape = "point-to-point"
+season = "July to September"
+months = [7, 8, 9]
+terrain = ["alpine", "forest"]
+caution = "The route is not a complete trail: no trails were cut or marked beyond those that already existed, and the site says the guide is a little out of date."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.wildisle.ca/backbone/index.html"
+publisher = "Philip Stone, Wild Isle Publications"
+facts = ["official_url", "summary", "terrain", "caution"]
+
+[[hike.source]]
+url = "https://www.wildisle.ca/downloads/books/Van_Isle_Backbone_Guide.pdf"
+publisher = "Philip Stone, Alpine Pacific Images"
+facts = ["summary", "start", "end", "shape", "season", "months", "terrain"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q2104736"
+publisher = "Wikidata (CC0)"
+facts = ["end_lonlat"]

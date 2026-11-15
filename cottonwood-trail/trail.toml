@@ -1,0 +1,73 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "cottonwood-trail"
+name = "Cottonwood Trail"
+short_name = "CT"
+country = "CA"
+regions = ["YT"]
+length_km = 85
+length_note = "85 km (53 mi) published, from the Parks Canada page for the Cottonwood Trail"
+tier = "regional"
+designation = "Parks Canada (Kluane National Park and Reserve)"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Parks Canada (Kluane National Park and Reserve) (publishes the trail)"
+publisher_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/cottonwood"
+url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/cottonwood"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/cottonwood, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for this trail was found; the relations named 'Cottonwood Trail' or 'Cottonwood Meadows Trail' found are in the United States."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. Parks Canada's page states no licence for a track, and OpenStreetMap has no route relation for the trail. Ask Parks Canada at the Haines Junction visitor centre."
+
+[osm]
+relation = 0
+note = "No OpenStreetMap route relation for this trail was found when searched on 2026-11-14 (Overpass name search over Canada)."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Parks Canada"
+note = "No logo of the trail is included here. Ask Parks Canada before using its marks."
+logo_file = ""
+logo_owner = "Parks Canada"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Cottonwood Trail is a backpacking route in Kluane National Park and Reserve in southwest Yukon. It runs between the Kathleen Lake day-use area and Mush Lake Road, both on the Haines Highway, over two mountain passes. Parks Canada describes it as a partial loop with two trailheads."
+official_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/cottonwood"
+start = "Kathleen Lake day-use area, Yukon"
+end = "Mush Lake Road, Haines Highway, Yukon"
+start_lonlat = [-137.304, 60.575]
+shape = "point-to-point"
+days = [4, 6]
+season = "June to early September"
+months = [6, 7, 8]
+high_point_m = 1310
+terrain = ["forest", "alpine"]
+travel = "trail"
+permit = "Overnight trips need a Wilderness Permit and an approved bear-resistant food canister, both from the Visitor Centre in Haines Junction."
+caution = "There are few bridges, so hikers wade creeks, and Victoria Creek can be swift, deep and sometimes impassable."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/cottonwood"
+publisher = "Parks Canada"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "months", "high_point", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/KADGP"
+publisher = "Natural Resources Canada (Canadian Geographical Names)"
+facts = ["start_lonlat"]

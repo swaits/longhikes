@@ -1,0 +1,84 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "ottawa-temiskaming-highland-trail"
+name = "Ottawa-Temiskaming Highland Trail"
+short_name = "OTHT"
+country = "CA"
+regions = ["ON"]
+length_km = 142
+length_note = "142 km for the main trail, from the Nastawgan Trails end-to-end badge page; its Our Trails page also gives 142 km"
+tier = "regional"
+designation = "Nastawgan Trails Inc."
+wave = 1
+
+[source]
+status = "none"
+publisher = "Nastawgan Trails Inc. (publishes the trail)"
+publisher_url = "https://nastawgantrails.org/"
+url = "https://nastawgantrails.org/our-trails"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://nastawgantrails.org/our-trails, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for this trail was found when searched."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. Nastawgan Trails sells a waterproof mapset and publishes a free PDF map and planner, but states no licence for a track, and OpenStreetMap has no route relation for the trail. The planner is linked from https://nastawgantrails.org/."
+
+[osm]
+relation = 0
+note = "No OpenStreetMap route relation for this trail was found when searched on 2026-11-14 (Overpass name search over Canada)."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Nastawgan Trails Inc."
+note = "The Nastawgan Trails site shows a logo in its header. No logo is included here and no logo policy was found. Ask Nastawgan Trails before using its mark."
+logo_file = ""
+logo_owner = "Nastawgan Trails Inc."
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Ottawa-Temiskaming Highland Trail is a wilderness hiking trail through the Temagami and Temiskaming forest of northeastern Ontario. It runs between Latchford in the north and Thorne in the south, past lakes, lookouts and falls. It is the main trail of Nastawgan Trails."
+official_url = "https://nastawgantrails.org/our-trails"
+start = "Latchford, Ontario"
+end = "Thorne, Ontario"
+start_lonlat = [-79.81, 47.329]
+end_lonlat = [-79.103, 46.701]
+shape = "point-to-point"
+terrain = ["forest", "lakes"]
+travel = "trail"
+caution = "The trail planner calls it a rugged wilderness trail."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://nastawgantrails.org/our-trails"
+publisher = "Nastawgan Trails Inc."
+facts = ["official_url"]
+
+[[hike.source]]
+url = "https://nastawgantrails.org/otht-end2end"
+publisher = "Nastawgan Trails Inc."
+facts = ["summary", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://nastawgantrails.org/ckfinder/userfiles/files/OTHT%20Mapset%20ref%2020241113.pdf"
+publisher = "Nastawgan Trails Inc."
+facts = ["summary", "start", "end", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/FBWMA"
+publisher = "Natural Resources Canada (Canadian Geographical Names)"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/FDNSB"
+publisher = "Natural Resources Canada (Canadian Geographical Names)"
+facts = ["end_lonlat"]

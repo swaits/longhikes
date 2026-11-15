@@ -1,0 +1,111 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "santa-fe-to-taos"
+name = "Santa Fe to Taos Thru-Hike"
+short_name = "SF2T"
+country = "US"
+regions = ["NM"]
+length_km = 212
+length_note = "132 mi, per the route page of santafetotaos.org (its six sections add to 132.0 mi)"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Pam Neely, first walked 2018); run by the Santa Fe to Taos Trail, a 501(c)(3) non-profit; no agency"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Pam Neely and the Santa Fe to Taos Trail non-profit (publish the route)"
+publisher_url = "https://santafetotaos.org"
+url = "https://santafetotaos.org/route/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://santafetotaos.org/route/, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the route is sold as a guidebook and the 2026 GPX file is offered only on the conditions the route page states. No OpenStreetMap route relation with this name was found on 2026-11-14."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is sold as a guidebook, and its GPX file is given only to those who take a Leave No Trace online course; the site states no terms for passing a track on and its footer reads All Rights Reserved. No track is included. Get the guidebook or the GPX file from santafetotaos.org."
+
+[osm]
+relation = 0
+note = "No route relation named Santa Fe to Taos was found in a name search on 2026-11-14."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Pam Neely"
+note = "The site refers to a Santa Fe to Taos Thru-Hike logo. No logo is included here and no logo policy was found. Ask the Santa Fe to Taos Trail before using its mark."
+logo_file = ""
+logo_owner = "Pam Neely"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Pam Neely"
+year = 2018
+line_policy = "sold"
+creator_words = "Want to get the 2026 SF2T enhanced GPX file for free?"
+creator_words_url = "https://santafetotaos.org/route/"
+note = "Santa Fe Plaza to Taos Plaza over the Sangre de Cristo Mountains, in six sections. The guidebook is sold by the non-profit and by shops. The route page says the 2026 enhanced GPX file is free after a Leave No Trace 101 online course (about 30 minutes) is finished and its certificate is emailed to the non-profit, which sends a coupon code. The route is not marked, and its creator does not want it on FarOut or AllTrails."
+
+[[guide]]
+title = "The Santa Fe to Taos Thru-Hike Guidebook"
+author = "The Santa Fe to Taos Trail (Pam Neely)"
+access = "purchase"
+url = "https://santafetotaos.org/guidebook/"
+format = "book"
+
+[[guide]]
+title = "Route page with section maps and the 2026 GPX offer"
+author = "Pam Neely"
+access = "free"
+url = "https://santafetotaos.org/route/"
+format = "web page with section maps; GPX file free after a Leave No Trace online course"
+
+[hike]
+summary = "The Santa Fe to Taos Thru-Hike crosses the Sangre de Cristo Mountains of northern New Mexico from Santa Fe Plaza to Taos Plaza. It passes through the Santa Fe National Forest, the Pecos Wilderness and the Carson National Forest, in six sections of about 20 miles each. The route is not marked."
+official_url = "https://santafetotaos.org"
+start = "Santa Fe Plaza, New Mexico"
+end = "Taos Plaza, New Mexico"
+start_lonlat = [-105.938, 35.688]
+end_lonlat = [-105.574, 36.407]
+shape = "point-to-point"
+days = [7, 21]
+season = "June to mid-October"
+months = [6, 7, 8, 9, 10]
+high_point_m = 3658
+terrain = ["alpine", "forest"]
+permit = "No permit is needed to walk the route; overnight parking in Santa Fe needs a member pass and parking in Taos needs a waiver and placard."
+caution = "The route is not marked, and large sections of snow lie on or near it until early to mid June."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://santafetotaos.org"
+publisher = "The Santa Fe to Taos Trail (the route's non-profit)"
+facts = ["official_url", "summary", "start", "end", "terrain"]
+
+[[hike.source]]
+url = "https://santafetotaos.org/route/"
+publisher = "The Santa Fe to Taos Trail (the route's non-profit)"
+facts = ["summary", "start", "end", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://santafetotaos.org/faqs/"
+publisher = "The Santa Fe to Taos Trail (the route's non-profit)"
+facts = ["days", "season", "months", "high_point", "permit", "caution"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q7419548"
+publisher = "Wikidata (CC0)"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q7684310"
+publisher = "Wikidata (CC0)"
+facts = ["end_lonlat"]

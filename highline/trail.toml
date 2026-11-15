@@ -1,0 +1,64 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "highline"
+name = "Highline National Recreation Trail"
+short_name = "Highline"
+country = "US"
+regions = ["AZ"]
+length_km = 89
+length_note = "55 mi, as the Forest Service's Tonto National Forest page states it; the same page also says 'over 50 miles'"
+tier = "regional"
+designation = "National Recreation Trail #31 (Forest Service, Tonto National Forest); part of it is a passage of the Arizona National Scenic Trail"
+wave = 1
+
+[source]
+status = "found"
+publisher = "USDA Forest Service, National Forest System trails"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+discovery = "arcgis-query-hash: GET <url>/query with where trail_no = '31' AND trail_name = 'HIGHLINE' AND admin_org = '031204' (outSR=4326, f=geojson), hash the answer body and count its rows; fetch again when either changes. 13 features on 2026-11-14."
+format = "ArcGIS MapServer layer, queried with trail_no = '31' AND trail_name = 'HIGHLINE' AND admin_org = '031204' (13 features); outSR=4326, f=geojson"
+crs = "EPSG:4326"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09). The Forest Service layer is a federal government work."
+attribution = "USDA Forest Service"
+osm_only = false
+mainline = "One trail number (31) and name (HIGHLINE) on the Payson Ranger District. The 13 features carry two designation codes in the layer (7 and 6 features); both are the Highline."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "USDA Forest Service (EDW National Forest System trails)"
+line_file = "line.geojson"
+length_gap_note = "The Forest Service layer holds 71.5 km (about 44 mi) of the Highline in 3 parts, with two gaps of a few hundred metres, against the 55 mi the Forest's page gives. The page says the Payson Ranger District rerouted and rebuilt sections in 2022; the layer may not hold all of the current trail. OpenStreetMap relation 4188405 measures 93.2 km in one part."
+
+[osm]
+relation = 4188405
+note = "OSM relation 4188405 'Highline Trail #31' (operator United States Forest Service) measures 93.2 km in 1 part. It was not used, because the Forest Service publishes the trail's track."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Tonto National Forest"
+note = "No logo is included. The Forest's trail page shows no trail logo."
+logo_file = ""
+logo_owner = "USDA Forest Service"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 71.5
+difference_percent = -19.7
+parts = 3
+note = "Forest Service layer, 13 features: 71.5 km in 3 parts, 19.7% short of 89 km (55 mi). The Forest's page and OpenStreetMap give more trail than the layer holds."
+
+[hike]
+summary = "The Highline Trail runs east and west below the Mogollon Rim in Tonto National Forest, Arizona, with Pine as its main starting point. It crosses rim canyons, brushy hills and stands of ponderosa pine, and part of it, between Washington Park and Pine, is a passage of the Arizona National Scenic Trail. It is open to hikers, horse riders and mountain bikers."
+official_url = "https://www.fs.usda.gov/r03/tonto/recreation/trails/highline"
+start = "Pine Trailhead, near Pine, Arizona"
+shape = "point-to-point"
+terrain = ["forest", "canyon"]
+travel = "trail"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r03/tonto/recreation/trails/highline"
+publisher = "USDA Forest Service, Tonto National Forest"
+facts = ["official_url", "summary", "start", "shape", "terrain", "travel"]

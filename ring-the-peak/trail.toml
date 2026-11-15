@@ -1,0 +1,61 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "ring-the-peak"
+name = "Ring the Peak Trail"
+short_name = "RTP"
+country = "US"
+regions = ["CO"]
+length_km = 101
+length_note = "approximately 63 mi, per Friends of the Peak; about 80 percent of it is complete"
+tier = "regional"
+designation = "Friends of the Peak (trail association), with the Trails and Open Space Coalition and land agencies; no formal designation"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Friends of the Peak (publishes the trail and offers GPX tracks)"
+publisher_url = "https://friendsofthepeak.org/ring-the-peak-2/"
+url = "https://friendsofthepeak.org/ring-the-peak-2/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included. Friends of the Peak offers GPX tracks for the west side and the east side on https://friendsofthepeak.org/ring-the-peak-2/ (read 2026-11-14) and states no licence for them, so they are not redistributed here."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included. OpenStreetMap relation 11275109 'Ring the Peak' holds 3 ways, 9.7 km, of a trail of about 101 km."
+source_checked = "2026-11-14"
+redistributable = false
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The only track the holder publishes, GPX files on the Friends of the Peak page, states no licence that allows passing it on, and OpenStreetMap holds only scraps of the trail (3 ways, 9.7 km, in relation 11275109). Get the GPX tracks from the Friends of the Peak page."
+
+[osm]
+relation = 11275109
+note = "Relation 11275109 'Ring the Peak' (operator Friends of the Peak, version 1, 2020) holds 3 ways, 9.7 km, joined in 1 part: scraps, not the loop. Read 2026-11-14."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Friends of the Peak"
+note = "No logo is included. The trail's markers are green stakes with a label, and no trail logo was found on the Friends of the Peak page when read on 2026-11-14."
+logo_file = ""
+logo_owner = "Friends of the Peak"
+
+[verification]
+verified = false
+note = "No line to measure. The OpenStreetMap relation holds 9.7 km of about 101 km and was not used."
+
+[hike]
+summary = "Ring the Peak is a loop of trails and backcountry roads that circles Pikes Peak near Colorado Springs, Colorado. The trails cross federal, state, county and city land, and some private land. About four fifths of the loop is complete."
+official_url = "https://friendsofthepeak.org/ring-the-peak-2/"
+shape = "loop"
+high_point_m = 3444
+travel = "trail-and-road"
+unfinished = "About 80 percent of the route is complete, and evaluation and planning continue for the remaining 20 percent."
+caution = "Many of the trails are covered by snow in winter."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://friendsofthepeak.org/ring-the-peak-2/"
+publisher = "Friends of the Peak"
+facts = ["official_url", "summary", "shape", "high_point", "travel", "unfinished", "caution"]

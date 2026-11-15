@@ -1,0 +1,7 @@
+bay-area-ridge
+
+Source: https://www.openstreetmap.org/relation/13042115 (North Bay), https://www.openstreetmap.org/relation/13042111 (East Bay), https://www.openstreetmap.org/relation/13042097 (South Bay), https://www.openstreetmap.org/relation/13042118 (San Francisco and Peninsula)
+Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
+Attribution: OpenStreetMap contributors (ODbL)
+Source read: 2026-11-14
+Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served. The four regional relations were joined into one file; a way that appears in two of them is kept once.

@@ -1,0 +1,73 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "appalachian-high-route"
+name = "Appalachian High Route"
+short_name = "AHR"
+country = "US"
+regions = ["NC", "TN"]
+length_km = 531
+length_note = "about 330 mi, per Jennifer Pharr Davis's page (other sources give about 350 mi)"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Jake Blood and Jennifer Pharr Davis); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Jake Blood and Jennifer Pharr Davis (publish the route)"
+publisher_url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
+url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the page gives maps as PDF and PNG images and no GPS file. The route runs mostly on the Appalachian Trail and the Mountains-to-Sea Trail, which have their own records, and no track is built from those. No OpenStreetMap route relation with this name was found on 2026-11-14."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The authors publish basic maps and directions on the page, and state that final maps will come later; no track file and no licence for passing one on are stated. Get the route from the page."
+
+[osm]
+relation = 0
+note = "No route relation named Appalachian High Route was found in a name search on 2026-11-14."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Jake Blood and Jennifer Pharr Davis"
+note = "No logo is included; a person-defined route has no emblem. Ask the author before using any mark."
+logo_file = ""
+logo_owner = "Jake Blood and Jennifer Pharr Davis"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Jake Blood and Jennifer Pharr Davis"
+line_policy = "open"
+note = "A loop of about 330 miles linking the Appalachian Trail (about 135 mi, Clingmans Dome to Flat Top Road near Spivey Gap), the Mountains-to-Sea Trail (about 155 mi, Clingmans Dome to Mount Mitchell), the Black Mountain Crest Trail (about 12 mi) and a Burnsville Connector (about 26 mi, of which about 18 mi are paved roads and sidewalks). The page says Pharr Davis helped Blood come up with the idea. The page says its authors plan finished maps as printed copies at the Burnsville Visitor Center, online and in apps."
+
+[[guide]]
+title = "Appalachian High Route: basic maps and directions"
+author = "Jennifer Pharr Davis and Jake Blood"
+access = "free"
+url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
+format = "web page with map PDFs and PNGs"
+
+[hike]
+summary = "The Appalachian High Route is a loop of about 330 miles in the mountains of North Carolina and Tennessee. It joins the Appalachian Trail, the Mountains-to-Sea Trail, the Black Mountain Crest Trail and a connector near Burnsville that has several miles of road."
+official_url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
+shape = "loop"
+terrain = ["forest"]
+travel = "trail"
+caution = "The Burnsville Connector is about 26 miles, of which about 18 are on paved secondary roads and sidewalks."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
+publisher = "Jennifer Pharr Davis (a creator of the route)"
+facts = ["official_url", "summary", "shape", "terrain", "travel", "caution"]

@@ -211,7 +211,7 @@ def first_guide(t):
 
 def readme_route_table(trails):
     lines = [
-        "| ID | Route | Country | States / provinces | Length (km) | Creator | Track policy | Track | First guide |",
+        "| ID | Route | Country | States / provinces | Length (km) | Author | Track policy | Track | First guide |",
         "| --- | --- | --- | --- | ---: | --- | --- | --- | --- |",
     ]
     for t in trails:

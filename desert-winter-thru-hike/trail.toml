@@ -1,0 +1,78 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "desert-winter-thru-hike"
+name = "Desert Winter Thru-Hike"
+short_name = "Desert WTH"
+country = "US"
+regions = ["AZ", "CA"]
+length_km = 1287
+length_note = "800 mi, per the author's mapset page"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Brett Tucker and partner, simBLISSity Ultralight Designs, 2026 mapset); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "simBLISSity Ultralight Designs (Brett Tucker and partner; publish the route)"
+publisher_url = "https://www.simblissity.net/"
+url = "https://www.simblissity.net/desert-wth-mapset.shtml"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://www.simblissity.net/desert-wth-mapset.shtml, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the authors give the mapset only to hikers who meet a condition they state. No OpenStreetMap route relation with this name was found on 2026-11-14."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The authors give the mapset only to hikers who have already hiked another of their routes of 400 miles or more, and state no terms for passing it on. No track is included. Ask the authors through the page."
+
+[osm]
+relation = 0
+note = "No route relation named Desert Winter Thru-Hike was found in a name search on 2026-11-14."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Brett Tucker (\"Blisterfree\") and partner, simBLISSity Ultralight Designs"
+note = "The authors' site shows the simBLISSity Ultralight Designs logo in its header. No logo is included here and no logo policy was found. Ask the authors before using their mark."
+logo_file = ""
+logo_owner = "Brett Tucker (\"Blisterfree\") and partner, simBLISSity Ultralight Designs"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Brett Tucker (\"Blisterfree\") and partner, simBLISSity Ultralight Designs"
+year = 2026
+line_policy = "withheld"
+creator_words = "THE DESERT WTH MAPSET IS FREE, AVAILABLE TO THOSE WHO'VE ALREADY HIKED ANOTHER OF OUR ROUTES (400 MI OR LONGER)."
+creator_words_url = "https://www.simblissity.net/desert-wth-mapset.shtml"
+note = "From Saguaro National Park to Joshua Tree National Park across the Sonoran, Colorado and Mojave deserts, for the winter months. The mapset page says access is requested through the authors' blog after reading, and that it includes future updates. The page names the company, not a person; the blog at blisterfree.wordpress.com names Brett Tucker as its author and as the creator of the Grand Enchantment Trail. The page gives the release as the 2026-2027 season and states no terms for passing the maps or GPS data on."
+
+[[guide]]
+title = "Desert WTH! topo mapset"
+author = "simBLISSity Ultralight Designs"
+access = "free"
+url = "https://www.simblissity.net/desert-wth-mapset.shtml"
+format = "topo mapset for Avenza, CalTopo and Gaia GPS; free only to hikers who have finished another of the authors' routes of 400 miles or more"
+
+[hike]
+summary = "The Desert Winter Thru-Hike is a route of about 800 miles across the Sonoran, Colorado and Mojave deserts, from Saguaro National Park to Joshua Tree National Park. It is made for the winter months and passes 20 Wilderness Areas and 7 national parks and monuments. It was designed to need little or no water caching."
+official_url = "https://www.simblissity.net/desert-wth-mapset.shtml"
+start = "Saguaro National Park, Arizona"
+end = "Joshua Tree National Park, California"
+shape = "point-to-point"
+season = "December to February"
+months = [12, 1, 2]
+terrain = ["desert"]
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.simblissity.net/desert-wth-mapset.shtml"
+publisher = "simBLISSity Ultralight Designs (the route's authors)"
+facts = ["official_url", "summary", "start", "end", "shape", "season", "months", "terrain"]

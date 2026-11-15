@@ -1,0 +1,75 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "iron-belle-trail"
+name = "Iron Belle Trail (hiking route)"
+short_name = "IBT"
+country = "US"
+regions = ["MI"]
+length_km = 2049
+length_note = "1,273 mi for the hiking route, from a Michigan DNR bulletin of 2020; other sources give 1,204 mi"
+tier = "regional"
+designation = "Michigan Department of Natural Resources"
+wave = "held"
+
+wave_note = "Held: the hiking route is about 70 percent complete, and about 1,033 of its 1,273 miles are the North Country Trail (record `north-country`). No track of its own is included."
+
+[source]
+status = "none"
+publisher = "Michigan Department of Natural Resources (oversees the trail)"
+publisher_url = "https://content.govdelivery.com/accounts/MIDNR/bulletins/2929548"
+url = "https://content.govdelivery.com/accounts/MIDNR/bulletins/2929548"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the pages its facts were read on (read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; see line_absent_reason."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. The hiking route is unfinished and mostly follows the North Country Trail, which is already a record here, and no track is assembled from that record. The DNR publishes statewide and regional Iron Belle Trail maps."
+
+[osm]
+relation = 0
+note = "Not searched: the hiking route mostly follows the North Country Trail (record `north-country`), and no track is assembled from that record."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://www.michigan.gov/ironbelle"
+contact = "Michigan Department of Natural Resources"
+note = "The DNR's Iron Belle Trail page on michigan.gov refused the request (HTTP 403), so no logo could be checked. No logo of the trail is included here. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Michigan Department of Natural Resources"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Iron Belle Trail has a hiking route from Belle Isle in Detroit to Ironwood in the western Upper Peninsula of Michigan. It crosses both peninsulas and passes through 48 of the state's 83 counties. Most of the hiking route uses the North Country National Scenic Trail."
+official_url = "https://content.govdelivery.com/accounts/MIDNR/bulletins/2929548"
+start = "Ironwood, Michigan"
+end = "Belle Isle, Detroit, Michigan"
+start_lonlat = [-90.171, 46.455]
+end_lonlat = [-82.98, 42.34]
+shape = "point-to-point"
+terrain = ["forest"]
+unfinished = "The DNR said in 2020 that the trail was 71 percent complete, and a 2026 DNR bulletin says over 70 percent."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://content.govdelivery.com/accounts/MIDNR/bulletins/2929548"
+publisher = "Michigan Department of Natural Resources"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "unfinished"]
+
+[[hike.source]]
+url = "https://content.govdelivery.com/accounts/MIDNR/bulletins/42988cd"
+publisher = "Michigan Department of Natural Resources"
+facts = ["unfinished"]
+
+[[hike.source]]
+url = "https://www.usgs.gov/us-board-on-geographic-names/domestic-names"
+publisher = "U.S. Geological Survey, Geographic Names Information System (GNIS 629087 Ironwood, MI; 621053 Belle Isle, Wayne County, MI)"
+facts = ["start_lonlat", "end_lonlat"]

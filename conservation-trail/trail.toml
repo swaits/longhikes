@@ -1,0 +1,60 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "conservation-trail"
+name = "Conservation Trail"
+short_name = "CT"
+country = "US"
+regions = ["NY"]
+length_km = 285
+length_note = "about 177 mi, from the Foothills Trail Club 'About the Trail' page (the club's home page says 180 mi)"
+tier = "regional"
+designation = "Foothills Trail Club of Western New York; a branch trail of the Finger Lakes Trail System"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Foothills Trail Club of Western New York (built and maintains the trail)"
+publisher_url = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
+url = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the pages its facts were read on (read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation was found for the trail."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. No track with a stated licence was found on the Foothills Trail Club's pages that were read, and OpenStreetMap has no route relation for the trail. The Finger Lakes Trail Conference and the club are the places to ask for maps."
+
+[osm]
+relation = 0
+note = "No route relation was found by a name search in the area on 2026-11-14."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://sites.google.com/view/foothillstrailclub/home"
+contact = "Foothills Trail Club of Western New York"
+note = "No logo was seen on the club's pages as read. No logo of the trail is included here. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Foothills Trail Club of Western New York"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Conservation Trail runs north through western New York from the Pennsylvania border in Allegany State Park to Niagara Falls, where it meets the Bruce Trail in Canada. It is part of the Finger Lakes Trail System: its southern miles are the main Finger Lakes Trail, and the part north of Fancy Tract Road is a branch trail marked with orange blazes. The Foothills Trail Club built and maintains it."
+official_url = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
+start = "Pennsylvania border, Allegany State Park, New York"
+end = "Rainbow Bridge, Niagara Falls, New York"
+shape = "point-to-point"
+terrain = ["forest"]
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
+publisher = "Foothills Trail Club of Western New York"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain"]

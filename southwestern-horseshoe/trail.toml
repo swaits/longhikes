@@ -1,0 +1,85 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "southwestern-horseshoe"
+name = "Southwestern Horseshoe"
+short_name = "SWH"
+country = "US"
+regions = ["UT", "AZ", "NM"]
+length_km = 2867
+length_note = "about 1,782 mi (2,867 km), per the author's page (its segment figures do not add exactly)"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Cam Honan, walked 2012); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Cam Honan, The Hiking Life (publishes the route)"
+publisher_url = "https://thehikinglife.com/2019/03/southwestern-horseshoe/"
+url = "https://thehikinglife.com/2019/03/southwestern-horseshoe/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://thehikinglife.com/2019/03/southwestern-horseshoe/, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included. The route is made of the Hayduke Trail, the Arizona Trail and the Grand Enchantment Trail, which have their own records (the Hayduke Trail and the Grand Enchantment Trail are sold by their authors), and no track is built from those. No OpenStreetMap route relation with this name was found on 2026-11-14."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The author offers no GPX file for the route and states no terms for passing one on, and its parts are sold or published by other authors. No track is included. Get the route from the author's page and the maps of its three trails."
+
+[osm]
+relation = 0
+note = "No route relation named Southwestern Horseshoe was found in a name search on 2026-11-14."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Cam Honan"
+note = "The author's site, thehikinglife.com, is run under the name The Hiking Life; no logo or emblem for this route was found. No logo is included here. Ask the author before using any mark."
+logo_file = ""
+logo_owner = "Cam Honan"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Cam Honan"
+year = 2012
+line_policy = "open"
+note = "The Hayduke Trail from Arches National Park to the South Rim of the Grand Canyon, the Arizona Trail to Rogers Trough, and the Grand Enchantment Trail to Albuquerque. The author walked it from 24 February to 29 April 2012. The page credits other people's overview maps and lists third-party map sources, some of them sold."
+
+[[guide]]
+title = "Southwestern Horseshoe"
+author = "Cam Honan"
+access = "free"
+url = "https://thehikinglife.com/2019/03/southwestern-horseshoe/"
+format = "web page with route notes and links to maps"
+
+[hike]
+summary = "The Southwestern Horseshoe is a route of about 1,782 miles that joins the Hayduke Trail, the Arizona Trail and the Grand Enchantment Trail in a horseshoe through Utah, Arizona and New Mexico. It runs from Arches National Park to Albuquerque. The author calls it definitely a spring or fall trip."
+official_url = "https://thehikinglife.com/2019/03/southwestern-horseshoe/"
+start = "Tower Arch, Arches National Park, Utah"
+end = "Sandia Crest, Albuquerque, New Mexico"
+end_lonlat = [-106.448, 35.209]
+shape = "point-to-point"
+days = [100, 100]
+season = "Spring or fall"
+months = [3, 4, 5, 9, 10, 11]
+terrain = ["desert", "canyon"]
+travel = "some-cross-country"
+caution = "The Hayduke Trail part is mostly cross-country, with Class 3 and occasional Class 4 scrambling and long water carries."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://thehikinglife.com/2019/03/southwestern-horseshoe/"
+publisher = "Cam Honan, The Hiking Life (the route's author)"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q104720600"
+publisher = "Wikidata (CC0)"
+facts = ["end_lonlat"]

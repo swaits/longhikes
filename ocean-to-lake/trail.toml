@@ -1,0 +1,66 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "ocean-to-lake"
+name = "Ocean to Lake Hiking Trail"
+short_name = "OTLHT"
+country = "US"
+regions = ["FL"]
+length_km = 99
+length_note = "about 61.4 mi, from the Florida Trail Association Loxahatchee Chapter page"
+tier = "regional"
+designation = "Florida Trail Association, Loxahatchee Chapter"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Florida Trail Association, Loxahatchee Chapter (publishes the trail; no open geometry found)"
+publisher_url = "https://www.loxfltrail.org/Ocean2LakeHikingTrail.html"
+url = "https://www.openstreetmap.org/relation/7037710"
+discovery = "osm-relation-version: Overpass `rel(7037710); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: ‘You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.’ (https://www.openstreetmap.org/copyright, read 2026-11-14). The track included here is from OpenStreetMap, relation 7037710."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 7037710 (Ocean to Lake Hiking Trail, operator Florida Trail Association): 85 main ways. The 4 ways with the role excursion are in alternates.geojson."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 7037710
+note = "Relation 7037710 'Ocean to Lake Hiking Trail' (ref FT, version 7, 2026-11-04). Downloaded 2026-11-14; 85 ways in the main track and 4 in alternates. release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://www.loxfltrail.org/"
+contact = "Florida Trail Association, Loxahatchee Chapter"
+note = "The chapter's home page shows the chapter's logo and the Florida Trail Association's logo. No logo of the trail is included here. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Florida Trail Association, Loxahatchee Chapter"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 100.2
+difference_percent = 1.2
+parts = 2
+note = "OSM relation 7037710, 85 main ways and 4 in alternates: 100.2 km in 2 parts, 1.2% over the published 99 km."
+
+[hike]
+summary = "The Ocean to Lake Hiking Trail runs west from Hobe Sound Beach on the Atlantic coast to Lake Okeechobee in southeast Florida. It crosses Jonathan Dickinson State Park, Palm Beach County natural areas, Corbett Wildlife Management Area and the Dupuis Management Area. The country changes about every mile, from sand dunes with scrub oak and sand pine to pine flatwoods, hammocks, cypress swamp and wet prairie."
+official_url = "https://www.loxfltrail.org/Ocean2LakeHikingTrail.html"
+start = "Hobe Sound Beach, Florida"
+end = "Lake Okeechobee Scenic Trail trailhead, near Port Mayaca, Florida"
+shape = "point-to-point"
+terrain = ["coast", "forest"]
+travel = "trail"
+caution = "Sections can be closed for hunting, prescribed burns or agency maintenance, and fees are charged for Jonathan Dickinson State Park and Corbett Wildlife Management Area."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.loxfltrail.org/Ocean2LakeHikingTrail.html"
+publisher = "Florida Trail Association, Loxahatchee Chapter"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "caution"]

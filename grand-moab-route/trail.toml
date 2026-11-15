@@ -1,0 +1,94 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "grand-moab-route"
+name = "Grand-Moab Route"
+short_name = "GMR"
+country = "US"
+regions = ["CO", "UT"]
+length_km = 225
+length_note = "about 140 mi, per the author's page"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Paul Mags of PMags.com, hiked 2022); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Paul Mags, PMags.com (publishes the route)"
+publisher_url = "https://pmags.com/the-grand-moab-route"
+url = "https://pmags.com/the-grand-moab-route"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://pmags.com/the-grand-moab-route, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the author has none to share. No OpenStreetMap route relation with this name was found on 2026-11-14."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The author publishes a written outline of the route and says he has no GPX file to share. No track is included. Get the route from the author's page."
+
+[osm]
+relation = 0
+note = "No route relation named Grand-Moab Route was found in a name search on 2026-11-14."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Paul Mags (PMags.com)"
+note = "The author's site shows a PMags.com logo in its header. No logo is included here and no logo policy was found. Ask the author before using his mark."
+logo_file = ""
+logo_owner = "Paul Mags (PMags.com)"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Paul Mags (PMags.com)"
+year = 2022
+line_policy = "open"
+creator_words = "I don’t have a GPX file to share."
+creator_words_url = "https://pmags.com/the-grand-moab-route"
+note = "From Grand Junction, Colorado, to Moab, Utah, over the La Sal Mountains. The author hiked it in May 2022 and updated the page in January 2026. The page is an outline of the route, its terrain and its navigation sources, and says an experienced backpacker who plots their own routes should be able to build a track from it. The site names its owner as Paul Mags; the sweep that listed this route gave the name Paul Magnanti, which the site does not state."
+
+[[guide]]
+title = "The Grand-Moab Route"
+author = "Paul Mags"
+access = "free"
+url = "https://pmags.com/the-grand-moab-route"
+format = "web page with route outline"
+
+[hike]
+summary = "The Grand-Moab Route links Grand Junction, Colorado, and Moab, Utah, in about 140 miles over the Uncompahgre Plateau, Dominguez Canyon and the La Sal Mountains. It mixes single track, bike paths, 4x4 roads and cross-country travel. The author hiked it in five days."
+official_url = "https://pmags.com/the-grand-moab-route"
+start = "Riverside Park, Grand Junction, Colorado"
+end = "Colorado River footbridge by Lions Park, Moab, Utah"
+start_lonlat = [-108.567, 39.067]
+end_lonlat = [-109.55, 38.572]
+shape = "point-to-point"
+days = [5, 5]
+high_point = "Manns Peak"
+high_point_m = 3741
+terrain = ["desert", "canyon", "alpine"]
+travel = "some-cross-country"
+permit = "No permit is needed; some trailheads have sign-ins and Sand Flats Recreation Area charges a $2 day pass."
+caution = "The author advises against doing the route from June to early September, and camping is not allowed on a 16-mile stretch near Grand Junction."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://pmags.com/the-grand-moab-route"
+publisher = "Paul Mags, PMags.com (the route's author)"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "high_point", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q989903"
+publisher = "Wikidata (CC0)"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q130134"
+publisher = "Wikidata (CC0)"
+facts = ["end_lonlat"]

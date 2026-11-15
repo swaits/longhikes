@@ -1,0 +1,66 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "chuck-keiper"
+name = "Chuck Keiper Trail"
+short_name = "CKT"
+country = "US"
+regions = ["PA"]
+length_km = 80
+length_note = "50 mi (80 km), 'a 50-mile, double-looped system' on the Pennsylvania DCNR Sproul State Forest hiking page; the Keystone Trails Association gives a main loop of 47.3 mi plus a 3.3 mi cross-connector"
+tier = "regional"
+designation = "Pennsylvania Department of Conservation and Natural Resources, Sproul State Forest"
+wave = "held"
+
+wave_note = "Held: the holder calls the trail a 50-mile double-looped system, but the trail is one 47.3 mi main loop with a 3.3 mi cross-connector, so it sits at the 50-mile floor and the main loop alone is under it. Undecided whether to list it."
+
+[source]
+status = "none"
+publisher = "Pennsylvania Department of Conservation and Natural Resources (publishes the trail)"
+publisher_url = "https://www.pa.gov/agencies/dcnr/recreation/where-to-go/state-forests/find-a-forest/sproul/hiking"
+url = "https://www.pa.gov/agencies/dcnr/recreation/where-to-go/state-forests/find-a-forest/sproul/hiking"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the pages its facts were read on (read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "OpenStreetMap relation 13034776 holds 21 ways (48.2 km) and was not used."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. DCNR publishes its own map PDFs for the trail but no track data was found with a stated licence, and the only OpenStreetMap relation (13034776) measures 48.2 km against the published 80 km, so it is not the whole trail."
+
+[osm]
+relation = 13034776
+note = "Relation 13034776 'Chuck Keiper Trail' (version 4, 2024-11-22) has 21 ways that measure 48.2 km in one part, against a published 80 km, and two loop relations named for Yost Run and Eddy Lick (17072566, 17072567, operator DCNR). Read with the track tool on 2026-11-14 as a dry run and not kept."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://www.pa.gov/agencies/dcnr"
+contact = "Pennsylvania Department of Conservation and Natural Resources"
+note = "The DCNR page shows the Commonwealth's own logo. No logo of the trail is included here. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Pennsylvania Department of Conservation and Natural Resources"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Chuck Keiper Trail is a foot-only backpacking trail in Sproul State Forest in north-central Pennsylvania. It is a double loop, with an East Branch cross-connector that lets hikers walk a west loop or an east loop. It runs through two wild areas and two natural areas, with waterfalls and the remains of a splash dam."
+official_url = "https://www.pa.gov/agencies/dcnr/recreation/where-to-go/state-forests/find-a-forest/sproul/hiking"
+shape = "loop"
+terrain = ["forest"]
+travel = "trail"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.pa.gov/agencies/dcnr/recreation/where-to-go/state-forests/find-a-forest/sproul/hiking"
+publisher = "Pennsylvania Department of Conservation and Natural Resources"
+facts = ["official_url", "summary", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.kta-hike.org/chuck-keiper-trail.html"
+publisher = "Keystone Trails Association"
+facts = ["summary", "terrain", "caution"]

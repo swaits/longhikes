@@ -1,0 +1,80 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "bay-area-ridge"
+name = "Bay Area Ridge Trail"
+short_name = "BART"
+country = "US"
+regions = ["CA"]
+length_km = 885
+length_note = "550 mi planned, per the Bay Area Ridge Trail Council; over 400 mi are open"
+tier = "regional"
+designation = "Bay Area Ridge Trail Council (trail association, founded 1987); open in sections across many agencies' land"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Bay Area Ridge Trail Council (publishes the trail; no open geometry found)"
+publisher_url = "https://ridgetrail.org/"
+url = "https://www.openstreetmap.org/relation/12257087"
+discovery = "osm-relation-version: Overpass `rel(13042115,13042111,13042097,13042118); out meta;` (versions and timestamps), or the Geofabrik replication diff; fetch again when any changes"
+format = "OpenStreetMap route relations, read through Overpass with all member ways: the four regional relations 13042115, 13042111, 13042097 and 13042118, joined into one file"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relations 13042115, 13042111, 13042097 and 13042118."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "The four regional OSM relations (North Bay, East Bay, South Bay, San Francisco and Peninsula), all member ways as main; none has a side role. The parent relation 12257087 holds one way and is not used."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 12257087
+note = "Relation 12257087 'Bay Area Ridge Trail' is a parent with one way; the trail is in four regional relations tagged with the council as operator: 13042115 (611 ways), 13042111 (291), 13042097 (256) and 13042118 (559, of which 12 are also in another relation). Read 2026-11-14."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Bay Area Ridge Trail Council"
+note = "No logo is included. The council's site shows a Bay Area Ridge Trail logo in its header; it is not included here."
+logo_file = ""
+logo_owner = "Bay Area Ridge Trail Council"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 790.1
+difference_percent = -10.7
+parts = 102
+note = "OSM regional relations, 1705 ways: 790.1 km in 102 parts, 10.7% short of the 885 km (550 mi) planned. The trail is not finished, so the parts are the open sections with gaps between them. The council says over 400 mi (644 km) are open; the OpenStreetMap track is longer, and may include parallel routes for bikes and horses."
+
+[hike]
+summary = "The Bay Area Ridge Trail is planned as a loop on the ridgelines around San Francisco Bay, linking parks and open space across the Bay Area. More than 400 miles are open, mostly in separate stretches. It is open to hikers, cyclists and horse riders on most of its length."
+official_url = "https://ridgetrail.org/"
+shape = "loop"
+terrain = ["forest"]
+travel = "trail-and-road"
+permit = "Some sections need a permit: East Bay Municipal Utility District lands need a trail permit, the Fifield-Cahill Ridge section needs a docent-led hike, and parts of Coyote Ridge need a Butterfly Pass."
+unfinished = "Over 400 of the planned 550 miles are open, with continuous stretches from the Peninsula to Marin and in the East Bay and gaps elsewhere."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://ridgetrail.org/"
+publisher = "Bay Area Ridge Trail Council"
+facts = ["official_url", "summary", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://ridgetrail.org/about/"
+publisher = "Bay Area Ridge Trail Council"
+facts = ["summary", "unfinished", "shape"]
+
+[[hike.source]]
+url = "https://ridgetrail.org/circumnavigation/"
+publisher = "Bay Area Ridge Trail Council"
+facts = ["summary", "travel", "permit", "unfinished"]
+
+[[hike.source]]
+url = "https://ridgetrail.org/national-scenic-trail/"
+publisher = "Bay Area Ridge Trail Council"
+facts = ["terrain", "summary"]

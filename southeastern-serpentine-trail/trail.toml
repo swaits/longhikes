@@ -1,0 +1,91 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "southeastern-serpentine-trail"
+name = "Southeastern Serpentine Trail"
+short_name = "SST"
+country = "US"
+regions = ["SC", "NC", "GA", "TN"]
+length_km = 938
+length_note = "583 mi (938 km), per the author's page"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Cam Honan, walked 2011); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Cam Honan, The Hiking Life (publishes the route)"
+publisher_url = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
+url = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://thehikinglife.com/2016/07/southeastern-serpentine-trail/, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included. The route is made of the Foothills Trail, the Bartram Trail, the Appalachian Trail through the Smokies and the Benton MacKaye Trail, which have their own records, and no track is built from those. No OpenStreetMap route relation with this name was found on 2026-11-14."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The author publishes a written route description on his page and no track file, and states no terms for passing one on (the page footer reads All Rights Reserved). No track is included. Get the route from the author's page."
+
+[osm]
+relation = 0
+note = "No route relation named Southeastern Serpentine Trail was found in a name search on 2026-11-14."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Cam Honan"
+note = "The author's site, thehikinglife.com, is run under the name The Hiking Life; no logo or emblem for this route was found. No logo is included here. Ask the author before using any mark."
+logo_file = ""
+logo_owner = "Cam Honan"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Cam Honan"
+year = 2011
+line_policy = "open"
+note = "Pieced together by the author from the Foothills Trail, the Bartram Trail, the Smokies section of the Appalachian Trail and the Benton MacKaye Trail, and walked in November 2011 as the sixth of his 12 Long Walks. The page gives an overview map and no GPX file for the whole route. The site names the author as Cam Honan, who also writes as Swami."
+
+[[guide]]
+title = "Southeastern Serpentine Trail"
+author = "Cam Honan"
+access = "free"
+url = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
+format = "web page with overview map and route notes"
+
+[hike]
+summary = "The Southeastern Serpentine Trail is a route of 583 miles through the southern Appalachians, from Table Rock State Park in South Carolina to Springer Mountain in Georgia. It joins the Foothills Trail, the Bartram Trail, the Appalachian Trail through the Great Smoky Mountains and the Benton MacKaye Trail. The author pieced it together from these trails."
+official_url = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
+start = "Table Rock State Park, South Carolina"
+end = "Springer Mountain, Georgia"
+start_lonlat = [-82.706, 35.036]
+end_lonlat = [-84.194, 34.627]
+shape = "point-to-point"
+days = [30, 35]
+season = "All year"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+terrain = ["forest"]
+travel = "trail"
+permit = "Only the Great Smoky Mountains National Park section, on the Appalachian Trail, needs a permit, and it must be booked in advance."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
+publisher = "Cam Honan, The Hiking Life (the route's author)"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "permit"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q611838"
+publisher = "Wikidata (CC0)"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q1891231"
+publisher = "Wikidata (CC0)"
+facts = ["end_lonlat"]

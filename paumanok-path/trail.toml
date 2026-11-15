@@ -1,0 +1,69 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "paumanok-path"
+name = "Paumanok Path"
+short_name = "PP"
+country = "US"
+regions = ["NY"]
+length_km = 201
+length_note = "125 mi, from the Southampton Trails Preservation Society history page"
+tier = "regional"
+designation = "Long Island volunteer trail groups: Long Island Greenbelt Trail Conference (Rocky Point to Hampton Bays) and Southampton Trails Preservation Society"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Southampton Trails Preservation Society and Long Island Greenbelt Trail Conference (publishes the trail; no open geometry found)"
+publisher_url = "https://southamptontrails.org/history/"
+url = "https://www.openstreetmap.org/relation/12900097"
+discovery = "osm-relation-version: Overpass `rel(12900097); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: ‘You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.’ (https://www.openstreetmap.org/copyright, read 2026-11-14). The track included here is from OpenStreetMap, relation 12900097."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 12900097 (Paumanok Path): one route relation of 167 ways, all main; none has a side role."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 12900097
+note = "Relation 12900097 'Paumanok Path' (ref PP, version 35, 2026-08-13). Downloaded 2026-11-14; release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://southamptontrails.org/"
+contact = "Southampton Trails Preservation Society"
+note = "The Society's and the Greenbelt Trail Conference's home pages show each organisation's own logo. No logo of the trail is included here. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Southampton Trails Preservation Society"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 193.5
+difference_percent = -3.7
+parts = 2
+note = "OSM relation 12900097, 167 ways: 193.5 km in 2 parts, 3.7% short of the published 201 km."
+
+[hike]
+summary = "The Paumanok Path is a regional trail across Long Island, New York, from Rocky Point in Brookhaven Town to Montauk Point on the Atlantic Ocean in East Hampton Town. Its western section crosses the Long Island Pine Barrens."
+official_url = "https://southamptontrails.org/history/"
+start = "Rocky Point, New York"
+end = "Montauk Point, New York"
+shape = "point-to-point"
+terrain = ["forest", "coast"]
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://southamptontrails.org/history/"
+publisher = "Southampton Trails Preservation Society"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://www.ligreenbelt.org/about-greenbelt-trails"
+publisher = "Long Island Greenbelt Trail Conference"
+facts = ["summary", "terrain"]

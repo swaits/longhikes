@@ -1,0 +1,81 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "bitterroots-80-mile-route"
+name = "Bitterroots 80-mile Route"
+short_name = "B80"
+country = "US"
+regions = ["MT"]
+length_km = 126
+length_note = "78 mi, per the author's page (its heading says 80 miles)"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Wilderness Mindset); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Mindset (publishes the route)"
+publisher_url = "https://wildernessmindset.com/80-miles-in-the-selway-bitterroot-wilderness/"
+url = "https://wildernessmindset.com/product/bitterroots-80-mile-route-map-pack/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://wildernessmindset.com/product/bitterroots-80-mile-route-map-pack/, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the GPX track is sold in the map pack. No OpenStreetMap route relation with this name was found on 2026-11-14."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is sold as a map pack that holds a GPX track, maps and a route description; no track is included. Get the pack from Wilderness Mindset."
+
+[osm]
+relation = 0
+note = "No route relation named Bitterroots 80-mile Route was found in a name search on 2026-11-14."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Wilderness Mindset"
+note = "No logo is included; a person-defined route has no emblem. Ask the author before using any mark."
+logo_file = ""
+logo_owner = "Wilderness Mindset"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Wilderness Mindset"
+line_policy = "sold"
+note = "A six-day route in the Selway-Bitterroot Wilderness, from the south side of Lake Como to the Big Creek Trailhead, partly off-trail. The author's page is headed 80 miles in the Selway-Bitterroot Wilderness; the shop sells it as the Bitterroots 80-mile Route Map Pack, and that is the name used here. The page does not say which states it crosses; the record names Montana, where it starts. The same author publishes the Beartooth High Route and the Chinese Wall Circuit."
+
+[[guide]]
+title = "Bitterroots 80-mile Route Map Pack"
+author = "Wilderness Mindset"
+access = "purchase"
+url = "https://wildernessmindset.com/product/bitterroots-80-mile-route-map-pack/"
+format = "topographic maps, route description, mileage and camp dataset, and GPX track"
+price = "$10.00"
+price_checked = "2026-11-14"
+
+[hike]
+summary = "The Bitterroots 80-mile Route is a six-day backpacking route in the Selway-Bitterroot Wilderness, starting at Lake Como. Parts of it are off-trail, across talus and scree and through burned forest. The author's page describes a south-to-north route, with day-by-day directions."
+official_url = "https://wildernessmindset.com/80-miles-in-the-selway-bitterroot-wilderness/"
+start = "Lake Como (south side), Montana"
+end = "Big Creek Trailhead"
+shape = "point-to-point"
+days = [6, 6]
+season = "Mid-July to early September"
+months = [7, 8]
+high_point_m = 2422
+terrain = ["alpine", "forest"]
+travel = "some-cross-country"
+caution = "Parts of the route have no trail, and burned areas, snowfields and deep river fords are described on the author's page."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://wildernessmindset.com/80-miles-in-the-selway-bitterroot-wilderness/"
+publisher = "Wilderness Mindset (the route's author)"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "high_point", "terrain", "travel", "caution"]

@@ -1,0 +1,63 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "conestoga-trail"
+name = "Conestoga Trail"
+short_name = "CT"
+country = "US"
+regions = ["PA"]
+length_km = 103
+length_note = "64 mi, from the Lancaster Hiking Club page; the Keystone Trails Association gives 65.8 mi"
+tier = "regional"
+designation = "Lancaster Hiking Club (Conestoga Trail System)"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Lancaster Hiking Club (publishes the trail; no open geometry found)"
+publisher_url = "https://www.lancasterhikingclub.com/copy-of-conestoga-trail"
+url = "https://www.openstreetmap.org/relation/6827091"
+discovery = "osm-relation-version: Overpass `rel(6827091); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: ‘You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.’ (https://www.openstreetmap.org/copyright, read 2026-11-14). The track included here is from OpenStreetMap, relation 6827091."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 6827091 (Conestoga Trail System): one route relation of 246 ways, all main; none has a side role."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 6827091
+note = "Relation 6827091 'Conestoga Trail System' (ref CTS, version 69, 2026-04-21) lists the Lancaster Hiking Club's page as its website. Downloaded 2026-11-14; release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://www.lancasterhikingclub.com/"
+contact = "Lancaster Hiking Club"
+note = "The club's home page shows no logo in its text. No logo of the trail is included here. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Lancaster Hiking Club"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 102.4
+difference_percent = -0.6
+parts = 3
+note = "OSM relation 6827091, 246 ways: 102.4 km in 3 parts, 0.6% short of the published 103 km."
+
+[hike]
+summary = "The Conestoga Trail runs north and south through Lancaster County, Pennsylvania, in woods, along streams and on roads. It passes neighbourhoods and farms, historic sites and covered bridges, and steep rocky trail in the river hills above the Susquehanna River. The Lancaster Hiking Club maintains it and marks it with orange blazes."
+official_url = "https://www.lancasterhikingclub.com/copy-of-conestoga-trail"
+shape = "point-to-point"
+terrain = ["forest", "farmland"]
+travel = "trail-and-road"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.lancasterhikingclub.com/copy-of-conestoga-trail"
+publisher = "Lancaster Hiking Club"
+facts = ["official_url", "summary", "shape", "terrain", "travel"]

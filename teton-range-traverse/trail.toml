@@ -1,0 +1,86 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "teton-range-traverse"
+name = "Teton Range Traverse"
+short_name = "TRT"
+country = "US"
+regions = ["WY"]
+length_km = 171
+length_note = "about 106 mi (171 km), per the author's page"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Cam Honan, walked 2016, after a northbound route of Francis Tapon); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Cam Honan, The Hiking Life (publishes the route)"
+publisher_url = "https://thehikinglife.com/2017/07/teton-range-traverse/"
+url = "https://thehikinglife.com/2017/07/teton-range-traverse/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://thehikinglife.com/2017/07/teton-range-traverse/, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the author gives directions and no GPX file. The route includes the Teton Crest Trail, which has its own record (teton-crest), and no track is built from it. No OpenStreetMap route relation with this name was found on 2026-11-14."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The author publishes a written route description on his page and no track file, and states no terms for passing one on (the page footer reads All Rights Reserved). No track is included. Get the route from the author's page."
+
+[osm]
+relation = 0
+note = "No route relation named Teton Range Traverse was found in a name search on 2026-11-14."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Cam Honan"
+note = "The author's site, thehikinglife.com, is run under the name The Hiking Life; no logo or emblem for this route was found. No logo is included here. Ask the author before using any mark."
+logo_file = ""
+logo_owner = "Cam Honan"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Cam Honan"
+year = 2016
+line_policy = "open"
+note = "Walked by the author and Greg Gressel in early October 2016. The page says the author heard of a version of the route from Francis Tapon and that its notes follow Tapon's northbound route as far as Jackass Pass. It follows the Teton Crest Trail, then goes north by Grassy Lake Road and the Bechler River Trail to Old Faithful. The page gives no GPX file; a reader asked for one in 2021."
+
+[[guide]]
+title = "Teton Range Traverse"
+author = "Cam Honan"
+access = "free"
+url = "https://thehikinglife.com/2017/07/teton-range-traverse/"
+format = "web page with step-by-step directions"
+
+[hike]
+summary = "The Teton Range Traverse goes north from Phillips Pass near Jackson Hole, Wyoming, along the Teton Crest Trail and on into Yellowstone National Park, to Old Faithful. It is about 106 miles, mostly on trail, with a short cross-country stretch and some dirt road. It has no resupply."
+official_url = "https://thehikinglife.com/2017/07/teton-range-traverse/"
+start = "Phillips Pass Trailhead, Wyoming"
+end = "Old Faithful, Yellowstone National Park"
+end_lonlat = [-110.828, 44.46]
+shape = "point-to-point"
+days = [3, 4]
+season = "Early fall"
+months = [9, 10]
+terrain = ["alpine", "forest"]
+travel = "trail"
+permit = "Overnight camping needs permits in Grand Teton National Park and Yellowstone National Park."
+caution = "There is a cross-country stretch of about three miles between Lake Solitude and Granite Basin, and no resupply on the route."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://thehikinglife.com/2017/07/teton-range-traverse/"
+publisher = "Cam Honan, The Hiking Life (the route's author)"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q858794"
+publisher = "Wikidata (CC0)"
+facts = ["end_lonlat"]

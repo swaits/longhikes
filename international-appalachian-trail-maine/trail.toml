@@ -1,0 +1,73 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "international-appalachian-trail-maine"
+name = "International Appalachian Trail, Maine section"
+short_name = "IAT-ME"
+country = "US"
+regions = ["ME"]
+length_km = 222
+length_note = "222 km (138 mi), from the IAT/SIA Council's Maine page, which adds that the length varies with the spur trails or alternate routes followed"
+tier = "regional"
+designation = "Maine Chapter of the International Appalachian Trail"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Maine Chapter of the International Appalachian Trail (maintains the trail)"
+publisher_url = "https://maineiat.org/?p=412"
+url = "https://maineiat.org/?p=412"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the pages its facts were read on (read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation was found for the trail."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. No track with a stated licence was found on the chapter's pages that were read, which refer hikers to the Maine IAT Trail Guide, and OpenStreetMap has no route relation for the Maine section (relation 6544824 is New Brunswick, in the record `sentier-international-appalaches`)."
+
+[osm]
+relation = 0
+note = "No route relation was found by a name search in the area on 2026-11-14."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://www.maineiat.org/"
+contact = "Maine Chapter of the International Appalachian Trail"
+note = "The chapter's home page shows logos of its partners. No logo of the trail is included here. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Maine Chapter of the International Appalachian Trail"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Maine section of the International Appalachian Trail starts in Katahdin Woods and Waters National Monument, east of Baxter State Park, and runs north and east to Fort Fairfield on the Canadian border. It follows trail, logging roads, an old tote road, rail-trail and road, then crosses Mars Hill Mountain and follows the border north."
+official_url = "https://maineiat.org/?p=412"
+start = "Katahdin Loop Road, Katahdin Woods and Waters National Monument, Maine"
+end = "Fort Fairfield, Maine"
+end_lonlat = [-67.834, 46.772]
+shape = "point-to-point"
+terrain = ["forest", "farmland"]
+travel = "trail-and-road"
+caution = "Much of the route is on roads, because the chapter has relied on landowners' permission to secure the route."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://maineiat.org/?p=412"
+publisher = "Maine Chapter of the International Appalachian Trail"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.maineiat.org/2025/08/03/maine-iat-road-walks/"
+publisher = "Maine Chapter of the International Appalachian Trail"
+facts = ["caution"]
+
+[[hike.source]]
+url = "https://www.usgs.gov/us-board-on-geographic-names/domestic-names"
+publisher = "U.S. Geological Survey, Geographic Names Information System (GNIS 566405 Fort Fairfield, ME)"
+facts = ["end_lonlat"]

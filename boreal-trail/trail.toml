@@ -1,0 +1,70 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "boreal-trail"
+name = "Boreal Trail"
+short_name = "BT"
+country = "CA"
+regions = ["SK"]
+length_km = 135
+length_note = "135 km, from the Saskatchewan Provincial Parks Boreal Trail guide; the guide also gives 153 km of trail in the whole system, and another source gives 120 km"
+tier = "regional"
+designation = "Saskatchewan Provincial Parks (Meadow Lake Provincial Park)"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Saskatchewan Provincial Parks (Meadow Lake Provincial Park) (publishes the trail)"
+publisher_url = "https://tourismsaskatchewan.com/listings/900/meadow-lake-provincial-park-boreal-trail"
+url = "https://saskparks.tourismsaskatchewan.com/media/media-library/pdfs/park-downloads/meadow-lake/meadow-lake-all.pdf"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://saskparks.tourismsaskatchewan.com/media/media-library/pdfs/park-downloads/meadow-lake/meadow-lake-all.pdf, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "OpenStreetMap has relations named 'Boreal Trail' (18166071, 18166072, 18166073); see the osm note."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. The Boreal Trail guide (PDF) states no licence for a track. The guide and its maps are at the PDF named in this record."
+
+[osm]
+relation = 0
+note = "Relations 18166071, 18166072 and 18166073 are named 'Boreal Trail'. Not yet measured on 2026-11-14."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Saskatchewan Provincial Parks"
+note = "No logo of the trail is included here. Ask Saskatchewan Provincial Parks before using its marks."
+logo_file = ""
+logo_owner = "Saskatchewan Provincial Parks"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Boreal Trail crosses Meadow Lake Provincial Park in northwest Saskatchewan, from the Cold River campground in the west to the park office at Dorintosh in the east. It runs through boreal forest past lakes and links front-country campgrounds, with backcountry campsites between. The trail is marked with posts about every kilometre."
+official_url = "https://tourismsaskatchewan.com/listings/900/meadow-lake-provincial-park-boreal-trail"
+start = "Cold River Rustic Campground, Meadow Lake Provincial Park, Saskatchewan"
+end = "Dorintosh Administration Office, Meadow Lake Provincial Park, Saskatchewan"
+shape = "point-to-point"
+season = "All year"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+terrain = ["forest", "lakes"]
+travel = "trail"
+permit = "Hikers camping along the trail need a Backcountry Permit, from the park office, any campground or entry gate, or online at parks.saskatchewan.ca."
+caution = "Mosquitoes, blackflies and horseflies are most numerous from early May to the end of June and from late August to the end of September."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://saskparks.tourismsaskatchewan.com/media/media-library/pdfs/park-downloads/meadow-lake/meadow-lake-all.pdf"
+publisher = "Saskatchewan Provincial Parks"
+facts = ["summary", "start", "end", "shape", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://tourismsaskatchewan.com/listings/900/meadow-lake-provincial-park-boreal-trail"
+publisher = "Tourism Saskatchewan"
+facts = ["official_url", "summary", "terrain"]

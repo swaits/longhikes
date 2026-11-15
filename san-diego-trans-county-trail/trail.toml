@@ -1,0 +1,83 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "san-diego-trans-county-trail"
+name = "San Diego Trans County Trail"
+short_name = "SDTCT"
+country = "US"
+regions = ["CA"]
+length_km = 249
+length_note = "about 155 mi, per the Treeline Review guide by Liz Thomas (other lists give about 140 mi)"
+kind = "route"
+tier = "regional"
+designation = "Route built in the 2000s by the Sea to Sea Trail Foundation (since folded) with agencies; current guide by Liz Thomas, Treeline Review"
+wave = "held"
+wave_note = "Held: no living holder or author is settled. The Sea to Sea Trail Foundation built it with the US Forest Service and the City of Poway and the Counties of San Diego, and has since folded. The Treeline Review guide (Liz Thomas, dated 2026-08-29) calls it a route and not a trail, and says its tracks and maps are kept by a Facebook group and are subject to change."
+
+[source]
+status = "none"
+publisher = "Sea to Sea Trail Foundation (folded); current guide by Liz Thomas, Treeline Review"
+publisher_url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
+url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; no holder with a stated track policy was found. No OpenStreetMap route relation with this name was found on 2026-11-14."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No holder or author is settled and no terms for passing on a track are stated. The guide's page mentions no GPX file and points to a Facebook group for maps. No track is included."
+
+[osm]
+relation = 0
+note = "No route relation named San Diego Trans County Trail was found in a name search on 2026-11-14."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Sea to Sea Trail Foundation (folded); guide by Liz Thomas"
+note = "No logo is included; the trail's foundation has folded and no emblem was found on the guide's page."
+logo_file = ""
+logo_owner = "Sea to Sea Trail Foundation (folded); guide by Liz Thomas"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Sea to Sea Trail Foundation (folded); guide by Liz Thomas"
+line_policy = "unclear"
+creator_words = "All tracks and maps are subject to change."
+creator_words_url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
+creator_words_by = "The San Diego Trans County Trail Facebook group, as quoted on the Treeline Review page"
+note = "Iberia Wash at the Salton Sea to Torrey Pines State Beach, a mix of existing trails and roads with desert washes and bushwhacking. The guide says it is not enough for a hiker to travel the route safely."
+
+[[guide]]
+title = "San Diego Trans County Trail"
+author = "Liz Thomas"
+access = "free"
+url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
+format = "web page with turn-by-turn guide"
+
+[hike]
+summary = "The San Diego Trans County Trail runs about 155 miles from the Salton Sea to the Pacific Ocean at Torrey Pines State Beach. It crosses desert washes, mountains and suburbs, with road walks and some bushwhacking. The guide calls it a route, not a trail."
+official_url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
+start = "Iberia Wash at the Salton Sea, California"
+end = "Torrey Pines State Beach, California"
+shape = "point-to-point"
+days = [7, 12]
+season = "November to February"
+months = [11, 12, 1, 2]
+high_point_m = 1494
+terrain = ["desert", "coast"]
+permit = "No permit is needed for the whole route; a Recreation.gov permit is recommended for Cedar Creek Falls and some alternates may need landowner permission."
+caution = "The guide says it is not enough for a hiker to travel the route safely, and that some alternates cross private land."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
+publisher = "Liz Thomas, Treeline Review (author of the current guide)"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "high_point", "terrain", "permit", "caution"]

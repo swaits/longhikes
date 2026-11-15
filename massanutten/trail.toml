@@ -1,0 +1,71 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "massanutten"
+name = "Massanutten Trail"
+short_name = "MT"
+country = "US"
+regions = ["VA"]
+length_km = 114
+length_note = "71 mi, from the National Recreation Trails database entry, which names the USDA Forest Service as manager"
+tier = "regional"
+designation = "National Recreation Trail (2003), George Washington and Jefferson National Forests, Lee Ranger District"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "USDA Forest Service, George Washington and Jefferson National Forests (publishes the trail; no open geometry found)"
+publisher_url = "https://nrtapplication.org/trails/massanutten-trail"
+url = "https://www.openstreetmap.org/relation/11520193"
+discovery = "osm-relation-version: Overpass `rel(11520193); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: ‘You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.’ (https://www.openstreetmap.org/copyright, read 2026-11-14). The track included here is from OpenStreetMap, relation 11520193."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 11520193 (Massanutten Trail, ref TR 408): one route relation of 57 ways, all main; none has a side role."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 11520193
+note = "Relation 11520193 'Massanutten Trail' (ref TR 408, operator United States Forestry Service, version 12, 2025-10-27). Downloaded 2026-11-14; release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://www.fs.usda.gov/r08/gwj"
+contact = "USDA Forest Service, George Washington and Jefferson National Forests"
+note = "No trail logo was seen on the pages read. No logo of the trail is included here. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "USDA Forest Service, George Washington and Jefferson National Forests"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 111.4
+difference_percent = -2.3
+parts = 3
+note = "OSM relation 11520193, 57 ways: 111.4 km in 3 parts, 2.3% short of the published 114 km."
+
+[hike]
+summary = "The Massanutten Trail is a 71-mile circuit of the ridges around the inner valley of Massanutten Mountain in the Shenandoah Valley of Virginia. Many parts follow old roads and trails. It is a National Recreation Trail that the Forest Service built for all non-motorized use, though its rugged sections suit hikers best."
+official_url = "https://nrtapplication.org/trails/massanutten-trail"
+shape = "loop"
+season = "All year"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+high_point_m = 853
+terrain = ["forest"]
+travel = "trail"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://nrtapplication.org/trails/massanutten-trail"
+publisher = "National Recreation Trails database (entry names the USDA Forest Service as manager)"
+facts = ["official_url", "summary", "shape", "season", "months", "high_point", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.americantrails.org/resources/massanutten-mountain-trail-virginia"
+publisher = "American Trails (National Recreation Trails)"
+facts = ["summary", "terrain"]

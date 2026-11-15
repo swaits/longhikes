@@ -1,0 +1,80 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "thames-valley-trail"
+name = "Thames Valley Trail"
+short_name = "TVT"
+country = "CA"
+regions = ["ON"]
+length_km = 110
+length_note = "110 km main trail, from the Thames Valley Trail Association's Trail Routes & Maps page; the page also describes 26 km of loop trails"
+tier = "regional"
+designation = "Thames Valley Trail Association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Thames Valley Trail Association (publishes the trail)"
+publisher_url = "https://tvta.ca/"
+url = "https://tvta.ca/hiking-information/trail-routes-and-maps/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://tvta.ca/hiking-information/trail-routes-and-maps/, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "OpenStreetMap relation 3444520 'Thames Valley Trail' exists (version 135); its track was not downloaded because the Overpass servers could not be reached."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included yet. The association sells maps and states no licence for a track. OpenStreetMap relation 3444520 is the trail, and a dry-run measure on 2026-11-14 gave 134.2 km in 12 parts against 110 km published (22.0% over, probably because the 26 km of loop trails are in it), but the download failed because Overpass could not be reached. Run python3 tools/osm_track.py 3444520 --id thames-valley-trail to add it."
+
+[osm]
+relation = 3444520
+note = "Relation 3444520 'Thames Valley Trail' (version 135, 2026-10-25) was found and measured in a dry run on 2026-11-14: 446 ways, 134.2 km, 12 parts. The track was not written."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Thames Valley Trail Association"
+note = "The association's site shows a logo in its header. No logo is included here and no logo policy was found. Ask the association before using its mark."
+logo_file = ""
+logo_owner = "Thames Valley Trail Association"
+
+[verification]
+verified = false
+note = "No track written, so nothing is verified. A dry run on 2026-11-14 measured OSM relation 3444520 at 134.2 km in 12 parts, 22.0% over the published 110 km."
+
+[hike]
+summary = "The Thames Valley Trail follows the Thames and North Thames rivers through southwestern Ontario, from the Elgin County line south of Delaware through London to St. Marys. It crosses farmland, parks and conservation areas, and most of it is on private land with the owners' permission. Loop trails join the main trail."
+official_url = "https://tvta.ca/hiking-information/trail-routes-and-maps/"
+start = "Elgin/Middlesex County line, south of Delaware, Ontario"
+end = "St. Marys, Ontario"
+end_lonlat = [-81.133, 43.259]
+shape = "point-to-point"
+season = "All year"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+terrain = ["farmland"]
+travel = "trail"
+caution = "Some of the trail is on floodplain, and flooding can be a hazard, especially in early spring and late fall."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://tvta.ca/hiking-information/trail-routes-and-maps/"
+publisher = "Thames Valley Trail Association"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://tvta.ca/faq/"
+publisher = "Thames Valley Trail Association"
+facts = ["summary", "season", "months"]
+
+[[hike.source]]
+url = "https://tvta.ca/about-us/tvta-information/"
+publisher = "Thames Valley Trail Association"
+facts = ["summary", "start", "end"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/FEBWI"
+publisher = "Natural Resources Canada (Canadian Geographical Names)"
+facts = ["end_lonlat"]

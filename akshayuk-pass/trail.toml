@@ -1,0 +1,70 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "akshayuk-pass"
+name = "Akshayuk Pass"
+short_name = "AP"
+country = "CA"
+regions = ["NU"]
+length_km = 97
+length_note = "97 km, from the Parks Canada page on hiking in Auyuittuq National Park"
+tier = "regional"
+designation = "Parks Canada (Auyuittuq National Park)"
+wave = "held"
+wave_note = "Held: Parks Canada publishes Akshayuk Pass as a named 97 km route with 9 emergency shelters, and calls it a trail in places, but its page says there is no designated trail to follow. Whether it is a designated trail or a route is undecided, and no track is included."
+
+[source]
+status = "none"
+publisher = "Parks Canada (Auyuittuq National Park) (publishes the trail)"
+publisher_url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking"
+url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "OpenStreetMap relation 19247431 'Akshayuk Pass Route' is the only relation found; it holds one way of 8.8 km and is not the whole route."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. Parks Canada's page gives no track and no licence for one. OpenStreetMap relation 19247431 holds only 8.8 km of the 97 km."
+
+[osm]
+relation = 19247431
+note = "Relation 19247431 'Akshayuk Pass Route' (version 1, 2025-06-12) was measured on 2026-11-14: one way, 8.8 km, so it is a scrap of the route and no track was taken from it."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Parks Canada"
+note = "No logo of the route is included here. Ask Parks Canada before using its marks."
+logo_file = ""
+logo_owner = "Parks Canada"
+
+[verification]
+verified = false
+note = "No line to measure. OpenStreetMap relation 19247431 measures 8.8 km in 1 part against 97 km published, and was not used."
+
+[hike]
+summary = "Akshayuk Pass is a 97 km valley between mountains and ice that runs through Auyuittuq National Park on Baffin Island. Parks Canada describes it as the park's most popular destination for hiking and skiing. It has nine emergency shelters and no campgrounds or services."
+official_url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking"
+start = "North Pangnirtung Fiord, Nunavut"
+end = "Overlord, Nunavut"
+shape = "point-to-point"
+days = [8, 12]
+terrain = ["alpine"]
+travel = "mostly-cross-country"
+permit = "Parks Canada's 2019 visitor information package says all visitors must attend a mandatory orientation session, register, pay the fees and get a park entry permit."
+caution = "Parks Canada says there is no designated trail to follow, and the most rugged section, between Thor Peak and Glacier Lake, crosses glacier moraines and many rivers."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking"
+publisher = "Parks Canada"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://pcweb2.azureedge.net/-/media/pn-np/nu/auyuittuq/archive/pdf/anp_visitorinformationpackage2019.pdf"
+publisher = "Parks Canada"
+facts = ["permit"]

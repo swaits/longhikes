@@ -1,0 +1,94 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "american-discovery-trail"
+name = "American Discovery Trail"
+short_name = "ADT"
+country = "US"
+regions = ["DE", "MD", "DC", "WV", "OH", "KY", "IN", "IL", "IA", "MO", "KS", "NE", "CO", "UT", "NV", "CA"]
+length_km = 10943
+length_note = "6,800 mi published by the Society, which counts the northern and southern routes across the Midwest together; the northern route alone is about 4,844 mi and the southern route about 5,008 mi"
+tier = "regional"
+designation = "National Millennium Trail (2000); American Discovery Trail Society; not a National Scenic Trail"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "OpenStreetMap contributors (the American Discovery Trail Society holds the official route and gives its data by state, region or nationwide, but states no licence for it)"
+publisher_url = "https://discoverytrail.org/the-route"
+url = "https://www.openstreetmap.org/relation/1544944"
+discovery = "osm-relation-version: Overpass `rel(1544944); out meta;` (version and timestamp), or the OpenStreetMap API page /api/0.6/relation/1544944; fetch again when it changes (version 452, 2025-04-05 when read)"
+format = "OpenStreetMap super-relation (route=hiking, network=nwn, ref=ADT) holding 93 sub-relations and about 12,000 ways, read through Overpass"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright). The track included here is from OpenStreetMap, relation 1544944. The Society's own route data, which its route page says is 'obtain[able] ... for free' from 1/1/2026 as a gift from Indiana Trails, is not used: that page states no licence and no permission to pass it on."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 1544944: members with an empty or main role are the main track; the 136 ways with the role alternative (and the alternative sub-relation) are in alternates.geojson. In the Midwest the main track follows the southern route (through Missouri); the alternate ways are the parts of the northern route that the southern route does not share. The relation's own note says the choice of which central route is 'alternative' was made on the trail's history."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "The published 6,800 mi counts the northern and southern Midwest routes together. The main track holds one coast-to-coast route, the southern one (the Society gives it as about 5,008 mi, 8,060 km; 8,036 km is measured). The northern route's own ways, 2,912 km, are in alternates.geojson: 8,036 km plus 2,912 km is 10,948 km, within 0.1% of the published figure."
+
+[osm]
+relation = 1544944
+note = "Read 2026-11-14: relation 1544944, 'American Discovery Trail', version 452, route=hiking, network=nwn, ref=ADT, website discoverytrail.org. 8,341 ways in the main track and 3,708 in alternates (2,912 km). Main track measured 8,036.4 km in 11 parts, so it has gaps of more than 100 m between parts. Sub-relations by state and segment are tagged operator American Discovery Trail Society."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "American Discovery Trail Society"
+note = "The Society's site, discoverytrail.org, shows a logo in its header. No logo is included here and no logo policy was found. Ask the Society before using its mark."
+logo_file = ""
+logo_owner = "American Discovery Trail Society"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 8036.4
+difference_percent = -26.6
+parts = 11
+note = "OSM relation 1544944: 8,036.4 km in 11 parts, 26.6% under the published 6,800 mi (10,943 km) because that figure counts both Midwest routes and the main track holds one of them. The measured length is within 0.3% of the Society's 5,008 mi (8,060 km) for the southern route. Alternates (2,912 km, the northern route's own ways) are in alternates.geojson. The Society says its official route is available only from the Society, and that other suggested routes may not be the official one, so this track follows OpenStreetMap's map of the trail and may differ from it."
+
+[hike]
+summary = "The American Discovery Trail is a coast-to-coast route of about 6,800 miles when both of its routes across the Midwest are counted, from Cape Henlopen State Park in Delaware to Limantour Beach at Point Reyes National Seashore in California. It links existing trails, rail trails, canal towpaths and roads, and the Society describes it as open to walkers, with most of it also open to bicycles. The northern route through Chicago is about 4,844 miles and the southern route through St. Louis about 5,008 miles."
+official_url = "https://discoverytrail.org/"
+start = "Cape Henlopen State Park, Delaware"
+end = "Limantour Beach, Point Reyes National Seashore, California"
+shape = "point-to-point"
+high_point = "Argentine Pass"
+high_point_m = 4026
+terrain = ["farmland", "prairie", "desert"]
+travel = "trail-and-road"
+caution = "The Society gives no overall share, but its regional pages describe much of the way as rail trails, canal paths, bike trails, sidewalks and rural roads, county and state roads in north-east Colorado, and dirt roads in Nevada, so it is not a footpath for most of its length."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://discoverytrail.org/our-history"
+publisher = "American Discovery Trail Society"
+facts = ["summary", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://discoverytrail.org/the-route"
+publisher = "American Discovery Trail Society"
+facts = ["official_url", "summary", "travel"]
+
+[[hike.source]]
+url = "https://discoverytrail.org/eastern-states"
+publisher = "American Discovery Trail Society"
+facts = ["start", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://discoverytrail.org/north-central"
+publisher = "American Discovery Trail Society"
+facts = ["terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://discoverytrail.org/western-states"
+publisher = "American Discovery Trail Society"
+facts = ["end", "high_point", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://discoverytrail.org/"
+publisher = "American Discovery Trail Society"
+facts = ["official_url"]

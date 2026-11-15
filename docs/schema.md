@@ -102,7 +102,7 @@ The field and file names keep the word "line" (`line.geojson`, `line_file`, `lin
 
 ## `[hike]`: what a hiker asks first
 
-Optional: a record without `[hike]` is valid. The table holds the facts a hiker wants before anything else: where the trail goes, what the country is like, how long it takes, when to go, where its own site is. Every fact is read on a page of the trail's holder (the agency, the association, or for a route its author) or on a government page, and named in `[[hike.source]]`. A fact that was not found on such a page is left out, never guessed. Where sources disagree, the managing body's figure is used. Wording is ours: nothing is copied from a source.
+Optional: a record without `[hike]` is valid. The table holds the facts a hiker wants before anything else: where the trail goes, what the country is like, how long it takes, when to go, where its own site is. Every fact is read on a page, and that page is named in `[[hike.source]]`. The first choice is a page of the trail's holder (the agency, the association, or for a route its author) or a government page. Where those say nothing, a fact may be read on an established hiking reference that covers the trail, such as a guide site, a hiking association's list of trails or a guidebook publisher's page; the source entry names that site as the publisher, so a reader can see where the fact came from and weigh it. Apps and pages that anyone can edit (AllTrails, forums, social media, wikis) are not sources. A fact found on no acceptable page is left out, never guessed. Where sources disagree, the managing body's figure is used. Wording is ours: nothing is copied from a source.
 
 | Field | Type | Meaning | Example |
 | --- | --- | --- | --- |

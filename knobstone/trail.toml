@@ -1,0 +1,77 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "knobstone"
+name = "Knobstone Trail"
+short_name = "KT"
+country = "US"
+regions = ["IN"]
+length_km = 97
+length_note = "60 mi, from the Indiana DNR 'About the Knobstone Trail' page (other sources give 48 to 58 mi)"
+tier = "regional"
+designation = "Indiana Department of Natural Resources"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Indiana Department of Natural Resources (publishes the trail; no open geometry found)"
+publisher_url = "https://www.in.gov/dnr/forestry/properties/knobstone-trail-conditions-reroutes-maps/knobstone-trail-about/"
+url = "https://www.openstreetmap.org/relation/4644135"
+discovery = "osm-relation-version: Overpass `rel(4644135); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: ‘You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.’ (https://www.openstreetmap.org/copyright, read 2026-11-14). The track included here is from OpenStreetMap, relation 4644135."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 4644135 (Knobstone Trail): one route relation of 16 ways, all main; none has a side role."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 4644135
+note = "Relation 4644135 'Knobstone Trail' (ref KT, version 29, 2026-04-12). Downloaded 2026-11-14; release.txt has the source and date."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://www.in.gov/dnr/forestry/"
+contact = "Indiana Department of Natural Resources"
+note = "The DNR Forestry page shows the DNR's agency logo. No logo of the trail is included here. Ask the trail's holder before using its mark."
+logo_file = ""
+logo_owner = "Indiana Department of Natural Resources"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 82.6
+difference_percent = -14.8
+parts = 3
+note = "OSM relation 4644135, 16 ways: 82.6 km in 3 parts, 14.8% short of the published 97 km."
+
+[hike]
+summary = "The Knobstone Trail is Indiana's longest footpath, a backcountry trail that runs along the Knobstone Escarpment in southern Indiana. It goes from Deam Lake in Clark County to Delaney Park in Washington County, through Clark State Forest, Elk Creek Public Fishing Area and Jackson-Washington State Forest. It has many steep climbs and descents."
+official_url = "https://www.in.gov/dnr/forestry/properties/knobstone-trail-conditions-reroutes-maps/"
+start = "Deam Lake, Indiana"
+end = "Delaney Park, Indiana"
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "trail"
+permit = "No fee is charged for hiking or camping, and overnight users are asked to register with the Indiana DNR Law Dispatch."
+caution = "Water is scarce along the trail, and July, August and September are the worst months to find it."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.in.gov/dnr/forestry/properties/knobstone-trail-conditions-reroutes-maps/knobstone-trail-about/"
+publisher = "Indiana Department of Natural Resources"
+facts = ["summary", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.in.gov/dnr/forestry/properties/knobstone-trail-conditions-reroutes-maps/"
+publisher = "Indiana Department of Natural Resources"
+facts = ["official_url"]
+
+[[hike.source]]
+url = "https://www.in.gov/dnr/forestry/properties/knobstone-trail-conditions-reroutes-maps/knobstone-trail-hiking-and-rules"
+publisher = "Indiana Department of Natural Resources"
+facts = ["permit", "caution"]

@@ -59,7 +59,7 @@ class ExtraPagesTest(unittest.TestCase):
 
     def test_all_routes_on_routes_page(self):
         routes = [r for r in self.records if r["derived"]["kind"] == "route"]
-        self.assertEqual(len(routes), 47)
+        self.assertEqual(len(routes), 50)
         page = read_out("routes/index.html")
         import html as _html
         text = _html.unescape(page)
@@ -125,9 +125,10 @@ class ExtraPagesTest(unittest.TestCase):
             m = re.search(rf'<option value="g:{g}">All of {re.escape(name)} \((\d+)\)</option>', home_doc)
             n = sum(1 for r in self.records if g in facets.place_groups(r))
             self.assertEqual(int(m.group(1)) if m else 0, n, g)
-        self.assertTrue(across)
-        self.assertIn('id="across-canada"', read_out("regions/index.html"))
-        self.assertIn('id="canada-wide"', read_out("regions/index.html"))  # the old anchor still lands
+        # No trail spans a whole country now that the Trans Canada Trail is gone;
+        # the "across" section appears only when one does.
+        self.assertEqual('id="across-canada"' in read_out("regions/index.html"), bool(across))
+        self.assertEqual('id="canada-wide"' in read_out("regions/index.html"), bool(across))  # the old anchor
 
     def test_list_pages_share_the_home_list(self):
         for rel in ("index.html", "regions/us-co/index.html", "routes/index.html",

@@ -142,7 +142,7 @@ class SectionsTest(unittest.TestCase):
         self.assertIn("Inclusion rule", sections)
         self.assertIn("A long trail here is a named, continuous walking route",
                       sections["Inclusion rule"])
-        self.assertEqual(len(sections), 10)
+        self.assertEqual(len(sections), 11)
 
 
 class ParagraphsTest(unittest.TestCase):
@@ -394,7 +394,7 @@ class RealDocumentsTest(unittest.TestCase):
         counter = TableCounter()
         counter.feed(md.render(read_doc("README.md")))
         counter.close()
-        self.assertEqual(counter.counts, [131, 47])
+        self.assertEqual(counter.counts, [132, 50])
 
     def test_readme_num_class_present(self):
         self.assertIn('class="num"', md.render(read_doc("README.md")))

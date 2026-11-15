@@ -90,7 +90,7 @@ class BuiltSiteTest(unittest.TestCase):
     def test_one_detail_page_per_record(self):
         found = [d for d in os.listdir(os.path.join(OUT, "trails"))
                  if os.path.isfile(os.path.join(OUT, "trails", d, "index.html"))]
-        self.assertEqual(len(self.records), 178)
+        self.assertEqual(len(self.records), 182)
         self.assertEqual(sorted(found), sorted(r["id"] for r in self.records))
         self.assertTrue(os.path.isfile(os.path.join(OUT, "index.html")))
 
@@ -175,7 +175,7 @@ class BuiltSiteTest(unittest.TestCase):
             v = raw.get("verification", {})
             if raw["source"].get("line_file") and v.get("verified") and abs(v.get("difference_percent", 0)) > 15:
                 expected.add(rec["id"])
-        self.assertEqual(len(expected), 17)
+        self.assertEqual(len(expected), 19)
         self.assertIn("voyageur", expected)
         for rec in self.records:
             page = self.pages[rec["id"]]
@@ -395,6 +395,64 @@ def written_forms(value):
 
 
 class RenderUnitTest(unittest.TestCase):
+    def test_links_listed_in_order_with_publisher(self):
+        rec = sample_record("L Trail")
+        rec["link"] = [
+            {"title": "First", "publisher": "Pub One", "url": "https://one.example/a?x=1&y=2", "note": "Maps."},
+            {"title": "Second", "publisher": "Pub Two", "url": "https://two.example/b"}]
+        rec.setdefault("hike", {})["official_url"] = "https://trail.example/"
+        body = trail.render(rec, site.Site("N", "T"))[2]
+        self.assertIn("More about this trail", body)
+        self.assertLess(body.index("First"), body.index("Second"))
+        self.assertIn('href="https://one.example/a?x=1&amp;y=2"', body)
+        self.assertIn("Pub One", body)
+        self.assertIn("<small>Maps.</small>", body)
+        self.assertEqual(body.count("<small>Maps.</small>"), 1)
+
+    def test_stand_in_link_is_not_repeated_in_the_list(self):
+        rec = sample_record("L Trail")
+        rec["link"] = [{"title": "First", "publisher": "Pub One", "url": "https://one.example/a"},
+                       {"title": "Second", "publisher": "Pub Two", "url": "https://two.example/b"}]
+        body = trail.render(rec, site.Site("N", "T"))[2]
+        self.assertEqual(body.count('href="https://one.example/a"'), 1)
+        self.assertIn('href="https://two.example/b"', body)
+        self.assertNotIn("Official site", body)
+        rec["link"] = rec["link"][:1]
+        self.assertNotIn("More about this trail", trail.render(rec, site.Site("N", "T"))[2])
+
+    def test_no_links_shows_nothing(self):
+        body = trail.render(sample_record("L Trail"), site.Site("N", "T"))[2]
+        self.assertNotIn("More about this trail", body)
+        self.assertNotIn("morelinks", body)
+
+    def test_link_title_and_note_are_escaped(self):
+        rec = sample_record("L Trail")
+        rec["link"] = [{"title": "<script>alert(1)</script>", "publisher": "<b>P</b>",
+                        "url": "https://one.example/", "note": "<img src=x onerror=1>"}]
+        body = trail.render(rec, site.Site("N", "T"))[2]
+        self.assertNotIn("<script>alert(1)", body)
+        self.assertNotIn("<b>P</b>", body)
+        self.assertNotIn("<img src=x", body)
+        self.assertIn("&lt;script&gt;alert(1)&lt;/script&gt;", body)
+
+    def test_links_with_an_official_site_keep_that_button(self):
+        rec = sample_record("L Trail")
+        rec["hike"] = {"official_url": "https://official.example/"}
+        rec["link"] = [{"title": "T", "publisher": "Wiki", "url": "https://wiki.example/t"}]
+        buttons = re.search(r'<p class="cluster trail-actions">.*?</p>', trail.page_head(rec), re.S).group(0)
+        self.assertIn("Official site", buttons)
+        self.assertNotIn("wiki.example", buttons)
+
+    def test_no_official_site_first_link_stands_in_named_by_publisher(self):
+        rec = sample_record("L Trail")
+        rec["link"] = [{"title": "T", "publisher": "Wiki Pub", "url": "https://wiki.example/t"},
+                       {"title": "U", "publisher": "Other", "url": "https://other.example/u"}]
+        buttons = re.search(r'<p class="cluster trail-actions">.*?</p>', trail.page_head(rec), re.S).group(0)
+        self.assertIn('href="https://wiki.example/t"', buttons)
+        self.assertIn("Wiki Pub", buttons)
+        self.assertNotIn("other.example", buttons)
+        self.assertNotIn("Official site", buttons)
+
     def test_names_are_escaped(self):
         rec = sample_record(name='Trail & "Quotes" <b>bold</b>')
         _, description, body, _ = trail.render(rec, site.Site("Site & Co", "Tag"))

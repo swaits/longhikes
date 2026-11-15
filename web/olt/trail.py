@@ -169,6 +169,11 @@ def page_head(rec):
     official = official_link(rec)
     if official:
         actions.append(f'<a class="button button--link" href="{esc(official[0])}">{esc(official[1])} {common.ICON_EXTERNAL}</a>')
+    elif more_links(rec):
+        # No page of its own: the first of the pages about the trail stands in, named by its publisher.
+        first = more_links(rec)[0]
+        actions.append(f'<a class="button button--link" href="{esc(first["url"])}">'
+                       f'{esc(first["publisher"])} {common.ICON_EXTERNAL}</a>')
     if rec["derived"].get("downloads"):
         actions.append(f'<a class="button button--primary" href="#download">{common.ICON_DOWNLOAD}Download the GPX</a>')
     else:
@@ -191,6 +196,7 @@ def page_head(rec):
     </header>
     <p class="trail-lede">{lede}</p>
     <p class="cluster trail-actions">{"".join(actions)}</p>
+    {links_panel(rec)}
   </div>
 </div>"""
 
@@ -606,6 +612,27 @@ def guide_card(g, i):
   {facts(*rows)}
   <a class="button button--link" href="{esc(g.get("url", ""))}" aria-describedby="guide-{i}">Guide page on {esc(host(g.get("url", "")))} {common.ICON_EXTERNAL}</a>
 </li>"""
+
+
+def more_links(rec):
+    return [l for l in rec.get("link", []) if isinstance(l, dict) and l.get("url")]
+
+
+def links_panel(rec):
+    """Other pages about this trail, under the buttons at the head of the page and quieter than them."""
+    links = more_links(rec)
+    # With no official site, the first link stands in for that button and is not repeated here.
+    if not official_link(rec):
+        links = links[1:]
+    if not links:
+        return ""
+    items = "".join(
+        f'<li><a href="{esc(l["url"])}">{esc(l.get("title", ""))} {common.ICON_EXTERNAL}</a>'
+        f' <span class="morelinks__by">{esc(l.get("publisher", ""))}</span>'
+        + (f'<small>{esc(l["note"])}</small>' if l.get("note") else "") + "</li>"
+        for l in links)
+    return (f'<section class="morelinks" aria-labelledby="morelinks-title">'
+            f'<h2 id="morelinks-title">More about this trail</h2><ul>{items}</ul></section>')
 
 
 def guides_panel(rec):

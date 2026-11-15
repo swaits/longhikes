@@ -304,7 +304,7 @@ class BuiltVocabularyTest(unittest.TestCase):
 
     def test_about_holds_the_dataset_terms(self):
         doc = self.read("about/index.html")
-        for want in ('id="how-trails-are-chosen"', "Held", "Deferred", "Candidate", "Track policy",
+        for want in ('id="how-trails-are-chosen"', "Held", "Candidate", "Track policy",
                      'href="/data/"', 'href="/sources/"', 'href="/logos/"', 'id="correct-or-add"'):
             self.assertIn(want, doc, want)
         for rel in ("data/index.html", "sources/index.html", "logos/index.html", "data/schema/index.html"):

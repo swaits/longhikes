@@ -288,7 +288,7 @@ def about_page(records, site, repo_root):
 
     what = quoted("What this is, and what it is not", "The dataset’s own words")
     rule = quoted("Inclusion rule", "The rule as the dataset states it")
-    rest = link_requests(render_sections(readme, site, ["How to use it", "Licences", "Report an error"]), site)
+    rest = link_requests(render_sections(readme, site, ["How to use it", "Other lists of long trails", "Licences", "Report an error"]), site)
     contrib = render_doc(read_doc(repo_root, "CONTRIBUTING.md"), site, heading_offset=1)
     cards = "".join(
         f'<li><a href="{esc(href)}">{esc(title)}</a><small>{esc(what_)}</small></li>'

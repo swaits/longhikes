@@ -77,15 +77,15 @@ def top_part(body):
 class GlanceTest(unittest.TestCase):
     def test_computed_rows_without_a_sourced_high_point(self):
         t = text(glance_of(render(rec_with(elev()))))
-        self.assertIn("High point 2,000 m 6,562 ft Computed from the track.", t)
-        self.assertIn("Low point 500 m 1,640 ft Computed from the track.", t)
+        self.assertIn("High point 6,562 ft 2,000 m Computed from the track.", t)
+        self.assertIn("Low point 1,640 ft 500 m Computed from the track.", t)
         # descent within a few percent of the climb is not shown
-        self.assertIn("Climb 3,000 m 9,843 ft Computed from the track, walking south to north.", t)
+        self.assertIn("Climb 9,843 ft 3,000 m Computed from the track, walking south to north.", t)
         self.assertNotIn("Descent", t)
 
     def test_descent_shown_when_it_differs(self):
         t = text(glance_of(render(rec_with(elev(descent_m=1000)))))
-        self.assertIn("Descent: 1,000 m 3,281 ft", t)
+        self.assertIn("Descent: 3,281 ft 1,000 m", t)
         self.assertIn("walking south to north", t)
         self.assertFalse(elevation.show_descent(elev(ascent_m=1000, descent_m=951)))
         self.assertTrue(elevation.show_descent(elev(ascent_m=1000, descent_m=949)))
@@ -93,11 +93,11 @@ class GlanceTest(unittest.TestCase):
     def test_sourced_high_point_is_kept(self):
         rec = rec_with(elev(), {"high_point": "Example Peak", "high_point_m": 2025, "checked": "2026-11-13"})
         t = text(glance_of(render(rec)))
-        self.assertIn("High point Example Peak 2,025 m 6,644 ft", t)
+        self.assertIn("High point Example Peak 6,644 ft 2,025 m", t)
         self.assertNotIn("2,000 m", t)  # the computed highest does not replace it
         # the computed low point and climb still appear, marked as computed
-        self.assertIn("Low point 500 m", t)
-        self.assertIn("Climb 3,000 m", t)
+        self.assertIn("Low point 1,640 ft 500 m", t)
+        self.assertIn("Climb 9,843 ft 3,000 m", t)
 
     def test_sourced_name_without_an_elevation_stays_as_it_was(self):
         rec = rec_with(elev(), {"high_point": "Example Peak", "checked": "2026-11-13"})
@@ -108,13 +108,13 @@ class GlanceTest(unittest.TestCase):
     def test_sea_level_low_point(self):
         data = elev(lowest={"m": 0, "lat": 43.0, "lon": -124.0})
         t = text(glance_of(render(rec_with(data))))
-        self.assertIn("Low point 0 m 0 ft Sea level. Computed from the track.", t)
+        self.assertIn("Low point 0 ft 0 m Sea level. Computed from the track.", t)
         self.assertIn("low point of sea level", elevation.summary_sentence(data))
 
     def test_loop_climb_has_no_direction(self):
         rec = rec_with(elev(), {"shape": "loop", "checked": "2026-11-13"})
         t = text(glance_of(render(rec)))
-        self.assertIn("Climb 3,000 m 9,843 ft Computed from the track.", t)
+        self.assertIn("Climb 9,843 ft 3,000 m Computed from the track.", t)
         self.assertNotIn("walking south to north", text(top_part(render(rec))))
 
 
@@ -148,7 +148,7 @@ class CaveatTest(unittest.TestCase):
                 self.assertIn("No profile is drawn", text(body))
                 self.assertIn(f"{parts} in the elevation sampling", text(body))
                 # the figures are still there
-                self.assertIn("Climb 3,000 m", text(glance_of(body)))
+                self.assertIn("Climb 9,843 ft 3,000 m", text(glance_of(body)))
 
 
 class ProfileTest(unittest.TestCase):
@@ -170,8 +170,8 @@ class ProfileTest(unittest.TestCase):
 
     def test_axes_in_both_units(self):
         svg = str(elevation.profile_svg(elev()))
-        km = svg[svg.index('<g class="len__km">'):svg.index('<g class="len__mi">')]
-        mi = svg[svg.index('<g class="len__mi">'):]
+        mi = svg[svg.index('<g class="len__mi">'):svg.index('<g class="len__km">')]
+        km = svg[svg.index('<g class="len__km">'):]
         self.assertIn("Distance along the track (km)", km)
         self.assertIn("Elevation (m)", km)
         self.assertIn("2,000", km)  # a metre tick reaches the high point
@@ -181,15 +181,15 @@ class ProfileTest(unittest.TestCase):
         # CSS shows one system, by the same data-units preference as lengths
         with open(os.path.join(WEB, "assets", "style.css"), encoding="utf-8") as f:
             css = f.read()
-        self.assertIn(".elev-profile .len__mi { display: none; }", css)
-        self.assertIn(':root[data-units="mi"] .elev-profile .len__mi { display: inline; }', css)
-        self.assertIn(':root[data-units="mi"] .elev-profile .len__km { display: none; }', css)
+        self.assertIn(".elev-profile .len__km { display: none; }", css)
+        self.assertIn(':root[data-units="km"] .elev-profile .len__km { display: inline; }', css)
+        self.assertIn(':root[data-units="km"] .elev-profile .len__mi { display: none; }', css)
 
     def test_text_alternative_states_the_facts(self):
         svg = str(elevation.profile_svg(elev()))
         label = html.unescape(re.search(r'aria-label="([^"]*)"', svg).group(1))
-        for want in ("3,000 m (9,843 ft)", "100.0 km (62 mi)", "500 m (1,640 ft)",
-                     "2,000 m (6,562 ft)", "walking south to north"):
+        for want in ("9,843 ft (3,000 m)", "62 mi (100.0 km)", "1,640 ft (500 m)",
+                     "6,562 ft (2,000 m)", "walking south to north"):
             self.assertIn(want, label, want)
         # the same sentence is the visible caption
         self.assertIn(label, text(render(rec_with(elev()))))
@@ -212,10 +212,10 @@ class AboutTest(unittest.TestCase):
         for want in ("computed from the trail’s track and Example Model",
                      "A point was taken every 30 m along each part of the track",
                      "Example Model credit, as it gives it.",
-                     "Highest point on the track 2,000 m", "At 40.00000, -105.00000",
-                     "Lowest point on the track 500 m", "Total climb 3,000 m",
-                     "Total descent 2,900 m", "Length sampled 100.0 km",
-                     "Coverage 1.000", "Parts 2", "Part starts 50.0 km",
+                     "Highest point on the track 6,562 ft 2,000 m", "At 40.00000, -105.00000",
+                     "Lowest point on the track 1,640 ft 500 m", "Total climb 9,843 ft 3,000 m",
+                     "Total descent 9,514 ft 2,900 m", "Length sampled 62.1 mi 100.0 km",
+                     "Coverage 1.000", "Parts 2", "Part starts 31.1 mi 50.0 km",
                      "Computed 2026-11-13",
                      "Computed from a public elevation model, not measured on the ground."):
             self.assertIn(want, t, want)

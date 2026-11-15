@@ -87,9 +87,10 @@ class FormatTest(unittest.TestCase):
 
     def test_elevation_follows_the_unit_toggle(self):
         e = str(words.elevation(2025))
-        # the same km/mi pair as lengths, so html[data-units] orders metres and feet too
+        # the same mi/km pair as lengths: feet first, and html[data-units="km"] puts metres first
         self.assertIn('<span class="len__km">2,025 m</span>', e)
         self.assertIn('<span class="len__mi">6,644 ft</span>', e)
+        self.assertLess(e.index("len__mi"), e.index("len__km"))
         self.assertIn('class="len len--inline"', e)
 
     def test_first_sentence(self):
@@ -109,7 +110,7 @@ class TrailPageTest(unittest.TestCase):
         self.assertIn('href="https://trail.example/"', top)
         self.assertIn("Official site", t)
         for want in ("Time 5 to 7 months", "Season March to October", "Example Peak",
-                     "2,025 m", "6,644 ft", "Shape End to end. South Gate, Arizona to North Gate, Utah",
+                     "6,644 ft 2,025 m", "Shape End to end. South Gate, Arizona to North Gate, Utah",
                      "Terrain Forest, Alpine", "Permits A permit is needed for the national park section.",
                      "Not finished. Forty miles are still on roads."):
             self.assertIn(want, t, want)
@@ -134,7 +135,7 @@ class TrailPageTest(unittest.TestCase):
         for absent in ("Season March", "High point", "Terrain Alpine", "Permits", "Not finished", "Official site"):
             self.assertNotIn(absent, t, absent)
         # no summary: the lede is built from the record
-        self.assertIn("A trail of 100 km 62 mi in Arizona, United States.", t)
+        self.assertIn("A trail of 62 mi 100 km in Arizona, United States.", t)
         about = render(rec)[render(rec).index('<details class="about-data"'):]
         self.assertIn("The record names no page for these facts.", about)
 
@@ -143,11 +144,11 @@ class TrailPageTest(unittest.TestCase):
         body = render(rec)
         top = top_part(body)
         t = text(top)
-        self.assertIn("A trail of 100 km 62 mi in Arizona, United States.", t)
+        self.assertIn("A trail of 62 mi 100 km in Arizona, United States.", t)
         self.assertIn("Length", t)
         self.assertIn("Where Arizona , United States", t)
         # every trail has a time: here estimated from its 100 km, and labelled so
-        self.assertIn("Time About 4 to 5 days Estimated from the length, at 20 to 30 km (12 to 19 mi) a day.", t)
+        self.assertIn("Time About 4 to 5 days Estimated from the length, at 12 to 19 mi 20 to 30 km a day.", t)
         self.assertIn("Season, terrain and walking are not on file for this trail yet.", t)
         self.assertNotIn("Where the hiking facts come from", body)
         # no track: the page says so plainly and points at the source
@@ -191,7 +192,7 @@ class TrailPageTest(unittest.TestCase):
         # the partial warning above the buttons, and in the glance
         self.assertLess(panel.index("notice--partial"), panel.index('<ul class="downloads">'))
         self.assertIn("Partial GPX to download here", top)
-        self.assertIn("Track measures 60.0 km of 100 km published", text(top))
+        self.assertIn("Track measures 37.3 mi 60.0 km of 62 mi 100 km published", text(top))
 
     def test_report_a_problem_stays_in_view(self):
         top = top_part(render(sample_record("X Trail")))
@@ -232,8 +233,8 @@ class ListTest(unittest.TestCase):
         cases = {
             "national-scenic-trails": (fake(1, tier="national"), fake(2)),
             "routes": (route, fake(2)),
-            "longest": (fake(1, km=2000), fake(2, km=1999)),
-            "under-100-km": (fake(1, km=99), fake(2, km=100)),
+            "longest": (fake(1, km=1609.35), fake(2, km=1609.3)),
+            "under-100-miles": (fake(1, km=160.9), fake(2, km=161)),
             # by Time: stated, or estimated from the length
             "a-week-or-less": (fake(1, hike={"days": [4, 7]}), fake(2, hike={"days": [20, 35]})),
             "one-to-two-weeks": (fake(1, km=250), fake(2, km=100)),

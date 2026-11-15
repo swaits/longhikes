@@ -90,7 +90,7 @@ class BuiltSiteTest(unittest.TestCase):
     def test_one_detail_page_per_record(self):
         found = [d for d in os.listdir(os.path.join(OUT, "trails"))
                  if os.path.isfile(os.path.join(OUT, "trails", d, "index.html"))]
-        self.assertEqual(len(self.records), 138)
+        self.assertEqual(len(self.records), 178)
         self.assertEqual(sorted(found), sorted(r["id"] for r in self.records))
         self.assertTrue(os.path.isfile(os.path.join(OUT, "index.html")))
 
@@ -175,7 +175,7 @@ class BuiltSiteTest(unittest.TestCase):
             v = raw.get("verification", {})
             if raw["source"].get("line_file") and v.get("verified") and abs(v.get("difference_percent", 0)) > 15:
                 expected.add(rec["id"])
-        self.assertEqual(len(expected), 15)
+        self.assertEqual(len(expected), 17)
         self.assertIn("voyageur", expected)
         for rec in self.records:
             page = self.pages[rec["id"]]
@@ -186,8 +186,8 @@ class BuiltSiteTest(unittest.TestCase):
                 self.assertLess(panel.index("notice--partial"), panel.index('<ul class="downloads">'), rec["id"])
                 v = rec["verification"]
                 text = page_text(panel[:panel.index('<ul class="downloads">')])
-                self.assertIn(f"measures {v['measured_km']:,.1f} km against a published "
-                              f"{rec['length_km']:,} km ({words.fmt_percent(v['difference_percent'])})", text)
+                self.assertIn(f"{v['measured_km']:,.1f} km against a published", text)
+                self.assertIn(f"{rec['length_km']:,} km ({words.fmt_percent(v['difference_percent'])})", text)
                 self.assertIn(re.sub(r"\s+", " ", rec["source"]["length_gap_note"]), text, rec["id"])
             short = rec["id"] in expected and rec["verification"]["difference_percent"] < 0
             glance = page[page.index('<section class="glance'):page.index("</section>", page.index('<section class="glance'))]
@@ -208,7 +208,7 @@ class BuiltSiteTest(unittest.TestCase):
                 self.assertEqual(row.count('class="entry__partial"'), 1 if tid in expected else 0, f"{rel}: {tid}")
                 if tid in expected:
                     rows_seen.add(tid)
-                    self.assertRegex(page_text(row), r"Track measures [\d,.]+ km (of|against) [\d,]+ km published")
+                    self.assertRegex(page_text(row), r"Track measures [\d,.]+ mi [\d,.]+ km (of|against) [\d,]+ mi [\d,.]+ km published")
             entries = len(re.findall(r'<li class="entry" ', doc))
             partial_rows = len(re.findall(r'<li class="entry" [^>]*data-partial="yes"', doc))
             self.assertEqual(doc.count('class="entry__partial"'), partial_rows, rel)

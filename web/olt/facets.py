@@ -21,6 +21,7 @@ import re
 from functools import cmp_to_key
 
 from . import common, elevation, hike, words
+from .markup import Markup
 
 # Facet names, exactly as every page shows them.
 WHERE, LENGTH, TIME, SEASON, TERRAIN, KIND, WALKING, SHAPE, GPX = (
@@ -155,8 +156,9 @@ def estimate_note(rec):
     if not time_days(rec)[2]:
         return ""
     slow, fast = pace(rec)
-    mi = f"{round(slow / words.KM_PER_MI)} to {round(fast / words.KM_PER_MI)} mi"
-    return f"Estimated from the length, at {slow} to {fast} km ({mi}) a day."
+    mi = f"{round(words.km_to_mi(slow))} to {round(words.km_to_mi(fast))} mi"
+    return Markup(f'Estimated from the length, at <span class="len len--inline"><span class="len__mi">{mi}</span>'
+                  f'<span class="len__km">{slow} to {fast} km</span></span> a day.')
 
 
 # Season ---------------------------------------------------------------------

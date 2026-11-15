@@ -8,7 +8,7 @@
    Themes: `color-scheme: light dark` follows prefers-color-scheme, and every
    colour token is written once with light-dark(). /assets/prefs.js pins a
    theme with <html data-theme="light|dark"> and the length order with
-   <html data-units="mi"> (the footer switches set both).
+   <html data-units="km"> (the footer switches set both); miles and feet come first without it.
 
    No inline styles except custom properties carrying data (--km, --n, --pos),
    which the Content-Security-Policy allows through style-src-attr.
@@ -230,6 +230,7 @@ code.raw {
 
 .site-header {
   background: var(--paper);
+  border-block-start: 4px solid var(--trail);
   border-block-end: 3px double var(--rule-strong);
 }
 .site-header__inner {
@@ -246,18 +247,15 @@ code.raw {
   align-items: center;
   gap: var(--space-3);
   color: var(--ink);
-  font: 650 1.3125rem/1 var(--font-serif);
-  letter-spacing: -0.01em;
+  font: 650 1.4375rem/1 var(--font-serif);
+  letter-spacing: -0.015em;
   text-decoration: none;
 }
 .wordmark:hover { text-decoration: none; }
-/* The mark is a paint blaze, the sign hikers follow on a tree. */
-.wordmark__blaze {
-  inline-size: 0.6rem;
-  block-size: 1.4rem;
-  background: var(--trail);
-  border-radius: 1px 2px 1px 3px;
-}
+/* The mark: a mountain with a trail up it, the same file as the tab icon. */
+.wordmark__mark { inline-size: 1.75rem; block-size: 1.75rem; }
+/* The home page carries the name large in its hero, so the header does not repeat it. */
+body:has(.hero--home) .site-header .wordmark { visibility: hidden; }
 
 .nav { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-5); padding: 0; list-style: none; }
 @media (max-width: 30rem) { .nav { column-gap: var(--space-4); } }
@@ -323,24 +321,25 @@ code.raw {
 /* 5. Shared components ------------------------------------------------------- */
 
 /* Lengths in both units. The reader's preference (html[data-units]) decides
-   which comes first; markup is always <span class="len"><km><mi></span>.
-   .len--inline reads "1,287 km (800 mi)"; .len--stack sets the first unit
+   which comes first: miles and feet unless the reader chose "km"; markup is
+   always <span class="len"><mi><km></span>.
+   .len--inline reads "800 mi (1,287 km)"; .len--stack sets the first unit
    large over the second. */
 .len { display: inline-flex; flex-wrap: wrap; align-items: baseline; column-gap: 0.3em; }
-.len__mi { order: 1; }
-:root[data-units="mi"] .len__mi { order: -1; }
-.len--inline .len__mi::before,
-:root[data-units="mi"] .len--inline .len__km::before { content: "("; }
-.len--inline .len__mi::after,
-:root[data-units="mi"] .len--inline .len__km::after { content: ")"; }
-:root[data-units="mi"] .len--inline .len__mi::before,
-:root[data-units="mi"] .len--inline .len__mi::after { content: none; }
+.len__km { order: 1; }
+:root[data-units="km"] .len__km { order: -1; }
+.len--inline .len__km::before,
+:root[data-units="km"] .len--inline .len__mi::before { content: "("; }
+.len--inline .len__km::after,
+:root[data-units="km"] .len--inline .len__mi::after { content: ")"; }
+:root[data-units="km"] .len--inline .len__km::before,
+:root[data-units="km"] .len--inline .len__km::after { content: none; }
 .len--stack { display: flex; flex-direction: column; align-items: flex-start; }
 .len--stack > * { font-variant-numeric: tabular-nums; }
-:root:not([data-units="mi"]) .len--stack .len__km,
-:root[data-units="mi"] .len--stack .len__mi { font: 600 var(--len-size, var(--step-1))/1.15 var(--font-sans); color: var(--ink); }
-:root:not([data-units="mi"]) .len--stack .len__mi,
-:root[data-units="mi"] .len--stack .len__km { font: 400 var(--step--1)/1.3 var(--font-sans); color: var(--ink-2); }
+:root:not([data-units="km"]) .len--stack .len__mi,
+:root[data-units="km"] .len--stack .len__km { font: 600 var(--len-size, var(--step-1))/1.15 var(--font-sans); color: var(--ink); }
+:root:not([data-units="km"]) .len--stack .len__km,
+:root[data-units="km"] .len--stack .len__mi { font: 400 var(--step--1)/1.3 var(--font-sans); color: var(--ink-2); }
 
 /* Kicker: a small caps label above a title */
 .kicker {
@@ -748,15 +747,42 @@ code.raw {
 .hero::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset-block: 0;
+  inset-inline: max(0px, (100% - var(--container)) / 2 - var(--gutter));
   background: url("contours.svg") 70% 30% / cover no-repeat;
-  -webkit-mask-image: linear-gradient(100deg, transparent 15%, #000 70%);
-  mask-image: linear-gradient(100deg, transparent 15%, #000 70%);
+  /* The lines belong to the content column: on a wide window they stay inside it
+     and do not run on to the right edge of the screen. They spread from the
+     column's top right and thin out to nothing toward the text, the bottom of
+     the band and the column's right edge, so they never stop on a straight line. */
+  -webkit-mask-image: radial-gradient(ellipse 70% 104% at 90% 0%, #000 0%, rgb(0 0 0 / 0.7) 30%, rgb(0 0 0 / 0.28) 58%, transparent 84%), linear-gradient(to right, #000 82%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 104% at 90% 0%, #000 0%, rgb(0 0 0 / 0.7) 30%, rgb(0 0 0 / 0.28) 58%, transparent 84%), linear-gradient(to right, #000 82%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
   pointer-events: none;
 }
 .hero__inner { position: relative; display: grid; gap: var(--space-5); }
 .hero h1 { max-inline-size: 28ch; font-size: var(--step-4); font-weight: 600; letter-spacing: -0.015em; }
 .hero__lede { max-inline-size: 40rem; font-size: var(--step-1); line-height: 1.5; }
+/* The home page's name plate: mark, name, what the site is, and what it offers. */
+.hero .lockup {
+  display: flex; align-items: center; gap: clamp(0.75rem, 2.4vw, 1.75rem);
+  max-inline-size: none;
+  font-size: clamp(2.75rem, 1.2rem + 7vw, 6rem); font-weight: 600; line-height: 1; letter-spacing: -0.02em;
+}
+.lockup__mark { flex: none; inline-size: 1.15em; block-size: 1.15em; }
+.hero__tagline { max-inline-size: 26em; font: 400 var(--step-3)/1.25 var(--font-serif); }
+.hero__tags {
+  display: flex; flex-wrap: wrap; gap: var(--space-1) 0; padding: 0; list-style: none;
+  color: var(--ink-2); font: 600 var(--step-0)/1.4 var(--font-sans); letter-spacing: 0.09em; text-transform: uppercase;
+}
+/* Each item carries its dot on the left; the list is shifted and clipped by the
+   same amount so a dot never starts a line. */
+.hero__tags { margin-inline-start: -1.7em; clip-path: inset(0 0 0 1.7em); }
+.hero__tags li { position: relative; padding-inline-start: 1.7em; }
+.hero__tags li::before { content: "\00B7"; position: absolute; inset-inline-start: 0.65em; }
+.hero__tags a { color: inherit; text-decoration: none; }
+.hero__tags a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 0.2em; }
+.hero--home .hero__lede { color: var(--ink-2); font-size: var(--step-0); }
 .hero__caveat {
   max-inline-size: 40rem;
   padding-inline-start: var(--space-4);
@@ -993,7 +1019,7 @@ html:not(.js) .list-head__arrow { display: none; }
 .entry__facts dd { margin: var(--space-1) 0 0; }
 
 /* Length strip on a log scale: 50 km at the left edge, 30,000 km at the right.
-   Ticks mark 100, 1,000 and 10,000 km. Uses CSS log(); without it the strip
+   Ticks mark 100, 1,000 and 10,000 miles, or kilometres when the reader chose them. Uses CSS log(); without it the strip
    shows ticks only. */
 .loglen {
   --tick: var(--rule-strong);
@@ -1005,6 +1031,12 @@ html:not(.js) .list-head__arrow { display: none; }
 }
 @supports (inline-size: calc(log(2) * 1%)) {
   .loglen {
+    background:
+      linear-gradient(var(--tick) 0 0) calc(log(100 * 1.609344 / 50) / log(600) * 100%) 100% / 1px 100% no-repeat,
+      linear-gradient(var(--tick) 0 0) calc(log(1000 * 1.609344 / 50) / log(600) * 100%) 100% / 1px 100% no-repeat,
+      linear-gradient(var(--tick) 0 0) calc(log(10000 * 1.609344 / 50) / log(600) * 100%) 100% / 1px 100% no-repeat;
+  }
+  :root[data-units="km"] .loglen {
     background:
       linear-gradient(var(--tick) 0 0) calc(log(2) / log(600) * 100%) 100% / 1px 100% no-repeat,
       linear-gradient(var(--tick) 0 0) calc(log(20) / log(600) * 100%) 100% / 1px 100% no-repeat,
@@ -1101,13 +1133,17 @@ html:not(.js) .list-head__arrow { display: none; }
   .list-head__sort.is-active .list-head__arrow { color: var(--trail); }
   .list-head__scale { position: relative; display: block; block-size: 1em; margin-block-start: var(--space-1); font: 400 0.6875rem/1 var(--font-mono); letter-spacing: 0; text-transform: none; }
   .list-head__scale > span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
-  .list-head__scale > span:nth-child(1) { inset-inline-start: 10.8%; }
-  .list-head__scale > span:nth-child(2) { inset-inline-start: 46.8%; }
-  .list-head__scale > span:nth-child(3) { inset-inline-start: 82.8%; }
+  /* Ticks at 100, 1,000 and 10,000 miles (the strip itself is on a kilometre scale). */
+  .list-head__scale > span:nth-child(1) { inset-inline-start: 18.3%; }
+  .list-head__scale > span:nth-child(2) { inset-inline-start: 54.3%; }
+  .list-head__scale > span:nth-child(3) { inset-inline-start: 90.3%; }
+  :root[data-units="km"] .list-head__scale > span:nth-child(1) { inset-inline-start: 10.8%; }
+  :root[data-units="km"] .list-head__scale > span:nth-child(2) { inset-inline-start: 46.8%; }
+  :root[data-units="km"] .list-head__scale > span:nth-child(3) { inset-inline-start: 82.8%; }
   /* One tick figure per mark, in the reader's units; the last carries the unit. */
-  .list-head__scale .len__mi { display: none; }
-  :root[data-units="mi"] .list-head__scale .len__mi { display: inline; }
-  :root[data-units="mi"] .list-head__scale .len__km { display: none; }
+  .list-head__scale .len__km { display: none; }
+  :root[data-units="km"] .list-head__scale .len__km { display: inline; }
+  :root[data-units="km"] .list-head__scale .len__mi { display: none; }
 }
 
 .empty-state {
@@ -1129,10 +1165,13 @@ html:not(.js) .list-head__arrow { display: none; }
 .page-head::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset-block: 0;
+  inset-inline: max(0px, (100% - var(--container)) / 2 - var(--gutter));
   background: url("contours.svg") 85% 40% / cover no-repeat;
-  -webkit-mask-image: linear-gradient(100deg, transparent 35%, #000 85%);
-  mask-image: linear-gradient(100deg, transparent 35%, #000 85%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 104% at 90% 0%, #000 0%, rgb(0 0 0 / 0.7) 30%, rgb(0 0 0 / 0.28) 58%, transparent 84%), linear-gradient(to right, #000 82%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 104% at 90% 0%, #000 0%, rgb(0 0 0 / 0.7) 30%, rgb(0 0 0 / 0.28) 58%, transparent 84%), linear-gradient(to right, #000 82%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
   opacity: 0.8;
   pointer-events: none;
 }
@@ -1613,9 +1652,9 @@ td .linklist a { font-weight: 400; }
 .elev-profile__line { fill: none; stroke: var(--trail); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .elev-profile__mark { fill: var(--surface); stroke: var(--trail); stroke-width: 2; }
 /* One axis system at a time, by the reader's unit preference */
-.elev-profile .len__mi { display: none; }
-:root[data-units="mi"] .elev-profile .len__mi { display: inline; }
-:root[data-units="mi"] .elev-profile .len__km { display: none; }
+.elev-profile .len__km { display: none; }
+:root[data-units="km"] .elev-profile .len__km { display: inline; }
+:root[data-units="km"] .elev-profile .len__mi { display: none; }
 
 /* Below the hiker's part: the plain foot line, then "About this data" */
 .trail-more { padding-block: var(--space-6) var(--space-7); }
@@ -1682,9 +1721,9 @@ td .linklist a { font-weight: 400; }
 .shelf__len { flex: none; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .shelf__more { font: 600 var(--step--1)/1.3 var(--font-sans); }
 /* One unit only in a card row, the reader's */
-.len--short .len__mi { display: none; }
-:root[data-units="mi"] .len--short .len__mi { display: inline; }
-:root[data-units="mi"] .len--short .len__km { display: none; }
+.len--short .len__km { display: none; }
+:root[data-units="km"] .len--short .len__km { display: inline; }
+:root[data-units="km"] .len--short .len__mi { display: none; }
 
 .region-chips { margin-block-start: var(--space-6); }
 .region-chips h3 { margin-block-end: var(--space-3); font-size: var(--step-1); }
@@ -1798,7 +1837,7 @@ a.tag:hover { background: var(--sunken); }
 
 /* The trail list where there is no room for columns (a phone, or beside the
    filters on a laptop): a compact card, not a table folded in on itself. Name, one or two lines of description, the place, then the facts on
-   one wrapping line ("420 km · About 4 weeks · Partial GPX here"). The labels,
+   one wrapping line ("260 mi · About 4 weeks · Partial GPX here"). The labels,
    the length strip, the second unit and the boxed notes are for wide rows; the
    trail's own page has all of it. */
 @container results (max-width: 65.99rem) {
@@ -1830,10 +1869,10 @@ a.tag:hover { background: var(--sunken); }
   .entry__facts dt { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .entry__facts dd { margin: 0; font: inherit; }
   .entry__facts .len--stack { display: inline; }
-  :root:not([data-units="mi"]) .entry__facts .len--stack .len__km,
-  :root[data-units="mi"] .entry__facts .len--stack .len__mi { font: 600 var(--step--1)/1.5 var(--font-sans); }
-  :root:not([data-units="mi"]) .entry__facts .len--stack .len__mi,
-  :root[data-units="mi"] .entry__facts .len--stack .len__km { display: none; }
+  :root:not([data-units="km"]) .entry__facts .len--stack .len__mi,
+  :root[data-units="km"] .entry__facts .len--stack .len__km { font: 600 var(--step--1)/1.5 var(--font-sans); }
+  :root:not([data-units="km"]) .entry__facts .len--stack .len__km,
+  :root[data-units="km"] .entry__facts .len--stack .len__mi { display: none; }
   .entry__facts .loglen,
   .entry__facts .swatch,
   .entry__facts .line__detail,

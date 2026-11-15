@@ -335,11 +335,11 @@ site calls them trails.</p>
 </section>
 
 <section aria-labelledby="how-trails-are-chosen"><h2 id="how-trails-are-chosen">How trails are chosen</h2>
-<p>A trail is listed when it is a named, continuous walk, or a named loop, of at least 80&nbsp;km (50&nbsp;miles)
+<p>A trail is listed when it is a named, continuous walk, or a named loop, of at least 50&nbsp;miles (80&nbsp;km)
 in the United States or Canada. It is either an official trail, looked after as one trail by a land agency or
 a trail association, or a route: {esc(facets.ROUTE_DEFINITION[0].lower() + facets.ROUTE_DEFINITION[1:])}
 {routes} of the {n} trails are routes. Every National Scenic Trail is listed, and a few well-known multi-day
-trails between 60 and 80&nbsp;km.</p>
+trails between 37 and 50&nbsp;miles (60 and 80&nbsp;km).</p>
 <p>Each record has a <em>tier</em>, which says why it is listed. A record can also be <em>held</em>: listed,
 but with something about it not yet settled, which its note says.</p>
 <div class="table-wrap"><table><thead><tr><th scope="col">Tier</th><th scope="col">What it means</th><th scope="col">Records</th></tr></thead>

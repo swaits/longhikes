@@ -123,12 +123,12 @@ def parts_caveat(elev):
 
 
 def plain_elevation(m):
-    """"2,025 m (6,644 ft)", for a sentence or a text alternative."""
-    return f"{words.fmt_int(m)} m ({words.fmt_int(m / words.M_PER_FT)} ft)"
+    """"6,644 ft (2,025 m)", for a sentence or a text alternative."""
+    return f"{words.fmt_int(words.m_to_ft(m))} ft ({words.fmt_int(m)} m)"
 
 
 def plain_length(km):
-    return f"{words.fmt_km1(km)} km ({words.fmt_int(words.km_to_mi(km))} mi)"
+    return f"{words.fmt_int(words.km_to_mi(km))} mi ({words.fmt_km1(km)} km)"
 
 
 def is_sea_level(point):
@@ -204,7 +204,7 @@ LEFT, RIGHT, TOP, BOTTOM = 58, 14, 14, 40
 
 def profile_svg(elev, loop=False):
     """The profile as inline SVG, drawn now, not by a script. Both unit systems
-    are drawn; CSS shows one, through the same len__km / len__mi pair and the
+    are drawn; CSS shows one, through the same len__mi / len__km pair and the
     reader's unit preference as every length on the site."""
     profile = elev.get("profile") or []
     if len(profile) < 2:
@@ -283,4 +283,4 @@ def profile_svg(elev, loop=False):
     return Markup(
         f'<svg class="elev-profile" viewBox="0 0 {W} {H}" role="img" '
         f'aria-label="{esc(summary_sentence(elev, loop))}" focusable="false">'
-        f"{axis_group('km')}{axis_group('mi')}{axes}{line}{marks}</svg>")
+        f"{axis_group('mi')}{axis_group('km')}{axes}{line}{marks}</svg>")

@@ -42,11 +42,12 @@ def line_short(rec):
 
 
 def partial_short_text(rec):
-    """The short form for lists: "Track measures 2.0 km of 1,100 km published"."""
+    """The short form for lists: "Track measures 1.2 mi (2.0 km) of 684 mi (1,100 km) published",
+    in the reader's unit order (words.length). Markup."""
     v = rec["verification"]
     word = "of" if v["difference_percent"] < 0 else "against"
-    return (f"Track measures {words.fmt_km1(v['measured_km'])} km {word} "
-            f"{words.fmt_km(rec['length_km'])} km published")
+    return Markup(f"Track measures {words.length(v['measured_km'], measured=True)} {word} "
+                  f"{words.length(rec['length_km'], mi=rec['derived']['length_mi'])} published")
 
 
 def name(rec):

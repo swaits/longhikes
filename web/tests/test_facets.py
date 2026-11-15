@@ -109,12 +109,17 @@ class TimeTest(unittest.TestCase):
         rec = fake(1, km=300)  # 300 km at 20 to 30 km a day: 10 to 15 days
         self.assertEqual(facets.time_days(rec), (10, 15, True))
         self.assertEqual(facets.time_text(rec), "About 1 to 2 weeks")
-        self.assertEqual(facets.estimate_note(rec), "Estimated from the length, at 20 to 30 km (12 to 19 mi) a day.")
+        note = facets.estimate_note(rec)  # miles first: both in the HTML, CSS orders them
+        self.assertTrue(note.startswith("Estimated from the length, at "))
+        self.assertLess(note.index('<span class="len__mi">12 to 19 mi</span>'),
+                        note.index('<span class="len__km">20 to 30 km</span>'))
+        self.assertTrue(note.endswith(" a day."))
         self.assertEqual(facets.time_band(rec), "two-weeks")
         # cross-country is slower: 12 to 20 km a day
         rec = fake(2, km=300, hike={"travel": "mostly-cross-country"})
         self.assertEqual(facets.time_days(rec), (15, 25, True))
         self.assertIn("12 to 20 km", facets.estimate_note(rec))
+        self.assertIn("7 to 12 mi", facets.estimate_note(rec))
         self.assertEqual(facets.time_band(rec), "month")
 
     def test_every_trail_has_a_time_and_its_label(self):
@@ -276,7 +281,7 @@ class BuiltVocabularyTest(unittest.TestCase):
         n = len(re.findall(r'<li class="entry" ', doc))
         self.assertEqual(n, len(records.load_records(ROOT)))
         self.assertIn(f"<strong>{n}</strong> of {n} trails", doc)
-        self.assertIn(f"{n} long-distance trails", doc)
+        self.assertIn(f"{n} trails. Narrow them", doc)
 
     def test_route_badges_link_to_the_routes_list(self):
         for rel in ("index.html", "routes/index.html"):

@@ -33,7 +33,7 @@
     var t = root.dataset.theme;
     return t ? t === 'dark' : darkQuery.matches;
   }
-  function milesFirst() { return root.dataset.units === 'mi'; }
+  function milesFirst() { return root.dataset.units !== 'km'; }
 
   function setTheme(value) {
     if (value === 'light' || value === 'dark') root.dataset.theme = value;
@@ -43,10 +43,10 @@
   }
 
   function setUnits(value) {
-    if (value === 'mi') root.dataset.units = 'mi';
+    if (value === 'km') root.dataset.units = 'km';
     else delete root.dataset.units;
-    writePref('lh-units', value === 'mi' ? 'mi' : null);
-    syncRadios('input[name="units"], input[name="units-list"]', value === 'mi' ? 'mi' : 'km');
+    writePref('lh-units', value === 'km' ? 'km' : null);
+    syncRadios('input[name="units"], input[name="units-list"]', value === 'km' ? 'km' : 'mi');
     document.dispatchEvent(new Event('olt:units'));
   }
 
@@ -66,7 +66,7 @@
     if (!root.dataset.theme) document.dispatchEvent(new Event('olt:theme'));
   });
 
-  /* A length in both units, in the reader's order: "1,287 km (800 mi)". */
+  /* A length in both units, in the reader's order: "800 mi (1,287 km)". */
   function lengthText(km) {
     var k = fmt.format(km) + ' km';
     var m = fmt.format(Math.round(km / KM_PER_MI)) + ' mi';
@@ -838,16 +838,19 @@
     }
 
     function read() {
-      var min = Number(el.min.value) || 0;
-      var max = Number(el.max.value) || Infinity;
+      var min = stepKm(el.min.value) || 0;
+      var max = stepKm(el.max.value) || Infinity;
+      var minRaw = el.min.value, maxRaw = el.max.value;
       var swapped = min > max;
-      if (swapped) { var keep = min; min = max; max = keep; }
+      if (swapped) { var keep = min; min = max; max = keep; keep = minRaw; minRaw = maxRaw; maxRaw = keep; }
       var s = {
         q: el.q.value.trim(),
         words: el.q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),
         where: el.where.value,
         min: min,
         max: max,
+        minRaw: minRaw,
+        maxRaw: maxRaw,
         swapped: swapped,
         month: el.month ? el.month.value : '',
         kind: radio('kind')
@@ -875,27 +878,68 @@
       return true;
     }
 
-    function lengthLabel(km) {
-      var k = fmt.format(km) + ' km';
-      var m = fmt.format(Math.round(km / KM_PER_MI)) + ' mi';
-      return milesFirst() ? m + ' · ' + k : k + ' · ' + m;
+    /* A length step's value is "100mi" or "160km": round in its own unit, so the
+       list offered follows the reader's units. Filtering compares kilometres. */
+    function stepKm(value) {
+      var m = /^(\d+(?:\.\d+)?)(mi|km)$/.exec(value || '');
+      return m ? Number(m[1]) * (m[2] === 'mi' ? KM_PER_MI : 1) : 0;
+    }
+
+    function stepLabel(n, unit) {
+      var km = unit === 'mi' ? n * KM_PER_MI : n;
+      var other = unit === 'mi' ? fmt.format(Math.round(km)) + ' km' : fmt.format(Math.round(km / KM_PER_MI)) + ' mi';
+      return fmt.format(n) + ' ' + unit + ' \u00b7 ' + other;
+    }
+
+    /* Offer round steps in the reader's units. The server writes the mile steps;
+       a reader who chose kilometres gets the kilometre steps (data-steps-km), and
+       a chosen step moves to the nearest one in the new list. */
+    function buildLengthOptions() {
+      var unit = milesFirst() ? 'mi' : 'km';
+      form.querySelectorAll('select[data-length-options]').forEach(function (select) {
+        var kind = select.dataset.lengthOptions;
+        var steps = (select.getAttribute('data-steps-' + unit) || '').split(',').filter(Boolean).map(Number);
+        var wasKm = stepKm(select.value);
+        select.textContent = '';
+        function add(value, text, selected) {
+          var o = document.createElement('option');
+          o.value = value;
+          o.textContent = text;
+          if (selected) o.selected = true;
+          select.appendChild(o);
+        }
+        if (kind === 'min') add('', 'Any', false);
+        steps.slice(kind === 'min' ? 0 : 1, kind === 'min' ? -1 : undefined).forEach(function (n) {
+          add(n + unit, stepLabel(n, unit), false);
+        });
+        if (kind === 'max') add('', 'Any', !wasKm);
+        if (wasKm) {
+          var best = null, gap = Infinity;
+          Array.prototype.forEach.call(select.options, function (o) {
+            var k = stepKm(o.value);
+            if (!k) return;
+            var d = Math.abs(Math.log(k / wasKm));
+            if (d < gap) { gap = d; best = o; }
+          });
+          if (best) best.selected = true;
+        }
+      });
     }
 
     function describeLength(s) {
       var text;
       if (!s.min && s.max === Infinity) text = 'Any length.';
-      else if (!s.min) text = 'Up to ' + lengthText(s.max) + '.';
-      else if (s.max === Infinity) text = 'From ' + lengthText(s.min) + ' up.';
-      else text = 'From ' + lengthText(s.min) + ' to ' + lengthText(s.max) + '.';
+      else if (!s.min) text = 'Up to ' + lengthText(Math.round(s.max)) + '.';
+      else if (s.max === Infinity) text = 'From ' + lengthText(Math.round(s.min)) + ' up.';
+      else text = 'From ' + lengthText(Math.round(s.min)) + ' to ' + lengthText(Math.round(s.max)) + '.';
       if (s.swapped) text += ' Shortest and longest were swapped.';
       return text;
     }
 
     function relabelLengths() {
-      form.querySelectorAll('select[data-length-options] option').forEach(function (o) {
-        if (o.value) o.textContent = lengthLabel(Number(o.value));
-      });
+      buildLengthOptions();
       setText(lenHint, describeLength(read()));
+      apply(true);
     }
 
     /* URL query <-> form. Only values that differ from the defaults are written. */
@@ -903,8 +947,8 @@
       var p = new URLSearchParams();
       if (s.q) p.set('q', s.q);
       if (s.where) p.set('where', s.where);
-      if (s.min) p.set('min', String(s.min));
-      if (s.max !== Infinity) p.set('max', String(s.max));
+      if (s.min) p.set('min', s.minRaw);
+      if (s.max !== Infinity) p.set('max', s.maxRaw);
       if (s.month) p.set('month', s.month);
       if (s.kind) p.set('kind', s.kind);
       MULTI.forEach(function (name) { if (s[name].length) p.set(name, s[name].join(',')); });
@@ -997,8 +1041,8 @@
       li.addEventListener('focusout', function () { highlight(''); });
     });
 
+    buildLengthOptions();
     fromQuery();
-    relabelLengths();
     applySort();
     apply(false);
     /* The count can announce from here on; the first application is done. */

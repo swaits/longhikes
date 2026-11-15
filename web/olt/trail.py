@@ -509,7 +509,7 @@ def download_group(rec, label, swatch, note, items, gid):
         f'<span class="button__meta">{esc(words.fmt_bytes(d["bytes"]))}</span></a>'
         for d in ordered_downloads(items))
     return f"""<li class="download">
-  <p class="download__what">{swatch}<strong id="{gid}">{esc(label)}</strong><small>{esc(note)}</small></p>
+  <p class="download__what">{swatch}<strong id="{gid}">{esc(label)}</strong><small>{note if isinstance(note, Markup) else esc(note)}</small></p>
   <div class="download__files">{buttons}</div>
 </li>"""
 
@@ -525,7 +525,7 @@ def partial_notice(rec):
     gap = rec["source"].get("length_gap_note", "")
     return f"""<div class="notice notice--partial">
       <h3>{head}</h3>
-      <p>The track in the dataset measures {esc(words.fmt_km1(v["measured_km"]))}&nbsp;km against a published {esc(words.fmt_km(rec["length_km"]))}&nbsp;km ({esc(words.fmt_percent(diff))}).</p>
+      <p>The track in the dataset measures {words.length(v["measured_km"], measured=True)} against a published {words.length(rec["length_km"], mi=rec["derived"]["length_mi"])} ({esc(words.fmt_percent(diff))}).</p>
       {f"<p>{common.rich(gap)}</p>" if gap else ""}
     </div>"""
 
@@ -542,8 +542,8 @@ def downloads_panel(rec):
         note = f"{src.get('line_source', '')}"
         if v.get("verified") and "measured_km" in v:
             parts = v.get("parts")
-            note = (f"{words.fmt_km1(v['measured_km'])} km measured"
-                    + (f" in {parts} part{'s' if parts != 1 else ''}" if parts else "") + f" · {note}")
+            note = Markup(f"{words.length(v['measured_km'], measured=True)} measured"
+                          + esc((f" in {parts} part{'s' if parts != 1 else ''}" if parts else "") + f" · {note}"))
         groups.append(download_group(rec, "Main track", common.SWATCH_ROUTE if common.is_route(rec) else common.SWATCH_LINE,
                                      note, main, "dl-main"))
     alts = [d for d in downloads if d["role"] == "alternates"]
@@ -859,7 +859,7 @@ def elevation_block(rec):
              "No climb is counted across a gap."),
     ]
     if starts:
-        rows.append(fact("Part starts", ", ".join(words.fmt_km1(s) for s in starts) + " km",
+        rows.append(fact("Part starts", words.distances(starts),
                          "The distance along the profile where each part after the first begins"))
     if not elevation.show_profile(elev):
         rows.append(fact("Profile", "Not drawn", elevation.parts_caveat(elev)))
@@ -1096,7 +1096,7 @@ def description(rec):
     else:
         km = words.fmt_km(rec["length_km"])
         mi = words.fmt_int(rec["derived"]["length_mi"])
-        text = f"{rec['name']}: a {kind_word(rec)} of {km} km ({mi} mi) {place_text(rec)}."
+        text = f"{rec['name']}: a {kind_word(rec)} of {mi} mi ({km} km) {place_text(rec)}."
     text += (" Download its GPX here." if common.has_line(rec)
              else " Where to get its GPX.")
     return text if len(text) <= 300 else text[:297].rsplit(" ", 1)[0] + "…"

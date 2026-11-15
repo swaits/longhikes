@@ -20,8 +20,12 @@ from . import common, facets, words
 MIN_SIZE = 4
 MAX_SHARE = 0.75
 
-LONG_KM = 2000
-SHORT_KM = 100
+# The two lists defined by length are set in miles; membership compares the
+# record's kilometres with the mile figure converted once, here.
+LONG_MI = 1000
+SHORT_MI = 100
+LONG_KM = LONG_MI * words.KM_PER_MI
+SHORT_KM = SHORT_MI * words.KM_PER_MI
 
 
 @dataclass(frozen=True)
@@ -35,8 +39,8 @@ class List:
     sort: str = "name"
 
 
-def _mi(km):
-    return words.fmt_int(words.km_to_mi(km))
+def _km(mi):
+    return words.fmt_int(mi * words.KM_PER_MI)
 
 
 def _band(key):
@@ -50,10 +54,10 @@ LISTS = (
     List("routes", "Routes", facets.ROUTE_DEFINITION,
          lambda r: facets.kind(r) == "route"),
     List("longest", "The longest",
-         f"Trails of {LONG_KM:,} km ({_mi(LONG_KM)} mi) or more.",
+         f"Trails of {LONG_MI:,} miles ({_km(LONG_MI)} km) or more.",
          lambda r: r["length_km"] >= LONG_KM, sort="length-desc"),
-    List("under-100-km", f"Under {SHORT_KM} km",
-         f"Trails shorter than {SHORT_KM} km ({_mi(SHORT_KM)} mi).",
+    List("under-100-miles", f"Under {SHORT_MI} miles",
+         f"Trails shorter than {SHORT_MI} miles ({_km(SHORT_MI)} km).",
          lambda r: r["length_km"] < SHORT_KM, sort="length-asc"),
     List("a-week-or-less", "A week or less",
          "Trails most people walk in a week or less, as a source states it or as estimated from the length.",

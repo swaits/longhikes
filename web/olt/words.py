@@ -33,8 +33,8 @@ ALL_CANADA = "all provinces and territories"
 # (label, meaning). Meanings follow docs/schema.md and README.md.
 TIERS = {
     "national": ("National Scenic Trail", "A United States National Scenic Trail"),
-    "regional": ("Regional", "A long trail of 80 km (50 mi) or more"),
-    "short": ("Short", "A well-known multi-day trail of 60 to 80 km"),
+    "regional": ("Regional", "A long trail of 50 miles (80 km) or more"),
+    "short": ("Short", "A well-known multi-day trail of 37 to 50 miles (60 to 80 km)"),
     "deferred": ("Deferred", "Listed, but something about it is not settled; the record's note says what"),
     "candidate": ("Candidate", "Listing not yet decided"),
 }
@@ -152,6 +152,10 @@ def km_to_mi(km):
     return km / KM_PER_MI
 
 
+def m_to_ft(m):
+    return m / M_PER_FT
+
+
 def fmt_percent(p):
     """-2.5 -> "−2.5%" (true minus sign), 0.9 -> "+0.9%", 0 -> "0.0%"."""
     if p == 0:
@@ -169,17 +173,27 @@ def fmt_bytes(n):
 
 
 def length(km, style="inline", mi=None, measured=False):
-    """A length in both units. The reader's unit preference decides the order (CSS).
+    """A length in both units. Miles come first unless the reader chose kilometres (CSS).
 
-    style "inline": "1,287 km (800 mi)"; "stack": large first unit over small second.
+    style "inline": "800 mi (1,287 km)"; "stack": large first unit over small second.
     measured: a measured length, always written with its one decimal ("2.0 km").
     """
     mi = km_to_mi(km) if mi is None else mi
     km_text = f"{fmt_km1(km) if measured else fmt_km(km)} km"
     whole = float(km).is_integer() and not measured
     mi_text = f"{fmt_int(mi)} mi" if whole or mi >= 100 else f"{mi:,.1f} mi"
-    return Markup(f'<span class="len len--{style}"><span class="len__km">{esc(km_text)}</span>'
-                  f'<span class="len__mi">{esc(mi_text)}</span></span>')
+    return Markup(f'<span class="len len--{style}"><span class="len__mi">{esc(mi_text)}</span>'
+                  f'<span class="len__km">{esc(km_text)}</span></span>')
+
+
+def distances(kms):
+    """Several measured distances in both units, as lengths are: "0.0, 12.4 mi" with "0.0, 20.0 km"
+    behind it, the reader's order decided by CSS. Markup."""
+    kms = list(kms)
+    mi = ", ".join(f"{km_to_mi(k):,.1f}" for k in kms) + " mi"
+    km = ", ".join(fmt_km1(k) for k in kms) + " km"
+    return Markup(f'<span class="len len--inline"><span class="len__mi">{esc(mi)}</span>'
+                  f'<span class="len__km">{esc(km)}</span></span>')
 
 
 # Hiker facts ([hike] table) -------------------------------------------------
@@ -228,12 +242,12 @@ def fmt_days(days):
 
 
 def elevation(m, style="inline"):
-    """An elevation in metres and feet; the reader's unit preference decides the order,
-    with the same len__km / len__mi pair as lengths: "2,025 m (6,644 ft)".
+    """An elevation in feet and metres; feet come first unless the reader chose metres,
+    with the same len__mi / len__km pair as lengths: "6,644 ft (2,025 m)".
     style "stack" sets the first unit large over the second, as lengths do."""
-    ft = m / M_PER_FT
-    return Markup(f'<span class="len len--{style}"><span class="len__km">{esc(fmt_int(m))} m</span>'
-                  f'<span class="len__mi">{esc(fmt_int(ft))} ft</span></span>')
+    ft = m_to_ft(m)
+    return Markup(f'<span class="len len--{style}"><span class="len__mi">{esc(fmt_int(ft))} ft</span>'
+                  f'<span class="len__km">{esc(fmt_int(m))} m</span></span>')
 
 
 def join_names(names):

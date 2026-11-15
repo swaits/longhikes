@@ -10,19 +10,38 @@ import math
 from . import browse, common, facets, hike, words
 from .markup import Markup, esc
 
-# Length range choices (km) for the filters. length_steps() adds a top step
-# above the longest trail, so a chosen upper bound can always reach every trail.
-LENGTH_STEPS = (60, 80, 100, 150, 200, 300, 500, 1000, 2000, 4000, 8000)
+# Length range choices for the filters, round in the unit they are written in.
+# Miles come first (the shortest trails are about 40 miles, the longest over
+# 6,000); a reader who chose kilometres gets round kilometre steps. length_steps()
+# adds a top step above the longest trail, so a chosen upper bound can always
+# reach every trail.
+LENGTH_STEPS_MI = (50, 75, 100, 150, 200, 300, 500, 1000, 2000, 4000, 8000)
+LENGTH_STEPS_KM = (60, 80, 100, 150, 200, 300, 500, 1000, 2000, 4000, 8000)
+LENGTH_STEPS = LENGTH_STEPS_MI
 
 
-def length_steps(records):
-    """LENGTH_STEPS plus a round step at or above the longest trail, when that is longer."""
+def length_steps(records, unit="mi"):
+    """The round steps for the unit, plus a round step at or above the longest trail, when that is longer."""
     longest = max((r["length_km"] for r in records), default=0)
-    steps = list(LENGTH_STEPS)
+    if unit == "mi":
+        longest = words.km_to_mi(longest)
+    steps = list(LENGTH_STEPS_MI if unit == "mi" else LENGTH_STEPS_KM)
     if longest > steps[-1]:
         magnitude = 10 ** int(math.floor(math.log10(longest)))
         steps.append(int(math.ceil(longest / magnitude) * magnitude))
     return steps
+
+
+def step_value(n, unit):
+    """The option value of a length step: "100mi" or "160km". app.js reads it the same way."""
+    return f"{n}{unit}"
+
+
+def step_label(n, unit):
+    """"100 mi · 161 km": the step in its own unit first."""
+    if unit == "mi":
+        return f"{n:,} mi &middot; {words.fmt_int(n * words.KM_PER_MI)} km"
+    return f"{n:,} km &middot; {words.fmt_int(words.km_to_mi(n))} mi"
 
 
 def counts(records):
@@ -95,7 +114,7 @@ def gpx_cell(rec):
     route = facets.kind(rec) == "route"
     if facets.gpx_here(rec):
         swatch = common.SWATCH_ROUTE if route else common.SWATCH_LINE
-        partial = (f'<p class="entry__partial">{esc(common.partial_short_text(rec))}</p>'
+        partial = (f'<p class="entry__partial">{common.partial_short_text(rec)}</p>'
                    if common.line_differs(rec) else "")
         return (f'<span class="line__status">{swatch}{esc(facets.GPX_SHORT[status])}</span>'
                 f'<span class="line__detail">GPX and GeoJSON</span>{partial}')
@@ -152,9 +171,8 @@ def entry(rec, *, level=3, extra="", routes_list=False):
 
 # The filters ------------------------------------------------------------------
 
-def _length_options(steps, selected_any_last):
-    opts = [f'<option value="{km}">{km:,} km &middot; {words.fmt_int(words.km_to_mi(km))} mi</option>'
-            for km in steps]
+def _length_options(steps, selected_any_last, unit="mi"):
+    opts = [f'<option value="{step_value(n, unit)}">{step_label(n, unit)}</option>' for n in steps]
     if selected_any_last:
         return "".join(opts[1:]) + '<option value="" selected>Any</option>'
     return '<option value="">Any</option>' + "".join(opts[:-1])
@@ -206,6 +224,7 @@ def finder_form(records, c=None, steps=None):
     """Search and the first-rank filters in view; Walking, Shape and GPX behind "More"."""
     c = c or counts(records)
     steps = steps or length_steps(records)
+    km_steps = length_steps(records, "km")
     first, more = [], []
     first.append(f"""<div class="field">
     <label class="field__label" for="where">{facets.WHERE}</label>
@@ -215,10 +234,10 @@ def finder_form(records, c=None, steps=None):
     <legend>{facets.LENGTH}</legend>
     <div class="range">
       <label class="vh" for="min">Shortest length</label>
-      <select class="select" id="min" name="min" data-length-options>{_length_options(steps, False)}</select>
+      <select class="select" id="min" name="min" data-length-options="min" data-steps-mi="{",".join(map(str, steps))}" data-steps-km="{",".join(map(str, km_steps))}">{_length_options(steps, False)}</select>
       <span class="range__to" aria-hidden="true">to</span>
       <label class="vh" for="max">Longest length</label>
-      <select class="select" id="max" name="max" data-length-options>{_length_options(steps, True)}</select>
+      <select class="select" id="max" name="max" data-length-options="max" data-steps-mi="{",".join(map(str, steps))}" data-steps-km="{",".join(map(str, km_steps))}">{_length_options(steps, True)}</select>
     </div>
     <p class="field__hint" id="len-hint" aria-live="polite">Any length.</p>
   </fieldset>""")
@@ -292,8 +311,9 @@ def finder_form(records, c=None, steps=None):
 
 # The list ---------------------------------------------------------------------
 
-# The length strip's ticks (style.css .loglen): 100, 1,000 and 10,000 km.
-SCALE_KM = (100, 1000, 10000)
+# The length strip's ticks (style.css .loglen): 100, 1,000 and 10,000 miles, or
+# kilometres for a reader who chose them. Positions are in style.css.
+SCALE_TICKS = (100, 1000, 10000)
 
 
 # Sort column of each sort key, and the arrow for its direction in the head.
@@ -326,11 +346,10 @@ def list_head(sort_key="name"):
     """
     sort_key = facets.normalize_sort(sort_key)
     ticks = []
-    for i, km in enumerate(SCALE_KM):
-        unit = " km" if i == len(SCALE_KM) - 1 else ""
-        mi_unit = " mi" if i == len(SCALE_KM) - 1 else ""
-        ticks.append(f'<span><span class="len__km">{km:,}{unit}</span>'
-                     f'<span class="len__mi">{words.fmt_int(words.km_to_mi(km))}{mi_unit}</span></span>')
+    for i, n in enumerate(SCALE_TICKS):
+        last = i == len(SCALE_TICKS) - 1
+        ticks.append(f'<span><span class="len__mi">{n:,}{" mi" if last else ""}</span>'
+                     f'<span class="len__km">{n:,}{" km" if last else ""}</span></span>')
     scale = f'<span class="list-head__scale">{"".join(ticks)}</span>'
     return f"""<div class="list-head" aria-hidden="true">
         {_head_button("name", "Trail", sort_key)}
@@ -344,8 +363,8 @@ def list_head(sort_key="name"):
 UNITS_TOGGLE = """<fieldset class="results-units">
             <legend class="vh">Lengths</legend>
             <div class="seg seg--small">
-              <label><input type="radio" name="units-list" value="km" checked><span>km</span></label>
-              <label><input type="radio" name="units-list" value="mi"><span>mi</span></label>
+              <label><input type="radio" name="units-list" value="mi" checked><span>mi</span></label>
+              <label><input type="radio" name="units-list" value="km"><span>km</span></label>
             </div>
           </fieldset>"""
 
@@ -535,17 +554,23 @@ def render(records, site):
     c = counts(records)
     recs = sorted(records, key=sort_name)
     total = c["total"]
-    lede = (f"{total} long-distance trails in the United States and Canada. Narrow them by where they are, "
-            f"how long they take, when to walk them and what the country is like. "
-            f"{c['gpx_here']} have a GPX to download.")
+    lede = (f"{total} trails. Narrow them by where they are, how long they take, when to walk them "
+            f"and what the country is like. {c['gpx_here']} have a GPX to download.")
     contribute = ""
     if site.repo_url:
         contribute = (f'<p class="finder__foot">Something wrong, or a trail missing? '
                       f'<a href="{esc(site.correction_url())}">Report a problem</a> or '
                       f'<a href="{esc(site.new_trail_url)}">suggest a trail</a>.</p>')
-    return f"""<section class="hero hero--short" aria-labelledby="hero-title">
+    return f"""<section class="hero hero--short hero--home" aria-labelledby="hero-title">
   <div class="container hero__inner">
-    <h1 id="hero-title">Find a long trail</h1>
+    <h1 id="hero-title" class="lockup"><img class="lockup__mark" src="/assets/favicon.svg" alt="" width="96" height="96">{esc(site.name)}</h1>
+    <p class="hero__tagline">Long-distance hiking trails of the United States and Canada, to compare and download.</p>
+    <ul class="hero__tags">
+      <li><a href="#finder">Filters</a></li>
+      <li><a href="/lists/with-gpx/">GPX</a></li>
+      <li><a href="/sources/">A source for every fact</a></li>
+      <li><a href="/data/">Open data</a></li>
+    </ul>
     <p class="hero__lede">{lede}</p>
     {lists_row(records)}
   </div>

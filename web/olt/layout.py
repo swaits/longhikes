@@ -56,7 +56,7 @@ def header(path, site):
         for text, href in NAV)
     return Markup(f"""<header class="site-header">
   <div class="container site-header__inner">
-    <a class="wordmark" href="/"><span class="wordmark__blaze" aria-hidden="true"></span>{esc(site.name)}</a>
+    <a class="wordmark" href="/"><img class="wordmark__mark" src="/assets/favicon.svg" alt="" width="28" height="28">{esc(site.name)}</a>
     <nav aria-label="Main"><ul class="nav">{items}</ul></nav>
   </div>
 </header>""")
@@ -71,7 +71,7 @@ def footer(site):
     return Markup(f"""<footer class="site-footer">
   <div class="container site-footer__grid">
     <div class="site-footer__about">
-      <a class="wordmark" href="/"><span class="wordmark__blaze" aria-hidden="true"></span>{esc(site.name)}</a>
+      <a class="wordmark" href="/"><img class="wordmark__mark" src="/assets/favicon.svg" alt="" width="28" height="28">{esc(site.name)}</a>
       <p>Not for navigation: tracks vary in quality, some trails are unfinished, and some have no GPX here. Check a trail&rsquo;s own maps before you go.</p>
       <p>The trail data is public domain (CC0-1.0). Each track keeps the terms of its source, named on its page. Tracks from OpenStreetMap are &copy;&nbsp;OpenStreetMap contributors, under the ODbL. Logos belong to their holders and are shown only to identify each trail.</p>
     </div>
@@ -106,8 +106,8 @@ def footer(site):
       <fieldset class="field">
         <legend>Units</legend>
         <div class="seg">
-          <label><input type="radio" name="units" value="km" checked><span>km and m first</span></label>
-          <label><input type="radio" name="units" value="mi"><span>mi and ft first</span></label>
+          <label><input type="radio" name="units" value="mi" checked><span>mi and ft first</span></label>
+          <label><input type="radio" name="units" value="km"><span>km and m first</span></label>
         </div>
       </fieldset>
     </div>
@@ -154,19 +154,25 @@ def layout(title, body, *, path, description="", maps=False, scripts=(), data=No
         f'<meta property="og:description" content="{esc(description)}">',
         f'<meta property="og:type" content="{esc(og_type)}">',
         f'<meta property="og:site_name" content="{esc(site.name)}">',
-        '<meta name="twitter:card" content="summary">',
+        '<meta name="twitter:card" content="summary_large_image">',
         f'<meta name="twitter:title" content="{esc(full_title)}">',
         f'<meta name="twitter:description" content="{esc(description)}">',
     ]
     if canonical:
         head.append(f'<meta property="og:url" content="{esc(canonical)}">')
-        head.append(f'<meta property="og:image" content="{esc(site.canonical("/assets/favicon.svg"))}">')
-        head.append(f'<meta name="twitter:image" content="{esc(site.canonical("/assets/favicon.svg"))}">')
+        # A PNG: link previews (Reddit, Slack, iMessage) do not draw an SVG.
+        image = esc(site.canonical("/assets/og.png"))
+        head.append(f'<meta property="og:image" content="{image}">')
+        head.append('<meta property="og:image:width" content="1200">')
+        head.append('<meta property="og:image:height" content="630">')
+        head.append(f'<meta name="twitter:image" content="{image}">')
     if jsonld is not None:
         head.append(str(_ld_json_block(jsonld)))
     head += [
         '<meta name="color-scheme" content="light dark">',
         '<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">',
+        '<link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">',
+        '<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">',
     ]
     head += [f'<link rel="preload" href="{f}" as="font" type="font/woff2" crossorigin>' for f in FONT_PRELOADS]
     if maps:

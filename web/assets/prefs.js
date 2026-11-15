@@ -8,6 +8,6 @@
     var theme = localStorage.getItem('lh-theme');
     var units = localStorage.getItem('lh-units');
     if (theme === 'light' || theme === 'dark') root.dataset.theme = theme;
-    if (units === 'mi') root.dataset.units = 'mi';
+    if (units === 'km') root.dataset.units = 'km';  /* anything else, an old 'mi' included, is miles */
   } catch (e) { /* storage blocked: defaults apply */ }
 })();

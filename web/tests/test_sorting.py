@@ -134,7 +134,7 @@ class SortKeysTest(unittest.TestCase):
 class ListDefaultsTest(unittest.TestCase):
     def test_only_four_lists_open_in_another_order(self):
         special = {lst.key: lst.sort for lst in browse.LISTS if lst.sort != "name"}
-        self.assertEqual(special, {"longest": "length-desc", "under-100-km": "length-asc",
+        self.assertEqual(special, {"longest": "length-desc", "under-100-miles": "length-asc",
                                    "a-week-or-less": "time-asc", "one-to-two-weeks": "time-asc"})
         for lst in browse.LISTS:
             self.assertIn(lst.sort, facets.SORT_LABEL, lst.key)
@@ -143,7 +143,7 @@ class ListDefaultsTest(unittest.TestCase):
     def test_members_come_in_the_list_order(self):
         recs = [make("short", "Short", km=3000), make("long", "Long", km=5000), make("mid", "Mid", km=100)]
         self.assertEqual(ids(browse.members(browse.by_key("longest"), recs)), ["long", "short"])
-        self.assertEqual(ids(browse.members(browse.by_key("under-100-km"),
+        self.assertEqual(ids(browse.members(browse.by_key("under-100-miles"),
                                              [make("a", "A", km=90), make("b", "B", km=10)])), ["b", "a"])
 
 

@@ -59,7 +59,7 @@ class ExtraPagesTest(unittest.TestCase):
 
     def test_all_routes_on_routes_page(self):
         routes = [r for r in self.records if r["derived"]["kind"] == "route"]
-        self.assertEqual(len(routes), 34)
+        self.assertEqual(len(routes), 47)
         page = read_out("routes/index.html")
         import html as _html
         text = _html.unescape(page)
@@ -140,6 +140,9 @@ class ExtraPagesTest(unittest.TestCase):
             scale = re.search(r'<div class="list-head".*?</div>', results, re.S).group(0)
             self.assertEqual(scale.count('class="len__km"'), 3, rel)
             self.assertEqual(scale.count('class="len__mi"'), 3, rel)
+            # round in each unit, miles first
+            self.assertIn('<span class="len__mi">100</span><span class="len__km">100</span>', scale)
+            self.assertIn('<span class="len__mi">10,000 mi</span><span class="len__km">10,000 km</span>', scale)
             for name in ("Length", "Time", "GPX", "Climb"):
                 self.assertIn(name, scale, rel)
             for col in ("name", "length", "time", "climb"):
@@ -182,9 +185,22 @@ class ExtraPagesTest(unittest.TestCase):
         # the map is in the tool, beside the list it filters
         main = doc[doc.index('<div class="finder__main">'):]
         self.assertLess(main.index('data-map="overview"'), main.index('<ol class="entries" id="entries">'))
-        steps = [int(v) for v in re.findall(r'<option value="(\d+)">', form[form.index('id="max"'):form.index("</select>", form.index('id="max"'))])]
-        self.assertGreaterEqual(steps[-1], max(r["length_km"] for r in self.records))
-        self.assertEqual(home.length_steps(self.records)[:11], list(home.LENGTH_STEPS))
+        longest_km = max(r["length_km"] for r in self.records)
+        maxsel = form[form.index('id="max"'):form.index("</select>", form.index('id="max"'))]
+        minsel = form[form.index('id="min"'):form.index("</select>", form.index('id="min"'))]
+        # the steps are round miles, miles first; the top step reaches the longest trail
+        steps = [int(v) for v in re.findall(r'<option value="(\d+)mi">', maxsel)]
+        self.assertGreaterEqual(steps[-1] * words.KM_PER_MI, longest_km)
+        self.assertEqual(steps, home.length_steps(self.records)[1:])
+        self.assertIn("100 mi &middot; 161 km", minsel)
+        self.assertEqual(home.length_steps(self.records)[:11], list(home.LENGTH_STEPS_MI))
+        # a reader who chose kilometres gets round kilometre steps (app.js builds them from data-steps-km)
+        km_steps = home.length_steps(self.records, "km")
+        self.assertEqual(km_steps[:11], list(home.LENGTH_STEPS_KM))
+        self.assertGreaterEqual(km_steps[-1], longest_km)
+        self.assertIn('data-steps-km="' + ",".join(map(str, km_steps)) + '"', form)
+        for n in home.LENGTH_STEPS_MI + home.LENGTH_STEPS_KM:
+            self.assertEqual(n % 5, 0, n)
 
     def test_logos_page_shows_exactly_the_logo_files(self):
         page = read_out("logos/index.html")

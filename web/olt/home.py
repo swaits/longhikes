@@ -131,7 +131,9 @@ def entry(rec, *, level=3, extra="", routes_list=False):
     route = facets.kind(rec) == "route"
     lo, hi, est = facets.time_days(rec)
     search = " ".join([rec["name"], rec.get("short_name", ""), rec["id"], facets.author(rec)]).lower()
+    abbr = rec.get("short_name", "")
     abbr_cls = "entry__abbr" if common.shield_url(rec) else "entry__abbr vh"
+    abbr_html = f' <span class="{abbr_cls}">{esc(abbr)}</span>' if abbr else ""
     # The climb a row may show and sort by (facets.row_climb_m): none when the
     # track covers too little or too much of the trail, so data-climb is empty
     # in exactly the cases where the row hides its climb.
@@ -158,7 +160,7 @@ def entry(rec, *, level=3, extra="", routes_list=False):
     return f"""<li class="entry"{attrs}>
   {common.plate(rec)}
   <div class="entry__body">{kicker}
-    <{h} class="entry__name"><a href="{esc(common.trail_path(rec))}">{common.name(rec)}</a> <span class="{abbr_cls}">{esc(rec.get("short_name", ""))}</span></{h}>{by}{desc_html}
+    <{h} class="entry__name"><a href="{esc(common.trail_path(rec))}">{common.name(rec)}</a>{abbr_html}</{h}>{by}{desc_html}
     <p class="entry__where">{where_html(rec)}</p>
   </div>
   <dl class="entry__facts">

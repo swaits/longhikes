@@ -162,6 +162,8 @@ def page_head(rec):
         crumbs.append(f'<li><a href="/regions/#across-canada">{esc(facets.ACROSS_CANADA_NAME)}</a></li>')
     crumbs.append(f'<li aria-current="page">{common.name(rec)}</li>')
     has_plate = bool(common.shield_url(rec))
+    abbr = rec.get("short_name", "")
+    abbr_html = f' <span class="titleblock__abbr">{esc(abbr)}</span>' if abbr else ""
     plate = common.plate(rec, size="lg", link=True, eager=True) if has_plate else ""
     summary = hike.summary(rec)
     lede = common.rich(summary) if summary else fallback_lede(rec)
@@ -189,7 +191,7 @@ def page_head(rec):
       {plate}
       <div class="titleblock__text">
         {kicker}
-        <h1>{common.name(rec)} <span class="titleblock__abbr">{esc(rec.get("short_name", ""))}</span></h1>
+        <h1>{common.name(rec)}{abbr_html}</h1>
         {f'<p class="titleblock__sub">{common.rich(lead)}</p>' if lead else ""}
         {define}
       </div>
@@ -754,6 +756,18 @@ def listing_note(rec):
     return f"{meaning}. The record has no note saying what."
 
 
+def abbreviation_fact(rec):
+    """The abbreviation with the page it was seen on."""
+    if not rec.get("short_name"):
+        return ""
+    url = rec.get("short_name_url", "")
+    host = re.sub(r"^www\.", "", urllib.parse.urlsplit(url).hostname or "") or url
+    notes = []
+    if url:
+        notes.append(f'Seen in use at <a href="{esc(url)}">{esc(host)}</a>.')
+    return fact("Abbreviation", rec["short_name"], Markup(" ".join(notes)) if notes else "")
+
+
 def record_block(rec):
     k = common.kind(rec)
     tier = rec.get("tier", "")
@@ -777,7 +791,7 @@ def record_block(rec):
         Markup(f'<div><dt>Where</dt><dd>{where}</dd></div>'),
         Markup(f'<div><dt>Published length</dt><dd>{words.length(rec["length_km"], "inline", rec["derived"]["length_mi"])}'
                f'<small>{esc(rec.get("length_note", ""))}. A check value, not measured from the track.</small></dd></div>'),
-        fact("Short name", rec.get("short_name", "")),
+        abbreviation_fact(rec),
         fact("Record ID", Markup(code(rec["id"])), "Stable: the directory name, never changed"),
     ]
     return block("record-title", "The record", facts(*rows))

@@ -441,6 +441,9 @@ body:has(.hero--home) .site-header .wordmark { visibility: hidden; }
   font: 600 var(--step--1) var(--font-mono);
   letter-spacing: 0.04em;
 }
+/* No logo and no abbreviation of its own: the site's mark, small and quiet */
+.plate--none > span { display: grid; place-items: center; inline-size: 100%; block-size: 100%; }
+.plate__mark { inline-size: 36%; block-size: auto; opacity: 0.4; }
 
 /* Tally: big numbers over small labels, split by hairlines */
 .tally {

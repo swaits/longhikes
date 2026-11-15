@@ -157,8 +157,13 @@ def logo_img(rec, alt, eager=False):
     return f'<img src="{esc(src)}" alt="{esc(alt)}"{dims}{loading} decoding="async">'
 
 
+# The site's own mark (assets/favicon.svg, its mountain) for a plate with no logo and no abbreviation to show.
+PLATE_MARK = Markup('<svg class="plate__mark" viewBox="0 0 32 32" focusable="false">'
+                    '<path d="M3.5 25.5 13 7.5l5.2 9.3 2.9-4.6 7.4 13.3z" fill="currentColor"/></svg>')
+
+
 def plate(rec, *, size="", link=False, eager=False, alt=None):
-    """The logo on a light plate, or a dashed plate with the short name when there is no logo file.
+    """The logo on a light plate, or a dashed plate when there is no logo file: the trail's abbreviation if it has one, else the site's mark.
 
     link: the logo links to the full-size file. eager: not lazy-loaded (the record page header).
     alt: the image's text; by default "<name> logo" on a sized plate and "" on a list plate.
@@ -174,7 +179,8 @@ def plate(rec, *, size="", link=False, eager=False, alt=None):
             label = "" if alt else f'<span class="vh">Full-size logo: {name(rec)}</span>'
             img = f'<a href="{esc(url)}">{img}{label}</a>'
         return Markup(f'<div class="{cls}">{img}</div>')
-    return Markup(f'<div class="{cls} plate--none" aria-hidden="true"><span>{esc(rec.get("short_name", ""))}</span></div>')
+    inner = esc(rec.get("short_name", "")) or PLATE_MARK
+    return Markup(f'<div class="{cls} plate--none" aria-hidden="true"><span>{inner}</span></div>')
 
 
 SWATCH_LINE = Markup('<span class="swatch swatch--line" aria-hidden="true"></span>')

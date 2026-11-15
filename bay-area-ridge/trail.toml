@@ -78,3 +78,8 @@ facts = ["summary", "travel", "permit", "unfinished"]
 url = "https://ridgetrail.org/national-scenic-trail/"
 publisher = "Bay Area Ridge Trail Council"
 facts = ["terrain", "summary"]
+
+[[link]]
+title = "Bay Area Ridge Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Bay_Area_Ridge_Trail"

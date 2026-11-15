@@ -69,3 +69,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 url = "https://rachelcarsontrails.org/"
 publisher = "Rachel Carson Trails Conservancy"
 facts = ["summary"]
+
+[[link]]
+title = "Baker Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Baker_Trail"

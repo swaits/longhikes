@@ -77,3 +77,8 @@ facts = ["travel", "unfinished", "caution"]
 url = "https://www.nps.gov/iatr/index.htm"
 publisher = "National Park Service"
 facts = ["summary", "terrain"]
+
+[[link]]
+title = "Ice Age National Scenic Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Ice_Age_National_Scenic_Trail"

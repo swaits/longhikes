@@ -6,7 +6,7 @@ A track is included in this repository only when its source's terms allow redist
 
 ## OpenStreetMap (ODbL-1.0)
 
-Used by: 86 trails with an included track, and part of the Colorado Trail track (about 38 km; the rest is United States Forest Service data). Also named as the recorded source for 7 record-only trails, where no track was downloaded or none was usable. One of the person-defined routes has a track from OpenStreetMap (the Big SEKI Loop, relation 11628437); the other 46 name no source licence for a track.
+Used by: 88 trails with an included track, and part of the Colorado Trail track (about 38 km; the rest is United States Forest Service data). Also named as the recorded source for 7 record-only trails, where no track was downloaded or none was usable. One of the person-defined routes has a track from OpenStreetMap (the Big SEKI Loop, relation 11628437); the other 49 name no source licence for a track.
 
 Quoted terms: "You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors."
 
@@ -14,7 +14,7 @@ Page: https://www.openstreetmap.org/copyright (read 2026-11-09). Full text: LICE
 
 ## United States federal agencies (public domain)
 
-Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 9 trails with an included track (Appalachian, Colorado Trail in part, Fremont, Highline, Natchez Trace, New England, North Umpqua, Pacific Northwest, Potomac Heritage), and named in 4 record-only records (Iditarod, Nez Perce, Overmountain Victory, Timberline).
+Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 12 trails with an included track (Appalachian, Black Canyon, Colorado Trail in part, Fremont, General George Crook, Highline, Natchez Trace, New England, North Umpqua, Pacific Northwest, Potomac Heritage, Toiyabe Crest), and named in 1 record-only record (Timberline).
 
 Quoted terms: "Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105."
 
@@ -38,15 +38,9 @@ Page: https://services8.arcgis.com/WyuHwdftppQLa5KO/arcgis/rest/services/Contine
 
 ## Publishers with no stated licence (no track included)
 
-Used by: the official trails marked "none-stated" and "record only" in the table below, none with an included track. Among them: California Coastal Commission with the Coastal Trails Alliance; Arizona State Parks (Great Western, Arizona part only); and the holders of the trails added on 2026-11-14 whose pages state no licence for a track.
+Used by: the official trails marked "none-stated" and "record only" in the table below, none with an included track. Among them: California Coastal Commission with the Coastal Trails Alliance; and the holders of the trails added on 2026-11-14 whose pages state no licence for a track.
 
 Terms found: no licence stated on the items, and no licence found on the publishers' pages when read on 2026-11-09. The items carry disclaimers only. A disclaimer is not a licence, so these publishers' tracks are not redistributed here. Each record's `source.url` is the page to ask for the track, and `source.line_absent_reason` states this reason. Nine more records that were listed here had a track added from OpenStreetMap on 2026-11-09; their publishers' own tracks are still not used, and each record keeps the publisher and its page in `source.publisher` and `source.publisher_url`.
-
-## Trans Canada Trail (CC-BY-NC-ND-4.0)
-
-Used by: 1 record (The Great Trail), record only.
-
-Terms: Creative Commons Attribution-NonCommercial-NoDerivatives 4.0, as stated on the source item (read 2026-11-09; source page in the record). Those terms do not allow commercial use or derivatives, so no track from this source is included.
 
 ## Person-defined routes (creator's own pages, no track included)
 
@@ -81,6 +75,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | big-seki-loop | Amy and James (Doing Miles) (publishes the route) | [source page](https://www.openstreetmap.org/relation/11628437) | ODbL-1.0 | track |
 | bigfoot-trail | Bigfoot Trail Alliance (publishes the route) | [source page](https://www.bigfoottrail.org/route/guidebook/) | none-stated | record only |
 | bitterroots-80-mile-route | Wilderness Mindset (publishes the route) | [source page](https://wildernessmindset.com/product/bitterroots-80-mile-route-map-pack/) | none-stated | record only |
+| black-canyon | Bureau of Land Management (Ground Transportation Linear Features) | [source page](https://gis.blm.gov/arcgis/rest/services/transportation/BLM_Natl_GTLF_Public_Display/MapServer/7) | us-gov-public-domain | track |
 | blue-mountains-trail | Greater Hells Canyon Council (publishes the route) | [source page](https://www.hellscanyon.org/blue-mountains-trail/maps) | none-stated | record only |
 | border-route | Border Route Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/5996078) | ODbL-1.0 | track |
 | boreal-trail | Saskatchewan Provincial Parks (Meadow Lake Provincial Park) (publishes the trail) | [source page](https://saskparks.tourismsaskatchewan.com/media/media-library/pdfs/park-downloads/meadow-lake/meadow-lake-all.pdf) | none-stated | record only |
@@ -97,6 +92,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | circle-of-solitude | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/wilderness-press/) | none-stated | record only |
 | cohos | Cohos Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/14765821) | ODbL-1.0 | track |
 | colorado-trail | USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
+| condor-trail | Condor Trail Association (publishes the route) | [source page](http://www.condortrail.com/maps-trail-descriptions/) | none-stated | record only |
 | conestoga-trail | Lancaster Hiking Club (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/6827091) | ODbL-1.0 | track |
 | conservation-trail | Foothills Trail Club of Western New York (built and maintains the trail) | [source page](https://sites.google.com/view/foothillstrailclub/about-the-trail) | none-stated | record only |
 | continental-divide | Continental Divide Trail Coalition (CDTC) | [source page](https://services8.arcgis.com/WyuHwdftppQLa5KO/arcgis/rest/services/Continental_Divide_Trail_2/FeatureServer/0) | CC-BY | track |
@@ -117,6 +113,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | foothills | Foothills Trail Conservancy (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4572989) | ODbL-1.0 | track |
 | fremont | USDA Forest Service, National Forest System trails | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | ganaraska | Ganaraska Hiking Trail Association (publishes the trail; no open track found) | [source page](https://www.openstreetmap.org/relation/3696751) | ODbL-1.0 | track |
+| general-george-crook | USDA Forest Service, National Forest System trails | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | grand-enchantment | simBLISSity Ultralight Designs (publishes the route, mapset and guidebook; no open geometry) | [source page](https://www.openstreetmap.org/relation/4485206) | ODbL-1.0 | record only |
 | grand-moab-route | Paul Mags, PMags.com (publishes the route) | [source page](https://pmags.com/the-grand-moab-route) | none-stated | record only |
 | grand-valley-trail | Grand Valley Trails Association (publishes the trail) | [source page](https://gvta.on.ca/Grand-Valley-Trails) | none-stated | record only |
@@ -125,11 +122,11 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | great-divide-trail | Great Divide Trail Association (account 'GreatDivideTrail', public map) | [source page](https://www.openstreetmap.org/relation/8139599) | ODbL-1.0 | track |
 | great-eastern | Great Eastern Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/11364314) | ODbL-1.0 | record only |
 | great-plains-trail | Steve Myers, Great Plains Trail Alliance (publishes the route) | [source page](https://www.greatplainstrail.org/gpt-map/) | none-stated | record only |
-| great-trail | Trans Canada Trail (account 'mappingtct') | [source page](https://services2.arcgis.com/rDdKyyk7uludsLpI/arcgis/rest/services/ExploreTheMap_EN_2022/FeatureServer/15) | CC-BY-NC-ND-4.0 | record only |
-| great-western | Arizona State Parks for the Arizona part; no whole-trail publisher found | [source page](https://services2.arcgis.com/gdcQ6sUWKP8qwBmV/arcgis/rest/services/GWT_Alignment_Public_View/FeatureServer/0) | none-stated | record only |
 | great-western-divide-loop | Brian Lucido (publishes the route) | [source page](https://www.brianlucido.com/sequoia-great-western-divide-loop/) | none-stated | record only |
 | great-western-loop | Andrew Skurka and Ryan Jordan (publish the route) | [source page](https://andrewskurka.com/adventures/great-western-loop/route-description/) | none-stated | record only |
+| guadalupe-ridge-trail | National Park Service (publishes the trail) | [source page](https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0) | none-stated | record only |
 | hayduke-trail | Joe Mitchell and Mike Coronella (publish the route) | [source page](https://uofupress.com/books/the-hayduke-trail/) | none-stated | record only |
+| high-country-pathway | Michigan Department of Natural Resources (manages the land; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2450544) | ODbL-1.0 | track |
 | high-sierra | National Park Service, Sequoia and Kings Canyon National Parks (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1714300) | ODbL-1.0 | track |
 | highlands | New York-New Jersey Trail Conference (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/6335422) | ODbL-1.0 | track |
 | highline | USDA Forest Service, National Forest System trails | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
@@ -138,7 +135,6 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | iat-newfoundland-labrador | International Appalachian Trail Newfoundland and Labrador (publishes the trail) | [source page](https://iatnl.org/thru-hikers/) | none-stated | record only |
 | ice-age | Ice Age Trail Alliance for the National Park Service | [source page](https://www.openstreetmap.org/relation/2381423) | ODbL-1.0 | track |
 | idaho-centennial | Idaho Department of Parks and Recreation | [source page](https://www.openstreetmap.org/relation/10758083) | ODbL-1.0 | track |
-| iditarod | Bureau of Land Management | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/Iditarod_National_Historic_Trail_BLM_Official_Temp/FeatureServer/0) | us-gov-public-domain | record only |
 | international-appalachian-trail-maine | Maine Chapter of the International Appalachian Trail (maintains the trail) | [source page](https://maineiat.org/?p=412) | none-stated | record only |
 | iron-belle-trail | Michigan Department of Natural Resources (oversees the trail) | [source page](https://content.govdelivery.com/accounts/MIDNR/bulletins/2929548) | none-stated | record only |
 | island-walk | Island Walk PEI Inc. (publishes the route; no open geometry found) | [source page](https://www.openstreetmap.org/relation/12307947) | ODbL-1.0 | track |
@@ -163,12 +159,13 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | mid-state | Mid State Trail Association (an ArcGIS item under an ArcGIS account, 2019; provenance not confirmed) | [source page](https://www.openstreetmap.org/relation/1022044) | ODbL-1.0 | track |
 | midstate-ma | Midstate Trail Committee (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/5503042) | ODbL-1.0 | track |
 | mogollon-rim-trail | Brett Tucker ("Blisterfree"), who publishes the route | [source page](https://www.simblissity.net/mogollon-rim-trail-mapset.shtml) | none-stated | record only |
+| mojave-sonoran-trail | Eric Poulin (publishes the route) | [source page](https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/) | none-stated | record only |
 | monadnock-sunapee | Monadnock-Sunapee Greenway Trail Club (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3888871) | ODbL-1.0 | track |
+| montana-trail | Montana Trail 406 Association (publishes the route) | [source page](https://montanatrail.org/montana-trail-hike-sections/) | none-stated | record only |
 | mountains-to-sea | North Carolina Division of Parks and Recreation; Friends of the Mountains-to-Sea Trail (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1395404) | ODbL-1.0 | track |
 | natchez-trace | National Park Service, Natchez Trace Parkway | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/NATT_TRANS_NSTTrail/FeatureServer/0) | us-gov-public-domain | track |
 | nepisiguit-migmaq-trail | Sentier Nepisiguit Mi'gmaq Trail Inc. (publishes the trail) | [source page](https://migmaqtrail.ca/discover.php) | none-stated | record only |
 | new-england | National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/NEEN_BND_NationalScenicTrailCenterline_ln/FeatureServer/0) | us-gov-public-domain | track |
-| nez-perce | USDA Forest Service Region 1 | [source page](https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/R01_NezPerceNeeMePoo_NationalHistoricTrail_Centerline/FeatureServer/0) | us-gov-public-domain | record only |
 | north-boundary | Parks Canada, Jasper National Park (publishes the trail; no open geometry found) | [source page](https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary) | none-stated | record only |
 | north-country | North Country Trail Association for the National Park Service | [source page](https://www.openstreetmap.org/relation/11140515) | ODbL-1.0 | track |
 | north-south | Rhode Island Department of Environmental Management (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/11102215) | ODbL-1.0 | track |
@@ -181,7 +178,6 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | oregon-desert | Oregon Natural Desert Association (ONDA) (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/10702483) | ODbL-1.0 | record only |
 | ottawa-temiskaming-highland-trail | Nastawgan Trails Inc. (publishes the trail) | [source page](https://nastawgantrails.org/our-trails) | none-stated | record only |
 | ouachita | Friends of the Ouachita Trail (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3838499) | ODbL-1.0 | track |
-| overmountain-victory | National Park Service | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/Overmountain_Victory_National_Historic_Trail_Official_Temp/FeatureServer/0) | us-gov-public-domain | record only |
 | ozark-highlands | Ozark Highlands Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/10868744) | ODbL-1.0 | track |
 | ozark-trail | Ozark Trail Association (publishes the trail); the ArcGIS item 'Ozark Trails Association' now answers 'Token Required' | [source page](https://www.openstreetmap.org/relation/16710911) | ODbL-1.0 | track |
 | pacific-crest | Pacific Crest Trail Association (PCTA) | [source page](https://services5.arcgis.com/ZldHa25efPFpMmfB/ArcGIS/rest/services/PCTA_Centerline/FeatureServer/0) | CC-BY-4.0 | track |
@@ -191,6 +187,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | pfiffner-traverse | Andrew Skurka (publishes the route) | [source page](https://andrewskurka.com/product/pfiffner-traverse-guide-maps/) | none-stated | record only |
 | pinhoti | Pinhoti Trail Alliance (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1642836) | ODbL-1.0 | track |
 | potomac-heritage | National Park Service, Potomac Heritage NST | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/POHE_Trail_Centerline_(Public_NPMap_Builder)_/FeatureServer/0) | us-gov-public-domain | track |
+| prescott-circle | City of Prescott and Prescott National Forest (manage the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4717133) | ODbL-1.0 | track |
 | pukaskwa-coastal | Parks Canada (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/15361195) | ODbL-1.0 | record only |
 | quehanna | Keystone Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7236114) | ODbL-1.0 | track |
 | rideau-trail | Rideau Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7675635) | ODbL-1.0 | track |
@@ -223,6 +220,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | teton-range-traverse | Cam Honan, The Hiking Life (publishes the route) | [source page](https://thehikinglife.com/2017/07/teton-range-traverse/) | none-stated | record only |
 | thames-valley-trail | Thames Valley Trail Association (publishes the trail) | [source page](https://tvta.ca/hiking-information/trail-routes-and-maps/) | none-stated | record only |
 | timberline | USDA Forest Service, Mount Hood National Forest | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | record only |
+| toiyabe-crest | USDA Forest Service, National Forest System trails | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | trans-adirondack-route | Erik Schlimmer (publishes the route) | [source page](https://erikschlimmer.com/books-sale-/) | none-stated | record only |
 | traversee-charlevoix | Traversée de Charlevoix (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/8082269) | ODbL-1.0 | track |
 | tuscarora | Potomac Appalachian Trail Club (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/10449263) | ODbL-1.0 | track |

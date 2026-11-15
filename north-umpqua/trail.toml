@@ -70,3 +70,8 @@ facts = ["summary", "terrain", "travel"]
 url = "https://www.blm.gov/visit/north-umpqua-wild-and-scenic-river"
 publisher = "Bureau of Land Management"
 facts = ["summary", "terrain", "travel"]
+
+[[link]]
+title = "North Umpqua Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/North_Umpqua_Trail"

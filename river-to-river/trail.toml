@@ -69,3 +69,8 @@ facts = ["summary", "official_url", "start", "end", "shape", "terrain", "season"
 url = "https://rivertorivertrail.net/home/trail-information/"
 publisher = "River to River Trail Society"
 facts = ["summary"]
+
+[[link]]
+title = "River to River Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/River_to_River_Trail"

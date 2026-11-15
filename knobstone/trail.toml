@@ -75,3 +75,8 @@ facts = ["official_url"]
 url = "https://www.in.gov/dnr/forestry/properties/knobstone-trail-conditions-reroutes-maps/knobstone-trail-hiking-and-rules"
 publisher = "Indiana Department of Natural Resources"
 facts = ["permit", "caution"]
+
+[[link]]
+title = "Knobstone Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Knobstone_Trail"

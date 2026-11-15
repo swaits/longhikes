@@ -75,3 +75,8 @@ facts = ["summary", "terrain"]
 url = "https://hikethealleghenytrail.org/hike/thru-hike/"
 publisher = "West Virginia Scenic Trails Association"
 facts = ["season", "months"]
+
+[[link]]
+title = "Allegheny Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Allegheny_Trail"

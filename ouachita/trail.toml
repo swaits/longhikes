@@ -69,3 +69,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 url = "https://www.fs.usda.gov/r08/ouachita/recreation/trails/ouachita-national-recreation-trail"
 publisher = "USDA Forest Service, Ouachita National Forest"
 facts = ["high_point"]
+
+[[link]]
+title = "Ouachita Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Ouachita_Trail"

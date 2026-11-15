@@ -82,3 +82,8 @@ facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/11334"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+[[link]]
+title = "Sky Islands Traverse"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Sky_Islands_Traverse"

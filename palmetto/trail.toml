@@ -69,3 +69,8 @@ facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"
 url = "https://www.palmettotrail.org/updates/post/from-the-mountains-to-the-sea"
 publisher = "Palmetto Conservation Foundation"
 facts = ["summary", "unfinished", "terrain"]
+
+[[link]]
+title = "Palmetto Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Palmetto_Trail"

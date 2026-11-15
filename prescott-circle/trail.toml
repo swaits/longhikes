@@ -1,0 +1,77 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "prescott-circle"
+name = "Prescott Circle Trail"
+short_name = "PCT"
+country = "US"
+regions = ["AZ"]
+length_km = 90
+length_note = "56 mi, as the City of Prescott states it; the Prescott National Forest's trails page says 50 mi"
+tier = "regional"
+designation = "Loop of linked trails around Prescott, Arizona, managed jointly by the City of Prescott (25 mi) and Prescott National Forest (31 mi)"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "City of Prescott and Prescott National Forest (manage the trail; no open geometry found)"
+publisher_url = "https://prescott-az.gov/?p=25791"
+url = "https://www.openstreetmap.org/relation/4717133"
+discovery = "osm-relation-version: Overpass `rel(4717133); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking, operator City of Prescott / Prescott National Forest), read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 4717133."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 4717133: one hiking route relation, 67 main ways, no alternates."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 4717133
+note = "Hiking route relation named Prescott Circle Trail, version 64, 67 ways, operator City of Prescott / Prescott National Forest. The Forest Service's own trail layer holds only the Forest's part of the loop, so it is not used."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "City of Prescott and Prescott National Forest"
+note = "No logo is included. The City's page for the trail shows only the City's own logo as site branding, and the Forest's page shows none for the trail."
+logo_file = ""
+logo_owner = "City of Prescott"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 90.5
+difference_percent = 0.6
+parts = 1
+note = "OSM relation 4717133, 67 ways: 90.5 km in 1 part, 0.6% longer than 90 km (56 mi)."
+
+[hike]
+summary = "The Prescott Circle Trail is a loop of linked non-motorized trails around Prescott in central Arizona, passing through high desert chaparral and ponderosa pine forest. It is managed jointly by the City of Prescott and Prescott National Forest, with 15 trailheads along it."
+official_url = "https://prescott-az.gov/?p=25791"
+start = "Peavine Trailhead, near Watson Lake, Prescott, Arizona"
+shape = "loop"
+days = [3, 5]
+season = "Spring, summer and fall"
+months = [3, 4, 5, 6, 7, 8, 9, 10, 11]
+terrain = ["forest", "desert"]
+travel = "trail"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://prescott-az.gov/?p=25791"
+publisher = "City of Prescott"
+facts = ["summary", "official_url", "shape", "season", "months", "travel"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r03/prescott/recreation/trails"
+publisher = "USDA Forest Service, Prescott National Forest"
+facts = ["summary", "shape"]
+
+[[hike.source]]
+url = "https://www.treelinereview.com/where-to-go/prescott-circle-trail"
+publisher = "Treeline Review (hiking guide site; trail data attributed to the City of Prescott)"
+facts = ["start", "days", "terrain"]

@@ -73,3 +73,8 @@ facts = ["summary", "caution"]
 url = "https://www.rideautrail.org/discover-the-trail/faq/"
 publisher = "Rideau Trail Association"
 facts = ["days"]
+
+[[link]]
+title = "Rideau Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Rideau_Trail"

@@ -71,3 +71,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain"]
 url = "https://muleapi.blm.gov/visit/idaho-centennial-roadtrail"
 publisher = "Bureau of Land Management"
 facts = ["summary", "caution"]
+
+[[link]]
+title = "Idaho Centennial Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Idaho_Centennial_Trail"

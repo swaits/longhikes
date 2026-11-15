@@ -64,3 +64,8 @@ checked = "2026-11-13"
 url = "https://friendsofthecumberlandtrail.org/land-culture-and-history-of-the-cumberland-trail/"
 publisher = "Friends of the Cumberland Trail"
 facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "unfinished"]
+
+[[link]]
+title = "Cumberland Trail (incomplete)"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Cumberland_Trail"

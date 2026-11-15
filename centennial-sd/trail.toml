@@ -69,3 +69,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel", "permit"]
 url = "https://www.fs.usda.gov/r02/blackhills/recreation/non-motorized-trail-brochures"
 publisher = "USDA Forest Service, Black Hills National Forest"
 facts = ["high_point"]
+
+[[link]]
+title = "South Dakota Centennial Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/South_Dakota_Centennial_Trail"

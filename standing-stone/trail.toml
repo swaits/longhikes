@@ -70,3 +70,8 @@ facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"
 url = "https://www.standingstonetrail.org/about"
 publisher = "Standing Stone Trail Club"
 facts = ["high_point"]
+
+[[link]]
+title = "Standing Stone Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Standing_Stone_Trail"

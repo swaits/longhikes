@@ -84,3 +84,8 @@ facts = ["season", "months"]
 url = "https://floridatrail.org/thru-hike/"
 publisher = "Florida Trail Association"
 facts = ["days"]
+
+[[link]]
+title = "Florida National Scenic Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Florida_National_Scenic_Trail"

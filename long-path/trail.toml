@@ -72,3 +72,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel"]
 url = "https://www.nynjtc.org/lp-section-18/"
 publisher = "New York-New Jersey Trail Conference"
 facts = ["high_point"]
+
+[[link]]
+title = "Long Path"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Long_Path"

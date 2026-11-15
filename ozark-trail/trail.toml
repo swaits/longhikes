@@ -70,3 +70,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "unfinished"]
 url = "https://ozarktrail.com/faq-items/what-is-the-ozark-trail/"
 publisher = "Ozark Trail Association"
 facts = ["summary", "travel", "unfinished"]
+
+[[link]]
+title = "Ozark Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Ozark_Trail"

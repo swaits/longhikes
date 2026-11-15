@@ -1,0 +1,86 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "mojave-sonoran-trail"
+name = "Mojave-Sonoran Trail"
+short_name = "MST"
+country = "US"
+regions = ["NV", "CA", "AZ"]
+length_km = 1006
+length_note = "625 mi, per the author's guide page (the same page's overview says 600 mi, and it warns that section mileages have changed since it was first published; the author's 2021 announcement said 675 mi)"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Eric Poulin, hiked 2021); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Eric Poulin (publishes the route)"
+publisher_url = "https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/"
+url = "https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. The guide page states no terms for passing the route or its map on; its footer reads 'Copyright © 2014-2022 SeekingLost.com. All rights reserved' (https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included. No OpenStreetMap route relation named Mojave-Sonoran was found on 2026-11-14, and the author's terms for passing the track on are not stated."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The author publishes the route as a free guide page with a CalTopo map that can be exported as a GPX file; no licence that allows passing the track on is stated. Get it from the author's page."
+
+[osm]
+relation = 0
+note = "No route relation with a name matching Mojave-Sonoran was found in a name search on 2026-11-14."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Eric Poulin"
+note = "No logo is included; a person-defined route has no emblem. Ask the author before using any mark."
+logo_file = ""
+logo_owner = "Eric Poulin"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Eric Poulin"
+year = 2021
+line_policy = "open"
+creator_words = "If you plan to transfer the route directly to your phone or GPS for navigation, you should export as a GPX file."
+creator_words_url = "https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/"
+note = "The author hiked the route from 1 November to 18 December 2021. The guide page links a CalTopo map, which a reader exports as a GPX or GeoJSON file, and says to use the current map for up-to-date section mileages. The page states no terms for passing the track on."
+
+[[guide]]
+title = "Mojave Sonoran Trail: A 625 Mile Thru-Hiking Route"
+author = "Eric Poulin"
+access = "free"
+url = "https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/"
+format = "web guide page with a CalTopo map that can be exported as GPX or GeoJSON"
+
+[hike]
+summary = "The Mojave-Sonoran Trail is a winter route of about 625 miles from near Valley of Fire State Park in southern Nevada to Palm Canyon in the Kofa Wilderness of Arizona. It follows the mountain ranges along the Colorado River through the Mojave and Sonoran Deserts. Only a few miles are on marked hiking trail."
+official_url = "https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/"
+start = "Valley of Fire State Park, Nevada"
+end = "Palm Canyon, Kofa Wilderness, Arizona"
+start_lonlat = [-114.598, 36.636]
+end_lonlat = [-114.217, 33.389]
+shape = "point-to-point"
+days = [35, 49]
+season = "November to March"
+months = [11, 12, 1, 2, 3]
+high_point = "Spirit Mountain, Nevada"
+high_point_m = 1720
+terrain = ["desert"]
+travel = "some-cross-country"
+permit = "The author says the route needs a National Parks pass for Lake Mead National Recreation Area and an Arizona State Trust Land permit."
+caution = "The author says only about 16 miles are on a hiking trail and roughly 40 percent is cross-country, and he calls the route the driest he has hiked."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/"
+publisher = "Eric Poulin (the route's author)"
+facts = ["summary", "official_url", "start", "end", "start_lonlat", "end_lonlat", "shape", "days", "season", "months", "high_point", "terrain", "travel", "permit", "caution"]

@@ -66,3 +66,8 @@ facts = ["official_url", "summary", "shape", "travel"]
 url = "https://dem.ri.gov/sites/g/files/xkgbur861/files/programs/bnatres/fishwild/pdf/wrisum21.pdf"
 publisher = "Rhode Island Department of Environmental Management"
 facts = ["summary", "terrain"]
+
+[[link]]
+title = "North-South Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/North-South_Trail"

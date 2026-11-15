@@ -76,3 +76,8 @@ facts = ["summary", "permit", "travel"]
 url = "https://www.fs.usda.gov/trails/pacific-crest-nst/geographic-areas"
 publisher = "USDA Forest Service"
 facts = ["summary", "start", "end", "shape", "high_point", "terrain"]
+
+[[link]]
+title = "Pacific Crest National Scenic Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Pacific_Crest_National_Scenic_Trail"

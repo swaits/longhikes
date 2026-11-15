@@ -82,3 +82,8 @@ facts = ["days"]
 url = "https://www.nps.gov/mora/planyourvisit/upload/Wonderland-Trail-7-26_508.pdf"
 publisher = "National Park Service, Mount Rainier National Park"
 facts = ["days"]
+
+[[link]]
+title = "Wonderland Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Wonderland_Trail"

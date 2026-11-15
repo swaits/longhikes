@@ -1,0 +1,72 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "high-country-pathway"
+name = "High Country Pathway"
+short_name = "HCP"
+country = "US"
+regions = ["MI"]
+length_km = 132
+length_note = "82 mi, as Michigan's tourism site (michigan.org) states it; the same page's trail data shows 75.06 mi, and the Top of Michigan Trails Council gives 80 mi. The Michigan DNR page for the trail did not answer an automated read (HTTP 403) and was not read."
+tier = "regional"
+designation = "Backpacking loop on state land managed by the Michigan Department of Natural Resources; volunteers maintain it"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Michigan Department of Natural Resources (manages the land; no open geometry found)"
+publisher_url = "https://www.michigan.gov/recsearch/trails/high-country-pathway"
+url = "https://www.openstreetmap.org/relation/2450544"
+discovery = "osm-relation-version: Overpass `rel(2450544); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 2450544."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 2450544: one hiking route relation, 45 main ways, no alternates."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "The hiking relation maps 89.3 km of the 132 km loop, in one open piece: the eastern part of the loop is missing. A second relation (2438894, route=mtb, 117.4 km) holds all of these ways and more, but it is a mountain-bike route and is not used. The track is kept as mapped."
+
+[osm]
+relation = 2450544
+note = "Hiking route relation named High Country Pathway, version 19, 45 ways. A second relation with the same name (2438894) is tagged route=mtb and imba epic, 59 ways, 117.4 km, and is not used."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Michigan Department of Natural Resources"
+note = "No logo is included. The pages read for this record show no logo or shield for the trail; the DNR's own page for the trail could not be read."
+logo_file = ""
+logo_owner = "Michigan Department of Natural Resources"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 89.3
+difference_percent = -32.3
+parts = 1
+note = "OSM relation 2450544, 45 ways: 89.3 km in 1 part, 32.3% short of 132 km (82 mi). The relation does not close the loop; the east side is not mapped in it."
+
+[hike]
+summary = "The High Country Pathway is a loop for backpackers through the northern Lower Peninsula of Michigan, around the Pigeon River Country State Forest and neighbouring state forest land. It passes through hardwood forest, meadows and wetlands, with nine state forest campgrounds along the way. Hikers share it with mountain bikers."
+official_url = "https://www.michigan.gov/recsearch/trails/high-country-pathway"
+start = "Pigeon River Country State Forest Headquarters, Vanderbilt, Michigan"
+shape = "loop"
+days = [7, 7]
+terrain = ["forest"]
+travel = "trail"
+caution = "Mountain bikers use the pathway as well as hikers."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.michigan.org/property/high-country-pathway"
+publisher = "Pure Michigan (Michigan's state tourism office)"
+facts = ["summary", "official_url", "start", "shape", "days", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.trailscouncil.org/high-country-pathway/"
+publisher = "Top of Michigan Trails Council"
+facts = ["summary", "start", "shape", "caution"]

@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-178 trails, 97 with a track and 81 with no track included. Of these, 47 are routes: 1 with a track and 46 without.
+182 trails, 102 with a track and 80 with no track included. Of these, 50 are routes: 1 with a track and 49 without.
 
 <!-- END COUNTS -->
 
@@ -52,6 +52,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | bay-area-ridge | Bay Area Ridge Trail | US | CA | 885 | yes | ODbL-1.0 |
 | bay-circuit | Bay Circuit Trail | US | MA | 370 | yes | ODbL-1.0 |
 | benton-mackaye | Benton MacKaye Trail | US | GA, TN, NC | 463 | yes | ODbL-1.0 |
+| black-canyon | Black Canyon National Recreation Trail | US | AZ | 129 | yes | us-gov-public-domain |
 | border-route | Border Route Trail | US | MN | 105 | yes | ODbL-1.0 |
 | boreal-trail | Boreal Trail | CA | SK | 135 | no | none-stated |
 | brazeau-loop | Brazeau Loop | CA | AB | 81 | no | none-stated |
@@ -80,12 +81,13 @@ A trail may be listed with no track included, when no track for it may be shared
 | foothills | Foothills Trail | US | SC, NC | 122 | yes | ODbL-1.0 |
 | fremont | Fremont National Recreation Trail | US | OR | 216 | yes | us-gov-public-domain |
 | ganaraska | Ganaraska Hiking Trail | CA | ON | 500 | yes | ODbL-1.0 |
+| general-george-crook | General George Crook National Recreation Trail | US | AZ | 95 | yes | us-gov-public-domain |
 | grand-enchantment | Grand Enchantment Trail | US | AZ, NM | 1239 | no | ODbL-1.0 |
 | grand-valley-trail | Grand Valley Trail | CA | ON | 240 | no | none-stated |
 | great-divide-trail | Great Divide Trail | CA | AB, BC | 1130 | yes | ODbL-1.0 |
 | great-eastern | Great Eastern Trail | US | AL, GA, TN, KY, VA, WV, MD, PA, NY | 3200 | no | ODbL-1.0 |
-| great-trail | The Great Trail (Trans Canada Trail) | CA | all provinces and territories | 28000 | no | CC-BY-NC-ND-4.0 |
-| great-western | Great Western Trail | US | AZ, UT, ID, WY, MT | 4800 | no | none-stated |
+| guadalupe-ridge-trail | Guadalupe Ridge Trail | US | TX, NM | 161 | no | none-stated |
+| high-country-pathway | High Country Pathway | US | MI | 132 | yes | ODbL-1.0 |
 | high-sierra | High Sierra Trail | US | CA | 116 | yes | ODbL-1.0 |
 | highlands | Highlands Trail | US | NJ, NY, PA, CT | 290 | yes | ODbL-1.0 |
 | highline | Highline National Recreation Trail | US | AZ | 89 | yes | us-gov-public-domain |
@@ -93,7 +95,6 @@ A trail may be listed with no track included, when no track for it may be shared
 | iat-newfoundland-labrador | International Appalachian Trail, Newfoundland and Labrador | CA | NL | 750 | no | none-stated |
 | ice-age | Ice Age National Scenic Trail | US | WI | 1931 | yes | ODbL-1.0 |
 | idaho-centennial | Idaho Centennial Trail | US | ID | 1448 | yes | ODbL-1.0 |
-| iditarod | Iditarod National Historic Trail | US | AK | 3701 | no | us-gov-public-domain |
 | international-appalachian-trail-maine | International Appalachian Trail, Maine section | US | ME | 222 | no | none-stated |
 | iron-belle-trail | Iron Belle Trail (hiking route) | US | MI | 2049 | no | none-stated |
 | island-walk | The Island Walk | CA | PE | 700 | yes | ODbL-1.0 |
@@ -120,7 +121,6 @@ A trail may be listed with no track included, when no track for it may be shared
 | natchez-trace | Natchez Trace National Scenic Trail | US | MS, AL, TN | 105 | yes | us-gov-public-domain |
 | nepisiguit-migmaq-trail | Sentier Nepisiguit Mi'gmaq Trail | CA | NB | 150 | no | none-stated |
 | new-england | New England National Scenic Trail | US | CT, MA | 378 | yes | us-gov-public-domain |
-| nez-perce | Nez Perce (Nee-Me-Poo) National Historic Trail | US | OR, ID, MT, WY | 1883 | no | us-gov-public-domain |
 | north-boundary | North Boundary Trail | CA | AB | 159 | no | none-stated |
 | north-country | North Country National Scenic Trail | US | ND, MN, WI, MI, OH, PA, NY, VT | 7403 | yes | ODbL-1.0 |
 | north-south | North-South Trail | US | RI | 125 | yes | ODbL-1.0 |
@@ -132,7 +132,6 @@ A trail may be listed with no track included, when no track for it may be shared
 | oregon-desert | Oregon Desert Trail | US | OR | 1200 | no | ODbL-1.0 |
 | ottawa-temiskaming-highland-trail | Ottawa-Temiskaming Highland Trail | CA | ON | 142 | no | none-stated |
 | ouachita | Ouachita National Recreation Trail | US | AR, OK | 359 | yes | ODbL-1.0 |
-| overmountain-victory | Overmountain Victory National Historic Trail | US | VA, TN, NC, SC | 540 | no | us-gov-public-domain |
 | ozark-highlands | Ozark Highlands Trail | US | AR | 435 | yes | ODbL-1.0 |
 | ozark-trail | Ozark Trail (Missouri) | US | MO | 630 | yes | ODbL-1.0 |
 | pacific-crest | Pacific Crest National Scenic Trail | US | CA, OR, WA | 4265 | yes | CC-BY-4.0 |
@@ -141,6 +140,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | paumanok-path | Paumanok Path | US | NY | 201 | yes | ODbL-1.0 |
 | pinhoti | Pinhoti Trail | US | AL, GA | 540 | yes | ODbL-1.0 |
 | potomac-heritage | Potomac Heritage National Scenic Trail | US | DC, MD, VA, PA | 1448 | yes | us-gov-public-domain |
+| prescott-circle | Prescott Circle Trail | US | AZ | 90 | yes | ODbL-1.0 |
 | pukaskwa-coastal | Pukaskwa Coastal Hiking Trail | CA | ON | 60 | no | ODbL-1.0 |
 | quehanna | Quehanna Trail | US | PA | 119 | yes | ODbL-1.0 |
 | rideau-trail | Rideau Trail | CA | ON | 387 | yes | ODbL-1.0 |
@@ -160,6 +160,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | teton-crest | Teton Crest Trail | US | WY | 64 | no | ODbL-1.0 |
 | thames-valley-trail | Thames Valley Trail | CA | ON | 110 | no | none-stated |
 | timberline | Timberline Trail (Mount Hood) | US | OR | 64 | no | us-gov-public-domain |
+| toiyabe-crest | Toiyabe Crest National Recreation Trail | US | NV | 101 | yes | us-gov-public-domain |
 | traversee-charlevoix | Traversée de Charlevoix | CA | QC | 105 | yes | ODbL-1.0 |
 | tuscarora | Tuscarora Trail | US | PA, MD, VA, WV | 406 | yes | ODbL-1.0 |
 | uinta-highline | Uinta Highline Trail | US | UT | 167 | yes | ODbL-1.0 |
@@ -190,6 +191,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | brooks-range-traverse | Brooks Range Traverse | US | AK | 1609 | Luc Mehl and Sarah Histand | open | no | [Brooks Range Traverse trip reports](https://thingstolucat.com/brooks-range-traverse/) (free) |
 | chinese-wall-circuit | The Chinese Wall Circuit | US | MT | 127 | Wilderness Mindset | open | no | [The Chinese Wall Circuit route page](https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/) (free) |
 | circle-of-solitude | Circle of Solitude | US | CA | 109 | Mike White | unclear | no | [Kings Canyon National Park](https://shop.adventurewithkeen.com/wilderness-press/) (purchase) |
+| condor-trail | Condor Trail | US | CA | 644 | Condor Trail Association | open | no | [Maps & Trail Descriptions (county KML files and mileage sheet)](http://www.condortrail.com/maps-trail-descriptions/) (free) |
 | deseret-hiking-route | Deseret Hiking Route | US | UT, ID | 1609 | Kevin "LarryBoy" DeVries | open | no | [A Complete Guide to the Deseret Hiking Route](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) (free) |
 | desert-trail | Desert Trail | US | CA, NV, OR | 2552 | Desert Trail Association, with the route scouted by Russel Pengely, D. W. "Old Creosote" Tomer and Steve Tabor | unclear | no | [Desert Trail site](https://deserttrail.net) (free) |
 | desert-winter-thru-hike | Desert Winter Thru-Hike | US | AZ, CA | 1287 | Brett Tucker ("Blisterfree") and partner, simBLISSity Ultralight Designs | withheld | no | [Desert WTH! topo mapset](https://www.simblissity.net/desert-wth-mapset.shtml) (free) |
@@ -205,6 +207,8 @@ A route is a trail that a hiker worked out and published. The record names the a
 | kings-canyon-high-basin-route | Kings Canyon High Basin Route | US | CA | 200 | Andrew Skurka | sold | no | [Kings Canyon High Basin Route Guide](https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/) (purchase) |
 | lowest-to-highest-route | Lowest to Highest Route | US | CA | 209 | Brett Tucker ("Blisterfree") and partner, simBLISSity Ultralight Designs | open | no | [L2H Navigation Bundle](http://simblissity.net/L2H.shtml) (free) |
 | mogollon-rim-trail | Mogollon Rim Trail | US | AZ, NM | 805 | Brett Tucker ("Blisterfree") | sold | no | [Mogollon Rim Trail Mapset & Resource Bundle](https://www.simblissity.net/mogollon-rim-trail-mapset.shtml) (purchase) |
+| mojave-sonoran-trail | Mojave-Sonoran Trail | US | NV, CA, AZ | 1006 | Eric Poulin | open | no | [Mojave Sonoran Trail: A 625 Mile Thru-Hiking Route](https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/) (free) |
+| montana-trail | Montana Trail 406 | US | MT | 2934 | Montana Trail 406 Association | open | no | [Montana Trail hike sections and complete hike GPX](https://montanatrail.org/montana-trail-hike-sections/) (free) |
 | northern-new-mexico-loop | Northern New Mexico Loop | US | NM | 805 | Brett Tucker ("Blisterfree") and collaborators | sold | no | [Northern New Mexico Loop Mapset & Resource Bundle](https://simblissity.net/northern-nm-loop-mapset.shtml) (purchase) |
 | pfiffner-traverse | Pfiffner Traverse | US | CO | 124 | Andrew Skurka | sold | no | [Pfiffner Traverse Guide](https://andrewskurka.com/product/pfiffner-traverse-guide-maps/) (purchase) |
 | route-in-between | Route In Between | US | AZ, UT, ID | 4344 | Kevin "LarryBoy" DeVries | open | no | [A Complete Guide to the Deseret Hiking Route](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) (free) |
@@ -262,6 +266,26 @@ SOURCES.md      each distinct source, its terms, and the trails that use it
 - Rebuild the generated files after editing a record: run `python3 tools/build_index.py`.
 
 Follow the licence in each record. Tracks from OpenStreetMap need the credit "© OpenStreetMap contributors" and stay under the ODbL. Tracks from United States federal agencies are public domain in the United States. Other tracks carry the credit named in their record.
+
+## Other lists of long trails
+
+Other people keep lists of long trails, and this dataset is checked against them to find trails it lacks. A trail found that way is then confirmed on its holder's own pages before it is added. Nothing is copied from the lists: they tell us a trail exists, and the record's facts come from the pages it names.
+
+With thanks to the lists checked so far:
+
+- LongTrailsWiki's List of Long Trails and List of Trails to Review (https://www.longtrailswiki.net), part of OpenLongTrails (https://www.openlongtrails.org)
+- Wikipedia's lists of long-distance trails in the United States and of trails in Canada
+- The OpenStreetMap wiki's list of long distance trails in the United States
+- ALDHA-West's list of trails (https://aldhawest.org/trails)
+- The Trek's list of long-distance trails in the US (https://thetrek.co)
+- thru-hiking.com
+- Backpacking Routes (https://backpackingroutes.com)
+- HikeBikeTravel's list of long distance trails in Canada (https://hikebiketravel.com)
+- Explore magazine's list of Canada's longest hiking trails
+- Hike Ontario's member trail associations
+- Nutty Hiker's list of thru-hiking trails
+
+If you keep such a list and want it named here, or named differently, open an issue.
 
 ## Licences
 

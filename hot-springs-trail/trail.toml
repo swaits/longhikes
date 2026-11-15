@@ -80,3 +80,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "days", "terrain", 
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1661401"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["start_lonlat"]
+
+[[link]]
+title = "Hot Springs Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Hot_Springs_Trail"

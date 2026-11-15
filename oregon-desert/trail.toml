@@ -71,3 +71,8 @@ facts = ["summary", "terrain"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1125099"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+[[link]]
+title = "Oregon Desert Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Oregon_Desert_Trail"

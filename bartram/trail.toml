@@ -69,3 +69,8 @@ facts = ["official_url", "summary", "end", "shape"]
 url = "https://blueridgebartram.org/"
 publisher = "Blue Ridge Bartram Trail Conservancy"
 facts = ["summary", "start", "season", "months", "travel"]
+
+[[link]]
+title = "Bartram Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Bartram_Trail"

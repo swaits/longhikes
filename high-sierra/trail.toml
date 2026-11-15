@@ -73,3 +73,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "days", "high_point
 url = "https://www.nps.gov/seki/planyourvisit/whitney.htm"
 publisher = "National Park Service, Sequoia and Kings Canyon National Parks"
 facts = ["high_point"]
+
+[[link]]
+title = "High Sierra Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/High_Sierra_Trail"

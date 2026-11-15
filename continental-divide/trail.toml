@@ -78,3 +78,8 @@ facts = ["summary", "days", "permit", "travel"]
 url = "https://cdtcoalition.org/colorado-14ers-on-the-cdt/"
 publisher = "Continental Divide Trail Coalition"
 facts = ["high_point"]
+
+[[link]]
+title = "Continental Divide National Scenic Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Continental_Divide_National_Scenic_Trail"

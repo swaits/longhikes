@@ -355,6 +355,49 @@ def check_elevation(tid, tdir, rec, errors):
                 errors.append(f"{where}: source.computed must be a date (YYYY-MM-DD)")
 
 
+LINK_FIELDS = ("title", "publisher", "url")
+LINK_KEYS = {"title", "publisher", "url", "note"}
+
+
+def _page(url):
+    """A URL without its scheme and trailing slash, for telling whether two are the same page."""
+    return re.sub(r"^https?://", "", str(url).strip()).rstrip("/")
+
+
+def check_links(tid, rec, errors):
+    """[[link]]: other pages about this one trail. Optional."""
+    links = rec.get("link")
+    if links is None:
+        return
+    if not isinstance(links, list) or not all(isinstance(l, dict) for l in links):
+        errors.append(f"{tid}: link must be an array of tables ([[link]])")
+        return
+    own = {_page(u) for u in (rec.get("hike", {}).get("official_url"),
+                              rec.get("source", {}).get("publisher_url")) if u}
+    seen = set()
+    for i, l in enumerate(links, 1):
+        for field in LINK_FIELDS:
+            if not isinstance(l.get(field), str) or not l[field].strip():
+                errors.append(f"{tid}: link {i} is missing {field}")
+        if "note" in l and (not isinstance(l["note"], str) or not l["note"].strip()):
+            errors.append(f"{tid}: link {i} note must be a non-empty string")
+        for name in l:
+            if name not in LINK_KEYS:
+                errors.append(f"{tid}: link {i} has unknown field {name}")
+        url = l.get("url")
+        if not isinstance(url, str) or not url:
+            continue
+        if not url.startswith(("https://", "http://")):
+            errors.append(f"{tid}: link {i} url must be an http(s) URL")
+        page = _page(url)
+        if page in seen:
+            errors.append(f"{tid}: link {i} repeats the url of an earlier link")
+        seen.add(page)
+        if page in own:
+            errors.append(f"{tid}: link {i} is the official site or the publisher's page; "
+                          "that belongs in hike.official_url or source.publisher_url")
+
+
 def main():
     errors = []
     trail_ids = build_index.trail_dirs(ROOT)
@@ -526,6 +569,7 @@ def main():
             if guides:
                 errors.append(f"{tid}: [[guide]] present but kind is not \"route\"")
 
+        check_links(tid, rec, errors)
         check_hike(tid, rec, errors)
         check_elevation(tid, tdir, rec, errors)
 

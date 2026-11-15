@@ -94,3 +94,8 @@ facts = ["summary", "start", "end", "shape", "travel", "permit", "caution", "hig
 url = "https://www.nps.gov/cany/planyourvisit/hayduke.htm"
 publisher = "National Park Service, Canyonlands National Park"
 facts = ["season", "months"]
+
+[[link]]
+title = "Hayduke"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Hayduke"

@@ -74,3 +74,8 @@ facts = ["permit"]
 url = "https://sheltoweetrace.org/thru-hikers"
 publisher = "Sheltowee Trace Association"
 facts = ["days"]
+
+[[link]]
+title = "Sheltowee Trace"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Sheltowee_Trace"

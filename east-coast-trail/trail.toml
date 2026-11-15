@@ -53,17 +53,18 @@ summary = "The East Coast Trail is a network of wilderness coastal paths on the 
 official_url = "https://www.newfoundlandlabrador.com/plan-and-book/attractions/210995"
 start = "Topsail Beach, Newfoundland"
 end = "Cappahayden, Newfoundland"
-shape = "network"
+shape = "point-to-point"
 season = "April to November"
 months = [4, 5, 6, 7, 8, 9, 10, 11]
 terrain = ["coast"]
 travel = "trail"
+permit = "The trail is free to use and no permit is needed."
 checked = "2026-11-13"
 
 [[hike.source]]
 url = "https://www.newfoundlandlabrador.com/plan-and-book/attractions/210995"
 publisher = "Government of Newfoundland and Labrador, tourism"
-facts = ["official_url", "summary", "end", "shape", "terrain", "travel"]
+facts = ["official_url", "summary", "end", "terrain", "travel"]
 
 [[hike.source]]
 url = "https://eastcoasttrail.com/"
@@ -74,3 +75,13 @@ facts = ["start", "end"]
 url = "https://eastcoasttrail.com/preparing-to-hike/"
 publisher = "East Coast Trail Association"
 facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://eastcoasttrail.com/faq/"
+publisher = "East Coast Trail Association"
+facts = ["permit", "shape"]
+
+[[link]]
+title = "East Coast Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/East_Coast_Trail"

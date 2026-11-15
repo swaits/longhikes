@@ -87,3 +87,8 @@ facts = ["summary", "start", "travel", "season", "months", "caution", "terrain"]
 url = "https://www.wikidata.org/wiki/Q7419548"
 publisher = "Wikidata"
 facts = ["start_lonlat"]
+
+[[link]]
+title = "Northern New Mexico Loop"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Northern_New_Mexico_Loop"

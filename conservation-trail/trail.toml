@@ -58,3 +58,8 @@ checked = "2026-11-14"
 url = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
 publisher = "Foothills Trail Club of Western New York"
 facts = ["official_url", "summary", "start", "end", "shape", "terrain"]
+
+[[link]]
+title = "Conservation Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Conservation_Trail"

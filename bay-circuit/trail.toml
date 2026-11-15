@@ -69,3 +69,8 @@ facts = ["official_url", "summary", "travel"]
 url = "https://www.baycircuit.org/about/"
 publisher = "Bay Circuit Alliance"
 facts = ["summary", "start", "end", "shape", "unfinished"]
+
+[[link]]
+title = "Bay Circuit Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Bay_Circuit_Trail"

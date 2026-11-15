@@ -79,3 +79,8 @@ facts = ["start", "end", "permit", "caution", "travel"]
 url = "https://geogratis.gc.ca/services/geoname/en/geonames/DARPA"
 publisher = "Natural Resources Canada (Canadian Geographical Names)"
 facts = ["start_lonlat"]
+
+[[link]]
+title = "Nepisiguit Mi’gmaq Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Nepisiguit_Mi%E2%80%99gmaq_Trail"

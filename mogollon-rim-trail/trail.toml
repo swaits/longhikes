@@ -88,3 +88,8 @@ facts = ["summary"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/903113"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+[[link]]
+title = "Mogollon Rim Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Mogollon_Rim_Trail"

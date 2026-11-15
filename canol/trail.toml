@@ -68,3 +68,8 @@ checked = "2026-11-13"
 url = "https://www.nwtparks.ca/find-a-park/canol-heritage-trail"
 publisher = "Northwest Territories Parks"
 facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[link]]
+title = "Canol Heritage Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Canol_Heritage_Trail"

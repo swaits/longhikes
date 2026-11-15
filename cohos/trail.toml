@@ -75,3 +75,8 @@ facts = ["summary", "start", "end", "days"]
 url = "https://www.cohostrail.org/the-trail/"
 publisher = "Cohos Trail Association"
 facts = ["summary", "high_point", "terrain", "travel"]
+
+[[link]]
+title = "Cohos Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Cohos_Trail"

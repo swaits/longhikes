@@ -63,3 +63,8 @@ checked = "2026-11-13"
 url = "https://fingerlakestrail.org/"
 publisher = "Finger Lakes Trail Conference"
 facts = ["official_url", "summary", "start", "end", "shape", "travel"]
+
+[[link]]
+title = "Finger Lakes Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Finger_Lakes_Trail"

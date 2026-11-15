@@ -1,0 +1,5 @@
+Source: https://gis.blm.gov/arcgis/rest/services/transportation/BLM_Natl_GTLF_Public_Display/MapServer/7 (Bureau of Land Management, Ground Transportation Linear Features, layer "Trails Managed for Public")
+Licence: us-gov-public-domain (see trail.toml and SOURCES.md in this repository)
+Attribution: Bureau of Land Management
+Source read: 2026-11-14
+Published copy: features with ROUTE_PRMRY_NM = 'Black Canyon Trail' and ADMIN_ST = 'AZ' (170 features); coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

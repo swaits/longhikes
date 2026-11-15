@@ -163,6 +163,19 @@ An array of tables, one per guide, and at least one for every route. A guide is 
 | `publisher` | string, where known | The publisher, where it is not the author. | `"Mountaineers Books"` |
 | `isbn` | string, where known | The book's ISBN. | `"978-0-89886-506-6"` |
 
+## `[[link]]`: other pages about the trail
+
+Optional: an array of tables, one per page. A link is a page about this one trail from someone other than its manager: a wiki article, an encyclopedia article, a second organisation that shares the trail. The trail's page shows them under "More about this trail". It is not for a site's home page, a shop or an app listing.
+
+The trail's own page belongs in `hike.official_url`, not here, and the publisher's page in `source.publisher_url`; a link that repeats either is an error. A link is not a source: a fact still needs its `[[hike.source]]`.
+
+| Field | Type | Meaning | Example |
+| --- | --- | --- | --- |
+| `title` | string | The page's own title, or the trail's name as that site gives it. Plain text. | `"Appalachian Trail"` |
+| `publisher` | string | Who publishes the page. | `"LongTrailsWiki"` |
+| `url` | string | The page's address, `http` or `https`. No two links in a record share one. | `"https://www.longtrailswiki.net/wiki/Appalachian_Trail"` |
+| `note` | string, where needed | One short plain sentence on what the page offers, where that is not obvious. | `"Trip reports and resupply notes."` |
+
 ## Files beside the record
 
 | File | Meaning |

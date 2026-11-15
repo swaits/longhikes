@@ -68,3 +68,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel", "permit",
 url = "https://www.brucetrail.org/"
 publisher = "Bruce Trail Conservancy"
 facts = ["summary"]
+
+[[link]]
+title = "Bruce Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Bruce_Trail"

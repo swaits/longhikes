@@ -71,3 +71,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel"]
 url = "https://hike-mst.org/"
 publisher = "Mid State Trail Association"
 facts = ["summary", "terrain", "caution"]
+
+[[link]]
+title = "Pennsylvania Mid-State Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Pennsylvania_Mid-State_Trail"

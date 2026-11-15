@@ -62,3 +62,8 @@ checked = "2026-11-13"
 url = "https://www.kta-hike.org/donut-hole-trail.html"
 publisher = "Keystone Trails Association"
 facts = ["official_url", "summary", "start", "end", "shape", "travel"]
+
+[[link]]
+title = "Donut Hole Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Donut_Hole_Trail"

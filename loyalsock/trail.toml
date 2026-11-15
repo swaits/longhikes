@@ -70,3 +70,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 url = "https://alpineclubofwilliamsport.com/history-of-the-loyalsock-trail/"
 publisher = "Alpine Club of Williamsport"
 facts = ["high_point"]
+
+[[link]]
+title = "Loyalsock Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Loyalsock_Trail"

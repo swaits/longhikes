@@ -89,3 +89,8 @@ facts = ["high_point"]
 url = "https://appalachiantrail.org/explore/faqs/"
 publisher = "Appalachian Trail Conservancy"
 facts = ["permit", "terrain"]
+
+[[link]]
+title = "Appalachian National Scenic Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Appalachian_National_Scenic_Trail"

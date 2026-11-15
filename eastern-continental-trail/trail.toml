@@ -89,3 +89,8 @@ facts = ["start_lonlat"]
 url = "https://geogratis.gc.ca/services/geoname/en/geonames/EGLSG"
 publisher = "Natural Resources Canada, Canadian Geographical Names Database"
 facts = ["end_lonlat"]
+
+[[link]]
+title = "Eastern Continental Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Eastern_Continental_Trail"

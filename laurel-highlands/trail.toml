@@ -84,3 +84,8 @@ facts = ["days"]
 url = "https://elibrary.dcnr.pa.gov/GetDocument?docId=1743399&DocName=LARI_ParkMap.pdf"
 publisher = "Pennsylvania Department of Conservation and Natural Resources"
 facts = ["high_point"]
+
+[[link]]
+title = "Laurel Highlands Hiking Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Laurel_Highlands_Hiking_Trail"

@@ -89,3 +89,8 @@ facts = ["start_lonlat"]
 url = "https://www.wikidata.org/wiki/Q1891231"
 publisher = "Wikidata (CC0)"
 facts = ["end_lonlat"]
+
+[[link]]
+title = "Southeast Serpentine Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Southeast_Serpentine_Trail"

@@ -106,3 +106,8 @@ facts = ["start", "end", "terrain"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/277494"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+[[link]]
+title = "Bigfoot Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Bigfoot_Trail"

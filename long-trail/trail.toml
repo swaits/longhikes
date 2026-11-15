@@ -80,3 +80,8 @@ facts = ["days", "season", "months", "permit", "end"]
 url = "https://greenmountainclub.org/hikes/sunset-ridge-to-mansfield-summit-the-chin/"
 publisher = "Green Mountain Club"
 facts = ["high_point"]
+
+[[link]]
+title = "Long Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Long_Trail"

@@ -78,3 +78,8 @@ facts = ["summary", "days", "season", "months", "terrain", "travel", "permit"]
 url = "https://www.fs.usda.gov/trails/arizona-nst/plan-visit"
 publisher = "USDA Forest Service"
 facts = ["season", "months", "days"]
+
+[[link]]
+title = "Arizona National Scenic Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Arizona_National_Scenic_Trail"

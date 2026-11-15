@@ -1,0 +1,110 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "condor-trail"
+name = "Condor Trail"
+short_name = "CT"
+country = "US"
+regions = ["CA"]
+length_km = 644
+length_note = "About 400 mi, per the Condor Trail Association"
+kind = "route"
+tier = "regional"
+designation = "Route of linked existing trails through the Los Padres National Forest, planned and promoted by the Condor Trail Association (a non-profit formed in 1996); no agency designation"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Condor Trail Association (publishes the route)"
+publisher_url = "http://www.condortrail.com/"
+url = "http://www.condortrail.com/maps-trail-descriptions/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. The Association's maps page offers county files (KML) for download and states no licence (http://www.condortrail.com/maps-trail-descriptions/, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included. OpenStreetMap relation 18404398 (Condor Trail) holds 73 ways, 168.2 km in 3 parts, about a quarter of the route."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The Association's own county files (KML) state no licence that allows passing them on, and OpenStreetMap holds only about a quarter of the route (168.2 km of about 644 km, in 3 parts), too little to stand for the whole. Get the files from the Association's maps page."
+
+[osm]
+relation = 18404398
+note = "OSM relation 18404398 is named Condor Trail and carries the Association's website; it holds 168.2 km in 3 parts on 2026-11-14. A second relation, Condor Trail Monterey Section (12335229), covers one part. Neither is used, because they are partial."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Condor Trail Association"
+note = "No logo is included. The Association's site shows a small logo icon among its page files; none was taken, and the Association's terms for its use are not stated. Ask the Association before using any mark."
+logo_file = ""
+logo_owner = "Condor Trail Association"
+
+[verification]
+verified = false
+note = "No track included. OpenStreetMap relation 18404398 measured 168.2 km in 3 parts on 2026-11-14, against about 644 km published."
+
+[route]
+creator = "Condor Trail Association"
+line_policy = "open"
+note = "The Association offers county track files (KML) and a mileage sheet for download on its maps page and a map layout in PDF form, and states no licence for them. Its site says the trail is not one long trail but a series of existing trails linked into a route that can be passed across the forest, and that it is not finished."
+
+[[guide]]
+title = "Maps & Trail Descriptions (county KML files and mileage sheet)"
+author = "Condor Trail Association"
+access = "free"
+url = "http://www.condortrail.com/maps-trail-descriptions/"
+format = "web page with downloadable KML files and a spreadsheet"
+publisher = "Condor Trail Association"
+
+[[guide]]
+title = "Hiker's Guide to the 400 Mile Condor Trail Through the Los Padres National Forest in California"
+author = "Brian Sarvis"
+access = "purchase"
+url = "http://www.condortrail.com/"
+format = "book"
+
+[hike]
+summary = "The Condor Trail is a long thru-hiking route through the Los Padres National Forest of coastal central California. It links existing trails from Lake Piru in the south to Bottchers Gap near Monterey in the north. The Condor Trail Association says it is a series of existing trails linked into a route, and that parts need route finding and bushwhacking."
+official_url = "http://www.condortrail.com/"
+start = "Lake Piru, California"
+start_lonlat = [-118.753, 34.482]
+end = "Bottchers Gap, California"
+end_lonlat = [-121.814, 36.354]
+shape = "point-to-point"
+travel = "some-cross-country"
+unfinished = "The Association says the trail is not completed: the basic trail is laid out from Highway 101 at the Cuesta Grade to Lake Piru, and the other sections are still being worked out."
+caution = "The Association says parts of the route are poorly maintained or not maintained, and some cross private land where public access has been denied or is not known."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "http://www.condortrail.com/"
+publisher = "Condor Trail Association"
+facts = ["official_url", "summary", "start", "end", "shape"]
+
+[[hike.source]]
+url = "http://www.condortrail.com/faqs/"
+publisher = "Condor Trail Association"
+facts = ["summary", "start", "end", "travel", "unfinished"]
+
+[[hike.source]]
+url = "http://www.condortrail.com/maps-trail-descriptions/"
+publisher = "Condor Trail Association"
+facts = ["travel", "unfinished", "caution"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/273032"
+publisher = "U.S. Geological Survey, Geographic Names Information System (Lake Piru)"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/269976"
+publisher = "U.S. Geological Survey, Geographic Names Information System (Bottchers Gap)"
+facts = ["end_lonlat"]
+
+[[link]]
+title = "Condor Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Condor_Trail"

@@ -62,3 +62,8 @@ checked = "2026-11-14"
 url = "https://www.fs.usda.gov/r03/tonto/recreation/trails/highline"
 publisher = "USDA Forest Service, Tonto National Forest"
 facts = ["official_url", "summary", "start", "shape", "terrain", "travel"]
+
+[[link]]
+title = "Arizona Highline Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Arizona_Highline_Trail"

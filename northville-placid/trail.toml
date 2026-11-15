@@ -68,3 +68,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "days", "terrain", 
 url = "https://dec.ny.gov/places-to-go/maps/northville-placid-trail-map-blue-mountain"
 publisher = "New York State Department of Environmental Conservation"
 facts = ["summary"]
+
+[[link]]
+title = "Northville Placid Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Northville_Placid_Trail"

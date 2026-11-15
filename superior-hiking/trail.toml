@@ -85,3 +85,8 @@ facts = ["season", "months"]
 url = "https://www.exploreminnesota.com/outdoors/hiking/superior-hiking-trail"
 publisher = "Explore Minnesota"
 facts = ["season", "months"]
+
+[[link]]
+title = "Superior Hiking Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Superior_Hiking_Trail"

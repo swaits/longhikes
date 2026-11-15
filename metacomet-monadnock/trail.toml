@@ -82,3 +82,8 @@ facts = ["high_point"]
 url = "https://ctwoodlands.org/trails/metacomet-trail"
 publisher = "Connecticut Forest and Park Association"
 facts = ["start", "summary"]
+
+[[link]]
+title = "Metacomet-Monadnock Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Metacomet-Monadnock_Trail"

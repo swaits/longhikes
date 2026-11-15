@@ -57,7 +57,10 @@ shape = "point-to-point"
 days = [5, 10]
 high_point = "Sassafras Mountain"
 high_point_m = 1083
+season = "Fall to early spring"
+months = [10, 11, 12, 1, 2, 3]
 terrain = ["forest"]
+permit = "No permit is needed to hike it."
 checked = "2026-11-13"
 
 [[hike.source]]
@@ -79,3 +82,18 @@ facts = ["terrain"]
 url = "https://dnr.sc.gov/news/yr2015/feb12/feb12_sassafras.html"
 publisher = "South Carolina Department of Natural Resources"
 facts = ["high_point"]
+
+[[hike.source]]
+url = "https://backpackingroutes.com/5-southern-long-distance-backpacking-trails/"
+publisher = "Backpacking Routes"
+facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://backpackingroutes.com/four-beginner-friendly-thru-hikes/"
+publisher = "Backpacking Routes"
+facts = ["permit"]
+
+[[link]]
+title = "Foothills Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Foothills_Trail"

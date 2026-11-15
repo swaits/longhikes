@@ -1,0 +1,63 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "toiyabe-crest"
+name = "Toiyabe Crest National Recreation Trail"
+short_name = "TCT"
+country = "US"
+regions = ["NV"]
+length_km = 101
+length_note = "62.7 mi, from the trail's own page on the Humboldt-Toiyabe National Forest site; the Forest's wilderness page says 72 mi, and the Forest Service's track measures 101.2 km (62.9 mi)"
+tier = "regional"
+designation = "National Recreation Trail (Forest Service, Humboldt-Toiyabe National Forest, Austin-Tonopah Ranger District), trail number 23050"
+wave = 1
+
+[source]
+status = "found"
+publisher = "USDA Forest Service, National Forest System trails"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+discovery = "arcgis-query-hash: GET <url>/query with where trail_no = '23050' AND trail_name = 'TOIYABE CREST NATL REC TRAIL' (outSR=4326, f=geojson), hash the answer body and count its rows; fetch again when either changes. Three features on 2026-11-14."
+format = "ArcGIS MapServer layer, queried with trail_no = '23050' AND trail_name = 'TOIYABE CREST NATL REC TRAIL' (3 features); outSR=4326, f=geojson"
+crs = "EPSG:4326"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09). The Forest Service layer is a federal government work."
+attribution = "USDA Forest Service"
+osm_only = false
+mainline = "The three features the layer holds under the trail's name and number, TOIYABE CREST NATL REC TRAIL, number 23050. Two are managed by one district office code (041703) and one by another (041704). Nothing is left out."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "USDA Forest Service (EDW National Forest System trails)"
+line_file = "line.geojson"
+
+[osm]
+relation = 0
+note = "Not searched for a track: the Forest Service publishes the trail's track as public domain data. A name search of OpenStreetMap route relations on 2026-11-14 found none called Toiyabe Crest."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Humboldt-Toiyabe National Forest"
+note = "No logo is included. The Forest Service's page for the trail names no trail logo or emblem."
+logo_file = ""
+logo_owner = "USDA Forest Service"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 101.2
+difference_percent = 0.2
+parts = 1
+note = "Forest Service layer, 3 features: 101.2 km in 1 part, 0.2% over the 101 km (62.7 mi) on the trail's page. The layer's own mileage fields add up to 63.8 mi."
+
+[hike]
+summary = "The Toiyabe Crest Trail follows the crest of the Toiyabe Range in central Nevada, from the Kingston Trailhead in the north to the North/South Twin Trailhead in the south. Its southern part runs through the Arc Dome Wilderness, where bicycles are not allowed. Outside the wilderness it is open to hikers, horse riders and mountain bikers."
+official_url = "https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/trails/toiyabe-crest-national-recreation-trail"
+start = "Kingston Trailhead, Nevada"
+end = "North/South Twin Trailhead, Nevada"
+shape = "point-to-point"
+travel = "trail"
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/trails/toiyabe-crest-national-recreation-trail"
+publisher = "USDA Forest Service, Humboldt-Toiyabe National Forest"
+facts = ["official_url", "summary", "start", "end", "shape", "travel"]

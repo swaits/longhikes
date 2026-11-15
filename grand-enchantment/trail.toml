@@ -82,3 +82,8 @@ facts = ["season", "months"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/928679"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+[[link]]
+title = "Grand Enchantment Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Grand_Enchantment_Trail"

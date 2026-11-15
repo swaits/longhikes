@@ -80,3 +80,8 @@ facts = ["summary", "season", "months"]
 url = "https://vancouverislandtrail.ca/faqs/"
 publisher = "Vancouver Island Trail Association"
 facts = ["season", "months", "days"]
+
+[[link]]
+title = "Vancouver Island Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Vancouver_Island_Trail"

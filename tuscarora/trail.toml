@@ -63,3 +63,8 @@ checked = "2026-11-13"
 url = "https://www.patc.net/tuscarora-trail"
 publisher = "Potomac Appalachian Trail Club"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]
+
+[[link]]
+title = "Tuscarora Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Tuscarora_Trail"

@@ -74,3 +74,8 @@ facts = ["summary"]
 url = "https://sunshinecoasttrail.com/plan-your-hike/multi-day-routes/"
 publisher = "Sunshine Coast Trail (qathet Parks and Wilderness Society)"
 facts = ["high_point"]
+
+[[link]]
+title = "Sunshine Coast Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Sunshine_Coast_Trail"

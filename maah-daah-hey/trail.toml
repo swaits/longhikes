@@ -66,3 +66,8 @@ checked = "2026-11-14"
 url = "https://www.fs.usda.gov/r01/dpg/recreation/trails/maah-daah-hey-trail"
 publisher = "USDA Forest Service, Dakota Prairie Grasslands"
 facts = ["official_url", "summary", "start", "end", "shape", "season", "months", "terrain", "travel", "caution"]
+
+[[link]]
+title = "Maah Daah Hey Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Maah_Daah_Hey_Trail"

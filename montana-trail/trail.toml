@@ -1,0 +1,108 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "montana-trail"
+name = "Montana Trail 406"
+short_name = "MT406"
+country = "US"
+regions = ["MT"]
+length_km = 2934
+length_note = "1,823 mi, as the Montana Trail 406 Association's FAQ states it for the hiking route (the page says 'currently 1,823 miles long' and that routing may change slightly); other sources give about 1,500 to 1,800 mi"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Montana Trail 406 Association, founded 2017); no agency or state designation is stated on the Association's pages"
+wave = "held"
+wave_note = "Held: on the Association's own section pages, five sections at the east end (21 to 25) are given in river miles (149, 157, 68, 77 and 29), and the pages for them describe travel by canoe, kayak or boat, or by bike on gravel roads. The FAQ says the whole route can be travelled on foot but also that there is no trail along the 149 miles of the Wild and Scenic River section. That is about a quarter of the length, so whether this is one continuous walking route is undecided."
+
+[source]
+status = "none"
+publisher = "Montana Trail 406 Association (publishes the route)"
+publisher_url = "https://montanatrail.org"
+url = "https://montanatrail.org/montana-trail-hike-sections/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. The Association offers a complete hike GPX and a GPX for each section on its site, and states no licence or terms of use for them: its FAQ says only 'GPX data of the entire trail is available on this website' and its hike sections page says GPS data is provided by onX (https://montanatrail.org/faq/ and https://montanatrail.org/montana-trail-hike-sections/, read 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for the route was found on 2026-11-14 (a search of Montana for route relations named Montana Trail or MT406 returned none)."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The Association publishes the GPX free but states no terms that allow passing it on, and OpenStreetMap carries no relation for the route. The route also joins the Continental Divide Trail and other trails, and no track is assembled from those here. Get the track from the Association's hike sections page."
+
+[osm]
+relation = 0
+note = "No route relation found when searched on 2026-11-14."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Montana Trail 406 Association"
+note = "No logo is included. The Association shows a logo on its website and none is included here. Ask the Association before using any mark."
+logo_file = ""
+logo_owner = "Montana Trail 406 Association"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Montana Trail 406 Association"
+line_policy = "open"
+creator_words = "GPX data of the entire trail is available on this website."
+creator_words_url = "https://montanatrail.org/faq/"
+note = "A route across Montana from the Idaho border to Fort Union, linking existing trails: the first section overlaps the Pacific Northwest Trail, and the route runs along much of the Continental Divide in Montana. The Association's section pages give river miles for sections 21 to 25 in the east. The Association also publishes a separate bike route. The Association says the founder first thought of the route in 2017 and that the first thru-hike, using hiking, canoeing and biking, was completed in 2022."
+
+[[guide]]
+title = "Montana Trail hike sections and complete hike GPX"
+author = "Montana Trail 406 Association"
+access = "free"
+url = "https://montanatrail.org/montana-trail-hike-sections/"
+format = "web pages for 25 hiking sections and a GPX file for the whole route"
+
+[hike]
+summary = "Montana Trail 406 is a long route across Montana, from the Idaho border to Fort Union near the North Dakota line. It links existing trails along the Continental Divide, crosses the island mountain ranges of central Montana, then follows the Missouri River and the short grass prairie of the east. About a quarter of its length is on the river, where hikers travel by boat."
+official_url = "https://montanatrail.org"
+start = "Idaho-Montana border, Montana"
+end = "Fort Union Trading Post National Historic Site, Montana and North Dakota"
+end_lonlat = [-104.041, 47.999]
+shape = "point-to-point"
+days = [90, 122]
+season = "Mid-June to mid-September"
+months = [6, 7, 8, 9]
+terrain = ["alpine", "prairie"]
+travel = "some-cross-country"
+permit = "The Association names no permit for the route as a whole, but says Glacier National Park requires permits to camp within the park."
+caution = "Sections 21 to 25 are given in river miles, there is no trail along 149 miles of the Wild and Scenic River section, and about 10 percent of the route follows roads or motorized routes."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://montanatrail.org"
+publisher = "Montana Trail 406 Association"
+facts = ["official_url", "summary"]
+
+[[hike.source]]
+url = "https://montanatrail.org/faq/"
+publisher = "Montana Trail 406 Association"
+facts = ["summary", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://montanatrail.org/section-1-idaho-border/"
+publisher = "Montana Trail 406 Association"
+facts = ["start", "shape"]
+
+[[hike.source]]
+url = "https://montanatrail.org/section-25-culbertson/"
+publisher = "Montana Trail 406 Association"
+facts = ["end", "shape", "summary"]
+
+[[hike.source]]
+url = "https://montanatrail.org/section-21-fort-benton/"
+publisher = "Montana Trail 406 Association"
+facts = ["summary", "caution"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q2362959"
+publisher = "Wikidata (CC0), item for Fort Union Trading Post National Historic Site"
+facts = ["end_lonlat"]

@@ -71,3 +71,8 @@ facts = ["summary", "unfinished"]
 url = "https://geogratis.gc.ca/services/geoname/en/geonames/AADVG"
 publisher = "Natural Resources Canada (Canadian Geographical Names)"
 facts = ["start_lonlat"]
+
+[[link]]
+title = "International Appalachian Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/International_Appalachian_Trail"

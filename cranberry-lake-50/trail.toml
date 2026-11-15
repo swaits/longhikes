@@ -67,3 +67,8 @@ facts = ["official_url", "summary", "shape", "terrain", "travel"]
 url = "https://cranberrylake50.org/faq/"
 publisher = "Cranberry Lake 50"
 facts = ["days"]
+
+[[link]]
+title = "Cranberry Lake 50"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Cranberry_Lake_50"

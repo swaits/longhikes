@@ -78,9 +78,20 @@ end = "Northern Yosemite National Park, California"
 shape = "point-to-point"
 terrain = ["alpine", "lakes"]
 travel = "mostly-cross-country"
+days = [14, 21]
 checked = "2026-11-13"
 
 [[hike.source]]
 url = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
 publisher = "Mountaineers Books"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://backpackingroutes.com/category/difficult-terrain/page/3/"
+publisher = "Backpacking Routes"
+facts = ["days"]
+
+[[link]]
+title = "Sierra High Route"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Sierra_High_Route"

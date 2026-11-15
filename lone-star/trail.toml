@@ -70,3 +70,8 @@ facts = ["official_url", "summary", "terrain", "permit", "end"]
 url = "https://lonestartrail.org/content.aspx?club_id=738078&module_id=676893&page_id=22"
 publisher = "Lone Star Hiking Trail Club"
 facts = ["summary", "start", "end", "shape", "travel"]
+
+[[link]]
+title = "Lone Star Hiking Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Lone_Star_Hiking_Trail"

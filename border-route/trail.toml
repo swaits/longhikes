@@ -74,3 +74,8 @@ facts = ["start", "end", "terrain"]
 url = "https://www.fs.usda.gov/r09/superior/recreation/trails/border-route-trail"
 publisher = "USDA Forest Service, Superior National Forest"
 facts = ["summary", "shape", "travel", "permit", "caution"]
+
+[[link]]
+title = "Border Route Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Border_Route_Trail"

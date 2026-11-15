@@ -79,3 +79,8 @@ facts = ["summary", "start", "end", "shape"]
 url = "https://newenglandtrail.org/thru-hiking/"
 publisher = "New England Trail"
 facts = ["days", "season", "months", "high_point", "travel", "permit", "start", "end"]
+
+[[link]]
+title = "New England National Scenic Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/New_England_National_Scenic_Trail"

@@ -54,7 +54,11 @@ official_url = "https://www.alabamaforeverwild.com/weogufka-state-forest-additio
 start = "Flagg Mountain, Alabama"
 end = "Benton MacKaye Trail, Georgia"
 shape = "point-to-point"
+days = [30, 30]
+season = "Spring and fall"
+months = [3, 4, 5, 9, 10, 11]
 terrain = ["forest"]
+travel = "trail"
 checked = "2026-11-13"
 
 [[hike.source]]
@@ -71,3 +75,13 @@ facts = ["summary", "start", "terrain"]
 url = "https://cavespring.ga.gov/attractions/trails-(pinhoti%2C-silver-comet%2C-trail-of-tears-and-more)"
 publisher = "City of Cave Spring, Georgia"
 facts = ["summary", "end", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://backpackingroutes.com/5-southern-long-distance-backpacking-trails/"
+publisher = "Backpacking Routes"
+facts = ["days", "season", "months", "travel"]
+
+[[link]]
+title = "Pinhoti Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Pinhoti_Trail"

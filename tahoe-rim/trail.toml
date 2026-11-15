@@ -81,3 +81,8 @@ facts = ["summary", "shape", "permit"]
 url = "https://tahoerimtrail.org/day-hiking/peaks-vistas/"
 publisher = "Tahoe Rim Trail Association"
 facts = ["terrain"]
+
+[[link]]
+title = "Tahoe Rim Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Tahoe_Rim_Trail"

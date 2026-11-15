@@ -1,0 +1,82 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "black-canyon"
+name = "Black Canyon National Recreation Trail"
+short_name = "BCT"
+country = "US"
+regions = ["AZ"]
+length_km = 129
+length_note = "80 mi, as the Bureau of Land Management states it on its trail page and handout (its National Recreation Trail application of 2008 says about 82 mi)"
+tier = "regional"
+designation = "National Recreation Trail (certified 2008), managed by the Bureau of Land Management, Hassayampa Field Office; shared by hikers, mountain bikers and horse riders"
+wave = 1
+
+[source]
+status = "found"
+publisher = "Bureau of Land Management (Ground Transportation Linear Features)"
+url = "https://gis.blm.gov/arcgis/rest/services/transportation/BLM_Natl_GTLF_Public_Display/MapServer/7"
+discovery = "arcgis-query-hash: GET <url>/query with where ROUTE_PRMRY_NM = 'Black Canyon Trail' AND ADMIN_ST = 'AZ' (outSR=4326, f=geojson); hash the answer body and count its rows; fetch again when either changes. 170 features on 2026-11-14."
+format = "ArcGIS MapServer layer 7, outSR=4326, f=geojson, 170 features"
+crs = "EPSG:4326"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09). The layer is a Bureau of Land Management dataset, a federal government work."
+attribution = "Bureau of Land Management"
+osm_only = false
+mainline = "Features named Black Canyon Trail in Arizona on the BLM layer. All 170 are coded National Recreation Trail, Black Canyon Trail System. Five features named Black Canyon Trail Connector (0.9 mi) are left out. The layer holds one feature coded motorized; it is kept as served."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "Bureau of Land Management (GTLF)"
+line_file = "line.geojson"
+
+[osm]
+relation = 15569997
+note = "OpenStreetMap has a hiking route relation named Black Canyon National Recreation Trail (15569997, operator Bureau of Land Management). It is not used: the BLM publishes the track as public domain data."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Bureau of Land Management, Hassayampa Field Office"
+note = "No logo is included. The BLM's page and handout for the trail show no trail logo; the Black Canyon Trail Coalition may have one, which was not looked at."
+logo_file = ""
+logo_owner = "Bureau of Land Management"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 117.3
+difference_percent = -9.1
+parts = 19
+note = "170 features of the BLM layer, 117.3 km in 19 parts, 9.1% short of 129 km (80 mi). The BLM's own mileage field for the features adds up to 72.8 mi. The parts are separate because the layer has small gaps and missing pieces between features (more than 100 m apart); the layer has no feature for these, so the track is not joined here."
+
+[hike]
+summary = "The Black Canyon Trail is a long singletrack trail through the Sonoran Desert north of Phoenix, Arizona, in the foothills of the Bradshaw Mountains. It runs past saguaro forests and rugged canyons and is often walked in segments from one of five trailheads. It is a shared trail: the Bureau of Land Management describes it as open to hikers, horseback riders and mountain bikers."
+official_url = "https://www.blm.gov/visit/black-canyon-national-recreation-trail"
+start = "Carefree Highway (State Route 74), Arizona"
+end = "Prescott National Forest boundary, Arizona"
+shape = "point-to-point"
+season = "November to April"
+months = [11, 12, 1, 2, 3, 4]
+terrain = ["desert"]
+travel = "trail"
+permit = "No use fees or permits are needed for general visits; commercial, competitive or large group events may need a special recreation permit."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.blm.gov/visit/black-canyon-national-recreation-trail"
+publisher = "Bureau of Land Management"
+facts = ["official_url", "summary", "season", "months", "terrain", "travel", "permit"]
+
+[[hike.source]]
+url = "https://www.blm.gov/arizona/public-room/map/black-canyon-national-recreation-trail"
+publisher = "Bureau of Land Management, Hassayampa Field Office (trail handout)"
+facts = ["summary", "season", "months", "terrain", "travel", "permit"]
+
+[[hike.source]]
+url = "https://www.nrtapplication.org/trails/black-canyon-national-recreation-trail"
+publisher = "National Recreation Trails database (nrtapplication.org), from the trail's 2008 application"
+facts = ["start", "end", "shape"]
+
+[[link]]
+title = "Black Canyon Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Black_Canyon_Trail"

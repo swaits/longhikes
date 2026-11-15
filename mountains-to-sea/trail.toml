@@ -79,3 +79,8 @@ facts = ["summary", "start", "end", "days", "season", "months", "travel", "permi
 url = "https://mountainstoseatrail.org/segment/3/"
 publisher = "Friends of the Mountains-to-Sea Trail"
 facts = ["high_point"]
+
+[[link]]
+title = "Mountains to Sea Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Mountains_to_Sea_Trail"

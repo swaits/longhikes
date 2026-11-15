@@ -71,3 +71,8 @@ checked = "2026-11-14"
 url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
 publisher = "Jennifer Pharr Davis (a creator of the route)"
 facts = ["official_url", "summary", "shape", "terrain", "travel", "caution"]
+
+[[link]]
+title = "Appalachian High Route"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Appalachian_High_Route"

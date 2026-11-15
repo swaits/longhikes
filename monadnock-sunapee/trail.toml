@@ -72,3 +72,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "days", "high_point
 url = "https://www.nhstateparks.org/NHStateParks/media/NHStateParks/PDFs/Maps/monadnock-hiking-map_info_3-2026-combined.pdf"
 publisher = "New Hampshire Division of Parks and Recreation"
 facts = ["high_point"]
+
+[[link]]
+title = "Monadnock-Sunapee Greenway"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Monadnock-Sunapee_Greenway"

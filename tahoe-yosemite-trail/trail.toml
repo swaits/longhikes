@@ -92,3 +92,8 @@ facts = ["start_lonlat"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/255168"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+[[link]]
+title = "Tahoe-Yosemite Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Tahoe-Yosemite_Trail"

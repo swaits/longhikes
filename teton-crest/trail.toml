@@ -60,6 +60,9 @@ shape = "point-to-point"
 terrain = ["alpine", "lakes"]
 travel = "trail"
 permit = "Permits are required for all overnight stays in the backcountry of Grand Teton National Park, obtained through recreation.gov or a permit office."
+days = [2, 4]
+season = "Summer to early fall"
+months = [7, 8, 9]
 checked = "2026-11-13"
 
 [[hike.source]]
@@ -81,3 +84,8 @@ facts = ["start_lonlat"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1609162"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://backpackingroutes.com/teton-crest-trail/"
+publisher = "Backpacking Routes"
+facts = ["days", "season", "months"]

@@ -84,3 +84,8 @@ checked = "2026-11-13"
 url = "https://doingmiles.com/route-big-seki-loop/"
 publisher = "Amy and James (Doing Miles)"
 facts = ["official_url", "summary", "start", "shape", "days", "season", "months", "high_point", "terrain", "travel", "permit"]
+
+[[link]]
+title = "Big SEKI Loop"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Big_SEKI_Loop"

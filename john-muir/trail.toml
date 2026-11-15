@@ -73,3 +73,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "high_point", "trav
 url = "https://www.cicerone.co.uk/products/hiking-the-john-muir-trail"
 publisher = "Cicerone Press"
 facts = ["days", "season", "months", "high_point", "terrain"]
+
+[[link]]
+title = "John Muir Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/John_Muir_Trail"

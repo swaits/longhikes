@@ -70,3 +70,8 @@ facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"
 url = "https://ozarkhighlandstrail.com/faq/"
 publisher = "Ozark Highlands Trail Association"
 facts = ["season", "months"]
+
+[[link]]
+title = "Ozark Highlands Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Ozark_Highlands_Trail"

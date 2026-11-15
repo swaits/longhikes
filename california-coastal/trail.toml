@@ -58,3 +58,8 @@ checked = "2026-11-13"
 url = "https://www.coastal.ca.gov/coastal-trail/"
 publisher = "California Coastal Commission"
 facts = ["official_url", "summary", "terrain", "travel", "unfinished"]
+
+[[link]]
+title = "California Coastal Trail (incomplete)"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/California_Coastal_Trail"

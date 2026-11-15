@@ -79,3 +79,8 @@ facts = ["travel"]
 url = "https://northcountrytrail.org/the-trail/trail-maps/"
 publisher = "North Country Trail Association"
 facts = ["terrain", "summary"]
+
+[[link]]
+title = "North Country National Scenic Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/North_Country_National_Scenic_Trail"

@@ -64,3 +64,8 @@ checked = "2026-11-14"
 url = "https://www.loxfltrail.org/Ocean2LakeHikingTrail.html"
 publisher = "Florida Trail Association, Loxahatchee Chapter"
 facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[link]]
+title = "Ocean to Lake Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Ocean_to_Lake_Trail"

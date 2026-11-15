@@ -37,6 +37,7 @@ To add one:
 2. Write `trail.toml` with every required field in docs/schema.md.
 3. Add `line.geojson` only if the track may be shared (see above), plus `release.txt`.
    For a track from an OpenStreetMap route relation, create the trail directory and `trail.toml` first, then run `python3 tools/osm_track.py RELATION_ID --id TRAIL_ID` (Python standard library only; add `--dry` to print the figures and write nothing). It fetches the relation and its sub-relations through Overpass, writes `line.geojson`, `alternates.geojson` (only when there are side ways) and `release.txt`, and prints the way counts, the measured length in km and the number of parts for `[verification]` and `[osm]`. It will not replace an existing `line.geojson` without `--force`.
+   To point to other good pages about the trail (a wiki or encyclopedia article), add a `[[link]]` table for each; the trail's own page goes in `hike.official_url` instead.
 4. Add a logo only as `shield.svg` or `shield.png`, and name its holder in `shield.logo_owner` and where the art came from in `shield.logo_source`.
 5. Run the two commands above.
 

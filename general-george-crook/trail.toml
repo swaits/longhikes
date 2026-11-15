@@ -1,0 +1,69 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "general-george-crook"
+name = "General George Crook National Recreation Trail"
+short_name = "GGC"
+country = "US"
+regions = ["AZ"]
+length_km = 95
+length_note = "58.9 mi, the Apache-Sitgreaves National Forests' figure for its part of the trail (trail 140), which the Forest Service's National Recreation Trail record also gives in its text (the same record's table says 138 mi); no Forest Service page gives one length for the whole trail"
+tier = "regional"
+designation = "National Recreation Trail (certified 1979), managed by the Forest Service: trail 140 on the Apache-Sitgreaves National Forests, trail 130 on the Coconino National Forest and trail 64 on the Prescott National Forest"
+wave = "held"
+wave_note = "Held: the Forest Service publishes the trail as three pieces on three national forests and gives no length for the whole. The Apache-Sitgreaves page gives 58.9 mi for its piece alone. The Forest Service track for all three pieces measures 193.5 km. The Coconino and Apache-Sitgreaves pieces join and make one walkable trail of about 177 km; the Prescott piece lies about 20 km west of them with a gap between. What would settle it: a Forest Service statement of the whole trail's length and ends."
+
+[source]
+status = "found"
+publisher = "USDA Forest Service, National Forest System trails"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+discovery = "arcgis-query-hash: GET <url>/query with where trail_no IN ('130','140','0064') AND trail_name IN ('GENERAL GEORGE CROOK','GENERAL CROOK') (outSR=4326, f=geojson), hash the answer body and count its rows; fetch again when either changes. Six features on 2026-11-14."
+format = "ArcGIS MapServer layer, queried with trail_no IN ('130','140','0064') AND trail_name IN ('GENERAL GEORGE CROOK','GENERAL CROOK') (6 features); outSR=4326, f=geojson"
+crs = "EPSG:4326"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09). The Forest Service layer is a federal government work."
+attribution = "USDA Forest Service"
+osm_only = false
+mainline = "The layer holds the trail as trail 140 (one feature, Apache-Sitgreaves), trail 130 (four features, Coconino) and trail 64 (one feature, Prescott). The connector trail 140A and trails with other names are left out."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "USDA Forest Service (EDW National Forest System trails)"
+line_file = "line.geojson"
+length_gap_note = "The published 58.9 mi is the Apache-Sitgreaves piece alone. The track holds all three Forest Service pieces: about 93 km for trail 140 (57.9 mi in the layer), about 83 km for trail 130 and about 16 km for trail 64."
+
+[osm]
+relation = 14392604
+note = "OpenStreetMap has hiking relations named General George Crook National Recreation Trail (14392604, ref 140), General Crook 140 (13616675) and General Crook Trail #130 (Incomplete) (7013986). They are not used: the Forest Service publishes the track as public domain data."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "USDA Forest Service"
+note = "No logo is included. The Forest Service's pages for the trail name no trail logo; they say the trail is marked with metal chevrons."
+logo_file = ""
+logo_owner = "USDA Forest Service"
+
+[verification]
+verified = true
+date = "2026-11-14"
+measured_km = 193.5
+difference_percent = 103.7
+parts = 3
+note = "Forest Service layer, 6 features: 193.5 km in 3 parts, 103.7% over the 95 km (58.9 mi) published for the Apache-Sitgreaves piece. The Coconino and Apache-Sitgreaves features join (gaps under 1 km) into one part of about 177 km; the Prescott feature is a separate part of about 16 km, 20 km from the west end of the Coconino piece."
+
+[hike]
+summary = "The General Crook Trail follows the line of a military supply road set up in 1871 by General George Crook, along the Mogollon Rim in central Arizona. The Forest Service manages it as three pieces on the Apache-Sitgreaves, Coconino and Prescott national forests. The Boy Scouts of America retraced it in the early 1970s and marked it with metal chevrons."
+official_url = "https://www.fs.usda.gov/r03/apache-sitgreaves/recreation/trails/general-crook-trail"
+shape = "point-to-point"
+travel = "trail"
+caution = "The Forest Service's National Recreation Trail record says the trail can be hard to find in some places."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r03/apache-sitgreaves/recreation/trails/general-crook-trail"
+publisher = "USDA Forest Service, Apache-Sitgreaves National Forests"
+facts = ["official_url", "summary", "shape", "travel"]
+
+[[hike.source]]
+url = "https://www.nrtapplication.org/trails/general-george-crook"
+publisher = "National Recreation Trails database (nrtapplication.org), from the trail's 1979 application"
+facts = ["summary", "caution"]

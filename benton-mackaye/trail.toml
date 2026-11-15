@@ -80,3 +80,8 @@ facts = ["summary", "start", "end", "shape", "high_point", "permit"]
 url = "https://bmta.org/blog/thru-hiking-the-benton-mackaye-trail-embrace-the-wilderness"
 publisher = "Benton MacKaye Trail Association"
 facts = ["days", "season", "months", "terrain"]
+
+[[link]]
+title = "Benton MacKaye Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Benton_MacKaye_Trail"

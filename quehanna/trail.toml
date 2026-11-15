@@ -62,3 +62,8 @@ checked = "2026-11-13"
 url = "https://www.kta-hike.org/quehanna-trail.html"
 publisher = "Keystone Trails Association"
 facts = ["summary", "official_url", "start", "shape", "terrain", "travel"]
+
+[[link]]
+title = "Quehanna Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Quehanna_Trail"

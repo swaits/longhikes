@@ -71,3 +71,8 @@ facts = ["caution"]
 url = "https://www.usgs.gov/us-board-on-geographic-names/domestic-names"
 publisher = "U.S. Geological Survey, Geographic Names Information System (GNIS 566405 Fort Fairfield, ME)"
 facts = ["end_lonlat"]
+
+[[link]]
+title = "International Appalachian Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/International_Appalachian_Trail"

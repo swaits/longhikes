@@ -1,0 +1,90 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "guadalupe-ridge-trail"
+name = "Guadalupe Ridge Trail"
+short_name = "GRT"
+country = "US"
+regions = ["TX", "NM"]
+length_km = 161
+length_note = "100 mi (161 km), per the National Park Service"
+tier = "regional"
+designation = "National Recreation Trail (designated 2018), shared by Guadalupe Mountains National Park, Carlsbad Caverns National Park, the Lincoln National Forest and the Bureau of Land Management; the National Park Service publishes it"
+wave = 1
+
+[source]
+status = "none"
+publisher = "National Park Service (publishes the trail)"
+publisher_url = "https://www.nps.gov/thingstodo/grt.htm"
+url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. The National Park Service's public trails layer is a federal government work, but it holds only seven features named Guadalupe Ridge Trail, all in Carlsbad Caverns National Park (queried 2026-11-14)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included. The National Park Service layer holds only the part inside Carlsbad Caverns National Park, which the Service says is over 20 mi of the 100."
+source_checked = "2026-11-14"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No whole track is published as open data. The National Park Service's public trails layer holds only the part in Carlsbad Caverns National Park (seven features, about 20 mi of the 100), and a name search of OpenStreetMap route relations on 2026-11-14 found none called Guadalupe Ridge Trail. The Service's trail page shows an overview map and its handout carries a map."
+
+[osm]
+relation = 0
+note = "Searched by name on 2026-11-14; no route relation for the Guadalupe Ridge Trail was found."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "National Park Service"
+note = "No logo is included. The Service's trail page and handout show no trail logo or emblem."
+logo_file = ""
+logo_owner = "National Park Service"
+
+[verification]
+verified = false
+note = "No track to measure."
+
+[hike]
+summary = "The Guadalupe Ridge Trail runs about 100 miles from Guadalupe Peak, the highest point in Texas, to White's City in New Mexico. It crosses Guadalupe Mountains National Park, Lincoln National Forest, Bureau of Land Management land and Carlsbad Caverns National Park, through Chihuahuan Desert, conifer forest and canyons. Water is scarce along the way."
+official_url = "https://www.nps.gov/thingstodo/grt.htm"
+start = "Guadalupe Peak, Guadalupe Mountains National Park, Texas"
+start_lonlat = [-104.861, 31.891]
+end = "White's City, New Mexico"
+end_lonlat = [-104.377, 32.176]
+shape = "point-to-point"
+days = [5, 8]
+season = "Spring and fall"
+months = [3, 4, 5, 9, 10, 11]
+high_point = "Guadalupe Peak"
+high_point_m = 2667
+terrain = ["desert", "forest", "canyon"]
+travel = "trail"
+permit = "A Wilderness Use Permit is required for overnight use in Guadalupe Mountains and Carlsbad Caverns National Parks, and a single recreation.gov itinerary can cover the whole trail."
+caution = "Water is scarce and not reliable in the Guadalupe Mountains, and the Park Service says planning where to find or cache water is one of the main factors on this trail."
+checked = "2026-11-14"
+
+[[hike.source]]
+url = "https://www.nps.gov/thingstodo/grt.htm"
+publisher = "National Park Service"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "high_point", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://www.nps.gov/cave/upload/Guadalupe-Ridge-Trail_Web.pdf"
+publisher = "National Park Service, Carlsbad Caverns National Park (trail handout)"
+facts = ["summary", "start", "end", "high_point", "terrain", "permit"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1358489"
+publisher = "U.S. Geological Survey, Geographic Names Information System (Guadalupe Peak)"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/899991"
+publisher = "U.S. Geological Survey, Geographic Names Information System (Whites City)"
+facts = ["end_lonlat"]
+
+[[link]]
+title = "Guadalupe Ridge Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Guadalupe_Ridge_Trail"

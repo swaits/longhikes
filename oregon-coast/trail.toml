@@ -68,3 +68,8 @@ facts = ["official_url", "summary", "terrain", "travel"]
 url = "https://stateparks.oregon.gov/?do=park.profile&parkId=193"
 publisher = "Oregon Parks and Recreation Department"
 facts = ["summary", "start", "end", "shape", "caution"]
+
+[[link]]
+title = "Oregon Coast Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Oregon_Coast_Trail"

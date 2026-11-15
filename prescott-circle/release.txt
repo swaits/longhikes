@@ -1,0 +1,7 @@
+prescott-circle
+
+Source: https://www.openstreetmap.org/relation/4717133
+Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
+Attribution: OpenStreetMap contributors (ODbL)
+Source read: 2026-11-14
+Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

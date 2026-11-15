@@ -63,3 +63,8 @@ checked = "2026-11-13"
 url = "https://masondixontrail.wixsite.com/mdts"
 publisher = "Mason-Dixon Trail System"
 facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"]
+
+[[link]]
+title = "Mason-Dixon Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Mason-Dixon_Trail"

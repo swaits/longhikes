@@ -80,3 +80,8 @@ facts = ["summary", "terrain", "travel", "season", "months"]
 url = "https://www.fs.usda.gov/r06/fremont-winema/recreation/trails/fremont-national-recreation-trail-160-southern"
 publisher = "USDA Forest Service, Fremont-Winema National Forest"
 facts = ["end", "season", "months"]
+
+[[link]]
+title = "Fremont Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Fremont_Trail"

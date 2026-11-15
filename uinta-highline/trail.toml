@@ -70,3 +70,8 @@ facts = ["summary", "official_url", "start", "end", "shape", "high_point", "terr
 url = "https://www.visitutah.com/articles/backpacking-high-uintas"
 publisher = "Utah Office of Tourism"
 facts = ["season", "months"]
+
+[[link]]
+title = "Uinta Highline Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Uinta_Highline_Trail"

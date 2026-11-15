@@ -59,9 +59,10 @@ days = [28, 42]
 season = "July to September"
 months = [7, 8, 9]
 high_point = "Below Coney Summit"
-high_point_m = 4048
+high_point_m = 4045
 terrain = ["alpine"]
 travel = "trail"
+permit = "No permit is needed, except a free self-issued permit at the station where the trail enters each wilderness area."
 checked = "2026-11-13"
 
 [[hike.source]]
@@ -83,3 +84,13 @@ facts = ["season", "months"]
 url = "https://coloradotrail.org/"
 publisher = "Colorado Trail Foundation"
 facts = ["high_point"]
+
+[[hike.source]]
+url = "https://coloradotrail.org/traveling-the-ct/faq/"
+publisher = "Colorado Trail Foundation"
+facts = ["permit"]
+
+[[link]]
+title = "Colorado Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Colorado_Trail"

@@ -81,3 +81,8 @@ facts = ["permit", "start"]
 url = "https://www.pnt.org/pnta/know-before-you-go/plan-your-trip/climate-weather/"
 publisher = "Pacific Northwest Trail Association"
 facts = ["season", "months"]
+
+[[link]]
+title = "Pacific Northwest National Scenic Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Pacific_Northwest_National_Scenic_Trail"

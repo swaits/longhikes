@@ -69,3 +69,8 @@ facts = ["official_url", "summary", "shape", "season", "months", "high_point", "
 url = "https://www.americantrails.org/resources/massanutten-mountain-trail-virginia"
 publisher = "American Trails (National Recreation Trails)"
 facts = ["summary", "terrain"]
+
+[[link]]
+title = "Massanutten Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Massanutten_Trail"

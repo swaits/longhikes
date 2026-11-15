@@ -91,3 +91,8 @@ facts = ["permit"]
 url = "https://greatdividetrail.com/go-hiking/trip-planning-resources/"
 publisher = "Great Divide Trail Association"
 facts = ["season", "months"]
+
+[[link]]
+title = "Great Divide Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Great_Divide_Trail"

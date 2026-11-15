@@ -75,3 +75,8 @@ checked = "2026-11-13"
 url = "https://erikschlimmer.com/tar-1"
 publisher = "Erik Schlimmer"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]
+
+[[link]]
+title = "Trans Adirondack Route"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Trans_Adirondack_Route"

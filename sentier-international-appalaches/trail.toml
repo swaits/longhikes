@@ -69,3 +69,8 @@ facts = ["summary", "official_url", "end", "shape", "season", "months", "terrain
 url = "https://tourismnewbrunswick.ca/listing/international-appalachian-trail-tide-head-perth-andover"
 publisher = "Tourism New Brunswick"
 facts = ["summary", "start", "terrain"]
+
+[[link]]
+title = "International Appalachian Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/International_Appalachian_Trail"

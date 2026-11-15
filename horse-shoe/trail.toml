@@ -62,3 +62,8 @@ checked = "2026-11-13"
 url = "https://cart.hstrail.org/"
 publisher = "Horse-Shoe Trail Conservancy"
 facts = ["official_url", "summary", "start", "end", "shape", "travel"]
+
+[[link]]
+title = "Horse-Shoe Trail"
+publisher = "LongTrailsWiki"
+url = "https://www.longtrailswiki.net/wiki/Horse-Shoe_Trail"

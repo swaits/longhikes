@@ -108,6 +108,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | east-beach-trail | BC Parks (Naikoon Provincial Park) (publishes the trail) | [source page](https://bcparks.ca/naikoon-park/) | none-stated | record only |
 | east-coast-trail | East Coast Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2199386) | ODbL-1.0 | track |
 | eastern-continental-trail | M. J. Eberhart (trail name Nimblewill Nomad), who publishes the route | [source page](https://nimblewillnomad.com/books/) | none-stated | record only |
+| eastern-sierra-high-route | Dan Stenziano (publishes the route) | [source page](https://danstenziano.com/products/eastern-sierra-high-route-guide) | none-stated | record only |
 | finger-lakes | Finger Lakes Trail Conference (publishes the trail; the North Country Trail Association hosts its track as 'agol_flt') | [source page](https://www.openstreetmap.org/relation/12725656) | ODbL-1.0 | track |
 | florida | Florida Trail Association with the USDA Forest Service Southern Region | [source page](https://www.openstreetmap.org/relation/14480287) | ODbL-1.0 | track |
 | foothills | Foothills Trail Conservancy (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4572989) | ODbL-1.0 | track |
@@ -116,7 +117,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | general-george-crook | USDA Forest Service, National Forest System trails | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | grand-enchantment | simBLISSity Ultralight Designs (publishes the route, mapset and guidebook; no open geometry) | [source page](https://www.openstreetmap.org/relation/4485206) | ODbL-1.0 | record only |
 | grand-moab-route | Paul Mags, PMags.com (publishes the route) | [source page](https://pmags.com/the-grand-moab-route) | none-stated | record only |
-| grand-valley-trail | Grand Valley Trails Association (publishes the trail) | [source page](https://gvta.on.ca/Grand-Valley-Trails) | none-stated | record only |
+| grand-valley-trail | Grand Valley Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3637768) | ODbL-1.0 | track |
 | great-basin-trail | Ryan "Dirtmonger" Sylva, who publishes the route | [source page](https://www.gossamergear.com/blogs/our-blog/great-basin-trail) | none-stated | record only |
 | great-colorado-route | Donovan "Iceman" Rice, who publishes the route | [source page](https://www.greatcoloradoroute.com/route) | none-stated | record only |
 | great-divide-trail | Great Divide Trail Association (account 'GreatDivideTrail', public map) | [source page](https://www.openstreetmap.org/relation/8139599) | ODbL-1.0 | track |
@@ -164,7 +165,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | montana-trail | Montana Trail 406 Association (publishes the route) | [source page](https://montanatrail.org/montana-trail-hike-sections/) | none-stated | record only |
 | mountains-to-sea | North Carolina Division of Parks and Recreation; Friends of the Mountains-to-Sea Trail (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1395404) | ODbL-1.0 | track |
 | natchez-trace | National Park Service, Natchez Trace Parkway | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/NATT_TRANS_NSTTrail/FeatureServer/0) | us-gov-public-domain | track |
-| nepisiguit-migmaq-trail | Sentier Nepisiguit Mi'gmaq Trail Inc. (publishes the trail) | [source page](https://migmaqtrail.ca/discover.php) | none-stated | record only |
+| nepisiguit-migmaq-trail | Sentier Nepisiguit Mi'gmaq Trail Inc. (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13656926) | ODbL-1.0 | track |
 | new-england | National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/NEEN_BND_NationalScenicTrailCenterline_ln/FeatureServer/0) | us-gov-public-domain | track |
 | north-boundary | Parks Canada, Jasper National Park (publishes the trail; no open geometry found) | [source page](https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary) | none-stated | record only |
 | north-country | North Country Trail Association for the National Park Service | [source page](https://www.openstreetmap.org/relation/11140515) | ODbL-1.0 | track |
@@ -218,7 +219,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | tahoe-yosemite-trail | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/wilderness-press/) | none-stated | record only |
 | teton-crest | National Park Service; USFS (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3895101) | ODbL-1.0 | record only |
 | teton-range-traverse | Cam Honan, The Hiking Life (publishes the route) | [source page](https://thehikinglife.com/2017/07/teton-range-traverse/) | none-stated | record only |
-| thames-valley-trail | Thames Valley Trail Association (publishes the trail) | [source page](https://tvta.ca/hiking-information/trail-routes-and-maps/) | none-stated | record only |
+| thames-valley-trail | Thames Valley Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3444520) | ODbL-1.0 | track |
 | timberline | USDA Forest Service, Mount Hood National Forest | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | record only |
 | toiyabe-crest | USDA Forest Service, National Forest System trails | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | trans-adirondack-route | Erik Schlimmer (publishes the route) | [source page](https://erikschlimmer.com/books-sale-/) | none-stated | record only |

@@ -1,0 +1,96 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "eastern-sierra-high-route"
+name = "Eastern Sierra High Route"
+short_name = "ESHR"
+short_name_url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
+country = "US"
+regions = ["CA"]
+length_km = 113
+length_note = "65 to 70 mi, per the author (the upper figure, 113 km, is used)"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Dan Stenziano); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Dan Stenziano (publishes the route)"
+publisher_url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
+url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the author and the page its facts were read on (https://danstenziano.com/products/eastern-sierra-high-route-guide, read 2026-11-15)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the author sells the route as a guide with a map set and waypoints."
+source_checked = "2026-11-15"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is sold as a guide. Its waypoints and map set come with the purchase, and no licence that allows passing them on is stated. Get them from the author's page."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's author does not publish a track."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Dan Stenziano"
+note = "No logo is included; a person-defined route has no emblem. Ask the author before using any mark."
+logo_file = ""
+logo_owner = "Dan Stenziano"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Dan Stenziano"
+line_policy = "sold"
+note = "The guide has a field guide, a 10-page printable map set and detailed waypoints in JSON; the page lists no GPX track. The author says the route stays as close to the main Sierra crest as it can without becoming technical, and uses as little trail as possible. It has five section hikes of 23 to 35 miles."
+
+[[guide]]
+title = "Eastern Sierra High Route Guide"
+author = "Dan Stenziano"
+access = "purchase"
+url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
+format = "Download package: field guide, trip planning document, section hikes, printable map set (PDF), waypoints (JSON), datasheet"
+price = "$15.00 USD"
+price_checked = "2026-11-15"
+
+[hike]
+summary = "The Eastern Sierra High Route runs along the east side of California's Sierra Nevada, from the Duck Pass trailhead above Mammoth Lakes to the Bishop Pass trailhead at South Lake near Bishop. It is 65 to 70 miles, with 70 to 80 percent of it off-trail and 13 cross-country passes. The author says nothing on it is harder than class 3, and that it takes about a week or less."
+official_url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
+start = "Duck Pass trailhead, Mammoth Lakes, California"
+start_lonlat = [-118.994, 37.596]
+end = "Bishop Pass trailhead at South Lake, near Bishop, California"
+end_lonlat = [-118.57, 37.165]
+shape = "point-to-point"
+terrain = ["alpine"]
+travel = "mostly-cross-country"
+permit = "A wilderness permit is required year round for overnight trips from the Duck Pass trailhead, and from May 1 through November 1 overnight visitors there are limited to 30 people per day."
+caution = "The author says the route is consistently difficult, with steep and sometimes loose talus, scree and sand."
+checked = "2026-11-15"
+
+[[hike.source]]
+url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
+publisher = "Dan Stenziano"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r05/inyo/recreation/trails/duck-pass-trail"
+publisher = "U.S. Forest Service, Inyo National Forest"
+facts = ["permit"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r05/inyo/recreation/coldwater-campground"
+publisher = "U.S. Forest Service, Inyo National Forest"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/267526"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

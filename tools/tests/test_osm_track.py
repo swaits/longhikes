@@ -243,23 +243,34 @@ class RunTests(unittest.TestCase):
 
 
 class FetchTests(unittest.TestCase):
-    def test_retry_then_mirror(self):
+    def test_next_endpoint_before_any_wait(self):
         calls, sleeps = [], []
 
         def opener(req, timeout):
             calls.append((req.full_url, req.get_header("User-agent"), timeout))
-            if len(calls) <= 5:
+            if len(calls) <= 4:
                 code = 429 if len(calls) % 2 else 504
                 raise urllib.error.HTTPError(req.full_url, code, "busy", {}, None)
             return io.BytesIO(b'{"elements": []}')
 
         out = T.fetch(1, opener=opener, sleep=sleeps.append)
         self.assertEqual(out, {"elements": []})
-        self.assertEqual(calls[0][0], T.ENDPOINTS[0])
+        n = len(T.ENDPOINTS)
+        self.assertEqual([c[0] for c in calls[:n]], T.ENDPOINTS)
         self.assertEqual(calls[4][0], T.ENDPOINTS[1])
-        self.assertEqual(sleeps, [10, 30, 60, 10])
+        self.assertEqual(sleeps, [10])      # only one wait: after a full round
         self.assertEqual(calls[0][1], T.USER_AGENT)
         self.assertTrue(calls[0][2])
+        self.assertIn("overpass.openstreetmap.fr", " ".join(T.ENDPOINTS))
+
+    def test_gives_up_after_all_rounds(self):
+        sleeps = []
+
+        def opener(req, timeout):
+            raise urllib.error.HTTPError(req.full_url, 502, "bad", {}, None)
+        with self.assertRaises(T.TrackError):
+            T.fetch(1, opener=opener, sleep=sleeps.append)
+        self.assertEqual(sleeps, list(T.RETRY_WAITS_S))
 
     def test_other_error_stops(self):
         def opener(req, timeout):

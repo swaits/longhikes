@@ -11,26 +11,27 @@ designation = "Thames Valley Trail Association"
 wave = 1
 
 [source]
-status = "none"
-publisher = "Thames Valley Trail Association (publishes the trail)"
+status = "osm-only"
+publisher = "Thames Valley Trail Association (publishes the trail; no open geometry found)"
 publisher_url = "https://tvta.ca/"
-url = "https://tvta.ca/hiking-information/trail-routes-and-maps/"
-format = "No line included"
+url = "https://www.openstreetmap.org/relation/3444520"
+discovery = "osm-relation-version: Overpass `rel(3444520); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
 crs = "EPSG:4326"
-licence = "none-stated"
-licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://tvta.ca/hiking-information/trail-routes-and-maps/, read 2026-11-14)."
-attribution = "none (no line included)"
-osm_only = false
-mainline = "OpenStreetMap relation 3444520 'Thames Valley Trail' exists (version 135); its track was not downloaded because the Overpass servers could not be reached."
-source_checked = "2026-11-14"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 3444520."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 3444520: one hiking route relation, 446 main ways, no alternates. No member has a role, so side trails are not set apart."
+source_checked = "2026-11-15"
 redistributable = true
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "No track is included yet. The association sells maps and states no licence for a track. OpenStreetMap relation 3444520 is the trail, and a dry-run measure on 2026-11-14 gave 134.2 km in 12 parts against 110 km published (22.0% over, probably because the 26 km of loop trails are in it), but the download failed because Overpass could not be reached. Run python3 tools/osm_track.py 3444520 --id thames-valley-trail to add it."
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "The OpenStreetMap track is 134.2 km in 12 parts, 22.0% over the published 110 km. OpenStreetMap does not mark which of its ways are side trails, so none are set apart here. 46.5 km is on ways named Thames Valley Trail, 16.1 km on ways named Fanshawe Trail and 3.6 km on ways named Thames Valley Side Trail; the rest is on roads and park paths. The difference is not explained. The track is kept as mapped."
 
 [osm]
 relation = 3444520
-note = "Relation 3444520 'Thames Valley Trail' (version 135, 2026-10-25) was found and measured in a dry run on 2026-11-14: 446 ways, 134.2 km, 12 parts. The track was not written."
+note = "Hiking route relation named Thames Valley Trail, version 135 (2026-10-25), ref TVT, 446 ways, no member roles. 26 of the ways are named Thames Valley Side Trail (3.6 km)."
 
 [shield]
 status = "logo-not-found"
@@ -41,15 +42,18 @@ logo_file = ""
 logo_owner = "Thames Valley Trail Association"
 
 [verification]
-verified = false
-note = "No track written, so nothing is verified. A dry run on 2026-11-14 measured OSM relation 3444520 at 134.2 km in 12 parts, 22.0% over the published 110 km."
+verified = true
+date = "2026-11-15"
+measured_km = 134.2
+difference_percent = 22.0
+parts = 12
+note = "OSM relation 3444520, 446 ways: 134.2 km in 12 parts, 22.0% longer than 110 km. The relation gives no roles, so no loop trails could be set apart as alternates."
 
 [hike]
 summary = "The Thames Valley Trail follows the Thames and North Thames rivers through southwestern Ontario, from the Elgin County line south of Delaware through London to St. Marys. It crosses farmland, parks and conservation areas, and most of it is on private land with the owners' permission. Loop trails join the main trail."
 official_url = "https://tvta.ca/hiking-information/trail-routes-and-maps/"
 start = "Elgin/Middlesex County line, south of Delaware, Ontario"
 end = "St. Marys, Ontario"
-end_lonlat = [-81.133, 43.259]
 shape = "point-to-point"
 season = "All year"
 months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -72,8 +76,3 @@ facts = ["summary", "season", "months"]
 url = "https://tvta.ca/about-us/tvta-information/"
 publisher = "Thames Valley Trail Association"
 facts = ["summary", "start", "end"]
-
-[[hike.source]]
-url = "https://geogratis.gc.ca/services/geoname/en/geonames/FEBWI"
-publisher = "Natural Resources Canada (Canadian Geographical Names)"
-facts = ["end_lonlat"]

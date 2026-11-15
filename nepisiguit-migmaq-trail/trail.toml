@@ -13,26 +13,26 @@ designation = "Sentier Nepisiguit Mi'gmaq Trail Inc."
 wave = 1
 
 [source]
-status = "none"
-publisher = "Sentier Nepisiguit Mi'gmaq Trail Inc. (publishes the trail)"
+status = "osm-only"
+publisher = "Sentier Nepisiguit Mi'gmaq Trail Inc. (publishes the trail; no open geometry found)"
 publisher_url = "https://migmaqtrail.ca/"
-url = "https://migmaqtrail.ca/discover.php"
-format = "No line included"
+url = "https://www.openstreetmap.org/relation/13656926"
+discovery = "osm-relation-version: Overpass `rel(13656926); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
 crs = "EPSG:4326"
-licence = "none-stated"
-licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://migmaqtrail.ca/discover.php, read 2026-11-14)."
-attribution = "none (no line included)"
-osm_only = false
-mainline = "OpenStreetMap relation 13656926 'Sentier Nepisiguit Mi'gmaq Trail' (network rwn) exists; it was not measured or downloaded because the Overpass servers did not answer."
-source_checked = "2026-11-14"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 13656926."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 13656926: one hiking route relation, 42 main ways and 9 alternates (8 approach, 1 alternative)."
+source_checked = "2026-11-15"
 redistributable = true
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "No track is included yet. The association sells a map and guidebook and states no licence for a track. OpenStreetMap relation 13656926 is the trail, but the download failed on 2026-11-14 because Overpass did not answer. Run python3 tools/osm_track.py 13656926 --id nepisiguit-migmaq-trail to add it."
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
 
 [osm]
 relation = 13656926
-note = "Relation 13656926 found by name search on 2026-11-14; the download from Overpass failed (no answer), so it is not measured."
+note = "Hiking route relation named Sentier Nepisiguit Mi'gmaq Trail, version 11 (2026-04-11), network rwn, 51 ways: 42 main, 8 with role approach and 1 with role alternative."
 
 [shield]
 status = "logo-not-found"
@@ -43,15 +43,18 @@ logo_file = ""
 logo_owner = "Sentier Nepisiguit Mi'gmaq Trail Inc."
 
 [verification]
-verified = false
-note = "No line to measure."
+verified = true
+date = "2026-11-15"
+measured_km = 145.3
+difference_percent = -3.1
+parts = 1
+note = "OSM relation 13656926, 42 main ways: 145.3 km in 1 part, 3.1% shorter than 150 km. 9 ways with side roles are in alternates.geojson."
 
 [hike]
 summary = "The Sentier Nepisiguit Mi'gmaq Trail is a single-track hiking trail in northern New Brunswick. It follows the Nepisiguit River from Daly Point Nature Reserve at Bathurst to the Appalachian mountains of Mount Carleton Provincial Park. It symbolises the route the Mi'gmaq used between coastal summer camps and winter hunting grounds, and it is marked in both directions with turtle-logo signs."
 official_url = "https://migmaqtrail.ca/discover.php"
 start = "Daly Point Nature Reserve, Bathurst, New Brunswick"
 end = "Mount Carleton Provincial Park, New Brunswick"
-start_lonlat = [-65.626, 47.636]
 shape = "point-to-point"
 days = [6, 12]
 season = "June to October"
@@ -75,11 +78,6 @@ facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "
 url = "https://migmaqtrail.ca/hiking-basics.php"
 publisher = "Sentier Nepisiguit Mi'gmaq Trail Inc."
 facts = ["start", "end", "permit", "caution", "travel"]
-
-[[hike.source]]
-url = "https://geogratis.gc.ca/services/geoname/en/geonames/DARPA"
-publisher = "Natural Resources Canada (Canadian Geographical Names)"
-facts = ["start_lonlat"]
 
 [[link]]
 title = "Nepisiguit Mi’gmaq Trail"

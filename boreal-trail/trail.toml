@@ -21,16 +21,16 @@ licence = "none-stated"
 licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://saskparks.tourismsaskatchewan.com/media/media-library/pdfs/park-downloads/meadow-lake/meadow-lake-all.pdf, read 2026-11-14)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "OpenStreetMap has relations named 'Boreal Trail' (18166071, 18166072, 18166073); see the osm note."
+mainline = "OpenStreetMap has three relations named 'Boreal Trail' (18166071, 18166072, 18166073), each a single way of 4.2, 1.2 and 7.6 km; together 13.0 km, so none is used. See the osm note."
 source_checked = "2026-11-14"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. The Boreal Trail guide (PDF) states no licence for a track. The guide and its maps are at the PDF named in this record."
+line_absent_reason = "No track is included. The Boreal Trail guide (PDF) states no licence for a track. The guide and its maps are at the PDF named in this record. OpenStreetMap holds only three short pieces (13.0 km of 135 km), so it is no source for the track either."
 
 [osm]
 relation = 0
-note = "Relations 18166071, 18166072 and 18166073 are named 'Boreal Trail'. Not yet measured on 2026-11-14."
+note = "Relations 18166071, 18166072 and 18166073 are named 'Boreal Trail' (route=hiking, version 1, 2024-10-15, no other tags). Each holds one way near Meadow Lake Provincial Park: 4.2 km, 1.2 km and 7.6 km, 13.0 km in all, against 135 km published. They are short pieces, not the trail, so no track was written on 2026-11-15. relation = 0 means no relation is used."
 
 [shield]
 status = "logo-not-found"

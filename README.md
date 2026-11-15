@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-182 trails, 102 with a track and 80 with no track included. Of these, 50 are routes: 1 with a track and 49 without.
+183 trails, 105 with a track and 78 with no track included. Of these, 51 are routes: 1 with a track and 50 without.
 
 <!-- END COUNTS -->
 
@@ -83,7 +83,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | ganaraska | Ganaraska Hiking Trail | CA | ON | 500 | yes | ODbL-1.0 |
 | general-george-crook | General George Crook National Recreation Trail | US | AZ | 95 | yes | us-gov-public-domain |
 | grand-enchantment | Grand Enchantment Trail | US | AZ, NM | 1239 | no | ODbL-1.0 |
-| grand-valley-trail | Grand Valley Trail | CA | ON | 240 | no | none-stated |
+| grand-valley-trail | Grand Valley Trail | CA | ON | 240 | yes | ODbL-1.0 |
 | great-divide-trail | Great Divide Trail | CA | AB, BC | 1130 | yes | ODbL-1.0 |
 | great-eastern | Great Eastern Trail | US | AL, GA, TN, KY, VA, WV, MD, PA, NY | 3200 | no | ODbL-1.0 |
 | guadalupe-ridge-trail | Guadalupe Ridge Trail | US | TX, NM | 161 | no | none-stated |
@@ -119,7 +119,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | monadnock-sunapee | Monadnock-Sunapee Greenway | US | NH | 80 | yes | ODbL-1.0 |
 | mountains-to-sea | Mountains-to-Sea Trail | US | NC | 1890 | yes | ODbL-1.0 |
 | natchez-trace | Natchez Trace National Scenic Trail | US | MS, AL, TN | 105 | yes | us-gov-public-domain |
-| nepisiguit-migmaq-trail | Sentier Nepisiguit Mi'gmaq Trail | CA | NB | 150 | no | none-stated |
+| nepisiguit-migmaq-trail | Sentier Nepisiguit Mi'gmaq Trail | CA | NB | 150 | yes | ODbL-1.0 |
 | new-england | New England National Scenic Trail | US | CT, MA | 378 | yes | us-gov-public-domain |
 | north-boundary | North Boundary Trail | CA | AB | 159 | no | none-stated |
 | north-country | North Country National Scenic Trail | US | ND, MN, WI, MI, OH, PA, NY, VT | 7403 | yes | ODbL-1.0 |
@@ -158,7 +158,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | susquehannock | Susquehannock Trail System | US | PA | 135 | yes | ODbL-1.0 |
 | tahoe-rim | Tahoe Rim Trail | US | CA, NV | 266 | yes | ODbL-1.0 |
 | teton-crest | Teton Crest Trail | US | WY | 64 | no | ODbL-1.0 |
-| thames-valley-trail | Thames Valley Trail | CA | ON | 110 | no | none-stated |
+| thames-valley-trail | Thames Valley Trail | CA | ON | 110 | yes | ODbL-1.0 |
 | timberline | Timberline Trail (Mount Hood) | US | OR | 64 | no | us-gov-public-domain |
 | toiyabe-crest | Toiyabe Crest National Recreation Trail | US | NV | 101 | yes | us-gov-public-domain |
 | traversee-charlevoix | Traversée de Charlevoix | CA | QC | 105 | yes | ODbL-1.0 |
@@ -196,6 +196,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | desert-trail | Desert Trail | US | CA, NV, OR | 2552 | Desert Trail Association, with the route scouted by Russel Pengely, D. W. "Old Creosote" Tomer and Steve Tabor | unclear | no | [Desert Trail site](https://deserttrail.net) (free) |
 | desert-winter-thru-hike | Desert Winter Thru-Hike | US | AZ, CA | 1287 | Brett Tucker ("Blisterfree") and partner, simBLISSity Ultralight Designs | withheld | no | [Desert WTH! topo mapset](https://www.simblissity.net/desert-wth-mapset.shtml) (free) |
 | eastern-continental-trail | Eastern Continental Trail | US | FL, AL, GA, TN, NC, VA, WV, MD, PA, NJ, NY, CT, MA, VT, NH, ME, QC, NB | 7081 | M. J. Eberhart (trail name Nimblewill Nomad) | open | no | [Eastern Continental Trail Guide, 2010 (archived)](https://nimblewillnomad.com/books/) (free) |
+| eastern-sierra-high-route | Eastern Sierra High Route | US | CA | 113 | Dan Stenziano | sold | no | [Eastern Sierra High Route Guide](https://danstenziano.com/products/eastern-sierra-high-route-guide) (purchase) |
 | grand-moab-route | Grand-Moab Route | US | CO, UT | 225 | Paul Mags (PMags.com) | open | no | [The Grand-Moab Route](https://pmags.com/the-grand-moab-route) (free) |
 | great-basin-trail | Great Basin Trail | US | NV | 1931 | Ryan "Dirtmonger" Sylva | unclear | no | [Great Basin Trail article](https://www.gossamergear.com/blogs/our-blog/great-basin-trail) (free) |
 | great-colorado-route | Great Colorado Route | US | CO | 3219 | Donovan "Iceman" Rice | open | no | [Great Colorado Route route page and GPX](https://www.greatcoloradoroute.com/route) (free) |

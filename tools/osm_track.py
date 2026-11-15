@@ -45,11 +45,12 @@ import urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ENDPOINTS = ["https://overpass-api.de/api/interpreter",
+             "https://overpass.openstreetmap.fr/api/interpreter",
              "https://overpass.kumi.systems/api/interpreter"]
 USER_AGENT = "osm-track-fetch/1.0 (python-urllib)"
 TIMEOUT_S = 300
 RETRY_STATUS = (429, 502, 503, 504)
-RETRY_WAITS_S = (10, 30, 60)       # per endpoint, between tries
+RETRY_WAITS_S = (10, 30, 60)       # between rounds of all endpoints
 JOIN_GAP_M = 100.0                  # same distance as tools/elevation.py
 EARTH_R = 6371008.8                 # metres; same as tools/elevation.py
 
@@ -152,8 +153,10 @@ def fetch(relation_id, opener=urllib.request.urlopen, sleep=time.sleep,
     """Overpass JSON for the relation and everything below it. One request at a time."""
     body = urllib.parse.urlencode({"data": query_for(relation_id)}).encode()
     last = None
-    for url in endpoints:
-        for attempt in range(len(RETRY_WAITS_S) + 1):
+    # Each round tries every endpoint once, so a dead server costs one failed
+    # request, not a run of waits, before the next one is tried.
+    for rnd in range(len(RETRY_WAITS_S) + 1):
+        for url in endpoints:
             req = urllib.request.Request(url, data=body, headers={
                 "User-Agent": USER_AGENT, "Accept": "application/json"})
             try:
@@ -165,11 +168,11 @@ def fetch(relation_id, opener=urllib.request.urlopen, sleep=time.sleep,
                     raise TrackError(f"Overpass refused the request ({last})") from e
             except (urllib.error.URLError, TimeoutError, OSError, ValueError) as e:
                 last = f"{url}: {e}"
-            if attempt < len(RETRY_WAITS_S):
-                wait = RETRY_WAITS_S[attempt]
-                print(f"  {last}; trying again in {wait} s", file=sys.stderr)
-                sleep(wait)
-        print(f"  giving up on {url}", file=sys.stderr)
+            print(f"  {last}", file=sys.stderr)
+        if rnd < len(RETRY_WAITS_S):
+            wait = RETRY_WAITS_S[rnd]
+            print(f"  trying all again in {wait} s", file=sys.stderr)
+            sleep(wait)
     raise TrackError(f"Overpass did not answer ({last})")
 
 

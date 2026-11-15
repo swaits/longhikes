@@ -59,7 +59,7 @@ class ExtraPagesTest(unittest.TestCase):
 
     def test_all_routes_on_routes_page(self):
         routes = [r for r in self.records if r["derived"]["kind"] == "route"]
-        self.assertEqual(len(routes), 50)
+        self.assertEqual(len(routes), 51)
         page = read_out("routes/index.html")
         import html as _html
         text = _html.unescape(page)

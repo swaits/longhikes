@@ -813,13 +813,17 @@ body:has(.hero--home) .site-header .wordmark { visibility: hidden; }
 /* Beside the list, the filters stay on screen while the list scrolls. The panel
    is never taller than the window: when its fields do not fit (a short window,
    or "More filters" opened) it scrolls on its own, so every filter can be
-   reached from anywhere in the list. Its reset button stays at its foot. */
+   reached from anywhere in the list. Its reset button stays at its foot.
+   The wheel must always move something: over the panel it scrolls the panel
+   while the panel has further to go, and the page otherwise. So no
+   overscroll-behavior here: in Chromium it stops the wheel reaching the page
+   even when the panel has nothing to scroll. */
 @media (min-width: 64rem) {
   .filters {
     position: sticky; inset-block-start: var(--space-4); align-self: start;
     max-block-size: calc(100vh - 2 * var(--space-4));
     max-block-size: calc(100dvh - 2 * var(--space-4));
-    overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+    overflow-y: auto; scrollbar-width: thin;
   }
   .filters .filters__reset {
     position: sticky; inset-block-end: 0; z-index: 1;

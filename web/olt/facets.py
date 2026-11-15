@@ -249,6 +249,15 @@ def is_national(rec):
 
 # GPX ------------------------------------------------------------------------
 
+# The same six, as short as a filter row needs: one line each beside its count.
+GPX_FILTER = {
+    "here": "GPX here",
+    "partial": "Partial GPX here",
+    "free": "Free from the author",
+    "sold": "Sold by the author",
+    "unpublished": "Not published",
+    "elsewhere": "On the official site",
+}
 GPX_STATUS = {
     "here": "GPX to download here",
     "partial": "Partial GPX to download here",

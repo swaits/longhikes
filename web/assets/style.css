@@ -810,10 +810,21 @@ body:has(.hero--home) .site-header .wordmark { visibility: hidden; }
     grid-template-columns: 18rem minmax(0, 1fr);
   }
 }
-/* Sticky only when the viewport can hold the whole form, so no part of it is
-   trapped in a nested scroll box or cut off below the fold. */
-@media (min-width: 64rem) and (min-height: 70rem) {
-  .filters { position: sticky; inset-block-start: var(--space-4); align-self: start; }
+/* Beside the list, the filters stay on screen while the list scrolls. The panel
+   is never taller than the window: when its fields do not fit (a short window,
+   or "More filters" opened) it scrolls on its own, so every filter can be
+   reached from anywhere in the list. Its reset button stays at its foot. */
+@media (min-width: 64rem) {
+  .filters {
+    position: sticky; inset-block-start: var(--space-4); align-self: start;
+    max-block-size: calc(100vh - 2 * var(--space-4));
+    max-block-size: calc(100dvh - 2 * var(--space-4));
+    overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin;
+  }
+  .filters .filters__reset {
+    position: sticky; inset-block-end: 0; z-index: 1;
+    background: var(--surface); border-block-start: 1px solid var(--rule-strong);
+  }
 }
 
 /* Filters: search always shown; the rest folds away on narrow screens */
@@ -858,7 +869,9 @@ body:has(.hero--home) .site-header .wordmark { visibility: hidden; }
   text-transform: none;
 }
 .filters__form { display: grid; gap: var(--space-4); padding: var(--space-4); }
-@media (min-width: 40rem) and (max-width: 69.99rem) {
+/* Two columns only while the filters sit above the list at full width; beside
+   the list the panel is narrow and every filter is one column. */
+@media (min-width: 40rem) and (max-width: 63.99rem) {
   .filters__form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .filters__form .field--wide { grid-column: 1 / -1; }
 }
@@ -914,7 +927,11 @@ body:has(.hero--home) .site-header .wordmark { visibility: hidden; }
 .check input { inline-size: 1.125rem; block-size: 1.125rem; margin: 0.15rem 0 0; accent-color: var(--trail); cursor: pointer; }
 .check__text { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); font: 500 var(--step-0)/1.35 var(--font-sans); }
 .check__count { color: var(--ink-2); font-weight: 400; font-variant-numeric: tabular-nums; }
-.check__hint { grid-column: 2; color: var(--ink-2); font: 400 var(--step--1)/1.4 var(--font-sans); }
+/* In the filter lists a choice is one line: its name on the left, its count on the right. */
+.filters__form .check { padding-block: 0.3rem; align-items: center; }
+.filters__form .check input { margin: 0; }
+.filters__form .check__text { flex-wrap: nowrap; justify-content: space-between; }
+.filters__form .check__count { flex: none; }
 
 /* Results head */
 .results-head {

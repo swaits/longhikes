@@ -205,9 +205,10 @@ def _checks(name, items, c, prefix, hints=None):
         n = c[f"{prefix}:{value}"]
         if not n:
             continue
-        hint = f'<span class="check__hint">{esc(hints[value])}</span>' if hints and hints.get(value) else ""
-        out.append(f'<label class="check"><input type="checkbox" name="{name}" value="{esc(value)}">'
-                   f'<span class="check__text">{esc(label)} <span class="check__count">{n}</span></span>{hint}</label>')
+        # A hint is a tooltip, not a second line: the row stays one line.
+        title = f' title="{esc(hints[value])}"' if hints and hints.get(value) else ""
+        out.append(f'<label class="check"{title}><input type="checkbox" name="{name}" value="{esc(value)}">'
+                   f'<span class="check__text">{esc(label)} <span class="check__count">{n}</span></span></label>')
     return "".join(out)
 
 
@@ -265,7 +266,7 @@ def finder_form(records, c=None, steps=None):
     <legend>{facets.KIND}</legend>
     <div class="seg">
       <label><input type="radio" name="kind" value="" checked><span>Any</span></label>
-      <label><input type="radio" name="kind" value="trail"><span>Official trails ({c["kind:trail"]})</span></label>
+      <label><input type="radio" name="kind" value="trail"><span>Official ({c["kind:trail"]})</span></label>
       <label><input type="radio" name="kind" value="route"><span>Routes ({c["kind:route"]})</span></label>
     </div>
     <p class="field__hint"><a href="/routes/">What is a route?</a></p>
@@ -284,7 +285,7 @@ def finder_form(records, c=None, steps=None):
       </fieldset>""")
     more.append(f"""<fieldset class="field">
         <legend>{facets.GPX}</legend>
-        {_checks("gpx", facets.GPX_STATUS.items(), c, "gpx")}
+        {_checks("gpx", facets.GPX_FILTER.items(), c, "gpx")}
       </fieldset>""")
     return f"""<form class="filters" id="finder-form" role="search" aria-label="Find a trail">
   <div class="filters__search field">

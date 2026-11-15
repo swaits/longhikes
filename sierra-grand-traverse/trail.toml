@@ -2,7 +2,6 @@
 
 id = "sierra-grand-traverse"
 name = "Sierra Grand Traverse"
-short_name = "SGT"
 country = "US"
 regions = ["CA"]
 length_km = 322

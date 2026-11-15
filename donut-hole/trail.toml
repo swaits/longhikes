@@ -3,6 +3,7 @@
 id = "donut-hole"
 name = "Donut Hole Trail"
 short_name = "DHT"
+short_name_url = "https://www.kta-hike.org/donut-hole-trail.html"
 country = "US"
 regions = ["PA"]
 length_km = 152

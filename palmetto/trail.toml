@@ -2,7 +2,6 @@
 
 id = "palmetto"
 name = "Palmetto Trail"
-short_name = "PT"
 country = "US"
 regions = ["SC"]
 length_km = 800

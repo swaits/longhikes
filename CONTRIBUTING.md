@@ -34,7 +34,7 @@ A route whose author chooses not to publish a track is still added, with no trac
 To add one:
 
 1. Create a directory named with a new stable `id`: lower-case words joined by hyphens. It never changes afterwards.
-2. Write `trail.toml` with every required field in docs/schema.md.
+2. Write `trail.toml` with every required field in docs/schema.md. Give `short_name` only if the trail's holder or author uses an abbreviation, or hikers commonly do, and put the page where you saw it in `short_name_url`; never make one up.
 3. Add `line.geojson` only if the track may be shared (see above), plus `release.txt`.
    For a track from an OpenStreetMap route relation, create the trail directory and `trail.toml` first, then run `python3 tools/osm_track.py RELATION_ID --id TRAIL_ID` (Python standard library only; add `--dry` to print the figures and write nothing). It fetches the relation and its sub-relations through Overpass, writes `line.geojson`, `alternates.geojson` (only when there are side ways) and `release.txt`, and prints the way counts, the measured length in km and the number of parts for `[verification]` and `[osm]`. It will not replace an existing `line.geojson` without `--force`.
    To point to other good pages about the trail (a wiki or encyclopedia article), add a `[[link]]` table for each; the trail's own page goes in `hike.official_url` instead.

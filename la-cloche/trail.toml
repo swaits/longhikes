@@ -2,7 +2,6 @@
 
 id = "la-cloche"
 name = "La Cloche Silhouette Trail"
-short_name = "LCS"
 country = "CA"
 regions = ["ON"]
 length_km = 80

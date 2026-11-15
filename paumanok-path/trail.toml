@@ -2,7 +2,6 @@
 
 id = "paumanok-path"
 name = "Paumanok Path"
-short_name = "PP"
 country = "US"
 regions = ["NY"]
 length_km = 201

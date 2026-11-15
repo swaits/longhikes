@@ -3,6 +3,7 @@
 id = "susquehannock"
 name = "Susquehannock Trail System"
 short_name = "STS"
+short_name_url = "https://stc-hike.org/"
 country = "US"
 regions = ["PA"]
 length_km = 135

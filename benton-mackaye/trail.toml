@@ -3,6 +3,7 @@
 id = "benton-mackaye"
 name = "Benton MacKaye Trail"
 short_name = "BMT"
+short_name_url = "https://www.bmta.org/"
 country = "US"
 regions = ["GA", "TN", "NC"]
 length_km = 463

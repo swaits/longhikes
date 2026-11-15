@@ -2,7 +2,8 @@
 
 id = "wind-river-high-route-dixon-wilson"
 name = "Wind River High Route (Dixon and Wilson)"
-short_name = "WRHR-DW"
+short_name = "WRHR"
+short_name_url = "https://www.adventurealan.com/wind-river-high-route-guide/"
 country = "US"
 regions = ["WY"]
 length_km = 129

@@ -2,7 +2,6 @@
 
 id = "mattabesett"
 name = "Mattabesett Trail"
-short_name = "MTB"
 country = "US"
 regions = ["CT"]
 length_km = 105

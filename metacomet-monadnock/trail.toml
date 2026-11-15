@@ -2,7 +2,8 @@
 
 id = "metacomet-monadnock"
 name = "Metacomet-Monadnock Trail"
-short_name = "MM"
+short_name = "M-M"
+short_name_url = "https://mmtrailnh.org/"
 country = "US"
 regions = ["CT", "MA", "NH"]
 length_km = 185

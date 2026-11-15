@@ -3,6 +3,7 @@
 id = "finger-lakes"
 name = "Finger Lakes Trail"
 short_name = "FLT"
+short_name_url = "https://fingerlakestrail.org/"
 country = "US"
 regions = ["NY"]
 length_km = 950

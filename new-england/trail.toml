@@ -3,6 +3,7 @@
 id = "new-england"
 name = "New England National Scenic Trail"
 short_name = "NET"
+short_name_url = "https://www.nps.gov/neen/index.htm"
 country = "US"
 regions = ["CT", "MA"]
 length_km = 378

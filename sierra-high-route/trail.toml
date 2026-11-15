@@ -3,6 +3,7 @@
 id = "sierra-high-route"
 name = "Sierra High Route"
 short_name = "SHR"
+short_name_url = "https://andrewskurka.com/product/sierra-high-route-map-set-databook/"
 country = "US"
 regions = ["CA"]
 length_km = 314

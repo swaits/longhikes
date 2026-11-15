@@ -3,6 +3,7 @@
 id = "shawangunk-ridge-trail"
 name = "Shawangunk Ridge Trail"
 short_name = "SRT"
+short_name_url = "https://secure.nynjtc.org/node/874"
 country = "US"
 regions = ["NJ", "NY"]
 length_km = 114

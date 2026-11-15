@@ -2,7 +2,6 @@
 
 id = "voyageur"
 name = "Voyageur Trail"
-short_name = "VT-ON"
 country = "CA"
 regions = ["ON"]
 length_km = 1100

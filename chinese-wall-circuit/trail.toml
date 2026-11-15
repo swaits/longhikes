@@ -2,7 +2,6 @@
 
 id = "chinese-wall-circuit"
 name = "The Chinese Wall Circuit"
-short_name = "CWC"
 country = "US"
 regions = ["MT"]
 length_km = 127

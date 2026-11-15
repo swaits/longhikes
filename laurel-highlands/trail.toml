@@ -3,6 +3,7 @@
 id = "laurel-highlands"
 name = "Laurel Highlands Hiking Trail"
 short_name = "LHHT"
+short_name_url = "https://www.pa.gov/agencies/dcnr/recreation/what-to-do/hiking/laurel-highlands-hiking-trail"
 country = "US"
 regions = ["PA"]
 length_km = 113

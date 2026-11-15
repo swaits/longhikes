@@ -2,7 +2,6 @@
 
 id = "wasatch-traverse"
 name = "Wasatch Traverse"
-short_name = "WT"
 country = "US"
 regions = ["UT"]
 length_km = 455

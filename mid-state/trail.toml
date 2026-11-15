@@ -2,7 +2,8 @@
 
 id = "mid-state"
 name = "Mid State Trail"
-short_name = "MST-PA"
+short_name = "MST"
+short_name_url = "https://hike-mst.org/"
 country = "US"
 regions = ["PA"]
 length_km = 515

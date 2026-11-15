@@ -3,6 +3,7 @@
 id = "standing-stone"
 name = "Standing Stone Trail"
 short_name = "SST"
+short_name_url = "https://www.standingstonetrail.org/"
 country = "US"
 regions = ["PA"]
 length_km = 137

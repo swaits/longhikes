@@ -3,6 +3,7 @@
 id = "san-diego-trans-county-trail"
 name = "San Diego Trans County Trail"
 short_name = "SDTCT"
+short_name_url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
 country = "US"
 regions = ["CA"]
 length_km = 249

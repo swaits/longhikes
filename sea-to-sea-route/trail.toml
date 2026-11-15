@@ -3,6 +3,7 @@
 id = "sea-to-sea-route"
 name = "Sea-to-Sea Route"
 short_name = "C2C"
+short_name_url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
 country = "US"
 regions = ["ND", "MN", "WI", "MI", "OH", "PA", "NY", "VT", "MT", "ID", "WA"]
 length_km = 12513

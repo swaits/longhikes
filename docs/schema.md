@@ -8,6 +8,7 @@ Example (shortened):
 id = "long-trail"
 name = "Long Trail (Vermont)"
 short_name = "LT"
+short_name_url = "https://www.greenmountainclub.org/"
 country = "US"
 regions = ["VT"]
 length_km = 438
@@ -32,7 +33,8 @@ line_file = "line.geojson"
 | --- | --- | --- | --- |
 | `id` | string | Stable identifier. Equals the directory name. Never changes. | `"long-trail"` |
 | `name` | string | The trail's own name. | `"Long Trail (Vermont)"` |
-| `short_name` | string | Abbreviation, as carried on the trail's shield, or the short form of a route's name where it has no shield. | `"LT"` |
+| `short_name` | string, where present | Abbreviation the trail's holder or author uses for it, or, failing that, one in established use among hikers. Never made up: a trail nobody abbreviates has none. Written without full stops (`"AT"`, not `"A.T."`); hyphens and digits stay as the holder writes them. Two trails may truthfully share one, and both show it. | `"LT"` |
+| `short_name_url` | string, with `short_name` | The page where the abbreviation was seen in use. Required when `short_name` is present; an error without it. An http(s) address. | `"https://www.greenmountainclub.org/"` |
 | `country` | string | `US` or `CA`. | `"US"` |
 | `regions` | array of strings | State, province or territory codes crossed. | `["VT"]` |
 | `length_km` | integer | Published length in kilometres. A check value, not measured from the track. | `438` |

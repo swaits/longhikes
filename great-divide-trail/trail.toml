@@ -3,6 +3,7 @@
 id = "great-divide-trail"
 name = "Great Divide Trail"
 short_name = "GDT"
+short_name_url = "https://greatdividetrail.com/"
 country = "CA"
 regions = ["AB", "BC"]
 length_km = 1130

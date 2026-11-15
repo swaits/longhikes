@@ -3,6 +3,7 @@
 id = "ozark-trail"
 name = "Ozark Trail (Missouri)"
 short_name = "OT"
+short_name_url = "https://ozarktrail.com/thru-hiking/"
 country = "US"
 regions = ["MO"]
 length_km = 630

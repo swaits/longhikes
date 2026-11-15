@@ -3,6 +3,7 @@
 id = "desert-winter-thru-hike"
 name = "Desert Winter Thru-Hike"
 short_name = "Desert WTH"
+short_name_url = "https://www.simblissity.net/desert-wth-mapset.shtml"
 country = "US"
 regions = ["AZ", "CA"]
 length_km = 1287

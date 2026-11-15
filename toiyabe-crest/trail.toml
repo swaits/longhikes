@@ -2,7 +2,6 @@
 
 id = "toiyabe-crest"
 name = "Toiyabe Crest National Recreation Trail"
-short_name = "TCT"
 country = "US"
 regions = ["NV"]
 length_km = 101

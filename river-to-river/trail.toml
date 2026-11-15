@@ -3,6 +3,7 @@
 id = "river-to-river"
 name = "River to River Trail"
 short_name = "R2R"
+short_name_url = "https://rivertorivertrail.net/"
 country = "US"
 regions = ["IL"]
 length_km = 257

@@ -2,7 +2,6 @@
 
 id = "long-trail"
 name = "Long Trail (Vermont)"
-short_name = "LT"
 country = "US"
 regions = ["VT"]
 length_km = 438

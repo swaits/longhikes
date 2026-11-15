@@ -2,7 +2,6 @@
 
 id = "highline"
 name = "Highline National Recreation Trail"
-short_name = "Highline"
 country = "US"
 regions = ["AZ"]
 length_km = 89

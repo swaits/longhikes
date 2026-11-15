@@ -3,6 +3,7 @@
 id = "great-basin-trail"
 name = "Great Basin Trail"
 short_name = "GBT"
+short_name_url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
 country = "US"
 regions = ["NV"]
 length_km = 1931

@@ -3,6 +3,7 @@
 id = "oregon-coast"
 name = "Oregon Coast Trail"
 short_name = "OCT"
+short_name_url = "https://stateparks.oregon.gov/index.cfm?do=v.page&id=95"
 country = "US"
 regions = ["OR"]
 length_km = 650

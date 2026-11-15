@@ -3,6 +3,7 @@
 id = "ozark-highlands"
 name = "Ozark Highlands Trail"
 short_name = "OHT"
+short_name_url = "https://ozarkhighlandstrail.com/trail/"
 country = "US"
 regions = ["AR"]
 length_km = 435

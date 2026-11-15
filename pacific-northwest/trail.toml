@@ -3,6 +3,7 @@
 id = "pacific-northwest"
 name = "Pacific Northwest National Scenic Trail"
 short_name = "PNT"
+short_name_url = "https://www.pnt.org/pnta/know-before-you-go/plan-your-trip/"
 country = "US"
 regions = ["MT", "ID", "WA"]
 length_km = 1931

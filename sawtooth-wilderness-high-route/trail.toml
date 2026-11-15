@@ -2,7 +2,6 @@
 
 id = "sawtooth-wilderness-high-route"
 name = "Sawtooth Wilderness High Route"
-short_name = "SWHR"
 country = "US"
 regions = ["ID"]
 length_km = 143

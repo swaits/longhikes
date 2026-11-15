@@ -3,6 +3,7 @@
 id = "guadalupe-ridge-trail"
 name = "Guadalupe Ridge Trail"
 short_name = "GRT"
+short_name_url = "https://www.nps.gov/thingstodo/grt.htm"
 country = "US"
 regions = ["TX", "NM"]
 length_km = 161

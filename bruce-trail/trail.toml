@@ -2,7 +2,6 @@
 
 id = "bruce-trail"
 name = "Bruce Trail"
-short_name = "BT-ON"
 country = "CA"
 regions = ["ON"]
 length_km = 890

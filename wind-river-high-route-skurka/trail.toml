@@ -3,6 +3,7 @@
 id = "wind-river-high-route-skurka"
 name = "Wind River High Route (Skurka guide)"
 short_name = "WRHR"
+short_name_url = "https://andrewskurka.com/adventures/wind-river-high-route/"
 country = "US"
 regions = ["WY"]
 length_km = 156

@@ -3,6 +3,7 @@
 id = "north-umpqua"
 name = "North Umpqua Trail"
 short_name = "NUT"
+short_name_url = "https://www.fs.usda.gov/r06/umpqua/recreation/groups/north-umpqua-trail-1414"
 country = "US"
 regions = ["OR"]
 length_km = 127

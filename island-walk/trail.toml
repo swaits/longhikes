@@ -3,6 +3,7 @@
 id = "island-walk"
 name = "The Island Walk"
 short_name = "IW"
+short_name_url = "https://theislandwalk.ca/"
 country = "CA"
 regions = ["PE"]
 length_km = 700

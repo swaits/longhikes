@@ -3,6 +3,7 @@
 id = "trans-adirondack-route"
 name = "Trans Adirondack Route"
 short_name = "TAR"
+short_name_url = "https://erikschlimmer.com/tar-1"
 country = "US"
 regions = ["NY"]
 length_km = 391

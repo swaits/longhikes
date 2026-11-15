@@ -2,7 +2,6 @@
 
 id = "lost-coast"
 name = "Lost Coast Trail"
-short_name = "LCT"
 country = "US"
 regions = ["CA"]
 length_km = 80

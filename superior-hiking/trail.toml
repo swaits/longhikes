@@ -3,6 +3,7 @@
 id = "superior-hiking"
 name = "Superior Hiking Trail"
 short_name = "SHT"
+short_name_url = "https://superiorhiking.org/thru-hiking/"
 country = "US"
 regions = ["MN"]
 length_km = 499

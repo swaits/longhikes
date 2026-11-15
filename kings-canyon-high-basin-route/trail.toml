@@ -3,6 +3,7 @@
 id = "kings-canyon-high-basin-route"
 name = "Kings Canyon High Basin Route"
 short_name = "KCHBR"
+short_name_url = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/"
 country = "US"
 regions = ["CA"]
 length_km = 200

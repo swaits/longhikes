@@ -3,6 +3,7 @@
 id = "southwestern-horseshoe"
 name = "Southwestern Horseshoe"
 short_name = "SWH"
+short_name_url = "https://thehikinglife.com/2019/03/southwestern-horseshoe/"
 country = "US"
 regions = ["UT", "AZ", "NM"]
 length_km = 2867

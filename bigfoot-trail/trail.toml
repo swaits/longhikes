@@ -2,7 +2,6 @@
 
 id = "bigfoot-trail"
 name = "Bigfoot Trail"
-short_name = "BFT"
 country = "US"
 regions = ["CA", "OR"]
 length_km = 579

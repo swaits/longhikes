@@ -3,6 +3,7 @@
 id = "basin-and-range-trail"
 name = "Basin and Range Trail"
 short_name = "BRT"
+short_name_url = "https://seekinglost.com/basin-and-range-trail/"
 country = "US"
 regions = ["NV"]
 length_km = 1754

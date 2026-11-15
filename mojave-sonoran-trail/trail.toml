@@ -3,6 +3,7 @@
 id = "mojave-sonoran-trail"
 name = "Mojave-Sonoran Trail"
 short_name = "MST"
+short_name_url = "https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/"
 country = "US"
 regions = ["NV", "CA", "AZ"]
 length_km = 1006

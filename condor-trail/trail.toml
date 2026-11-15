@@ -3,6 +3,7 @@
 id = "condor-trail"
 name = "Condor Trail"
 short_name = "CT"
+short_name_url = "http://www.condortrail.com/"
 country = "US"
 regions = ["CA"]
 length_km = 644

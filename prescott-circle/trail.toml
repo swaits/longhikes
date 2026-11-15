@@ -3,6 +3,7 @@
 id = "prescott-circle"
 name = "Prescott Circle Trail"
 short_name = "PCT"
+short_name_url = "https://prescott-az.gov/?p=25791"
 country = "US"
 regions = ["AZ"]
 length_km = 90

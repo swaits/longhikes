@@ -3,6 +3,7 @@
 id = "pacific-crest"
 name = "Pacific Crest National Scenic Trail"
 short_name = "PCT"
+short_name_url = "https://www.pcta.org/"
 country = "US"
 regions = ["CA", "OR", "WA"]
 length_km = 4265

@@ -2,7 +2,6 @@
 
 id = "east-beach-trail"
 name = "East Beach Trail (Naikoon)"
-short_name = "EBT"
 country = "CA"
 regions = ["BC"]
 length_km = 90

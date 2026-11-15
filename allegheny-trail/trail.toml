@@ -3,6 +3,7 @@
 id = "allegheny-trail"
 name = "Allegheny Trail"
 short_name = "ALT"
+short_name_url = "https://hikethealleghenytrail.org/"
 country = "US"
 regions = ["WV"]
 length_km = 530

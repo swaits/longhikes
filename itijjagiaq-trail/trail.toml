@@ -2,7 +2,6 @@
 
 id = "itijjagiaq-trail"
 name = "Itijjagiaq Trail"
-short_name = "IT"
 country = "CA"
 regions = ["NU"]
 length_km = 120

@@ -3,6 +3,7 @@
 id = "ocean-to-lake"
 name = "Ocean to Lake Hiking Trail"
 short_name = "OTLHT"
+short_name_url = "https://www.loxfltrail.org/Ocean2LakeHikingTrail.html"
 country = "US"
 regions = ["FL"]
 length_km = 99

@@ -2,7 +2,6 @@
 
 id = "warrior-trail"
 name = "Warrior Trail"
-short_name = "WT"
 country = "US"
 regions = ["PA", "WV"]
 length_km = 108

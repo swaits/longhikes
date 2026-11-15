@@ -2,7 +2,6 @@
 
 id = "buckeye"
 name = "Buckeye Trail"
-short_name = "BT"
 country = "US"
 regions = ["OH"]
 length_km = 2250

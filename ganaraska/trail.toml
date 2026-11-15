@@ -2,7 +2,6 @@
 
 id = "ganaraska"
 name = "Ganaraska Hiking Trail"
-short_name = "GHT"
 country = "CA"
 regions = ["ON"]
 length_km = 500

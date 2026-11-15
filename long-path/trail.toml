@@ -3,6 +3,7 @@
 id = "long-path"
 name = "Long Path"
 short_name = "LP"
+short_name_url = "https://nynjtc.org/long-path"
 country = "US"
 regions = ["NJ", "NY"]
 length_km = 576

@@ -3,6 +3,7 @@
 id = "bartram"
 name = "Bartram Trail"
 short_name = "BT"
+short_name_url = "https://blueridgebartram.org/"
 country = "US"
 regions = ["GA", "NC"]
 length_km = 180

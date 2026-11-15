@@ -3,6 +3,7 @@
 id = "border-route"
 name = "Border Route Trail"
 short_name = "BRT"
+short_name_url = "https://borderroutetrail.org/"
 country = "US"
 regions = ["MN"]
 length_km = 105

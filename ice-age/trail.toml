@@ -3,6 +3,7 @@
 id = "ice-age"
 name = "Ice Age National Scenic Trail"
 short_name = "IAT"
+short_name_url = "https://www.iceagetrail.org/"
 country = "US"
 regions = ["WI"]
 length_km = 1931

@@ -3,6 +3,7 @@
 id = "iron-belle-trail"
 name = "Iron Belle Trail (hiking route)"
 short_name = "IBT"
+short_name_url = "https://content.govdelivery.com/accounts/MIDNR/bulletins/2929548"
 country = "US"
 regions = ["MI"]
 length_km = 2049

@@ -2,7 +2,6 @@
 
 id = "brazeau-loop"
 name = "Brazeau Loop"
-short_name = "BL"
 country = "CA"
 regions = ["AB"]
 length_km = 81

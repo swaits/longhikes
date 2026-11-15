@@ -3,6 +3,7 @@
 id = "nepisiguit-migmaq-trail"
 name = "Sentier Nepisiguit Mi'gmaq Trail"
 short_name = "SNMT"
+short_name_url = "https://migmaqtrail.ca/discover.php"
 country = "CA"
 regions = ["NB"]
 length_km = 150

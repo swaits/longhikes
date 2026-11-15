@@ -3,6 +3,7 @@
 id = "kekekabic"
 name = "Kekekabic Trail"
 short_name = "KEK"
+short_name_url = "https://northcountrytrail.org/trail/minnesota/kek/"
 country = "US"
 regions = ["MN"]
 length_km = 66

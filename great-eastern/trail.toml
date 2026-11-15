@@ -3,6 +3,7 @@
 id = "great-eastern"
 name = "Great Eastern Trail"
 short_name = "GET"
+short_name_url = "https://www.greateasterntrail.net/about-us/"
 country = "US"
 regions = ["AL", "GA", "TN", "KY", "VA", "WV", "MD", "PA", "NY"]
 length_km = 3200

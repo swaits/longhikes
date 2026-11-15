@@ -3,6 +3,7 @@
 id = "appalachian-high-route"
 name = "Appalachian High Route"
 short_name = "AHR"
+short_name_url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
 country = "US"
 regions = ["NC", "TN"]
 length_km = 531

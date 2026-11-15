@@ -2,7 +2,6 @@
 
 id = "sheltowee-trace"
 name = "Sheltowee Trace National Recreation Trail"
-short_name = "STT"
 country = "US"
 regions = ["KY", "TN"]
 length_km = 515

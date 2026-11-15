@@ -3,6 +3,7 @@
 id = "ouachita"
 name = "Ouachita National Recreation Trail"
 short_name = "OT"
+short_name_url = "https://www.friendsoftheouachita.org/about-the-ot"
 country = "US"
 regions = ["AR", "OK"]
 length_km = 359

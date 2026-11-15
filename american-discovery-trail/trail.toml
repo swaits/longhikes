@@ -3,6 +3,7 @@
 id = "american-discovery-trail"
 name = "American Discovery Trail"
 short_name = "ADT"
+short_name_url = "https://discoverytrail.org/"
 country = "US"
 regions = ["DE", "MD", "DC", "WV", "OH", "KY", "IN", "IL", "IA", "MO", "KS", "NE", "CO", "UT", "NV", "CA"]
 length_km = 10943

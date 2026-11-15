@@ -2,7 +2,6 @@
 
 id = "boreal-trail"
 name = "Boreal Trail"
-short_name = "BT"
 country = "CA"
 regions = ["SK"]
 length_km = 135

@@ -3,6 +3,7 @@
 id = "chesapeake-ohio-canal"
 name = "Chesapeake and Ohio Canal Towpath"
 short_name = "C&O"
+short_name_url = "https://www.nps.gov/choh/planyourvisit/hiking.htm"
 country = "US"
 regions = ["MD", "DC", "WV"]
 length_km = 297

@@ -2,7 +2,6 @@
 
 id = "foothills"
 name = "Foothills Trail"
-short_name = "FHT"
 country = "US"
 regions = ["SC", "NC"]
 length_km = 122

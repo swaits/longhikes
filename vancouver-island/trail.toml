@@ -3,6 +3,7 @@
 id = "vancouver-island"
 name = "Vancouver Island Trail"
 short_name = "VIT"
+short_name_url = "https://vancouverislandtrail.ca/the-trail/about-the-vit/"
 country = "CA"
 regions = ["BC"]
 length_km = 800

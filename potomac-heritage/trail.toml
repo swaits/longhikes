@@ -2,7 +2,8 @@
 
 id = "potomac-heritage"
 name = "Potomac Heritage National Scenic Trail"
-short_name = "POHE"
+short_name = "PHT"
+short_name_url = "https://www.nps.gov/pohe/index.htm"
 country = "US"
 regions = ["DC", "MD", "VA", "PA"]
 length_km = 1448

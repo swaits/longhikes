@@ -3,6 +3,7 @@
 id = "backbone"
 name = "Backbone Trail"
 short_name = "BBT"
+short_name_url = "https://www.nps.gov/samo/planyourvisit/backbonetrail.htm"
 country = "US"
 regions = ["CA"]
 length_km = 108

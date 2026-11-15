@@ -3,6 +3,7 @@
 id = "lowest-to-highest-route"
 name = "Lowest to Highest Route"
 short_name = "L2H"
+short_name_url = "http://simblissity.net/L2H.shtml"
 country = "US"
 regions = ["CA"]
 length_km = 209

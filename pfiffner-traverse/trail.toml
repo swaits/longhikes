@@ -2,7 +2,6 @@
 
 id = "pfiffner-traverse"
 name = "Pfiffner Traverse"
-short_name = "PT"
 country = "US"
 regions = ["CO"]
 length_km = 124

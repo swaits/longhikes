@@ -2,7 +2,6 @@
 
 id = "pinhoti"
 name = "Pinhoti Trail"
-short_name = "PIN"
 country = "US"
 regions = ["AL", "GA"]
 length_km = 540

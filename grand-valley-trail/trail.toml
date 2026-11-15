@@ -2,7 +2,6 @@
 
 id = "grand-valley-trail"
 name = "Grand Valley Trail"
-short_name = "GVT"
 country = "CA"
 regions = ["ON"]
 length_km = 240

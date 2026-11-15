@@ -2,7 +2,6 @@
 
 id = "akshayuk-pass"
 name = "Akshayuk Pass"
-short_name = "AP"
 country = "CA"
 regions = ["NU"]
 length_km = 97

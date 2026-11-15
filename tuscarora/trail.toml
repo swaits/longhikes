@@ -2,7 +2,6 @@
 
 id = "tuscarora"
 name = "Tuscarora Trail"
-short_name = "TT"
 country = "US"
 regions = ["PA", "MD", "VA", "WV"]
 length_km = 406

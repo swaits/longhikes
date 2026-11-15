@@ -3,6 +3,7 @@
 id = "california-coastal"
 name = "California Coastal Trail"
 short_name = "CCT"
+short_name_url = "https://www.coastal.ca.gov/coastal-trail/"
 country = "US"
 regions = ["CA"]
 length_km = 1931

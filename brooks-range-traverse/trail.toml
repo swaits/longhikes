@@ -2,7 +2,6 @@
 
 id = "brooks-range-traverse"
 name = "Brooks Range Traverse"
-short_name = "BRT"
 country = "US"
 regions = ["AK"]
 length_km = 1609

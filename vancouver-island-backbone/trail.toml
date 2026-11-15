@@ -2,7 +2,6 @@
 
 id = "vancouver-island-backbone"
 name = "Vancouver Island Backbone"
-short_name = "VIB"
 country = "CA"
 regions = ["BC"]
 length_km = 300

@@ -2,7 +2,6 @@
 
 id = "black-canyon"
 name = "Black Canyon National Recreation Trail"
-short_name = "BCT"
 country = "US"
 regions = ["AZ"]
 length_km = 129

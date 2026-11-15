@@ -2,7 +2,6 @@
 
 id = "rideau-trail"
 name = "Rideau Trail"
-short_name = "RT"
 country = "CA"
 regions = ["ON"]
 length_km = 387

@@ -2,7 +2,6 @@
 
 id = "cohos"
 name = "Cohos Trail"
-short_name = "COHOS"
 country = "US"
 regions = ["NH"]
 length_km = 270

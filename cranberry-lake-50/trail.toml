@@ -3,6 +3,7 @@
 id = "cranberry-lake-50"
 name = "Cranberry Lake 50"
 short_name = "CL50"
+short_name_url = "https://cranberrylake50.org/"
 country = "US"
 regions = ["NY"]
 length_km = 80

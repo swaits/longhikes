@@ -2,7 +2,8 @@
 
 id = "florida"
 name = "Florida National Scenic Trail"
-short_name = "FNST"
+short_name = "FT"
+short_name_url = "https://floridatrail.org/explore-the-florida-trail/"
 country = "US"
 regions = ["FL"]
 length_km = 2414

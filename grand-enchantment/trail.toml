@@ -3,6 +3,7 @@
 id = "grand-enchantment"
 name = "Grand Enchantment Trail"
 short_name = "GET"
+short_name_url = "http://www.simblissity.net/get-about.shtml"
 country = "US"
 regions = ["AZ", "NM"]
 length_km = 1239

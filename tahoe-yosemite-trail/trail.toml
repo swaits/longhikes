@@ -2,7 +2,6 @@
 
 id = "tahoe-yosemite-trail"
 name = "Tahoe–Yosemite Trail"
-short_name = "TYT"
 country = "US"
 regions = ["CA"]
 length_km = 299

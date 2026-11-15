@@ -3,6 +3,7 @@
 id = "cross-vermont"
 name = "Cross Vermont Trail"
 short_name = "CVT"
+short_name_url = "https://crossvermont.org/our_trail/index.php"
 country = "US"
 regions = ["VT"]
 length_km = 145

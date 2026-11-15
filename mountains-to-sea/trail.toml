@@ -2,7 +2,8 @@
 
 id = "mountains-to-sea"
 name = "Mountains-to-Sea Trail"
-short_name = "MST-NC"
+short_name = "MST"
+short_name_url = "https://mountainstoseatrail.org/"
 country = "US"
 regions = ["NC"]
 length_km = 1890

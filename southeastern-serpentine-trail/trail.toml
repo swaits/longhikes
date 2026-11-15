@@ -3,6 +3,7 @@
 id = "southeastern-serpentine-trail"
 name = "Southeastern Serpentine Trail"
 short_name = "SST"
+short_name_url = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
 country = "US"
 regions = ["SC", "NC", "GA", "TN"]
 length_km = 938

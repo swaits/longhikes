@@ -3,6 +3,7 @@
 id = "bay-circuit"
 name = "Bay Circuit Trail"
 short_name = "BCT"
+short_name_url = "https://www.baycircuit.org/"
 country = "US"
 regions = ["MA"]
 length_km = 370

@@ -2,7 +2,6 @@
 
 id = "north-boundary"
 name = "North Boundary Trail"
-short_name = "NBT"
 country = "CA"
 regions = ["AB"]
 length_km = 159

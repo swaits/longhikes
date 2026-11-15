@@ -3,6 +3,7 @@
 id = "john-muir"
 name = "John Muir Trail"
 short_name = "JMT"
+short_name_url = "https://www.nps.gov/yose/planyourvisit/jmt.htm"
 country = "US"
 regions = ["CA"]
 length_km = 340

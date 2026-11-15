@@ -3,6 +3,7 @@
 id = "loyalsock"
 name = "Loyalsock Trail"
 short_name = "LT"
+short_name_url = "https://alpineclubofwilliamsport.com/loyalsock-trail-information/"
 country = "US"
 regions = ["PA"]
 length_km = 95

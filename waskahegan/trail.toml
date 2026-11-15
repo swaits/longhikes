@@ -2,7 +2,6 @@
 
 id = "waskahegan"
 name = "Waskahegan Trail"
-short_name = "WT"
 country = "CA"
 regions = ["AB"]
 length_km = 309

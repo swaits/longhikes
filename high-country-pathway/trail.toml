@@ -2,7 +2,6 @@
 
 id = "high-country-pathway"
 name = "High Country Pathway"
-short_name = "HCP"
 country = "US"
 regions = ["MI"]
 length_km = 132

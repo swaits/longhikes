@@ -2,7 +2,6 @@
 
 id = "grand-moab-route"
 name = "Grand-Moab Route"
-short_name = "GMR"
 country = "US"
 regions = ["CO", "UT"]
 length_km = 225

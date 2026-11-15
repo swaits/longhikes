@@ -2,7 +2,8 @@
 
 id = "iat-newfoundland-labrador"
 name = "International Appalachian Trail, Newfoundland and Labrador"
-short_name = "IAT NL"
+short_name = "IATNL"
+short_name_url = "https://iatnl.org/thru-hikers/"
 country = "CA"
 regions = ["NL"]
 length_km = 750

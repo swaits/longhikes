@@ -3,6 +3,7 @@
 id = "route-in-between"
 name = "Route In Between"
 short_name = "RIB"
+short_name_url = "http://www.lbhikes.com/2019/12/dhr.html"
 country = "US"
 regions = ["AZ", "UT", "ID"]
 length_km = 4344

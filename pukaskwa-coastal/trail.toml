@@ -2,7 +2,6 @@
 
 id = "pukaskwa-coastal"
 name = "Pukaskwa Coastal Hiking Trail"
-short_name = "PCHT"
 country = "CA"
 regions = ["ON"]
 length_km = 60

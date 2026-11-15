@@ -2,7 +2,6 @@
 
 id = "montana-trail"
 name = "Montana Trail 406"
-short_name = "MT406"
 country = "US"
 regions = ["MT"]
 length_km = 2934

@@ -3,6 +3,7 @@
 id = "idaho-centennial"
 name = "Idaho Centennial Trail"
 short_name = "ICT"
+short_name_url = "https://idahotrailsassociation.org/ict-resources/"
 country = "US"
 regions = ["ID"]
 length_km = 1448

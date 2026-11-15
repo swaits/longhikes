@@ -2,7 +2,6 @@
 
 id = "cumberland-trail"
 name = "Cumberland Trail"
-short_name = "CMT"
 country = "US"
 regions = ["TN"]
 length_km = 480

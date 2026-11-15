@@ -2,7 +2,6 @@
 
 id = "south-boundary"
 name = "South Boundary Trail"
-short_name = "SBT"
 country = "CA"
 regions = ["AB"]
 length_km = 121

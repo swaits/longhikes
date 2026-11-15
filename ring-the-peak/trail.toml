@@ -2,7 +2,6 @@
 
 id = "ring-the-peak"
 name = "Ring the Peak Trail"
-short_name = "RTP"
 country = "US"
 regions = ["CO"]
 length_km = 101

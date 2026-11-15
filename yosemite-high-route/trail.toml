@@ -2,7 +2,6 @@
 
 id = "yosemite-high-route"
 name = "Yosemite High Route"
-short_name = "YHR"
 country = "US"
 regions = ["CA"]
 length_km = 261

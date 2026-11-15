@@ -3,6 +3,7 @@
 id = "appalachian"
 name = "Appalachian National Scenic Trail"
 short_name = "AT"
+short_name_url = "https://www.nps.gov/appa/index.htm"
 country = "US"
 regions = ["GA", "NC", "TN", "VA", "WV", "MD", "PA", "NJ", "NY", "CT", "MA", "VT", "NH", "ME"]
 length_km = 3537

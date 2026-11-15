@@ -3,6 +3,7 @@
 id = "great-colorado-route"
 name = "Great Colorado Route"
 short_name = "GCR"
+short_name_url = "https://www.greatcoloradoroute.com"
 country = "US"
 regions = ["CO"]
 length_km = 3219

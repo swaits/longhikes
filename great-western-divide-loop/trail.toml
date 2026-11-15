@@ -2,7 +2,6 @@
 
 id = "great-western-divide-loop"
 name = "Sequoia Great Western Divide Loop"
-short_name = "GWDL"
 country = "US"
 regions = ["CA"]
 length_km = 93

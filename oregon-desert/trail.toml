@@ -3,6 +3,7 @@
 id = "oregon-desert"
 name = "Oregon Desert Trail"
 short_name = "ODT"
+short_name_url = "https://onda.org/regions/oregon-desert-trail/"
 country = "US"
 regions = ["OR"]
 length_km = 1200

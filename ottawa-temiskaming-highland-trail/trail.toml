@@ -3,6 +3,7 @@
 id = "ottawa-temiskaming-highland-trail"
 name = "Ottawa-Temiskaming Highland Trail"
 short_name = "OTHT"
+short_name_url = "https://nastawgantrails.org/our-trails"
 country = "CA"
 regions = ["ON"]
 length_km = 142

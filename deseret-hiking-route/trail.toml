@@ -3,6 +3,7 @@
 id = "deseret-hiking-route"
 name = "Deseret Hiking Route"
 short_name = "DHR"
+short_name_url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
 country = "US"
 regions = ["UT", "ID"]
 length_km = 1609

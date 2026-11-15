@@ -2,7 +2,6 @@
 
 id = "conservation-trail"
 name = "Conservation Trail"
-short_name = "CT"
 country = "US"
 regions = ["NY"]
 length_km = 285

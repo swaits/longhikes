@@ -3,6 +3,7 @@
 id = "quehanna"
 name = "Quehanna Trail"
 short_name = "QT"
+short_name_url = "https://www.kta-hike.org/quehanna-trail.html"
 country = "US"
 regions = ["PA"]
 length_km = 119

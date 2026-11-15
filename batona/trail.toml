@@ -2,7 +2,6 @@
 
 id = "batona"
 name = "Batona Trail"
-short_name = "BT"
 country = "US"
 regions = ["NJ"]
 length_km = 80

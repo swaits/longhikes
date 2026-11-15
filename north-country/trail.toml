@@ -2,7 +2,6 @@
 
 id = "north-country"
 name = "North Country National Scenic Trail"
-short_name = "NCT"
 country = "US"
 regions = ["ND", "MN", "WI", "MI", "OH", "PA", "NY", "VT"]
 length_km = 7403

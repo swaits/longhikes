@@ -2,7 +2,6 @@
 
 id = "avon"
 name = "Avon Trail"
-short_name = "AT"
 country = "CA"
 regions = ["ON"]
 length_km = 130

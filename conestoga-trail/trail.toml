@@ -2,7 +2,6 @@
 
 id = "conestoga-trail"
 name = "Conestoga Trail"
-short_name = "CT"
 country = "US"
 regions = ["PA"]
 length_km = 103

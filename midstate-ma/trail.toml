@@ -3,6 +3,7 @@
 id = "midstate-ma"
 name = "Midstate Trail (Massachusetts)"
 short_name = "MST"
+short_name_url = "https://www.midstatetrail.org/"
 country = "US"
 regions = ["MA"]
 length_km = 148

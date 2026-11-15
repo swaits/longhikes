@@ -2,7 +2,8 @@
 
 id = "sky-islands-traverse"
 name = "Sky Islands Traverse"
-short_name = "SIT"
+short_name = "SKIT"
+short_name_url = "https://simblissity.net/skit.shtml"
 country = "US"
 regions = ["AZ"]
 length_km = 837

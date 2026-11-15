@@ -2,7 +2,8 @@
 
 id = "international-appalachian-trail-maine"
 name = "International Appalachian Trail, Maine section"
-short_name = "IAT-ME"
+short_name = "IAT"
+short_name_url = "https://maineiat.org/?p=412"
 country = "US"
 regions = ["ME"]
 length_km = 222

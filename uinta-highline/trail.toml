@@ -2,7 +2,6 @@
 
 id = "uinta-highline"
 name = "Uinta Highline Trail"
-short_name = "UHT"
 country = "US"
 regions = ["UT"]
 length_km = 167

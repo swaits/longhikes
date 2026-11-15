@@ -2,7 +2,6 @@
 
 id = "bitterroots-80-mile-route"
 name = "Bitterroots 80-mile Route"
-short_name = "B80"
 country = "US"
 regions = ["MT"]
 length_km = 126

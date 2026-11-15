@@ -2,7 +2,6 @@
 
 id = "highlands"
 name = "Highlands Trail"
-short_name = "HT"
 country = "US"
 regions = ["NJ", "NY", "PA", "CT"]
 length_km = 290

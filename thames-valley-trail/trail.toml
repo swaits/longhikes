@@ -2,7 +2,6 @@
 
 id = "thames-valley-trail"
 name = "Thames Valley Trail"
-short_name = "TVT"
 country = "CA"
 regions = ["ON"]
 length_km = 110

@@ -2,7 +2,6 @@
 
 id = "fremont"
 name = "Fremont National Recreation Trail"
-short_name = "FNRT"
 country = "US"
 regions = ["OR"]
 length_km = 216

@@ -3,6 +3,7 @@
 id = "sunapee-ragged-kearsarge"
 name = "Sunapee-Ragged-Kearsarge Greenway"
 short_name = "SRKG"
+short_name_url = "https://www.srkg.org/"
 country = "US"
 regions = ["NH"]
 length_km = 121

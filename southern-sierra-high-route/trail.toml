@@ -3,6 +3,7 @@
 id = "southern-sierra-high-route"
 name = "Southern Sierra High Route"
 short_name = "SoSHR"
+short_name_url = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
 country = "US"
 regions = ["CA"]
 length_km = 161

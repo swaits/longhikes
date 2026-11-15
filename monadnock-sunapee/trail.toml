@@ -3,6 +3,7 @@
 id = "monadnock-sunapee"
 name = "Monadnock-Sunapee Greenway"
 short_name = "MSG"
+short_name_url = "https://www.msgtc.org/"
 country = "US"
 regions = ["NH"]
 length_km = 80

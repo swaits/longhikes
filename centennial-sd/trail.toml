@@ -2,7 +2,6 @@
 
 id = "centennial-sd"
 name = "Centennial Trail"
-short_name = "CT"
 country = "US"
 regions = ["SD"]
 length_km = 179

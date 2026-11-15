@@ -2,7 +2,8 @@
 
 id = "sentier-international-appalaches"
 name = "Sentier international des Appalaches (International Appalachian Trail, Quebec and New Brunswick)"
-short_name = "IAT-CA"
+short_name = "IAT"
+short_name_url = "https://www.sia-iat.com/a-propos-du-sia?lang=en"
 country = "CA"
 regions = ["QC", "NB"]
 length_km = 1177

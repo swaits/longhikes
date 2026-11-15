@@ -2,7 +2,6 @@
 
 id = "natchez-trace"
 name = "Natchez Trace National Scenic Trail"
-short_name = "NATT"
 country = "US"
 regions = ["MS", "AL", "TN"]
 length_km = 105

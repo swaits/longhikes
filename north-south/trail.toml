@@ -2,7 +2,6 @@
 
 id = "north-south"
 name = "North-South Trail"
-short_name = "NST"
 country = "US"
 regions = ["RI"]
 length_km = 125

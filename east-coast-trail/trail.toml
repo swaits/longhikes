@@ -3,6 +3,7 @@
 id = "east-coast-trail"
 name = "East Coast Trail (Newfoundland)"
 short_name = "ECT"
+short_name_url = "https://www.newfoundlandlabrador.com/plan-and-book/attractions/210995"
 country = "CA"
 regions = ["NL"]
 length_km = 336

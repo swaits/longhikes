@@ -2,7 +2,6 @@
 
 id = "canol"
 name = "Canol Heritage Trail"
-short_name = "CHT"
 country = "CA"
 regions = ["NT"]
 length_km = 371

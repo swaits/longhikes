@@ -2,7 +2,6 @@
 
 id = "alexander-mackenzie"
 name = "Alexander MacKenzie Heritage Trail"
-short_name = "AMHT"
 country = "CA"
 regions = ["BC"]
 length_km = 420

@@ -3,6 +3,7 @@
 id = "santa-fe-to-taos"
 name = "Santa Fe to Taos Thru-Hike"
 short_name = "SF2T"
+short_name_url = "https://santafetotaos.org"
 country = "US"
 regions = ["NM"]
 length_km = 212

@@ -3,6 +3,7 @@
 id = "blue-mountains-trail"
 name = "Blue Mountains Trail"
 short_name = "BMT"
+short_name_url = "https://www.hellscanyon.org/blue-mountains-trail"
 country = "US"
 regions = ["OR"]
 length_km = 853

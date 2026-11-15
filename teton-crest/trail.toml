@@ -2,7 +2,8 @@
 
 id = "teton-crest"
 name = "Teton Crest Trail"
-short_name = "TCT-WY"
+short_name = "TCT"
+short_name_url = "https://www.nps.gov/grte/planyourvisit/backcountryroutesandzones.htm"
 country = "US"
 regions = ["WY"]
 length_km = 64

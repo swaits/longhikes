@@ -2,7 +2,6 @@
 
 id = "timberline"
 name = "Timberline Trail (Mount Hood)"
-short_name = "TLT"
 country = "US"
 regions = ["OR"]
 length_km = 64

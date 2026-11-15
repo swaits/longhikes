@@ -3,6 +3,7 @@
 id = "colorado-trail"
 name = "Colorado Trail"
 short_name = "CT"
+short_name_url = "https://coloradotrail.org/"
 country = "US"
 regions = ["CO"]
 length_km = 782

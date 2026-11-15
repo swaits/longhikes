@@ -3,6 +3,7 @@
 id = "big-seki-loop"
 name = "Big SEKI Loop"
 short_name = "BSL"
+short_name_url = "https://doingmiles.com/route-big-seki-loop/"
 country = "US"
 regions = ["CA"]
 length_km = 249

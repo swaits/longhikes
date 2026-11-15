@@ -2,7 +2,6 @@
 
 id = "oak-ridges"
 name = "Oak Ridges Trail"
-short_name = "ORT"
 country = "CA"
 regions = ["ON"]
 length_km = 270

@@ -3,6 +3,7 @@
 id = "lone-star"
 name = "Lone Star Hiking Trail"
 short_name = "LSHT"
+short_name_url = "https://en.wikipedia.org/wiki/Lone_Star_Hiking_Trail"
 country = "US"
 regions = ["TX"]
 length_km = 155

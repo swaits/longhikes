@@ -3,6 +3,7 @@
 id = "great-western-loop"
 name = "Great Western Loop"
 short_name = "GWL"
+short_name_url = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
 country = "US"
 regions = ["AZ", "NM", "CO", "WY", "ID", "MT", "CA", "OR", "WA"]
 length_km = 11064

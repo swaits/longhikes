@@ -3,6 +3,7 @@
 id = "mogollon-rim-trail"
 name = "Mogollon Rim Trail"
 short_name = "MRT"
+short_name_url = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
 country = "US"
 regions = ["AZ", "NM"]
 length_km = 805

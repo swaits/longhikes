@@ -3,6 +3,7 @@
 id = "northville-placid"
 name = "Northville-Placid Trail"
 short_name = "NPT"
+short_name_url = "https://albany.adk.org/about-our-chapter/northville-placid-trail/"
 country = "US"
 regions = ["NY"]
 length_km = 220

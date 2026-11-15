@@ -2,7 +2,6 @@
 
 id = "northern-new-mexico-loop"
 name = "Northern New Mexico Loop"
-short_name = "NNML"
 country = "US"
 regions = ["NM"]
 length_km = 805

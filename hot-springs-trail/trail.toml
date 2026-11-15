@@ -3,6 +3,7 @@
 id = "hot-springs-trail"
 name = "Hot Springs Trail"
 short_name = "HST"
+short_name_url = "https://outsideways.com/routes/us/hot-springs-trail/"
 country = "US"
 regions = ["CA", "OR", "ID"]
 length_km = 3896

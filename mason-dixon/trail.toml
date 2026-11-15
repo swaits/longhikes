@@ -2,7 +2,8 @@
 
 id = "mason-dixon"
 name = "Mason-Dixon Trail"
-short_name = "MDT"
+short_name = "M-DT"
+short_name_url = "https://masondixontrail.wixsite.com/mdts"
 country = "US"
 regions = ["PA", "MD", "DE"]
 length_km = 311

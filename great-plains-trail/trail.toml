@@ -3,6 +3,7 @@
 id = "great-plains-trail"
 name = "Great Plains Trail"
 short_name = "GPT"
+short_name_url = "https://www.greatplainstrail.org/about-the-trail/"
 country = "US"
 regions = ["SK", "ND", "SD", "NE", "TX"]
 length_km = 3540

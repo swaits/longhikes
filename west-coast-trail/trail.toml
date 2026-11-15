@@ -3,6 +3,7 @@
 id = "west-coast-trail"
 name = "West Coast Trail"
 short_name = "WCT"
+short_name_url = "https://parks.canada.ca/pn-np/bc/pacificrim/activ/sco-wct"
 country = "CA"
 regions = ["BC"]
 length_km = 75

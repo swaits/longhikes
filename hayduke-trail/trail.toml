@@ -2,7 +2,6 @@
 
 id = "hayduke-trail"
 name = "Hayduke Trail"
-short_name = "HT"
 country = "US"
 regions = ["UT", "AZ"]
 length_km = 1287

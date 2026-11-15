@@ -3,6 +3,7 @@
 id = "horse-shoe"
 name = "Horse-Shoe Trail"
 short_name = "HST"
+short_name_url = "https://cart.hstrail.org/"
 country = "US"
 regions = ["PA"]
 length_km = 225

@@ -3,6 +3,7 @@
 id = "vagabond-loop"
 name = "Vagabond Loop"
 short_name = "VL"
+short_name_url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
 country = "US"
 regions = ["AZ", "UT", "CO", "NM"]
 length_km = 5632

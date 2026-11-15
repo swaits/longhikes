@@ -2,7 +2,6 @@
 
 id = "traversee-charlevoix"
 name = "Traversée de Charlevoix"
-short_name = "TC"
 country = "CA"
 regions = ["QC"]
 length_km = 105

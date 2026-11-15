@@ -2,7 +2,6 @@
 
 id = "baker"
 name = "Baker Trail"
-short_name = "BT"
 country = "US"
 regions = ["PA"]
 length_km = 216

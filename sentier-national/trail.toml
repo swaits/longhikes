@@ -2,7 +2,8 @@
 
 id = "sentier-national"
 name = "Sentier National (Quebec)"
-short_name = "SN"
+short_name = "SNQ"
+short_name_url = "https://www.randoquebec.ca/sentier-national-au-quebec/"
 country = "CA"
 regions = ["QC"]
 length_km = 1500

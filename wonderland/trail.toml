@@ -2,7 +2,6 @@
 
 id = "wonderland"
 name = "Wonderland Trail"
-short_name = "WT"
 country = "US"
 regions = ["WA"]
 length_km = 150

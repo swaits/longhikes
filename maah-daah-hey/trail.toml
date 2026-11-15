@@ -2,7 +2,6 @@
 
 id = "maah-daah-hey"
 name = "Maah Daah Hey Trail"
-short_name = "MDHT"
 country = "US"
 regions = ["ND"]
 length_km = 232

@@ -3,6 +3,7 @@
 id = "continental-divide"
 name = "Continental Divide National Scenic Trail"
 short_name = "CDT"
+short_name_url = "https://cdtcoalition.org/"
 country = "US"
 regions = ["NM", "CO", "WY", "ID", "MT"]
 length_km = 4989

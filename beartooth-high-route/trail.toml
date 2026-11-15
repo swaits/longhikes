@@ -2,7 +2,6 @@
 
 id = "beartooth-high-route"
 name = "Beartooth High Route"
-short_name = "BHR"
 country = "US"
 regions = ["MT", "WY"]
 length_km = 145

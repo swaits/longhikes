@@ -3,6 +3,7 @@
 id = "corvallis-to-the-sea"
 name = "Corvallis-to-the-Sea Trail"
 short_name = "C2C"
+short_name_url = "https://c2ctrail.org/"
 country = "US"
 regions = ["OR"]
 length_km = 97

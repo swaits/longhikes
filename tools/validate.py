@@ -355,6 +355,24 @@ def check_elevation(tid, tdir, rec, errors):
                 errors.append(f"{where}: source.computed must be a date (YYYY-MM-DD)")
 
 
+def check_short_name(tid, rec, errors):
+    """short_name is optional; where present it needs short_name_url, the page where it was seen in use."""
+    name, url = rec.get("short_name"), rec.get("short_name_url")
+    if "short_name" in rec:
+        if not isinstance(name, str) or not name.strip():
+            errors.append(f"{tid}: short_name must be a non-empty string (leave it out when no abbreviation is in use)")
+        elif name != name.strip():
+            errors.append(f"{tid}: short_name has a leading or trailing space")
+        elif "." in name:
+            errors.append(f"{tid}: short_name must be written without full stops (\"AT\", not \"A.T.\")")
+        if "short_name_url" not in rec:
+            errors.append(f"{tid}: short_name needs short_name_url, the page where it was seen in use")
+    elif "short_name_url" in rec:
+        errors.append(f"{tid}: short_name_url without short_name")
+    if "short_name_url" in rec and not (isinstance(url, str) and url.startswith(("https://", "http://"))):
+        errors.append(f"{tid}: short_name_url must be an http(s) URL")
+
+
 LINK_FIELDS = ("title", "publisher", "url")
 LINK_KEYS = {"title", "publisher", "url", "note"}
 
@@ -415,10 +433,11 @@ def main():
             continue
         trails.append(rec)
 
-        for field in ("id", "name", "short_name", "country", "regions",
+        for field in ("id", "name", "country", "regions",
                       "length_km", "tier", "designation"):
             if field not in rec or rec[field] in ("", None, []):
                 errors.append(f"{tid}: missing required field {field}")
+        check_short_name(tid, rec, errors)
         if rec.get("id") != tid:
             errors.append(f"{tid}: id {rec.get('id')!r} does not match directory name")
         if rec.get("country") not in ("US", "CA"):

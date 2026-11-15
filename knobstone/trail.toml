@@ -3,6 +3,7 @@
 id = "knobstone"
 name = "Knobstone Trail"
 short_name = "KT"
+short_name_url = "https://www.in.gov/dnr/forestry/properties/knobstone-trail-conditions-reroutes-maps/"
 country = "US"
 regions = ["IN"]
 length_km = 97

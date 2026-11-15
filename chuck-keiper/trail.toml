@@ -2,7 +2,6 @@
 
 id = "chuck-keiper"
 name = "Chuck Keiper Trail"
-short_name = "CKT"
 country = "US"
 regions = ["PA"]
 length_km = 80

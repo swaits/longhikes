@@ -3,6 +3,7 @@
 id = "eastern-continental-trail"
 name = "Eastern Continental Trail"
 short_name = "ECT"
+short_name_url = "https://nimblewillnomad.com/books/"
 country = "US"
 regions = ["FL", "AL", "GA", "TN", "NC", "VA", "WV", "MD", "PA", "NJ", "NY", "CT", "MA", "VT", "NH", "ME", "QC", "NB"]
 length_km = 7081

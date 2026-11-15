@@ -3,6 +3,7 @@
 id = "tahoe-rim"
 name = "Tahoe Rim Trail"
 short_name = "TRT"
+short_name_url = "https://tahoerimtrail.org/"
 country = "US"
 regions = ["CA", "NV"]
 length_km = 266

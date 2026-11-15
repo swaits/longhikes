@@ -2,7 +2,6 @@
 
 id = "massanutten"
 name = "Massanutten Trail"
-short_name = "MT"
 country = "US"
 regions = ["VA"]
 length_km = 114

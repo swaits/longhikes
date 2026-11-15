@@ -3,6 +3,7 @@
 id = "desert-trail"
 name = "Desert Trail"
 short_name = "DT"
+short_name_url = "https://deserttrail.net"
 country = "US"
 regions = ["CA", "NV", "OR"]
 length_km = 2552

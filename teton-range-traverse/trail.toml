@@ -2,7 +2,6 @@
 
 id = "teton-range-traverse"
 name = "Teton Range Traverse"
-short_name = "TRT"
 country = "US"
 regions = ["WY"]
 length_km = 171

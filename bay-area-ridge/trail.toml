@@ -2,7 +2,6 @@
 
 id = "bay-area-ridge"
 name = "Bay Area Ridge Trail"
-short_name = "BART"
 country = "US"
 regions = ["CA"]
 length_km = 885

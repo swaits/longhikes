@@ -2,7 +2,6 @@
 
 id = "circle-of-solitude"
 name = "Circle of Solitude"
-short_name = "CoS"
 country = "US"
 regions = ["CA"]
 length_km = 109

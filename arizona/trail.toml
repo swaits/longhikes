@@ -3,6 +3,7 @@
 id = "arizona"
 name = "Arizona National Scenic Trail"
 short_name = "AZT"
+short_name_url = "https://aztrail.org/"
 country = "US"
 regions = ["AZ"]
 length_km = 1287

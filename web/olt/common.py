@@ -207,6 +207,25 @@ FOOTER_MAP_CREDIT = Markup(
     "the U.S. Geological Survey, NOAA, ArcticDEM and INEGI; Canada terrain data under the Open Government "
     "Licence - Canada. The full credit is under each trail map.")
 
+def save_button(rec, *, row=True):
+    """The control that saves a trail to the visitor's saved trails, or takes it off.
+
+    A real <button>, never inside a link, named for the trail ("Save Pacific
+    Crest Trail") whatever its state; app.js sets aria-pressed (and the word
+    "Save" or "Saved" on a trail page) from the saved list, lh-saved in
+    localStorage. row: the star alone, placed under the logo of a list row
+    (style.css .save--row); otherwise the button beside a trail page's actions.
+    Hidden without JavaScript, which saving needs (.js-only).
+    """
+    tid = esc(rec["id"])
+    label = f'<span class="vh">Save {name(rec)}</span>'
+    if row:
+        return Markup(f'<button class="save save--row js-only" type="button" data-save="{tid}" '
+                      f'aria-pressed="false" title="Save">{ICON_STAR}{label}</button>')
+    return Markup(f'<button class="button button--quiet save save--page js-only" type="button" data-save="{tid}" '
+                  f'aria-pressed="false">{ICON_STAR}<span class="save__word" aria-hidden="true">Save</span>{label}</button>')
+
+
 SWATCH_LINE = Markup('<span class="swatch swatch--line" aria-hidden="true"></span>')
 SWATCH_ROUTE = Markup('<span class="swatch swatch--route" aria-hidden="true"></span>')
 SWATCH_ALT = Markup('<span class="swatch swatch--alt" aria-hidden="true"></span>')
@@ -218,3 +237,23 @@ ICON_DOWNLOAD = Markup('<svg viewBox="0 0 16 16" aria-hidden="true" focusable="f
                        '<path d="M8 1.5v9M4 7l4 4 4-4M2.5 14.5h11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>')
 ICON_EXTERNAL = Markup('<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">'
                        '<path d="M6 3H3v10h10v-3M9 2.5h4.5V7M13.5 2.5 7 9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>')
+# The mark of a saved trail. Its fill is set by style.css (outline when not
+# saved, filled when saved), so one drawing serves every state.
+ICON_STAR = Markup('<svg class="star" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+                   '<path d="M12 2.8l2.85 5.78 6.38.93-4.62 4.5 1.09 6.35L12 17.36l-5.7 3 1.09-6.35-4.62-4.5 '
+                   '6.38-.93z" stroke-linejoin="round"/></svg>')
+# The three themes, for the theme menu in the header: auto (half dark, as the
+# device decides), light (a sun) and dark (a moon).
+ICON_THEME = {
+    "auto": Markup('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+                   '<circle cx="12" cy="12" r="8.25" fill="none" stroke="currentColor" stroke-width="1.7"/>'
+                   '<path d="M12 3.75a8.25 8.25 0 0 1 0 16.5z" fill="currentColor"/></svg>'),
+    "light": Markup('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+                    '<circle cx="12" cy="12" r="4.25" fill="none" stroke="currentColor" stroke-width="1.7"/>'
+                    '<path d="M12 2.5v2.75M12 18.75v2.75M2.5 12h2.75M18.75 12h2.75M5.28 5.28l1.95 1.95'
+                    'M16.77 16.77l1.95 1.95M5.28 18.72l1.95-1.95M16.77 7.23l1.95-1.95" fill="none" '
+                    'stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>'),
+    "dark": Markup('<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+                   '<path d="M19.75 14.6A8 8 0 0 1 9.4 4.25a8.25 8.25 0 1 0 10.35 10.35z" fill="none" '
+                   'stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>'),
+}

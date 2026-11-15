@@ -11,7 +11,7 @@ WEB = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, WEB)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from olt import browse, home, words  # noqa: E402
+from olt import browse, home, layout, words  # noqa: E402
 from test_hike import fake, render, top_part  # noqa: E402
 
 
@@ -37,10 +37,11 @@ class DefaultOrderTest(unittest.TestCase):
                         row.index('<span class="len__km">100 km</span>'))
         self.assertIn('data-km="100"', row)  # sorting and filtering stay in kilometres
 
-    def test_footer_switch_lists_miles_first_and_selects_it(self):
-        src = read("olt", "layout.py")
-        self.assertIn('value="mi" checked><span>mi and ft first</span>', src)
-        self.assertLess(src.index("mi and ft first"), src.index("km and m first"))
+    def test_header_switch_lists_miles_first_and_selects_it(self):
+        prefs = layout.prefs()
+        self.assertIn('value="mi" checked><span aria-hidden="true">mi</span><span class="vh">Miles and feet</span>', prefs)
+        self.assertLess(prefs.index('value="mi"'), prefs.index('value="km"'))
+        self.assertNotIn('value="km" checked', prefs)
         self.assertIn('value="mi" checked><span>mi</span>', home.UNITS_TOGGLE)
         self.assertLess(home.UNITS_TOGGLE.index(">mi<"), home.UNITS_TOGGLE.index(">km<"))
 

@@ -271,10 +271,11 @@ class BuiltVocabularyTest(unittest.TestCase):
         self.maxDiff = None
         self.assertEqual(bad[:40], [])
 
-    def test_navigation_has_three_items(self):
+    def test_navigation_has_three_sections_and_saved(self):
         doc = self.read("index.html")
-        nav = re.search(r'<nav aria-label="Main"><ul class="nav">(.*?)</ul></nav>', doc).group(1)
-        self.assertEqual(re.findall(r">([^<]+)</a>", nav), ["Trails", "Places", "About"])
+        nav = re.search(r'<nav class="site-nav" aria-label="Main"><ul class="nav">(.*?)</ul></nav>', doc).group(1)
+        self.assertEqual(re.findall(r'<li><a href="[^"]*"[^>]*>([^<]+)</a>', nav), ["Trails", "Places", "About"])
+        self.assertIn('<li class="nav__saved js-only"><a href="/saved/">', nav)
 
     def test_one_count_noun(self):
         doc = self.read("index.html")

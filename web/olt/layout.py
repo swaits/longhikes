@@ -54,15 +54,64 @@ def _current(path, href):
     return href != "/" and path.startswith(href)
 
 
+SAVED_PATH = "/saved/"
+
+THEMES = (("auto", "Auto"), ("light", "Light"), ("dark", "Dark"))
+
+
+def prefs():
+    """The reader's two display choices, at the right of the header on every page.
+
+    Units: a two-way switch, mi or km first (radios named "units", as every
+    units switch on the site; app.js keeps them in step and fires olt:units).
+    Theme: a small menu built from <details>, its button showing the theme in
+    use (its icon, and its name where there is room); the menu holds the three
+    themes as radios named "theme" (app.js fires olt:theme). The icon and name
+    in the button follow <html data-theme>, which prefs.js sets before first
+    paint, so the button is right from the start. Both need JavaScript and are
+    hidden without it (.js-only).
+    """
+    icons = "".join(f'<span class="theme__icon theme__icon--{k}">{common.ICON_THEME[k]}</span>' for k, _ in THEMES)
+    now = "".join(f'<span class="theme__now--{k}">{label}</span>' for k, label in THEMES)
+    hint = {"auto": '<span class="vh">, </span><small>As your device is set</small>'}
+    options = "".join(
+        f'<label class="theme__option"><input type="radio" name="theme" value="{k}"{" checked" if k == "auto" else ""}>'
+        f'<span class="theme__choice">{common.ICON_THEME[k]}<span class="theme__label">{label}{hint.get(k, "")}'
+        f'</span></span></label>'
+        for k, label in THEMES)
+    return Markup(f"""<div class="prefs js-only">
+      <fieldset class="prefs__units">
+        <legend class="vh">Units</legend>
+        <div class="seg seg--prefs">
+          <label><input type="radio" name="units" value="mi" checked><span aria-hidden="true">mi</span><span class="vh">Miles and feet</span></label>
+          <label><input type="radio" name="units" value="km"><span aria-hidden="true">km</span><span class="vh">Kilometres and metres</span></label>
+        </div>
+      </fieldset>
+      <details class="theme" data-theme-menu>
+        <summary class="theme__button">{icons}<span class="vh">Theme: </span><span class="theme__now">{now}</span></summary>
+        <fieldset class="theme__menu">
+          <legend class="vh">Theme</legend>
+          {options}
+        </fieldset>
+      </details>
+    </div>""")
+
+
 def header(path, site):
     items = "".join(
         f'<li><a href="{esc(href)}"{attrs(aria_current="page" if path == href else ("true" if _current(path, href) else None))}>'
         f"{esc(text)}</a></li>"
         for text, href in NAV)
+    # The visitor's saved trails: app.js fills in the count. Saving needs
+    # JavaScript, so without it the link is not offered.
+    items += (f'<li class="nav__saved js-only"><a href="{SAVED_PATH}"'
+              f'{attrs(aria_current="page" if path == SAVED_PATH else None)}>{common.ICON_STAR}Saved'
+              f'<span class="nav__count" data-saved-count hidden></span></a></li>')
     return Markup(f"""<header class="site-header">
   <div class="container site-header__inner">
     <a class="wordmark" href="/"><img class="wordmark__mark" src="/assets/favicon.svg" alt="" width="28" height="28">{esc(site.name)}</a>
-    <nav aria-label="Main"><ul class="nav">{items}</ul></nav>
+    <nav class="site-nav" aria-label="Main"><ul class="nav">{items}</ul></nav>
+    {prefs()}
   </div>
 </header>""")
 
@@ -87,6 +136,7 @@ def footer(site):
         <li><a href="/regions/">Places</a></li>
         <li><a href="/lists/">Lists</a></li>
         <li><a href="/routes/">Routes</a></li>
+        <li class="js-only"><a href="{SAVED_PATH}">Saved trails</a></li>
       </ul>
     </nav>
     <nav aria-labelledby="footer-project">
@@ -99,23 +149,6 @@ def footer(site):
         {report}
       </ul>
     </nav>
-    <div class="site-footer__prefs">
-      <fieldset class="field">
-        <legend>Theme</legend>
-        <div class="seg">
-          <label><input type="radio" name="theme" value="auto" checked><span>Auto</span></label>
-          <label><input type="radio" name="theme" value="light"><span>Light</span></label>
-          <label><input type="radio" name="theme" value="dark"><span>Dark</span></label>
-        </div>
-      </fieldset>
-      <fieldset class="field">
-        <legend>Units</legend>
-        <div class="seg">
-          <label><input type="radio" name="units" value="mi" checked><span>mi and ft first</span></label>
-          <label><input type="radio" name="units" value="km"><span>km and m first</span></label>
-        </div>
-      </fieldset>
-    </div>
   </div>
   <div class="site-footer__base">
     <div class="container">{common.FOOTER_MAP_CREDIT}</div>
@@ -130,7 +163,7 @@ def _ld_json_block(obj):
 
 
 def layout(title, body, *, path, description="", maps=False, outdoor=False, scripts=(), data=None, site=None,
-           jsonld=None, og_type="website"):
+           jsonld=None, og_type="website", noindex=False):
     """Return a complete HTML document.
 
     title        the page's own title ("Arizona National Scenic Trail"); the site
@@ -144,17 +177,23 @@ def layout(title, body, *, path, description="", maps=False, outdoor=False, scri
     scripts      extra same-origin script URLs, loaded with defer after app.js.
     data         optional object, embedded as <script type="application/json" id="page-data">.
     site         settings (olt.site.Site); defaults to web/site.toml.
+    noindex      True for a page whose content is the visitor's own (/saved/):
+                 search engines are asked not to index it, and it has no
+                 canonical address (its address carries the list). seo.py
+                 leaves it out of the sitemap.
     """
     site = site or site_settings.load()
     full_title = f"{title} · {site.name}" if title else f"{site.name}: {site.tagline}"
     description = description or site.tagline
-    canonical = site.canonical(path)
+    canonical = "" if noindex else site.canonical(path)
     head = [
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
         f"<title>{esc(full_title)}</title>",
         f'<meta name="description" content="{esc(description)}">',
     ]
+    if noindex:
+        head.append('<meta name="robots" content="noindex">')
     if canonical:
         head.append(f'<link rel="canonical" href="{esc(canonical)}">')
     head += [
@@ -168,6 +207,7 @@ def layout(title, body, *, path, description="", maps=False, outdoor=False, scri
     ]
     if canonical:
         head.append(f'<meta property="og:url" content="{esc(canonical)}">')
+    if site.base_url:
         # A PNG: link previews (Reddit, Slack, iMessage) do not draw an SVG.
         image = esc(site.canonical("/assets/og.png"))
         head.append(f'<meta property="og:image" content="{image}">')

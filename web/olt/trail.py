@@ -181,6 +181,7 @@ def page_head(rec):
         actions.append(f'<a class="button button--primary" href="#download">{common.ICON_DOWNLOAD}Download the GPX</a>')
     else:
         actions.append(f'<a class="button button--quiet" href="#track">GPX: {esc(facets.GPX_STATUS[facets.gpx(rec)])}</a>')
+    actions.append(str(common.save_button(rec, row=False)))
     tag_html = common.badges(rec)
     kicker = f'<p class="cluster">{tag_html}</p>' if tag_html else ""
     lead = lead_line(rec)

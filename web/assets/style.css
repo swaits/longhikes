@@ -8,7 +8,7 @@
    Themes: `color-scheme: light dark` follows prefers-color-scheme, and every
    colour token is written once with light-dark(). /assets/prefs.js pins a
    theme with <html data-theme="light|dark"> and the length order with
-   <html data-units="km"> (the footer switches set both); miles and feet come first without it.
+   <html data-units="km"> (the switches in the header set both); miles and feet come first without it.
 
    No inline styles except custom properties carrying data (--km, --n, --pos),
    which the Content-Security-Policy allows through style-src-attr.
@@ -153,6 +153,8 @@ h1, h2, h3, h4 {
 }
 
 p, ul, ol, dl, figure, blockquote { margin: 0; }
+/* hidden always hides, whatever display a class gives the element. */
+[hidden] { display: none !important; }
 p { text-wrap: pretty; }
 img, svg { display: block; max-inline-size: 100%; }
 
@@ -219,7 +221,7 @@ code.raw {
   position: absolute;
   inset-block-start: var(--space-2);
   inset-inline-start: var(--space-2);
-  z-index: 10;
+  z-index: 40;
   padding: var(--space-2) var(--space-4);
   background: var(--ink);
   color: var(--paper);
@@ -228,18 +230,49 @@ code.raw {
 }
 .skip-link:focus { transform: none; }
 
+/* The header. Narrow: the name and the two display switches on the first row,
+   the sections on a second row of their own, spread across the width like a
+   tab bar. From 50rem: one row, name, sections, then the switches set off by
+   a hairline. Above everything on the page, so the theme menu opens over it. */
 .site-header {
+  position: relative;
+  z-index: 20;
   background: var(--paper);
   border-block-start: 4px solid var(--trail);
   border-block-end: 3px double var(--rule-strong);
 }
 .site-header__inner {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: "mark prefs" "nav nav";
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2) var(--space-5);
-  padding-block: var(--space-3);
+  column-gap: var(--space-4);
+  padding-block-start: var(--space-2);
+}
+.site-header .wordmark { grid-area: mark; justify-self: start; }
+.site-nav { grid-area: nav; margin-block-start: var(--space-2); border-block-start: 1px solid var(--rule); }
+.site-nav .nav { justify-content: space-between; }
+.prefs { grid-area: prefs; }
+.site-header .wordmark { white-space: nowrap; }
+/* The narrowest phones (360px and less): the name a little smaller, so it
+   keeps to one line beside the switches. */
+@media (max-width: 23.5rem) {
+  .site-header__inner { column-gap: var(--space-3); }
+  .site-header .wordmark { gap: var(--space-2); font-size: 1.1875rem; }
+  .site-header .wordmark__mark { inline-size: 1.5rem; block-size: 1.5rem; }
+}
+/* Without JavaScript there are no switches: the name sits alone on its row. */
+html:not(.js) .site-header__inner { grid-template-areas: "mark mark" "nav nav"; }
+@media (min-width: 50rem) {
+  .site-header__inner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: "mark nav prefs";
+    column-gap: var(--space-5);
+    padding-block: var(--space-3);
+  }
+  html:not(.js) .site-header__inner { grid-template-areas: "mark nav nav"; }
+  .site-nav { justify-self: end; margin-block-start: 0; border-block-start: 0; }
+  .prefs { padding-inline-start: var(--space-5); border-inline-start: 1px solid var(--rule); }
 }
 
 .wordmark {
@@ -271,6 +304,125 @@ body:has(.hero--home) .site-header .wordmark { visibility: hidden; }
 }
 .nav a:hover { border-block-end-color: var(--rule-strong); }
 .nav a[aria-current] { border-block-end-color: var(--trail); }
+
+/* Saved, with how many: the star turns trail red once something is saved. */
+.nav__saved a { gap: 0.35rem; }
+.nav__saved .star { inline-size: 1rem; block-size: 1rem; }
+.nav__saved:has(.nav__count:not([hidden])) .star { color: var(--trail); }
+.nav__saved:has(.nav__count:not([hidden])) .star path { fill: currentColor; }
+.nav__count {
+  min-inline-size: 1.5em;
+  padding: 0 0.4em;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font: 600 var(--step--2)/1.5 var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+/* The star of a saved trail (common.ICON_STAR): an outline, filled when saved. */
+.star path { fill: none; stroke: currentColor; stroke-width: 1.6; }
+
+/* The display switches: units (a .seg) and the theme menu. 44px targets on
+   a narrow or touch screen; a little lower beside the links on a desktop. */
+.prefs { --pref-h: 2.75rem; display: flex; align-items: center; gap: var(--space-2); }
+@media (min-width: 50rem) and (pointer: fine) { .prefs { --pref-h: 2.25rem; } }
+.prefs__units { min-inline-size: 0; margin: 0; padding: 0; border: 0; }
+.seg--prefs { background: var(--surface); }
+.seg--prefs span[aria-hidden] {
+  min-inline-size: 2.75rem;
+  min-block-size: var(--pref-h);
+  padding-block: 0;
+  font: 600 var(--step--1)/1 var(--font-sans);
+  letter-spacing: 0.02em;
+}
+.seg--prefs .vh { min-block-size: 0; padding: 0; }
+
+.theme { position: relative; }
+.theme__button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-inline-size: 2.75rem;
+  min-block-size: var(--pref-h);
+  padding: 0 var(--space-2) 0 var(--space-3);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font: 600 var(--step--1)/1 var(--font-sans);
+  cursor: pointer;
+  list-style: none;
+}
+.theme__button::-webkit-details-marker { display: none; }
+.theme__button::after {
+  content: "";
+  flex: none;
+  inline-size: 0.4rem;
+  block-size: 0.4rem;
+  border: solid currentColor;
+  border-width: 0 1.5px 1.5px 0;
+  transform: translateY(-25%) rotate(45deg);
+}
+.theme[open] > .theme__button::after { transform: translateY(25%) rotate(-135deg); }
+.theme__button:hover { background: var(--sunken); }
+.theme[open] > .theme__button { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.theme[open] > .theme__button:focus-visible { outline-offset: 2px; }
+/* The button shows the theme in use, from html[data-theme] (prefs.js sets it
+   before first paint): its icon, and its name from 50rem. */
+.theme__icon, .theme__now > span { display: none; }
+.theme__icon svg { inline-size: 1.25rem; block-size: 1.25rem; }
+:root:not([data-theme]) .theme__icon--auto,
+:root[data-theme="light"] .theme__icon--light,
+:root[data-theme="dark"] .theme__icon--dark { display: block; }
+:root:not([data-theme]) .theme__now--auto,
+:root[data-theme="light"] .theme__now--light,
+:root[data-theme="dark"] .theme__now--dark { display: inline; }
+@media (max-width: 49.99rem) {
+  .theme__button { padding-inline: var(--space-2); }
+  .theme__now { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+@media (max-width: 23.5rem) {
+  .prefs { gap: 0.375rem; }
+  .theme__button { justify-content: center; padding-inline: 0; }
+  .theme__button::after { display: none; }
+}
+.theme__menu {
+  position: absolute;
+  inset-block-start: calc(100% + var(--space-2));
+  inset-inline-end: 0;
+  z-index: 1;
+  display: grid;
+  gap: 2px;
+  min-inline-size: 14rem;
+  margin: 0;
+  padding: var(--space-1);
+  border: 1px solid var(--ink);
+  background: var(--surface);
+  box-shadow: 4px 4px 0 var(--rule);
+}
+.theme__option { position: relative; display: block; }
+.theme__option input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+.theme__choice {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-block-size: 2.75rem;
+  padding: var(--space-1) var(--space-3);
+  color: var(--ink);
+  font: 500 var(--step-0)/1.2 var(--font-sans);
+}
+.theme__choice > svg { flex: none; inline-size: 1.25rem; block-size: 1.25rem; }
+.theme__label small { display: block; color: var(--ink-2); font: 400 var(--step--1)/1.3 var(--font-sans); }
+.theme__option input:hover:not(:checked) + .theme__choice { background: var(--sunken); }
+.theme__option input:checked + .theme__choice { background: var(--ink); color: var(--paper); font-weight: 600; }
+.theme__option input:checked + .theme__choice small { color: inherit; }
+.theme__option input:focus-visible + .theme__choice { outline: 3px solid var(--focus); outline-offset: -3px; }
+.theme__option input:checked:focus-visible + .theme__choice { outline-color: var(--paper); }
+
+/* Saving needs JavaScript: without it, its controls are not offered. */
+html:not(.js) .js-only { display: none !important; }
 
 .breadcrumb ol {
   display: flex;
@@ -309,8 +461,6 @@ body:has(.hero--home) .site-header .wordmark { visibility: hidden; }
 .site-footer__about { grid-column: span 2; max-inline-size: 34rem; }
 .site-footer .wordmark { font-size: var(--step-1); }
 .site-footer__about > * + * { margin-block-start: var(--space-3); }
-.site-footer__prefs { display: grid; align-content: start; gap: var(--space-4); }
-.site-footer__prefs .seg { background: var(--surface); }
 .site-footer__base {
   padding-block: var(--space-4);
   border-block-start: 1px solid var(--rule);
@@ -1015,6 +1165,39 @@ html:not(.js) .list-head__arrow { display: none; }
 }
 .entry[hidden] { display: none; }
 .entry:hover, .entry.is-highlit { background: color-mix(in srgb, var(--highlight) 55%, transparent); }
+
+/* The Save star of a row (common.save_button): drawn just under the logo
+   plate, out of the row's flow, so it never makes a row taller or moves a
+   column. Every layout leaves room there: the plate is the top of the first
+   column, which holds nothing else (its height is --plate-w at 3:2). The
+   button is a 44px target with the star at its centre. */
+.entry { position: relative; --pad-x: var(--space-2); }
+.save--row {
+  position: absolute;
+  inset-block-start: calc(var(--space-4) + var(--plate-w) * 2 / 3 - 0.375rem);
+  inset-inline-start: calc(var(--pad-x) + (var(--plate-w) - 2.75rem) / 2);
+  display: grid;
+  place-items: center;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--ink-3);
+  cursor: pointer;
+}
+.save--row .star { inline-size: 1.375rem; block-size: 1.375rem; }
+.save--row:hover { color: var(--ink); }
+.save--row:hover .star path { fill: color-mix(in srgb, var(--highlight) 70%, transparent); }
+.save--row:focus-visible { outline-offset: -0.4rem; border-radius: 50%; }
+.save[aria-pressed="true"] { color: var(--trail); }
+.save[aria-pressed="true"] .star path,
+.save--row[aria-pressed="true"]:hover .star path { fill: currentColor; }
+/* On the Saved page, a trail unsaved during the visit stays, dimmed, to be saved again. */
+.entry.is-unsaved > :not(.entry__body),
+.entry.is-unsaved .entry__body > :not(.save) { opacity: 0.5; }
 .entry__plate { grid-area: plate; align-self: start; }
 .entry__body { grid-area: body; display: grid; gap: var(--space-1); align-content: start; min-inline-size: 0; }
 .entry__kicker { display: flex; flex-wrap: wrap; gap: var(--space-1); }
@@ -1139,6 +1322,9 @@ html:not(.js) .list-head__arrow { display: none; }
     padding-block: var(--space-4);
   }
   .entry__plate { aspect-ratio: 5 / 3; }
+  /* The tallest plate and the shortest rows: the star a little smaller and closer. */
+  .save--row { inset-block-start: calc(var(--space-4) + var(--plate-w) * 2 / 3 - 0.5rem); }
+  .save--row .star { inline-size: 1.25rem; block-size: 1.25rem; }
   .entry__facts {
     grid-template-columns: 9.5rem 6rem 7rem 6.5rem;
     gap: var(--space-4);
@@ -1503,6 +1689,10 @@ td .linklist a { font-weight: 400; }
 @media (forced-colors: active) {
   .swatch, .ratio > span, .loglen::after, .gauge__mark { forced-color-adjust: none; }
   .tag--nst, .seg input:checked + span { forced-color-adjust: auto; border: 1px solid CanvasText; }
+  /* The theme in use is marked by more than its ground: a frame, and a check. */
+  .theme__option input:checked + .theme__choice { border: 1px solid CanvasText; }
+  .theme__option input:checked + .theme__choice .theme__label::after { content: " \2713"; }
+  .nav__count { border: 1px solid CanvasText; }
 }
 
 /* 10. Added pages: regions, routes, sources, logos, about, data ----------- */
@@ -1885,6 +2075,7 @@ a.tag:hover { background: var(--sunken); }
   .key { display: none; }
   .entry {
     --plate-w: 3.75rem;
+    --pad-x: 0px;
     grid-template-areas: "plate body" ". facts" ". note";
     gap: var(--space-2) var(--space-3);
     padding: var(--space-4) 0;
@@ -1937,3 +2128,70 @@ a.tag:hover { background: var(--sunken); }
 .morelinks__by { color: var(--ink-2); }
 .morelinks small { display: block; color: var(--ink-2); font-size: var(--step--1); line-height: 1.4; }
 .morelinks svg { display: inline; inline-size: 0.85em; block-size: 0.85em; vertical-align: -0.1em; }
+
+/* 13. Saved trails: the Save button of a trail page, the Saved page ---------- */
+
+.save--page[aria-pressed="true"] { border-color: var(--trail); }
+
+.saved-head .notice { max-inline-size: 46rem; margin-block-start: var(--space-2); }
+html.js .saved-nojs { display: none; }
+html:not(.js) .saved-body { display: none; }
+.saved-from { border-inline-start-color: var(--route); background: var(--highlight); }
+.saved-from .cluster { margin-block-start: var(--space-1); }
+.saved-status { color: var(--green); font: 500 var(--step--1)/1.4 var(--font-sans); }
+.saved-status:empty { display: none; }
+.saved-body { padding-block-start: var(--space-5); }
+.saved-list { display: grid; gap: var(--space-5); }
+.saved-empty .star { display: inline-block; inline-size: 1.15em; block-size: 1.15em; vertical-align: -0.2em; color: var(--ink-2); }
+.saved-empty .button { margin-block-start: var(--space-2); }
+
+/* The link to a list: written out in full (it can be selected with one tap
+   and copied by hand), with a Copy link button beside it. */
+.share {
+  display: grid;
+  gap: var(--space-2);
+  max-inline-size: 46rem;
+  margin-block-start: var(--space-4);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  border: 1px solid var(--rule-strong);
+  background: var(--surface);
+  font-family: var(--font-sans);
+}
+.share__title { color: var(--ink); font: 600 var(--step--2)/1.4 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; }
+.share__what { color: var(--ink-2); font: 400 var(--step--1)/1.45 var(--font-sans); }
+.share__row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); }
+.share__url {
+  flex: 1 1 16rem;
+  min-inline-size: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: var(--step--1);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  -webkit-user-select: all;
+  user-select: all;
+}
+.share__done { color: var(--green); font: 500 var(--step--1)/1.4 var(--font-sans); }
+.share__done:empty { display: none; }
+
+/* Said once, at the foot of the window, when the browser will not keep a
+   save. A live region from the start: empty, it takes no room. */
+.save-note {
+  position: fixed;
+  z-index: 50;
+  inset-inline: var(--space-4);
+  inset-block-end: var(--space-4);
+  max-inline-size: 32rem;
+  margin-inline: auto;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--ink);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--rule);
+  font: 500 var(--step--1)/1.45 var(--font-sans);
+  cursor: pointer;
+}
+.save-note:empty { padding: 0; border: 0; box-shadow: none; pointer-events: none; }

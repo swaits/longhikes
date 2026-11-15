@@ -11,6 +11,7 @@ writes:
     /regions/, /regions/<slug>/ Places: the hub and one page per state or province
     /lists/, /lists/<key>/      the lists shown today (olt/browse.py); /routes/ is the Routes list
     /about/ and the pages under it: /data/, /data/schema/, /data/changelog/, /sources/, /logos/
+    /saved/                     the visitor's saved trails (olt/saved.py; not indexed)
     /404.html                   not found
 
 Adding a page elsewhere (regions, sources, ...): build its body as HTML,
@@ -21,7 +22,7 @@ import json
 import os
 import shutil
 
-from . import browse, docs, home, layout, regions, seo, site as site_settings, thumbs, trail
+from . import browse, docs, home, layout, regions, saved, seo, site as site_settings, thumbs, trail
 
 WEB_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS_DIR = os.path.join(WEB_DIR, "assets")
@@ -132,6 +133,11 @@ def render_site(records, out_dir, repo_root, site=None):
     add("/data/schema/", t, d, b)
     t, d, b = docs.changelog_page(site, repo_root)
     add("/data/changelog/", t, d, b)
+    # The visitor's own list: not indexed, and left out of the sitemap below.
+    t, d, b = saved.saved_page(records, site)
+    layout.write_page(out_dir, saved.PATH, layout.layout(
+        t, b, path=saved.PATH, description=d, maps=True, site=site, noindex=True))
+    pages += 1
     docs.copy_licences(out_dir, repo_root)
     seo.write_seo_files(out_dir, seo.all_paths(records, region_paths + ["/lists/"] + list_paths), site)
     print(f"pages written {pages}: {len(records)} trail pages, home, 404, places, lists, about")

@@ -1,7 +1,9 @@
 /* Site script, served at /assets/app.js (deferred). Vanilla JS, no build step.
 
    1. Preferences: theme, length order and base map (saved in localStorage; applied
-      early by prefs.js)
+      early by prefs.js), and the theme menu in the header
+   1b. Saved trails: the Save buttons, the count in the header (lh-saved in localStorage)
+   1c. The Saved page (/saved/): the visitor's saved trails, or a list from a link
    2. Maps: .mapfig[data-map] figures. Data is fetched from data-src (same origin);
       lines are drawn on a plain graticule first, then on an OpenFreeMap base map
       when MapLibre and WebGL are available. A trail page's map (data-outdoor) is
@@ -78,6 +80,37 @@
     if (!root.dataset.theme) document.dispatchEvent(new Event('olt:theme'));
   });
 
+  /* The theme menu in the header: a <details> whose button shows the theme in
+     use (by CSS, from html[data-theme]) and whose menu holds the three themes
+     as radios. A choice made with the pointer, or Enter, closes it; the arrow
+     keys move through the choices and leave it open. Escape, a press outside
+     it, or the focus leaving it closes it too. */
+  document.querySelectorAll('[data-theme-menu]').forEach(function (menu) {
+    var summary = menu.querySelector('summary');
+    var byPointer = false;
+    function close(refocus) {
+      if (!menu.open) return;
+      menu.open = false;
+      if (refocus) summary.focus();
+    }
+    menu.addEventListener('keydown', function (e) {
+      byPointer = false;
+      if (e.key === 'Escape' && menu.open) { e.preventDefault(); close(true); }
+      else if (e.key === 'Enter' && e.target.name === 'theme') { e.preventDefault(); close(true); }
+    });
+    menu.querySelector('fieldset').addEventListener('pointerdown', function () { byPointer = true; });
+    menu.addEventListener('change', function () {
+      if (byPointer) close(true);
+      byPointer = false;
+    });
+    menu.addEventListener('focusout', function (e) {
+      if (e.relatedTarget && !menu.contains(e.relatedTarget)) close(false);
+    });
+    document.addEventListener('pointerdown', function (e) {
+      if (menu.open && !menu.contains(e.target)) close(false);
+    });
+  });
+
   /* A length in both units, in the reader's order: "800 mi (1,287 km)". */
   function lengthText(km) {
     var k = fmt.format(km) + ' km';
@@ -96,6 +129,266 @@
     probe.style.color = 'var(' + name + ')';
     return getComputedStyle(probe).color;
   }
+
+  /* 1b. Saved trails -----------------------------------------------------------
+     The visitor's saved trails: their ids in the order saved, a JSON array in
+     localStorage under lh-saved. Nothing leaves the browser. Every read and
+     write is guarded: when storage is missing, blocked or full, the list is
+     kept for this page only, and a note says so the first time a save cannot
+     be kept. Ids that match no trail are ignored; a page that lists every
+     trail (ol[data-every-trail]: home, /saved/) also drops them from storage.
+     Each [data-save] button saves or unsaves its trail (aria-pressed); each
+     [data-saved-count] shows how many are saved. A change made in another tab
+     arrives by the storage event. Every change fires olt:saved. */
+
+  var SAVED_KEY = 'lh-saved';
+  var ID_FORM = /^[a-z0-9][a-z0-9-]{0,99}$/;
+  var savedHere = null;  /* the list, while storage will not keep it */
+  var everyTrail = null; /* id -> true, on a page that lists every trail */
+
+  (function () {
+    var all = document.querySelector('ol.entries[data-every-trail]');
+    if (!all) return;
+    everyTrail = {};
+    all.querySelectorAll('.entry[data-id]').forEach(function (li) { everyTrail[li.dataset.id] = true; });
+  })();
+
+  /* Well-formed ids, each once, and where the page knows every trail, only
+     trails that exist. */
+  function cleanIds(ids) {
+    var seen = {};
+    return ids.filter(function (id) {
+      if (typeof id !== 'string' || !ID_FORM.test(id) || seen[id]) return false;
+      seen[id] = true;
+      return !everyTrail || everyTrail[id] === true;
+    });
+  }
+
+  function storedSaved() {
+    var raw = null;
+    try { raw = localStorage.getItem(SAVED_KEY); } catch (e) { return []; }
+    try {
+      var list = JSON.parse(raw || '[]');
+      return Array.isArray(list) ? list : [];
+    } catch (e) { return []; }
+  }
+
+  function readSaved() {
+    return savedHere ? savedHere.slice() : cleanIds(storedSaved());
+  }
+
+  /* Store the list; false when storage will not keep it. */
+  function storeSaved(list) {
+    try {
+      if (list.length) localStorage.setItem(SAVED_KEY, JSON.stringify(list));
+      else localStorage.removeItem(SAVED_KEY);
+      return true;
+    } catch (e) { return false; }
+  }
+
+  /* A note at the foot of the window, once a page, when a save cannot be kept.
+     It is a live region from the start, so it is announced when filled. */
+  var savedNote = document.createElement('p');
+  savedNote.className = 'save-note';
+  savedNote.setAttribute('role', 'status');
+  document.body.appendChild(savedNote);
+  var savedNoteShown = false;
+  function sayNotKept() {
+    if (savedNoteShown) return;
+    savedNoteShown = true;
+    savedNote.textContent = 'This browser is not keeping saved trails, so they last only while this page is open.';
+    var clear = function () { savedNote.textContent = ''; };
+    savedNote.addEventListener('click', clear);
+    setTimeout(clear, 15000);
+  }
+
+  function syncSaved() {
+    var list = readSaved();
+    var on = {};
+    list.forEach(function (id) { on[id] = true; });
+    document.querySelectorAll('[data-save]').forEach(function (button) {
+      var saved = on[button.dataset.save] === true;
+      button.setAttribute('aria-pressed', saved ? 'true' : 'false');
+      if (button.hasAttribute('title')) button.title = saved ? 'Saved' : 'Save';
+      var word = button.querySelector('.save__word');
+      if (word) word.textContent = saved ? 'Saved' : 'Save';
+    });
+    document.querySelectorAll('[data-saved-count]').forEach(function (count) {
+      count.textContent = list.length ? String(list.length) : '';
+      count.hidden = !list.length;
+    });
+    document.dispatchEvent(new CustomEvent('olt:saved', { detail: { ids: list } }));
+  }
+
+  function writeSaved(list) {
+    list = cleanIds(list);
+    if (storeSaved(list)) savedHere = null;
+    else { savedHere = list.slice(); sayNotKept(); }
+    syncSaved();
+    return list;
+  }
+
+  function toggleSaved(id) {
+    var list = readSaved();
+    var i = list.indexOf(id);
+    if (i === -1) list.push(id); else list.splice(i, 1);
+    writeSaved(list);
+  }
+
+  /* The buttons are in the page from the start; one listener serves them all. */
+  document.addEventListener('click', function (e) {
+    var button = e.target.closest ? e.target.closest('[data-save]') : null;
+    if (button) toggleSaved(button.dataset.save);
+  });
+  window.addEventListener('storage', function (e) {
+    if (e.key !== SAVED_KEY && e.key !== null) return;
+    savedHere = null;
+    syncSaved();
+  });
+  /* Here every trail is known: forget saved ids that match none (a trail
+     taken off the site). Only those; the rest of the list is untouched. */
+  if (everyTrail && !savedHere) {
+    var stored = storedSaved();
+    var kept = cleanIds(stored);
+    if (kept.length !== stored.length) storeSaved(kept);
+  }
+  syncSaved();
+
+  /* 1c. The Saved page ---------------------------------------------------------
+     /saved/ holds every trail's row, hidden (olt/saved.py). With no t= in the
+     address it shows the visitor's saved trails; with t=<id>,<id>,... it shows
+     that list, marked as from a link, and changes nothing until "Save these".
+     A link that holds the visitor's own list is shown as theirs. On their own
+     list a trail they unsave stays in place, dimmed, so it can be saved again;
+     trails saved meanwhile (in another tab) are added at the end. The map
+     shows the trails listed; the link to the list is written out in full, to
+     copy by hand or with the Copy link button (section 5). Runs before the
+     maps start, so the map opens on the right trails. */
+
+  function initSavedPage(page) {
+    var title = page.querySelector('[data-saved-title]');
+    var lede = page.querySelector('[data-saved-lede]');
+    var from = page.querySelector('[data-saved-from]');
+    var dropNote = page.querySelector('[data-saved-dropped]');
+    var merged = page.querySelector('[data-saved-merged]');
+    var share = page.querySelector('[data-saved-share]');
+    var url = page.querySelector('[data-saved-url]');
+    var empty = document.querySelector('[data-saved-empty]');
+    var none = document.querySelector('[data-saved-none]');
+    var listBox = document.querySelector('[data-saved-list]');
+    var results = listBox.querySelector('.results');
+    var total = results.querySelector('[data-saved-total]');
+    var fig = listBox.querySelector('.mapfig[data-map]');
+    var drawable = {};
+    ((fig && fig.dataset.drawable) || '').split(' ').forEach(function (id) { if (id) drawable[id] = true; });
+    var rows = {};
+    results.querySelectorAll('.entry[data-id]').forEach(function (li) { rows[li.dataset.id] = li; });
+
+    var params = new URLSearchParams(window.location.search);
+    var fromLink = params.has('t');
+    var linkIds = [];
+    var dropped = 0;
+    if (fromLink) {
+      var seen = {};
+      (params.get('t') || '').split(',').forEach(function (id) {
+        id = id.trim().toLowerCase();
+        if (!id || seen[id]) return;
+        seen[id] = true;
+        if (rows.hasOwnProperty(id)) linkIds.push(id); else dropped += 1;
+      });
+      var own = readSaved();
+      if (linkIds.length && own.length === linkIds.length &&
+          linkIds.every(function (id) { return own.indexOf(id) !== -1; })) fromLink = false;
+    }
+    var shown = fromLink ? linkIds.slice() : readSaved();
+    var mapOn = false;
+
+    function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
+
+    function render() {
+      var own = readSaved();
+      var ownSet = {};
+      own.forEach(function (id) { ownSet[id] = true; });
+      var view = fromLink ? (linkIds.length ? 'link' : 'none') : (shown.length ? 'own' : 'empty');
+      var heading = fromLink ? 'A list from a link' : 'Saved trails';
+      if (title.textContent !== heading) {
+        var cut = document.title.indexOf(' · ');
+        title.textContent = heading;
+        document.title = heading + (cut === -1 ? '' : document.title.slice(cut));
+      }
+      lede.hidden = fromLink;
+      from.hidden = view !== 'link';
+      dropNote.hidden = !dropped;
+      dropNote.textContent = dropped ? plural(dropped, 'trail', 'trails') + ' in the link ' +
+        (dropped === 1 ? 'is not on this site, so it is' : 'are not on this site, so they are') + ' left out.' : '';
+      empty.hidden = view !== 'empty';
+      none.hidden = view !== 'none';
+      listBox.hidden = view === 'empty' || view === 'none';
+
+      var order = {};
+      shown.forEach(function (id, i) { order[id] = i; });
+      Object.keys(rows).forEach(function (id) {
+        var li = rows[id];
+        var listed = order.hasOwnProperty(id);
+        li.hidden = !listed;
+        if (listed) li.dataset.order = String(order[id]); else delete li.dataset.order;
+        li.classList.toggle('is-unsaved', view === 'own' && listed && !ownSet[id]);
+      });
+      var n = fromLink ? linkIds.length : own.length;
+      total.innerHTML = '';
+      var strong = document.createElement('strong');
+      strong.textContent = String(n);
+      total.appendChild(strong);
+      total.appendChild(document.createTextNode(n === 1 ? ' trail' : ' trails'));
+
+      var ids = fromLink ? linkIds : own;
+      share.hidden = view === 'none' || !ids.length;
+      url.textContent = window.location.origin + '/saved/?t=' + ids.join(',');
+
+      var onMap = shown.filter(function (id) { return drawable[id]; });
+      if (fig) fig.hidden = !onMap.length;
+      return onMap;
+    }
+
+    var onMap = render();
+    var mapIds = onMap.join(' ');
+    /* The map starts only when it has a trail to draw. */
+    if (fig && onMap.length) {
+      fig.dataset.ids = mapIds;
+      mapOn = true;
+    } else if (fig) {
+      fig.removeAttribute('data-map');
+    }
+
+    var mergeButton = page.querySelector('[data-saved-merge]');
+    mergeButton.addEventListener('click', function () {
+      var own = readSaved();
+      var added = 0;
+      linkIds.forEach(function (id) {
+        if (own.indexOf(id) === -1) { own.push(id); added += 1; }
+      });
+      if (added) writeSaved(own);
+      merged.textContent = added ? 'Added ' + plural(added, 'trail', 'trails') + ' to your saved trails.'
+        : 'All of these were saved already.';
+    });
+
+    document.addEventListener('olt:saved', function (e) {
+      if (!fromLink) {
+        e.detail.ids.forEach(function (id) { if (shown.indexOf(id) === -1) shown.push(id); });
+      }
+      var ids = render();
+      if (ids.length && fig && !mapOn) { window.location.reload(); return; }
+      if (ids.length && ids.join(' ') !== mapIds) {
+        mapIds = ids.join(' ');
+        maps.forEach(function (m) { if (m.kind === 'overview') setVisible(m, ids); });
+      }
+      var select = results.querySelector('[data-sort-select]');
+      applySortUI(results, select ? select.value : 'saved', false);
+    });
+  }
+
+  var savedPage = document.querySelector('[data-saved-page]');
+  if (savedPage) initSavedPage(savedPage);
 
   /* 2. Maps ------------------------------------------------------------------- */
 
@@ -881,6 +1174,8 @@
   var COLUMN_PRIMARY = { 'name': 'name', 'length': 'length-desc', 'time': 'time-asc', 'climb': 'climb-desc' };
   var COLUMN_TOGGLE = { 'name': 'name-desc', 'name-desc': 'name', 'length-desc': 'length-asc', 'length-asc': 'length-desc',
                         'time-asc': 'time-desc', 'time-desc': 'time-asc', 'climb-desc': 'climb-asc', 'climb-asc': 'climb-desc' };
+  /* The Saved page's list also has the order saved (rows numbered in data-order by section 1c). */
+  if (savedPage) SORT_KEYS.saved = 1;
 
   function normalizeSortKey(value, dflt) {
     if (SORT_KEYS[value]) return value;
@@ -893,6 +1188,11 @@
   function compareEntries(a, b, key) {
     key = normalizeSortKey(key, 'name');
     var an = a.dataset.name || '', bn = b.dataset.name || '';
+    if (key === 'saved') {
+      var ao = a.dataset.order ? Number(a.dataset.order) : Infinity;
+      var bo = b.dataset.order ? Number(b.dataset.order) : Infinity;
+      return cmpNum(ao, bo) || cmpStr(an, bn);
+    }
     if (key === 'name') return cmpStr(an, bn);
     if (key === 'name-desc') return cmpStr(bn, an);
     if (key === 'climb-desc' || key === 'climb-asc') {
@@ -969,7 +1269,7 @@
   function replaceSortInUrl(root, key) {
     var p = new URLSearchParams(window.location.search);
     if (key === defaultSortOf(root)) p.delete('sort'); else p.set('sort', key);
-    var q = p.toString();
+    var q = p.toString().replace(/%2C/g, ',');  /* a Saved list's t=a,b,c stays readable */
     window.history.replaceState(null, '', (q ? '?' + q : window.location.pathname) + window.location.hash);
   }
 
@@ -1299,7 +1599,7 @@
     button.hidden = false;
     button.addEventListener('click', function () {
       var text = target.textContent.trim();
-      function ok() { if (done) done.textContent = 'Copied: ' + text; }
+      function ok() { if (done) done.textContent = button.dataset.copyDone || 'Copied: ' + text; }
       function manual() {
         var range = document.createRange();
         range.selectNodeContents(target);

@@ -121,12 +121,17 @@ def gpx_cell(rec):
     return f'<span class="line__status">{common.SWATCH_NONE}{esc(facets.GPX_SHORT[status])}</span>'
 
 
-def entry(rec, *, level=3, extra="", routes_list=False):
+def entry(rec, *, level=3, extra="", routes_list=False, hidden=False):
     """One trail in a list. Its data-* attributes drive the filters in app.js.
 
     level: the heading level of the trail's name. extra: HTML placed last in the row.
     routes_list: the Routes list, whose "By <author>" headings already say what the
     row's Route badge and "Route by" line would repeat; both are left out there.
+    hidden: written hidden, for app.js to show (the Saved page).
+
+    The Save star follows the name in the markup (so it is the next stop for the
+    keyboard) but is drawn under the logo, out of the row's flow (style.css
+    .save--row): it never makes a row taller or moves its columns.
     """
     route = facets.kind(rec) == "route"
     lo, hi, est = facets.time_days(rec)
@@ -157,10 +162,13 @@ def entry(rec, *, level=3, extra="", routes_list=False):
     time_html = esc(facets.time_text(rec)) + (' <small class="entry__est">estimate</small>' if est else "")
     climb_html = (f'\n    <div class="entry__climb"><dt>Climb</dt><dd>{words.elevation(climb_m, "stack")}'
                   f'<small class="entry__est">computed</small></dd></div>') if climb_m is not None else ""
+    if hidden:
+        attrs += " hidden"
     return f"""<li class="entry"{attrs}>
   {common.plate(rec)}
   <div class="entry__body">{kicker}
-    <{h} class="entry__name"><a href="{esc(common.trail_path(rec))}">{common.name(rec)}</a>{abbr_html}</{h}>{by}{desc_html}
+    <{h} class="entry__name"><a href="{esc(common.trail_path(rec))}">{common.name(rec)}</a>{abbr_html}</{h}>
+    {common.save_button(rec)}{by}{desc_html}
     <p class="entry__where">{where_html(rec)}</p>
   </div>
   <dl class="entry__facts">
@@ -371,14 +379,25 @@ UNITS_TOGGLE = """<fieldset class="results-units">
             </div>
           </fieldset>"""
 
-def sort_select(default_sort="name"):
+# The order a saved list was made in: offered first on the Saved page only,
+# where app.js numbers the rows (data-order) in the order they were saved.
+SAVED_ORDER = ("saved", "Order saved")
+
+
+def sort_select(default_sort="name", saved=False):
     """The one sort control of every list of trails, with the page's
     default order selected. Hidden without JavaScript (style.css):
-    it cannot work then, and the HTML is already in the default order."""
-    default_sort = facets.normalize_sort(default_sort)
+    it cannot work then, and the HTML is already in the default order.
+    saved: the Saved page's list, which opens in the order saved."""
+    sorts = facets.SORTS
+    if saved:
+        sorts = (SAVED_ORDER,) + tuple(sorts)
+        default_sort = SAVED_ORDER[0]
+    else:
+        default_sort = facets.normalize_sort(default_sort)
     options = "".join(
         f'\n              <option value="{esc(k)}"{" selected" if k == default_sort else ""}>{esc(label)}</option>'
-        for k, label in facets.SORTS)
+        for k, label in sorts)
     return f"""<label class="results-sort"><span class="results-sort__label">Sort by</span>
             <select class="select" id="sort" name="sort" data-sort-select>{options}
             </select>
@@ -398,7 +417,7 @@ def key(official=True):
       </ul>"""
 
 
-def results(recs=None, *, finder=False, groups=None, routes_list=False, default_sort="name"):
+def results(recs=None, *, finder=False, groups=None, routes_list=False, default_sort="name", saved=False):
     """The list of trails, as every page shows it: div.results > head, key, list head, ol.entries.
 
     Every list carries the same "Sort by" control. The rows are written in
@@ -410,6 +429,13 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
     sorting is within each group and the groups keep their order.
     extra_fn(rec) gives HTML placed last in each row.
     routes_list: passed to entry() for the Routes list (see there).
+    saved: the Saved page's list. Every trail's row is written hidden, and
+    app.js shows the saved ones (or a link's) and writes the count; the sort
+    control opens on the order saved.
+
+    A list that holds every trail (the finder's, the Saved page's) is marked
+    data-every-trail: there app.js knows every trail id, and drops the saved
+    ids that match no trail.
     """
     default_sort = facets.normalize_sort(default_sort)
     if groups is None:
@@ -421,14 +447,15 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
     only_routes = bool(shown) and all(facets.kind(r) == "route" for r in shown)
     noun = ("route" if only_routes else "trail") + ("" if total == 1 else "s")
     lists = ""
+    every = ' data-every-trail' if finder or saved else ""
     for heading, items, extra_fn in groups:
         level = 4 if heading else 3
         rows = "\n".join(entry(r, level=level, extra=extra_fn(r) if extra_fn else "",
-                                routes_list=routes_list) for r in items)
+                                routes_list=routes_list, hidden=saved) for r in items)
         if heading:
             lists += f'\n      <h3 class="results__group">{heading}</h3>'
         list_id = ' id="entries"' if finder else ""
-        lists += f'\n      <ol class="entries"{list_id}>\n{rows}\n      </ol>'
+        lists += f'\n      <ol class="entries"{list_id}{every}>\n{rows}\n      </ol>'
     if finder:
         count = (f'<p class="results-count" id="results-count" role="status">'
                  f'<strong>{total}</strong> of {total} {noun}</p>')
@@ -437,11 +464,15 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
         <p><strong>No trails match these filters.</strong></p>
         <button class="button button--quiet" type="button" data-reset>Clear search and filters</button>
       </div>"""
+    elif saved:
+        count = '<p class="results-count" data-saved-total><strong>0</strong> trails</p>'
+        empty = ""
     else:
         count = f'<p class="results-count"><strong>{total}</strong> {noun}</p>'
         empty = ""
-    tools = sort_select(default_sort) + "\n          " + UNITS_TOGGLE
-    return Markup(f"""<div class="results" data-sortable data-default-sort="{esc(default_sort)}">
+    tools = sort_select(default_sort, saved=saved) + "\n          " + UNITS_TOGGLE
+    dflt = SAVED_ORDER[0] if saved else default_sort
+    return Markup(f"""<div class="results" data-sortable data-default-sort="{esc(dflt)}">
       <div class="results-head">
         {count}
         <div class="results-tools">
@@ -473,9 +504,15 @@ def drawable_ids(recs):
     return [r["id"] for r in recs if r["id"] in tracks or hike.sketch_points(r)]
 
 
-def overview_map(recs, label, *, wide=False, scope=""):
+def overview_map(recs, label, *, wide=False, scope="", saved=False):
     """The map of the given trails (the overview geometry, limited to their ids
-    unless every trail is shown). A note instead when too little can be drawn."""
+    unless every trail is shown). A note instead when too little can be drawn.
+
+    saved: the Saved page's map. It is given every trail (scope "all") and
+    app.js limits it to the trails shown; the figure lists the ids it can draw
+    (data-drawable), so app.js leaves the map out when it would be empty, and
+    its caption counts nothing, since the list is the visitor's.
+    """
     ids = drawable_ids(recs)
     if not ids:
         return Markup('<p class="note">None of these trails has a GPX here or a known start or end, '
@@ -511,6 +548,11 @@ def overview_map(recs, label, *, wide=False, scope=""):
                          f'{"are" if s != 1 else "is"} shown as a dotted straight line between '
                          'their start and end, or a ring where only one end is known. '
                          'That is not the trail&rsquo;s path.')
+    if saved:
+        sentences = ["Tracks are simplified for display. Select one for its name.",
+                     "A trail with no GPX here is shown by its start and end only: dots straight from one "
+                     "to the other, or a ring where only one end is known."]
+        ids_attr += f' data-drawable="{esc(" ".join(ids))}"'
     sentences.append("Each trail&rsquo;s page names its source, credit and licence. "
                      "Base map: OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.")
     return Markup(f"""<figure class="mapfig{" mapfig--wide" if wide else ""}" data-map="overview" data-src="/data/overview.geojson"{ids_attr}{overview_bbox(recs)}>

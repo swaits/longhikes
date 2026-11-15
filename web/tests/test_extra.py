@@ -186,7 +186,7 @@ class ExtraPagesTest(unittest.TestCase):
             self.assertNotIn(f'name="{name}"', form, name)
         # the map is in the tool, beside the list it filters
         main = doc[doc.index('<div class="finder__main">'):]
-        self.assertLess(main.index('data-map="overview"'), main.index('<ol class="entries" id="entries">'))
+        self.assertLess(main.index('data-map="overview"'), main.index('<ol class="entries" id="entries"'))
         longest_km = max(r["length_km"] for r in self.records)
         maxsel = form[form.index('id="max"'):form.index("</select>", form.index('id="max"'))]
         minsel = form[form.index('id="min"'):form.index("</select>", form.index('id="min"'))]

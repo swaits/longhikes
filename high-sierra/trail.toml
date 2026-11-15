@@ -2,6 +2,8 @@
 
 id = "high-sierra"
 name = "High Sierra Trail"
+short_name = "HST"
+short_name_url = "https://www.treelinereview.com/where-to-go/backpacking-high-sierra-trail"
 country = "US"
 regions = ["CA"]
 length_km = 116

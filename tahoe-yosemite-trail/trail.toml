@@ -64,7 +64,9 @@ isbn = "0-89997-084-2"
 summary = "The Tahoe-Yosemite Trail is Thomas Winnett's route through California's Sierra Nevada from Meeks Bay at Lake Tahoe to Tuolumne Meadows in Yosemite National Park. It links maintained trails with road walks, unmaintained trail and cross-country travel. The route stayed unofficial."
 official_url = "https://shop.adventurewithkeen.com/wilderness-press/"
 start = "Meeks Bay, Lake Tahoe, California"
+start_lonlat = [-120.124, 39.034]
 end = "Tuolumne Meadows, Yosemite National Park, California"
+end_lonlat = [-119.377, 37.878]
 shape = "point-to-point"
 terrain = ["alpine", "forest", "lakes"]
 travel = "some-cross-country"
@@ -80,3 +82,13 @@ facts = ["summary", "official_url"]
 url = "https://www.fs.usda.gov/recarea/ltbmu/recreation/camping-cabins/recarea/?recid=11826&actid=50"
 publisher = "USDA Forest Service, Lake Tahoe Basin Management Unit"
 facts = ["summary", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1659750"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/255168"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

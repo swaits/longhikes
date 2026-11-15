@@ -64,6 +64,7 @@ format = "web route description and interactive map"
 summary = "The Chinese Wall Circuit is a loop in the Bob Marshall Wilderness in Montana. It follows the Continental Divide Trail and other maintained trails beneath the Chinese Wall, a 12-mile escarpment, and returns along the top of the wall. About 14 of its 79 miles are off trail."
 official_url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/"
 start = "Benchmark Trailhead, Montana"
+start_lonlat = [-112.888, 47.494]
 shape = "loop"
 days = [5, 6]
 season = "Late June to mid-September"
@@ -78,3 +79,8 @@ checked = "2026-11-13"
 url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/"
 publisher = "Wilderness Mindset"
 facts = ["official_url", "summary", "start", "shape", "days", "season", "months", "high_point", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/800438"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]

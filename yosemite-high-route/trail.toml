@@ -66,7 +66,9 @@ price_checked = "2026-11-10"
 summary = "The Yosemite High Route explores the upper headwaters of the Tuolumne and Merced Rivers in Yosemite National Park, California. Its core runs from Grace Meadow near the park's northern boundary to the base of Quartzite Peak at the Merced River, through remote canyons, alpine areas and lake basins. Seventy percent of the core is off-trail, between 8,000 and 11,000 feet."
 official_url = "https://andrewskurka.com/adventures/yosemite-high-route/"
 start = "Grace Meadow, Yosemite National Park, California"
+start_lonlat = [-119.615, 38.14]
 end = "Base of Quartzite Peak at the Merced River, Yosemite National Park, California"
+end_lonlat = [-119.425, 37.716]
 shape = "point-to-point"
 days = [7, 14]
 terrain = ["alpine", "lakes", "forest"]
@@ -88,3 +90,13 @@ facts = ["summary"]
 url = "https://www.nps.gov/yose/planyourvisit/wildpermits.htm"
 publisher = "National Park Service"
 facts = ["permit"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/224374"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/253804"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

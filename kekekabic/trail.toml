@@ -49,6 +49,7 @@ note = "Not downloaded."
 summary = "The Kekekabic Trail is a primitive trail across the heart of the Boundary Waters Canoe Area Wilderness in northern Minnesota, from Snowbank Lake near Ely to the Gunflint Trail. Most of it lies within the wilderness, and the Forest Service recommends map and compass skills for it."
 official_url = "https://www.fs.usda.gov/r09/superior/recreation/trails/kekekabic-trail-west"
 start = "Snowbank Lake trailhead, near Ely, Minnesota"
+start_lonlat = [-91.419, 47.988]
 end = "Kekekabic trailhead on the Gunflint Trail, Minnesota"
 shape = "point-to-point"
 season = "All year"
@@ -73,3 +74,8 @@ facts = ["end", "summary"]
 url = "https://www.fs.usda.gov/r09/superior/recreation/groups/north-country-national-scenic-trail"
 publisher = "USDA Forest Service, Superior National Forest"
 facts = ["summary", "terrain"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/658332"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]

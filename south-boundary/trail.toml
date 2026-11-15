@@ -49,6 +49,7 @@ note = "No line to measure."
 summary = "The South Boundary Trail is a remote wilderness route in Jasper National Park, Alberta, recommended only for experienced backpackers. It follows the Brazeau, Southesk and Cairn river valleys over Cairn Pass and Rocky Pass, past glacially fed rivers."
 official_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/south-boundary"
 start = "Nigel Creek trailhead, Jasper National Park, Alberta"
+start_lonlat = [-117.038, 52.166]
 end = "Rocky Pass trailhead, Alberta"
 shape = "point-to-point"
 days = [7, 10]
@@ -69,3 +70,8 @@ facts = ["summary", "official_url", "start", "end", "shape", "days", "terrain", 
 url = "https://pcweb2.azureedge.net/-/media/pn-np/ab/jasper/WET4/pdf/activ/guides-maps/backcountry-guide/south-boundary/South-boundary-backcountry-guide_Eng_2025.pdf"
 publisher = "Parks Canada, Jasper National Park"
 facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/IANPN"
+publisher = "Natural Resources Canada, Canadian Geographical Names Database"
+facts = ["start_lonlat"]

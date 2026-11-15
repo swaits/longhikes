@@ -65,6 +65,7 @@ summary = "The Great Plains Trail runs north to south through the shortgrass pra
 official_url = "https://www.greatplainstrail.org/about-the-trail/"
 start = "Grassland National Park, on the Canada-United States border"
 end = "Guadalupe Peak, Guadalupe Mountains National Park, Texas"
+end_lonlat = [-104.861, 31.891]
 shape = "point-to-point"
 season = "Spring and fall"
 months = [3, 4, 5, 9, 10, 11]
@@ -83,3 +84,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 url = "https://www.greatplainstrail.org/great-plains-trail-newsletter-for-july-2022/"
 publisher = "Great Plains Trail Alliance"
 facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1358489"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

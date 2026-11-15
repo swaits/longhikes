@@ -65,6 +65,7 @@ format = "GPX and an interactive CalTopo map"
 summary = "The Great Colorado Route is a 32-section route across Colorado that mixes a high route with a traditional thru-hike. It links high alpine passes, remote wilderness and deep canyons, and includes 13 fourteeners. Its author calls it demanding by design."
 official_url = "https://www.greatcoloradoroute.com"
 start = "Black Canyon of the Gunnison National Park, Colorado"
+start_lonlat = [-107.728, 38.58]
 shape = "loop"
 days = [135, 135]
 season = "May to October, depending on the section"
@@ -83,3 +84,8 @@ facts = ["official_url", "summary", "days", "season", "months", "terrain", "trav
 url = "https://www.greatcoloradoroute.com/route"
 publisher = "Donovan Rice (Iceman)"
 facts = ["start", "shape"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q305880"
+publisher = "Wikidata"
+facts = ["start_lonlat"]

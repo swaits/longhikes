@@ -65,6 +65,7 @@ format = "web page with an exportable route map (GPX)"
 summary = "The Sequoia Great Western Divide Loop is a backpacking loop from Crescent Meadow in Sequoia National Park that crosses the Great Western Divide at Kaweah Gap, past Precipice Lake and the Hamilton Lakes. The walk starts in giant sequoia forest and reaches alpine country above the treeline on the divide."
 official_url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
 start = "Crescent Meadow, Sequoia National Park"
+start_lonlat = [-118.748, 36.559]
 terrain = ["forest", "alpine"]
 checked = "2026-11-13"
 
@@ -72,3 +73,8 @@ checked = "2026-11-13"
 url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
 publisher = "National Park Service, Sequoia and Kings Canyon National Parks"
 facts = ["official_url", "summary", "start", "terrain"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/258914"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]

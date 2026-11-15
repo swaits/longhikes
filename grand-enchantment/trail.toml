@@ -52,6 +52,7 @@ summary = "The Grand Enchantment Trail is a route of over 770 miles from the edg
 official_url = "http://www.simblissity.net/get-about.shtml"
 start = "First Water Trailhead, Superstition Mountains, Arizona"
 end = "Albuquerque, New Mexico"
+end_lonlat = [-106.651, 35.084]
 shape = "point-to-point"
 season = "Spring or autumn"
 months = [3, 4, 5, 9, 10, 11]
@@ -76,3 +77,8 @@ facts = ["summary", "start", "end", "high_point", "terrain", "travel"]
 url = "http://www.simblissity.net/get_faq.shtml"
 publisher = "Brett Tucker (simBLISSity Ultralight Designs)"
 facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/928679"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

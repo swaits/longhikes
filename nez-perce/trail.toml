@@ -50,7 +50,9 @@ note = "Metadata read; not downloaded. Deferred: auto-tour style route in part."
 summary = "The Nez Perce (Nee-Me-Poo) National Historic Trail traces the route of the 1877 flight of the Nez Perce from Wallowa Lake, Oregon, to the Bear Paw Battlefield near Chinook, Montana, ending 40 miles short of the Canadian border. The route was used in its entirety only once, and the component trails and roads that made it up bore generations of use before and after."
 official_url = "https://www.fs.usda.gov/trails/nez-perce-nht"
 start = "Wallowa Lake, Oregon"
+start_lonlat = [-117.209, 45.31]
 end = "Bear Paw Battlefield, near Chinook, Montana"
+end_lonlat = [-109.211, 48.377]
 shape = "point-to-point"
 travel = "trail-and-road"
 checked = "2026-11-13"
@@ -64,3 +66,13 @@ facts = ["official_url", "summary", "start", "end", "shape"]
 url = "https://www.fs.usda.gov/trails/nez-perce-nht/about-trail"
 publisher = "USDA Forest Service"
 facts = ["summary", "start", "end", "travel"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1151862"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.wikidata.org/wiki/Q49474028"
+publisher = "Wikidata"
+facts = ["end_lonlat"]

@@ -50,7 +50,9 @@ note = "Metadata read; not downloaded. Deferred: Alaska is outside the first cov
 summary = "The Iditarod National Historic Trail is a winter trail system in Alaska made up of a 1,000-mile main trail between Seward and Nome and about 1,400 miles of side and connecting routes. It began as a gold-rush era sled dog route and is best known today for the Iditarod Trail Sled Dog Race, one of several permitted race events."
 official_url = "https://www.blm.gov/programs/national-conservation-lands/national-scenic-and-historic-trails/iditarod"
 start = "Seward, Alaska"
+start_lonlat = [-149.442, 60.104]
 end = "Nome, Alaska"
+end_lonlat = [-165.406, 64.501]
 shape = "network"
 caution = "This is the only winter trail in the National Trails System: its permitted events are sled dog, snowmachine and ski races, and the Bureau of Land Management maintains about 200 miles of the route, with five public shelter cabins."
 checked = "2026-11-13"
@@ -59,3 +61,13 @@ checked = "2026-11-13"
 url = "https://www.blm.gov/programs/national-conservation-lands/national-scenic-and-historic-trails/iditarod"
 publisher = "Bureau of Land Management"
 facts = ["official_url", "summary", "start", "end", "shape", "caution"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1414598"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1407125"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

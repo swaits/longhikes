@@ -49,7 +49,9 @@ note = "No line to measure."
 summary = "The Chesapeake and Ohio Canal towpath follows the Potomac River from Georgetown in Washington, DC, to Cumberland in western Maryland. It is the path beside the old canal, with locks, lockhouses and a tunnel along the way. Hiker-biker campsites are spaced along it from Swains Lock to Cumberland."
 official_url = "https://www.nps.gov/choh/planyourvisit/hiking.htm"
 start = "Georgetown, Washington, DC"
+start_lonlat = [-77.062, 38.905]
 end = "Cumberland, Maryland"
+end_lonlat = [-78.763, 39.653]
 shape = "point-to-point"
 season = "All year"
 months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -75,3 +77,13 @@ facts = ["summary"]
 url = "https://www.nps.gov/thingstodo/bike-the-c-o-canal-towpath.htm"
 publisher = "National Park Service"
 facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/531663"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/590057"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

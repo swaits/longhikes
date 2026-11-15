@@ -51,6 +51,7 @@ summary = "The Oregon Desert Trail is a route of about 750 miles across Oregon's
 official_url = "https://onda.org/regions/oregon-desert-trail/"
 start = "Outside Bend, Oregon"
 end = "Lake Owyhee State Park, Oregon"
+end_lonlat = [-117.286, 43.617]
 shape = "point-to-point"
 terrain = ["desert"]
 travel = "some-cross-country"
@@ -65,3 +66,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 url = "https://onda.org/regions/oregon-desert-trail/plan-a-trip/"
 publisher = "Oregon Natural Desert Association"
 facts = ["summary", "terrain"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1125099"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

@@ -65,7 +65,9 @@ format = "web route description with waypoints and timetable PDF"
 summary = "The Southern Sierra High Route traverses the highest part of California's Sierra Nevada from the South Lake trailhead near Bishop to Cottonwood Lakes. It extends the Sierra High Route south past Mount Whitney, crossing the Sierra crest eight times over many high passes. Most of it is off-trail or on unmaintained trails."
 official_url = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
 start = "South Lake trailhead near Bishop, California"
+start_lonlat = [-118.57, 37.165]
 end = "Cottonwood Lakes trailhead, California"
+end_lonlat = [-118.216, 36.497]
 shape = "point-to-point"
 high_point = "Mount Whitney"
 high_point_m = 4421
@@ -79,3 +81,13 @@ checked = "2026-11-13"
 url = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
 publisher = "Alan Dixon and Don Wilson (Adventure Alan)"
 facts = ["summary", "official_url", "start", "end", "shape", "high_point", "terrain", "travel", "permit", "days"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/267526"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/270626"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

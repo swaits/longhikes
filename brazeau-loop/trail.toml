@@ -48,6 +48,8 @@ note = "No line to measure."
 [hike]
 summary = "The Brazeau Loop is a backcountry loop in Jasper National Park in Alberta. It is a demanding high-elevation trail that crosses three mountain passes and needs several river fords. The passes can hold snow until July."
 official_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas"
+start = "Nigel Creek trailhead, Jasper National Park, Alberta"
+start_lonlat = [-117.038, 52.166]
 shape = "loop"
 days = [5, 5]
 high_point_m = 2492
@@ -65,4 +67,9 @@ facts = ["official_url", "summary", "shape", "days", "terrain", "travel"]
 [[hike.source]]
 url = "https://pcweb2.azureedge.net/-/media/pn-np/ab/jasper/WET4/pdf/visit/depliants-brochures/ete-summer/Backcountry-Guide-ENG-2019.pdf"
 publisher = "Parks Canada, Jasper National Park"
-facts = ["season", "months", "high_point"]
+facts = ["start", "season", "months", "high_point"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/IANPN"
+publisher = "Natural Resources Canada, Canadian Geographical Names Database"
+facts = ["start_lonlat"]

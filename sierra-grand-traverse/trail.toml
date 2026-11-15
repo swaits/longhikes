@@ -70,7 +70,9 @@ isbn = "978-1-68051-618-0"
 summary = "The Sierra Grand Traverse crosses the High Sierra in California from Tuolumne Meadows in Yosemite National Park south past Mount Whitney to Horseshoe Meadows. It winds through five wilderness areas across three national parks and two national forests, mostly between 9,000 and 12,000 feet. More than half of it is off-trail, over 41 passes."
 official_url = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
 start = "Tuolumne Meadows, Yosemite National Park, California"
+start_lonlat = [-119.377, 37.878]
 end = "Horseshoe Meadows, California"
+end_lonlat = [-118.176, 36.445]
 shape = "point-to-point"
 terrain = ["alpine"]
 travel = "mostly-cross-country"
@@ -80,3 +82,13 @@ checked = "2026-11-13"
 url = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
 publisher = "Mountaineers Books"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/255168"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/271655"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

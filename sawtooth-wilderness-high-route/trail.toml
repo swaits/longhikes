@@ -65,6 +65,7 @@ format = "web trip report with a GPX download and a CalTopo map"
 summary = "This Sawtooth Wilderness high route loops from the Tin Cup Trailhead at Pettit Lake in Idaho, staying as high as possible among the range's lakes and passes. The author planned most of it off-trail. The published hike in August 2017 covered part of the planned route in eight days."
 official_url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
 start = "Tin Cup Trailhead at Pettit Lake, Idaho"
+start_lonlat = [-114.879, 43.98]
 shape = "loop"
 terrain = ["alpine", "lakes"]
 travel = "mostly-cross-country"
@@ -76,3 +77,8 @@ checked = "2026-11-13"
 url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
 publisher = "Seeking Lost (the route's creator)"
 facts = ["summary", "official_url", "start", "shape", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/388386"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]

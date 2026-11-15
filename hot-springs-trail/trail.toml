@@ -63,6 +63,7 @@ format = "book"
 summary = "The Hot Springs Trail is a route from Santa Barbara, California, to the Canadian border in Idaho that links 100 wild and resort hot spring areas. It is mainly a hiking trail with official mountain biking and whitewater rafting options, and it mixes roads, trails and trail-less ridge running."
 official_url = "https://outsideways.com/routes/us/hot-springs-trail/"
 start = "Santa Barbara, California"
+start_lonlat = [-119.698, 34.421]
 end = "the Canadian border, Idaho"
 shape = "point-to-point"
 days = [110, 110]
@@ -74,3 +75,8 @@ checked = "2026-11-13"
 url = "https://outsideways.com/routes/us/hot-springs-trail/"
 publisher = "Aria Zoner"
 facts = ["official_url", "summary", "start", "end", "shape", "days", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1661401"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]

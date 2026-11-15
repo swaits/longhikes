@@ -67,6 +67,7 @@ summary = "The Beartooth High Route is a 90-mile route across the Beartooth Rang
 official_url = "https://wildernessmindset.com/beartooth-high-route/"
 start = "Beartooth Highway, east end"
 end = "Rabbit Gulch Trailhead"
+end_lonlat = [-110.039, 45.296]
 shape = "point-to-point"
 days = [10, 10]
 season = "Late July through September"
@@ -80,3 +81,8 @@ checked = "2026-11-13"
 url = "https://wildernessmindset.com/beartooth-high-route/"
 publisher = "Wilderness Mindset"
 facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "months", "high_point", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/789313"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

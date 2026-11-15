@@ -61,8 +61,10 @@ format = "guide, archived; his books page is the page to ask on"
 [hike]
 summary = "The Eastern Continental Trail is a route of about 4,400 miles that M. J. Eberhart, who goes by Nimblewill Nomad, walked in 1998 from the Florida Keys to northern Quebec. It crosses 16 states and two Canadian provinces. His book is the only written account of a thru-hike of it."
 official_url = "https://nimblewillnomad.com/books/"
-start = "Florida Keys, Florida"
+start = "Key West, Florida"
+start_lonlat = [-81.783, 24.556]
 end = "Cap Gaspé (Forillon), Quebec"
+end_lonlat = [-64.164, 48.752]
 shape = "point-to-point"
 days = [300, 300]
 travel = "trail-and-road"
@@ -77,3 +79,13 @@ facts = ["official_url", "summary", "start", "shape"]
 url = "https://nimblewillnomad.com/odyssey-00-01-journal-entries-1/"
 publisher = "M. J. Eberhart (Nimblewill Nomad)"
 facts = ["end", "days", "travel"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/294048"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/EGLSG"
+publisher = "Natural Resources Canada, Canadian Geographical Names Database"
+facts = ["end_lonlat"]

@@ -65,7 +65,9 @@ format = "CalTopo maps and a databook, sent after a signed waiver"
 summary = "The Blue Mountains Trail is a long hiking route through northeast Oregon, from Joseph to John Day. It links mountains, mixed-conifer forest and river canyons, including Hells Canyon. It is a route still being worked out, and it mixes trail, roads and cross-country travel."
 official_url = "https://www.hellscanyon.org/blue-mountains-trail"
 start = "Wallowa Lake State Park, near Joseph, Oregon"
+start_lonlat = [-117.209, 45.31]
 end = "John Day, Oregon"
+end_lonlat = [-118.953, 44.416]
 shape = "point-to-point"
 season = "From mid-July, once the snow has melted"
 months = [7, 8, 9]
@@ -88,3 +90,13 @@ facts = ["summary", "terrain", "travel", "caution"]
 url = "https://www.hellscanyon.org/blue-mountains-trail"
 publisher = "Greater Hells Canyon Council"
 facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "caution", "season", "months"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1151862"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1144303"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

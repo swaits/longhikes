@@ -53,7 +53,9 @@ note = "The NPS national layer has only 5.4 km of the 64 km: not usable as a sou
 summary = "The Teton Crest Trail is a point to point route along the crest of the Teton Range in Wyoming, starting outside Grand Teton National Park at Phillips Pass and ending at String Lake. The park service says it climbs over 9,000 feet and is best enjoyed over multiple days. Camping zones along it fill almost every night from late July through early September."
 official_url = "https://www.nps.gov/grte/planyourvisit/backcountryroutesandzones.htm"
 start = "Phillips Pass, Wyoming"
+start_lonlat = [-110.932, 43.548]
 end = "String Lake, Grand Teton National Park, Wyoming"
+end_lonlat = [-110.733, 43.786]
 shape = "point-to-point"
 terrain = ["alpine", "lakes"]
 travel = "trail"
@@ -69,3 +71,13 @@ facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"
 url = "https://www.nps.gov/grte/planyourvisit/back.htm"
 publisher = "National Park Service"
 facts = ["permit", "terrain"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1602124"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1609162"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

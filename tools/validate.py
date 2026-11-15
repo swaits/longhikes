@@ -31,7 +31,8 @@ HIKE_TERRAIN = {"alpine", "forest", "desert", "coast", "prairie", "canyon", "tun
                 "lakes", "farmland"}
 HIKE_FACTS = {"summary", "official_url", "start", "end", "shape", "days", "season",
               "high_point", "high_point_m", "terrain", "permit", "unfinished", "caution",
-              "months", "travel"}
+              "months", "travel", "start_lonlat", "end_lonlat"}
+LONLAT_BOUNDS = (-180.0, -50.0, 24.0, 75.0)  # lon min, lon max, lat min, lat max
 HIKE_TRAVEL = {"trail", "trail-and-road", "some-cross-country", "mostly-cross-country"}
 HIKE_KEYS = HIKE_FACTS | {"checked"}
 ELEVATION_KEYS = {"highest", "lowest", "ascent_m", "descent_m", "track_km", "published_km",
@@ -142,6 +143,42 @@ def check_hike(tid, rec, errors):
         errors.append(
             f"{tid}: hike.travel must be one of {', '.join(sorted(HIKE_TRAVEL))}, "
             f"not {hike['travel']!r}")
+
+    def lonlat(name):
+        value = hike[name]
+        if (not isinstance(value, list) or len(value) != 2
+                or not all(isinstance(x, (int, float)) and not isinstance(x, bool)
+                           for x in value)):
+            errors.append(f"{tid}: hike.{name} must be two numbers, [longitude, latitude]")
+            return None
+        lon, lat = float(value[0]), float(value[1])
+        if not (LONLAT_BOUNDS[0] <= lon <= LONLAT_BOUNDS[1]
+                and LONLAT_BOUNDS[2] <= lat <= LONLAT_BOUNDS[3]):
+            errors.append(
+                f"{tid}: hike.{name} [{lon}, {lat}] is out of range: longitude must be "
+                f"{LONLAT_BOUNDS[0]} to {LONLAT_BOUNDS[1]} and latitude "
+                f"{LONLAT_BOUNDS[2]} to {LONLAT_BOUNDS[3]}")
+            return None
+        return (lon, lat)
+
+    end_points = {}
+    for name, place in (("start_lonlat", "start"), ("end_lonlat", "end")):
+        if name in hike:
+            if place not in hike:
+                errors.append(f"{tid}: hike.{name} is present but hike.{place} is not")
+            else:
+                point = lonlat(name)
+                if point is not None:
+                    end_points[name] = point
+    if len(end_points) == 2:
+        length = rec.get("length_km")
+        if isinstance(length, (int, float)) and not isinstance(length, bool) and length > 0:
+            straight = haversine_km([end_points["start_lonlat"], end_points["end_lonlat"]])
+            if straight > length * 1.02:
+                errors.append(
+                    f"{tid}: hike.start_lonlat and hike.end_lonlat are {straight:.1f} km "
+                    f"apart, which is more than length_km {length}")
+
     if "months" in hike:
         months = hike["months"]
         ok = (isinstance(months, list) and months

@@ -67,6 +67,7 @@ summary = "The Pfiffner Traverse follows the Continental Divide and the crest of
 official_url = "https://andrewskurka.com/adventures/pfiffner-traverse-colorado-rockies/"
 start = "Trail Ridge Road, Colorado"
 end = "Berthoud Pass, Colorado"
+end_lonlat = [-105.778, 39.798]
 shape = "point-to-point"
 days = [6, 10]
 terrain = ["alpine", "forest", "lakes"]
@@ -83,3 +84,8 @@ facts = ["summary", "official_url", "start", "end", "shape", "days", "terrain", 
 url = "https://andrewskurka.com/product/pfiffner-traverse-guide-maps/"
 publisher = "Andrew Skurka"
 facts = ["summary", "start", "end", "permit"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/181335"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

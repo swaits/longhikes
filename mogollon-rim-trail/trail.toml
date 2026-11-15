@@ -65,6 +65,7 @@ summary = "The Mogollon Rim Trail is a route across Arizona's Rim Country, from 
 official_url = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
 start = "Parsons Trailhead, near Cottonwood, Arizona"
 end = "Alma, New Mexico"
+end_lonlat = [-108.903, 33.38]
 shape = "point-to-point"
 terrain = ["forest", "canyon", "desert"]
 travel = "some-cross-country"
@@ -82,3 +83,8 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 url = "https://www.simblissity.net/mogollon-rim-trail-mapset.shtml"
 publisher = "Brett Tucker, Simblissity Ultralight Designs"
 facts = ["summary"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/903113"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

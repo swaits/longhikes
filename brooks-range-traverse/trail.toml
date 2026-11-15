@@ -65,7 +65,9 @@ format = "web trip reports, route descriptions and maps"
 summary = "The Brooks Range Traverse crosses northern Alaska from Kivalina to Kaktovik, in three parts walked in 2016, 2017 and 2019. It runs over tundra, ridges and granite country with no trail, and the walking is joined by long river stretches floated in packrafts."
 official_url = "https://thingstolucat.com/brooks-range-traverse/"
 start = "Kivalina, Alaska"
+start_lonlat = [-164.533, 67.727]
 end = "Kaktovik, Alaska"
+end_lonlat = [-143.624, 70.132]
 shape = "point-to-point"
 terrain = ["tundra", "alpine"]
 travel = "mostly-cross-country"
@@ -86,3 +88,13 @@ facts = ["summary", "terrain", "travel", "caution"]
 url = "https://thingstolucat.com/arctic-refuge-traverse/"
 publisher = "Luc Mehl"
 facts = ["summary", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1413348"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1404349"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

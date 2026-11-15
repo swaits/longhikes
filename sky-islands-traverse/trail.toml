@@ -66,6 +66,7 @@ summary = "The Sky Islands Traverse makes a circuitous journey across ten forest
 official_url = "https://simblissity.net/skit.shtml"
 start = "Dragoon Mountains, Arizona"
 end = "Silver Peak above Portal, Arizona"
+end_lonlat = [-109.197, 31.905]
 shape = "point-to-point"
 terrain = ["desert", "forest", "canyon"]
 travel = "some-cross-country"
@@ -76,3 +77,8 @@ checked = "2026-11-13"
 url = "https://simblissity.net/skit.shtml"
 publisher = "Brett Tucker (Simblissity)"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/11334"
+publisher = "U.S. Geological Survey, Geographic Names Information System"
+facts = ["end_lonlat"]

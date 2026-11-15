@@ -49,6 +49,7 @@ note = "No line to measure."
 summary = "The North Boundary Trail is a remote wilderness route along the northern edge of Jasper National Park, from Rock Lake over Snake Indian Pass and down the Smoky River to Mount Robson Provincial Park in British Columbia. It is recommended only for backpackers with significant backcountry experience, and the final stretch joins the popular Berg Lake trail."
 official_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary"
 start = "Rock Lake, Alberta"
+start_lonlat = [-118.263, 53.46]
 end = "Berg Lake trailhead, Mount Robson Provincial Park, British Columbia"
 shape = "point-to-point"
 days = [7, 10]
@@ -64,3 +65,8 @@ checked = "2026-11-13"
 url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary"
 publisher = "Parks Canada, Jasper National Park"
 facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/IAFNS"
+publisher = "Natural Resources Canada, Canadian Geographical Names Database"
+facts = ["start_lonlat"]

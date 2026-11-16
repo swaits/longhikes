@@ -39,7 +39,7 @@ note = "Not recorded: the route's author does not publish a track."
 status = "no-logo-exists"
 logo_source = ""
 contact = "Dan Stenziano"
-note = "No logo is included; a person-defined route has no emblem. Ask the author before using any mark."
+note = "No emblem of the route was found. The author's home page (https://danstenziano.com/) shows no logo or emblem; the guide's product page (https://danstenziano.com/products/eastern-sierra-high-route-guide) answered HTTP 429 to automated reads and was not retried further. Checked 2026-11-16."
 logo_file = ""
 logo_owner = "Dan Stenziano"
 
@@ -94,3 +94,14 @@ facts = ["start_lonlat"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/267526"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-15"
+change = "The record was added: Eastern Sierra High Route."
+fields = ["record"]
+basis = "The record's own source entry: Dan Stenziano."
+asked_by = "the dataset's own check"
+outcome = "applied"

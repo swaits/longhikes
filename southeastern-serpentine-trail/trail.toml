@@ -37,9 +37,9 @@ note = "No route relation named Southeastern Serpentine Trail was found in a nam
 
 [shield]
 status = "no-logo-exists"
-logo_source = ""
+logo_source = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
 contact = "Cam Honan"
-note = "The author's site, thehikinglife.com, is run under the name The Hiking Life; no logo or emblem for this route was found. No logo is included here. Ask the author before using any mark."
+note = "Looked at the route page and the home page of thehikinglife.com. They show only the site's own logo (The Hiking Life), which stands for the site, not the route."
 logo_file = ""
 logo_owner = "Cam Honan"
 
@@ -95,3 +95,23 @@ facts = ["end_lonlat"]
 title = "Southeast Serpentine Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Southeast_Serpentine_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Southeastern Serpentine Trail."
+fields = ["record"]
+basis = "The record's own source entry: Cam Honan."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now names where an emblem was looked for and not found, and who holds the mark."
+fields = ["shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"

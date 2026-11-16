@@ -35,10 +35,10 @@ relation = 0
 note = "Searched by name on 2026-11-14; no route relation for the Guadalupe Ridge Trail was found."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "National Park Service"
-note = "No logo is included. The Service's trail page and handout show no trail logo or emblem."
+note = "No trail emblem found. The Service's pages (https://www.nps.gov/thingstodo/grt.htm and https://www.nps.gov/cave/guadalupe-ridge.htm) show only the NPS arrowhead, which is the agency's. The address guadaluperidgetrail.com shows a coming-soon page. Checked 2026-11-16."
 logo_file = ""
 logo_owner = "National Park Service"
 
@@ -89,3 +89,23 @@ facts = ["end_lonlat"]
 title = "Guadalupe Ridge Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Guadalupe_Ridge_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Guadalupe Ridge Trail."
+fields = ["record"]
+basis = "The record's own source entry: National Park Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.nps.gov/thingstodo/grt.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"

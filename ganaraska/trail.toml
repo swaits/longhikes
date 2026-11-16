@@ -37,9 +37,9 @@ note = "Found by a name search on 2026-11-08: relation 3696751 'Ganaraska Trail'
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://ganaraska-hiking-trail.org/wp-content/uploads/2016/01/cropped-GanaraskaLogo-e1452359706312-192x192.jpg"
+logo_source = "https://ganaraska-hiking-trail.org/wp-content/uploads/2016/01/GanaraskaLogo-e1452359706312.jpg"
 contact = "Ganaraska Hiking Trail Association"
-note = "Ganaraska Hiking Trail Association logo (the G arrow mark), from the Association's own site ganaraska-hiking-trail.org, converted from JPEG."
+note = "The Ganaraska Hiking Trail's own roundel: a black arrow and 'G' inside a ring lettered 'GANARASKA HIKING TRAIL'. It appears at the left of the title banner on https://www.ganaraska-hiking-trail.org/ and alone as the site icon, from which the file already held was taken at 192x192 px. This is the full-size original of that same artwork from the association's own site, reduced to 1024 px on the long side and converted from JPEG to PNG. No terms for the logo were found on the holder's site. The white surround was made transparent."
 logo_file = "shield.png"
 logo_owner = "Ganaraska Hiking Trail Association"
 
@@ -63,3 +63,23 @@ checked = "2026-11-13"
 url = "https://www.ganaraska-hiking-trail.org/"
 publisher = "Ganaraska Hiking Trail Association"
 facts = ["official_url", "summary", "start", "end", "shape"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Ganaraska Hiking Trail."
+fields = ["record"]
+basis = "The record's own source entry: Ganaraska Hiking Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://ganaraska-hiking-trail.org/wp-content/uploads/2016/01/GanaraskaLogo-e1452359706312.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -34,9 +34,9 @@ note = "No route relation found when searched on 2026-11-10."
 
 [shield]
 status = "logo-not-found"
-logo_source = ""
+logo_source = "https://waskahegantrail.ca/about-2/"
 contact = "Waskahegan Trail Association"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "An association crest exists but no usable flat artwork for it was found at an allowed source. Looked at https://waskahegantrail.ca/about-2/ , https://waskahegantrail.ca/ and the association's media library. The site header is a photographic banner lettered with the association's name. Its beaver crest (a yellow roundel lettered 'WASKAHEGAN TRAIL ASSOCIATION') appears in the media library only as a photograph of an embroidered patch at https://waskahegantrail.ca/wp-content/uploads/2016/05/Crest.jpg , which is a photograph rather than artwork, so nothing was taken."
 logo_file = ""
 logo_owner = "Waskahegan Trail Association"
 
@@ -61,3 +61,23 @@ facts = ["summary", "official_url", "terrain"]
 url = "https://waskahegantrail.ca/hiking-the-trail/"
 publisher = "Waskahegan Trail Association"
 facts = ["summary", "terrain", "travel", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Waskahegan Trail."
+fields = ["record"]
+basis = "The record's own source entry: Waskahegan Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now names where an emblem was looked for and who holds the mark."
+fields = ["shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
+basis_url = "https://waskahegantrail.ca/about-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"

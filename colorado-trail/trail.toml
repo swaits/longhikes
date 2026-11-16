@@ -38,7 +38,7 @@ note = "19469031 Waterton Canyon to Twin Lakes (287.3 km) and 19469030 Durango t
 status = "logo-not-found"
 logo_source = ""
 contact = "Colorado Trail Foundation"
-note = "No logo file found: coloradotrail.org blocks automated fetches (403) and its store shows the triangular CT logo only in product photos. Retried 2026-11-08 with a browser identifier: the site answers HTTP 403 to every request (SiteDistrict WAF), its Instagram hides the profile picture from anonymous clients, and Commons has no file naming the Foundation."
+note = "No logo file is included. The Foundation's site, https://coloradotrail.org/, answers HTTP 403 to automated reads, so it was not worked around. The Forest Service page for Segment 1 (https://www.fs.usda.gov/r02/psicc/recreation/trails/colorado-trail-1776-segment-1-waterton-canyon) shows only the Forest Service and USDA marks. Checked 2026-11-16."
 logo_file = ""
 logo_owner = "Colorado Trail Foundation"
 
@@ -95,3 +95,14 @@ facts = ["permit"]
 title = "Colorado Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Colorado_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Colorado Trail."
+fields = ["record"]
+basis = "The record's own source entry: USDA Forest Service."
+asked_by = "the dataset's own check"
+outcome = "applied"

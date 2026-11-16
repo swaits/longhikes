@@ -37,9 +37,9 @@ note = "No route relation found when searched on 2026-11-10."
 status = "no-logo-exists"
 logo_source = ""
 contact = "Wilderness Mindset"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "No emblem of its own. The route page carries photographs and the Wilderness Mindset business logo only; no badge is used for the route itself on the page, in its source, or in the site's route list. Addresses looked at: wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/ (full page and every image address in it, read through the page text after the server returned 406 to a direct script read) and wildernessmindset.com/ (site header and Backpacking Routes menu)."
 logo_file = ""
-logo_owner = "Wilderness Mindset"
+logo_owner = ""
 
 [verification]
 verified = false
@@ -83,3 +83,23 @@ facts = ["official_url", "summary", "start", "shape", "days", "season", "months"
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/800438"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["start_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: The Chinese Wall Circuit."
+fields = ["record"]
+basis = "The record's own source entry: Wilderness Mindset."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now names where an emblem was looked for and not found, and who holds the mark."
+fields = ["shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/"
+asked_by = "the dataset's own check"
+outcome = "applied"

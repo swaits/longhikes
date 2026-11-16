@@ -35,9 +35,9 @@ note = "Downloaded 2026-11-08; release.txt has the relation version and timestam
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://www.sia-iat.com/"
+logo_source = "https://static.wixstatic.com/media/c7871a_197e515e2e414022aa3cf96c71e26b2d~mv2.png"
 contact = "Sentier international des Appalaches"
-note = "International Appalachian Trail logo (mountain mark) from SIA-IAT Quebec's own site sia-iat.com. The trail's GR A1 blaze is a separate red-and-white mark."
+note = "The blue SIA AT sign is the site's own logo at sia-iat.com, and the chapter's guide describes the official logo as the blue SIA/IAT blaze. Cropped from the sign image to the blue frame; the red GR A1 band below it was cut off, since it is a separate route blaze. The sign's small text inside the frame is kept."
 logo_file = "shield.png"
 logo_owner = "Sentier international des Appalaches"
 
@@ -75,3 +75,23 @@ facts = ["summary", "start", "terrain"]
 title = "International Appalachian Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/International_Appalachian_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Sentier international des Appalaches (International Appalachian Trail, Quebec and New Brunswick)."
+fields = ["record"]
+basis = "The record's own source entry: Sentier international des Appalaches."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://static.wixstatic.com/media/c7871a_197e515e2e414022aa3cf96c71e26b2d~mv2.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

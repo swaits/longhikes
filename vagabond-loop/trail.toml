@@ -37,9 +37,9 @@ note = "No route relation found when searched on 2026-11-10."
 
 [shield]
 status = "no-logo-exists"
-logo_source = ""
+logo_source = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
 contact = "Ryan \"Dirtmonger\" Sylva"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "No emblem of its own was found. Looked at the author's route page https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html . Its artwork is the author's Great Basin Trail badge (that other route's emblem, staged under that trail) and gear sponsors' logos; the author publishes no crest or badge for the Vagabond Loop itself. A person-defined route with no emblem of its own."
 logo_file = ""
 logo_owner = "Ryan \"Dirtmonger\" Sylva"
 
@@ -72,3 +72,23 @@ checked = "2026-11-13"
 url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
 publisher = "Ryan \"Dirtmonger\" Sylva"
 facts = ["summary", "official_url", "start", "shape", "terrain"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Vagabond Loop."
+fields = ["record"]
+basis = "The record's own source entry: Ryan \"Dirtmonger\" Sylva."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now names where an emblem was looked for and not found, and who holds the mark."
+fields = ["shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+asked_by = "the dataset's own check"
+outcome = "applied"

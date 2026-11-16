@@ -14,6 +14,34 @@ jobs:
           python-version: "3.12"
       - run: python3 tools/validate.py
 
+  # A change to a fact needs a new [[history]] entry (docs/schema.md). The check compares the
+  # work with its base, so it needs the history of the base branch: a full clone, not the
+  # shallow one that checkout makes by default.
+  history:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check the history
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          # A pull request is checked against its target branch; a push against the commit
+          # before it. A new branch has no such commit: the tool then uses origin/main.
+          if [ "$EVENT" = "pull_request" ]; then
+            base="origin/$BASE_REF"
+          else
+            base="$BEFORE"
+          fi
+          python3 tools/check_history.py --base "$base"
+      - run: python3 -m unittest discover tools/tests -p "test_history.py"
+
   site:
     runs-on: ubuntu-latest
     steps:
@@ -30,7 +58,7 @@ jobs:
   # Netlify builds the site from this repository when asked to. Asking only
   # after both jobs above pass means a broken record or page is never deployed.
   deploy:
-    needs: [validate, site]
+    needs: [validate, history, site]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main' && github.repository == 'swaits/longhikes'
     runs-on: ubuntu-latest
     steps:

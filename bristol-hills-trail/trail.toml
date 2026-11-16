@@ -34,9 +34,9 @@ note = "Hiking route relation named Bristol Hills Branch Trail, version 46 (2026
 
 [shield]
 status = "logo-not-found"
-logo_source = "https://fingerlakestrail.org/plan-hikes-finger-lakes-trail/hiking-the-finger-lakes-trail/"
+logo_source = "https://fingerlakestrail.org/"
 contact = "Finger Lakes Trail Conference"
-note = "No logo of the trail is included here. Ask the holder before using its mark."
+note = "The trail's holder, the Finger Lakes Trail Conference, refused automated reads at fingerlakestrail.org (HTTP 403), so it could not be checked for a Bristol Hills Trail emblem. Other allowed pages (cnyhiking.com, gofingerlakes.org) are not the holder's."
 logo_file = ""
 logo_owner = "Finger Lakes Trail Conference"
 
@@ -66,3 +66,24 @@ facts = ["summary", "start", "end", "shape", "terrain", "travel"]
 url = "https://www.gofingerlakes.org/locations/gannett-hill-park/"
 publisher = "Go Finger Lakes (Finger Lakes Land Trust)"
 facts = ["summary", "start"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-16"
+change = "The record was added as a designated trail, 55 miles (89 km), in NY. Its track comes from OpenStreetMap relation 3630775."
+fields = ["record"]
+basis = "Found in a search of the web region by region. The facts were read on pages of CNY Hiking, Go Finger Lakes, and OpenStreetMap for the track; the page linked is the first one the record names."
+basis_url = "https://cnyhiking.com/The%20Bristol%20Hills%20Trail.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now names where an emblem was looked for and who holds the mark."
+fields = ["shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
+basis_url = "https://fingerlakestrail.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"

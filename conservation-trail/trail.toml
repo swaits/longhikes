@@ -33,10 +33,10 @@ relation = 0
 note = "No route relation was found by a name search in the area on 2026-11-14."
 
 [shield]
-status = "logo-not-found"
-logo_source = "https://sites.google.com/view/foothillstrailclub/home"
+status = "no-logo-exists"
+logo_source = ""
 contact = "Foothills Trail Club of Western New York"
-note = "No logo was seen on the club's pages as read. No logo of the trail is included here. Ask the trail's holder before using its mark."
+note = "The trail has no emblem of its own. It is a branch trail of the Finger Lakes Trail System and is marked with plain orange blazes (white on the southern part), which are not an emblem, and the Finger Lakes Trail logo found on fingerlakestrail.org stands for the main Finger Lakes Trail, not for this branch. Addresses checked: foothillstrailclub.org home and about-the-trail pages (the club's Google Sites pages: text and photographs, no logo file), sites.google.com/view/foothillstrailclub home and about-the-trail pages, fingerlakestrail.org home page and its page source (Finger Lakes Trail logo and map icons only), and Wikimedia Commons (no relevant file). Ask the club before using any mark."
 logo_file = ""
 logo_owner = "Foothills Trail Club of Western New York"
 
@@ -62,3 +62,23 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain"]
 title = "Conservation Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Conservation_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Conservation Trail."
+fields = ["record"]
+basis = "The record's own source entry: Foothills Trail Club of Western New York."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

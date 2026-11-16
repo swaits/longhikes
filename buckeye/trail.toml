@@ -35,9 +35,9 @@ note = "OSM 1738661 plus 28 section relations."
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://buckeyetrail.org/"
+logo_source = "https://www.buckeyetrail.org/media/site/5f6f0e4a9e-1760709600/buckeye-trail-association-logo.svg"
 contact = "Buckeye Trail Association"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark. Its blue-blaze mark is the Association's."
+note = "The trail's roundel: a blue ring lettered Buckeye Trail around a buckeye leaf and nuts. It is shown in use as the header logo at https://www.buckeyetrail.org/. Taken from the Association's SVG logo by deleting the two state-shape paths drawn behind the roundel and narrowing the viewBox to the roundel; the roundel's own paths are unchanged. No logo terms were found on the site."
 logo_file = "shield.svg"
 logo_owner = "Buckeye Trail Association"
 
@@ -70,3 +70,23 @@ facts = ["summary", "shape", "terrain"]
 title = "Buckeye Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Buckeye_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Buckeye Trail."
+fields = ["record"]
+basis = "The record's own source entry: Buckeye Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://www.buckeyetrail.org/media/site/5f6f0e4a9e-1760709600/buckeye-trail-association-logo.svg"
+asked_by = "the dataset's own check"
+outcome = "applied"

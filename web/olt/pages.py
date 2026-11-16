@@ -10,7 +10,7 @@ writes:
     /trails/<id>/shield-thumb.png  the list-size copy of a PNG logo (olt/thumbs.py)
     /regions/, /regions/<slug>/ Places: the hub and one page per state or province
     /lists/, /lists/<key>/      the lists shown today (olt/browse.py); /routes/ is the Routes list
-    /about/ and the pages under it: /data/, /data/schema/, /data/changelog/, /sources/, /logos/
+    /about/ and the pages under it: /data/, /data/schema/, /data/changelog/, /sources/, /logos/, /left-out/
     /saved/                     the visitor's saved trails (olt/saved.py; not indexed)
     /404.html                   not found
 
@@ -22,7 +22,7 @@ import json
 import os
 import shutil
 
-from . import browse, docs, home, layout, regions, saved, seo, site as site_settings, thumbs, trail
+from . import browse, docs, home, layout, leftout, regions, saved, seo, site as site_settings, thumbs, trail
 
 WEB_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS_DIR = os.path.join(WEB_DIR, "assets")
@@ -133,6 +133,8 @@ def render_site(records, out_dir, repo_root, site=None):
     add("/data/schema/", t, d, b)
     t, d, b = docs.changelog_page(site, repo_root)
     add("/data/changelog/", t, d, b)
+    t, d, b = leftout.left_out_page(leftout.load_entries(repo_root), site, repo_root)
+    add(leftout.PATH, t, d, b)
     # The visitor's own list: not indexed, and left out of the sitemap below.
     t, d, b = saved.saved_page(records, site)
     layout.write_page(out_dir, saved.PATH, layout.layout(

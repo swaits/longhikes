@@ -32,10 +32,10 @@ relation = 0
 note = "Not searched for a track: the Forest Service publishes the trail's track as public domain data. A name search of OpenStreetMap route relations on 2026-11-14 found none called Toiyabe Crest."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "no-logo-exists"
+logo_source = "https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/trails/toiyabe-crest-national-recreation-trail"
 contact = "Humboldt-Toiyabe National Forest"
-note = "No logo is included. The Forest Service's page for the trail names no trail logo or emblem."
+note = "No emblem of its own was found. Looked at https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/trails/toiyabe-crest-national-recreation-trail . The only marks shown are the USDA and Forest Service agency logos and generic recreation icons, which do not stand for this trail. This is a numbered Forest Service trail and no crest, badge or trail-marker artwork for it was found. National Recreation Trail designation alone gives it no crest on the agency page."
 logo_file = ""
 logo_owner = "USDA Forest Service"
 
@@ -60,3 +60,23 @@ checked = "2026-11-14"
 url = "https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/trails/toiyabe-crest-national-recreation-trail"
 publisher = "USDA Forest Service, Humboldt-Toiyabe National Forest"
 facts = ["official_url", "summary", "start", "end", "shape", "travel"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Toiyabe Crest National Recreation Trail."
+fields = ["record"]
+basis = "The record's own source entry: USDA Forest Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/trails/toiyabe-crest-national-recreation-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

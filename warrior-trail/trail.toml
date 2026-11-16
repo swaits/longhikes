@@ -33,10 +33,10 @@ relation = 0
 note = "No route relation was found by a name search in the area on 2026-11-14."
 
 [shield]
-status = "logo-not-found"
-logo_source = "https://visitgreene.org/?p=1265"
+status = "no-logo-exists"
+logo_source = ""
 contact = "Warrior Trail Association"
-note = "The Association has no site of its own that was found; the Greene County tourism page that describes the trail shows that agency's logo. No logo of the trail is included here. Ask the trail's holder before using its mark."
+note = "The trail has no emblem of its own that was found. DCNR and the Keystone Trails Association say it is marked with yellow dots or blazes and red mileposts, which are not an emblem. Addresses checked: visitgreene.org/?p=1265 (the Greene County tourism logo only) and that site's county map PDF link, visitgreene.org home page, the DCNR trail page at trails.dcnr.pa.gov (trailkey 355: agency logo and use icons only), the Keystone Trails Association page kta-hike.org/warrior-trail.html (the KTA logo and one screenshot photograph), and Wikimedia Commons (none). The Association has no website of its own that was found; it is reached by post in Waynesburg, Pennsylvania."
 logo_file = ""
 logo_owner = "Warrior Trail Association"
 
@@ -70,3 +70,23 @@ facts = ["summary", "terrain"]
 url = "https://www.usgs.gov/us-board-on-geographic-names/domestic-names"
 publisher = "U.S. Geological Survey, Geographic Names Information System (GNIS 1176170 Greensboro, PA; 1543607 Moundsville, WV)"
 facts = ["start_lonlat", "end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Warrior Trail."
+fields = ["record"]
+basis = "The record's own source entry: Warrior Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://visitgreene.org/?p=1265"
+asked_by = "the dataset's own check"
+outcome = "applied"

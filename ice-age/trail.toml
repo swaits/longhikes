@@ -38,11 +38,11 @@ note = "Super-relation 2381423 with 219 sub-relations; 138 in the main role and 
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://iceagetrail.org/"
-contact = "Ice Age Trail Alliance (iceagetrail.org); NPS"
-note = "Federal Register notice of 2000-03-28 established the Ice Age marker as federal insignia; use needs NPS permission. The Alliance has its own marks."
+logo_source = "https://www.nps.gov/iatr/planyourvisit/images/Ice-Age-NST-Trailmark.png"
+contact = "National Park Service (Ice Age National Scenic Trail)"
+note = "The official Ice Age National Scenic Trail marker: a woolly mammoth in a rounded triangle. It is shown in use as the official trail marker logo at https://www.nps.gov/iatr/planyourvisit/index.htm. The transparent border was trimmed and the 3000 px original reduced to 1024 px. The Federal Register notice of 2000-03-28 established the Ice Age marker as federal insignia; use needs NPS permission. The same mark is shown smaller at https://www.iceagetrail.org/."
 logo_file = "shield.png"
-logo_owner = "Ice Age Trail Alliance (iceagetrail.org); NPS"
+logo_owner = "National Park Service"
 
 [verification]
 verified = true
@@ -83,3 +83,23 @@ facts = ["summary", "terrain"]
 title = "Ice Age National Scenic Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Ice_Age_National_Scenic_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Ice Age National Scenic Trail."
+fields = ["record"]
+basis = "The record's own source entry: Ice Age Trail Alliance for the National Park Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.contact", "shield.logo_owner", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://www.nps.gov/iatr/planyourvisit/images/Ice-Age-NST-Trailmark.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

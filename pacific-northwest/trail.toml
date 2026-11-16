@@ -36,11 +36,11 @@ note = "OSM relation 11225405 (1,931 km tag), maintained against PNTA data."
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://www.fs.usda.gov/pnt/"
+logo_source = "https://pnt-prod.s3.amazonaws.com/wp-content/uploads/PNTA-Header.png"
 contact = "Pacific Northwest Trail Association (pnt.org); USFS Region 6"
-note = "No logo policy found. The official emblem of a National Scenic Trail is a federal insignia (18 U.S.C. 701; Federal Register notices of 2000-03-28 cover Ice Age, North Country and Natchez Trace; status for the others not confirmed). Use needs the administering agency's permission."
+note = "The Pacific Northwest Trail Association roundel: peaks and water ringed with the words Pacific Northwest Trail Association and PNTA. It is shown in use in the header of https://www.pnt.org/; cropped from that header art, the wording set beside the roundel was cut off. The Forest Service trail home page at https://www.fs.usda.gov/trails/pacific-northwest-nst shows no trail emblem, and the Forest Service's Pacific Northwest NST Advisory Council minutes (March 2024, fs.usda.gov) record that its three-sided thunderbird service mark is not the official federal mark and is to be replaced. No logo terms were found on the Association's site. Federal National Scenic Trail insignia are covered by 18 U.S.C. 701; this roundel is the Association's mark."
 logo_file = "shield.png"
-logo_owner = "Pacific Northwest Trail Association (pnt.org); USFS Region 6"
+logo_owner = "Pacific Northwest Trail Association"
 
 [verification]
 verified = true
@@ -87,3 +87,23 @@ facts = ["season", "months"]
 title = "Pacific Northwest National Scenic Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Pacific_Northwest_National_Scenic_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Pacific Northwest National Scenic Trail."
+fields = ["record"]
+basis = "The record's own source entry: USDA Forest Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_owner", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://pnt-prod.s3.amazonaws.com/wp-content/uploads/PNTA-Header.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

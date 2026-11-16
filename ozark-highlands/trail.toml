@@ -36,9 +36,9 @@ note = "Downloaded 2026-11-08; release.txt has the relation version and timestam
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://ozarkhighlandstrail.com/"
+logo_source = "https://ozarkhighlandstrail.com/wp-content/uploads/2022/09/cropped-icon-1.png"
 contact = "Ozark Highlands Trail Association"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "The Association's arched badge (three trees, 'OZARK HIGHLANDS TRAIL / ASSOCIATION'), the site icon of ozarkhighlandstrail.com at 512 px. It replaces the earlier file that carried the letters OHTA beside the badge. Trimmed of its empty border only. No terms for use of the logo are stated on the page."
 logo_file = "shield.png"
 logo_owner = "Ozark Highlands Trail Association"
 
@@ -83,3 +83,41 @@ facts = ["season", "months"]
 title = "Ozark Highlands Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Ozark_Highlands_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Ozark Highlands Trail."
+fields = ["record"]
+basis = "The record's own source entry: Ozark Highlands Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length was changed from about 270 miles (435 km) to about 325 miles (523 km) planned, with about 290 miles built."
+fields = ["length_km", "length_note"]
+basis = "The length was first checked against another site's list, then against the holder's own page. The Ozark Highlands Trail Association's page for the trail gives about 325 miles planned and about 290 miles built."
+basis_url = "https://ozarkhighlandstrail.com/trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "What is unbuilt was stated exactly, and a caution was added about the stretch east of Dillard's Ferry with no built trail and the road walk past the Matney Knob trailhead."
+fields = ["hike.unfinished", "hike.caution"]
+basis = "The association's page for the trail describes the gaps in the Lower Buffalo Wilderness and near Norfork Lake. The National Park Service's page on the Buffalo River Trail is now a source for the summary."
+basis_url = "https://ozarkhighlandstrail.com/trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://ozarkhighlandstrail.com/wp-content/uploads/2022/09/cropped-icon-1.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

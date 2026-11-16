@@ -35,9 +35,9 @@ note = "No route relation found when searched on 2026-11-10. Five relations matc
 
 [shield]
 status = "no-logo-exists"
-logo_source = ""
+logo_source = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
 contact = "the author of the SeekingLost blog"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "Looked at the trip report page and the SeekingLost home page. They show photos and the blog's own site icon only; no emblem for the route."
 logo_file = ""
 logo_owner = "the author of the SeekingLost blog"
 
@@ -81,3 +81,23 @@ facts = ["summary", "official_url", "start", "shape", "terrain", "travel", "perm
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/388386"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["start_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Sawtooth Wilderness High Route."
+fields = ["record"]
+basis = "The record's own source entry: the author of the SeekingLost blog."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now names where an emblem was looked for and not found, and who holds the mark."
+fields = ["shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
+asked_by = "the dataset's own check"
+outcome = "applied"

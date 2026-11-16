@@ -35,9 +35,9 @@ note = "Verified."
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://sunshinecoasttrail.com/"
+logo_source = "https://sunshinecoasttrail.com/wp-content/uploads/2022/04/SunCoast_Trail_icon.png"
 contact = "Sunshine Coast Trail Society"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "The trail's badge: a framed panel reading SUNSHINE COAST TRAIL over mountains, forest and water. It is the site icon of sunshinecoasttrail.com at 512 px and the same art as the site-logo.gif in the page header. The earlier file was a smaller copy. Trimmed of its empty border only. No terms for use of the logo are stated on the page."
 logo_file = "shield.png"
 logo_owner = "Sunshine Coast Trail Society"
 
@@ -80,3 +80,23 @@ facts = ["high_point"]
 title = "Sunshine Coast Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Sunshine_Coast_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Sunshine Coast Trail."
+fields = ["record"]
+basis = "The record's own source entry: Sunshine Coast Trail Society."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://sunshinecoasttrail.com/wp-content/uploads/2022/04/SunCoast_Trail_icon.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

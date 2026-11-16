@@ -37,7 +37,7 @@ note = "No route relation found when searched on 2026-11-10."
 status = "no-logo-exists"
 logo_source = ""
 contact = "Liz Thomas"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "No emblem of the route exists at an allowed source. The author's page https://www.eathomas.com/other-long-trails/wasatchoverview was read in full: it shows the author's personal Liz Thomas Hiking logo and photographs, but no crest, badge or mark for the route itself. The personal logo stands for the author, not for this route, so it does not count."
 logo_file = ""
 logo_owner = "Liz Thomas"
 
@@ -75,3 +75,14 @@ checked = "2026-11-13"
 url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
 publisher = "Liz Thomas"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution", "days"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Wasatch Traverse."
+fields = ["record"]
+basis = "The record's own source entry: Liz Thomas."
+asked_by = "the dataset's own check"
+outcome = "applied"

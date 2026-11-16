@@ -36,12 +36,12 @@ relation = 0
 note = "Not recorded: the only OpenStreetMap relation named Great Plains Trail, 21910936, is a 0.46 mi path in St. Charles County, Missouri, not this route."
 
 [shield]
-status = "no-logo-exists"
-logo_source = ""
-contact = "Steve Myers (Great Plains Trail Alliance)"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
-logo_file = ""
-logo_owner = "Steve Myers (Great Plains Trail Alliance)"
+status = "use-real-logo"
+logo_source = "https://www.greatplainstrail.org/wp-content/uploads/2012/07/logo_alone.jpg"
+contact = "Great Plains Trail Alliance"
+note = "A rounded-triangle emblem with a bison and a prairie trail, shown as the trail's logo on greatplainstrail.org. It is the only emblem found for the trail; the trail itself is a route set by its author, so the holder's own emblem is what is used here. The corners are white, not transparent, because the source is a JPEG. Saved as PNG without other changes. The white surround was made transparent."
+logo_file = "shield.png"
+logo_owner = "Great Plains Trail Alliance"
 
 [verification]
 verified = false
@@ -90,3 +90,23 @@ facts = ["season", "months"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1358489"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Great Plains Trail."
+fields = ["record"]
+basis = "The record's own source entry: Steve Myers."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.contact", "shield.logo_file", "shield.logo_owner"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://www.greatplainstrail.org/wp-content/uploads/2012/07/logo_alone.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"

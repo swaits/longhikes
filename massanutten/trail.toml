@@ -33,12 +33,12 @@ relation = 11520193
 note = "Relation 11520193 'Massanutten Trail' (ref TR 408, operator United States Forestry Service, version 12, 2025-10-27). Downloaded 2026-11-14; release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = "https://www.fs.usda.gov/r08/gwj"
+status = "no-logo-exists"
+logo_source = ""
 contact = "USDA Forest Service, George Washington and Jefferson National Forests"
-note = "No trail logo was seen on the pages read. No logo of the trail is included here. Ask the trail's holder before using its mark."
+note = "No emblem of its own. The trail is marked on the ground with orange paint blazes in a dotted-i pattern; a paint blaze is not a crest, and no badge artwork for the trail appears on the Forest Service, National Recreation Trails or Potomac Appalachian Trail Club pages. The only logos seen are the Forest Service shield, the National Recreation Trails header mark, and the PATC logo, none of which stands for this trail. Addresses looked at: nrtapplication.org/trails/massanutten-trail (page and its source), fs.usda.gov/r08/gwj (the forest home and recreation pages as now served; the old Massanutten recreation address redirects there), patc.net/ (the club that publishes the Massanutten maps; header and source), and Forest Service pages for the trail found by search. Wikimedia Commons was also searched and holds no emblem for the trail."
 logo_file = ""
-logo_owner = "USDA Forest Service, George Washington and Jefferson National Forests"
+logo_owner = ""
 
 [verification]
 verified = true
@@ -73,3 +73,23 @@ facts = ["summary", "terrain"]
 title = "Massanutten Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Massanutten_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Massanutten Trail."
+fields = ["record"]
+basis = "The record's own source entry: USDA Forest Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source", "shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://nrtapplication.org/trails/massanutten-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

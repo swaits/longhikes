@@ -35,9 +35,9 @@ note = "Not recorded: the route's author does not publish a downloadable track."
 
 [shield]
 status = "no-logo-exists"
-logo_source = ""
+logo_source = "http://www.acrossutah.com/wordpress/"
 contact = "Jamal Green"
-note = "No logo is included; a person-defined route has no emblem. Ask the author before using any mark."
+note = "Looked at http://www.acrossutah.com/wordpress/, its route page and master map page. The only mark is the page banner 'Across Utah!' (a map of Utah with a wordmark and tagline, http://www.acrossutah.com/wordpress/wp-content/uploads/2014/02/2014_Logo.jpg). It is a banner, not an emblem, so none is included."
 logo_file = ""
 logo_owner = "Jamal Green"
 
@@ -81,3 +81,23 @@ checked = "2026-11-15"
 url = "http://www.acrossutah.com/wordpress/the_route/"
 publisher = "Jamal Green, Across Utah (the route's author)"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-15"
+change = "The record was added: Across Utah Route."
+fields = ["record"]
+basis = "The record's own source entry: Jamal Green."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now names where an emblem was looked for and not found, and who holds the mark."
+fields = ["shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "http://www.acrossutah.com/wordpress/"
+asked_by = "the dataset's own check"
+outcome = "applied"

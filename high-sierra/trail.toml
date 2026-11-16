@@ -36,10 +36,10 @@ relation = 1714300
 note = "Downloaded 2026-11-10; 22 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "no-logo-exists"
+logo_source = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
 contact = "National Park Service"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "No emblem of its own was found. Looked at https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm . The only mark shown is the National Park Service arrowhead, the agency's own logo, which does not stand for this trail."
 logo_file = ""
 logo_owner = "National Park Service"
 
@@ -79,3 +79,23 @@ facts = ["high_point"]
 title = "High Sierra Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/High_Sierra_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: High Sierra Trail."
+fields = ["record"]
+basis = "The record's own source entry: National Park Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -36,9 +36,9 @@ note = "Downloaded 2026-11-10; 429 ways in the main track. release.txt has the s
 
 [shield]
 status = "logo-not-found"
-logo_source = ""
+logo_source = "https://cart.hstrail.org/wp-content/uploads/2019/10/horse-shoe_trail_header_1000_logo-1.jpg"
 contact = "Horse-Shoe Trail Conservancy"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "The Conservancy's round emblem (a horseshoe around a shoe, 'HORSE-SHOE TRAIL', '1935' on a yellow ring with a rope border) is shown only inside the 1000 px photo header of cart.hstrail.org, where it sits on a forest photograph about 180 px across. No separate artwork was found on cart.hstrail.org or hstrail.org. Cropping it would keep photo corners, so no file is included."
 logo_file = ""
 logo_owner = "Horse-Shoe Trail Conservancy"
 
@@ -68,3 +68,23 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel"]
 title = "Horse-Shoe Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Horse-Shoe_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Horse-Shoe Trail."
+fields = ["record"]
+basis = "The record's own source entry: Horse-Shoe Trail Conservancy."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now names where an emblem was looked for and who holds the mark."
+fields = ["shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
+basis_url = "https://cart.hstrail.org/wp-content/uploads/2019/10/horse-shoe_trail_header_1000_logo-1.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"

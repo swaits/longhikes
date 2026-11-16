@@ -33,10 +33,10 @@ relation = 0
 note = "No OpenStreetMap route relation for this trail was found when searched on 2026-11-14 (Overpass name search over Canada)."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "BC Parks"
-note = "No logo of the trail is included here. Ask BC Parks before using its marks."
+note = "The trail has no emblem of its own. Addresses checked: bcparks.ca/naikoon-park (BC Parks wordmark, activity icons and map links only), the East Beach trail map PDF linked from that page (nrs.objectstore.gov.bc.ca naikoon_east_beach_trail_map: its panels carry the Haida Nation and BC Parks logos and photographs, no trail mark), the Naikoon park map PDF, bcparks.ca home page, and Wikimedia Commons (none)."
 logo_file = ""
 logo_owner = "BC Parks"
 
@@ -76,3 +76,23 @@ facts = ["start_lonlat"]
 url = "https://geogratis.gc.ca/services/geoname/en/geonames/JCKJA"
 publisher = "Natural Resources Canada (Canadian Geographical Names)"
 facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: East Beach Trail (Naikoon)."
+fields = ["record"]
+basis = "The record's own source entry: BC Parks."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://bcparks.ca/naikoon-park/"
+asked_by = "the dataset's own check"
+outcome = "applied"

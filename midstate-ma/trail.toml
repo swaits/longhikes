@@ -35,11 +35,11 @@ relation = 5503042
 note = "Downloaded 2026-11-10; 257 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://www.midstatetrail.org/wp-content/uploads/2017/06/follow_triangle.png"
 contact = "Midstate Trail Committee"
-note = "No logo is included. Ask the trail's holder before using its mark."
-logo_file = ""
+note = "The Midstate Trail's yellow triangle, the trail sign it is followed by, from the 'Follow the Yellow Triangles' graphic on midstatetrail.org. The words above the triangle are cut off. 122 by 91 px, the largest copy of the triangle alone found at this source. Nothing larger was found, so it is small. No terms were stated."
+logo_file = "shield.png"
 logo_owner = "Midstate Trail Committee"
 
 [verification]
@@ -70,3 +70,23 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel"]
 url = "https://www.midstatetrail.org/about-the-midstate-trail/old-growth-forest/"
 publisher = "Midstate Trail Committee"
 facts = ["high_point"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Midstate Trail (Massachusetts)."
+fields = ["record"]
+basis = "The record's own source entry: Midstate Trail Committee."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://www.midstatetrail.org/wp-content/uploads/2017/06/follow_triangle.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

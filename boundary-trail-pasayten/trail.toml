@@ -33,10 +33,10 @@ relation = 5252516
 note = "Hiking route relation named Boundary Trail (operator USDA Forest Service), version 12 (2025-02-19), 35 main ways and 4 alternate ways. Ways named Castle Pass Trail, Three Fools Creek Trail and Pacific Crest Trail are left out of the track, because the relation holds them beyond the end of this trail (tools/osm_track.py --exclude-name). A separate relation 5259786 (Old Boundary Trail, ref 533, 12.3 km) is not used."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "no-logo-exists"
+logo_source = "https://www.fs.usda.gov/r06/okanogan-wenatchee/recreation/trails/boundary-trail"
 contact = "U.S. Forest Service, Okanogan-Wenatchee National Forest"
-note = "No logo is included. The Forest Service pages read show no trail logo or shield for this trail."
+note = "No emblem of its own was found. Looked at https://www.fs.usda.gov/r06/okanogan-wenatchee/recreation/trails/boundary-trail . The only marks shown are the USDA and Forest Service agency logos and generic recreation icons, which do not stand for this trail. This is a numbered Forest Service trail and no crest, badge or trail-marker artwork for it was found. The Pacific Northwest Trail follows part of this trail but its emblem belongs to that other trail, not this one."
 logo_file = ""
 logo_owner = "U.S. Forest Service"
 
@@ -73,3 +73,24 @@ facts = ["summary", "terrain", "permit"]
 url = "https://www.fs.usda.gov/trails/pacific-northwest-nst/geographic-areas"
 publisher = "U.S. Forest Service, Pacific Northwest National Scenic Trail"
 facts = ["summary"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-16"
+change = "The record was added as a designated trail, 73 miles (117 km), in WA. Its track comes from OpenStreetMap relation 5252516."
+fields = ["record"]
+basis = "Found in a search of the web region by region. The facts were read on pages of U.S. Forest Service, and OpenStreetMap for the track; the page linked is the first one the record names."
+basis_url = "https://www.fs.usda.gov/r06/okanogan-wenatchee/recreation/trails/boundary-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.fs.usda.gov/r06/okanogan-wenatchee/recreation/trails/boundary-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -35,7 +35,7 @@ note = "OpenStreetMap has a hiking route relation named Black Canyon National Re
 status = "logo-not-found"
 logo_source = ""
 contact = "Bureau of Land Management, Hassayampa Field Office"
-note = "No logo is included. The BLM's page and handout for the trail show no trail logo; the Black Canyon Trail Coalition may have one, which was not looked at."
+note = "No logo is included. The BLM page (https://www.blm.gov/visit/black-canyon-national-recreation-trail) shows only the BLM logo. The Black Canyon Trail Coalition's site, https://bctaz.org/, returned an empty page to automated reads on 2026-11-16, so any trail emblem there was not seen."
 logo_file = ""
 logo_owner = "Bureau of Land Management"
 
@@ -79,3 +79,14 @@ facts = ["start", "end", "shape"]
 title = "Black Canyon Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Black_Canyon_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Black Canyon National Recreation Trail."
+fields = ["record"]
+basis = "The record's own source entry: Bureau of Land Management."
+asked_by = "the dataset's own check"
+outcome = "applied"

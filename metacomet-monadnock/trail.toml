@@ -36,10 +36,10 @@ relation = 2317544
 note = "OSM 2317544."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Appalachian Mountain Club"
-note = "No logo file found: the trail is the northern part of the New England NST, and no separate Metacomet-Monadnock emblem exists. Retried 2026-11-08: outdoors.org and amcnh.org refuse automated requests, and the only emblem is the New England NST's, which is that federal trail's mark and not this trail's."
+note = "No separate emblem of this trail exists at an allowed source. The New Hampshire Metacomet-Monadnock Trail site https://mmtrailnh.org/ and its about pages were read, including the theme stylesheet: the site has a text header and no logo or badge artwork at all. The trail is marked with white rectangular blazes. The rounded-triangle emblem seen along its southern part is the New England National Scenic Trail's federal mark and belongs to that trail, not to this one."
 logo_file = ""
 logo_owner = "Appalachian Mountain Club"
 
@@ -88,3 +88,23 @@ facts = ["start", "summary"]
 title = "Metacomet-Monadnock Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Metacomet-Monadnock_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Metacomet-Monadnock Trail."
+fields = ["record"]
+basis = "The record's own source entry: Appalachian Mountain Club."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://mmtrailnh.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -36,11 +36,11 @@ relation = 10702483
 note = "Not downloaded."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://onda.org/wp-content/uploads/2017/10/ODT_guidebook_cover.png"
 contact = "Oregon Natural Desert Association"
-note = "No standalone logo file found: the trail has an emblem (a pronghorn in a rounded shield, 'Oregon Desert Trail'), but ONDA publishes it only on the cover of its guidebook (https://onda.org/wp-content/uploads/2017/10/ODT_guidebook_cover.png, shown on https://onda.org/regions/oregon-desert-trail/plan-a-trip/), set under a photograph and above ONDA's own logo. Cropping it out would make a different image, so it is not included. The trail page, plan-a-trip page, press page, guides page and stories page offer no emblem file. Checked 2026-11-13."
-logo_file = ""
+note = "The trail's emblem: a pronghorn head in a rounded shield lettered Oregon Desert Trail. ONDA shows it in use on the cover of the Oregon Desert Trail Guidebook, pictured at https://onda.org/regions/oregon-desert-trail/plan-a-trip/. Cropped from that cover image and cut to the shield outline, so the photograph behind its top corners, the Guidebook wording and the ONDA logo are not included. Cropped again to show the whole crest. At 236 px wide it is the largest the 463 px cover image offers. No logo terms were found on the site."
+logo_file = "shield.png"
 logo_owner = "Oregon Natural Desert Association"
 
 [verification]
@@ -77,3 +77,32 @@ facts = ["end_lonlat"]
 title = "Oregon Desert Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Oregon_Desert_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Oregon Desert Trail."
+fields = ["record"]
+basis = "The record's own source entry: Oregon Natural Desert Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length note now says that the 750 miles are the Oregon Natural Desert Association's figure, in place of \"about 750 mi published\"."
+fields = ["length_note"]
+basis = "The length was first checked against another site's list, then against the holder's own page for the trail."
+basis_url = "https://onda.org/regions/oregon-desert-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://onda.org/wp-content/uploads/2017/10/ODT_guidebook_cover.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

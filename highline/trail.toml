@@ -33,10 +33,10 @@ relation = 4188405
 note = "OSM relation 4188405 'Highline Trail #31' (operator United States Forest Service) measures 93.2 km in 1 part. It was not used, because the Forest Service publishes the trail's track."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Tonto National Forest"
-note = "No logo is included. The Forest's trail page shows no trail logo."
+note = "No emblem of the trail itself exists at an allowed source. The Forest Service trail page https://www.fs.usda.gov/r03/tonto/recreation/trails/highline was read in full: it carries only the USDA and Forest Service agency logos and generic recreation activity icons. As a National Recreation Trail it falls under that program's shared marker insignia, which is not this trail's own emblem; the emblem of the Arizona National Scenic Trail, which shares part of the tread, is that other trail's mark."
 logo_file = ""
 logo_owner = "USDA Forest Service"
 
@@ -66,3 +66,23 @@ facts = ["official_url", "summary", "start", "shape", "terrain", "travel"]
 title = "Arizona Highline Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Arizona_Highline_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Highline National Recreation Trail."
+fields = ["record"]
+basis = "The record's own source entry: USDA Forest Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.fs.usda.gov/r03/tonto/recreation/trails/highline"
+asked_by = "the dataset's own check"
+outcome = "applied"

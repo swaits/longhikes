@@ -35,12 +35,12 @@ relation = 7037710
 note = "Relation 7037710 'Ocean to Lake Hiking Trail' (ref FT, version 7, 2026-11-04). Downloaded 2026-11-14; 85 ways in the main track and 4 in alternates. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = "https://www.loxfltrail.org/"
+status = "no-logo-exists"
+logo_source = ""
 contact = "Florida Trail Association, Loxahatchee Chapter"
-note = "The chapter's home page shows the chapter's logo and the Florida Trail Association's logo. No logo of the trail is included here. Ask the trail's holder before using its mark."
+note = "No emblem of its own. The chapter's site uses the Loxahatchee Chapter's own hiker logo and the Florida Trail Association's mark; neither stands for this trail. The image shown for the trail on its page is a route map, and the chapter's printable map PDFs carry the same two chapter and association marks in their corners, with the trail name as plain type. The yearly Ocean to Lake Hike event page uses no badge either. Addresses looked at: loxfltrail.org/Ocean2LakeHikingTrail.html, loxfltrail.org/lake2ocean.html and loxfltrail.org/ (pages and their sources), and two PDFs linked from the trail page, loxfltrail.org/docs/OTLHT-Map-1-Full-Route-2019-10.pdf and loxfltrail.org/OTLDataBook.pdf (both rendered and read). Wikimedia Commons was also searched and holds only a photograph."
 logo_file = ""
-logo_owner = "Florida Trail Association, Loxahatchee Chapter"
+logo_owner = ""
 
 [verification]
 verified = true
@@ -70,3 +70,23 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 title = "Ocean to Lake Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Ocean_to_Lake_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Ocean to Lake Hiking Trail."
+fields = ["record"]
+basis = "The record's own source entry: Florida Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source", "shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.loxfltrail.org/Ocean2LakeHikingTrail.html"
+asked_by = "the dataset's own check"
+outcome = "applied"

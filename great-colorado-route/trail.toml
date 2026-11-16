@@ -36,11 +36,11 @@ relation = 0
 note = "No route relation found when searched on 2026-11-10."
 
 [shield]
-status = "no-logo-exists"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://images.squarespace-cdn.com/content/v1/69a4c90bd5639b4cc1a0d2cc/bf651c31-d4d6-4ca0-9a3b-e083df90ba25/favicon.ico"
 contact = "Donovan \"Iceman\" Rice"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
-logo_file = ""
+note = "The mark is the letters GCR in the colours of the Colorado flag, a wide rectangle. It is the site icon of greatcoloradoroute.com and the only mark the author's site shows for the route. It is used as is, taken from the site icon file at 1598 by 752 px. No logo policy was found."
+logo_file = "shield.png"
 logo_owner = "Donovan \"Iceman\" Rice"
 
 [verification]
@@ -90,3 +90,23 @@ facts = ["start", "shape"]
 url = "https://www.wikidata.org/wiki/Q305880"
 publisher = "Wikidata"
 facts = ["start_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Great Colorado Route."
+fields = ["record"]
+basis = "The record's own source entry: Donovan \"Iceman\" Rice."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://images.squarespace-cdn.com/content/v1/69a4c90bd5639b4cc1a0d2cc/bf651c31-d4d6-4ca0-9a3b-e083df90ba25/favicon.ico"
+asked_by = "the dataset's own check"
+outcome = "applied"

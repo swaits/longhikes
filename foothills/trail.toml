@@ -33,9 +33,9 @@ note = "Downloaded 2026-11-08; release.txt has the relation version and timestam
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://foothillstrail.org/"
+logo_source = "https://foothillstrail.org/wp-content/uploads/2016/08/logo1.png"
 contact = "Foothills Trail Conservancy"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "A sunrise over hills, shown as the trail's logo on foothillstrail.org. Cropped to the sunrise and hills; the Foothills Trail wordmark under them is cut off. The source is 185 by 120 px and was the only artwork found, so the file is small. Transparent background."
 logo_file = "shield.png"
 logo_owner = "Foothills Trail Conservancy"
 
@@ -96,3 +96,23 @@ facts = ["permit"]
 title = "Foothills Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Foothills_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Foothills Trail."
+fields = ["record"]
+basis = "The record's own source entry: Foothills Trail Conservancy."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://foothillstrail.org/wp-content/uploads/2016/08/logo1.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

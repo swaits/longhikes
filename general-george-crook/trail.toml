@@ -34,10 +34,10 @@ relation = 14392604
 note = "OpenStreetMap has hiking relations named General George Crook National Recreation Trail (14392604, ref 140), General Crook 140 (13616675) and General Crook Trail #130 (Incomplete) (7013986). They are not used: the Forest Service publishes the track as public domain data."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "USDA Forest Service"
-note = "No logo is included. The Forest Service's pages for the trail name no trail logo; they say the trail is marked with metal chevrons."
+note = "No trail emblem found. The Forest Service page (https://www.fs.usda.gov/r03/apache-sitgreaves/recreation/trails/general-crook-trail) shows only the Forest Service and USDA marks. The trail is marked with metal chevrons. Checked 2026-11-16."
 logo_file = ""
 logo_owner = "USDA Forest Service"
 
@@ -66,3 +66,23 @@ facts = ["official_url", "summary", "shape", "travel"]
 url = "https://www.nrtapplication.org/trails/general-george-crook"
 publisher = "National Recreation Trails database (nrtapplication.org), from the trail's 1979 application"
 facts = ["summary", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: General George Crook National Recreation Trail."
+fields = ["record"]
+basis = "The record's own source entry: USDA Forest Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.fs.usda.gov/r03/apache-sitgreaves/recreation/trails/general-crook-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -33,10 +33,10 @@ relation = 10449263
 note = "Downloaded 2026-11-10; 261 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Potomac Appalachian Trail Club"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "The trail has no emblem of its own. It is marked with plain blue blazes. As part of the Potomac Heritage National Scenic Trail it may carry that trail's marker, which stands for the Potomac Heritage Trail and not for the Tuscarora alone. Addresses checked: patc.net/tuscarora-trail and its page source (the club's transparent logo and header artwork only), patc.net home page, and Wikimedia Commons (none). No Tuscarora badge, crest or marker artwork exists on the club's site. Ask the club before using any mark."
 logo_file = ""
 logo_owner = "Potomac Appalachian Trail Club"
 
@@ -67,3 +67,23 @@ facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"
 title = "Tuscarora Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Tuscarora_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Tuscarora Trail."
+fields = ["record"]
+basis = "The record's own source entry: Potomac Appalachian Trail Club."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.patc.net/tuscarora-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

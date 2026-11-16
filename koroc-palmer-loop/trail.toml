@@ -33,12 +33,12 @@ relation = 0
 note = "No OpenStreetMap route relation number was found by search on 2026-11-16. No track was fetched."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Parks Canada"
-note = "No logo of the trail is included here. Ask Parks Canada before using its marks."
+note = "No emblem of its own. Neither Parks Canada nor Nunavik Parks uses a badge for this loop; their pages show photographs and their own agency marks, which do not stand for the loop. Addresses looked at: parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc (page and every image address in its source) and nunavikparks.ca/en/parks/kuururjuaq (the Kuururjuaq park page, its header and source; the only logos are Nunavik Parks' own). Wikimedia Commons was also searched and holds no emblem for the loop."
 logo_file = ""
-logo_owner = "Parks Canada"
+logo_owner = ""
 
 [verification]
 verified = false
@@ -67,3 +67,24 @@ facts = ["summary", "official_url", "start", "start_lonlat", "shape", "days", "h
 url = "https://parcs.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc"
 publisher = "Parks Canada"
 facts = ["summary", "shape", "days"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-16"
+change = "The record was added as a designated trail, 56 miles (90 km), in QC and NL. No track is included."
+fields = ["record"]
+basis = "Found in a search of the web region by region. The facts were read on pages of Parks Canada; the page linked is the first one the record names."
+basis_url = "https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc"
+asked_by = "the dataset's own check"
+outcome = "applied"

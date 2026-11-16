@@ -48,6 +48,11 @@ build_index = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(build_index)
 load_toml = build_index.load_toml
 
+spec = importlib.util.spec_from_file_location(
+    "trail_history", os.path.join(ROOT, "tools", "trail_history.py"))
+trail_history = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(trail_history)
+
 
 def haversine_km(coords):
     total, R = 0.0, 6371.0088
@@ -133,6 +138,71 @@ def check_stated_permission(tid, src, errors):
     url = src.get("permission_url")
     if not isinstance(url, str) or not re.match(r"^https?://[^\s/]+\S*$", url):
         errors.append(f"{tid}: licence stated-permission needs source.permission_url as an http(s) address")
+
+
+SHIELD_STATUSES = ("use-real-logo", "no-logo-exists", "logo-not-found")
+SHIELD_FILES = ("shield.svg", "shield.png")
+
+
+def check_shield(tid, shield, tdir, errors):
+    """The [shield] table: status, logo file and the words that go with each state.
+
+    use-real-logo: a logo file is included, and names its holder or source.
+    no-logo-exists: the trail has no emblem of its own; no file; the note says where that was checked.
+    logo-not-found: an emblem exists or may exist, but no usable artwork was found at an allowed
+    source; no file; the note says where it was looked for or seen.
+    """
+    status = shield.get("status")
+    if not status:
+        errors.append(f"{tid}: missing required field shield.status")
+    elif status not in SHIELD_STATUSES:
+        errors.append(f"{tid}: shield.status {status!r} is not one of {', '.join(SHIELD_STATUSES)}")
+    logo_file = shield.get("logo_file") or ""
+    on_disk = [f for f in SHIELD_FILES if os.path.isfile(os.path.join(tdir, f))]
+    if logo_file and logo_file not in SHIELD_FILES:
+        errors.append(f"{tid}: shield.logo_file {logo_file!r} is not shield.svg or shield.png")
+    if status == "use-real-logo" and not logo_file:
+        errors.append(f"{tid}: shield.status is use-real-logo but shield.logo_file names no file "
+                      "(a trail with no usable artwork is logo-not-found, or no-logo-exists when it has no emblem)")
+    if status in ("no-logo-exists", "logo-not-found"):
+        if logo_file or on_disk:
+            errors.append(f"{tid}: shield.status is {status} but a logo file is included; "
+                          "a trail with a logo file is use-real-logo")
+        if not str(shield.get("note", "")).strip():
+            errors.append(f"{tid}: shield.status is {status} and shield.note does not say where an emblem was looked for")
+    if on_disk:
+        if logo_file not in on_disk:
+            errors.append(f"{tid}: logo file on disk {on_disk} but shield.logo_file is {logo_file!r}")
+        if not str(shield.get("logo_owner", "")).strip():
+            errors.append(f"{tid}: logo present but shield.logo_owner is empty")
+        if not str(shield.get("logo_source", "")).strip() and not str(shield.get("logo_owner", "")).strip():
+            errors.append(f"{tid}: logo present but its source and holder are not named")
+    if logo_file and not os.path.isfile(os.path.join(tdir, logo_file)):
+        errors.append(f"{tid}: declared logo file {logo_file} does not exist")
+
+
+def check_guides(tid, guides, errors):
+    """[[guide]]: a route needs at least one (checked with the route); any trail may have its holder's own."""
+    if guides is None:
+        return
+    if not isinstance(guides, list):
+        errors.append(f"{tid}: guide must be an array of tables")
+        return
+    for i, g in enumerate(guides, 1):
+        for field in ("title", "author", "access", "url"):
+            if not str(g.get(field, "")).strip():
+                errors.append(f"{tid}: guide {i} is missing {field}")
+        if g.get("access") not in ("free", "purchase"):
+            errors.append(
+                f"{tid}: guide {i} access must be \"free\" or \"purchase\", "
+                f"not {g.get('access')!r}")
+        if not str(g.get("url", "")).startswith(("https://", "http://")):
+            errors.append(f"{tid}: guide {i} url must be an http(s) URL")
+        if (str(g.get("price", "")).strip()
+                and not DATE_RE.match(str(g.get("price_checked", "")))):
+            errors.append(
+                f"{tid}: guide {i} has a price but no price_checked date "
+                "(YYYY-MM-DD)")
 
 
 def check_hike(tid, rec, errors):
@@ -447,6 +517,159 @@ def check_links(tid, rec, errors):
                           "that belongs in hike.official_url or source.publisher_url")
 
 
+LEFT_OUT_FILE = "left-out.toml"
+LEFT_OUT_REASONS = {
+    "below-floor", "rail-trail-or-towpath", "driving-route", "not-mainly-walking",
+    "network", "cannot-be-walked-through", "mostly-unbuilt",
+    "not-published-as-route", "waiting",
+}
+LEFT_OUT_KEYS = {
+    "id", "name", "country", "regions", "length_mi", "length_km", "length_note",
+    "reason", "note", "source_url", "decided", "was_listed", "waiting_for",
+}
+LEFT_OUT_REQUIRED = ("id", "name", "country", "regions", "reason", "note",
+                     "decided", "was_listed")
+LEFT_OUT_REGIONS = {
+    "AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI",
+    "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN",
+    "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH",
+    "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA",
+    "WI", "WV", "WY",
+    "AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT",
+    "all provinces and territories", "contiguous United States",
+}
+KM_PER_MI = 1.609344
+
+
+def _left_out_name_key(name):
+    return " ".join(re.sub(r"[^a-z0-9]+", " ", str(name).lower()).split())
+
+
+def check_left_out_entries(entries, trails, errors, where=LEFT_OUT_FILE):
+    """Check the entries of left-out.toml against the listed trails.
+
+    entries is the file's [[trail]] list; trails the records in the dataset.
+    """
+    if not isinstance(entries, list) or not entries:
+        errors.append(f"{where}: must hold at least one [[trail]] entry")
+        return
+    listed_ids = {r.get("id") for r in trails}
+    listed_names = {_left_out_name_key(r.get("name", "")) for r in trails}
+    seen_ids, seen_names = set(), set()
+    names = []
+    for i, e in enumerate(entries, 1):
+        if not isinstance(e, dict):
+            errors.append(f"{where}: entry {i} must be a table ([[trail]])")
+            continue
+        who = e.get("id") or f"entry {i}"
+        for field in LEFT_OUT_REQUIRED:
+            value = e.get(field)
+            if value in ("", None, []) or (isinstance(value, str) and not value.strip()):
+                errors.append(f"{where}: {who} is missing required field {field}")
+        for name in sorted(set(e) - LEFT_OUT_KEYS):
+            errors.append(f"{where}: {who} has unknown field {name}")
+        for field in ("id", "name", "note"):
+            value = e.get(field)
+            if field in e and (not isinstance(value, str) or not value.strip()):
+                errors.append(f"{where}: {who} {field} must be a non-empty string")
+        eid = e.get("id")
+        if isinstance(eid, str) and eid:
+            if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", eid):
+                errors.append(f"{where}: {eid!r} is not a plain id of lower case words and hyphens")
+            if eid in seen_ids:
+                errors.append(f"{where}: duplicate id {eid}")
+            seen_ids.add(eid)
+            if eid in listed_ids:
+                errors.append(f"{where}: {eid} matches a trail that is listed in the dataset")
+        ename = e.get("name")
+        if isinstance(ename, str) and ename.strip():
+            names.append(ename)
+            key = _left_out_name_key(ename)
+            if key in seen_names:
+                errors.append(f"{where}: duplicate name {ename}")
+            seen_names.add(key)
+            if key in listed_names:
+                errors.append(f"{where}: {ename} matches a trail that is listed in the dataset")
+        if "country" in e and e.get("country") not in ("US", "CA"):
+            errors.append(f"{where}: {who} country must be US or CA")
+        regions = e.get("regions")
+        if "regions" in e and regions not in ("", None, []):
+            if not isinstance(regions, list) or not regions:
+                errors.append(f"{where}: {who} regions must be a non-empty list of region codes")
+            else:
+                for code in regions:
+                    if code not in LEFT_OUT_REGIONS:
+                        errors.append(f"{where}: {who} region {code!r} is not a known state or province code")
+                if len(set(map(str, regions))) != len(regions):
+                    errors.append(f"{where}: {who} regions repeats a code")
+        if "reason" in e and e.get("reason") not in LEFT_OUT_REASONS and str(e.get("reason")).strip():
+            errors.append(
+                f"{where}: {who} reason must be one of "
+                f"{', '.join(sorted(LEFT_OUT_REASONS))}, not {e.get('reason')!r}")
+        decided = e.get("decided")
+        if "decided" in e and str(decided).strip():
+            if not isinstance(decided, str) or not DATE_RE.match(decided):
+                errors.append(f"{where}: {who} decided must be a date (YYYY-MM-DD)")
+            else:
+                try:
+                    datetime.date.fromisoformat(decided)
+                except ValueError:
+                    errors.append(f"{where}: {who} decided {decided!r} is not a real date")
+        if "was_listed" in e and e.get("was_listed") not in ("", None):
+            if not isinstance(e.get("was_listed"), bool):
+                errors.append(f"{where}: {who} was_listed must be true or false")
+        url = e.get("source_url")
+        if "source_url" in e:
+            if not isinstance(url, str) or not url.startswith(("https://", "http://")):
+                errors.append(f"{where}: {who} source_url must be an http(s) URL")
+        elif "no page" not in str(e.get("note", "")).lower():
+            errors.append(
+                f"{where}: {who} has no source_url, and its note does not say that no page exists")
+        if e.get("reason") == "waiting":
+            waiting_for = e.get("waiting_for")
+            if not isinstance(waiting_for, str) or not waiting_for.strip():
+                errors.append(f"{where}: {who} reason is waiting, so waiting_for must say what would change the decision")
+        elif "waiting_for" in e:
+            errors.append(f"{where}: {who} waiting_for belongs to reason waiting only")
+        lengths = {}
+        for field in ("length_mi", "length_km"):
+            if field in e:
+                value = e[field]
+                if (not isinstance(value, (int, float)) or isinstance(value, bool)
+                        or value <= 0):
+                    errors.append(f"{where}: {who} {field} must be a positive number")
+                else:
+                    lengths[field] = float(value)
+        if len(lengths) == 2:
+            km_from_mi = lengths["length_mi"] * KM_PER_MI
+            if abs(km_from_mi - lengths["length_km"]) > max(1.5, 0.02 * lengths["length_km"]):
+                errors.append(
+                    f"{where}: {who} length_mi {e['length_mi']} and length_km "
+                    f"{e['length_km']} do not agree")
+        if "length_note" in e:
+            note = e["length_note"]
+            if not isinstance(note, str) or not note.strip():
+                errors.append(f"{where}: {who} length_note must be a non-empty string")
+    if names != sorted(names, key=str.lower):
+        errors.append(f"{where}: entries must be sorted by name")
+
+
+def check_left_out(root, trails, errors):
+    """Check left-out.toml at the top level: trails considered and left out."""
+    path = os.path.join(root, LEFT_OUT_FILE)
+    if not os.path.isfile(path):
+        errors.append(f"{LEFT_OUT_FILE}: missing")
+        return
+    try:
+        doc = load_toml(path)
+    except Exception as e:  # noqa: BLE001 - report and continue
+        errors.append(f"{LEFT_OUT_FILE}: does not parse: {e}")
+        return
+    for name in sorted(set(doc) - {"trail"}):
+        errors.append(f"{LEFT_OUT_FILE}: unknown top level field {name}")
+    check_left_out_entries(doc.get("trail"), trails, errors)
+
+
 def main():
     errors = []
     trail_ids = build_index.trail_dirs(ROOT)
@@ -539,20 +762,7 @@ def main():
         elif not str(src.get("line_absent_reason", "")).strip():
             errors.append(f"{tid}: no line file, and source.line_absent_reason is empty")
 
-        shield = rec.get("shield", {})
-        if not shield.get("status"):
-            errors.append(f"{tid}: missing required field shield.status")
-        logo_file = shield.get("logo_file") or ""
-        on_disk = [f for f in ("shield.svg", "shield.png") if os.path.isfile(os.path.join(tdir, f))]
-        if on_disk:
-            if logo_file not in on_disk:
-                errors.append(f"{tid}: logo file on disk {on_disk} but shield.logo_file is {logo_file!r}")
-            if not str(shield.get("logo_owner", "")).strip():
-                errors.append(f"{tid}: logo present but shield.logo_owner is empty")
-            if not str(shield.get("logo_source", "")).strip() and not str(shield.get("logo_owner", "")).strip():
-                errors.append(f"{tid}: logo present but its source and holder are not named")
-        if logo_file and not os.path.isfile(os.path.join(tdir, logo_file)):
-            errors.append(f"{tid}: declared logo file {logo_file} does not exist")
+        check_shield(tid, rec.get("shield", {}), tdir, errors)
 
         osm = rec.get("osm", {})
         if "relation" not in osm:
@@ -583,22 +793,6 @@ def main():
                     "route.creator_words_url is missing")
             if not isinstance(guides, list) or not guides:
                 errors.append(f"{tid}: kind is \"route\" but there is no [[guide]] table")
-            else:
-                for i, g in enumerate(guides, 1):
-                    for field in ("title", "author", "access", "url"):
-                        if not str(g.get(field, "")).strip():
-                            errors.append(f"{tid}: guide {i} is missing {field}")
-                    if g.get("access") not in ("free", "purchase"):
-                        errors.append(
-                            f"{tid}: guide {i} access must be \"free\" or \"purchase\", "
-                            f"not {g.get('access')!r}")
-                    if not str(g.get("url", "")).startswith(("https://", "http://")):
-                        errors.append(f"{tid}: guide {i} url must be an http(s) URL")
-                    if (str(g.get("price", "")).strip()
-                            and not DATE_RE.match(str(g.get("price_checked", "")))):
-                        errors.append(
-                            f"{tid}: guide {i} has a price but no price_checked date "
-                            "(YYYY-MM-DD)")
             if policy in NO_LINE_POLICIES:
                 if src.get("line_file"):
                     errors.append(
@@ -617,12 +811,14 @@ def main():
         else:
             if route is not None:
                 errors.append(f"{tid}: [route] table present but kind is not \"route\"")
-            if guides:
-                errors.append(f"{tid}: [[guide]] present but kind is not \"route\"")
 
+        check_guides(tid, guides, errors)
         check_links(tid, rec, errors)
         check_hike(tid, rec, errors)
         check_elevation(tid, tdir, rec, errors)
+        trail_history.check_entries(tid, rec, errors)
+
+    check_left_out(ROOT, trails, errors)
 
     for dirpath, dirnames, filenames in os.walk(ROOT):
         if ".git" in dirpath:

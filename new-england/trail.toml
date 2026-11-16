@@ -85,3 +85,14 @@ facts = ["days", "season", "months", "high_point", "travel", "permit", "start", 
 title = "New England National Scenic Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/New_England_National_Scenic_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: New England National Scenic Trail."
+fields = ["record"]
+basis = "The record's own source entry: National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club."
+asked_by = "the dataset's own check"
+outcome = "applied"

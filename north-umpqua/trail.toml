@@ -34,10 +34,10 @@ relation = 0
 note = "No route relation named for the North Umpqua Trail was found in the area on 2026-11-14. The Forest Service and BLM publish the trail's track."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "no-logo-exists"
+logo_source = "https://www.fs.usda.gov/r06/umpqua/recreation/groups/north-umpqua-trail-1414"
 contact = "Umpqua National Forest"
-note = "No logo is included. The Forest Service's pages for the trail show no trail logo."
+note = "No emblem of its own was found. Looked at https://www.fs.usda.gov/r06/umpqua/recreation/groups/north-umpqua-trail-1414 , which shows only USDA and Forest Service agency logos and generic recreation icons, and at the Bureau of Land Management segment brochure address http://www.blm.gov/or/districts/roseburg/recreation/umpquatrails/pdf/mott-panther-segment.pdf , which now returns a 404 page. No trail crest or marker artwork was found at either managing agency."
 logo_file = ""
 logo_owner = "USDA Forest Service"
 
@@ -76,3 +76,23 @@ facts = ["summary", "terrain", "travel"]
 title = "North Umpqua Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/North_Umpqua_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: North Umpqua Trail."
+fields = ["record"]
+basis = "The record's own source entry: USDA Forest Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.fs.usda.gov/r06/umpqua/recreation/groups/north-umpqua-trail-1414"
+asked_by = "the dataset's own check"
+outcome = "applied"

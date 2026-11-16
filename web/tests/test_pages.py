@@ -494,13 +494,14 @@ class RenderUnitTest(unittest.TestCase):
     def test_logo_source_without_a_logo_file_is_not_called_taken_from(self):
         # A record can name where its logo is held without including the logo.
         rec = sample_record("X Trail")
-        rec["shield"] = {"status": "use-real-logo", "logo_source": "https://holder.example/", "contact": "Holder",
+        rec["shield"] = {"status": "logo-not-found", "logo_source": "https://holder.example/", "contact": "Holder",
                          "note": "No policy found.", "logo_file": "", "logo_owner": "Holder & Co"}
         _, _, body, _ = trail.render(rec, site.Site("N", "T"))
         self.assertIn('href="https://holder.example/"', body)
         self.assertNotIn("logo was taken from", body)
         self.assertIn("the logo is not included here", body)
-        self.assertIn("The trail has a logo, held by Holder &amp; Co, but no copy of it is in this dataset.", body)
+        self.assertIn("Emblem not found.", body)
+        self.assertIn("An emblem exists or may exist, but no usable artwork of it was found at a source the dataset allows.", body)
 
     def test_trail_correction_links_github_branch(self):
         gh = site.Site("N", "T", repo_url="https://github.com/o/r/", repo_branch="dev")
@@ -549,8 +550,8 @@ class RenderUnitTest(unittest.TestCase):
             rec = sample_record(name="A & B")
             n = pages.render_site([rec], out, repo, site=site.Site("N", "T"))
             # trail page + home + 404 + places hub + 1 place + lists hub + routes,
-            # sources, logos, about, data, schema, changelog, saved (no list holds MIN_SIZE trails)
-            self.assertEqual(n, 14)
+            # sources, logos, about, data, schema, changelog, left out, saved (no list holds MIN_SIZE trails)
+            self.assertEqual(n, 15)
             with open(os.path.join(out, "trails", "x", "index.html"), encoding="utf-8") as f:
                 self.assertIn("A &amp; B", f.read())
             with open(os.path.join(out, "index.html"), encoding="utf-8") as f:

@@ -33,10 +33,10 @@ relation = 14141941
 note = "Downloaded 2026-11-10; 36 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Ontario Parks"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "The trail has no emblem of its own. It is navigated by plain blue markers, which are not an emblem. Addresses checked: ontarioparks.ca/park/killarney and its full page source (the Ontario Parks logo, facility icons and gallery photographs only), ontarioparks.ca home page, friendsofkillarneypark.ca (the Friends of Killarney Park site refused the connection, reset by peer, twice, so it could not be read), and Wikimedia Commons (no emblem file). The Friends' printed La Cloche Silhouette Trail Guide is sold through its store and was not used."
 logo_file = ""
 logo_owner = "Ontario Parks"
 
@@ -68,3 +68,23 @@ facts = ["official_url", "summary", "shape", "terrain", "travel", "permit"]
 url = "https://www.ontarioparks.ca/park/killarney/activities"
 publisher = "Ontario Parks"
 facts = ["start", "days"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: La Cloche Silhouette Trail."
+fields = ["record"]
+basis = "The record's own source entry: Ontario Parks."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.ontarioparks.ca/park/killarney"
+asked_by = "the dataset's own check"
+outcome = "applied"

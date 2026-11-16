@@ -36,11 +36,11 @@ note = "OSM has relation 921198 (4,988 km) and four state sections."
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://continentaldividetrail.org/"
-contact = "Continental Divide Trail Coalition (continentaldividetrail.org); USFS CDNST administrator"
-note = "No logo policy found. The official emblem of a National Scenic Trail is a federal insignia (18 U.S.C. 701; Federal Register notices of 2000-03-28 cover Ice Age, North Country and Natchez Trace; status for the others not confirmed). Use needs the administering agency's permission."
+logo_source = "https://www.fs.usda.gov/sites/default/files/fs_media/fs_document/CDT_ServiceMark_Auth_Guidelines_FINAL_06282021.pdf"
+contact = "USDA Forest Service, Continental Divide National Scenic Trail administrator"
+note = "The official Continental Divide National Scenic Trail service mark: a blue rounded triangle with a black CD monogram, lettered Continental Divide Trail, National Scenic Trail. The Forest Service's Service Mark Design and Use Requirements (June 2021), downloaded from fs.usda.gov, identifies it as the trail's mark; the file here is the 687x706 px artwork embedded on its first page, converted to PNG. The guidelines state the service mark is property of the U.S. Department of Agriculture, registered with the U.S. Patent and Trademark Office, and the Forest Service's marking guide states it may only be used with the express permission of the US Forest Service. The Coalition lockup previously used is that organisation's mark, not the trail's. The white surround was made transparent."
 logo_file = "shield.png"
-logo_owner = "Continental Divide Trail Coalition (continentaldividetrail.org); USFS CDNST administrator"
+logo_owner = "USDA Forest Service"
 
 [verification]
 verified = true
@@ -84,3 +84,23 @@ facts = ["high_point"]
 title = "Continental Divide National Scenic Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Continental_Divide_National_Scenic_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Continental Divide National Scenic Trail."
+fields = ["record"]
+basis = "The record's own source entry: Continental Divide Trail Coalition."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.contact", "shield.logo_owner", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://www.fs.usda.gov/sites/default/files/fs_media/fs_document/CDT_ServiceMark_Auth_Guidelines_FINAL_06282021.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"

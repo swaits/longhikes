@@ -36,11 +36,11 @@ relation = 7014936
 note = "Found by a name search on 2026-11-08: relation 7014936 'Lone Star Hiking Trail' (rwn, distance tag 155 km). Downloaded; release.txt has the version."
 
 [shield]
-status = "no-logo-exists"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://images.clubexpress.com/738078/graphics/clublogo_150x150_noBackground_1062358180.png"
 contact = "Lone Star Hiking Trail Club"
-note = "No trail emblem exists. The file removed on 2026-11-08 was the USDA symbol (the Department of Agriculture's agency mark, not the trail's). The map draws the trail name only."
-logo_file = ""
+note = "The Lone Star Hiking Trail's own roundel: two hikers in a yellow circle lettered 'LONE STAR HIKING TRAIL SAM HOUSTON NATIONAL FOREST' on a transparent ground. It is the header logo of the Lone Star Hiking Trail Club's site at https://lonestartrail.org/ , served from the club platform that hosts that site, and is used unchanged. At 153x150 px it is the only size the club's site serves; nothing larger exists at an allowed source. No terms for the logo were found on the holder's site."
+logo_file = "shield.png"
 logo_owner = "Lone Star Hiking Trail Club"
 
 [verification]
@@ -76,3 +76,23 @@ facts = ["summary", "start", "end", "shape", "travel"]
 title = "Lone Star Hiking Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Lone_Star_Hiking_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Lone Star Hiking Trail."
+fields = ["record"]
+basis = "The record's own source entry: Lone Star Hiking Trail Club."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://images.clubexpress.com/738078/graphics/clublogo_150x150_noBackground_1062358180.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

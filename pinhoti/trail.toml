@@ -32,12 +32,12 @@ relation = 1642836
 note = "Downloaded 2026-11-08; release.txt has the relation version and timestamp."
 
 [shield]
-status = "use-real-logo"
-logo_source = "https://alabamatrailsfoundation.org/wp-content/uploads/2022/02/trails-foundation-logo.png"
+status = "logo-not-found"
+logo_source = ""
 contact = "Alabama Trails Foundation (the Pinhoti's Alabama maintainer); Georgia Pinhoti Trail Association"
-note = "The Pinhoti Trail Alliance's old domain, pinhotitrail.org, now redirects to a parked landing page (checked 2026-11-08), and no Pinhoti-specific emblem survives on an official site or Commons. This is the Alabama Trails Foundation's own mark, from its site: the Pinhoti is the Foundation's first Primary Project and current maintainer. 864x504 PNG."
-logo_file = "shield.png"
-logo_owner = "Alabama Trails Foundation (the Pinhoti's Alabama maintainer); Georgia Pinhoti Trail Association"
+note = "The trail's emblem exists but no standalone artwork of it is at an allowed source. In use on the ground it is a turkey footprint: white diamond markers and a rounded-triangle National Recreation Trail marker, both black on white, photographed in the Pinhoti Trail Built Environment Master Plan (May 2019) that the Alabama Trails Foundation links from its home page. That plan also proposes a redrawn blue turkey-foot primary logo, but no current holder page was found using the redraw, so it was not used. The file that was in the record was the Alabama Trails Foundation's own wordmark, not the trail's emblem, so it was removed. Addresses looked at: alabamatrailsfoundation.org/ and its Pinhoti search results (alabamatrailsfoundation.org/?s=Pinhoti), the master plan PDF it links at dropbox.com/s/oaevvd5jpe7qteq/PinhotiMasterPlan_Book_190510%20(s).pdf, georgiapinhoti.org/ (now a blank page), the Forest Service Pinhoti pages for Georgia and Alabama at fs.usda.gov, and Wikimedia Commons, which holds a photograph of a trail marker, not artwork."
+logo_file = ""
+logo_owner = ""
 
 [verification]
 verified = true
@@ -84,3 +84,23 @@ facts = ["days", "season", "months", "travel"]
 title = "Pinhoti Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Pinhoti_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Pinhoti Trail."
+fields = ["record"]
+basis = "The record's own source entry: Pinhoti Trail Alliance."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was removed because it was the Alabama Trails Foundation's wordmark, not the trail's own emblem. The record now says no usable artwork of the emblem was found."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file", "shield.logo_owner"]
+basis = "The foundation's pages and the Pinhoti master plan it links show the trail's emblem is a turkey footprint, and no standalone artwork of it is at an allowed source."
+basis_url = "https://www.alabamaforeverwild.com/weogufka-state-forest-addition-terminus-pinhoti-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -38,7 +38,7 @@ note = "Not searched."
 status = "use-real-logo"
 logo_source = "https://npshistory.com/publications/pohe/route-marking-graphic-id-2015.pdf"
 contact = "NPS Potomac Heritage NST"
-note = "Official Potomac Heritage NST emblem, extracted from the NPS Route Marking and Graphic Identity Guide (2015), page The Trail Marker (Logo); the logo is a Federal mark published in the Federal Register (2001). The generic NPS arrowhead previously here was removed. Use needs the trail administrator's written permission per the guide."
+note = "Official Potomac Heritage NST emblem, extracted from the NPS Route Marking and Graphic Identity Guide (2015), page The Trail Marker (Logo); the logo is a Federal mark published in the Federal Register (2001). The generic NPS arrowhead previously here was removed. Use needs the trail administrator's written permission per the guide. The black square surround was made transparent."
 logo_file = "shield.png"
 logo_owner = "NPS Potomac Heritage NST"
 
@@ -65,3 +65,23 @@ facts = ["summary", "official_url", "shape"]
 url = "https://www.nps.gov/pohe/learn/index.htm"
 publisher = "National Park Service"
 facts = ["summary", "shape"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Potomac Heritage National Scenic Trail."
+fields = ["record"]
+basis = "The record's own source entry: National Park Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://npshistory.com/publications/pohe/route-marking-graphic-id-2015.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"

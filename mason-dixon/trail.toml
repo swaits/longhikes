@@ -35,11 +35,11 @@ relation = 1820324
 note = "Downloaded 2026-11-10; 691 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://static.wixstatic.com/media/ffe8eb_98df0e09aa174e9f8b301fa9dce9a5c5~mv2.png"
 contact = "Mason-Dixon Trail System"
-note = "No logo is included. Ask the trail's holder before using its mark."
-logo_file = ""
+note = "The trail's own round blue marker (hiker symbol, 'MASON-DIXON TRAIL'), shown on the Trail System's home page. Trimmed of its empty border only. 300 px original. No terms for use of the logo are stated on the page."
+logo_file = "shield.png"
 logo_owner = "Mason-Dixon Trail System"
 
 [verification]
@@ -69,3 +69,23 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 title = "Mason-Dixon Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Mason-Dixon_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Mason-Dixon Trail."
+fields = ["record"]
+basis = "The record's own source entry: Mason-Dixon Trail System."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://static.wixstatic.com/media/ffe8eb_98df0e09aa174e9f8b301fa9dce9a5c5~mv2.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

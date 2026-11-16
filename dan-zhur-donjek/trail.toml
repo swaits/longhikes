@@ -33,10 +33,10 @@ relation = 0
 note = "No OpenStreetMap route relation number was found by search on 2026-11-16. No track was fetched."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Parks Canada"
-note = "No logo of the trail is included here. Ask Parks Canada before using its marks."
+note = "No emblem of the route exists at an allowed source. Parks Canada's page https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur and its route description PDF (A-Dan-Zhur-Route-EN--May-2025-002.pdf, linked from that page) were read: they carry the Parks Canada beaver, the Kluane National Park and Reserve header and the Canada wordmark. Those are the agency's and the park's marks, not this route's, so they do not count. The PDF states the route is not marked with signs."
 logo_file = ""
 logo_owner = "Parks Canada"
 
@@ -68,3 +68,24 @@ facts = ["summary", "official_url", "start", "shape", "days", "season", "months"
 url = "https://parcs.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
 publisher = "Parks Canada"
 facts = ["summary"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-16"
+change = "The record was added as a designated trail, 68 miles (110 km), in YT. No track is included."
+fields = ["record"]
+basis = "Found in a search of the web region by region. The facts were read on pages of Parks Canada; the page linked is the first one the record names."
+basis_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
+asked_by = "the dataset's own check"
+outcome = "applied"

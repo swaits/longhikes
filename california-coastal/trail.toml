@@ -39,7 +39,7 @@ note = "Not searched."
 status = "use-real-logo"
 logo_source = "https://documents.coastal.ca.gov/assets/ca-coastal-trail/trail-logo.jpg"
 contact = "California Coastal Commission"
-note = "The California Coastal Trail's own mark (a blue roundel with a white wave and the words 'California Coastal Trail'), from the Commission's California Coastal Trail page, https://www.coastal.ca.gov/coastal-trail/, which tells visitors to look for it on completed segments. Published there as a 548x548 JPEG on a white ground, converted to PNG. The page does not name the holder and states no terms for the logo."
+note = "The California Coastal Trail's own mark (a blue roundel with a white wave and the words 'California Coastal Trail'), from the Commission's California Coastal Trail page, https://www.coastal.ca.gov/coastal-trail/, which tells visitors to look for it on completed segments. Published there as a 548x548 JPEG on a white ground, converted to PNG. The page does not name the holder and states no terms for the logo. The white surround was made transparent."
 logo_file = "shield.png"
 logo_owner = "California Coastal Commission"
 
@@ -64,3 +64,23 @@ facts = ["official_url", "summary", "terrain", "travel", "unfinished"]
 title = "California Coastal Trail (incomplete)"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/California_Coastal_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: California Coastal Trail."
+fields = ["record"]
+basis = "The record's own source entry: California Coastal Commission."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://documents.coastal.ca.gov/assets/ca-coastal-trail/trail-logo.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"

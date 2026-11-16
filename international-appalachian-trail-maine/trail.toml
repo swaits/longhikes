@@ -35,11 +35,11 @@ relation = 0
 note = "No route relation was found by a name search in the area on 2026-11-14."
 
 [shield]
-status = "logo-not-found"
-logo_source = "https://www.maineiat.org/"
+status = "use-real-logo"
+logo_source = "https://maineiat.org/wp-content/uploads/2019/11/IAT-SIA-blaze-85x252.jpg"
 contact = "Maine Chapter of the International Appalachian Trail"
-note = "The chapter's home page shows logos of its partners. No logo of the trail is included here. Ask the trail's holder before using its mark."
-logo_file = ""
+note = "The emblem is the trail's blue and white blaze with a hiker, the letters SIA AT and iat-sia.org. It is shown on maineiat.org and on the international site, iat-sia.org. It is the only size found anywhere on either site, 85 by 252 px, so it is below 256 px. The file is used unchanged. No logo policy was found."
+logo_file = "shield.png"
 logo_owner = "Maine Chapter of the International Appalachian Trail"
 
 [verification]
@@ -77,3 +77,23 @@ facts = ["end_lonlat"]
 title = "International Appalachian Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/International_Appalachian_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: International Appalachian Trail, Maine section."
+fields = ["record"]
+basis = "The record's own source entry: Maine Chapter of the International Appalachian Trail."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://maineiat.org/wp-content/uploads/2019/11/IAT-SIA-blaze-85x252.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"

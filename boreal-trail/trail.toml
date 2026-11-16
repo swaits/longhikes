@@ -33,10 +33,10 @@ relation = 0
 note = "Relations 18166071, 18166072 and 18166073 are named 'Boreal Trail' (route=hiking, version 1, 2024-10-15, no other tags). Each holds one way near Meadow Lake Provincial Park: 4.2 km, 1.2 km and 7.6 km, 13.0 km in all, against 135 km published. They are short pieces, not the trail, so no track was written on 2026-11-15. relation = 0 means no relation is used."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Saskatchewan Provincial Parks"
-note = "No logo of the trail is included here. Ask Saskatchewan Provincial Parks before using its marks."
+note = "The trail has no emblem of its own. Addresses checked: the Tourism Saskatchewan listing at tourismsaskatchewan.com/listings/900/meadow-lake-provincial-park-boreal-trail, the Boreal Trail guide PDF on Tourism Saskatchewan's blob storage (MLPP trails guide: its first pages carry the Saskatchewan Parks diamond logo and photographs, no Boreal Trail mark), its trail-map pages inside the same guide (a generic hiker pictogram and Saskatchewan Parks marks only), and Wikimedia Commons (no relevant file). No trail marker artwork exists at these sources."
 logo_file = ""
 logo_owner = "Saskatchewan Provincial Parks"
 
@@ -67,3 +67,23 @@ facts = ["summary", "start", "end", "shape", "season", "months", "terrain", "tra
 url = "https://tourismsaskatchewan.com/listings/900/meadow-lake-provincial-park-boreal-trail"
 publisher = "Tourism Saskatchewan"
 facts = ["official_url", "summary", "terrain"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Boreal Trail."
+fields = ["record"]
+basis = "The record's own source entry: Saskatchewan Provincial Parks."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://tourismsaskatchewan.com/listings/900/meadow-lake-provincial-park-boreal-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

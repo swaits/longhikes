@@ -33,11 +33,11 @@ relation = 8082269
 note = "Downloaded 2026-11-10; 74 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://www.traverseedecharlevoix.qc.ca/wp-content/uploads/Logo-La-Traversee-de-Charlevoix.svg"
 contact = "Traversée de Charlevoix"
-note = "No logo is included. Ask the trail's holder before using its mark."
-logo_file = ""
+note = "The trail's own oval emblem: hikers, a cyclist and a lake under the name La Traversée de Charlevoix. It is the SVG from the trail's own site, unaltered. The file has no scripts and no external references, and its text is outlined. Vector, with a 220 by 146 viewBox. No terms were found."
+logo_file = "shield.svg"
 logo_owner = "Traversée de Charlevoix"
 
 [verification]
@@ -65,3 +65,23 @@ checked = "2026-11-13"
 url = "https://www.traverseedecharlevoix.qc.ca/en/hiking/the-complete-crossing"
 publisher = "La Traversée de Charlevoix"
 facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "months", "travel", "permit"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Traversée de Charlevoix."
+fields = ["record"]
+basis = "The record's own source entry: Traversée de Charlevoix."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://www.traverseedecharlevoix.qc.ca/wp-content/uploads/Logo-La-Traversee-de-Charlevoix.svg"
+asked_by = "the dataset's own check"
+outcome = "applied"

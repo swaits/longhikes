@@ -69,6 +69,6 @@ def all_paths(records, region_paths):
     """Every indexable page path, in nav order then record pages."""
     paths = ["/", "/regions/"] + list(region_paths) + [
         "/routes/", "/sources/", "/logos/", "/about/", "/data/",
-        "/data/schema/", "/data/changelog/"]
+        "/data/schema/", "/data/changelog/", "/left-out/"]
     paths += [common.trail_path(r) for r in sorted(records, key=lambda r: r["id"])]
     return paths

@@ -41,7 +41,7 @@ note = "Not recorded: the route's author does not allow his track to be passed o
 status = "use-real-logo"
 logo_source = "https://simblissity.net/images/GET/get%20monogram1_small.JPG"
 contact = "simBLISSity Ultralight Designs"
-note = "The route's own monogram (a triangle over a mountain photograph), shown beside the route's name on the author's Grand Enchantment Trail page, https://simblissity.net/get/. Published there only as a small 97x90 JPEG, converted to PNG; the page's banner (the name set over a photograph) was not used. Footer: 'Copyright \u00a9 2026 simBLISSity Ultralight Designs'. No logo policy found on that page."
+note = "The route's own monogram (a triangle over a mountain photograph), shown beside the route's name on the author's Grand Enchantment Trail page, https://simblissity.net/get/. Published there only as a small 97x90 JPEG, converted to PNG; the page's banner (the name set over a photograph) was not used. Footer: 'Copyright © 2026 simBLISSity Ultralight Designs'. No logo policy found on that page. The near white surround of the rounded square was made transparent."
 logo_file = "shield.png"
 logo_owner = "simBLISSity Ultralight Designs"
 
@@ -103,3 +103,32 @@ facts = ["end_lonlat"]
 title = "Grand Enchantment Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Grand_Enchantment_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Grand Enchantment Trail."
+fields = ["record"]
+basis = "The record's own source entry: Brett Tucker."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The record was changed from an official trail to a route by its author, Brett Tucker, dating from 2003. Its track is sold in a mapset, so no track is included and the OpenStreetMap relation is no longer recorded."
+fields = ["kind", "designation", "route.creator", "route.year", "route.line_policy", "guide.title", "guide.author", "guide.access", "guide.url", "guide.format", "guide.publisher", "osm.relation", "source.status", "source.publisher", "source.publisher_url", "source.url", "source.licence", "source.licence_text", "source.attribution", "source.osm_only", "source.line_absent_reason"]
+basis = "The author's own FAQ and pages describe it as the author's own route, sold as a mapset with GPS tracks, and state no terms for passing the tracks on."
+basis_url = "http://www.simblissity.net/get_faq.shtml"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://simblissity.net/images/GET/get%20monogram1_small.JPG"
+asked_by = "the dataset's own check"
+outcome = "applied"

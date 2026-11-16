@@ -37,10 +37,10 @@ relation = 0
 note = "No route relation named San Diego Trans County Trail was found in a name search on 2026-11-14."
 
 [shield]
-status = "no-logo-exists"
-logo_source = ""
+status = "logo-not-found"
+logo_source = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
 contact = "Sea to Sea Trail Foundation (folded); guide by Liz Thomas"
-note = "No logo is included; the trail's foundation has folded and no emblem was found on the guide's page."
+note = "Trail signage exists but no usable emblem artwork was found at an allowed source. Looked at the current guide to the route at https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail . It shows Treeline Review's own logo and photographs, among them a trail post at Cuyamaca carrying a red and white 'SAN DIEGO TRANS COUNTY TRAIL' sign panel; the sign design is visible there only inside a photograph, at an angle and weathered, so there is no flat artwork to take. The Sea to Sea Trail Foundation that first promoted the route has folded and no holder site publishing emblem artwork was found."
 logo_file = ""
 logo_owner = "Sea to Sea Trail Foundation (folded); guide by Liz Thomas"
 
@@ -82,3 +82,23 @@ checked = "2026-11-14"
 url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
 publisher = "Liz Thomas, Treeline Review (author of the current guide)"
 facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "high_point", "terrain", "permit", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: San Diego Trans County Trail."
+fields = ["record"]
+basis = "The record's own source entry: Sea to Sea Trail Foundation."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says an emblem exists or may exist but no usable artwork of it was found at an allowed source."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
+basis_url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

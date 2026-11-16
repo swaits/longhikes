@@ -35,11 +35,11 @@ relation = 11360008
 note = "Downloaded 2026-11-10; 78 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://static.wixstatic.com/media/30a84d_b3362299a6fc4aa097db41e071b2789f.png"
 contact = "Standing Stone Trail Club"
-note = "No logo is included. Ask the trail's holder before using its mark."
-logo_file = ""
+note = "The trail's badge: the standing stone and a pine in a framed panel lettered Standing Stone Trail, Part of the Great Eastern Trail. It is shown in use in the header of https://www.standingstonetrail.org/, where the holder names the file SST Logo. The file is unchanged; at 166x212 px it is the largest version the site serves. No logo terms were found on the site."
+logo_file = "shield.png"
 logo_owner = "Standing Stone Trail Club"
 
 [verification]
@@ -76,3 +76,23 @@ facts = ["high_point"]
 title = "Standing Stone Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Standing_Stone_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Standing Stone Trail."
+fields = ["record"]
+basis = "The record's own source entry: Standing Stone Trail Club."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://static.wixstatic.com/media/30a84d_b3362299a6fc4aa097db41e071b2789f.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

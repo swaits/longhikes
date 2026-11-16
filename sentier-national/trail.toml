@@ -35,10 +35,10 @@ relation = 7300742
 note = "Downloaded 2026-11-08; release.txt has the relation version and timestamp."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Fédération québécoise de la marche"
-note = "No logo file found: the Sentier national au Quebec is run by Rando Quebec. Retried 2026-11-08: its Sentier national pages use the Rando Quebec corporate logo only, and there is no Sentier national emblem on the site or Commons."
+note = "No emblem of the trail itself exists at an allowed source. Rando Québec's Sentier National pages, beginning at https://www.randoquebec.ca/sentier-national-au-quebec/, were read in full: they carry the Rando Québec corporate logo and its beige variant, photographs, and a film poster, but no Sentier National crest, badge or blaze artwork. The corporate logo stands for the organisation and all its work, not for this trail."
 logo_file = ""
 logo_owner = "Fédération québécoise de la marche"
 
@@ -74,3 +74,23 @@ facts = ["summary", "start", "shape"]
 url = "https://www.sepaq.com/pq/mot/index.dot?language_id=1"
 publisher = "Sépaq"
 facts = ["summary", "terrain"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Sentier National (Quebec)."
+fields = ["record"]
+basis = "The record's own source entry: Fédération québécoise de la marche."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.randoquebec.ca/sentier-national-au-quebec/"
+asked_by = "the dataset's own check"
+outcome = "applied"

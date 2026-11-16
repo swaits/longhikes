@@ -38,7 +38,7 @@ note = "Not downloaded."
 status = "no-logo-exists"
 logo_source = ""
 contact = "NPS Grand Teton"
-note = "No trail emblem found: the NPS Grand Teton National Park home page (https://www.nps.gov/grte/index.htm) shows only the NPS arrowhead, the agency's mark and not the trail's, and the Grand Teton National Park Foundation's trail-renewal page showed no emblem file. A web search found no Teton Crest Trail marker design. No file is included. Checked 2026-11-13."
+note = "No trail emblem found. The Park's backcountry page (https://www.nps.gov/grte/planyourvisit/back.htm) shows only the NPS arrowhead, which is the agency's. Checked 2026-11-16."
 logo_file = ""
 logo_owner = "NPS Grand Teton"
 
@@ -90,3 +90,14 @@ facts = ["end_lonlat"]
 url = "https://backpackingroutes.com/teton-crest-trail/"
 publisher = "Backpacking Routes"
 facts = ["days", "season", "months"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Teton Crest Trail."
+fields = ["record"]
+basis = "The record's own source entry: National Park Service."
+asked_by = "the dataset's own check"
+outcome = "applied"

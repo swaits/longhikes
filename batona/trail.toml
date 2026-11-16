@@ -33,10 +33,10 @@ relation = 4129027
 note = "Downloaded 2026-11-10; 100 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Batona Hiking Club"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "The trail has no emblem of its own. It is marked with plain pink blazes, which are not an emblem. Addresses checked: batona.wildapricot.org home page and its page source (only the site theme's default logo and a text title), the New Jersey DEP Wharton State Forest trails brochure PDF at dep.nj.gov (the address returned a short HTML page, not the PDF), the older Batona map address njparksandforests.org/parks/docs/batona14web.pdf (also returned HTML, not a PDF), and Wikimedia Commons (none). Ask the club before using any mark."
 logo_file = ""
 logo_owner = "Batona Hiking Club"
 
@@ -78,3 +78,23 @@ facts = ["summary", "start", "end", "shape", "travel"]
 url = "https://dep.nj.gov/wp-content/uploads/parksandforests/docs/sps/batona-map-2026.pdf"
 publisher = "New Jersey State Park Service"
 facts = ["high_point"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Batona Trail."
+fields = ["record"]
+basis = "The record's own source entry: Batona Hiking Club."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://batona.wildapricot.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"

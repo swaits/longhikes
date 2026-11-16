@@ -33,11 +33,11 @@ relation = 6335422
 note = "Downloaded 2026-11-10; 491 ways in the main track and 1 in alternates. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://www.nynjtc.org/wp-content/uploads/2024/08/HT-Blaze-Transp-w_-Wht.png"
 contact = "New York-New Jersey Trail Conference"
-note = "No logo is included. Ask the trail's holder before using its mark."
-logo_file = ""
+note = "The teal diamond blaze reading Highlands Trail, from the Trail Conference site nynjtc.org, is the trail's own marker. Trimmed the transparent margin and reduced the 5462 px original to 1024 px; nothing else changed. Transparent background."
+logo_file = "shield.png"
 logo_owner = "New York-New Jersey Trail Conference"
 
 [verification]
@@ -62,3 +62,23 @@ checked = "2026-11-13"
 url = "https://nynjtc.org/highlands-trail"
 publisher = "New York-New Jersey Trail Conference"
 facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Highlands Trail."
+fields = ["record"]
+basis = "The record's own source entry: New York-New Jersey Trail Conference."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://www.nynjtc.org/wp-content/uploads/2024/08/HT-Blaze-Transp-w_-Wht.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

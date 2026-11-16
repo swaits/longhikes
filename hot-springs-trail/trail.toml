@@ -36,12 +36,12 @@ relation = 0
 note = "Not recorded: the route's creator does not publish a track."
 
 [shield]
-status = "no-logo-exists"
+status = "logo-not-found"
 logo_source = ""
 contact = "Aria Zoner"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "No usable artwork is at an allowed live source. The author's own sites for the route, hotspringstrail.org (named in the guidebook) and wholefoodhiker.com (named as the author's site in his books), no longer resolve, so the holder's site could not be read at all; whether the guidebook uses a route badge could not be confirmed from an allowed source, and book retailers are not allowed sources. The route listing that is live shows photographs and its own site marks only. Addresses looked at: outsideways.com/routes/us/hot-springs-trail/ (page and its source), hotspringstrail.org and www.hotspringstrail.org (name no longer resolves), wholefoodhiker.com/ and wholefoodhiker.com/hot-springs-trail (name no longer resolves), and an archived 2025 snapshot of hotspringstrail.org at web.archive.org, which is a blank landing stub with no images."
 logo_file = ""
-logo_owner = "Aria Zoner"
+logo_owner = ""
 
 [verification]
 verified = false
@@ -86,3 +86,23 @@ facts = ["start_lonlat"]
 title = "Hot Springs Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Hot_Springs_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Hot Springs Trail."
+fields = ["record"]
+basis = "The record's own source entry: Aria Zoner."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says an emblem exists or may exist but no usable artwork of it was found at an allowed source."
+fields = ["shield.status", "shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
+basis_url = "https://outsideways.com/routes/us/hot-springs-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"

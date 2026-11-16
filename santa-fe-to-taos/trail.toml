@@ -37,9 +37,9 @@ note = "No route relation named Santa Fe to Taos was found in a name search on 2
 
 [shield]
 status = "logo-not-found"
-logo_source = ""
+logo_source = "https://santafetotaos.org/"
 contact = "Pam Neely"
-note = "The site refers to a Santa Fe to Taos Thru-Hike logo. No logo is included here and no logo policy was found. Ask the Santa Fe to Taos Trail before using its mark."
+note = "The route's site santafetotaos.org uses a round photograph of a mountain meadow as its logo, taken from https://santafetotaos.org/wp-content/uploads/2023/12/cropped-sf2taos-logo-123023-150px.png. A photograph in a circle is not an emblem, so it was not used. No trail blaze or badge artwork was found."
 logo_file = ""
 logo_owner = "Pam Neely"
 
@@ -110,3 +110,23 @@ facts = ["start_lonlat"]
 url = "https://www.wikidata.org/wiki/Q7684310"
 publisher = "Wikidata (CC0)"
 facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Santa Fe to Taos Thru-Hike."
+fields = ["record"]
+basis = "The record's own source entry: Pam Neely and the Santa Fe to Taos Trail non-profit."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now names where an emblem was looked for and who holds the mark."
+fields = ["shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
+basis_url = "https://santafetotaos.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"

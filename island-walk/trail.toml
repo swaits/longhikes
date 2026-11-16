@@ -35,11 +35,11 @@ relation = 12307947
 note = "Downloaded 2026-11-10; 586 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://theislandwalk.ca/wp-content/uploads/2025/08/Island-Walk-logo-EN.png"
 contact = "Island Walk PEI Inc."
-note = "No logo is included. Ask the trail's holder before using its mark."
-logo_file = ""
+note = "The trail's own emblem: a wide coastal badge with the name The Island Walk inside the shape, a walker above shore, fields and spruces. It is the header logo on the trail's own site, theislandwalk.ca, shown on every page. The transparent margin was trimmed with a small even border added; nothing else was changed. No terms for the logo were found on the site. The first search missed it because it read the home page as text only."
+logo_file = "shield.png"
 logo_owner = "Island Walk PEI Inc."
 
 [verification]
@@ -75,3 +75,23 @@ facts = ["summary", "shape"]
 url = "https://theislandwalk.ca/partner/"
 publisher = "Island Walk PEI Inc."
 facts = ["season", "months"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: The Island Walk."
+fields = ["record"]
+basis = "The record's own source entry: Island Walk PEI Inc."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://theislandwalk.ca/wp-content/uploads/2025/08/Island-Walk-logo-EN.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

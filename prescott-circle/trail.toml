@@ -35,11 +35,11 @@ relation = 4717133
 note = "Hiking route relation named Prescott Circle Trail, version 64, 67 ways, operator City of Prescott / Prescott National Forest. The Forest Service's own trail layer holds only the Forest's part of the loop, so it is not used."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://yavapai-trails.org/wp-content/uploads/2019/08/pct-logo.png"
 contact = "City of Prescott and Prescott National Forest"
-note = "No logo is included. The City's page for the trail shows only the City's own logo as site branding, and the Forest's page shows none for the trail."
-logo_file = ""
+note = "The trail's roundel: boot prints, a horseshoe and a bicycle in a green circle lettered Prescott Circle Trail. The City of Prescott's site https://prescott-az.gov/?p=25791 refused automated reads (403 on the trail page and on its map PDF, checked 2026-11-16), and the Prescott National Forest pages show no emblem art. The file was taken as shown in use from the Yavapai Trails Association's Prescott Circle Trail page, https://www.yavapai-trails.org/prescott-circle-trail/; the Forest Service links to that association as the publisher of the Prescott Circle Trail maps and guide. The file is unchanged, and at 229x220 px it is the largest version found at an allowed source. No logo terms were found on that page."
+logo_file = "shield.png"
 logo_owner = "City of Prescott"
 
 [verification]
@@ -76,3 +76,23 @@ facts = ["summary", "shape"]
 url = "https://www.treelinereview.com/where-to-go/prescott-circle-trail"
 publisher = "Treeline Review (hiking guide site; trail data attributed to the City of Prescott)"
 facts = ["start", "days", "terrain"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Prescott Circle Trail."
+fields = ["record"]
+basis = "The record's own source entry: City of Prescott and Prescott National Forest."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://yavapai-trails.org/wp-content/uploads/2019/08/pct-logo.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

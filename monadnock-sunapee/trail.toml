@@ -36,9 +36,9 @@ note = "Downloaded 2026-11-10; 62 ways in the main track. release.txt has the so
 
 [shield]
 status = "logo-not-found"
-logo_source = ""
+logo_source = "https://www.msgtc.org/"
 contact = "Monadnock-Sunapee Greenway Trail Club"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "The club's own graphic is a brown ridge over green pines carrying white trail blazes, set above the club's name in its logo file at https://www.msgtc.org/wp-content/uploads/2018/10/logo.png. Cut out of that lockup it reads as a drawing of the landscape, not an emblem, so it was not used. The home page https://www.msgtc.org/ was checked and shows no trail blaze, badge or patch as artwork, only photographs."
 logo_file = ""
 logo_owner = "Monadnock-Sunapee Greenway Trail Club"
 
@@ -78,3 +78,23 @@ facts = ["high_point"]
 title = "Monadnock-Sunapee Greenway"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Monadnock-Sunapee_Greenway"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Monadnock-Sunapee Greenway."
+fields = ["record"]
+basis = "The record's own source entry: Monadnock-Sunapee Greenway Trail Club."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now names where an emblem was looked for and who holds the mark."
+fields = ["shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
+basis_url = "https://www.msgtc.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"

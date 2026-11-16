@@ -37,9 +37,9 @@ note = "OSM 1675439."
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://bmta.org/"
+logo_source = "https://bmta.org/wp-content/uploads/2020/01/favicon.png"
 contact = "Benton MacKaye Trail Association"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "The Association's round badge: a white diamond (the trail's blaze) on dark green inside a tan ring reading BENTON MACKAYE TRAIL ASSOCIATION. It is the site icon on bmta.org, 512 px, larger than the 144 px header logo it replaces. Trimmed of its empty border only. No terms for use of the logo are stated on the page."
 logo_file = "shield.png"
 logo_owner = "Benton MacKaye Trail Association"
 
@@ -86,3 +86,23 @@ facts = ["days", "season", "months", "terrain"]
 title = "Benton MacKaye Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Benton_MacKaye_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Benton MacKaye Trail."
+fields = ["record"]
+basis = "The record's own source entry: Benton MacKaye Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://bmta.org/wp-content/uploads/2020/01/favicon.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

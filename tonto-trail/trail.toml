@@ -36,7 +36,7 @@ note = "Hiking route relation named Tonto Trail, version 32 (2023-10-25), 19 way
 status = "no-logo-exists"
 logo_source = ""
 contact = "National Park Service, Grand Canyon National Park"
-note = "No logo is included. The National Park Service pages read show no trail logo or shield for the Tonto Trail."
+note = "No trail emblem found. The Park's trail handouts (https://www.nps.gov/grca/planyourvisit/upload/Tonto_Hermit-Bright_Angel_to_Hermit.pdf) and pages show only NPS marks. Checked 2026-11-16."
 logo_file = ""
 logo_owner = "National Park Service"
 
@@ -79,3 +79,14 @@ facts = ["summary", "official_url", "terrain"]
 url = "https://www.nps.gov/grca/planyourvisit/backcountry-permit.htm"
 publisher = "National Park Service, Grand Canyon National Park"
 facts = ["permit"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-15"
+change = "The record was added: Tonto Trail."
+fields = ["record"]
+basis = "The record's own source entry: National Park Service."
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -37,10 +37,10 @@ relation = 1022044
 note = "Relation 1022044, 471 ways. Downloaded 2026-11-09."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "no-logo-exists"
+logo_source = "https://hike-mst.org/index.php/the-organization"
 contact = "Mid State Trail Association"
-note = "No logo file found: hike-mst.org (Mid State Trail Association) exposes no logo asset. Retried 2026-11-08: the site's template points at a header sprite, header-assets.png, that answers 404; the KTA and PA Wilds pages show only their own logos; no Association mark found on the site or Commons."
+note = "The Association's site (https://hike-mst.org/ and its organization, FAQ and trail pages) shows a membership sticker, https://hike-mst.org/images/stories/mststicker.jpg: a raccoon on a map of Pennsylvania with the slogan 'hike the MID STATE TRAIL / GO WILD!'. That is a slogan sticker, not a crest, and is not included. The trail is blazed with plain orange blazes. No other mark was found."
 logo_file = ""
 logo_owner = "Mid State Trail Association"
 
@@ -77,3 +77,23 @@ facts = ["summary", "terrain", "caution"]
 title = "Pennsylvania Mid-State Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Pennsylvania_Mid-State_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Mid State Trail."
+fields = ["record"]
+basis = "The record's own source entry: Mid State Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://hike-mst.org/index.php/the-organization"
+asked_by = "the dataset's own check"
+outcome = "applied"

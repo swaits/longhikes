@@ -35,7 +35,7 @@ note = "Hiking route relation named Mt. Hood Timberline Trail, 10 ways. An earli
 status = "no-logo-exists"
 logo_source = ""
 contact = "USFS Mount Hood National Forest"
-note = "No trail emblem found: the Forest Service's Timberline Trail #600 page (https://www.fs.usda.gov/r06/mthood/recreation/trails/timberline-trail-600) carries only the USDA and Forest Service marks, which are the agency's and not the trail's, and a web search found no Timberline Trail association or emblem. No file is included. Checked 2026-11-13."
+note = "No emblem of the trail exists at an allowed source. The Forest Service trail page https://www.fs.usda.gov/r06/mthood/recreation/trails/timberline-trail-600 was read in full: it carries only the USDA and Forest Service agency logos and generic recreation activity icons. Those are the agency's marks, not this trail's, so they do not count."
 logo_file = ""
 logo_owner = "USFS Mount Hood National Forest"
 
@@ -76,3 +76,23 @@ facts = ["start", "days"]
 url = "https://www.wikidata.org/wiki/Q1574090"
 publisher = "Wikidata"
 facts = ["start_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Timberline Trail (Mount Hood)."
+fields = ["record"]
+basis = "The record's own source entry: USDA Forest Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "A track was added from OpenStreetMap relation 7641482, which is named Mt. Hood Timberline Trail: 40.1 miles (64.5 km) in 1 part, 0.8% longer than the published 64 km. It replaces the Forest Service layer that the record named as the source but had not downloaded."
+fields = ["osm.relation", "source.attribution", "source.licence", "source.licence_text", "source.line_absent_reason", "source.line_file", "source.line_source", "source.osm_only", "source.status", "source.url"]
+basis = "OpenStreetMap relation 7641482, read on 2026-11-16 under the ODbL."
+basis_url = "https://www.openstreetmap.org/relation/7641482"
+asked_by = "the dataset's own check"
+outcome = "applied"

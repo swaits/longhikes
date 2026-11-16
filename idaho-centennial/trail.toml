@@ -38,10 +38,10 @@ relation = 10758083
 note = "10758083 is the west half and 19215740 a short piece at Upper Priest Lake; 83 ways in all. Downloaded 2026-11-09."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "no-logo-exists"
+logo_source = "https://parksandrecreation.idaho.gov/?p=2905"
 contact = "Idaho Department of Parks and Recreation"
-note = "No trail logo file found: Idaho Parks and Recreation publishes the agency logo, not an Idaho Centennial Trail emblem. Retried 2026-11-08: idahoparks.org is a scripted site that exposes no logo file, the State of Idaho's ArcGIS item thumbnail is a map preview, and Idaho Trails Association and Commons have no ICT emblem."
+note = "No emblem of its own was found. Looked at the Idaho Department of Parks and Recreation trail page https://parksandrecreation.idaho.gov/?p=2905 , its data hub page https://idpr-data-idaho.hub.arcgis.com/datasets/idaho::idaho-centennial-trail-official-route/about , and the Idaho Trails Association's Idaho Centennial Trail resources page https://idahotrailsassociation.org/ict-resources/ . The marks shown are the department's generic icons and photographs and the Idaho Trails Association's own logo, which stands for that association and its many trails, not for this trail. No Idaho Centennial Trail crest or marker artwork was found on any of them."
 logo_file = ""
 logo_owner = "Idaho Department of Parks and Recreation"
 
@@ -77,3 +77,23 @@ facts = ["summary", "caution"]
 title = "Idaho Centennial Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Idaho_Centennial_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Idaho Centennial Trail."
+fields = ["record"]
+basis = "The record's own source entry: Idaho Department of Parks and Recreation."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://parksandrecreation.idaho.gov/?p=2905"
+asked_by = "the dataset's own check"
+outcome = "applied"

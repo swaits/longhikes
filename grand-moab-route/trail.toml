@@ -34,10 +34,10 @@ relation = 0
 note = "No route relation named Grand-Moab Route was found in a name search on 2026-11-14."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Paul Mags (PMags.com)"
-note = "The author's site shows a PMags.com logo in its header. No logo is included here and no logo policy was found. Ask the author before using his mark."
+note = "The route has no emblem of its own. Addresses checked: the author's route page pmags.com/the-grand-moab-route and its full page source (the PMags oval logo, which is the author's brand, and photographs, including a Colorado Trail marker photograph that belongs to another trail), pmags.com home page (same brand logo only), and Wikimedia Commons (none). No route marker or crest exists on the author's site."
 logo_file = ""
 logo_owner = "Paul Mags (PMags.com)"
 
@@ -91,3 +91,23 @@ facts = ["start_lonlat"]
 url = "https://www.wikidata.org/wiki/Q130134"
 publisher = "Wikidata (CC0)"
 facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Grand-Moab Route."
+fields = ["record"]
+basis = "The record's own source entry: Paul Mags."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://pmags.com/the-grand-moab-route"
+asked_by = "the dataset's own check"
+outcome = "applied"

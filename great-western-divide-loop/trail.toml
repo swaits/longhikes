@@ -34,10 +34,10 @@ relation = 0
 note = "No route relation found when searched on 2026-11-10."
 
 [shield]
-status = "no-logo-exists"
+status = "logo-not-found"
 logo_source = ""
 contact = "Brian Lucido"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "The author's page could not be read. https://www.brianlucido.com/sequoia-great-western-divide-loop/ refused automated reads (403 on both https and http, checked 2026-11-16), so whether the author uses an emblem for the route could not be established. The National Park Service page for the country it crosses, https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm, was read and carries only National Park Service branding, with no mark for this route."
 logo_file = ""
 logo_owner = "Brian Lucido"
 
@@ -77,3 +77,23 @@ facts = ["official_url", "summary", "start", "terrain"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/258914"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["start_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Sequoia Great Western Divide Loop."
+fields = ["record"]
+basis = "The record's own source entry: Brian Lucido."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says an emblem exists or may exist but no usable artwork of it was found at an allowed source."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
+basis_url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
+asked_by = "the dataset's own check"
+outcome = "applied"

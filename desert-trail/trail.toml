@@ -36,12 +36,12 @@ relation = 0
 note = "Not recorded: whether the creator shares the track is not settled."
 
 [shield]
-status = "no-logo-exists"
-logo_source = ""
-contact = "Desert Trail Association, with the route scouted by Russel Pengely, D. W. \"Old Creosote\" Tomer and Steve Tabor"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
-logo_file = ""
-logo_owner = "Desert Trail Association, with the route scouted by Russel Pengely, D. W. \"Old Creosote\" Tomer and Steve Tabor"
+status = "use-real-logo"
+logo_source = "https://deserttrail.net/images/DTLogo.png"
+contact = "Desert Trail Association"
+note = "The emblem is a rounded-triangle trail marker with a bighorn ram, desert scene and the name Desert Trail, and the address deserttrail.net on its lower edge. It is the logo on the home page of deserttrail.net. The transparent margin was trimmed and a small margin added, and it was reduced to 1024 px on the long side. No logo policy was found."
+logo_file = "shield.png"
+logo_owner = "Desert Trail Association"
 
 [verification]
 verified = false
@@ -77,3 +77,23 @@ checked = "2026-11-13"
 url = "https://deserttrail.net"
 publisher = "Desert Survivors (the route's present keeper)"
 facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Desert Trail."
+fields = ["record"]
+basis = "The record's own source entry: Desert Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.contact", "shield.logo_file", "shield.logo_owner"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://deserttrail.net/images/DTLogo.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

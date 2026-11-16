@@ -33,11 +33,11 @@ relation = 12257087
 note = "Relation 12257087 'Bay Area Ridge Trail' is a parent with one way; the trail is in four regional relations tagged with the council as operator: 13042115 (611 ways), 13042111 (291), 13042097 (256) and 13042118 (559, of which 12 are also in another relation). Read 2026-11-14."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://ridgetrail.org/wp-content/uploads/2024/06/cropped-BayAreaRidgeTrail_FINAL-LOGO_PMS_outlined_white-background-2.png"
 contact = "Bay Area Ridge Trail Council"
-note = "No logo is included. The council's site shows a Bay Area Ridge Trail logo in its header; it is not included here."
-logo_file = ""
+note = "The trail's roundel: a compass ring lettered Bay Area Ridge Trail over ridge and water shapes. It is shown in use as the header logo at https://ridgetrail.org/ and on the media page https://ridgetrail.org/about-us/media/. The file is unchanged. At 240 px it is the largest version the Council's site serves. No logo terms were found on the site."
+logo_file = "shield.png"
 logo_owner = "Bay Area Ridge Trail Council"
 
 [verification]
@@ -82,3 +82,23 @@ facts = ["terrain", "summary"]
 title = "Bay Area Ridge Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Bay_Area_Ridge_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Bay Area Ridge Trail."
+fields = ["record"]
+basis = "The record's own source entry: Bay Area Ridge Trail Council."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://ridgetrail.org/wp-content/uploads/2024/06/cropped-BayAreaRidgeTrail_FINAL-LOGO_PMS_outlined_white-background-2.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

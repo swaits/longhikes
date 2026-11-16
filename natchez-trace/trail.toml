@@ -36,7 +36,7 @@ note = "OSM relation 18963604 and two section relations."
 status = "use-real-logo"
 logo_source = "https://www.govinfo.gov/content/pkg/FR-2000-03-28/pdf/00-7563.pdf"
 contact = "NPS Natchez Trace Parkway"
-note = "Official Natchez Trace NST emblem, from the Federal Register notice of 2000-03-28 (65 FR 16414) that prescribes it as the official trail marker. Black-and-white as published there. The generic NPS arrowhead previously here was removed. Federal insignia (18 U.S.C. 701)."
+note = "The official Natchez Trace National Scenic Trail marker, as published in the Federal Register notice of 2000-03-28 (65 FR 16414): black on white. The notice's PDF was rendered at 300 dpi and cropped to the emblem; the notice's text was cut off. The previous file was a reversed copy on a black ground. The notice calls it federal insignia whose use is controlled by the trail's administrator, under 18 U.S.C. 701. The white surround was made transparent."
 logo_file = "shield.png"
 logo_owner = "NPS Natchez Trace Parkway"
 
@@ -66,3 +66,23 @@ facts = ["official_url", "summary", "shape", "terrain", "unfinished"]
 url = "https://www.nps.gov/natt/planyourvisit/hiking.htm"
 publisher = "National Park Service"
 facts = ["summary", "unfinished", "travel"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Natchez Trace National Scenic Trail."
+fields = ["record"]
+basis = "The record's own source entry: National Park Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://www.govinfo.gov/content/pkg/FR-2000-03-28/pdf/00-7563.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"

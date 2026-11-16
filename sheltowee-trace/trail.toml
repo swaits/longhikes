@@ -33,11 +33,11 @@ note = "38 section relations."
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://sheltowee.org/"
-contact = "Sheltowee Trace Association; USFS"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+logo_source = "https://images.squarespace-cdn.com/content/v1/5f656f5d5a92157dd17414ac/1614824980218-WB89JT7X4L2SHLT1LK75/favicon.ico"
+contact = "Sheltowee Trace Association"
+note = "The emblem is a dark green diamond with a box turtle, the trail's blaze. It is the site icon of sheltoweetrace.org, 256 px, and appears beside the name in the header logo. It replaces the lockup used before. The site icon file is opaque, with a black square around the diamond, so the source is not transparent as an earlier version of this note said. No logo policy was found. The black square surround was made transparent."
 logo_file = "shield.png"
-logo_owner = "Sheltowee Trace Association; USFS"
+logo_owner = "Sheltowee Trace Association"
 
 [verification]
 verified = true
@@ -78,3 +78,23 @@ facts = ["days"]
 title = "Sheltowee Trace"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Sheltowee_Trace"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Sheltowee Trace National Recreation Trail."
+fields = ["record"]
+basis = "The record's own source entry: USDA Forest Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.contact", "shield.logo_owner", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://images.squarespace-cdn.com/content/v1/5f656f5d5a92157dd17414ac/1614824980218-WB89JT7X4L2SHLT1LK75/favicon.ico"
+asked_by = "the dataset's own check"
+outcome = "applied"

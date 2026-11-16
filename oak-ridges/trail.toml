@@ -33,11 +33,11 @@ relation = 4287243
 note = "Downloaded 2026-11-10; 368 ways in the main track and 11 in alternates. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://www.oakridgestrail.org/wp-content/uploads/2024/07/favicon.jpg"
 contact = "Oak Ridges Trail Association"
-note = "No logo is included. Ask the trail's holder before using its mark."
-logo_file = ""
+note = "The Association's mark (winding path, oak leaf, 'ORTA'), the site icon of oakridgestrail.org at 1100 px, reduced to 1024 px and saved as PNG; border trimmed. The image has a white ground. It is the Association's only mark and no separate trail marker artwork was found. No terms for use of the logo are stated on the page."
+logo_file = "shield.png"
 logo_owner = "Oak Ridges Trail Association"
 
 [verification]
@@ -68,3 +68,23 @@ facts = ["official_url", "summary", "shape", "travel", "caution"]
 url = "https://www.oakridgestrail.org/chapters/"
 publisher = "Oak Ridges Trail Association"
 facts = ["summary", "start", "end", "terrain"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Oak Ridges Trail."
+fields = ["record"]
+basis = "The record's own source entry: Oak Ridges Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://www.oakridgestrail.org/wp-content/uploads/2024/07/favicon.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"

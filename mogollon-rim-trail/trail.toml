@@ -36,11 +36,11 @@ relation = 0
 note = "Not recorded: the route's creator does not publish a track."
 
 [shield]
-status = "no-logo-exists"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://blisterfree.wordpress.com/wp-content/uploads/2019/02/mrt_logo_final.png"
 contact = "Brett Tucker (\"Blisterfree\")"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
-logo_file = ""
+note = "The emblem is the author's Mogollon Rim Trail crest: a rounded triangle with the trail name round it, a rim cliff, agave, pine and peaks inside. The author shows it on his introduction page at blisterfree.wordpress.com (2019/02/24, introducing-the-mogollon-rim-trail) as the route's logo (file mrt_logo_final.png). The plain white corners outside the crest in the original have been made transparent with a corner flood-fill, and the file was trimmed with a small margin; the crest's own edge is intact on white and on dark grounds. Also checked: the author's mapset pages at simblissity.net (mapsets.shtml), which show only the simBLISSity brand logo, and Wikimedia Commons (none). Ask the author before using his mark."
+logo_file = "shield.png"
 logo_owner = "Brett Tucker (\"Blisterfree\")"
 
 [verification]
@@ -94,3 +94,23 @@ facts = ["end_lonlat"]
 title = "Mogollon Rim Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Mogollon_Rim_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Mogollon Rim Trail."
+fields = ["record"]
+basis = "The record's own source entry: Brett Tucker."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://blisterfree.wordpress.com/wp-content/uploads/2019/02/mrt_logo_final.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

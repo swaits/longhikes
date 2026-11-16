@@ -38,9 +38,9 @@ note = "Super-relation 8139599 with 41 sub-relations (sections A to G and their 
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://greatdividetrail.com/"
+logo_source = "https://greatdividetrail.com/wp-content/uploads/2024/12/GDTLogo2017-1.png"
 contact = "Great Divide Trail Association"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "The trail's own rounded-triangle emblem (peak, forest and path, 'GREAT DIVIDE TRAIL / CANADA'), shown in the header of greatdividetrail.com. It replaces the earlier file that carried the Association's name beside it. Trimmed of its empty border and reduced from 1090 to 1024 px. No terms for use of the logo are stated on the page."
 logo_file = "shield.png"
 logo_owner = "Great Divide Trail Association"
 
@@ -97,3 +97,23 @@ facts = ["season", "months"]
 title = "Great Divide Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Great_Divide_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Great Divide Trail."
+fields = ["record"]
+basis = "The record's own source entry: Great Divide Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://greatdividetrail.com/wp-content/uploads/2024/12/GDTLogo2017-1.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

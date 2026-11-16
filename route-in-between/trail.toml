@@ -39,7 +39,7 @@ note = "No route relation found when searched on 2026-11-10."
 status = "no-logo-exists"
 logo_source = ""
 contact = "Kevin \"LarryBoy\" DeVries"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "No emblem of the route exists at an allowed source. The author's pages https://www.lbhikes.com/2019/12/dhr.html and http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html were read in full: they show photographs and a route map screenshot with no emblem, and no crest or badge for the Route In Between or for its Deseret Hiking Route middle section."
 logo_file = ""
 logo_owner = "Kevin \"LarryBoy\" DeVries"
 
@@ -77,3 +77,14 @@ checked = "2026-11-13"
 url = "https://www.lbhikes.com/2019/12/dhr.html"
 publisher = "Kevin \"LarryBoy\" DeVries (LB Hikes)"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Route In Between."
+fields = ["record"]
+basis = "The record's own source entry: Kevin \"LarryBoy\" DeVries."
+asked_by = "the dataset's own check"
+outcome = "applied"

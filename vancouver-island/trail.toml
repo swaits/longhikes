@@ -35,11 +35,11 @@ relation = 12038457
 note = "Downloaded 2026-11-10; 1008 ways in the main track and 33 in alternates. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://vancouverislandtrail.ca/wp-content/uploads/2023/05/VIT-logos.png"
 contact = "Vancouver Island Trail Association"
-note = "No logo is included. Ask the trail's holder before using its mark."
-logo_file = ""
+note = "The emblem is a yellow shield-shaped marker with a T and downward arrow and the words Vancouver Island Trail. It is the trail logo on vancouverislandtrail.ca, also used as the site icon. The file is used unchanged, 400 by 585 px. No logo policy was found."
+logo_file = "shield.png"
 logo_owner = "Vancouver Island Trail Association"
 
 [verification]
@@ -86,3 +86,23 @@ facts = ["season", "months", "days"]
 title = "Vancouver Island Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Vancouver_Island_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Vancouver Island Trail."
+fields = ["record"]
+basis = "The record's own source entry: Vancouver Island Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://vancouverislandtrail.ca/wp-content/uploads/2023/05/VIT-logos.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

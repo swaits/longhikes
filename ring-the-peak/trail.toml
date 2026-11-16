@@ -33,12 +33,12 @@ relation = 11275109
 note = "Relation 11275109 'Ring the Peak' (operator Friends of the Peak, version 1, 2020) holds 3 ways, 9.7 km, joined in 1 part: scraps, not the loop. Read 2026-11-14."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Friends of the Peak"
-note = "No logo is included. The trail's markers are green stakes with a label, and no trail logo was found on the Friends of the Peak page when read on 2026-11-14."
+note = "No emblem of its own. On the ground the Ring is marked with green Carsonite stakes whose 3-inch square labels are brown for clockwise and green for counterclockwise travel, with the name as type; no crest artwork is used by Friends of the Peak or the Trails and Open Space Coalition, whose pages show only their own organisation logos and a route map. The old ringthepeak.com address now serves nothing of the holder's, and its archived copy at web.archive.org refused automated reads (429) when tried once, so it was not worked around. Addresses looked at: friendsofthepeak.org/ring-the-peak-2/ (full page, including the Ring the Peak Trail map image at friendsofthepeak.org/wp-content/uploads/2021/03/Ring-the-Peak-Trail.png, which is a map with no emblem), friendsofthepeak.org/ (site header), trailsandopenspaces.org/ring-the-peak-draft-master-plan/ (which now serves the Coalition home page), and the archived snapshot address given above. Wikimedia Commons was also searched and holds no emblem for the trail."
 logo_file = ""
-logo_owner = "Friends of the Peak"
+logo_owner = ""
 
 [verification]
 verified = false
@@ -58,3 +58,23 @@ checked = "2026-11-14"
 url = "https://friendsofthepeak.org/ring-the-peak-2/"
 publisher = "Friends of the Peak"
 facts = ["official_url", "summary", "shape", "high_point", "travel", "unfinished", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Ring the Peak Trail."
+fields = ["record"]
+basis = "The record's own source entry: Friends of the Peak."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://friendsofthepeak.org/ring-the-peak-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"

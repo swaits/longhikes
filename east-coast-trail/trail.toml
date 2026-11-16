@@ -37,7 +37,7 @@ note = "Verified."
 status = "use-real-logo"
 logo_source = "https://eastcoasttrail.com/"
 contact = "East Coast Trail Association"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "The trail's roundel: a path between green headlands under a peak, in a circle. The Association's site https://eastcoasttrail.com/ refused automated reads (403 on both https and http, checked 2026-11-16), so no fresh art could be taken. Cropped from the logo file already in this record, which came from that site; the East Coast Trail wording set beside the roundel was cut off. At 181x173 px it is smaller than 256 px because the source file is only 500x173 px."
 logo_file = "shield.png"
 logo_owner = "East Coast Trail Association"
 
@@ -86,3 +86,23 @@ facts = ["permit", "shape"]
 title = "East Coast Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/East_Coast_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: East Coast Trail (Newfoundland)."
+fields = ["record"]
+basis = "The record's own source entry: East Coast Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://eastcoasttrail.com/"
+asked_by = "the dataset's own check"
+outcome = "applied"

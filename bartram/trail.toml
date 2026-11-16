@@ -35,11 +35,11 @@ relation = 9955138
 note = "Downloaded 2026-11-10; 138 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://blueridgebartram.org/wp-content/themes/blue-ridge-bartram/assets/images/header-logo.svg"
 contact = "Blue Ridge Bartram Trail Conservancy"
-note = "No logo is included. Ask the trail's holder before using its mark."
-logo_file = ""
+note = "The Conservancy's moth, the mark in the header of blueridgebartram.org; its footer logo adds the words 'Blue Ridge Bartram Trail Conservancy' and an arc of mountains, which are not included. It is the organisation's mark rather than a trail sign, and the Conservancy cares only for this trail. Plain SVG, no scripts, no edits. No terms for use of the logo are stated on the page."
+logo_file = "shield.svg"
 logo_owner = "Blue Ridge Bartram Trail Conservancy"
 
 [verification]
@@ -75,3 +75,23 @@ facts = ["summary", "start", "season", "months", "travel"]
 title = "Bartram Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Bartram_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Bartram Trail."
+fields = ["record"]
+basis = "The record's own source entry: Blue Ridge Bartram Trail Conservancy."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://blueridgebartram.org/wp-content/themes/blue-ridge-bartram/assets/images/header-logo.svg"
+asked_by = "the dataset's own check"
+outcome = "applied"

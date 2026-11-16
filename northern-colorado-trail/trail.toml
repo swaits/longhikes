@@ -36,11 +36,11 @@ relation = 0
 note = "Not recorded: the route's author does not allow his track to be passed on."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://images.squarespace-cdn.com/content/v1/66a10c313ce1973b392b1403/f5001852-1a8d-41a8-bb81-0e119a66b6f7/NOCO+Trail+LOGO+2-17-2025.png"
 contact = "Kevin Silvernale"
-note = "No logo is included. The author's site shows a route logo; ask the author before using it."
-logo_file = ""
+note = "The route's own oval emblem (mountains, winding path, 'NO-CO Trail'), cropped from the header logo of northerncoloradotrail.org. The words 'Northern Colorado Trail' set beside the emblem were cut off. The site serves the file as WebP; the staged file is a PNG made from it with no other change. Black on a transparent ground inside a white oval. No terms for use of the logo are stated on the page."
+logo_file = "shield.png"
 logo_owner = "Kevin Silvernale"
 
 [verification]
@@ -83,3 +83,24 @@ facts = ["summary", "official_url", "start", "end", "shape", "high_point", "terr
 url = "https://5280.com/ways-to-hike-the-new-northern-colorado-trail/"
 publisher = "5280 magazine"
 facts = ["summary", "days", "travel"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-16"
+change = "The record was added as a route, 304 miles (490 km), in CO. No track is included."
+fields = ["record"]
+basis = "Found in a search of the web region by region. The facts were read on pages of Kevin Silvernale, 5280 magazine; the page linked is the first one the record names."
+basis_url = "https://www.northerncoloradotrail.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://images.squarespace-cdn.com/content/v1/66a10c313ce1973b392b1403/f5001852-1a8d-41a8-bb81-0e119a66b6f7/NOCO+Trail+LOGO+2-17-2025.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

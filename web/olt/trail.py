@@ -575,7 +575,9 @@ def downloads_panel(rec):
         licence_html = Markup(f'{licence_html}; OpenStreetMap parts {ext_link(words.LICENCE_URLS["ODbL-1.0"], "ODbL 1.0")}')
     osm_note = ("<p class=\"note\">Tracks from OpenStreetMap need the credit &ldquo;&copy;&nbsp;OpenStreetMap contributors&rdquo; "
                 "and stay under the ODbL (share-alike).</p>") if "ODbL" in src.get("attribution", "") + licence else ""
-    licence_note = (f'<p class="note">{esc(words.LICENCE_NOTES[licence])}</p>'
+    permission = permission_figure(src)
+    licence_note = (f'<p class="note">{esc(words.LICENCE_NOTES[licence])}'
+                    f'{" The statement is quoted below." if permission else ""}</p>'
                     if licence in words.LICENCE_NOTES else "")
     release = (f'<p class="note"><a href="/trails/{esc(rec["id"])}/release.txt">release.txt</a>: '
                f"the source, licence and date the track files came from.</p>"
@@ -594,7 +596,7 @@ def downloads_panel(rec):
         <button class="button button--quiet" type="button" data-copy="#credit-text" data-copy-status="#credit-done" aria-describedby="credit-label" hidden>Copy credit</button>
       </div>
       <p class="credit__done" id="credit-done" role="status"></p>
-      {osm_note}{licence_note}
+      {osm_note}{licence_note}{permission}
     </div>
     {release}
   </div>
@@ -647,10 +649,10 @@ def guides_panel(rec):
         return ""
     cards = "".join(guide_card(g, i) for i, g in enumerate(guides, 1))
     return f"""<section class="panel" aria-labelledby="guides-title">
-  <h2 class="panel__head" id="guides-title">Where to get the route</h2>
+  <h2 class="panel__head" id="guides-title">{"Where to get the route" if common.is_route(rec) else "Maps and guides"}</h2>
   <div class="panel__body">
     <ul class="guides">{cards}</ul>
-    <p class="note">Links go to the author&rsquo;s or publisher&rsquo;s own page for each guide.</p>
+    <p class="note">Links go to the {"author&rsquo;s or publisher&rsquo;s" if common.is_route(rec) else "holder&rsquo;s"} own page for each guide.</p>
   </div>
 </section>"""
 
@@ -936,6 +938,21 @@ def elevation_block(rec):
     return block("elevation-data-title", "Elevation", content)
 
 
+def permission_figure(src):
+    """The quoted words of a track shared by stated permission: the quotation, who said it and
+    when, and the page it was read at. Empty for any other licence."""
+    if src.get("licence") != "stated-permission" or not src.get("permission_quote"):
+        return ""
+    url = src.get("permission_url", "")
+    return f"""<figure class="quote">
+  <blockquote{f' cite="{esc(url)}"' if url else ""}><p>{esc(src["permission_quote"])}</p></blockquote>
+  <figcaption>
+    <p class="quote__who">Said by {esc(src.get("permission_by", ""))} on {esc(src.get("permission_date", ""))}.</p>
+    {f'<p>Read at {ext_link(url)}.</p>' if url else ""}
+  </figcaption>
+</figure>"""
+
+
 def source_block(rec):
     src = rec["source"]
     line = common.has_line(rec)
@@ -973,17 +990,9 @@ def source_block(rec):
     ]
     if src.get("decision") or src.get("decision_text"):
         rows.append(fact("Decision", src.get("decision_text", "") or words.DECISIONS.get(src.get("decision", ""), src.get("decision", ""))))
-    licence_note = (f'<p>{esc(words.LICENCE_NOTES[licence])}</p>' if licence in words.LICENCE_NOTES else "")
-    permission = ""
-    if licence == "stated-permission" and src.get("permission_quote"):
-        url = src.get("permission_url", "")
-        permission = f"""<figure class="quote">
-  <blockquote{f' cite="{esc(url)}"' if url else ""}><p>{esc(src["permission_quote"])}</p></blockquote>
-  <figcaption>
-    <p class="quote__who">Said by {esc(src.get("permission_by", ""))} on {esc(src.get("permission_date", ""))}.</p>
-    {f'<p>Read at {ext_link(url)}.</p>' if url else ""}
-  </figcaption>
-</figure>"""
+    permission = permission_figure(src)
+    licence_note = (f'<p>{esc(words.LICENCE_NOTES[licence])}{" The statement is quoted below." if permission else ""}</p>'
+                    if licence in words.LICENCE_NOTES else "")
     licence_text = (f'<h3 class="block__sub">What the source says</h3>{licence_note}{Markup(permission)}{record_text(src["licence_text"])}'
                     '<p class="note">With the page it was read on. Not legal advice.</p>') if src.get("licence_text") else ""
     return block("source-title", "Source and licence", facts(*rows) + Markup(licence_text))
@@ -1005,16 +1014,13 @@ def logo_block(rec):
     sh = rec.get("shield", {})
     status = sh.get("status", "")
     if not common.shield_url(rec):
-        # No logo file: one line, the status and the record's note.
-        lead = {"no-logo-exists": "No logo", "logo-not-found": "Logo not found",
-                "use-real-logo": "Logo not included"}.get(status, "No logo file")
+        # No logo file. The two states say different things: the trail has no emblem of its
+        # own, or it has (or may have) one and no usable artwork of it was found.
+        lead = {"no-logo-exists": "No emblem of its own",
+                "logo-not-found": "Emblem not found"}.get(status, "No logo file")
+        why = {"logo-not-found": " An emblem exists or may exist, but no usable artwork of it was found "
+                                 "at a source the dataset allows."}.get(status, "")
         note = sh.get("note", "")
-        # "use-real-logo" without a file: the trail has a logo, but no copy is here.
-        why = ""
-        if status == "use-real-logo":
-            holder = sh.get("logo_owner") or sh.get("contact") or ""
-            why = (f" The trail has a logo{', held by ' + str(esc(holder)) if holder else ''}, "
-                   "but no copy of it is in this dataset.")
         return block("logo-title", "Logo", Markup(
             f'<p class="record-text"><strong>{esc(lead)}.</strong>{why}{" " + common.rich(note) if note else ""}</p>'))
     rows = [
@@ -1092,6 +1098,45 @@ def about_data(rec, site):
   <span class="about-data__hint">Where the track and the facts come from, licence, checks, the logo, corrections, and every field of the record</span></summary>
   <div class="about-data__body detail__main">
     {blocks}
+  </div>
+</details>"""
+
+
+HISTORY_LABELS = {"declined": "Request declined"}
+
+
+def history_entry(e):
+    """One entry of the record's [[history]], as a list item."""
+    outcome = e.get("outcome", "")
+    label = HISTORY_LABELS.get(outcome, "")
+    url = e.get("basis_url", "")
+    basis = esc(e.get("basis", ""))
+    link = f' <a href="{esc(url)}">{esc(url)}</a>' if url else ""
+    fields = "".join(f"<li><code>{esc(f)}</code></li>" for f in e.get("fields", []))
+    date = esc(e.get("date", ""))
+    return f"""<li class="history__entry history__entry--{esc(outcome)}">
+  <p class="history__head"><time datetime="{date}">{date}</time>{f' <strong class="history__outcome">{esc(label)}</strong>' if label else ""}</p>
+  <p class="history__change">{esc(e.get("change", ""))}</p>
+  <p class="history__basis"><span class="history__label">Basis:</span> {basis}{link}</p>
+  <p class="history__who"><span class="history__label">Asked by:</span> {esc(e.get("asked_by", ""))}</p>
+  <ul class="history__fields" aria-label="Fields it concerns">{fields}</ul>
+</li>"""
+
+
+def history_section(rec):
+    """Who asked for what on this record, on what evidence, and what was declined: collapsed,
+    beside "About this data". Left out when the record has no history."""
+    entries = [e for e in rec.get("history", []) if isinstance(e, dict)]
+    if not entries:
+        return ""
+    count = len(entries)
+    return f"""<details class="about-data about-data--history" id="record-history">
+  <summary><h2 id="record-history-title">History of this record</h2>
+  <span class="about-data__hint">What was changed or asked for, on what evidence, and who asked, oldest first ({count} entr{"y" if count == 1 else "ies"})</span></summary>
+  <div class="about-data__body detail__main">
+    <ol class="history">
+    {"".join(history_entry(e) for e in entries)}
+    </ol>
   </div>
 </details>"""
 
@@ -1224,6 +1269,7 @@ def render(rec, site, records=None):
   {onward(rec, records)}
   {page_foot(rec, site)}
   {about_data(rec, site)}
+  {history_section(rec)}
 </div>"""
     return rec["name"], description(rec), body, has_map
 

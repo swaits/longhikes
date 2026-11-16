@@ -35,9 +35,9 @@ note = "Downloaded 2026-11-08; release.txt has the relation version and timestam
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://mountainstoseatrail.org/wp-content/uploads/2016/11/MST-white-logo.png"
+logo_source = "https://mountainstoseatrail.org/wp-content/uploads/2017/10/MST-icon-144.png"
 contact = "Friends of the Mountains-to-Sea Trail"
-note = "The Friends' own mark, from its site: the ridge line, surf and 'Friends of the Mountains-to-Sea Trail / North Carolina', 217x111 PNG. The site serves this standing mark in white on a transparent ground; it may need a plate behind it on the map."
+note = "The trail's square MST emblem (two hikers on a ridge over surf, 'Mountains-to-Sea Trail', 'MST'), the site's touch icon at 144 px; no larger copy was found on the site. It replaces the white wordmark of the Friends. Colour, on a solid ground. No terms for use of the logo are stated on the page."
 logo_file = "shield.png"
 logo_owner = "Friends of the Mountains-to-Sea Trail"
 
@@ -85,3 +85,23 @@ facts = ["high_point"]
 title = "Mountains to Sea Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Mountains_to_Sea_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Mountains-to-Sea Trail."
+fields = ["record"]
+basis = "The record's own source entry: North Carolina Division of Parks and Recreation."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://mountainstoseatrail.org/wp-content/uploads/2017/10/MST-icon-144.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

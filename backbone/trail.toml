@@ -34,10 +34,10 @@ relation = 2748910
 note = "OSM 2748910."
 
 [shield]
-status = "no-logo-exists"
-logo_source = ""
+status = "logo-not-found"
+logo_source = "https://www.nps.gov/samo/planyourvisit/backbonetrail.htm"
 contact = "NPS Santa Monica Mountains NRA"
-note = "No trail emblem exists. The file removed on 2026-11-08 was the generic NPS arrowhead (the agency mark, not the trail's), fetched from an NPS park page. The map draws the trail name only."
+note = "An official trail marker exists but no usable artwork for it was found at an allowed source. Looked at https://www.nps.gov/samo/planyourvisit/backbonetrail.htm and the National Park Service map graphic and information graphic linked from it; they show the National Park Service arrowhead (the agency's mark), maps and photographs, but no Backbone Trail emblem artwork. That an emblem exists is shown by the Western National Parks Association's National Park Service-approved Backbone Trail pin, described at https://store.wnpa.org/products/santa-monica-mountains-national-rec-area-pin-backbone-trail-033220 as bearing 'the official plump triangle trail marker for the Backbone Trail'; a merchandise shop is not an allowed source, so nothing was taken from it."
 logo_file = ""
 logo_owner = "NPS Santa Monica Mountains NRA"
 
@@ -84,3 +84,23 @@ facts = ["season", "months", "high_point", "permit", "caution"]
 title = "Backbone Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Backbone_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Backbone Trail."
+fields = ["record"]
+basis = "The record's own source entry: National Park Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says an emblem exists or may exist but no usable artwork of it was found at an allowed source."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
+basis_url = "https://www.nps.gov/samo/planyourvisit/backbonetrail.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"

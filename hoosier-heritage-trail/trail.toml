@@ -5,7 +5,7 @@ name = "Hoosier Heritage Trail"
 country = "US"
 regions = ["IN"]
 length_km = 259
-length_note = "161 mi in the heading of the Hoosier Heritage Trail Association's home page; the same page's introduction says 170 mi, and the association's comparison article lists 170 mi. The 161 mi figure is used."
+length_note = "161 mi (259 km) is the current official length, as the association's president states on this dataset's issue tracker and as the association's home page now gives it throughout. There was a 170 mi version. Tornado damage and salvage logging made part of it very difficult, so the association has shortened the official trail for now. An article of May 2026 on the association's site, comparing Indiana's backpacking trails, still lists the 170 mi version."
 tier = "regional"
 designation = "Hoosier Heritage Trail Association, an Indiana non-profit; a trail it describes as the newest of Indiana's long backpacking trails"
 wave = 1
@@ -37,11 +37,11 @@ relation = 0
 note = "Not searched: the association publishes its own track, and its president has stated that it may be shared."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://i0.wp.com/hoosierheritagetrail.org/wp-content/uploads/2026/03/HHT-Logo-Crimson.png"
 contact = "Hoosier Heritage Trail Association"
-note = "No logo is included. Ask the association before using any mark."
-logo_file = ""
+note = "The emblem is a red roundel showing a hiker and fir trees against the outline of Indiana. The Association's president sent the logo file by email on 2026-11-16 and agreed to the roundel being shown alone. The lettering Hoosier Heritage Trail beside the roundel was cut off. The same artwork is shown on the home page and downloads page of hoosierheritagetrail.org. No logo policy was found. The white surround was made transparent."
+logo_file = "shield.png"
 logo_owner = "Hoosier Heritage Trail Association"
 
 [verification]
@@ -50,11 +50,22 @@ date = "2026-11-16"
 measured_km = 259.2
 difference_percent = 0.1
 parts = 1
-note = "The holder's GPX file, 259.2 km in 1 part (7,997 points), against 259 km (161 mi, the figure in the heading of the association's home page). The same page's introduction says 170 mi and the association's comparison article lists 170 mi; the track is within 0.1% of the 161 mi figure."
+note = "The holder's GPX file, 259.2 km in 1 part (7,997 points), against 259 km (161 mi, the figure in the heading and the introduction of the association's home page). The track is within 0.1% of that figure. An older article on the association's site lists the 170 mi version."
+
+[[guide]]
+title = "Hoosier Heritage Trail Guide and Map Set, 2026"
+author = "Hoosier Heritage Trail Association"
+access = "free"
+url = "https://hoosierheritagetrail.org/wp-content/uploads/2026/11/Hoosier-Heritage-Trail-2026-Mapset.pdf"
+format = "PDF of 32 pages, updated 11/15/2026, offered on the association's Downloads page. Its contents list covers water, hunting season, trail maintenance reports, trailheads and parking, and a map for each section of the trail."
 
 [hike]
-summary = "The Hoosier Heritage Trail is a long-distance trail across Indiana for day hikers, section hikers and backpackers, published by the Hoosier Heritage Trail Association. The association's home page gives its length as 161 miles. The association says it aims to build a trail of more than 400 miles between the Falls of the Ohio and the Indiana Dunes."
+summary = "The Hoosier Heritage Trail is a long-distance trail across Indiana, published by the Hoosier Heritage Trail Association. It runs 161 miles from the Knobstone trailhead in Deam Lake State Recreation Area to the Bryant Creek Lake boat ramp in Morgan-Monroe State Forest. About three quarters is forested dirt trail and the rest is quiet rural roads, many of them gravel. The association's president says the longest stretch between legal forest campsites is 13.3 miles. The association says it aims to build a trail of more than 400 miles between the Falls of the Ohio and the Indiana Dunes."
 official_url = "https://hoosierheritagetrail.org/"
+start = "Knobstone trailhead, Deam Lake State Recreation Area, Indiana"
+end = "Bryant Creek Lake boat ramp and parking area, Morgan-Monroe State Forest, Indiana"
+shape = "point-to-point"
+travel = "trail-and-road"
 start_lonlat = [-85.863, 38.462]
 end_lonlat = [-86.477, 39.323]
 checked = "2026-11-16"
@@ -74,8 +85,79 @@ url = "https://hoosierheritagetrail.org/about/"
 publisher = "Hoosier Heritage Trail Association"
 facts = ["summary"]
 
+[[hike.source]]
+url = "https://github.com/swaits/longhikes/issues/2#issuecomment-6927004842"
+publisher = "Hoosier Heritage Trail Association (said by its president on the dataset's issue tracker, 2026-11-16)"
+facts = ["summary", "start", "end", "shape", "travel"]
+
 [[link]]
 title = "Knobstone Hiking Trail"
 publisher = "Knobstone Hiking Trail Association"
 url = "https://www.knobstonehikingtrail.org/"
 note = "A separate trail over a similar corridor, published by the Knobstone Hiking Trail Association."
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-16"
+change = "The record was added at the request of the association's president, as a designated trail of 161 miles (259 km) in IN, with the association's own track."
+fields = ["record"]
+basis = "The association's president asked for the trail to be added in an issue on this dataset's public issue tracker, and named the association's Downloads page as the place the track is offered."
+basis_url = "https://github.com/swaits/longhikes/issues/2"
+asked_by = "the trail association's president"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The track is shared by stated permission. The record quotes the president's words, who said them, when and where, and the licence is recorded as stated-permission, not public domain or Creative Commons."
+fields = ["source.licence", "source.licence_text", "source.permission_quote", "source.permission_by", "source.permission_date", "source.permission_url", "source.redistributable"]
+basis = "The association's president wrote in the issue that the track is completely public and free to share. No licence is named."
+basis_url = "https://github.com/swaits/longhikes/issues/2"
+asked_by = "the trail association's president"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The two ends are named, the shape and the kind of walking are set, and the length note now says why the official length is 161 miles (259 km): the 170 mile version was shortened for now."
+fields = ["length_note", "hike.start", "hike.end", "hike.shape", "hike.travel"]
+basis = "The association's president answered the open questions in a comment on the issue: the length, the two ends, and the share of forested dirt trail and quiet rural roads."
+basis_url = "https://github.com/swaits/longhikes/issues/2#issuecomment-6927004842"
+asked_by = "the trail association's president"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo was replaced with the roundel from the file the association's president sent on 2026-11-16, shown alone with the lettering beside it cut off."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The association's president sent the file by email and agreed to the roundel being shown alone. The same artwork is shown on the association's home page."
+basis_url = "https://hoosierheritagetrail.org/"
+asked_by = "the trail association's president"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The summary now says the longest stretch between legal forest campsites is 13.3 miles."
+fields = ["hike.summary"]
+basis = "The association's president gave the figure in a comment on the issue."
+basis_url = "https://github.com/swaits/longhikes/issues/2#issuecomment-6927004842"
+asked_by = "the trail association's president"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length note no longer says the association's site disagrees with itself: its home page now gives 161 miles throughout. It keeps the president's words that the 170 mile version was shortened for now, and says that an article of May 2026 on the site still lists 170 miles."
+fields = ["length_note"]
+basis = "The home page, the Downloads page and the About page give no 170 mile figure now. The president says the association has corrected the 170 mile figure on the site."
+basis_url = "https://hoosierheritagetrail.org/"
+asked_by = "the trail association's president"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The association's 2026 guide and map set, a free PDF, was added to the record."
+fields = ["guide"]
+basis = "The association's Downloads page offers the 2026 mapset, the address answers with a PDF of 32 pages, and the president points hikers to it for water, hunting season and other detail."
+basis_url = "https://hoosierheritagetrail.org/downloads/"
+asked_by = "the trail association's president"
+outcome = "applied"

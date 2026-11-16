@@ -34,11 +34,11 @@ relation = 8310290
 note = "OSM relation 8310290."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://stateparks.oregon.gov/ckFiles/files/OCT-Map-1.pdf"
 contact = "Oregon Parks and Recreation Department"
-note = "No logo file found: the official OCT logo exists on Oregon State Parks merchandise, but only through a third-party shop, which was not used. Retried 2026-11-08: the Oregon State Parks OCT page carries only the agency logo, and the Oregon Coast Trail Foundation's site has no emblem file."
-logo_file = ""
+note = "The emblem is the Oregon Coast Trail logo: a blue-framed square with waves on one side and a dashed white route across a black shore on the other. Oregon State Parks prints it at the head of every section map on its Oregon Coast Trail page, above the words Oregon Coast Trail, and the 2023 Oregon Coast Trail Action Plan says town signage should include the OCT logo. Cropped from section map 1 (OCT-Map-1.pdf, rendered at 300 dpi) to the square alone; the words below it were cut off. Also checked: stateparks.oregon.gov Oregon Coast Trail page and home page (agency logo only), section maps, the 2023 Action Plan PDF (agency logos only on its cover), oregoncoasttrail.org (the Foundation's site: home, about, maps and gallery pages show photographs and map screenshots, no logo file), and Wikimedia Commons (no emblem file). The same logo is sold on merchandise, which was not used as a source."
+logo_file = "shield.png"
 logo_owner = "Oregon Parks and Recreation Department"
 
 [verification]
@@ -74,3 +74,23 @@ facts = ["summary", "start", "end", "shape", "caution"]
 title = "Oregon Coast Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Oregon_Coast_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Oregon Coast Trail."
+fields = ["record"]
+basis = "The record's own source entry: Oregon Parks and Recreation Department."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://stateparks.oregon.gov/ckFiles/files/OCT-Map-1.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -37,7 +37,7 @@ note = "Not recorded: the route's creator does not publish a track."
 status = "no-logo-exists"
 logo_source = ""
 contact = "Wilderness Mindset"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "No emblem of the route was found. The map pack page (https://wildernessmindset.com/product/beartooth-high-route-map-pack/) and the home page (https://wildernessmindset.com/) show only the Wilderness Mindset logo, which is the author's brand and not the route's. Checked 2026-11-16."
 logo_file = ""
 logo_owner = "Wilderness Mindset"
 
@@ -85,3 +85,14 @@ facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/789313"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Beartooth High Route."
+fields = ["record"]
+basis = "The record's own source entry: Wilderness Mindset."
+asked_by = "the dataset's own check"
+outcome = "applied"

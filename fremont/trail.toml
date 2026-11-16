@@ -32,10 +32,10 @@ relation = 14320212
 note = "OSM relation 14320212 'Fremont NRT' (ref 160) exists. It was not used, because the Forest Service publishes the trail's track."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Fremont-Winema National Forest"
-note = "No logo is included. The Forest's pages say the trail is marked with grey diamonds and red, white and blue National Recreation Trail markers, but no logo file was taken."
+note = "No emblem of the trail itself exists at an allowed source. The Forest Service trail page https://www.fs.usda.gov/r06/fremont-winema/recreation/trails/fremont-national-recreation-trail-160 was read in full: it carries only the USDA and Forest Service agency logos and generic recreation activity icons. The trail is marked on the ground with grey diamonds and the red, white and blue National Recreation Trail program marker; that marker is the shared insignia of all National Recreation Trails, not this trail's own emblem, and no artwork of a trail-specific mark is published."
 logo_file = ""
 logo_owner = "USDA Forest Service"
 
@@ -84,3 +84,23 @@ facts = ["end", "season", "months"]
 title = "Fremont Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Fremont_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Fremont National Recreation Trail."
+fields = ["record"]
+basis = "The record's own source entry: USDA Forest Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.fs.usda.gov/r06/fremont-winema/recreation/trails/fremont-national-recreation-trail-160"
+asked_by = "the dataset's own check"
+outcome = "applied"

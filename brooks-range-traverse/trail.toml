@@ -37,9 +37,9 @@ note = "No route relation found when searched on 2026-11-10."
 status = "no-logo-exists"
 logo_source = ""
 contact = "Luc Mehl and Sarah Histand"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "No emblem of its own. The author's trip reports carry photographs and maps but no badge for the route; the site's own small header drawing is the author's site mark, not a route emblem. Addresses looked at: thingstolucat.com/brooks-range-traverse/ (page and every image address in its source) and thingstolucat.com/ (home page, header, footer and source)."
 logo_file = ""
-logo_owner = "Luc Mehl and Sarah Histand"
+logo_owner = ""
 
 [verification]
 verified = false
@@ -97,3 +97,23 @@ facts = ["start_lonlat"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1404349"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Brooks Range Traverse."
+fields = ["record"]
+basis = "The record's own source entry: Luc Mehl and Sarah Histand."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now names where an emblem was looked for and not found, and who holds the mark."
+fields = ["shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://thingstolucat.com/brooks-range-traverse/"
+asked_by = "the dataset's own check"
+outcome = "applied"

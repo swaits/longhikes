@@ -36,12 +36,12 @@ relation = 0
 note = "No route relation named Desert Winter Thru-Hike was found in a name search on 2026-11-14."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
-contact = "Brett Tucker (\"Blisterfree\") and partner, simBLISSity Ultralight Designs"
-note = "The authors' site shows the simBLISSity Ultralight Designs logo in its header. No logo is included here and no logo policy was found. Ask the authors before using their mark."
+status = "no-logo-exists"
+logo_source = "https://www.simblissity.net/desert-wth-mapset.shtml"
+contact = "simBLISSity Ultralight Designs"
+note = "Looked at https://www.simblissity.net/desert-wth-mapset.shtml. The only mark is the maker's wordmark 'SUL logo3.jpg' (simBLISSity Ultralight Designs, 365x85), which stands for the business, not the route."
 logo_file = ""
-logo_owner = "Brett Tucker (\"Blisterfree\") and partner, simBLISSity Ultralight Designs"
+logo_owner = "simBLISSity Ultralight Designs"
 
 [verification]
 verified = false
@@ -77,3 +77,23 @@ checked = "2026-11-14"
 url = "https://www.simblissity.net/desert-wth-mapset.shtml"
 publisher = "simBLISSity Ultralight Designs (the route's authors)"
 facts = ["official_url", "summary", "start", "end", "shape", "season", "months", "terrain"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Desert Winter Thru-Hike."
+fields = ["record"]
+basis = "The record's own source entry: simBLISSity Ultralight Designs."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source", "shield.contact", "shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.simblissity.net/desert-wth-mapset.shtml"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -35,11 +35,11 @@ relation = 0
 note = "No route relation found when searched on 2026-11-14."
 
 [shield]
-status = "no-logo-exists"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://montanatrail.org/wp-content/uploads/2021/11/montana-trail-logo.webp"
 contact = "Montana Trail 406 Association"
-note = "No logo is included. The Association shows a logo on its website and none is included here. Ask the Association before using any mark."
-logo_file = ""
+note = "The emblem is a rounded-triangle marker with a bison skull and the words Montana Trail 406 Big Sky. It is the logo in the header of montanatrail.org. It is converted from WebP to PNG without other change. It is the largest size found, 150 by 160 px, so it is below 256 px; the site's touch icon is 180 px. No logo policy was found. The white surround was made transparent."
+logo_file = "shield.png"
 logo_owner = "Montana Trail 406 Association"
 
 [verification]
@@ -105,3 +105,23 @@ facts = ["summary", "caution"]
 url = "https://www.wikidata.org/wiki/Q2362959"
 publisher = "Wikidata (CC0), item for Fort Union Trading Post National Historic Site"
 facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Montana Trail 406."
+fields = ["record"]
+basis = "The record's own source entry: Montana Trail 406 Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://montanatrail.org/wp-content/uploads/2021/11/montana-trail-logo.webp"
+asked_by = "the dataset's own check"
+outcome = "applied"

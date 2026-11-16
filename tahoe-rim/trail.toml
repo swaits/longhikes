@@ -87,3 +87,14 @@ facts = ["terrain"]
 title = "Tahoe Rim Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Tahoe_Rim_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Tahoe Rim Trail."
+fields = ["record"]
+basis = "The record's own source entry: Tahoe Rim Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"

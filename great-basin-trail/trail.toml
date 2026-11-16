@@ -36,11 +36,11 @@ relation = 0
 note = "Not recorded: whether the creator shares the track is not settled."
 
 [shield]
-status = "no-logo-exists"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhszFnWsLND5_P6voxPgOkO8lYn0E5Nn68uWgxZm7to_MIvK9HRh7-HwpnrKzOAZ_LvypddlETUVB7z5ZU-905vcq_cuN1OU51ofVFRccoEWQ_n3KkGTnXNxNFT7ZqOM-gJshWm7k2qfJA/s1600/Great+Basin+Trail+Logo.png"
 contact = "Ryan \"Dirtmonger\" Sylva"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
-logo_file = ""
+note = "The Great Basin Trail's own emblem as its author publishes it: a rounded-triangle badge lettered 'GREAT BASIN TRAIL NEVADA' with a bristlecone pine and a hiker at sunset. The author shows it on his own site at https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html and on his Great Basin Trail pages there; the page shows it at 330 px and this is the same uploaded artwork at its full 900 px, used unchanged. No terms for the logo were found on the author's site."
+logo_file = "shield.png"
 logo_owner = "Ryan \"Dirtmonger\" Sylva"
 
 [verification]
@@ -75,3 +75,23 @@ checked = "2026-11-13"
 url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
 publisher = "Ryan Sylva (Dirtmonger), on the Gossamer Gear blog"
 facts = ["official_url", "summary", "shape", "terrain", "travel", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Great Basin Trail."
+fields = ["record"]
+basis = "The record's own source entry: Ryan \"Dirtmonger\" Sylva."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhszFnWsLND5_P6voxPgOkO8lYn0E5Nn68uWgxZm7to_MIvK9HRh7-HwpnrKzOAZ_LvypddlETUVB7z5ZU-905vcq_cuN1OU51ofVFRccoEWQ_n3KkGTnXNxNFT7ZqOM-gJshWm7k2qfJA/s1600/Great+Basin+Trail+Logo.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

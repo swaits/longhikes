@@ -33,10 +33,10 @@ relation = 0
 note = "No route relation was found by search on 2026-11-16."
 
 [shield]
-status = "logo-not-found"
-logo_source = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
+status = "no-logo-exists"
+logo_source = ""
 contact = "USDA Forest Service, Huron-Manistee National Forests"
-note = "No logo of the trail is included here. Ask the holder before using its mark."
+note = "No trail emblem found. The Forest Service page (https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail) shows only the Forest Service marks, and the Michigan Trails page (https://michigantrails.us/midland-mackinac-trail/) shows the site's own logo. No trail association site was found. Checked 2026-11-16."
 logo_file = ""
 logo_owner = "USDA Forest Service, Huron-Manistee National Forests"
 
@@ -69,3 +69,24 @@ facts = ["summary", "start", "end", "shape", "terrain", "travel"]
 url = "https://www.ebook.de/de/product/34763345/joan_h_young_midland_to_mackinac_trail_guide.html"
 publisher = "ebook.de (guide description)"
 facts = ["summary", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-16"
+change = "The record was added as a designated trail, 210 miles (338 km), in MI. No track is included."
+fields = ["record"]
+basis = "Found in a search of the web region by region. The facts were read on pages of USDA Forest Service, Michigan Trails, ebook.de; the page linked is the first one the record names."
+basis_url = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

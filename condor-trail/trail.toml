@@ -36,11 +36,11 @@ relation = 18404398
 note = "OSM relation 18404398 is named Condor Trail and carries the Association's website; it holds 168.2 km in 3 parts on 2026-11-14. A second relation, Condor Trail Monterey Section (12335229), covers one part. Neither is used, because they are partial."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "http://www.condortrail.com/wp-content/uploads/2018/08/logo.png"
 contact = "Condor Trail Association"
-note = "No logo is included. The Association's site shows a small logo icon among its page files; none was taken, and the Association's terms for its use are not stated. Ask the Association before using any mark."
-logo_file = ""
+note = "The trail's own diamond marker (condor in flight over a sun symbol, 'CONDOR TRAIL' on a salmon ground), the logo file of condortrail.com. Trimmed of its empty border only. Only 167 px wide; no larger file is on the site. No terms for use of the logo are stated on the page."
+logo_file = "shield.png"
 logo_owner = "Condor Trail Association"
 
 [verification]
@@ -109,3 +109,23 @@ facts = ["end_lonlat"]
 title = "Condor Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Condor_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Condor Trail."
+fields = ["record"]
+basis = "The record's own source entry: Condor Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "http://www.condortrail.com/wp-content/uploads/2018/08/logo.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

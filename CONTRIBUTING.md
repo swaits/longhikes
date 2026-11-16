@@ -8,7 +8,7 @@ Issues and pull requests are taken at https://github.com/swaits/longhikes. That 
 
 - You do not need git to report something. Every trail's page on https://longhikes.org has a "Report a problem" link that opens a short form, and the repository's issue forms cover a wrong record, a missing trail, and a request from a steward or author to remove or re-credit a track or a logo.
 - To fix a record yourself, use "Edit this record" on the trail's page, or edit `<id>/trail.toml` in a fork, and open a pull request. Say where each changed fact can be checked.
-- Every pull request is checked automatically by `tools/validate.py` and the site's tests. A person still reviews it, most of all where a track is added or changed.
+- Every pull request is checked automatically by `tools/validate.py`, `tools/check_history.py` and the site's tests. A person still reviews it, most of all where a track is added or changed.
 
 ## Correct a trail
 
@@ -16,20 +16,33 @@ Issues and pull requests are taken at https://github.com/swaits/longhikes. That 
 2. Keep every field name in `trail.toml` (see docs/schema.md). Say in the commit message which fields changed and why.
 3. If you change a track, name its source and licence. A track may only be included when its source's terms allow redistribution. United States federal data is public domain. OpenStreetMap data is ODbL and needs the credit "© OpenStreetMap contributors". A track whose holder, author or recorder has stated in writing that it may be shared, without naming a licence, uses `licence = "stated-permission"`: quote the statement exactly in `source.licence_text`, say who made it (by role), where (a page or issue address) and when. It is not public domain or Creative Commons, and nothing may present it as either. If a publisher's own track may not be passed on, do not include it: keep the record, use an OpenStreetMap track if one is already recorded for the trail, or include no track and say why in `source.line_absent_reason`.
 4. Update `release.txt` when track files change: source, licence, and the date read.
-5. Rebuild the generated files and check everything:
+5. Add an entry at the end of the record's `[[history]]`: the date, what changed, the fields, the page it was read on, who asked (by role, never a private person's name) and the outcome. See "History and conflicts" below.
+6. Rebuild the generated files and check everything:
 
 ```bash
 python3 tools/build_index.py
 python3 tools/validate.py
+python3 tools/check_history.py
 ```
 
-The second command must print `OK <n> trails`.
+The second command must print `OK <n> trails`. The third must print `OK history`: it fails when a fact changed and no new history entry names the field. Run it before you send a change, whether you are a person or an agent. It compares your work with `origin/main` (or `main`), so fetch first if you have not lately. Do not remove or reword an entry that is already there.
+
+## History and conflicts
+
+Every record has a `[[history]]` list, oldest first, which says who asked for each change, on what evidence, and which requests were turned down. Git has the diffs; the history has the reasons, so that someone who later asks for the opposite change can see what was decided.
+
+- Add one entry for each change to a fact (the list of facts is in docs/schema.md and `python3 tools/check_history.py --facts`), at the end of the file.
+- `python3 tools/check_history.py` prints the earlier entries about each field you changed. If one was `declined`, or was asked for by someone other than the dataset's own check, read it before you go on.
+- The holder's or the author's own current page wins. Where two requests conflict, the earlier decision stands unless the later one brings new evidence from such a page. The request that loses is recorded as an entry with the outcome `declined` and its reason, and nothing else in the record changes.
+- Say who asked by role: "a hiker", "the trail association's president", "the route's author".
 
 ## Add a trail
 
 A trail belongs here when it meets the inclusion rule in README.md: a named, continuous walking route, or a named loop, of at least 50 miles (80 km) (a few well-known routes of 60-80 km are also listed), in the United States or Canada. It is either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a route: a high route, a traverse or a loop of linked trails that a hiker or a small group worked out and published.
 
 A route whose author chooses not to publish a track is still added, with no track included, pointing to where the route is got from. No track for it is included from any source, OpenStreetMap included. The rule is in README.md, section "Inclusion rule"; the fields are in docs/schema.md.
+
+Before suggesting or adding a trail, look at https://longhikes.org/left-out/ first. It lists the trails that were considered and left out, with the reason and the date for each one; the same list is `left-out.toml` at the top of this repository. If the trail is there and the facts have changed since the decision, open an issue with a page that shows the change. If a trail on that list is added, its entry is removed from `left-out.toml` in the same change; `tools/validate.py` refuses an entry that matches a listed trail.
 
 To add one:
 
@@ -39,7 +52,8 @@ To add one:
    For a track from an OpenStreetMap route relation, create the trail directory and `trail.toml` first, then run `python3 tools/osm_track.py RELATION_ID --id TRAIL_ID` (Python standard library only; add `--dry` to print the figures and write nothing). It fetches the relation and its sub-relations through Overpass, writes `line.geojson`, `alternates.geojson` (only when there are side ways) and `release.txt`, and prints the way counts, the measured length in km and the number of parts for `[verification]` and `[osm]`. It will not replace an existing `line.geojson` without `--force`.
    To point to other good pages about the trail (a wiki or encyclopedia article), add a `[[link]]` table for each; the trail's own page goes in `hike.official_url` instead.
 4. Add a logo only as `shield.svg` or `shield.png`, and name its holder in `shield.logo_owner` and where the art came from in `shield.logo_source`.
-5. Run the two commands above.
+5. Write the first `[[history]]` entry, with `fields = ["record"]`, the date, who asked for the trail (by role) and the page that shows it.
+6. Run the three commands above.
 
 ## Refresh a trail from its source
 
@@ -49,7 +63,7 @@ To add one:
 3. Replace `line.geojson` (and `alternates.geojson` or `line-<source>.geojson` where present), keeping coordinates in longitude, latitude order. The published copy rounds coordinates to 6 decimal places and uses compact JSON.
 4. Update `source.source_checked`, `release.txt`, and the `[verification]` section (measured length of the new track, and the difference from `length_km`).
 5. If the measured length differs from `length_km` by more than 15%, explain why in `source.length_gap_note` (for example: the trail is partly unbuilt, or the published length counts side trails).
-6. Run `python3 tools/build_index.py`, then `python3 tools/validate.py`.
+6. Add a `[[history]]` entry saying the track was refreshed and from what. Run `python3 tools/build_index.py`, then `python3 tools/validate.py` and `python3 tools/check_history.py`.
 
 ## Style
 

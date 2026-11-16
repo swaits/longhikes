@@ -36,11 +36,11 @@ relation = 0
 note = "No route relation found when searched on 2026-11-10. Two bicycle relations with similar names are other routes."
 
 [shield]
-status = "no-logo-exists"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://static.wixstatic.com/media/998edb_2aa9f8931add4884a948f5cbf8f2603e~mv2.png"
 contact = "Greater Hells Canyon Council"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
-logo_file = ""
+note = "The trail's own rounded-triangle emblem (bighorn sheep, river and peak, 'Blue Mountains Trail, Est. 2021'), shown on the Council's Blue Mountains Trail page as 'BMT logo final'. Trimmed of its empty border only. No terms for use of the logo are stated on the page."
+logo_file = "shield.png"
 logo_owner = "Greater Hells Canyon Council"
 
 [verification]
@@ -106,3 +106,23 @@ facts = ["end_lonlat"]
 title = "Blue Mountains Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Blue_Mountains_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Blue Mountains Trail."
+fields = ["record"]
+basis = "The record's own source entry: Greater Hells Canyon Council."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://static.wixstatic.com/media/998edb_2aa9f8931add4884a948f5cbf8f2603e~mv2.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

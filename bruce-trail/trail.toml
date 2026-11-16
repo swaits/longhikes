@@ -33,9 +33,9 @@ note = "Section relations 2551527, 3375262, 3444639, 3444701, 3445408, 3444722, 
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://brucetrail.org/"
+logo_source = "https://brucetrail.org/wp-content/uploads/2022/07/BTC_arrow-icon.png"
 contact = "Bruce Trail Conservancy"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "The emblem is the white arrow on a green diamond. The Conservancy's Basic Trail Maintenance Guide (development.brucetrail.org) says the diamond signs are installed to identify the route as the Bruce Trail, with white diamonds for the main trail, and calls it the Bruce Trail arrow, so the diamond is the trail's own marker and not only the Conservancy's logo. It is the left-hand element of the header lockup at brucetrail.org and is also posted on the trail itself. This file is the diamond alone from the Conservancy's own site (BTC_arrow-icon.png), trimmed with a small margin. At 238 px wide in the original it is below 256 px; no larger diamond-alone artwork was found on the site (the header lockup's diamond is smaller). It replaces the earlier file, which was the whole lockup. Also checked: brucetrail.org home and explore-the-trail pages and their page source, the membership brochure and campground PDFs, the Following-the-blazes graphic, and Wikimedia Commons (no emblem file)."
 logo_file = "shield.png"
 logo_owner = "Bruce Trail Conservancy"
 
@@ -72,3 +72,23 @@ facts = ["summary"]
 title = "Bruce Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Bruce_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Bruce Trail."
+fields = ["record"]
+basis = "The record's own source entry: Bruce Trail Conservancy."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://brucetrail.org/wp-content/uploads/2022/07/BTC_arrow-icon.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -35,11 +35,11 @@ relation = 3134579
 note = "Downloaded 2026-11-10; 107 ways in the main track and 31 in alternates. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://alpineclubofwilliamsport.com/wp-content/uploads/2017/06/lt-blaze-transparentbg.png"
 contact = "Alpine Club of Williamsport"
-note = "No logo is included. Ask the trail's holder before using its mark."
-logo_file = ""
+note = "The trail's blaze badge: red LT letters in a yellow circle, the mark painted as the Loyalsock Trail blaze. It is shown in use, captioned as the current LT blaze, at https://alpineclubofwilliamsport.com/loyalsock-trail-information/, and is the site's icon. The file is unchanged, including the coloured fringe at the circle's edge in the holder's own art. At 178x171 px it is the largest version on the site. No logo terms were found on the site."
+logo_file = "shield.png"
 logo_owner = "Alpine Club of Williamsport"
 
 [verification]
@@ -76,3 +76,23 @@ facts = ["high_point"]
 title = "Loyalsock Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Loyalsock_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Loyalsock Trail."
+fields = ["record"]
+basis = "The record's own source entry: Alpine Club of Williamsport."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://alpineclubofwilliamsport.com/wp-content/uploads/2017/06/lt-blaze-transparentbg.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

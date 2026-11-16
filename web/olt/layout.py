@@ -30,7 +30,8 @@ NAV = (
 # lists (Routes among them) are part of Trails; the dataset pages are part of
 # About and are linked from the About hub and the footer.
 NAV_PARENT = {"/trails/": "/", "/lists/": "/", "/routes/": "/",
-              "/sources/": "/about/", "/logos/": "/about/", "/data/": "/about/"}
+              "/sources/": "/about/", "/logos/": "/about/", "/data/": "/about/",
+              "/left-out/": "/about/"}
 
 FONT_PRELOADS = (
     "/assets/fonts/source-serif-4-latin.woff2",
@@ -146,6 +147,7 @@ def footer(site):
         <li><a href="/data/">Data and downloads</a></li>
         <li><a href="/sources/">Sources and their terms</a></li>
         <li><a href="/logos/">Logos</a></li>
+        <li><a href="/left-out/">Considered and left out</a></li>
         {report}
       </ul>
     </nav>

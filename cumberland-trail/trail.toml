@@ -68,3 +68,14 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 title = "Cumberland Trail (incomplete)"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Cumberland_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Cumberland Trail."
+fields = ["record"]
+basis = "The record's own source entry: Tennessee State Parks."
+asked_by = "the dataset's own check"
+outcome = "applied"

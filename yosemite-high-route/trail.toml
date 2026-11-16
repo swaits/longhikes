@@ -34,10 +34,10 @@ relation = 0
 note = "Not recorded: the route's creator does not publish a track."
 
 [shield]
-status = "no-logo-exists"
+status = "logo-not-found"
 logo_source = ""
 contact = "Andrew Skurka"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "No logo file is included. The author's site, https://andrewskurka.com/, answers HTTP 403 to automated reads, so it was not worked around. Checked 2026-11-16."
 logo_file = ""
 logo_owner = "Andrew Skurka"
 
@@ -99,3 +99,23 @@ facts = ["start_lonlat"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/253804"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Yosemite High Route."
+fields = ["record"]
+basis = "The record's own source entry: Andrew Skurka."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says an emblem exists or may exist but no usable artwork of it was found at an allowed source."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
+basis_url = "https://andrewskurka.com/"
+asked_by = "the dataset's own check"
+outcome = "applied"

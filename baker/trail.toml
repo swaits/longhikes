@@ -33,10 +33,10 @@ relation = 9078832
 note = "Downloaded 2026-11-10; 196 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Rachel Carson Trails Conservancy"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "The Conservancy's pages show only its own mark, a yellow upright blaze with the letters RCTC beside the name Rachel Carson Trails Conservancy. That mark stands for the Conservancy, not the Baker Trail, so none is included. Addresses looked at: https://rachelcarsontrails.org/ and https://rachelcarsontrails.org/trails/baker-trail. The trail is marked with plain yellow blazes. Checked 2026-11-16."
 logo_file = ""
 logo_owner = "Rachel Carson Trails Conservancy"
 
@@ -73,3 +73,23 @@ facts = ["summary"]
 title = "Baker Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Baker_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Baker Trail."
+fields = ["record"]
+basis = "The record's own source entry: Rachel Carson Trails Conservancy."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://rachelcarsontrails.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"

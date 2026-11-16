@@ -33,10 +33,10 @@ relation = 0
 note = "No route relation found when searched on 2026-11-10."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Parks Canada"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "No trail emblem found. The Parks Canada page (https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/south-boundary) shows a banner photograph, a cover, an elevation chart and a map only. Checked 2026-11-16."
 logo_file = ""
 logo_owner = "Parks Canada"
 
@@ -74,3 +74,23 @@ facts = ["season", "months"]
 url = "https://geogratis.gc.ca/services/geoname/en/geonames/IANPN"
 publisher = "Natural Resources Canada, Canadian Geographical Names Database"
 facts = ["start_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: South Boundary Trail."
+fields = ["record"]
+basis = "The record's own source entry: Parks Canada."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/south-boundary"
+asked_by = "the dataset's own check"
+outcome = "applied"

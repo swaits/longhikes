@@ -37,9 +37,9 @@ note = "Not recorded: relations 20066136 (South Florida roadwalk) and 20068411 (
 
 [shield]
 status = "no-logo-exists"
-logo_source = ""
+logo_source = "https://nimblewillnomad.com/books/"
 contact = "M. J. Eberhart (trail name Nimblewill Nomad)"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "No emblem of its own was found. Looked at the author's books page https://nimblewillnomad.com/books/ . The only logo shown is the author's own Nimblewill Nomad mark and his book covers; he uses no crest or badge for this route, which is a linking of other trails that keep their own marks. A person-defined route with no emblem of its own."
 logo_file = ""
 logo_owner = "M. J. Eberhart (trail name Nimblewill Nomad)"
 
@@ -95,3 +95,32 @@ facts = ["end_lonlat"]
 title = "Eastern Continental Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Eastern_Continental_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Eastern Continental Trail."
+fields = ["record"]
+basis = "The record's own source entry: M. J. Eberhart."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length note was rewritten: the author's books page gives 4,400 miles, and the author's 2000 journal about 4,800 miles. The guide was changed from a free, archived 2010 trail guide to the author's book Ten Million Steps, which is bought."
+fields = ["length_note", "guide.title", "guide.access", "guide.format"]
+basis = "The length was first checked against another site's list, then against the author's own pages: the author's books page describes the walk and lists the book, and the author's 2000 journal gives about 4,800 miles."
+basis_url = "https://nimblewillnomad.com/books/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now names where an emblem was looked for and not found, and who holds the mark."
+fields = ["shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://nimblewillnomad.com/books/"
+asked_by = "the dataset's own check"
+outcome = "applied"

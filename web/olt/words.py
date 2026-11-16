@@ -72,8 +72,7 @@ LICENCES = {
 }
 LICENCE_NOTES = {
     "stated-permission": ("Shared with permission. The holder has said in writing that this track may be "
-                          "shared; the statement is quoted below. It is not public domain and not a "
-                          "Creative Commons licence."),
+                          "shared. It is not public domain and not a Creative Commons licence."),
 }
 LICENCE_URLS = {
     "us-gov-public-domain": "https://www.usa.gov/government-works",
@@ -94,8 +93,8 @@ POLICIES = {
 }
 SHIELD_STATUS = {
     "use-real-logo": ("Logo in use", "The trail has a logo"),
-    "no-logo-exists": ("No logo", "No logo exists for this trail"),
-    "logo-not-found": ("Logo not found", "No logo file was found"),
+    "no-logo-exists": ("No emblem of its own", "The trail has no emblem of its own"),
+    "logo-not-found": ("Emblem not found", "An emblem exists or may exist, but no usable artwork of it was found"),
 }
 ACCESS = {"free": "Free", "purchase": "Purchase"}
 DECISIONS = {"included-named": "Included with its name"}

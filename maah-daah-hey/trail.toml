@@ -33,12 +33,12 @@ relation = 11562289
 note = "Downloaded 2026-11-10; 65 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
-contact = "USDA Forest Service, Dakota Prairie Grasslands"
-note = "No logo is included. Ask the trail's holder before using its mark."
-logo_file = ""
-logo_owner = "USDA Forest Service, Dakota Prairie Grasslands"
+status = "use-real-logo"
+logo_source = "https://mdhta.com/wp-content/uploads/2020/05/favicon-1.png"
+contact = "Maah Daah Hey Trail Association"
+note = "The Maah Daah Hey Trail's own emblem is the turtle: the Maah Daah Hey Trail Association's about page at https://mdhta.com/about/ says the symbol for the trail is the turtle and that its effigy is emblazoned on the posts that mark the trail. This file is that turtle alone, red on the black square ground that is part of the association's site icon artwork at https://mdhta.com/ , used unchanged at 512x512 px. The association's media library also holds the turtle in white on a transparent ground, which would not show on a light page, so the site-icon version is staged. No terms for the logo were found on the holder's site. The dark square surround was made transparent; the dark centre of the turtle, which the emblem encloses, was left as it was."
+logo_file = "shield.png"
+logo_owner = "Maah Daah Hey Trail Association"
 
 [verification]
 verified = true
@@ -70,3 +70,23 @@ facts = ["official_url", "summary", "start", "end", "shape", "season", "months",
 title = "Maah Daah Hey Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Maah_Daah_Hey_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Maah Daah Hey Trail."
+fields = ["record"]
+basis = "The record's own source entry: USDA Forest Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.contact", "shield.logo_file", "shield.logo_owner"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://mdhta.com/wp-content/uploads/2020/05/favicon-1.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -34,9 +34,9 @@ note = "One of 27 passages."
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://palmettoconservation.org/"
+logo_source = "https://www.palmettotrail.org/"
 contact = "Palmetto Conservation Foundation"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "The Palmetto Trail's own emblem: a palmetto tree inside the outline of South Carolina set as a diamond. The trail's site at https://www.palmettotrail.org/ uses this emblem alone as its small header logo, drawn in black on a transparent ground, and in a circular form lettered 'PALMETTO TRAIL SOUTH CAROLINA' in its footer. The file already held was that circular footer version with every fill white on a transparent ground, so it does not show on a light page; this black header version replaces it, taken unchanged from the header artwork of the holder's home page. It is black on a transparent ground, so it needs a light ground to show. No terms for the logo were found on the holder's site."
 logo_file = "shield.svg"
 logo_owner = "Palmetto Conservation Foundation"
 
@@ -73,3 +73,23 @@ facts = ["summary", "unfinished", "terrain"]
 title = "Palmetto Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Palmetto_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Palmetto Trail."
+fields = ["record"]
+basis = "The record's own source entry: Palmetto Conservation Foundation."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://www.palmettotrail.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"

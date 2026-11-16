@@ -35,10 +35,10 @@ relation = 3934864
 note = "Relation 3934864 'Shawangunk Ridge Trail' (version 81, 2026-09-08). Downloaded 2026-11-14; release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = "https://www.nynjtc.org/"
+status = "no-logo-exists"
+logo_source = "https://secure.nynjtc.org/region/shawangunk-ridge-trail"
 contact = "New York-New Jersey Trail Conference"
-note = "The Trail Conference's home page shows its own logo. No logo of the trail is included here. Ask the trail's holder before using its mark."
+note = "No emblem of its own was found. Looked at the New York-New Jersey Trail Conference's trail page https://secure.nynjtc.org/node/874 (which redirects to https://secure.nynjtc.org/region/shawangunk-ridge-trail ) and at https://www.nynjtc.org/ . The conference's own logo is the only mark; the page says the trail is marked with blue blazes and shows maps and photographs, but no Shawangunk Ridge Trail crest, badge or marker artwork."
 logo_file = ""
 logo_owner = "New York-New Jersey Trail Conference"
 
@@ -65,3 +65,23 @@ checked = "2026-11-14"
 url = "https://secure.nynjtc.org/node/874"
 publisher = "New York-New Jersey Trail Conference"
 facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "unfinished"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Shawangunk Ridge Trail."
+fields = ["record"]
+basis = "The record's own source entry: New York-New Jersey Trail Conference."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://secure.nynjtc.org/region/shawangunk-ridge-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

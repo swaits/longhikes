@@ -39,7 +39,7 @@ note = "Four region relations are the track: 12725656 Allegany, 12725657 Western
 status = "use-real-logo"
 logo_source = "https://fingerlakestrail.org/wp-content/uploads/2017/02/finger-lakes-trail-logo-small.png"
 contact = "Finger Lakes Trail Conference"
-note = "The Conference's own mark, from its site: the yellow octagon with dark-green firs and 'FT / FINGER LAKES TRAIL', 82x96 PNG."
+note = "The Conference's own mark, from its site: the yellow octagon with dark-green firs and 'FT / FINGER LAKES TRAIL', an 82x96 PNG. It is the trail's emblem alone. It is smaller than 256 px, and no larger file could be fetched because fingerlakestrail.org refused automated reads (HTTP 403 on the home page and on the logo file)."
 logo_file = "shield.png"
 logo_owner = "Finger Lakes Trail Conference"
 
@@ -69,3 +69,23 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel"]
 title = "Finger Lakes Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Finger_Lakes_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Finger Lakes Trail."
+fields = ["record"]
+basis = "The record's own source entry: Finger Lakes Trail Conference."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length was changed from 590 miles (950 km), counted with branches, to 580 miles (933 km) for the main trail."
+fields = ["length_km", "length_note"]
+basis = "The length was first checked against another site's list, then against the holder's own pages. The Finger Lakes Trail Conference's Fall 2022 newsletter gives 580 miles for the main trail, its end-to-end page says about 585 miles, and its home page puts the whole system, with branch, loop and spur trails, at over 1,000 miles."
+basis_url = "https://fingerlakestrail.org/wp-content/uploads/FLTC_Files/FLTNews/FLTNews2022-3.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"

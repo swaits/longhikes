@@ -249,9 +249,11 @@ def logos_page(records, site, repo_root):
 <div class="container section"><div class="section-head"><h2>Every logo in the dataset</h2>
 <p>{len(with_logo)} records include a logo file.</p></div>
 <ul class="logo-grid">{cards}</ul>
-<p class="note">No logo file is included for the other records: {counts["no-logo-exists"]} are recorded as
-having no logo (<code class="raw">no-logo-exists</code>) and {counts["logo-not-found"]} as
-logo not found (<code class="raw">logo-not-found</code>).</p></div>"""
+<p class="note">No logo file is included for the other records. {counts["no-logo-exists"]} have no emblem of
+their own (<code class="raw">no-logo-exists</code>): the pages that would show one were checked and none does.
+{counts["logo-not-found"]} have an emblem, or may have one, but no usable artwork of it was found at a source the
+dataset allows (<code class="raw">logo-not-found</code>). Each record says in its logo note where an emblem was
+looked for.</p></div>"""
     return "Logos", "Trail logos, their holders, and how a holder can ask for removal.", Markup(body)
 
 
@@ -267,6 +269,7 @@ ABOUT_PARTS = (
     ("/logos/", "Logos", "Each trail's logo, who holds it, and how to ask for removal"),
     ("/data/schema/", "Record schema", "Every field of a trail's record (trail.toml) and what it means"),
     ("/data/changelog/", "Changelog", "What changed, release by release"),
+    ("/left-out/", "Considered and left out", "Trails that were looked at and left out, and why"),
     ("#correct-or-add", "Correct or add a trail", "Report a problem, suggest a trail, or edit the data"),
 )
 
@@ -312,7 +315,8 @@ def about_page(records, site, repo_root):
         forms = (f'<ul class="linklist">'
                  f'<li><a href="{esc(site.correction_url())}">Report a problem</a><small>A short form, no git needed. '
                  f'Every trail page also has its own link, with the trail filled in.</small></li>'
-                 f'<li><a href="{esc(site.new_trail_url)}">Suggest a trail</a><small>A short form for a trail that is missing</small></li>'
+                 f'<li><a href="{esc(site.new_trail_url)}">Suggest a trail</a><small>A short form for a trail that is missing. '
+                 f'First look at <a href="/left-out/">Considered and left out</a>, in case it has been decided already</small></li>'
                  f'<li><a href="{esc(site.removal_url)}">Ask for a track or logo to be removed</a><small>For the holder of a track or a logo</small></li>'
                  f'<li><a href="{esc(site.repo_url)}">Edit the data yourself</a><small>The source repository: one text file per trail</small></li>'
                  f'</ul>')
@@ -342,6 +346,8 @@ a trail association, or a route: {esc(facets.ROUTE_DEFINITION[0].lower() + facet
 trails between 37 and 50&nbsp;miles (60 and 80&nbsp;km).</p>
 <p>Each record has a <em>tier</em>, which says why it is listed. A record can also be <em>held</em>: listed,
 but with something about it not yet settled, which its note says.</p>
+<p>Trails that were looked at and left out are kept in the open too, with the reason for each one:
+<a href="/left-out/">Considered and left out</a>. Look there before suggesting a trail.</p>
 <div class="table-wrap"><table><thead><tr><th scope="col">Tier</th><th scope="col">What it means</th><th scope="col">Records</th></tr></thead>
 <tbody>{tier_rows}<tr><td>Held <code class="raw">wave = "held"</code></td><td>{esc(words.meaning(words.WAVES, "held"))}. Any tier can be held.</td><td class="num">{held}</td></tr></tbody></table></div>
 <p>These states are for keeping the dataset. They are not shown when browsing trails, and they do not change

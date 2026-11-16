@@ -39,7 +39,7 @@ note = "No route relation with a name matching Mojave-Sonoran was found in a nam
 status = "no-logo-exists"
 logo_source = ""
 contact = "Eric Poulin"
-note = "No logo is included; a person-defined route has no emblem. Ask the author before using any mark."
+note = "No emblem of the route exists at an allowed source. The author's page https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/ was read in full: it shows the author's Seeking Lost site logo, an overview map whose title is set as type, charts and photographs, but no crest, badge or roundel for the route itself. The Seeking Lost logo stands for the author's site and his other routes, not for this route alone."
 logo_file = ""
 logo_owner = "Eric Poulin"
 
@@ -85,3 +85,14 @@ checked = "2026-11-14"
 url = "https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/"
 publisher = "Eric Poulin (the route's author)"
 facts = ["summary", "official_url", "start", "end", "start_lonlat", "end_lonlat", "shape", "days", "season", "months", "high_point", "terrain", "travel", "permit", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Mojave-Sonoran Trail."
+fields = ["record"]
+basis = "The record's own source entry: Eric Poulin."
+asked_by = "the dataset's own check"
+outcome = "applied"

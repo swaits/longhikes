@@ -34,12 +34,12 @@ relation = 19247431
 note = "Relation 19247431 'Akshayuk Pass Route' (version 1, 2025-06-12) was measured on 2026-11-14: one way, 8.8 km, so it is a scrap of the route and no track was taken from it."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Parks Canada"
-note = "No logo of the route is included here. Ask Parks Canada before using its marks."
+note = "No emblem of its own. Parks Canada marks this as a route with no designated trail to follow, and no route badge or marker artwork appears anywhere in its pages. The only marks seen are Parks Canada's own agency marks, which do not stand for the route. Addresses looked at: parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking (the hiking page and every image address in its source), parks.canada.ca/pn-np/nu/auyuittuq (the park home page and its source), and the Auyuittuq Visitor Information Package PDF at pcweb2.azureedge.net/-/media/pn-np/nu/auyuittuq/archive/pdf/anp_visitorinformationpackage2019.pdf (cover and text read; photographs and agency marks only). Wikimedia Commons was also searched and holds no emblem for the route."
 logo_file = ""
-logo_owner = "Parks Canada"
+logo_owner = ""
 
 [verification]
 verified = false
@@ -67,3 +67,23 @@ facts = ["summary", "official_url", "start", "end", "shape", "days", "terrain", 
 url = "https://pcweb2.azureedge.net/-/media/pn-np/nu/auyuittuq/archive/pdf/anp_visitorinformationpackage2019.pdf"
 publisher = "Parks Canada"
 facts = ["permit"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Akshayuk Pass."
+fields = ["record"]
+basis = "The record's own source entry: Parks Canada."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking"
+asked_by = "the dataset's own check"
+outcome = "applied"

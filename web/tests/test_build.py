@@ -145,7 +145,9 @@ class BuildTreeTest(unittest.TestCase):
                 f.write("x")
         os.remove(os.path.join(self.root, "avon", "line.geojson"))
         self.build()
-        self.assertEqual(sorted(os.listdir(tdir)), ["index.html", "release.txt", "trail.toml"])
+        # The trail's own logo file, where the record has one, is copied beside its page.
+        logo = [f for f in ("shield.png", "shield.svg") if os.path.exists(os.path.join(self.root, "avon", f))]
+        self.assertEqual(sorted(os.listdir(tdir)), sorted(["index.html", "release.txt", "trail.toml"] + logo))
 
     def test_removed_trail_directory_is_pruned(self):
         self.build()

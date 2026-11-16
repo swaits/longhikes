@@ -33,9 +33,9 @@ note = "Downloaded 2026-11-08; release.txt has the relation version and timestam
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://cohostrail.org/"
+logo_source = "https://www.cohostrail.org/wp-content/uploads/2015/01/cohos-trail-logo.jpg"
 contact = "Cohos Trail Association"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "The Cohos Trail's own blaze emblem: yellow 'CT' letters on a brown twin-peaked shield, as painted on the trail's markers. It is the header logo at https://www.cohostrail.org/ . The file already held was that header image at 47x50 px; this is the same emblem at 72x80 px from the association's own media library, converted from JPEG to PNG with no other change. Nothing larger exists at an allowed source: the media library holds no bigger flat version, the 2025 guidebook PDF on the site contains no images, the databook cover shows the emblem smaller still, and the larger sticker images on the site are photographs of a sticker, not artwork. No terms for the logo were found on the holder's site. The cream surround was made transparent."
 logo_file = "shield.png"
 logo_owner = "Cohos Trail Association"
 
@@ -79,3 +79,23 @@ facts = ["summary", "high_point", "terrain", "travel"]
 title = "Cohos Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Cohos_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Cohos Trail."
+fields = ["record"]
+basis = "The record's own source entry: Cohos Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://www.cohostrail.org/wp-content/uploads/2015/01/cohos-trail-logo.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"

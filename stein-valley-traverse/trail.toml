@@ -33,10 +33,10 @@ relation = 9983039
 note = "Hiking route relation named Stein Valley Traverse, version 6 (2024-08-30), 31 ways, no member roles."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "no-logo-exists"
+logo_source = "https://bcparks.ca/stein-valley-nlakapamux-heritage-park/"
 contact = "BC Parks"
-note = "No logo of the trail is included here. Ask BC Parks before using its marks."
+note = "No emblem of its own was found. Looked at https://bcparks.ca/stein-valley-nlakapamux-heritage-park/ . The page carries BC Parks branding, activity icons and photographs only; the BC Parks logo is the agency's and does not stand for this traverse, and the park page gives the traverse no crest or marker artwork of its own."
 logo_file = ""
 logo_owner = "BC Parks"
 
@@ -74,3 +74,24 @@ facts = ["summary", "end", "shape", "travel", "caution"]
 url = "https://nrs.objectstore.gov.bc.ca/kuwyyf/stein_valley_brochure_d174525f71.pdf"
 publisher = "BC Parks"
 facts = ["summary", "start", "end", "shape", "permit"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-16"
+change = "The record was added as a designated trail, 50 miles (80 km), in BC. Its track comes from OpenStreetMap relation 9983039."
+fields = ["record"]
+basis = "Found in a search of the web region by region. The facts were read on pages of BC Parks, and OpenStreetMap for the track; the page linked is the first one the record names."
+basis_url = "https://bcparks.ca/stein-valley-nlakapamux-heritage-park/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://bcparks.ca/stein-valley-nlakapamux-heritage-park/"
+asked_by = "the dataset's own check"
+outcome = "applied"

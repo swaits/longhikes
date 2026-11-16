@@ -36,7 +36,7 @@ note = "Not recorded: whether the creator shares the track is not settled."
 status = "no-logo-exists"
 logo_source = ""
 contact = "Mike White"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "No emblem of the route exists at an allowed source. The route is a named loop in Mike White's Wilderness Press guidebook Kings Canyon National Park; the publisher's page https://shop.adventurewithkeen.com/wilderness-press/ was read and is a bookshop listing with no mark for this route, and the author publishes no route page of his own. A route known only as a guidebook name has no crest, badge or blaze of its own."
 logo_file = ""
 logo_owner = "Mike White"
 
@@ -56,3 +56,14 @@ access = "purchase"
 url = "https://shop.adventurewithkeen.com/wilderness-press/"
 format = "book; the publisher's Wilderness Press page, as the book's own page was not found"
 publisher = "Wilderness Press"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Circle of Solitude."
+fields = ["record"]
+basis = "The record's own source entry: Wilderness Press."
+asked_by = "the dataset's own check"
+outcome = "applied"

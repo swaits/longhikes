@@ -33,12 +33,12 @@ relation = 6125620
 note = "Downloaded 2026-11-14; 23 ways in the main track and none in alternates. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Bureau of Land Management, King Range National Conservation Area"
-note = "No logo is included. The BLM and State Parks pages for the trail were read for a trail logo and none was found."
+note = "No emblem of its own. The BLM and California State Parks pages for the trail, and the BLM's King Range fact sheet, use only the BLM, National Conservation Lands and State Parks marks; no badge for the Lost Coast Trail itself appears in any of them, and the King Range map and guide PDFs linked from the BLM page carry agency styling only. Addresses looked at: blm.gov/visit/lost-coast-trail (page and its source), blm.gov/programs/national-conservation-lands/california/king-range-national-conservation-area (page, source, and the fact sheet and map PDFs it links, including blm.gov/sites/default/files/docs/2024-06/KingRange_FS_508.pdf, rendered and read), and parks.ca.gov/?page_id=429 (Sinkyone Wilderness State Park page, source, and the information sheet PDF it links). Wikimedia Commons holds photographs of trailhead signs, which show agency boards, not a trail crest."
 logo_file = ""
-logo_owner = "Bureau of Land Management"
+logo_owner = ""
 
 [verification]
 verified = true
@@ -69,3 +69,23 @@ facts = ["official_url", "summary", "terrain", "travel", "permit", "caution"]
 url = "https://www.parks.ca.gov/?page_id=28158"
 publisher = "California State Parks"
 facts = ["summary", "start", "end", "shape", "terrain", "travel"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Lost Coast Trail."
+fields = ["record"]
+basis = "The record's own source entry: Bureau of Land Management and California State Parks."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.blm.gov/visit/lost-coast-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

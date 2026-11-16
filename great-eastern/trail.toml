@@ -65,3 +65,23 @@ checked = "2026-11-13"
 url = "https://www.greateasterntrail.net/about-us/"
 publisher = "Great Eastern Trail Association"
 facts = ["official_url", "summary", "start", "end", "shape", "travel", "unfinished"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Great Eastern Trail."
+fields = ["record"]
+basis = "The record's own source entry: Great Eastern Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "A track was added from OpenStreetMap relation 1024490, in place of relation 11364314: 1,470.3 miles (2,366.2 km) in 34 parts, 26.1% short of the published 2,000 miles (3,200 km). The relation's own distance tag is 2,600 km, and the sections OpenStreetMap has not joined are missing."
+fields = ["osm.relation", "source.licence_text", "source.line_absent_reason", "source.line_file", "source.line_source", "source.url"]
+basis = "OpenStreetMap relation 1024490, read on 2026-11-16 under the ODbL."
+basis_url = "https://www.openstreetmap.org/relation/1024490"
+asked_by = "the dataset's own check"
+outcome = "applied"

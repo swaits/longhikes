@@ -88,10 +88,10 @@ The field and file names keep the word "line" (`line.geojson`, `line_file`, `lin
 
 | Field | Type | Meaning | Example |
 | --- | --- | --- | --- |
-| `status` | string | `use-real-logo`, `no-logo-exists`, or `logo-not-found`. | `"use-real-logo"` |
+| `status` | string | `use-real-logo`: a logo file is included (`logo_file` names it). `no-logo-exists`: the trail has no emblem of its own, and the note says which pages were checked. `logo-not-found`: an emblem exists or may exist, but no usable artwork of it was found at an allowed source, and the note says where it was looked for or seen. The validator rejects any other value, a `use-real-logo` record with no file, and a file with either of the other two. | `"use-real-logo"` |
 | `logo_source` | string | Where the logo art was taken from, when known. | `"https://www.greenmountainclub.org/"` |
 | `contact` | string | Who holds the emblem or mark. | `"Green Mountain Club"` |
-| `note` | string | What is known about the logo and its terms. | `"No logo or shield policy found."` |
+| `note` | string | What is known about the logo and its terms. Required when no file is included: it says where an emblem was looked for. | `"No logo or shield policy found."` |
 | `logo_file` | string | Included logo file (`"shield.svg"` or `"shield.png"`), or `""` when none is included. | `"shield.svg"` |
 | `logo_owner` | string | The logo's holder, named whenever a logo file is included. | `"Green Mountain Club"` |
 
@@ -155,7 +155,7 @@ Present only when `kind = "route"`. A route is a high route, a traverse or a loo
 
 ## `[[guide]]`: where the route is got from
 
-An array of tables, one per guide, and at least one for every route. A guide is the book, map set or page that gives the route.
+An array of tables, one per guide, and at least one for every route. A guide is the book, map set or page that gives the route. Any other trail may have one too: its holder's own guide or map set, shown as "Maps and guides".
 
 | Field | Type | Meaning | Example |
 | --- | --- | --- | --- |
@@ -181,6 +181,42 @@ The trail's own page belongs in `hike.official_url`, not here, and the publisher
 | `publisher` | string | Who publishes the page. | `"LongTrailsWiki"` |
 | `url` | string | The page's address, `http` or `https`. No two links in a record share one. | `"https://www.longtrailswiki.net/wiki/Appalachian_Trail"` |
 | `note` | string, where needed | One short plain sentence on what the page offers, where that is not obvious. | `"Trip reports and resupply notes."` |
+
+## `[[history]]`: who asked for what, and on what evidence
+
+Required: every record has at least one entry. An array of tables, oldest first, added to and never rewritten. Git keeps the diffs. The history keeps what git does not: the reason for each change, who asked for it, and the requests that were turned down, so that a later request that conflicts with an earlier one is easy to notice and settle.
+
+The first entry is the one that adds the record, with `fields = ["record"]`. Every later entry names the fields it concerns.
+
+| Field | Type | Meaning | Example |
+| --- | --- | --- | --- |
+| `date` | string (date) | The day the change was made, or the request was answered, `YYYY-MM-DD`. Not before the entry above it. | `"2026-11-16"` |
+| `change` | string | One or two plain sentences: what changed, or what was asked for and declined. | `"The length was changed from 270 miles (435 km) to about 325 miles (523 km) planned."` |
+| `fields` | array of strings | The record fields it concerns, named as this page names them (`length_km`, `source.licence`, `hike.caution`). A table name (`source`, `guide`, `hike.source`) names every field in it. `["record"]` for the entry that adds the record, and for no other. | `["length_km", "length_note"]` |
+| `basis` | string | A sentence saying on what evidence: which page said what. | `"The association's page for the trail gives about 325 miles planned."` |
+| `basis_url` | string | The page that was read, or the address of the issue or pull request. An `http(s)` address. Required, except for the entry that adds a record where the record's own `[source]` is the basis. | `"https://ozarkhighlandstrail.com/trail/"` |
+| `asked_by` | string | Who asked, by role and never by a private person's name: `"the dataset's own check"`, `"the trail association's president"`, `"a hiker"`, `"the route's author"`. | `"a hiker"` |
+| `outcome` | string | `applied` (the record was changed) or `declined` (it was not, and `basis` says why). | `"declined"` |
+
+Settling a conflict:
+
+- The holder's or the author's own current page wins. A fact on such a page is the one the record gives.
+- Where two requests conflict, the earlier decision stands unless the later one brings new evidence from such a page.
+- The request that loses is recorded as `declined`, with its reason in `basis`, so that it is not argued again.
+
+### The check
+
+`python3 tools/check_history.py` compares your work with the base revision (`origin/main`, then `main`; `--base REV` for another). Run it before you send a change. The workflow runs it for every push and pull request. For every `trail.toml` that differs (and every changed track file) it
+
+- fails when a fact changed and no new entry with the outcome `applied` names the field, and says which record and which fields;
+- fails when an entry that was already there was changed or removed;
+- prints, for each changed fact, the earlier entries about the same field, and prints `!!` lines where an earlier entry was `declined`, or was asked for by someone other than the dataset's own check. That is where two requests may conflict: read the entry before you change the field again.
+
+**Facts**, which need an entry when they change: `name`, `short_name`, `short_name_url`, `country`, `regions`, `length_km`, `length_note`, `kind`, `tier`, `designation`, `inclusion`; everything in `[source]` except the fields below, which includes the track's source, licence and permission; `osm.relation`; everything in `[shield]` except `note` (the logo); everything in `[hike]` except `summary`, `checked` and the sources (the ends, official page, days, season, terrain, travel, high point, permit, unfinished and caution); `[route]` except `note` (the author and the track policy); `[[guide]]` except the price. A replaced track file counts as a change to `source.line_file`.
+
+**Not facts**, which need none: `[[history]]` itself; all of `[verification]`, which the tools refresh; `source.source_checked`, `source.discovery`, `source.format`, `source.crs`, `source.mainline` and `source.length_gap_note`; `hike.summary` (our wording), `hike.checked` and `[[hike.source]]`; `guide.price` and `guide.price_checked`; the notes `osm.note`, `shield.note` and `route.note`; `[[link]]`; `wave` and `wave_note`. A field that is in neither list is a fact. The lists are `FACTS_TEXT` and `NOT_FACTS` in `tools/trail_history.py`, and `python3 tools/check_history.py --facts` prints them.
+
+The site shows the history of each record under "History of this record".
 
 ## Files beside the record
 
@@ -227,3 +263,56 @@ Computed by `python3 tools/elevation.py` from the trail's track (`line.geojson`)
 - Ascent and descent depend on the method's settings. They are comparable between trails in this dataset, which all use the same settings. They are not the figure a GPS watch or another site would show.
 - The profile follows the track as it is stored. Where the track is partial, joined in the wrong order, or includes side trails or alternates, the facts follow it. Check `coverage` and `parts` first.
 - The direction is a convention, chosen to make the output repeatable. It is not the trail's usual direction.
+
+## `left-out.toml`: trails considered and left out
+
+One file at the top level, `left-out.toml`, holds the trails and routes that were looked at and left out, a few of which were listed here once and later removed. The site shows it as the "Considered and left out" page, so that a trail is not suggested and argued over again from nothing. An entry is not a judgement on the trail. It says only why the trail does not meet the inclusion rule in README.md.
+
+The file holds one `[[trail]]` table per trail, sorted by `name`. No entry may match a trail in the dataset, by `id` or by `name`: if a left out trail comes to be listed, its entry leaves this file when its record is added. `tools/validate.py` checks the file in `check_left_out_entries` and `check_left_out`.
+
+Example:
+
+```toml
+[[trail]]
+id = "example-trail"
+name = "Example Trail"
+country = "US"
+regions = ["PA"]
+length_mi = 42.0
+length_km = 68
+reason = "below-floor"
+note = "The holder gives it as 42 miles, below the 50 mile floor."
+source_url = "https://example.org/example-trail"
+decided = "2026-11-14"
+was_listed = false
+```
+
+| Field | Type | Meaning | Example |
+| --- | --- | --- | --- |
+| `id` | string | Stable identifier for the entry: lower case words joined by hyphens, as a record `id` is written. A trail that was listed and removed keeps the `id` its record had. | `"fundy-footpath"` |
+| `name` | string | The trail's own name. Where another trail in the dataset carries the same name, the name here says which one this is, as record names do. | `"Highline National Recreation Trail (Bear River Range)"` |
+| `country` | string | `US` or `CA`. | `"US"` |
+| `regions` | array of strings | State, province or territory codes crossed, as the records write them. A trail that spans a whole country uses a plain phrase instead, as the records use `"all provinces and territories"`. | `["MD", "DC", "WV"]` |
+| `length_mi` | number, where known | The length its holder or author states, in miles. Left out where no page states one; never guessed. Given with `length_km`, and the two must agree. | `184.5` |
+| `length_km` | number, where known | That length in kilometres, converted where the holder stated miles (or the reverse). | `297` |
+| `length_note` | string, where needed | The length in words where a pair of numbers would mislead: a planned length, an "over 100 miles", two separate sections, a total for a whole network. Where present it is what the site shows. | `"120 miles planned"` |
+| `reason` | string | Why it is left out, from the fixed set in the table below. One reason per entry: where two apply, the one that decided it, with the other said in `note`. | `"below-floor"` |
+| `note` | string | One or two plain sentences giving the specific fact that decided it, read on the page in `source_url`. Neutral wording: these are good trails that do not fit this list's rule. | `"Pennsylvania DCNR give this loop as 42.1 miles."` |
+| `source_url` | string | The holder's, author's or a government page that shows the deciding fact. Left out only where truly no page exists, and then the `note` says that no page exists. | `"https://www.nps.gov/ovvi/index.htm"` |
+| `decided` | string (date) | The day the decision was made, `YYYY-MM-DD`. | `"2026-11-14"` |
+| `was_listed` | boolean | `true` where the trail was once in the dataset and was removed. The site marks these in plain words. | `true` |
+| `waiting_for` | string, `waiting` only | What would change the decision. Required when `reason` is `waiting` and refused for every other reason. | `"It is designated a National Scenic Trail."` |
+
+The `reason` values mirror the inclusion rule:
+
+| Value | Meaning |
+| --- | --- |
+| `below-floor` | Shorter than the 50 mile (80 km) floor, and not one of the few well known shorter trails listed. |
+| `rail-trail-or-towpath` | A gravel rail trail or a canal towpath. |
+| `driving-route` | Mainly a driving or motor route, as most National Historic Trails are, with at most short walkable pieces. |
+| `not-mainly-walking` | Made mainly for bikes, horses or motor vehicles. |
+| `network` | A network of trails, not one named trail walked as one walk. |
+| `cannot-be-walked-through` | Published in separate pieces, or blocked, so it cannot be walked through as one walk. |
+| `mostly-unbuilt` | Mostly unbuilt or still proposed. |
+| `not-published-as-route` | A route its author has not published as a route, with a stated length, for others to follow; or a walk no land manager publishes as a named trail with a length. |
+| `waiting` | Not left out for good. `waiting_for` says what would change the decision. |

@@ -33,10 +33,10 @@ relation = 2971739
 note = "Downloaded 2026-11-10; 139 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Connecticut Forest and Park Association"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "No emblem of the Mattabesett Trail itself was found. The trail is blazed with blue rectangles, and as part of the New England National Scenic Trail it also carries that trail's marker, which stands for the New England Trail and not for the Mattabesett alone. Addresses checked: ctwoodlands.org/trails/mattabesett-trail and ctwoodlands.org (both returned 403 Forbidden to an automated read, so the holder's pages could not be re-read this time; an earlier search read the trail page and found the association's logo only), the National Park Service New England Trail page at nps.gov/neen (the Park Service arrowhead branding only), newenglandtrail.org (did not load), and Wikimedia Commons (no Mattabesett emblem). Ask the association before using any mark."
 logo_file = ""
 logo_owner = "Connecticut Forest and Park Association"
 
@@ -70,3 +70,23 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 url = "https://newenglandtrail.org/thru-hiking/"
 publisher = "New England Trail"
 facts = ["season", "months"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Mattabesett Trail."
+fields = ["record"]
+basis = "The record's own source entry: Connecticut Forest and Park Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://ctwoodlands.org/trails/mattabesett-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

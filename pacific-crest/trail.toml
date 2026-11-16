@@ -36,9 +36,9 @@ note = "OSM has 1225378 plus about 30 section relations; not needed."
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://www.pcta.org/"
+logo_source = "https://www.fs.usda.gov/sites/nfs/files/trails/pacific-crest-nst/image/PCT%20logo.jpg"
 contact = "Pacific Crest Trail Association (pcta.org); USFS Pacific Crest NST office"
-note = "No public logo-use policy found. The PCTA name and logo are its marks. The official emblem of a National Scenic Trail is a federal insignia (18 U.S.C. 701; Federal Register notices of 2000-03-28 cover Ice Age, North Country and Natchez Trace; status for the others not confirmed). Use needs the administering agency's permission."
+note = "The National Scenic Trail crest, from the Forest Service page for the Pacific Crest National Scenic Trail. Replaces the earlier crop from the PCTA banner. The source is a small JPEG of 253 by 289 px, so the file is smaller than 256 px on its short side; pcta.org refused automated reads, so no larger copy was found. Trimmed the white border and saved as PNG; the pixels were not changed. The white surround was made transparent."
 logo_file = "shield.png"
 logo_owner = "Pacific Crest Trail Association (pcta.org); USFS Pacific Crest NST office"
 
@@ -82,3 +82,23 @@ facts = ["summary", "start", "end", "shape", "high_point", "terrain"]
 title = "Pacific Crest National Scenic Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Pacific_Crest_National_Scenic_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Pacific Crest National Scenic Trail."
+fields = ["record"]
+basis = "The record's own source entry: Pacific Crest Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://www.fs.usda.gov/sites/nfs/files/trails/pacific-crest-nst/image/PCT%20logo.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"

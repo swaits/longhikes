@@ -38,7 +38,7 @@ note = "Downloaded 2026-11-10; 230 ways in the main track. release.txt has the s
 status = "logo-not-found"
 logo_source = ""
 contact = "River to River Trail Society"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "An emblem exists but no usable artwork was found at an allowed source. The trail's symbol since the beginning, as the Society's own guide puts it, is a white diamond with a blue i, and the Society also has a crest (the shape of southern Illinois with River to River Trail Society under it). Both appear at allowed sources only as photographs: photographs of the plastic and cedar diamond markers on page 7 of the Society's Trail Guide (rivertorivertrail.net/wp-content/uploads/2018/10/R2R_Trail_Guide_V5.0_201810.pdf), a photograph of an embroidered crest patch on that guide's cover, and a photograph of a diamond marker in the Society's 2022 dedication program PDF. Photographs of markers and patches are not usable artwork, so none is included. Also checked: rivertorivertrail.net home, about, society-information and trail-information pages (the site's HTML returned 406 to a direct automated read, so its pages were read through a plain fetch and its PDFs downloaded directly; its header is text only), the Forest Service Shawnee page fs.usda.gov/r09/shawnee/recreation/trails/river-river-trail (Forest Service and USDA logos only), and Wikimedia Commons (no relevant file). Ask the Society for its crest artwork."
 logo_file = ""
 logo_owner = "River to River Trail Society"
 
@@ -75,3 +75,14 @@ facts = ["summary"]
 title = "River to River Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/River_to_River_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: River to River Trail."
+fields = ["record"]
+basis = "The record's own source entry: River to River Trail Society."
+asked_by = "the dataset's own check"
+outcome = "applied"

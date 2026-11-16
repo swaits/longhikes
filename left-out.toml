@@ -1,0 +1,459 @@
+# Trails and routes considered for this dataset and left out, with the
+# reason and the date the decision was made. Field meanings are in
+# docs/schema.md, section "left-out.toml". Entries are sorted by name.
+# Nothing here is a judgement on the trail. Each entry says only why it
+# does not meet the inclusion rule in README.md.
+
+[[trail]]
+id = "alaska-long-trail"
+name = "Alaska Long Trail"
+country = "US"
+regions = ["AK"]
+length_mi = 500
+length_km = 805
+reason = "waiting"
+note = "The Bureau of Land Management is studying a proposed 500 mile route from Seward to Fairbanks made of existing and proposed trails. It is not yet one designated trail."
+source_url = "https://www.blm.gov/programs/national-conservation-lands/alaska/alaska-long-national-scenic-trail"
+decided = "2026-11-14"
+was_listed = false
+waiting_for = "It is designated a National Scenic Trail."
+
+[[trail]]
+id = "american-perimeter-trail"
+name = "American Perimeter Trail"
+country = "US"
+regions = ["contiguous United States"]
+length_mi = 14000
+length_km = 22531
+reason = "waiting"
+note = "Its own page calls it a 14,000 mile trail system around the contiguous United States and says it uses existing trails, off trail treks, thoroughfares and some undefined routes. The page also says the mileage will change as the trail is developed."
+source_url = "https://americanperimetertrail.org/about-the-trail/"
+decided = "2026-11-16"
+was_listed = false
+waiting_for = "Every part of the route is defined and published, with a settled length."
+
+[[trail]]
+id = "black-forest-trail"
+name = "Black Forest Trail"
+country = "US"
+regions = ["PA"]
+length_mi = 42.1
+length_km = 68
+reason = "below-floor"
+note = "Pennsylvania DCNR give this loop in Tiadaghton State Forest as 42.1 miles. That is below the 50 mile floor."
+source_url = "https://www.pa.gov/agencies/dcnr/recreation/where-to-go/state-forests/find-a-forest/tiadaghton/hiking"
+decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "bonneville-shoreline-trail"
+name = "Bonneville Shoreline Trail"
+country = "US"
+regions = ["UT"]
+length_note = "More than 280 miles proposed; just over 100 miles designated"
+reason = "network"
+note = "Its committee say the trail will one day run more than 280 miles, from the Idaho border to Nephi, and that just over 100 miles are now officially designated. Those designated miles are separate segments along the proposed route, not one continuous walk."
+source_url = "https://www.bonnevilleshorelinetrail.org/"
+decided = "2026-11-16"
+was_listed = false
+
+[[trail]]
+id = "buffalo-river-trail"
+name = "Buffalo River Trail"
+country = "US"
+regions = ["AR"]
+length_note = "37 miles and a little more than 42 miles, in two separate sections"
+reason = "cannot-be-walked-through"
+note = "The National Park Service publish it as two separate hikes, a 37 mile upper section from Boxley Valley to Pruitt and a little more than 42 miles from Woolum to Dillards Ferry. No trail was built between Pruitt and Woolum, so the two sections cannot be walked as one trail."
+source_url = "https://www.nps.gov/thingstodo/hike-the-buffalo-river-trail.htm"
+decided = "2026-11-16"
+was_listed = false
+
+[[trail]]
+id = "chesapeake-ohio-canal"
+name = "Chesapeake and Ohio Canal Towpath"
+country = "US"
+regions = ["MD", "DC", "WV"]
+length_mi = 184.5
+length_km = 297
+reason = "rail-trail-or-towpath"
+note = "The National Park Service describe 184.5 miles of canal towpath along the Potomac River. It is a canal towpath, which the rule leaves out."
+source_url = "https://www.nps.gov/choh/planyourvisit/hiking.htm"
+decided = "2026-11-16"
+was_listed = true
+
+[[trail]]
+id = "confederation-trail"
+name = "Confederation Trail"
+country = "CA"
+regions = ["PE"]
+length_mi = 170
+length_km = 273
+reason = "rail-trail-or-towpath"
+note = "Tourism Prince Edward Island say the former island railway became this trail after rail service ended in 1989, 273 km from tip to tip and 449 km with the branch trails. It is a rail trail, which the rule leaves out."
+source_url = "https://www.tourismpei.com/askanislander/questions/we-have-a-car-and-want-to-bike-some-of-the-confederation-trail-what-is-the"
+decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "crow-wing-trail"
+name = "Crow Wing Trail"
+country = "CA"
+regions = ["MB"]
+length_mi = 124
+length_km = 200
+reason = "not-mainly-walking"
+note = "Its association call it a 200 km section of the Trans Canada Trail from Winnipeg to Emerson along an old Red River cart trail. They promote it for cycling and horseback riding as well as hiking, and much of it follows gravel municipal roads."
+source_url = "https://crowwingtrail.ca/"
+decided = "2026-11-16"
+was_listed = false
+
+[[trail]]
+id = "fundy-footpath"
+name = "Fundy Footpath"
+country = "CA"
+regions = ["NB"]
+length_mi = 25.5
+length_km = 41
+reason = "below-floor"
+note = "This Fundy Hiking Trail Association trail along the Bay of Fundy coast is 41 km long. That is below the floor for this list."
+source_url = "http://www.fundyhikingtrails.com"
+decided = "2026-11-14"
+was_listed = true
+
+[[trail]]
+id = "george-s-mickelson-trail"
+name = "George S. Mickelson Trail"
+country = "US"
+regions = ["SD"]
+length_mi = 109
+length_km = 175
+reason = "rail-trail-or-towpath"
+note = "South Dakota Game, Fish and Parks say the trail is 109 miles of crushed limestone with more than 100 converted railroad bridges. It is a rail trail, which the rule leaves out."
+source_url = "https://gfp.sd.gov/parks/detail/george-s--mickelson-trail/"
+decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "grand-escalante-loop"
+name = "Grand Escalante Loop"
+country = "US"
+regions = ["UT"]
+reason = "not-published-as-route"
+note = "Its author presents it as a long hike he made around Escalante, with a map of the trip. No page of his publishes it as a route for others to follow with a stated route length, so there is no published route to record."
+source_url = "http://www.acrossutah.com/wordpress/map-grand-escalante-loop-hike/"
+decided = "2026-11-15"
+was_listed = false
+
+[[trail]]
+id = "grand-gulch"
+name = "Grand Gulch"
+country = "US"
+regions = ["UT"]
+reason = "not-published-as-route"
+note = "The Bureau of Land Management publish Grand Gulch as a canyon in a Wilderness Study Area, reached by separate short access trails, and state no through length. No land manager publishes it as a named walk with a length."
+source_url = "https://www.blm.gov/visit/grand-gulch"
+decided = "2026-11-16"
+was_listed = false
+
+[[trail]]
+id = "great-allegheny-passage"
+name = "Great Allegheny Passage"
+country = "US"
+regions = ["PA", "MD"]
+length_mi = 150
+length_km = 241
+reason = "rail-trail-or-towpath"
+note = "Its conservancy describe a 150 mile path between Pittsburgh and Cumberland on a former rail corridor with a crushed limestone surface. It is a rail trail, which the rule leaves out."
+source_url = "https://gaptrail.org/lp-explore-guide/"
+decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "great-western"
+name = "Great Western Trail"
+country = "US"
+regions = ["AZ", "UT", "ID", "WY", "MT"]
+length_mi = 3100
+length_km = 4989
+reason = "driving-route"
+note = "The Forest Service call it a 3,100 mile corridor of parallel trails and dirt roads for motorized and nonmotorized users. On the North Kaibab section they say hiking and horse use are not recommended because the route is on open roads."
+source_url = "https://www.fs.usda.gov/r03/kaibab/recreation/trails/great-western-trail-150"
+decided = "2026-11-14"
+was_listed = true
+
+[[trail]]
+id = "greenstone-ridge-trail"
+name = "Greenstone Ridge Trail"
+country = "US"
+regions = ["MI"]
+length_mi = 41.7
+length_km = 67
+reason = "below-floor"
+note = "The National Park Service give this Isle Royale trail as about 41.7 miles. That is below the 50 mile floor."
+source_url = "https://www.nps.gov/places/greenstone-ridge-trailhead-windigo.htm"
+decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "high-rockies-trail"
+name = "High Rockies Trail"
+country = "CA"
+regions = ["AB"]
+length_mi = 49.7
+length_km = 80
+reason = "not-mainly-walking"
+note = "Alberta Parks give it as 80.0 km from Goat Creek to Elk Pass and list it among their hiker and biker trails, with camping for hikers and cyclists. It is presented mainly as a ride rather than as a walking trail."
+source_url = "https://www.albertaparks.ca/parks/kananaskis/kananaskis-country/advisories-public-safety/trail-reports/spray-valley/high-rockies-summer/"
+decided = "2026-11-16"
+was_listed = false
+
+[[trail]]
+id = "highline-bear-river-range"
+name = "Highline National Recreation Trail (Bear River Range)"
+country = "US"
+regions = ["ID"]
+length_mi = 60
+length_km = 97
+reason = "not-mainly-walking"
+note = "The Forest Service list this Bear River Range trail at 60 miles and list motorcycle trail riding among its uses. A trail open to motorcycles does not meet the rule for a walking trail."
+source_url = "https://www.fs.usda.gov/recarea/ctnf/recreation/recarea/?recid=54153"
+decided = "2026-11-16"
+was_listed = false
+
+[[trail]]
+id = "iditarod"
+name = "Iditarod National Historic Trail"
+country = "US"
+regions = ["AK"]
+length_mi = 1000
+length_km = 1609
+length_note = "1,000 miles main route, with about 1,400 miles of side and connecting trails"
+reason = "driving-route"
+note = "The Bureau of Land Management call it the only winter trail in the National Trails System, a 1,000 mile main route between Seward and Nome with about 1,400 miles of side and connecting routes. It is travelled in winter by dog sled and snowmachine, not as a walking trail."
+source_url = "https://www.blm.gov/programs/national-conservation-lands/national-scenic-and-historic-trails/iditarod"
+decided = "2026-11-14"
+was_listed = true
+
+[[trail]]
+id = "katy-trail"
+name = "Katy Trail"
+country = "US"
+regions = ["MO"]
+length_mi = 240
+length_km = 386
+reason = "rail-trail-or-towpath"
+note = "Missouri State Parks call it the longest developed rail trail in the country, 240 miles on the former Missouri-Kansas-Texas Railroad corridor. Rail trails are left out by the rule."
+source_url = "https://mostateparks.com/park/katy-trail-state-park"
+decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "kettle-valley-rail-trail"
+name = "Kettle Valley Rail Trail"
+country = "CA"
+regions = ["BC"]
+length_mi = 410
+length_km = 660
+reason = "rail-trail-or-towpath"
+note = "The City of Penticton visitor page describes 660 km from Hope to Castlegar as a decommissioned railway converted into a recreational rail trail. Rail trails are left out by the rule."
+source_url = "https://visitpenticton.com/experience/kettle-valley-rail-trail/"
+decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "lake-superior-coastal-trail"
+name = "Lake Superior Coastal Trail"
+country = "CA"
+regions = ["ON"]
+length_mi = 40.4
+length_km = 65
+reason = "below-floor"
+note = "Ontario Parks list this Lake Superior Provincial Park backpacking trail at 65 km. That is below the floor for this list."
+source_url = "https://www.ontarioparks.ca/park/lakesuperior/activities"
+decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "mantario-trail"
+name = "Mantario Trail"
+country = "CA"
+regions = ["MB"]
+length_mi = 39.8
+length_km = 64
+reason = "below-floor"
+note = "Manitoba Parks describe it as extending over 60 kilometres through the Mantario Wilderness Zone of Whiteshell Provincial Park. At about 64 km it is below the floor for this list."
+source_url = "https://www.gov.mb.ca/sd/parks/park-maps-and-locations/eastern/mantario-trail.html"
+decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "metolius-windigo-trail"
+name = "Metolius-Windigo Trail"
+country = "US"
+regions = ["OR"]
+length_mi = 120
+length_km = 193
+reason = "not-mainly-walking"
+note = "This 120 mile Deschutes National Forest trail was built mainly as a long distance horse trail, served by horse camps along the way. Hikers and mountain bikers may use it, but it was not built mainly as a walking trail."
+source_url = "https://www.nrtapplication.org/trails/metolius-windigo-trail"
+decided = "2026-11-16"
+was_listed = false
+
+[[trail]]
+id = "nez-perce"
+name = "Nez Perce National Historic Trail"
+country = "US"
+regions = ["OR", "ID", "MT", "WY"]
+length_mi = 1170
+length_km = 1883
+reason = "driving-route"
+note = "The Forest Service publish this 1,170 mile historic route chiefly as eight auto tour segments on roads between its sites. There is no continuous walking trail to record."
+source_url = "https://www.fs.usda.gov/trails/nez-perce-nht"
+decided = "2026-11-14"
+was_listed = true
+
+[[trail]]
+id = "overmountain-victory"
+name = "Overmountain Victory National Historic Trail"
+country = "US"
+regions = ["VA", "TN", "NC", "SC"]
+length_mi = 330
+length_km = 531
+reason = "driving-route"
+note = "The National Park Service say the 330 mile route can be followed on a commemorative motor route along existing state highways, or on a little over 80 miles of walkable trail in pieces. Mainly a driving route, it is left out by the rule."
+source_url = "https://www.nps.gov/ovvi/index.htm"
+decided = "2026-11-14"
+was_listed = true
+
+[[trail]]
+id = "pine-mountain-state-scenic-trail"
+name = "Pine Mountain State Scenic Trail"
+country = "US"
+regions = ["KY"]
+length_mi = 120
+length_km = 193
+length_note = "120 miles planned"
+reason = "waiting"
+note = "Kentucky state this linear state park is still under development, to run 120 miles from Breaks Interstate Park to Cumberland Gap when complete. They put the designated trail at two sections totalling 44 miles, from Breaks to US 119."
+source_url = "https://eec.ky.gov/Nature-Preserves/Locations/Pages/Pine%20Mountain%20State%20Scenic%20Trail.aspx"
+decided = "2026-11-16"
+was_listed = false
+waiting_for = "The built trail reaches 50 miles in one continuous piece, or the whole planned trail can be walked through."
+
+[[trail]]
+id = "rachel-carson-trail"
+name = "Rachel Carson Trail"
+country = "US"
+regions = ["PA"]
+length_mi = 46.2
+length_km = 74.4
+reason = "below-floor"
+note = "The Rachel Carson Trails Conservancy give it as 46.2 miles between Harrison Hills County Park and Wexford. That is below the 50 mile floor."
+source_url = "https://rachelcarsontrails.org/trails/rachel-carson-trail"
+decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "rainbow-trail"
+name = "Rainbow Trail"
+country = "US"
+regions = ["CO"]
+length_note = "Over 100 miles"
+reason = "not-mainly-walking"
+note = "The Forest Service say this trail of over 100 miles along the Sangre de Cristo Range is open to motorcycles, mountain bikers, horse and foot traffic. A trail open to motorcycles for its whole length does not meet the rule."
+source_url = "https://www.fs.usda.gov/r02/psicc/recreation/rainbow-trail-1336-bear-creek-trailhead"
+decided = "2026-11-16"
+was_listed = false
+
+[[trail]]
+id = "sea-to-sky-trail"
+name = "Sea to Sky Trail"
+country = "CA"
+regions = ["BC"]
+length_mi = 112
+length_km = 180
+reason = "not-mainly-walking"
+note = "The Squamish-Lillooet Regional District call it a non motorized multi use trail of 180 km, open for hiking and biking, with some sections designed for adaptive mountain biking. It is made mainly for shared use with bikes rather than as a walking trail."
+source_url = "https://www.slrd.bc.ca/services/recreation-culture/parks-trails/sea-sky-trail"
+decided = "2026-11-16"
+was_listed = false
+
+[[trail]]
+id = "sentiers-de-lestrie"
+name = "Sentiers de l'Estrie"
+country = "CA"
+regions = ["QC"]
+length_note = "More than 200 km of trails"
+reason = "network"
+note = "The club publish more than 200 km of forest walking trails in separate sectors in the Estrie hills. That is a network of trails, not one trail."
+source_url = "https://lessentiersdelestrie.qc.ca/"
+decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "great-trail"
+name = "Trans Canada Trail"
+country = "CA"
+regions = ["all provinces and territories"]
+length_mi = 18641
+length_km = 30000
+reason = "network"
+note = "Trans Canada Trail call it a 30,000 kilometre network connecting coast to coast to coast, for activities from hiking and cycling to paddling and snowmobiling. A network of local trails is not one trail under the rule."
+source_url = "https://tctrail.ca/"
+decided = "2026-11-14"
+was_listed = true
+
+[[trail]]
+id = "trans-catalina-trail"
+name = "Trans-Catalina Trail"
+country = "US"
+regions = ["CA"]
+length_mi = 38.5
+length_km = 62
+reason = "below-floor"
+note = "The Catalina Island Conservancy give it as 38.5 miles of trail across the island. That is below the 50 mile floor."
+source_url = "https://catalinaconservancy.org/recreation/trans-catalina-trail/"
+decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "trans-zion-trek"
+name = "Trans-Zion Trek"
+country = "US"
+regions = ["UT"]
+length_mi = 48.3
+length_km = 77.7
+reason = "cannot-be-walked-through"
+note = "At about 48 miles it is below the floor to begin with. The National Park Service also list the East Rim Trail, part of the walk across Zion, as a long term closure since a 2019 rockfall, so it cannot now be walked through."
+source_url = "https://www.nps.gov/zion/planyourvisit/conditions.htm"
+decided = "2026-11-15"
+was_listed = false
+
+[[trail]]
+id = "uwharrie-trail"
+name = "Uwharrie Trail"
+country = "US"
+regions = ["NC"]
+length_mi = 40
+length_km = 64
+reason = "below-floor"
+note = "The Forest Service describe a 40 mile trail in Uwharrie National Forest. That is below the 50 mile floor."
+source_url = "https://www.fs.usda.gov/features/quick-response-codes-tell-story-uwharrie-trail"
+decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "xtexas-trail"
+name = "xTexas Trail"
+country = "US"
+regions = ["TX"]
+length_mi = 1500
+length_km = 2414
+reason = "waiting"
+note = "Its association say they are creating a 1,500 mile trail across rural Texas for hikers, cyclists and horseback riders, and its first end to end hike was in early 2026. Much of it is on rural roads and the route is still being changed."
+source_url = "https://www.xtexas.org/about-us"
+decided = "2026-11-16"
+was_listed = false
+waiting_for = "The association publish the route in a settled form that is no longer being rerouted."
+

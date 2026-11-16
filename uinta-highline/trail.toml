@@ -35,7 +35,7 @@ note = "Verified."
 status = "no-logo-exists"
 logo_source = ""
 contact = "USFS Ashley National Forest"
-note = "No trail emblem exists. The file removed on 2026-11-08 was the USDA symbol (the Department of Agriculture's agency mark, not the trail's). The map draws the trail name only."
+note = "No emblem of the trail exists at an allowed source. The Forest Service trail page https://www.fs.usda.gov/r04/uinta-wasatch-cache/recreation/trails/highline-trail-105 was read in full: it carries only the USDA and Forest Service agency logos and generic recreation activity icons. Those are the agency's marks, not this trail's, so they do not count."
 logo_file = ""
 logo_owner = "USFS Ashley National Forest"
 
@@ -74,3 +74,14 @@ facts = ["season", "months"]
 title = "Uinta Highline Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Uinta_Highline_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Uinta Highline Trail."
+fields = ["record"]
+basis = "The record's own source entry: USDA Forest Service."
+asked_by = "the dataset's own check"
+outcome = "applied"

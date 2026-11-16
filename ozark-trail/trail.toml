@@ -38,9 +38,9 @@ note = "Found by a name search on 2026-11-08: relation 16710911 'Ozark Trail' (r
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://ozarktrail.com/"
+logo_source = "https://ozarktrail.com/wp-content/uploads/2018/01/ozark_trail_association_ipad_icon.png"
 contact = "Ozark Trail Association"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "The Ozark Trail Association's rounded-triangle emblem, a green T monogram, from its square icon on ozarktrail.com. The association name and wordmark in the existing lockup are cut off. This is the largest copy of the emblem alone found at this source, at 200 px, and nothing larger was found. Whether the association's emblem stands for the trail itself is a judgement, and the owner may wish to check it."
 logo_file = "shield.png"
 logo_owner = "Ozark Trail Association"
 
@@ -76,3 +76,23 @@ facts = ["summary", "travel", "unfinished"]
 title = "Ozark Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Ozark_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Ozark Trail (Missouri)."
+fields = ["record"]
+basis = "The record's own source entry: Ozark Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://ozarktrail.com/wp-content/uploads/2018/01/ozark_trail_association_ipad_icon.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

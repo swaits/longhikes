@@ -38,9 +38,9 @@ note = "Downloaded 2026-11-10; 275 ways in the main track. release.txt has the s
 status = "logo-not-found"
 logo_source = ""
 contact = "Cross Vermont Trail Association"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "An emblem seems to exist but no usable artwork of it alone is at an allowed source. The association's mark is a green Vermont shape with a dashed route across it, shown beside the name as a lockup in the site header (crossvermont.org/images/bin_cvta-images/cvt_blaze.jpg, 216 px) and at the head of its Maps and Cue Sheets PDF. At 300 dpi from that PDF the shape is crisp, but the letters of the name overlap its bounding box, so a rectangular crop either cuts into the shape or keeps letter fragments; nothing was staged, as such a crop would not be clean. Its other signs are a blue board with the name and a tagline, and a green bicycle oval, neither of which is the trail's crest. Torn: if a non-rectangular cut were allowed, the green shape alone could stand as the mark. Addresses looked at: crossvermont.org/our_trail/index.php, crossvermont.org/index.php, crossvermont.org/our_trail/signs-about.htm, crossvermont.org/about_us/annrpt.php (pages and their sources), crossvermont.org/images/page_maps/crossvt-maps-all.pdf (first page rendered at 72 and 300 dpi), and the blaze, trail-sign and road-sign images named above. Wikimedia Commons was also searched and holds only a photograph of a sign."
 logo_file = ""
-logo_owner = "Cross Vermont Trail Association"
+logo_owner = ""
 
 [verification]
 verified = true
@@ -64,3 +64,23 @@ checked = "2026-11-13"
 url = "https://crossvermont.org/our_trail/index.php"
 publisher = "Cross Vermont Trail Association"
 facts = ["official_url", "summary", "start", "end", "shape", "travel", "unfinished"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Cross Vermont Trail."
+fields = ["record"]
+basis = "The record's own source entry: Cross Vermont Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now names where an emblem was looked for and who holds the mark."
+fields = ["shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
+basis_url = "https://crossvermont.org/our_trail/index.php"
+asked_by = "the dataset's own check"
+outcome = "applied"

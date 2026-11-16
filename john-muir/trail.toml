@@ -37,7 +37,7 @@ note = "Verified against 340 km."
 status = "no-logo-exists"
 logo_source = ""
 contact = "USFS Inyo National Forest; NPS"
-note = "No trail emblem exists. The file removed on 2026-11-08 was the generic NPS arrowhead (the agency mark, not the trail's), fetched from an NPS park page. The map draws the trail name only."
+note = "No emblem of the trail exists at an allowed source. The National Park Service's John Muir Trail page https://www.nps.gov/yose/planyourvisit/jmt.htm was read in full: it carries only National Park Service branding, and the arrowhead is the agency's mark, not this trail's. Crests sold for the trail on merchandise sites are fan art that cannot be traced to the managing agencies, so they do not count."
 logo_file = ""
 logo_owner = "USFS Inyo National Forest; NPS"
 
@@ -79,3 +79,14 @@ facts = ["days", "season", "months", "high_point", "terrain"]
 title = "John Muir Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/John_Muir_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: John Muir Trail."
+fields = ["record"]
+basis = "The record's own source entry: No single publisher: NPS Yosemite and Sequoia-Kings Canyon."
+asked_by = "the dataset's own check"
+outcome = "applied"

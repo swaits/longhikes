@@ -33,12 +33,12 @@ relation = 6827091
 note = "Relation 6827091 'Conestoga Trail System' (ref CTS, version 69, 2026-04-21) lists the Lancaster Hiking Club's page as its website. Downloaded 2026-11-14; release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = "https://www.lancasterhikingclub.com/"
+status = "no-logo-exists"
+logo_source = ""
 contact = "Lancaster Hiking Club"
-note = "The club's home page shows no logo in its text. No logo of the trail is included here. Ask the trail's holder before using its mark."
+note = "No emblem of its own. The trail is marked on the ground with orange paint blazes, and its trailhead sign is an orange board with the name Conestoga Trail System as plain type; neither is a crest, and no badge artwork exists on the holder's site. The club's site has no club crest either, only its name as type and the map sheets it posts, which are map exports with no emblem on them. Addresses looked at: lancasterhikingclub.com/ and lancasterhikingclub.com/copy-of-conestoga-trail (pages and their sources, including the sign photograph and each posted map sheet at static.wixstatic.com), kta-hike.org/conestoga-trail.html (the Keystone Trails Association page for the trail, and its source), and conestogatrail.org, the address printed on the trail sign, which no longer resolves. Wikimedia Commons was also searched and holds no emblem for the trail."
 logo_file = ""
-logo_owner = "Lancaster Hiking Club"
+logo_owner = ""
 
 [verification]
 verified = true
@@ -60,3 +60,23 @@ checked = "2026-11-14"
 url = "https://www.lancasterhikingclub.com/copy-of-conestoga-trail"
 publisher = "Lancaster Hiking Club"
 facts = ["official_url", "summary", "shape", "terrain", "travel"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Conestoga Trail."
+fields = ["record"]
+basis = "The record's own source entry: Lancaster Hiking Club."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source", "shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.lancasterhikingclub.com/copy-of-conestoga-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -35,12 +35,12 @@ relation = 13780803
 note = "Downloaded 2026-11-10; 134 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Keystone Trails Association"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "No emblem of its own. The trail is marked on the ground with red painted blazes, orange where it shares tread with the Susquehannock Trail System; a paint colour is not a crest, and no badge is used by either holder. The Keystone Trails Association page shows only the association's own round logo and a map; its guidebook cover, shown in the association store, is a photograph with the title as type. Pennsylvania DCNR's pages and its two trail map PDFs carry DCNR marks only. Addresses looked at: kta-hike.org/donut-hole-trail.html, kta-hike.org/maps.html, kta-hike.org/store.html (pages and their sources, including the guidebook cover image), trails.dcnr.pa.gov and dcnr.pa.gov Sproul State Forest hiking pages found by search, and the DCNR Donut Hole West map PDF at elibrary.dcnr.pa.gov (downloaded; a topographic sheet with no trail emblem). Wikimedia Commons holds a photograph of a red blaze and of a trailhead map, not artwork."
 logo_file = ""
-logo_owner = "Keystone Trails Association"
+logo_owner = ""
 
 [verification]
 verified = true
@@ -68,3 +68,23 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel"]
 title = "Donut Hole Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Donut_Hole_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Donut Hole Trail."
+fields = ["record"]
+basis = "The record's own source entry: Keystone Trails Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.kta-hike.org/donut-hole-trail.html"
+asked_by = "the dataset's own check"
+outcome = "applied"

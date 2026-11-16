@@ -36,12 +36,12 @@ relation = 0
 note = "No route relation found when searched on 2026-11-10."
 
 [shield]
-status = "no-logo-exists"
+status = "logo-not-found"
 logo_source = ""
 contact = "Ron Strickland"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "Every allowed source refused automated reads, so the route was not settled either way. Both the page the record names and the author's own site returned 403 to a plain generic read, and that was not worked around. Addresses tried: andrewskurka.com/adventures/sea-to-sea-route/overview/ and andrewskurka.com/ (403), ronstrickland.com/sea-to-sea_trail.htm and ronstrickland.com/ (403; the author's own site, found by search as the original home of the Sea-to-Sea Route proposal by Ron Strickland of Scenic Trails Research). No managing agency page exists for this proposed route, and Wikimedia Commons was searched and holds no emblem for it."
 logo_file = ""
-logo_owner = "Ron Strickland"
+logo_owner = ""
 
 [verification]
 verified = false
@@ -80,3 +80,23 @@ checked = "2026-11-13"
 url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
 publisher = "Andrew Skurka"
 facts = ["summary", "official_url", "shape", "unfinished"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Sea-to-Sea Route."
+fields = ["record"]
+basis = "The record's own source entry: Ron Strickland."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says an emblem exists or may exist but no usable artwork of it was found at an allowed source."
+fields = ["shield.status", "shield.logo_owner"]
+basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
+basis_url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -35,10 +35,10 @@ note = "Downloaded 2026-11-08; release.txt has the relation version and timestam
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://www.adk.org/"
+logo_source = "https://nptrail.org/wp-content/uploads/2026/02/image.png"
 contact = "Adirondack Mountain Club"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
-logo_file = "shield.svg"
+note = "The emblem is the trail's diamond-shaped completion patch, with the letters NTP and the words Northville-Placid Trail, ADK Mtn. Club. It is shown on the completion patch page of nptrail.org, the site of the Club's Northville-Placid Trail chapter. It is a scan of the cloth patch. It replaces the Club's wordmark used before. The file is used unchanged. No logo policy was found."
+logo_file = "shield.png"
 logo_owner = "Adirondack Mountain Club"
 
 [verification]
@@ -74,3 +74,23 @@ facts = ["summary"]
 title = "Northville Placid Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Northville_Placid_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Northville-Placid Trail."
+fields = ["record"]
+basis = "The record's own source entry: Adirondack Mountain Club."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://nptrail.org/wp-content/uploads/2026/02/image.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

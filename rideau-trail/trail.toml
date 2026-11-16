@@ -34,9 +34,9 @@ note = "Downloaded 2026-11-08; release.txt has the relation version and timestam
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://www.rideautrail.org/"
+logo_source = "https://www.rideautrail.org/wp-content/uploads/2022/06/RTA_icon.png"
 contact = "Rideau Trail Association"
-note = "No logo or shield policy found. Treat as the maintaining organisation's mark."
+note = "The Association's tree mark (an orange and a green fir), the site icon of rideautrail.org at 304 px; the words 'Rideau Trail Association' of the header logo are not in it. Trimmed of its empty border only. The trail's own blazes are plain blue and orange triangles, which are not a single emblem. No terms for use of the logo are stated on the page."
 logo_file = "shield.png"
 logo_owner = "Rideau Trail Association"
 
@@ -77,3 +77,23 @@ facts = ["days"]
 title = "Rideau Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Rideau_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Rideau Trail."
+fields = ["record"]
+basis = "The record's own source entry: Rideau Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://www.rideautrail.org/wp-content/uploads/2022/06/RTA_icon.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

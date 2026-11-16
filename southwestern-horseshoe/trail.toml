@@ -39,7 +39,7 @@ note = "No route relation named Southwestern Horseshoe was found in a name searc
 status = "no-logo-exists"
 logo_source = ""
 contact = "Cam Honan"
-note = "The author's site, thehikinglife.com, is run under the name The Hiking Life; no logo or emblem for this route was found. No logo is included here. Ask the author before using any mark."
+note = "The route has no emblem of its own. Addresses checked: the author's route page thehikinglife.com/2019/03/southwestern-horseshoe (read in full: the site's own header, text and photographs, no logo or crest for the route; a direct automated read of the same address returned 406), thehikinglife.com home page (406 to a direct read), and Wikimedia Commons (none). The author uses no emblem for this route. Ask the author before using any mark."
 logo_file = ""
 logo_owner = "Cam Honan"
 
@@ -84,3 +84,14 @@ facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "
 url = "https://www.wikidata.org/wiki/Q104720600"
 publisher = "Wikidata (CC0)"
 facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Southwestern Horseshoe."
+fields = ["record"]
+basis = "The record's own source entry: Cam Honan."
+asked_by = "the dataset's own check"
+outcome = "applied"

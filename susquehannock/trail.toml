@@ -38,7 +38,7 @@ note = "Downloaded 2026-11-10; 65 ways in the main track. release.txt has the so
 status = "logo-not-found"
 logo_source = ""
 contact = "Susquehannock Trail Club"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "An emblem exists but no usable artwork was found at an allowed source. The club's own site says the Susquehannock Trail System is marked with orange paint blazes and occasionally an STS emblem. At allowed sources that emblem appears only as photographs: an embroidered Susquehannock Circuit Hiker patch (green triangle with an orange STS maple leaf) photographed on the club's circuit-hiker-award page, and signs in photographs such as the Northern Gateway photograph used across stc-hike.org. A photograph of a patch is not usable artwork, so none is included. Also checked: stc-hike.org home, trail-map, circuit-hiker-award and newsletters pages and their page source (a default site-builder logo, photographs only), the club's STS Publication Map PDF and Fall 2023 newsletter PDF (map and text masthead, no emblem artwork), and Wikimedia Commons (none). Ask the club for its emblem artwork."
 logo_file = ""
 logo_owner = "Susquehannock Trail Club"
 
@@ -62,3 +62,14 @@ checked = "2026-11-13"
 url = "https://stc-hike.org/"
 publisher = "Susquehannock Trail Club"
 facts = ["summary", "official_url", "shape", "terrain", "travel"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Susquehannock Trail System."
+fields = ["record"]
+basis = "The record's own source entry: Susquehannock Trail Club."
+asked_by = "the dataset's own check"
+outcome = "applied"

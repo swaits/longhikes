@@ -35,10 +35,10 @@ relation = 7192246
 note = "Downloaded 2026-11-10; 95 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Pennsylvania Department of Conservation and Natural Resources"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "No emblem of the trail exists at an allowed source. The managing agency's page https://www.pa.gov/agencies/dcnr/recreation/what-to-do/hiking/laurel-highlands-hiking-trail carries only the Commonwealth of Pennsylvania logo, and the Keystone Trails Association page https://www.kta-hike.org/laurel-highlands-hiking-trail.html carries only that association's own logo, which serves all of its trails. Both pages were read in full. The trail is marked with plain yellow rectangular blazes, which have no crest form."
 logo_file = ""
 logo_owner = "Pennsylvania Department of Conservation and Natural Resources"
 
@@ -90,3 +90,23 @@ facts = ["high_point"]
 title = "Laurel Highlands Hiking Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Laurel_Highlands_Hiking_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Laurel Highlands Hiking Trail."
+fields = ["record"]
+basis = "The record's own source entry: Keystone Trails Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.pa.gov/agencies/dcnr/recreation/what-to-do/hiking/laurel-highlands-hiking-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

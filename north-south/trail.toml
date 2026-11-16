@@ -33,10 +33,10 @@ relation = 11102215
 note = "Downloaded 2026-11-10; 197 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Rhode Island Department of Environmental Management"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "The trail has no emblem of its own that was found. It is marked with plain blue blazes and small handwritten direction signs. Addresses checked: the trail's listed page rigis.org/datasets/north-south-trail (a data record with no artwork), rigis.org home page, dem.ri.gov documents found by search (a land-acquisition report and a fish and wildlife summary that mention the trail, with the agency crest only), and Wikimedia Commons (none). No state page or map PDF for the trail showing a marker as artwork was found. Ask the state before using any mark."
 logo_file = ""
 logo_owner = "Rhode Island Department of Environmental Management"
 
@@ -70,3 +70,23 @@ facts = ["summary", "terrain"]
 title = "North-South Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/North-South_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: North-South Trail."
+fields = ["record"]
+basis = "The record's own source entry: Rhode Island Department of Environmental Management."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.rigis.org/datasets/north-south-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"

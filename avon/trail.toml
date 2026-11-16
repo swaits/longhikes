@@ -34,11 +34,11 @@ relation = 3442182
 note = "Downloaded 2026-11-10; 460 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://avontrail.ca/wp-content/uploads/2025/04/cropped-Avon-Trail_Logo_Horizontal-1-1.png"
 contact = "Avon Trail Association"
-note = "No logo is included. Ask the trail's holder before using its mark."
-logo_file = ""
+note = "The trail's roundel: a white swan in a green circle. It is shown in use in the header of https://avontrail.ca/, set beside the words The Avon Trail as type. Cropped from that header logo; the wording beside the roundel was cut off. No logo terms were found on the site."
+logo_file = "shield.png"
 logo_owner = "Avon Trail Association"
 
 [verification]
@@ -68,3 +68,23 @@ facts = ["official_url", "start", "end", "shape"]
 url = "https://avontrail.ca/about/"
 publisher = "Avon Trail Association"
 facts = ["summary", "start", "end", "terrain", "travel"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Avon Trail."
+fields = ["record"]
+basis = "The record's own source entry: Avon Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://avontrail.ca/wp-content/uploads/2025/04/cropped-Avon-Trail_Logo_Horizontal-1-1.png"
+asked_by = "the dataset's own check"
+outcome = "applied"

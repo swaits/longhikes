@@ -39,7 +39,7 @@ note = "Not recorded: the route's creator does not publish a track."
 status = "no-logo-exists"
 logo_source = ""
 contact = "Steve Roper"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "The route has no emblem of its own. It is a route described in a book and has no holder's site and no marker on the ground. Addresses checked: the publisher's book page at mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country (returned 403 Forbidden this time; an earlier search read it and found the book cover only), mountaineers.org home page (also 403), and Wikimedia Commons (none). A book cover is not a trail emblem. Ask the author before using any mark."
 logo_file = ""
 logo_owner = "Steve Roper"
 
@@ -96,3 +96,14 @@ facts = ["days"]
 title = "Sierra High Route"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Sierra_High_Route"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Sierra High Route."
+fields = ["record"]
+basis = "The record's own source entry: Steve Roper."
+asked_by = "the dataset's own check"
+outcome = "applied"

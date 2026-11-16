@@ -39,7 +39,7 @@ note = "Not recorded: the route's creator does not publish a track."
 status = "no-logo-exists"
 logo_source = ""
 contact = "Brett Tucker (\"Blisterfree\")"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "No crest-style emblem of the route exists at an allowed source. The author's page https://simblissity.net/skit.shtml was read in full: its only route artwork is a banner that sets the words Sky Islands Traverse as display type over a range silhouette (skit-logo-sized.jpg). That is a wordmark banner, not a crest, shield, roundel or blaze that could be cropped out, and the page publishes no stand-alone emblem."
 logo_file = ""
 logo_owner = "Brett Tucker (\"Blisterfree\")"
 
@@ -88,3 +88,14 @@ facts = ["end_lonlat"]
 title = "Sky Islands Traverse"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Sky_Islands_Traverse"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Sky Islands Traverse."
+fields = ["record"]
+basis = "The record's own source entry: Brett Tucker."
+asked_by = "the dataset's own check"
+outcome = "applied"

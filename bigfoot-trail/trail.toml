@@ -34,11 +34,11 @@ relation = 0
 note = "Not recorded: the route is sold, so no track is taken from any source."
 
 [shield]
-status = "logo-not-found"
-logo_source = ""
+status = "use-real-logo"
+logo_source = "https://bigfootdev2.wpengine.com/wp-content/uploads/2019/06/Header-300x300.gif"
 contact = "Bigfoot Trail Alliance"
-note = "No logo is included. No logo was found on the Alliance's home page when read on 2026-11-14. Ask the Alliance before using any mark."
-logo_file = ""
+note = "A roundel reading Bigfoot Trail Alliance, with mountains, a road through conifers and a Bigfoot figure, shown on the Alliance's site bigfoottrail.org. The roundel is the Alliance's logo, and the organisation's name runs round the ring, so it is a close call. The file came from the site's staging host, bigfootdev2.wpengine.com, not the live address. Saved as PNG with transparent corners, unchanged."
+logo_file = "shield.png"
 logo_owner = "Bigfoot Trail Alliance"
 
 [verification]
@@ -110,3 +110,23 @@ facts = ["end_lonlat"]
 title = "Bigfoot Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Bigfoot_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Bigfoot Trail."
+fields = ["record"]
+basis = "The record's own source entry: Bigfoot Trail Alliance."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The trail's own emblem was added as the logo file, shown alone."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://bigfootdev2.wpengine.com/wp-content/uploads/2019/06/Header-300x300.gif"
+asked_by = "the dataset's own check"
+outcome = "applied"

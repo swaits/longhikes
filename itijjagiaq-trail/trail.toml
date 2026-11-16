@@ -33,10 +33,10 @@ relation = 0
 note = "No OpenStreetMap route relation for this trail was found when searched on 2026-11-14 (Overpass name search over Canada)."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Nunavut Parks"
-note = "The Nunavut Parks page shows an image of partner logos in its footer and no logo of the trail. No logo is included here."
+note = "The trail has no emblem of its own. Addresses checked: nunavutparks.com/nunavut_parks/katannilik-territorial-park and its page source (the Nunavut Parks logo, a strip of partner logos in the footer, and photographs), nunavutparks.com home page, the Katannilik management plan and master plan PDFs linked from the park page (agency title pages, no trail mark), the Nunavut Parks guide PDF at gov.nu.ca (the address returned an HTML page, not the PDF), and Wikimedia Commons (none)."
 logo_file = ""
 logo_owner = "Nunavut Parks"
 
@@ -62,3 +62,23 @@ facts = ["summary", "official_url", "start", "end", "shape"]
 url = "https://geogratis.gc.ca/services/geoname/en/geonames/OAUDP"
 publisher = "Natural Resources Canada (Canadian Geographical Names)"
 facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Itijjagiaq Trail."
+fields = ["record"]
+basis = "The record's own source entry: Nunavut Parks."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://nunavutparks.com/nunavut_parks/katannilik-territorial-park/"
+asked_by = "the dataset's own check"
+outcome = "applied"

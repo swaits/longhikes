@@ -36,11 +36,11 @@ note = "OSM super-relation 156553 plus 13 per-state relations; not needed."
 
 [shield]
 status = "use-real-logo"
-logo_source = "https://appalachiantrail.org/"
-contact = "Appalachian Trail Conservancy (appalachiantrail.org); NPS Appalachian NST office"
-note = "ATC owns registered marks; its brand guidelines cover volunteers and one-time uses only, no general licence found. The official emblem of a National Scenic Trail is a federal insignia (18 U.S.C. 701; Federal Register notices of 2000-03-28 cover Ice Age, North Country and Natchez Trace; status for the others not confirmed). Use needs the administering agency's permission."
+logo_source = "https://upload.wikimedia.org/wikipedia/commons/2/24/Appalachian_Trail_Marker_Logo.svg"
+contact = "NPS Appalachian NST office; Appalachian Trail Conservancy"
+note = "The official Appalachian National Scenic Trail marker: a rounded triangle with the AT symbol, 'APPALACHIAN TRAIL / NATIONAL SCENIC TRAIL'. Taken from Wikimedia Commons file 'Appalachian Trail Marker Logo.svg' (a vector copy, public domain as US Government work), whose page gives nps.gov/appa as its origin. nps.gov/appa did not show the marker when read, so the match to the holder's own site was not seen. It replaces the earlier file, which was the Conservancy's own emblem. Federal insignia rules still apply."
 logo_file = "shield.svg"
-logo_owner = "Appalachian Trail Conservancy (appalachiantrail.org); NPS Appalachian NST office"
+logo_owner = "NPS Appalachian National Scenic Trail office"
 
 [verification]
 verified = true
@@ -95,3 +95,23 @@ facts = ["permit", "terrain"]
 title = "Appalachian National Scenic Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Appalachian_National_Scenic_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Appalachian National Scenic Trail."
+fields = ["record"]
+basis = "The record's own source entry: National Park Service Appalachian NST and Appalachian Trail Conservancy."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo file was replaced with the trail's own emblem, shown alone."
+fields = ["shield.logo_source", "shield.contact", "shield.logo_owner", "shield.logo_file"]
+basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://upload.wikimedia.org/wikipedia/commons/2/24/Appalachian_Trail_Marker_Logo.svg"
+asked_by = "the dataset's own check"
+outcome = "applied"

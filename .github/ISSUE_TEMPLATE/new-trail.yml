@@ -19,6 +19,12 @@ body:
         A trail can be listed as a record only, with no track, when no track
         for it may be shared. A track is included only where its source's
         terms allow it to be passed on.
+
+        Before filling in this form, please look at the list of trails that
+        were considered and left out, at https://longhikes.org/left-out/.
+        If your trail is listed there, the decision and its reason are
+        already on record. Suggest it again only if the facts have changed
+        since that decision, and give a page below that shows the change.
   - type: input
     id: name
     attributes:

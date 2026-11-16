@@ -34,10 +34,10 @@ relation = 2654551
 note = "Downloaded 2026-11-10; 28 ways in the main track. release.txt has the source and date."
 
 [shield]
-status = "logo-not-found"
+status = "no-logo-exists"
 logo_source = ""
 contact = "Province of British Columbia"
-note = "No logo is included. Ask the trail's holder before using its mark."
+note = "The trail has no emblem of its own. Addresses checked: bcparks.ca/tweedsmuir-park/hiking (park text, one photograph, the BC Parks wordmark only), bcparks.ca home page, the BC Geographical Names records at apps.gov.bc.ca/pub/bcgnws/names/68181.html and 68161.html (name and history only), and Wikimedia Commons (no emblem file). The former Alexander Mackenzie Heritage Trail Association has no live site that was found, only archive records at Northern BC Archives. No trail marker artwork was found anywhere allowed."
 logo_file = ""
 logo_owner = "Province of British Columbia"
 
@@ -69,3 +69,23 @@ facts = ["summary", "start", "end", "shape", "travel"]
 url = "https://bcparks.ca/tweedsmuir-park/hiking/"
 publisher = "BC Parks"
 facts = ["official_url", "summary", "days", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Alexander MacKenzie Heritage Trail."
+fields = ["record"]
+basis = "The record's own source entry: Province of British Columbia."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://bcparks.ca/tweedsmuir-park/hiking/"
+asked_by = "the dataset's own check"
+outcome = "applied"

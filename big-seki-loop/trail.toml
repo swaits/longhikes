@@ -39,7 +39,7 @@ note = "Downloaded 2026-11-10; 57 ways in the main track. release.txt has the so
 status = "no-logo-exists"
 logo_source = ""
 contact = "Amy and James (Doing Miles)"
-note = "No logo is included; a person-defined route has no emblem. Ask the creator before using any mark."
+note = "No emblem of the route exists at an allowed source. The authors' page https://doingmiles.com/route-big-seki-loop/ was read in full: it shows the authors' Doing Miles site logo, a route map graphic with no emblem, and photographs, but no crest, badge or mark for the route itself. The Doing Miles logo stands for the authors' site, not for this route, so it does not count."
 logo_file = ""
 logo_owner = "Amy and James (Doing Miles)"
 
@@ -90,3 +90,14 @@ facts = ["official_url", "summary", "start", "shape", "days", "season", "months"
 title = "Big SEKI Loop"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Big_SEKI_Loop"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-10"
+change = "The record was added: Big SEKI Loop."
+fields = ["record"]
+basis = "The record's own source entry: Amy and James."
+asked_by = "the dataset's own check"
+outcome = "applied"

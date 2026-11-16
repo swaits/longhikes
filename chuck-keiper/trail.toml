@@ -36,10 +36,10 @@ relation = 13034776
 note = "Relation 13034776 'Chuck Keiper Trail' (version 4, 2024-11-22) with the two loop relations 17072566 (Yost Run Trail Loop, version 1, 11.4 km) and 17072567 (Eddy Lick Trail Loop, version 2, 15.5 km), operator DCNR. They share ways with the main relation, so the joined track is 58.7 km, not the sum of 75.1 km."
 
 [shield]
-status = "logo-not-found"
-logo_source = "https://www.pa.gov/agencies/dcnr"
+status = "no-logo-exists"
+logo_source = ""
 contact = "Pennsylvania Department of Conservation and Natural Resources"
-note = "The DCNR page shows the Commonwealth's own logo. No logo of the trail is included here. Ask the trail's holder before using its mark."
+note = "The trail has no emblem of its own. DCNR says it is marked with orange rectangular blazes, which are not an emblem. Addresses checked: the DCNR Sproul State Forest hiking page at pa.gov/agencies/dcnr (Commonwealth logo only, plus links to the Chuck Keiper North and South map PDFs on elibrary.dcnr.pa.gov, which returned an HTML error page and not the maps), pa.gov home page, the Keystone Trails Association page at kta-hike.org/chuck-keiper-trail.html (two map images and photographs, the KTA logo only), trails.dcnr.pa.gov (agency icons only), and Wikimedia Commons (none)."
 logo_file = ""
 logo_owner = "Pennsylvania Department of Conservation and Natural Resources"
 
@@ -68,3 +68,32 @@ facts = ["official_url", "summary", "shape", "terrain", "travel"]
 url = "https://www.kta-hike.org/chuck-keiper-trail.html"
 publisher = "Keystone Trails Association"
 facts = ["summary", "terrain", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-14"
+change = "The record was added: Chuck Keiper Trail."
+fields = ["record"]
+basis = "The record's own source entry: Pennsylvania Department of Conservation and Natural Resources."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "A track was added from OpenStreetMap relations 13034776, 17072566 and 17072567: 36.5 miles (58.7 km) in 3 parts, 26.6% short of the published 50 miles (80 km). The source changed from none to OpenStreetMap."
+fields = ["source.attribution", "source.licence", "source.licence_text", "source.line_absent_reason", "source.line_file", "source.line_source", "source.osm_only", "source.publisher", "source.status", "source.url"]
+basis = "OpenStreetMap relation 13034776, read on 2026-11-16 under the ODbL."
+basis_url = "https://www.openstreetmap.org/relation/13034776"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
+fields = ["shield.status", "shield.logo_source"]
+basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.pa.gov/agencies/dcnr/recreation/where-to-go/state-forests/find-a-forest/sproul/hiking"
+asked_by = "the dataset's own check"
+outcome = "applied"

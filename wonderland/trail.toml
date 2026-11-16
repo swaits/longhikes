@@ -37,7 +37,7 @@ note = "OSM relation 4111743."
 status = "no-logo-exists"
 logo_source = ""
 contact = "NPS Mount Rainier National Park"
-note = "No trail emblem exists. The file removed on 2026-11-08 was the generic NPS arrowhead (the agency mark, not the trail's), fetched from an NPS park page. The map draws the trail name only."
+note = "No emblem of the trail exists at an allowed source. The National Park Service's Wonderland Trail page https://www.nps.gov/mora/planyourvisit/the-wonderland-trail.htm was read in full: it carries only National Park Service branding, and the arrowhead is the agency's mark, not this trail's. The page's linked profile map and trip planner PDFs are named there as maps and planners, not emblem art."
 logo_file = ""
 logo_owner = "NPS Mount Rainier National Park"
 
@@ -86,3 +86,14 @@ facts = ["days"]
 title = "Wonderland Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Wonderland_Trail"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-09"
+change = "The record was added: Wonderland Trail."
+fields = ["record"]
+basis = "The record's own source entry: National Park Service."
+asked_by = "the dataset's own check"
+outcome = "applied"

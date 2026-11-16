@@ -6,3 +6,4 @@ web/.cache/
 # Local mirrors of other sites, for reference only. Their content is not ours to publish.
 /sources/
 /references/
+/refresh/

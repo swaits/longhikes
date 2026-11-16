@@ -65,6 +65,14 @@ To add one:
 5. If the measured length differs from `length_km` by more than 15%, explain why in `source.length_gap_note` (for example: the trail is partly unbuilt, or the published length counts side trails).
 6. Add a `[[history]]` entry saying the track was refreshed and from what. Run `python3 tools/build_index.py`, then `python3 tools/validate.py` and `python3 tools/check_history.py`.
 
+## The monthly refresh
+
+About once a month the maintainer runs a refresh of the whole dataset. Every record is checked again against the pages it cites and against its holder's or author's current site, the trails in `left-out.toml` are checked against the reason they were left out, and the web is searched for trails and routes that are missing. Tracks whose source has changed and emblems that were not found are looked at again. Nothing it proposes reaches a record until a second reader has opened the cited pages and the maintainer has ruled on what belongs.
+
+It is run by an agent, started with `/refresh-trails` in Claude Code (`/refresh-trails light` for the short version that only verifies records and left-out entries). The runbook, the briefs given to each worker, the rules they follow and the format they stage proposals in are in `.claude/skills/refresh-trails/`. The mechanical steps are in `tools/refresh.py`: `preflight`, `slices`, `links`, `collect` and `apply`. Staged work lives in `refresh/<date>/`, which git ignores, so that none of it can reach a commit.
+
+You do not need any of this to report something. A trail's page has a "Report a problem" link, and a request from a holder or author on the issue tracker is read in the next refresh and sooner if it is simple.
+
 ## Style
 
 - Plain, short English. No sales talk.

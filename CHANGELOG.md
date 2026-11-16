@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-16 - A monthly refresh process for the whole dataset
+
+- The monthly refresh is now written down and can be started with one command. An agent follows the runbook in `.claude/skills/refresh-trails/` (start it with `/refresh-trails`, or `/refresh-trails light` to verify and re-check only). It verifies every record against the pages it cites, re-checks `left-out.toml` and its `waiting` entries, searches for missing trails and routes by region, looks at tracks and emblems, has every proposed change reviewed by a second reader who opens the cited pages, and stops for the maintainer's ruling on borderline trails before anything is applied.
+- Eight briefs, one for each kind of work, and two shared files hold the rules the workers follow: evidence from the holder's or author's own page, no work around a site that refuses automated reads, no stopping a process by name, one Overpass request at a time. The staged proposal format is defined once, in `proposal-format.md`.
+- A new tool, `tools/refresh.py`, does the mechanical parts with the standard library only. `slices` splits the trails and the left-out entries into balanced slices (`--since DAYS` takes only records whose `hike.checked` is older). `links` fetches every address in every record once, with a plain User-Agent, a delay per site and no retry of a refusal, into a CSV. `collect` gathers what the workers staged into one summary. `apply` makes the accepted proposals by targeted edits to the named fields, adds the `[[history]]` entry, and refuses a proposal whose old value no longer matches. It never rewrites a record.
+- Staged work lives in `refresh/<date>/`, which `.gitignore` lists. Workers do not edit the repository; only the apply step does.
+- `CONTRIBUTING.md` has a short section on the refresh. There is no change to any trail record or to the site.
+
 ## 2026-11-16 - Emblems for 81 trails, a history on every record, and a page of what was left out
 
 - 81 trails now show an emblem, up from 41. Each is the trail's own crest, badge or roundel, alone. Where the holder only publishes a larger logo, the emblem was cropped out of it and the lettering or organisation name beside it was cut off. Where the emblem sat on a white surround that could be removed cleanly, the surround was made transparent. 72 are PNG and 9 are SVG.

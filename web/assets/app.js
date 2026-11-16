@@ -4,10 +4,13 @@
       early by prefs.js), and the theme menu in the header
    1b. Saved trails: the Save buttons, the count in the header (lh-saved in localStorage)
    1c. The Saved page (/saved/): the visitor's saved trails, or a list from a link
-   2. Maps: .mapfig[data-map] figures. Data is fetched from data-src (same origin);
-      lines are drawn on a plain graticule first, then on an OpenFreeMap base map
-      when MapLibre and WebGL are available. A trail page's map (data-outdoor) is
-      an outdoor map, with relief and contours, and a switch to the plain one.
+   2. Maps: .mapfig[data-map] figures. Nothing for a map is loaded with the page: when
+      the figure scrolls near the screen (or is touched, or takes focus) the script
+      loads MapLibre (and the contour add-on) from the addresses on its own <script>
+      tag, and fetches the figure's data from data-src (same origin). Lines are drawn
+      on a plain graticule first, then on an OpenFreeMap base map when MapLibre and
+      WebGL are available. A trail page's map (data-outdoor) is an outdoor map, with
+      relief and contours, and a switch to the plain one.
    3. Trail finder (home page): search, filters, sort, URL query state, map/list highlight
    4. Copy-credit buttons
 
@@ -17,6 +20,7 @@
   'use strict';
 
   var root = document.documentElement;
+  var SCRIPT = document.currentScript;  /* this tag: carries the map libraries' addresses (data-maplibre-js ...) */
   var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
   var KM_PER_MI = 1.609344;
   var fmt = new Intl.NumberFormat('en-US');
@@ -846,7 +850,45 @@
   }
 
   var maps = [];
-  var mapStarters = [];
+
+  /* MapLibre's style and script, and the contour add-on on a trail page, are
+     loaded when the first map starts, from the addresses on this script's own
+     tag (layout.py). The scripts run in the order added (async = false), so the
+     add-on finds MapLibre. Resolves when all have loaded or failed; a missing
+     library is noticed by the map, not here. */
+  var libsLoaded = null;
+  function loadLibraries() {
+    if (libsLoaded) return libsLoaded;
+    var d = (SCRIPT && SCRIPT.dataset) || {};
+    function done(el, resolve, before) {
+      el.addEventListener('load', resolve);
+      el.addEventListener('error', resolve);
+      document.head.insertBefore(el, before || null);
+    }
+    var jobs = [];
+    if (d.maplibreCss && !document.querySelector('link[data-maplibre-css]')) {
+      jobs.push(new Promise(function (resolve) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = d.maplibreCss;
+        link.setAttribute('data-maplibre-css', '');
+        /* Before the site's stylesheet, where the page used to carry it: the
+           site's rules for the map's frame must win over MapLibre's. */
+        done(link, resolve, document.head.querySelector('link[rel="stylesheet"]'));
+      }));
+    }
+    [window.maplibregl ? '' : d.maplibreJs, window.mlcontour ? '' : d.contourJs].forEach(function (src) {
+      if (!src) return;
+      jobs.push(new Promise(function (resolve) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = false;
+        done(script, resolve);
+      }));
+    });
+    libsLoaded = Promise.all(jobs);
+    return libsLoaded;
+  }
 
   function initMap(fig) {
     var host = fig.querySelector('.map');
@@ -860,7 +902,6 @@
     var onlyIds = (fig.dataset.ids || '').trim().split(/\s+/).filter(Boolean);
     /* A trail page's map: fetch its outdoor style now, beside the track data. */
     var outdoorUrl = kind === 'overview' ? '' : (fig.dataset.outdoor || '');
-    if (outdoorUrl) fetchOutdoor(outdoorUrl);
     var entry = { kind: kind, map: null, fc: null, defs: defs, fallback: fallback,
                   visibleIds: onlyIds.length ? onlyIds : null, ready: false,
                   mapStarted: false, fullBounds: null, boundsById: null };
@@ -888,8 +929,13 @@
         (kind === 'sketch' ? 'The start and end are drawn on a plain graticule.' : 'The track is drawn on a plain graticule.');
     }
 
-    status.textContent = kind === 'sketch' ? 'Loading the map…' : 'Loading the track…';
-    var dataReady = fetch(fig.dataset.src, { credentials: 'same-origin' })
+    /* Until the map starts the frame holds its size (the CSS), with a note that
+       says what happens next; the page loads nothing for it. */
+    status.textContent = 'The map loads when you scroll to it.';
+    var dataReady = null;
+    function fetchData() {
+      status.textContent = kind === 'sketch' ? 'Loading the map…' : 'Loading the track…';
+      return fetch(fig.dataset.src, { credentials: 'same-origin' })
       .then(function (r) {
         if (!r.ok) throw new Error(r.status);
         return r.json();
@@ -919,6 +965,7 @@
         status.textContent = 'The track data did not load. Downloads on this page are unaffected.';
         return null;
       });
+    }
 
     var resizeTimer;
     window.addEventListener('resize', function () {
@@ -926,11 +973,10 @@
       resizeTimer = setTimeout(redrawFallback, 150);
     });
 
-    /* The MapLibre half of the map. Everything above (the fetch and the
-       fallback drawing) runs as soon as this script does; this part waits
-       until MapLibre is present (see startMaps below), because the page loads
-       this script before the MapLibre script. If it never arrives the
-       fallback drawing stays and fail() says why. */
+    /* The MapLibre half of the map. begin() (below) fetches the data, which
+       draws the fallback, and loads MapLibre in the same breath; this part
+       runs once MapLibre has loaded. If it never arrives the fallback drawing
+       stays and fail() says why. */
     function startMapLibre() {
       if (!window.maplibregl) { dataReady.then(function (fc) { if (fc) fail('the map library did not load'); }); return; }
       if (!webglAvailable()) { dataReady.then(function (fc) { if (fc) fail('WebGL is off in this browser'); }); return; }
@@ -1081,15 +1127,37 @@
       });
     }
 
-    mapStarters.push(function () {
+    /* Start this map: the data, the base map's style and the libraries all
+       load now, side by side. Once only. */
+    function begin() {
       if (entry.mapStarted) return;
       entry.mapStarted = true;
-      startMapLibre();
-    });
-  }
+      if (outdoorUrl) fetchOutdoor(outdoorUrl);
+      dataReady = fetchData();
+      loadLibraries().then(startMapLibre);
+    }
 
-  function startMaps() {
-    mapStarters.forEach(function (start) { start(); });
+    /* When: a fifth of the frame is on the screen and the page has loaded, or the
+       moment it is touched, clicked or focused. A frame below the fold, or only
+       peeking over it, costs the page nothing. A browser without
+       IntersectionObserver starts it once the page has loaded. */
+    function afterLoad(fn) {
+      if (document.readyState === 'complete') fn();
+      else window.addEventListener('load', fn, { once: true });
+    }
+    ['pointerdown', 'focusin', 'keydown'].forEach(function (type) {
+      host.addEventListener(type, begin, { once: true, passive: true });
+    });
+    if ('IntersectionObserver' in window) {
+      var watcher = new IntersectionObserver(function (changes) {
+        if (!changes.some(function (c) { return c.isIntersecting; })) return;
+        watcher.disconnect();
+        afterLoad(begin);
+      }, { threshold: 0.2 });
+      watcher.observe(host);
+    } else {
+      afterLoad(begin);
+    }
   }
 
   function entryFor(id) {
@@ -1201,13 +1269,9 @@
     fitToVisible(entry, ids);
   }
 
-  /* Fetch the line data and draw the fallback at once; start MapLibre now if
-     it is already here, and otherwise when the page has loaded (the deferred
-     MapLibre script follows this one). The finder and the other controls
-     below never wait for it. */
+  /* Each map waits for its moment (initMap): nothing is fetched here. The
+     finder and the other controls below never wait for a map. */
   document.querySelectorAll('.mapfig[data-map]').forEach(initMap);
-  if (window.maplibregl || document.readyState === 'complete') startMaps();
-  else window.addEventListener('load', startMaps);
 
   /* 2b. Sorting every list of trails -----------------------------------------
      The same orders as facets.SORTS in Python, over the rows' data-*
@@ -1265,9 +1329,13 @@
 
   function sortEntriesIn(root, key) {
     root.querySelectorAll('ol.entries').forEach(function (list) {
-      Array.prototype.slice.call(list.querySelectorAll('.entry'))
-        .sort(function (a, b) { return compareEntries(a, b, key); })
-        .forEach(function (li) { list.appendChild(li); });
+      var rows = Array.prototype.slice.call(list.querySelectorAll('.entry'));
+      var sorted = rows.slice().sort(function (a, b) { return compareEntries(a, b, key); });
+      /* The page is written in its default order, so on load the rows are
+         already where they belong: moving 200 of them to the same place costs
+         a full restyle for nothing. */
+      if (sorted.every(function (li, i) { return li === rows[i]; })) return;
+      sorted.forEach(function (li) { list.appendChild(li); });
     });
   }
 

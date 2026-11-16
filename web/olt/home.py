@@ -121,13 +121,18 @@ def gpx_cell(rec):
     return f'<span class="line__status">{common.SWATCH_NONE}{esc(facets.GPX_SHORT[status])}</span>'
 
 
-def entry(rec, *, level=3, extra="", routes_list=False, hidden=False):
+# The first rows of a list are on the first screen: their logos are not lazy-loaded.
+EAGER_ROWS = 4
+
+
+def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=False):
     """One trail in a list. Its data-* attributes drive the filters in app.js.
 
     level: the heading level of the trail's name. extra: HTML placed last in the row.
     routes_list: the Routes list, whose "By <author>" headings already say what the
     row's Route badge and "Route by" line would repeat; both are left out there.
     hidden: written hidden, for app.js to show (the Saved page).
+    eager: the logo is not lazy-loaded (a row of the first screen).
 
     The Save star follows the name in the markup (so it is the next stop for the
     keyboard) but is drawn under the logo, out of the row's flow (style.css
@@ -166,7 +171,7 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False):
     if hidden:
         attrs += " hidden"
     return f"""<li class="entry"{attrs}>
-  {common.plate(rec)}
+  {common.plate(rec, eager=eager)}
   <div class="entry__body">{kicker}
     <{h} class="entry__name"><a href="{esc(common.trail_path(rec))}">{common.name(rec)}</a>{abbr_html}</{h}>
     {common.save_button(rec)}{by}{desc_html}
@@ -444,10 +449,13 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
     noun = ("route" if only_routes else "trail") + ("" if total == 1 else "s")
     lists = ""
     every = ' data-every-trail' if finder or saved else ""
+    seen = 0
     for heading, items, extra_fn in groups:
         level = top + 1 if heading else top
         rows = "\n".join(entry(r, level=level, extra=extra_fn(r) if extra_fn else "",
-                                routes_list=routes_list, hidden=saved) for r in items)
+                                routes_list=routes_list, hidden=saved,
+                                eager=not saved and seen + i < EAGER_ROWS) for i, r in enumerate(items))
+        seen += len(items)
         if heading:
             lists += f'\n      <h{top} class="results__group">{heading}</h{top}>'
         list_id = ' id="entries"' if finder else ""
@@ -613,7 +621,7 @@ def render(records, site):
     return f"""<section class="hero hero--short hero--home" aria-labelledby="hero-title">
   <div class="container hero__inner">
     <h1 id="hero-title" class="lockup"><img class="lockup__mark" src="/assets/favicon.svg" alt="" width="96" height="96">{esc(site.name)}<span class="vh">: long-distance hiking trails of the United States and Canada</span></h1>
-    <p class="hero__tagline">Long-distance hiking trails of the United States and Canada.</p>
+    <p class="hero__tagline">{esc(site.tagline.rstrip("."))}.</p>
     <ul class="hero__tags">
       <li><a href="#finder">Filters</a></li>
       <li><a href="/lists/with-gpx/">GPX</a></li>

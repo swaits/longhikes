@@ -330,11 +330,18 @@ class BuiltSiteTest(unittest.TestCase):
                 for th in re.findall(r"<th\b[^>]*>", head):
                     self.assertIn('scope="col"', th, path)
 
-    def test_app_script_loads_before_maplibre(self):
+    def test_maplibre_is_not_loaded_with_the_page(self):
+        # app.js loads MapLibre when the map scrolls into view or is touched, from the
+        # addresses on its own tag (layout.py); the page itself names no MapLibre file.
         with open(os.path.join(OUT, "index.html"), encoding="utf-8") as f:
             doc = f.read()
-        app, maplibre = doc.index('src="/assets/app.js" defer'), doc.index('maplibre-gl.js" defer')
-        self.assertLess(app, maplibre)
+        tag = re.search(r'<script src="/immutable/app\.[0-9a-f]{10}\.js" defer ([^>]*)></script>', doc)
+        self.assertIsNotNone(tag)
+        self.assertRegex(tag.group(1), r'data-maplibre-js="/immutable/maplibre-gl\.[0-9a-f]{10}\.js"')
+        self.assertRegex(tag.group(1), r'data-maplibre-css="/immutable/maplibre-gl\.[0-9a-f]{10}\.css"')
+        self.assertNotRegex(doc, r'<link[^>]*maplibre')
+        self.assertNotRegex(doc, r'<script src="[^"]*maplibre')
+        self.assertNotIn("data-contour-js", tag.group(1))
 
     def test_not_found_page_has_a_search_form(self):
         with open(os.path.join(OUT, "404.html"), encoding="utf-8") as f:
@@ -550,8 +557,10 @@ class RenderUnitTest(unittest.TestCase):
             rec = sample_record(name="A & B")
             n = pages.render_site([rec], out, repo, site=site.Site("N", "T"))
             # trail page + home + 404 + places hub + 1 place + lists hub + routes,
-            # sources, logos, about, data, schema, changelog, left out, saved (no list holds MIN_SIZE trails)
-            self.assertEqual(n, 15)
+            # sources, logos, about, data, schema, changelog, left out, saved (no list holds MIN_SIZE trails),
+            # and the two reference pages, the glossary and the method (the tables, authors, recent and
+            # linked-trails pages need at least MIN_SIZE trails and are not built for one)
+            self.assertEqual(n, 17)
             with open(os.path.join(out, "trails", "x", "index.html"), encoding="utf-8") as f:
                 self.assertIn("A &amp; B", f.read())
             with open(os.path.join(out, "index.html"), encoding="utf-8") as f:

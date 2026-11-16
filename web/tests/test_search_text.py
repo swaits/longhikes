@@ -46,14 +46,14 @@ def levels(html_text):
 
 class TrailTitleTest(unittest.TestCase):
     def test_common_name_abbreviation_miles_and_what_the_page_offers(self):
-        self.assertEqual(trail.page_title(at(), S), "Appalachian Trail (AT): 2,198 miles, map and GPX")
+        self.assertEqual(trail.page_title(at(), S), "Appalachian Trail (AT): 2,198 miles (3,537 km), map and GPX")
 
     def test_the_record_name_is_used_where_there_is_no_common_name(self):
         rec = gpx(fake(1, km=160))
         rec["name"] = "Hoosier Heritage Trail"
         del rec["short_name"]
         rec["derived"]["length_mi"] = 99
-        self.assertEqual(trail.page_title(rec, S), "Hoosier Heritage Trail: 99 miles, map and GPX")
+        self.assertEqual(trail.page_title(rec, S), "Hoosier Heritage Trail: 99 miles (160 km), map and GPX")
 
     def test_gpx_and_map_only_where_the_page_has_them(self):
         rec = at()
@@ -71,10 +71,10 @@ class TrailTitleTest(unittest.TestCase):
         rec["kind"] = "route"
         rec["route"] = {"creator": "Steve Roper", "line_policy": "sold"}
         title = trail.page_title(rec, S)
-        self.assertEqual(title, "Sierra High Route (SHR): 195-mile route")
+        self.assertEqual(title, "Sierra High Route (SHR): 195-mile route by Steve Roper")
         self.assertNotIn("GPX", title)
-        rec["name"], rec["short_name"] = "Tiny", "T"
-        self.assertEqual(trail.page_title(rec, S), "Tiny (T): 195-mile route by Steve Roper")
+        rec["name"], rec["short_name"] = "A Route With A Rather Long Name", "RWLN"
+        self.assertEqual(trail.page_title(rec, S), "A Route With A Rather Long Name (RWLN): 195-mile route")
 
     def test_pieces_go_in_a_stated_order_and_the_length_stays(self):
         rec = at()
@@ -84,9 +84,9 @@ class TrailTitleTest(unittest.TestCase):
         title = trail.page_title(rec, S)
         self.assertLessEqual(len(title), ROOM)
         self.assertIn("2,198 miles", title)
-        rec["common_name"] = "A Very Long Name For A Trail That Goes On And On"
+        rec["common_name"] = "A Very Long Name For A Trail That Goes On"
         title = trail.page_title(rec, S)
-        self.assertEqual(title, "A Very Long Name For A Trail That Goes On And On: 2,198 miles")
+        self.assertEqual(title, "A Very Long Name For A Trail That Goes On: 2,198 miles, GPX")
 
     def test_kilometres_follow_only_where_there_is_room(self):
         rec = gpx(fake(1, km=80))
@@ -97,7 +97,7 @@ class TrailTitleTest(unittest.TestCase):
     def test_the_page_carries_the_title_and_the_common_name_in_its_heading(self):
         rec = at()
         title, description, body, _ = trail.render(rec, S)
-        self.assertEqual(title, "Appalachian Trail (AT): 2,198 miles, map and GPX")
+        self.assertEqual(title, "Appalachian Trail (AT): 2,198 miles (3,537 km), map and GPX")
         self.assertIn('<h1>Appalachian Trail <span class="titleblock__abbr">AT</span></h1>', body)
         self.assertIn("Full name: Appalachian National Scenic Trail", body)
         self.assertIn("Common name", body)
@@ -161,7 +161,7 @@ class PlaceAndListTitleTest(unittest.TestCase):
             r["id"], r["name"] = f"n{i}", f"Trail {i}"
         recs[0]["derived"]["kind"] = recs[0]["kind"] = "route"
         title = regions.region_page("ca-nl", recs, S)[0]
-        self.assertLessEqual(len(title) + len(" · Long Hikes"), common.TITLE_LIMIT)
+        self.assertLessEqual(len(title), common.TITLE_LIMIT)
         self.assertTrue(title.startswith("Long Trails in Newfoundland and Labrador"))
 
     def test_a_place_with_one_trail(self):
@@ -187,12 +187,73 @@ class PlaceAndListTitleTest(unittest.TestCase):
 
     def test_the_home_page_has_its_own_title_and_description(self):
         page = layout.layout("", "<h1>x</h1>", path="/", site=S, description=home.description(self.recs))
-        self.assertIn("<title>Long-Distance Hiking Trails of the US and Canada · Long Hikes</title>", page)
+        # 48 + " · Long Hikes" is 61 characters: the site name is dropped from <title>, and the
+        # share titles never carry it.
+        self.assertIn("<title>Long-Distance Hiking Trails of the US and Canada</title>", page)
+        self.assertIn('<meta property="og:title" content="Long-Distance Hiking Trails of the US and Canada">', page)
+        self.assertIn('<meta name="twitter:title" content="Long-Distance Hiking Trails of the US and Canada">', page)
         self.assertNotIn("A tagline", page.split("</head>")[0].split('name="description"')[1].split(">")[0])
         self.assertLessEqual(len(home.description(self.recs)), common.DESCRIPTION_LIMIT)
         self.assertIn("6 long-distance hiking trails and routes", home.description(self.recs))
         bare = layout.layout("", "x", path="/", site=site.Site("N", "Tag"))
         self.assertIn("<title>N: Tag</title>", bare)
+
+
+class TitleAndShareTextTest(unittest.TestCase):
+    def head(self, title, description="Short."):
+        return layout.layout(title, "<h1>x</h1>", path="/x/", site=S, description=description).split("</head>")[0]
+
+    def test_the_site_name_is_kept_in_title_only_where_the_whole_is_60_or_fewer(self):
+        fits = "T" * (60 - len(" · Long Hikes"))
+        head = self.head(fits)
+        self.assertIn(f"<title>{fits} · Long Hikes</title>", head)
+        over = "T" * (60 - len(" · Long Hikes") + 1)
+        self.assertIn(f"<title>{over}</title>", self.head(over))
+
+    def test_share_titles_never_carry_the_site_name(self):
+        for title in ("Short", "T" * 47, "T" * 70):
+            head = self.head(title)
+            self.assertIn(f'<meta property="og:title" content="{title}">', head)
+            self.assertIn(f'<meta name="twitter:title" content="{title}">', head)
+
+    def test_a_title_that_only_its_name_makes_long_is_not_cut(self):
+        rec = at()
+        rec["common_name"] = rec["name"] = "N" * 58
+        rec["short_name"] = ""
+        self.assertEqual(trail.page_title(rec, S), "N" * 58)  # the name fits, the length does not
+        rec["common_name"] = rec["name"] = "N" * 70
+        self.assertEqual(trail.page_title(rec, S), "N" * 70 + f": {rec['derived']['length_mi']:,} miles")
+
+    def test_share_description_is_at_most_125_and_cut_at_a_sentence_or_word(self):
+        self.assertEqual(common.share_description("A short one."), "A short one.")
+        text = ("A trail of 2,198 miles (3,537 km) across 14 states, usually 5 to 7 months. "
+                "It follows the crest of the Appalachian Mountains from Georgia to Maine and is the longest.")
+        got = common.share_description(text)
+        self.assertEqual(got, "A trail of 2,198 miles (3,537 km) across 14 states, usually 5 to 7 months.")
+        words = ("A trail of 2,198 miles (3,537 km) across 14 states, usually 5 to 7 months and "
+                 "following the crest of the Appalachian Mountains from Georgia to Maine, and more")
+        got = common.share_description(words)
+        self.assertLessEqual(len(got), 125)
+        self.assertTrue(got.endswith("\u2026"))
+        self.assertTrue(words.startswith(got[:-1]))
+        self.assertIsNone(re.search(r"(,|\b(and|or|but|with|to|of|the|in))\u2026$", got), got)
+        for limit in range(40, 125):
+            cut = common.share_description(words, limit)
+            self.assertLessEqual(len(cut), limit)
+            self.assertIsNone(re.search(r"([,;:]|\b(and|or|but|with|to|of|the|a|in|by|from))\u2026?$", cut), cut)
+
+    def test_the_search_description_is_unchanged_and_the_share_one_is_cut_from_it(self):
+        desc = ("A trail of 2,198 miles (3,537 km) across 14 states, usually 5 to 7 months. "
+                "It follows the crest of the Appalachian Mountains from Georgia to Maine, the longest in the country.")
+        head = self.head("T", desc)
+        self.assertIn(f'<meta name="description" content="{desc}">', head)
+        self.assertIn('<meta property="og:description" content="A trail of 2,198 miles (3,537 km) across 14 states, usually 5 to 7 months.">', head)
+        self.assertIn('<meta name="twitter:description" content="A trail of 2,198 miles (3,537 km) across 14 states, usually 5 to 7 months.">', head)
+
+    def test_the_footer_links_the_glossary_the_method_and_the_authors(self):
+        foot = layout.footer(S)
+        for href in ("/glossary/", "/method/", "/authors/"):
+            self.assertEqual(foot.count(f'href="{href}"'), 1, href)
 
 
 class HeadingOrderTest(unittest.TestCase):

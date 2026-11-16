@@ -66,7 +66,16 @@
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 
-# Self-hosted MapLibre CSS/JS is not fingerprinted yet, so keep it short.
+# The site's stylesheet, scripts, fonts and the map libraries are named for a hash
+# of their content and served from /immutable/ (web/olt/fingerprint.py writes them
+# there at build time, and every page names them by the hashed address), so a file
+# never changes under its name: cache it for a year and never ask again. The rule
+# is by directory, not by file type, so it cannot reach a file that is not hashed.
+/immutable/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# What stays under /assets/ (the icons, the social card, the base-map style, the
+# licence texts) keeps its address, so it revalidates.
 /assets/*
   Cache-Control: public, max-age=300, must-revalidate
 

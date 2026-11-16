@@ -50,20 +50,66 @@ def partial_short_text(rec):
                   f"{words.length(rec['length_km'], mi=rec['derived']['length_mi'])} published")
 
 
-# A search result shows about this much. The title limit counts the whole title,
-# the site name included.
-TITLE_LIMIT = 65
+# A search result shows about 60 characters of a title and about 155 of a description; a
+# social preview shows about 125 characters of a description. The site name is shown by
+# the search engine on its own line, so " \u00b7 <site name>" is added to the <title> only when
+# the whole title still has TITLE_LIMIT characters or fewer.
+TITLE_LIMIT = 60
 DESCRIPTION_LIMIT = 155
+SHARE_DESCRIPTION_LIMIT = 125
 
 
 def title_room(site):
-    """How many characters a page's own title may have, before " · <site name>"."""
-    return TITLE_LIMIT - len(site.name) - len(" \u00b7 ")
+    """How many characters a page's own title may have: TITLE_LIMIT, with or without the site name."""
+    return TITLE_LIMIT
 
 
 def fit_title(options, site):
     """The first of options (richest first) that fits title_room; else the last, the shortest."""
     return next((o for o in options if len(o) <= title_room(site)), options[-1])
+
+
+def title_tag(title, site):
+    """The text of <title>: "<title> \u00b7 <site name>" where that is TITLE_LIMIT characters or
+    fewer, else the title alone."""
+    full = f"{title} \u00b7 {site.name}"
+    return full if len(full) <= TITLE_LIMIT else title
+
+
+_DANGLING = {"and", "or", "but", "nor", "with", "to", "of", "the", "a", "an", "in", "on", "at", "by",
+             "for", "from", "as", "than", "that", "which", "is", "are", "was", "were", "about",
+             "across", "through", "over", "under", "between", "into", "near", "via"}
+_ABBREVIATIONS = {"st", "mt", "mts", "ft", "no", "vs", "u.s", "d.c", "dr", "jr", "sr", "approx", "e.g", "i.e"}
+
+
+def share_description(text, limit=SHARE_DESCRIPTION_LIMIT):
+    """text for a social preview: at most `limit` characters, cut from the search description at the
+    end of a sentence where one falls past half the limit, else at the end of a word, with an
+    ellipsis. A cut never leaves a comma, a colon or a conjunction (or other joining word) last."""
+    text = re.sub(r"\s+", " ", text).strip()
+    if len(text) <= limit:
+        return text
+    best = 0
+    for m in re.finditer(r"[.!?](?= )", text[:limit + 1]):
+        if m.end() > limit:
+            break
+        last = text[:m.start()].rsplit(" ", 1)[-1].lower().rstrip(".")
+        if last in _ABBREVIATIONS:
+            continue
+        best = m.end()
+    if best >= limit // 2:
+        return text[:best]
+    head = text[:limit - 1]
+    if text[limit - 1] != " ":
+        head = head.rsplit(" ", 1)[0] if " " in head else head
+    head = head.rstrip(" ,;:.")
+    while True:
+        word = head.rsplit(" ", 1)[-1].lower().rstrip(",;:")
+        if " " in head and (word in _DANGLING or head[-1] in ",;:"):
+            head = head.rsplit(" ", 1)[0].rstrip(" ,;:.")
+        else:
+            break
+    return head + "\u2026"
 
 
 def plain_name(rec):

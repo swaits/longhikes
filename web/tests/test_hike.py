@@ -266,8 +266,8 @@ class ListTest(unittest.TestCase):
         self.assertFalse(browse.is_shown(76, 100))
 
     def test_thin_list_is_not_shown(self):
-        # three loops among twenty trails: below MIN_SIZE, so no link and no page
-        recs = [fake(i, hike={"shape": "loop"} if i < 3 else {"shape": "point-to-point"}) for i in range(20)]
+        # four loops among twenty trails: below MIN_SIZE, so no link and no page
+        recs = [fake(i, hike={"shape": "loop"} if i < 4 else {"shape": "point-to-point"}) for i in range(20)]
         for i in range(5):
             recs[i]["tier"] = "national"
         keys = [lst.key for lst, _ in browse.shown(recs)]
@@ -277,7 +277,7 @@ class ListTest(unittest.TestCase):
         body = home.render(recs, GH)
         self.assertNotIn('href="/lists/loops/"', body)
         self.assertIn('href="/lists/national-scenic-trails/"', body)
-        recs[3]["hike"] = {"shape": "loop"}
+        recs[4]["hike"] = {"shape": "loop"}
         self.assertIn("loops", [lst.key for lst, _ in browse.shown(recs)])
 
     def test_rules_name_no_trail(self):

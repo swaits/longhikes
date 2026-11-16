@@ -3,7 +3,11 @@
     render_site(records, out_dir, repo_root)
 
 writes:
-    /assets/...                 web/assets/ copied verbatim (style.css, app.js, fonts, vendor)
+    /assets/...                 web/assets/ copied as it is (icons, social card, base-map style), less the
+                                files below that are fingerprinted
+    /immutable/...              the stylesheet, scripts, fonts and map libraries, each named for a hash of
+                                its content; written by web/build.py through olt/fingerprint.py once the
+                                pages are, which also removes their copies from /assets/
     /index.html                 home: overview map and the trail finder with every record
     /trails/<id>/index.html     one page per record
     /trails/<id>/trail.toml     the raw record; release.txt beside it where the trail has one
@@ -26,14 +30,16 @@ import json
 import os
 import shutil
 
-from . import browse, cards, docs, facets, feed, home, layout, leftout, regions, saved, seo, site as site_settings, thumbs, trail
+from .markup import esc
+from . import authors, browse, cards, datafiles, docs, facets, feed, home, layout, leftout, pagekit, placefacets, reference, regions, saved, seo, site as site_settings, standing, thumbs, trail, views
 
 WEB_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS_DIR = os.path.join(WEB_DIR, "assets")
 
 
 def copy_assets(out_dir, assets_dir=ASSETS_DIR):
-    """Copy web/assets/ to <out>/assets/, replacing what was there."""
+    """Copy web/assets/ to <out>/assets/, replacing what was there. The fingerprinted files
+    (olt/fingerprint.py) are copied too and taken out again by fingerprint.publish()."""
     dest = os.path.join(out_dir, "assets")
     if os.path.isdir(dest):
         shutil.rmtree(dest)
@@ -83,13 +89,14 @@ def render_site(records, out_dir, repo_root, site=None):
     pages = 0
     dates = {}  # page path -> its own date (YYYY-MM-DD), for the sitemap
     everything = seo.newest(records)
+    author_links = authors.link_map(records, repo_root)
     for rec in records:
         # Read by common.name() wherever a page shows the record's name as text.
         rec["derived"]["name_lang"] = site.name_lang.get(rec["id"], "")
     for rec in records:
         copy_record_files(rec, out_dir, repo_root)
         thumbs.prepare(rec, out_dir, repo_root)
-        title, description, body, needs_map = trail.render(rec, site, records)
+        title, description, body, needs_map = trail.render(rec, site, records, author_links=author_links)
         path = f"/trails/{rec['id']}/"
         card, card_alt = cards.prepare(rec, out_dir)
         layout.write_page(out_dir, path, layout.layout(
@@ -106,38 +113,132 @@ def render_site(records, out_dir, repo_root, site=None):
     layout.write_page(out_dir, "/404.html", not_found_page(site))
     pages += 2
 
-    def add(path, title, description, body_html, *, maps=False, jsonld=None, recs=None, date="", alternates=()):
-        """Write a page. recs: the trails it lists, which give its date and its ItemList."""
+    def add(path, title, description, body_html, *, maps=False, jsonld=None, recs=None, date="", alternates=(), about=None):
+        """Write a page. recs: the trails it lists, which give its date and its ItemList.
+        about: a node the page is about (an author's Person), added to its graph."""
         nonlocal pages
         if recs is not None:
             jsonld = seo.collection_jsonld(path, site, title=title, description=description, recs=recs)
+            if about:
+                jsonld[0]["about"] = {"@id": about["@id"]}
+                jsonld.append(about)
         layout.write_page(out_dir, path, layout.layout(
             title, body_html, path=path, description=description, maps=maps, site=site, jsonld=jsonld,
             alternates=alternates))
         dates[path] = date or (seo.newest(recs) if recs is not None else everything)
         pages += 1
 
+    shown = browse.shown(records)
+    facet_plan = placefacets.plan(records)
+    facets_of_place = placefacets.pages_by_place(facet_plan)
     t, d, b = regions.regions_index_page(records, site)
     add("/regions/", t, d, b)  # every trail is on it: the newest of them
     by_slug, _ = regions.collect_regions(records)
     region_paths = []
     for slug in sorted(by_slug):
-        t, d, b, needs_map = regions.region_page(slug, records, site)
+        here = [(p["lst"].title, p["path"], len(p["recs"])) for p in facets_of_place.get(slug, [])]
+        t, d, b, needs_map = regions.region_page(slug, records, site, facet_pages=here)
         path = f"/regions/{slug}/"
         region_paths.append(path)
         add(path, t, d, b, maps=needs_map, recs=by_slug[slug]["records"])
+    # Pages for one kind of trail in one place (olt/placefacets.py).
+    for p in facet_plan:
+        t, d, b, needs_map = placefacets.page(p, records, site, facet_plan)
+        region_paths.append(p["path"])
+        add(p["path"], t, d, b, maps=needs_map, recs=p["recs"])
+    # The view pages: each is built only when the records give it at least MIN_SIZE trails.
+    view_paths = []
+    labels = {"/": "Every trail", "/lists/": "All lists", "/regions/": "Places", "/data/schema/": "Record schema"}
+    extras = []      # (group, title, blurb, path, how many) for /lists/
+    for lst, _ in shown:
+        labels[browse.path(lst)] = lst.title
+
+    pending = []     # (path, title, description, body, add() options): written once every view is known
+
+    def view(path, group, link_label, blurb, built):
+        """Hold a view page built as (title, description, body, recs...) and note it for /lists/."""
+        t, d, b = built[:3]
+        recs = built[3] if len(built) > 3 and isinstance(built[3], list) else None
+        pending.append((path, t, d, b, {"recs": recs}))
+        view_paths.append(path)
+        labels[path] = link_label
+        if group:
+            extras.append((group, link_label, blurb, path, len(recs) if recs else 0))
+
+    for c in datafiles.collections(repo_root):
+        built = standing.collection_page(c, records, site)
+        if built:
+            view(standing.collection_path(c), "tables", f"{c['name']} trails compared",
+                 f"The {c['name']} trails side by side: length, states, time, high point, climb and season.", built)
+    ranked = []
+    for spec in standing.RANKINGS:
+        built = standing.ranking_page(spec, records, site)
+        if built:
+            path = f"{standing.NUMBERS}{spec[0]}/"
+            ranked.append((path, spec[1], len(built[3])))
+            view(path, "tables", spec[1], f"{len(built[3])} trails with the figure, ranked, with the caveats.", built)
+    if ranked:
+        view(standing.NUMBERS, "tables", "Long trails by the numbers",
+             "The longest and shortest, trails by state and province, and links to the rankings.",
+             standing.numbers_page(records, site, ranked))
+    author_groups = authors.author_pages(records, repo_root)
+    authors_built = any(facets.kind(r) == "route" for r in records)
+    if authors_built:
+        t, d, b, routes = authors.index_page(records, site, repo_root)
+        view(authors.INDEX, "tables", "Route authors", f"The {len(routes)} routes by who published them, and where.",
+             (t, d, b, routes))
+        for g in author_groups:
+            t, d, b, needs_map, routes, person = authors.author_page(g, records, site, author_groups)
+            path = authors.path(g)
+            pending.append((path, t, d, b, {"maps": needs_map, "recs": routes, "about": person}))
+            view_paths.append(path)
+            labels[path] = f"Routes by {g['name']}"
+    built = views.recent_page(records, site)
+    if built:
+        view(views.RECENT, "changes", "Recently added and changed",
+             "The newest additions and the newest changes to what each trail says.", built)
+    built = views.connected_page(records, site)
+    if built:
+        view(views.CONNECTED, "changes", "Linked long trails", "Trails whose own descriptions name another trail.", built)
+    t, d, b = reference.method_page(records, site, repo_root)
+    pending.append((reference.METHOD, t, d, b, {"jsonld": seo.article_jsonld(reference.METHOD, site, title=t, description=d,
+                                                                              date=everything)}))
+    view_paths.append(reference.METHOD)
+    labels[reference.METHOD] = "Method"
+    extras.append(("reference", "How the figures are measured", "What each figure means and how far to trust it.", reference.METHOD, 0))
+    glossary = reference.glossary_page(repo_root, labels, site)
+    if glossary:
+        t, d, b, terms = glossary
+        pending.append((reference.GLOSSARY, t, d, b, {"jsonld": seo.glossary_jsonld(
+            reference.GLOSSARY, site, title=t, description=d, terms=terms, date=everything)}))
+        view_paths.append(reference.GLOSSARY)
+        extras.append(("reference", "Glossary", f"{len(terms)} trail terms as this site uses them.", reference.GLOSSARY, len(terms)))
+    for path, t, d, b, options in pending:
+        b = pagekit.append_nav(b, pagekit.more_nav(path, extras) + reference.terms_nav(path, repo_root))
+        add(path, t, d, b, **options)
+    # Lists, each with its figures, related lists and terms.
     list_paths = []
-    shown = browse.shown(records)
     for lst, recs in shown:
         if lst.key == "routes":
             continue  # /routes/ below, built whether or not the list is shown
-        t, d, b, needs_map = regions.list_page(lst, recs, len(records), site)
         path = browse.path(lst)
+        before = standing.figures_section(recs) if lst.table else ""
+        same = [(o, len(r)) for o, r in shown if o.group == lst.group and o.key != lst.key]
+        after = ""
+        if same:
+            heading = next(h for k, h, _ in browse.GROUPS if k == lst.group)
+            after += (f'<nav class="region-nav" aria-label="{esc(heading)}">{esc(heading)}: ' + " · ".join(
+                f'<a href="{esc(browse.path(o))}">{esc(o.title)}</a> ({n})' for o, n in same) + "</nav>")
+        after += placefacets.places_nav(lst, facet_plan)
+        after += reference.terms_nav(path, repo_root)
+        t, d, b, needs_map = regions.list_page(lst, recs, len(records), site, records=records, before=before, after=after)
         list_paths.append(path)
         add(path, t, d, b, maps=needs_map, recs=recs)
-    t, d, b = regions.lists_index_page(records, site)
+    t, d, b = regions.lists_index_page(records, site, extras)
     add("/lists/", t, d, b)
-    t, d, b, needs_map = regions.routes_page(records, site, repo_root)
+    t, d, b, needs_map = regions.routes_page(records, site, repo_root, after=reference.terms_nav("/routes/", repo_root),
+                                             author_pages=({c: authors.credit_html(c, links) for c, links in author_links.items()}
+                                                       if authors_built else None))
     add("/routes/", t, d, b, maps=needs_map, recs=[r for r in records if facets.kind(r) == "route"])
     t, d, b = docs.sources_page(records, site, repo_root)
     add("/sources/", t, d, b)
@@ -166,6 +267,6 @@ def render_site(records, out_dir, repo_root, site=None):
     if site.base_url:  # its links are absolute
         with open(os.path.join(out_dir, "llms.txt"), "w", encoding="utf-8", newline="\n") as f:
             f.write(seo.llms_txt(records, site, changelog))
-    seo.write_seo_files(out_dir, seo.all_paths(records, region_paths + ["/lists/"] + list_paths), site, dates)
+    seo.write_seo_files(out_dir, seo.all_paths(records, region_paths + ["/lists/"] + list_paths, view_paths), site, dates)
     print(f"pages written {pages}: {len(records)} trail pages, home, 404, places, lists, about")
     return pages

@@ -1814,6 +1814,9 @@ td .linklist a { font-weight: 400; }
 /* 11. Hiker pages: the top of a trail page, collections ------------------- */
 
 .trail-lede { max-inline-size: 46rem; font-size: var(--step-1); line-height: 1.5; text-wrap: pretty; }
+/* The generated "In brief" paragraph and the date of the last check, under the lede. */
+.trail-brief { max-inline-size: 46rem; margin-block-start: var(--space-3); line-height: 1.55; text-wrap: pretty; }
+.trail-checked { margin-block-start: var(--space-2); }
 .trail-actions { margin-block-start: var(--space-4); }
 .page-head .titleblock { margin-block-end: var(--space-4); }
 
@@ -2206,3 +2209,16 @@ html:not(.js) .saved-body { display: none; }
   cursor: pointer;
 }
 .save-note:empty { padding: 0; border: 0; box-shadow: none; pointer-events: none; }
+
+/* Authors with the most routes: the shelf card with its routes kept on narrow screens too. */
+.shelves--wide { grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr)); margin-block-end: var(--space-6); }
+.shelf--author { grid-template-rows: auto 1fr auto; align-content: start; gap: var(--space-3); }
+.shelf--author .shelf__items { margin: 0; }
+.shelf--author .shelf__items li { align-items: baseline; }
+.shelf--author .shelf__more { margin: 0; padding-block-start: var(--space-2); }
+.author-list { padding: 0; list-style: none; max-inline-size: var(--measure); }
+.author-list li { padding-block: var(--space-2); border-block-start: 1px dotted var(--rule); line-height: 1.45; overflow-wrap: anywhere; }
+@media (max-width: 40rem) {
+  .shelf--author { grid-template-rows: auto 1fr auto; padding: var(--space-4); }
+  .shelf--author .shelf__items, .shelf--author .shelf__more { display: block; }
+}

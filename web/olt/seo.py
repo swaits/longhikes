@@ -84,6 +84,15 @@ def modified(rec):
     return max(record_dates(rec), default="")
 
 
+def checked(rec):
+    """The newest date the record itself was checked on: its verification, its [hike] facts or its
+    source read. This is the date a trail page shows as "Last checked" and the page's
+    dateModified. A history entry is a change or a request, not a check, so it is left out."""
+    found = [rec.get("verification", {}).get("date"), hike.table(rec).get("checked"),
+             rec.get("source", {}).get("source_checked")]
+    return max((str(d) for d in found if d and re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(d))), default="")
+
+
 def newest(recs):
     """The newest modified() among records: the date of a page that lists them."""
     return max((modified(r) for r in recs), default="")
@@ -334,7 +343,7 @@ def trail_jsonld(rec, site, *, title, description):
     """The nodes for one trail page: its ItemPage and its Place. layout.layout adds the breadcrumb."""
     path = f"/trails/{rec['id']}/"
     place = place_node(rec, site)
-    return [page_node("ItemPage", path, site, name=title, description=description, date=modified(rec),
+    return [page_node("ItemPage", path, site, name=title, description=description, date=checked(rec),
                       main={"@id": place["@id"]}, breadcrumb_id=breadcrumb_id(site, path)), place]
 
 
@@ -348,13 +357,43 @@ def collection_jsonld(path, site, *, title, description, recs, date=""):
                       breadcrumb_id=breadcrumb_id(site, path))]
 
 
+def glossary_jsonld(path, site, *, title, description, terms, date=""):
+    """The glossary page: a WebPage whose main entity is a DefinedTermSet of the terms it defines."""
+    items = [{"@type": "DefinedTerm", "name": t["term"], "description": t["definition"],
+              "url": url_of(site, path) + "#" + t["id"], "inDefinedTermSet": {"@id": url_of(site, path) + "#terms"}}
+             for t in terms]
+    main = {"@type": "DefinedTermSet", "@id": url_of(site, path) + "#terms", "name": title, "hasDefinedTerm": items}
+    return [page_node("WebPage", path, site, name=title, description=description, date=date, main=main,
+                      breadcrumb_id=breadcrumb_id(site, path))]
+
+
+def article_jsonld(path, site, *, title, description, date=""):
+    """A plain page of text and tables (the method page): a WebPage."""
+    return [page_node("WebPage", path, site, name=title, description=description, date=date,
+                      breadcrumb_id=breadcrumb_id(site, path))]
+
+
+def person_node(site):
+    """The maintainer, as site.toml names them: a Person with their profile page as `sameAs`.
+    {} when site.toml names no maintainer. Name and profile page only."""
+    if not site.maintainer_name:
+        return {}
+    node = {"@type": "Person", "@id": url_of(site, "/") + "#maintainer", "name": site.maintainer_name}
+    if site.maintainer_url:
+        node["url"] = site.maintainer_url
+        node["sameAs"] = [site.maintainer_url]
+    return _clean(node)
+
+
 def organization_node(site):
-    """The publisher: name, address, logo, and the repository and contact site.toml holds."""
+    """The publisher: name, address, logo, the repository and contact site.toml holds, and
+    the maintainer as its founder (schema.org's property for the person behind a small organisation)."""
     node = {"@type": "Organization", "@id": url_of(site, "/") + "#organization", "name": site.name,
             "url": url_of(site, "/"), "description": site.tagline,
             "logo": url_of(site, "/assets/apple-touch-icon.png"),
-            "sameAs": [site.repo_url] if site.repo_url else []}
-    contact = site.contact_url
+            "sameAs": [site.repo_url] if site.repo_url else [],
+            "founder": person_node(site)}
+    contact = site.contact
     if contact.startswith("mailto:"):
         node["email"] = contact[len("mailto:"):]
     elif contact:
@@ -405,7 +444,8 @@ def dataset_jsonld(records, site, *, version=""):
         "isAccessibleForFree": True,
         "keywords": ["long-distance hiking trails", "hiking", "backpacking", "thru-hiking", "GPX", "GeoJSON",
                      "trail length", "open data"] + countries,
-        "creator": publisher,
+        "creator": person_node(site) or publisher,
+        "maintainer": person_node(site),
         "publisher": publisher,
         "sameAs": site.repo_url,
         "spatialCoverage": spatial,
@@ -496,10 +536,11 @@ def write_seo_files(out_dir, paths, site, lastmod=None):
         os.remove(sitemap)  # a stale sitemap with wrong URLs is worse than none
 
 
-def all_paths(records, region_paths):
-    """Every indexable page path, in nav order then record pages."""
+def all_paths(records, region_paths, extra_paths=()):
+    """Every indexable page path, in nav order then record pages. extra_paths: the view pages
+    (tables, authors, glossary and the rest) that pages.render_site builds."""
     paths = ["/", "/regions/"] + list(region_paths) + [
         "/routes/", "/sources/", "/logos/", "/about/", "/data/",
-        "/data/schema/", "/data/changelog/", "/left-out/"]
+        "/data/schema/", "/data/changelog/", "/left-out/"] + list(extra_paths)
     paths += [common.trail_path(r) for r in sorted(records, key=lambda r: r["id"])]
     return paths

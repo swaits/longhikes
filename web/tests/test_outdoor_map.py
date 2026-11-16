@@ -164,25 +164,28 @@ class OutdoorPagesTest(unittest.TestCase):
         cls.records = records.load_records(ROOT)
 
     def test_trail_maps_are_outdoor_and_load_the_add_on(self):
-        contour = f'<script src="{layout.CONTOUR_JS}" defer></script>'
-        maplibre = f'<script src="{layout.MAPLIBRE_JS}" defer></script>'
+        # The page names the add-on (and MapLibre) on app.js's own tag; app.js loads them when the
+        # map starts, MapLibre first (test_map_start). No page loads either with its own tag.
+        from olt import fingerprint
+        contour = f'data-contour-js="{fingerprint.url(layout.CONTOUR_JS)}"'
         with_map = 0
         for rec in self.records:
             page = read(OUT, "trails", rec["id"], "index.html")
             figures = re.findall(r'<figure class="mapfig[^"]*"[^>]*>', page)
             mapped = [f for f in figures if 'data-map="' in f]
+            self.assertNotIn("maplibre", re.sub(r'<script src="/immutable/app[^>]*>', "", page), rec["id"])
             if mapped:
                 with_map += 1
                 for fig in mapped:
                     self.assertIn(f'data-outdoor="{layout.OUTDOOR_STYLE}"', fig, rec["id"])
                 self.assertEqual(page.count(contour), 1, rec["id"])
-                self.assertLess(page.index(maplibre), page.index(contour), rec["id"])
+                self.assertEqual(page.count(f'data-maplibre-js="{fingerprint.url(layout.MAPLIBRE_JS)}"'), 1, rec["id"])
             else:
-                self.assertNotIn(contour, page, rec["id"])
+                self.assertNotIn("data-contour-js", page, rec["id"])
                 self.assertNotIn("data-outdoor", page, rec["id"])
         self.assertGreater(with_map, 100)
         self.assertTrue(os.path.isfile(os.path.join(OUT, *layout.OUTDOOR_STYLE.strip("/").split("/"))))
-        self.assertTrue(os.path.isfile(os.path.join(OUT, *layout.CONTOUR_JS.strip("/").split("/"))))
+        self.assertTrue(os.path.isfile(os.path.join(OUT, *fingerprint.url(layout.CONTOUR_JS).strip("/").split("/"))))
 
     def test_overview_maps_stay_plain(self):
         paths = ["index.html", os.path.join("routes", "index.html"), os.path.join("lists", "index.html")]

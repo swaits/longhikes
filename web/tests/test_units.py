@@ -103,7 +103,7 @@ class LengthListsTest(unittest.TestCase):
     def test_the_hide_rule_is_kept(self):
         self.assertFalse(browse.is_shown(3, 100))
         self.assertFalse(browse.is_shown(80, 100))
-        self.assertTrue(browse.is_shown(4, 100))
+        self.assertTrue(browse.is_shown(browse.MIN_SIZE, 100))
 
 
 class RoundStepsTest(unittest.TestCase):

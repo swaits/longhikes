@@ -132,10 +132,14 @@ class SortKeysTest(unittest.TestCase):
 
 
 class ListDefaultsTest(unittest.TestCase):
-    def test_only_four_lists_open_in_another_order(self):
+    def test_only_the_lists_defined_by_an_order_open_in_another(self):
+        # the length bands open longest first, the shortest bands and the time lists in their own order
         special = {lst.key: lst.sort for lst in browse.LISTS if lst.sort != "name"}
-        self.assertEqual(special, {"longest": "length-desc", "under-100-miles": "length-asc",
-                                   "a-week-or-less": "time-asc", "one-to-two-weeks": "time-asc"})
+        self.assertEqual(special, {
+            "longest": "length-desc", "500-to-1000-miles": "length-desc", "200-to-500-miles": "length-desc",
+            "100-to-200-miles": "length-desc", "under-100-miles": "length-asc", "under-200-miles": "length-asc",
+            "weekend": "time-asc", "a-week-or-less": "time-asc", "one-to-two-weeks": "time-asc",
+            "two-to-four-weeks": "time-asc", "a-month-or-more": "time-asc"})
         for lst in browse.LISTS:
             self.assertIn(lst.sort, facets.SORT_LABEL, lst.key)
             self.assertFalse(hasattr(lst, "order"), lst.key)

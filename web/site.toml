@@ -5,8 +5,10 @@
 
 name = "Long Hikes"
 
-# One line under the name: the default meta description, and what the data files say the site is.
-tagline = "Long-distance hiking trails of the United States and Canada, with their tracks where they may be shared"
+# One line under the name: the home page's headline, the text of the site card
+# (assets/og.png, made by web/tools/make_cards.py), the default meta description, and what the
+# data files say the site is. No full stop; claim only what the site does.
+tagline = "Long-distance hiking trails of the United States and Canada"
 
 # The home page's <title> before the name is added: what the site is, in the words
 # people search with, about 50 characters. Empty: "<name>: <tagline>".
@@ -27,8 +29,16 @@ repo_branch = "main"
 # Where to write to the maintainers (a contact page or a mailto: address), for
 # logo removal requests and other questions. When this or repo_url is set, the
 # About and Logos pages link the documents' "open an issue" and "write to the
-# maintainers" wording to it. Empty: the documents' wording is left as it is.
+# maintainers" wording to it. Empty: the repository's issue chooser when repo_url is a
+# GitHub repository (site.contact), else the documents' wording is left as it is.
 contact_url = ""
+
+# The person who maintains the site, and the page that says who they are, for the About
+# page's "Who maintains this" and for the home page's Organization and the Dataset in the
+# structured data. Both empty: the About page has no such section and the markup names no
+# person. No email address and no other personal detail belongs here.
+maintainer_name = "Stephen Waits"
+maintainer_url = "https://github.com/swaits"
 
 # Language of record names that are not English, by record id (a BCP 47 tag).
 # Every place a page shows one of these names as text marks it with lang="..",

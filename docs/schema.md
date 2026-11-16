@@ -317,3 +317,42 @@ The `reason` values mirror the inclusion rule:
 | `mostly-unbuilt` | Mostly unbuilt or still proposed. |
 | `not-published-as-route` | A route its author has not published as a route, with a stated length, for others to follow; or a walk no land manager publishes as a named trail with a length. |
 | `waiting` | Not left out for good. `waiting_for` says what would change the decision. |
+
+## `glossary.toml`: the words this site uses
+
+One file at the top level, `glossary.toml`, holds the trail terms the site uses, as it uses them. The site shows it as the Glossary page (`/glossary/`) and links each list or page to the terms that apply to it. The file holds one `[[term]]` table per term, in the order the page shows them. `tools/validate.py` checks it in `check_datafiles.py`.
+
+A definition is short, plain and true of how this dataset uses the word. It states no fact about a particular trail, and it uses no dash as punctuation.
+
+| Field | Type | Meaning | Example |
+| --- | --- | --- | --- |
+| `id` | string | Lower case words joined by hyphens. The anchor of the entry on the page. Unique. | `"high-route"` |
+| `term` | string | The word as the page shows it. Unique, ignoring case. | `"High route"` |
+| `definition` | string | One to three plain sentences, ending in a full stop. | `"A route through high country that links passes, ridges and basins, and may leave maintained trail to do it."` |
+| `source_url` | string, where present | An `http(s)` address of a page that defines or describes the term, where one exists. | `"https://www.aldhawest.org/triple-crown"` |
+| `see` | array of strings, where present | Site paths of the lists and pages where the term applies, each starting and ending with `/`. The entry links to each that exists, and each such page links back to the entry. | `["/lists/high-routes/"]` |
+
+## `collections.toml`: named sets of trails
+
+One file at the top level, `collections.toml`, names sets of trails that the site sets side by side on one page, such as the three trails of the Triple Crown. The page is at `/<id>/`. It shows each member's published length, states and provinces, usual time, high point, climb and season in one table, in the order of `members`. It does not rank or recommend.
+
+| Field | Type | Meaning | Example |
+| --- | --- | --- | --- |
+| `id` | string | Lower case words joined by hyphens. The page's address. Unique. | `"triple-crown"` |
+| `name` | string | The set's name as it is used. | `"Triple Crown"` |
+| `members` | array of strings | The `id` of two or more records, in the order the definition names them. Each must be a record in the dataset. | `["appalachian", "pacific-crest", "continental-divide"]` |
+| `definition` | string | What the set is, in a sentence, as its source states it. | `"The Triple Crown of Hiking is the award ..."` |
+| `source_url` | string | An `http(s)` address of the page that states the definition. | `"https://www.aldhawest.org/triple-crown"` |
+| `source_publisher` | string | Who publishes that page. | `"American Long Distance Hiking Association, West"` |
+
+## `authors.toml`: who the route credits name
+
+A route's author is the free text of its `route.creator`. One file at the top level, `authors.toml`, names the people and organisations those credits name, with every exact credit that names each. The site gives every route author a page of their own (`/authors/<name>/`), however many routes they have, and an author with no entry stands alone as written. An entry is needed where a person is credited in more than one form, where one credit names two or more people in full (the credit is listed under each, so the route is on each page and each page says who else is credited), and where the page should be marked up as a person. A nickname, a company or an association is left without an entry, and is not marked up as a person.
+
+`/authors/` opens with a block for each author who has at least `PROMINENT_MIN` routes (3, set in `web/olt/authors.py`), and lists the others below, alphabetically. An author whose routes reach it moves up with no other change.
+
+| Field | Type | Meaning | Example |
+| --- | --- | --- | --- |
+| `name` | string | The name as the credits write it. Unique. | `"Andrew Skurka"` |
+| `credits` | array of strings | One or more exact `route.creator` values that credit this author. Each must be the `route.creator` of at least one route and contain the name. The same credit may be listed under each author it names. | `["Andrew Skurka", "Andrew Skurka and Ryan Jordan"]` |
+| `kind` | string, optional | `person` (the default) or `organisation`. Only a `person` page carries a schema.org `Person`. | `"organisation"` |

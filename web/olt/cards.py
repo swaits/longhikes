@@ -73,3 +73,14 @@ def stored_fingerprint(path):
             break
         pos += 12 + size
     return ""
+
+
+def site_lines(site):
+    """The two texts the site card shows: the site's name and its headline (the tagline, as
+    the home page prints it, with a full stop)."""
+    return site.name, site.tagline.rstrip(".") + "."
+
+
+def site_fingerprint(site):
+    """Like fingerprint(), for the site card assets/og.png."""
+    return hashlib.sha1("\n".join(site_lines(site)).encode("utf-8")).hexdigest()[:12]

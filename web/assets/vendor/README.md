@@ -1,7 +1,8 @@
 # Third-party assets
 
-Served from `/assets/`, so pages make no requests to CDNs or font services at
-runtime. Map tiles, glyphs and sprites still come from OpenFreeMap, and the
+Served from the site's own address (the build writes each file as
+`/immutable/<name>.<hash>.<ext>`, see `web/olt/fingerprint.py`), so pages make
+no requests to CDNs or font services at runtime. Map tiles, glyphs and sprites still come from OpenFreeMap, and the
 trail maps' elevation tiles from Terrain Tiles on AWS.
 
 ## MapLibre GL JS

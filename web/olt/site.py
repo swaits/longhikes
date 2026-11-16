@@ -12,7 +12,7 @@ class Site:
     """The settings every page needs. Build one with load()."""
 
     def __init__(self, name, tagline, base_url="", repo_url="", repo_branch="main",
-                 contact_url="", name_lang=None, home_title=""):
+                 contact_url="", name_lang=None, home_title="", maintainer_name="", maintainer_url=""):
         if not name:
             raise ValueError("site.toml: name must not be empty")
         self.name = name
@@ -23,6 +23,10 @@ class Site:
         self.repo_url = repo_url.rstrip("/")
         self.repo_branch = (repo_branch or "main").strip() or "main"
         self.contact_url = contact_url.strip()
+        # Who maintains the site, and the page about them: shown on the About page and
+        # named in the structured data. Both are public by the owner's choice.
+        self.maintainer_name = maintainer_name.strip()
+        self.maintainer_url = maintainer_url.strip()
         # record id -> language tag of its name ("fr"), for names that are not English
         self.name_lang = dict(name_lang or {})
 
@@ -34,6 +38,18 @@ class Site:
     def issues_url(self):
         """Where to report an error, or "" when repo_url is unset."""
         return self.repo_url + "/issues" if self.repo_url else ""
+
+    @property
+    def issue_chooser_url(self):
+        """The repository's issue chooser (its forms and a blank issue), or "" when repo_url
+        is not a GitHub repository."""
+        return self.repo_url + "/issues/new/choose" if self.repo_url and self.is_github else ""
+
+    @property
+    def contact(self):
+        """Where to write to the maintainers: contact_url, else the issue chooser, else "".
+        No email address is ever built here; a mailto: contact_url is the owner's own choice."""
+        return self.contact_url or self.issue_chooser_url
 
     @property
     def is_github(self):
@@ -106,7 +122,8 @@ def from_file(path):
                 base_url=data.get("base_url", ""), repo_url=data.get("repo_url", ""),
                 repo_branch=data.get("repo_branch", "main"),
                 contact_url=data.get("contact_url", ""), name_lang=data.get("name_lang", {}),
-                home_title=data.get("home_title", ""))
+                home_title=data.get("home_title", ""),
+                maintainer_name=data.get("maintainer_name", ""), maintainer_url=data.get("maintainer_url", ""))
 
 
 @functools.cache

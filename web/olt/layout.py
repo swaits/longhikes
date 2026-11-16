@@ -18,7 +18,7 @@ scripts or styles (the Content-Security-Policy forbids them).
 import json
 import os
 
-from . import common, seo, site as site_settings
+from . import common, fingerprint, seo, site as site_settings
 from .markup import Markup, attrs, esc, json_block
 
 NAV = (
@@ -35,15 +35,21 @@ NAV_PARENT = {"/trails/": "/", "/lists/": "/", "/routes/": "/",
 
 FEED_PATH = "/feed.xml"  # the Atom feed of the changelog (olt/feed.py)
 
+# The fonts every page draws above the fold: the body face and the three weights of the
+# condensed sans (labels, tiles, headings). A weight that arrives after the first paint swaps
+# in with different letter widths, and the page shifts as the lines re-wrap (the home page's
+# row of lists moved by 0.15 before the 500 and 600 were here).
 FONT_PRELOADS = (
     "/assets/fonts/source-serif-4-latin.woff2",
     "/assets/fonts/ibm-plex-sans-condensed-400-latin.woff2",
+    "/assets/fonts/ibm-plex-sans-condensed-500-latin.woff2",
+    "/assets/fonts/ibm-plex-sans-condensed-600-latin.woff2",
 )
 MAPLIBRE_CSS = "/assets/vendor/maplibre-gl/maplibre-gl.css"
 MAPLIBRE_JS = "/assets/vendor/maplibre-gl/maplibre-gl.js"
 # The outdoor map of the trail pages: its style, named on each trail map figure
 # (data-outdoor) for app.js to fetch, and the contour add-on (maplibre-contour),
-# loaded on those pages only (layout(outdoor=True)).
+# loaded with MapLibre on those pages only (layout(outdoor=True)).
 OUTDOOR_STYLE = "/assets/map/outdoor.json"
 CONTOUR_JS = "/assets/vendor/maplibre-contour/maplibre-contour.js"
 
@@ -139,6 +145,7 @@ def footer(site):
         <li><a href="/regions/">Places</a></li>
         <li><a href="/lists/">Lists</a></li>
         <li><a href="/routes/">Routes</a></li>
+        <li><a href="/authors/">Route authors</a></li>
         <li class="js-only"><a href="{SAVED_PATH}">Saved trails</a></li>
       </ul>
     </nav>
@@ -146,6 +153,8 @@ def footer(site):
       <h2 id="footer-project">About</h2>
       <ul>
         <li><a href="/about/">About {esc(site.name)}</a></li>
+        <li><a href="/method/">Method: how figures are made</a></li>
+        <li><a href="/glossary/">Glossary</a></li>
         <li><a href="/data/">Data and downloads</a></li>
         <li><a href="/sources/">Sources and their terms</a></li>
         <li><a href="/logos/">Logos</a></li>
@@ -189,15 +198,18 @@ def layout(title, body, *, path, description="", maps=False, outdoor=False, scri
            jsonld=None, og_type="website", noindex=False, image="", image_alt="", alternates=()):
     """Return a complete HTML document.
 
-    title        the page's own title ("Arizona National Scenic Trail"); the site
-                 name is appended. Empty for the home page: site.toml's
+    title        the page's own title ("Arizona National Scenic Trail"). The <title>
+                 appends " · <site name>" only when the whole is 60 characters or
+                 fewer; the share titles (og:title, twitter:title) never carry it. Empty for the home page: site.toml's
                  home_title, or "<name>: <tagline>" where that is not set.
     body         the page content (HTML, Markup or str), placed inside <main>.
     path         the page's site path, e.g. "/regions/" (canonical link, nav state).
-    description  meta description; defaults to the site tagline.
-    maps         True to load MapLibre (pages with a .mapfig[data-map]).
+    description  meta description (155 characters); defaults to the site tagline. The share
+                 descriptions (og:description, twitter:description) are cut from it to 125.
+    maps         True on a page with a .mapfig[data-map]: app.js is given the addresses of
+                 MapLibre, and loads it when the map scrolls into view or is touched.
     outdoor      True as well on a page whose map is an outdoor map (a trail
-                 page): loads the contour add-on after MapLibre, deferred.
+                 page): app.js loads the contour add-on with MapLibre.
     scripts      extra same-origin script URLs, loaded with defer after app.js.
     data         optional object, embedded as <script type="application/json" id="page-data">.
     site         settings (olt.site.Site); defaults to web/site.toml.
@@ -213,13 +225,15 @@ def layout(title, body, *, path, description="", maps=False, outdoor=False, scri
     """
     site = site or site_settings.load()
     title = title or site.home_title
-    full_title = f"{title} · {site.name}" if title else f"{site.name}: {site.tagline}"
+    tag = common.title_tag(title, site) if title else f"{site.name}: {site.tagline}"
+    share_title = title or tag
     description = description or site.tagline
+    share_text = common.share_description(description)
     canonical = "" if noindex else site.canonical(path)
     head = [
         '<meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width, initial-scale=1">',
-        f"<title>{esc(full_title)}</title>",
+        f"<title>{esc(tag)}</title>",
         f'<meta name="description" content="{esc(description)}">',
     ]
     if noindex:
@@ -227,13 +241,13 @@ def layout(title, body, *, path, description="", maps=False, outdoor=False, scri
     if canonical:
         head.append(f'<link rel="canonical" href="{esc(canonical)}">')
     head += [
-        f'<meta property="og:title" content="{esc(full_title)}">',
-        f'<meta property="og:description" content="{esc(description)}">',
+        f'<meta property="og:title" content="{esc(share_title)}">',
+        f'<meta property="og:description" content="{esc(share_text)}">',
         f'<meta property="og:type" content="{esc(og_type)}">',
         f'<meta property="og:site_name" content="{esc(site.name)}">',
         '<meta name="twitter:card" content="summary_large_image">',
-        f'<meta name="twitter:title" content="{esc(full_title)}">',
-        f'<meta name="twitter:description" content="{esc(description)}">',
+        f'<meta name="twitter:title" content="{esc(share_title)}">',
+        f'<meta name="twitter:description" content="{esc(share_text)}">',
     ]
     if canonical:
         head.append(f'<meta property="og:url" content="{esc(canonical)}">')
@@ -260,21 +274,22 @@ def layout(title, body, *, path, description="", maps=False, outdoor=False, scri
     ]
     head += [f'<link rel="alternate" type="{esc(kind)}" href="{esc(href)}"{attrs(title=name)}>'
              for href, kind, name in alternates]
-    head += [f'<link rel="preload" href="{f}" as="font" type="font/woff2" crossorigin>' for f in FONT_PRELOADS]
-    if maps:
-        head.append(f'<link rel="stylesheet" href="{MAPLIBRE_CSS}">')
+    head += [f'<link rel="preload" href="{fingerprint.url(f)}" as="font" type="font/woff2" crossorigin>' for f in FONT_PRELOADS]
     head += [
-        '<link rel="stylesheet" href="/assets/style.css">',
+        f'<link rel="stylesheet" href="{fingerprint.url("/assets/style.css")}">',
         # Sets the theme and unit preference before first paint (no inline scripts allowed).
-        '<script src="/assets/prefs.js"></script>',
+        f'<script src="{fingerprint.url("/assets/prefs.js")}"></script>',
     ]
-    # app.js first: deferred scripts run in order, and the finder and the rest of the
-    # page must not wait for MapLibre (app.js starts the maps when MapLibre arrives).
-    head.append('<script src="/assets/app.js" defer></script>')
+    # The page's one script. A page with a map does not load MapLibre (200 KB of script, 65 KB
+    # of style) with the page: app.js loads these three files itself, when the map scrolls
+    # into view or is touched, from the addresses it is given here.
+    libs = {}
     if maps:
-        head.append(f'<script src="{MAPLIBRE_JS}" defer></script>')
+        libs = {"data-maplibre-css": MAPLIBRE_CSS, "data-maplibre-js": MAPLIBRE_JS}
         if outdoor:
-            head.append(f'<script src="{CONTOUR_JS}" defer></script>')
+            libs["data-contour-js"] = CONTOUR_JS
+    libs = "".join(f' {name}="{fingerprint.url(src)}"' for name, src in libs.items())
+    head.append(f'<script src="{fingerprint.url("/assets/app.js")}" defer{libs}></script>')
     head += [f'<script src="{esc(s)}" defer></script>' for s in scripts]
     data_block = json_block(data, "page-data") if data is not None else ""
     return f"""<!doctype html>

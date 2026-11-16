@@ -1,0 +1,166 @@
+# Route authors, by the exact credit each route's record gives (`route.creator`). Fields are in
+# docs/schema.md (the authors section).
+#
+# A route's credit is free text. An author with an entry here is a named person or organisation, and
+# every exact credit that names them is listed, so one page lists all their routes:
+#   - one person credited in several forms (Andrew Skurka, Brett Tucker);
+#   - a credit that names two or more people ("Jake Blood and Jennifer Pharr Davis") is listed under
+#     each of them, so the route is on each page and each page says who else is credited. Only people
+#     the credit names in full are given an entry: "John and Monica Chapman" and "Amy and James
+#     (Doing Miles)" give no full name for each, so they stand as written, as one author;
+#   - a person credited in one form only, so that the page can mark them up as a person. `kind`
+#     is "person" (the default) or "organisation".
+# A credit that has no entry stands alone as its own author and is not marked up as a person: a
+# nickname, a company, an association and "the author of a blog" are all left that way.
+
+[[author]]
+name = "Andrew Skurka"
+credits = [
+  "Andrew Skurka",
+  "Andrew Skurka and Ryan Jordan",
+]
+
+[[author]]
+name = "Ryan Jordan"
+credits = ["Andrew Skurka and Ryan Jordan"]
+
+[[author]]
+name = "Brett Tucker"
+credits = [
+  "Brett Tucker",
+  'Brett Tucker ("Blisterfree")',
+  'Brett Tucker ("Blisterfree") and collaborators',
+  'Brett Tucker ("Blisterfree") and partner, simBLISSity Ultralight Designs',
+]
+
+[[author]]
+name = "Alan Dixon"
+credits = ["Alan Dixon and Don Wilson"]
+
+[[author]]
+name = "Don Wilson"
+credits = ["Alan Dixon and Don Wilson"]
+
+[[author]]
+name = "Jake Blood"
+credits = ["Jake Blood and Jennifer Pharr Davis"]
+
+[[author]]
+name = "Jennifer Pharr Davis"
+credits = ["Jake Blood and Jennifer Pharr Davis"]
+
+[[author]]
+name = "Joe Mitchell"
+credits = ["Joe Mitchell and Mike Coronella"]
+
+[[author]]
+name = "Mike Coronella"
+credits = ["Joe Mitchell and Mike Coronella"]
+
+[[author]]
+name = "Ky Harkey"
+credits = ["Ky Harkey and Anna Claire Eddington"]
+
+[[author]]
+name = "Anna Claire Eddington"
+credits = ["Ky Harkey and Anna Claire Eddington"]
+
+[[author]]
+name = "Luc Mehl"
+credits = ["Luc Mehl and Sarah Histand"]
+
+[[author]]
+name = "Sarah Histand"
+credits = ["Luc Mehl and Sarah Histand"]
+
+[[author]]
+name = "Liz Thomas"
+credits = [
+  "Liz Thomas",
+  "Sea to Sea Trail Foundation (folded); guide by Liz Thomas",
+]
+
+[[author]]
+name = "Sea to Sea Trail Foundation"
+credits = ["Sea to Sea Trail Foundation (folded); guide by Liz Thomas"]
+kind = "organisation"
+
+[[author]]
+name = "Aria Zoner"
+credits = ["Aria Zoner"]
+
+[[author]]
+name = "Brian Lucido"
+credits = ["Brian Lucido"]
+
+[[author]]
+name = "Cam Honan"
+credits = ["Cam Honan"]
+
+[[author]]
+name = "Dan Stenziano"
+credits = ["Dan Stenziano"]
+
+[[author]]
+name = "Eric Poulin"
+credits = ["Eric Poulin"]
+
+[[author]]
+name = "Erik Schlimmer"
+credits = ["Erik Schlimmer"]
+
+[[author]]
+name = "Jamal Green"
+credits = ["Jamal Green"]
+
+[[author]]
+name = "Kevin Silvernale"
+credits = ["Kevin Silvernale"]
+
+[[author]]
+name = "Michael Kauffmann"
+credits = ["Michael Kauffmann"]
+
+[[author]]
+name = "Mike White"
+credits = ["Mike White"]
+
+[[author]]
+name = "Pam Neely"
+credits = ["Pam Neely"]
+
+[[author]]
+name = "Philip Stone"
+credits = ["Philip Stone"]
+
+[[author]]
+name = "Ron Strickland"
+credits = ["Ron Strickland"]
+
+[[author]]
+name = "Steve Roper"
+credits = ["Steve Roper"]
+
+[[author]]
+name = "Thomas Winnett"
+credits = ["Thomas Winnett"]
+
+[[author]]
+name = "Kevin \"LarryBoy\" DeVries"
+credits = ['Kevin "LarryBoy" DeVries']
+
+[[author]]
+name = "Ryan \"Dirtmonger\" Sylva"
+credits = ['Ryan "Dirtmonger" Sylva']
+
+[[author]]
+name = "Donovan \"Iceman\" Rice"
+credits = ['Donovan "Iceman" Rice']
+
+[[author]]
+name = "M. J. Eberhart"
+credits = ["M. J. Eberhart (trail name Nimblewill Nomad)"]
+
+[[author]]
+name = "Paul Mags"
+credits = ["Paul Mags (PMags.com)"]

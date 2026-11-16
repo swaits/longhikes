@@ -1,0 +1,10 @@
+# Named sets of trails that the site sets side by side on one page. Each member is the id of a
+# record. Fields are in docs/schema.md (the collections section).
+
+[[collection]]
+id = "triple-crown"
+name = "Triple Crown"
+members = ["appalachian", "pacific-crest", "continental-divide"]
+definition = "The Triple Crown of Hiking is the award the American Long Distance Hiking Association, West gives for walking the whole of the Appalachian, Pacific Crest and Continental Divide trails."
+source_url = "https://www.aldhawest.org/triple-crown"
+source_publisher = "American Long Distance Hiking Association, West"

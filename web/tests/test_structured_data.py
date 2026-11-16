@@ -196,7 +196,7 @@ class JsonLdTest(unittest.TestCase):
             self.assertEqual(place["url"], f"{BASE}/trails/{rec['id']}/")
             page = next(n for n in nodes if n["@type"] == "ItemPage")
             self.assertEqual(page["mainEntity"]["@id"], place["@id"])
-            self.assertEqual(page["dateModified"], seo.modified(rec))
+            self.assertEqual(page["dateModified"], seo.checked(rec))
             self.assertRegex(page["dateModified"], r"^\d{4}-\d{2}-\d{2}$")
             count += 1
         self.assertEqual(count, len(self.records))
@@ -285,7 +285,7 @@ class JsonLdTest(unittest.TestCase):
         self.assertTrue(os.path.isfile(os.path.join(OUT, "assets", "apple-touch-icon.png")))
         # only what site.toml holds: the repository, and a contact when one is set
         self.assertEqual(org.get("sameAs", []), [SITE.repo_url] if SITE.repo_url else [])
-        self.assertEqual("email" in org or "contactPoint" in org, bool(SITE.contact_url))
+        self.assertEqual("email" in org or "contactPoint" in org, bool(SITE.contact))
         web = next(n for n in home if n["@type"] == "WebSite")
         self.assertEqual(web["publisher"], {"@id": org["@id"]})
         data = nodes_of(self.pages["data/index.html"])
@@ -303,7 +303,9 @@ class JsonLdTest(unittest.TestCase):
             self.assertTrue(os.path.isfile(os.path.join(OUT, *path.split("/"))), path)
         self.assertTrue(all("name" in v for v in ds["variableMeasured"]))
         self.assertIn("United States", ds["description"])
-        self.assertEqual(ds["creator"]["name"], SITE.name)
+        # one maintainer, named by name and profile page: the Person is the creator, the site the publisher
+        self.assertEqual(ds["creator"]["name"], SITE.maintainer_name or SITE.name)
+        self.assertEqual(ds["publisher"]["name"], SITE.name)
 
     def test_no_wording_the_house_style_forbids(self):
         for path in ("data/index.html", "index.html", "trails/long-trail/index.html"):
@@ -346,6 +348,15 @@ class CardsTest(unittest.TestCase):
         for rec in self.records:
             stored = cards.stored_fingerprint(os.path.join(WEB, "cards", f"{rec['id']}.png"))
             self.assertEqual(stored, cards.fingerprint(rec), f"{rec['id']}: card is stale")
+
+    def test_site_card_is_not_stale(self):
+        """assets/og.png shows the site name and tagline from web/site.toml. A changed setting
+        fails here until web/tools/make_cards.py has redrawn it."""
+        cfg = site.from_file(os.path.join(WEB, "site.toml"))
+        self.assertEqual(cards.stored_fingerprint(os.path.join(WEB, "assets", "og.png")),
+                         cards.site_fingerprint(cfg), "assets/og.png is stale")
+        self.assertEqual(thumbs.png_size(os.path.join(WEB, "assets", "og.png")), (1200, 630))
+        self.assertEqual(meta(read("index.html"), "og:image"), f"{BASE}/assets/og.png")
 
     def test_no_card_for_a_record_that_is_gone(self):
         ids = {r["id"] for r in self.records}

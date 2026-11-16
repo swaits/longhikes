@@ -83,7 +83,7 @@ def link_requests(html, site):
     to the maintainers, when site.toml says where (repo_url, contact_url).
     The wording is left as the documents have it; with neither set, nothing changes."""
     issue = site.issues_url or site.contact_url
-    contact = site.contact_url or site.repo_url
+    contact = site.contact or site.repo_url
     if issue:
         for phrase in ("Open an issue", "open an issue", "opening an issue"):
             html = _link_text(html, phrase, issue)
@@ -284,6 +284,30 @@ def _count_line(records, key, value):
     return sum(1 for r in records if str(r.get(key, "")) == value)
 
 
+def maintainer_section(site):
+    """The About page's "Who maintains this", from site.toml and facts the repository holds:
+    the name and the profile page, the licence, the sources, how a correction is made, and what
+    the site does not do. "" when site.toml names no maintainer. No email address, no biography."""
+    if not site.maintainer_name:
+        return ""
+    who = esc(site.maintainer_name)
+    if site.maintainer_url:
+        who = f'<a href="{esc(site.maintainer_url)}">{who}</a>'
+    ask = "open an issue on GitHub"
+    if site.contact:
+        ask = f'<a href="{esc(site.contact)}">open an issue on GitHub</a>'
+    return f"""<section aria-labelledby="who-maintains"><h2 id="who-maintains">Who maintains this</h2>
+<p>{esc(site.name)} is maintained by {who}. It is an open project: the data, the code and every change are in a public repository.</p>
+<ul>
+<li>The records and the compiled index are public domain (CC0 1.0). Each track keeps the licence of its source.</li>
+<li>Every fact in a record names the page it was read on, and each record keeps a history of what changed and why.</li>
+<li>To correct a fact, suggest a trail or ask for a track or logo to be removed, {ask}. Every trail page has its own &ldquo;Report a problem&rdquo; link.</li>
+<li>The site has no ads, no accounts, no tracking and no analytics. Your theme, units and saved trails stay in your own browser. Maps load their tiles from OpenFreeMap.</li>
+</ul>
+</section>
+"""
+
+
 def about_page(records, site, repo_root):
     """(title, description, body) for /about/: the hub for the project and the dataset."""
     readme = read_doc(repo_root, "README.md")
@@ -344,6 +368,7 @@ site calls them trails.</p>
 {what}
 </section>
 
+{maintainer_section(site)}
 <section aria-labelledby="how-trails-are-chosen"><h2 id="how-trails-are-chosen">How trails are chosen</h2>
 <p>A trail is listed when it is a named, continuous walk, or a named loop, of at least 50&nbsp;miles (80&nbsp;km)
 in the United States or Canada. It is either an official trail, looked after as one trail by a land agency or

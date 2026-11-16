@@ -8,7 +8,7 @@ import os
 import re
 import urllib.parse
 
-from . import browse, common, elevation, facets, hike, related, words
+from . import browse, common, elevation, facets, hike, related, seo, words
 from .layout import OUTDOOR_STYLE
 from .markup import Markup, esc
 
@@ -94,6 +94,7 @@ def org_name(text):
 
 # Page head ------------------------------------------------------------------
 
+
 def kind_word(rec):
     return "route" if common.is_route(rec) else "trail"
 
@@ -127,6 +128,20 @@ def lead_line(rec):
     return rec.get("designation", "")
 
 
+def lead_html(rec, lead, author_links=None):
+    """The lead line as HTML; on a route, the author's name in it links to the author's page
+    (author_links: {credit: [(name, path)]} from olt/authors.py)."""
+    links = (author_links or {}).get(facets.author(rec)) if common.is_route(rec) else None
+    if not links:
+        return common.rich(lead)
+    text = str(esc(lead))
+    for name, href in links:
+        n = str(esc(name))
+        if n in text:
+            text = text.replace(n, f'<a href="{esc(href)}">{n}</a>', 1)
+    return Markup(text)
+
+
 def route_definition():
     """What a route is, one tap away from the Kind line of a route's page (no script needed)."""
     return Markup(f'<details class="define"><summary>What is a route?</summary>'
@@ -150,7 +165,215 @@ def official_link(rec):
     return None
 
 
-def page_head(rec):
+# The kinds of country, as an adjective before "country": "forest and alpine country".
+TERRAIN_ADJECTIVE = {"alpine": "alpine", "forest": "forest", "desert": "desert", "coast": "coastal",
+                     "prairie": "prairie", "canyon": "canyon", "tundra": "tundra", "lakes": "lake",
+                     "farmland": "farmland"}
+# What the walking is (docs/schema.md `travel`).
+WALKING_ALONE = {
+    "trail": "It is on built or maintained trail all or nearly all the way.",
+    "trail-and-road": "It is on trail, with long stretches on roads.",
+    "some-cross-country": "It is mostly on trail or road, with stretches that have no trail.",
+    "mostly-cross-country": "It has no trail for most of the way.",
+}
+# An author's name that reads as a name in a sentence: no nickname in quotes, no note, no company.
+PLAIN_AUTHOR = re.compile(r"[^\"();]{1,40}")
+# A designation that is only a kind of trail and a year: "National Scenic Trail (1968)".
+DESIGNATION_YEAR = re.compile(r"^(National [A-Z][a-z]+ Trail) \((?:(designated|certified) )?(\d{4})\)$")
+GPX_CLAUSE = {
+    "here": "this page has a GPX of the track to download",
+    "partial": "this page has a GPX of part of the track to download",
+    "free": "its author publishes a GPX free of charge, which this site does not host",
+    "sold": "its author sells a GPX, which this site does not host",
+    "unpublished": "no GPX of it is published",
+}
+
+
+def _name_html(rec):
+    """The name for the start of a sentence: "The Appalachian Trail", with no "The" before a
+    name that has one or is not in English; marked with its language when it is not English."""
+    plain = common.plain_name(rec)
+    lang = rec.get("derived", {}).get("name_lang", "")
+    if rec.get("common_name") or not lang:
+        text = esc(plain)
+    else:
+        text = f'<span lang="{esc(lang)}">{esc(plain)}</span>'
+    if lang or plain.lower().startswith("the "):
+        return Markup(text)
+    return Markup("The " + text)
+
+
+MAX_BRIEF = 4  # sentences in the "In brief" paragraph
+MONTH_WORDS = ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+SEASON_WORDS = ("spring", "summer", "fall", "autumn", "winter", "late", "early", "mid", "from", "about")
+SENTENCE_VERBS = re.compile(r"\b(is|are|can|start|starts|hikes?|hiked|travelled|traveled|bring|brings|closed|best)\b", re.I)
+
+
+def season_sentence(rec):
+    """("range", "The usual season is May to July") for a season that is a range of months or
+    seasons, ("sentence", "Northbound hikes start late February to early April") for one the record
+    already words as a sentence, or None when the record has none or it is too long to say briefly.
+    The caller adds the full stop. Only the record's own words are used."""
+    text = facets.season_text(rec).strip().rstrip(". ")
+    if not text:
+        return None
+    if re.search(r"[;:]", text):  # "Spring and fall; summers tend to be humid": the range, then a note
+        head = re.split(r"[;:]", text, maxsplit=1)[0].strip()
+        if not SENTENCE_VERBS.search(head) or len(text) > 110:
+            text = head
+    if len(text) > 110:  # a long note that does not break at a clause stays in "At a glance"
+        return None
+    if text.lower() == "all year":
+        return ("sentence", "It can be walked all year")
+    if SENTENCE_VERBS.search(text) and not text.lower().startswith(("from", "about", "early", "late", "mid")) or \
+            text.split()[0].lower() in ("northbound", "the", "best", "hikers"):
+        return ("sentence", text[:1].upper() + text[1:])
+    first = text.split()[0].lower().split("-")[0]
+    if first in SEASON_WORDS:
+        text = text[:1].lower() + text[1:]
+    return ("range", f"The usual season is {text}")
+
+
+def permit_sentence(rec):
+    """The record's permit text as one sentence, when it is short and says one thing; else ""."""
+    text = common.sentence(hike.table(rec).get("permit", ""))
+    if not text or len(text) > 75 or text.count(".") > 1 or ";" in text:
+        return ""
+    return text
+
+
+def brief_sentences(rec):
+    """The "In brief" paragraph as a list of sentences in HTML, from the record's own fields only.
+    A fact the record lacks is left out. At most MAX_BRIEF sentences, in the order a searcher
+    wants them: what it is and where, how long and how long it takes, the highest point and climb,
+    when to go, and whether there is a GPX. Facts that do not fit stay in "At a glance"."""
+    h = hike.table(rec)
+    route = common.is_route(rec)
+    shape = facets.shape(rec)
+    mi = words.fmt_int(rec["derived"]["length_mi"])
+    km = words.fmt_km(rec["length_km"])
+    terrain = [TERRAIN_ADJECTIVE[t] for t in facets.terrain(rec)]
+    walking = facets.walking(rec)
+    country = f"{words.join_names(terrain)} country" if terrain else ""
+    items = []  # (priority, display position, sentence); the lowest priorities are kept
+
+    # What it is, how long, where.
+    tail = ""
+    name = common.plain_name(rec)
+    if route:
+        who, year = facets.author(rec), rec.get("route", {}).get("year")
+        if not PLAIN_AUTHOR.fullmatch(who or "") or who.lower().startswith("the "):
+            who = ""  # a nickname, a company or a note: the line under the heading names the author in full
+        noun = f"{'loop ' if shape == 'loop' else ''}route" if shape != "network" else "route network"
+        noun += f" by {who}" if who else ""
+        tail = f", dating from {year}," if who and year else ""
+    else:
+        found = DESIGNATION_YEAR.match(rec.get("designation", "").strip())
+        noun = {"loop": "loop trail", "network": "trail network"}.get(shape, "trail")
+        if found:
+            # "National Scenic Trail (1968)": the kind and the year, unless the name already says the kind
+            if found.group(1).lower() not in name.lower():
+                noun = found.group(1)
+            tail = f", {found.group(2) or 'designated'} in {found.group(3)},"
+    article = "an" if mi.startswith("8") else "a"  # "an 81-mile", "an 800-mile"
+    through = f" through {country}" if country else ""
+    items.append((0, 0, f"{_name_html(rec)} is {article} {esc(mi)}-mile ({esc(km)} km) {esc(noun)}"
+                        f"{esc(tail)}{esc(through)} {esc(place_text(rec))}."))
+    unfinished = common.sentence(h.get("unfinished", ""))
+    if unfinished and unfinished not in hike.summary(rec):  # the lede above may already say it
+        items.append((4, 1, esc(unfinished)))
+
+    # Where it starts and ends, and how long it usually takes.
+    start, end = h.get("start", ""), h.get("end", "")
+    days = hike.days(rec)
+    # A place name that starts a sentence in the record reads mid-sentence in lower case.
+    mid = lambda text: text[:1].lower() + text[1:] if text.startswith(("The ", "Near ")) else text  # noqa: E731
+    at = lambda text: "near " + text[5:] if text.startswith("Near ") else "at " + text  # noqa: E731
+    from_start, to_end = mid(start), mid(end)
+    if shape == "loop":
+        where = f"It starts and ends {at(start)}" if start else ""
+    elif shape == "network":
+        where = f"Most walks start {at(start)}" if start else ""
+    elif start and end:
+        where = f"It runs from {from_start}{',' if ',' in start else ''} to {to_end}"
+    elif start:
+        where = f"It starts {at(start)}"
+    elif end:
+        where = f"It ends {at(end)}"
+    else:
+        where = ""
+    if where and days:
+        items.append((1, 2, f"{esc(where)}, and walking all of it usually takes {esc(days)}."))
+    elif where:
+        items.append((1, 2, f"{esc(where)}."))
+    elif days:
+        items.append((1, 2, f"Walking all of it usually takes {esc(days)}."))
+
+    # What the walking is.
+    if walking and walking != "trail":  # the usual case needs no sentence
+        items.append((5, 3, esc(WALKING_ALONE[walking])))
+
+    # Highest point and climb, with the record's own caveat where the figures come from the track.
+    elev = elevation.get(rec)
+    high_name, high_m = h.get("high_point", ""), h.get("high_point_m")
+    high = ""
+    if high_name.startswith(("Near ", "Between ", "Above ", "Along ")):
+        high_name = high_name[:1].lower() + high_name[1:]  # "Its highest point is near Owen Creek"
+    if high_name and high_m:
+        high = f"{high_name}, at {elevation.plain_elevation(high_m)}"
+    elif high_name:
+        high = high_name
+    elif high_m:
+        high = elevation.plain_elevation(high_m)
+    climb = f"the track climbs {elevation.plain_elevation(elev['ascent_m'])} in total" if elev else ""
+    how = "computed from the track"
+    if elev and elevation.coverage_kind(elev) == "partial":
+        how = (f"computed from the part of the track on file, {elevation.coverage_percent(elev)} "
+               f"of the published length")
+    elif elev and elevation.coverage_kind(elev) == "over":
+        how = (f"computed from a track longer than the published length "
+               f"({elevation.coverage_percent(elev)} of it), so the climb is overstated")
+    if high and climb:
+        items.append((2, 4, f"Its highest point is {esc(high)}, and {esc(climb)}, {esc(how)}."))
+    elif high:
+        items.append((2, 4, f"Its highest point is {esc(high)}."))
+    elif elev:
+        items.append((2, 4, f"Its highest point is {esc(elevation.plain_elevation(elev['highest']['m']))}, "
+                            f"and {esc(climb)}, {esc(how)}."))
+
+    # When to walk it and whether this site has a GPX: one sentence where the season is a plain range.
+    clause = GPX_CLAUSE.get(facets.gpx(rec)) or ("this site has no GPX for it" + (", so see the official site" if official_link(rec) else ""))
+    season = season_sentence(rec)
+    if season and not re.search(r"[,;]", season[1]):
+        # "The usual season is May to July, and this page has a GPX of the track to download."
+        items.append((3, 5, f"{esc(season[1])}, and {esc(clause)}."))
+    else:
+        if season:
+            items.append((3.5, 5, esc(season[1]) + "."))
+        items.append((3, 6, esc(clause[:1].upper() + clause[1:]) + "."))
+    permit = permit_sentence(rec)
+    if permit:
+        items.append((6, 7, esc(permit)))
+
+    # At most MAX_BRIEF sentences: the lowest priorities are kept, shown in reading order.
+    kept = sorted(sorted(items, key=lambda i: (i[0], i[1]))[:MAX_BRIEF], key=lambda i: i[1])
+    return [text for _, _, text in kept]
+
+
+def brief(rec):
+    """The "In brief" paragraph for the top of a trail page: Markup."""
+    return Markup(f'<p class="trail-brief"><strong>In brief.</strong> {" ".join(brief_sentences(rec))}</p>')
+
+
+def checked_line(rec):
+    """"Last checked 2026-11-08", as a <time>, in the page's small print; "" when the record has no date."""
+    date = seo.checked(rec)
+    if not date:
+        return ""
+    return Markup(f'<p class="note trail-checked">Last checked <time datetime="{esc(date)}">{esc(date)}</time></p>')
+
+
+def page_head(rec, author_links=None):
     route = common.is_route(rec)
     crumbs = ['<li><a href="/regions/">Places</a></li>']
     keys = facets.place_keys(rec)
@@ -198,11 +421,13 @@ def page_head(rec):
       <div class="titleblock__text">
         {kicker}
         <h1>{heading}{abbr_html}</h1>
-        {full_name}{f'<p class="titleblock__sub">{common.rich(lead)}</p>' if lead else ""}
+        {full_name}{f'<p class="titleblock__sub">{lead_html(rec, lead, author_links)}</p>' if lead else ""}
         {define}
       </div>
     </header>
     <p class="trail-lede">{lede}</p>
+    {brief(rec)}
+    {checked_line(rec)}
     <p class="cluster trail-actions">{"".join(actions)}</p>
     {links_panel(rec)}
   </div>
@@ -1256,9 +1481,11 @@ def page_title(rec, site):
     Only what is true of the page: GPX only where it has a download, a map only
     where it has a track.
 
-    The whole title, site name included, stays within common.TITLE_LIMIT. Pieces go in
+    The title alone stays within common.TITLE_LIMIT (the site name is added to <title> only
+    where the whole is within it too, see common.title_tag). Pieces go in
     this order until it fits: the kilometres, the author of a route, the word
-    "map", the abbreviation, then "GPX". A route says it is a route.
+    "map", the abbreviation, then "GPX". A route says it is a route. Where even that is
+    too long and the name alone fits, the title is the name; the name is never cut.
     """
     name = common.plain_name(rec)
     abbr = rec.get("short_name", "")
@@ -1283,7 +1510,10 @@ def page_title(rec, site):
         option = text(*step)
         if option not in options:
             options.append(option)
-    return common.fit_title(options, site)
+    fitted = common.fit_title(options, site)
+    if len(fitted) > common.title_room(site) >= len(name):
+        return name  # only the name fits: the length goes before the name is cut
+    return fitted
 
 
 def places_short(rec):
@@ -1387,7 +1617,7 @@ def onward(rec, records):
             f'<div class="onward__grid">{"".join(parts)}</div></nav>')
 
 
-def render(rec, site, records=None):
+def render(rec, site, records=None, author_links=None):
     """Return (title, description, body HTML, needs_map) for one trail.
     records: every trail, for the ways onward at the foot (left out when None)."""
     has_track = common.has_line(rec)
@@ -1397,7 +1627,7 @@ def render(rec, site, records=None):
     aside_html = (f'<aside class="detail__aside" aria-label="{"Downloads" if has_track else "Where to get the route"}">'
                   f'{aside}</aside>') if aside else ""
     profile = elevation_figure(rec)
-    body = f"""{page_head(rec)}
+    body = f"""{page_head(rec, author_links)}
 <div class="container detail{"" if aside else " detail--no-aside"}{"" if has_map else " detail--no-map"}{" detail--with-profile" if profile else ""}">
   {glance(rec, records)}
   {map_figure(rec) if has_track else sketch_figure(rec) if sketch else empty_frame(rec)}

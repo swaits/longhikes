@@ -1,0 +1,138 @@
+# The trail terms this site uses, as it uses them. The Glossary page (/glossary/) is built from
+# this file, in this order. Fields are in docs/schema.md (the glossary section).
+
+[[term]]
+id = "trail"
+term = "Trail"
+definition = "On this site, a long trail that a land agency or a trail association designates, looks after and publishes as one trail. A trail that a hiker worked out is a route instead."
+see = ["/", "/routes/"]
+
+[[term]]
+id = "route"
+term = "Route"
+definition = "A trail that a hiker worked out and published. No agency or association looks after it as one trail, and there may be no signs for it. The record names its author and the guide it comes from."
+see = ["/routes/", "/authors/"]
+
+[[term]]
+id = "high-route"
+term = "High route"
+definition = "A route through high country that links passes, ridges and basins, and may leave maintained trail to do it. A route is listed as a high route here when its own name says High Route."
+see = ["/lists/high-routes/", "/lists/off-trail/"]
+
+[[term]]
+id = "thru-hike"
+term = "Thru-hike"
+definition = "Walking a whole trail from one end to the other in one trip. The usual times on this site are for this kind of walk."
+see = ["/lists/under-200-miles/", "/lists/a-month-or-more/"]
+
+[[term]]
+id = "section-hike"
+term = "Section hike"
+definition = "Walking part of a trail on one trip, and the rest on others. The lengths and times on this site are for the whole trail, so a section hike is a part of them."
+see = ["/lists/under-100-miles/", "/lists/weekend/"]
+
+[[term]]
+id = "loop"
+term = "Loop"
+definition = "A trail that finishes where it starts."
+see = ["/lists/loops/"]
+
+[[term]]
+id = "point-to-point"
+term = "End to end"
+definition = "A trail with two different ends, walked from one to the other. Most trails here are of this shape."
+see = ["/lists/loops/"]
+
+[[term]]
+id = "network"
+term = "Network"
+definition = "A set of linked trails with several ways to start and end, not one path from end to end."
+see = ["/"]
+
+[[term]]
+id = "cross-country"
+term = "Cross-country"
+definition = "Walking where there is no trail, by map and compass or GPS. A record says some or most of a trail is cross-country when its sources describe it that way."
+see = ["/lists/off-trail/", "/lists/mostly-cross-country/"]
+
+[[term]]
+id = "track"
+term = "Track"
+definition = "The path of a trail drawn on a map, as a series of points. This site includes a trail's track only where its source allows it to be passed on."
+see = ["/lists/with-gpx/", "/method/"]
+
+[[term]]
+id = "gpx"
+term = "GPX"
+definition = "A common file format for a track, which GPS watches, phones and mapping apps can open. A trail page offers a GPX where this site holds its track and may share it."
+source_url = "https://www.topografix.com/gpx.asp"
+see = ["/lists/with-gpx/"]
+
+[[term]]
+id = "no-gpx"
+term = "No GPX here"
+definition = "A trail listed with no track included, because no track may be shared or none exists. Its page says where to get one."
+see = ["/lists/with-gpx/", "/method/"]
+
+[[term]]
+id = "national-scenic-trail"
+term = "National Scenic Trail"
+definition = "A long trail that the United States Congress has named under the National Trails System Act. Every one of them is listed here."
+source_url = "https://www.nps.gov/subjects/nationaltrailssystem/national-scenic-trails.htm"
+see = ["/lists/national-scenic-trails/", "/triple-crown/"]
+
+[[term]]
+id = "national-recreation-trail"
+term = "National Recreation Trail"
+definition = "A trail that the United States government has recognised as a National Recreation Trail. A trail is marked as one here when its record's designation says so."
+source_url = "https://www.nps.gov/subjects/nationaltrailssystem/national-recreation-trails.htm"
+see = ["/lists/national-recreation-trails/"]
+
+[[term]]
+id = "triple-crown"
+term = "Triple Crown"
+definition = "An award from the American Long Distance Hiking Association, West, for walking the whole of the Appalachian, Pacific Crest and Continental Divide trails."
+source_url = "https://www.aldhawest.org/triple-crown"
+see = ["/triple-crown/"]
+
+[[term]]
+id = "resupply"
+term = "Resupply"
+definition = "Buying or collecting food and supplies along the way, in a town or from a box sent ahead. Long trails need it. This site does not list resupply points."
+see = ["/lists/a-month-or-more/"]
+
+[[term]]
+id = "published-length"
+term = "Published length"
+definition = "The length the trail's holder or author gives, shown in miles with kilometres after. Where a track is included, its measured length is checked against it."
+see = ["/method/", "/numbers/"]
+
+[[term]]
+id = "typical-time"
+term = "Typical time"
+definition = "How many days the whole trail usually takes. Where a source states it, that is shown. Otherwise it is estimated from the length at a set distance a day, and the page says so."
+see = ["/lists/weekend/", "/lists/one-to-two-weeks/", "/lists/a-month-or-more/", "/method/"]
+
+[[term]]
+id = "season"
+term = "Season"
+definition = "The months in which the whole trail is usually walked, as a source states them. It is not the dates a park or a hut is open. Only some records state one."
+see = ["/lists/"]
+
+[[term]]
+id = "climb"
+term = "Climb"
+definition = "The total of every rise along the track, computed from a public elevation model. It is not measured on the ground, and another source's figure can differ by 15 percent or more."
+see = ["/numbers/most-climbing/", "/method/"]
+
+[[term]]
+id = "high-point"
+term = "High point"
+definition = "The highest elevation on the trail, as a source states it, in feet with metres after."
+see = ["/numbers/highest-points/"]
+
+[[term]]
+id = "unfinished"
+term = "Unfinished trail"
+definition = "A trail that is not complete on the ground. Its page says how much exists, as a source states it."
+see = ["/lists/unfinished/"]

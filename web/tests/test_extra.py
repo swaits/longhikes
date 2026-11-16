@@ -63,7 +63,7 @@ class ExtraPagesTest(unittest.TestCase):
         self.assertEqual(len(routes), 57)
         page = read_out("routes/index.html")
         import html as _html
-        text = _html.unescape(page)
+        text = _html.unescape(re.sub(r"<[^>]+>", "", page))  # a credit naming two authors links each name
         for r in routes:
             self.assertIn(f'href="/trails/{r["id"]}/"', page, r["id"])
             self.assertIn(r["route"]["creator"], text, r["id"])

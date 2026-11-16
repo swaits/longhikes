@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Make the small PNG logo thumbnails the site shows in lists.
 
-For every <id>/shield.png in the repository root, writes web/thumbs/<id>.png,
-scaled to fit within 256 x 256 px (never enlarged), metadata stripped and
-transparency kept. Needs ImageMagick 7 (`magick`) on the PATH; runs optipng
+For every <id>/shield.png (or, where there is no PNG, <id>/shield.svg) in the
+repository root, writes web/thumbs/<id>.png, scaled to fit within 256 x 256 px
+(a PNG is never enlarged; an SVG is drawn at that size, so a thumbnail is never
+blurred), metadata stripped and transparency kept. A vector logo can weigh
+hundreds of kilobytes (the Bartram Trail's is 345 KB); its thumbnail a few tens. Needs ImageMagick 7 (`magick`) on the PATH; runs optipng
 too when it is installed. Run on a developer machine and commit the output:
 the site build itself is standard library only and does not run this.
 
@@ -25,19 +27,28 @@ MAX_SIDE = 256
 
 
 def sources():
-    """{id: path} for each <id>/shield.png directly under the repository root."""
+    """{id: path} for each <id>/shield.png, or <id>/shield.svg when there is no PNG,
+    directly under the repository root."""
     found = {}
     for name in sorted(os.listdir(ROOT)):
-        path = os.path.join(ROOT, name, "shield.png")
-        if not name.startswith((".", "_")) and os.path.isfile(path):
-            found[name] = path
+        if name.startswith((".", "_")):
+            continue
+        for ext in ("png", "svg"):
+            path = os.path.join(ROOT, name, f"shield.{ext}")
+            if os.path.isfile(path):
+                found[name] = path
+                break
     return found
 
 
 def make_thumb(src, dst):
     """Write one thumbnail with ImageMagick, then optimise it when optipng is present."""
-    cmd = ["magick", src, "-strip", "-resize", f"{MAX_SIDE}x{MAX_SIDE}>",
-           "PNG32:" + dst]
+    if src.endswith(".svg"):
+        # Drawn at 384 dpi (so the drawing is larger than the thumbnail), then fitted.
+        cmd = ["magick", "-background", "none", "-density", "384", src, "-strip",
+               "-resize", f"{MAX_SIDE}x{MAX_SIDE}>", "PNG32:" + dst]
+    else:
+        cmd = ["magick", src, "-strip", "-resize", f"{MAX_SIDE}x{MAX_SIDE}>", "PNG32:" + dst]
     try:
         subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     except subprocess.CalledProcessError as e:
@@ -50,7 +61,7 @@ def make_thumb(src, dst):
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(description="Make web/thumbs/<id>.png from each <id>/shield.png.")
+    ap = argparse.ArgumentParser(description="Make web/thumbs/<id>.png from each <id>/shield.png (or .svg).")
     ap.add_argument("--force", action="store_true", help="rebuild thumbnails that are up to date")
     args = ap.parse_args(argv)
 

@@ -6,7 +6,7 @@ The section is called Places; its pages keep their /regions/ URLs.
 """
 import collections
 
-from . import browse, common, facets, home, words
+from . import browse, common, facets, home, summary, words
 from .markup import Markup, esc
 
 
@@ -116,8 +116,31 @@ def regions_index_page(records, site):
     return "Long Trails by State and Province: US and Canada", common.cut_at_word(description, common.DESCRIPTION_LIMIT), Markup(body)
 
 
-def region_page(slug, records, site):
-    """(title, description, body, needs_map) for /regions/<slug>/: the trails in one state or province."""
+def place_note(info, by_slug, records):
+    """A paragraph (HTML) on how the place stands among the others: its share of the trails, and which place
+    in its part of the country has the most."""
+    n, total = len(info["records"]), len(records)
+    parts = [f"{esc(info['name'])} has {_plural(n, 'trail')} of the {total} trails on this site, "
+             f"{n / total * 100:.1f} percent of them."]
+    group = info["group"]
+    if group:
+        mates = [i for i in by_slug.values() if i["group"] == group]
+        top = max(mates, key=lambda i: (len(i["records"]), i["name"]))
+        gname = facets.GROUP_NAME[group]
+        if len(mates) > 1:
+            if top is info:
+                parts.append(f"Of the {len(mates)} places in {esc(gname)} with trails here, it has the most.")
+            else:
+                parts.append(f"Of the {len(mates)} places in {esc(gname)} with trails here, "
+                             f'<a href="{esc(facets.place_path(top["key"]))}">{esc(top["name"])}</a> has the most, '
+                             f"{len(top['records'])}.")
+    return Markup("<p>" + " ".join(parts) + "</p>")
+
+
+def region_page(slug, records, site, facet_pages=()):
+    """(title, description, body, needs_map) for /regions/<slug>/: the trails in one state or province.
+
+    facet_pages: [(label, path, how many)] for this place's pages of one kind of trail (olt/placefacets.py)."""
     by_slug, _ = collect_regions(records)
     info = by_slug[slug]
     recs = info["records"]
@@ -140,6 +163,11 @@ def region_page(slug, records, site):
     held = lists_here(recs, records)
     nav += (f'<nav class="region-nav" aria-label="Lists with trails in {esc(info["name"])}">'
             f'Lists with trails in {esc(info["name"])}, and how many here: {" · ".join(held)}</nav>') if held else ""
+    if facet_pages:
+        nav += (f'<nav class="region-nav" aria-label="Kinds of trail in {esc(info["name"])}">'
+                f'More in {esc(info["name"])}: '
+                + " · ".join(f'<a href="{esc(path)}">{esc(label)}</a> ({n})' for label, path, n in facet_pages) + "</nav>")
+    standing_note = place_note(info, by_slug, records)
     body = f"""<div class="page-head"><div class="container">
   <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{crumbs}<li aria-current="page">{esc(info["name"])}</li></ol></nav>
   <header class="titleblock"><div class="titleblock__text">
@@ -150,6 +178,7 @@ def region_page(slug, records, site):
   </div></header>
 </div></div>
 <div class="container section place">
+  <div class="prose place-summary">{summary.facts(recs, records)}{standing_note}{summary.details(recs)}</div>
   {home.overview_map(recs, f"Map of the trails in {info['name']}")}
   {home.results(recs, top=2)}
   {nav}
@@ -196,13 +225,15 @@ def route_guides(rec):
             f'<ul class="route-guides">{items}</ul></div>')
 
 
-def routes_page(records, site, repo_root=None):
+def routes_page(records, site, repo_root=None, after="", author_pages=None):
     """(title, description, body, needs_map) for /routes/: the Routes list."""
     routes = [r for r in records if facets.kind(r) == "route"]
     by_author = collections.defaultdict(list)
     for r in routes:
         by_author[facets.author(r) or "Author not named"].append(r)
-    groups = [(f"By {esc(a)}", sorted(by_author[a], key=home.sort_name), route_guides)
+    linked = author_pages is not None
+    author_pages = author_pages or {}
+    groups = [(f"By {author_pages[a]}" if a in author_pages else f"By {esc(a)}", sorted(by_author[a], key=home.sort_name), route_guides)
               for a in sorted(by_author, key=str.lower)]
     n_gpx = _gpx_count(routes)
     body = f"""<div class="page-head"><div class="container">
@@ -224,7 +255,8 @@ def routes_page(records, site, repo_root=None):
 <div class="container section">
   {home.overview_map(routes, "Map of the routes with a GPX here")}
   {home.results(groups=groups, routes_list=True, top=2)}
-  <nav class="region-nav" aria-label="Other lists"><a href="/lists/">All lists</a> · <a href="/">Every trail</a></nav>
+  {after}
+  <nav class="region-nav" aria-label="Other lists">{'<a href="/authors/">Route authors</a> · ' if linked else ""}<a href="/lists/">All lists</a> · <a href="/">Every trail</a></nav>
 </div>"""
     description = (f"{_plural(len(routes), 'route')} in the United States and Canada by {len(by_author)} authors, "
                    f"with their guides{f' and {n_gpx} with a GPX here' if n_gpx else ''}.")
@@ -232,24 +264,33 @@ def routes_page(records, site, repo_root=None):
             Markup(body), home.has_overview_map(routes))
 
 
-def list_page(lst, recs, total, site):
-    """(title, description, body, needs_map) for /lists/<key>/."""
+def list_page(lst, recs, total, site, *, records=None, before="", after=""):
+    """(title, description, body, needs_map) for /lists/<key>/.
+
+    records: every trail, for the summary and the note. before: HTML placed above the map (a table
+    of figures); after: HTML placed under the list (links to related lists, places and terms)."""
     n_gpx = _gpx_count(recs)
     rule = (f"Lists are picked out by rule from each trail&rsquo;s facts, so they change as trails are added "
             f"or corrected. A list is shown when it has at least {browse.MIN_SIZE} trails and no more than "
             f"{round(browse.MAX_SHARE * 100)}% of the {total}.")
+    note = lst.note(recs, records) if lst.note and records is not None else ""
+    note = f" {esc(note)}" if note else ""
+    about = summary.facts(recs, records) if records is not None else ""
     body = f"""<div class="page-head"><div class="container">
   <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Trails</a></li>
   <li><a href="/lists/">Lists</a></li><li aria-current="page">{esc(lst.title)}</li></ol></nav>
   <header class="titleblock"><div class="titleblock__text">
   <p class="kicker">A list</p>
   <h1>{esc(lst.title)}</h1>
-  <p class="page-head__lede">{esc(lst.blurb)} {_plural(len(recs))}, {n_gpx} with a GPX here.</p>
+  <p class="page-head__lede">{esc(lst.blurb)} {_plural(len(recs))}, {n_gpx} with a GPX here.{note}</p>
   </div></header>
 </div></div>
-<div class="container section">
+<div class="container section place">
+  <div class="prose place-summary">{about}</div>
+  {before}
   {home.overview_map(recs, f"Map of the trails in the list {lst.title}")}
   {home.results(recs, default_sort=lst.sort, top=2)}
+  {after}
   <p class="finder__foot">{rule}</p>
   <nav class="region-nav" aria-label="Other lists"><a href="/lists/">All lists</a> · <a href="/">Every trail</a></nav>
 </div>"""
@@ -261,30 +302,44 @@ def list_page(lst, recs, total, site):
     return lst.search_title(len(recs)), desc, Markup(body), home.has_overview_map(recs)
 
 
-def lists_index_page(records, site):
-    """(title, description, body) for /lists/: every list shown today, with a few of its trails."""
-    cards = []
-    for lst, recs in browse.shown(records):
-        sample = "".join(
-            f'<li><a href="{esc(common.trail_path(r))}">{common.name(r)}</a> '
-            f'<span class="shelf__len">{words.length(r["length_km"], "short", r["derived"]["length_mi"])}</span></li>'
-            for r in recs[:4])
-        cards.append(f"""<li class="shelf">
-        <h2 class="shelf__title"><a href="{esc(browse.path(lst))}">{esc(lst.title)}</a> <span class="shelf__count">{len(recs)}</span></h2>
-        <p class="shelf__blurb">{esc(lst.blurb)}</p>
-        <ul class="shelf__items">{sample}</ul>
-        <p class="shelf__more"><a href="{esc(browse.path(lst))}">See all {len(recs)}<span class="vh">: {esc(lst.title)}</span></a></p>
-      </li>""")
+def lists_index_page(records, site, extras=()):
+    """(title, description, body) for /lists/: every list shown today, under its heading, and the
+    other ways in (tables, authors, reference pages) that pages.py hands over as extras.
+
+    extras: [(group key, title, blurb, path, how many)] for pages that are not lists."""
+    shown = browse.shown(records)
+    sections = ""
+    for key, heading, intro in browse.GROUPS + EXTRA_GROUPS:
+        items = [(lst.title, lst.blurb, browse.path(lst), len(recs)) for lst, recs in shown if lst.group == key]
+        items += [(t, b, path, n) for g, t, b, path, n in extras if g == key]
+        if not items:
+            continue
+        cards = "".join(f"""<li class="shelf">
+        <h3 class="shelf__title"><a href="{esc(path)}">{esc(title)}</a>{f' <span class="shelf__count">{n}</span>' if n else ""}</h3>
+        <p class="shelf__blurb">{esc(blurb)}</p>
+      </li>""" for title, blurb, path, n in items)
+        sections += f"""<section class="lists-group" aria-labelledby="group-{esc(key)}">
+  <h2 id="group-{esc(key)}">{esc(heading)}</h2>
+  <p class="places__sum">{esc(intro)}</p>
+  <ul class="shelves">{cards}</ul>
+</section>"""
     body = f"""<div class="page-head"><div class="container">
   <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Trails</a></li><li aria-current="page">Lists</li></ol></nav>
   <header class="titleblock"><div class="titleblock__text"><h1>Lists</h1>
-  <p class="page-head__lede">Ready-made selections of the {len(records)} trails, a way to start. Each is
-  picked out by rule from what each trail&rsquo;s page says, so a list grows as trails are added.</p>
+  <p class="page-head__lede">Ready-made selections of the {len(records)} trails, and the tables and reference pages
+  built from them. Each list is picked out by rule from what each trail&rsquo;s page says, so it grows as trails are added.</p>
   </div></header></div></div>
-<div class="container section"><ul class="shelves">{"".join(cards)}</ul>
+<div class="container section place">{sections}
 <p class="finder__foot">A list is shown when it has at least {browse.MIN_SIZE} trails and no more than
 {round(browse.MAX_SHARE * 100)}% of all of them. To combine conditions, use the filters on <a href="/">the home page</a>.</p></div>"""
-    shown = browse.shown(records)
     desc = (f"{len(shown)} ready-made lists of the {len(records)} long trails, each picked out by rule from the records: "
-            f"by length, time, terrain, type and country.")
-    return "Long Hiking Trail Lists: Length, Terrain and Type", common.cut_at_word(desc, common.DESCRIPTION_LIMIT), Markup(body)
+            f"by length, time to walk, month, terrain, who looks after it and type, with tables and a glossary.")
+    return "Long Hiking Trail Lists: Length, Time and Terrain", common.cut_at_word(desc, common.DESCRIPTION_LIMIT), Markup(body)
+
+
+# Headings for the pages that are not lists, after the lists' own (olt/browse.py GROUPS).
+EXTRA_GROUPS = (
+    ("tables", "Tables and rankings", "The trails laid side by side and ranked, with the caveats that go with each figure."),
+    ("changes", "What is new", "The newest trails and the newest changes to them."),
+    ("reference", "Reference", "What the words mean, and how the figures are measured."),
+)

@@ -53,6 +53,11 @@ spec = importlib.util.spec_from_file_location(
 trail_history = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(trail_history)
 
+spec = importlib.util.spec_from_file_location(
+    "check_datafiles", os.path.join(ROOT, "tools", "check_datafiles.py"))
+check_datafiles = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(check_datafiles)
+
 
 def haversine_km(coords):
     total, R = 0.0, 6371.0088
@@ -833,6 +838,7 @@ def main():
         trail_history.check_entries(tid, rec, errors)
 
     check_left_out(ROOT, trails, errors)
+    check_datafiles.check_datafiles(ROOT, trails, errors)
 
     for dirpath, dirnames, filenames in os.walk(ROOT):
         if ".git" in dirpath:

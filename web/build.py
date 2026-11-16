@@ -19,7 +19,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 
-from olt import geo, hike, records  # noqa: E402
+from olt import fingerprint, geo, hike, records  # noqa: E402
 
 GPX_TOL_M = 5.0
 MAP_TOL_M = 30.0
@@ -510,6 +510,9 @@ def main(argv=None):
         print("pages step skipped: olt.pages not found")
     else:
         pages.render_site(recs, out_dir, ROOT)
+        # The pages name the stylesheet, scripts, fonts and map libraries by content hash
+        # (olt/fingerprint.py); this writes those files, under /immutable/.
+        fingerprint.publish(out_dir)
 
     total = 0
     for base, _, names in os.walk(out_dir):

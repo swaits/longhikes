@@ -1,0 +1,92 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "maricopa-trail"
+name = "Maricopa Trail"
+country = "US"
+regions = ["AZ"]
+length_km = 507
+length_note = "More than 315 mi, as Maricopa County Parks and Recreation states it on its Maricopa Trail FAQ page. The county's history page says more than 350 mi. The Maricopa Trail and Park Foundation says 315 mi on its trail page and 317 mi in two of its articles."
+tier = "regional"
+designation = "Maricopa County Parks and Recreation; a loop around the Phoenix area linking the county's regional parks, largely completed in 2018. The Maricopa Trail and Park Foundation is its partner"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Maricopa County Parks and Recreation (publishes the trail)"
+publisher_url = "https://www.maricopacountyparks.net/park-locator/maricopa-trail/"
+url = "https://www.openstreetmap.org/relation/4020964"
+discovery = "osm-relation-version: Overpass `rel(4020964); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=mtb), read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 4020964. The county's own map service (Parks and Trails (County), https://gis.maricopa.gov/arcgis/rest/services/PNR/ParkAndTrail/MapServer, layers 9 to 12) is not used: its licence text says 'Any download for commercial intent or resale of this information is prohibited, except in accordance with a sublicensing agreement' (item page at https://www.arcgis.com/home/item.html?id=38384e9dca8b4fe9b764bab613a2a2d1, read 2026-11-15), so it does not allow the data to be passed on."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 4020964: one route relation tagged route=mtb, ref MT. Its 697 main ways are the loop. Its 160 ways with the roles excursion (135) and route (25) are kept apart as alternates, which holds the side routes. Of the main track, 149.7 km is on ways named Maricopa Trail, 72.1 km on ways with no name, 46.6 km on ways named Sun Circle Trail (a regional trail that overlaps parts of the Maricopa Trail, as the county's FAQ says), and the rest on named park trails the loop uses."
+source_checked = "2026-11-15"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 4020964
+note = "Route relation named Maricopa Trail, version 239 (2026-11-08), type route, route=mtb, ref MT. 697 main ways and 160 alternate ways (135 excursion, 25 route)."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Maricopa County Parks and Recreation"
+note = "No logo is included. The county's Maricopa Trail pages show no trail logo, and no logo policy was found. Ask the county before using any mark."
+logo_file = ""
+logo_owner = "Maricopa County Parks and Recreation"
+
+[verification]
+verified = true
+date = "2026-11-15"
+measured_km = 458.8
+difference_percent = -9.5
+parts = 20
+note = "OSM relation 4020964: 458.8 km of main track in 20 parts, 9.5% short of 507 km (315 mi). The 160 alternate ways are not counted in that figure. The county says the trail continues to grow, so its published length may include connections that the mapped relation does not."
+
+[hike]
+summary = "The Maricopa Trail is a loop around the Phoenix area that links the regional parks of Maricopa County. The county says it uses existing trails, canal corridors, utility easements and public lands, and the foundation says its segments tie together existing trails, roads and new paths. It passes through 15 municipalities and is open to hikers, mountain bikers and horse riders."
+official_url = "https://www.maricopacountyparks.net/park-locator/maricopa-trail/"
+shape = "loop"
+season = "Fall to spring"
+months = [10, 11, 12, 1, 2, 3, 4]
+terrain = ["desert", "farmland"]
+travel = "trail-and-road"
+permit = "The county says no permit is needed to hike the segments on state land, and that camping is allowed only in designated areas such as developed campgrounds or approved backcountry sites in some parks."
+caution = "The county says many segments are remote with no water or restrooms, which are mostly at trailheads and parks, and it advises against hiking in extreme heat."
+checked = "2026-11-15"
+
+[[hike.source]]
+url = "https://www.maricopacountyparks.net/park-locator/maricopa-trail/"
+publisher = "Maricopa County Parks and Recreation"
+facts = ["summary", "official_url", "shape", "travel"]
+
+[[hike.source]]
+url = "https://www.maricopacountyparks.net/park-locator/maricopa-trail/trail-information/faqs/"
+publisher = "Maricopa County Parks and Recreation"
+facts = ["summary", "shape", "terrain", "permit", "caution"]
+
+[[hike.source]]
+url = "https://www.maricopacountyparks.net/park-locator/maricopa-trail/trail-information/history/"
+publisher = "Maricopa County Parks and Recreation"
+facts = ["summary", "shape", "travel"]
+
+[[hike.source]]
+url = "https://www.maricopacountyparks.net/park-locator/maricopa-trail/trail-maps/"
+publisher = "Maricopa County Parks and Recreation"
+facts = ["permit"]
+
+[[hike.source]]
+url = "https://mctpf.org/news/1151/want-to-hike-the-maricopa-trail-heres-a-good-starting-point-if-youre-new-to-the-route/"
+publisher = "Maricopa Trail + Park Foundation"
+facts = ["summary", "season", "months", "terrain", "travel"]
+
+[[link]]
+title = "The Trail"
+publisher = "Maricopa Trail + Park Foundation"
+url = "https://mctpf.org/the-trail/"
+note = "The foundation's page for the trail, with its segment maps."

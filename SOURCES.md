@@ -55,6 +55,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 
 | Trail | Publisher | Page | Licence | Included |
 | --- | --- | --- | --- | --- |
+| across-utah-route | Jamal Green, Across Utah (publishes the route) | [source page](http://www.acrossutah.com/wordpress/master-map/) | none-stated | record only |
 | akshayuk-pass | Parks Canada (Auyuittuq National Park) (publishes the trail) | [source page](https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking) | none-stated | record only |
 | alexander-mackenzie | Province of British Columbia (BC Geographical Names record; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2654551) | ODbL-1.0 | track |
 | allegheny-trail | West Virginia Scenic Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1772789) | ODbL-1.0 | track |
@@ -153,6 +154,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | lowest-to-highest-route | simBLISSity Ultralight Designs (Brett Tucker and partner; publish the route) | [source page](http://simblissity.net/L2H.shtml) | none-stated | record only |
 | loyalsock | Alpine Club of Williamsport (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3134579) | ODbL-1.0 | track |
 | maah-daah-hey | USDA Forest Service, Dakota Prairie Grasslands (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/11562289) | ODbL-1.0 | track |
+| maricopa-trail | Maricopa County Parks and Recreation (publishes the trail) | [source page](https://www.openstreetmap.org/relation/4020964) | ODbL-1.0 | track |
 | mason-dixon | Mason-Dixon Trail System (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1820324) | ODbL-1.0 | track |
 | massanutten | USDA Forest Service, George Washington and Jefferson National Forests (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/11520193) | ODbL-1.0 | track |
 | mattabesett | Connecticut Forest and Park Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2971739) | ODbL-1.0 | track |
@@ -222,6 +224,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | thames-valley-trail | Thames Valley Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3444520) | ODbL-1.0 | track |
 | timberline | USDA Forest Service, Mount Hood National Forest | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | record only |
 | toiyabe-crest | USDA Forest Service, National Forest System trails | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
+| tonto-trail | National Park Service, Grand Canyon National Park (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2836546) | ODbL-1.0 | track |
 | trans-adirondack-route | Erik Schlimmer (publishes the route) | [source page](https://erikschlimmer.com/books-sale-/) | none-stated | record only |
 | traversee-charlevoix | Traversée de Charlevoix (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/8082269) | ODbL-1.0 | track |
 | tuscarora | Potomac Appalachian Trail Club (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/10449263) | ODbL-1.0 | track |

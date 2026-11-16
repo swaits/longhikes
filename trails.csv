@@ -1,4 +1,5 @@
 id,name,country,regions,length_km,status,line_source,licence,kind,line_policy
+across-utah-route,Across Utah Route,US,UT,1127,record-only,none (no line included),none-stated,route,unclear
 akshayuk-pass,Akshayuk Pass,CA,NU,97,record-only,none (no line included),none-stated,designated,
 alexander-mackenzie,Alexander MacKenzie Heritage Trail,CA,BC,420,included,OpenStreetMap,ODbL-1.0,designated,
 allegheny-trail,Allegheny Trail,US,WV,530,included,OpenStreetMap,ODbL-1.0,designated,
@@ -97,6 +98,7 @@ lost-coast,Lost Coast Trail,US,CA,80,included,OpenStreetMap,ODbL-1.0,designated,
 lowest-to-highest-route,Lowest to Highest Route,US,CA,209,record-only,none (no line included),none-stated,route,open
 loyalsock,Loyalsock Trail,US,PA,95,included,OpenStreetMap,ODbL-1.0,designated,
 maah-daah-hey,Maah Daah Hey Trail,US,ND,232,included,OpenStreetMap,ODbL-1.0,designated,
+maricopa-trail,Maricopa Trail,US,AZ,507,included,OpenStreetMap,ODbL-1.0,designated,
 mason-dixon,Mason-Dixon Trail,US,PA;MD;DE,311,included,OpenStreetMap,ODbL-1.0,designated,
 massanutten,Massanutten Trail,US,VA,114,included,OpenStreetMap,ODbL-1.0,designated,
 mattabesett,Mattabesett Trail,US,CT,105,included,OpenStreetMap,ODbL-1.0,designated,
@@ -166,6 +168,7 @@ teton-range-traverse,Teton Range Traverse,US,WY,171,record-only,none (no line in
 thames-valley-trail,Thames Valley Trail,CA,ON,110,included,OpenStreetMap,ODbL-1.0,designated,
 timberline,Timberline Trail (Mount Hood),US,OR,64,record-only,none (no line included),us-gov-public-domain,designated,
 toiyabe-crest,Toiyabe Crest National Recreation Trail,US,NV,101,included,USDA Forest Service (EDW National Forest System trails),us-gov-public-domain,designated,
+tonto-trail,Tonto Trail,US,AZ,153,included,OpenStreetMap,ODbL-1.0,designated,
 trans-adirondack-route,Trans Adirondack Route,US,NY,391,record-only,none (no line included),none-stated,route,sold
 traversee-charlevoix,Traversée de Charlevoix,CA,QC,105,included,OpenStreetMap,ODbL-1.0,designated,
 tuscarora,Tuscarora Trail,US,PA;MD;VA;WV,406,included,OpenStreetMap,ODbL-1.0,designated,

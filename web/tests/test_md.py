@@ -394,7 +394,7 @@ class RealDocumentsTest(unittest.TestCase):
         counter = TableCounter()
         counter.feed(md.render(read_doc("README.md")))
         counter.close()
-        self.assertEqual(counter.counts, [132, 51])
+        self.assertEqual(counter.counts, [134, 52])
 
     def test_readme_num_class_present(self):
         self.assertIn('class="num"', md.render(read_doc("README.md")))

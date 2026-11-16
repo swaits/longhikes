@@ -1,0 +1,81 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "tonto-trail"
+name = "Tonto Trail"
+country = "US"
+regions = ["AZ"]
+length_km = 153
+length_note = "95 mi, as the National Park Service states it in its Tonto Trail guides (from Red Canyon on the east to Garnet Canyon on the west); one of the two guides names Hance Rapid, not Red Canyon, as the east end"
+tier = "regional"
+designation = "Grand Canyon National Park, National Park Service"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "National Park Service, Grand Canyon National Park (publishes the trail; no open geometry found)"
+publisher_url = "https://www.nps.gov/grca/planyourvisit/campsite-information.htm"
+url = "https://www.openstreetmap.org/relation/2836546"
+discovery = "osm-relation-version: Overpass `rel(2836546); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 2836546."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 2836546: one hiking route relation, 19 main ways, no alternates. 17 ways are named Tonto Trail and 2 are named West Tonto Trail; no way carries another trail's name."
+source_checked = "2026-11-15"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 2836546
+note = "Hiking route relation named Tonto Trail, version 32 (2023-10-25), 19 ways, no member roles. Listed for Grand Canyon National Park on the OpenStreetMap wiki project page."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "National Park Service, Grand Canyon National Park"
+note = "No logo is included. The National Park Service pages read show no trail logo or shield for the Tonto Trail."
+logo_file = ""
+logo_owner = "National Park Service"
+
+[verification]
+verified = true
+date = "2026-11-15"
+measured_km = 147.1
+difference_percent = -3.9
+parts = 2
+note = "OSM relation 2836546, 19 ways: 147.1 km in 2 parts, 3.9% short of 153 km (95 mi). The parts are 54.1 km on the east and 92.9 km on the west. They are 0.4 km apart near 112.125 W, 36.082 N, where one way ends short of the next. The west end is near 112.42 W and the east end near 111.92 W."
+
+[hike]
+summary = "The Tonto Trail follows the Tonto Platform, a bench about 3,900 feet below the South Rim of the Grand Canyon, from Red Canyon in the east to Garnet Canyon in the west. The National Park Service calls it 95 rough, unmaintained miles. The rim trails that cross it split it into sections, and most hikers walk it in installments."
+official_url = "https://www.nps.gov/grca/planyourvisit/campsite-information.htm"
+start = "Red Canyon, Grand Canyon National Park, Arizona"
+end = "Garnet Canyon, Grand Canyon National Park, Arizona"
+shape = "point-to-point"
+terrain = ["desert", "canyon"]
+travel = "trail"
+permit = "Camping anywhere in the park outside the developed rim campgrounds needs a backcountry permit from the park, which takes reservations on Recreation.gov."
+caution = "Most of the trail has no reliable water, and the National Park Service warns against walking it in summer heat."
+checked = "2026-11-15"
+
+[[hike.source]]
+url = "https://www.nps.gov/grca/planyourvisit/upload/Tonto_Hermit-Bright_Angel_to_Hermit.pdf"
+publisher = "National Park Service, Grand Canyon National Park (trail guide)"
+facts = ["summary", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.nps.gov/grca/planyourvisit/upload/Tonto_Grapevine-Grandview_to_South_Kaibab.pdf"
+publisher = "National Park Service, Grand Canyon National Park (trail guide)"
+facts = ["summary", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.nps.gov/grca/planyourvisit/campsite-information.htm"
+publisher = "National Park Service, Grand Canyon National Park"
+facts = ["summary", "official_url", "terrain"]
+
+[[hike.source]]
+url = "https://www.nps.gov/grca/planyourvisit/backcountry-permit.htm"
+publisher = "National Park Service, Grand Canyon National Park"
+facts = ["permit"]

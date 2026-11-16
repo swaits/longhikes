@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-183 trails, 105 with a track and 78 with no track included. Of these, 51 are routes: 1 with a track and 50 without.
+186 trails, 107 with a track and 79 with no track included. Of these, 52 are routes: 1 with a track and 51 without.
 
 <!-- END COUNTS -->
 
@@ -110,6 +110,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | lost-coast | Lost Coast Trail | US | CA | 80 | yes | ODbL-1.0 |
 | loyalsock | Loyalsock Trail | US | PA | 95 | yes | ODbL-1.0 |
 | maah-daah-hey | Maah Daah Hey Trail | US | ND | 232 | yes | ODbL-1.0 |
+| maricopa-trail | Maricopa Trail | US | AZ | 507 | yes | ODbL-1.0 |
 | mason-dixon | Mason-Dixon Trail | US | PA, MD, DE | 311 | yes | ODbL-1.0 |
 | massanutten | Massanutten Trail | US | VA | 114 | yes | ODbL-1.0 |
 | mattabesett | Mattabesett Trail | US | CT | 105 | yes | ODbL-1.0 |
@@ -161,6 +162,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | thames-valley-trail | Thames Valley Trail | CA | ON | 110 | yes | ODbL-1.0 |
 | timberline | Timberline Trail (Mount Hood) | US | OR | 64 | no | us-gov-public-domain |
 | toiyabe-crest | Toiyabe Crest National Recreation Trail | US | NV | 101 | yes | us-gov-public-domain |
+| tonto-trail | Tonto Trail | US | AZ | 153 | yes | ODbL-1.0 |
 | traversee-charlevoix | Traversée de Charlevoix | CA | QC | 105 | yes | ODbL-1.0 |
 | tuscarora | Tuscarora Trail | US | PA, MD, VA, WV | 406 | yes | ODbL-1.0 |
 | uinta-highline | Uinta Highline Trail | US | UT | 167 | yes | ODbL-1.0 |
@@ -181,6 +183,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 
 | ID | Route | Country | States / provinces | Length (km) | Author | Track policy | Track | First guide |
 | --- | --- | --- | --- | ---: | --- | --- | --- | --- |
+| across-utah-route | Across Utah Route | US | UT | 1127 | Jamal Green | unclear | no | [The Route](http://www.acrossutah.com/wordpress/the_route/) (free) |
 | appalachian-high-route | Appalachian High Route | US | NC, TN | 531 | Jake Blood and Jennifer Pharr Davis | open | no | [Appalachian High Route: basic maps and directions](https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route) (free) |
 | basin-and-range-trail | Basin and Range Trail | US | NV | 1754 | Eric Poulin | sold | no | [Basin and Range Trail Planning Kit (guidebook, GPX, maps, waypoints, water chart)](https://basinandrangetrail.com/shop/) (purchase) |
 | beartooth-high-route | Beartooth High Route | US | MT, WY | 145 | Wilderness Mindset | sold | no | [Beartooth High Route Map Pack](https://wildernessmindset.com/product/beartooth-high-route-map-pack/) (purchase) |

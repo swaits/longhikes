@@ -211,6 +211,20 @@ class MissingValuesTest(unittest.TestCase):
         self.assertIn("if (s.month && words(d.months).indexOf(s.month) === -1) return false;", js)
         self.assertIn("note.hidden = !on[note.dataset.missing]", js)
 
+    def test_clearing_returns_the_lengths_to_any(self):
+        # A form's reset picks the option marked as default, or else the first one.
+        # "Any" is the last option of the longest-length list, so both the page and
+        # the script (which rebuilds the lists in the reader's units) must mark it;
+        # in the shortest-length list it is first.
+        form = home.finder_form(self.recs(3, 8))
+        longest = re.search(r'<select[^>]* id="max"[^>]*>(.*?)</select>', form, re.S).group(1)
+        self.assertEqual(re.findall(r'<option value="([^"]*)" selected', longest), [""])
+        shortest = re.search(r'<select[^>]* id="min"[^>]*>(.*?)</select>', form, re.S).group(1)
+        self.assertTrue(shortest.startswith('<option value="">Any</option>'))
+        with open(os.path.join(WEB, "assets", "app.js"), encoding="utf-8") as f:
+            js = f.read()
+        self.assertIn("if (value === '') o.defaultSelected = true;", js)
+
 
 # Words that must not appear on a browsing page (home, places, lists, Routes, and a
 # trail page above "About this data"). Record text can say what it likes; these are

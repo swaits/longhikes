@@ -23,14 +23,17 @@
 
   /* 1. Preferences ----------------------------------------------------------- */
 
+  /* False once storage has refused a read or a write: the choices then last
+     for this page only, and are not read back from storage. */
+  var prefsKept = true;
   function readPref(key) {
-    try { return localStorage.getItem(key); } catch (e) { return null; }
+    try { return localStorage.getItem(key); } catch (e) { prefsKept = false; return null; }
   }
   function writePref(key, value) {
     try {
       if (value) localStorage.setItem(key, value);
       else localStorage.removeItem(key);
-    } catch (e) { /* storage blocked: the choice lasts for this page only */ }
+    } catch (e) { prefsKept = false; /* storage blocked: the choice lasts for this page only */ }
   }
 
   function isDark() {
@@ -68,8 +71,37 @@
     document.querySelectorAll(selector).forEach(function (input) { input.checked = input.value === value; });
   }
 
-  syncRadios('input[name="theme"]', readPref('lh-theme') || 'auto');
-  syncRadios('input[name="units"], input[name="units-list"]', milesFirst() ? 'mi' : 'km');
+  function syncPrefControls() {
+    syncRadios('input[name="theme"]', root.dataset.theme || 'auto');
+    syncRadios('input[name="units"], input[name="units-list"]', milesFirst() ? 'mi' : 'km');
+  }
+
+  /* Bring the page back in step with the stored choices, and the switches in
+     step with the page. A page shown again by Back may be an old copy from the
+     browser's cache, made before a choice changed on another page; and a browser
+     may put a form's old values back after this script has run, without a change
+     event. Another tab changing a choice comes here too (the storage event). */
+  function resyncPrefs() {
+    var theme = readPref('lh-theme');
+    var units = readPref('lh-units') === 'km' ? 'km' : '';
+    var basemap = readPref('lh-basemap') === 'plain' ? 'plain' : '';
+    if (theme !== 'light' && theme !== 'dark') theme = '';
+    if (prefsKept) {
+      [['theme', theme], ['units', units], ['basemap', basemap]].forEach(function (pair) {
+        if ((root.dataset[pair[0]] || '') === pair[1]) return;
+        if (pair[1]) root.dataset[pair[0]] = pair[1];
+        else delete root.dataset[pair[0]];
+        document.dispatchEvent(new Event('olt:' + pair[0]));
+      });
+    }
+    syncPrefControls();
+  }
+
+  syncPrefControls();
+  window.addEventListener('pageshow', resyncPrefs);
+  window.addEventListener('storage', function (e) {
+    if (e.key === null || e.key === 'lh-theme' || e.key === 'lh-units' || e.key === 'lh-basemap') resyncPrefs();
+  });
   document.querySelectorAll('input[name="theme"]').forEach(function (input) {
     input.addEventListener('change', function () { if (input.checked) setTheme(input.value); });
   });
@@ -245,6 +277,9 @@
     savedHere = null;
     syncSaved();
   });
+  /* A page shown again by Back from the browser's cache is an old copy: a trail
+     may have been saved on another page since. */
+  window.addEventListener('pageshow', function (e) { if (e.persisted) syncSaved(); });
   /* Here every trail is known: forget saved ids that match none (a trail
      taken off the site). Only those; the rest of the list is untouched. */
   if (everyTrail && !savedHere) {
@@ -298,7 +333,14 @@
       });
       var own = readSaved();
       if (linkIds.length && own.length === linkIds.length &&
-          linkIds.every(function (id) { return own.indexOf(id) !== -1; })) fromLink = false;
+          linkIds.every(function (id) { return own.indexOf(id) !== -1; })) {
+        /* The visitor's own list: the address stops naming it, so that after a
+           trail is unsaved a reload does not show the old list as someone's link. */
+        fromLink = false;
+        params.delete('t');
+        var rest = params.toString();
+        window.history.replaceState(null, '', window.location.pathname + (rest ? '?' + rest : '') + window.location.hash);
+      }
     }
     var shown = fromLink ? linkIds.slice() : readSaved();
     var mapOn = false;
@@ -986,7 +1028,7 @@
         status.textContent = '';
         collapseAttribution();
         if (entry.visibleIds) setVisible(entry, entry.visibleIds);
-        if (kind === 'overview') wireOverview(map, defs);
+        if (kind === 'overview') wireOverview(entry, map, defs);
         if (current === 'outdoor') showElevation(map);
         if (base) {
           switcher = basemapControl();
@@ -1064,8 +1106,14 @@
     }
   }
 
-  function wireOverview(map, defs) {
+  function wireOverview(entry, map, defs) {
     var popup = new maplibregl.Popup({ closeButton: true, maxWidth: '18rem' });
+    /* The trail the open popup is about, so that it closes when the filters
+       leave that trail out, and its length follows the units. */
+    var shown = null;
+    popup.on('close', function () { shown = null; });
+    entry.closePopupUnless = function (set) { if (shown && !set[shown.id]) popup.remove(); };
+    document.addEventListener('olt:units', function () { if (shown) shown.meta.textContent = shown.text(); });
     defs.filter(function (d) { return d.hit; }).forEach(function (def) {
       map.on('mousemove', def.id, function (e) {
         map.getCanvas().style.cursor = 'pointer';
@@ -1082,7 +1130,8 @@
         a.href = '/trails/' + encodeURIComponent(p.id) + '/';
         a.textContent = p.name;
         var meta = document.createElement('p');
-        meta.textContent = lengthText(Number(p.length_km)) + (p.kind === 'route' ? ' · Route' : '');
+        var text = function () { return lengthText(Number(p.length_km)) + (p.kind === 'route' ? ' · Route' : ''); };
+        meta.textContent = text();
         box.appendChild(a);
         box.appendChild(meta);
         if (p.sketch) {
@@ -1095,6 +1144,7 @@
           box.appendChild(note);
         }
         popup.setLngLat(e.lngLat).setDOMContent(box).addTo(map);
+        shown = { id: p.id, meta: meta, text: text };
       });
     });
   }
@@ -1139,6 +1189,7 @@
     });
     var map = entry.map;
     if (!map || !entry.ready) return;
+    if (entry.closePopupUnless) entry.closePopupUnless(set);
     var inSet = ['in', ['get', 'id'], ['literal', ids]];
     entry.defs.forEach(function (def) {
       if (def.id.indexOf('olt-hi') === 0) return;
@@ -1286,6 +1337,8 @@
       wireSortHeads(root, function () { return current; }, function (k) { setSort(k, true, true); });
       setSort(sortFromUrl(root), false, false);
       window.addEventListener('popstate', function () { setSort(sortFromUrl(root), false, false); });
+      /* Back or a reload may put the select's old value back after this ran. */
+      window.addEventListener('pageshow', function () { setSort(sortFromUrl(root), false, false); });
     });
   }
 
@@ -1405,6 +1458,19 @@
       return fmt.format(n) + ' ' + unit + ' \u00b7 ' + other;
     }
 
+    /* The value of the step in a list nearest to a length, or '' for none. */
+    function nearestStep(select, km) {
+      var best = '', gap = Infinity;
+      if (!(km > 0)) return best;
+      Array.prototype.forEach.call(select.options, function (o) {
+        var k = stepKm(o.value);
+        if (!k) return;
+        var d = Math.abs(Math.log(k / km));
+        if (d < gap) { gap = d; best = o.value; }
+      });
+      return best;
+    }
+
     /* Offer round steps in the reader's units. The server writes the mile steps;
        a reader who chose kilometres gets the kilometre steps (data-steps-km), and
        a chosen step moves to the nearest one in the new list. */
@@ -1419,6 +1485,9 @@
           var o = document.createElement('option');
           o.value = value;
           o.textContent = text;
+          /* "Any" is the default, so that the form's reset returns to it: a reset
+             picks the option marked as default, or else the first one. */
+          if (value === '') o.defaultSelected = true;
           if (selected) o.selected = true;
           select.appendChild(o);
         }
@@ -1427,16 +1496,7 @@
           add(n + unit, stepLabel(n, unit), false);
         });
         if (kind === 'max') add('', 'Any', !wasKm);
-        if (wasKm) {
-          var best = null, gap = Infinity;
-          Array.prototype.forEach.call(select.options, function (o) {
-            var k = stepKm(o.value);
-            if (!k) return;
-            var d = Math.abs(Math.log(k / wasKm));
-            if (d < gap) { gap = d; best = o; }
-          });
-          if (best) best.selected = true;
-        }
+        if (wasKm) select.value = nearestStep(select, wasKm);
       });
     }
 
@@ -1472,15 +1532,22 @@
 
     function fromQuery() {
       var p = new URLSearchParams(window.location.search);
-      el.q.value = p.get('q') || '';
+      /* Left alone when it already says the same, so a space being typed stays. */
+      if (el.q.value.trim() !== (p.get('q') || '').trim()) el.q.value = p.get('q') || '';
       var where = p.get('where') || p.get('region') || '';
       if (!where && (p.get('country') === 'US' || p.get('country') === 'CA')) where = p.get('country');
       el.where.value = hasOption(el.where, where) ? where : '';
-      ['min', 'max', 'month'].forEach(function (name) {
-        if (!el[name]) return;
+      /* A length in the address may be a step from the other unit's list (a link
+         from a reader who uses kilometres, opened by one who uses miles), or a
+         step this list no longer has: take the nearest step offered. */
+      ['min', 'max'].forEach(function (name) {
         var v = p.get(name) || '';
-        el[name].value = hasOption(el[name], v) ? v : '';
+        el[name].value = hasOption(el[name], v) ? v : nearestStep(el[name], stepKm(v));
       });
+      if (el.month) {
+        var month = p.get('month') || '';
+        el.month.value = hasOption(el.month, month) ? month : '';
+      }
       var kind = p.get('kind') || '';
       if (kind === 'designated') kind = 'trail';
       syncRadios('#finder-form input[name="kind"]', kind === 'trail' || kind === 'route' ? kind : '');
@@ -1555,10 +1622,12 @@
       li.addEventListener('focusout', function () { highlight(''); });
     });
 
+    /* The address is rewritten too, so that it says what the controls show: a
+       length given in the other unit becomes the step chosen for it. */
     buildLengthOptions();
     fromQuery();
     applySort();
-    apply(false);
+    apply(true);
     /* The count can announce from here on; the first application is done. */
     setTimeout(function () { if (count) count.removeAttribute('aria-live'); }, 0);
     /* The filters behind "More" stay folded, unless the address already sets one. */
@@ -1570,6 +1639,18 @@
     var firstOn = s0.where || s0.min || s0.max !== Infinity || s0.month || s0.kind || s0.time.length || s0.terrain.length;
     if (panel && window.matchMedia('(max-width: 63.99rem)').matches && !firstOn) panel.open = false;
     window.addEventListener('popstate', function () { fromQuery(); applySort(); apply(false); });
+    /* A page reached by Back, Forward or a reload: the browser may put the old
+       values of the controls back after this script has run, or show an old copy
+       of the whole page. The address is the record of the filters, so set the
+       controls from it again and filter again. */
+    window.addEventListener('pageshow', function (e) {
+      var nav = window.performance && performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+      if (!e.persisted && !(nav && (nav.type === 'back_forward' || nav.type === 'reload'))) return;
+      buildLengthOptions();
+      fromQuery();
+      applySort();
+      apply(true);
+    });
   }
 
   var finder = document.getElementById('finder-form');

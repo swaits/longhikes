@@ -600,7 +600,7 @@ def render(records, site):
     recs = sorted(records, key=sort_name)
     total = c["total"]
     lede = (f"{total} trails. Narrow them by where they are, how long they take, when to walk them "
-            f"and what the country is like. {c['gpx_here']} have a GPX to download.")
+            f"and what the country is like.")
     contribute = ""
     if site.repo_url:
         contribute = (f'<p class="finder__foot">Something wrong, or a trail missing? '
@@ -609,7 +609,7 @@ def render(records, site):
     return f"""<section class="hero hero--short hero--home" aria-labelledby="hero-title">
   <div class="container hero__inner">
     <h1 id="hero-title" class="lockup"><img class="lockup__mark" src="/assets/favicon.svg" alt="" width="96" height="96">{esc(site.name)}</h1>
-    <p class="hero__tagline">Long-distance hiking trails of the United States and Canada, to compare and download.</p>
+    <p class="hero__tagline">Long-distance hiking trails of the United States and Canada.</p>
     <ul class="hero__tags">
       <li><a href="#finder">Filters</a></li>
       <li><a href="/lists/with-gpx/">GPX</a></li>

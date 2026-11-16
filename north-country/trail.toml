@@ -2,6 +2,7 @@
 
 id = "north-country"
 name = "North Country National Scenic Trail"
+common_name = "North Country Trail"
 country = "US"
 regions = ["ND", "MN", "WI", "MI", "OH", "PA", "NY", "VT"]
 length_km = 7403
@@ -101,5 +102,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://northcountrytrail.org/files/outreach/NCTA%20Brand%20Standards%20and%20Style%20Guide_2024.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The name hikers use, North Country Trail, was added as the common name. The recorded name is unchanged."
+fields = ["common_name"]
+basis = "The National Park Service page uses 'North Country Trail' in its captions and links, with the formal name in its title."
+basis_url = "https://www.nps.gov/noco/index.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

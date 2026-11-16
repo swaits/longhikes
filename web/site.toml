@@ -5,8 +5,12 @@
 
 name = "Long Hikes"
 
-# One line under the name: the home page <title> and the default meta description.
+# One line under the name: the default meta description, and what the data files say the site is.
 tagline = "Long-distance hiking trails of the United States and Canada, with their tracks where they may be shared"
+
+# The home page's <title> before the name is added: what the site is, in the words
+# people search with, about 50 characters. Empty: "<name>: <tagline>".
+home_title = "Long-Distance Hiking Trails of the US and Canada"
 
 # Absolute origin of the deployed site, without a trailing slash, for example
 # "https://example.org". When set, every page gets a canonical link. Empty: none.

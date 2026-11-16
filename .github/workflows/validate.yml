@@ -50,8 +50,8 @@ jobs:
         with:
           python-version: "3.12"
       # Standard library only: no packages to install, and no ImageMagick.
-      # web/tools/make_thumbs.py is a manual tool; web/thumbs/ is committed
-      # and the build only copies those thumbnails (see web/olt/thumbs.py).
+      # web/tools/make_thumbs.py and make_cards.py are manual tools; web/thumbs/ and
+      # web/cards/ are committed and the build only copies them (web/olt/thumbs.py, cards.py).
       - run: python3 -m unittest discover -s web/tests
       - run: python3 web/build.py --out _site
 

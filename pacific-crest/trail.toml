@@ -2,6 +2,7 @@
 
 id = "pacific-crest"
 name = "Pacific Crest National Scenic Trail"
+common_name = "Pacific Crest Trail"
 short_name = "PCT"
 short_name_url = "https://www.pcta.org/"
 country = "US"
@@ -100,5 +101,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.fs.usda.gov/sites/nfs/files/trails/pacific-crest-nst/image/PCT%20logo.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The name hikers use, Pacific Crest Trail, was added as the common name. The recorded name is unchanged."
+fields = ["common_name"]
+basis = "The Forest Service page for the trail, which administers it, uses 'Pacific Crest Trail' in its alerts link ('Pacific Crest Trail Closures') beside the formal name."
+basis_url = "https://www.fs.usda.gov/trails/pacific-crest-nst"
 asked_by = "the dataset's own check"
 outcome = "applied"

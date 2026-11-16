@@ -2,6 +2,7 @@
 
 id = "ouachita"
 name = "Ouachita National Recreation Trail"
+common_name = "Ouachita Trail"
 short_name = "OT"
 short_name_url = "https://www.friendsoftheouachita.org/about-the-ot"
 country = "US"
@@ -93,5 +94,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.friendsoftheouachita.org/wp-content/uploads/2025/04/foot-logo.svg"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The name hikers use, Ouachita Trail, was added as the common name. The recorded name is unchanged."
+fields = ["common_name"]
+basis = "The Friends of the Ouachita Trail say: 'The 'Ouachita Trail', as it is more commonly known'."
+basis_url = "https://www.friendsoftheouachita.org/about-the-ot"
 asked_by = "the dataset's own check"
 outcome = "applied"

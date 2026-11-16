@@ -2,6 +2,7 @@
 
 id = "continental-divide"
 name = "Continental Divide National Scenic Trail"
+common_name = "Continental Divide Trail"
 short_name = "CDT"
 short_name_url = "https://cdtcoalition.org/"
 country = "US"
@@ -102,5 +103,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.contact", "shield.logo_owner", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.fs.usda.gov/sites/default/files/fs_media/fs_document/CDT_ServiceMark_Auth_Guidelines_FINAL_06282021.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The name hikers use, Continental Divide Trail, was added as the common name. The recorded name is unchanged."
+fields = ["common_name"]
+basis = "The Continental Divide Trail Coalition's page says 'the Continental Divide Trail was designated nearly 50 years ago' and gives the formal name as well."
+basis_url = "https://cdtcoalition.org/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -2,6 +2,7 @@
 
 id = "sheltowee-trace"
 name = "Sheltowee Trace National Recreation Trail"
+common_name = "Sheltowee Trace"
 country = "US"
 regions = ["KY", "TN"]
 length_km = 515
@@ -96,5 +97,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.contact", "shield.logo_owner", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://images.squarespace-cdn.com/content/v1/5f656f5d5a92157dd17414ac/1614824980218-WB89JT7X4L2SHLT1LK75/favicon.ico"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The name hikers use, Sheltowee Trace, was added as the common name. The recorded name is unchanged."
+fields = ["common_name"]
+basis = "The Sheltowee Trace Association's page says 'The Sheltowee Trace is home to horse riders' under a heading with the formal name."
+basis_url = "https://sheltoweetrace.org/trace"
 asked_by = "the dataset's own check"
 outcome = "applied"

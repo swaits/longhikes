@@ -135,10 +135,10 @@ def left_out_page(entries, site, repo_root):
   <div class="titleblock__text"><h1>Considered and left out</h1>
   <p class="page-head__lede">Trails and routes that were looked at for this dataset and left out, and why.</p>
   </div></header></div></div>
-<div class="container section">
+<div class="container section section--finder place">
   <p class="prose">{_opening(entries, site)}</p>
   {groups}
 </div>"""
-    description = ("Trails and routes considered for this dataset and left out: "
+    description = (f"{len(entries)} trails and routes considered for {site.name} and left out: "
                    "the reason, the deciding fact and its source page for each one.")
-    return "Considered and left out", description, Markup(body)
+    return "Trails Considered and Left Out, and Why", description, Markup(body)

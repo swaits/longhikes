@@ -1,4 +1,4 @@
-"""Site-wide settings from web/site.toml (name, tagline, base_url, repo_url, repo_branch, contact_url, name_lang)."""
+"""Site-wide settings from web/site.toml (name, tagline, home_title, base_url, repo_url, repo_branch, contact_url, name_lang)."""
 import functools
 import os
 import tomllib
@@ -12,11 +12,13 @@ class Site:
     """The settings every page needs. Build one with load()."""
 
     def __init__(self, name, tagline, base_url="", repo_url="", repo_branch="main",
-                 contact_url="", name_lang=None):
+                 contact_url="", name_lang=None, home_title=""):
         if not name:
             raise ValueError("site.toml: name must not be empty")
         self.name = name
         self.tagline = tagline
+        # The home page's own title, before the name is added (about 50 characters).
+        self.home_title = home_title.strip()
         self.base_url = base_url.rstrip("/")
         self.repo_url = repo_url.rstrip("/")
         self.repo_branch = (repo_branch or "main").strip() or "main"
@@ -103,7 +105,8 @@ def from_file(path):
     return Site(name=data.get("name", ""), tagline=data.get("tagline", ""),
                 base_url=data.get("base_url", ""), repo_url=data.get("repo_url", ""),
                 repo_branch=data.get("repo_branch", "main"),
-                contact_url=data.get("contact_url", ""), name_lang=data.get("name_lang", {}))
+                contact_url=data.get("contact_url", ""), name_lang=data.get("name_lang", {}),
+                home_title=data.get("home_title", ""))
 
 
 @functools.cache

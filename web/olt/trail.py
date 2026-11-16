@@ -8,7 +8,7 @@ import os
 import re
 import urllib.parse
 
-from . import common, elevation, facets, hike, words
+from . import browse, common, elevation, facets, hike, related, words
 from .layout import OUTDOOR_STYLE
 from .markup import Markup, esc
 
@@ -165,6 +165,10 @@ def page_head(rec):
     has_plate = bool(common.shield_url(rec))
     abbr = rec.get("short_name", "")
     abbr_html = f' <span class="titleblock__abbr">{esc(abbr)}</span>' if abbr else ""
+    # The name hikers use leads the page; the recorded name stays, just under it.
+    common_name = rec.get("common_name", "")
+    heading = esc(common_name) if common_name else common.name(rec)
+    full_name = f'<p class="titleblock__sub">Full name: {common.name(rec)}</p>' if common_name else ""
     plate = common.plate(rec, size="lg", link=True, eager=True) if has_plate else ""
     summary = hike.summary(rec)
     lede = common.rich(summary) if summary else fallback_lede(rec)
@@ -193,8 +197,8 @@ def page_head(rec):
       {plate}
       <div class="titleblock__text">
         {kicker}
-        <h1>{common.name(rec)}{abbr_html}</h1>
-        {f'<p class="titleblock__sub">{common.rich(lead)}</p>' if lead else ""}
+        <h1>{heading}{abbr_html}</h1>
+        {full_name}{f'<p class="titleblock__sub">{common.rich(lead)}</p>' if lead else ""}
         {define}
       </div>
     </header>
@@ -205,6 +209,14 @@ def page_head(rec):
 </div>"""
 
 
+def shape_label(rec, records):
+    """"Loop" (linked to the loops list when it is shown), "End to end" or "Network"."""
+    label = facets.SHAPES[facets.shape(rec)]
+    if facets.shape(rec) == "loop":
+        return list_anchor(records, "loops", label) or esc(label)
+    return esc(label)
+
+
 def glance_row(label, value, note="", wide=False):
     note_html = f"<small>{note if isinstance(note, Markup) else esc(note)}</small>" if note else ""
     value_html = value if isinstance(value, Markup) else esc(value)
@@ -212,16 +224,52 @@ def glance_row(label, value, note="", wide=False):
                   f'<dd>{value_html}{note_html}</dd></div>')
 
 
-def glance(rec):
-    """The hiker's facts at a glance, under the attribute names every page uses."""
+def list_anchor(records, key, text):
+    """text linked to the list's page when that list is shown today (browse.is_shown); else None."""
+    link = related.list_link(records, key) if records else None
+    return Markup(f'<a href="{esc(link[0])}">{esc(text)}</a>') if link else None
+
+
+# The time lists, by the band a trail falls in (facets.time_band).
+TIME_LISTS = {"week": "a-week-or-less", "two-weeks": "one-to-two-weeks"}
+
+
+def length_note(rec, records):
+    """A link under the length to the list its length puts it in: the shortest or the longest."""
+    for key, text in (("under-100-miles", f"More trails under {browse.SHORT_MI} miles"),
+                      ("longest", f"More trails of {browse.LONG_MI:,} miles or more")):
+        if related.list_link(records, key) and browse.by_key(key).test(rec):
+            return list_anchor(records, key, text)
+    return ""
+
+
+def time_note(rec, records):
+    """The estimate's note, then a link to the list of trails that take as long."""
+    note = facets.estimate_note(rec)
+    key = TIME_LISTS.get(facets.time_band(rec))
+    if not key or not related.list_link(records, key):
+        return note
+    text = f"More trails of {browse.by_key(key).title.lower()}"
+    return Markup(f"{note} {list_anchor(records, key, text)}" if note else str(list_anchor(records, key, text)))
+
+
+def glance(rec, records=None):
+    """The hiker's facts at a glance, under the attribute names every page uses.
+
+    records: every trail, so that terrain, shape, time and length link to the
+    lists they put the trail in (left out when None)."""
     h = hike.table(rec)
-    rows = [glance_row(facets.LENGTH, words.length(rec["length_km"], "stack", rec["derived"]["length_mi"]))]
-    rows.append(glance_row(facets.TIME, facets.time_text(rec), facets.estimate_note(rec)))
+    rows = [glance_row(facets.LENGTH, words.length(rec["length_km"], "stack", rec["derived"]["length_mi"]),
+                       length_note(rec, records))]
+    rows.append(glance_row(facets.TIME, facets.time_text(rec), time_note(rec, records)))
     season = facets.season_text(rec)
     if season:
         rows.append(glance_row(facets.SEASON, season))
     if facets.walking(rec):
-        rows.append(glance_row(facets.WALKING, facets.WALKING_VALUES[facets.walking(rec)]))
+        walking = facets.WALKING_VALUES[facets.walking(rec)]
+        if facets.walking(rec) in facets.CROSS_COUNTRY:
+            walking = list_anchor(records, "off-trail", walking) or walking
+        rows.append(glance_row(facets.WALKING, walking))
     elev = elevation.get(rec)
     if h.get("high_point") or h.get("high_point_m"):
         # A named, sourced high point is better than a computed number.
@@ -250,14 +298,16 @@ def glance(rec):
         if isinstance(text, tuple):
             text = Markup(f'{esc(text[0])}<span class="glance__to"> to </span>{esc(text[1])}')
         if facets.shape(rec):
-            text = Markup(f'<strong>{esc(facets.SHAPES[facets.shape(rec)])}.</strong> {esc(text) if not isinstance(text, Markup) else text}')
+            text = Markup(f'<strong>{shape_label(rec, records)}.</strong> {esc(text) if not isinstance(text, Markup) else text}')
             label = facets.SHAPE
         rows.append(glance_row(label, text, wide=True))
     elif facets.shape(rec):
-        rows.append(glance_row(facets.SHAPE, facets.SHAPES[facets.shape(rec)]))
+        rows.append(glance_row(facets.SHAPE, shape_label(rec, records)))
     terrain = facets.terrain(rec)
     if terrain:
-        rows.append(glance_row(facets.TERRAIN, ", ".join(words.TERRAIN[t] for t in terrain), wide=True))
+        names = Markup(", ".join(str(list_anchor(records, f"terrain-{t}", words.TERRAIN[t]) or esc(words.TERRAIN[t]))
+                                 for t in terrain))
+        rows.append(glance_row(facets.TERRAIN, names, wide=True))
     if h.get("permit"):
         rows.append(glance_row("Permits", common.sentence(h["permit"]), wide=True))
     country = " and ".join(words.COUNTRIES.get(c, c) for c in common.countries(rec))
@@ -786,6 +836,8 @@ def record_block(rec):
     where = Markup(f'{codes}{names_html}, {esc(country)}')
     rows = [
         fact("Kind", words.label(words.KINDS, k), words.meaning(words.KINDS, k)),
+        fact("Common name", rec["common_name"], "The name hikers use, where it differs from the name above.")
+        if rec.get("common_name") else "",
         fact("Designation", rec.get("designation", "")),
         fact("Tier", words.label(words.TIERS, tier), words.meaning(words.TIERS, tier)),
         fact("Listing", words.label(words.WAVES, wave), listing_note(rec)),
@@ -1190,17 +1242,87 @@ def raw_record(rec):
 
 # The page -------------------------------------------------------------------
 
+def gpx_offered(rec):
+    """True when the page offers a GPX download (the build lists its files in derived.downloads)."""
+    downloads = rec["derived"].get("downloads")
+    if downloads is None:
+        return common.has_line(rec)
+    return any(d.get("format") == "GPX" for d in downloads)
+
+
+def page_title(rec, site):
+    """The page's own title, before the site name is added: the name hikers use, the
+    abbreviation where there is one, the length in miles, and what the page offers.
+    Only what is true of the page: GPX only where it has a download, a map only
+    where it has a track.
+
+    The whole title, site name included, stays within common.TITLE_LIMIT. Pieces go in
+    this order until it fits: the kilometres, the author of a route, the word
+    "map", the abbreviation, then "GPX". A route says it is a route.
+    """
+    name = common.plain_name(rec)
+    abbr = rec.get("short_name", "")
+    named = f"{name} ({abbr})" if abbr and abbr.lower() != name.lower() else name
+    mi = words.fmt_int(rec["derived"]["length_mi"])
+    km = words.fmt_km(rec["length_km"])
+    gpx = gpx_offered(rec)
+    who = facets.author(rec)
+    route = common.is_route(rec)
+
+    def text(head, with_km, with_who, offer):
+        if route:
+            tail = f"{mi}-mile route" + (f" by {who}" if with_who and who else "")
+        else:
+            tail = f"{mi} miles" + (f" ({km} km)" if with_km else "")
+        return f"{head}: {tail}" + {2: ", map and GPX", 1: ", GPX", 0: ""}[offer if gpx else 0]
+
+    steps = ((named, True, True, 2), (named, False, False, 2), (named, False, False, 1),
+             (name, False, False, 1), (name, False, False, 0))
+    options = []
+    for step in steps:
+        option = text(*step)
+        if option not in options:
+            options.append(option)
+    return common.fit_title(options, site)
+
+
+def places_short(rec):
+    """Where it is, for a description: "in Oregon", "in Utah and Wyoming",
+    "across 14 states", "across Canada"."""
+    codes = rec.get("regions", [])
+    if words.ALL_CANADA in codes:
+        return "across Canada"
+    countries = [words.COUNTRIES.get(c, c) for c in common.countries(rec)] or \
+        [words.COUNTRIES.get(rec["country"], rec["country"])]
+    if not codes:
+        return f"in {words.join_names(countries)}"
+    if len(codes) > 3:
+        unit = {"United States": "states", "Canada": "provinces and territories"}.get(
+            words.join_names(countries), "states and provinces")
+        return f"across {len(codes)} {unit}"
+    return f"in {words.join_names(words.region_name(c) for c in codes)}"
+
+
 def description(rec):
-    one = hike.one_line(rec)
-    if one:
-        text = one
-    else:
-        km = words.fmt_km(rec["length_km"])
-        mi = words.fmt_int(rec["derived"]["length_mi"])
-        text = f"{rec['name']}: a {kind_word(rec)} of {mi} mi ({km} km) {place_text(rec)}."
-    text += (" Download its GPX here." if common.has_line(rec)
-             else " Where to get its GPX.")
-    return text if len(text) <= 300 else text[:297].rsplit(" ", 1)[0] + "…"
+    """The meta description, from the record's own fields and at most DESCRIPTION_LIMIT
+    characters: what it is, how long, where, the usual time where a source states one,
+    then the first sentence of the summary (or the designation where there is none)."""
+    mi = words.fmt_int(rec["derived"]["length_mi"])
+    km = words.fmt_km(rec["length_km"])
+    text = f"A {kind_word(rec)} of {mi} miles ({km} km) {places_short(rec)}"
+    days = hike.days(rec)
+    if days:
+        text += f", usually {days}"
+    text += "."
+    tail = hike.one_line(rec)
+    if not tail and rec.get("designation"):
+        tail = rec["designation"].strip()
+        tail = tail[:1].upper() + tail[1:]
+        if not tail.endswith("."):
+            tail += "."
+    if tail:
+        text += " " + tail
+    return common.cut_at_word(re.sub(r"\s+", " ", text.replace("`", "")), common.DESCRIPTION_LIMIT)
 
 
 # Ways onward ------------------------------------------------------------------
@@ -1208,11 +1330,12 @@ def description(rec):
 ONWARD_MAX = 6
 
 
-def _onward_list(title, recs, more_href, more_text, heading_id):
+def _onward_list(title, recs, more_href, more_text, heading_id, meta=None):
+    """One list of ways onward: each trail's name and length, then meta(r) (HTML) where given."""
     items = "".join(
         f'<li><a href="{esc(common.trail_path(r))}">{common.name(r)}</a>'
         f'<span class="onward__len">{words.length(r["length_km"], "short", r["derived"]["length_mi"])}'
-        f'{" · Route" if common.is_route(r) else ""}</span></li>'
+        f'{" · Route" if common.is_route(r) else ""}{meta(r) if meta else ""}</span></li>'
         for r in recs[:ONWARD_MAX])
     more = (f'<p class="onward__more"><a href="{esc(more_href)}">{esc(more_text)}</a></p>'
             if more_href else "")
@@ -1220,13 +1343,23 @@ def _onward_list(title, recs, more_href, more_text, heading_id):
             f'<h3 id="{heading_id}">{esc(title)}</h3><ul class="onward__list">{items}</ul>{more}</section>')
 
 
+RELATED_WHY = {"name": "same name", "named": "named here", "names": "mentions this"}
+
+
 def onward(rec, records):
-    """Ways onward at the foot of the page: other trails in the same state or province
-    (up to three of them), and for a route, other routes by the same author."""
+    """Ways onward at the foot of the page, all worked out from the records (olt/related.py):
+    trails tied to this one by name or by what the descriptions say; other trails in the
+    same state or province (up to three of them); trails like this one in length, terrain
+    and shape; and for a route, other routes by the same author."""
     if not records:
         return ""
     others = [r for r in records if r["id"] != rec["id"]]
     parts = []
+    tied = related.related_to(rec, records)
+    if tied:
+        why = {r["id"]: w for r, w in tied}
+        parts.append(_onward_list("Related trails", [r for r, _ in tied], "", "", "onward-related",
+                                  meta=lambda r: f" · {esc(RELATED_WHY[why[r['id']]])}"))
     for i, key in enumerate(k for k in facets.place_keys(rec) if k != facets.ACROSS_CANADA):
         if i >= 3:
             break
@@ -1237,6 +1370,12 @@ def onward(rec, records):
         more = (facets.place_path(key), f"All {len(here) + 1} trails in {name}") if len(here) > ONWARD_MAX else \
             (facets.place_path(key), f"{name} on the map")
         parts.append(_onward_list(f"More in {name}", here, more[0], more[1], f"onward-{key.lower()}"))
+    like = related.similar_to(rec, records)
+    if like:
+        def alike(r):
+            shared = related.shared_terrain(rec, r)
+            return f" · {esc(', '.join(words.TERRAIN[t].lower() for t in shared))}" if shared else ""
+        parts.append(_onward_list("Similar in length and terrain", like, "", "", "onward-similar", meta=alike))
     who = facets.author(rec)
     if who:
         same = sorted((r for r in others if facets.author(r) == who), key=lambda r: -r["length_km"])
@@ -1260,7 +1399,7 @@ def render(rec, site, records=None):
     profile = elevation_figure(rec)
     body = f"""{page_head(rec)}
 <div class="container detail{"" if aside else " detail--no-aside"}{"" if has_map else " detail--no-map"}{" detail--with-profile" if profile else ""}">
-  {glance(rec)}
+  {glance(rec, records)}
   {map_figure(rec) if has_track else sketch_figure(rec) if sketch else empty_frame(rec)}
   {profile}
   {aside_html}
@@ -1271,7 +1410,7 @@ def render(rec, site, records=None):
   {about_data(rec, site)}
   {history_section(rec)}
 </div>"""
-    return rec["name"], description(rec), body, has_map
+    return page_title(rec, site), description(rec), body, has_map
 
 
 def release_path(repo_root, rec):

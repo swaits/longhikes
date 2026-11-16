@@ -2,6 +2,7 @@
 
 id = "appalachian"
 name = "Appalachian National Scenic Trail"
+common_name = "Appalachian Trail"
 short_name = "AT"
 short_name_url = "https://www.nps.gov/appa/index.htm"
 country = "US"
@@ -113,5 +114,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.contact", "shield.logo_owner", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://upload.wikimedia.org/wikipedia/commons/2/24/Appalachian_Trail_Marker_Logo.svg"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The name hikers use, Appalachian Trail, was added as the common name. The recorded name is unchanged."
+fields = ["common_name"]
+basis = "The National Park Service page for the trail opens its description with 'The Appalachian Trail is a 2,190+ mile long public footpath' and also uses the formal name."
+basis_url = "https://www.nps.gov/appa/index.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

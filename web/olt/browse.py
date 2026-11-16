@@ -37,6 +37,12 @@ class List:
     # The order the list opens in, a key of facets.SORTS. Name order unless
     # the list is defined by an order (the longest, the shortest, a week).
     sort: str = "name"
+    # The page's <title> before the site name, in the words people search with; {n} is
+    # the number of trails. Empty: the list's own title with the count.
+    page_title: str = ""
+
+    def search_title(self, n):
+        return (self.page_title or f"{self.title}: {{n}} Trails").format(n=n)
 
 
 def _km(mi):
@@ -47,39 +53,46 @@ def _band(key):
     return lambda r: facets.time_band(r) == key
 
 
+# The terrain as an adjective, for a list's page title ("Coastal Hiking Trails").
+TERRAIN_ADJECTIVE = {"coast": "Coastal", "lakes": "Lake"}
+
 LISTS = (
     List("national-scenic-trails", "National Scenic Trails",
          "The long trails the United States Congress has named National Scenic Trails.",
-         facets.is_national),
+         facets.is_national, page_title="National Scenic Trails: {n} Long Hiking Trails"),
     List("routes", "Routes", facets.ROUTE_DEFINITION,
-         lambda r: facets.kind(r) == "route"),
+         lambda r: facets.kind(r) == "route", page_title="Long Hiking Routes by Author: {n} Routes"),
     List("longest", "The longest",
          f"Trails of {LONG_MI:,} miles ({_km(LONG_MI)} km) or more.",
-         lambda r: r["length_km"] >= LONG_KM, sort="length-desc"),
+         lambda r: r["length_km"] >= LONG_KM, sort="length-desc",
+         page_title=f"Longest Hiking Trails: {{n}} Trails of {LONG_MI:,}+ Miles"),
     List("under-100-miles", f"Under {SHORT_MI} miles",
          f"Trails shorter than {SHORT_MI} miles ({_km(SHORT_MI)} km).",
-         lambda r: r["length_km"] < SHORT_KM, sort="length-asc"),
+         lambda r: r["length_km"] < SHORT_KM, sort="length-asc",
+         page_title=f"Hiking Trails Under {SHORT_MI} Miles: {{n}} Long Trails"),
     List("a-week-or-less", "A week or less",
          "Trails most people walk in a week or less, as a source states it or as estimated from the length.",
-         _band("week"), sort="time-asc"),
+         _band("week"), sort="time-asc", page_title="Long Trails to Hike in a Week or Less: {n} Trails"),
     List("one-to-two-weeks", "One to two weeks",
          "Trails that take one to two weeks, as a source states it or as estimated from the length.",
-         _band("two-weeks"), sort="time-asc"),
+         _band("two-weeks"), sort="time-asc", page_title="Long Trails to Hike in One to Two Weeks: {n} Trails"),
     List("loops", "Loops", "Trails that finish where they start.",
-         lambda r: facets.shape(r) == "loop"),
+         lambda r: facets.shape(r) == "loop", page_title="Loop Hiking Trails: {n} Long Trail Loops"),
     List("with-gpx", "With a GPX to download",
          "Trails with a GPX file of the track on their page.",
-         facets.gpx_here),
+         facets.gpx_here, page_title="Long Trails with a GPX to Download: {n} Trails"),
     List("canada", "In Canada", "Trails in Canada, or crossing into it.",
-         lambda r: "CA" in common.countries(r)),
+         lambda r: "CA" in common.countries(r), page_title="Hiking Trails in Canada: {n} Long Trails"),
     List("united-states", "In the United States", "Trails in the United States, or crossing into it.",
-         lambda r: "US" in common.countries(r)),
+         lambda r: "US" in common.countries(r), page_title="Hiking Trails in the United States: {n} Long Trails"),
     List("off-trail", "Cross-country",
          "Trails with stretches of walking where there is no trail.",
-         lambda r: facets.walking(r) in facets.CROSS_COUNTRY),
+         lambda r: facets.walking(r) in facets.CROSS_COUNTRY,
+         page_title="Cross-Country Hiking: {n} Long Trails and Routes"),
 ) + tuple(
     List(f"terrain-{t}", label, f"Trails with {t} among their main terrain.",
-         lambda r, t=t: t in facets.terrain(r))
+         lambda r, t=t: t in facets.terrain(r),
+         page_title=f"{TERRAIN_ADJECTIVE.get(t, label)} Hiking Trails: {{n}} Long Trails")
     for t, label in words.TERRAIN.items()
 )
 

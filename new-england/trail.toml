@@ -2,6 +2,7 @@
 
 id = "new-england"
 name = "New England National Scenic Trail"
+common_name = "New England Trail"
 short_name = "NET"
 short_name_url = "https://www.nps.gov/neen/index.htm"
 country = "US"
@@ -94,5 +95,14 @@ date = "2026-11-09"
 change = "The record was added: New England National Scenic Trail."
 fields = ["record"]
 basis = "The record's own source entry: National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The name hikers use, New England Trail, was added as the common name. The recorded name is unchanged."
+fields = ["common_name"]
+basis = "The National Park Service page says 'the New England Trail covers 235 miles' and uses it in its mailing address."
+basis_url = "https://www.nps.gov/neen/index.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

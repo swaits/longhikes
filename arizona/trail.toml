@@ -2,6 +2,7 @@
 
 id = "arizona"
 name = "Arizona National Scenic Trail"
+common_name = "Arizona Trail"
 short_name = "AZT"
 short_name_url = "https://aztrail.org/"
 country = "US"
@@ -93,5 +94,14 @@ date = "2026-11-09"
 change = "The record was added: Arizona National Scenic Trail."
 fields = ["record"]
 basis = "The record's own source entry: Arizona Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The name hikers use, Arizona Trail, was added as the common name. The recorded name is unchanged."
+fields = ["common_name"]
+basis = "The Arizona Trail Association's page is headed 'Welcome to the Arizona Trail' and uses the formal name only in its introduction."
+basis_url = "https://aztrail.org/"
 asked_by = "the dataset's own check"
 outcome = "applied"

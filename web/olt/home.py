@@ -135,7 +135,8 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False):
     """
     route = facets.kind(rec) == "route"
     lo, hi, est = facets.time_days(rec)
-    search = " ".join([rec["name"], rec.get("short_name", ""), rec["id"], facets.author(rec)]).lower()
+    search = " ".join([rec["name"], rec.get("common_name", ""), rec.get("short_name", ""), rec["id"],
+                       facets.author(rec)]).lower()
     abbr = rec.get("short_name", "")
     abbr_cls = "entry__abbr" if common.shield_url(rec) else "entry__abbr vh"
     abbr_html = f' <span class="{abbr_cls}">{esc(abbr)}</span>' if abbr else ""
@@ -409,7 +410,7 @@ def key(official=True):
       </ul>"""
 
 
-def results(recs=None, *, finder=False, groups=None, routes_list=False, default_sort="name", saved=False):
+def results(recs=None, *, finder=False, groups=None, routes_list=False, default_sort="name", saved=False, top=3):
     """The list of trails, as every page shows it: div.results > head, key, list head, ol.entries.
 
     Every list carries the same "Sort by" control. The rows are written in
@@ -417,8 +418,11 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
     JavaScript off; app.js reorders in place and keeps ?sort= in the address.
 
     finder: the home page's list, driven by the filters (live count, empty state).
-    groups: [(heading, trails, extra_fn)] to list the trails under level-3 headings;
+    groups: [(heading, trails, extra_fn)] to list the trails under headings (level `top`);
     sorting is within each group and the groups keep their order.
+    top: the heading level of a trail's name where the trails are not in groups (and of a
+    group's heading where they are; the names then sit one level lower). 3 under a page's
+    own h2 (the home page); 2 on a page whose h1 is followed directly by the list.
     extra_fn(rec) gives HTML placed last in each row.
     routes_list: passed to entry() for the Routes list (see there).
     saved: the Saved page's list. Every trail's row is written hidden, and
@@ -441,11 +445,11 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
     lists = ""
     every = ' data-every-trail' if finder or saved else ""
     for heading, items, extra_fn in groups:
-        level = 4 if heading else 3
+        level = top + 1 if heading else top
         rows = "\n".join(entry(r, level=level, extra=extra_fn(r) if extra_fn else "",
                                 routes_list=routes_list, hidden=saved) for r in items)
         if heading:
-            lists += f'\n      <h3 class="results__group">{heading}</h3>'
+            lists += f'\n      <h{top} class="results__group">{heading}</h{top}>'
         list_id = ' id="entries"' if finder else ""
         lists += f'\n      <ol class="entries"{list_id}{every}>\n{rows}\n      </ol>'
     if finder:
@@ -586,6 +590,14 @@ def lists_row(records):
     </nav>"""
 
 
+def description(records):
+    """The home page's meta description: how many, what each has, and how many have a GPX."""
+    n_gpx = sum(1 for r in records if facets.gpx_here(r))
+    text = (f"{len(records)} long-distance hiking trails and routes in the US and Canada: length, typical time, "
+            f"a source for every fact, and a GPX for {n_gpx}.")
+    return common.cut_at_word(text, common.DESCRIPTION_LIMIT)
+
+
 def render(records, site):
     """The home page body (HTML)."""
     c = counts(records)
@@ -600,7 +612,7 @@ def render(records, site):
                       f'<a href="{esc(site.new_trail_url)}">suggest a trail</a>.</p>')
     return f"""<section class="hero hero--short hero--home" aria-labelledby="hero-title">
   <div class="container hero__inner">
-    <h1 id="hero-title" class="lockup"><img class="lockup__mark" src="/assets/favicon.svg" alt="" width="96" height="96">{esc(site.name)}</h1>
+    <h1 id="hero-title" class="lockup"><img class="lockup__mark" src="/assets/favicon.svg" alt="" width="96" height="96">{esc(site.name)}<span class="vh">: long-distance hiking trails of the United States and Canada</span></h1>
     <p class="hero__tagline">Long-distance hiking trails of the United States and Canada.</p>
     <ul class="hero__tags">
       <li><a href="#finder">Filters</a></li>

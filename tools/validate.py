@@ -456,6 +456,19 @@ def check_elevation(tid, tdir, rec, errors):
                 errors.append(f"{where}: source.computed must be a date (YYYY-MM-DD)")
 
 
+def check_common_name(tid, rec, errors):
+    """common_name is optional; where present it is the name hikers use, so it is a clean string that differs from name."""
+    if "common_name" not in rec:
+        return
+    name = rec["common_name"]
+    if not isinstance(name, str) or not name.strip():
+        errors.append(f"{tid}: common_name must be a non-empty string (leave it out when name is the name hikers use)")
+    elif name != name.strip():
+        errors.append(f"{tid}: common_name has a leading or trailing space")
+    elif name == rec.get("name"):
+        errors.append(f"{tid}: common_name repeats name (leave it out when they are the same)")
+
+
 def check_short_name(tid, rec, errors):
     """short_name is optional; where present it needs short_name_url, the page where it was seen in use."""
     name, url = rec.get("short_name"), rec.get("short_name_url")
@@ -692,6 +705,7 @@ def main():
             if field not in rec or rec[field] in ("", None, []):
                 errors.append(f"{tid}: missing required field {field}")
         check_short_name(tid, rec, errors)
+        check_common_name(tid, rec, errors)
         if rec.get("id") != tid:
             errors.append(f"{tid}: id {rec.get('id')!r} does not match directory name")
         if rec.get("country") not in ("US", "CA"):

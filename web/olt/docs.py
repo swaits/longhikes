@@ -215,7 +215,10 @@ def sources_page(records, site, repo_root):
             f'<p class="page-head__lede">Where the tracks come from, and the terms each source states.</p>'
             f'</div></header></div></div>{computed}'
             f'<div class="container section"><div class="prose doc">{doc_html}</div></div>')
-    return "Sources", "Where each trail track comes from: licences, track sources and source terms.", Markup(body)
+    n_tracks = sum(1 for r in records if r.get("source", {}).get("line_file"))
+    description = (f"Where the tracks and facts for the {len(records)} trails come from: {n_tracks} tracks included, "
+                   f"each source's licence and terms, and the credit each asks for.")
+    return "Sources and Licences for Trail Tracks and Data", common.cut_at_word(description, common.DESCRIPTION_LIMIT), Markup(body)
 
 
 def logos_page(records, site, repo_root):
@@ -254,7 +257,10 @@ their own (<code class="raw">no-logo-exists</code>): the pages that would show o
 {counts["logo-not-found"]} have an emblem, or may have one, but no usable artwork of it was found at a source the
 dataset allows (<code class="raw">logo-not-found</code>). Each record says in its logo note where an emblem was
 looked for.</p></div>"""
-    return "Logos", "Trail logos, their holders, and how a holder can ask for removal.", Markup(body)
+    n_logos = sum(1 for r in records if "shield" in r["derived"]["files"])
+    description = (f"The {n_logos} trail logos shown on {site.name}, who holds each one, "
+                   f"and how a holder can ask for a logo to be removed.")
+    return "Trail Logos and Their Holders", common.cut_at_word(description, common.DESCRIPTION_LIMIT), Markup(body)
 
 
 BREAD = Markup('<nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/about/">About</a></li>')
@@ -375,7 +381,9 @@ a source page, a map, or a measured track.</p>
 {contrib}
 </section>
 </div></div>"""
-    return "About", f"What {site.name} is, how trails are chosen, the data and its sources, and how to correct or add a trail.", Markup(body)
+    description = (f"{n} trails and routes in the United States and Canada: how a trail is chosen, "
+                   f"where the data comes from, and how to correct or add one.")
+    return "About: How Trails Are Listed and Checked", common.cut_at_word(description, common.DESCRIPTION_LIMIT), Markup(body)
 
 
 def _size(out_dir, relpath):
@@ -490,7 +498,9 @@ def data_page(records, site, repo_root, out_dir):
   <li><a href="/sources/">Sources</a><small>Each source, its terms and the trails that use it</small></li>
   </ul></div>
 </div>"""
-    return "Data", "Bulk downloads, stable per-trail file URLs, the record schema and licences.", Markup(body)
+    description = (f"Download the records of all {len(records)} trails, and every track that may be shared, "
+                   f"as CSV, JSON, GeoJSON and GPX. The records are public domain.")
+    return "Trail Data Downloads: CSV, JSON, GeoJSON and GPX", common.cut_at_word(description, common.DESCRIPTION_LIMIT), Markup(body)
 
 
 def schema_page(site, repo_root):
@@ -501,7 +511,9 @@ def schema_page(site, repo_root):
   <header class="titleblock"><div class="titleblock__text"><p class="kicker">Reference</p>
   <h1>Record schema</h1></div></header></div></div>
 <div class="container section"><div class="prose doc">{doc_html}</div></div>"""
-    return "Record schema", "Every field of a trail record (trail.toml) and what it means.", Markup(body)
+    return ("Trail Record Schema: Every Field of trail.toml",
+            "What each field of a trail record means, which fields need a source and a history entry, "
+            "and how the elevation figures are computed.", Markup(body))
 
 
 def changelog_page(site, repo_root):
@@ -512,7 +524,8 @@ def changelog_page(site, repo_root):
   <header class="titleblock"><div class="titleblock__text"><p class="kicker">Reference</p>
   <h1>Changelog</h1></div></header></div></div>
 <div class="container section"><div class="prose doc">{doc_html}</div></div>"""
-    return "Changelog", "What changed in the dataset, release by release.", Markup(body)
+    return ("Changelog: What Changed in the Trail Data",
+            "Trails added, removed and corrected in the dataset, release by release, newest first.", Markup(body))
 
 
 def copy_licences(out_dir, repo_root):

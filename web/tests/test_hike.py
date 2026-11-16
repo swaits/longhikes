@@ -122,7 +122,8 @@ class TrailPageTest(unittest.TestCase):
         self.assertIn('href="https://trail.example/facts"', about)
         self.assertIn("For start, end, time and season", text(about))
         self.assertIn("Checked 2026-11-13.", text(about))
-        self.assertEqual(trail.description(rec)[:52], "A long walk along the crest of the Example Range. Wh")
+        self.assertTrue(trail.description(rec).startswith(
+            "A trail of 62 miles (100 km) in Arizona, usually 5 to 7 months. A long walk along the crest"))
 
     def test_partial_hike_table(self):
         rec = sample_record("X Trail")

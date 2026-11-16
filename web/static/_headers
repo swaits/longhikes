@@ -70,27 +70,51 @@
 /assets/*
   Cache-Control: public, max-age=300, must-revalidate
 
+# Raw files under /trails/ are kept out of search results with X-Robots-Tag:
+# noindex, so that a trail's page stays the one result for its name, its length
+# or its GPX, and a 29 MB GeoJSON or a TOML record is not offered beside it.
+# The files stay fetchable and linked. The bulk downloads under /data/ are the
+# dataset's own distribution (the Dataset markup on /data/ names them) and are
+# left indexable, as is the feed and llms.txt. Each header is set by one rule only.
+
 # Trail downloads: correct media types and a download disposition.
 /trails/*/*.gpx
   Content-Type: application/gpx+xml
   Content-Disposition: attachment
   Cache-Control: public, max-age=3600
+  X-Robots-Tag: noindex
 
 /trails/*/*.geojson
   Content-Type: application/geo+json
   Content-Disposition: attachment
   Cache-Control: public, max-age=3600
+  X-Robots-Tag: noindex
 
 # Map geometry for the trail pages: fetched by page scripts, never a download.
 /trails/*/map.json
   Content-Type: application/json
   Cache-Control: public, max-age=300, must-revalidate
+  X-Robots-Tag: noindex
+
+# Where a trail has no track, the page sketches its ends from this file.
+/trails/*/sketch.json
+  X-Robots-Tag: noindex
 
 # Record and release notes: shown in the browser, not downloaded.
 /trails/*/trail.toml
   Content-Type: text/plain; charset=utf-8
+  X-Robots-Tag: noindex
 
 /trails/*/release.txt
+  Content-Type: text/plain; charset=utf-8
+  X-Robots-Tag: noindex
+
+# The Atom feed of the changelog, and the plain-text guide for assistants.
+/feed.xml
+  Content-Type: application/atom+xml; charset=utf-8
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/llms.txt
   Content-Type: text/plain; charset=utf-8
 
 # Licence texts (LICENSE has no extension): shown in the browser as text.

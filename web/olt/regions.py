@@ -45,6 +45,34 @@ def _plural(n, word="trail"):
     return f"{n} {word}{'' if n == 1 else 's'}"
 
 
+def _with_gpx(n_gpx, total):
+    """"3 with a GPX here", or "all with a GPX here" when every one has; "" when none has."""
+    if not n_gpx:
+        return ""
+    return "all with a GPX here" if n_gpx == total else f"{n_gpx} with a GPX here"
+
+
+def _miles(rec):
+    return words.fmt_int(rec["derived"]["length_mi"])
+
+
+def _fit(options, limit=common.DESCRIPTION_LIMIT):
+    """The first of options (fullest first) that fits; else the last, cut at a word."""
+    return common.cut_at_word(next((o for o in options if len(o) <= limit), options[-1]), limit)
+
+
+def lists_here(recs, records):
+    """The ready-made lists that hold some of these trails, as links with how many of them each
+    holds. A list that holds all of them (and there are several) says nothing about the place."""
+    ids = {r["id"] for r in recs}
+    parts = []
+    for lst, members in browse.shown(records):
+        k = sum(1 for m in members if m["id"] in ids)
+        if k and not (k == len(recs) > 1):
+            parts.append(f'<a href="{esc(browse.path(lst))}">{esc(lst.title)}</a> ({k})')
+    return parts
+
+
 def regions_index_page(records, site):
     """(title, description, body) for /regions/: the Places hub."""
     by_slug, across = collect_regions(records)
@@ -83,7 +111,9 @@ def regions_index_page(records, site):
   </div></header>
   <ul class="chips" aria-label="Jump to a part of the country">{"".join(jump)}</ul></div></div>
 <div class="container section places">{blocks}</div>"""
-    return "Places", "Long trails by state and province, grouped into parts of the United States and Canada.", Markup(body)
+    description = (f"Where the {len(records)} long trails and routes are: {n_us} in the United States and {n_ca} in Canada, "
+                   f"by state and province, with the number in each.")
+    return "Long Trails by State and Province: US and Canada", common.cut_at_word(description, common.DESCRIPTION_LIMIT), Markup(body)
 
 
 def region_page(slug, records, site):
@@ -107,6 +137,9 @@ def region_page(slug, records, site):
                 siblings.append(f'<a href="{esc(facets.place_path(k))}">{esc(facets.place_name(k))}</a>')
     nav = (f'<nav class="region-nav" aria-label="Elsewhere in {esc(group_name)}">Elsewhere in {esc(group_name)}: '
            f'{" · ".join(siblings)}</nav>') if siblings else ""
+    held = lists_here(recs, records)
+    nav += (f'<nav class="region-nav" aria-label="Lists with trails in {esc(info["name"])}">'
+            f'Lists with trails in {esc(info["name"])}, and how many here: {" · ".join(held)}</nav>') if held else ""
     body = f"""<div class="page-head"><div class="container">
   <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{crumbs}<li aria-current="page">{esc(info["name"])}</li></ol></nav>
   <header class="titleblock"><div class="titleblock__text">
@@ -118,11 +151,32 @@ def region_page(slug, records, site):
 </div></div>
 <div class="container section place">
   {home.overview_map(recs, f"Map of the trails in {info['name']}")}
-  {home.results(recs)}
+  {home.results(recs, top=2)}
   {nav}
 </div>"""
-    title = info["name"]
-    desc = f"{_plural(len(recs))} in {info['name']}, {country}: length, time and where to get the GPX."
+    name = info["name"]
+    routes = sum(1 for r in recs if common.is_route(r))
+    mixed = 0 < routes < len(recs)
+    options = []
+    if mixed:
+        options.append(f"Long Trails in {name}: {_plural(len(recs) - routes, 'Trail')} and {_plural(routes, 'Route')}")
+        options.append(f"Long Trails in {name}: {len(recs)} Trails and Routes")
+    else:
+        options.append(f"Long Trails in {name}: {_plural(len(recs), 'Route' if routes else 'Trail')}")
+    options.append(f"Long Trails in {name}")
+    title = common.fit_title(options, site)
+    by_length = sorted(recs, key=lambda r: (r["length_km"], r["id"]))
+    shortest, longest = by_length[0], by_length[-1]
+    what = _plural(len(recs), "trail") + (" and routes" if mixed else "")
+    if routes == len(recs):
+        what = _plural(len(recs), "route")
+    gpx = f" {_with_gpx(n_gpx, len(recs))[:1].upper()}{_with_gpx(n_gpx, len(recs))[1:]}." if n_gpx else ""
+    if len(recs) == 1:
+        first = f"{common.plain_name(longest)}, {_miles(longest)} miles, is the one long trail listed in {name}, {country}."
+    else:
+        first = (f"{what[:1].upper() + what[1:]} in {name}, {country}, from {common.plain_name(shortest)}, {_miles(shortest)} miles, "
+                 f"to {common.plain_name(longest)}, {_miles(longest)} miles.")
+    desc = _fit([first + gpx, first, f"{what[:1].upper() + what[1:]} in {name}, {country}.{gpx}"])
     return title, desc, Markup(body), home.has_overview_map(recs)
 
 
@@ -169,10 +223,13 @@ def routes_page(records, site, repo_root=None):
 </div>
 <div class="container section">
   {home.overview_map(routes, "Map of the routes with a GPX here")}
-  {home.results(groups=groups, routes_list=True)}
+  {home.results(groups=groups, routes_list=True, top=2)}
   <nav class="region-nav" aria-label="Other lists"><a href="/lists/">All lists</a> · <a href="/">Every trail</a></nav>
 </div>"""
-    return "Routes", f"{_plural(len(routes), 'route')} in the United States and Canada, by author, with their guides.", Markup(body), home.has_overview_map(routes)
+    description = (f"{_plural(len(routes), 'route')} in the United States and Canada by {len(by_author)} authors, "
+                   f"with their guides{f' and {n_gpx} with a GPX here' if n_gpx else ''}.")
+    return (browse.by_key("routes").search_title(len(routes)), common.cut_at_word(description, common.DESCRIPTION_LIMIT),
+            Markup(body), home.has_overview_map(routes))
 
 
 def list_page(lst, recs, total, site):
@@ -192,11 +249,16 @@ def list_page(lst, recs, total, site):
 </div></div>
 <div class="container section">
   {home.overview_map(recs, f"Map of the trails in the list {lst.title}")}
-  {home.results(recs, default_sort=lst.sort)}
+  {home.results(recs, default_sort=lst.sort, top=2)}
   <p class="finder__foot">{rule}</p>
   <nav class="region-nav" aria-label="Other lists"><a href="/lists/">All lists</a> · <a href="/">Every trail</a></nav>
 </div>"""
-    return lst.title, f"{lst.title}: {lst.blurb}", Markup(body), home.has_overview_map(recs)
+    by_length = sorted(recs, key=lambda r: (r["length_km"], r["id"]))
+    stats = [f" {_plural(len(recs))}, from {common.plain_name(by_length[0])}, {_miles(by_length[0])} miles, "
+             f"to {common.plain_name(by_length[-1])}, {_miles(by_length[-1])} miles; {_with_gpx(n_gpx, len(recs)) or 'none with a GPX here'}.",
+             f" {_plural(len(recs))}, {_with_gpx(n_gpx, len(recs)) or 'none with a GPX here'}.", f" {_plural(len(recs))}."]
+    desc = _fit([lst.blurb + s for s in stats] + [lst.blurb])
+    return lst.search_title(len(recs)), desc, Markup(body), home.has_overview_map(recs)
 
 
 def lists_index_page(records, site):
@@ -222,4 +284,7 @@ def lists_index_page(records, site):
 <div class="container section"><ul class="shelves">{"".join(cards)}</ul>
 <p class="finder__foot">A list is shown when it has at least {browse.MIN_SIZE} trails and no more than
 {round(browse.MAX_SHARE * 100)}% of all of them. To combine conditions, use the filters on <a href="/">the home page</a>.</p></div>"""
-    return "Lists", "Ready-made lists of long trails: National Scenic Trails, routes, loops, the longest and more.", Markup(body)
+    shown = browse.shown(records)
+    desc = (f"{len(shown)} ready-made lists of the {len(records)} long trails, each picked out by rule from the records: "
+            f"by length, time, terrain, type and country.")
+    return "Long Hiking Trail Lists: Length, Terrain and Type", common.cut_at_word(desc, common.DESCRIPTION_LIMIT), Markup(body)

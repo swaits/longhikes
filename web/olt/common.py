@@ -50,6 +50,34 @@ def partial_short_text(rec):
                   f"{words.length(rec['length_km'], mi=rec['derived']['length_mi'])} published")
 
 
+# A search result shows about this much. The title limit counts the whole title,
+# the site name included.
+TITLE_LIMIT = 65
+DESCRIPTION_LIMIT = 155
+
+
+def title_room(site):
+    """How many characters a page's own title may have, before " · <site name>"."""
+    return TITLE_LIMIT - len(site.name) - len(" \u00b7 ")
+
+
+def fit_title(options, site):
+    """The first of options (richest first) that fits title_room; else the last, the shortest."""
+    return next((o for o in options if len(o) <= title_room(site)), options[-1])
+
+
+def plain_name(rec):
+    """The name hikers use (common_name) where the record has one, else its name. Plain text."""
+    return rec.get("common_name") or rec["name"]
+
+
+def cut_at_word(text, limit):
+    """text if it fits, else cut at a word with an ellipsis, within limit characters."""
+    if len(text) <= limit:
+        return text
+    return text[:limit - 1].rsplit(" ", 1)[0].rstrip(" ,;:.") + "\u2026"
+
+
 def name(rec):
     """The record's name as HTML text, marked with its language when it is not
     English (web/site.toml [name_lang], copied to derived.name_lang by pages.py).

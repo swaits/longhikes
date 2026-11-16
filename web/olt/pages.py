@@ -8,11 +8,15 @@ writes:
     /trails/<id>/index.html     one page per record
     /trails/<id>/trail.toml     the raw record; release.txt beside it where the trail has one
     /trails/<id>/shield-thumb.png  the list-size copy of a PNG logo (olt/thumbs.py)
+    /trails/<id>/card.png       the trail's social card, from web/cards/ (olt/cards.py)
     /regions/, /regions/<slug>/ Places: the hub and one page per state or province
     /lists/, /lists/<key>/      the lists shown today (olt/browse.py); /routes/ is the Routes list
     /about/ and the pages under it: /data/, /data/schema/, /data/changelog/, /sources/, /logos/, /left-out/
     /saved/                     the visitor's saved trails (olt/saved.py; not indexed)
-    /404.html                   not found
+    /404.html                   not found (not indexed)
+    /sitemap.xml, /robots.txt   with a <lastmod> from the data (olt/seo.py)
+    /feed.xml                   the changelog as an Atom feed (olt/feed.py)
+    /llms.txt                   the bulk files, per-trail files and licences, as plain links
 
 Adding a page elsewhere (regions, sources, ...): build its body as HTML,
 wrap it with olt.layout.layout() and write it with olt.layout.write_page().
@@ -22,7 +26,7 @@ import json
 import os
 import shutil
 
-from . import browse, docs, home, layout, leftout, regions, saved, seo, site as site_settings, thumbs, trail
+from . import browse, cards, docs, facets, feed, home, layout, leftout, regions, saved, seo, site as site_settings, thumbs, trail
 
 WEB_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS_DIR = os.path.join(WEB_DIR, "assets")
@@ -58,6 +62,7 @@ def copy_record_files(rec, out_dir, repo_root):
 
 
 def not_found_page(site):
+    """The 404 page. It is not for search results: noindex, and no canonical address."""
     body = layout.page_head("Page not found", kicker="404",
                             lede="There is no page at this address. Search the trails by name instead.")
     body += """<div class="container section">
@@ -68,7 +73,7 @@ def not_found_page(site):
   </form>
   <p class="prose"><a href="/">Find a trail</a> on the home page, or browse by <a href="/regions/">place</a>.</p>
 </div>"""
-    return layout.layout("Page not found", body, path="/404.html", site=site)
+    return layout.layout("Page not found", body, path="/404.html", site=site, noindex=True)
 
 
 def render_site(records, out_dir, repo_root, site=None):
@@ -76,6 +81,8 @@ def render_site(records, out_dir, repo_root, site=None):
     site = site or site_settings.load()
     copy_assets(out_dir)
     pages = 0
+    dates = {}  # page path -> its own date (YYYY-MM-DD), for the sitemap
+    everything = seo.newest(records)
     for rec in records:
         # Read by common.name() wherever a page shows the record's name as text.
         rec["derived"]["name_lang"] = site.name_lang.get(rec["id"], "")
@@ -84,30 +91,41 @@ def render_site(records, out_dir, repo_root, site=None):
         thumbs.prepare(rec, out_dir, repo_root)
         title, description, body, needs_map = trail.render(rec, site, records)
         path = f"/trails/{rec['id']}/"
-        layout.write_page(out_dir, path, layout.layout(title, body, path=path, description=description,
-                                                      maps=needs_map, outdoor=needs_map, site=site))
+        card, card_alt = cards.prepare(rec, out_dir)
+        layout.write_page(out_dir, path, layout.layout(
+            title, body, path=path, description=description, maps=needs_map, outdoor=needs_map, site=site,
+            jsonld=seo.trail_jsonld(rec, site, title=title, description=description),
+            image=card, image_alt=card_alt))
+        dates[path] = seo.modified(rec)
         pages += 1
-    dataset = seo.dataset_jsonld(records, site)
     body = home.render(records, site)
-    layout.write_page(out_dir, "/", layout.layout("", body, path="/", maps=True, site=site, jsonld=dataset))
+    layout.write_page(out_dir, "/", layout.layout("", body, path="/", maps=True, site=site,
+                                                  description=home.description(records),
+                                                  jsonld=seo.home_jsonld(site)))
+    dates["/"] = everything
     layout.write_page(out_dir, "/404.html", not_found_page(site))
     pages += 2
 
-    def add(path, title, description, body_html, *, maps=False, jsonld=None):
+    def add(path, title, description, body_html, *, maps=False, jsonld=None, recs=None, date="", alternates=()):
+        """Write a page. recs: the trails it lists, which give its date and its ItemList."""
         nonlocal pages
+        if recs is not None:
+            jsonld = seo.collection_jsonld(path, site, title=title, description=description, recs=recs)
         layout.write_page(out_dir, path, layout.layout(
-            title, body_html, path=path, description=description, maps=maps, site=site, jsonld=jsonld))
+            title, body_html, path=path, description=description, maps=maps, site=site, jsonld=jsonld,
+            alternates=alternates))
+        dates[path] = date or (seo.newest(recs) if recs is not None else everything)
         pages += 1
 
     t, d, b = regions.regions_index_page(records, site)
-    add("/regions/", t, d, b)
+    add("/regions/", t, d, b)  # every trail is on it: the newest of them
     by_slug, _ = regions.collect_regions(records)
     region_paths = []
     for slug in sorted(by_slug):
         t, d, b, needs_map = regions.region_page(slug, records, site)
         path = f"/regions/{slug}/"
         region_paths.append(path)
-        add(path, t, d, b, maps=needs_map)
+        add(path, t, d, b, maps=needs_map, recs=by_slug[slug]["records"])
     list_paths = []
     shown = browse.shown(records)
     for lst, recs in shown:
@@ -116,31 +134,38 @@ def render_site(records, out_dir, repo_root, site=None):
         t, d, b, needs_map = regions.list_page(lst, recs, len(records), site)
         path = browse.path(lst)
         list_paths.append(path)
-        add(path, t, d, b, maps=needs_map)
+        add(path, t, d, b, maps=needs_map, recs=recs)
     t, d, b = regions.lists_index_page(records, site)
     add("/lists/", t, d, b)
     t, d, b, needs_map = regions.routes_page(records, site, repo_root)
-    add("/routes/", t, d, b, maps=needs_map)
+    add("/routes/", t, d, b, maps=needs_map, recs=[r for r in records if facets.kind(r) == "route"])
     t, d, b = docs.sources_page(records, site, repo_root)
     add("/sources/", t, d, b)
     t, d, b = docs.logos_page(records, site, repo_root)
     add("/logos/", t, d, b)
     t, d, b = docs.about_page(records, site, repo_root)
     add("/about/", t, d, b)
+    changelog = feed.newest_date(docs.read_doc(repo_root, "CHANGELOG.md"))
     t, d, b = docs.data_page(records, site, repo_root, out_dir)
-    add("/data/", t, d, b, jsonld=dataset)
+    add("/data/", t, d, b, jsonld=seo.dataset_jsonld(records, site, version=changelog),
+        alternates=[(f"/data/{name}", kind, f"{site.name}: {name}") for name, kind, _ in seo.distribution()[:2]])
     t, d, b = docs.schema_page(site, repo_root)
-    add("/data/schema/", t, d, b)
+    add("/data/schema/", t, d, b, date=changelog)
     t, d, b = docs.changelog_page(site, repo_root)
-    add("/data/changelog/", t, d, b)
-    t, d, b = leftout.left_out_page(leftout.load_entries(repo_root), site, repo_root)
-    add(leftout.PATH, t, d, b)
+    add("/data/changelog/", t, d, b, date=changelog)
+    entries = leftout.load_entries(repo_root)
+    t, d, b = leftout.left_out_page(entries, site, repo_root)
+    add(leftout.PATH, t, d, b, date=max((str(e.get("decided", "")) for e in entries), default=""))
     # The visitor's own list: not indexed, and left out of the sitemap below.
     t, d, b = saved.saved_page(records, site)
     layout.write_page(out_dir, saved.PATH, layout.layout(
         t, b, path=saved.PATH, description=d, maps=True, site=site, noindex=True))
     pages += 1
     docs.copy_licences(out_dir, repo_root)
-    seo.write_seo_files(out_dir, seo.all_paths(records, region_paths + ["/lists/"] + list_paths), site)
+    feed.write_feed(out_dir, site, repo_root)
+    if site.base_url:  # its links are absolute
+        with open(os.path.join(out_dir, "llms.txt"), "w", encoding="utf-8", newline="\n") as f:
+            f.write(seo.llms_txt(records, site, changelog))
+    seo.write_seo_files(out_dir, seo.all_paths(records, region_paths + ["/lists/"] + list_paths), site, dates)
     print(f"pages written {pages}: {len(records)} trail pages, home, 404, places, lists, about")
     return pages

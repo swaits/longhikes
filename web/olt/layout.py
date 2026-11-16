@@ -18,7 +18,7 @@ scripts or styles (the Content-Security-Policy forbids them).
 import json
 import os
 
-from . import common, site as site_settings
+from . import common, seo, site as site_settings
 from .markup import Markup, attrs, esc, json_block
 
 NAV = (
@@ -32,6 +32,8 @@ NAV = (
 NAV_PARENT = {"/trails/": "/", "/lists/": "/", "/routes/": "/",
               "/sources/": "/about/", "/logos/": "/about/", "/data/": "/about/",
               "/left-out/": "/about/"}
+
+FEED_PATH = "/feed.xml"  # the Atom feed of the changelog (olt/feed.py)
 
 FONT_PRELOADS = (
     "/assets/fonts/source-serif-4-latin.woff2",
@@ -159,17 +161,37 @@ def footer(site):
 
 
 def _ld_json_block(obj):
+    """One JSON-LD script. "<", ">" and "&" are written as \\u escapes, so no text from a
+    record can close the script element or start a tag inside it."""
     text = json.dumps(obj, ensure_ascii=False, separators=(",", ":"))
     text = text.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     return Markup(f'<script type="application/ld+json">{text}</script>')
 
 
+def structured_data(jsonld, body, path, site, noindex=False):
+    """The page's JSON-LD as one <script>, or "": the page's own nodes (one dict or a list of
+    them, from olt.seo) and a BreadcrumbList equal to the breadcrumb the body shows. A page
+    that is not indexed carries none."""
+    if noindex:
+        return ""
+    nodes = list(jsonld) if isinstance(jsonld, (list, tuple)) else ([jsonld] if jsonld else [])
+    crumb = seo.breadcrumb_node(body, site, path, seo.breadcrumb_id(site, path))
+    if crumb:
+        nodes.append(crumb)
+    if not nodes:
+        return ""
+    obj = {"@context": "https://schema.org", **nodes[0]} if len(nodes) == 1 else \
+        {"@context": "https://schema.org", "@graph": nodes}
+    return str(_ld_json_block(obj))
+
+
 def layout(title, body, *, path, description="", maps=False, outdoor=False, scripts=(), data=None, site=None,
-           jsonld=None, og_type="website", noindex=False):
+           jsonld=None, og_type="website", noindex=False, image="", image_alt="", alternates=()):
     """Return a complete HTML document.
 
     title        the page's own title ("Arizona National Scenic Trail"); the site
-                 name is appended. Empty for the home page: "<name>: <tagline>".
+                 name is appended. Empty for the home page: site.toml's
+                 home_title, or "<name>: <tagline>" where that is not set.
     body         the page content (HTML, Markup or str), placed inside <main>.
     path         the page's site path, e.g. "/regions/" (canonical link, nav state).
     description  meta description; defaults to the site tagline.
@@ -179,12 +201,18 @@ def layout(title, body, *, path, description="", maps=False, outdoor=False, scri
     scripts      extra same-origin script URLs, loaded with defer after app.js.
     data         optional object, embedded as <script type="application/json" id="page-data">.
     site         settings (olt.site.Site); defaults to web/site.toml.
-    noindex      True for a page whose content is the visitor's own (/saved/):
+    jsonld       the page's own schema.org nodes, one dict or a list (olt.seo builds them
+                 from the records). A BreadcrumbList for the breadcrumb in the body is added.
+    image        site path of the page's social card (1200 x 630 PNG); the site card
+                 /assets/og.png when empty. image_alt describes it.
+    alternates   (href, media type, title) of other forms of this page, as <link rel="alternate">.
+    noindex      True for a page whose content is the visitor's own (/saved/), or the 404 page:
                  search engines are asked not to index it, and it has no
                  canonical address (its address carries the list). seo.py
                  leaves it out of the sitemap.
     """
     site = site or site_settings.load()
+    title = title or site.home_title
     full_title = f"{title} · {site.name}" if title else f"{site.name}: {site.tagline}"
     description = description or site.tagline
     canonical = "" if noindex else site.canonical(path)
@@ -211,19 +239,27 @@ def layout(title, body, *, path, description="", maps=False, outdoor=False, scri
         head.append(f'<meta property="og:url" content="{esc(canonical)}">')
     if site.base_url:
         # A PNG: link previews (Reddit, Slack, iMessage) do not draw an SVG.
-        image = esc(site.canonical("/assets/og.png"))
-        head.append(f'<meta property="og:image" content="{image}">')
+        card = esc(site.canonical(image or "/assets/og.png"))
+        alt = esc(image_alt or site.name)
+        head.append(f'<meta property="og:image" content="{card}">')
+        head.append('<meta property="og:image:type" content="image/png">')
         head.append('<meta property="og:image:width" content="1200">')
         head.append('<meta property="og:image:height" content="630">')
-        head.append(f'<meta name="twitter:image" content="{image}">')
-    if jsonld is not None:
-        head.append(str(_ld_json_block(jsonld)))
+        head.append(f'<meta property="og:image:alt" content="{alt}">')
+        head.append(f'<meta name="twitter:image" content="{card}">')
+        head.append(f'<meta name="twitter:image:alt" content="{alt}">')
+    ld = structured_data(jsonld, body, path, site, noindex)
+    if ld:
+        head.append(ld)
     head += [
         '<meta name="color-scheme" content="light dark">',
         '<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">',
         '<link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">',
         '<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">',
+        f'<link rel="alternate" type="application/atom+xml" title="{esc(site.name)}: what changed" href="{FEED_PATH}">',
     ]
+    head += [f'<link rel="alternate" type="{esc(kind)}" href="{esc(href)}"{attrs(title=name)}>'
+             for href, kind, name in alternates]
     head += [f'<link rel="preload" href="{f}" as="font" type="font/woff2" crossorigin>' for f in FONT_PRELOADS]
     if maps:
         head.append(f'<link rel="stylesheet" href="{MAPLIBRE_CSS}">')

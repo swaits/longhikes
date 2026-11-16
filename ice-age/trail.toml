@@ -2,6 +2,7 @@
 
 id = "ice-age"
 name = "Ice Age National Scenic Trail"
+common_name = "Ice Age Trail"
 short_name = "IAT"
 short_name_url = "https://www.iceagetrail.org/"
 country = "US"
@@ -101,5 +102,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.contact", "shield.logo_owner", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.nps.gov/iatr/planyourvisit/images/Ice-Age-NST-Trailmark.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The name hikers use, Ice Age Trail, was added as the common name. The recorded name is unchanged."
+fields = ["common_name"]
+basis = "The Ice Age Trail Alliance's page is headed 'About the Ice Age Trail' and uses the formal name in its introduction."
+basis_url = "https://www.iceagetrail.org/explore/explore-the-trail/ice-age-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

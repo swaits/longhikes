@@ -55,7 +55,7 @@ class PageTest(unittest.TestCase):
         self.text = str(self.body)
 
     def test_title(self):
-        self.assertEqual(self.title, "Considered and left out")
+        self.assertEqual(self.title, "Trails Considered and Left Out, and Why")
 
     def test_opening_is_generated_from_the_entries(self):
         self.assertIn("lists 2 trails and routes", self.text)

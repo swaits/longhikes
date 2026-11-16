@@ -2,6 +2,7 @@
 
 id = "black-canyon"
 name = "Black Canyon National Recreation Trail"
+common_name = "Black Canyon Trail"
 country = "US"
 regions = ["AZ"]
 length_km = 129
@@ -88,5 +89,14 @@ date = "2026-11-14"
 change = "The record was added: Black Canyon National Recreation Trail."
 fields = ["record"]
 basis = "The record's own source entry: Bureau of Land Management."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The name hikers use, Black Canyon Trail, was added as the common name. The recorded name is unchanged."
+fields = ["common_name"]
+basis = "The Bureau of Land Management page says 'The 80-mile Black Canyon Trail' and uses the formal name in its heading."
+basis_url = "https://www.blm.gov/visit/black-canyon-national-recreation-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

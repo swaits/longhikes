@@ -218,7 +218,9 @@ def build_trail(rec, out_dir, code_mtime, force, stats):
         stats.processed += 1
         gpx_args = dict(url=src.get("url", ""), attribution=src.get("attribution", ""),
                         licence=src.get("licence", ""), licence_text=src.get("licence_text", ""),
-                        creator=gpx_creator())
+                        creator=gpx_creator(),
+                        permission=({k: src[k] for k in ("permission_quote", "permission_by", "permission_date", "permission_url")
+                                     if k in src} if src.get("licence") == "stated-permission" else None))
         maps = []
         if "line" in files:
             built = build_set(tid, "line", os.path.join(ROOT, files["line"]), tid,

@@ -8,45 +8,60 @@ country = "US"
 regions = ["AZ", "NM"]
 length_km = 1239
 length_note = "over 770 mi published by the route's author"
+kind = "route"
 tier = "candidate"
-designation = "Author-published route (the route's creator, simBLISSity Ultralight Designs, 2003); no agency or association"
+designation = "Person-defined route (Brett Tucker, simBLISSity Ultralight Designs, 2003); not a government-designated trail"
 wave = "held"
-wave_note = "Candidate: the creator publishes an official mapset with GPS tracks, so the guidebook-track exclusion does not apply; inclusion is undecided."
+wave_note = "Candidate: an author's route, sold as a mapset with GPS tracks; no track is included, and inclusion is undecided."
 inclusion = "candidate-decision-pending"
 
 [source]
-status = "osm-only"
-publisher = "simBLISSity Ultralight Designs (publishes the route, mapset and guidebook; no open geometry)"
-url = "https://www.openstreetmap.org/relation/4485206"
-discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
-format = "OpenStreetMap relation, read through Overpass or a Geogabrik extract"
+status = "none"
+publisher = "Brett Tucker, simBLISSity Ultralight Designs (publishes the route and sells the mapset)"
+publisher_url = "http://www.simblissity.net/get-about.shtml"
+url = "http://www.simblissity.net/get/"
+format = "No track included"
 crs = "EPSG:4326"
-licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 4485206."
-attribution = "OpenStreetMap contributors (ODbL); route by simBLISSity Ultralight Designs"
-osm_only = true
-mainline = "One OSM relation for the whole route; no alternates recorded."
-source_checked = "2026-11-08"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. The author's pages read (mapset, download, about, FAQ) state no terms for passing on his tracks. The site footer reads 'Copyright \u00a9 2026 simBLISSity Ultralight Designs'. Read 2026-11-16."
+attribution = "none (no track included)"
+osm_only = false
+mainline = "No track is included; the author sells an official mapset with GPS tracks."
+source_checked = "2026-11-16"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "No track is included. The route's author publishes an official mapset with GPS tracks; it has not been added here."
+line_absent_reason = "The route is sold as a mapset with GPS tracks, and no page read allows the author's tracks to be passed on, so no track is included. Get the track from the author's mapset."
 
 [osm]
-relation = 4485206
-note = "OSM relation 4485206. The creator's own mapset with GPS tracks is at simblissity.net/get."
+relation = 0
+note = "Not recorded: the route's author does not allow his track to be passed on."
 
 [shield]
 status = "use-real-logo"
 logo_source = "https://simblissity.net/images/GET/get%20monogram1_small.JPG"
 contact = "simBLISSity Ultralight Designs"
-note = "The route's own monogram (a triangle over a mountain photograph), shown beside the route's name on the creator's Grand Enchantment Trail page, https://simblissity.net/get/. Published there only as a small 97x90 JPEG, converted to PNG; the page's banner (the name set over a photograph) was not used. Footer: 'Copyright \u00a9 2026 simBLISSity Ultralight Designs'. No logo policy found on that page."
+note = "The route's own monogram (a triangle over a mountain photograph), shown beside the route's name on the author's Grand Enchantment Trail page, https://simblissity.net/get/. Published there only as a small 97x90 JPEG, converted to PNG; the page's banner (the name set over a photograph) was not used. Footer: 'Copyright \u00a9 2026 simBLISSity Ultralight Designs'. No logo policy found on that page."
 logo_file = "shield.png"
 logo_owner = "simBLISSity Ultralight Designs"
 
 [verification]
 verified = false
-note = "Not downloaded. Moved here from the excluded list on review, 2026-11-08: the creator publishes an official mapset with GPS tracks, so the reason for excluding author routes (a track withheld on purpose) does not apply."
+note = "No track to measure."
+
+[route]
+creator = "Brett Tucker"
+year = 2003
+line_policy = "sold"
+note = "Conceived in 2003 by an experienced thru-hiker. The author sells an official mapset with GPS tracks as a digital download; no price was read. No page read states terms that allow his tracks to be passed on."
+
+[[guide]]
+title = "Grand Enchantment Trail Official Mapset"
+author = "Brett Tucker"
+access = "purchase"
+url = "http://www.simblissity.net/get/"
+format = "map set with GPS tracks, digital download"
+publisher = "simBLISSity Ultralight Designs"
 
 [hike]
 summary = "The Grand Enchantment Trail is a route of over 770 miles from the edge of Phoenix in Arizona to the edge of Albuquerque in New Mexico. It crosses desert, volcanic ranges, canyons and forested sky-island mountains, and passes through the Gila Wilderness. About half is foot trail, and the rest is dirt road and some cross-country travel."

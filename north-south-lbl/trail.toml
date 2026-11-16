@@ -1,0 +1,69 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "north-south-lbl"
+name = "North/South Trail (Land Between the Lakes)"
+country = "US"
+regions = ["KY", "TN"]
+length_km = 95
+length_note = "59 mi published on the Land Between the Lakes trails page"
+tier = "regional"
+designation = "USDA Forest Service, Land Between the Lakes National Recreation Area. The 31 mi North End is open to hikers and bicycles. The 27 mi South End is for hikers, with horses allowed only between Road 342 and the Homeplace."
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "USDA Forest Service, Land Between the Lakes National Recreation Area (publishes the trail; no open geometry found)"
+publisher_url = "https://www.landbetweenthelakes.us/outdoors-recreation/trails-3/"
+url = "https://www.openstreetmap.org/relation/6055272"
+discovery = "osm-relation-version: Overpass `rel(6055272); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 6055272."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 6055272: one hiking route relation, 33 main ways, no alternates."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 6055272
+note = "Hiking route relation named North/South Trail (ref NS, operator Forest Service Land Between The Lakes), version 13 (2025-06-13), 33 ways, no member roles."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://www.landbetweenthelakes.us/outdoors-recreation/trails-3/"
+contact = "USDA Forest Service, Land Between the Lakes National Recreation Area"
+note = "No logo was seen on the trails page as read. No logo of the trail is included here. Ask the holder before using its mark."
+logo_file = ""
+logo_owner = "USDA Forest Service, Land Between the Lakes National Recreation Area"
+
+[verification]
+verified = true
+date = "2026-11-16"
+measured_km = 91.1
+difference_percent = -4.1
+parts = 1
+note = "OSM relation 6055272, 33 ways: 91.1 km in 1 part, 4.1% short of the published 95 km."
+
+[hike]
+summary = "The North/South Trail runs the length of Land Between the Lakes in Kentucky and Tennessee, from the North Welcome Station to the South Welcome Station. The north part is rugged and hilly and the south part is easier, through forest and lakeshore country. The Forest Service manages the trail."
+official_url = "https://www.landbetweenthelakes.us/outdoors-recreation/trails-3/"
+start = "North Welcome Station, Land Between the Lakes, Kentucky"
+end = "South Welcome Station, Land Between the Lakes, Tennessee"
+shape = "point-to-point"
+terrain = ["forest", "lakes"]
+travel = "trail"
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://www.landbetweenthelakes.us/outdoors-recreation/trails-3/"
+publisher = "USDA Forest Service, Land Between the Lakes National Recreation Area"
+facts = ["official_url", "summary", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://kentuckylakegateway.com/project/north-south-trail/"
+publisher = "Livingston County, Kentucky Area Trails"
+facts = ["summary", "start", "end"]

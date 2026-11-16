@@ -1,0 +1,70 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "dan-zhur-donjek"
+name = "Dän Zhùr (Donjek) Route"
+country = "CA"
+regions = ["YT"]
+length_km = 110
+length_note = "110 km (68 mi) loop, from the Parks Canada page for the Dän Zhùr (Donjek) Route"
+tier = "regional"
+designation = "Parks Canada (Kluane National Park and Reserve)"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Parks Canada (Kluane National Park and Reserve) (publishes the trail)"
+publisher_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
+url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
+format = "No track included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur, read 2026-11-16)."
+attribution = "none (no track included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation number was found by search, and no track has been fetched yet."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "none (no track included)"
+line_file = ""
+line_absent_reason = "No track has been added yet. Parks Canada's page gives a route description and states no licence for a track."
+
+[osm]
+relation = 0
+note = "No OpenStreetMap route relation number was found by search on 2026-11-16. No track was fetched."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Parks Canada"
+note = "No logo of the trail is included here. Ask Parks Canada before using its marks."
+logo_file = ""
+logo_owner = "Parks Canada"
+
+[verification]
+verified = false
+note = "No track to measure."
+
+[hike]
+summary = "The Dän Zhùr (Donjek) Route is a 110 km loop in and beside Kluane National Park and Reserve in southwest Yukon. It crosses the Burwash Uplands, descends to the Donjek River and the toe of the Donjek Glacier, and returns over Atlas Pass. Parks Canada calls it Parcours Dän Zhùr (Donjek) in French."
+official_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
+start = "Duke River Bridge, Alaska Highway, Yukon"
+shape = "loop"
+days = [8, 10]
+season = "Mid-June to mid-September"
+months = [6, 7, 8, 9]
+high_point_m = 2170
+terrain = ["alpine"]
+travel = "mostly-cross-country"
+permit = "Overnight trips need a Wilderness Permit and an approved bear resistant food canister, from the Kluane visitor centres in Haines Junction or at Thechàl Dhâl."
+caution = "Parks Canada says this route is not marked and not maintained, about half of it lies outside the park boundary, and route finding and wilderness experience are essential."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
+publisher = "Parks Canada"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "high_point", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://parcs.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
+publisher = "Parks Canada"
+facts = ["summary"]

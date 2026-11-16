@@ -16,24 +16,24 @@ wave_note = "Held: a composite of existing trails, not one designated trail."
 [source]
 status = "osm-only"
 publisher = "Great Eastern Trail Association (publishes the trail; no open geometry found)"
-url = "https://www.openstreetmap.org/relation/11364314"
-discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
-format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+url = "https://www.openstreetmap.org/relation/1024490"
+discovery = "osm-relation-version: Overpass `rel(1024490); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 11385238."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 1024490."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM carries it as per-trail relations (Tuscarora, C&O Canal 11385238, TuNuGu, Pine Mountain Link...). Mostly other named trails joined."
-source_checked = "2026-11-08"
+mainline = "OSM relation 1024490 holds the trail as a set of member relations of other named trails (for example Pinhoti, Tuscarora, Mid-State, C&O Canal Trail). 1,468 main ways; 12 ways with role route are kept apart in alternates.geojson."
+source_checked = "2026-11-16"
 redistributable = true
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "No track has been added for this trail yet."
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "The relation's own distance tag is 2600 km, not 3200 km. The track is 34 parts: three long ones of 445, 428 and 351 km, and many short pieces with gaps between them. The sections that OpenStreetMap has not joined are missing, so the track is shorter than the published length."
 
 [osm]
-relation = 11385238
-note = "Several relations."
+relation = 1024490
+note = "Hiking route relation named Great Eastern Trail, version 21 (2023-08-01), ref GET, distance tag 2600 km. It holds sub-relations for the trail's sections, among them relation 11385238 for the C&O Canal part, which alone measures 46.3 km and is not used by itself."
 
 [shield]
 status = "use-real-logo"
@@ -44,8 +44,12 @@ logo_file = "shield.png"
 logo_owner = "Great Eastern Trail Association"
 
 [verification]
-verified = false
-note = "Not downloaded. Could be dropped as a composite of trails already on the list."
+verified = true
+date = "2026-11-16"
+measured_km = 2366.2
+difference_percent = -26.1
+parts = 34
+note = "OSM relation 1024490: 2366.2 km in 34 parts, 26.1% short of 3200 km (about 2,000 mi). The relation reaches from central Alabama to the Finger Lakes Trail in New York. Its three longest parts are 445 km (Alabama to Tennessee), 428 km (Tennessee to Virginia) and 351 km (Pennsylvania to Maryland). The rest is short pieces, so there are gaps between sections."
 
 [hike]
 summary = "The Great Eastern Trail links existing trails into a long footpath through the Appalachian Mountains, from Alabama to the Finger Lakes Trail in New York. It crosses nine states and is meant to be a non-motorized hiking trail. The linking is not finished, and new trail is still needed where there are gaps."

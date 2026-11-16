@@ -11,26 +11,25 @@ designation = "USFS trail #600, Mount Hood National Forest"
 wave = "held"
 
 [source]
-status = "found"
+status = "osm-only"
 publisher = "USDA Forest Service, Mount Hood National Forest"
-url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
-discovery = "arcgis-layer-edit-date on the EDW layer"
-format = "USFS National Forest System trails (already ingested as fs_trail), trail number 600"
-crs = "EPSG:3857"
-licence = "us-gov-public-domain"
-licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09)."
-attribution = "USDA Forest Service"
-osm_only = false
-mainline = "Trail number 600 pieces."
-source_checked = "2026-11-08"
+url = "https://www.openstreetmap.org/relation/7641482"
+discovery = "osm-relation-version: Overpass `rel(7641482); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 7641482."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 7641482: one hiking route relation, 10 main ways, no alternates."
+source_checked = "2026-11-16"
 redistributable = true
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "No track has been added for this trail yet."
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
 
 [osm]
-relation = 0
-note = "No relation matched the name."
+relation = 7641482
+note = "Hiking route relation named Mt. Hood Timberline Trail, 10 ways. An earlier search by the name Timberline Trail did not match it."
 
 [shield]
 status = "no-logo-exists"
@@ -41,8 +40,12 @@ logo_file = ""
 logo_owner = "USFS Mount Hood National Forest"
 
 [verification]
-verified = false
-note = "Not downloaded."
+verified = true
+date = "2026-11-16"
+measured_km = 64.5
+difference_percent = 0.8
+parts = 1
+note = "OSM relation 7641482, 10 ways: 64.5 km in 1 part, 0.8% longer than 64 km."
 
 [hike]
 summary = "The Timberline Trail circumnavigates Mount Hood in Oregon at or near tree line, entering the Mount Hood Wilderness. Built mainly by the Civilian Conservation Corps in the 1930s, it passes vistas, waterfalls, alpine meadows and west side Cascade forests. It climbs in and out of glacially fed drainages the whole way around."

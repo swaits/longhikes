@@ -1,0 +1,66 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "boundary-trail-mount-st-helens"
+name = "Boundary Trail #1 (Mount St. Helens)"
+country = "US"
+regions = ["WA"]
+length_km = 86
+length_note = "53.7 mi published on the Forest Service trail page, whose first segment runs from Hummocks through Norway Pass to Bear Meadow. A segment page gives 32.4 mi, which does not fit the other figures."
+tier = "regional"
+designation = "Gifford Pinchot National Forest Trail 1, Mount St. Helens east to Council Lake. Not the Boundary Trail (Trail 533) in the Pasayten Wilderness."
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "USDA Forest Service, Gifford Pinchot National Forest (publishes the trail; no open geometry found)"
+publisher_url = "https://www.fs.usda.gov/r06/giffordpinchot/recreation/trails/trail-1-boundary"
+url = "https://www.openstreetmap.org/relation/5628775"
+discovery = "osm-relation-version: Overpass `rel(5628775); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 5628775."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 5628775: one hiking route relation, 15 main ways, no alternates."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 5628775
+note = "Hiking route relation named Boundary Trail (ref 1, operator United States Forest Service), version 16 (2024-09-16), 15 ways, no member roles."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://www.fs.usda.gov/r06/giffordpinchot/recreation/trails/trail-1-boundary"
+contact = "USDA Forest Service, Gifford Pinchot National Forest"
+note = "No logo of the trail is included here. Ask the holder before using its mark."
+logo_file = ""
+logo_owner = "USDA Forest Service, Gifford Pinchot National Forest"
+
+[verification]
+verified = true
+date = "2026-11-16"
+measured_km = 91.6
+difference_percent = 6.5
+parts = 1
+note = "OSM relation 5628775, 15 ways: 91.6 km in 1 part, 6.5% over 86 km."
+
+[hike]
+summary = "Boundary Trail #1 runs east in the Gifford Pinchot National Forest in Washington, from the Hummocks Trail near Johnston Ridge in the Mount St. Helens National Volcanic Monument to Council Lake. It follows timbered ridges and cirque basins with views of Mount St. Helens, Mount Rainier and Mount Adams, and at times Mount Hood. West of Bear Meadows it is open to hikers only, and east of Bear Meadows it is open to motorcycles, hikers, horses and bicycles."
+official_url = "https://www.fs.usda.gov/r06/giffordpinchot/recreation/trails/trail-1-boundary"
+start = "Hummocks Trail, near Johnston Ridge, Mount St. Helens National Volcanic Monument, Washington"
+end = "Council Lake, Washington"
+shape = "point-to-point"
+terrain = ["alpine", "forest"]
+travel = "trail"
+permit = "Some trailheads that access this trail require a valid Recreation Pass, per the Forest Service."
+caution = "East of Bear Meadows the trail is open to motorcycles as well as hikers, horses and bicycles. The Forest Service states the trail is closed to ATV use."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r06/giffordpinchot/recreation/trails/trail-1-boundary"
+publisher = "USDA Forest Service, Gifford Pinchot National Forest"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "permit", "caution"]

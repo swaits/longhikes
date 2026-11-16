@@ -1,0 +1,7 @@
+boundary-trail-pasayten
+
+Source: https://www.openstreetmap.org/relation/5252516
+Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
+Attribution: OpenStreetMap contributors (ODbL)
+Source read: 2026-11-16
+Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served, except that ways named Castle Pass Trail, Three Fools Creek Trail, Pacific Crest Trail were left out because they belong to other trails.

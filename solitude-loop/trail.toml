@@ -1,0 +1,64 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "solitude-loop"
+name = "Solitude Loop Trail"
+country = "US"
+regions = ["WY"]
+length_km = 89
+length_note = "55.2 mi, as the Forest Service states it on its Solitude Loop Trail 038 page"
+tier = "regional"
+designation = "Bighorn National Forest Trail 038, Cloud Peak Wilderness. Allowed uses vary by segment: the Forest Service lists hiking and horseback riding, with 8 mi on the eastern side open to vehicles 50 inches or less in width, 3.2 mi of that limited to motorcycles."
+wave = 1
+
+[source]
+status = "found"
+publisher = "USDA Forest Service (National Forest System Trails, Enterprise Data Warehouse)"
+publisher_url = "https://www.fs.usda.gov/r02/bighorn/recreation/trails/solitude-loop-trail-038"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+discovery = "arcgis-query-hash: GET <url>/query with where trail_no = '038' within the Bighorn National Forest area (outSR=4326, f=geojson); hash the answer body and count its rows; fetch again when either changes. 19 features on 2026-11-16."
+format = "ArcGIS MapServer layer 0, outSR=4326, f=geojson, 19 features"
+crs = "EPSG:4326"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The USDA Forest Service metadata for this dataset (https://data.fs.usda.gov/geodata/edw/edw_resources/meta/Trans_Trail_NFS_Publish.xml, read 2026-11-16) gives access constraints 'None' and, as use constraints, only a disclaimer of warranty and liability; it states no restriction on use. The layer is a Forest Service dataset made by federal employees, a federal government work."
+attribution = "USDA Forest Service"
+osm_only = false
+mainline = "Features with trail_no 038 (SOLITUDE LOOP) in the Bighorn National Forest area: 19 features of three administrative units (020201, 020203, 020206), one trail name, no feature left out."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "USDA Forest Service (National Forest System Trails)"
+line_file = "line.geojson"
+
+[osm]
+relation = 0
+note = "No OpenStreetMap route relation for this trail was found by a name search of route relations on 2026-11-16. The Forest Service layer is used."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "U.S. Forest Service, Bighorn National Forest"
+note = "No logo is included. The Forest Service page read shows no trail logo or shield for this trail."
+logo_file = ""
+logo_owner = "U.S. Forest Service"
+
+[verification]
+verified = true
+date = "2026-11-16"
+measured_km = 91.2
+difference_percent = 2.5
+parts = 1
+note = "19 features of the Forest Service layer, 91.2 km in 1 part, 2.5% over the published 89 km. The layer's own mileage field adds up to 56.8 mi."
+
+[hike]
+summary = "The Solitude Loop Trail is a loop around Cloud Peak in the Cloud Peak Wilderness of Wyoming's Bighorn Mountains. The Forest Service says it covers a wide variety of alpine country and lists four trailheads for it: Coffeen Park, West Tensleep, Battle Park and Hunter Campground."
+official_url = "https://www.fs.usda.gov/r02/bighorn/recreation/trails/solitude-loop-trail-038"
+start = "Coffeen Park Trailhead, Bighorn National Forest, Wyoming"
+shape = "loop"
+terrain = ["alpine", "forest", "lakes"]
+travel = "trail"
+caution = "Part of the trail lies in a special regulation area where visitors must pack out all human waste, and uses allowed vary from segment to segment."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r02/bighorn/recreation/trails/solitude-loop-trail-038"
+publisher = "U.S. Forest Service, Bighorn National Forest"
+facts = ["summary", "official_url", "start", "shape", "terrain", "travel", "caution"]

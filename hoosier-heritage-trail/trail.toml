@@ -1,0 +1,81 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "hoosier-heritage-trail"
+name = "Hoosier Heritage Trail"
+country = "US"
+regions = ["IN"]
+length_km = 259
+length_note = "161 mi in the heading of the Hoosier Heritage Trail Association's home page; the same page's introduction says 170 mi, and the association's comparison article lists 170 mi. The 161 mi figure is used."
+tier = "regional"
+designation = "Hoosier Heritage Trail Association, an Indiana non-profit; a trail it describes as the newest of Indiana's long backpacking trails"
+wave = 1
+
+[source]
+status = "verified"
+publisher = "Hoosier Heritage Trail Association (publishes the trail)"
+publisher_url = "https://hoosierheritagetrail.org/"
+url = "https://hoosierheritagetrail.org/downloads/"
+discovery = "page-link: the Downloads page offers the GPX file (named HHT GPX with a date, 11-15-26 when read); read the page again and fetch the file when its date changes."
+format = "GPX 1.1, one track with one segment of 7,997 points, offered on the Downloads page as the file HHT-GPX-11-15-26.gpx"
+crs = "EPSG:4326"
+licence = "stated-permission"
+licence_text = "The association's president answered \"Is there a track?\" with \"Yes\" in the form filed on this dataset's public issue tracker, and gave the association's Downloads page as where the track is offered. The statement names no licence, so this track is shared by the holder's stated permission, not under a public-domain or Creative Commons licence. The Downloads page itself (read 2026-11-16) states no terms."
+permission_quote = "It's completely public and free to share."
+permission_by = "the association's president"
+permission_date = "2026-11-16"
+permission_url = "https://github.com/swaits/longhikes/issues/2"
+attribution = "Hoosier Heritage Trail Association"
+osm_only = false
+mainline = "The file holds one track in one segment, and no waypoints or alternates. It is used as it is."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "Hoosier Heritage Trail Association (the holder's GPX file)"
+line_file = "line.geojson"
+
+[osm]
+relation = 0
+note = "Not searched: the association publishes its own track, and its president has stated that it may be shared."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Hoosier Heritage Trail Association"
+note = "No logo is included. Ask the association before using any mark."
+logo_file = ""
+logo_owner = "Hoosier Heritage Trail Association"
+
+[verification]
+verified = true
+date = "2026-11-16"
+measured_km = 259.2
+difference_percent = 0.1
+parts = 1
+note = "The holder's GPX file, 259.2 km in 1 part (7,997 points), against 259 km (161 mi, the figure in the heading of the association's home page). The same page's introduction says 170 mi and the association's comparison article lists 170 mi; the track is within 0.1% of the 161 mi figure."
+
+[hike]
+summary = "The Hoosier Heritage Trail is a long-distance trail across Indiana for day hikers, section hikers and backpackers, published by the Hoosier Heritage Trail Association. The association's home page gives its length as 161 miles. The association says it aims to build a trail of more than 400 miles between the Falls of the Ohio and the Indiana Dunes."
+official_url = "https://hoosierheritagetrail.org/"
+start_lonlat = [-85.863, 38.462]
+end_lonlat = [-86.477, 39.323]
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://hoosierheritagetrail.org/"
+publisher = "Hoosier Heritage Trail Association"
+facts = ["summary", "official_url"]
+
+[[hike.source]]
+url = "https://hoosierheritagetrail.org/downloads/"
+publisher = "Hoosier Heritage Trail Association"
+facts = ["start_lonlat", "end_lonlat"]
+
+[[hike.source]]
+url = "https://hoosierheritagetrail.org/about/"
+publisher = "Hoosier Heritage Trail Association"
+facts = ["summary"]
+
+[[link]]
+title = "Knobstone Hiking Trail"
+publisher = "Knobstone Hiking Trail Association"
+url = "https://www.knobstonehikingtrail.org/"
+note = "A separate trail over a similar corridor, published by the Knobstone Hiking Trail Association."

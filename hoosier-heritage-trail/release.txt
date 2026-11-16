@@ -1,0 +1,5 @@
+Source: https://hoosierheritagetrail.org/downloads/ (Hoosier Heritage Trail Association; file HHT-GPX-11-15-26.gpx, https://hoosierheritagetrail.org/wp-content/uploads/2026/11/HHT-GPX-11-15-26.gpx)
+Licence: stated-permission (see trail.toml and SOURCES.md in this repository). The association's president wrote on 2026-11-16 at https://github.com/swaits/longhikes/issues/2: "It's completely public and free to share." No licence is named.
+Attribution: Hoosier Heritage Trail Association
+Source read: 2026-11-16
+Published copy: the one track of the GPX file (7,997 points) as one LineString; coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

@@ -1,0 +1,70 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "middle-fork-trail"
+name = "Middle Fork Trail"
+country = "US"
+regions = ["ID"]
+length_km = 132
+length_note = "82.3 mi, as the Forest Service states it on its Middle Fork Trail #4001 page"
+tier = "regional"
+designation = "Salmon-Challis National Forest Trail 4001, Frank Church-River of No Return Wilderness; open to hikers and horseback riders"
+wave = 1
+
+[source]
+status = "found"
+publisher = "USDA Forest Service (National Forest System Trails, Enterprise Data Warehouse)"
+publisher_url = "https://www.fs.usda.gov/r04/salmon-challis/recreation/trails/middle-fork-trail-4001"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+discovery = "arcgis-query-hash: GET <url>/query with where trail_no = '4001' within Idaho (outSR=4326, f=geojson); hash the answer body and count its rows; fetch again when either changes. 2 features on 2026-11-16."
+format = "ArcGIS MapServer layer 0, outSR=4326, f=geojson, 2 features"
+crs = "EPSG:4326"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The USDA Forest Service metadata for this dataset (https://data.fs.usda.gov/geodata/edw/edw_resources/meta/Trans_Trail_NFS_Publish.xml, read 2026-11-16) gives access constraints 'None' and, as use constraints, only a disclaimer of warranty and liability; it states no restriction on use. The layer is a Forest Service dataset made by federal employees, a federal government work."
+attribution = "USDA Forest Service"
+osm_only = false
+mainline = "Features with trail_no 4001 (MIDDLE FORK) in Idaho: 2 features of administrative unit 041306, no feature left out."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "USDA Forest Service (National Forest System Trails)"
+line_file = "line.geojson"
+
+[osm]
+relation = 0
+note = "No OpenStreetMap route relation for this trail was found by a name search of route relations on 2026-11-16. The Forest Service layer is used."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "U.S. Forest Service, Salmon-Challis National Forest"
+note = "No logo is included. The Forest Service page read shows no trail logo or shield for the Middle Fork Trail."
+logo_file = ""
+logo_owner = "U.S. Forest Service"
+
+[verification]
+verified = true
+date = "2026-11-16"
+measured_km = 115.5
+difference_percent = -12.5
+parts = 1
+note = "2 features of the Forest Service layer, 115.5 km in 1 part, 12.5% short of the published 132 km. The layer's own mileage field adds up to 72.3 mi. The Forest Service page gives 82.3 mi and the layer 72.3 mi; the layer's 4001 features were not compared with the page by segment."
+
+[hike]
+summary = "The Middle Fork Trail follows the Middle Fork of the Salmon River through the Frank Church-River of No Return Wilderness in Idaho, from Big Hole at the meeting of Bear Valley and Marsh Creeks to Camas Creek. The Idaho Trails Association notes that it carries part of the Idaho Centennial Trail, which has its own record in this dataset. The Forest Service lists it for backpacking, hiking and horseback riding."
+official_url = "https://www.fs.usda.gov/r04/salmon-challis/recreation/trails/middle-fork-trail-4001"
+start = "Big Hole, at the confluence of Bear Valley and Marsh Creeks, Idaho"
+end = "Camas Creek, Idaho"
+shape = "point-to-point"
+terrain = ["canyon", "forest"]
+travel = "trail"
+caution = "Within the Wild and Scenic River corridor everything, including human waste and ashes, must be packed out, and fires must be contained in a fire pan."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r04/salmon-challis/recreation/trails/middle-fork-trail-4001"
+publisher = "U.S. Forest Service, Salmon-Challis National Forest"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://idahotrailsassociation.org/event/2026-middle-fork-salmon/"
+publisher = "Idaho Trails Association"
+facts = ["summary"]

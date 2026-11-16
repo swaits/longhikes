@@ -242,6 +242,101 @@ class RunTests(unittest.TestCase):
             self.assertNotIn("alternates.geojson", os.listdir(os.path.join(tmp, "t")))
 
 
+class MultiRelationTests(unittest.TestCase):
+    def test_release_text_lists_each_relation(self):
+        one = T.release_text("x", 5, "2026-01-02")
+        self.assertEqual(one, T.release_text("x", [5], "2026-01-02"))
+        two = T.release_text("x", [5, 6], "2026-01-02")
+        self.assertIn("Source: https://www.openstreetmap.org/relation/5\n"
+                      "Source: https://www.openstreetmap.org/relation/6\n", two)
+
+    def test_two_relations_joined_once_per_way(self):
+        import datetime
+        calls = []
+
+        def fetch(r):
+            calls.append(r)
+            return response()
+        with tempfile.TemporaryDirectory() as tmp:
+            os.mkdir(os.path.join(tmp, "t"))
+            ns = argparse.Namespace(relation=[1, 1], id="t", out=tmp, dry=False,
+                                    force=False)
+            T.run(ns, fetcher=fetch, out=lambda m: None,
+                  today=datetime.date(2026, 1, 2))
+            self.assertEqual(calls, [1, 1])
+            single = T.parse(response(), 1)
+            with open(os.path.join(tmp, "t", "line.geojson"), encoding="utf-8") as f:
+                self.assertEqual(f.read(), T.geojson_text(single["main"]))
+            with open(os.path.join(tmp, "t", "release.txt"), encoding="utf-8") as f:
+                self.assertEqual(f.read().count("Source: "), 2)
+
+    def test_merge_main_wins_over_side(self):
+        a = {"version": 1, "timestamp": "x", "name": "a", "roles": {"way:(empty)": 1},
+             "main": [{"osm_id": "1", "coords": [[0, 0], [1, 1]]}], "side": []}
+        b = {"version": 2, "timestamp": "y", "name": "b", "roles": {"way:(empty)": 1},
+             "main": [{"osm_id": "2", "coords": [[1, 1], [2, 2]]}],
+             "side": [{"osm_id": "1", "coords": [[0, 0], [1, 1]]},
+                      {"osm_id": "3", "coords": [[5, 5], [6, 6]]}]}
+        m = T.merge_tracks([a, b])
+        self.assertEqual([w["osm_id"] for w in m["main"]], ["1", "2"])
+        self.assertEqual([w["osm_id"] for w in m["side"]], ["3"])
+        self.assertEqual(m["roles"]["way:(empty)"], 2)
+
+
+class ExcludeNameTests(unittest.TestCase):
+    """--exclude-name leaves out ways of other trails and changes nothing else."""
+
+    def test_no_option_gives_the_same_track(self):
+        plain = T.parse(response(), 1)
+        self.assertEqual(plain["excluded"], [])
+        again = T.parse(response(), 1, exclude_names=())
+        self.assertEqual(T.geojson_text(plain["main"]), T.geojson_text(again["main"]))
+        self.assertEqual(T.geojson_text(plain["side"]), T.geojson_text(again["side"]))
+
+    def test_named_way_is_left_out_of_main(self):
+        t = T.parse(response(), 1, exclude_names=["main"])      # way 10 is named "Main"
+        self.assertEqual(t["excluded"], [("10", "Main")])
+        self.assertNotIn("10", [w["osm_id"] for w in t["main"]])
+        plain = T.parse(response(), 1)
+        self.assertEqual([w["osm_id"] for w in t["main"]],
+                         [w["osm_id"] for w in plain["main"] if w["osm_id"] != "10"])
+        self.assertEqual(t["side"], plain["side"])
+
+    def test_unnamed_ways_and_other_names_stay(self):
+        t = T.parse(response(), 1, exclude_names=["Some Other Trail"])
+        self.assertEqual(t["excluded"], [])
+        self.assertEqual(t["main"], T.parse(response(), 1)["main"])
+
+    def test_release_text_says_what_was_left_out(self):
+        text = T.release_text("x", 5, "2026-01-02", ["Castle Pass Trail", "Three Fools Creek Trail"])
+        self.assertIn("except that ways named Castle Pass Trail, Three Fools Creek Trail were left out", text)
+        self.assertEqual(T.release_text("x", 5, "2026-01-02", []), T.release_text("x", 5, "2026-01-02"))
+
+    def test_run_writes_without_the_ways_and_says_so(self):
+        import datetime
+        msgs = []
+        with tempfile.TemporaryDirectory() as tmp:
+            os.mkdir(os.path.join(tmp, "t"))
+            ns = argparse.Namespace(relation=[1], id="t", out=tmp, dry=False, force=False,
+                                    exclude_name=["Main"])
+            T.run(ns, fetcher=lambda r: response(), out=msgs.append, today=datetime.date(2026, 1, 2))
+            with open(os.path.join(tmp, "t", "line.geojson"), encoding="utf-8") as f:
+                self.assertNotIn('"osm_id":"10"', f.read())
+            with open(os.path.join(tmp, "t", "release.txt"), encoding="utf-8") as f:
+                self.assertIn("ways named Main were left out", f.read())
+        self.assertIn("left out: 1 way named 'Main'", msgs)
+
+    def test_command_line_takes_the_option_more_than_once(self):
+        calls = []
+        real = T.run
+        try:
+            T.run = lambda args, **kw: calls.append(args)
+            T.main(["5", "--id", "t", "--exclude-name", "A", "--exclude-name", "B"])
+        finally:
+            T.run = real
+        self.assertEqual(calls[0].exclude_name, ["A", "B"])
+
+
 class FetchTests(unittest.TestCase):
     def test_next_endpoint_before_any_wait(self):
         calls, sleeps = [], []

@@ -13,26 +13,27 @@ wave = "held"
 wave_note = "Held: the holder calls the trail a 50-mile double-looped system, but the trail is one 47.3 mi main loop with a 3.3 mi cross-connector, so it sits at the 50-mile floor and the main loop alone is under it. Undecided whether to list it."
 
 [source]
-status = "none"
-publisher = "Pennsylvania Department of Conservation and Natural Resources (publishes the trail)"
+status = "osm-only"
+publisher = "Pennsylvania Department of Conservation and Natural Resources (publishes the trail; no open geometry found)"
 publisher_url = "https://www.pa.gov/agencies/dcnr/recreation/where-to-go/state-forests/find-a-forest/sproul/hiking"
-url = "https://www.pa.gov/agencies/dcnr/recreation/where-to-go/state-forests/find-a-forest/sproul/hiking"
-format = "No line included"
+url = "https://www.openstreetmap.org/relation/13034776"
+discovery = "osm-relation-version: Overpass `rel(13034776); out meta;` `rel(17072566); out meta;` `rel(17072567); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relations (route=hiking), read through Overpass with all member ways"
 crs = "EPSG:4326"
-licence = "none-stated"
-licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the pages its facts were read on (read 2026-11-14)."
-attribution = "none (no line included)"
-osm_only = false
-mainline = "OpenStreetMap relation 13034776 holds 21 ways (48.2 km) and was not used."
-source_checked = "2026-11-14"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 13034776, relation 17072566, relation 17072567."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relations 13034776 (Chuck Keiper Trail, 21 ways), 17072566 (Yost Run Trail Loop, 5 ways) and 17072567 (Eddy Lick Trail Loop, 10 ways), joined. Ways shared by the relations are kept once, so the 32 ways differ from the 36 listed. All members are main; none has a side role."
+source_checked = "2026-11-16"
 redistributable = true
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "No track is included. DCNR publishes its own map PDFs for the trail but no track data was found with a stated licence, and the only OpenStreetMap relation (13034776) measures 48.2 km against the published 80 km, so it is not the whole trail."
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "The track is 26.6% short of the published 80 km (50 mi). The three relations share ways, so their lengths (48.2, 11.4 and 15.5 km) do not add up to the 58.7 km of the joined track. The Keystone Trails Association gives a main loop of 47.3 mi (76 km) and the main relation holds 48.2 km of it. Where the rest of the loop and cross-connector lies in OpenStreetMap was not found."
 
 [osm]
 relation = 13034776
-note = "Relation 13034776 'Chuck Keiper Trail' (version 4, 2024-11-22) has 21 ways that measure 48.2 km in one part, against a published 80 km, and two loop relations named for Yost Run and Eddy Lick (17072566, 17072567, operator DCNR). Read with the track tool on 2026-11-14 as a dry run and not kept."
+note = "Relation 13034776 'Chuck Keiper Trail' (version 4, 2024-11-22) with the two loop relations 17072566 (Yost Run Trail Loop, version 1, 11.4 km) and 17072567 (Eddy Lick Trail Loop, version 2, 15.5 km), operator DCNR. They share ways with the main relation, so the joined track is 58.7 km, not the sum of 75.1 km."
 
 [shield]
 status = "logo-not-found"
@@ -43,8 +44,12 @@ logo_file = ""
 logo_owner = "Pennsylvania Department of Conservation and Natural Resources"
 
 [verification]
-verified = false
-note = "No line to measure."
+verified = true
+date = "2026-11-16"
+measured_km = 58.7
+difference_percent = -26.6
+parts = 3
+note = "OSM relations 13034776 and 17072566 and 17072567, 32 ways: 58.7 km in 3 parts, 26.6% short of the published 80 km. The parts are separate because their ends are more than 100 m apart."
 
 [hike]
 summary = "The Chuck Keiper Trail is a foot-only backpacking trail in Sproul State Forest in north-central Pennsylvania. It is a double loop, with an East Branch cross-connector that lets hikers walk a west loop or an east loop. It runs through two wild areas and two natural areas, with waterfalls and the remains of a splash dam."

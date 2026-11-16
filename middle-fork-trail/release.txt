@@ -1,0 +1,7 @@
+middle-fork-trail
+
+Source: https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0 (USDA Forest Service, National Forest System Trails, Enterprise Data Warehouse)
+Licence: us-gov-public-domain (see trail.toml and SOURCES.md in this repository)
+Attribution: USDA Forest Service
+Source read: 2026-11-16
+Published copy: features with trail_no = '4001' (MIDDLE FORK) in Idaho; 2 features; coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

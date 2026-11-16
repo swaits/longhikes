@@ -19,10 +19,10 @@ import re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAX_BYTES = 50 * 1024 * 1024
 ALLOWED_LICENCES = {
-    "us-gov-public-domain", "CC-BY-4.0", "CC-BY", "ODbL-1.0",
+    "us-gov-public-domain", "CC-BY-4.0", "CC-BY", "ODbL-1.0", "stated-permission",
     "CC-BY-NC-ND-4.0", "none-stated", "restricted", "unknown",
 }
-DATA_LICENCES = {"us-gov-public-domain", "CC-BY-4.0", "CC-BY", "ODbL-1.0"}
+DATA_LICENCES = {"us-gov-public-domain", "CC-BY-4.0", "CC-BY", "ODbL-1.0", "stated-permission"}
 LINE_POLICIES = {"open", "sold", "withheld", "unclear"}
 NO_LINE_POLICIES = {"sold", "withheld", "unclear"}
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -103,6 +103,38 @@ def check_geometry(geom, where, errors):
     return length
 
 
+PERMISSION_FIELDS = ("permission_quote", "permission_by", "permission_date", "permission_url")
+
+
+def check_stated_permission(tid, src, errors):
+    """A track shared by stated permission quotes the statement, says who made it, when and where.
+
+    The four permission_* fields are required for that licence and refused for every other one."""
+    if src.get("licence") != "stated-permission":
+        for field in PERMISSION_FIELDS:
+            if field in src:
+                errors.append(f"{tid}: source.{field} belongs to the stated-permission licence only")
+        return
+    text = src.get("licence_text")
+    if not isinstance(text, str) or not text.strip():
+        errors.append(f"{tid}: licence stated-permission needs a non-empty source.licence_text")
+    for field in ("permission_quote", "permission_by"):
+        value = src.get(field)
+        if not isinstance(value, str) or not value.strip():
+            errors.append(f"{tid}: licence stated-permission needs a non-empty source.{field}")
+    date = src.get("permission_date")
+    if not isinstance(date, str) or not DATE_RE.match(date):
+        errors.append(f"{tid}: licence stated-permission needs source.permission_date as YYYY-MM-DD")
+    else:
+        try:
+            datetime.date.fromisoformat(date)
+        except ValueError:
+            errors.append(f"{tid}: source.permission_date {date!r} is not a real date")
+    url = src.get("permission_url")
+    if not isinstance(url, str) or not re.match(r"^https?://[^\s/]+\S*$", url):
+        errors.append(f"{tid}: licence stated-permission needs source.permission_url as an http(s) address")
+
+
 def check_hike(tid, rec, errors):
     """Check the optional [hike] table and its [[hike.source]] tables."""
     hike = rec.get("hike")
@@ -164,12 +196,11 @@ def check_hike(tid, rec, errors):
     end_points = {}
     for name, place in (("start_lonlat", "start"), ("end_lonlat", "end")):
         if name in hike:
-            if place not in hike:
+            if place not in hike and not rec.get("source", {}).get("line_file"):
                 errors.append(f"{tid}: hike.{name} is present but hike.{place} is not")
-            else:
-                point = lonlat(name)
-                if point is not None:
-                    end_points[name] = point
+            point = lonlat(name)
+            if point is not None:
+                end_points[name] = point
     if len(end_points) == 2:
         length = rec.get("length_km")
         if isinstance(length, (int, float)) and not isinstance(length, bool) and length > 0:
@@ -452,6 +483,7 @@ def main():
                 errors.append(f"{tid}: missing required field source.{field}")
         if src.get("licence") not in ALLOWED_LICENCES:
             errors.append(f"{tid}: licence {src.get('licence')!r} is not in the allowed list")
+        check_stated_permission(tid, src, errors)
         if not str(src.get("url", "")).startswith(("https://", "http://")):
             errors.append(f"{tid}: source.url must be an http(s) URL")
         if not DATE_RE.match(str(src.get("source_checked", ""))):

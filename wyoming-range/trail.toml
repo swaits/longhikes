@@ -1,0 +1,72 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "wyoming-range"
+name = "Wyoming Range National Recreation Trail"
+country = "US"
+regions = ["WY"]
+length_km = 113
+length_note = "70 mi, as the Forest Service states it on its trail page. Friends of the Bridger-Teton gives 75 mi."
+tier = "regional"
+designation = "National Recreation Trail, Bridger-Teton National Forest Trail 48; open to hikers, horseback riders and mountain bikers, with one short section between Lake Creek and North Piney Creek open to trail bikes"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "U.S. Forest Service, Bridger-Teton National Forest (publishes the trail; no open geometry found)"
+publisher_url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/trails/wyoming-range-national-recreation-trail-48"
+url = "https://www.openstreetmap.org/relation/13395352"
+discovery = "osm-relation-version: Overpass `rel(13395352); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 13395352."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 13395352: one hiking route relation, 33 main ways, 1 alternate way."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 13395352
+note = "Hiking route relation named Wyoming Range National Recreation Trail (ref WRNRT), version 16 (2024-07-03), 33 main ways and 1 alternate way."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "U.S. Forest Service, Bridger-Teton National Forest"
+note = "No logo is included. The pages read show no trail logo or shield for this trail."
+logo_file = ""
+logo_owner = "U.S. Forest Service"
+
+[verification]
+verified = true
+date = "2026-11-16"
+measured_km = 123.3
+difference_percent = 9.1
+parts = 1
+note = "OSM relation 13395352, 33 ways: 123.3 km in 1 part, 9.1% over 113 km."
+
+[hike]
+summary = "The Wyoming Range National Recreation Trail runs along the crest of the Wyoming Range in western Wyoming, from the Bryan Flat Guard Station, south of the Hoback River, south to Snider Basin at the South Piney Creek trailhead. Much of it is at 9,000 feet or above. Friends of the Bridger-Teton says it can be walked in either direction."
+official_url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/trails/wyoming-range-national-recreation-trail-48"
+start = "Bryan Flat Guard Station, south of the Hoback River, near Camp Davis, Wyoming"
+end = "Snider Basin at the South Piney Creek trailhead, Wyoming"
+shape = "point-to-point"
+season = "July to September"
+months = [7, 8, 9]
+terrain = ["alpine", "forest"]
+travel = "trail"
+caution = "Friends of the Bridger-Teton says the trail is not always marked, that some sections see little use, and that there is little cell service along it."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/trails/wyoming-range-national-recreation-trail-48"
+publisher = "U.S. Forest Service, Bridger-Teton National Forest"
+facts = ["summary", "official_url", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.btfriends.org/the-wyoming-range-national-recreation-trail"
+publisher = "Friends of the Bridger-Teton"
+facts = ["summary", "start", "end", "shape", "season", "months", "terrain", "travel", "caution"]

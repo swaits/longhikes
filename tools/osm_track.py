@@ -14,6 +14,20 @@ Python standard library only. Run from anywhere:
     python3 tools/osm_track.py RELATION_ID --id TRAIL_ID --dry     print figures only
     python3 tools/osm_track.py RELATION_ID --id TRAIL_ID --out DIR write to DIR/TRAIL_ID
     python3 tools/osm_track.py RELATION_ID --id TRAIL_ID --force   replace existing files
+    python3 tools/osm_track.py REL1 REL2 ... --id TRAIL_ID         join several relations
+    python3 tools/osm_track.py RELATION_ID --id TRAIL_ID --exclude-name "Castle Pass Trail"
+                                                                   leave out ways with that name
+
+Several relations (a trail mapped as separate section relations) are read one
+after another and joined into one track: main ways in the order of the
+relations, a way kept once at its first place, a way main in any relation
+kept as main. A single relation gives exactly the files it always did.
+
+--exclude-name NAME (repeatable) leaves out every way whose name tag is NAME
+(whole name, upper or lower case alike), from main and alternates alike. It is
+for a relation that also holds ways of other, differently named trails. The
+run prints each name left out and how many ways, and release.txt says so.
+Without it nothing is left out and the output is exactly what it was.
 
 The trail directory (and its trail.toml) must exist first. It prints what the
 record's [verification] and [osm] sections need: ways in main and in
@@ -178,13 +192,14 @@ def fetch(relation_id, opener=urllib.request.urlopen, sleep=time.sleep,
 
 # ---------------------------------------------------------------- parsing
 
-def parse(doc, relation_id, warn=None):
+def parse(doc, relation_id, warn=None, exclude_names=()):
     """Turn an Overpass JSON response into the track.
 
     Returns a dict: version, timestamp, main and side (lists of way dicts with
     osm_id, name, highway, coords), roles (a Counter-like dict of
     "type:role" -> count). Raises TrackError for a relation that is not a
-    route, or that has no way members.
+    route, or that has no way members. A way whose name is in exclude_names is
+    left out and listed under "excluded" (osm_id, name); no key changes without it.
     """
     warn = warn or (lambda m: print("warning: " + m, file=sys.stderr))
     nodes, ways, rels = {}, {}, {}
@@ -204,6 +219,8 @@ def parse(doc, relation_id, warn=None):
     if rtype not in ("route", "superroute"):
         raise TrackError(f"relation {relation_id} is type={rtype!r}, not type=route")
 
+    skip = {n.strip().casefold() for n in exclude_names}
+    excluded = []
     roles, main, side = {}, [], []
     seen_main, seen_side = set(), set()
 
@@ -245,6 +262,9 @@ def parse(doc, relation_id, warn=None):
                     warn(f"way {wid} has fewer than 2 points; skipped")
                     continue
                 tags = way.get("tags") or {}
+                if skip and (tags.get("name") or "").strip().casefold() in skip:
+                    excluded.append((str(wid), tags["name"]))
+                    continue
                 rec = {"osm_id": str(wid), "coords": coords}
                 if tags.get("name"):
                     rec["name"] = tags["name"]
@@ -273,7 +293,8 @@ def parse(doc, relation_id, warn=None):
         raise TrackError(f"relation {relation_id} has no usable ways")
     return {"version": root.get("version"), "timestamp": root.get("timestamp"),
             "main": main, "side": side, "roles": roles,
-            "name": (root.get("tags") or {}).get("name", "")}
+            "name": (root.get("tags") or {}).get("name", ""),
+            "excluded": excluded}
 
 
 # ---------------------------------------------------------------- output
@@ -292,14 +313,50 @@ def geojson_text(ways):
     return HEADER + ",".join(feats) + "]}\n"
 
 
-def release_text(trail_id, relation_id, date):
-    return (f"{trail_id}\n\n"
-            f"Source: https://www.openstreetmap.org/relation/{relation_id}\n"
+def release_text(trail_id, relation_id, date, left_out=None):
+    if isinstance(relation_id, (list, tuple)) and len(relation_id) == 1:
+        relation_id = relation_id[0]
+    if isinstance(relation_id, (list, tuple)):
+        src = "".join(f"Source: https://www.openstreetmap.org/relation/{r}\n"
+                      for r in relation_id)
+    else:
+        src = f"Source: https://www.openstreetmap.org/relation/{relation_id}\n"
+    text = (f"{trail_id}\n\n"
+            f"{src}"
             "Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)\n"
             "Attribution: OpenStreetMap contributors (ODbL)\n"
             f"Source read: {date}\n"
             "Published copy: coordinates rounded to 6 decimal places and written as "
-            "compact JSON. Geometry is otherwise as served.\n")
+            "compact JSON. Geometry is otherwise as served")
+    if left_out:
+        text += (", except that ways named " + ", ".join(f"{n}" for n in left_out)
+                 + " were left out because they belong to other trails")
+    return text + ".\n"
+
+
+def merge_tracks(tracks):
+    """Join the tracks of several relations into one (see the header)."""
+    if len(tracks) == 1:
+        return tracks[0]
+    main, side, roles = [], [], {}
+    seen_main, seen_side = set(), set()
+    for t in tracks:
+        for w in t["main"]:
+            if w["osm_id"] not in seen_main:
+                seen_main.add(w["osm_id"])
+                main.append(w)
+        for w in t["side"]:
+            if w["osm_id"] not in seen_side:
+                seen_side.add(w["osm_id"])
+                side.append(w)
+        for k, v in t["roles"].items():
+            roles[k] = roles.get(k, 0) + v
+    side = [w for w in side if w["osm_id"] not in seen_main]
+    return {"excluded": [e for t in tracks for e in t.get("excluded", [])],
+            "version": [t["version"] for t in tracks],
+            "timestamp": [t["timestamp"] for t in tracks],
+            "main": main, "side": side, "roles": roles,
+            "name": " + ".join(t["name"] for t in tracks)}
 
 
 def figures(track):
@@ -322,12 +379,32 @@ def run(args, fetcher=fetch, today=None, out=print):
         if have:
             raise TrackError(f"{', '.join(have)} already in {tdir}: use --force to "
                              "replace")
-    track = parse(fetcher(args.relation), args.relation)
+    rels = (list(args.relation) if isinstance(args.relation, (list, tuple))
+            else [args.relation])
+    skip = list(getattr(args, "exclude_name", None) or [])
+    parsed = []
+    for rel in rels:
+        t = parse(fetcher(rel), rel, exclude_names=skip)
+        if len(rels) > 1:
+            f1 = figures(t)
+            out(f"relation {rel} {t['name']!r}: version {t['version']}, "
+                f"{f1['main_ways']} main ways, {f1['measured_km']:.1f} km")
+        parsed.append(t)
+    track = merge_tracks(parsed)
     fig = figures(track)
     for key in sorted(track["roles"]):
         out(f"role {key}: {track['roles'][key]}")
-    out(f"relation {args.relation} {track['name']!r}: version {track['version']}, "
-        f"timestamp {track['timestamp']}")
+    if len(rels) == 1:
+        out(f"relation {rels[0]} {track['name']!r}: version {track['version']}, "
+            f"timestamp {track['timestamp']}")
+    else:
+        out(f"joined {len(rels)} relations: {rels}")
+    left_out = []
+    for name in skip:
+        n = sum(1 for _, nm in track.get("excluded", []) if nm.strip().casefold() == name.strip().casefold())
+        out(f"left out: {n} way{'s' if n != 1 else ''} named {name!r}")
+        if n:
+            left_out.append(name)
     out(f"main ways: {fig['main_ways']}")
     out(f"alternate ways: {fig['alternate_ways']}")
     out(f"measured_km: {fig['measured_km']:.1f}")
@@ -336,7 +413,7 @@ def run(args, fetcher=fetch, today=None, out=print):
         out("dry run: nothing written")
         return track
     date = (today or datetime.date.today()).isoformat()
-    files = {"release.txt": release_text(args.id, args.relation, date)}
+    files = {"release.txt": release_text(args.id, rels, date, left_out)}
     if track["main"]:
         files["line.geojson"] = geojson_text(track["main"])
     else:
@@ -354,10 +431,13 @@ def run(args, fetcher=fetch, today=None, out=print):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Fetch a trail's track from an OSM route relation.")
-    ap.add_argument("relation", type=int, help="OSM relation id")
+    ap.add_argument("relation", type=int, nargs="+",
+                    help="OSM relation id (several: joined into one track)")
     ap.add_argument("--id", required=True, help="trail id (the directory name)")
     ap.add_argument("--out", default=ROOT, help="directory holding the trail directories "
                     "(default: the repository root)")
+    ap.add_argument("--exclude-name", action="append", default=[], metavar="NAME",
+                    help="leave out ways with this name tag (repeatable)")
     ap.add_argument("--dry", action="store_true", help="print the figures, write nothing")
     ap.add_argument("--force", action="store_true", help="replace existing files")
     args = ap.parse_args(argv)

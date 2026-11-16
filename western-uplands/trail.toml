@@ -1,0 +1,76 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "western-uplands"
+name = "Western Uplands Backpacking Trail"
+country = "CA"
+regions = ["ON"]
+length_km = 88
+length_note = "88 km, the longest of loops of 32 to 88 km, from the Ontario Parks page for Algonquin Provincial Park backcountry activities"
+tier = "regional"
+designation = "Ontario Parks, Algonquin Provincial Park"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Ontario Parks (Algonquin Provincial Park) (publishes the trail; no open geometry found)"
+publisher_url = "https://www.ontarioparks.ca/park/algonquin/backcountry/activities"
+url = "https://www.openstreetmap.org/relation/11851825"
+discovery = "osm-relation-version: Overpass `rel(11851825); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 11851825."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 11851825: one hiking route relation, 22 main ways, no alternates. The track is the relation named Western Uplands Backpacking Trail (main). Six side relations are not included."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+length_gap_note = "The track is the main relation only, 69.8 km, 20.7% short of the published 88 km. OpenStreetMap holds six more relations for the Western Uplands Backpacking Trail: loops named Maggie Lake (5.5 km), Rain Lake (8.6 km) and Loft Lake (7.7 km), crosscuts named southern (8.3 km) and northern (5.4 km), and an approach from Highway 60 (0.4 km). They add about 36 km and are not included. Ontario Parks gives 88 km as the longest of its loops; which of these make up that loop was not checked."
+
+[osm]
+relation = 11851825
+note = "Hiking route relation named Western Uplands Backpacking Trail (main), version 7 (2026-06-27), 22 ways, no member roles. Six more relations of the same trail (11851826, 11851827, 11851828, 11863535, 11863536, 11863537) are loops, crosscuts and an approach, and are not used."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Ontario Parks"
+note = "No logo is included. Ask Ontario Parks before using its marks."
+logo_file = ""
+logo_owner = "Ontario Parks"
+
+[verification]
+verified = true
+date = "2026-11-16"
+measured_km = 69.8
+difference_percent = -20.7
+parts = 1
+note = "OSM relation 11851825, 22 ways: 69.8 km in 1 part, 20.7% short of the published 88 km."
+
+[hike]
+summary = "The Western Uplands Backpacking Trail is a backpacking trail of loops in Algonquin Provincial Park in Ontario. Ontario Parks gives the loops as 32 to 88 km, and the length in this record is the 88 km longest loop, so shorter loops exist on the same trail. It is reached from the Western Uplands Backpacking Trailhead at the Oxtongue River Picnic Ground on Highway 60 or from the Rain Lake Access Point."
+official_url = "https://www.ontarioparks.ca/park/algonquin/backcountry/activities"
+start = "Western Uplands Backpacking Trailhead on Highway 60, Ontario"
+start_lonlat = [-78.798, 45.463]
+shape = "loop"
+terrain = ["forest", "lakes"]
+travel = "trail"
+permit = "Backcountry campsites on the trail are reserved site by site through Ontario Parks, and the reservation letter is the camping permit."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://www.ontarioparks.ca/park/algonquin/backcountry/activities"
+publisher = "Ontario Parks"
+facts = ["summary", "official_url", "start", "shape", "travel"]
+
+[[hike.source]]
+url = "https://www.ontarioparks.ca/park/algonquin/backcountry/camping"
+publisher = "Ontario Parks"
+facts = ["summary", "start_lonlat", "terrain", "permit"]
+
+[[hike.source]]
+url = "https://www.ontarioparks.ca/backcountry/overnighthiking"
+publisher = "Ontario Parks"
+facts = ["summary", "shape"]

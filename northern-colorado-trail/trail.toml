@@ -1,0 +1,85 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "northern-colorado-trail"
+name = "Northern Colorado Trail"
+short_name = "NOCO"
+short_name_url = "https://www.northerncoloradotrail.org/"
+country = "US"
+regions = ["CO"]
+length_km = 490
+length_note = "304.4 mi (490.0 km), per the author's site, which also calls it a 300-mile route"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Kevin Silvernale); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Kevin Silvernale, Northern Colorado Trail (publishes the route)"
+publisher_url = "https://www.northerncoloradotrail.org/"
+url = "https://www.northerncoloradotrail.org/noco-trail-guides"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "restricted"
+licence_text = "The author gives his data sheets, maps and GPS files away for personal use only. His trail guides page states: 'All files published on www.northerncoloradotrail.org are for personal use only and may not be resold, redistributed, or used for commercial purposes without prior written consent.' (https://www.northerncoloradotrail.org/noco-trail-guides, read 2026-11-16). No track is included here."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the author publishes the route as data sheets, maps, GPS routes and waypoints for download under personal-use terms that do not allow passing them on."
+source_checked = "2026-11-16"
+redistributable = false
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The author offers guides, maps and GPS files for download for personal use only, and states that they may not be resold, redistributed, or used for commercial purposes without prior written consent. Those terms do not allow his track to be passed on, so no track is included. Get the route from the author's trail guides page."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's author does not allow his track to be passed on."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Kevin Silvernale"
+note = "No logo is included. The author's site shows a route logo; ask the author before using it."
+logo_file = ""
+logo_owner = "Kevin Silvernale"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Kevin Silvernale"
+line_policy = "open"
+creator_words = "All files published on www.northerncoloradotrail.org are for personal use only and may not be resold, redistributed, or used for commercial purposes without prior written consent."
+creator_words_url = "https://www.northerncoloradotrail.org/noco-trail-guides"
+note = "A route in four segments linking existing trails and roads across northern Colorado. The author offers PDF data sheets, trail maps, GPS routes and GPS waypoints for download, all for personal use only with no redistribution allowed, so the track is free for personal use but may not be passed on. 5280 magazine reports that Kevin Silvernale began plotting the route in 2023 and launched the route's website in February 2025."
+
+[[guide]]
+title = "Northern Colorado Trail Guides"
+author = "Kevin Silvernale"
+access = "free"
+url = "https://www.northerncoloradotrail.org/noco-trail-guides"
+format = "web page with PDF data sheets for each segment, in four segments; the site also has trail maps, GPS routes and GPS waypoints, all for personal use only"
+
+[hike]
+summary = "The Northern Colorado Trail crosses northern Colorado from Estes Park to Glenwood Springs. The author counts 304.4 miles in four segments through Rocky Mountain National Park and the Flat Tops Wilderness, with the towns of Walden, Steamboat Springs, Oak Creek and Yampa between the ends. It links existing trails and roads."
+official_url = "https://www.northerncoloradotrail.org/"
+start = "Estes Park, Colorado"
+end = "Glenwood Springs, Colorado"
+shape = "point-to-point"
+days = [21, 21]
+high_point = "Comanche Peak"
+high_point_m = 3812
+terrain = ["alpine", "forest"]
+travel = "trail-and-road"
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://www.northerncoloradotrail.org/"
+publisher = "Kevin Silvernale, Northern Colorado Trail (the route's author)"
+facts = ["summary", "official_url", "start", "end", "shape", "high_point", "terrain"]
+
+[[hike.source]]
+url = "https://5280.com/ways-to-hike-the-new-northern-colorado-trail/"
+publisher = "5280 magazine"
+facts = ["summary", "days", "travel"]

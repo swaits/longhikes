@@ -16,23 +16,22 @@ wave = "held"
 status = "osm-only"
 publisher = "Kekekabic Trail Club; USFS (publishes the trail; no open geometry found)"
 url = "https://www.openstreetmap.org/relation/10831114"
-discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
-format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+discovery = "osm-relation-version: Overpass `rel(10831114); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 10831114."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 10831114."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM 10831114 (66 km tag)."
-source_checked = "2026-11-08"
+mainline = "OSM relation 10831114: one hiking route relation, 11 main ways, no alternates."
+source_checked = "2026-11-16"
 redistributable = true
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "No track has been added for this trail yet."
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
 
 [osm]
 relation = 10831114
-note = "Not downloaded."
+note = "Hiking route relation named Kekekabic Trail, version 7 (2026-06-22), 11 ways."
 
 [shield]
 status = "logo-not-found"
@@ -43,8 +42,12 @@ logo_file = ""
 logo_owner = "Kekekabic Trail Club"
 
 [verification]
-verified = false
-note = "Not downloaded."
+verified = true
+date = "2026-11-16"
+measured_km = 61.9
+difference_percent = -6.2
+parts = 1
+note = "OSM relation 10831114, 11 ways: 61.9 km in 1 part, 6.2% short of 66 km."
 
 [hike]
 summary = "The Kekekabic Trail is a primitive trail across the heart of the Boundary Waters Canoe Area Wilderness in northern Minnesota, from Snowbank Lake near Ely to the Gunflint Trail. Most of it lies within the wilderness, and the Forest Service recommends map and compass skills for it."

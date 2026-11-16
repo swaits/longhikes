@@ -411,12 +411,15 @@ def line_licence_rows(records, repo_root):
         recs = by_licence[lic]
         label = words.label(words.LICENCES, lic)
         n = len(recs)
-        what = f"Tracks licensed {esc(label)}: {n} record{'s' if n != 1 else ''}"
+        what = (f"Tracks shared with permission: {n} record{'s' if n != 1 else ''}" if lic == "stated-permission"
+                else f"Tracks licensed {esc(label)}: {n} record{'s' if n != 1 else ''}")
         if n <= 3:
             links = ", ".join(f'<a href="{esc(common.trail_path(r))}">{common.name(r)}</a>' for r in recs)
             what += f" ({links})"
         what = Markup(what)
         terms = Markup(f'{esc(label)} <code class="raw">{esc(lic)}</code>; credit as named in each record and its release.txt')
+        if lic in words.LICENCE_NOTES:
+            terms = Markup(f'{esc(words.LICENCE_NOTES[lic])} <code class="raw">{esc(lic)}</code>; credit as named in each record and its release.txt')
         rows.append((what, terms, _licence_text_url(lic, repo_root)))
     return rows
 

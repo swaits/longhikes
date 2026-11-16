@@ -60,7 +60,7 @@ class ExtraPagesTest(unittest.TestCase):
 
     def test_all_routes_on_routes_page(self):
         routes = [r for r in self.records if r["derived"]["kind"] == "route"]
-        self.assertEqual(len(routes), 52)
+        self.assertEqual(len(routes), 57)
         page = read_out("routes/index.html")
         import html as _html
         text = _html.unescape(page)
@@ -137,8 +137,9 @@ class ExtraPagesTest(unittest.TestCase):
             doc = read_out(rel)
             results = doc[doc.index('<div class="results"'):]
             for part in ('<div class="list-head" aria-hidden="true">', '<ol class="entries"',
-                         'name="units-list"', '<ul class="key"', "Sort by", 'data-sort-select'):
+                         '<ul class="key"', "Sort by", 'data-sort-select'):
                 self.assertIn(part, results, f"{rel}: {part}")
+            self.assertNotIn('name="units-list"', doc, rel)  # the header's switch is the only one
             scale = re.search(r'<div class="list-head".*?</div>', results, re.S).group(0)
             self.assertEqual(scale.count('class="len__km"'), 3, rel)
             self.assertEqual(scale.count('class="len__mi"'), 3, rel)
@@ -232,7 +233,9 @@ class ExtraPagesTest(unittest.TestCase):
         for lic in {r["source"]["licence"] for r in lines}:
             n = sum(1 for r in lines if r["source"]["licence"] == lic)
             label = html.escape(words.label(words.LICENCES, lic), quote=True)
-            self.assertIn(f"Tracks licensed {label}: {n} record", page, lic)
+            what = (f"Tracks shared with permission: {n} record" if lic == "stated-permission"
+                    else f"Tracks licensed {label}: {n} record")
+            self.assertIn(what, page, lic)
         for name in ("trails.json", "overview.geojson"):
             self.assertRegex(page, rf'<a href="/data/{re.escape(name)}">')
         for name in ("all-gpx.zip", "all-geojson.zip"):

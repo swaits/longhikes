@@ -1,0 +1,84 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "teton-crest-route"
+name = "Teton Crest Route"
+country = "US"
+regions = ["WY"]
+length_km = 95
+length_note = "59 mi, per the author's route page and map pack page"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Wilderness Mindset); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Mindset (publishes the route)"
+publisher_url = "https://wildernessmindset.com/teton-crest-trail/"
+url = "https://wildernessmindset.com/product/teton-crest-route-map-pack/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the author and the pages its facts were read on (https://wildernessmindset.com/teton-crest-trail/ and https://wildernessmindset.com/product/teton-crest-route-map-pack/, read 2026-11-16)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the author sells the route as a map pack with a GPX track."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is sold as a map pack. Its maps, route description, mileage dataset and GPX track come with the purchase, and no licence that allows passing them on is stated. Get them from the author's shop page."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's author does not publish a track."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Wilderness Mindset"
+note = "No logo is included; a person-defined route has no emblem. Ask the author before using any mark."
+logo_file = ""
+logo_owner = "Wilderness Mindset"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Wilderness Mindset"
+line_policy = "sold"
+note = "The designated Teton Crest Trail, which has its own record in this dataset (teton-crest, about 40 mi from Phillips Pass to String Lake), plus a northern extension. The route starts farther north at the Hominy Peak trailhead, follows little-used northern trails, crosses cross-country over Littles Peak to Lake Solitude, then follows the Teton Crest Trail south to the Phillips Bench trailhead at Teton Pass. It is not Cam Honan's Teton Range Traverse, also in this dataset, a longer route of about 106 mi that continues north to Old Faithful in Yellowstone."
+
+[[guide]]
+title = "Teton Crest Route Map Pack"
+author = "Wilderness Mindset"
+access = "purchase"
+url = "https://wildernessmindset.com/product/teton-crest-route-map-pack/"
+format = "Download package: topographic maps, route description, mileage and campsite dataset, GPX track"
+price = "$10.00"
+price_checked = "2026-11-16"
+
+[hike]
+summary = "The Teton Crest Route is a 59-mile traverse of most of Wyoming's Teton Range, from the Hominy Peak trailhead in the north to the Phillips Bench trailhead at Teton Pass in the south. It adds a northern extension and one cross-country link over Littles Peak to the designated Teton Crest Trail, which alone runs about 40 miles from Phillips Pass to String Lake and has its own record in this dataset. It also differs from the Teton Range Traverse in this dataset, which is longer and ends at Old Faithful."
+official_url = "https://wildernessmindset.com/teton-crest-trail/"
+start = "Hominy Peak trailhead, Wyoming"
+end = "Phillips Bench trailhead at Teton Pass, Wyoming"
+shape = "point-to-point"
+days = [4, 4]
+high_point = "Littles Peak"
+high_point_m = 3265
+terrain = ["alpine", "lakes"]
+travel = "some-cross-country"
+permit = "The author says the route passes through Grand Teton National Park but can be timed so that every night is camped outside the park, in which case no park permit is needed."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://wildernessmindset.com/teton-crest-trail/"
+publisher = "Wilderness Mindset (the route's author)"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "high_point", "terrain", "travel", "permit"]
+
+[[hike.source]]
+url = "https://wildernessmindset.com/product/teton-crest-route-map-pack/"
+publisher = "Wilderness Mindset (the route's author)"
+facts = ["summary", "terrain", "travel"]

@@ -371,14 +371,6 @@ def list_head(sort_key="name"):
       </div>"""
 
 
-UNITS_TOGGLE = """<fieldset class="results-units">
-            <legend class="vh">Lengths</legend>
-            <div class="seg seg--small">
-              <label><input type="radio" name="units-list" value="mi" checked><span>mi</span></label>
-              <label><input type="radio" name="units-list" value="km"><span>km</span></label>
-            </div>
-          </fieldset>"""
-
 # The order a saved list was made in: offered first on the Saved page only,
 # where app.js numbers the rows (data-order) in the order they were saved.
 SAVED_ORDER = ("saved", "Order saved")
@@ -470,7 +462,7 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
     else:
         count = f'<p class="results-count"><strong>{total}</strong> {noun}</p>'
         empty = ""
-    tools = sort_select(default_sort, saved=saved) + "\n          " + UNITS_TOGGLE
+    tools = sort_select(default_sort, saved=saved)
     dflt = SAVED_ORDER[0] if saved else default_sort
     return Markup(f"""<div class="results" data-sortable data-default-sort="{esc(dflt)}">
       <div class="results-head">

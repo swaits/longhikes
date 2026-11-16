@@ -575,6 +575,8 @@ def downloads_panel(rec):
         licence_html = Markup(f'{licence_html}; OpenStreetMap parts {ext_link(words.LICENCE_URLS["ODbL-1.0"], "ODbL 1.0")}')
     osm_note = ("<p class=\"note\">Tracks from OpenStreetMap need the credit &ldquo;&copy;&nbsp;OpenStreetMap contributors&rdquo; "
                 "and stay under the ODbL (share-alike).</p>") if "ODbL" in src.get("attribution", "") + licence else ""
+    licence_note = (f'<p class="note">{esc(words.LICENCE_NOTES[licence])}</p>'
+                    if licence in words.LICENCE_NOTES else "")
     release = (f'<p class="note"><a href="/trails/{esc(rec["id"])}/release.txt">release.txt</a>: '
                f"the source, licence and date the track files came from.</p>"
                if rec["derived"].get("release") else "")
@@ -592,7 +594,7 @@ def downloads_panel(rec):
         <button class="button button--quiet" type="button" data-copy="#credit-text" data-copy-status="#credit-done" aria-describedby="credit-label" hidden>Copy credit</button>
       </div>
       <p class="credit__done" id="credit-done" role="status"></p>
-      {osm_note}
+      {osm_note}{licence_note}
     </div>
     {release}
   </div>
@@ -971,7 +973,18 @@ def source_block(rec):
     ]
     if src.get("decision") or src.get("decision_text"):
         rows.append(fact("Decision", src.get("decision_text", "") or words.DECISIONS.get(src.get("decision", ""), src.get("decision", ""))))
-    licence_text = (f'<h3 class="block__sub">What the source says</h3>{record_text(src["licence_text"])}'
+    licence_note = (f'<p>{esc(words.LICENCE_NOTES[licence])}</p>' if licence in words.LICENCE_NOTES else "")
+    permission = ""
+    if licence == "stated-permission" and src.get("permission_quote"):
+        url = src.get("permission_url", "")
+        permission = f"""<figure class="quote">
+  <blockquote{f' cite="{esc(url)}"' if url else ""}><p>{esc(src["permission_quote"])}</p></blockquote>
+  <figcaption>
+    <p class="quote__who">Said by {esc(src.get("permission_by", ""))} on {esc(src.get("permission_date", ""))}.</p>
+    {f'<p>Read at {ext_link(url)}.</p>' if url else ""}
+  </figcaption>
+</figure>"""
+    licence_text = (f'<h3 class="block__sub">What the source says</h3>{licence_note}{Markup(permission)}{record_text(src["licence_text"])}'
                     '<p class="note">With the page it was read on. Not legal advice.</p>') if src.get("licence_text") else ""
     return block("source-title", "Source and licence", facts(*rows) + Markup(licence_text))
 

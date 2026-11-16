@@ -1,0 +1,92 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "big-bend-100"
+name = "Big Bend 100"
+country = "US"
+regions = ["TX"]
+length_km = 161
+length_note = "100 mi, per Ky Harkey in Texas Parks & Wildlife Magazine"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Ky Harkey and Anna Claire Eddington); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Ky Harkey and Anna Claire Eddington (the route's authors)"
+publisher_url = "https://tpwmagazine.com/adventure-recreation/the-big-bend-100-a-hike-across-two-west-texas-parks/"
+url = "https://tpwmagazine.com/adventure-recreation/the-big-bend-100-a-hike-across-two-west-texas-parks/"
+format = "No track included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the authors and the pages its facts were read on (the author's article at https://tpwmagazine.com/adventure-recreation/the-big-bend-100-a-hike-across-two-west-texas-parks/, read 2026-11-16)."
+attribution = "none (no track included)"
+osm_only = false
+mainline = "No track is included; the authors' site for the route is no longer online and no terms that allow passing a track on were found."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "none (no track included)"
+line_file = ""
+line_absent_reason = "No track is included. The authors' site for the route, bigbend100.com, is no longer online, and no terms that allow passing a track on were found on the pages that were read. Get the route from the author's description in Texas Parks & Wildlife Magazine."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's authors publish no track that may be passed on."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Ky Harkey and Anna Claire Eddington"
+note = "No logo is included; a person-defined route has no emblem. Ask the authors before using any mark."
+logo_file = ""
+logo_owner = "Ky Harkey and Anna Claire Eddington"
+
+[verification]
+verified = false
+note = "No track to measure."
+
+[route]
+creator = "Ky Harkey and Anna Claire Eddington"
+line_policy = "unclear"
+note = "Harkey describes a nine-day hike through Big Bend Ranch State Park by way of the Sauceda Bunkhouse and past Mexicano and Madrid Falls, then Lajitas, then Big Bend National Park over the Mesa de Anguila and the South Rim to the Chisos Basin. The Trek dates the first hike to January 2018. The authors' site for the route, bigbend100.com, is no longer online. The Big Bend Sentinel reported in 2023 that neither the state park nor the national park recognises or encourages this route."
+
+[[guide]]
+title = "The Big Bend 100: A Hike Across Two West Texas Parks"
+author = "Ky Harkey"
+access = "free"
+url = "https://tpwmagazine.com/adventure-recreation/the-big-bend-100-a-hike-across-two-west-texas-parks/"
+format = "magazine article (web page), April 2020"
+publisher = "Texas Parks & Wildlife Magazine"
+
+[[guide]]
+title = "Guide: The Big Bend 100"
+author = "Rafael A. Mujica"
+access = "free"
+url = "https://ramujica.wordpress.com/how-to-hike-the-big-bend-100/"
+format = "web page; a third-party guide, not by the route's authors"
+
+[hike]
+summary = "The Big Bend 100 is a 100-mile route across two west Texas parks, Big Bend Ranch State Park and Big Bend National Park. It begins in the northwest panhandle of the state park, passes Lajitas between the parks, crosses the Mesa de Anguila and approaches the Chisos Mountains from the west, and ends in the Chisos Basin after the South Rim. Much of it follows old jeep roads, sandy arroyos, seldom used trails and cross-country stretches in Chihuahuan Desert country."
+start = "Northwest panhandle of Big Bend Ranch State Park, Texas"
+end = "Chisos Basin, Big Bend National Park, Texas"
+shape = "point-to-point"
+terrain = ["desert", "canyon"]
+travel = "some-cross-country"
+caution = "Harkey warns that the route has exceptional navigational challenges in rarely traveled parts of the parks, and that a hiker should never rely on desert water sources without a backup plan."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://tpwmagazine.com/adventure-recreation/the-big-bend-100-a-hike-across-two-west-texas-parks/"
+publisher = "Texas Parks & Wildlife Magazine (article by Ky Harkey, the route's co-author)"
+facts = ["summary", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://bigbendsentinel.com/2023/04/12/a-walk-on-the-wild-side-a-100-mile-hike-through-texas-best-idea/"
+publisher = "Big Bend Sentinel"
+facts = ["summary"]
+
+[[link]]
+title = "The Big Bend 100: The Newest Long-Distance Trail in Texas"
+publisher = "The Trek"
+url = "https://thetrek.co/big-bend-100-newest-long-distance-trail-texas/"
+note = "News account naming Ky Harkey and Anna Claire Eddington as the route's authors."

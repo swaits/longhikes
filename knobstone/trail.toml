@@ -1,83 +1,106 @@
 # Long-trail record. Field meanings: docs/schema.md in this repository.
 
 id = "knobstone"
-name = "Knobstone Trail"
-short_name = "KT"
-short_name_url = "https://www.in.gov/dnr/forestry/properties/knobstone-trail-conditions-reroutes-maps/"
+name = "Knobstone Hiking Trail"
+short_name = "KHT"
+short_name_url = "https://www.knobstonehikingtrail.org/"
 country = "US"
 regions = ["IN"]
-length_km = 97
-length_note = "60 mi, from the Indiana DNR 'About the Knobstone Trail' page (other sources give 48 to 58 mi)"
+length_km = 257
+length_note = "160 mi published by the Knobstone Hiking Trail Association. Its four sections are 45, 37.9, 28.4 and 42.7 mi and sum to 154.0 mi."
 tier = "regional"
-designation = "Indiana Department of Natural Resources"
+designation = "Knobstone Hiking Trail Association; southern section managed by Indiana Department of Natural Resources"
 wave = 1
 
 [source]
 status = "osm-only"
-publisher = "Indiana Department of Natural Resources (publishes the trail; no open geometry found)"
+publisher = "Indiana Department of Natural Resources (publishes the southern Knobstone section; no open geometry found)"
 publisher_url = "https://www.in.gov/dnr/forestry/properties/knobstone-trail-conditions-reroutes-maps/knobstone-trail-about/"
 url = "https://www.openstreetmap.org/relation/4644135"
-discovery = "osm-relation-version: Overpass `rel(4644135); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
-format = "OpenStreetMap route relation, read through Overpass with all member ways"
+discovery = "osm-relation-version: Overpass `rel(4644135); out meta;` `rel(7240414); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relations (route=hiking), read through Overpass with all member ways"
 crs = "EPSG:4326"
 licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: ‘You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.’ (https://www.openstreetmap.org/copyright, read 2026-11-14). The track included here is from OpenStreetMap, relation 4644135."
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 4644135, relation 7240414."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM relation 4644135 (Knobstone Trail): one route relation of 16 ways, all main; none has a side role."
-source_checked = "2026-11-14"
+mainline = "OSM relations 4644135 (Knobstone Trail, 16 ways, all main) and 7240414 (Tecumseh Trail, 64 main ways and 3 alternate ways), joined."
+source_checked = "2026-11-16"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
+length_gap_note = "The included track joins OpenStreetMap relation 4644135 (the southern Knobstone section, from Deam Lake to Delaney Park, 82.6 km) and relation 7240414 (the Tecumseh Trail, 69.8 km). The Pioneer section and the Hoosier National Forest section are not included, because OpenStreetMap has no route relation for them, so the track is 40.7% short of the published 160 mi trail."
 
 [osm]
 relation = 4644135
-note = "Relation 4644135 'Knobstone Trail' (ref KT, version 29, 2026-04-12). Downloaded 2026-11-14; release.txt has the source and date."
+note = "Relation 4644135 'Knobstone Trail' (ref KT, version 29, 2026-04-12), the southern Knobstone section, 82.6 km. Relation 7240414 'Tecumseh Trail' (ref TCM, operator Hoosier Hikers Council, version 25, 2026-06-13), the Tecumseh section, 69.8 km. No relation was found for the Pioneer or Hoosier National Forest sections."
 
 [shield]
 status = "logo-not-found"
-logo_source = "https://www.in.gov/dnr/forestry/"
-contact = "Indiana Department of Natural Resources"
-note = "The DNR Forestry page shows the DNR's agency logo. No logo of the trail is included here. Ask the trail's holder before using its mark."
+logo_source = "https://www.knobstonehikingtrail.org/"
+contact = "Knobstone Hiking Trail Association"
+note = "The Association site shows its own logo. No logo of the trail is included here. Ask the holder before using its mark."
 logo_file = ""
-logo_owner = "Indiana Department of Natural Resources"
+logo_owner = "Knobstone Hiking Trail Association"
 
 [verification]
 verified = true
-date = "2026-11-14"
-measured_km = 82.6
-difference_percent = -14.8
-parts = 3
-note = "OSM relation 4644135, 16 ways: 82.6 km in 3 parts, 14.8% short of the published 97 km."
+date = "2026-11-16"
+measured_km = 152.4
+difference_percent = -40.7
+parts = 4
+note = "OSM relations 4644135 and 7240414, 80 ways: 152.4 km in 4 parts, 40.7% short of the published 257 km. The parts are separate because their ends are more than 100 m apart."
 
 [hike]
-summary = "The Knobstone Trail is Indiana's longest footpath, a backcountry trail that runs along the Knobstone Escarpment in southern Indiana. It goes from Deam Lake in Clark County to Delaney Park in Washington County, through Clark State Forest, Elk Creek Public Fishing Area and Jackson-Washington State Forest. It has many steep climbs and descents."
-official_url = "https://www.in.gov/dnr/forestry/properties/knobstone-trail-conditions-reroutes-maps/"
+summary = "The Knobstone Hiking Trail runs along the Knobstone Escarpment in southern Indiana, from Deam Lake to Morgan-Monroe State Forest near Martinsville. It has four sections, Knobstone, Pioneer, Hoosier National Forest and Tecumseh, through forested bluffs with many steep climbs and descents. The Knobstone Hiking Trail Association publishes the whole trail."
+official_url = "https://www.knobstonehikingtrail.org/150-mile-kht/"
 start = "Deam Lake, Indiana"
-end = "Delaney Park, Indiana"
+end = "Morgan-Monroe State Forest, near Martinsville, Indiana"
 shape = "point-to-point"
 terrain = ["forest"]
-travel = "trail"
-permit = "No fee is charged for hiking or camping, and overnight users are asked to register with the Indiana DNR Law Dispatch."
-caution = "Water is scarce along the trail, and July, August and September are the worst months to find it."
-checked = "2026-11-14"
+travel = "trail-and-road"
+permit = "No fee, reservation or permit is required to hike the trail."
+unfinished = "The Pioneer section is still being built. It has about 5 miles of trail with about 9 more miles in development, and the rest is on remote county roads."
+caution = "Water is scarce along the southern Knobstone section, and July, August and September are the worst months to find it. The Hoosier Heritage Trail Association reported on 2026-03-28, in its article \"A Fond Farewell to the Pioneer Trail\", that after a dispute the easements along the Pioneer section were revoked and hikers are no longer allowed on most of the private land along it. The Knobstone Hiking Trail Association's site still lists the section."
+checked = "2026-11-16"
 
 [[hike.source]]
-url = "https://www.in.gov/dnr/forestry/properties/knobstone-trail-conditions-reroutes-maps/knobstone-trail-about/"
-publisher = "Indiana Department of Natural Resources"
-facts = ["summary", "start", "end", "shape", "terrain", "travel"]
+url = "https://www.knobstonehikingtrail.org/"
+publisher = "Knobstone Hiking Trail Association"
+facts = ["summary", "shape", "terrain", "travel", "permit", "unfinished", "caution"]
 
 [[hike.source]]
-url = "https://www.in.gov/dnr/forestry/properties/knobstone-trail-conditions-reroutes-maps/"
-publisher = "Indiana Department of Natural Resources"
-facts = ["official_url"]
+url = "https://www.knobstonehikingtrail.org/150-mile-kht/"
+publisher = "Knobstone Hiking Trail Association"
+facts = ["official_url", "summary"]
+
+[[hike.source]]
+url = "https://www.knobstonehikingtrail.org/150-mile-kht/tecumseh-trail-section/tecumseh-trail-features/"
+publisher = "Knobstone Hiking Trail Association"
+facts = ["summary", "end"]
+
+[[hike.source]]
+url = "https://www.knobstonehikingtrail.org/150-mile-kht/knobstone-trail-section/knobstone-trail-features/"
+publisher = "Knobstone Hiking Trail Association"
+facts = ["summary", "start"]
 
 [[hike.source]]
 url = "https://www.in.gov/dnr/forestry/properties/knobstone-trail-conditions-reroutes-maps/knobstone-trail-hiking-and-rules"
 publisher = "Indiana Department of Natural Resources"
-facts = ["permit", "caution"]
+facts = ["caution"]
+
+[[hike.source]]
+url = "https://hoosierheritagetrail.org/a-fond-farewell-to-the-pioneer-trail/"
+publisher = "Hoosier Heritage Trail Association"
+facts = ["caution"]
 
 [[link]]
 title = "Knobstone Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Knobstone_Trail"
+
+[[link]]
+title = "Hoosier Heritage Trail"
+publisher = "Hoosier Heritage Trail Association"
+url = "https://hoosierheritagetrail.org/"
+note = "A separate trail over a similar corridor, published by the Hoosier Heritage Trail Association."

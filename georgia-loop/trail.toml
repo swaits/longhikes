@@ -1,0 +1,81 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "georgia-loop"
+name = "Georgia Loop"
+country = "US"
+regions = ["GA"]
+length_km = 89
+length_note = "55 mi published by the Benton MacKaye Trail Association"
+kind = "route"
+tier = "regional"
+designation = "Route of linked existing trails in Georgia, published as a backpacking hike by the Benton MacKaye Trail Association; no single author is named"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Benton MacKaye Trail Association (publishes the loop)"
+publisher_url = "https://bmta.org/backpacking-hikes/"
+url = "https://bmta.org/backpacking-hikes/"
+format = "No track included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://bmta.org/backpacking-hikes/, read 2026-11-16)."
+attribution = "none (no track included)"
+osm_only = false
+mainline = "No track is included; the Association page lists the loop as a triangle of three existing trails and states no terms that allow passing a track on."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "none (no track included)"
+line_file = ""
+line_absent_reason = "No track is included. The Association publishes the loop as a backpacking hike made of three existing trails, and no terms that allow passing a track on are stated on its page. Get the route from the Association page and its guide for the Georgia section of the Benton MacKaye Trail."
+
+[osm]
+relation = 0
+note = "Not recorded: whether a track may be shared is not settled."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Benton MacKaye Trail Association"
+note = "No logo is included; the loop has no emblem of its own. Ask the Association before using any mark."
+logo_file = ""
+logo_owner = "Benton MacKaye Trail Association"
+
+[verification]
+verified = false
+note = "No track to measure."
+
+[route]
+creator = "Benton MacKaye Trail Association"
+line_policy = "unclear"
+note = "No single author is named for the loop. The Association publishes it on its Backpacking Hikes page, with its length, as a triangle of the Appalachian Trail, the Benton MacKaye Trail and the Duncan Ridge Trail, using Benton MacKaye Trail sections 2a to 3c. The Appalachian Trail and the Benton MacKaye Trail are listed separately in this dataset as appalachian and benton-mackaye. The Duncan Ridge Trail is not listed on its own."
+
+[[guide]]
+title = "Georgia Loop"
+author = "Benton MacKaye Trail Association"
+access = "free"
+url = "https://bmta.org/backpacking-hikes/"
+format = "web page, as a section of Backpacking Hikes"
+
+[[guide]]
+title = "Benton MacKaye Trail Guide, Georgia Section"
+author = "Benton MacKaye Trail Association"
+access = "purchase"
+url = "https://bmta.org/product/benton-mackaye-trail-guide-ga/"
+format = "guidebook for the Georgia section of the Benton MacKaye Trail, recommended on the loop page; 48 pages"
+price = "$12.00"
+price_checked = "2026-11-16"
+
+[hike]
+summary = "The Georgia Loop is a 55-mile loop in northern Georgia made of parts of three trails, the Appalachian Trail, the Benton MacKaye Trail and the Duncan Ridge Trail. The triangle can be started at Three Forks on FS 58, at Skeenah Creek on GA 60 or at Woody Gap on GA 60. The Benton MacKaye Trail Association publishes it as a backpacking hike and rates its difficulty Intermediate to Difficult, with dogs on leash allowed."
+official_url = "https://bmta.org/backpacking-hikes/"
+shape = "loop"
+terrain = ["forest"]
+travel = "trail"
+caution = "The Association describes the loop as the toughest hike in Georgia."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://bmta.org/backpacking-hikes/"
+publisher = "Benton MacKaye Trail Association"
+facts = ["summary", "official_url", "shape", "terrain", "travel", "caution"]

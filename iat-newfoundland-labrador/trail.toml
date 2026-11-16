@@ -14,26 +14,26 @@ wave = "held"
 wave_note = "Held: the chapter's own pages describe a thru-hiker route from Port aux Basques to Crow Head and give 750 km as its goal, but the route is made largely of T'Railway sections, gravel logging roads and highways, is described by the chapter as an extension it aims to build, and no track is included. The Quebec and New Brunswick part is the record sentier-international-appalaches."
 
 [source]
-status = "none"
+status = "osm-only"
 publisher = "International Appalachian Trail Newfoundland and Labrador (publishes the trail)"
 publisher_url = "https://iatnl.org/"
-url = "https://iatnl.org/thru-hikers/"
-format = "No line included"
+url = "https://www.openstreetmap.org/relation/15695142"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
 crs = "EPSG:4326"
-licence = "none-stated"
-licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://iatnl.org/thru-hikers/, read 2026-11-14)."
-attribution = "none (no line included)"
-osm_only = false
-mainline = "OpenStreetMap relation 15695142 'International Appalachian Trail (Newfoundland)' exists; it was not downloaded for this record because the route is held (see wave_note)."
-source_checked = "2026-11-14"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 15695142."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 15695142: one hiking route relation, 347 main ways, no alternates."
+source_checked = "2026-11-16"
 redistributable = true
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "No track is included. The chapter's thru-hiker page offers a GPS track, but states no licence for it, and the record is held. OpenStreetMap relation 15695142 exists and was not downloaded. The track is offered on https://iatnl.org/thru-hikers/."
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+discovery = "osm-relation-version: Overpass `rel(15695142); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
 
 [osm]
 relation = 15695142
-note = "Relation 15695142 'International Appalachian Trail (Newfoundland)' (route=hiking, network iwn) was found by name search on 2026-11-14. Not downloaded or measured."
+note = "Hiking route relation named International Appalachian Trail (Newfoundland), version 21 (2026-10-12), network iwn, 347 ways. The chapter's own GPS track states no licence and is not used."
 
 [shield]
 status = "logo-not-found"
@@ -44,8 +44,12 @@ logo_file = ""
 logo_owner = "International Appalachian Trail Newfoundland and Labrador"
 
 [verification]
-verified = false
-note = "No line to measure."
+verified = true
+date = "2026-11-16"
+measured_km = 742.7
+difference_percent = -1.0
+parts = 1
+note = "OSM relation 15695142, 347 ways: 742.7 km in 1 part, 1.0% short of 750 km, and 0.2% short of the 743 km the IAT/SIA council gives."
 
 [hike]
 summary = "The International Appalachian Trail in Newfoundland is a thru-hiker route from Port aux Basques north along the island's west coast to Crow Head, at the tip of the Great Northern Peninsula. It joins sections of the Newfoundland T'Railway, gravel logging roads and secondary highways, and backcountry trails and routes branch from it."

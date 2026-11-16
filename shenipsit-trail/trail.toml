@@ -1,0 +1,64 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "shenipsit-trail"
+name = "Shenipsit Trail"
+country = "US"
+regions = ["CT"]
+length_km = 80
+length_note = "50 mi published on the Connecticut Forest and Park Association trail page"
+tier = "regional"
+designation = "Connecticut Forest and Park Association; bicycles allowed only in specific areas"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "Connecticut Forest and Park Association (publishes the trail; no open geometry found)"
+publisher_url = "https://ctwoodlands.org/trails/shenipsit-trail/"
+url = "https://www.openstreetmap.org/relation/11242812"
+discovery = "osm-relation-version: Overpass `rel(11242812); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 11242812."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 11242812: one hiking route relation, 161 main ways, no alternates."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 11242812
+note = "Hiking route relation named Shenipsit Trail, version 35 (2026-09-07), 161 ways, no member roles."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://ctwoodlands.org/trails/shenipsit-trail/"
+contact = "Connecticut Forest and Park Association"
+note = "No logo of the trail is included here. Ask the holder before using its mark."
+logo_file = ""
+logo_owner = "Connecticut Forest and Park Association"
+
+[verification]
+verified = true
+date = "2026-11-16"
+measured_km = 73.7
+difference_percent = -7.9
+parts = 5
+note = "OSM relation 11242812, 161 ways: 73.7 km in 5 parts, 7.9% short of the published 80 km. The parts are separate because their ends are more than 100 m apart."
+
+[hike]
+summary = "The Shenipsit Trail runs north in central Connecticut from the Cobalt area of East Hampton to West Stafford, just south of the Massachusetts border. It crosses the Meshomasic and Shenipsit State Forests on woodland paths, with views from Case Mountain and Soapstone Mountain. The Connecticut Forest and Park Association publishes the trail page."
+official_url = "https://ctwoodlands.org/trails/shenipsit-trail/"
+start = "Cobalt, East Hampton, Connecticut"
+end = "West Stafford, Connecticut"
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "trail"
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://ctwoodlands.org/trails/shenipsit-trail/"
+publisher = "Connecticut Forest and Park Association"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"]

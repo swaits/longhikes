@@ -53,7 +53,7 @@
     if (value === 'km') root.dataset.units = 'km';
     else delete root.dataset.units;
     writePref('lh-units', value === 'km' ? 'km' : null);
-    syncRadios('input[name="units"], input[name="units-list"]', value === 'km' ? 'km' : 'mi');
+    syncRadios('input[name="units"]', value === 'km' ? 'km' : 'mi');
     document.dispatchEvent(new Event('olt:units'));
   }
 
@@ -73,7 +73,7 @@
 
   function syncPrefControls() {
     syncRadios('input[name="theme"]', root.dataset.theme || 'auto');
-    syncRadios('input[name="units"], input[name="units-list"]', milesFirst() ? 'mi' : 'km');
+    syncRadios('input[name="units"]', milesFirst() ? 'mi' : 'km');
   }
 
   /* Bring the page back in step with the stored choices, and the switches in
@@ -105,7 +105,7 @@
   document.querySelectorAll('input[name="theme"]').forEach(function (input) {
     input.addEventListener('change', function () { if (input.checked) setTheme(input.value); });
   });
-  document.querySelectorAll('input[name="units"], input[name="units-list"]').forEach(function (input) {
+  document.querySelectorAll('input[name="units"]').forEach(function (input) {
     input.addEventListener('change', function () { if (input.checked) setUnits(input.value); });
   });
   darkQuery.addEventListener('change', function () {
@@ -1033,6 +1033,9 @@
         if (base) {
           switcher = basemapControl();
           map.addControl(switcher, 'top-left');
+          /* The choice may have changed while the map was loading (another tab,
+             or Back): the change event came before the map was ready to follow it. */
+          applyBasemap();
         }
         mapCorners();
       });
@@ -1544,6 +1547,13 @@
         var v = p.get(name) || '';
         el[name].value = hasOption(el[name], v) ? v : nearestStep(el[name], stepKm(v));
       });
+      /* An address that gives them the wrong way round is rewritten by apply()
+         with the shorter one first: the controls say the same. */
+      if (stepKm(el.min.value) > stepKm(el.max.value) && stepKm(el.max.value)) {
+        var low = el.max.value, high = el.min.value;
+        el.min.value = hasOption(el.min, low) ? low : nearestStep(el.min, stepKm(low));
+        el.max.value = hasOption(el.max, high) ? high : nearestStep(el.max, stepKm(high));
+      }
       if (el.month) {
         var month = p.get('month') || '';
         el.month.value = hasOption(el.month, month) ? month : '';

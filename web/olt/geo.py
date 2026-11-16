@@ -265,13 +265,26 @@ def _num(v):
 
 
 def gpx_text(parts, name, url="", attribution="", licence="", licence_text="",
-             creator="long-trails dataset"):
-    """GPX 1.1 with one <trk> and one <trkseg> per part."""
+             creator="long-trails dataset", permission=None):
+    """GPX 1.1 with one <trk> and one <trkseg> per part.
+
+    `permission` is the source's stated-permission fields (permission_quote, permission_by,
+    permission_date, permission_url) when the licence is stated-permission."""
     desc = []
     if attribution:
         desc.append(f"Attribution: {attribution}")
     if licence_text:
         desc.append(f"Licence: {licence_text}")
+        if permission and permission.get("permission_quote"):
+            said = f'Permission: "{permission["permission_quote"]}"'
+            if permission.get("permission_by"):
+                said += f" Said by {permission['permission_by']}"
+                if permission.get("permission_date"):
+                    said += f" on {permission['permission_date']}"
+                said += "."
+            if permission.get("permission_url"):
+                said += f" Read at {permission['permission_url']}"
+            desc.append(said)
     elif licence:
         desc.append(f"Licence: {licence}")
     out = [

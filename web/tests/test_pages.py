@@ -90,7 +90,7 @@ class BuiltSiteTest(unittest.TestCase):
     def test_one_detail_page_per_record(self):
         found = [d for d in os.listdir(os.path.join(OUT, "trails"))
                  if os.path.isfile(os.path.join(OUT, "trails", d, "index.html"))]
-        self.assertEqual(len(self.records), 186)
+        self.assertEqual(len(self.records), 204)
         self.assertEqual(sorted(found), sorted(r["id"] for r in self.records))
         self.assertTrue(os.path.isfile(os.path.join(OUT, "index.html")))
 
@@ -175,7 +175,7 @@ class BuiltSiteTest(unittest.TestCase):
             v = raw.get("verification", {})
             if raw["source"].get("line_file") and v.get("verified") and abs(v.get("difference_percent", 0)) > 15:
                 expected.add(rec["id"])
-        self.assertEqual(len(expected), 20)
+        self.assertEqual(len(expected), 25)
         self.assertIn("voyageur", expected)
         for rec in self.records:
             page = self.pages[rec["id"]]

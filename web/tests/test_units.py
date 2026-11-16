@@ -42,8 +42,6 @@ class DefaultOrderTest(unittest.TestCase):
         self.assertIn('value="mi" checked><span aria-hidden="true">mi</span><span class="vh">Miles and feet</span>', prefs)
         self.assertLess(prefs.index('value="mi"'), prefs.index('value="km"'))
         self.assertNotIn('value="km" checked', prefs)
-        self.assertIn('value="mi" checked><span>mi</span>', home.UNITS_TOGGLE)
-        self.assertLess(home.UNITS_TOGGLE.index(">mi<"), home.UNITS_TOGGLE.index(">km<"))
 
 
 class StoredChoiceTest(unittest.TestCase):

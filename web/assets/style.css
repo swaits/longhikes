@@ -1137,8 +1137,6 @@ html:not(.js) .js-only { display: none !important; }
 }
 .key li { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
 .results-tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
-.results-units { margin: 0; padding: 0; border: 0; }
-.seg--small span { min-block-size: 2.75rem; min-inline-size: 2.75rem; }
 .field__label--sub { margin-block-start: var(--space-2); }
 
 /* Without JavaScript the list is complete and readable; the controls that need it are hidden. */

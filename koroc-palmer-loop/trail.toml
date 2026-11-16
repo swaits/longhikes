@@ -1,0 +1,69 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "koroc-palmer-loop"
+name = "Koroc River and Palmer River Loop (Boucle des rivières Koroc et Palmer)"
+country = "CA"
+regions = ["QC", "NL"]
+length_km = 90
+length_note = "About 90 km (56 mi) loop, from the Parks Canada page for the Koroc River and Palmer River Loop"
+tier = "regional"
+designation = "Parks Canada (Torngat Mountains National Park) and Nunavik Parks (Parc national Kuururjuaq)"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Parks Canada (Torngat Mountains National Park) (publishes the trail)"
+publisher_url = "https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc"
+url = "https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc"
+format = "No track included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc, read 2026-11-16)."
+attribution = "none (no track included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation number was found by search, and no track has been fetched yet."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "none (no track included)"
+line_file = ""
+line_absent_reason = "No track has been added yet. Parks Canada's page gives a route description and states no licence for a track."
+
+[osm]
+relation = 0
+note = "No OpenStreetMap route relation number was found by search on 2026-11-16. No track was fetched."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Parks Canada"
+note = "No logo of the trail is included here. Ask Parks Canada before using its marks."
+logo_file = ""
+logo_owner = "Parks Canada"
+
+[verification]
+verified = false
+note = "No track to measure. The start point in this record is converted from the UTM figures on the Parks Canada page (20V 466085 E 6514837 N)."
+
+[hike]
+summary = "The Koroc River and Palmer River Loop is a loop of about 90 km through the Torngat Mountains, starting and ending at a gravel airstrip in the Koroc River valley in Quebec. It follows the Koroc River west, crosses to the Palmer River in Newfoundland and Labrador, and returns through the Iberville valley. The airstrip is reached by helicopter or Twin Otter from the Torngat Mountains base camp or from Kuujjuaq."
+official_url = "https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc"
+start = "Gravel airstrip in the Koroc River valley, Quebec"
+start_lonlat = [-63.586, 58.772]
+shape = "loop"
+days = [7, 8]
+high_point_m = 1128
+terrain = ["alpine", "tundra"]
+travel = "mostly-cross-country"
+permit = "Hikers must register before the trip with both Torngat Mountains National Park and Parc national Kuururjuaq, and de-register after leaving the parks."
+caution = "Stream crossings on the Koroc River and its tributaries can be fast and very cold, and they grow harder after heavy rain."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc"
+publisher = "Parks Canada"
+facts = ["summary", "official_url", "start", "start_lonlat", "shape", "days", "high_point", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://parcs.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc"
+publisher = "Parks Canada"
+facts = ["summary", "shape", "days"]

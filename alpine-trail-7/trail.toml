@@ -1,0 +1,74 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "alpine-trail-7"
+name = "Alpine Trail #7"
+country = "US"
+regions = ["MT"]
+length_km = 88
+length_note = "54.7 mi published by the Forest Service on its Flathead National Forest trail page (read in an archived copy; that address now redirects to the forest recreation page)"
+tier = "regional"
+designation = "Flathead National Forest Trail 7, Swan Lake Ranger District; open to hiking, biking and motorcycle trail riding"
+wave = 1
+
+[source]
+status = "found"
+publisher = "USDA Forest Service (National Forest System Trails, Enterprise Data Warehouse)"
+publisher_url = "https://www.fs.usda.gov/recarea/flathead/recreation/recarea/?recid=66288&actid=51"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+discovery = "arcgis-query-hash: GET <url>/query with where trail_no = '7' within the Flathead National Forest area (outSR=4326, f=geojson); hash the answer body and count its rows; fetch again when either changes. 57 features on 2026-11-16."
+format = "ArcGIS MapServer layer 0, outSR=4326, f=geojson, 57 features"
+crs = "EPSG:4326"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The USDA Forest Service metadata for this dataset (https://data.fs.usda.gov/geodata/edw/edw_resources/meta/Trans_Trail_NFS_Publish.xml, read 2026-11-16) gives access constraints 'None' and, as use constraints, only a disclaimer of warranty and liability; it states no restriction on use. The layer is a Forest Service dataset made by federal employees, a federal government work."
+attribution = "USDA Forest Service"
+osm_only = false
+mainline = "Features with trail_no 7 (ALPINE 7) in the Flathead National Forest area: 57 features of three administrative units (011001, 011004, 011006), one trail name, no feature left out."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "USDA Forest Service (National Forest System Trails)"
+line_file = "line.geojson"
+
+[osm]
+relation = 0
+note = "No OpenStreetMap route relation for this trail was found by a name search of route relations on 2026-11-16. The Forest Service layer is used."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://www.fs.usda.gov/recarea/flathead/recreation/recarea/?recid=66288&actid=51"
+contact = "USDA Forest Service, Flathead National Forest"
+note = "No logo of the trail is included here. Ask the holder before using its mark."
+logo_file = ""
+logo_owner = "USDA Forest Service, Flathead National Forest"
+
+[verification]
+verified = true
+date = "2026-11-16"
+measured_km = 87.4
+difference_percent = -0.7
+parts = 2
+note = "57 features of the Forest Service layer, 87.4 km in 2 parts, 0.7% short of the published 88 km. The layer's own mileage field adds up to 55.2 mi. The two parts are separate because their ends are more than 100 m apart."
+
+[hike]
+summary = "The Alpine Trail #7 runs in the Swan Mountain Range of the Flathead National Forest in Montana, from the junction with Columbia Mountain Trail #51 to Inspiration Point. It passes the Jewel Basin, a high mountain hiking area with over 20 lakes. The Forest Service says the trail has several access points and is best followed with a district map."
+start = "Junction with Columbia Mountain Trail #51, Montana"
+end = "Inspiration Point, Montana"
+shape = "point-to-point"
+terrain = ["alpine", "lakes"]
+travel = "trail"
+caution = "The Forest Service lists the trail as open to hiking, biking and motorcycle trail riding, with motorized use in specific stretches only and Jewel Basin Special Area rules to check."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://web.archive.org/web/20201201005308/https://www.fs.usda.gov/recarea/flathead/recreation/recarea/?recid=66288&actid=51"
+publisher = "USDA Forest Service, Flathead National Forest (trail page read in a copy saved by the Wayback Machine)"
+facts = ["summary", "start", "end", "shape", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r01/flathead/recreation/jewel-basin-hiking-area"
+publisher = "USDA Forest Service, Flathead National Forest"
+facts = ["summary", "terrain"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r01/flathead/offices/swan-lake-ranger-station"
+publisher = "USDA Forest Service, Flathead National Forest"
+facts = ["summary"]

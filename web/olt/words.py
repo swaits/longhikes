@@ -64,10 +64,16 @@ LICENCES = {
     "CC-BY-4.0": "CC BY 4.0",
     "CC-BY": "CC BY",
     "ODbL-1.0": "ODbL 1.0",
+    "stated-permission": "Shared with permission",
     "CC-BY-NC-ND-4.0": "CC BY-NC-ND 4.0",
     "none-stated": "None stated",
     "restricted": "Restricted",
     "unknown": "Unknown",
+}
+LICENCE_NOTES = {
+    "stated-permission": ("Shared with permission. The holder has said in writing that this track may be "
+                          "shared; the statement is quoted below. It is not public domain and not a "
+                          "Creative Commons licence."),
 }
 LICENCE_URLS = {
     "us-gov-public-domain": "https://www.usa.gov/government-works",

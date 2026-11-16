@@ -1,0 +1,76 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "stein-valley-traverse"
+name = "Stein Valley Traverse"
+country = "CA"
+regions = ["BC"]
+length_km = 80
+length_note = "80 km from the east park boundary to the west park boundary, from the BC Parks brochure for Stein Valley Nlaka'pamux Heritage Park"
+tier = "regional"
+designation = "BC Parks (Stein Valley Nlaka'pamux Heritage Park), co-managed with the Lytton First Nation"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "BC Parks (Stein Valley Nlaka'pamux Heritage Park) (publishes the trail; no open geometry found)"
+publisher_url = "https://bcparks.ca/stein-valley-nlakapamux-heritage-park/"
+url = "https://www.openstreetmap.org/relation/9983039"
+discovery = "osm-relation-version: Overpass `rel(9983039); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 9983039."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 9983039: one hiking route relation, 31 main ways, no alternates."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 9983039
+note = "Hiking route relation named Stein Valley Traverse, version 6 (2024-08-30), 31 ways, no member roles."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "BC Parks"
+note = "No logo of the trail is included here. Ask BC Parks before using its marks."
+logo_file = ""
+logo_owner = "BC Parks"
+
+[verification]
+verified = true
+date = "2026-11-16"
+measured_km = 88.8
+difference_percent = 11.0
+parts = 1
+note = "OSM relation 9983039, 31 ways: 88.8 km in 1 part, 11.0% over 80 km."
+
+[hike]
+summary = "The Stein Valley Traverse crosses Stein Valley Nlaka'pamux Heritage Park in British Columbia from its east boundary to its west boundary, following the Stein River and its lakes. BC Parks calls it the main east to west traverse and gives it as 80 km from park boundary to park boundary. At the west end the walk leaves the park by the Lizzie Creek Trail, which is beyond the 80 km."
+official_url = "https://bcparks.ca/stein-valley-nlakapamux-heritage-park/"
+start = "Main trailhead on the west side of the Fraser River by Lytton, British Columbia"
+end = "Western park boundary west of Tundra Lake, British Columbia"
+shape = "point-to-point"
+terrain = ["forest", "alpine", "lakes"]
+travel = "some-cross-country"
+permit = "BC Parks' park brochure says there is no hiker registration in the Stein Valley."
+caution = "BC Parks says solid route finding skills are a necessity, because sections of trail may be wet, steep or difficult to see, and the upper valley above treeline is a route marked in places with cairns."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://bcparks.ca/stein-valley-nlakapamux-heritage-park/"
+publisher = "BC Parks"
+facts = ["official_url", "summary", "start", "terrain", "caution"]
+
+[[hike.source]]
+url = "https://bcparks.ca/stein-valley-nlakapamux-heritage-park/hiking/"
+publisher = "BC Parks"
+facts = ["summary", "end", "shape", "travel", "caution"]
+
+[[hike.source]]
+url = "https://nrs.objectstore.gov.bc.ca/kuwyyf/stein_valley_brochure_d174525f71.pdf"
+publisher = "BC Parks"
+facts = ["summary", "start", "end", "shape", "permit"]

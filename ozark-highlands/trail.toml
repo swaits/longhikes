@@ -6,8 +6,8 @@ short_name = "OHT"
 short_name_url = "https://ozarkhighlandstrail.com/trail/"
 country = "US"
 regions = ["AR"]
-length_km = 435
-length_note = "about 270 mi"
+length_km = 523
+length_note = "about 325 mi planned, per the Ozark Highlands Trail Association; about 290 mi are built"
 tier = "regional"
 designation = "Ozark Highlands Trail Association"
 wave = 1
@@ -28,6 +28,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
+length_gap_note = "The track is 373.8 km against 523 km (325 mi) planned. OpenStreetMap holds the trail from Lake Fort Smith to the Matney Knob trailhead, mile 253 in the Association's markers, and not the Lower Buffalo Wilderness stretch, which has no built trail. The Norfork Lake pieces past Matney Knob, about 72 mi of markers to the Missouri line and themselves short of built trail by an 18 mi gap, are not in the relation."
 
 [osm]
 relation = 10868744
@@ -45,27 +46,33 @@ logo_owner = "Ozark Highlands Trail Association"
 verified = true
 date = "2026-11-08"
 measured_km = 373.8
-difference_percent = -14.1
+difference_percent = -28.5
 parts = 3
-note = "68 ways in 3 parts, 373.8 km, -14.1% against 435 km (270 mi). The 270 mi figure includes the planned extension toward Missouri and the Ozark Trail link, which is not built; the built main track is what OSM holds. Kept with that note."
+note = "68 ways in 3 parts, 373.8 km, 28.5% short of 523 km (325 mi planned). The ways run from Lake Fort Smith to the Matney Knob trailhead: 244.0 km named Ozark Highlands Trail, 60.7 km named for the Buffalo River Trail it shares, and 43.6 km named OHT Sylamore Section. The Lower Buffalo Wilderness stretch and everything past Matney Knob are missing, as source.length_gap_note says. Kept with that note."
 
 [hike]
-summary = "The Ozark Highlands Trail runs across northern Arkansas from Lake Fort Smith toward the Missouri border north of Norfork Lake. It crosses the Boston Mountains and the Buffalo River country, rugged forested Ozark terrain. Fall through spring are its peak seasons."
+summary = "The Ozark Highlands Trail runs across northern Arkansas from Lake Fort Smith toward the Missouri border north of Norfork Lake. It crosses the Boston Mountains, then follows the Buffalo River Trail for 43 miles through the Buffalo River country, in rugged forested Ozark terrain. Fall through spring are its peak seasons."
 official_url = "https://ozarkhighlandstrail.com/trail/"
 start = "Lake Fort Smith State Park, Arkansas"
 end = "Missouri border north of Norfork Lake, Arkansas"
 shape = "point-to-point"
 terrain = ["forest", "lakes"]
 travel = "some-cross-country"
-unfinished = "About 290 miles have been built of the planned 325 miles, with gaps in the Lower Buffalo Wilderness and near Norfork Lake."
+unfinished = "About 290 miles of the planned 325 miles are built, with no built trail yet for about 14 miles through the Lower Buffalo Wilderness or for about 18 miles along the shore of Norfork Lake."
+caution = "East of Dillard's Ferry on AR-14, the way to the Spring Creek trailhead is a bushwhack of about 15 miles with no built trail, mostly through the Lower Buffalo Wilderness, and past the Matney Knob trailhead the trail goes on as separate pieces along Norfork Lake, joined by a road walk of about 10 miles."
 season = "October to early June"
 months = [10, 11, 12, 1, 2, 3, 4, 5]
-checked = "2026-11-13"
+checked = "2026-11-16"
 
 [[hike.source]]
 url = "https://ozarkhighlandstrail.com/trail/"
 publisher = "Ozark Highlands Trail Association"
-facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "unfinished"]
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "unfinished", "caution"]
+
+[[hike.source]]
+url = "https://www.nps.gov/thingstodo/hike-the-buffalo-river-trail-woolum-to-dillards-ferry.htm"
+publisher = "National Park Service"
+facts = ["summary"]
 
 [[hike.source]]
 url = "https://ozarkhighlandstrail.com/faq/"

@@ -1,0 +1,71 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "midland-to-mackinac-trail"
+name = "Midland to Mackinac Trail"
+country = "US"
+regions = ["MI"]
+length_km = 338
+length_note = "210 mi, per the Forest Service trail page; Michigan Trails also lists 280 mi, and a 2018 guide estimates 210 to 215 mi"
+tier = "regional"
+designation = "Historic footpath restored by Boy Scouts, Lake Huron Area Council, and volunteers"
+wave = 1
+
+[source]
+status = "none"
+publisher = "USDA Forest Service, Huron-Manistee National Forests (publishes the National Forest segment)"
+publisher_url = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
+url = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
+format = "No track included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the pages its facts were read on (read 2026-11-16)."
+attribution = "none (no track included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation was found for the trail, and the 2018 guide states there is no GPS track for the trail."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "none (no track included)"
+line_file = ""
+line_absent_reason = "No track has been added yet. The 2018 guide states there is no GPS track for the trail, and no track with a stated licence was found on the pages that were read."
+
+[osm]
+relation = 0
+note = "No route relation was found by search on 2026-11-16."
+
+[shield]
+status = "logo-not-found"
+logo_source = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
+contact = "USDA Forest Service, Huron-Manistee National Forests"
+note = "No logo of the trail is included here. Ask the holder before using its mark."
+logo_file = ""
+logo_owner = "USDA Forest Service, Huron-Manistee National Forests"
+
+[verification]
+verified = false
+note = "No track to measure."
+
+[hike]
+summary = "The Midland to Mackinac Trail runs from Midland County to Mackinaw City at the tip of the Lower Peninsula in Michigan. It follows a historic Native American footpath through forest, passing through few towns. The Forest Service describes it as restored by Boy Scouts of the Lake Huron Area Council and other volunteers."
+official_url = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
+start = "Midland County, Michigan"
+end = "Mackinaw City, Michigan"
+shape = "point-to-point"
+terrain = ["forest"]
+travel = "trail"
+caution = "The 2018 guide states there is no GPS track for the trail and that its maps are bound to be wrong in places."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
+publisher = "USDA Forest Service, Huron-Manistee National Forests"
+facts = ["official_url", "summary"]
+
+[[hike.source]]
+url = "https://michigantrails.us/midland-mackinac-trail/"
+publisher = "Michigan Trails"
+facts = ["summary", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.ebook.de/de/product/34763345/joan_h_young_midland_to_mackinac_trail_guide.html"
+publisher = "ebook.de (guide description)"
+facts = ["summary", "caution"]

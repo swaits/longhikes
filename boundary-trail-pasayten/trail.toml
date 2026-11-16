@@ -1,0 +1,75 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "boundary-trail-pasayten"
+name = "Boundary Trail (Pasayten Wilderness)"
+country = "US"
+regions = ["WA"]
+length_km = 117
+length_note = "Over 73 mi, as the Forest Service states it on its Pasayten Wilderness page; its Boundary Trail page gives 13 mi on the Tonasket Ranger District and another 60 mi on the Methow Valley Ranger District"
+tier = "regional"
+designation = "Okanogan-Wenatchee National Forest Trail 533, Pasayten Wilderness; open to hikers and horseback riders. Not Boundary Trail 1 in the Gifford Pinchot National Forest."
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "U.S. Forest Service, Okanogan-Wenatchee National Forest (publishes the trail; no open geometry found)"
+publisher_url = "https://www.fs.usda.gov/r06/okanogan-wenatchee/recreation/trails/boundary-trail"
+url = "https://www.openstreetmap.org/relation/5252516"
+discovery = "osm-relation-version: Overpass `rel(5252516); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 5252516."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 5252516: one hiking route relation, 35 main ways and 4 alternate ways. Three main ways named for other trails, which the relation holds beyond the end of this trail, are left out: Castle Pass Trail (23.7 km), Three Fools Creek Trail (4.9 km) and a 0.2 km way named Pacific Crest Trail. The remaining 32 main ways are the Boundary Trail, 112.0 km of ways named Boundary Trail and a 0.25 km way named Spanish Trail 503 between two of them, 112.3 km in all."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 5252516
+note = "Hiking route relation named Boundary Trail (operator USDA Forest Service), version 12 (2025-02-19), 35 main ways and 4 alternate ways. Ways named Castle Pass Trail, Three Fools Creek Trail and Pacific Crest Trail are left out of the track, because the relation holds them beyond the end of this trail (tools/osm_track.py --exclude-name). A separate relation 5259786 (Old Boundary Trail, ref 533, 12.3 km) is not used."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "U.S. Forest Service, Okanogan-Wenatchee National Forest"
+note = "No logo is included. The Forest Service pages read show no trail logo or shield for this trail."
+logo_file = ""
+logo_owner = "U.S. Forest Service"
+
+[verification]
+verified = true
+date = "2026-11-16"
+measured_km = 112.3
+difference_percent = -4.0
+parts = 1
+note = "OSM relation 5252516, 32 of its 35 main ways: 112.3 km in 1 part, 4.0% short of the published 117 km (over 73 mi, as the Forest Service states it). All 35 main ways measured 141.1 km, 20.6% over; the 29 km more were ways named for other trails, beyond the end of this trail, and are left out."
+
+[hike]
+summary = "The Boundary Trail crosses the Pasayten Wilderness in Washington from the Irongate Trailhead in the southeast, north and west near the Canadian border, to its junction with the Pacific Crest Trail. Its western part carries the Pacific Northwest Trail, which has its own record in this dataset; the Forest Service says the Pacific Northwest Trail follows the Boundary Trail past Cathedral Peak and Sheep Mountain before crossing the Pasayten River."
+official_url = "https://www.fs.usda.gov/r06/okanogan-wenatchee/recreation/trails/boundary-trail"
+start = "Irongate Trailhead, Pasayten Wilderness, Washington"
+end = "Junction with the Pacific Crest Trail, Pasayten Wilderness, Washington"
+shape = "point-to-point"
+terrain = ["alpine", "forest"]
+travel = "trail"
+permit = "A free self-issuing wilderness permit, filled out at the trailhead, is required to enter the Pasayten Wilderness."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r06/okanogan-wenatchee/recreation/trails/boundary-trail"
+publisher = "U.S. Forest Service, Okanogan-Wenatchee National Forest"
+facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "permit"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r06/okanogan-wenatchee/recreation/pasayten-wilderness-okanogan-wenatchee"
+publisher = "U.S. Forest Service, Okanogan-Wenatchee National Forest"
+facts = ["summary", "terrain", "permit"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/trails/pacific-northwest-nst/geographic-areas"
+publisher = "U.S. Forest Service, Pacific Northwest National Scenic Trail"
+facts = ["summary"]

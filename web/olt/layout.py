@@ -62,7 +62,7 @@ THEMES = (("auto", "Auto"), ("light", "Light"), ("dark", "Dark"))
 def prefs():
     """The reader's two display choices, at the right of the header on every page.
 
-    Units: a two-way switch, mi or km first (radios named "units", as every
+    Units: a two-way switch, mi or km first (radios named "units", the only
     units switch on the site; app.js keeps them in step and fires olt:units).
     Theme: a small menu built from <details>, its button showing the theme in
     use (its icon, and its name where there is room); the menu holds the three

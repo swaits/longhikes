@@ -214,10 +214,11 @@ def routes_page(records, site, repo_root=None, after="", author_pages=None, n_au
     groups = [(f"By {author_pages[a]}" if a in author_pages else f"By {esc(a)}", sorted(by_author[a], key=home.sort_name), route_guides)
               for a in sorted(by_author, key=str.lower)]
     n_gpx = _gpx_count(routes)
+    n_authors_said = n_authors or len(by_author)  # one figure for the intro, the head and the description
     intro = f"""<p>Every other trail on this site is an official trail. Being a route says who looks after it, not
   how rough it is: some routes are on maintained trail all the way, and some official trails have
   long road walks. The Walking line on each trail&rsquo;s page says what the walking is.</p>
-  <p>{_plural(len(routes), "route")}, by {n_authors or len(by_author)} authors. {n_gpx} {"has" if n_gpx == 1 else "have"} a GPX here; for the rest,
+  <p>{_plural(len(routes), "route")}, by {n_authors_said} authors. {n_gpx} {"has" if n_gpx == 1 else "have"} a GPX here; for the rest,
   each route&rsquo;s page says whether its author gives the track away, sells it, or does not publish it.
   <a href="/?kind=route">Narrow them with the filters</a>.</p>"""
     head_count = (f'\n  <p class="page-head__lede">{_plural(len(routes), "route")} by <a href="/authors/">{_plural(n_authors, "author")}</a></p>'
@@ -234,7 +235,7 @@ def routes_page(records, site, repo_root=None, after="", author_pages=None, n_au
   {after}
   <nav class="region-nav" aria-label="Other lists">{'<a href="/authors/">Route authors</a> · ' if linked else ""}<a href="/lists/">All lists</a> · <a href="/">Every trail</a></nav>
 </div>"""
-    description = (f"{_plural(len(routes), 'route')} in the United States and Canada by {len(by_author)} authors, "
+    description = (f"{_plural(len(routes), 'route')} in the United States and Canada by {n_authors_said} authors, "
                    f"with their guides{f' and {n_gpx} with a GPX here' if n_gpx else ''}.")
     return (browse.by_key("routes").search_title(len(routes)), common.cut_at_word(description, common.DESCRIPTION_LIMIT),
             Markup(body), home.has_overview_map(routes))

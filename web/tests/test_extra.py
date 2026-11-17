@@ -68,6 +68,26 @@ class ExtraPagesTest(unittest.TestCase):
             self.assertIn(f'href="/trails/{r["id"]}/"', page, r["id"])
             self.assertIn(r["route"]["creator"], text, r["id"])
 
+    def test_routes_page_author_count_is_the_one_on_the_authors_page(self):
+        """The Routes page's visible line, its meta description and its intro say the same number of
+        authors, and it is the number of authors listed on /authors/ (one page each)."""
+        import html as _html
+        from olt import authors
+        n = len(authors.author_pages(self.records, ROOT))
+        page = read_out("routes/index.html")
+        visible = re.search(r'<p class="page-head__lede">\d+ routes? by <a href="/authors/">(\d+) authors?</a>', page)
+        meta = re.search(r'<meta name="description" content="([^"]*)"', page)
+        intro = re.search(r"by (\d+) authors\. ", _html.unescape(re.sub(r"<[^>]+>", "", page)))
+        self.assertTrue(visible and meta and intro)
+        described = re.search(r"by (\d+) authors", _html.unescape(meta.group(1)))
+        self.assertEqual(int(visible.group(1)), n)
+        self.assertEqual(int(described.group(1)), n)
+        self.assertEqual(int(intro.group(1)), n)
+        index = read_out("authors/index.html")
+        self.assertIn(f"worked out by {n} authors", index)
+        listed = {m for m in re.findall(r'href="(/authors/[^/"]+/)"', index)}
+        self.assertEqual(len(listed), n)
+
     def test_ways_into_the_authors_pages_are_routes(self):
         """A route's row names its author as a link to their page (each named person who has one);
         the Routes page head counts routes and authors and links /authors/; /lists/ lists Route

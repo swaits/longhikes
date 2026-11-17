@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-17 - The Routes page gives one count of authors
+
+- The Routes page said "45 authors" on the page and "43 authors" in the description search engines show. The description counted distinct credit lines, so a route credited to two people together counted once; the page counted the authors who have a page. Both now use the number of authors listed on `/authors/`, which is 45, and a test holds the line on the page, the description and the authors page to the same figure.
+- No trail's facts changed.
+
 ## 2026-11-17 - Every page that shows trails has one layout, and the site sets no tables
 
 - Every page that shows a set of trails now has the same layout: the home page, every place page, every list, the Routes page, the route authors, the Triple Crown, the rankings and the newest trails. Under the page's name and its one line come the trails as rows, with their map beside them on the right. The map stays in view as the rows scroll. This holds from 900 px wide up, so at 1,187 px and at a tablet held sideways the map is beside the trails, not under them. On a narrower screen the map is a short band above the rows, a third of the screen high at most, never below the list.

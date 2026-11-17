@@ -29,7 +29,8 @@ REASONS = {
     "network": ("Networks, not one trail",
                 "This list holds one named trail or route at a time, not a whole network of trails."),
     "cannot-be-walked-through": ("Cannot be walked through",
-                                 "A listed trail can be walked as one continuous walk, road links allowed."),
+                                 "A listed trail is one route from end to end. Road links count, and so does "
+                                 "a ferry, shuttle or bus link its holder or author names as the way through."),
     "mostly-unbuilt": ("Mostly unbuilt or still proposed",
                        "A trail that does not yet exist on the ground cannot be listed."),
     "not-published-as-route": ("Not published as a route by its author",

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-17 - A ferry or a bus does not rule a trail out
+
+- The inclusion rule said a trail must be walkable from one end to the other today. It now says more plainly that this is a judgement the maintainer makes case by case, not a mechanical test. A trail must be one route a person can travel from one end to the other on foot. A ferry, shuttle or bus link across water or a closed stretch, named by the holder or the route's author as the way through, does not rule a trail out. The record says how each such link is made, and the track has a gap there. A trail published only as separate pieces, a network with no through route, or a gap with no way across is still left out. Road links the holder publishes as the way through, and evidence that people have walked a trail end to end, still count. The wording is changed in the README, the contributing guide, the schema, the refresh rules and the method pages.
+- The case that prompted it is the Washington Coast Trail, which stays: its author took a shuttle round Willapa Bay and buses at Taholah, Queets and Forks.
+- No trail's facts changed.
+
 ## 2026-11-17 - A hiker's track of the California coast, and the Washington Coast Trail
 
 - The California Coastal Trail has a track for the first time. A hiker who walked the whole coast in eight section hikes attached the GPX file to this dataset's public issue tracker and agreed to share it under CC BY 4.0. The record credits Lauren Lake, of the PacificCoastalTrail blog, who is named as the author on the blog and whose blog the hiker asked to have credited, with a link to it. The record says in plain words that the track is one hiker's walk, not the Coastal Conservancy's official alignment, and that there is none for the whole trail. The published length is unchanged at about 1,200 miles (1,931 km). The track measures 1,156 miles (1,860 km), 3.7% under that, in 7 parts.

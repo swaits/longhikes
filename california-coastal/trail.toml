@@ -15,22 +15,21 @@ wave = "held"
 wave_note = "Held: mostly road and sidewalk."
 
 [source]
-status = "found"
+status = "verified"
 publisher = "California Coastal Commission; Coastal Trails Alliance"
 url = "https://services9.arcgis.com/wwVnNW92ZHUIr0V0/arcgis/rest/services/California_Coastal_Trail_April_2021/FeatureServer"
 discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read editingInfo.dataLastEditDate (and the feature count); fetch again when either changes. The Commission layer is dated April 2021; the Alliance item was updated 2026-10-20 ('Credit Required for Use')."
-format = "ArcGIS FeatureServer"
-crs = "not read"
-licence = "none-stated"
-licence_text = "No licence is stated on the publisher's item, and no licence was found on the publisher's site when read on 2026-11-09. The item carries a disclaimer only and grants no licence, so the publisher's track is not redistributed here."
-attribution = "California Coastal Commission; State Coastal Conservancy; Coastal Trails Alliance"
+format = "The Commission layer is an ArcGIS FeatureServer, not downloaded. The track included is a CalTopo GPX 1.1 export attached by a hiker to the dataset's issue 1: 43 tracks of one segment each (9 section tracks and 34 optional or side tracks), 508 waypoints, no routes."
+crs = "EPSG:4326"
+licence = "CC-BY-4.0"
+licence_text = "Two sources are named here and they have different terms. The Commission's layer is not used: its item states no licence and carries a disclaimer only (read 2026-11-09). The track included is a hiker's own and is shared under Creative Commons Attribution 4.0 International (CC BY 4.0). The hiker wrote on this dataset's public issue tracker on 2026-11-16: \"CC BY 4.0 sounds good, and your idea for the source and link work for me.\" (https://github.com/swaits/longhikes/issues/1#issuecomment-6928214012). The idea the hiker agreed to was to name the hiker as the source of the track, link the hiker's blog, and say plainly that the trail is incomplete and that the track follows the hiker's own choices where the official trail has gaps. The first file attached was a CalTopo error page, and the hiker attached the track again on 2026-11-17 (https://github.com/swaits/longhikes/issues/1#issuecomment-6935577911)."
+attribution = "Track: Lauren Lake, PacificCoastalTrail blog (https://pacificcoastaltrail.wordpress.com), CC BY 4.0. It is one hiker's walk of the coast, not the official alignment. The trail itself: California Coastal Commission; State Coastal Conservancy; Coastal Trails Alliance."
 osm_only = false
-mainline = "Planned and existing parts mixed; the layer marks status. A large share is road and sidewalk."
-source_checked = "2026-11-08"
-redistributable = false
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "No track has been added for this trail yet."
+mainline = "The main track is one hiker's walk of the whole coast in eight section hikes, from the Oregon border to the Mexican border, with the hiker's own choices where the official trail is unfinished or closed. It is not the Coastal Conservancy's official alignment, and there is none for the whole trail. Section 8 is two tracks in the file (it is split at the Camp Pendleton closure), so the file gives nine section tracks, in file order. The file draws a straight line across water in four places, and each is cut so that the track has a gap there: Tomales Bay (5.0 km, where the hiker's note says a shuttle was used to the restart point at Point Reyes), Morro Bay (0.4 km, at the docks marked Docks/Kayak), the Balboa Island ferry (0.3 km) and the Coronado ferry (1.7 km, with four points drawn over the bay dropped). The hiker's walk does not cross the Camp Pendleton closure either: the 17.0 km between the end of section 8a and the start of 8b is a gap, and the file's own track of the closed section is left out. The track is in 13 pieces and 7 parts. The file's other 34 tracks are the hiker's optional and side routes (tide, river and road alternatives): 29 are in alternates.geojson and five are left out, four because the hiker labels them impassable, closed or a packraft option, and one because it duplicates the Old Coast Road in Big Sur."
+source_checked = "2026-11-17"
+redistributable = true
+line_source = "A hiker's own walk of the coast (GPX file attached to the dataset's issue 1)"
+line_file = "line.geojson"
 
 [osm]
 relation = 0
@@ -45,8 +44,12 @@ logo_file = "shield.png"
 logo_owner = "California Coastal Commission"
 
 [verification]
-verified = false
-note = "Found by search; not downloaded. Large road share; inclusion undecided."
+verified = true
+date = "2026-11-17"
+measured_km = 1860.1
+difference_percent = -3.7
+parts = 7
+note = "The hiker's GPX file, nine section tracks cut at four water crossings: 1860.1 km in 7 parts (13 pieces, 32,475 points), -3.7% against the published 1,931 km (about 1,200 mi planned). The track is one hiker's walk, not the official alignment. The gaps are 0.9 km between sections 3 and 4 at Bodega Bay, 5.0 km at Tomales Bay, 0.4 km at Morro Bay, 0.3 km at the Balboa ferry, 17.0 km at the Camp Pendleton closure and 1.7 km at the Coronado ferry."
 
 [hike]
 summary = "The California Coastal Trail is a connected public trail system planned to run the length of the California coast. It uses beaches, bluff tops, hillsides, paved paths and sidewalks, and sometimes a road shoulder where nothing else is possible. About 70 percent has been built so far."
@@ -107,4 +110,13 @@ fields = ["hike.unfinished"]
 basis = "A hiker wrote on the dataset's public issue tracker that they walked the whole California coast in eight section hikes and offered the track. The Coastal Commission says about 875 miles are built."
 basis_url = "https://github.com/swaits/longhikes/issues/1"
 asked_by = "a hiker, on the issue tracker"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-17"
+change = "A track was added: one hiker's walk of the whole coast, shared under CC BY 4.0, with the hiker's optional and side routes as alternates. The track is not the official alignment, which does not exist for the whole trail. The published length is unchanged at about 1,200 miles (1,931 km); the track measures about 1,156 miles (1,860 km) in 7 parts, with a gap at each water crossing and at the Camp Pendleton closure."
+fields = ["source.status", "source.licence", "source.licence_text", "source.attribution", "source.redistributable", "source.line_source", "source.line_file", "source.line_absent_reason"]
+basis = "A hiker who walked the whole coast in eight section hikes attached the GPX file to the dataset's public issue tracker and wrote that CC BY 4.0 suits them and that crediting them as the source, with a link to their blog, works for them."
+basis_url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6928214012"
+asked_by = "a hiker"
 outcome = "applied"

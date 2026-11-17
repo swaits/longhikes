@@ -1,0 +1,105 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "washington-coast-trail"
+name = "Washington Coast Trail"
+country = "US"
+regions = ["WA"]
+length_km = 290
+length_note = "About 180 mi (290 km), the author's figure, given on this dataset's issue tracker: \"The length is approximately 180 miles, though very dependent on how you hike/boat/bus the bay crossings.\""
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Lauren Lake, 2022); no agency or association"
+wave = 1
+
+[source]
+status = "verified"
+publisher = "Lauren Lake, PacificCoastalTrail blog (publishes the route)"
+publisher_url = "https://pacificcoastaltrail.wordpress.com/"
+url = "https://pacificcoastaltrail.wordpress.com/2022/03/23/itinerary-washington-coast/"
+discovery = "page-link: the itinerary page links the route's CalTopo map (https://caltopo.com/m/BHDR0). The track came as a GPX file the author attached to the dataset's issue 1 on 2026-11-17; read the page again, and ask the author for a new file, when the page changes."
+format = "GPX 1.1 exported from CalTopo: 20 tracks of one segment each (12 daily tracks, 3 bus tracks, 3 alternates and 2 tracks not used), 110 waypoints, no routes"
+crs = "EPSG:4326"
+licence = "CC-BY-4.0"
+licence_text = "Creative Commons Attribution 4.0 International (CC BY 4.0). The route's author wrote on this dataset's public issue tracker on 2026-11-17: \"CC BY 4.0 is fine for this as well.\" (https://github.com/swaits/longhikes/issues/1#issuecomment-6935950983). The author had agreed earlier in the same issue, for the California track, to be credited as the source with a link to the blog (https://github.com/swaits/longhikes/issues/1#issuecomment-6928214012). The itinerary page itself (read 2026-11-17) states no terms."
+attribution = "Lauren Lake, PacificCoastalTrail blog (https://pacificcoastaltrail.wordpress.com), CC BY 4.0"
+osm_only = false
+mainline = "The main track is the file's 12 daily tracks, Day 1 to Day 12, in the order of the days from Cape Disappointment to Cape Flattery. The file lists them out of order, and Day 5 is stored from Taholah to Moclips and is reversed. Nothing is drawn between days, so the bay crossings and bus rides are gaps: 12.7 km from the Stackpole Road parking lot (where a waypoint reads \"Meet shuttle for ride to Tokeland\") to Tokeland, around Willapa Bay; 3.8 km from Westport across the mouth of Grays Harbor; 0.4 km inside Moclips, between the end of Day 4 and the bus stop where Day 5 starts; 19.2 km from Taholah to the restart point south of Queets, where the itinerary page has a bus; and 13.3 km from the Cedar Creek bus stop to the turnoff for Oil City, where the file has a bus track by way of Forks. The track is in 12 pieces and 6 parts. The file's three bus tracks, its tracks Quinault North and Quinault South (which the itinerary page does not describe as walked) and its waypoints are not used. The three alternates (the La Push alternate and two overland routes round tide points) are in alternates.geojson."
+source_checked = "2026-11-17"
+redistributable = true
+line_source = "Lauren Lake (the author's GPX file)"
+line_file = "line.geojson"
+
+[osm]
+relation = 0
+note = "Not searched: the author publishes the track and has shared it."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Lauren Lake, PacificCoastalTrail blog"
+note = "No emblem of the route was found. The author's itinerary page, home page and About page were read on 2026-11-17: the images they carry are photographs and the blog's own header text, with no crest, badge or mark for the route."
+logo_file = ""
+logo_owner = "Lauren Lake, PacificCoastalTrail blog"
+
+[verification]
+verified = true
+date = "2026-11-17"
+measured_km = 287.9
+difference_percent = -0.7
+parts = 6
+note = "The author's GPX file, 12 daily tracks: 287.9 km in 6 parts (3,100 points), 0.7% under the author's 180 mi (290 km). The bay crossings and bus rides are gaps between parts, not part of the track."
+
+[route]
+creator = "Lauren Lake (PacificCoastalTrail blog)"
+year = 2022
+line_policy = "open"
+creator_words = "CC BY 4.0 is fine for this as well."
+creator_words_url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6935950983"
+note = "The author calls the Washington, Oregon and California coast routes together the Pacific Coastal Trail, and is working on a further 245 miles from Cape Flattery to Bellingham, which this record does not include. The route passes Cape Alava, the western end of the Pacific Northwest Trail, and the author's track file marks a junction with that trail on the Olympic coast."
+
+[[guide]]
+title = "Itinerary: Washington Coast"
+author = "Lauren Lake (PacificCoastalTrail blog)"
+access = "free"
+url = "https://pacificcoastaltrail.wordpress.com/2022/03/23/itinerary-washington-coast/"
+format = "web page with a 12-day table of stopping points, and a link to a CalTopo map; the GPX file is shared on the dataset's issue tracker"
+
+[hike]
+summary = "The Washington Coast Trail is a route along the Washington coast from Cape Disappointment to Cape Flattery, about 180 miles. Its author walked it northbound in 12 days and left the hardest part, the Wilderness Coast, for the end. The two big bays in the south are rounded by shuttle or bus, and the north has tide pinch points and scrambles over rocks and ladders."
+official_url = "https://pacificcoastaltrail.wordpress.com/2022/03/23/itinerary-washington-coast/"
+start = "Cape Disappointment, Washington"
+end = "Cape Flattery, Washington"
+shape = "point-to-point"
+days = [12, 12]
+terrain = ["coast"]
+caution = "The route is not on foot all the way. Its author rounded the two major bays in the south with a shuttle driver and says it could be done by bus, and used a bus again at Taholah and Queets and to Forks. At a couple of tide pinch points the author stopped just short and crossed on an early morning tide, and some days are scrambles over rocks and ladders. At least a few nights of wilderness camping are needed."
+start_lonlat = [-124.076, 46.271]
+end_lonlat = [-124.718, 48.388]
+checked = "2026-11-17"
+
+[[hike.source]]
+url = "https://pacificcoastaltrail.wordpress.com/2022/03/23/itinerary-washington-coast/"
+publisher = "Lauren Lake, PacificCoastalTrail blog"
+facts = ["official_url", "summary", "days", "terrain", "caution"]
+
+[[hike.source]]
+url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6935950983"
+publisher = "Lauren Lake, PacificCoastalTrail blog (said by the route's author on the dataset's issue tracker, 2026-11-17)"
+facts = ["summary", "start", "end", "shape", "caution"]
+
+[[hike.source]]
+url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6935845788"
+publisher = "Lauren Lake, PacificCoastalTrail blog (the author's GPX file, attached to the dataset's issue tracker)"
+facts = ["start_lonlat", "end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-17"
+change = "The record was added at the request of the route's author, as a person-defined route of about 180 miles (290 km) in WA, with the author's own track and alternates."
+fields = ["record"]
+basis = "The route's author sent the track on the dataset's public issue tracker, named the route the Washington Coast Trail, gave its ends, Cape Disappointment and Cape Flattery, and its length, and named the itinerary page as the best page for it."
+basis_url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6935950983"
+asked_by = "the route's author"
+outcome = "applied"

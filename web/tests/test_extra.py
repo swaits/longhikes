@@ -60,7 +60,7 @@ class ExtraPagesTest(unittest.TestCase):
 
     def test_all_routes_on_routes_page(self):
         routes = [r for r in self.records if r["derived"]["kind"] == "route"]
-        self.assertEqual(len(routes), 57)
+        self.assertEqual(len(routes), 58)
         page = read_out("routes/index.html")
         import html as _html
         text = _html.unescape(re.sub(r"<[^>]+>", "", page))  # a credit naming two authors links each name

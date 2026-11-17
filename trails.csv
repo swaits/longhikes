@@ -33,7 +33,7 @@ bristol-hills-trail,Bristol Hills Trail,US,NY,89,included,OpenStreetMap,ODbL-1.0
 brooks-range-traverse,Brooks Range Traverse,US,AK,1609,record-only,none (no line included),none-stated,route,open
 bruce-trail,Bruce Trail,CA,ON,890,included,OpenStreetMap,ODbL-1.0,designated,
 buckeye,Buckeye Trail,US,OH,2250,included,OpenStreetMap,ODbL-1.0,designated,
-california-coastal,California Coastal Trail,US,CA,1931,record-only,none (no line included),none-stated,designated,
+california-coastal,California Coastal Trail,US,CA,1931,included,A hiker's own walk of the coast (GPX file attached to the dataset's issue 1),CC-BY-4.0,designated,
 canol,Canol Heritage Trail,CA,NT,371,included,OpenStreetMap,ODbL-1.0,designated,
 centennial-sd,Centennial Trail,US,SD,179,included,OpenStreetMap,ODbL-1.0,designated,
 chinese-wall-circuit,The Chinese Wall Circuit,US,MT,127,record-only,none (no line included),none-stated,route,open
@@ -187,6 +187,7 @@ vancouver-island,Vancouver Island Trail,CA,BC,800,included,OpenStreetMap,ODbL-1.
 vancouver-island-backbone,Vancouver Island Backbone,CA,BC,300,record-only,none (no line included),none-stated,route,open
 warrior-trail,Warrior Trail,US,PA;WV,108,record-only,none (no line included),none-stated,designated,
 wasatch-traverse,Wasatch Traverse,US,UT,455,record-only,none (no line included),none-stated,route,open
+washington-coast-trail,Washington Coast Trail,US,WA,290,included,Lauren Lake (the author's GPX file),CC-BY-4.0,route,open
 waskahegan,Waskahegan Trail,CA,AB,309,record-only,none (no line included),none-stated,designated,
 west-coast-trail,West Coast Trail,CA,BC,75,included,OpenStreetMap,ODbL-1.0,designated,
 western-uplands,Western Uplands Backpacking Trail,CA,ON,88,included,OpenStreetMap,ODbL-1.0,designated,

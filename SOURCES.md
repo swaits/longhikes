@@ -36,13 +36,21 @@ Quoted terms: the source item's licence field reads "CC BY" (no version stated).
 
 Page: https://services8.arcgis.com/WyuHwdftppQLa5KO/arcgis/rest/services/Continental_Divide_Trail_2/FeatureServer/0 (read 2026-11-09). Treated here as Creative Commons Attribution, with credit to the Continental Divide Trail Coalition. The version should be confirmed with the Coalition before a use that needs a named version.
 
+## A hiker who shares a track under CC BY 4.0 (CC-BY-4.0)
+
+Used by: 2 trails (California Coastal Trail, Washington Coast Trail). The hiker's own GPX files, attached to this dataset's issue 1 on 2026-11-17, one of a walk of the whole California coast in eight section hikes and one of the Washington coast route the hiker worked out.
+
+Quoted terms: for California, "CC BY 4.0 sounds good, and your idea for the source and link work for me." (https://github.com/swaits/longhikes/issues/1#issuecomment-6928214012, 2026-11-16); for Washington, "CC BY 4.0 is fine for this as well." (https://github.com/swaits/longhikes/issues/1#issuecomment-6935950983, 2026-11-17).
+
+Credit required: Lauren Lake, PacificCoastalTrail blog (https://pacificcoastaltrail.wordpress.com), the name the blog gives the author. Full text of the licence: LICENSES/CC-BY-4.0.txt. The California track is one hiker's walk, not the official alignment, and the record says so.
+
 ## Holders who state permission in writing (stated-permission)
 
 Used by: 1 trail with an included track (Hoosier Heritage Trail). The holder of the trail, the route's author or the person who recorded the track has stated in writing that the track may be shared, without naming a licence. Each record gives the statement in `source.permission_quote`, who made it by role in `source.permission_by`, when in `source.permission_date` and where in `source.permission_url`; the trail page shows them as a quotation with a link. This is not public domain and not a Creative Commons licence.
 
 ## Publishers with no stated licence (no track included)
 
-Used by: the official trails marked "none-stated" and "record only" in the table below, none with an included track. Among them: California Coastal Commission with the Coastal Trails Alliance; and the holders of the trails added on 2026-11-14 whose pages state no licence for a track.
+Used by: the official trails marked "none-stated" and "record only" in the table below, none with an included track. Among them: the holders of the trails added on 2026-11-14 whose pages state no licence for a track.
 
 Terms found: no licence stated on the items, and no licence found on the publishers' pages when read on 2026-11-09. The items carry disclaimers only. A disclaimer is not a licence, so these publishers' tracks are not redistributed here. Each record's `source.url` is the page to ask for the track, and `source.line_absent_reason` states this reason. Nine more records that were listed here had a track added from OpenStreetMap on 2026-11-09; their publishers' own tracks are still not used, and each record keeps the publisher and its page in `source.publisher` and `source.publisher_url`.
 
@@ -50,7 +58,7 @@ Terms found: no licence stated on the items, and no licence found on the publish
 
 Used by: the person-defined routes (`kind = "route"`). Each record names its creator and the guide the route is got from, in its `[[guide]]` tables, and `route.line_policy` says whether the creator shares the track.
 
-Terms found: none. No route creator's page read on 2026-11-10 states a licence for the route's track. The record says where the track may be got from the creator, and `source.line_absent_reason` says why no track is included here: the route is sold as a guide, the creator withholds the track, the question is not settled, or the creator offers a download with no licence that allows passing it on. Where OpenStreetMap carries the route as a route relation and the creator publishes the track freely, the track comes from OpenStreetMap under the terms above.
+Terms found: none. No route creator's page read on 2026-11-10 states a licence for the route's track. The record says where the track may be got from the creator, and `source.line_absent_reason` says why no track is included here: the route is sold as a guide, the creator withholds the track, the question is not settled, or the creator offers a download with no licence that allows passing it on. The Washington Coast Trail is the one person-defined route whose author shared the track directly, under CC BY 4.0 (see above). Where OpenStreetMap carries the route as a route relation and the creator publishes the track freely, the track comes from OpenStreetMap under the terms above.
 
 Page: the creator's or publisher's own page for the guide, given in each record's first `[[guide]]` and quoted in `route.creator_words_url` where the creator's words are quoted.
 
@@ -93,7 +101,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | brooks-range-traverse | Luc Mehl (publishes the route) | [source page](https://thingstolucat.com/brooks-range-traverse/) | none-stated | record only |
 | bruce-trail | Bruce Trail Conservancy (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3375262) | ODbL-1.0 | track |
 | buckeye | Buckeye Trail Association (publishes the loop); the Ohio DNR MapServer requires a token | [source page](https://www.openstreetmap.org/relation/1738661) | ODbL-1.0 | track |
-| california-coastal | California Coastal Commission; Coastal Trails Alliance | [source page](https://services9.arcgis.com/wwVnNW92ZHUIr0V0/arcgis/rest/services/California_Coastal_Trail_April_2021/FeatureServer) | none-stated | record only |
+| california-coastal | California Coastal Commission; Coastal Trails Alliance (the track is a hiker's own, not theirs) | [source page](https://services9.arcgis.com/wwVnNW92ZHUIr0V0/arcgis/rest/services/California_Coastal_Trail_April_2021/FeatureServer) | CC-BY-4.0 | track |
 | canol | Northwest Territories Parks (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13591414) | ODbL-1.0 | track |
 | centennial-sd | USDA Forest Service, Black Hills National Forest (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7330792) | ODbL-1.0 | track |
 | chinese-wall-circuit | Wilderness Mindset (publishes the route) | [source page](https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/) | none-stated | record only |
@@ -248,6 +256,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | warrior-trail | Warrior Trail Association (publishes the trail; no site of its own found, the Association is on Facebook) | [source page](https://visitgreene.org/?p=1265) | none-stated | record only |
 | wasatch-traverse | Liz Thomas (publishes the route) | [source page](https://www.eathomas.com/other-long-trails/wasatchoverview) | none-stated | record only |
 | waskahegan | Waskahegan Trail Association (publishes the trail) | [source page](https://waskahegantrail.ca/about-2) | none-stated | record only |
+| washington-coast-trail | Lauren Lake, PacificCoastalTrail blog (publishes the route) | [source page](https://pacificcoastaltrail.wordpress.com/2022/03/23/itinerary-washington-coast/) | CC-BY-4.0 | track |
 | west-coast-trail | Parks Canada (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/6955341) | ODbL-1.0 | track |
 | western-uplands | Ontario Parks (Algonquin Provincial Park) (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/11851825) | ODbL-1.0 | track |
 | wind-river-high-route-dixon-wilson | Alan Dixon and Don Wilson (publish the route) | [source page](https://www.adventurealan.com/wind-river-high-route/) | none-stated | record only |

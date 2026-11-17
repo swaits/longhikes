@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-196 trails, 118 with a track and 78 with no track included. Of these, 57 are routes: 1 with a track and 56 without.
+197 trails, 120 with a track and 77 with no track included. Of these, 58 are routes: 2 with a track and 56 without.
 
 <!-- END COUNTS -->
 
@@ -64,7 +64,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | bristol-hills-trail | Bristol Hills Trail | US | NY | 89 | yes | ODbL-1.0 |
 | bruce-trail | Bruce Trail | CA | ON | 890 | yes | ODbL-1.0 |
 | buckeye | Buckeye Trail | US | OH | 2250 | yes | ODbL-1.0 |
-| california-coastal | California Coastal Trail | US | CA | 1931 | no | none-stated |
+| california-coastal | California Coastal Trail | US | CA | 1931 | yes | CC-BY-4.0 |
 | canol | Canol Heritage Trail | CA | NT | 371 | yes | ODbL-1.0 |
 | centennial-sd | Centennial Trail | US | SD | 179 | yes | ODbL-1.0 |
 | cohos | Cohos Trail | US | NH | 270 | yes | ODbL-1.0 |
@@ -244,6 +244,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | vagabond-loop | Vagabond Loop | US | AZ, UT, CO, NM | 5632 | Ryan "Dirtmonger" Sylva | open | no | [Vagabond Loop route description](https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html) (free) |
 | vancouver-island-backbone | Vancouver Island Backbone | CA | BC | 300 | Philip Stone | open | no | [Hiking Guide to the Vancouver Island Backbone](https://www.wildisle.ca/backbone/index.html) (free) |
 | wasatch-traverse | Wasatch Traverse | US | UT | 455 | Liz Thomas | open | no | [Wasatch Traverse overview](https://www.eathomas.com/other-long-trails/wasatchoverview) (free) |
+| washington-coast-trail | Washington Coast Trail | US | WA | 290 | Lauren Lake (PacificCoastalTrail blog) | open | yes | [Itinerary: Washington Coast](https://pacificcoastaltrail.wordpress.com/2022/03/23/itinerary-washington-coast/) (free) |
 | wind-river-high-route-dixon-wilson | Wind River High Route (Dixon and Wilson) | US | WY | 129 | Alan Dixon and Don Wilson | open | no | [Wind River High Route guide](https://www.adventurealan.com/wind-river-high-route/) (free) |
 | wind-river-high-route-skurka | Wind River High Route (Skurka guide) | US | WY | 156 | Andrew Skurka | sold | no | [Wind River Range High Route Guide](https://andrewskurka.com/product/wind-river-high-route-guide/) (purchase) |
 | yosemite-high-route | Yosemite High Route | US | CA | 261 | Andrew Skurka | sold | no | [Yosemite High Route Guide](https://andrewskurka.com/product/yosemite-high-route-guide/) (purchase) |

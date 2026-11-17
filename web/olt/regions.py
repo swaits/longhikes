@@ -178,9 +178,8 @@ def region_page(slug, records, site, facet_pages=()):
   </div></header>
 </div></div>
 <div class="container section place">
-  <div class="prose place-summary">{summary.facts(recs, records)}{standing_note}{summary.details(recs)}</div>
-  {home.overview_map(recs, f"Map of the trails in {info['name']}")}
-  {home.results(recs, top=2)}
+  {home.place_grid(f'<div class="prose place-summary">{summary.facts(recs, records)}{standing_note}{summary.details(recs)}</div>',
+                   home.results(recs, top=2), home.overview_map(recs, f"Map of the trails in {info['name']}"))}
   {nav}
 </div>"""
     name = info["name"]
@@ -236,6 +235,14 @@ def routes_page(records, site, repo_root=None, after="", author_pages=None):
     groups = [(f"By {author_pages[a]}" if a in author_pages else f"By {esc(a)}", sorted(by_author[a], key=home.sort_name), route_guides)
               for a in sorted(by_author, key=str.lower)]
     n_gpx = _gpx_count(routes)
+    intro = f"""<div class="prose">
+  <p>Every other trail on this site is an official trail. Being a route says who looks after it, not
+  how rough it is: some routes are on maintained trail all the way, and some official trails have
+  long road walks. The Walking line on each trail&rsquo;s page says what the walking is.</p>
+  <p>{_plural(len(routes), "route")}, by {len(by_author)} authors. {n_gpx} {"has" if n_gpx == 1 else "have"} a GPX here; for the rest,
+  each route&rsquo;s page says whether its author gives the track away, sells it, or does not publish it.
+  <a href="/?kind=route">Narrow them with the filters</a>.</p>
+  </div>"""
     body = f"""<div class="page-head"><div class="container">
   <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">Trails</a></li>
   <li><a href="/lists/">Lists</a></li><li aria-current="page">Routes</li></ol></nav>
@@ -243,18 +250,7 @@ def routes_page(records, site, repo_root=None, after="", author_pages=None):
   <p class="page-head__lede" id="what-is-a-route">{esc(facets.ROUTE_DEFINITION)}</p>
   </div></header></div></div>
 <div class="container section">
-  <div class="prose">
-  <p>Every other trail on this site is an official trail. Being a route says who looks after it, not
-  how rough it is: some routes are on maintained trail all the way, and some official trails have
-  long road walks. The Walking line on each trail&rsquo;s page says what the walking is.</p>
-  <p>{_plural(len(routes), "route")}, by {len(by_author)} authors. {n_gpx} {"has" if n_gpx == 1 else "have"} a GPX here; for the rest,
-  each route&rsquo;s page says whether its author gives the track away, sells it, or does not publish it.
-  <a href="/?kind=route">Narrow them with the filters</a>.</p>
-  </div>
-</div>
-<div class="container section">
-  {home.overview_map(routes, "Map of the routes with a GPX here")}
-  {home.results(groups=groups, routes_list=True, top=2)}
+  {home.place_grid(intro, home.results(groups=groups, routes_list=True, top=2), home.overview_map(routes, "Map of the routes with a GPX here"))}
   {after}
   <nav class="region-nav" aria-label="Other lists">{'<a href="/authors/">Route authors</a> · ' if linked else ""}<a href="/lists/">All lists</a> · <a href="/">Every trail</a></nav>
 </div>"""
@@ -286,10 +282,9 @@ def list_page(lst, recs, total, site, *, records=None, before="", after=""):
   </div></header>
 </div></div>
 <div class="container section place">
-  <div class="prose place-summary">{about}</div>
   {before}
-  {home.overview_map(recs, f"Map of the trails in the list {lst.title}")}
-  {home.results(recs, default_sort=lst.sort, top=2)}
+  {home.place_grid(f'<div class="prose place-summary">{about}</div>', home.results(recs, default_sort=lst.sort, top=2),
+                   home.overview_map(recs, f"Map of the trails in the list {lst.title}"))}
   {after}
   <p class="finder__foot">{rule}</p>
   <nav class="region-nav" aria-label="Other lists"><a href="/lists/">All lists</a> · <a href="/">Every trail</a></nav>

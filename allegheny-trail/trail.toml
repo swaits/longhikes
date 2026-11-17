@@ -6,12 +6,12 @@ short_name = "ALT"
 short_name_url = "https://hikethealleghenytrail.org/"
 country = "US"
 regions = ["WV"]
-length_km = 530
-length_note = "about 330 mi"
+length_km = 509
+length_note = "316 mi, as the West Virginia Scenic Trail Association gives it on its about page ('this challenging and scenic 316-mile footpath running south from the Mason-Dixon Line through West Virginia and Virginia to the Appalachian Trail at Peters Mountain'). West Virginia State Parks gives 311 mi for the same trail, and an older page of its was reported to give 330 mi, counting the last 20 miles awaiting completion, which was not read again. Whether all of the 316 mi is built and walkable is not stated on the pages read."
 tier = "regional"
 designation = "West Virginia Scenic Trails Association"
 wave = "held"
-wave_note = "Held: no usable whole track exists. OSM holds about 50 km of the 530 km trail in fragment relations, and the West Virginia Scenic Trails Association publishes no open track. What would fix it: a track from the Association, or complete OSM route mapping."
+wave_note = "Held: no usable whole track exists. OSM holds about 50 km of the 500 km trail in fragment relations, and the West Virginia Scenic Trails Association publishes no open track. What would fix it: a track from the Association, or complete OSM route mapping."
 
 [source]
 status = "osm-only"
@@ -29,7 +29,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "OSM holds only fragment relations (28.8 km in the named relation, 21.1 km more in alternates), about 50 km of 530 km. No usable whole track found on 2026-11-08. Held."
+length_gap_note = "OSM holds only fragment relations (28.8 km in the named relation, 21.1 km more in alternates), about 50 km of 500 km. No usable whole track found on 2026-11-08. Held."
 
 [osm]
 relation = 1772789
@@ -47,9 +47,9 @@ logo_owner = "West Virginia Scenic Trails Association"
 verified = true
 date = "2026-11-08"
 measured_km = 28.8
-difference_percent = -94.6
+difference_percent = -94.2
 parts = 1
-note = "OSM holds only fragment relations (28.8 km in the named relation, 21.1 km more in alternates), about 50 km of 530 km. No usable whole track found on 2026-11-08. Held."
+note = "OSM holds only fragment relations (28.8 km in the named relation, 21.1 km more in alternates), about 50 km of 500 km. No usable whole track found on 2026-11-08. Held."
 
 [hike]
 summary = "The Allegheny Trail runs south through West Virginia from the Mason-Dixon Line at the Pennsylvania border to the Appalachian Trail on Peters Mountain, near the Virginia border. It crosses rugged mountains and river valleys, with long stretches in the Monongahela National Forest. It is built and kept by volunteers."
@@ -99,5 +99,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://hikethealleghenytrail.org/wp-content/uploads/2026/05/Main_No_URL_Color_2.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length was changed from about 330 miles (530 km), which counted miles not yet built, to 316 miles (509 km), the association's own figure."
+fields = ["length_km", "length_note"]
+basis = "The West Virginia Scenic Trail Association's about page says it stewards 'this challenging and scenic 316-mile footpath running south from the Mason-Dixon Line through West Virginia and Virginia to the Appalachian Trail at Peters Mountain'. West Virginia State Parks gives 311 miles for the same trail."
+basis_url = "https://hikethealleghenytrail.org/about/"
 asked_by = "the dataset's own check"
 outcome = "applied"

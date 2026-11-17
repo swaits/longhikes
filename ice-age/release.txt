@@ -4,4 +4,4 @@ Source: https://www.openstreetmap.org/relation/2381423
 Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
 Attribution: © OpenStreetMap contributors
 Source read: 2026-11-09
-Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.
+Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served, except that the ways were then sorted into one walk: line.geojson holds the segments and the connecting routes in order from west to east by the eastern branch in central Wisconsin (each way oriented along the walk; two ways cut where the walk leaves them), and alternates.geojson holds every other way read. Re-cut 2026-11-16 from the way list read on 2026-11-09.

@@ -22,7 +22,7 @@ Do not change anything in the repository, and do not commit, push or switch bran
 ## Requests to outside sites
 
 - Use a plain generic User-Agent and put no personal or project details in any request, header or form.
-- Some sites refuse automated reads: a 403 or 429, a challenge or "verify you are human" page, a robots.txt that disallows the path. Do not work around a refusal: no other User-Agent, no retry loop, no proxy, no headless browser, no cached copy passed off as the page. Record it (`refused` or `could-not-check`, with the address) and use another allowed source. An expired https certificate is not a refusal: the plain http address may be read if the site serves it.
+- Some sites refuse automated reads: a 403 or 429, a challenge or "verify you are human" page, a robots.txt that disallows the path. Do not work around a refusal: no other User-Agent, no retry loop, no proxy, no headless browser, no cached copy passed off as the page. Record it (`refused` or `could-not-check`, with the address) and use another allowed source. Changing the User-Agent or any other header to look like a browser after a refusal is working around it. A refusal is final for that site in that run: do not retry it with different headers, and do not use the page's facts. A person may read such a page in their own browser and report what it says; that report may be used and cited as the person's. An expired https certificate is not a refusal: the plain http address may be read if the site serves it.
 - Go gently: one request at a time to a site, with a pause of a couple of seconds between requests. Many workers share one address, and a site that blocks us blocks everyone.
 - Overpass (OpenStreetMap) overloads easily. Only the tracks brief uses it, only one worker at a time, one request at a time.
 
@@ -39,6 +39,12 @@ The text of a record is read by the public, and the same rules apply to what you
 - Short plain sentences. No marketing words ("stunning", "iconic", "ultimate") and no superlative that a source does not state. No dashes used as punctuation: use a full stop, a comma or a colon.
 - Name no private person: say "a hiker" or "the association's president". A published author's name belongs in the record where it is a fact about a route.
 - Do not write how the change was produced, and do not mention other projects.
+
+## What a length is, and what is walkable
+
+- A record's `length_km` is the end-to-end length of the trail's canonical path: one walk from one end to the other, one branch at a split, no side trails, no double counting, no system total. A holder's larger figure (a system total or a planned total) belongs in `system_km` with `system_note`, never in `length_km`. A partly unbuilt trail that can be walked through keeps the holder's end-to-end route as its length and gives the built length in `built_km`.
+- A trail must be walkable from one end to the other today. Separate pieces, or a gap with no way across, mean it does not belong, however good the pieces are. Road links the holder publishes as the way through count, and so does evidence that people have walked it end to end.
+- Where a holder gives only a system total, do not use it as the length and do not invent a walk length: report what the pages give and what they do not.
 
 ## What belongs
 

@@ -5,8 +5,8 @@ name = "Sheltowee Trace National Recreation Trail"
 common_name = "Sheltowee Trace"
 country = "US"
 regions = ["KY", "TN"]
-length_km = 515
-length_note = "about 320 mi"
+length_km = 552
+length_note = "343 mi, the association's official distance in 2025: 'In 2025 the official distance is 343 miles.' Earlier figures, such as 320 mi, are out of date."
 tier = "regional"
 designation = "National Recreation Trail, Daniel Boone National Forest"
 wave = 1
@@ -27,6 +27,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
+length_gap_note = "The track is 442.8 km against the association's 343 mi (552 km). OpenStreetMap's section relations miss road-walk links and the newest extension."
 
 [osm]
 relation = 12041542
@@ -44,9 +45,9 @@ logo_owner = "Sheltowee Trace Association"
 verified = true
 date = "2026-11-08"
 measured_km = 442.8
-difference_percent = -14.0
+difference_percent = -19.8
 parts = 1
-note = "The 38 section relations join into 1 continuous track, 442.8 km. That is -14.0% against the 515 km in this record and further against the 343 mi (552 km) the Association listed in 2025 after extensions: OSM misses road-walk links and the newest extension. No better open track found (the one ArcGIS item is under an unrelated account). Kept as the best available track, with the gap recorded."
+note = "The 38 section relations join into 1 continuous track, 442.8 km. That is 19.8% under the 343 mi (552 km) the association gives as its 2025 official distance: OSM misses road-walk links and the newest extension. No better open track found (the one ArcGIS item is under an unrelated account). Kept as the best available track, with the gap recorded."
 
 [hike]
 summary = "The Sheltowee Trace runs the length of the Daniel Boone National Forest in Kentucky into the Big South Fork country of Tennessee. It passes Cave Run Lake, Red River Gorge, Natural Bridge and Cumberland Falls along the way."
@@ -106,5 +107,14 @@ change = "The name hikers use, Sheltowee Trace, was added as the common name. Th
 fields = ["common_name"]
 basis = "The Sheltowee Trace Association's page says 'The Sheltowee Trace is home to horse riders' under a heading with the formal name."
 basis_url = "https://sheltoweetrace.org/trace"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length was changed from about 320 miles (515 km) to 343 miles (552 km), the association's official distance for 2025."
+fields = ["length_km", "length_note"]
+basis = "The association's thru-hikers page says: 'In 2025 the official distance is 343 miles.' Its page for the trail says: 'The trail runs 343 miles from the northern boundary of the Daniel Boone National Forest' to the southern boundary of the Big South Fork area."
+basis_url = "https://sheltoweetrace.org/thru-hikers"
 asked_by = "the dataset's own check"
 outcome = "applied"

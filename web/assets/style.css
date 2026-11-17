@@ -287,11 +287,16 @@ html:not(.js) .site-header__inner { grid-template-areas: "mark mark" "nav nav"; 
 .wordmark:hover { text-decoration: none; }
 /* The mark: a mountain with a trail up it, the same file as the tab icon. */
 .wordmark__mark { inline-size: 1.75rem; block-size: 1.75rem; }
-/* The home page carries the name large in its hero, so the header does not repeat it. */
-body:has(.hero--home) .site-header .wordmark { visibility: hidden; }
 
 .nav { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-5); padding: 0; list-style: none; }
 @media (max-width: 30rem) { .nav { column-gap: var(--space-4); } }
+/* Five items now: between the narrow and the full header the gaps close up, so the links keep one
+   row beside the name and the switches. */
+@media (min-width: 50rem) and (max-width: 63.99rem) {
+  .site-header__inner { column-gap: var(--space-4); }
+  .nav { column-gap: var(--space-4); }
+  .prefs { padding-inline-start: var(--space-4); }
+}
 .nav a {
   display: inline-flex;
   align-items: center;
@@ -764,7 +769,13 @@ html:not(.js) .js-only { display: none !important; }
 .map__fallback svg { inline-size: 100%; block-size: 100%; }
 .map__canvas { opacity: 0; transition: opacity 0.4s ease; }
 .map[data-state="ready"] .map__canvas { opacity: 1; }
-.map[data-state="ready"] .map__fallback { visibility: hidden; }
+/* The page's drawing of the tracks gives way once the live map has drawn them: the map fades in
+   over it, and the drawing is gone when the fade is done. */
+.map[data-state="ready"] .map__fallback { visibility: hidden; transition: visibility 0s 0.4s; }
+@media (prefers-reduced-motion: reduce) {
+  .map__canvas { transition: none; }
+  .map[data-state="ready"] .map__fallback { transition: none; }
+}
 
 .map__status {
   position: absolute;
@@ -778,6 +789,8 @@ html:not(.js) .js-only { display: none !important; }
   font: 400 var(--step--2)/1.4 var(--font-sans);
 }
 .map[data-state="ready"] .map__status { display: none; }
+/* With JavaScript the note is for failures only; the no-script text is shown without it. */
+html.js .map__status:not([data-say]) { display: none; }
 
 /* Fallback drawing: graticule and lines without tiles */
 .fallback__grat { stroke: var(--rule); stroke-width: 1; fill: none; vector-effect: non-scaling-stroke; }
@@ -789,6 +802,13 @@ html:not(.js) .js-only { display: none !important; }
 .fallback__line--sketch-route { stroke: var(--route); }
 .fallback__ring { fill: var(--casing); stroke: var(--trail); stroke-width: 2; vector-effect: non-scaling-stroke; }
 .fallback__ring--route { stroke: var(--route); }
+/* The page's own drawing (olt/sketch.py): the widths the live map draws at the zoom it opens on. */
+.map__sketch .fallback__casing { stroke-width: 4; }
+.map__sketch .fallback__line { stroke-width: 2.5; }
+.map__sketch .fallback__line--alternate { stroke-width: 1.5; }
+.map__sketch .fallback__line--sketch { stroke-width: 2.5; }
+.mapfig[data-map="overview"] .map__sketch .fallback__line { stroke-width: 1.6; }
+.mapfig[data-map="overview"] .map__sketch .fallback__line--sketch { stroke-width: 2; }
 
 .mapfig__caption {
   display: flex;
@@ -932,26 +952,8 @@ html:not(.js) .js-only { display: none !important; }
 .hero__inner { position: relative; display: grid; gap: var(--space-5); }
 .hero h1 { max-inline-size: 28ch; font-size: var(--step-4); font-weight: 600; letter-spacing: -0.015em; }
 .hero__lede { max-inline-size: 40rem; font-size: var(--step-1); line-height: 1.5; }
-/* The home page's name plate: mark, name, what the site is, and what it offers. */
-.hero .lockup {
-  display: flex; align-items: center; gap: clamp(0.75rem, 2.4vw, 1.75rem);
-  max-inline-size: none;
-  font-size: clamp(2.75rem, 1.2rem + 7vw, 6rem); font-weight: 600; line-height: 1; letter-spacing: -0.02em;
-}
-.lockup__mark { flex: none; inline-size: 1.15em; block-size: 1.15em; }
-.hero__tagline { max-inline-size: 26em; font: 400 var(--step-3)/1.25 var(--font-serif); }
-.hero__tags {
-  display: flex; flex-wrap: wrap; gap: var(--space-1) 0; padding: 0; list-style: none;
-  color: var(--ink-2); font: 600 var(--step-0)/1.4 var(--font-sans); letter-spacing: 0.09em; text-transform: uppercase;
-}
-/* Each item carries its dot on the left; the list is shifted and clipped by the
-   same amount so a dot never starts a line. */
-.hero__tags { margin-inline-start: -1.7em; clip-path: inset(0 0 0 1.7em); }
-.hero__tags li { position: relative; padding-inline-start: 1.7em; }
-.hero__tags li::before { content: "\00B7"; position: absolute; inset-inline-start: 0.65em; }
-.hero__tags a { color: inherit; text-decoration: none; }
-.hero__tags a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 0.2em; }
-.hero--home .hero__lede { color: var(--ink-2); font-size: var(--step-0); }
+.hero--home h1 { max-inline-size: none; font-size: var(--step-3); line-height: 1.15; }
+.hero--home .hero__lede { color: var(--ink-2); font-size: var(--step-0); max-inline-size: none; }
 .hero__caveat {
   max-inline-size: 40rem;
   padding-inline-start: var(--space-4);
@@ -962,50 +964,57 @@ html:not(.js) .js-only { display: none !important; }
 .hero__counts { display: grid; gap: var(--space-3); margin-block-start: var(--space-3); }
 .hero__cta { padding: var(--space-3) var(--space-5); font-size: var(--step-1); }
 
-/* Finder: filters beside the results */
-.finder__grid {
+/* Home: the trails first. The lists, a search bar, then the trails, with the overview map beside
+   them on a wide screen (it stays in view while the list scrolls). On a narrow screen the map
+   follows the list, and the bar has a link to it. */
+.home {
   display: grid;
-  gap: var(--space-5) var(--space-6);
-  grid-template-areas: "filters" "main" "notes";
+  gap: var(--space-1) var(--space-6);
   grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "lists" "bar" "results" "map" "notes";
+  align-items: start;
 }
-.filters { grid-area: filters; }
-.finder__main { grid-area: main; display: grid; gap: var(--space-5); align-content: start; min-inline-size: 0; }
+.home__lists { grid-area: lists; min-inline-size: 0; }
+.home__bar { grid-area: bar; min-inline-size: 0; }
+.home__results { grid-area: results; min-inline-size: 0; }
+.home__map { grid-area: map; min-inline-size: 0; scroll-margin-block-start: var(--space-4); }
+.home__notes { grid-area: notes; }
+.finder__notes { display: grid; gap: var(--space-2); }
 .results { container: results / inline-size; }
-.finder__notes { grid-area: notes; display: grid; gap: var(--space-2); }
 @media (min-width: 64rem) {
-  .finder__grid {
-    grid-template-areas: "filters main" ". notes";
-    grid-template-columns: 18rem minmax(0, 1fr);
+  .home {
+    grid-template-columns: minmax(0, 1fr) 27rem;
+    grid-template-areas: "lists lists" "bar map" "results map" "notes .";
   }
+  .home__map { position: sticky; inset-block-start: var(--space-4); }
+  .home__map .map { aspect-ratio: auto; block-size: clamp(20rem, calc(100dvh - 17rem), 46rem); }
+  .filters__maplink { display: none; }
+  .home .results-head { padding-block-end: var(--space-2); }
 }
-/* Beside the list, the filters stay on screen while the list scrolls. The panel
-   is never taller than the window: when its fields do not fit (a short window,
-   or "More filters" opened) it scrolls on its own, so every filter can be
-   reached from anywhere in the list. Its reset button stays at its foot.
-   The wheel must always move something: over the panel it scrolls the panel
-   while the panel has further to go, and the page otherwise. So no
-   overscroll-behavior here: in Chromium it stops the wheel reaching the page
-   even when the panel has nothing to scroll. */
+@media (min-width: 64rem) and (pointer: fine) {
+  .home .results-sort .select { min-block-size: 2.25rem; }
+  .home .lists-row .chips a { min-block-size: 2rem; }
+  .home .filters__bar .input, .home .filters__bar .button { min-block-size: 2.5rem; }
+}
+/* Beside the map the rows are a little closer, so more of the list is in view. */
 @media (min-width: 64rem) {
-  .filters {
-    position: sticky; inset-block-start: var(--space-4); align-self: start;
-    max-block-size: calc(100vh - 2 * var(--space-4));
-    max-block-size: calc(100dvh - 2 * var(--space-4));
-    overflow-y: auto; scrollbar-width: thin;
-  }
-  .filters .filters__reset {
-    position: sticky; inset-block-end: 0; z-index: 1;
-    background: var(--surface); border-block-start: 1px solid var(--rule-strong);
-  }
+  .home .entry { padding-block: 0.5rem; }
 }
 
-/* Filters: search always shown; the rest folds away on narrow screens */
-.filters { border: 1px solid var(--ink); background: var(--surface); }
-.filters .filters__search { padding: var(--space-4); }
-/* A field placed between the search box and the folded filters (the
-   downloadable-line check) sits outside both padded areas. */
-.filters > .field:not(.filters__search) { padding: 0 var(--space-4) var(--space-4); }
+/* The search bar: the search field, a Filters control that opens the panels, Clear (shown only
+   when something is set), and on a narrow screen a link to the map. */
+.filters__bar { display: flex; align-items: stretch; gap: var(--space-2); }
+.filters__search { flex: 1 1 auto; min-inline-size: 0; }
+.filters__bar .button { flex: none; min-block-size: 2.75rem; }
+.filters__toggle { gap: var(--space-2); }
+.filters__toggle[aria-expanded="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.filters__toggle .filters__count:not(:empty) { background: var(--paper); color: var(--ink); }
+.filters__clear[hidden] { display: none; }
+/* The panels: the existing filter fields, in columns where there is room. With JavaScript they
+   open from the bar; without it the bar and panels are not offered at all (see below). */
+.filters__panels { margin-block-start: var(--space-2); border: 1px solid var(--ink); background: var(--surface); }
+html.js .filters__panels:not([data-open]) { display: none; }
+.filters__panel > summary { display: none; }
 .filters__more > summary {
   display: flex;
   align-items: center;
@@ -1041,12 +1050,12 @@ html:not(.js) .js-only { display: none !important; }
   letter-spacing: 0.02em;
   text-transform: none;
 }
-.filters__form { display: grid; gap: var(--space-4); padding: var(--space-4); }
-/* Two columns only while the filters sit above the list at full width; beside
-   the list the panel is narrow and every filter is one column. */
-@media (min-width: 40rem) and (max-width: 63.99rem) {
-  .filters__form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .filters__form .field--wide { grid-column: 1 / -1; }
+/* The fields run in as many columns as the panel has room for. */
+.filters__first, .filters__form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: var(--space-4) var(--space-5);
+  padding: var(--space-4);
 }
 
 .field { display: grid; align-content: start; gap: var(--space-2); min-inline-size: 0; margin: 0; padding: 0; border: 0; }
@@ -1142,7 +1151,6 @@ html:not(.js) .js-only { display: none !important; }
 /* Without JavaScript the list is complete and readable; the controls that need it are hidden. */
 html:not(.js) .filters,
 html:not(.js) .results-tools { display: none; }
-html:not(.js) .finder__grid { grid-template-areas: "main" "notes"; grid-template-columns: minmax(0, 1fr); }
 html:not(.js) .list-head__sort { cursor: default; }
 html:not(.js) .list-head__arrow { display: none; }
 
@@ -1426,17 +1434,23 @@ html:not(.js) .list-head__arrow { display: none; }
   .titleblock--with-plate .titleblock__text > :first-child { grid-column: 2; grid-row: 1; align-self: center; }
 }
 
-/* Trail page body: map, then the primary actions (downloads or guides), then the record.
-   On wide screens the actions sit beside the map. The aside is often taller than
-   the viewport, so it scrolls with the page rather than sticking. */
+/* Trail page body. The first screen holds the map and the key facts: a short lead and the
+   buttons, then the map, in the left column; At a glance (and the downloads under it) in the
+   right one, level with the top of the left. On a narrow screen the order is the buttons, the
+   facts, the map, the elevation profile and the downloads. The aside is often taller than the
+   viewport, so it scrolls with the page rather than sticking. */
 .detail {
   display: grid;
-  gap: var(--space-5) var(--space-6);
+  gap: var(--space-4) var(--space-6);
   grid-template-columns: minmax(0, 1fr);
-  grid-template-areas: "glance" "map" "aside";
+  grid-template-areas: "lead" "glance" "map" "aside";
   align-items: start;
+  padding-block-start: var(--space-3);
 }
-.detail--with-profile { grid-template-areas: "glance" "map" "profile" "aside"; }
+.detail--with-profile { grid-template-areas: "lead" "glance" "map" "profile" "aside"; }
+.detail__lead { grid-area: lead; display: grid; gap: var(--space-3); min-inline-size: 0; }
+.detail__lead:not(:has(*)) { display: none; }
+.detail__side { display: contents; }
 .detail__glance { grid-area: glance; min-inline-size: 0; }
 .detail__map { grid-area: map; min-inline-size: 0; }
 .detail__profile { grid-area: profile; min-inline-size: 0; }
@@ -1447,19 +1461,19 @@ html:not(.js) .list-head__arrow { display: none; }
   .detail {
     grid-template-columns: minmax(0, 1fr) 22rem;
     grid-template-rows: auto 1fr;
-    grid-template-areas: "map glance" "map aside";
+    grid-template-areas: "lead side" "map side";
   }
-  .detail--no-aside { grid-template-areas: "map glance" "map ."; }
-  .detail--with-profile { grid-template-rows: auto 1fr auto; grid-template-areas: "map glance" "map aside" "profile profile"; }
-  .detail--with-profile.detail--no-aside { grid-template-areas: "map glance" "map ." "profile profile"; }
-  /* The map fills the height of the column beside it, so a long column of
-     facts and downloads leaves no empty space under the map. */
-  .detail__map { align-self: stretch; display: flex; flex-direction: column; }
-  .detail__map > .mapfig__frame { flex: 1 1 auto; display: flex; flex-direction: column; }
-  .detail__map .map { flex: 1 1 auto; aspect-ratio: auto; min-block-size: 30rem; }
-  /* With no track there is no map to stretch: the notice keeps its own height. */
-  .detail--no-map .detail__map { align-self: start; }
-  .detail--no-map .detail__map .map { flex: 0 0 auto; min-block-size: 22rem; }
+  .detail--with-profile { grid-template-rows: auto 1fr auto; grid-template-areas: "lead side" "map side" "profile profile"; }
+  .detail__lead:not(:has(*)) { display: block; }
+  .detail__side { display: grid; grid-area: side; gap: var(--space-5); align-content: start; min-inline-size: 0; }
+  .detail__side > * { grid-area: auto; }
+  /* The map is as tall as the window allows, and stays in view while the facts and downloads
+     beside it scroll past. */
+  .detail__map { align-self: start; position: sticky; inset-block-start: var(--space-4); }
+  .detail__map .map { aspect-ratio: auto; block-size: clamp(30rem, calc(100dvh - 15rem), 52rem); }
+  /* With no track there is no map: the notice keeps its own height. */
+  .detail--no-map .detail__map { position: static; }
+  .detail--no-map .detail__map .map { block-size: auto; min-block-size: 22rem; }
 }
 
 .block + .block { margin-block-start: var(--space-7); }
@@ -1736,6 +1750,55 @@ td .linklist a { font-weight: 400; }
 .prose .table-wrap { max-inline-size: 100%; }
 .prose .table-wrap table:has(th:nth-child(4)) { min-inline-size: 30rem; }
 
+/* A table of figures with one trail in each column (the Triple Crown): the columns are equal and
+   the label column narrow, whatever the cells hold; a long value wraps inside its cell. */
+.table-wrap table[data-stack="columns"] { table-layout: fixed; min-inline-size: 0; }
+.table-wrap table[data-stack="columns"] th:first-child { inline-size: 9rem; }
+.table-wrap table[data-stack="columns"] th,
+.table-wrap table[data-stack="columns"] td { padding: var(--space-3) var(--space-4); overflow-wrap: anywhere; hyphens: auto; }
+.table-wrap table[data-stack="columns"] tbody th { background: var(--sunken); font-weight: 600; }
+
+/* Between a phone and a laptop a table with many columns gives up some of its padding. */
+@media (min-width: 40.01rem) and (max-width: 63.99rem) {
+  .table-wrap table[data-stack="rows"] th, .table-wrap table[data-stack="rows"] td { padding-inline: var(--space-2); }
+}
+
+/* On a phone a table is not a grid to scroll. A table with many columns is one block per row (its
+   first cell is the block's title and every other cell is a label and its value, from data-label);
+   a table of trails in columns is one block per trail, headed by the trail's name. One set of
+   markup: the cells carry their labels (olt/pagekit.py). */
+@media (max-width: 40rem) {
+  .table-wrap:has(table[data-stack]) { overflow: visible; border: 0; background: none; }
+  .table-wrap table[data-stack] { min-inline-size: 0 !important; table-layout: auto; }
+  .table-wrap table[data-stack="rows"] thead,
+  .table-wrap table[data-stack="columns"] thead th:first-child,
+  .table-wrap table[data-stack="columns"] tbody th { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; padding: 0; border: 0; }
+  .table-wrap table[data-stack="rows"],
+  .table-wrap table[data-stack="rows"] tbody,
+  .table-wrap table[data-stack="rows"] tr { display: block; }
+  .table-wrap table[data-stack="rows"] tr { margin-block-end: var(--space-3); background: var(--surface); border: 1px solid var(--rule-strong); }
+  .table-wrap table[data-stack="rows"] tbody tr:last-child td { border-block-end: 1px dotted var(--rule-strong); }
+  .table-wrap table[data-stack="rows"] tr > :first-child { display: block; padding: var(--space-2) var(--space-3); background: var(--sunken); font-weight: 600; border-block-end: 1px solid var(--rule-strong); }
+  .table-wrap table[data-stack="rows"] td:first-child::before { content: none; }
+  .table-wrap table[data-stack] td { display: grid; grid-template-columns: minmax(5.5rem, 7.5rem) minmax(0, 1fr); gap: var(--space-3); align-items: baseline; text-align: start; border-block-end: 1px dotted var(--rule-strong); }
+  .table-wrap table[data-stack] td:last-child { border-block-end: 0; }
+  .table-wrap table[data-stack] td::before { content: attr(data-label); color: var(--ink-2); font: 600 var(--step--2)/1.4 var(--font-sans); letter-spacing: 0.06em; text-transform: uppercase; }
+  .table-wrap table[data-stack="rows"] td.num { text-align: start; }
+  /* Trails in columns: the header cells and the cells of one column are the blocks, in order. */
+  .table-wrap table[data-stack="columns"] { display: grid; border: 1px solid var(--rule-strong); background: var(--surface); }
+  .table-wrap table[data-stack="columns"] thead,
+  .table-wrap table[data-stack="columns"] tbody,
+  .table-wrap table[data-stack="columns"] tr { display: contents; }
+  .table-wrap table[data-stack="columns"] thead th:not(:first-child) { display: block; padding: var(--space-3); background: var(--ink); color: var(--paper); font: 600 var(--step-0)/1.3 var(--font-sans); letter-spacing: 0; border: 0; }
+  .table-wrap table[data-stack="columns"] thead th:nth-child(2), .table-wrap table[data-stack="columns"] td:nth-of-type(1) { order: 1; }
+  .table-wrap table[data-stack="columns"] thead th:nth-child(3), .table-wrap table[data-stack="columns"] td:nth-of-type(2) { order: 2; }
+  .table-wrap table[data-stack="columns"] thead th:nth-child(4), .table-wrap table[data-stack="columns"] td:nth-of-type(3) { order: 3; }
+  .table-wrap table[data-stack="columns"] thead th:nth-child(5), .table-wrap table[data-stack="columns"] td:nth-of-type(4) { order: 4; }
+  .table-wrap table[data-stack="columns"] thead th:nth-child(6), .table-wrap table[data-stack="columns"] td:nth-of-type(5) { order: 5; }
+  .table-wrap table[data-stack="columns"] thead th:nth-child(7), .table-wrap table[data-stack="columns"] td:nth-of-type(6) { order: 6; }
+  .table-wrap table[data-stack="columns"] thead th:nth-child(n+3) { margin-block-start: var(--space-4); }
+}
+
 .region-nav { margin-block-start: var(--space-6); font: 400 var(--step--1)/1.5 var(--font-sans); color: var(--ink-2); }
 .logo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); gap: var(--space-4); padding: 0; list-style: none; }
 .logo-card { display: grid; gap: var(--space-3); padding: var(--space-4); background: var(--surface); border: 1px solid var(--rule-strong); }
@@ -1813,12 +1876,35 @@ td .linklist a { font-weight: 400; }
 
 /* 11. Hiker pages: the top of a trail page, collections ------------------- */
 
-.trail-lede { max-inline-size: 46rem; font-size: var(--step-1); line-height: 1.5; text-wrap: pretty; }
-/* The generated "In brief" paragraph and the date of the last check, under the lede. */
-.trail-brief { max-inline-size: 46rem; margin-block-start: var(--space-3); line-height: 1.55; text-wrap: pretty; }
-.trail-checked { margin-block-start: var(--space-2); }
-.trail-actions { margin-block-start: var(--space-4); }
-.page-head .titleblock { margin-block-end: var(--space-4); }
+/* The top of every page is compact: breadcrumb, then the name, so that what the page is for is
+   on the first screen (the map and the facts of a trail, the first trails of a list). */
+.page-head { padding-block: var(--space-3) 0; }
+.page-head .titleblock { margin-block: var(--space-2) 0; gap: var(--space-2) var(--space-4); }
+.page-head .titleblock h1 { font-size: var(--step-3); line-height: 1.1; }
+.page-head .titleblock--with-plate { grid-template-columns: 4.5rem minmax(0, 1fr); }
+.page-head .titleblock .plate { padding: 0.35rem; }
+.page-head .titleblock__text { gap: var(--space-1); }
+.page-head .titleblock__sub { font-size: var(--step-0); }
+@media (min-width: 48rem) {
+  .page-head .titleblock--with-plate { grid-template-columns: 6rem minmax(0, 1fr); }
+}
+/* The lead above the map: the first sentence of the summary, when it is short. The summary in
+   full is under the map. */
+.trail-lede { max-inline-size: 46rem; font-size: var(--step-0); line-height: 1.45; text-wrap: pretty; }
+.trail-actions { margin-block-start: 0; }
+/* On a phone the buttons come first. */
+@media (max-width: 47.99rem) {
+  .detail__lead { display: flex; flex-direction: column; }
+  .detail__lead .trail-actions { order: -1; }
+}
+/* Under the map: the summary in full, the generated "In brief" paragraph, the date of the last
+   check, and the other pages about the trail. */
+.trail-text { max-inline-size: 46rem; margin-block-end: var(--space-6); }
+.trail-text > h2 { margin-block-end: var(--space-3); font-size: var(--step-2); }
+.trail-summary { font-size: var(--step-1); line-height: 1.5; text-wrap: pretty; }
+.trail-brief { margin-block-start: var(--space-3); line-height: 1.55; text-wrap: pretty; }
+.trail-checked { margin-block-start: var(--space-3); }
+.trail-more .morelinks { max-inline-size: 46rem; margin-block-end: var(--space-6); }
 
 /* At a glance: the hiker's facts, a legend box like the panels */
 .glance { border: 1px solid var(--ink); background: var(--surface); }
@@ -1858,6 +1944,19 @@ td .linklist a { font-weight: 400; }
   font: 400 var(--step--1)/1.45 var(--font-sans);
 }
 .glance > .note { padding: 0 var(--space-4) var(--space-4); }
+/* Below the two-column page the panel shows its first facts, so the map is on the first screen;
+   a button opens the rest. Without JavaScript every fact shows and the button is not offered. */
+.glance__toggle { display: none; }
+@media (max-width: 63.99rem) {
+  html.js .glance:not([data-all]) .glance__facts > div:nth-child(n+5),
+  html.js .glance:not([data-all]) > .note { display: none; }
+  html.js .glance__toggle {
+    display: block; inline-size: 100%; min-block-size: 2.75rem; padding: var(--space-2) var(--space-4);
+    border: 0; border-block-start: 1px solid var(--rule-strong); background: var(--sunken); color: var(--link);
+    font: 600 var(--step--1)/1.3 var(--font-sans); text-align: start; cursor: pointer;
+  }
+  .glance__toggle:hover { background: var(--paper); }
+}
 
 /* Elevation profile: a legend box like the glance, the line drawn as SVG */
 .elev { border: 1px solid var(--ink); background: var(--surface); }
@@ -1990,7 +2089,6 @@ td .linklist a { font-weight: 400; }
 
 .entry__days { display: block; margin-block-start: var(--space-1); color: var(--ink-2); font: 400 var(--step--1)/1.3 var(--font-sans); }
 .finder__foot { max-inline-size: var(--measure); color: var(--ink-2); font: 400 var(--step--1)/1.5 var(--font-sans); }
-.filters__reset { padding-block-start: var(--space-4) !important; }
 /* Narrow screens: a card is its title, count and rule; the trail names are on its page. */
 @media (max-width: 40rem) {
   .shelf { grid-template-rows: auto; padding: var(--space-3) var(--space-4); }
@@ -1999,18 +2097,25 @@ td .linklist a { font-weight: 400; }
 
 /* 12. Catalogue, places, lists, onward ---------------------------------------- */
 
-.hero--short { padding-block: var(--space-6) var(--space-4); }
-.hero--short .hero__inner { gap: var(--space-4); }
-.lists-row { display: grid; gap: var(--space-2); }
+.hero--short { padding-block: var(--space-3) var(--space-2); }
+.hero--short .hero__inner { gap: var(--space-1); }
+/* The home page's lists: a short row. The label leads it, and the pills fit one row or two on a
+   wide screen; on a phone they are one row that scrolls sideways within itself. */
+.lists-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); }
 .lists-row__title { font: 600 var(--step--2)/1.3 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
-.section--finder { padding-block-start: var(--space-4); }
-.filters__first { display: grid; gap: var(--space-4); padding: 0 var(--space-4) var(--space-4); }
-.filters__first .field + .field { padding-block-start: var(--space-4); border-block-start: 1px dotted var(--rule-strong); }
-.filters__form .field + .field { padding-block-start: var(--space-4); border-block-start: 1px dotted var(--rule-strong); }
-@media (min-width: 40rem) and (max-width: 63.99rem) {
-  .filters__first { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-5); }
-  .filters__first .field:nth-child(2) { padding-block-start: 0; border-block-start: 0; }
+.lists-row .chips { flex: 1 1 0; min-inline-size: 0; }
+@media (min-width: 40rem) and (pointer: fine) { .lists-row .chips a { min-block-size: 2.25rem; } }
+@media (max-width: 39.99rem) {
+  .lists-row { display: grid; gap: var(--space-1); }
+  .lists-row .chips {
+    flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain;
+    margin-inline: calc(-1 * var(--gutter)); padding: 3px var(--gutter);
+  }
+  /* The row scrolls by touch; a scrollbar under it reads as a stray white band */
+  .lists-row .chips::-webkit-scrollbar { display: none; }
+  .lists-row .chips li { flex: none; }
 }
+.section--finder { padding-block-start: var(--space-4); }
 .pills { display: flex; flex-wrap: wrap; gap: var(--space-2); }
 .pills .check { grid-template-columns: auto auto; padding: 0.15rem var(--space-2); border: 1px solid var(--rule-strong); border-radius: 999px; }
 .pills .check:has(input:checked) { border-color: var(--ink); background: var(--sunken); }
@@ -2053,6 +2158,21 @@ a.tag:hover { background: var(--sunken); }
 .places__n { flex: none; color: var(--ink-2); font-size: var(--step--1); font-variant-numeric: tabular-nums; }
 .page-head .chips { margin-block-start: var(--space-2); }
 .place > * + * { margin-block-start: var(--space-6); }
+.section.place { padding-block-start: var(--space-4); }
+/* A place, list or routes page: the list, then the map, then the page's own text; on a wide
+   screen the list beside the text and the map, which stays in view as the list scrolls. */
+.place-grid {
+  display: grid; align-items: start; gap: var(--space-5) var(--space-6);
+  grid-template-columns: minmax(0, 1fr); grid-template-areas: "list" "map" "text";
+}
+.place-grid__text { grid-area: text; min-inline-size: 0; }
+.place-grid__list { grid-area: list; min-inline-size: 0; }
+.place-grid__map { grid-area: map; min-inline-size: 0; }
+@media (min-width: 64rem) {
+  .place-grid { grid-template-columns: minmax(0, 1fr) 27rem; grid-template-rows: auto minmax(0, 1fr); grid-template-areas: "list text" "list map"; gap: var(--space-4) var(--space-6); }
+  .place-grid__map { position: sticky; inset-block-start: var(--space-4); }
+  .place-grid__map .map { aspect-ratio: auto; block-size: clamp(18rem, calc(100dvh - 17rem), 40rem); }
+}
 
 /* About hub */
 .about-hub__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); gap: 0 var(--space-5); max-inline-size: none; }
@@ -2060,24 +2180,7 @@ a.tag:hover { background: var(--sunken); }
 .doc section > * + * { margin-block-start: var(--space-4); }
 .doc section + section { margin-block-start: var(--space-7); }
 
-.filters__panel > summary {
-  display: flex; align-items: center; gap: var(--space-3);
-  padding: var(--space-2) var(--space-4); min-block-size: 2.75rem;
-  border-block: 1px solid var(--ink);
-  font: 600 var(--step--1)/1.3 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase;
-  cursor: pointer; list-style: none;
-}
-.filters__panel > summary::-webkit-details-marker { display: none; }
-.filters__panel > summary::after {
-  content: ""; margin-inline-start: auto; inline-size: 0.5rem; block-size: 0.5rem;
-  border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-25%) rotate(45deg);
-}
-.filters__panel[open] > summary::after { transform: translateY(25%) rotate(-135deg); }
-.filters__panel[open] > summary { margin-block-end: var(--space-4); }
 .filters__count:not(:empty) { padding: 0 var(--space-2); border-radius: 999px; background: var(--ink); color: var(--paper); letter-spacing: 0.02em; text-transform: none; }
-@media (min-width: 64rem) {
-  .filters__panel > summary { display: none; }
-}
 
 /* The trail list where there is no room for columns (a phone, or beside the
    filters on a laptop): a compact card, not a table folded in on itself. Name, one or two lines of description, the place, then the facts on

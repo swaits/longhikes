@@ -185,9 +185,9 @@ class ExtraPagesTest(unittest.TestCase):
         # no dataset filters
         for name in ("tier", "policy", "designated", "line", "country", "region"):
             self.assertNotIn(f'name="{name}"', form, name)
-        # the map is in the tool, beside the list it filters
-        main = doc[doc.index('<div class="finder__main">'):]
-        self.assertLess(main.index('data-map="overview"'), main.index('<ol class="entries" id="entries"'))
+        # the map is in the tool, beside the list it filters (after it in the page, beside it on a wide screen)
+        main = doc[doc.index('<div class="home__results">'):]
+        self.assertLess(main.index('<ol class="entries" id="entries"'), main.index('data-map="overview"'))
         longest_km = max(r["length_km"] for r in self.records)
         maxsel = form[form.index('id="max"'):form.index("</select>", form.index('id="max"'))]
         minsel = form[form.index('id="min"'):form.index("</select>", form.index('id="min"'))]

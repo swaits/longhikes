@@ -19,7 +19,7 @@ URL_RE = re.compile(r"^https?://[^\s/]+\S*$")
 # names these. A table name on its own ("source", "hike.source") names every field in it.
 _TABLES = {
     "": ("id", "name", "common_name", "short_name", "short_name_url", "country", "regions", "length_km",
-         "length_note", "kind", "tier", "designation", "wave", "wave_note", "inclusion"),
+         "length_note", "system_km", "system_note", "built_km", "kind", "tier", "designation", "wave", "wave_note", "inclusion"),
     "source": ("status", "publisher", "publisher_url", "url", "discovery", "format", "crs",
                "licence", "licence_text", "permission_quote", "permission_by",
                "permission_date", "permission_url", "attribution", "osm_only", "mainline",
@@ -62,8 +62,8 @@ NOT_FACTS = (
     "wave", "wave_note",    # the dataset's own bookkeeping
 )
 FACTS_TEXT = (
-    "name, common_name, short_name, short_name_url, country, regions, length_km, length_note, kind, tier, designation, "
-    "inclusion; source.* (status, publisher, publisher_url, url, licence, licence_text, "
+    "name, common_name, short_name, short_name_url, country, regions, length_km, length_note, system_km, system_note, built_km, kind, tier, "
+    "designation, inclusion; source.* (status, publisher, publisher_url, url, licence, licence_text, "
     "permission_*, attribution, osm_only, line_source, line_file, line_absent_reason, "
     "decision, decision_text, redistributable); osm.relation; shield.* except note; "
     "hike.* except summary, checked and source (start, end, official_url, days, season, terrain, "

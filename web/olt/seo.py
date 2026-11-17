@@ -56,7 +56,9 @@ def distribution():
 
 # What the dataset records for each trail (docs/schema.md), as variableMeasured.
 VARIABLES = (
-    ("length_km", "Published length of the trail", "KMT"),
+    ("length_km", "End-to-end length of the trail's canonical path, as its holder or author states it", "KMT"),
+    ("system_km", "The larger figure the holder publishes for the whole system or a planned total, where there is one", "KMT"),
+    ("built_km", "The built length of an unfinished trail, as its holder states it", "KMT"),
     ("measured_km", "Length measured from the track, in kilometres", "KMT"),
     ("difference_percent", "Measured length against the published length, in per cent", "P1"),
     ("ascent_m", "Total climbing along the track, computed from an elevation model", "MTR"),
@@ -257,6 +259,16 @@ def _properties(rec):
         _pv("Published length", mi, "SMI", "miles", description=rec.get("length_note", "")),
         _pv("Published length", rec["length_km"], "KMT", "kilometres"),
     ]
+    if rec.get("system_km"):
+        # The holder's larger figure: its own labelled value, never the trail's length.
+        note = str(rec.get("system_note", "")).strip().rstrip(".")
+        props.append(_pv("Whole system length", round(words.km_to_mi(rec["system_km"])), "SMI", "miles",
+                         description=f"Counting {note}"))
+        props.append(_pv("Whole system length", rec["system_km"], "KMT", "kilometres",
+                         description=f"Counting {note}"))
+    if rec.get("built_km"):
+        props.append(_pv("Built length", round(words.km_to_mi(rec["built_km"])), "SMI", "miles"))
+        props.append(_pv("Built length", rec["built_km"], "KMT", "kilometres"))
     days = h.get("days")
     if isinstance(days, list) and len(days) == 2:
         props.append(_pv("Usual time to walk it all", f"{days[0]} to {days[1]} days", "DAY", "days",

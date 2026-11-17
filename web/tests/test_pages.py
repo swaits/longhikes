@@ -90,7 +90,7 @@ class BuiltSiteTest(unittest.TestCase):
     def test_one_detail_page_per_record(self):
         found = [d for d in os.listdir(os.path.join(OUT, "trails"))
                  if os.path.isfile(os.path.join(OUT, "trails", d, "index.html"))]
-        self.assertEqual(len(self.records), 204)
+        self.assertEqual(len(self.records), 196)
         self.assertEqual(sorted(found), sorted(r["id"] for r in self.records))
         self.assertTrue(os.path.isfile(os.path.join(OUT, "index.html")))
 
@@ -175,8 +175,8 @@ class BuiltSiteTest(unittest.TestCase):
             v = raw.get("verification", {})
             if raw["source"].get("line_file") and v.get("verified") and abs(v.get("difference_percent", 0)) > 15:
                 expected.add(rec["id"])
-        self.assertEqual(len(expected), 25)
-        self.assertIn("voyageur", expected)
+        self.assertEqual(len(expected), 17)
+        self.assertIn("knobstone", expected)
         for rec in self.records:
             page = self.pages[rec["id"]]
             has_notice = 'class="notice notice--partial"' in page
@@ -305,8 +305,7 @@ class BuiltSiteTest(unittest.TestCase):
 
     def test_names_marked_with_their_language(self):
         langs = site.load().name_lang
-        self.assertEqual(langs, {"traversee-charlevoix": "fr", "sentier-national": "fr",
-                                 "sentier-international-appalaches": "fr"})
+        self.assertEqual(langs, {"traversee-charlevoix": "fr", "sentier-international-appalaches": "fr"})
         with open(os.path.join(OUT, "index.html"), encoding="utf-8") as f:
             home = f.read()
         by_id = {r["id"]: r for r in self.records}
@@ -331,7 +330,7 @@ class BuiltSiteTest(unittest.TestCase):
                     self.assertIn('scope="col"', th, path)
 
     def test_maplibre_is_not_loaded_with_the_page(self):
-        # app.js loads MapLibre when the map scrolls into view or is touched, from the
+        # app.js loads MapLibre a moment after the page has loaded, from the
         # addresses on its own tag (layout.py); the page itself names no MapLibre file.
         with open(os.path.join(OUT, "index.html"), encoding="utf-8") as f:
             doc = f.read()
@@ -446,7 +445,7 @@ class RenderUnitTest(unittest.TestCase):
         rec = sample_record("L Trail")
         rec["hike"] = {"official_url": "https://official.example/"}
         rec["link"] = [{"title": "T", "publisher": "Wiki", "url": "https://wiki.example/t"}]
-        buttons = re.search(r'<p class="cluster trail-actions">.*?</p>', trail.page_head(rec), re.S).group(0)
+        buttons = re.search(r'<p class="cluster trail-actions">.*?</p>', trail.action_buttons(rec), re.S).group(0)
         self.assertIn("Official site", buttons)
         self.assertNotIn("wiki.example", buttons)
 
@@ -454,7 +453,7 @@ class RenderUnitTest(unittest.TestCase):
         rec = sample_record("L Trail")
         rec["link"] = [{"title": "T", "publisher": "Wiki Pub", "url": "https://wiki.example/t"},
                        {"title": "U", "publisher": "Other", "url": "https://other.example/u"}]
-        buttons = re.search(r'<p class="cluster trail-actions">.*?</p>', trail.page_head(rec), re.S).group(0)
+        buttons = re.search(r'<p class="cluster trail-actions">.*?</p>', trail.action_buttons(rec), re.S).group(0)
         self.assertIn('href="https://wiki.example/t"', buttons)
         self.assertIn("Wiki Pub", buttons)
         self.assertNotIn("other.example", buttons)

@@ -41,6 +41,22 @@ def line_short(rec):
     return line_differs(rec) and rec["verification"]["difference_percent"] < 0
 
 
+def built_text(rec):
+    """"290 mi built" for an unfinished trail whose holder states the built length; else "". Markup."""
+    if not rec.get("built_km"):
+        return Markup("")
+    return Markup(f"{words.length(rec['built_km'], 'inline')} built")
+
+
+def system_text(rec):
+    """"Whole system: 1,584 mi, counting all designated trail ..." where the holder publishes a
+    larger figure; else "". Markup. The note says what the figure counts (system_note)."""
+    if not rec.get("system_km"):
+        return Markup("")
+    return Markup(f"Whole system: {words.length(rec['system_km'], 'inline')}, "
+                  f"counting {esc(str(rec.get('system_note', '')).strip().rstrip('.'))}")
+
+
 def partial_short_text(rec):
     """The short form for lists: "Track measures 1.2 mi (2.0 km) of 684 mi (1,100 km) published",
     in the reader's unit order (words.length). Markup."""

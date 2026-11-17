@@ -242,7 +242,7 @@ def site_words(doc):
     if '<details class="about-data"' in doc:
         doc = doc[:doc.index('<details class="about-data"')]
     doc = doc[doc.index('<main id="main">'):]
-    for cls in ("entry__desc", "entry__name", "trail-lede", "titleblock__sub", "entry__partial",
+    for cls in ("entry__desc", "entry__name", "trail-lede", "trail-summary", "titleblock__sub", "entry__partial",
                 "note", "record-text", "map__reason", "glance__warn", "shelf__items", "onward__list"):
         doc = re.sub(rf'<(\w+) class="{cls}"[^>]*>.*?</\1>', " ", doc, flags=re.S)
     doc = re.sub(r"<dd>.*?</dd>", " ", doc, flags=re.S)  # glance values are the trail's facts
@@ -285,10 +285,10 @@ class BuiltVocabularyTest(unittest.TestCase):
         self.maxDiff = None
         self.assertEqual(bad[:40], [])
 
-    def test_navigation_has_three_sections_and_saved(self):
+    def test_navigation_has_four_sections_and_saved(self):
         doc = self.read("index.html")
         nav = re.search(r'<nav class="site-nav" aria-label="Main"><ul class="nav">(.*?)</ul></nav>', doc).group(1)
-        self.assertEqual(re.findall(r'<li><a href="[^"]*"[^>]*>([^<]+)</a>', nav), ["Trails", "Places", "About"])
+        self.assertEqual(re.findall(r'<li><a href="[^"]*"[^>]*>([^<]+)</a>', nav), ["Trails", "Places", "Lists", "About"])
         self.assertIn('<li class="nav__saved js-only"><a href="/saved/">', nav)
 
     def test_one_count_noun(self):

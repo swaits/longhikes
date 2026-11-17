@@ -33,6 +33,18 @@ was_listed = false
 waiting_for = "Every part of the route is defined and published, with a settled length."
 
 [[trail]]
+id = "bay-area-ridge"
+name = "Bay Area Ridge Trail"
+country = "US"
+regions = ["CA"]
+length_note = "550 miles planned for the loop; over 400 miles open"
+reason = "cannot-be-walked-through"
+note = "The Ridge Trail Council say there are two continuous stretches, and that otherwise there are still gaps in the trail. It names no connecting routes through the gaps, and its circumnavigation means walking every dedicated section in any order."
+source_url = "https://ridgetrail.org/circumnavigation/"
+decided = "2026-11-16"
+was_listed = true
+
+[[trail]]
 id = "black-forest-trail"
 name = "Black Forest Trail"
 country = "US"
@@ -83,6 +95,19 @@ decided = "2026-11-16"
 was_listed = true
 
 [[trail]]
+id = "chuck-keiper"
+name = "Chuck Keiper Trail"
+country = "US"
+regions = ["PA"]
+length_mi = 47.3
+length_km = 76
+reason = "below-floor"
+note = "The Keystone Trails Association say the trail consists of a main loop of 47.3 miles, with a cross-connector of 3.3 miles. The main loop is below the 50 mile floor."
+source_url = "https://www.kta-hike.org/chuck-keiper-trail.html"
+decided = "2026-11-16"
+was_listed = true
+
+[[trail]]
 id = "confederation-trail"
 name = "Confederation Trail"
 country = "CA"
@@ -105,6 +130,32 @@ length_km = 200
 reason = "not-mainly-walking"
 note = "Its association call it a 200 km section of the Trans Canada Trail from Winnipeg to Emerson along an old Red River cart trail. They promote it for cycling and horseback riding as well as hiking, and much of it follows gravel municipal roads."
 source_url = "https://crowwingtrail.ca/"
+decided = "2026-11-16"
+was_listed = false
+
+[[trail]]
+id = "cumberland-trail"
+name = "Cumberland Trail"
+country = "US"
+regions = ["TN"]
+length_note = "Over 300 miles planned; 208.9 miles completed"
+reason = "cannot-be-walked-through"
+note = "The Friends of the Cumberland Trail say that once completed the trail will extend over 300 miles, and that 208.9 miles are completed. About 90 miles are not built and no connecting routes are published, so it cannot be walked from end to end."
+source_url = "https://friendsofthecumberlandtrail.org/land-culture-and-history-of-the-cumberland-trail/"
+decided = "2026-11-16"
+was_listed = true
+
+[[trail]]
+id = "florida-keys-overseas-heritage-trail"
+name = "Florida Keys Overseas Heritage Trail"
+country = "US"
+regions = ["FL"]
+length_mi = 106
+length_km = 171
+length_note = "A planned 106 mile corridor, with more than 90 miles paved"
+reason = "rail-trail-or-towpath"
+note = "Florida State Parks describe it as a multi-use bicycle and pedestrian resource that incorporates 23 of the historic Flagler Railroad bridges. It is paved in segments along the corridor from Key Largo to Key West, with more than 90 miles of trail on a planned 106 mile corridor."
+source_url = "https://www.floridastateparks.org/parks-and-trails/florida-keys-overseas-heritage-trail"
 decided = "2026-11-16"
 was_listed = false
 
@@ -236,6 +287,20 @@ decided = "2026-11-14"
 was_listed = true
 
 [[trail]]
+id = "iron-belle-trail"
+name = "Iron Belle Trail"
+country = "US"
+regions = ["MI"]
+length_mi = 1273
+length_km = 2049
+length_note = "1,273 miles planned for the hiking route; more than 70 percent complete"
+reason = "cannot-be-walked-through"
+note = "The Michigan Department of Natural Resources say the trail is currently more than 70 percent complete. The rest of the 1,273 mile hiking route is only mapped as proposed, with no connecting routes or through guide published."
+source_url = "https://www.michigan.gov/recsearch/trails/iron-belle-trail"
+decided = "2026-11-16"
+was_listed = true
+
+[[trail]]
 id = "katy-trail"
 name = "Katy Trail"
 country = "US"
@@ -301,6 +366,18 @@ decided = "2026-11-16"
 was_listed = false
 
 [[trail]]
+id = "natchez-trace"
+name = "Natchez Trace National Scenic Trail"
+country = "US"
+regions = ["MS", "AL", "TN"]
+length_note = "Five separate sections, over 60 miles in all; the longest is 26 miles"
+reason = "cannot-be-walked-through"
+note = "The National Park Service say the trail consists of five separate sections, over 60 miles in all. The longest, Yockanookany, is 26 miles, so no one walk from end to end exists."
+source_url = "https://www.nps.gov/natt/index.htm"
+decided = "2026-11-16"
+was_listed = true
+
+[[trail]]
 id = "nez-perce"
 name = "Nez Perce National Historic Trail"
 country = "US"
@@ -327,6 +404,18 @@ decided = "2026-11-14"
 was_listed = true
 
 [[trail]]
+id = "palmetto"
+name = "Palmetto Trail"
+country = "US"
+regions = ["SC"]
+length_note = "500 miles when complete; about 400 miles open in passages"
+reason = "cannot-be-walked-through"
+note = "The Palmetto Conservation Foundation say it will span 500 miles when complete, and publish about 400 miles as separate passages. There is no way across the gap between Columbia and Peak or across the Tyger River, and no through route is published."
+source_url = "https://www.palmettotrail.org/about/the-palmetto-trail"
+decided = "2026-11-16"
+was_listed = true
+
+[[trail]]
 id = "pine-mountain-state-scenic-trail"
 name = "Pine Mountain State Scenic Trail"
 country = "US"
@@ -340,6 +429,20 @@ source_url = "https://eec.ky.gov/Nature-Preserves/Locations/Pages/Pine%20Mountai
 decided = "2026-11-16"
 was_listed = false
 waiting_for = "The built trail reaches 50 miles in one continuous piece, or the whole planned trail can be walked through."
+
+[[trail]]
+id = "potomac-heritage"
+name = "Potomac Heritage National Scenic Trail"
+country = "US"
+regions = ["DC", "MD", "VA", "PA"]
+length_mi = 900
+length_km = 1448
+length_note = "A network of over 900 miles"
+reason = "network"
+note = "The National Park Service describe it as a network of trails stretching over 900 miles. They publish no single route to walk from end to end."
+source_url = "https://www.nps.gov/pohe/index.htm"
+decided = "2026-11-16"
+was_listed = true
 
 [[trail]]
 id = "rachel-carson-trail"
@@ -378,6 +481,19 @@ note = "The Squamish-Lillooet Regional District call it a non motorized multi us
 source_url = "https://www.slrd.bc.ca/services/recreation-culture/parks-trails/sea-sky-trail"
 decided = "2026-11-16"
 was_listed = false
+
+[[trail]]
+id = "sentier-national"
+name = "Sentier National"
+country = "CA"
+regions = ["QC"]
+length_km = 1830
+length_note = "About 1,830 km, in separate sections"
+reason = "cannot-be-walked-through"
+note = "Rando Quebec give the trail as 1,830 km long, in nine regional sections, and publish no continuous route to walk from end to end."
+source_url = "https://www.randoquebec.ca/sentier-national-au-quebec/"
+decided = "2026-11-16"
+was_listed = true
 
 [[trail]]
 id = "sentiers-de-lestrie"
@@ -444,6 +560,19 @@ decided = "2026-11-14"
 was_listed = false
 
 [[trail]]
+id = "voyageur"
+name = "Voyageur Trail"
+country = "CA"
+regions = ["ON"]
+length_km = 1100
+length_note = "About 1,100 km planned; built as separate sections"
+reason = "cannot-be-walked-through"
+note = "The association's vision is to build a continuous wilderness hiking trail from Sudbury through Sault Ste. Marie to Thunder Bay, some 1,100 km. Today it is separate sections kept by seven clubs, with no continuous route to walk."
+source_url = "https://www.voyageurtrail.ca/"
+decided = "2026-11-16"
+was_listed = true
+
+[[trail]]
 id = "xtexas-trail"
 name = "xTexas Trail"
 country = "US"
@@ -456,4 +585,3 @@ source_url = "https://www.xtexas.org/about-us"
 decided = "2026-11-16"
 was_listed = false
 waiting_for = "The association publish the route in a settled form that is no longer being rerouted."
-

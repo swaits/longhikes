@@ -5,7 +5,7 @@ name = "Alexander MacKenzie Heritage Trail"
 country = "CA"
 regions = ["BC"]
 length_km = 420
-length_note = "420 km, from the BC Geographical Names record"
+length_note = "420 km from the Blackwater River to Bella Coola, with a suggested hiking time of 25 to 30 days, as BC Parks gives it; the BC Geographical Names record gives the same figure."
 tier = "regional"
 designation = "Heritage trail under the Heritage Conservation Act (1987); forest recreation trail under the Forest Act (1987)"
 wave = 1
@@ -86,6 +86,15 @@ date = "2026-11-16"
 change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://bcparks.ca/tweedsmuir-park/hiking/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length note now says what the 420 kilometres is: the route from the Blackwater River to Bella Coola, as BC Parks gives it."
+fields = ["length_note"]
+basis = "BC Parks gives the length as 420 km with a suggested hiking time of 25 to 30 days, and the route on to Bella Coola."
 basis_url = "https://bcparks.ca/tweedsmuir-park/hiking/"
 asked_by = "the dataset's own check"
 outcome = "applied"

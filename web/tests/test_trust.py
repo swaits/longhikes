@@ -190,14 +190,14 @@ class InBrief(unittest.TestCase):
         self.assertIn("trail network", net[0])
         self.assertTrue(any(x.startswith("Most walks start at ") for x in net))
         part = self.sentences(load("allegheny-trail"))
-        self.assertTrue(any("computed from the part of the track on file, about 5% of the published length" in x for x in part))
+        self.assertTrue(any("computed from the part of the track on file, about 6% of the published length" in x for x in part))
         self.assertTrue(any(x == "This page has a GPX of part of the track to download." for x in part))
 
     def test_trail_without_a_track_and_french_name(self):
         free = self.sentences(load("circle-of-solitude"))
         self.assertTrue(free[-1].startswith("This site has no GPX for it"))
-        fr = load("sentier-national")
-        self.assertTrue(self.sentences(fr)[0].startswith("Sentier National (Quebec) is a "))
+        fr = load("traversee-charlevoix")
+        self.assertTrue(self.sentences(fr)[0].startswith("Traversée de Charlevoix is a "))
         self.assertIn('<span lang="fr">', str(trail.brief_sentences(fr)[0]))
 
     def test_a_place_name_that_starts_with_near_reads_mid_sentence(self):
@@ -239,13 +239,28 @@ class InBrief(unittest.TestCase):
             self.assertEqual("highest point" in paragraph,
                              bool(h.get("high_point") or h.get("high_point_m") or rec["derived"].get("elevation")), rec["id"])
 
-    def test_the_paragraph_is_in_the_page_head_before_the_buttons(self):
+    def test_the_map_area_comes_first_and_the_paragraph_is_under_it(self):
         rec = load("appalachian")
         body = str(trail.render(rec, SITE, [rec])[2])
-        self.assertLess(body.index('class="trail-lede"'), body.index('class="trail-brief"'))
-        self.assertLess(body.index('class="trail-brief"'), body.index('class="note trail-checked"'))
-        self.assertLess(body.index('class="note trail-checked"'), body.index('class="cluster trail-actions"'))
-        self.assertIn("<strong>In brief.</strong>", body)
+        order = ['class="titleblock', 'class="cluster trail-actions"', 'id="glance-title"', 'class="mapfig ',
+                 'id="brief-title"', 'class="trail-brief"', 'class="note trail-checked"']
+        at = [body.index(x) for x in order]
+        self.assertEqual(at, sorted(at), order)
+        self.assertIn("<h2 id=\"brief-title\">In brief</h2>", body)
+        self.assertIn('class="trail-summary"', body)  # the summary in full stays in the page, as text
+        self.assertLess(body.index('id="brief-title"'), body.index('id="morelinks-title"') if 'id="morelinks-title"' in body else len(body))
+
+    def test_the_lead_above_the_map_is_the_first_sentence_and_only_when_short(self):
+        rec = load("appalachian")
+        lead = text_of(trail.lead_text(rec))
+        self.assertTrue(hike.summary(rec).startswith(lead))
+        self.assertLessEqual(len(lead), trail.LEAD_MAX)
+        long_rec = copy.deepcopy(rec)
+        long_rec["hike"]["summary"] = "A " + "very " * 60 + "long first sentence. A second one."
+        self.assertEqual(str(trail.lead_text(long_rec)), "")
+        body = str(trail.render(long_rec, SITE, [long_rec])[2])
+        self.assertNotIn('class="trail-lede"', body)
+        self.assertIn("very very", body)  # but the whole summary is under the map
 
 
 def words_km(rec):

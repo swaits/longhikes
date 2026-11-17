@@ -6,8 +6,8 @@ short_name = "GET"
 short_name_url = "https://www.greateasterntrail.net/about-us/"
 country = "US"
 regions = ["AL", "GA", "TN", "KY", "VA", "WV", "MD", "PA", "NY"]
-length_km = 3200
-length_note = "about 2,000 mi"
+length_km = 2897
+length_note = "About 1,800 mi, as the Great Eastern Trail Association gives it: 'This path is 1800 miles long and crosses nine states' on its about page, and 'the 1800-mile trail' on its home page. Backpacker gives 1,600 mi, and the first end-to-end thru-hike was in 2013. An earlier version of this record gave about 2,000 mi, which no page read for this check says."
 tier = "regional"
 designation = "Great Eastern Trail Association; links existing trails"
 wave = "held"
@@ -29,7 +29,7 @@ source_checked = "2026-11-16"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "The relation's own distance tag is 2600 km, not 3200 km. The track is 34 parts: three long ones of 445, 428 and 351 km, and many short pieces with gaps between them. The sections that OpenStreetMap has not joined are missing, so the track is shorter than the published length."
+length_gap_note = "The relation's own distance tag is 2600 km, not 2897 km (the association's 1,800 mi). The track is 34 parts: three long ones of 445, 428 and 351 km, and many short pieces with gaps between them. The sections that OpenStreetMap has not joined are missing, so the track is shorter than the published length."
 
 [osm]
 relation = 1024490
@@ -47,9 +47,9 @@ logo_owner = "Great Eastern Trail Association"
 verified = true
 date = "2026-11-16"
 measured_km = 2366.2
-difference_percent = -26.1
+difference_percent = -18.3
 parts = 34
-note = "OSM relation 1024490: 2366.2 km in 34 parts, 26.1% short of 3200 km (about 2,000 mi). The relation reaches from central Alabama to the Finger Lakes Trail in New York. Its three longest parts are 445 km (Alabama to Tennessee), 428 km (Tennessee to Virginia) and 351 km (Pennsylvania to Maryland). The rest is short pieces, so there are gaps between sections."
+note = "OSM relation 1024490: 2366.2 km in 34 parts, 18.3% short of 2897 km (about 1,800 mi). The relation reaches from central Alabama to the Finger Lakes Trail in New York. Its three longest parts are 445 km (Alabama to Tennessee), 428 km (Tennessee to Virginia) and 351 km (Pennsylvania to Maryland). The rest is short pieces, so there are gaps between sections."
 
 [hike]
 summary = "The Great Eastern Trail links existing trails into a long footpath through the Appalachian Mountains, from Alabama to the Finger Lakes Trail in New York. It crosses nine states and is meant to be a non-motorized hiking trail. The linking is not finished, and new trail is still needed where there are gaps."
@@ -58,13 +58,18 @@ start = "Alabama"
 end = "Finger Lakes Trail, New York"
 shape = "point-to-point"
 travel = "trail"
-unfinished = "The trail is made of existing trails that are still being linked, and new trail is needed where gaps remain."
+unfinished = "The trail is made of existing trails that are still being linked, and new trail is needed where gaps remain. Backpacker reported in 2022 that the association had completed over 70 percent since 2007, and that the first end-to-end thru-hike, by two hikers, was in 2013."
 checked = "2026-11-13"
 
 [[hike.source]]
 url = "https://www.greateasterntrail.net/about-us/"
 publisher = "Great Eastern Trail Association"
 facts = ["official_url", "summary", "start", "end", "shape", "travel", "unfinished"]
+
+[[hike.source]]
+url = "https://www.backpacker.com/trips/trips-by-state/pennsylvania-trails/the-great-eastern-trail-could-be-the-next-appalachian-trail-heres-how-to-hike-part-of-it-now/"
+publisher = "Backpacker"
+facts = ["unfinished"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -83,5 +88,23 @@ change = "A track was added from OpenStreetMap relation 1024490, in place of rel
 fields = ["osm.relation", "source.licence_text", "source.line_absent_reason", "source.line_file", "source.line_source", "source.url"]
 basis = "OpenStreetMap relation 1024490, read on 2026-11-16 under the ODbL."
 basis_url = "https://www.openstreetmap.org/relation/1024490"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length note now says that end-to-end thru-hikes are on record, and gives the other lengths in print. The unfinished sentence says how much of the trail is complete."
+fields = ["length_note", "hike.unfinished"]
+basis = "Backpacker reports that the Great Eastern Trail Association has completed over 70 percent of the trail since 2007 and that the first thru-hike, in 2013, covered 1,600 miles; the association's own site refused automated reads."
+basis_url = "https://www.backpacker.com/trips/trips-by-state/pennsylvania-trails/the-great-eastern-trail-could-be-the-next-appalachian-trail-heres-how-to-hike-part-of-it-now/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length was changed from about 2,000 miles (3,200 km) to about 1,800 miles (2,897 km), the association's own figure. The earlier figure is not on any page the association publishes."
+fields = ["length_km", "length_note", "source.length_gap_note", "verification.difference_percent", "verification.note"]
+basis = "The Great Eastern Trail Association's about page says: 'This path is 1800 miles long and crosses nine states.' Its home page says the logo 'is posted on many places on the 1800-mile trail.'"
+basis_url = "https://www.greateasterntrail.net/about-us/"
 asked_by = "the dataset's own check"
 outcome = "applied"

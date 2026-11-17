@@ -8,7 +8,7 @@ import os
 import re
 import urllib.parse
 
-from . import browse, common, elevation, facets, hike, related, seo, words
+from . import browse, common, elevation, facets, hike, related, seo, sketch, words
 from .layout import OUTDOOR_STYLE
 from .markup import Markup, esc
 
@@ -242,6 +242,15 @@ def permit_sentence(rec):
     return text
 
 
+def built_clause(rec):
+    """", with about 290 miles (467 km) built" for an unfinished trail whose holder states the built
+    length; else "". HTML-safe text."""
+    if not rec.get("built_km"):
+        return ""
+    mi = words.fmt_int(words.km_to_mi(rec["built_km"]))
+    return f", with {esc(mi)} miles ({esc(words.fmt_km(rec['built_km']))} km) built"
+
+
 def brief_sentences(rec):
     """The "In brief" paragraph as a list of sentences in HTML, from the record's own fields only.
     A fact the record lacks is left out. At most MAX_BRIEF sentences, in the order a searcher
@@ -278,7 +287,7 @@ def brief_sentences(rec):
     article = "an" if mi.startswith("8") else "a"  # "an 81-mile", "an 800-mile"
     through = f" through {country}" if country else ""
     items.append((0, 0, f"{_name_html(rec)} is {article} {esc(mi)}-mile ({esc(km)} km) {esc(noun)}"
-                        f"{esc(tail)}{esc(through)} {esc(place_text(rec))}."))
+                        f"{esc(tail)}{esc(through)} {esc(place_text(rec))}{built_clause(rec)}."))
     unfinished = common.sentence(h.get("unfinished", ""))
     if unfinished and unfinished not in hike.summary(rec):  # the lede above may already say it
         items.append((4, 1, esc(unfinished)))
@@ -360,9 +369,11 @@ def brief_sentences(rec):
     return [text for _, _, text in kept]
 
 
-def brief(rec):
-    """The "In brief" paragraph for the top of a trail page: Markup."""
-    return Markup(f'<p class="trail-brief"><strong>In brief.</strong> {" ".join(brief_sentences(rec))}</p>')
+def brief(rec, label=True):
+    """The "In brief" paragraph of a trail: Markup. label: it opens with "In brief." (a trail page has
+    its own "In brief" heading over it and leaves the label out)."""
+    lead = "<strong>In brief.</strong> " if label else ""
+    return Markup(f'<p class="trail-brief">{lead}{" ".join(brief_sentences(rec))}</p>')
 
 
 def checked_line(rec):
@@ -393,8 +404,42 @@ def page_head(rec, author_links=None):
     heading = esc(common_name) if common_name else common.name(rec)
     full_name = f'<p class="titleblock__sub">Full name: {common.name(rec)}</p>' if common_name else ""
     plate = common.plate(rec, size="lg", link=True, eager=True) if has_plate else ""
-    summary = hike.summary(rec)
-    lede = common.rich(summary) if summary else fallback_lede(rec)
+    tag_html = common.badges(rec)
+    kicker = f'<p class="cluster">{tag_html}</p>' if tag_html else ""
+    lead = lead_line(rec)
+    define = route_definition() if route else ""
+    return f"""<div class="page-head page-head--trail">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{"".join(crumbs)}</ol></nav>
+    <header class="titleblock{" titleblock--with-plate" if has_plate else ""}">
+      {plate}
+      <div class="titleblock__text">
+        {kicker}
+        <h1>{heading}{abbr_html}</h1>
+        {full_name}{f'<p class="titleblock__sub">{lead_html(rec, lead, author_links)}</p>' if lead else ""}
+        {define}
+      </div>
+    </header>
+  </div>
+</div>"""
+
+
+# The longest first sentence of the summary that stands above the map (about two lines beside the
+# At a glance panel); a longer one is left to the "In brief" section below the map.
+LEAD_MAX = 180
+
+
+def lead_text(rec):
+    """The line above the map: the first sentence of the summary, or "" when it is longer than LEAD_MAX
+    (the whole summary is under the map either way). Markup."""
+    one = hike.one_line(rec)
+    if not one or len(one) > LEAD_MAX:
+        return ""
+    return Markup(f'<p class="trail-lede">{common.rich(one)}</p>')
+
+
+def action_buttons(rec):
+    """The buttons under the lead: the trail's own page, the GPX, Save."""
     actions = []
     official = official_link(rec)
     if official:
@@ -409,29 +454,21 @@ def page_head(rec, author_links=None):
     else:
         actions.append(f'<a class="button button--quiet" href="#track">GPX: {esc(facets.GPX_STATUS[facets.gpx(rec)])}</a>')
     actions.append(str(common.save_button(rec, row=False)))
-    tag_html = common.badges(rec)
-    kicker = f'<p class="cluster">{tag_html}</p>' if tag_html else ""
-    lead = lead_line(rec)
-    define = route_definition() if route else ""
-    return f"""<div class="page-head">
-  <div class="container">
-    <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{"".join(crumbs)}</ol></nav>
-    <header class="titleblock{" titleblock--with-plate" if has_plate else ""}">
-      {plate}
-      <div class="titleblock__text">
-        {kicker}
-        <h1>{heading}{abbr_html}</h1>
-        {full_name}{f'<p class="titleblock__sub">{lead_html(rec, lead, author_links)}</p>' if lead else ""}
-        {define}
-      </div>
-    </header>
-    <p class="trail-lede">{lede}</p>
-    {brief(rec)}
-    {checked_line(rec)}
-    <p class="cluster trail-actions">{"".join(actions)}</p>
-    {links_panel(rec)}
-  </div>
-</div>"""
+    return f'<p class="cluster trail-actions">{"".join(actions)}</p>'
+
+
+def trail_text(rec):
+    """The words under the map area: the summary in full, the "In brief" paragraph, the date of the
+    last check and the other pages about the trail. The text stays in the page for search engines."""
+    summary = hike.summary(rec)
+    lede = common.rich(summary) if summary else fallback_lede(rec)
+    return f"""<section class="trail-text" aria-labelledby="brief-title">
+  <h2 id="brief-title">In brief</h2>
+  <p class="trail-summary">{lede}</p>
+  {brief(rec, label=False)}
+  {checked_line(rec)}
+</section>
+{links_panel(rec)}"""
 
 
 def shape_label(rec, records):
@@ -468,6 +505,13 @@ def length_note(rec, records):
     return ""
 
 
+def length_asides(rec, records):
+    """What sits quietly under the length: the built figure of an unfinished trail, the holder's
+    larger figure with what it counts, then the link to the list the length puts the trail in."""
+    lines = [common.built_text(rec), common.system_text(rec), length_note(rec, records) or ""]
+    return Markup("<br>".join(str(line) for line in lines if line))
+
+
 def time_note(rec, records):
     """The estimate's note, then a link to the list of trails that take as long."""
     note = facets.estimate_note(rec)
@@ -485,7 +529,7 @@ def glance(rec, records=None):
     lists they put the trail in (left out when None)."""
     h = hike.table(rec)
     rows = [glance_row(facets.LENGTH, words.length(rec["length_km"], "stack", rec["derived"]["length_mi"]),
-                       length_note(rec, records))]
+                       length_asides(rec, records))]
     rows.append(glance_row(facets.TIME, facets.time_text(rec), time_note(rec, records)))
     season = facets.season_text(rec)
     if season:
@@ -565,14 +609,26 @@ def glance(rec, records=None):
         pending = f'<p class="note">{esc(names)} {verb} not on file for this trail yet.</p>'
     elev_caveat = elevation.coverage_caveat(elev) if elev else ""
     elev_note = f'<p class="note">{esc(elev_caveat)}</p>' if elev_caveat else ""
+    # On a narrow screen only the first facts show (length and time first) and a button opens the
+    # rest (style.css, app.js); with no JavaScript every fact shows.
     return f"""<section class="glance detail__glance" aria-labelledby="glance-title">
   <h2 class="glance__title" id="glance-title">At a glance</h2>
   <dl class="glance__facts">{"".join(rows)}</dl>
   {unfinished}{caution}{elev_note}{pending}
+  <button class="glance__toggle js-only" type="button" aria-expanded="false" data-glance-toggle>All the facts</button>
 </section>"""
 
 
 # Map or empty frame ---------------------------------------------------------
+
+def sketch_of(box, features, route_main=False):
+    """(data-frame attribute, the static sketch) of a map frame for the extent `box`: the ground the
+    live map opens on, and the drawing of the track on it (olt/sketch.py). Both are "" without a box."""
+    if not box:
+        return "", ""
+    fr = sketch.frame(box)
+    return f' data-frame="{",".join(f"{v:g}" for v in fr)}"', sketch.svg(features, fr, route_main=route_main)
+
 
 def map_figure(rec):
     src = rec["source"]
@@ -583,12 +639,13 @@ def map_figure(rec):
         legend += f"<li>{common.SWATCH_ALT}Alternates and connectors</li>"
     bbox = rec["derived"].get("map_bbox") or rec["derived"].get("bbox")
     bbox_attr = f' data-bbox="{",".join(str(v) for v in bbox)}"' if bbox else ""
+    frame_attr, drawing = sketch_of(bbox, sketch.trail_features(rec["id"]), route_main=route)
     credit = common.sentence(common.credit_text(src.get("attribution", "")))
-    return f"""<figure class="mapfig mapfig--detail detail__map" data-map="trail" data-src="/trails/{esc(rec["id"])}/map.json" data-route="{"yes" if route else "no"}"{bbox_attr} data-outdoor="{OUTDOOR_STYLE}">
+    return f"""<figure class="mapfig mapfig--detail detail__map" data-map="trail" data-src="/trails/{esc(rec["id"])}/map.json" data-route="{"yes" if route else "no"}"{bbox_attr}{frame_attr} data-outdoor="{OUTDOOR_STYLE}">
   <div class="mapfig__frame">
     <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
     <div class="map" role="region" aria-label="Map of the {esc(rec["name"])}">
-      <div class="map__fallback"></div>
+      <div class="map__fallback">{drawing}</div>
       <div class="map__canvas"></div>
       <p class="map__status" role="status">The map needs JavaScript. Download the GPX or GeoJSON file from this page.</p>
     </div>
@@ -753,11 +810,12 @@ def sketch_figure(rec):
             legend_text = "No GPX here: start only"
     _title, status, reason, rule, actions_html = _no_gpx_parts(rec)
     reason_html = reason if isinstance(reason, Markup) else common.rich(reason)
-    return f"""<figure class="mapfig mapfig--detail detail__map" id="track" data-map="sketch" data-src="/trails/{esc(rec["id"])}/sketch.json" data-route="{"yes" if route else "no"}"{bbox_attr} data-outdoor="{OUTDOOR_STYLE}">
+    frame_attr, drawing = sketch_of(box, sketch.trail_features(rec["id"]), route_main=route)
+    return f"""<figure class="mapfig mapfig--detail detail__map" id="track" data-map="sketch" data-src="/trails/{esc(rec["id"])}/sketch.json" data-route="{"yes" if route else "no"}"{bbox_attr}{frame_attr} data-outdoor="{OUTDOOR_STYLE}">
   <div class="mapfig__frame">
     <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
     <div class="map" role="region" aria-label="Map showing the start and end of the {esc(rec["name"])}; no GPX here">
-      <div class="map__fallback"></div>
+      <div class="map__fallback">{drawing}</div>
       <div class="map__canvas"></div>
       <p class="map__status" role="status">The map needs JavaScript. The ends of the trail are named below it.</p>
     </div>
@@ -1072,8 +1130,15 @@ def record_block(rec):
         rows.append(fact("Inclusion", words.label(words.INCLUSION, inc), words.meaning(words.INCLUSION, inc)))
     rows += [
         Markup(f'<div><dt>Where</dt><dd>{where}</dd></div>'),
-        Markup(f'<div><dt>Published length</dt><dd>{words.length(rec["length_km"], "inline", rec["derived"]["length_mi"])}'
-               f'<small>{esc(rec.get("length_note", ""))}. A check value, not measured from the track.</small></dd></div>'),
+        Markup(f'<div><dt>Length</dt><dd>{words.length(rec["length_km"], "inline", rec["derived"]["length_mi"])}'
+               f'<small>{esc(common.sentence(rec.get("length_note", "")))} The end-to-end length of the trail&rsquo;s '
+               f'canonical path, a check value, not measured from the track.</small></dd></div>'),
+        fact("Built length", common.built_text(rec), "How much of the trail is built, as the holder states it.")
+        if rec.get("built_km") else "",
+        fact("Whole system", Markup(f'{words.length(rec["system_km"], "inline")}, counting '
+                                    f'{esc(str(rec["system_note"]).strip().rstrip("."))}'),
+             "The holder's larger figure, kept apart from the length.")
+        if rec.get("system_km") else "",
         abbreviation_fact(rec),
         fact("Record ID", Markup(code(rec["id"])), "Stable: the directory name, never changed"),
     ]
@@ -1539,7 +1604,10 @@ def description(rec):
     then the first sentence of the summary (or the designation where there is none)."""
     mi = words.fmt_int(rec["derived"]["length_mi"])
     km = words.fmt_km(rec["length_km"])
-    text = f"A {kind_word(rec)} of {mi} miles ({km} km) {places_short(rec)}"
+    built = ""
+    if rec.get("built_km"):
+        built = f", {words.fmt_int(words.km_to_mi(rec['built_km']))} miles built,"
+    text = f"A {kind_word(rec)} of {mi} miles ({km} km){built} {places_short(rec)}"
     days = hike.days(rec)
     if days:
         text += f", usually {days}"
@@ -1621,20 +1689,25 @@ def render(rec, site, records=None, author_links=None):
     """Return (title, description, body HTML, needs_map) for one trail.
     records: every trail, for the ways onward at the foot (left out when None)."""
     has_track = common.has_line(rec)
-    sketch = hike.sketch_points(rec) if not has_track else []
-    has_map = has_track or bool(sketch)
+    sketch_points = hike.sketch_points(rec) if not has_track else []
+    has_map = has_track or bool(sketch_points)
     aside = downloads_panel(rec) + guides_panel(rec)
     aside_html = (f'<aside class="detail__aside" aria-label="{"Downloads" if has_track else "Where to get the route"}">'
                   f'{aside}</aside>') if aside else ""
     profile = elevation_figure(rec)
+    side = f'<div class="detail__side">{glance(rec, records)}{aside_html}</div>'
     body = f"""{page_head(rec, author_links)}
 <div class="container detail{"" if aside else " detail--no-aside"}{"" if has_map else " detail--no-map"}{" detail--with-profile" if profile else ""}">
-  {glance(rec, records)}
-  {map_figure(rec) if has_track else sketch_figure(rec) if sketch else empty_frame(rec)}
+  <div class="detail__lead">
+    {lead_text(rec)}
+    {action_buttons(rec)}
+  </div>
+  {side}
+  {map_figure(rec) if has_track else sketch_figure(rec) if sketch_points else empty_frame(rec)}
   {profile}
-  {aside_html}
 </div>
 <div class="container trail-more">
+  {trail_text(rec)}
   {onward(rec, records)}
   {page_foot(rec, site)}
   {about_data(rec, site)}

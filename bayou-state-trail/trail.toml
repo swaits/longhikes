@@ -1,0 +1,95 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "bayou-state-trail"
+name = "Bayou State Trail"
+country = "US"
+regions = ["LA"]
+length_km = 772
+length_note = "480 mi, the official miles the Bayou State Trail Association gives on its news, about, membership and 480 Club pages; its trails page gives three regions of about 140, 180 and 160 miles, which add up to 480. The association's home page calls the trail a 470 mile footpath, and its news and about pages say the hikeable route runs nearly 500 miles (the about page also says 500 miles). Its about page names Ivan Lake Recreation Area, north of Shreveport, as the northern start, and its home page names Bodcau Wildlife Management Area."
+tier = "regional"
+designation = "Bayou State Trail Association, a Louisiana non-profit (established 2021)"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Bayou State Trail Association (publishes the trail)"
+publisher_url = "https://www.bayoustatetrail.com/"
+url = "https://www.bayoustatetrail.com/trails"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included. The association's site shows a map image on its trails page and links a FarOut guide from its home page, and states no terms for sharing a track or a map file (pages read 2026-11-16). OpenStreetMap has no route relation for the trail."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap relation named Bayou State Trail was found."
+source_checked = "2026-11-16"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. The association's site states no terms for sharing a track, and it offers its route only as a map image and a FarOut guide link. No OpenStreetMap route relation for the trail was found, by a name search on Overpass and on Nominatim, and by a search on the association's name as operator."
+
+[osm]
+relation = 0
+note = "Searched 2026-11-16: no OpenStreetMap route relation named Bayou State Trail, none operated by the association, and none with ref BST in Louisiana."
+
+[shield]
+status = "use-real-logo"
+logo_source = "https://assets.cdn.filesafe.space/YuEAnZQMJ3dJe4ZafAYi/media/655c55e00226f0b3a6099c50.png"
+contact = "Bayou State Trail Association"
+note = "The association's round badge: a pine tree and a sunburst in purple, green and gold rings, with the words Bayou State Trail Association above and Established 2021 below. It is the brand logo in the header of bayoustatetrail.com, and the association has no other mark for the trail, so it is used as the trail's emblem, as the Benton MacKaye Trail and the Pacific Northwest Trail do with their associations' roundels. The file is the original at 500 px, transparent, unaltered. No terms for use of the logo are stated on the site. Read 2026-11-16."
+logo_file = "shield.png"
+logo_owner = "Bayou State Trail Association"
+
+[verification]
+verified = false
+note = "No track to measure. No OpenStreetMap relation was found."
+
+[hike]
+summary = "The Bayou State Trail crosses Louisiana from Bodcau Wildlife Management Area in the north to Morgan City in the south. It passes through public lands such as Kisatchie National Forest and Chicot State Park, then the Atchafalaya Basin and Cajun towns. The Bayou State Trail Association, formed in 2021, published the route in August 2024."
+official_url = "https://www.bayoustatetrail.com/"
+start = "Bodcau Wildlife Management Area, Louisiana"
+end = "Morgan City, Louisiana"
+shape = "point-to-point"
+terrain = ["forest"]
+caution = "The association does not say how much of the route is trail and how much is road or town walking. It reports that the Hwy 182 bridge over the Atchafalaya River, between Berwick and Morgan City, is closed until the fall of 2026, and that the southern end is for now at the Berwick Branch Library, 3512 5th Street."
+checked = "2026-11-16"
+
+[[hike.source]]
+url = "https://www.bayoustatetrail.com/"
+publisher = "Bayou State Trail Association"
+facts = ["summary", "official_url", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://www.bayoustatetrail.com/trails"
+publisher = "Bayou State Trail Association"
+facts = ["summary", "terrain", "caution"]
+
+[[hike.source]]
+url = "https://www.bayoustatetrail.com/news"
+publisher = "Bayou State Trail Association"
+facts = ["summary", "shape"]
+
+[[hike.source]]
+url = "https://www.bayoustatetrail.com/about"
+publisher = "Bayou State Trail Association"
+facts = ["summary", "terrain"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-16"
+change = "The record was added: Bayou State Trail."
+fields = ["record"]
+basis = "The record's own source entry: Bayou State Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The association's round badge was added as the trail's emblem. The record had said the trail has no emblem of its own."
+fields = ["shield.status", "shield.logo_source", "shield.logo_file", "shield.logo_owner"]
+basis = "The badge is the brand logo in the header of the association's own site, and the file was taken from there."
+basis_url = "https://www.bayoustatetrail.com/"
+asked_by = "the dataset's own check"
+outcome = "applied"

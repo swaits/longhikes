@@ -14,7 +14,8 @@ Trail pages change: a holder renames a trail, a section closes, a length is revi
 2. Open every page the record cites: each `[[hike.source]]` url, `hike.official_url`, `source.publisher_url`, `source.url` and `source.permission_url` where present, the `[[guide]]` pages, and the pages named in `short_name_url` and `length_note`. Then open the holder's or author's current official site for the trail, even if the record does not cite its current address, and follow a moved page to where it went. `links.csv` in the staging directory says which of the record's addresses are dead, redirected or refused; use it to find where to start, and still read the page itself.
 3. Check each of these against what the pages say now:
    - the name, and the holder or author
-   - the length, and what it counts (built or planned, with or without side trails)
+   - the length, and what it counts (built or planned, with or without side trails). The record's `length_km` must be one end-to-end walk of the canonical path: one branch at a split, no side trails, no stretch counted twice, no system total. If the page's figure is a system or planned total, find the end-to-end figure; the larger figure belongs in `system_km`. If the trail is partly unbuilt, check `built_km` and the `hike.unfinished` sentence against the page
+   - whether the trail can be walked from one end to the other today: published in one piece, or with road links the holder publishes as the way through, or with end-to-end walks on record. Separate pieces or a gap with no way across is a finding
    - both ends (and for a loop the usual trailhead), by place name
    - allowed uses: hiking, bicycles, horses, dogs, motor vehicles
    - permits, reservations and fees for walking the whole trail
@@ -28,7 +29,7 @@ Trail pages change: a holder renames a trail, a section closes, a length is revi
    - Something changed: stage a `change` proposal with one `[[proposal.edit]]` per field, each with the `page` and the `quote` that support it, a `[proposal.history]`, and also a `verified` proposal for what you checked and found unchanged.
    - Pages disagree with each other, or with the record, and you cannot tell which is right: do not edit. Write a `could-not-check` proposal that says what disagrees and which pages say what.
    - A request recorded in the history is contradicted by the holder's page: a `declined` proposal, not a change.
-   - The pages say the trail no longer exists, has been merged into another, or can no longer be walked through: never propose removing it. Stage a `could-not-check` proposal with the pages and sentences, because whether a trail still belongs is the owner's decision.
+   - The pages say the trail no longer exists, has been merged into another, or can no longer be walked through from one end to the other: never propose removing it. Stage a `could-not-check` proposal with the pages and sentences, because whether a trail still belongs is the owner's decision.
 
 ## The hard part
 

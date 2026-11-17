@@ -8,3 +8,48 @@ members = ["appalachian", "pacific-crest", "continental-divide"]
 definition = "The Triple Crown of Hiking is the award the American Long Distance Hiking Association, West gives for walking the whole of the Appalachian, Pacific Crest and Continental Divide trails."
 source_url = "https://www.aldhawest.org/triple-crown"
 source_publisher = "American Long Distance Hiking Association, West"
+
+# The lists the home page offers under "Start from a list", in the order of `home`. `key` is a
+# list's key (the last part of its address under /lists/; "routes" for /routes/). Lists with no
+# `home` are not on the home page; /lists/ has them all. A list that is not shown today (fewer than
+# 5 trails, or nearly every trail) is left out of the row. Fields are in docs/schema.md.
+
+[[list]]
+key = "national-scenic-trails"
+home = 1
+
+[[list]]
+key = "routes"
+home = 2
+
+[[list]]
+key = "high-routes"
+home = 3
+
+[[list]]
+key = "loops"
+home = 4
+
+[[list]]
+key = "under-100-miles"
+home = 5
+
+[[list]]
+key = "a-week-or-less"
+home = 6
+
+[[list]]
+key = "one-to-two-weeks"
+home = 7
+
+[[list]]
+key = "a-month-or-more"
+home = 8
+
+[[list]]
+key = "with-gpx"
+home = 9
+
+[[list]]
+key = "canada"
+home = 10

@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-204 trails, 126 with a track and 78 with no track included. Of these, 57 are routes: 1 with a track and 56 without.
+196 trails, 118 with a track and 78 with no track included. Of these, 57 are routes: 1 with a track and 56 without.
 
 <!-- END COUNTS -->
 
@@ -18,9 +18,11 @@ The counts at this release:
 
 A long trail here is a named, continuous walking route, or a named loop, of at least 50 miles (80 km), in the United States or Canada: either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a route, as described below. The floor is 50 miles because that is about what multi-day wilderness backpacking takes. A small number of well-known multi-day trails between 60 km and 80 km are also listed.
 
+A trail's length is the end-to-end length of its canonical path: one walk from one end to the other, with one branch taken at a split, no side trails, no stretch counted twice and no system total. The floor applies to that length. A trail must also be walkable from one end to the other today. A trail published in separate pieces, or with gaps that have no way across, is not listed, and goes in `left-out.toml`. Road links that the holder publishes as the way through count as walkable, and so does evidence that people have walked it end to end. A trail that can be walked through but is partly unbuilt is listed: its length is the holder's end-to-end route, and the built length is stated beside it. A larger figure that the holder publishes, such as a system total or a planned total, is kept as a separate, labelled fact.
+
 Not listed: paths made mainly for cycling, such as gravel rail trails and canal towpaths, and historic trails that are mainly driving routes with short walkable pieces.
 
-Every United States National Scenic Trail is listed. Other trails are listed when they meet the rule above.
+A United States National Scenic Trail is listed when it can be walked from one end to the other. The Natchez Trace and the Potomac Heritage National Scenic Trails cannot be, and are in `left-out.toml`. Other trails are listed when they meet the rule above.
 
 Routes are listed too, at the same 50-mile floor. A route is a trail that a hiker worked out and published: a high route, a traverse, or a loop of linked trails. Its record names the author and says where the route is got from: the guidebook, map set or page, and whether it is free or sold. Whether a track is included follows the author's choice:
 
@@ -40,9 +42,9 @@ A trail may be listed with no track included, when no track for it may be shared
 | --- | --- | --- | --- | ---: | --- | --- |
 | akshayuk-pass | Akshayuk Pass | CA | NU | 97 | no | none-stated |
 | alexander-mackenzie | Alexander MacKenzie Heritage Trail | CA | BC | 420 | yes | ODbL-1.0 |
-| allegheny-trail | Allegheny Trail | US | WV | 530 | yes | ODbL-1.0 |
+| allegheny-trail | Allegheny Trail | US | WV | 509 | yes | ODbL-1.0 |
 | alpine-trail-7 | Alpine Trail #7 | US | MT | 88 | yes | us-gov-public-domain |
-| american-discovery-trail | American Discovery Trail | US | DE, MD, DC, WV, OH, KY, IN, IL, IA, MO, KS, NE, CO, UT, NV, CA | 10943 | yes | ODbL-1.0 |
+| american-discovery-trail | American Discovery Trail | US | DE, MD, DC, WV, OH, KY, IN, IL, IA, MO, KS, NE, CO, UT, NV, CA | 8060 | yes | ODbL-1.0 |
 | appalachian | Appalachian National Scenic Trail | US | GA, NC, TN, VA, WV, MD, PA, NJ, NY, CT, MA, VT, NH, ME | 3537 | yes | us-gov-public-domain |
 | arizona | Arizona National Scenic Trail | US | AZ | 1287 | yes | ODbL-1.0 |
 | avon | Avon Trail | CA | ON | 130 | yes | ODbL-1.0 |
@@ -50,8 +52,8 @@ A trail may be listed with no track included, when no track for it may be shared
 | baker | Baker Trail | US | PA | 216 | yes | ODbL-1.0 |
 | bartram | Bartram Trail | US | GA, NC | 180 | yes | ODbL-1.0 |
 | batona | Batona Trail | US | NJ | 80 | yes | ODbL-1.0 |
-| bay-area-ridge | Bay Area Ridge Trail | US | CA | 885 | yes | ODbL-1.0 |
 | bay-circuit | Bay Circuit Trail | US | MA | 370 | yes | ODbL-1.0 |
+| bayou-state-trail | Bayou State Trail | US | LA | 772 | no | none-stated |
 | benton-mackaye | Benton MacKaye Trail | US | GA, TN, NC | 463 | yes | ODbL-1.0 |
 | black-canyon | Black Canyon National Recreation Trail | US | AZ | 129 | yes | us-gov-public-domain |
 | border-route | Border Route Trail | US | MN | 105 | yes | ODbL-1.0 |
@@ -65,7 +67,6 @@ A trail may be listed with no track included, when no track for it may be shared
 | california-coastal | California Coastal Trail | US | CA | 1931 | no | none-stated |
 | canol | Canol Heritage Trail | CA | NT | 371 | yes | ODbL-1.0 |
 | centennial-sd | Centennial Trail | US | SD | 179 | yes | ODbL-1.0 |
-| chuck-keiper | Chuck Keiper Trail | US | PA | 80 | yes | ODbL-1.0 |
 | cohos | Cohos Trail | US | NH | 270 | yes | ODbL-1.0 |
 | colorado-trail | Colorado Trail | US | CO | 782 | yes | us-gov-public-domain |
 | conestoga-trail | Conestoga Trail | US | PA | 103 | yes | ODbL-1.0 |
@@ -75,20 +76,19 @@ A trail may be listed with no track included, when no track for it may be shared
 | cottonwood-trail | Cottonwood Trail | CA | YT | 85 | no | none-stated |
 | cranberry-lake-50 | Cranberry Lake 50 | US | NY | 80 | yes | ODbL-1.0 |
 | cross-vermont | Cross Vermont Trail | US | VT | 145 | yes | ODbL-1.0 |
-| cumberland-trail | Cumberland Trail | US | TN | 480 | yes | ODbL-1.0 |
 | dan-zhur-donjek | Dän Zhùr (Donjek) Route | CA | YT | 110 | no | none-stated |
 | donut-hole | Donut Hole Trail | US | PA | 152 | yes | ODbL-1.0 |
 | east-beach-trail | East Beach Trail (Naikoon) | CA | BC | 90 | no | none-stated |
 | east-coast-trail | East Coast Trail (Newfoundland) | CA | NL | 336 | yes | ODbL-1.0 |
 | finger-lakes | Finger Lakes Trail | US | NY | 933 | yes | ODbL-1.0 |
-| florida | Florida National Scenic Trail | US | FL | 2414 | yes | ODbL-1.0 |
+| florida | Florida National Scenic Trail | US | FL | 1818 | yes | ODbL-1.0 |
 | foothills | Foothills Trail | US | SC, NC | 122 | yes | ODbL-1.0 |
 | fremont | Fremont National Recreation Trail | US | OR | 216 | yes | us-gov-public-domain |
 | ganaraska | Ganaraska Hiking Trail | CA | ON | 500 | yes | ODbL-1.0 |
-| general-george-crook | General George Crook National Recreation Trail | US | AZ | 95 | yes | us-gov-public-domain |
+| general-george-crook | General George Crook National Recreation Trail | US | AZ | 222 | yes | us-gov-public-domain |
 | grand-valley-trail | Grand Valley Trail | CA | ON | 240 | yes | ODbL-1.0 |
 | great-divide-trail | Great Divide Trail | CA | AB, BC | 1130 | yes | ODbL-1.0 |
-| great-eastern | Great Eastern Trail | US | AL, GA, TN, KY, VA, WV, MD, PA, NY | 3200 | yes | ODbL-1.0 |
+| great-eastern | Great Eastern Trail | US | AL, GA, TN, KY, VA, WV, MD, PA, NY | 2897 | yes | ODbL-1.0 |
 | guadalupe-ridge-trail | Guadalupe Ridge Trail | US | TX, NM | 161 | no | none-stated |
 | high-country-pathway | High Country Pathway | US | MI | 132 | yes | ODbL-1.0 |
 | high-sierra | High Sierra Trail | US | CA | 116 | yes | ODbL-1.0 |
@@ -100,7 +100,6 @@ A trail may be listed with no track included, when no track for it may be shared
 | ice-age | Ice Age National Scenic Trail | US | WI | 1931 | yes | ODbL-1.0 |
 | idaho-centennial | Idaho Centennial Trail | US | ID | 1448 | yes | ODbL-1.0 |
 | international-appalachian-trail-maine | International Appalachian Trail, Maine section | US | ME | 222 | no | none-stated |
-| iron-belle-trail | Iron Belle Trail (hiking route) | US | MI | 2049 | no | none-stated |
 | island-walk | The Island Walk | CA | PE | 700 | yes | ODbL-1.0 |
 | itijjagiaq-trail | Itijjagiaq Trail | CA | NU | 120 | no | none-stated |
 | john-muir | John Muir Trail | US | CA | 340 | yes | ODbL-1.0 |
@@ -126,7 +125,6 @@ A trail may be listed with no track included, when no track for it may be shared
 | midstate-ma | Midstate Trail (Massachusetts) | US | MA | 148 | yes | ODbL-1.0 |
 | monadnock-sunapee | Monadnock-Sunapee Greenway | US | NH | 80 | yes | ODbL-1.0 |
 | mountains-to-sea | Mountains-to-Sea Trail | US | NC | 1890 | yes | ODbL-1.0 |
-| natchez-trace | Natchez Trace National Scenic Trail | US | MS, AL, TN | 105 | yes | us-gov-public-domain |
 | nepisiguit-migmaq-trail | Sentier Nepisiguit Mi'gmaq Trail | CA | NB | 150 | yes | ODbL-1.0 |
 | new-england | New England National Scenic Trail | US | CT, MA | 378 | yes | us-gov-public-domain |
 | north-boundary | North Boundary Trail | CA | AB | 159 | no | none-stated |
@@ -142,13 +140,11 @@ A trail may be listed with no track included, when no track for it may be shared
 | ottawa-temiskaming-highland-trail | Ottawa-Temiskaming Highland Trail | CA | ON | 142 | no | none-stated |
 | ouachita | Ouachita National Recreation Trail | US | AR, OK | 359 | yes | ODbL-1.0 |
 | ozark-highlands | Ozark Highlands Trail | US | AR | 523 | yes | ODbL-1.0 |
-| ozark-trail | Ozark Trail (Missouri) | US | MO | 630 | yes | ODbL-1.0 |
+| ozark-trail | Ozark Trail (Missouri) | US | MO | 370 | yes | ODbL-1.0 |
 | pacific-crest | Pacific Crest National Scenic Trail | US | CA, OR, WA | 4265 | yes | CC-BY-4.0 |
 | pacific-northwest | Pacific Northwest National Scenic Trail | US | MT, ID, WA | 1931 | yes | us-gov-public-domain |
-| palmetto | Palmetto Trail | US | SC | 800 | yes | ODbL-1.0 |
 | paumanok-path | Paumanok Path | US | NY | 201 | yes | ODbL-1.0 |
 | pinhoti | Pinhoti Trail | US | AL, GA | 540 | yes | ODbL-1.0 |
-| potomac-heritage | Potomac Heritage National Scenic Trail | US | DC, MD, VA, PA | 1448 | yes | us-gov-public-domain |
 | prescott-circle | Prescott Circle Trail | US | AZ | 90 | yes | ODbL-1.0 |
 | pukaskwa-coastal | Pukaskwa Coastal Hiking Trail | CA | ON | 60 | yes | ODbL-1.0 |
 | quehanna | Quehanna Trail | US | PA | 119 | yes | ODbL-1.0 |
@@ -156,9 +152,8 @@ A trail may be listed with no track included, when no track for it may be shared
 | ring-the-peak | Ring the Peak Trail | US | CO | 101 | no | none-stated |
 | river-to-river | River to River Trail | US | IL | 257 | yes | ODbL-1.0 |
 | sentier-international-appalaches | Sentier international des Appalaches (International Appalachian Trail, Quebec and New Brunswick) | CA | QC, NB | 1177 | yes | ODbL-1.0 |
-| sentier-national | Sentier National (Quebec) | CA | QC | 1500 | yes | ODbL-1.0 |
 | shawangunk-ridge-trail | Shawangunk Ridge Trail | US | NJ, NY | 114 | yes | ODbL-1.0 |
-| sheltowee-trace | Sheltowee Trace National Recreation Trail | US | KY, TN | 515 | yes | ODbL-1.0 |
+| sheltowee-trace | Sheltowee Trace National Recreation Trail | US | KY, TN | 552 | yes | ODbL-1.0 |
 | shenipsit-trail | Shenipsit Trail | US | CT | 80 | yes | ODbL-1.0 |
 | solitude-loop | Solitude Loop Trail | US | WY | 89 | yes | us-gov-public-domain |
 | south-boundary | South Boundary Trail | CA | AB | 121 | no | none-stated |
@@ -178,7 +173,6 @@ A trail may be listed with no track included, when no track for it may be shared
 | tuscarora | Tuscarora Trail | US | PA, MD, VA, WV | 406 | yes | ODbL-1.0 |
 | uinta-highline | Uinta Highline Trail | US | UT | 167 | yes | ODbL-1.0 |
 | vancouver-island | Vancouver Island Trail | CA | BC | 800 | yes | ODbL-1.0 |
-| voyageur | Voyageur Trail | CA | ON | 1100 | yes | ODbL-1.0 |
 | warrior-trail | Warrior Trail | US | PA, WV | 108 | no | none-stated |
 | waskahegan | Waskahegan Trail | CA | AB | 309 | no | none-stated |
 | west-coast-trail | West Coast Trail | CA | BC | 75 | yes | ODbL-1.0 |

@@ -2,6 +2,7 @@
 
     glossary.toml     [[term]]        id, term, definition, optional source_url, see
     collections.toml  [[collection]]  id, name, members, definition, source_url, source_publisher
+                      [[list]]        key, home (the lists the home page shows, and their order)
     authors.toml      [[author]]      name, credits, optional kind
 
 Each function appends one message per problem to `errors`. Used by tools/validate.py, which passes
@@ -9,10 +10,24 @@ the records it has read. Python 3 standard library only. Fields are in docs/sche
 """
 import os
 import re
+import sys
 import tomllib
 
 ID_RE = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 DASH_RE = re.compile(r"[–—]| - ")
+
+
+def built_in_list_keys():
+    """The keys of the lists defined in web/olt/browse.py, or None when the generator cannot be read."""
+    web = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "web")
+    sys.path.insert(0, web)
+    try:
+        from olt import browse
+        return {lst.key for lst in browse.LISTS}
+    except Exception:  # noqa: BLE001 - without the generator the keys are not checked
+        return None
+    finally:
+        sys.path.remove(web)
 
 
 def _load(root, name, errors):
@@ -120,6 +135,38 @@ def check_collection_entries(entries, trail_ids, errors, where="collections.toml
                 errors.append(f"{who} member {m} is not a trail in the dataset")
 
 
+def check_list_entries(entries, list_keys, errors, where="collections.toml"):
+    """The [[list]] entries: a list's key and its place on the home page. Optional.
+    list_keys: the keys of the lists defined in web/olt/browse.py."""
+    if entries is None:
+        return
+    if not isinstance(entries, list):
+        errors.append(f"{where}: [[list]] must be an array of tables")
+        return
+    seen_keys, seen_home = set(), {}
+    for i, e in enumerate(entries, 1):
+        if not isinstance(e, dict):
+            errors.append(f"{where}: [[list]] entry {i} must be a table")
+            continue
+        who = f"{where}: [[list]] {e.get('key') or 'entry ' + str(i)}"
+        check_unknown(e, {"key", "home"}, who, errors)
+        key = _text(e, "key", who, errors)
+        if key and list_keys is not None and key not in list_keys:
+            errors.append(f"{who} is not the key of a list in web/olt/browse.py")
+        if key in seen_keys:
+            errors.append(f"{who} appears twice")
+        seen_keys.add(key)
+        home = e.get("home")
+        if home is None:
+            continue
+        if isinstance(home, bool) or not isinstance(home, int) or home < 1:
+            errors.append(f"{who} home must be a whole number from 1")
+        elif home in seen_home:
+            errors.append(f"{who} home {home} is also the place of {seen_home[home]}")
+        else:
+            seen_home[home] = key
+
+
 def check_author_entries(entries, routes, errors, where="authors.toml"):
     """routes: [(trail id, route.creator)] for every route in the dataset."""
     if not isinstance(entries, list) or not entries:
@@ -162,9 +209,10 @@ def check_datafiles(root, trails, errors):
         check_glossary_entries(doc.get("term"), errors)
     doc = _load(root, "collections.toml", errors)
     if doc is not None:
-        for name in sorted(set(doc) - {"collection"}):
+        for name in sorted(set(doc) - {"collection", "list"}):
             errors.append(f"collections.toml: unknown top level field {name}")
         check_collection_entries(doc.get("collection"), {r.get("id") for r in trails}, errors)
+        check_list_entries(doc.get("list"), built_in_list_keys(), errors)
     doc = _load(root, "authors.toml", errors)
     if doc is not None:
         for name in sorted(set(doc) - {"author"}):

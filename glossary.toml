@@ -104,7 +104,7 @@ see = ["/lists/a-month-or-more/"]
 [[term]]
 id = "published-length"
 term = "Published length"
-definition = "The length the trail's holder or author gives, shown in miles with kilometres after. Where a track is included, its measured length is checked against it."
+definition = "The end-to-end length of a trail's canonical path, as its holder or author gives it: one walk from one end to the other, with one branch at a split, no side trails and no system total. It is shown in miles with kilometres after. Where a track is included, its measured length is checked against it."
 see = ["/method/", "/numbers/"]
 
 [[term]]
@@ -134,5 +134,5 @@ see = ["/numbers/highest-points/"]
 [[term]]
 id = "unfinished"
 term = "Unfinished trail"
-definition = "A trail that is not complete on the ground. Its page says how much exists, as a source states it."
+definition = "A trail that is not complete on the ground but can still be walked through. Its length is the holder's end-to-end route, and its page gives the built length beside it where the holder states one."
 see = ["/lists/unfinished/"]

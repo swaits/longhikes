@@ -16,23 +16,36 @@ def head(h1, lede_html, crumbs, *, kicker=""):
 </div></div>"""
 
 
-def table(headers, rows, *, caption="", numeric=(), row_heads=False):
+# A table with at least this many columns is set as one block per row on a phone (style.css).
+STACK_COLUMNS = 4
+
+
+def table(headers, rows, *, caption="", numeric=(), row_heads=False, compare=False):
     """A table in the site's table wrapper. headers: column titles; rows: lists of HTML cells
     (Markup, or text that is escaped); numeric: column numbers set at the end of the cell;
-    row_heads: the first cell of each row is a row heading."""
-    def cell(i, value, head=False):
+    row_heads: the first cell of each row is a row heading.
+
+    Every cell carries its label (data-label: its column's title, or in a compare table its row's
+    heading) so that a phone can set the same markup as blocks, with no sideways scrolling
+    (style.css): one block per row where the table has STACK_COLUMNS columns or more, and
+    compare: a table of figures down the side and one trail in each column, with a fixed layout
+    of equal columns, and on a phone one block per trail, headed by the trail's name."""
+    def cell(i, value, label, head=False):
         text = value if isinstance(value, Markup) else esc(value)
         cls = ' class="num"' if i in numeric else ""
         if head:
             return f'<th scope="row"{cls}>{text}</th>'
-        return f"<td{cls}>{text}</td>"
+        return f'<td{cls} data-label="{esc(label)}">{text}</td>'
     cap = f'<caption class="vh">{esc(caption)}</caption>' if caption else ""
     num = ' class="num"'
     head = "".join(f'<th scope="col"{num if i in numeric else ""}>{esc(h)}</th>' for i, h in enumerate(headers))
     body = "".join(
-        "<tr>" + "".join(cell(i, v, head=row_heads and i == 0) for i, v in enumerate(row)) + "</tr>"
+        "<tr>" + "".join(cell(i, v, row[0] if compare else headers[i], head=row_heads and i == 0)
+                         for i, v in enumerate(row)) + "</tr>"
         for row in rows)
-    return Markup(f'<div class="table-wrap"><table>{cap}<thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>')
+    mode = "columns" if compare else "rows" if len(headers) >= STACK_COLUMNS else ""
+    stack = f' data-stack="{mode}"' if mode else ""
+    return Markup(f'<div class="table-wrap"><table{stack}>{cap}<thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>')
 
 
 def trail_link(rec):

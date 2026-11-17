@@ -24,18 +24,18 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 10758083. The publisher's own track is not licensed for redistribution and is not used."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OpenStreetMap holds no whole-trail relation. 10758083 'Idaho Centennial Trail (West)' is the west half; 19215740 adds a short piece at Upper Priest Lake. Both are in line.geojson; no alternates are mapped."
+mainline = "OpenStreetMap holds no whole-trail relation. 10758083 'Idaho Centennial Trail (West)' gives four pieces in central Idaho (45.45 to 46.35 N, 277 km); 19215740 'Idaho Centennial Trail' gives one 15.5 km piece at Upper Priest Lake (48.75 to 48.84 N), the Upper Priest Lake Trail near the Canadian border, which is the trail's northern end. That piece is 291 km north of the nearest other piece and nothing is mapped between them, so the track is a partial track in two distant groups of pieces, not one walk. All five parts are in line.geojson; no alternates are mapped."
 decision = "included-named"
 decision_text = "Included with its name and logo. The track is from OpenStreetMap."
 source_checked = "2026-11-09"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "OpenStreetMap holds less than half the trail: relation 10758083 ('Idaho Centennial Trail (West)') and the short relation 19215740 give 292.5 km in 5 parts, 79.8% short of 1,448 km (about 900 mi). No whole-trail relation is mapped."
+length_gap_note = "OpenStreetMap holds only part of the trail: five pieces, 292.5 km in all, 79.8% short of 1,448 km (about 900 mi). Four lie in central Idaho and one, 15.5 km, lies at the northern end near Upper Priest Lake, 291 km from the rest. The southern part from Murphy Hot Springs and the stretch between the central pieces and Upper Priest Lake are not mapped. No whole-trail relation exists."
 
 [osm]
 relation = 10758083
-note = "10758083 is the west half and 19215740 a short piece at Upper Priest Lake; 83 ways in all. Downloaded 2026-11-09."
+note = "10758083 gives four pieces in central Idaho and 19215740 one piece at Upper Priest Lake, at the trail's northern end; 83 ways in all. Downloaded 2026-11-09. Checked 2026-11-16: the far fragment is the northern end of the trail, not an error, and is kept in the main track."
 
 [shield]
 status = "no-logo-exists"
@@ -51,7 +51,7 @@ date = "2026-11-09"
 measured_km = 292.5
 difference_percent = -79.8
 parts = 5
-note = "OpenStreetMap holds the west half only: 292.5 km in 5 parts, 79.8% short of 1,448 km."
+note = "OpenStreetMap holds part of the trail only: 292.5 km in 5 parts, 79.8% short of 1,448 km. Four parts are in central Idaho (277 km) and one (15.5 km) is the northern end at Upper Priest Lake, 291 km from the rest, so the track is not one walk."
 
 [hike]
 summary = "The Idaho Centennial Trail is the state trail of Idaho, running from Murphy Hot Springs on the Nevada border north through mountains and high desert to the state's northern boundary. It crosses 11 national forests and about 100 miles of Bureau of Land Management land, climbing and dropping between 2,500 and 9,000 feet through sagebrush desert, alpine meadows, cedar forests and six major river canyons."

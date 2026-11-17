@@ -1,6 +1,7 @@
-"""The maps start late: nothing for a map (MapLibre, its style, the contour add-on, the track
-data) loads with the page. These pin the script's promises (the script has no unit tests; the
-behaviour was checked by driving the pages in a browser)."""
+"""The maps start a moment after the page has loaded, every one of them, by itself. Nothing for a
+map (MapLibre, its style, the contour add-on, the track data) loads with the page, and nothing
+waits for a scroll, a tap, a key or focus. These pin the script's promises (the script has no unit
+tests; the behaviour was checked by driving the pages in a browser)."""
 import os
 import re
 import unittest
@@ -19,22 +20,40 @@ class MapStartTest(unittest.TestCase):
         cls.js = read("assets", "app.js")
 
     def test_one_function_starts_a_map_and_it_is_the_only_caller_of_the_fetch_and_the_loader(self):
-        self.assertEqual(self.js.count("fetchData()"), 2)  # its definition and the one call
+        self.assertEqual(self.js.count("fetchData()"), 3)  # its definition, begin(), and a frame with no drawing
         self.assertEqual(self.js.count("loadLibraries()"), 2)
         begin = re.search(r"function begin\(\) \{(.*?)\n    \}\n", self.js, re.S)
         self.assertIsNotNone(begin)
-        self.assertIn("dataReady = fetchData();", begin.group(1))
+        self.assertIn("dataReady = dataReady || fetchData();", begin.group(1))
         self.assertIn("loadLibraries().then(startMapLibre);", begin.group(1))
         self.assertIn("if (outdoorUrl) fetchOutdoor(outdoorUrl);", begin.group(1))
         self.assertEqual(self.js.count("fetchOutdoor(outdoorUrl)"), 2)  # begin() and startMapLibre(), once started
 
-    def test_a_map_starts_when_near_the_screen_or_touched_never_at_once(self):
-        self.assertIn("new IntersectionObserver(", self.js)
-        self.assertIn("afterLoad(begin);", self.js)  # near the screen, and the page has loaded
-        for event in ("pointerdown", "focusin", "keydown"):
-            self.assertIn(f"'{event}'", self.js)
+    def start_code(self):
+        code = re.search(r"function begin\(\) \{.*?\n  function entryFor", self.js, re.S).group(0)
+        return re.sub(r"/\*.*?\*/", "", code, flags=re.S)  # the code, not the comments
+
+    def test_every_map_starts_by_itself_after_the_load_event_and_nothing_else_starts_it(self):
+        code = self.start_code()
+        self.assertIn("window.addEventListener('load', fn, { once: true })", code)
+        self.assertIn("requestIdleCallback(begin, { timeout: 500 })", code)
+        self.assertIn("setTimeout(begin, 100)", code)
+        self.assertEqual(len(re.findall(r"\bbegin\b", code)), 3)  # its definition and those two calls, no other trigger
+
+    def test_no_map_waits_for_visibility_or_for_the_visitor(self):
+        # the whole script: no observer of any kind, and no scroll listener
+        for word in ("IntersectionObserver", "ResizeObserver", "MAP_AHEAD", "isIntersecting", "'scroll'", "'touchstart'"):
+            self.assertNotIn(word, self.js)
+        code = self.start_code()
+        for event in ("pointerdown", "pointerup", "focusin", "focus", "keydown", "keyup", "click", "mouseover", "touch", "wheel"):
+            self.assertNotIn(event, code)
+        self.assertNotIn("addEventListener('" , code.replace("window.addEventListener('load'", ""))
         self.assertNotIn("startMaps", self.js)
         self.assertNotRegex(self.js, r"initMap\(fig\)[^}]*\n\s*(fetch|loadLibraries)")
+
+    def test_a_frame_with_no_drawing_of_its_own_is_drawn_from_the_data_at_once(self):
+        # the saved trails are known only to the browser: no drawing is made when the site is built
+        self.assertIn("if (!hasSketch()) dataReady = fetchData();", self.js)
 
     def test_the_libraries_come_from_the_addresses_on_the_scripts_own_tag(self):
         self.assertIn("var SCRIPT = document.currentScript;", self.js)
@@ -48,8 +67,11 @@ class MapStartTest(unittest.TestCase):
         # the page runs the scripts in order: the add-on needs MapLibre first
         self.assertIn("script.async = false;", self.js)
 
-    def test_until_it_starts_the_frame_says_what_happens_and_the_page_text_stays_for_no_script(self):
-        self.assertIn("'The map loads when you scroll to it.'", self.js)
+    def test_until_it_starts_the_frame_holds_its_drawing_and_says_nothing_with_a_script(self):
+        # the page's own drawing fills the frame (test_first_screen.py); the no-script text is shown
+        # only without JavaScript, or when a failure sets data-say
+        self.assertNotIn("The map loads when you scroll to it.", self.js)
+        self.assertIn("function say(text) {", self.js)
 
 
 if __name__ == "__main__":

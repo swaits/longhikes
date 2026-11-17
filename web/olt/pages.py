@@ -31,7 +31,7 @@ import os
 import shutil
 
 from .markup import esc
-from . import authors, browse, cards, datafiles, docs, facets, feed, home, layout, leftout, pagekit, placefacets, reference, regions, saved, seo, site as site_settings, standing, thumbs, trail, views
+from . import authors, browse, cards, datafiles, docs, facets, feed, home, layout, leftout, pagekit, placefacets, reference, regions, saved, seo, site as site_settings, sketch, standing, thumbs, trail, views
 
 WEB_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS_DIR = os.path.join(WEB_DIR, "assets")
@@ -86,6 +86,8 @@ def render_site(records, out_dir, repo_root, site=None):
     """Write every HTML page for the given records. Returns the number of pages written."""
     site = site or site_settings.load()
     copy_assets(out_dir)
+    sketch.use(out_dir)  # the maps' static drawings are read from the track files written here
+    layout.UNDER_LISTS.clear()
     pages = 0
     dates = {}  # page path -> its own date (YYYY-MM-DD), for the sitemap
     everything = seo.newest(records)
@@ -105,7 +107,7 @@ def render_site(records, out_dir, repo_root, site=None):
             image=card, image_alt=card_alt))
         dates[path] = seo.modified(rec)
         pages += 1
-    body = home.render(records, site)
+    body = home.render(records, site, repo_root)
     layout.write_page(out_dir, "/", layout.layout("", body, path="/", maps=True, site=site,
                                                   description=home.description(records),
                                                   jsonld=seo.home_jsonld(site)))
@@ -161,6 +163,7 @@ def render_site(records, out_dir, repo_root, site=None):
         recs = built[3] if len(built) > 3 and isinstance(built[3], list) else None
         pending.append((path, t, d, b, {"recs": recs}))
         view_paths.append(path)
+        layout.UNDER_LISTS.add(path)  # its header item is Lists
         labels[path] = link_label
         if group:
             extras.append((group, link_label, blurb, path, len(recs) if recs else 0))

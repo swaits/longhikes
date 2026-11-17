@@ -461,6 +461,48 @@ def check_elevation(tid, tdir, rec, errors):
                 errors.append(f"{where}: source.computed must be a date (YYYY-MM-DD)")
 
 
+def _whole_km(value):
+    """True for a positive whole number of kilometres (not a boolean)."""
+    return isinstance(value, int) and not isinstance(value, bool) and value > 0
+
+
+def check_length_facts(tid, rec, errors):
+    """system_km, system_note and built_km (docs/schema.md, "What length_km counts").
+
+    system_km is the larger figure a holder publishes for a whole system or a planned total:
+    a whole number of kilometres, greater than length_km, and it must say what it counts in
+    system_note. system_note has no use without system_km. built_km is the built length of an
+    unfinished trail: a whole number of kilometres, no more than length_km, and only on a record
+    whose hike.unfinished says so."""
+    length = rec.get("length_km")
+    comparable = isinstance(length, (int, float)) and not isinstance(length, bool) and length > 0
+    if "system_km" in rec:
+        system = rec["system_km"]
+        if not _whole_km(system):
+            errors.append(f"{tid}: system_km must be a positive whole number of kilometres")
+        elif comparable and system <= length:
+            errors.append(f"{tid}: system_km {system} must be greater than length_km {length}: "
+                          "it is the larger figure, a system total or a planned total")
+        note = rec.get("system_note")
+        if not isinstance(note, str) or not note.strip():
+            errors.append(f"{tid}: system_km is present but system_note, what it counts, is not")
+        elif note.strip().lower().startswith("counting"):
+            errors.append(f"{tid}: system_note must not begin with the word 'counting': "
+                          "the page adds it")
+    elif "system_note" in rec:
+        errors.append(f"{tid}: system_note is present but system_km is not")
+    if "built_km" in rec:
+        built = rec["built_km"]
+        if not _whole_km(built):
+            errors.append(f"{tid}: built_km must be a positive whole number of kilometres")
+        elif comparable and built > length:
+            errors.append(f"{tid}: built_km {built} cannot exceed length_km {length}")
+        hike = rec.get("hike") if isinstance(rec.get("hike"), dict) else {}
+        if not str(hike.get("unfinished", "")).strip():
+            errors.append(f"{tid}: built_km is present but hike.unfinished is not: "
+                          "built_km belongs only on an unfinished trail")
+
+
 def check_common_name(tid, rec, errors):
     """common_name is optional; where present it is the name hikers use, so it is a clean string that differs from name."""
     if "common_name" not in rec:
@@ -711,6 +753,7 @@ def main():
                 errors.append(f"{tid}: missing required field {field}")
         check_short_name(tid, rec, errors)
         check_common_name(tid, rec, errors)
+        check_length_facts(tid, rec, errors)
         if rec.get("id") != tid:
             errors.append(f"{tid}: id {rec.get('id')!r} does not match directory name")
         if rec.get("country") not in ("US", "CA"):

@@ -38,14 +38,30 @@ line_file = "line.geojson"
 | `short_name_url` | string, with `short_name` | The page where the abbreviation was seen in use. Required when `short_name` is present; an error without it. An http(s) address. | `"https://www.greenmountainclub.org/"` |
 | `country` | string | `US` or `CA`. | `"US"` |
 | `regions` | array of strings | State, province or territory codes crossed. | `["VT"]` |
-| `length_km` | integer | Published length in kilometres. A check value, not measured from the track. | `438` |
-| `length_note` | string | Where the published length comes from. | `"272 mi published"` |
+| `length_km` | integer | The end-to-end length of the trail's canonical path, in kilometres, as the trail's holder or author states it. A check value, not measured from the track. See "What `length_km` counts" below. | `438` |
+| `length_note` | string | Where the length was read, and any disagreement between pages. | `"272 mi published"` |
+| `system_km` | integer, where present | The larger figure the holder publishes for the whole trail system or the planned total, in kilometres. It must be greater than `length_km`, and `system_note` must say what it counts. Shown beside the length with its note; never used for lists, bands, filters or time estimates. See below. | `2549` |
+| `system_note` | string, with `system_km` | What the larger figure counts, as a phrase that follows the word "counting" ("counting both corridors and connectors"). Required when `system_km` is present and refused without it. The site shows it as "Whole system: 1,584 mi, counting ...". | `"all designated trail, official side trail and connecting roadwalks"` |
+| `built_km` | integer, where present | Only on an unfinished trail (one whose `hike.unfinished` is present): the length already built, in kilometres, as the holder states it. It cannot exceed `length_km`. The site shows it beneath the length ("290 mi built"). | `467` |
 | `kind` | string, where present | `"route"` for a route: one that a hiker or a small group worked out and published. Absent means a designated trail: one that a land agency or a trail association designates. | `"route"` |
 | `tier` | string | `national` (US National Scenic Trail), `regional` (80 km or more), `short` (well-known, 60-80 km), `deferred`, or `candidate`. The tiers apply to routes as well. | `"regional"` |
 | `designation` | string | What makes it a long trail: statute, agency or association, or for a route the person and year it was published. | `"National Scenic Trail (1968)"` |
 | `wave` | integer or string | `1` for trails in the first set; `"held"` where listing is undecided. | `1` |
 | `wave_note` | string, where present | Why a held trail is held. | `"Held: no usable whole track exists."` |
-| `inclusion` | string, where present | `nst-unconditional` for every National Scenic Trail; `candidate-decision-pending` for a candidate. Absent otherwise. | `"nst-unconditional"` |
+| `inclusion` | string, where present | `nst-unconditional` for every National Scenic Trail that is listed; `candidate-decision-pending` for a candidate. Absent otherwise. | `"nst-unconditional"` |
+
+### What `length_km` counts
+
+`length_km` is the end-to-end length of the trail's canonical path: the way one person walks the trail from one end to the other. One branch is taken at a split, side trails are left out, no stretch is counted twice, and a system total is never used. The length is the holder's or the author's own figure for that path; where only a system total is published, the record does not use it as the length (see below).
+
+A trail must also be walkable from one end to the other today. A trail that cannot be, because it is published in separate pieces or has gaps with no way across, is not listed and goes in `left-out.toml`. Road links that the holder publishes as the way through count as walkable, and so does evidence that people have walked it end to end. A trail that can be walked through but is partly unbuilt stays: its `length_km` is the holder's end-to-end route, `built_km` states the built part, and `hike.unfinished` says how the gaps are crossed.
+
+A larger figure that the holder publishes (a system total, or a planned total) is kept as its own labelled fact in `system_km` and `system_note`. A planned total is the same thing: it is `system_km`, and the note says it is planned. There is no separate field for it.
+
+Worked examples:
+
+- The Florida Trail. The holder's figure of about 1,500 miles counts both branches at two splits, plus connectors. One walk from end to end, the Eastern Corridor by the east side of Lake Okeechobee, is 1,130 miles (1,818 km), so `length_km = 1818`. The holder's larger figure goes in `system_km = 2549`, with `system_note = "all designated trail, official side trail and connecting roadwalks"`.
+- An unfinished trail. The Ozark Highlands Trail route is about 325 miles (523 km) from end to end, of which about 290 miles (467 km) are built. `length_km = 523`, `built_km = 467`, and `hike.unfinished` says what is unbuilt and how a hiker crosses it.
 
 ## `[source]`: where the track comes from
 
@@ -213,7 +229,7 @@ Settling a conflict:
 - fails when an entry that was already there was changed or removed;
 - prints, for each changed fact, the earlier entries about the same field, and prints `!!` lines where an earlier entry was `declined`, or was asked for by someone other than the dataset's own check. That is where two requests may conflict: read the entry before you change the field again.
 
-**Facts**, which need an entry when they change: `name`, `common_name`, `short_name`, `short_name_url`, `country`, `regions`, `length_km`, `length_note`, `kind`, `tier`, `designation`, `inclusion`; everything in `[source]` except the fields below, which includes the track's source, licence and permission; `osm.relation`; everything in `[shield]` except `note` (the logo); everything in `[hike]` except `summary`, `checked` and the sources (the ends, official page, days, season, terrain, travel, high point, permit, unfinished and caution); `[route]` except `note` (the author and the track policy); `[[guide]]` except the price. A replaced track file counts as a change to `source.line_file`.
+**Facts**, which need an entry when they change: `name`, `common_name`, `short_name`, `short_name_url`, `country`, `regions`, `length_km`, `length_note`, `system_km`, `system_note`, `built_km`, `kind`, `tier`, `designation`, `inclusion`; everything in `[source]` except the fields below, which includes the track's source, licence and permission; `osm.relation`; everything in `[shield]` except `note` (the logo); everything in `[hike]` except `summary`, `checked` and the sources (the ends, official page, days, season, terrain, travel, high point, permit, unfinished and caution); `[route]` except `note` (the author and the track policy); `[[guide]]` except the price. A replaced track file counts as a change to `source.line_file`.
 
 **Not facts**, which need none: `[[history]]` itself; all of `[verification]`, which the tools refresh; `source.source_checked`, `source.discovery`, `source.format`, `source.crs`, `source.mainline` and `source.length_gap_note`; `hike.summary` (our wording), `hike.checked` and `[[hike.source]]`; `guide.price` and `guide.price_checked`; the notes `osm.note`, `shield.note` and `route.note`; `[[link]]`; `wave` and `wave_note`. A field that is in neither list is a fact. The lists are `FACTS_TEXT` and `NOT_FACTS` in `tools/trail_history.py`, and `python3 tools/check_history.py --facts` prints them.
 
@@ -344,6 +360,15 @@ One file at the top level, `collections.toml`, names sets of trails that the sit
 | `definition` | string | What the set is, in a sentence, as its source states it. | `"The Triple Crown of Hiking is the award ..."` |
 | `source_url` | string | An `http(s)` address of the page that states the definition. | `"https://www.aldhawest.org/triple-crown"` |
 | `source_publisher` | string | Who publishes that page. | `"American Long Distance Hiking Association, West"` |
+
+### `[[list]]`: which lists the home page shows
+
+The same file also says which of the site's lists the home page offers under "Start from a list". The lists themselves are defined in `web/olt/browse.py` (each is a rule over the records); an entry here only places one on the home page. The row shows the marked lists in the order of `home`, each with its count, and then a link to every list (`/lists/`). A marked list that is not shown today is left out of the row: a list is shown when it holds at least 5 trails and no more than three quarters of all of them (a month's list needs 8).
+
+| Field | Type | Meaning | Example |
+| --- | --- | --- | --- |
+| `key` | string | The key of a list in `browse.py`, which is the last part of its address under `/lists/` (`routes` for `/routes/`). Each key may appear once. | `"under-100-miles"` |
+| `home` | integer | Its place in the home page's row, counting from 1. Unique among the entries. | `5` |
 
 ## `authors.toml`: who the route credits name
 

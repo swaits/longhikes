@@ -7,7 +7,7 @@ attributes in olt/facets.py, under the same names the trail pages use.
 import collections
 import math
 
-from . import browse, common, facets, hike, words
+from . import browse, common, datafiles, facets, hike, sketch, words
 from .markup import Markup, esc
 
 # Length range choices for the filters, round in the unit they are written in.
@@ -68,17 +68,22 @@ def counts(records):
     return c
 
 
-def overview_bbox(records):
-    """data-bbox attribute: the extent of every track and sketch, so the map opens on it before the data loads."""
+def overview_box(records):
+    """[west, south, east, north] of every track and sketch of these trails, or None."""
     boxes = [r["derived"]["bbox"] for r in records if r["derived"].get("bbox")]
     for r in records:
         box = hike.sketch_bbox(hike.sketch_points(r))
         if box:
             boxes.append(box)
     if not boxes:
-        return ""
-    box = [min(b[0] for b in boxes), min(b[1] for b in boxes), max(b[2] for b in boxes), max(b[3] for b in boxes)]
-    return f' data-bbox="{",".join(f"{v:.4f}" for v in box)}"'
+        return None
+    return [min(b[0] for b in boxes), min(b[1] for b in boxes), max(b[2] for b in boxes), max(b[3] for b in boxes)]
+
+
+def overview_bbox(records):
+    """data-bbox attribute: the extent of every track and sketch, so the map opens on it before the data loads."""
+    box = overview_box(records)
+    return f' data-bbox="{",".join(f"{v:.4f}" for v in box)}"' if box else ""
 
 
 sort_name = facets.sort_name
@@ -304,24 +309,28 @@ def finder_form(records, c=None, steps=None):
         {_checks("gpx", facets.GPX_FILTER.items(), c, "gpx")}
       </fieldset>""")
     return f"""<form class="filters" id="finder-form" role="search" aria-label="Find a trail">
-  <div class="filters__search field">
-    <label class="field__label" for="q">Search</label>
-    <input class="input" id="q" name="q" type="search" placeholder="Name, abbreviation or author of a route" autocomplete="off" spellcheck="false">
+  <div class="filters__bar">
+    <div class="filters__search field">
+      <label class="vh" for="q">Search</label>
+      <input class="input" id="q" name="q" type="search" placeholder="Search by name, abbreviation or author" autocomplete="off" spellcheck="false">
+    </div>
+    <button class="button filters__toggle js-only" type="button" aria-expanded="false" aria-controls="filters-panels">Filters <span class="filters__count"></span></button>
+    <button class="button button--quiet filters__clear" type="reset" hidden>Clear</button>
+    <a class="button button--quiet filters__maplink" href="#map">Map</a>
   </div>
-  <details class="filters__panel" open>
-    <summary>Filters <span class="filters__count"></span></summary>
-    <div class="filters__first">
-    {"".join(first)}
-    </div>
-  </details>
-  <details class="filters__more">
-    <summary>More filters <span class="filters__active"></span></summary>
-    <div class="filters__form">
-      {"".join(more)}
-    </div>
-  </details>
-  <div class="field filters__reset">
-    <button class="button button--quiet" type="reset">Clear search and filters</button>
+  <div class="filters__panels" id="filters-panels">
+    <details class="filters__panel" open>
+      <summary>Filters</summary>
+      <div class="filters__first">
+      {"".join(first)}
+      </div>
+    </details>
+    <details class="filters__more">
+      <summary>More filters <span class="filters__active"></span></summary>
+      <div class="filters__form">
+        {"".join(more)}
+      </div>
+    </details>
   </div>
 </form>"""
 
@@ -559,11 +568,19 @@ def overview_map(recs, label, *, wide=False, scope="", saved=False):
         ids_attr += f' data-drawable="{esc(" ".join(ids))}"'
     sentences.append("Each trail&rsquo;s page names its source, credit and licence. "
                      "Base map: OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.")
-    return Markup(f"""<figure class="mapfig{" mapfig--wide" if wide else ""}" data-map="overview" data-src="/data/overview.geojson"{ids_attr}{overview_bbox(recs)}>
+    # The tracks are drawn into the page, on the ground the live map opens on (olt/sketch.py). The
+    # Saved page has none: which trails it draws is the visitor's own, so app.js draws them.
+    frame_attr, drawing = "", ""
+    box = overview_box(recs)
+    if box and not saved:
+        fr = sketch.frame(box)
+        frame_attr = f' data-frame="{",".join(f"{v:g}" for v in fr)}"'
+        drawing = sketch.svg(sketch.overview_features(ids), fr, ident=True)
+    return Markup(f"""<figure class="mapfig{" mapfig--wide" if wide else ""}" data-map="overview" data-src="/data/overview.geojson"{ids_attr}{overview_bbox(recs)}{frame_attr}>
   <div class="mapfig__frame">
     <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
     <div class="map" role="region" aria-label="{esc(label)}">
-      <div class="map__fallback"></div>
+      <div class="map__fallback">{drawing}</div>
       <div class="map__canvas"></div>
       <p class="map__status" role="status">The map needs JavaScript. The list has every trail.</p>
     </div>
@@ -578,24 +595,44 @@ def overview_map(recs, label, *, wide=False, scope="", saved=False):
 </figure>""")
 
 
+def place_grid(text_html, listing, map_html):
+    """The body of a place, list or routes page: the list beside its map on a wide screen, with the
+    page's own text above the map there, so that the first trails are on the first screen. On a
+    narrow screen the list comes first, then the map, then the text (style.css .place-grid)."""
+    return f"""<div class="place-grid">
+  <div class="place-grid__text">{text_html}</div>
+  <div class="place-grid__list">{listing}</div>
+  <div class="place-grid__map">{map_html}</div>
+</div>"""
+
+
 def has_overview_map(recs, scope=""):
     """True when overview_map would draw a map of these trails (needs the map library)."""
     n = len(drawable_ids(recs))
     return n > 0 and (scope == "all" or n >= MAP_MIN)
 
 
-def lists_row(records):
-    """The ready-made lists, as a row of links with their counts. The terrain lists are
-    on /lists/; here the Terrain filter does the same work."""
+def lists_row(records, picks=()):
+    """The row of lists on the home page: the lists the data file marks for it (picks, from
+    datafiles.home_lists: key and position), in that order, each with its count, then "All lists".
+    A marked list that is not shown today (too few trails, or nearly all of them) is left out."""
+    have = {lst.key: (lst, recs) for lst, recs in browse.shown(records)}
     items = "".join(
-        f'<li><a href="{esc(browse.path(lst))}">{esc(lst.title)} <span class="chips__n">{len(recs)}</span></a></li>'
-        for lst, recs in browse.shown(records) if not lst.key.startswith("terrain-"))
+        f'<li><a href="{esc(browse.path(have[key][0]))}">{esc(have[key][0].title)} '
+        f'<span class="chips__n">{len(have[key][1])}</span></a></li>'
+        for key in picks if key in have)
     if not items:
         return ""
     return f"""<nav class="lists-row" aria-labelledby="lists-title">
       <h2 id="lists-title" class="lists-row__title">Start from a list</h2>
       <ul class="chips">{items}<li><a href="/lists/">All lists</a></li></ul>
     </nav>"""
+
+
+def home_picks(entries):
+    """The keys of the lists marked for the home page, in the order of their `home` positions."""
+    marked = [e for e in entries if isinstance(e.get("home"), int)]
+    return [e["key"] for e in sorted(marked, key=lambda e: e["home"])]
 
 
 def description(records):
@@ -606,8 +643,8 @@ def description(records):
     return common.cut_at_word(text, common.DESCRIPTION_LIMIT)
 
 
-def render(records, site):
-    """The home page body (HTML)."""
+def render(records, site, repo_root=""):
+    """The home page body (HTML). repo_root: where collections.toml names the lists the page shows."""
     c = counts(records)
     recs = sorted(records, key=sort_name)
     total = c["total"]
@@ -618,32 +655,21 @@ def render(records, site):
         contribute = (f'<p class="finder__foot">Something wrong, or a trail missing? '
                       f'<a href="{esc(site.correction_url())}">Report a problem</a> or '
                       f'<a href="{esc(site.new_trail_url)}">suggest a trail</a>.</p>')
+    picks = home_picks(datafiles.lists(repo_root))
     return f"""<section class="hero hero--short hero--home" aria-labelledby="hero-title">
   <div class="container hero__inner">
-    <h1 id="hero-title" class="lockup"><img class="lockup__mark" src="/assets/favicon.svg" alt="" width="96" height="96">{esc(site.name)}<span class="vh">: long-distance hiking trails of the United States and Canada</span></h1>
-    <p class="hero__tagline">{esc(site.tagline.rstrip("."))}.</p>
-    <ul class="hero__tags">
-      <li><a href="#finder">Filters</a></li>
-      <li><a href="/lists/with-gpx/">GPX</a></li>
-      <li><a href="/sources/">A source for every fact</a></li>
-      <li><a href="/data/">Open data</a></li>
-    </ul>
+    <h1 id="hero-title">{esc(site.tagline.rstrip("."))}</h1>
     <p class="hero__lede">{lede}</p>
-    {lists_row(records)}
   </div>
 </section>
-
-<section class="section section--finder" id="finder" aria-labelledby="finder-title">
-  <div class="container finder__grid">
-    <h2 class="vh" id="finder-title">Every trail</h2>
-    {finder_form(records, c, length_steps(records))}
-    <div class="finder__main">
-      {overview_map(records, "Map of the trails the filters leave", wide=True, scope="all")}
-      {results(recs, finder=True)}
-    </div>
-    <div class="finder__notes">
-      <p class="finder__foot">Not for navigation: tracks vary in quality and some trails are unfinished. Check each trail&rsquo;s own maps before you go.</p>
-      {contribute}
-    </div>
+<div class="container home" id="finder">
+  <div class="home__lists">{lists_row(records, picks)}</div>
+  <h2 class="vh" id="finder-title">Every trail</h2>
+  <div class="home__bar">{finder_form(records, c, length_steps(records))}</div>
+  <div class="home__results">{results(recs, finder=True)}</div>
+  <div class="home__map" id="map">{overview_map(records, "Map of the trails the filters leave", wide=True, scope="all")}</div>
+  <div class="home__notes finder__notes">
+    <p class="finder__foot">Not for navigation: tracks vary in quality and some trails are unfinished. Check each trail&rsquo;s own maps before you go.</p>
+    {contribute}
   </div>
-</section>"""
+</div>"""

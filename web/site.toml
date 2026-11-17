@@ -45,5 +45,4 @@ maintainer_url = "https://github.com/swaits"
 # so screen readers pronounce it in that language.
 [name_lang]
 traversee-charlevoix = "fr"
-sentier-national = "fr"
 sentier-international-appalaches = "fr"

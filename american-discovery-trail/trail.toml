@@ -6,8 +6,10 @@ short_name = "ADT"
 short_name_url = "https://discoverytrail.org/"
 country = "US"
 regions = ["DE", "MD", "DC", "WV", "OH", "KY", "IN", "IL", "IA", "MO", "KS", "NE", "CO", "UT", "NV", "CA"]
-length_km = 10943
-length_note = "6,800 mi published by the Society, which counts the northern and southern routes across the Midwest together; the northern route alone is about 4,844 mi and the southern route about 5,008 mi"
+length_km = 8060
+length_note = "The southern route, about 5,008 mi, as the American Discovery Trail Society gives it. The northern route is about 4,844 mi (7,796 km). The Society calls neither the main route."
+system_km = 10943
+system_note = "both the northern and southern routes across the Midwest"
 tier = "regional"
 designation = "National Millennium Trail (2000); American Discovery Trail Society; not a National Scenic Trail"
 wave = 1
@@ -24,12 +26,11 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright). The track included here is from OpenStreetMap, relation 1544944. The Society's own route data, which its route page says is 'obtain[able] ... for free' from 1/1/2026 as a gift from Indiana Trails, is not used: that page states no licence and no permission to pass it on."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM relation 1544944: members with an empty or main role are the main track; the 136 ways with the role alternative (and the alternative sub-relation) are in alternates.geojson. In the Midwest the main track follows the southern route (through Missouri); the alternate ways are the parts of the northern route that the southern route does not share. The relation's own note says the choice of which central route is 'alternative' was made on the trail's history."
+mainline = "OSM relation 1544944: members with an empty or main role are the main track; the 136 ways with the role alternative (and the alternative sub-relation) are in alternates.geojson. In the Midwest the main track follows the southern route (through Missouri); the alternate ways are the parts of the northern route that the southern route does not share. The relation's own note says the choice of which central route is 'alternative' was made on the trail's history. Checked 2026-11-16: the super-relation's three main sub-relations (Western, Central South Route, Eastern) are the main track and the Central North Route sub-relation is the alternative; by geometry, the main track crosses the Midwest between latitudes 37.5 and 39.0 N with no closed alternative (no loop over 2 km), and the alternates, which hold the northern route, lie between 40.0 and 42.5 N."
 source_checked = "2026-11-14"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "The published 6,800 mi counts the northern and southern Midwest routes together. The main track holds one coast-to-coast route, the southern one (the Society gives it as about 5,008 mi, 8,060 km; 8,036 km is measured). The northern route's own ways, 2,912 km, are in alternates.geojson: 8,036 km plus 2,912 km is 10,948 km, within 0.1% of the published figure."
 
 [osm]
 relation = 1544944
@@ -47,9 +48,9 @@ logo_owner = "American Discovery Trail Society"
 verified = true
 date = "2026-11-14"
 measured_km = 8036.4
-difference_percent = -26.6
+difference_percent = -0.3
 parts = 11
-note = "OSM relation 1544944: 8,036.4 km in 11 parts, 26.6% under the published 6,800 mi (10,943 km) because that figure counts both Midwest routes and the main track holds one of them. The measured length is within 0.3% of the Society's 5,008 mi (8,060 km) for the southern route. Alternates (2,912 km, the northern route's own ways) are in alternates.geojson. The Society says its official route is available only from the Society, and that other suggested routes may not be the official one, so this track follows OpenStreetMap's map of the trail and may differ from it."
+note = "OSM relation 1544944: 8,036.4 km in 11 parts, 0.3% under the Society's 5,008 mi (8,060 km) for the southern route, coast to coast. The main track holds the southern route only; the northern route's own ways (2,912 km) are in alternates.geojson, and the published 6,800 mi (10,943 km) counts both routes. The Society says its official route is available only from the Society, and that other suggested routes may not be the official one, so this track follows OpenStreetMap's map of the trail and may differ from it."
 
 [hike]
 summary = "The American Discovery Trail is a coast-to-coast route of about 6,800 miles when both of its routes across the Midwest are counted, from Cape Henlopen State Park in Delaware to Limantour Beach at Point Reyes National Seashore in California. It links existing trails, rail trails, canal towpaths and roads, and the Society describes it as open to walkers, with most of it also open to bicycles. The northern route through Chicago is about 4,844 miles and the southern route through St. Louis about 5,008 miles."
@@ -111,5 +112,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://images.squarespace-cdn.com/content/v1/67ae4cc833be0b134cff2431/d4c83a05-bce3-47bf-9ac2-41369b341a0e/ADTS.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length was changed from about 6,800 miles (10,943 km), which counts both Midwest routes, to 5,008 miles (8,060 km), the southern route end to end. The 6,800 miles is kept as its own fact."
+fields = ["length_km", "length_note", "system_km", "system_note"]
+basis = "The Society says: 'Coast-to-coast, the northern route is approximately 4,844 miles. The southern route is about 5,008 miles.'"
+basis_url = "https://discoverytrail.org/route"
 asked_by = "the dataset's own check"
 outcome = "applied"

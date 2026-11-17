@@ -74,8 +74,8 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | bartram | Blue Ridge Bartram Trail Conservancy (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/9955138) | ODbL-1.0 | track |
 | basin-and-range-trail | Eric Poulin (publishes the route) | [source page](https://basinandrangetrail.com/shop/) | none-stated | record only |
 | batona | Batona Hiking Club (publishes the trail with the New Jersey State Park Service; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4129027) | ODbL-1.0 | track |
-| bay-area-ridge | Bay Area Ridge Trail Council (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/12257087) | ODbL-1.0 | track |
 | bay-circuit | Appalachian Mountain Club (leads the trail's partners; no open geometry found) | [source page](https://www.openstreetmap.org/relation/12779888) | ODbL-1.0 | track |
+| bayou-state-trail | Bayou State Trail Association (publishes the trail) | [source page](https://www.bayoustatetrail.com/trails) | none-stated | record only |
 | beartooth-high-route | Wilderness Mindset (publishes the route) | [source page](https://wildernessmindset.com/product/beartooth-high-route-map-pack/) | none-stated | record only |
 | benton-mackaye | Benton MacKaye Trail Association (publishes the trail); the only other track, a Blue Ridge Forever ArcGIS item (2017), is restricted | [source page](https://www.openstreetmap.org/relation/1675439) | ODbL-1.0 | track |
 | big-bend-100 | Ky Harkey and Anna Claire Eddington (the route's authors) | [source page](https://tpwmagazine.com/adventure-recreation/the-big-bend-100-a-hike-across-two-west-texas-parks/) | none-stated | record only |
@@ -97,7 +97,6 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | canol | Northwest Territories Parks (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13591414) | ODbL-1.0 | track |
 | centennial-sd | USDA Forest Service, Black Hills National Forest (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7330792) | ODbL-1.0 | track |
 | chinese-wall-circuit | Wilderness Mindset (publishes the route) | [source page](https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/) | none-stated | record only |
-| chuck-keiper | Pennsylvania Department of Conservation and Natural Resources (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13034776) | ODbL-1.0 | track |
 | circle-of-solitude | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/wilderness-press/) | none-stated | record only |
 | cohos | Cohos Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/14765821) | ODbL-1.0 | track |
 | colorado-trail | USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
@@ -109,7 +108,6 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | cottonwood-trail | Parks Canada (Kluane National Park and Reserve) (publishes the trail) | [source page](https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/cottonwood) | none-stated | record only |
 | cranberry-lake-50 | Cranberry Lake 50 volunteer trail crew (publishes the loop; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7580730) | ODbL-1.0 | track |
 | cross-vermont | Cross Vermont Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2750828) | ODbL-1.0 | track |
-| cumberland-trail | Tennessee State Parks (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13968933) | ODbL-1.0 | track |
 | dan-zhur-donjek | Parks Canada (Kluane National Park and Reserve) (publishes the trail) | [source page](https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur) | none-stated | record only |
 | deseret-hiking-route | Kevin "LarryBoy" DeVries (publishes the route) | [source page](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) | none-stated | record only |
 | desert-trail | Desert Trail Association, whose route was scouted by Russel Pengely, D. W. "Old Creosote" Tomer and Steve Tabor; the site is now run by Desert Survivors | [source page](https://deserttrail.net) | none-stated | record only |
@@ -149,7 +147,6 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | ice-age | Ice Age Trail Alliance for the National Park Service | [source page](https://www.openstreetmap.org/relation/2381423) | ODbL-1.0 | track |
 | idaho-centennial | Idaho Department of Parks and Recreation | [source page](https://www.openstreetmap.org/relation/10758083) | ODbL-1.0 | track |
 | international-appalachian-trail-maine | Maine Chapter of the International Appalachian Trail (maintains the trail) | [source page](https://maineiat.org/?p=412) | none-stated | record only |
-| iron-belle-trail | Michigan Department of Natural Resources (oversees the trail) | [source page](https://content.govdelivery.com/accounts/MIDNR/bulletins/2929548) | none-stated | record only |
 | island-walk | Island Walk PEI Inc. (publishes the route; no open geometry found) | [source page](https://www.openstreetmap.org/relation/12307947) | ODbL-1.0 | track |
 | itijjagiaq-trail | Nunavut Parks (Government of Nunavut) (publishes the trail) | [source page](https://nunavutparks.com/nunavut_parks/katannilik-territorial-park/) | none-stated | record only |
 | john-muir | No single publisher: NPS Yosemite and Sequoia-Kings Canyon, USFS Inyo and Sierra National Forests | [source page](https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0) | ODbL-1.0 | track |
@@ -180,7 +177,6 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | monadnock-sunapee | Monadnock-Sunapee Greenway Trail Club (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3888871) | ODbL-1.0 | track |
 | montana-trail | Montana Trail 406 Association (publishes the route) | [source page](https://montanatrail.org/montana-trail-hike-sections/) | none-stated | record only |
 | mountains-to-sea | North Carolina Division of Parks and Recreation; Friends of the Mountains-to-Sea Trail (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1395404) | ODbL-1.0 | track |
-| natchez-trace | National Park Service, Natchez Trace Parkway | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/NATT_TRANS_NSTTrail/FeatureServer/0) | us-gov-public-domain | track |
 | nepisiguit-migmaq-trail | Sentier Nepisiguit Mi'gmaq Trail Inc. (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13656926) | ODbL-1.0 | track |
 | new-england | National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/NEEN_BND_NationalScenicTrailCenterline_ln/FeatureServer/0) | us-gov-public-domain | track |
 | north-boundary | Parks Canada, Jasper National Park (publishes the trail; no open geometry found) | [source page](https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary) | none-stated | record only |
@@ -201,11 +197,9 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | ozark-trail | Ozark Trail Association (publishes the trail); the ArcGIS item 'Ozark Trails Association' now answers 'Token Required' | [source page](https://www.openstreetmap.org/relation/16710911) | ODbL-1.0 | track |
 | pacific-crest | Pacific Crest Trail Association (PCTA) | [source page](https://services5.arcgis.com/ZldHa25efPFpMmfB/ArcGIS/rest/services/PCTA_Centerline/FeatureServer/0) | CC-BY-4.0 | track |
 | pacific-northwest | USDA Forest Service, Pacific Northwest Region (Region 6) | [source page](https://services1.arcgis.com/gGHDlz6USftL5Pau/arcgis/rest/services/Pacific_Northwest_National_Scenic_Trail/FeatureServer/0) | us-gov-public-domain | track |
-| palmetto | Palmetto Conservation Foundation (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/5385288) | ODbL-1.0 | track |
 | paumanok-path | Southampton Trails Preservation Society and Long Island Greenbelt Trail Conference (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/12900097) | ODbL-1.0 | track |
 | pfiffner-traverse | Andrew Skurka (publishes the route) | [source page](https://andrewskurka.com/product/pfiffner-traverse-guide-maps/) | none-stated | record only |
 | pinhoti | Pinhoti Trail Alliance (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1642836) | ODbL-1.0 | track |
-| potomac-heritage | National Park Service, Potomac Heritage NST | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/POHE_Trail_Centerline_(Public_NPMap_Builder)_/FeatureServer/0) | us-gov-public-domain | track |
 | prescott-circle | City of Prescott and Prescott National Forest (manage the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4717133) | ODbL-1.0 | track |
 | pukaskwa-coastal | Parks Canada (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/15361195) | ODbL-1.0 | track |
 | quehanna | Keystone Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7236114) | ODbL-1.0 | track |
@@ -218,7 +212,6 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | sawtooth-wilderness-high-route | the author of the SeekingLost blog, who publishes the route | [source page](https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/) | none-stated | record only |
 | sea-to-sea-route | Ron Strickland, with the overview published by Andrew Skurka | [source page](https://andrewskurka.com/adventures/sea-to-sea-route/overview/) | none-stated | record only |
 | sentier-international-appalaches | Sentier international des Appalaches (Québec); IAT New Brunswick (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/9318808) | ODbL-1.0 | track |
-| sentier-national | Fédération québécoise de la marche (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7300742) | ODbL-1.0 | track |
 | shawangunk-ridge-trail | New York-New Jersey Trail Conference (publishes the trail) | [source page](https://www.openstreetmap.org/relation/3934864) | ODbL-1.0 | track |
 | sheltowee-trace | USDA Forest Service, Daniel Boone National Forest; Sheltowee Trace Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/12041542) | ODbL-1.0 | track |
 | shenipsit-trail | Connecticut Forest and Park Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/11242812) | ODbL-1.0 | track |
@@ -252,7 +245,6 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | vagabond-loop | Ryan "Dirtmonger" Sylva, who publishes the route | [source page](https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html) | none-stated | record only |
 | vancouver-island | Vancouver Island Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/12038457) | ODbL-1.0 | track |
 | vancouver-island-backbone | Philip Stone, Alpine Pacific Images (publishes the route) | [source page](https://www.wildisle.ca/backbone/index.html) | none-stated | record only |
-| voyageur | Voyageur Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/18529238) | ODbL-1.0 | track |
 | warrior-trail | Warrior Trail Association (publishes the trail; no site of its own found, the Association is on Facebook) | [source page](https://visitgreene.org/?p=1265) | none-stated | record only |
 | wasatch-traverse | Liz Thomas (publishes the route) | [source page](https://www.eathomas.com/other-long-trails/wasatchoverview) | none-stated | record only |
 | waskahegan | Waskahegan Trail Association (publishes the trail) | [source page](https://waskahegantrail.ca/about-2) | none-stated | record only |

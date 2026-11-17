@@ -5,8 +5,8 @@ name = "General George Crook National Recreation Trail"
 common_name = "General Crook Trail"
 country = "US"
 regions = ["AZ"]
-length_km = 95
-length_note = "58.9 mi, the Apache-Sitgreaves National Forests' figure for its part of the trail (trail 140), which the Forest Service's National Recreation Trail record also gives in its text (the same record's table says 138 mi); no Forest Service page gives one length for the whole trail"
+length_km = 222
+length_note = "138 mi, the length in the National Recreation Trail record's table (a record of the 1979 application, which the site says may be out of date). The same page's text says 58.9 mi. An earlier check found a retired Forest Service page saying 'Originally 200 miles in length, 138 miles are maintained today'; that page could not be read again. No current Forest Service page gives the whole trail's length: the Apache-Sitgreaves page gives 58.9 mi for its part, and the Prescott and Coconino pages give 11.4 mi and 25 mi for theirs, which do not add up to 138."
 tier = "regional"
 designation = "National Recreation Trail (certified 1979), managed by the Forest Service: trail 140 on the Apache-Sitgreaves National Forests, trail 130 on the Coconino National Forest and trail 64 on the Prescott National Forest"
 wave = "held"
@@ -28,7 +28,7 @@ source_checked = "2026-11-14"
 redistributable = true
 line_source = "USDA Forest Service (EDW National Forest System trails)"
 line_file = "line.geojson"
-length_gap_note = "The published 58.9 mi is the Apache-Sitgreaves piece alone. The track holds all three Forest Service pieces: about 93 km for trail 140 (57.9 mi in the layer), about 83 km for trail 130 and about 16 km for trail 64."
+length_gap_note = "The track holds all three Forest Service pieces: about 93 km for trail 140 (57.9 mi in the layer), about 83 km for trail 130 and about 16 km for trail 64."
 
 [osm]
 relation = 14392604
@@ -46,9 +46,9 @@ logo_owner = "USDA Forest Service"
 verified = true
 date = "2026-11-14"
 measured_km = 193.5
-difference_percent = 103.7
+difference_percent = -12.8
 parts = 3
-note = "Forest Service layer, 6 features: 193.5 km in 3 parts, 103.7% over the 95 km (58.9 mi) published for the Apache-Sitgreaves piece. The Coconino and Apache-Sitgreaves features join (gaps under 1 km) into one part of about 177 km; the Prescott feature is a separate part of about 16 km, 20 km from the west end of the Coconino piece."
+note = "Forest Service layer, 6 features: 193.5 km in 3 parts, 12.8% under the 222 km (138 mi) recorded for the whole trail. The Coconino and Apache-Sitgreaves features join (gaps under 1 km) into one part of about 177 km; the Prescott feature is a separate part of about 16 km, 20 km from the west end of the Coconino piece."
 
 [hike]
 summary = "The General Crook Trail follows the line of a military supply road set up in 1871 by General George Crook, along the Mogollon Rim in central Arizona. The Forest Service manages it as three pieces on the Apache-Sitgreaves, Coconino and Prescott national forests. The Boy Scouts of America retraced it in the early 1970s and marked it with metal chevrons."
@@ -94,5 +94,14 @@ change = "The name hikers use, General Crook Trail, was added as the common name
 fields = ["common_name"]
 basis = "The Forest Service page for the trail is headed 'General Crook Trail' and uses that name throughout."
 basis_url = "https://www.fs.usda.gov/r03/apache-sitgreaves/recreation/trails/general-crook-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length was changed from 59 miles (95 km), which is one forest's part of the trail, to 138 miles (222 km) for the whole trail. The note says where the figure comes from and that no current page gives one."
+fields = ["length_km", "length_note"]
+basis = "The National Recreation Trail record's table gives the length as 138 miles; its text, from the same 1979 application, says 58.9 miles. The current Apache-Sitgreaves page gives 58.9 miles for its Black Mesa part only. A retired Forest Service page that gave 138 miles maintained, of 200 originally, was found through a search and could not be read again."
+basis_url = "https://www.nrtapplication.org/trails/general-george-crook"
 asked_by = "the dataset's own check"
 outcome = "applied"

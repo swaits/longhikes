@@ -108,6 +108,8 @@ def method_page(records, site, repo_root):
     gaps = sum(1 for r, _ in ver if r.get("source", {}).get("length_gap_note"))
     mid = statistics.median(abs(d) for _, d in ver) if ver else 0
     no_track = sum(1 for r in records if not common.has_line(r))
+    n_system = sum(1 for r in records if r.get("system_km"))
+    n_built = sum(1 for r in records if r.get("built_km"))
     elev = [(r, elevation.get(r)) for r in records if elevation.get(r)]
     src = collections.Counter((e["source"].get("model", ""), e["source"].get("smoothing", ""),
                               e["source"].get("sample_spacing_m")) for _, e in elev if e.get("source"))
@@ -130,7 +132,8 @@ def method_page(records, site, repo_root):
         f"length was measured and checked against the published length."), [("Trails", "/"), ("About", "/about/")])
         + f"""<div class="container section place"><div class="prose">
   <h2>Length</h2>
-  <p>{esc(_sentence(meaning.get("length_km", "")))} It is the figure the trail&rsquo;s holder or author gives, and each record says where it comes from. The lists and pages show it in miles with kilometres after.</p>
+  <p>A trail&rsquo;s length here is the end-to-end length of its canonical path: one walk from one end to the other, taking one branch at a split, leaving out side trails and counting no stretch twice. It is the figure the trail&rsquo;s holder or author gives for that walk, and each record says where it comes from. A trail that cannot be walked from end to end today is not listed. The lists and pages show the length in miles with kilometres after.</p>
+  <p>Some holders also publish a larger figure for a whole system, or a planned total. A record keeps it apart as the whole system, with what it counts, and no list, length band or time estimate uses it. {n_system} of the {n} records have one. A trail that can be walked through but is partly unbuilt keeps the holder&rsquo;s end-to-end route as its length and gives the built length beside it. {n_built} of the {n} records give one.</p>
   <p>Where a track is included, its length is measured along the track as a geodesic length and compared with the published figure. The difference is the measured length minus the published length, as a percent of the published length. Track ends within 100 metres are joined, and the number of parts left is shown.</p>
   <p>Across the {len(ver)} measured tracks, the middle difference is {mid:.1f} percent.</p>
   {pagekit.table(["Measured against published", "Tracks", "Share"], rows, caption="How the measured tracks compare", numeric=(1, 2))}

@@ -4,13 +4,15 @@
       early by prefs.js), and the theme menu in the header
    1b. Saved trails: the Save buttons, the count in the header (lh-saved in localStorage)
    1c. The Saved page (/saved/): the visitor's saved trails, or a list from a link
-   2. Maps: .mapfig[data-map] figures. Nothing for a map is loaded with the page: when
-      the figure scrolls near the screen (or is touched, or takes focus) the script
-      loads MapLibre (and the contour add-on) from the addresses on its own <script>
-      tag, and fetches the figure's data from data-src (same origin). Lines are drawn
-      on a plain graticule first, then on an OpenFreeMap base map when MapLibre and
-      WebGL are available. A trail page's map (data-outdoor) is an outdoor map, with
-      relief and contours, and a switch to the plain one.
+   2. Maps: .mapfig[data-map] figures. A frame is never empty: the page carries a static
+      drawing of its tracks (olt/sketch.py). A moment after the page has loaded (idle, or
+      after 500 ms at most), and never on a scroll, a touch, a key or focus, every map starts
+      by itself: the script loads MapLibre (and the contour add-on) from the addresses on its
+      own <script> tag, and fetches the figure's data
+      from data-src (same origin). The live map opens on the same ground as the drawing
+      (data-frame), and the drawing gives way to it once it has drawn the tracks. Where
+      the base map cannot load, the drawing stays. A trail page's map (data-outdoor) is an
+      outdoor map, with relief and contours, and a switch to the plain one.
    3. Trail finder (home page): search, filters, sort, URL query state, map/list highlight
    4. Copy-credit buttons
 
@@ -636,13 +638,9 @@
     return d + '°' + (m < 10 ? '0' : '') + m + '′' + (value >= 0 ? pos : neg);
   }
 
-  /* Lines on a plain graticule (Web Mercator), no tiles. Returns the drawn extent. */
-  function drawFallback(host, fc, bbox, routeMain) {
-    bbox = ensureSpan(bbox);
-    var rect = host.getBoundingClientRect();
-    var W = Math.max(Math.round(rect.width), 280);
-    var H = Math.max(Math.round(rect.height), 180);
-    var pad = 28;
+  /* The ground a W x H frame shows when it fits bbox with pad pixels around it (Web Mercator,
+     as MapLibre's fitBounds does). */
+  function extentOf(bbox, W, H, pad) {
     var rad = Math.PI / 180;
     var cx = (bbox[0] + bbox[2]) / 2;
     var y0 = mercY(bbox[1]);
@@ -650,9 +648,20 @@
     var cy = (y0 + y1) / 2;
     var k = Math.min((W - 2 * pad) / Math.max((bbox[2] - bbox[0]) * rad, 1e-6),
                      (H - 2 * pad) / Math.max(y1 - y0, 1e-6));
+    return { cx: cx, cy: cy, k: k, rad: rad,
+             w: cx - W / 2 / k / rad, e: cx + W / 2 / k / rad, n: invMercY(cy + H / 2 / k), s: invMercY(cy - H / 2 / k) };
+  }
+
+  /* Lines on a plain graticule (Web Mercator), no tiles. Returns the drawn extent. */
+  function drawFallback(host, fc, bbox, routeMain) {
+    bbox = ensureSpan(bbox);
+    var rect = host.getBoundingClientRect();
+    var W = Math.max(Math.round(rect.width), 280);
+    var H = Math.max(Math.round(rect.height), 180);
+    var ext = extentOf(bbox, W, H, 28);
+    var rad = ext.rad, cx = ext.cx, cy = ext.cy, k = ext.k;
     function x(lon) { return W / 2 + (lon - cx) * rad * k; }
     function y(lat) { return H / 2 - (mercY(lat) - cy) * k; }
-    var ext = { w: cx - W / 2 / k / rad, e: cx + W / 2 / k / rad, n: invMercY(cy + H / 2 / k), s: invMercY(cy - H / 2 / k) };
 
     var span = Math.max(ext.e - ext.w, ext.n - ext.s);
     var step = [0.25, 0.5, 1, 2, 5, 10, 15].filter(function (s) { return span / s <= 9; })[0] || 20;
@@ -909,6 +918,19 @@
 
     var bbox = (fig.dataset.bbox || '').split(',').map(Number);
     if (bbox.length !== 4 || bbox.some(isNaN)) bbox = null;
+    /* The ground the static drawing shows, and the live map opens on with no padding of its own. */
+    var frame = (fig.dataset.frame || '').split(',').map(Number);
+    if (frame.length !== 4 || frame.some(isNaN)) frame = null;
+    entry.frame = frame;
+    entry.initialIds = onlyIds.length ? onlyIds : null;
+
+    /* The page's own drawing of the tracks (class map__sketch) stays until the live map has
+       drawn its first frame. Until then nothing is redrawn over it. */
+    function hasSketch() { return !!fallback.querySelector('.map__sketch'); }
+    function say(text) {
+      status.textContent = text;
+      status.dataset.say = '1';
+    }
 
     function corners(ext) {
       /* A wide map of Alaska reaches past 180°: name that longitude as the east one it is. */
@@ -916,7 +938,13 @@
       if (nw) nw.textContent = dms(ext.n, 'N', 'S') + ' ' + dms(wrap(ext.w), 'E', 'W');
       if (se) se.textContent = dms(ext.s, 'N', 'S') + ' ' + dms(wrap(ext.e), 'E', 'W');
     }
+    function sketchCorners() {
+      if (!frame || !hasSketch()) return;
+      var r = host.getBoundingClientRect();
+      if (r.width && r.height) corners(extentOf(frame, r.width, r.height, 0));
+    }
     function redrawFallback() {
+      if (hasSketch()) { sketchCorners(); return; }
       if (!entry.ready && entry.fc) {
         corners(drawFallback(fallback, entry.fc, bbox || bboxOf(entry.fc), routeMain));
         if (entry.visibleIds) setVisible(entry, entry.visibleIds);
@@ -925,16 +953,15 @@
     function fail(reason) {
       if (entry.ready) return;
       host.dataset.state = 'fallback';
-      status.textContent = 'Base map unavailable (' + reason + '). ' +
-        (kind === 'sketch' ? 'The start and end are drawn on a plain graticule.' : 'The track is drawn on a plain graticule.');
+      say('Base map unavailable (' + reason + '). ' +
+        (kind === 'sketch' ? 'The start and end are drawn on a plain ground.' : 'The track is drawn on a plain ground.'));
     }
 
-    /* Until the map starts the frame holds its size (the CSS), with a note that
-       says what happens next; the page loads nothing for it. */
-    status.textContent = 'The map loads when you scroll to it.';
+    /* Until the map starts the frame holds its size and its drawing (the page's own, or one
+       made from the data); the page loads nothing more for it. */
+    sketchCorners();
     var dataReady = null;
     function fetchData() {
-      status.textContent = kind === 'sketch' ? 'Loading the map…' : 'Loading the track…';
       return fetch(fig.dataset.src, { credentials: 'same-origin' })
       .then(function (r) {
         if (!r.ok) throw new Error(r.status);
@@ -956,13 +983,12 @@
               : fb;
           });
         }
-        if (!entry.ready && entry.mapStarted && window.maplibregl) status.textContent = 'Loading the base map…';
         redrawFallback();
         return fc;
       })
       .catch(function () {
         host.dataset.state = 'error';
-        status.textContent = 'The track data did not load. Downloads on this page are unaffected.';
+        say('The track data did not load. Downloads on this page are unaffected.');
         return null;
       });
     }
@@ -980,7 +1006,6 @@
     function startMapLibre() {
       if (!window.maplibregl) { dataReady.then(function (fc) { if (fc) fail('the map library did not load'); }); return; }
       if (!webglAvailable()) { dataReady.then(function (fc) { if (fc) fail('WebGL is off in this browser'); }); return; }
-      if (!entry.ready && entry.fc) status.textContent = 'Loading the base map…';
       var timer = setTimeout(function () { fail('tiles did not load'); }, 15000);
       if (outdoorUrl) fetchOutdoor(outdoorUrl).then(function (base) { createMap(base, timer); });
       else createMap(null, timer);
@@ -1003,7 +1028,12 @@
         pitchWithRotate: false,
         touchPitch: false
       };
-      if (bbox) {
+      if (frame) {
+        /* The ground the page's drawing shows, fitted with no padding of its own: the track
+           does not move when the live map takes over. */
+        options.bounds = [[frame[0], frame[1]], [frame[2], frame[3]]];
+        options.fitBoundsOptions = { padding: 0 };
+      } else if (bbox) {
         options.bounds = [[bbox[0], bbox[1]], [bbox[2], bbox[3]]];
         options.fitBoundsOptions = { padding: 32 };
       }
@@ -1070,8 +1100,27 @@
         }
         entry.ready = true;
         settled = true;
-        host.dataset.state = 'ready';
-        status.textContent = '';
+        /* The live map shows (and the drawing gives way, in the CSS) once it has drawn its first
+           frame with the tracks: the base map fills in behind a track that holds still. */
+        var shown = false;
+        function reveal() {
+          if (shown) return;
+          shown = true;
+          host.dataset.state = 'ready';
+          status.textContent = '';
+          delete status.dataset.say;
+        }
+        /* Once the tracks' source is loaded and the map has drawn a frame since: the base map
+           is still filling in, and the tracks it draws are where the drawing's were. */
+        function trackDrawn() {
+          if (!map.isSourceLoaded('olt')) return;
+          map.off('sourcedata', trackDrawn);
+          map.once('render', reveal);
+          map.triggerRepaint();
+        }
+        map.on('sourcedata', trackDrawn);
+        trackDrawn();
+        setTimeout(reveal, 2500);
         collapseAttribution();
         if (entry.visibleIds) setVisible(entry, entry.visibleIds);
         if (kind === 'overview') wireOverview(entry, map, defs);
@@ -1133,31 +1182,25 @@
       if (entry.mapStarted) return;
       entry.mapStarted = true;
       if (outdoorUrl) fetchOutdoor(outdoorUrl);
-      dataReady = fetchData();
+      dataReady = dataReady || fetchData();
       loadLibraries().then(startMapLibre);
     }
 
-    /* When: a fifth of the frame is on the screen and the page has loaded, or the
-       moment it is touched, clicked or focused. A frame below the fold, or only
-       peeking over it, costs the page nothing. A browser without
-       IntersectionObserver starts it once the page has loaded. */
+    /* When: every map starts by itself, once, a moment after the page has loaded: when the browser
+       is idle, or after 500 ms at most. Where the map sits, how big the screen is, and whether the
+       visitor scrolls, touches, types or does nothing make no difference. The drawing in the frame
+       holds the place of the map until its first frame is drawn. */
     function afterLoad(fn) {
       if (document.readyState === 'complete') fn();
       else window.addEventListener('load', fn, { once: true });
     }
-    ['pointerdown', 'focusin', 'keydown'].forEach(function (type) {
-      host.addEventListener(type, begin, { once: true, passive: true });
+    afterLoad(function () {
+      if (window.requestIdleCallback) requestIdleCallback(begin, { timeout: 500 });
+      else setTimeout(begin, 100);
     });
-    if ('IntersectionObserver' in window) {
-      var watcher = new IntersectionObserver(function (changes) {
-        if (!changes.some(function (c) { return c.isIntersecting; })) return;
-        watcher.disconnect();
-        afterLoad(begin);
-      }, { threshold: 0.2 });
-      watcher.observe(host);
-    } else {
-      afterLoad(begin);
-    }
+    /* A frame the page came without a drawing for (the saved trails, known only here) is drawn
+       from the data as soon as this script has it. */
+    if (!hasSketch()) dataReady = fetchData();
   }
 
   function entryFor(id) {
@@ -1239,8 +1282,13 @@
     if (!union) return;
     var target = shown >= total && entry.fullBounds ? entry.fullBounds : union;
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var padding = 32;
+    /* The trails the page opened on are the ground its drawing shows: that view needs no move. */
+    var first = entry.initialIds || Object.keys(entry.boundsById);
+    var same = ids.length === first.length && ids.every(function (id) { return first.indexOf(id) !== -1; });
+    if (entry.frame && same) { target = entry.frame; padding = 0; }
     map.fitBounds([[target[0], target[1]], [target[2], target[3]]],
-      { padding: 32, maxZoom: 11, animate: !reduceMotion });
+      { padding: padding, maxZoom: 11, animate: !reduceMotion });
   }
 
   function setVisible(entry, ids) {
@@ -1252,6 +1300,10 @@
     if (!entry.ready && entry.fc && entry.kind === 'overview') {
       var sub = entry.fc.features.filter(function (f) { return set[(f.properties || {}).id]; });
       var whole = sub.length === entry.fc.features.length;
+      /* The page's own drawing stands while the filters leave the trails it opened on. */
+      var opened = entry.initialIds ? entry.initialIds.length : Object.keys(entry.boundsById || {}).length;
+      var onSketch = entry.fallback.querySelector('.map__sketch');
+      if (onSketch && ids.length === opened) { sub = []; }
       if (sub.length) drawFallback(entry.fallback, whole ? entry.fc : { type: 'FeatureCollection', features: sub },
         whole && entry.fullBounds ? entry.fullBounds : bboxOf({ features: sub }), false);
     }
@@ -1269,7 +1321,7 @@
     fitToVisible(entry, ids);
   }
 
-  /* Each map waits for its moment (initMap): nothing is fetched here. The
+  /* Each map starts by itself shortly after the page has loaded (initMap). The
      finder and the other controls below never wait for a map. */
   document.querySelectorAll('.mapfig[data-map]').forEach(initMap);
 
@@ -1439,6 +1491,16 @@
     var defaultSort = defaultSortOf(resultsRoot);
     var more = form.querySelector('.filters__more');
     var total = items.length;
+    /* The bar: the Filters control opens the panels, and Clear shows only when something is set. */
+    var toggle = form.querySelector('.filters__toggle');
+    var panels = form.querySelector('.filters__panels');
+    var clear = form.querySelector('.filters__clear');
+    function showPanels(open) {
+      if (!panels) return;
+      if (open) panels.setAttribute('data-open', ''); else panels.removeAttribute('data-open');
+      if (toggle) toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    if (toggle) toggle.addEventListener('click', function () { showPanels(!panels.hasAttribute('data-open')); });
 
     /* The count is the one live region. Keep it quiet through the first
        application below so nothing is announced on load, and write to it
@@ -1671,7 +1733,9 @@
       active.textContent = n ? n + ' on' : '';
       var all = (s.where ? 1 : 0) + (s.min ? 1 : 0) + (s.max !== Infinity ? 1 : 0) + (s.month ? 1 : 0) + (s.kind ? 1 : 0) +
         (s.time.length ? 1 : 0) + (s.terrain.length ? 1 : 0) + n;
-      setText(form.querySelector('.filters__count'), all ? all + ' on' : '');
+      setText(form.querySelector('.filters__count'), all ? String(all) : '');
+      /* Clear is offered only when something is set: a search, or any filter. */
+      if (clear) clear.hidden = !(s.q || all);
 
       maps.forEach(function (m) { if (m.kind === 'overview') setVisible(m, shown); });
       if (updateUrl) {
@@ -1711,11 +1775,9 @@
     /* The filters behind "More" stay folded, unless the address already sets one. */
     var s0 = read();
     if (more && MORE.some(function (name) { return s0[name].length; })) more.open = true;
-    /* On a narrow screen the filters fold behind their heading, so the trails
-       come first; they stay open when the address already sets one. */
-    var panel = form.querySelector('.filters__panel');
+    /* The panels open from the bar; they start open when the address already sets a filter. */
     var firstOn = s0.where || s0.min || s0.max !== Infinity || s0.month || s0.kind || s0.time.length || s0.terrain.length;
-    if (panel && window.matchMedia('(max-width: 63.99rem)').matches && !firstOn) panel.open = false;
+    if (firstOn || MORE.some(function (name) { return s0[name].length; })) showPanels(true);
     window.addEventListener('popstate', function () { fromQuery(); applySort(); apply(false); });
     /* A page reached by Back, Forward or a reload: the browser may put the old
        values of the controls back after this script has run, or show an old copy
@@ -1734,6 +1796,17 @@
   var finder = document.getElementById('finder-form');
   if (finder) initFinder(finder);
   initSortableLists();
+
+  /* 3b. A trail page's At a glance panel on a narrow screen: the button opens the rest of the facts. */
+  document.querySelectorAll('[data-glance-toggle]').forEach(function (button) {
+    var panel = button.closest('.glance');
+    button.addEventListener('click', function () {
+      var all = !panel.hasAttribute('data-all');
+      if (all) panel.setAttribute('data-all', ''); else panel.removeAttribute('data-all');
+      button.setAttribute('aria-expanded', all ? 'true' : 'false');
+      button.textContent = all ? 'Fewer facts' : 'All the facts';
+    });
+  });
 
   /* 4. A link to a part of the page inside a closed <details> (About this data)
      opens it, so the target is shown rather than hidden. */

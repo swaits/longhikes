@@ -128,7 +128,7 @@ def collection_page(collection, records, site):
     from . import home
     body = (pagekit.head(f"{name} trails compared", lede, [("Trails", "/"), ("Lists", "/lists/")])
             + '<div class="container section place">'
-              f'{pagekit.table(headers, rows, caption=f"The {name} trails side by side", row_heads=True)}'
+              f'{pagekit.table(headers, rows, caption=f"The {name} trails side by side", row_heads=True, compare=True)}'
               f'{source}'
               f'<div class="prose place-summary">{summary.facts(recs, records)}</div>'
               f'{home.results(recs, top=2)}'

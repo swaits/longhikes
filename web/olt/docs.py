@@ -373,8 +373,9 @@ site calls them trails.</p>
 <p>A trail is listed when it is a named, continuous walk, or a named loop, of at least 50&nbsp;miles (80&nbsp;km)
 in the United States or Canada. It is either an official trail, looked after as one trail by a land agency or
 a trail association, or a route: {esc(facets.ROUTE_DEFINITION[0].lower() + facets.ROUTE_DEFINITION[1:])}
-{routes} of the {n} trails are routes. Every National Scenic Trail is listed, and a few well-known multi-day
-trails between 37 and 50&nbsp;miles (60 and 80&nbsp;km).</p>
+{routes} of the {n} trails are routes. The length is the end-to-end length of the trail&rsquo;s canonical path, and the
+trail must be walkable from one end to the other today. A National Scenic Trail is listed unless it cannot be walked
+through, and so are a few well-known multi-day trails between 37 and 50&nbsp;miles (60 and 80&nbsp;km).</p>
 <p>Each record has a <em>tier</em>, which says why it is listed. A record can also be <em>held</em>: listed,
 but with something about it not yet settled, which its note says.</p>
 <p>Trails that were looked at and left out are kept in the open too, with the reason for each one:

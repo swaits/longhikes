@@ -43,7 +43,7 @@ WAVES = {
     "held": ("Held", "Listed, but something about it is not settled"),
 }
 INCLUSION = {
-    "nst-unconditional": ("Listed unconditionally", "Every National Scenic Trail is listed"),
+    "nst-unconditional": ("Listed as a National Scenic Trail", "A National Scenic Trail is listed unless it cannot be walked from one end to the other"),
     "candidate-decision-pending": ("Candidate", "The decision to list it is pending"),
 }
 KINDS = {

@@ -8,7 +8,8 @@ short_name_url = "https://www.iceagetrail.org/"
 country = "US"
 regions = ["WI"]
 length_km = 1931
-length_note = "about 1,200 mi planned; fewer built"
+length_note = "About 1,200 mi for the whole route, as the Ice Age Trail Alliance gives it: nearly 700 mi of yellow-blazed trail and about 500 mi of unmarked connecting routes."
+built_km = 1127
 tier = "national"
 designation = "National Scenic Trail (1980)"
 wave = 1
@@ -26,16 +27,16 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 2381423. The publisher's own track is not licensed for redistribution and is not used."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "Super-relation 2381423 holds 138 segment relations in the main role; the 81 relations marked 'connection' (the connecting routes and road walks between segments) are in alternates.geojson."
+mainline = "Super-relation 2381423 holds 138 relations in the main role (the trail's segments) and 81 marked 'connection' (the unmarked connecting routes and road walks between segments, which the Ice Age Trail Alliance counts in the trail's 1,200 miles). The main track is the segments and the connecting routes together, in order from Interstate State Park in the west to Potawatomi State Park in the east. Ways with the roles approach, excursion and alternative are in alternates.geojson, as is every segment or connection way that is not on the walk. In central Wisconsin the trail has a western and an eastern branch between Chaffee Creek and Devil's Lake; no source read names either branch as the main route, so the eastern branch was taken as the main track by default (Karner Blue, Montello, John Muir Park, Portage Canal and Sauk Point, 135 km) and the western branch (the Baraboo-Chaffee Creek connection, 131 km) is in alternates.geojson. The branches were told apart by the relations' own names and by geometry."
 source_checked = "2026-11-09"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "The trail is not finished: OpenStreetMap's segment relations map the built trail, 1,141.0 km in 89 parts against 1,931 km (about 1,200 mi) planned. The connection relations, 872.5 km of connecting route and road walk, are in alternates.geojson."
+length_gap_note = "The main track is 1,788.5 km in 40 parts, 7.4% short of 1,931 km (about 1,200 mi). OpenStreetMap has no way joining the parts: most gaps are 100 to 370 m, one is 0.85 km (at Madison) and one is 7.0 km (between Greenbush and LaBudde Creek, near the Kettle Moraine). The trail is also not finished, and the connecting routes change from year to year."
 
 [osm]
 relation = 2381423
-note = "Super-relation 2381423 with 219 sub-relations; 138 in the main role and 81 marked 'connection'. Downloaded 2026-11-09."
+note = "Super-relation 2381423 with 219 sub-relations; 138 in the main role and 81 marked 'connection'. Downloaded 2026-11-09. Re-cut 2026-11-16: the main track is now 1,513 ways, segments and connections in order from west to east by the eastern branch, with 1,046 pieces (225.0 km) in alternates."
 
 [shield]
 status = "use-real-logo"
@@ -48,10 +49,10 @@ logo_owner = "National Park Service"
 [verification]
 verified = true
 date = "2026-11-09"
-measured_km = 1141.0
-difference_percent = -40.9
-parts = 89
-note = "The built segments give 1,141.0 km in 89 parts, 40.9% short of 1,931 km planned. The 81 'connection' relations (872.5 km) are in alternates.geojson."
+measured_km = 1788.5
+difference_percent = -7.4
+parts = 40
+note = "Segments and connecting routes in order, by the eastern branch: 1,788.5 km in 40 parts, 7.4% short of 1,931 km (about 1,200 mi). The earlier track, the built segments alone, was 1,141.0 km in 89 parts. Alternates (225.0 km) hold the western branch, side trails and the rest."
 
 [hike]
 summary = "The Ice Age Trail is a thousand-mile footpath across Wisconsin that traces the landscape left by the last continental glacier, from Interstate State Park at St. Croix Falls to Potawatomi State Park at Sturgeon Bay. It crosses some of the state's most beautiful natural areas and leads hikers right down the main streets of Wisconsin communities. The trail is managed by a partnership of the National Park Service, the Wisconsin Department of Natural Resources and the Ice Age Trail Alliance."
@@ -111,5 +112,23 @@ change = "The name hikers use, Ice Age Trail, was added as the common name. The 
 fields = ["common_name"]
 basis = "The Ice Age Trail Alliance's page is headed 'About the Ice Age Trail' and uses the formal name in its introduction."
 basis_url = "https://www.iceagetrail.org/explore/explore-the-trail/ice-age-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length note now says what the 1,200 miles counts, and the built length, nearly 700 miles (1,127 km) of blazed trail, was added. The length is unchanged."
+fields = ["length_note", "built_km"]
+basis = "The Alliance says the entire route is about 1,200 miles, with nearly 700 miles yellow-blazed and about 500 miles of unmarked connecting routes."
+basis_url = "https://www.iceagetrail.org/explore/explore-the-trail/ice-age-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track was rebuilt as the trail segments plus the connecting routes in order from west to east, by the eastern branch in central Wisconsin (1,789 km in 40 parts); the western branch moved to the alternates."
+fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
+basis = "OpenStreetMap relation 2381423 holds the trail's segments and its connecting routes, which the Ice Age Trail Alliance counts in the trail's 1,200 miles. No source read names either central Wisconsin branch as the main route, so the eastern branch was taken by default."
+basis_url = "https://www.openstreetmap.org/relation/2381423"
 asked_by = "the dataset's own check"
 outcome = "applied"

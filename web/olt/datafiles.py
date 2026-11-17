@@ -2,6 +2,7 @@
 
     glossary.toml     [[term]]        the Glossary page (olt/reference.py)
     collections.toml  [[collection]]  named sets of trails set side by side (olt/standing.py)
+                      [[list]]        which lists the home page shows, and in what order (olt/home.py)
     authors.toml      [[author]]      route authors credited in more than one form (olt/authors.py)
 
 Each is checked by tools/validate.py and described in docs/schema.md. Like left-out.toml, a file
@@ -34,3 +35,8 @@ def collections(repo_root):
 
 def authors(repo_root):
     return load(repo_root, "authors.toml", "author")
+
+
+def lists(repo_root):
+    """The [[list]] entries of collections.toml: a list's key, and `home`, its place in the home page's row."""
+    return load(repo_root, "collections.toml", "list")

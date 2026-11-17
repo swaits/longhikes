@@ -5,7 +5,7 @@ name = "Ganaraska Hiking Trail"
 country = "CA"
 regions = ["ON"]
 length_km = 500
-length_note = "about 500 km with side trails"
+length_note = "About 500 km (311 mi) for the main trail of ten sections, as the association gives it for its End-to-End badge. The side trails to Wasaga Beach and Midland are not counted."
 tier = "regional"
 designation = "Ganaraska Hiking Trail Association"
 wave = "held"
@@ -29,7 +29,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "OSM relation 3696751 gives 238.4 km in 7 parts and ends near Barrie; it does not reach the Glen Huron terminus. The 500 km published figure includes branch trails. No usable whole track found on 2026-11-08. Held."
+length_gap_note = "OSM relation 3696751 gives 238.4 km in 7 parts and ends near Barrie; it does not reach the Glen Huron terminus. The 500 km published figure is the main trail of ten sections. No usable whole track found on 2026-11-08. Held."
 
 [osm]
 relation = 3696751
@@ -49,7 +49,7 @@ date = "2026-11-08"
 measured_km = 238.4
 difference_percent = -52.3
 parts = 7
-note = "OSM relation 3696751 gives 238.4 km in 7 parts and ends near Barrie; it does not reach the Glen Huron terminus. The 500 km published figure includes branch trails. No usable whole track found on 2026-11-08. Held."
+note = "OSM relation 3696751 gives 238.4 km in 7 parts and ends near Barrie; it does not reach the Glen Huron terminus. The 500 km published figure is the main trail of ten sections. No usable whole track found on 2026-11-08. Held."
 
 [hike]
 summary = "The Ganaraska Hiking Trail runs across southern Ontario from Port Hope on Lake Ontario to the Bruce Trail near Collingwood. Side trails reach Wasaga Beach and Midland. Local clubs lead hikes on it through the year."
@@ -81,5 +81,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://ganaraska-hiking-trail.org/wp-content/uploads/2016/01/GanaraskaLogo-e1452359706312.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length note was corrected: the 500 kilometres is the main trail of ten sections, and the side trails are not counted in it."
+fields = ["length_note"]
+basis = "The association says: 'The full trail is approximately 500 km' and that hikers must complete the main trail of all ten sections for the End-to-End badge."
+basis_url = "https://www.ganaraska-hiking-trail.org/?page_id=713"
 asked_by = "the dataset's own check"
 outcome = "applied"

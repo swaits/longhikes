@@ -24,14 +24,19 @@ from .markup import Markup, attrs, esc, json_block
 NAV = (
     ("Trails", "/"),
     ("Places", "/regions/"),
+    ("Lists", "/lists/"),
     ("About", "/about/"),
 )
-# Pages with no header item of their own, and the item they sit under. The
-# lists (Routes among them) are part of Trails; the dataset pages are part of
-# About and are linked from the About hub and the footer.
-NAV_PARENT = {"/trails/": "/", "/lists/": "/", "/routes/": "/",
+# Pages with no header item of their own, and the item they sit under. A trail's page is part of
+# Trails; the dataset pages are part of About and are linked from the About hub and the footer.
+NAV_PARENT = {"/trails/": "/",
               "/sources/": "/about/", "/logos/": "/about/", "/data/": "/about/",
-              "/left-out/": "/about/"}
+              "/left-out/": "/about/", "/method/": "/about/", "/glossary/": "/about/"}
+# Under Lists: the lists (Routes among them), the tables and rankings, the authors and the views of
+# what is new. A table that collections.toml names has an address of its own; olt/pages.py adds it
+# to UNDER_LISTS as it writes the page.
+LISTS_PREFIXES = ("/lists/", "/routes/", "/numbers/", "/authors/", "/recent/", "/connected/")
+UNDER_LISTS = set()
 
 FEED_PATH = "/feed.xml"  # the Atom feed of the changelog (olt/feed.py)
 
@@ -45,6 +50,7 @@ FONT_PRELOADS = (
     "/assets/fonts/ibm-plex-sans-condensed-500-latin.woff2",
     "/assets/fonts/ibm-plex-sans-condensed-600-latin.woff2",
 )
+CONTOURS = "/assets/contours.svg"
 MAPLIBRE_CSS = "/assets/vendor/maplibre-gl/maplibre-gl.css"
 MAPLIBRE_JS = "/assets/vendor/maplibre-gl/maplibre-gl.js"
 # The outdoor map of the trail pages: its style, named on each trail map figure
@@ -56,11 +62,11 @@ CONTOUR_JS = "/assets/vendor/maplibre-contour/maplibre-contour.js"
 
 def _current(path, href):
     """True when the nav item href is the section the page at path belongs to."""
-    if href == "/" and path == "/":
-        return True
+    if href == "/lists/":
+        return path.startswith(LISTS_PREFIXES) or path in UNDER_LISTS
     if any(path.startswith(p) and parent == href for p, parent in NAV_PARENT.items()):
         return True
-    return href != "/" and path.startswith(href)
+    return path == "/" if href == "/" else path.startswith(href)
 
 
 SAVED_PATH = "/saved/"
@@ -207,7 +213,7 @@ def layout(title, body, *, path, description="", maps=False, outdoor=False, scri
     description  meta description (155 characters); defaults to the site tagline. The share
                  descriptions (og:description, twitter:description) are cut from it to 125.
     maps         True on a page with a .mapfig[data-map]: app.js is given the addresses of
-                 MapLibre, and loads it when the map scrolls into view or is touched.
+                 MapLibre, and loads it a moment after the page has loaded.
     outdoor      True as well on a page whose map is an outdoor map (a trail
                  page): app.js loads the contour add-on with MapLibre.
     scripts      extra same-origin script URLs, loaded with defer after app.js.
@@ -275,14 +281,17 @@ def layout(title, body, *, path, description="", maps=False, outdoor=False, scri
     head += [f'<link rel="alternate" type="{esc(kind)}" href="{esc(href)}"{attrs(title=name)}>'
              for href, kind, name in alternates]
     head += [f'<link rel="preload" href="{fingerprint.url(f)}" as="font" type="font/woff2" crossorigin>' for f in FONT_PRELOADS]
+    # The contour picture behind the page head: found by the stylesheet only, so it would arrive after
+    # the first paint and, on a compact head, be the last thing painted (the page's largest paint).
+    head.append(f'<link rel="preload" href="{fingerprint.url(CONTOURS)}" as="image" type="image/svg+xml">')
     head += [
         f'<link rel="stylesheet" href="{fingerprint.url("/assets/style.css")}">',
         # Sets the theme and unit preference before first paint (no inline scripts allowed).
         f'<script src="{fingerprint.url("/assets/prefs.js")}"></script>',
     ]
     # The page's one script. A page with a map does not load MapLibre (200 KB of script, 65 KB
-    # of style) with the page: app.js loads these three files itself, when the map scrolls
-    # into view or is touched, from the addresses it is given here.
+    # of style) with the page: app.js loads these three files itself, a moment after the page has
+    # loaded and never on a scroll or a touch, from the addresses it is given here.
     libs = {}
     if maps:
         libs = {"data-maplibre-css": MAPLIBRE_CSS, "data-maplibre-js": MAPLIBRE_JS}

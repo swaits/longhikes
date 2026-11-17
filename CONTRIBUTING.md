@@ -27,6 +27,12 @@ python3 tools/check_history.py
 
 The second command must print `OK <n> trails`. The third must print `OK history`: it fails when a fact changed and no new history entry names the field. Run it before you send a change, whether you are a person or an agent. It compares your work with `origin/main` (or `main`), so fetch first if you have not lately. Do not remove or reword an entry that is already there.
 
+## What a trail's length is
+
+`length_km` is the end-to-end length of the trail's canonical path, as the holder or author states it: one walk from one end to the other, taking one branch at a split, with no side trails, no stretch counted twice and no system total. A holder's larger figure, such as a system total or a planned total, goes in `system_km` with `system_note` saying what it counts, and is never used as the length. For a trail that is partly unbuilt, `length_km` is the holder's end-to-end route, `built_km` is the built length, and `hike.unfinished` says how the gaps are crossed. `length_note` says where the figure was read and where pages disagree. docs/schema.md has the rule in full, with examples.
+
+A trail must be walkable from one end to the other today. A trail published in separate pieces, or with a gap that has no way across, is not listed: it goes in `left-out.toml` with the reason `cannot-be-walked-through`, or another that fits. Road links the holder publishes as the way through count as walkable, and so does evidence that people have walked it end to end. When you correct a length or report a gap, give the holder's page and the sentence that says it.
+
 ## History and conflicts
 
 Every record has a `[[history]]` list, oldest first, which says who asked for each change, on what evidence, and which requests were turned down. Git has the diffs; the history has the reasons, so that someone who later asks for the opposite change can see what was decided.
@@ -38,7 +44,7 @@ Every record has a `[[history]]` list, oldest first, which says who asked for ea
 
 ## Add a trail
 
-A trail belongs here when it meets the inclusion rule in README.md: a named, continuous walking route, or a named loop, of at least 50 miles (80 km) (a few well-known routes of 60-80 km are also listed), in the United States or Canada. It is either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a route: a high route, a traverse or a loop of linked trails that a hiker or a small group worked out and published.
+A trail belongs here when it meets the inclusion rule in README.md: a named, continuous walking route, or a named loop, of at least 50 miles (80 km) of end-to-end length (a few well-known routes of 60-80 km are also listed), in the United States or Canada, that can be walked from one end to the other today. It is either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a route: a high route, a traverse or a loop of linked trails that a hiker or a small group worked out and published.
 
 A route whose author chooses not to publish a track is still added, with no track included, pointing to where the route is got from. No track for it is included from any source, OpenStreetMap included. The rule is in README.md, section "Inclusion rule"; the fields are in docs/schema.md.
 

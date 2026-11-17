@@ -117,17 +117,17 @@ def left_out_page(entries, site, repo_root):
             if e.get("source_url"):
                 source = (f'<a href="{esc(e["source_url"])}">Source page</a>')
             rows += (
-                f"<tr><td>{esc(e.get('name', ''))}{mark}</td>"
-                f"<td>{esc(_where(e))}</td>"
-                f"<td>{_length(e)}</td>"
-                f"<td>{why}</td>"
-                f'<td><time datetime="{esc(e.get("decided", ""))}">'
+                f'<tr><td data-label="Trail">{esc(e.get("name", ""))}{mark}</td>'
+                f'<td data-label="Where">{esc(_where(e))}</td>'
+                f'<td data-label="Length">{_length(e)}</td>'
+                f'<td data-label="Why it is left out">{why}</td>'
+                f'<td data-label="Decided"><time datetime="{esc(e.get("decided", ""))}">'
                 f"{esc(e.get('decided', ''))}</time></td>"
-                f"<td>{source}</td></tr>")
+                f'<td data-label="Source">{source}</td></tr>')
         groups += f"""<section aria-labelledby="left-out-{esc(reason)}">
   <div class="section-head"><h2 id="left-out-{esc(reason)}">{esc(heading)}</h2>
   <p>{esc(meaning)}</p></div>
-  <div class="table-wrap"><table>
+  <div class="table-wrap"><table data-stack="rows">
   <thead><tr><th scope="col">Trail</th><th scope="col">Where</th><th scope="col">Length</th><th scope="col">Why it is left out</th><th scope="col">Decided</th><th scope="col">Source</th></tr></thead>
   <tbody>{rows}</tbody></table></div>
 </section>"""

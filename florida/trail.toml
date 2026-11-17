@@ -7,8 +7,10 @@ short_name = "FT"
 short_name_url = "https://floridatrail.org/explore-the-florida-trail/"
 country = "US"
 regions = ["FL"]
-length_km = 2414
-length_note = "about 1,500 mi published"
+length_km = 1818
+length_note = "The Eastern Corridor thru-hike, by the east side of Lake Okeechobee: 'Eastern Corridor Thru-Hike: 1,130 miles' on the Florida Trail Association's card (a 2019 card, on its own site). The association's FAQ (floridatrail.org/faqs) totals the same hike at 1,287.9 mi, of which 365.71 mi is road connector, and the two figures are not reconciled. Its 2024 to 2025 thru-hiker guide says a thru-hike is approximately 1,100 mi and averages 2 to 3 months."
+system_km = 2549
+system_note = "all designated trail, official side trail and connecting roadwalks, on both corridors and both sides of Lake Okeechobee"
 tier = "national"
 designation = "National Scenic Trail (1983)"
 wave = 1
@@ -26,7 +28,8 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 14480287. The publisher's own track is not licensed for redistribution and is not used."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "Five regional relations make the thru route: 14480287 Panhandle, 14480288 Northern, 14480289 Central, 14480290 Southern and 14480373 Disconnected Trails. Ways marked 'alternative', 'excursion' or 'approach', and the nested side relations 16774782 (high-water alternate) and 19804593 (Orange Blaze connector), are in alternates.geojson."
+length_gap_note = "The main track is one walk, not the designated system. At 1,783.6 km it is 1.9% short of the 1,818 km (1,130 mi) Eastern Corridor thru-hike the Association publishes, but 26% short of the 2,414 km (1,500 mi) figure, which also counts the west side of Lake Okeechobee, the Western Corridor and connecting roads and trails; those are in alternates.geojson."
+mainline = "The main track is one continuous south-to-north walk, cut from the five regional relations (14480287 Panhandle, 14480288 Northern, 14480289 Central, 14480290 Southern, 14480373 Disconnected Trails) by the Florida Trail Association's thru-hike: the east side of Lake Okeechobee and the Eastern Corridor (Cross Seminole and Seminole Wekiva trails). The relations do not say which branch is which, so the branches were told apart from the geometry: where the track splits twice, the two ways around the lake (92 km east, 91 km west) and through central Florida (327 km Eastern, 386 km Western) match the Association's data book figures of 57.4 and 55.5 mi and 203.7 and 239.5 mi. The west side of the lake, the Western Corridor, connecting roads off the walk, the pieces of the Disconnected Trails relation that do not join the route, and the ways marked 'alternative', 'excursion' or 'approach' (with the nested side relations 16774782, a high-water alternate, and 19804593, the Orange Blaze connector) are in alternates.geojson."
 source_checked = "2026-11-09"
 redistributable = true
 line_source = "OpenStreetMap"
@@ -34,7 +37,7 @@ line_file = "line.geojson"
 
 [osm]
 relation = 14480287
-note = "Relations 14480287, 14480288, 14480289, 14480290 and 14480373 downloaded 2026-11-09; 2,082 main ways and 326 alternate ways."
+note = "Relations 14480287, 14480288, 14480289, 14480290 and 14480373 downloaded 2026-11-09 (2,082 main ways and 326 alternate ways); the track was re-cut on 2026-11-16 to 1,446 main ways in walking order, with 962 ways in alternates."
 
 [shield]
 status = "use-real-logo"
@@ -47,10 +50,10 @@ logo_owner = "USDA Forest Service"
 [verification]
 verified = true
 date = "2026-11-09"
-measured_km = 2338.7
-difference_percent = -3.1
-parts = 6
-note = "The five regional relations give 2,338.7 km in 6 parts, 3.1% short of 2,414 km. Alternates, excursions and approaches (326 ways, 248.0 km) are in alternates.geojson."
+measured_km = 1783.6
+difference_percent = -1.9
+parts = 1
+note = "One continuous south-to-north walk of 1,783.6 km in 1 part, by the east side of Lake Okeechobee and the Eastern Corridor, 1.9% short of the Association's 1,130-mile (1,818 km) Eastern Corridor thru-hike. The 555 km taken out of the earlier 2,338.7 km track (the west side of the lake, the Western Corridor, off-route roads and unconnected pieces) is in alternates.geojson, which now holds 962 ways, 803.1 km."
 
 [hike]
 summary = "The Florida National Scenic Trail runs the length of Florida, from Big Cypress National Preserve in the south to Gulf Islands National Seashore on the Panhandle coast. It crosses cypress swamp, prairie, pinelands and sand beaches. It is the only subtropical National Scenic Trail in the nation."
@@ -87,6 +90,11 @@ url = "https://floridatrail.org/thru-hike/"
 publisher = "Florida Trail Association"
 facts = ["days"]
 
+[[hike.source]]
+url = "https://floridatrail.org/wp-content/uploads/2024/09/FTA-Thru-Hiker-Guide-2024-2025_Updated-9.11.24.pdf"
+publisher = "Florida Trail Association"
+facts = ["days"]
+
 [[link]]
 title = "Florida National Scenic Trail"
 publisher = "LongTrailsWiki"
@@ -118,5 +126,23 @@ change = "The name hikers use, Florida Trail, was added as the common name. The 
 fields = ["common_name"]
 basis = "The Florida Trail Association's page is headed 'Explore the Florida Trail' and uses the formal name in its text."
 basis_url = "https://floridatrail.org/explore-the-florida-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The length was changed from about 1,500 miles (2,414 km), the whole trail system, to 1,130 miles (1,818 km), one end-to-end walk by the Eastern Corridor and the east side of Lake Okeechobee. The system figure, 1,584 miles (2,549 km), is kept as its own fact."
+fields = ["length_km", "length_note", "system_km", "system_note"]
+basis = "The Florida Trail Association's card says: 'Total Florida Trail Length: 1,584* miles. Eastern Corridor Thru-Hike: 1,130 miles', and the note to the first figure says it is based on all designated trail, official side trail and connecting roadwalks. Its FAQ gives the same hike as 1,287.9 miles, with 365.71 miles of road connector, and its 2024 to 2025 thru-hiker guide says a thru-hike is approximately 1,100 miles and averages 2 to 3 months."
+basis_url = "http://floridatrail.org/wp-content/uploads/2023/03/FT-By-the-Numbers-Index-Card-2019-speedy-update.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track was re-cut to one south-to-north walk by the east side of Lake Okeechobee and the Eastern Corridor (1,784 km in one part); the west side of the lake and the Western Corridor moved to the alternates."
+fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
+basis = "OpenStreetMap relations 14480287 to 14480290 and 14480373 hold the trail's regional routes. The branches were told apart by their geometry, which matches the branch lengths in the Florida Trail Association's data book."
+basis_url = "https://www.openstreetmap.org/relation/14480287"
 asked_by = "the dataset's own check"
 outcome = "applied"

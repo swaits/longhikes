@@ -1,7 +1,0 @@
-natchez-trace
-
-Source: https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/NATT_TRANS_NSTTrail/FeatureServer/0
-Licence: us-gov-public-domain (see trail.toml and SOURCES.md in this repository)
-Attribution: National Park Service, Natchez Trace Parkway
-Source read: 2026-11-08
-Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

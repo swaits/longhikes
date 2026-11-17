@@ -1,7 +1,7 @@
 """A paragraph built from the records that a page lists: what the set holds.
 
-    facts(recs, records)   count, longest and shortest, loops and routes, times, terrain,
-                           holders, highest point, and how many have a GPX
+    facts(recs, records)   one short paragraph: the longest and shortest, loops and routes,
+                           the most common terrain and the highest point
 
 Every figure is counted from the records, and a sentence is left out when the records
 give it nothing to say. No trail is named here: the longest and the shortest are found
@@ -57,51 +57,40 @@ def holder_counts(recs, records):
 
 
 def facts(recs, records):
-    """The summary paragraphs (Markup) for a set of trails. Empty for no trails."""
+    """The summary of a set of trails: one short paragraph (Markup). Empty for no trails."""
     if not recs:
         return Markup("")
     by_length = sorted(recs, key=lambda r: (r["length_km"], r["id"]))
     shortest, longest = by_length[0], by_length[-1]
     sentences = []
     if len(recs) > 1:
-        sentences.append(f"The longest is {_name_link(longest)}, {_miles(longest)}. "
-                         f"The shortest is {_name_link(shortest)}, {_miles(shortest)}.")
+        sentences.append(f"The longest is {_name_link(longest)}, {_miles(longest)}, "
+                         f"and the shortest {_name_link(shortest)}, {_miles(shortest)}.")
     else:
         sentences.append(f"{_name_link(longest)} is {_miles(longest)} long.")
     loops = sum(1 for r in recs if facets.shape(r) == "loop")
     routes = [r for r in recs if facets.kind(r) == "route"]
     parts = []
     if loops:
-        parts.append(_plural(loops, "loop"))
+        parts.append(f"{loops} {'is a loop' if loops == 1 else 'are loops'}")
     if routes:
         authors = {facets.author(r) for r in routes if facets.author(r)}
-        parts.append(f"{_plural(len(routes), 'route')}" + (f" by {_plural(len(authors), 'author')}" if authors else ""))
+        n = len(routes)
+        parts.append(f"{n} {'is a route' if n == 1 else 'are routes'}"
+                     + (f" by {_plural(len(authors), 'author')}" if authors and n > 1 else ""))
     if parts and len(recs) > 1:
-        sentences.append(f"{_join(parts)[:1].upper()}{_join(parts)[1:]}.")
-    paragraphs = [" ".join(sentences)]
-
-    more = []
-    timed = sorted(recs, key=lambda r: facets.time_days(r)[:2])
-    if len(recs) > 1:
-        quick, slow = timed[0], timed[-1]
-        more.append(f"The quickest to walk whole is {_name_link(quick)}, {facets.time_text(quick).lower()}, "
-                    f"and the slowest is {_name_link(slow)}, {facets.time_text(slow).lower()}.")
+        text = _join(parts)
+        sentences.append(f"{text[:1].upper()}{text[1:]}.")
     terrain = terrain_counts(recs)
-    if terrain:
+    if terrain and len(recs) > 1:
         shown = _join(
-            f'{_list_link(records, "terrain-" + t, words.TERRAIN[t].lower(), n)}' for t, n in terrain[:4])
-        have = sum(1 for r in recs if facets.terrain(r))
-        more.append(f"Terrain is on file for {have} of them; the most common is {shown}.")
-    holders = holder_counts(recs, records)
-    if holders:
-        more.append("By designation: " + _join(_list_link(records, lst.key, lst.title, k) for lst, k in holders) + ".")
+            f'{_list_link(records, "terrain-" + t, words.TERRAIN[t].lower(), n)}' for t, n in terrain[:3])
+        sentences.append(f"The most common terrain is {shown}.")
     high = [(hike.table(r).get("high_point_m"), r) for r in recs if isinstance(hike.table(r).get("high_point_m"), (int, float))]
     if high:
         m, top = max(high, key=lambda t: (t[0], t[1]["id"]))
-        more.append(f"The highest point stated is {words.elevation(m)}, on {_name_link(top)}.")
-    if more:
-        paragraphs.append(" ".join(more))
-    return Markup("".join(f"<p>{p}</p>" for p in paragraphs))
+        sentences.append(f"The highest point on file is {words.elevation(m)}, on {_name_link(top)}.")
+    return Markup(f"<p>{' '.join(sentences)}</p>")
 
 
 DETAIL_MAX = 3      # a page with this many trails or fewer gets a paragraph on each, so it is not a bare list

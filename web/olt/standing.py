@@ -1,5 +1,5 @@
-"""Tables built from the records: key figures for a set of trails, a collection set side by side
-(the Triple Crown), and the rankings under /numbers/.
+"""Pages built from the records' figures: a collection with its map (the Triple Crown), and the
+rankings under /numbers/, each as the site's trail rows.
 
 Nothing here names a trail. A collection is read from collections.toml; a ranking takes the
 records that carry the figure and says how many that is. Every figure comes from a record field,
@@ -12,7 +12,6 @@ from . import browse, common, datafiles, elevation, facets, hike, pagekit, regio
 from .markup import Markup, esc
 
 NUMBERS = "/numbers/"
-RANKING_ROWS = 25          # rows in a ranking table (the page says how many records have the figure)
 HUB_ROWS = 10
 
 
@@ -49,26 +48,8 @@ def season_cell(rec):
     return facets.season_text(rec) or "Not on file"
 
 
-# One figure: (label, function of a record). The order is the order of columns and rows.
-FIGURES = (
-    ("Length", lambda r: words.length(r["length_km"], mi=r["derived"]["length_mi"])),
-    ("States and provinces", _places),
-    ("Typical time", time_cell),
-    ("High point", high_point_cell),
-    ("Climb", climb_cell),
-    ("Season", season_cell),
-    ("Publisher", lambda r: r.get("source", {}).get("publisher", "") or "Not on file"),
-)
-
-
-def key_figures_table(recs, caption="Key figures"):
-    """One row per trail: length, places, time, high point, climb, season and publisher."""
-    rows = [[pagekit.trail_link(r)] + [fn(r) for _, fn in FIGURES] for r in recs]
-    return pagekit.table(["Trail"] + [label for label, _ in FIGURES], rows, caption=caption, row_heads=True)
-
-
 def figures_note(recs):
-    """What the figures in key_figures_table mean, with the caveats the records state."""
+    """What the times and climbs of these trails mean, with the caveats the records state."""
     est = sum(1 for r in recs if facets.time_days(r)[2])
     parts = [f"Times that start with “About” are estimated from the length ({est} of these). "
              "Otherwise a source states the time.",
@@ -82,11 +63,6 @@ def climb_caveat(recs):
         e["source"]["limits"] for e in (elevation.get(r) for r in recs) if e and e.get("source", {}).get("limits"))
     text = limits.most_common(1)[0][0] if limits else ""
     return ("Climb: " + text) if text else ""
-
-
-def figures_section(recs, intro=""):
-    return (f'<div class="prose"><p>{intro}</p></div>' if intro else "") + str(key_figures_table(recs)) + \
-        f'<p class="finder__foot">{esc(figures_note(recs))}</p>'
 
 
 # Collections ----------------------------------------------------------------------
@@ -114,43 +90,40 @@ def collection_page(collection, records, site):
     total_mi = sum(r["derived"]["length_mi"] for r in recs)
     total_km = sum(r["length_km"] for r in recs)
     places = {c for r in recs for c in r.get("regions", [])}
-    lede = (f"{esc(collection['definition'])} Here are the {len(recs)} trails side by side, in the order the "
-            f"definition names them, from what each trail's page says. Their published lengths add up to {words.fmt_int(total_mi)} "
-            f"miles ({words.fmt_int(total_km)} km), across {len(places)} states and provinces.")
-    headers = ["Figure"] + [common.plain_name(r) for r in recs]
-    rows = [[label] + [fn(r) for r in recs] for label, fn in FIGURES]
-    rows.insert(0, ["Full name"] + [pagekit.trail_link(r) for r in recs])
-    rows.append(["Designated"] + [common.designated_year(r) or "Not on file" for r in recs])
-    source = (f'<p class="finder__foot">The award is described by {esc(collection.get("source_publisher", "its holder"))} at '
+    lede = esc(collection['definition'])
+    totals = (f"<p>Their published lengths add up to {words.fmt_int(total_mi)} miles ({words.fmt_int(total_km)} km), "
+              f"across {len(places)} states and provinces.</p>")
+    source = (f'<p>The award is described by {esc(collection.get("source_publisher", "its holder"))} at '
               f'<a href="{esc(collection["source_url"])}">{esc(collection["source_url"])}</a>. '
               f'{esc(figures_note(recs))} Lengths are the published figures. '
               f'See the <a href="/method/">method</a> for how they are checked.</p>')
     from . import home
+
+    def more(r):
+        """The figures the trails are compared by, beyond a row's own: high point, climb, year named."""
+        out = []
+        hp_name, hp_m = high_point(r)
+        if hp_m is not None:
+            out.append(("High point", Markup(f"{esc(hp_name + ', ') if hp_name else ''}{words.elevation(hp_m)}")))
+        climb = facets.row_climb_m(r)
+        if climb is not None:
+            out.append(("Climb", words.elevation(climb)))
+        year = common.designated_year(r)
+        if year:
+            out.append(("Designated", esc(str(year))))
+        return out
     body = (pagekit.head(f"{name} trails compared", lede, [("Trails", "/"), ("Lists", "/lists/")])
             + '<div class="container section place">'
-              f'{pagekit.table(headers, rows, caption=f"The {name} trails side by side", row_heads=True, compare=True)}'
-              f'{source}'
-              f'<div class="prose place-summary">{summary.facts(recs, records)}</div>'
-              f'{home.results(recs, top=2)}'
+              f'{home.browse_view(home.results(recs, top=2, ranked="", more=more, default_sort="name"), home.overview_map(recs, f"Map of the {name} trails"), about=f"{totals}{summary.facts(recs, records)}{source}", about_title=f"About the {name}")}'
               '<nav class="region-nav" aria-label="Related pages"><a href="/lists/national-scenic-trails/">National Scenic Trails</a> · '
               f'<a href="/glossary/#{esc(collection["id"])}">What the {esc(name)} is</a> · <a href="/lists/">All lists</a></nav></div>')
     desc = common.cut_at_word(
-        f"{name} trails side by side: published length, states, typical time, high point, climb and season for "
-        f"{abbrs}. Figures from each trail's page, not ranked.", common.DESCRIPTION_LIMIT)
+        f"The {name} trails, {abbrs}, with their map: published length, typical time, high point, climb and the year "
+        f"each was named. Figures from each trail's page, not ranked.", common.DESCRIPTION_LIMIT)
     return title, desc, Markup(body), recs
 
 
 # Numbers ----------------------------------------------------------------------------
-
-def _rank_rows(recs, value_of, cell_of, extra=None):
-    rows = []
-    for i, r in enumerate(recs, 1):
-        row = [str(i), pagekit.trail_link(r), cell_of(r)]
-        if extra:
-            row.append(extra(r))
-        rows.append(row)
-    return rows
-
 
 def _climb(rec):
     return facets.row_climb_m(rec)
@@ -196,24 +169,19 @@ def ranking_page(spec, records, site):
     if len(have) < browse.MIN_SIZE:
         return None
     ranked = sorted(have, key=lambda r: (-value_of(r), r["id"]))
-    shown = ranked[:RANKING_ROWS]
     title = common.fit_title([f"{head}: {len(have)} Trails", head], site)
     if key == "highest-points":
         caveat = (f"{len(have)} of the {len(records)} trails have a high point stated in metres, as a source gives it. The rest "
                   "give none, so they are not ranked.")
     else:
         caveat = _climb_coverage_note(records) + " " + climb_caveat(have)
-    rows = _rank_rows(shown, value_of, cell_of, extra=lambda r: words.length(r["length_km"], mi=r["derived"]["length_mi"]))
-    lede = (f"The {len(have)} trails and routes that have the figure, {how}. "
-            f"The table shows the first {len(shown)}. {esc(caveat)}")
+    lede = f"The {len(have)} trails and routes that have the figure, {how}."
     from . import home
+    notes = (f"<p>{esc(caveat)}</p><p>Where two trails share a figure, they are in name order. "
+             f"The same figures are on each trail&rsquo;s page. See the <a href=\"/method/\">method</a> for what the caveats mean.</p>")
     body = (pagekit.head(head, lede, [("Trails", "/"), ("Lists", "/lists/"), ("By the numbers", NUMBERS)])
             + '<div class="container section place">'
-              f'{pagekit.table(["#", "Trail", label, "Length"], rows, caption=head, numeric=(0,))}'
-              f'<p class="finder__foot">Where two trails share a figure, they are in name order. '
-              f'The same figures are on each trail&rsquo;s page. See the <a href="/method/">method</a> for what the caveats mean.</p>'
-              f'<div class="prose place-summary">{summary.facts(have, records)}</div>'
-              f'{home.results(have, default_sort="climb-desc" if key != "highest-points" else "length-desc", top=2)}'
+              f'{home.browse_view(home.results(ranked, top=2, ranked=label, lead=lambda r: (label, cell_of(r))), home.overview_map(ranked, f"Map of the trails {how}"), about=f"{summary.facts(have, records)}{notes}", about_title="About this ranking")}'
               f'<nav class="region-nav" aria-label="Related pages"><a href="{NUMBERS}">By the numbers</a> · '
               f'<a href="/lists/">All lists</a></nav></div>')
     desc = common.cut_at_word(f"{len(have)} long hiking trails {how}, with the caveats that go with the figure.",
@@ -235,31 +203,34 @@ def numbers_page(records, site, ranked_pages):
     longest = by_length[:HUB_ROWS]
     shortest = list(reversed(by_length[-HUB_ROWS:]))
 
-    def length_rows(rs):
-        return [[str(i), pagekit.trail_link(r), words.length(r["length_km"], mi=r["derived"]["length_mi"]), time_cell(r)]
-                for i, r in enumerate(rs, 1)]
+    def length_lead(r):
+        return ("Length", words.length(r["length_km"], mi=r["derived"]["length_mi"]))
     by_slug, _ = regions.collect_regions(records)
-    place_rows = []
+    places = []
     for slug in sorted(by_slug, key=lambda s: (-len(by_slug[s]["records"]), by_slug[s]["name"])):
         info = by_slug[slug]
         rs = info["records"]
         top = max(rs, key=lambda r: (r["length_km"], r["id"]))
-        place_rows.append([Markup(f'<a href="{esc(facets.place_path(info["key"]))}">{esc(info["name"])}</a>'),
-                           str(len(rs)), str(sum(1 for r in rs if facets.kind(r) == "route")),
-                           str(sum(1 for r in rs if facets.shape(r) == "loop")),
-                           str(sum(1 for r in rs if facets.gpx_here(r))),
-                           Markup(f'{pagekit.trail_link(top)}, {words.length(top["length_km"], mi=top["derived"]["length_mi"])}')])
+        facts = [f'{len(rs)} trail{"" if len(rs) == 1 else "s"}']
+        for n, word in ((sum(1 for r in rs if facets.kind(r) == "route"), "route"),
+                        (sum(1 for r in rs if facets.shape(r) == "loop"), "loop")):
+            if n:
+                facts.append(f'{n} {word}{"" if n == 1 else "s"}')
+        facts.append(f'{sum(1 for r in rs if facets.gpx_here(r))} with a GPX')
+        places.append(pagekit.plain_entry(
+            f'<a href="{esc(facets.place_path(info["key"]))}">{esc(info["name"])}</a>', heading=False, facts=facts,
+            small=[Markup(f'Longest: {pagekit.trail_link(top)}, {words.length(top["length_km"], mi=top["derived"]["length_mi"])}')]))
     links = "".join(f'<li><a href="{esc(path)}">{esc(head)}</a> ({n} trails)</li>' for path, head, n in ranked_pages)
     body = (pagekit.head("Long trails by the numbers", lede, [("Trails", "/"), ("Lists", "/lists/")])
-            + f"""<div class="container section place">
+            + f"""<div class="container section place numbers">
   <section><h2>Rankings</h2><ul>{links}</ul></section>
   <section><h2>The {HUB_ROWS} longest by published length</h2>
-  {pagekit.table(["#", "Trail", "Length", "Typical time"], length_rows(longest), caption="The longest trails", numeric=(0,))}</section>
+  {home.results(longest, top=3, ranked="length", lead=length_lead, tools=False)}</section>
   <section><h2>The {HUB_ROWS} shortest by published length</h2>
-  {pagekit.table(["#", "Trail", "Length", "Typical time"], length_rows(shortest), caption="The shortest trails", numeric=(0,))}</section>
+  {home.results(shortest, top=3, ranked="length", lead=length_lead, tools=False)}</section>
   <section><h2>Trails by state and province</h2>
   <p>A trail that crosses several states is counted in each, so the counts add up to more than {len(records)}.</p>
-  {pagekit.table(["Place", "Trails", "Routes", "Loops", "With a GPX", "Longest"], place_rows, caption="Trails by state and province", numeric=(1, 2, 3, 4))}</section>
+  {pagekit.plain_list(places, "Trails by state and province")}</section>
   <p class="finder__foot">Lengths are the published figures, which are check values, not measured from a track. See the
   <a href="/method/">method</a>. <a href="/lists/longest/">The longest trails</a> and
   <a href="/lists/under-100-miles/">the shortest</a> have their own lists.</p>

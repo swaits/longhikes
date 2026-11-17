@@ -52,9 +52,6 @@ class List:
     # (list's trails, all trails) -> a plain sentence or two that says what the list covers
     # where that is not every trail: how many have the fact the list is built on.
     note: Optional[Callable] = None
-    # The page opens with a table of key figures for its trails (olt/standing.py): for a short
-    # list of named standing, where a reader compares the trails.
-    table: bool = False
     # A larger least size than MIN_SIZE, where the list is thin by nature (a month's list).
     min_size: int = 0
 
@@ -154,11 +151,11 @@ HALF_MI = 500
 LISTS = (
     List("national-scenic-trails", "National Scenic Trails",
          "The long trails the United States Congress has named National Scenic Trails.",
-         facets.is_national, page_title="National Scenic Trails: {n} Long Hiking Trails", group="standing", table=True),
+         facets.is_national, page_title="National Scenic Trails: {n} Long Hiking Trails", group="standing"),
     List("national-recreation-trails", "National Recreation Trails",
          "Trails whose designation says they are National Recreation Trails.",
          _designation(r"National Recreation Trail"),
-         page_title="National Recreation Trails: {n} Long Hiking Trails", group="standing", table=True),
+         page_title="National Recreation Trails: {n} Long Hiking Trails", group="standing"),
     List("routes", "Routes", facets.ROUTE_DEFINITION,
          lambda r: facets.kind(r) == "route", page_title="Long Hiking Routes by Author: {n} Routes",
          group="standing", noun="Long Hiking Routes"),

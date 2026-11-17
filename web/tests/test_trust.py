@@ -242,25 +242,25 @@ class InBrief(unittest.TestCase):
     def test_the_map_area_comes_first_and_the_paragraph_is_under_it(self):
         rec = load("appalachian")
         body = str(trail.render(rec, SITE, [rec])[2])
-        order = ['class="titleblock', 'class="cluster trail-actions"', 'id="glance-title"', 'class="mapfig ',
-                 'id="brief-title"', 'class="trail-brief"', 'class="note trail-checked"']
+        order = ['class="titleblock', 'class="trail-actions"', 'class="mapfig ', 'id="glance-title"',
+                 'class="detail__text"', 'id="brief-title"', 'class="trail-summary"', 'class="trail-brief"',
+                 'class="note trail-checked"']
         at = [body.index(x) for x in order]
         self.assertEqual(at, sorted(at), order)
-        self.assertIn("<h2 id=\"brief-title\">In brief</h2>", body)
-        self.assertIn('class="trail-summary"', body)  # the summary in full stays in the page, as text
+        self.assertIn('<h2 id="brief-title" class="vh">In brief</h2>', body)
+        self.assertIn("<strong>In brief.</strong>", body)
         self.assertLess(body.index('id="brief-title"'), body.index('id="morelinks-title"') if 'id="morelinks-title"' in body else len(body))
 
-    def test_the_lead_above_the_map_is_the_first_sentence_and_only_when_short(self):
+    def test_nothing_stands_between_the_head_and_the_map(self):
         rec = load("appalachian")
-        lead = text_of(trail.lead_text(rec))
-        self.assertTrue(hike.summary(rec).startswith(lead))
-        self.assertLessEqual(len(lead), trail.LEAD_MAX)
-        long_rec = copy.deepcopy(rec)
-        long_rec["hike"]["summary"] = "A " + "very " * 60 + "long first sentence. A second one."
-        self.assertEqual(str(trail.lead_text(long_rec)), "")
-        body = str(trail.render(long_rec, SITE, [long_rec])[2])
-        self.assertNotIn('class="trail-lede"', body)
-        self.assertIn("very very", body)  # but the whole summary is under the map
+        body = str(trail.render(rec, SITE, [rec])[2])
+        between = body[body.index('class="page-head page-head--trail"'):body.index('class="mapfig ')]
+        self.assertNotIn("trail-lede", between)
+        self.assertNotIn("trail-summary", between)
+        # the actions are part of the head, and the phone's strip of key facts is the only thing after it
+        head = between[:between.index('<div class="container detail')]
+        self.assertIn('class="trail-actions"', head)
+        self.assertIn('class="trail-strip"', between[len(head):])
 
 
 def words_km(rec):

@@ -214,9 +214,11 @@ class CreditsTest(unittest.TestCase):
         for rec in records.load_records(ROOT):
             page = read(OUT, "trails", rec["id"], "index.html")
             if 'data-map="' in page:
-                caption = page[page.index('<figcaption class="mapfig__caption'):]
-                caption = caption[:caption.index("</figcaption>")]
-                self.assertIn(credit, caption, rec["id"])
+                # beside the map, under the downloads
+                beside = page[page.index('<section class="map-credit"'):]
+                beside = beside[:beside.index("</section>")]
+                self.assertIn(credit, beside, rec["id"])
+                self.assertLess(page.index('class="mapfig '), page.index('<section class="map-credit"'))
 
     def test_footer_credits_the_elevation_data_on_every_page(self):
         for base, _, names in os.walk(OUT):

@@ -92,6 +92,7 @@ def render_site(records, out_dir, repo_root, site=None):
     dates = {}  # page path -> its own date (YYYY-MM-DD), for the sitemap
     everything = seo.newest(records)
     author_links = authors.link_map(records, repo_root)
+    home.use_authors(author_links)
     for rec in records:
         # Read by common.name() wherever a page shows the record's name as text.
         rec["derived"]["name_lang"] = site.name_lang.get(rec["id"], "")
@@ -161,7 +162,7 @@ def render_site(records, out_dir, repo_root, site=None):
         """Hold a view page built as (title, description, body, recs...) and note it for /lists/."""
         t, d, b = built[:3]
         recs = built[3] if len(built) > 3 and isinstance(built[3], list) else None
-        pending.append((path, t, d, b, {"recs": recs}))
+        pending.append((path, t, d, b, {"recs": recs, "maps": 'data-map="overview"' in str(b)}))
         view_paths.append(path)
         layout.UNDER_LISTS.add(path)  # its header item is Lists
         labels[path] = link_label
@@ -172,7 +173,7 @@ def render_site(records, out_dir, repo_root, site=None):
         built = standing.collection_page(c, records, site)
         if built:
             view(standing.collection_path(c), "tables", f"{c['name']} trails compared",
-                 f"The {c['name']} trails side by side: length, states, time, high point, climb and season.", built)
+                 f"The {c['name']} trails with their map: length, time, high point, climb and the year each was named.", built)
     ranked = []
     for spec in standing.RANKINGS:
         built = standing.ranking_page(spec, records, site)
@@ -188,7 +189,7 @@ def render_site(records, out_dir, repo_root, site=None):
     authors_built = any(facets.kind(r) == "route" for r in records)
     if authors_built:
         t, d, b, routes = authors.index_page(records, site, repo_root)
-        view(authors.INDEX, "tables", "Route authors", f"The {len(routes)} routes by who published them, and where.",
+        view(authors.INDEX, "standing", "Route authors", f"The {len(routes)} routes by who published them, and where.",
              (t, d, b, routes))
         for g in author_groups:
             t, d, b, needs_map, routes, person = authors.author_page(g, records, site, author_groups)
@@ -225,7 +226,6 @@ def render_site(records, out_dir, repo_root, site=None):
         if lst.key == "routes":
             continue  # /routes/ below, built whether or not the list is shown
         path = browse.path(lst)
-        before = standing.figures_section(recs) if lst.table else ""
         same = [(o, len(r)) for o, r in shown if o.group == lst.group and o.key != lst.key]
         after = ""
         if same:
@@ -234,12 +234,13 @@ def render_site(records, out_dir, repo_root, site=None):
                 f'<a href="{esc(browse.path(o))}">{esc(o.title)}</a> ({n})' for o, n in same) + "</nav>")
         after += placefacets.places_nav(lst, facet_plan)
         after += reference.terms_nav(path, repo_root)
-        t, d, b, needs_map = regions.list_page(lst, recs, len(records), site, records=records, before=before, after=after)
+        t, d, b, needs_map = regions.list_page(lst, recs, len(records), site, records=records, after=after)
         list_paths.append(path)
         add(path, t, d, b, maps=needs_map, recs=recs)
     t, d, b = regions.lists_index_page(records, site, extras)
     add("/lists/", t, d, b)
     t, d, b, needs_map = regions.routes_page(records, site, repo_root, after=reference.terms_nav("/routes/", repo_root),
+                                             n_authors=len(author_groups) if authors_built else None,
                                              author_pages=({c: authors.credit_html(c, links) for c, links in author_links.items()}
                                                        if authors_built else None))
     add("/routes/", t, d, b, maps=needs_map, recs=[r for r in records if facets.kind(r) == "route"])

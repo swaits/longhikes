@@ -1,6 +1,7 @@
 """The first screen: what the top of the trail page and the home page hold, the home page's lists
-(read from data), the header's Lists item, the tables that stack on a phone, and the maps' static
-drawings (olt/sketch.py) with the script's handover from them.
+(read from data), the header's Lists item, the shared layout of every page that shows a set of
+trails, the rows that take the place of tables, and the maps' static drawings (olt/sketch.py) with
+the script's handover from them.
 
 Pages are rendered one at a time; the site is not built. The sketch reads the track files of a
 site directory, so those are written to a temporary one here. The behaviour of the script in a
@@ -56,15 +57,23 @@ class HomePageTest(unittest.TestCase):
         self.assertEqual(keys, ["national-scenic-trails", "routes", "high-routes", "loops", "under-100-miles",
                                 "a-week-or-less", "one-to-two-weeks", "a-month-or-more", "with-gpx", "canada"])
         row = home.lists_row(self.recs, keys)
-        titles = re.findall(r'<li><a href="[^"]+">(.*?) <span class="chips__n">', row)
+        titles = re.findall(r'<li><a href="[^"]+">(.*?)<span class="lists-row__n">', row)
         self.assertEqual(titles, [browse.by_key(k).title for k in keys])
         self.assertTrue(row.rstrip().endswith("</nav>"))
-        self.assertIn('<a href="/lists/">All lists</a>', row)
+        self.assertIn('<li class="lists-row__all"><a href="/lists/">All lists</a></li></ul>', row)
         self.assertNotIn("Hiking in", row)
+        self.assertNotIn("chips", row)  # one quiet line of links, not pills
         # a different file gives a different row: the set is not a constant of the generator
         other = home.home_picks([{"key": "loops", "home": 2}, {"key": "routes", "home": 1}, {"key": "canada"}])
         self.assertEqual(other, ["routes", "loops"])
-        self.assertEqual(re.findall(r'<li><a href="[^"]+">(.*?) <span', home.lists_row(self.recs, other)), ["Routes", "Loops"])
+        self.assertEqual(re.findall(r'<li><a href="[^"]+">(.*?)<span', home.lists_row(self.recs, other)), ["Routes", "Loops"])
+
+    def test_the_introduction_is_the_headline_its_sentence_and_the_lists(self):
+        intro = self.body[:self.body.index('class="container home"')]
+        self.assertIn('<section class="intro"', intro)
+        h1, lede, lists = intro.index("<h1"), intro.index('class="intro__lede"'), intro.index('class="lists-row"')
+        self.assertLess(h1, lede)
+        self.assertLess(lede, lists)
 
     def test_search_and_filters_are_one_bar_with_a_clear_control_that_starts_hidden(self):
         bar = self.body[self.body.index('class="filters__bar"'):self.body.index('id="filters-panels"')]
@@ -75,15 +84,19 @@ class HomePageTest(unittest.TestCase):
         self.assertIn('class="filters__panel"', self.body)
         self.assertIn('class="filters__more"', self.body)
 
-    def test_the_results_precede_the_map_in_the_page_and_the_map_has_its_own_address(self):
-        self.assertLess(self.body.index('class="home__results"'), self.body.index('class="home__map"'))
-        self.assertIn('id="map"', self.body)
+    def test_the_trails_and_the_map_are_the_shared_browsing_layout_with_the_search_bar_over_the_rows(self):
+        grid = self.body[self.body.index('<div class="browse">'):]
+        self.assertLess(grid.index('class="browse__map" id="map"'), grid.index('class="browse__list"'))
+        self.assertLess(grid.index('class="browse__list"'), grid.index('id="finder-form"'))
+        self.assertLess(grid.index('id="finder-form"'), grid.index('id="entries"'))
+        self.assertNotIn("filters__maplink", self.body)
 
-    def test_the_stylesheet_puts_the_map_beside_the_list_on_a_wide_screen(self):
+    def test_the_open_filters_lie_over_the_rows_and_can_be_closed(self):
         css = read(WEB, "assets", "style.css")
-        self.assertRegex(css, r"\.home \{[^}]*grid-template-areas: \"lists\" \"bar\" \"results\" \"map\" \"notes\"")
-        self.assertIn('grid-template-areas: "lists lists" "bar map" "results map" "notes ."', css)
-        self.assertRegex(css, r"\.lists-row \.chips \{[^}]*flex-wrap: nowrap; overflow-x: auto")
+        self.assertRegex(css, r"html\.js \.filters__panels \{[^}]*position: absolute;")
+        self.assertIn('class="button filters__done"', self.body)
+        js = read(WEB, "assets", "app.js")
+        self.assertIn("e.key === 'Escape'", js)
 
 
 class ListEntriesCheckTest(unittest.TestCase):
@@ -150,36 +163,57 @@ class HeaderTest(unittest.TestCase):
         self.assertIn("layout.UNDER_LISTS.add(path)", read(WEB, "olt", "pages.py"))
 
 
-class TablesTest(unittest.TestCase):
-    def test_every_cell_carries_its_label_and_a_wide_table_is_set_by_row(self):
-        t = str(pagekit.table(["Trail", "Length", "States", "Time"], [["A", "1", "X", "2"]], caption="c"))
-        self.assertIn('<table data-stack="rows">', t)
-        self.assertEqual(re.findall(r'data-label="([^"]+)"', t), ["Trail", "Length", "States", "Time"])
-        small = str(pagekit.table(["A", "B", "C"], [["1", "2", "3"]]))
-        self.assertNotIn("data-stack", small)
+class NoTablesTest(unittest.TestCase):
+    """The site sets no tables. A set of trails is the site's trail rows; a set of other things is
+    rows in the same language (pagekit.rows_list); a table written in Markdown is set the same way."""
 
-    def test_a_compare_table_labels_each_cell_with_its_row_and_stacks_by_column(self):
-        t = str(pagekit.table(["Figure", "AT", "PCT"], [["Length", "2,198", "2,650"], ["States", "14", "3"]],
-                              row_heads=True, compare=True))
-        self.assertIn('<table data-stack="columns">', t)
-        self.assertEqual(re.findall(r'<td data-label="([^"]+)"', t), ["Length", "Length", "States", "States"])
+    def test_a_set_of_things_is_rows_with_a_name_a_sentence_and_a_line_of_facts(self):
+        t = str(pagekit.table(["File", "What it holds", "Size"],
+                              [["a.json", "Every trail with all its fields, written out for the programs that read it", "3 MB"]],
+                              caption="c"))
+        self.assertNotIn("<table", t)
+        self.assertIn('<ol class="entries entries--plain" aria-label="c">', t)
+        self.assertLess(t.index('class="entry__name">a.json'), t.index('class="entry__desc">Every trail'))
+        self.assertIn('<p class="entry__meta"><span><span class="entry__label">Size</span> 3 MB</span></p>', t)
 
-    def test_the_triple_crown_table_is_a_compare_table_with_equal_columns(self):
+    def test_a_table_written_in_markdown_or_by_hand_is_set_as_rows(self):
+        html = ('<p>x</p><div class="table-wrap"><table><thead><tr><th scope="col">Tier</th><th>Records</th></tr></thead>'
+                '<tbody><tr><td>Measured</td><td>12</td></tr><tr><td>Stated</td><td>3</td></tr></tbody></table></div><p>y</p>')
+        out = pagekit.untable(html)
+        self.assertNotIn("<table", out)
+        self.assertNotIn("table-wrap", out)
+        self.assertEqual(re.findall(r'class="entry__name">(\w+)<', out), ["Measured", "Stated"])
+        self.assertTrue(out.startswith("<p>x</p>") and out.endswith("<p>y</p>"))
+
+    def test_the_triple_crown_is_three_trail_rows_with_their_map_and_the_compared_figures_in_each_row(self):
         from olt import standing
         recs = records.load_records(ROOT)
         c = datafiles.collections(ROOT)[0]
-        title, desc, body, _ = standing.collection_page(c, recs, SITE)
-        self.assertIn('data-stack="columns"', str(body))
-        css = read(WEB, "assets", "style.css")
-        self.assertIn('table[data-stack="columns"] { table-layout: fixed;', css)
-        self.assertIn('th:first-child { inline-size: 9rem; }', css)
-        self.assertIn("order: 3", css)  # one block per trail on a phone, from the same cells
-        self.assertNotIn("min-inline-size: 34rem !important", css)
+        title, desc, body, members = standing.collection_page(c, recs, SITE)
+        body = str(body)
+        self.assertNotIn("<table", body)
+        self.assertEqual(body.count('<li class="entry"'), len(members))
+        self.assertIn('class="browse__map"', body)
+        self.assertIn("<dt>High point</dt>", body)
+        self.assertIn("<dt>Designated</dt>", body)
 
-    def test_the_left_out_tables_stack_on_a_phone_too(self):
+    def test_a_ranking_is_the_trail_rows_in_rank_order_led_by_the_rank_and_the_figure(self):
+        from olt import standing
+        recs = records.load_records(ROOT)
+        title, desc, body, have = standing.ranking_page(standing.RANKINGS[0], recs, SITE)
+        body = str(body)
+        self.assertNotIn("<table", body)
+        ranks = [int(n) for n in re.findall(r'data-rank="(\d+)"', body)]
+        self.assertEqual(ranks, list(range(1, len(have) + 1)))
+        first = body[body.index('data-rank="1"'):]
+        self.assertLess(first.index('class="entry__lead"'), first.index('class="entry__length"'))
+        self.assertIn('<span class="entry__rank">No. 1</span>', first)
+        self.assertIn('<option value="rank" selected>', body)
+
+    def test_the_left_out_entries_are_rows_in_the_trail_row_language(self):
         src = read(WEB, "olt", "leftout.py")
-        self.assertIn('<table data-stack="rows">', src)
-        self.assertEqual(src.count("data-label="), 6)
+        self.assertNotIn("<table", src)
+        self.assertIn("pagekit.plain_entry(", src)
 
 
 class SketchTest(unittest.TestCase):
@@ -276,12 +310,27 @@ class HandoverTest(unittest.TestCase):
 
 
 class PageTopsTest(unittest.TestCase):
-    def test_a_place_or_list_page_puts_its_list_before_the_text_and_the_map_in_the_narrow_order(self):
-        grid = home.place_grid("TEXT", "LIST", "MAP")
-        self.assertLess(grid.index("TEXT"), grid.index("LIST"))  # the text is first in the page
+    def test_a_browsing_page_is_the_map_and_the_rows_then_the_text_about_the_set(self):
+        grid = str(home.browse_view("LIST", '<figure class="mapfig">MAP</figure>', about="<p>TEXT</p>", about_title="About X"))
+        self.assertLess(grid.index("MAP"), grid.index("LIST"))     # the map is a band above the rows when narrow
+        self.assertLess(grid.index("LIST"), grid.index("TEXT"))    # the text about the set follows the rows
+        self.assertIn('<h2 id="about-these">About X</h2>', grid)
         css = read(WEB, "assets", "style.css")
-        self.assertIn('grid-template-areas: "list" "map" "text";', css)
-        self.assertIn('grid-template-areas: "list text" "list map";', css)
+        self.assertIn('grid-template-areas: "list map";', css)
+        self.assertRegex(css, r"\.browse__map \{ grid-area: map; position: sticky;")
+
+    def test_a_set_too_small_to_map_is_the_rows_with_the_note_under_them(self):
+        grid = str(home.browse_view("LIST", '<p class="note">NOTE</p>'))
+        self.assertIn('class="browse browse--no-map"', grid)
+        self.assertLess(grid.index("LIST"), grid.index("NOTE"))
+
+    def test_a_place_page_has_its_rows_before_its_summary(self):
+        from olt import regions
+        recs = records.load_records(ROOT)
+        _, _, body, _ = regions.region_page("us-co", recs, SITE)
+        body = str(body)
+        self.assertLess(body.index('class="browse__list"'), body.index('class="browse-about"'))
+        self.assertNotIn("percent", body)
 
     def test_every_page_head_is_compact(self):
         css = read(WEB, "assets", "style.css")

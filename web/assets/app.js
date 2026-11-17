@@ -1346,6 +1346,8 @@
                         'time-asc': 'time-desc', 'time-desc': 'time-asc', 'climb-desc': 'climb-asc', 'climb-asc': 'climb-desc' };
   /* The Saved page's list also has the order saved (rows numbered in data-order by section 1c). */
   if (savedPage) SORT_KEYS.saved = 1;
+  /* A ranking (/numbers/) has its rank as an order (rows numbered in data-rank by the page). */
+  if (document.querySelector('.entry[data-rank]')) SORT_KEYS.rank = 1;
 
   function normalizeSortKey(value, dflt) {
     if (SORT_KEYS[value]) return value;
@@ -1363,6 +1365,7 @@
       var bo = b.dataset.order ? Number(b.dataset.order) : Infinity;
       return cmpNum(ao, bo) || cmpStr(an, bn);
     }
+    if (key === 'rank') return cmpNum(Number(a.dataset.rank || Infinity), Number(b.dataset.rank || Infinity));
     if (key === 'name') return cmpStr(an, bn);
     if (key === 'name-desc') return cmpStr(bn, an);
     if (key === 'climb-desc' || key === 'climb-asc') {
@@ -1501,6 +1504,15 @@
       if (toggle) toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
     if (toggle) toggle.addEventListener('click', function () { showPanels(!panels.hasAttribute('data-open')); });
+    /* The open panels lie over the rows: Show the trails, Escape, or a click outside the form closes them. */
+    var done = form.querySelector('.filters__done');
+    if (done) done.addEventListener('click', function () { showPanels(false); if (toggle) toggle.focus(); });
+    form.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panels && panels.hasAttribute('data-open')) { showPanels(false); if (toggle) toggle.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (panels && panels.hasAttribute('data-open') && !form.contains(e.target)) showPanels(false);
+    });
 
     /* The count is the one live region. Keep it quiet through the first
        application below so nothing is announced on load, and write to it

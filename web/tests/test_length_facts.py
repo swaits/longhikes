@@ -44,7 +44,7 @@ def unfinished():
 
 def glance_length(rec):
     body = top_part(render(rec))
-    start = body.index('<dt>Length</dt>')
+    start = body.index('<dt>Length</dt>', body.index('id="glance-title"'))
     return body[start:body.index("</div>", start)]
 
 
@@ -55,6 +55,10 @@ class GlanceTest(unittest.TestCase):
         self.assertIn(f"Whole system: 1,584 mi 2,549 km, counting {NOTE}", text(row))
         self.assertLess(row.index("len--stack"), row.index("Whole system"))
         self.assertIn("<small>", row)
+        # a line of its own across the whole panel
+        self.assertIn('<span class="glance__aside">Whole system', row)
+        body = top_part(render(florida()))
+        self.assertIn('<div class="glance__wide glance__length"><dt>Length</dt>', body)
 
     def test_the_built_figure_sits_beneath_the_length(self):
         row = glance_length(unfinished())

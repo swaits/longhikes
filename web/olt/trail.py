@@ -128,6 +128,16 @@ def lead_line(rec):
     return rec.get("designation", "")
 
 
+def credit_html(rec, credit, author_links=None):
+    """A route's credit as HTML, each author's name in it a link to their page (olt/authors.py link_map)."""
+    text = str(esc(credit))
+    for name, href in (author_links or {}).get(facets.author(rec), []):
+        n = str(esc(name))
+        if n in text:
+            text = text.replace(n, f'<a href="{esc(href)}">{n}</a>', 1)
+    return Markup(text)
+
+
 def lead_html(rec, lead, author_links=None):
     """The lead line as HTML; on a route, the author's name in it links to the author's page
     (author_links: {credit: [(name, path)]} from olt/authors.py)."""
@@ -384,6 +394,10 @@ def checked_line(rec):
     return Markup(f'<p class="note trail-checked">Last checked <time datetime="{esc(date)}">{esc(date)}</time></p>')
 
 
+# A name longer than this (in characters) is set a step smaller in the page's head.
+LONG_NAME = 48
+
+
 def page_head(rec, author_links=None):
     route = common.is_route(rec)
     crumbs = ['<li><a href="/regions/">Places</a></li>']
@@ -408,10 +422,12 @@ def page_head(rec, author_links=None):
     kicker = f'<p class="cluster">{tag_html}</p>' if tag_html else ""
     lead = lead_line(rec)
     define = route_definition() if route else ""
+    # The actions belong to the head: on a wide screen they stand at its right, over the column of
+    # facts; on a narrow one they are one row under the name (style.css .trail-head).
     return f"""<div class="page-head page-head--trail">
-  <div class="container">
+  <div class="container trail-head">
     <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{"".join(crumbs)}</ol></nav>
-    <header class="titleblock{" titleblock--with-plate" if has_plate else ""}">
+    <header class="titleblock{" titleblock--with-plate" if has_plate else ""}{" titleblock--long" if len(common_name or rec["name"]) > LONG_NAME else ""}">
       {plate}
       <div class="titleblock__text">
         {kicker}
@@ -420,27 +436,18 @@ def page_head(rec, author_links=None):
         {define}
       </div>
     </header>
+    {action_buttons(rec)}
   </div>
 </div>"""
 
 
-# The longest first sentence of the summary that stands above the map (about two lines beside the
-# At a glance panel); a longer one is left to the "In brief" section below the map.
-LEAD_MAX = 180
-
-
-def lead_text(rec):
-    """The line above the map: the first sentence of the summary, or "" when it is longer than LEAD_MAX
-    (the whole summary is under the map either way). Markup."""
-    one = hike.one_line(rec)
-    if not one or len(one) > LEAD_MAX:
-        return ""
-    return Markup(f'<p class="trail-lede">{common.rich(one)}</p>')
-
-
 def action_buttons(rec):
-    """The buttons under the lead: the trail's own page, the GPX, Save."""
+    """The trail's actions, in its head: the GPX (or where to get it), the trail's own page, Save."""
     actions = []
+    if rec["derived"].get("downloads"):
+        actions.append(f'<a class="button button--primary trail-actions__gpx" href="#download">{common.ICON_DOWNLOAD}Download the GPX</a>')
+    else:
+        actions.append(f'<a class="button button--quiet trail-actions__gpx" href="#track">GPX: {esc(facets.GPX_STATUS[facets.gpx(rec)])}</a>')
     official = official_link(rec)
     if official:
         actions.append(f'<a class="button button--link" href="{esc(official[0])}">{esc(official[1])} {common.ICON_EXTERNAL}</a>')
@@ -449,23 +456,30 @@ def action_buttons(rec):
         first = more_links(rec)[0]
         actions.append(f'<a class="button button--link" href="{esc(first["url"])}">'
                        f'{esc(first["publisher"])} {common.ICON_EXTERNAL}</a>')
-    if rec["derived"].get("downloads"):
-        actions.append(f'<a class="button button--primary" href="#download">{common.ICON_DOWNLOAD}Download the GPX</a>')
-    else:
-        actions.append(f'<a class="button button--quiet" href="#track">GPX: {esc(facets.GPX_STATUS[facets.gpx(rec)])}</a>')
     actions.append(str(common.save_button(rec, row=False)))
-    return f'<p class="cluster trail-actions">{"".join(actions)}</p>'
+    return f'<p class="trail-actions">{"".join(actions)}</p>'
+
+
+def strip(rec):
+    """The key facts in one tight line, for a phone: length, time and where (style.css shows it there
+    only; At a glance has the same facts in full)."""
+    codes = " ".join(esc(c.split("-")[-1]) for c in rec.get("regions", []))
+    return f"""<dl class="trail-strip" aria-label="Key facts">
+    <div><dt>{facets.LENGTH}</dt><dd>{words.length(rec["length_km"], "inline", rec["derived"]["length_mi"])}</dd></div>
+    <div><dt>{facets.TIME}</dt><dd>{esc(facets.time_text(rec))}</dd></div>
+    <div><dt>{facets.WHERE}</dt><dd>{codes}</dd></div>
+  </dl>"""
 
 
 def trail_text(rec):
-    """The words under the map area: the summary in full, the "In brief" paragraph, the date of the
-    last check and the other pages about the trail. The text stays in the page for search engines."""
+    """The words under the map: the summary in full, the "In brief" paragraph and the date of the
+    last check, then the other pages about the trail."""
     summary = hike.summary(rec)
     lede = common.rich(summary) if summary else fallback_lede(rec)
     return f"""<section class="trail-text" aria-labelledby="brief-title">
-  <h2 id="brief-title">In brief</h2>
+  <h2 id="brief-title" class="vh">In brief</h2>
   <p class="trail-summary">{lede}</p>
-  {brief(rec, label=False)}
+  {brief(rec)}
   {checked_line(rec)}
 </section>
 {links_panel(rec)}"""
@@ -482,7 +496,8 @@ def shape_label(rec, records):
 def glance_row(label, value, note="", wide=False):
     note_html = f"<small>{note if isinstance(note, Markup) else esc(note)}</small>" if note else ""
     value_html = value if isinstance(value, Markup) else esc(value)
-    return Markup(f'<div{" class=\"glance__wide\"" if wide else ""}><dt>{esc(label)}</dt>'
+    cls = " glance__length" if label == facets.LENGTH else ""
+    return Markup(f'<div{" class=\"glance__wide" + cls + chr(34) if wide else (" class=" + chr(34) + cls.strip() + chr(34) if cls else "")}><dt>{esc(label)}</dt>'
                   f'<dd>{value_html}{note_html}</dd></div>')
 
 
@@ -507,9 +522,10 @@ def length_note(rec, records):
 
 def length_asides(rec, records):
     """What sits quietly under the length: the built figure of an unfinished trail, the holder's
-    larger figure with what it counts, then the link to the list the length puts the trail in."""
+    larger figure with what it counts, then the link to the list the length puts the trail in.
+    Each is a line of its own."""
     lines = [common.built_text(rec), common.system_text(rec), length_note(rec, records) or ""]
-    return Markup("<br>".join(str(line) for line in lines if line))
+    return Markup("".join(f'<span class="glance__aside">{line}</span>' for line in lines if line))
 
 
 def time_note(rec, records):
@@ -528,8 +544,10 @@ def glance(rec, records=None):
     records: every trail, so that terrain, shape, time and length link to the
     lists they put the trail in (left out when None)."""
     h = hike.table(rec)
+    # The length leads, set large. A built or a whole-system figure under it is a line across the
+    # whole panel, so the row is as wide as the panel.
     rows = [glance_row(facets.LENGTH, words.length(rec["length_km"], "stack", rec["derived"]["length_mi"]),
-                       length_asides(rec, records))]
+                       length_asides(rec, records), wide=bool(rec.get("built_km") or rec.get("system_km")))]
     rows.append(glance_row(facets.TIME, facets.time_text(rec), time_note(rec, records)))
     season = facets.season_text(rec)
     if season:
@@ -590,10 +608,11 @@ def glance(rec, records=None):
         value = Markup(f'<a href="#track">{esc(facets.GPX_STATUS[status])}</a>')
         note = ""
     rows.append(glance_row(facets.GPX, value, note, wide=True))
-    halves = [i for i, r in enumerate(rows) if 'class="glance__wide"' not in r]
+    halves = [i for i, r in enumerate(rows) if 'glance__wide' not in r.split(">", 1)[0]]
     if len(halves) % 2:  # an odd one out takes the full width rather than leave a gap beside it
         i = halves[-1]
-        rows[i] = Markup(rows[i].replace("<div>", '<div class="glance__wide">', 1))
+        rows[i] = Markup(rows[i].replace("<div>", '<div class="glance__wide">', 1)
+                         .replace('<div class="glance__length">', '<div class="glance__wide glance__length">', 1))
     caution = ""
     if h.get("caution"):
         caution = f'<p class="glance__warn"><strong>Know before you go.</strong> {common.rich(common.sentence(h["caution"]))}</p>'
@@ -653,9 +672,25 @@ def map_figure(rec):
   </div>
   <figcaption class="mapfig__caption">
     <ul class="legend" aria-label="Legend">{legend}</ul>
-    <p>Track: {esc(src.get("line_source", ""))}, read {esc(src.get("source_checked", ""))}, drawn simplified to 30&nbsp;m. Credit: {esc(credit)} {common.TRAIL_MAP_CREDIT}</p>
+    <p>Track: {esc(src.get("line_source", ""))}, read {esc(src.get("source_checked", ""))}, drawn simplified to 30&nbsp;m.</p>
   </figcaption>
 </figure>"""
+
+
+def map_credit(rec):
+    """The credit of the map, beside it under the downloads: the track's source, the base map and the
+    relief. "" for a trail with no map."""
+    has_track = common.has_line(rec)
+    if not has_track and not hike.sketch_points(rec):
+        return ""
+    track = ""
+    if has_track:
+        credit = common.sentence(common.credit_text(rec["source"].get("attribution", "")))
+        track = f"<p>Track credit: {esc(credit)}</p>"
+    return f"""<section class="map-credit" aria-labelledby="map-credit-title">
+  <h2 class="map-credit__title" id="map-credit-title">Map credit</h2>
+  {track}<p>{common.TRAIL_MAP_CREDIT}</p>
+</section>"""
 
 
 def elevation_figure(rec):
@@ -828,7 +863,6 @@ def sketch_figure(rec):
     <p>{reason_html}</p>
     <p class="note">{esc(rule)}</p>
     {actions_html}
-    <p>{common.TRAIL_MAP_CREDIT}</p>
     </div>
   </figcaption>
 </figure>"""
@@ -1056,11 +1090,11 @@ def policy_scale(current):
     return Markup(f'<ol class="policy-scale" aria-label="Track policies for routes">{"".join(items)}</ol>')
 
 
-def route_block(rec):
+def route_block(rec, author_links=None):
     r = rec["route"]
     p = r.get("line_policy", "")
     rows = [
-        fact("Author", r.get("creator", ""), "Who worked the route out (route.creator)"),
+        fact("Author", credit_html(rec, r.get("creator", ""), author_links) if r.get("creator") else "", "Who worked the route out (route.creator)"),
         fact("First published", str(r["year"])) if r.get("year") else
         fact("First published", "Not recorded", "No page read states a year"),
         fact("Track policy", words.label(words.POLICIES, p), words.meaning(words.POLICIES, p)),
@@ -1074,7 +1108,7 @@ def route_block(rec):
         quote = f"""<figure class="quote">
   <blockquote{f' cite="{esc(url)}"' if url else ""}><p>{esc(r["creator_words"])}</p></blockquote>
   <figcaption>
-    <p class="quote__who"><strong>{esc(by)}</strong> {not_creator}</p>
+    <p class="quote__who"><strong>{esc(by) if r.get("creator_words_by") else credit_html(rec, by, author_links)}</strong> {not_creator}</p>
     {f'<p>Read on {ext_link(url)}.</p>' if url else ""}
   </figcaption>
 </figure>"""
@@ -1430,9 +1464,9 @@ def hike_sources_block(rec):
     return block("hike-title", "Where the hiking facts come from", Markup(body + checked))
 
 
-def about_data(rec, site):
+def about_data(rec, site, author_links=None):
     """Everything about where the page's data comes from: collapsed, below the hiker's part."""
-    blocks = ((route_block(rec) if common.is_route(rec) else "") + record_block(rec) + hike_sources_block(rec)
+    blocks = ((route_block(rec, author_links) if common.is_route(rec) else "") + record_block(rec) + hike_sources_block(rec)
               + verification_block(rec) + elevation_block(rec) + source_block(rec) + osm_block(rec) + logo_block(rec)
               + links_block(rec) + correction_block(rec, site) + raw_record(rec))
     return f"""<details class="about-data" id="about-data">
@@ -1517,16 +1551,13 @@ def raw_value(value):
 def raw_record(rec):
     """Every field of the record with its exact value, as the last block of the page."""
     fields = {k: v for k, v in rec.items() if k != "derived"}
-    rows = "".join(f'<tr><th scope="row"><code>{esc(field)}</code></th><td>{esc(raw_value(value))}</td></tr>'
+    rows = "".join(f'<div><dt><code>{esc(field)}</code></dt><dd>{esc(raw_value(value))}</dd></div>'
                    for field, value in flatten(fields))
     return Markup(f"""<details class="rawrecord">
   <summary>Every field of the record, with its exact value</summary>
   <p class="note">As stored in <a href="/trails/{esc(rec["id"])}/trail.toml">trail.toml</a>.
   The <a href="/data/schema/">record schema</a> says what each field means.</p>
-  <div class="table-wrap"><table class="rawrecord__table">
-    <thead><tr><th scope="col">Field</th><th scope="col">Value</th></tr></thead>
-    <tbody>{rows}</tbody>
-  </table></div>
+  <dl class="rawrecord__fields">{rows}</dl>
 </details>""")
 
 
@@ -1695,22 +1726,19 @@ def render(rec, site, records=None, author_links=None):
     aside_html = (f'<aside class="detail__aside" aria-label="{"Downloads" if has_track else "Where to get the route"}">'
                   f'{aside}</aside>') if aside else ""
     profile = elevation_figure(rec)
-    side = f'<div class="detail__side">{glance(rec, records)}{aside_html}</div>'
+    side = f'<div class="detail__side">{glance(rec, records)}{aside_html}{map_credit(rec)}</div>'
     body = f"""{page_head(rec, author_links)}
 <div class="container detail{"" if aside else " detail--no-aside"}{"" if has_map else " detail--no-map"}{" detail--with-profile" if profile else ""}">
-  <div class="detail__lead">
-    {lead_text(rec)}
-    {action_buttons(rec)}
-  </div>
-  {side}
+  {strip(rec)}
   {map_figure(rec) if has_track else sketch_figure(rec) if sketch_points else empty_frame(rec)}
+  {side}
+  <div class="detail__text">{trail_text(rec)}</div>
   {profile}
 </div>
 <div class="container trail-more">
-  {trail_text(rec)}
   {onward(rec, records)}
   {page_foot(rec, site)}
-  {about_data(rec, site)}
+  {about_data(rec, site, author_links)}
   {history_section(rec)}
 </div>"""
     return page_title(rec, site), description(rec), body, has_map

@@ -252,15 +252,19 @@ class AuthorTest(unittest.TestCase):
         self.assertIn("also credited to <a href=\"/authors/andrew-skurka/\">Andrew Skurka</a>", str(body))
         self.assertEqual(person["@type"], "Person")
 
-    def test_featured_authors_are_cards_with_lengths_that_follow_the_units_switch(self):
+    def test_featured_authors_lead_the_page_with_their_routes_as_the_site_s_rows(self):
         recs = self.routes(["Cam Honan"] * 3 + ["A Club"])
         _, _, body, _ = authors.index_page(recs, SITE, ROOT)
         html = str(body)
-        self.assertIn('<li class="shelf shelf--author">', html)
-        self.assertIn('class="shelf__count"', html)
-        self.assertIn('class="shelf__len"><span class="len len--inline"><span class="len__mi">', html)
-        self.assertIn("All 3 routes by Cam Honan", html)
-        self.assertNotIn("A Club</a></h3>", html)
+        self.assertNotIn("<table", html)
+        self.assertNotIn("shelf", html)
+        head = '<h2 class="results__group"><a href="/authors/cam-honan/">Cam Honan</a> <span class="results__n">3 routes</span></h2>'
+        self.assertIn(head, html)
+        rows = html[html.index(head):]
+        self.assertEqual(rows[:rows.index("</ol>")].count('<li class="entry"'), 3)
+        self.assertIn('class="len__mi"', rows)  # lengths follow the units switch
+        self.assertNotIn('class="results__group"><a href="/authors/a-club/"', html)
+        self.assertIn('/authors/a-club/', html)  # listed among the other authors
 
     def test_every_author_has_a_page_however_few_routes(self):
         recs = self.routes(["Andrew Skurka"] * 3 + ["Andrew Skurka and Ryan Jordan"] * 2 + ["Cam Honan"] * 4 + ["A Club"])
@@ -273,7 +277,8 @@ class AuthorTest(unittest.TestCase):
         one = next(g for g in gs if len(g["routes"]) == 1 and g["kind"] == "person")
         title, desc, body, _, routes, person = authors.author_page(one, real, SITE, gs)
         self.assertIn('class="trail-brief"', str(body))
-        self.assertIn("<table", str(body))
+        self.assertNotIn("<table", str(body))
+        self.assertIn('<li class="entry"', str(body))
         self.assertLessEqual(len(title), 60)
         self.assertEqual(person["name"], one["name"])
         club = next(g for g in gs if g["name"] == "Wilderness Mindset")
@@ -290,10 +295,10 @@ class AuthorTest(unittest.TestCase):
         counts = [len(g["routes"]) for g in top]
         self.assertEqual(counts, sorted(counts, reverse=True))
         body = str(authors.index_page(real, SITE, ROOT)[2])
-        self.assertLess(body.index('id="most-routes"'), body.index('id="other-authors"'))
+        self.assertLess(body.index('id="most-routes"'), body.index('class="browse-about"'))
         for g in top:
-            self.assertLess(body.index(f'<h3 class="shelf__title"><a href="/authors/{g["slug"]}/">'), body.index('id="other-authors"'))
-        self.assertEqual(body.count('class="shelf shelf--author"'), len(top))
+            self.assertLess(body.index(f'<h2 class="results__group"><a href="/authors/{g["slug"]}/">'), body.index('class="browse-about"'))
+        self.assertEqual(body.count('<h2 class="results__group">'), len(top))
         old = authors.PROMINENT_MIN
         try:
             authors.PROMINENT_MIN = 5
@@ -384,10 +389,14 @@ class SummaryTest(unittest.TestCase):
         self.assertIn("Its high point is Top", text)
         self.assertEqual(str(summary.details([fake(i) for i in range(summary.DETAIL_MAX + 1)])), "")
 
-    def test_place_page_says_how_many_trails_and_the_share(self):
+    def test_place_page_says_what_its_trails_are_after_the_rows_without_arithmetic(self):
         recs = [fake(i, regions=["AZ"]) for i in range(4)] + [fake(5, regions=["UT"])]
         title, desc, body, _ = regions.region_page("us-az", recs, SITE)
-        self.assertIn("4 trails of the 5 trails on this site, 80.0 percent", str(body))
+        body = str(body)
+        self.assertIn("The longest is", body)
+        self.assertNotIn("percent", body)
+        self.assertLess(body.index('class="browse__list"'), body.index("The longest is"))
+        self.assertEqual(body[body.index('class="browse-about"'):].count("<p>"), 1)  # one short paragraph
 
 
 class RealDataTest(unittest.TestCase):
@@ -438,7 +447,7 @@ class RealDataTest(unittest.TestCase):
         by_slug, _ = regions.collect_regions(self.records)
         for slug in by_slug:
             _, _, body, _ = regions.region_page(slug, self.records, SITE)
-            self.assertIn("place-summary", str(body))
+            self.assertIn('class="browse-about"', str(body))
             if len(by_slug[slug]["records"]) > 1:
                 self.assertIn("The longest is", str(body))
 

@@ -175,7 +175,7 @@ class SaveButtonsTest(unittest.TestCase):
     def test_every_trail_page_has_a_save_button_by_its_actions(self):
         for rec in self.records:
             doc = read_out(f"trails/{rec['id']}/index.html")
-            actions = doc[doc.index('<p class="cluster trail-actions">'):doc.index("</p>", doc.index('<p class="cluster trail-actions">'))]
+            actions = doc[doc.index('<p class="trail-actions">'):doc.index("</p>", doc.index('<p class="trail-actions">'))]
             m = re.search(r'<button class="button button--quiet save save--page js-only" type="button" '
                           r'data-save="([^"]+)" aria-pressed="false">', actions)
             self.assertTrue(m, rec["id"])

@@ -67,17 +67,17 @@ def recent_page(records, site):
     changes, total = recent_changes(records)
     newest = seo.newest(records)
     groups = [(f"Added {d} ({len(rs)})", rs, None) for d, rs in added]
-    rows = [[d, pagekit.trail_link(r), change] for d, r, change in changes]
+    items = [pagekit.plain_entry(pagekit.trail_link(r), heading=False, text=[esc(change)],
+                                 small=[f'<time datetime="{esc(d)}">{esc(d)}</time>']) for d, r, change in changes]
     lede = (f"The {len(recs)} newest additions, from each trail&rsquo;s own history, and the newest of the {total} changes "
             f"made to a trail&rsquo;s facts. The newest date in the data is {esc(newest)}.")
     body = (pagekit.head("Recently added and changed", lede, [("Trails", "/"), ("Lists", "/lists/")])
             + f"""<div class="container section place">
-  <section><h2>Newly added trails</h2>
-  {home.results(groups=groups, top=3)}</section>
-  <section><h2>Newest changes</h2>
-  {pagekit.table(["Date", "Trail", "What changed"], rows, caption="The newest changes")}
+  <h2 class="vh">Newly added trails</h2>
+  {home.browse_view(home.results(groups=groups, top=3), home.overview_map(recs, "Map of the newest trails"),
+                    about=f"""{pagekit.plain_list(items, "The newest changes")}
   <p class="finder__foot">Each trail keeps its own history, shown at the foot of its page. The
-  <a href="/data/changelog/">changelog</a> lists changes to the site and the dataset as a whole.</p></section>
+  <a href="/data/changelog/">changelog</a> lists changes to the site and the dataset as a whole.</p>""", about_title="Newest changes", about_id="newest-changes")}
 </div>""")
     title = "Recently Added Long Hiking Trails and Changes"
     desc = common.cut_at_word(f"The {len(recs)} newest long hiking trails and the newest changes to them, "

@@ -17,7 +17,7 @@
       "tileSize": 512,
       "maxzoom": 12,
       "bounds": [-180, 14, -50, 85],
-      "attribution": "Relief: <a href=\"https://registry.opendata.aws/terrain-tiles/\">Terrain Tiles</a>, USGS and others (full credit below the map)"
+      "attribution": "Relief: <a href=\"https://registry.opendata.aws/terrain-tiles/\">Terrain Tiles</a>, USGS and others (full credit beside the map)"
     },
     "olt-contours": {"type": "vector", "tiles": ["contours://{z}/{x}/{y}"], "minzoom": 11, "maxzoom": 15, "bounds": [-180, 14, -50, 85]}
   },

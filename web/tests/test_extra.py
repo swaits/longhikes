@@ -68,6 +68,40 @@ class ExtraPagesTest(unittest.TestCase):
             self.assertIn(f'href="/trails/{r["id"]}/"', page, r["id"])
             self.assertIn(r["route"]["creator"], text, r["id"])
 
+    def test_ways_into_the_authors_pages_are_routes(self):
+        """A route's row names its author as a link to their page (each named person who has one);
+        the Routes page head counts routes and authors and links /authors/; /lists/ lists Route
+        authors beside Routes; the trail page links the author where it names them."""
+        import html as _html
+        from olt import authors
+        routes = [r for r in self.records if r["derived"]["kind"] == "route"]
+        gs = authors.author_pages(self.records, ROOT)
+        links = authors.link_map(self.records, ROOT)
+        row = re.compile(r'<p class="entry__by">(.*?)</p>')
+        home = read_out("index.html")
+        by_line = {m for m in row.findall(home)}
+        for r in routes:
+            for name, href in links.get(r["route"]["creator"], []):
+                self.assertIn(f'<a href="{href}">{_html.escape(name)}</a>', "".join(by_line), r["id"])
+        # a credit with two people links each; a credit with no page stays plain
+        self.assertTrue(any(len(v) > 1 for v in links.values()))
+        self.assertEqual(len(gs), len({n for v in links.values() for n, _ in v}))
+        # Routes page head
+        page = read_out("routes/index.html")
+        head = page[:page.index('<div class="container section place">')]
+        self.assertIn(f'<p class="page-head__lede">{len(routes)} routes by <a href="/authors/">{len(gs)} authors</a></p>', head)
+        # Lists index: in the group Routes is in
+        lists = read_out("lists/index.html")
+        group = lists[lists.index('id="group-standing"'):]
+        group = group[:group.index("</section>")]
+        self.assertIn('<a href="/routes/">Routes</a>', group)
+        self.assertIn('<a href="/authors/">Route authors</a>', group)
+        # the trail page links the author's name in its head and its Author fact
+        for r in routes:
+            for name, href in links.get(r["route"]["creator"], []):
+                trail_page = read_out(f"trails/{r['id']}/index.html")
+                self.assertGreaterEqual(trail_page.count(f'<a href="{href}">'), 2, r["id"])
+
     def test_every_logo_on_logos_page(self):
         page = read_out("logos/index.html")
         for r in self.records:
@@ -185,9 +219,9 @@ class ExtraPagesTest(unittest.TestCase):
         # no dataset filters
         for name in ("tier", "policy", "designated", "line", "country", "region"):
             self.assertNotIn(f'name="{name}"', form, name)
-        # the map is in the tool, beside the list it filters (after it in the page, beside it on a wide screen)
-        main = doc[doc.index('<div class="home__results">'):]
-        self.assertLess(main.index('<ol class="entries" id="entries"'), main.index('data-map="overview"'))
+        # the map is in the tool, beside the list it filters (above it in the page, beside it on a wide screen)
+        main = doc[doc.index('<div class="browse">'):]
+        self.assertLess(main.index('data-map="overview"'), main.index('<ol class="entries" id="entries"'))
         longest_km = max(r["length_km"] for r in self.records)
         maxsel = form[form.index('id="max"'):form.index("</select>", form.index('id="max"'))]
         minsel = form[form.index('id="min"'):form.index("</select>", form.index('id="min"'))]
@@ -221,9 +255,9 @@ class ExtraPagesTest(unittest.TestCase):
         self.assertIn(f"<dt>Track measured</dt><dd>{measured}<", page)
         self.assertIn("<dt>Source status: OpenStreetMap only</dt>", page)
         # a record's "none (no line included)" is shown in words, not as the raw value
-        self.assertIn("<td>None (no track included)</td>", page)
+        self.assertIn('<p class="entry__name">None (no track included)</p>', page)
         self.assertNotIn("none (no line included)", page)
-        self.assertEqual(page.count('<th scope="col">Trails</th>'), 2)
+        self.assertNotIn("<table", page)
         self.assertNotRegex(page, r'<td><a href="/trails/[^"]+/">[^<]*</a>, <a')
 
     def test_data_page_licences_from_the_records(self):
@@ -240,7 +274,7 @@ class ExtraPagesTest(unittest.TestCase):
             self.assertRegex(page, rf'<a href="/data/{re.escape(name)}">')
         for name in ("all-gpx.zip", "all-geojson.zip"):
             size = words.fmt_bytes(os.path.getsize(os.path.join(OUT, "data", name)))
-            self.assertRegex(page, rf'/data/{re.escape(name)}</a></td><td>[^<]*</td><td class="num">{re.escape(size)}<')
+            self.assertRegex(page, rf'/data/{re.escape(name)}</a></p>.*?<span class="entry__label">Size</span> {re.escape(size)}<')
             self.assertIn(f'"contentUrl":"{site.load().base_url}/data/{name}"', page)
 
     def test_archives_hold_every_line(self):

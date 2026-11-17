@@ -230,6 +230,10 @@ def layout(title, body, *, path, description="", maps=False, outdoor=False, scri
                  leaves it out of the sitemap.
     """
     site = site or site_settings.load()
+    # The site sets no tables: one written in Markdown or by hand is set as rows (olt/pagekit.py).
+    if "<table" in str(body):
+        from . import pagekit
+        body = Markup(pagekit.untable(body))
     title = title or site.home_title
     tag = common.title_tag(title, site) if title else f"{site.name}: {site.tagline}"
     share_title = title or tag

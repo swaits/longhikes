@@ -294,9 +294,9 @@ class LeftOutLayoutTest(unittest.TestCase):
         entries = [{"id": "a", "name": "A", "country": "US", "regions": ["AZ"], "reason": "below-floor",
                     "note": "Short.", "decided": "2026-11-14", "source_url": "https://e.org/"}]
         body = str(leftout.left_out_page(entries, S, "")[2])
-        # .place spaces its children apart (the intro from the first heading), and
-        # .section--finder gives the intro the same short space above as the home page's list.
-        opening = '<div class="container section section--finder place">'
+        # .place spaces its children apart (the intro from the first heading); each reason is a
+        # section of rows in the language of a trail's row.
+        opening = '<div class="container section place left-out">'
         self.assertIn(opening, body)
         main = body[body.index(opening):]
         self.assertLess(main.index('<p class="prose">'), main.index("<section"))

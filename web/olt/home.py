@@ -130,7 +130,27 @@ def gpx_cell(rec):
 EAGER_ROWS = 4
 
 
-def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=False):
+# {credit: [(author name, page path)]} for the authors who have a page (olt/authors.py link_map),
+# set by pages.render_site: a route's "Route by" line links each named author who has one.
+AUTHOR_LINKS = {}
+
+
+def use_authors(links):
+    AUTHOR_LINKS.clear()
+    AUTHOR_LINKS.update(links or {})
+
+
+def route_by_html(rec):
+    """facets.route_by(rec) as HTML, each author's name in it a link to their page."""
+    text = str(esc(facets.route_by(rec)))
+    for name, href in AUTHOR_LINKS.get(facets.author(rec), []):
+        n = str(esc(name))
+        if n in text:
+            text = text.replace(n, f'<a href="{esc(href)}">{n}</a>', 1)
+    return Markup(text)
+
+
+def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=False, lead=None, rank=None, more=()):
     """One trail in a list. Its data-* attributes drive the filters in app.js.
 
     level: the heading level of the trail's name. extra: HTML placed last in the row.
@@ -138,6 +158,10 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
     row's Route badge and "Route by" line would repeat; both are left out there.
     hidden: written hidden, for app.js to show (the Saved page).
     eager: the logo is not lazy-loaded (a row of the first screen).
+    lead: (label, HTML) of a figure that leads the line of facts, set as the length is (a ranked
+    figure, or a figure a page compares). rank: the row's place in a ranking (data-rank, and
+    "No. 3" before the figure). more: [(label, HTML)] of further facts, each with its label,
+    after the others on the line of facts (a page that compares a few trails).
 
     The Save star follows the name in the markup (so it is the next stop for the
     keyboard) but is drawn under the logo, out of the row's flow (style.css
@@ -167,7 +191,7 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
     h = f"h{level}"
     tag_html = common.badges(rec, route_tag=not routes_list)
     kicker = f'\n    <p class="entry__kicker">{tag_html}</p>' if tag_html else ""
-    by = f'\n    <p class="entry__by">{esc(facets.route_by(rec))}</p>' if route and not routes_list else ""
+    by = f'\n    <p class="entry__by">{route_by_html(rec)}</p>' if route and not routes_list else ""
     desc = entry_desc(rec)
     desc_html = f'\n    <p class="entry__desc">{esc(desc)}</p>' if desc else ""
     time_html = esc(facets.time_text(rec)) + (' <small class="entry__est">estimate</small>' if est else "")
@@ -175,6 +199,14 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
                   f'<small class="entry__est">computed</small></dd></div>') if climb_m is not None else ""
     if hidden:
         attrs += " hidden"
+    lead_html = ""
+    if rank is not None:
+        attrs += f' data-rank="{rank}"'
+    if lead:
+        no = f'<span class="entry__rank">No. {rank}</span> ' if rank is not None else ""
+        lead_html = (f'\n    <div class="entry__lead"><dt>{esc(lead[0])}</dt><dd>{no}'
+                     f'<span class="entry__figure">{lead[1]}</span></dd></div>')
+    more_html = "".join(f'\n    <div class="entry__more"><dt>{esc(label)}</dt><dd>{value}</dd></div>' for label, value in more)
     return f"""<li class="entry"{attrs}>
   {common.plate(rec, eager=eager)}
   <div class="entry__body">{kicker}
@@ -182,10 +214,10 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
     {common.save_button(rec)}{by}{desc_html}
     <p class="entry__where">{where_html(rec)}</p>
   </div>
-  <dl class="entry__facts">
+  <dl class="entry__facts">{lead_html}
     <div class="entry__length"><dt>Length</dt><dd>{words.length(rec["length_km"], "stack", rec["derived"]["length_mi"])}<span class="loglen" style="--km: {rec["length_km"]}" aria-hidden="true"></span></dd></div>
     <div class="entry__time"><dt>Time</dt><dd>{time_html}</dd></div>
-    <div class="entry__line"><dt>GPX</dt><dd class="line line--{"yes" if facets.gpx_here(rec) else "no"}">{gpx_cell(rec)}</dd></div>{climb_html}
+    <div class="entry__line"><dt>GPX</dt><dd class="line line--{"yes" if facets.gpx_here(rec) else "no"}">{gpx_cell(rec)}</dd></div>{climb_html}{more_html}
   </dl>{extra}
 </li>"""
 
@@ -316,7 +348,6 @@ def finder_form(records, c=None, steps=None):
     </div>
     <button class="button filters__toggle js-only" type="button" aria-expanded="false" aria-controls="filters-panels">Filters <span class="filters__count"></span></button>
     <button class="button button--quiet filters__clear" type="reset" hidden>Clear</button>
-    <a class="button button--quiet filters__maplink" href="#map">Map</a>
   </div>
   <div class="filters__panels" id="filters-panels">
     <details class="filters__panel" open>
@@ -331,6 +362,7 @@ def finder_form(records, c=None, steps=None):
         {"".join(more)}
       </div>
     </details>
+    <p class="filters__end js-only"><button class="button filters__done" type="button">Show the trails</button></p>
   </div>
 </form>"""
 
@@ -391,7 +423,7 @@ def list_head(sort_key="name"):
 SAVED_ORDER = ("saved", "Order saved")
 
 
-def sort_select(default_sort="name", saved=False):
+def sort_select(default_sort="name", saved=False, ranked=""):
     """The one sort control of every list of trails, with the page's
     default order selected. Hidden without JavaScript (style.css):
     it cannot work then, and the HTML is already in the default order.
@@ -400,6 +432,9 @@ def sort_select(default_sort="name", saved=False):
     if saved:
         sorts = (SAVED_ORDER,) + tuple(sorts)
         default_sort = SAVED_ORDER[0]
+    elif ranked:
+        sorts = (("rank", f"Rank: {ranked}"),) + tuple(sorts)
+        default_sort = "rank"
     else:
         default_sort = facets.normalize_sort(default_sort)
     options = "".join(
@@ -424,7 +459,8 @@ def key(official=True):
       </ul>"""
 
 
-def results(recs=None, *, finder=False, groups=None, routes_list=False, default_sort="name", saved=False, top=3):
+def results(recs=None, *, finder=False, groups=None, routes_list=False, default_sort="name", saved=False, top=3,
+            ranked="", lead=None, more=None, tools=True):
     """The list of trails, as every page shows it: div.results > head, key, list head, ol.entries.
 
     Every list carries the same "Sort by" control. The rows are written in
@@ -446,11 +482,17 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
     A list that holds every trail (the finder's, the Saved page's) is marked
     data-every-trail: there app.js knows every trail id, and drops the saved
     ids that match no trail.
+
+    ranked: the label of a ranking (a /numbers/ page): the rows keep the order given, each
+    numbered, and "Rank" is the list's first order. lead(rec) -> (label, HTML) or None: a figure
+    that leads each row's line of facts (the ranked figure, or one a page compares). more(rec) ->
+    [(label, HTML)]: further facts for each row (entry()). tools: False for a short list inside a
+    page that has its own (no count and no sort control).
     """
     default_sort = facets.normalize_sort(default_sort)
     if groups is None:
         groups = [(None, recs, None)]
-    groups = [(heading, facets.sort_records(list(items), default_sort), extra_fn)
+    groups = [(heading, list(items) if ranked else facets.sort_records(list(items), default_sort), extra_fn)
               for heading, items, extra_fn in groups]
     total = sum(len(g[1]) for g in groups)
     shown = [r for g in groups for r in g[1]]
@@ -463,7 +505,9 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
         level = top + 1 if heading else top
         rows = "\n".join(entry(r, level=level, extra=extra_fn(r) if extra_fn else "",
                                 routes_list=routes_list, hidden=saved,
-                                eager=not saved and seen + i < EAGER_ROWS) for i, r in enumerate(items))
+                                eager=not saved and seen + i < EAGER_ROWS,
+                                lead=lead(r) if lead else None, more=more(r) if more else (),
+                                rank=seen + i + 1 if ranked else None) for i, r in enumerate(items))
         seen += len(items)
         if heading:
             lists += f'\n      <h{top} class="results__group">{heading}</h{top}>'
@@ -483,8 +527,10 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
     else:
         count = f'<p class="results-count"><strong>{total}</strong> {noun}</p>'
         empty = ""
-    tools = sort_select(default_sort, saved=saved)
-    dflt = SAVED_ORDER[0] if saved else default_sort
+    if not tools:
+        return Markup(f'<div class="results results--short">{lists}</div>')
+    tools = sort_select(default_sort, saved=saved, ranked=ranked)
+    dflt = SAVED_ORDER[0] if saved else "rank" if ranked else default_sort
     return Markup(f"""<div class="results" data-sortable data-default-sort="{esc(dflt)}">
       <div class="results-head">
         {count}
@@ -576,6 +622,9 @@ def overview_map(recs, label, *, wide=False, scope="", saved=False):
         fr = sketch.frame(box)
         frame_attr = f' data-frame="{",".join(f"{v:g}" for v in fr)}"'
         drawing = sketch.svg(sketch.overview_features(ids), fr, ident=True)
+        # The frame takes the shape of the ground it shows, within calm bounds, so the tracks fill it
+        # (style.css .browse__map); the drawing and the live map fit the same ground either way.
+        frame_attr += f' style="--frame-n: {frame_ratio(fr):.3f}"'
     return Markup(f"""<figure class="mapfig{" mapfig--wide" if wide else ""}" data-map="overview" data-src="/data/overview.geojson"{ids_attr}{overview_bbox(recs)}{frame_attr}>
   <div class="mapfig__frame">
     <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
@@ -595,15 +644,40 @@ def overview_map(recs, label, *, wide=False, scope="", saved=False):
 </figure>""")
 
 
-def place_grid(text_html, listing, map_html):
-    """The body of a place, list or routes page: the list beside its map on a wide screen, with the
-    page's own text above the map there, so that the first trails are on the first screen. On a
-    narrow screen the list comes first, then the map, then the text (style.css .place-grid)."""
-    return f"""<div class="place-grid">
-  <div class="place-grid__text">{text_html}</div>
-  <div class="place-grid__list">{listing}</div>
-  <div class="place-grid__map">{map_html}</div>
+# The shape of a browsing page's map frame: the ground's own width over height, held between these.
+RATIO_MIN, RATIO_MAX = 0.8, 1.6
+
+
+def frame_ratio(fr):
+    """Width over height of the frame `fr` (Web Mercator), between RATIO_MIN and RATIO_MAX."""
+    plane = sketch.Plane(fr)
+    return max(RATIO_MIN, min(RATIO_MAX, plane.w / plane.h if plane.h else RATIO_MAX))
+
+
+def browse_view(listing, map_html, *, about="", about_title="", about_id="about-these"):
+    """The body of every page that shows a set of trails: the rows, with their map.
+
+    On a wide screen the rows are on the left and the map on the right, where it stays in view as the
+    rows scroll; on a narrow one the map is a short band above the rows. Text about the set (about,
+    HTML) follows the rows as a section of its own under about_title. A set too small to map (the
+    map is a note) is the rows alone, with the note under them (style.css .browse)."""
+    has_map = 'class="mapfig' in str(map_html)
+    if has_map:
+        grid = f"""<div class="browse">
+  <div class="browse__map" id="map">{map_html}</div>
+  <div class="browse__list">{listing}</div>
 </div>"""
+    else:
+        grid = f"""<div class="browse browse--no-map">
+  <div class="browse__list">{listing}{map_html}</div>
+</div>"""
+    if about:
+        grid += f"""
+<section class="browse-about" aria-labelledby="{esc(about_id)}">
+  <h2 id="{esc(about_id)}">{esc(about_title or "About these trails")}</h2>
+  <div class="prose">{about}</div>
+</section>"""
+    return Markup(grid)
 
 
 def has_overview_map(recs, scope=""):
@@ -613,19 +687,19 @@ def has_overview_map(recs, scope=""):
 
 
 def lists_row(records, picks=()):
-    """The row of lists on the home page: the lists the data file marks for it (picks, from
-    datafiles.home_lists: key and position), in that order, each with its count, then "All lists".
-    A marked list that is not shown today (too few trails, or nearly all of them) is left out."""
+    """The row of lists under the home page's headline: the lists the data file marks for it (picks,
+    from datafiles.home_lists: key and position), in that order, each with its count, then "All
+    lists". A marked list that is not shown today (too few trails, or nearly all of them) is left out."""
     have = {lst.key: (lst, recs) for lst, recs in browse.shown(records)}
     items = "".join(
-        f'<li><a href="{esc(browse.path(have[key][0]))}">{esc(have[key][0].title)} '
-        f'<span class="chips__n">{len(have[key][1])}</span></a></li>'
+        f'<li><a href="{esc(browse.path(have[key][0]))}">{esc(have[key][0].title)}'
+        f'<span class="lists-row__n">{len(have[key][1])}</span></a></li>'
         for key in picks if key in have)
     if not items:
         return ""
     return f"""<nav class="lists-row" aria-labelledby="lists-title">
-      <h2 id="lists-title" class="lists-row__title">Start from a list</h2>
-      <ul class="chips">{items}<li><a href="/lists/">All lists</a></li></ul>
+      <h2 id="lists-title" class="vh">Start from a list</h2>
+      <ul>{items}<li class="lists-row__all"><a href="/lists/">All lists</a></li></ul>
     </nav>"""
 
 
@@ -656,19 +730,19 @@ def render(records, site, repo_root=""):
                       f'<a href="{esc(site.correction_url())}">Report a problem</a> or '
                       f'<a href="{esc(site.new_trail_url)}">suggest a trail</a>.</p>')
     picks = home_picks(datafiles.lists(repo_root))
-    return f"""<section class="hero hero--short hero--home" aria-labelledby="hero-title">
-  <div class="container hero__inner">
-    <h1 id="hero-title">{esc(site.tagline.rstrip("."))}</h1>
-    <p class="hero__lede">{lede}</p>
+    listing = f"""<div class="home__bar">{finder_form(records, c, length_steps(records))}</div>
+  {results(recs, finder=True)}"""
+    return f"""<section class="intro" aria-labelledby="intro-title">
+  <div class="container intro__inner">
+    <h1 id="intro-title">{esc(site.tagline.rstrip("."))}</h1>
+    <p class="intro__lede">{lede}</p>
+    {lists_row(records, picks)}
   </div>
 </section>
 <div class="container home" id="finder">
-  <div class="home__lists">{lists_row(records, picks)}</div>
   <h2 class="vh" id="finder-title">Every trail</h2>
-  <div class="home__bar">{finder_form(records, c, length_steps(records))}</div>
-  <div class="home__results">{results(recs, finder=True)}</div>
-  <div class="home__map" id="map">{overview_map(records, "Map of the trails the filters leave", wide=True, scope="all")}</div>
-  <div class="home__notes finder__notes">
+  {browse_view(listing, overview_map(records, "Map of the trails the filters leave", scope="all"))}
+  <div class="finder__notes">
     <p class="finder__foot">Not for navigation: tracks vary in quality and some trails are unfinished. Check each trail&rsquo;s own maps before you go.</p>
     {contribute}
   </div>

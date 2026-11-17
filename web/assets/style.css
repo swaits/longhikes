@@ -850,10 +850,10 @@ html.js .map__status:not([data-say]) { display: none; }
 .map__message > * + * { margin-block-start: var(--space-3); }
 .map__message h2 { font-size: var(--step-2); }
 
-.mapfig--detail { --map-ratio: 1 / 1; }
+.mapfig--detail { --map-ratio: 4 / 3; }
 @media (min-width: 48rem) {
   .mapfig { --map-ratio: 2 / 1; }
-  .mapfig--detail { --map-ratio: 4 / 3; }
+  .mapfig--detail { --map-ratio: 3 / 2; }
 }
 @media (max-width: 40rem) {
   :root { --collar: 1.25rem; }
@@ -964,45 +964,75 @@ html.js .map__status:not([data-say]) { display: none; }
 .hero__counts { display: grid; gap: var(--space-3); margin-block-start: var(--space-3); }
 .hero__cta { padding: var(--space-3) var(--space-5); font-size: var(--step-1); }
 
-/* Home: the trails first. The lists, a search bar, then the trails, with the overview map beside
-   them on a wide screen (it stays in view while the list scrolls). On a narrow screen the map
-   follows the list, and the bar has a link to it. */
-.home {
-  display: grid;
-  gap: var(--space-1) var(--space-6);
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-areas: "lists" "bar" "results" "map" "notes";
-  align-items: start;
+/* Home: the introduction. The headline and its one sentence on the contour ground of the old hero,
+   at a fraction of its height, and the row of lists under a hairline. */
+.intro { position: relative; overflow: hidden; padding-block: var(--space-6) var(--space-4); }
+.intro::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline: max(0px, (100% - var(--container)) / 2 - var(--gutter));
+  background: url("contours.svg") 70% 30% / cover no-repeat;
+  -webkit-mask-image: radial-gradient(ellipse 60% 120% at 92% 0%, #000 0%, rgb(0 0 0 / 0.6) 30%, rgb(0 0 0 / 0.2) 60%, transparent 85%), linear-gradient(to right, #000 82%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 120% at 92% 0%, #000 0%, rgb(0 0 0 / 0.6) 30%, rgb(0 0 0 / 0.2) 60%, transparent 85%), linear-gradient(to right, #000 82%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  pointer-events: none;
 }
-.home__lists { grid-area: lists; min-inline-size: 0; }
-.home__bar { grid-area: bar; min-inline-size: 0; }
-.home__results { grid-area: results; min-inline-size: 0; }
-.home__map { grid-area: map; min-inline-size: 0; scroll-margin-block-start: var(--space-4); }
-.home__notes { grid-area: notes; }
-.finder__notes { display: grid; gap: var(--space-2); }
+.intro__inner { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-3); }
+.intro h1 { max-inline-size: 30ch; font-size: var(--step-3); font-weight: 600; line-height: 1.12; letter-spacing: -0.015em; text-wrap: balance; }
+.intro__lede { max-inline-size: 40rem; color: var(--ink-2); font-size: var(--step-1); line-height: 1.45; text-wrap: pretty; }
+@media (max-width: 39.99rem) {
+  .intro { padding-block: var(--space-4) var(--space-3); }
+  .intro__lede { font-size: var(--step-0); }
+}
+.home { padding-block: var(--space-4) var(--space-7); }
+.finder__notes { display: grid; gap: var(--space-2); margin-block-start: var(--space-6); }
 .results { container: results / inline-size; }
-@media (min-width: 64rem) {
-  .home {
-    grid-template-columns: minmax(0, 1fr) 27rem;
-    grid-template-areas: "lists lists" "bar map" "results map" "notes .";
-  }
-  .home__map { position: sticky; inset-block-start: var(--space-4); }
-  .home__map .map { aspect-ratio: auto; block-size: clamp(20rem, calc(100dvh - 17rem), 46rem); }
-  .filters__maplink { display: none; }
-  .home .results-head { padding-block-end: var(--space-2); }
+.home__bar { margin-block-end: var(--space-3); }
+
+/* Every page that shows a set of trails: the rows, with their map. Wide: the rows on the left, the
+   map on the right, where it stays in view as the rows scroll. Narrow: the map is a short band above
+   the rows. The frame takes the shape of the ground it shows (--map-ratio, written on the figure),
+   no taller than the window allows. Text about the set follows the rows (.browse-about). */
+.browse { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-items: start; }
+.browse__list, .browse__map { min-inline-size: 0; }
+/* The height follows from the column's width and the frame's shape (--frame-n, width over height),
+   capped by the window; set as a height, not a ratio, so a cap never narrows the frame. */
+.browse__map { container-type: inline-size; scroll-margin-block-start: var(--space-4); }
+.browse__map .map {
+  aspect-ratio: auto;
+  block-size: clamp(10rem, calc((100cqi - 2 * var(--collar)) / var(--frame-n, 1.5)), 34svh);
 }
-@media (min-width: 64rem) and (pointer: fine) {
-  .home .results-sort .select { min-block-size: 2.25rem; }
-  .home .lists-row .chips a { min-block-size: 2rem; }
+.browse__map .mapfig__caption { padding-block-start: var(--space-2); font-size: var(--step--2); }
+.browse__map .mapfig__caption p { color: var(--ink-3); }
+/* On a narrow screen the band keeps its legend; the sentences under it are for the wide layout (and
+   for screen readers, which still have them). */
+@media (max-width: 55.99rem) {
+  .browse__map .mapfig__caption p { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .browse__map .mapfig__caption { padding-block-start: var(--space-1); }
+}
+@media (min-width: 56rem) {
+  .browse { grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.85fr); grid-template-areas: "list map"; gap: var(--space-6); }
+  .browse__list { grid-area: list; }
+  .browse__map { grid-area: map; position: sticky; inset-block-start: var(--space-4); }
+  .browse__map .map { block-size: clamp(16rem, calc((100cqi - 2 * var(--collar)) / var(--frame-n, 1.5)), calc(100svh - 12rem)); }
+  .browse--no-map { grid-template-columns: minmax(0, 1fr); grid-template-areas: "list"; }
+  .browse--no-map .browse__list { max-inline-size: 48rem; }
+}
+@media (min-width: 56rem) and (pointer: fine) {
+  .browse .results-sort .select { min-block-size: 2.25rem; }
   .home .filters__bar .input, .home .filters__bar .button { min-block-size: 2.5rem; }
 }
-/* Beside the map the rows are a little closer, so more of the list is in view. */
-@media (min-width: 64rem) {
-  .home .entry { padding-block: 0.5rem; }
-}
+.browse--no-map .note { margin-block-start: var(--space-5); max-inline-size: var(--measure); color: var(--ink-2); font: 400 var(--step--1)/1.5 var(--font-sans); }
+.browse-about { margin-block-start: var(--space-7); padding-block-start: var(--space-4); border-block-start: 1px solid var(--ink); }
+.browse-about > h2 { margin-block-end: var(--space-3); font-size: var(--step-2); }
+.browse-about .prose { line-height: 1.55; }
+.browse-about .prose > h2 { margin-block-start: var(--space-5); font-size: var(--step-1); }
+.browse-about .prose > p { text-wrap: pretty; }
 
-/* The search bar: the search field, a Filters control that opens the panels, Clear (shown only
-   when something is set), and on a narrow screen a link to the map. */
+/* The search bar: the search field, a Filters control that opens the panels, and Clear (shown only
+   when something is set). */
 .filters__bar { display: flex; align-items: stretch; gap: var(--space-2); }
 .filters__search { flex: 1 1 auto; min-inline-size: 0; }
 .filters__bar .button { flex: none; min-block-size: 2.75rem; }
@@ -1012,8 +1042,22 @@ html.js .map__status:not([data-say]) { display: none; }
 .filters__clear[hidden] { display: none; }
 /* The panels: the existing filter fields, in columns where there is room. With JavaScript they
    open from the bar; without it the bar and panels are not offered at all (see below). */
+.filters { position: relative; }
 .filters__panels { margin-block-start: var(--space-2); border: 1px solid var(--ink); background: var(--surface); }
 html.js .filters__panels:not([data-open]) { display: none; }
+/* Open, the panels lie over the rows below the bar, as a sheet laid on the table: the page does not
+   move, and the map beside them shows what the filters leave. */
+html.js .filters__panels {
+  position: absolute;
+  z-index: 30;
+  inset-inline: 0;
+  inset-block-start: 100%;
+  max-block-size: min(72svh, 46rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-shadow: 6px 6px 0 var(--rule);
+}
+.filters__end { position: sticky; inset-block-end: 0; display: flex; justify-content: flex-end; padding: var(--space-3) var(--space-4); border-block-start: 1px solid var(--rule); background: var(--surface); }
 .filters__panel > summary { display: none; }
 .filters__more > summary {
   display: flex;
@@ -1434,47 +1478,57 @@ html:not(.js) .list-head__arrow { display: none; }
   .titleblock--with-plate .titleblock__text > :first-child { grid-column: 2; grid-row: 1; align-self: center; }
 }
 
-/* Trail page body. The first screen holds the map and the key facts: a short lead and the
-   buttons, then the map, in the left column; At a glance (and the downloads under it) in the
-   right one, level with the top of the left. On a narrow screen the order is the buttons, the
-   facts, the map, the elevation profile and the downloads. The aside is often taller than the
-   viewport, so it scrolls with the page rather than sticking. */
+/* Trail page body. Directly under the head: the map, the dominant thing, with At a glance beside it,
+   tops level. Under the map the reading column (the summary and "In brief"); under At a glance the
+   downloads and the credit. Then, across the page, the elevation profile. The map frame is a calm
+   landscape of the same shape on every trail page, the track fitted inside it; never taller than
+   the window. On a narrow screen: a strip of the key facts, the map, the facts, the words, the
+   downloads, the profile. */
 .detail {
   display: grid;
-  gap: var(--space-4) var(--space-6);
+  gap: var(--space-5) var(--space-6);
   grid-template-columns: minmax(0, 1fr);
-  grid-template-areas: "lead" "glance" "map" "aside";
+  grid-template-areas: "strip" "map" "glance" "text" "aside" "profile";
   align-items: start;
-  padding-block-start: var(--space-3);
+  padding-block-start: var(--space-4);
 }
-.detail--with-profile { grid-template-areas: "lead" "glance" "map" "profile" "aside"; }
-.detail__lead { grid-area: lead; display: grid; gap: var(--space-3); min-inline-size: 0; }
-.detail__lead:not(:has(*)) { display: none; }
+.trail-strip { grid-area: strip; }
+.detail__map { grid-area: map; min-inline-size: 0; }
 .detail__side { display: contents; }
 .detail__glance { grid-area: glance; min-inline-size: 0; }
-.detail__map { grid-area: map; min-inline-size: 0; }
-.detail__profile { grid-area: profile; min-inline-size: 0; }
-.detail__main { min-inline-size: 0; }
 .detail__aside { grid-area: aside; min-inline-size: 0; }
 .detail__aside > * + * { margin-block-start: var(--space-5); }
+.detail__text { grid-area: text; min-inline-size: 0; }
+.detail__profile { grid-area: profile; min-inline-size: 0; }
+.detail__main { min-inline-size: 0; }
+/* With no track the frame holds a notice: as tall as the notice needs, and never less than a calm frame. */
+.detail .map--empty { min-block-size: 18rem; }
+@media (min-width: 64rem) { .detail .map--empty { min-block-size: 26rem; } }
 @media (min-width: 64rem) {
   .detail {
     grid-template-columns: minmax(0, 1fr) 22rem;
-    grid-template-rows: auto 1fr;
-    grid-template-areas: "lead side" "map side";
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "map side" "text side" "profile profile";
+    row-gap: var(--space-6);
   }
-  .detail--with-profile { grid-template-rows: auto 1fr auto; grid-template-areas: "lead side" "map side" "profile profile"; }
-  .detail__lead:not(:has(*)) { display: block; }
+  .trail-strip { display: none; }
   .detail__side { display: grid; grid-area: side; gap: var(--space-5); align-content: start; min-inline-size: 0; }
   .detail__side > * { grid-area: auto; }
-  /* The map is as tall as the window allows, and stays in view while the facts and downloads
-     beside it scroll past. */
-  .detail__map { align-self: start; position: sticky; inset-block-start: var(--space-4); }
-  .detail__map .map { aspect-ratio: auto; block-size: clamp(30rem, calc(100dvh - 15rem), 52rem); }
-  /* With no track there is no map: the notice keeps its own height. */
-  .detail--no-map .detail__map { position: static; }
-  .detail--no-map .detail__map .map { block-size: auto; min-block-size: 22rem; }
 }
+
+/* The key facts in one line on a phone: length, time and where. */
+.trail-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+  padding-block: var(--space-2);
+  border-block: 1px solid var(--ink);
+  font: 400 var(--step--1)/1.35 var(--font-sans);
+}
+.trail-strip dt { color: var(--ink-2); font: 600 var(--step--2)/1.3 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; }
+.trail-strip dd { margin: 0; font-weight: 500; }
+.trail-strip div:first-child dd { font-weight: 600; }
+@media (min-width: 64rem) { .trail-strip { display: none; } }
 
 .block + .block { margin-block-start: var(--space-7); }
 .block > h2 {
@@ -1856,11 +1910,13 @@ td .linklist a { font-weight: 400; }
 .rawrecord[open] > summary::after { transform: translateY(25%) rotate(-135deg); }
 .rawrecord > summary:focus-visible { outline-offset: -5px; }
 .rawrecord > .note { padding: 0 var(--space-4) var(--space-3); }
-.rawrecord .table-wrap { border: 0; border-block-start: 1px solid var(--rule); }
-.rawrecord__table { table-layout: fixed; }
-.rawrecord__table thead th:first-child { inline-size: 34%; }
-.rawrecord__table th, .rawrecord__table td { overflow-wrap: anywhere; }
-.rawrecord__table td { font-family: var(--font-mono); font-size: var(--step--1); }
+/* Each field and its value: the field's name on the left, its value beside it, a hairline between. */
+.rawrecord__fields { margin: 0; border-block-start: 1px solid var(--rule); font: 400 var(--step--1)/1.45 var(--font-sans); }
+.rawrecord__fields > div { display: grid; grid-template-columns: minmax(0, 34%) minmax(0, 1fr); gap: var(--space-1) var(--space-4); padding: var(--space-2) var(--space-4); border-block-end: 1px solid var(--rule); }
+.rawrecord__fields > div:last-child { border-block-end: 0; }
+.rawrecord__fields dt, .rawrecord__fields dd { margin: 0; overflow-wrap: anywhere; }
+.rawrecord__fields dd { font-family: var(--font-mono); }
+@media (max-width: 40rem) { .rawrecord__fields > div { grid-template-columns: minmax(0, 1fr); } }
 
 /* 404 page search */
 .notfound-search {
@@ -1880,7 +1936,9 @@ td .linklist a { font-weight: 400; }
    on the first screen (the map and the facts of a trail, the first trails of a list). */
 .page-head { padding-block: var(--space-3) 0; }
 .page-head .titleblock { margin-block: var(--space-2) 0; gap: var(--space-2) var(--space-4); }
-.page-head .titleblock h1 { font-size: var(--step-3); line-height: 1.1; }
+.page-head .titleblock h1 { font-size: var(--step-3); line-height: 1.1; text-wrap: balance; }
+/* A long name is set a step smaller, so it keeps to two or three lines. */
+.page-head .titleblock--long h1 { font-size: var(--step-2); line-height: 1.15; }
 .page-head .titleblock--with-plate { grid-template-columns: 4.5rem minmax(0, 1fr); }
 .page-head .titleblock .plate { padding: 0.35rem; }
 .page-head .titleblock__text { gap: var(--space-1); }
@@ -1888,23 +1946,36 @@ td .linklist a { font-weight: 400; }
 @media (min-width: 48rem) {
   .page-head .titleblock--with-plate { grid-template-columns: 6rem minmax(0, 1fr); }
 }
-/* The lead above the map: the first sentence of the summary, when it is short. The summary in
-   full is under the map. */
-.trail-lede { max-inline-size: 46rem; font-size: var(--step-0); line-height: 1.45; text-wrap: pretty; }
-.trail-actions { margin-block-start: 0; }
-/* On a phone the buttons come first. */
-@media (max-width: 47.99rem) {
-  .detail__lead { display: flex; flex-direction: column; }
-  .detail__lead .trail-actions { order: -1; }
+/* The head of a trail page: the name on the left; the actions at the right on a wide screen, as wide
+   as the column of facts under them and level with the foot of the name; on a narrow one, a row
+   under the name. */
+.trail-head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 var(--space-6); }
+.trail-head > .breadcrumb { grid-column: 1 / -1; }
+.trail-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-block-start: var(--space-3); }
+.trail-actions .button { min-block-size: 2.5rem; }
+@media (min-width: 64rem) {
+  .trail-head { grid-template-columns: minmax(0, 1fr) 22rem; align-items: end; }
+  .trail-actions { display: grid; grid-template-columns: minmax(0, 1fr) auto; margin-block-start: 0; }
+  .trail-actions .button { justify-content: center; }
+  .trail-actions__gpx { grid-column: 1 / -1; }
 }
-/* Under the map: the summary in full, the generated "In brief" paragraph, the date of the last
-   check, and the other pages about the trail. */
-.trail-text { max-inline-size: 46rem; margin-block-end: var(--space-6); }
-.trail-text > h2 { margin-block-end: var(--space-3); font-size: var(--step-2); }
+@media (max-width: 39.99rem) {
+  .trail-actions { flex-wrap: nowrap; }
+  .trail-actions .button { flex: 0 1 auto; min-inline-size: 0; padding-inline: var(--space-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .trail-actions .trail-actions__gpx { flex: 1 1 auto; }
+}
+/* Under the map: the summary in full, the "In brief" paragraph, the date of the last check (small
+   print), and the other pages about the trail. */
+.trail-text { max-inline-size: 42rem; }
 .trail-summary { font-size: var(--step-1); line-height: 1.5; text-wrap: pretty; }
-.trail-brief { margin-block-start: var(--space-3); line-height: 1.55; text-wrap: pretty; }
-.trail-checked { margin-block-start: var(--space-3); }
-.trail-more .morelinks { max-inline-size: 46rem; margin-block-end: var(--space-6); }
+.trail-brief { margin-block-start: var(--space-4); line-height: 1.6; text-wrap: pretty; }
+.trail-checked { margin-block-start: var(--space-3); color: var(--ink-3); font: 400 var(--step--2)/1.4 var(--font-sans); letter-spacing: 0.02em; }
+.detail__text .morelinks { max-inline-size: 42rem; margin-block-start: var(--space-6); }
+/* The map's credit, small print under the downloads. */
+.map-credit { color: var(--ink-2); font: 400 var(--step--2)/1.5 var(--font-sans); }
+.map-credit > * + * { margin-block-start: var(--space-2); }
+.map-credit__title { color: var(--ink-2); font: 600 var(--step--2)/1.3 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; }
+.map-credit a { overflow-wrap: anywhere; }
 
 /* At a glance: the hiker's facts, a legend box like the panels */
 .glance { border: 1px solid var(--ink); background: var(--surface); }
@@ -1927,6 +1998,13 @@ td .linklist a { font-weight: 400; }
 .glance__facts > div:first-child,
 .glance__facts > div:nth-child(2):not(.glance__wide) { border-block-start: 0; }
 .glance__wide { grid-column: 1 / -1; }
+.glance__facts > .glance__wide:first-child + div { border-block-start: 1px dotted var(--rule-strong); }
+.glance__facts > .glance__wide:first-child + div:not(.glance__wide) + div:not(.glance__wide) { border-block-start: 1px dotted var(--rule-strong); }
+/* The length leads, large; a built or whole-system figure is one quiet line each under it. */
+.glance__length { --len-size: var(--step-3); }
+.glance__length .len--stack { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--space-2); }
+.glance dd .glance__aside { display: block; margin-block-start: var(--space-1); }
+.glance__length small { margin-block-start: var(--space-2); }
 .glance dt {
   color: var(--ink-2);
   font: 600 var(--step--2)/1.3 var(--font-sans);
@@ -2099,21 +2177,31 @@ td .linklist a { font-weight: 400; }
 
 .hero--short { padding-block: var(--space-3) var(--space-2); }
 .hero--short .hero__inner { gap: var(--space-1); }
-/* The home page's lists: a short row. The label leads it, and the pills fit one row or two on a
-   wide screen; on a phone they are one row that scrolls sideways within itself. */
-.lists-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); }
-.lists-row__title { font: 600 var(--step--2)/1.3 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
-.lists-row .chips { flex: 1 1 0; min-inline-size: 0; }
-@media (min-width: 40rem) and (pointer: fine) { .lists-row .chips a { min-block-size: 2.25rem; } }
+/* The home page's lists: one quiet line of links under the headline, each with its count, ending in
+   All lists. On a phone it is one line that scrolls sideways within itself. */
+.lists-row { margin-block-start: var(--space-2); padding-block-start: var(--space-3); border-block-start: 1px solid var(--rule); }
+/* Each link carries its dot in its own left padding, and the line is pulled left by that padding and
+   clipped, so a link that starts a line shows no dot (as the facts line of a row does). */
+.lists-row ul {
+  display: flex; flex-wrap: wrap; align-items: center;
+  margin-inline-start: -0.8em; clip-path: inset(0 0 0 0.8em);
+  padding: 0; list-style: none; font: 500 0.8rem/1.3 var(--font-sans);
+}
+.lists-row li { position: relative; display: inline-flex; align-items: center; padding-inline-start: 0.8em; }
+.lists-row li::before { content: "\00B7"; position: absolute; inset-inline-start: 0.26em; color: var(--ink-3); }
+.lists-row a { display: inline-flex; align-items: center; min-block-size: 2rem; color: var(--ink); text-decoration-color: var(--rule-strong); }
+.lists-row a:hover { text-decoration-color: var(--trail); }
+.lists-row__n { display: inline-block; margin-inline-start: 0.35em; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.lists-row__all a { color: var(--link); font-weight: 600; }
 @media (max-width: 39.99rem) {
-  .lists-row { display: grid; gap: var(--space-1); }
-  .lists-row .chips {
-    flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain;
-    margin-inline: calc(-1 * var(--gutter)); padding: 3px var(--gutter);
+  .lists-row ul {
+    flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; clip-path: none;
+    margin-inline: calc(-1 * var(--gutter)); padding-inline: calc(var(--gutter) - 0.8em) var(--gutter);
   }
-  /* The row scrolls by touch; a scrollbar under it reads as a stray white band */
-  .lists-row .chips::-webkit-scrollbar { display: none; }
-  .lists-row .chips li { flex: none; }
+  .lists-row li:first-child::before { visibility: hidden; }
+  .lists-row ul::-webkit-scrollbar { display: none; }
+  .lists-row li { flex: none; }
+  .lists-row a { min-block-size: 2.75rem; }
 }
 .section--finder { padding-block-start: var(--space-4); }
 .pills { display: flex; flex-wrap: wrap; gap: var(--space-2); }
@@ -2159,21 +2247,6 @@ a.tag:hover { background: var(--sunken); }
 .page-head .chips { margin-block-start: var(--space-2); }
 .place > * + * { margin-block-start: var(--space-6); }
 .section.place { padding-block-start: var(--space-4); }
-/* A place, list or routes page: the list, then the map, then the page's own text; on a wide
-   screen the list beside the text and the map, which stays in view as the list scrolls. */
-.place-grid {
-  display: grid; align-items: start; gap: var(--space-5) var(--space-6);
-  grid-template-columns: minmax(0, 1fr); grid-template-areas: "list" "map" "text";
-}
-.place-grid__text { grid-area: text; min-inline-size: 0; }
-.place-grid__list { grid-area: list; min-inline-size: 0; }
-.place-grid__map { grid-area: map; min-inline-size: 0; }
-@media (min-width: 64rem) {
-  .place-grid { grid-template-columns: minmax(0, 1fr) 27rem; grid-template-rows: auto minmax(0, 1fr); grid-template-areas: "list text" "list map"; gap: var(--space-4) var(--space-6); }
-  .place-grid__map { position: sticky; inset-block-start: var(--space-4); }
-  .place-grid__map .map { aspect-ratio: auto; block-size: clamp(18rem, calc(100dvh - 17rem), 40rem); }
-}
-
 /* About hub */
 .about-hub__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); gap: 0 var(--space-5); max-inline-size: none; }
 .about-hub__list li, .about-hub__list li:first-child { padding-block: var(--space-2); border-block-start: 0; border-block-end: 1px dotted var(--rule-strong); }
@@ -2232,6 +2305,11 @@ a.tag:hover { background: var(--sunken); }
   .entry__facts .line__status { display: inline; font: inherit; }
   .entry__guides { grid-column: 2 / -1; grid-template-columns: minmax(0, 1fr); }
 }
+/* A figure that leads a row's facts (a ranking's figure, with its rank) is set as the length is; the
+   facts a page adds for comparing a few trails keep their labels. */
+.entry__rank { color: var(--trail); font-weight: 600; font-variant-numeric: tabular-nums; }
+.entry__figure { font-weight: 600; }
+.entry__more dt { position: static !important; inline-size: auto !important; block-size: auto !important; overflow: visible !important; clip-path: none !important; margin-inline-end: 0.35em; color: var(--ink-2); font: inherit; letter-spacing: 0; text-transform: none; }
 /* A wider card has room for a larger logo. */
 @container results (min-width: 34rem) and (max-width: 65.99rem) {
   .entry { --plate-w: 6rem; gap: var(--space-2) var(--space-4); }
@@ -2325,3 +2403,30 @@ html:not(.js) .saved-body { display: none; }
   .shelf--author { grid-template-rows: auto 1fr auto; padding: var(--space-4); }
   .shelf--author .shelf__items, .shelf--author .shelf__more { display: block; }
 }
+
+/* 14. Rows of things that are not trails ------------------------------------ */
+
+/* Files, terms, changes, places and the trails left out are set as a trail's row is, with no emblem:
+   a name, its sentence, a line of short facts and small print (olt/pagekit.py plain_entry). */
+.entries .entry--plain { grid-template-columns: minmax(0, 1fr); grid-template-areas: "body"; padding: var(--space-3) 0; }
+.entry--plain .entry__name { font-size: var(--step-0); }
+.entry--plain .entry__desc { display: block; -webkit-line-clamp: none; line-clamp: none; overflow: visible; max-inline-size: var(--measure); font-size: var(--step--1); }
+.entry__meta {
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  margin-inline-start: -1.1em; clip-path: inset(0 0 0 1.1em);
+  color: var(--ink); font: 400 var(--step--1)/1.5 var(--font-sans);
+}
+.entry__meta > span { position: relative; padding-inline-start: 1.1em; }
+.entry__meta > span::before { content: "\00B7"; position: absolute; inset-inline-start: 0.4em; color: var(--ink-2); }
+.entry__meta > span:first-child { font-weight: 600; }
+.entry__label { color: var(--ink-2); font-weight: 400; }
+.entry__small { color: var(--ink-3); font: 400 var(--step--2)/1.45 var(--font-sans); letter-spacing: 0.02em; }
+.entry__small a { color: var(--link); }
+.prose .entries--plain { margin-block-start: var(--space-3); }
+.results__n { color: var(--ink-2); font: 500 var(--step--1)/1 var(--font-sans); }
+.results__group a { color: var(--ink); text-decoration-color: var(--rule-strong); }
+.results--short .entries { margin-block-start: var(--space-3); }
+.numbers > section + section, .left-out > section + section { margin-block-start: var(--space-7); }
+.numbers > section > h2 { margin-block-end: var(--space-3); font-size: var(--step-2); }
+.numbers > section > ul { padding-inline-start: 1.2em; }
+.left-out > section { margin-block-start: var(--space-7); }

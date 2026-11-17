@@ -295,7 +295,7 @@ TRAIL_MAP_CREDIT = Markup(f"Base map: {BASE_MAP_CREDIT} Relief and contours: {es
 FOOTER_MAP_CREDIT = Markup(
     f"Base maps: {BASE_MAP_CREDIT} Elevation, relief and contours: Terrain Tiles, with data courtesy of "
     "the U.S. Geological Survey, NOAA, ArcticDEM and INEGI; Canada terrain data under the Open Government "
-    "Licence - Canada. The full credit is under each trail map.")
+    "Licence - Canada. The full credit is beside each trail map.")
 
 def save_button(rec, *, row=True):
     """The control that saves a trail to the visitor's saved trails, or takes it off.

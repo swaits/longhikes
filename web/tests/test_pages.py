@@ -241,7 +241,18 @@ class BuiltSiteTest(unittest.TestCase):
                     self.assertNotIn("swatch", group, rec["id"])
         self.assertGreater(groups, 85)
 
-    def test_raw_record_table_holds_every_field(self):
+    def test_no_page_in_the_build_sets_a_table(self):
+        """The site sets no tables: sets of trails are the trail rows, other sets are rows in the
+        same language, and a record's raw fields are a definition list."""
+        pages = 0
+        for path in html_files(OUT):
+            with open(path, encoding="utf-8") as f:
+                doc = f.read()
+            pages += 1
+            self.assertNotIn("<table", doc, os.path.relpath(path, OUT))
+        self.assertGreater(pages, 20)
+
+    def test_raw_record_listing_holds_every_field(self):
         for rec in self.records:
             with open(os.path.join(ROOT, rec["id"], "trail.toml"), "rb") as f:
                 raw = tomllib.load(f)
@@ -250,9 +261,9 @@ class BuiltSiteTest(unittest.TestCase):
             # the last block of the page's main column
             tail = page[page.index('<details class="rawrecord">'):]
             self.assertNotIn('<section class="block"', tail, rec["id"])
-            table = re.search(r'<table class="rawrecord__table">(.*?)</table>', tail, re.S).group(1)
+            listing = re.search(r'<dl class="rawrecord__fields">(.*?)</dl>', tail, re.S).group(1)
             rows = {html.unescape(f): re.sub(r"\s+", " ", html.unescape(v)).strip()
-                    for f, v in re.findall(r'<tr><th scope="row"><code>(.*?)</code></th><td>(.*?)</td></tr>', table, re.S)}
+                    for f, v in re.findall(r'<div><dt><code>(.*?)</code></dt><dd>(.*?)</dd></div>', listing, re.S)}
             fields = dict(leaves(raw))
             self.assertEqual(set(rows), set(fields), rec["id"])
             for field, value in fields.items():
@@ -445,7 +456,7 @@ class RenderUnitTest(unittest.TestCase):
         rec = sample_record("L Trail")
         rec["hike"] = {"official_url": "https://official.example/"}
         rec["link"] = [{"title": "T", "publisher": "Wiki", "url": "https://wiki.example/t"}]
-        buttons = re.search(r'<p class="cluster trail-actions">.*?</p>', trail.action_buttons(rec), re.S).group(0)
+        buttons = re.search(r'<p class="trail-actions">.*?</p>', trail.action_buttons(rec), re.S).group(0)
         self.assertIn("Official site", buttons)
         self.assertNotIn("wiki.example", buttons)
 
@@ -453,7 +464,7 @@ class RenderUnitTest(unittest.TestCase):
         rec = sample_record("L Trail")
         rec["link"] = [{"title": "T", "publisher": "Wiki Pub", "url": "https://wiki.example/t"},
                        {"title": "U", "publisher": "Other", "url": "https://other.example/u"}]
-        buttons = re.search(r'<p class="cluster trail-actions">.*?</p>', trail.action_buttons(rec), re.S).group(0)
+        buttons = re.search(r'<p class="trail-actions">.*?</p>', trail.action_buttons(rec), re.S).group(0)
         self.assertIn('href="https://wiki.example/t"', buttons)
         self.assertIn("Wiki Pub", buttons)
         self.assertNotIn("other.example", buttons)

@@ -152,33 +152,27 @@ def index_page(records, site, repo_root):
     top = prominent(gs)
     rest = [g for g in gs if g not in top]
     n_gpx = sum(1 for r in routes if facets.gpx_here(r))
-    lede = (f"{len(routes)} long hiking routes, worked out by {len(gs)} authors. "
-            f"Every author has a page of their own, with their routes and where each is published. "
-            f"{n_gpx} of the routes {'has' if n_gpx == 1 else 'have'} a GPX here. {esc(facets.ROUTE_DEFINITION)}")
-    sections = ""
-    if top:
-        blocks = "\n".join(_block(g) for g in top)
-        sections += (f'<h2 id="most-routes">Authors with {PROMINENT_MIN} or more routes</h2>\n'
-                     f'<p class="note">{_plural(len(top), "author")}, the most routes first.</p>\n'
-                     f'<ul class="shelves shelves--wide">\n{blocks}\n</ul>\n')
+    lede = f"{len(routes)} long hiking routes, worked out by {len(gs)} authors, each with a page of their own."
+    lede_more = (f"<p>Every author has a page with their routes and where each is published. "
+                 f"{n_gpx} of the routes {'has' if n_gpx == 1 else 'have'} a GPX here. {esc(facets.ROUTE_DEFINITION)}</p>")
+    # The authors with the most routes lead the page: each under their own heading, their routes as
+    # the site's rows, with every route on the map beside them. The other authors follow as a list.
+    groups = [(f'<a href="{esc(path(g))}">{esc(g["name"])}</a> <span class="results__n">{_plural(len(g["routes"]), "route")}</span>',
+               g["routes"], regions.route_guides) for g in top]
+    rest_html = ""
     if rest:
         items = "\n".join(f'<li><a href="{esc(path(g))}">{esc(g["name"])}</a>, {_route_links(g)}</li>' for g in rest)
         heading = "Other authors" if top else "All authors"
-        sections += f'<h2 id="other-authors">{heading}</h2>\n<ul class="author-list">\n{items}\n</ul>\n'
-    rows = []
-    for g in gs:
-        first = True
-        for r in g["routes"]:
-            rows.append([Markup(f'<a href="{esc(path(g))}">{esc(g["name"])}</a>') if first else "", pagekit.trail_link(r), year_text(r),
-                         words.length(r["length_km"], mi=r["derived"]["length_mi"]), facets.GPX_STATUS[facets.gpx(r)], guide_text(r)])
-            first = False
+        rest_html = f'<ul class="author-list" aria-label="{heading}">\n{items}\n</ul>\n'
+    listing = home.results(groups=groups, routes_list=True, top=2) if top else ""
+    about = (f"<p>{_plural(len(top), 'author')} with {PROMINENT_MIN} or more routes are above, the most routes first. "
+             "A route credited to several people is listed under each of them. An author credited in more than one form is "
+             "listed once, under the name authors.toml gives. Guides marked free are free; the rest are bought from the "
+             "author or publisher.</p>")
     body = (pagekit.head("Route authors", lede, [("Trails", "/"), ("Lists", "/lists/"), ("Routes", "/routes/")])
             + f"""<div class="container section place">
-  {sections}
-  <h2 id="every-route">Every route, with its author</h2>
-  {pagekit.table(["Author", "Route", "Year", "Length", "GPX", "Published in"], rows, caption="Routes by author")}
-  <p class="finder__foot">A route credited to several people is listed under each of them. An author credited in more than one form is
-  listed once, under the name authors.toml gives. Guides marked free are free; the rest are bought from the author or publisher.</p>
+  <h2 class="vh" id="most-routes">Authors with {PROMINENT_MIN} or more routes</h2>
+  {home.browse_view(listing, home.overview_map(routes, "Map of every route"), about=rest_html + about + lede_more, about_title="Other authors") if top else rest_html}
   <nav class="region-nav" aria-label="Related pages"><a href="/routes/">Routes with their guides</a> ·
   <a href="/glossary/#route">What a route is</a> · <a href="/lists/">All lists</a></nav>
 </div>""")
@@ -205,16 +199,6 @@ def author_page(g, records, site, all_pages):
     sites = own_sites(g)
     if sites:
         lede += " Their own page: " + "; ".join(f'<a href="{esc(u)}">{esc(h)}</a>' for h, u in sites) + "."
-    show_credit = any(r["route"].get("creator") != g["name"] for r in routes)
-    rows = []
-    for r in routes:
-        cells = [pagekit.trail_link(r), words.length(r["length_km"], mi=r["derived"]["length_mi"]),
-                 trail.place_text(r).removeprefix("in "), hike.days(r) or "Not on file", guide_text(r)]
-        if show_credit:
-            credit = r["route"].get("creator", "")
-            cells.append(esc(credit) if credit != g["name"] else "")
-        rows.append(cells)
-    heads = ["Route", "Length", "Where it runs", "Usual time", "Published in"] + (["Credited as"] if show_credit else [])
     shared = [r for r in routes if g["others"].get(r["id"])]
     shared_note = ""
     if shared:
@@ -223,21 +207,18 @@ def author_page(g, records, site, all_pages):
         for r in shared:
             people = [f'<a href="{esc(path(by_name[o]))}">{esc(o)}</a>' if o in by_name else esc(o) for o in g["others"][r["id"]]]
             lines.append(f'{esc(common.plain_name(r))}: also credited to {words.join_names(people)}.')
-        shared_note = '<p class="note">' + " ".join(lines) + "</p>"
-    briefs = "".join(f'<h3><a href="{esc(common.trail_path(r))}">{esc(common.plain_name(r))}</a></h3>\n{trail.brief(r)}\n' for r in routes)
+        shared_note = "<p>" + " ".join(lines) + "</p>"
+    briefs = "".join(f'<h4><a href="{esc(common.trail_path(r))}">{esc(common.plain_name(r))}</a></h4>\n{trail.brief(r)}\n' for r in routes)
     nav_items = [x for x in prominent(all_pages) if x is not g]
     nav = (f'<nav class="region-nav" aria-label="Authors with the most routes">Authors with the most routes: '
            + " · ".join(f'<a href="{esc(path(x))}">{esc(x["name"])}</a> ({len(x["routes"])})' for x in nav_items) + "</nav>") if nav_items else ""
-    more = (f'<div class="prose place-summary">{summary.facts(routes, records)}</div>' if n >= 3 else "")
+    more = str(summary.facts(routes, records)) if n >= 3 else ""
+    listing = home.results(groups=[(None, routes, regions.route_guides)], routes_list=True, top=2)
+    about = f"{more}{shared_note}<h3 id=\"in-brief\">{'About the route' if n == 1 else 'About each route'}</h3>{briefs}"
     body = (pagekit.head(f"Routes by {g['name']}", lede, [("Trails", "/"), ("Lists", "/lists/"), ("Authors", INDEX)])
             + f"""<div class="container section place">
-  <h2 id="routes">{'The route' if n == 1 else 'The routes'}</h2>
-  {pagekit.table(heads, rows, caption=f"Routes by {g['name']}")}
-  {shared_note}
-  <h2 id="in-brief">{'About the route' if n == 1 else 'About each route'}</h2>
-  {briefs}
-  {more}
-  {home.overview_map(routes, f"Map of the routes by {g['name']}")}
+  <h2 class="vh" id="routes">{'The route' if n == 1 else 'The routes'}</h2>
+  {home.browse_view(listing, home.overview_map(routes, f"Map of the routes by {g['name']}"), about=about, about_title=f"About the routes by {g['name']}")}
   {nav}
   <nav class="region-nav" aria-label="Related pages"><a href="/routes/">All routes</a> · <a href="{INDEX}">All route authors</a></nav>
 </div>""")

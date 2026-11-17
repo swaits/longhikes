@@ -8,7 +8,7 @@ Everything on this page comes from that file and from web/site.toml.
 import os
 import tomllib
 
-from . import words
+from . import pagekit, words
 from .markup import Markup, esc
 
 FILE_NAME = "left-out.toml"
@@ -104,38 +104,30 @@ def left_out_page(entries, site, repo_root):
         if not listed:
             continue
         heading, meaning = REASONS[reason]
-        rows = ""
+        items = []
         for e in listed:
-            mark = ""
-            if e.get("was_listed"):
-                mark = '<br><span class="tag">Once listed here</span>'
-            why = f"<p>{esc(e.get('note', ''))}</p>"
+            # In the language of a trail's row: the name as a row's name, "once listed here" as a tag
+            # where a route's tag is, where and how long as its line of facts, the deciding sentence
+            # as its text, the date and the source as small print.
+            tag = '<span class="tag">Once listed here</span>' if e.get("was_listed") else ""
+            text = [esc(e.get("note", ""))]
             if e.get("waiting_for"):
-                why += (f"<p>It would be listed if this changes: "
-                        f"{esc(e['waiting_for'])}</p>")
-            source = ""
+                text.append(f"It would be listed if this changes: {esc(e['waiting_for'])}")
+            small = [f'Decided <time datetime="{esc(e.get("decided", ""))}">{esc(e.get("decided", ""))}</time>']
             if e.get("source_url"):
-                source = (f'<a href="{esc(e["source_url"])}">Source page</a>')
-            rows += (
-                f'<tr><td data-label="Trail">{esc(e.get("name", ""))}{mark}</td>'
-                f'<td data-label="Where">{esc(_where(e))}</td>'
-                f'<td data-label="Length">{_length(e)}</td>'
-                f'<td data-label="Why it is left out">{why}</td>'
-                f'<td data-label="Decided"><time datetime="{esc(e.get("decided", ""))}">'
-                f"{esc(e.get('decided', ''))}</time></td>"
-                f'<td data-label="Source">{source}</td></tr>')
-        groups += f"""<section aria-labelledby="left-out-{esc(reason)}">
+                small.append(f'<a href="{esc(e["source_url"])}">Source page</a>')
+            items.append(pagekit.plain_entry(esc(e.get("name", "")), tag=tag, text=text,
+                                             facts=[esc(_where(e)), _length(e)], small=small))
+        groups += f"""<section class="left-out__group" aria-labelledby="left-out-{esc(reason)}">
   <div class="section-head"><h2 id="left-out-{esc(reason)}">{esc(heading)}</h2>
   <p>{esc(meaning)}</p></div>
-  <div class="table-wrap"><table data-stack="rows">
-  <thead><tr><th scope="col">Trail</th><th scope="col">Where</th><th scope="col">Length</th><th scope="col">Why it is left out</th><th scope="col">Decided</th><th scope="col">Source</th></tr></thead>
-  <tbody>{rows}</tbody></table></div>
+  {pagekit.plain_list(items)}
 </section>"""
     body = f"""<div class="page-head"><div class="container">{bread}<li aria-current="page">Considered and left out</li></ol></nav><header class="titleblock">
   <div class="titleblock__text"><h1>Considered and left out</h1>
   <p class="page-head__lede">Trails and routes that were looked at for this dataset and left out, and why.</p>
   </div></header></div></div>
-<div class="container section section--finder place">
+<div class="container section place left-out">
   <p class="prose">{_opening(entries, site)}</p>
   {groups}
 </div>"""

@@ -183,13 +183,13 @@ class TrailPageTest(unittest.TestCase):
     def test_credit_licence_and_partial_warning_stay_in_view(self):
         rec = with_line(sample_record("X Trail"))
         top = top_part(render(rec))
-        # the credit and licence beside the downloads, and on the map's caption
+        # the credit and licence beside the downloads, and the map's credit under them
         panel = top[top.index('id="download"'):]
         self.assertIn('id="credit-text">Example Trail Association (CC BY 4.0)<', panel)
         self.assertIn('Licence: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>', panel)
         self.assertLess(panel.index('<ul class="downloads">'), panel.index('class="credit"'))
-        caption = top[top.index('<figcaption class="mapfig__caption">'):]
-        self.assertIn("Credit: Example Trail Association (CC BY 4.0).", caption)
+        credit = top[top.index('<section class="map-credit"'):]
+        self.assertIn("Track credit: Example Trail Association (CC BY 4.0).", credit)
         # the partial warning above the buttons, and in the glance
         self.assertLess(panel.index("notice--partial"), panel.index('<ul class="downloads">'))
         self.assertIn("Partial GPX to download here", top)

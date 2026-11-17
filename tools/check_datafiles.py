@@ -3,11 +3,13 @@
     glossary.toml     [[term]]        id, term, definition, optional source_url, see
     collections.toml  [[collection]]  id, name, members, definition, source_url, source_publisher
                       [[list]]        key, home (the lists the home page shows, and their order)
-    authors.toml      [[author]]      name, credits, optional kind
+    authors.toml      [[author]]      name, credits, optional kind, url, summary, bio, checked,
+                                      [[author.source]] (url, publisher)
 
 Each function appends one message per problem to `errors`. Used by tools/validate.py, which passes
 the records it has read. Python 3 standard library only. Fields are in docs/schema.md.
 """
+import datetime
 import os
 import re
 import sys
@@ -15,6 +17,17 @@ import tomllib
 
 ID_RE = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 DASH_RE = re.compile(r"[–—]| - ")
+DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+
+# authors.toml: what an [[author]] entry may hold, and the limits on its words.
+# person (the default): one named person. people: human, but not one full name (a pair credited
+# together, or a person known by a blog's name). organisation: credited, but given nothing more.
+AUTHOR_KINDS = ("person", "people", "organisation")
+AUTHOR_ABOUT = ("summary", "bio", "checked", "source")  # for people only; refused on an organisation
+AUTHOR_KEYS = {"name", "credits", "kind", "url", "summary", "bio", "checked", "source"}
+AUTHOR_SOURCE_KEYS = {"url", "publisher"}
+SUMMARY_MAX = 160  # characters
+BIO_WORDS = (40, 130)
 
 
 def built_in_list_keys():
@@ -179,9 +192,9 @@ def check_author_entries(entries, routes, errors, where="authors.toml"):
             errors.append(f"{where}: entry {i} must be a table ([[author]])")
             continue
         who = f"{where}: {a.get('name') or 'entry ' + str(i)}"
-        check_unknown(a, {"name", "credits", "kind"}, who, errors)
-        if a.get("kind", "person") not in ("person", "organisation"):
-            errors.append(f"{who} kind must be person or organisation")
+        check_unknown(a, AUTHOR_KEYS, who, errors)
+        if a.get("kind", "person") not in AUTHOR_KINDS:
+            errors.append(f"{who} kind must be one of {', '.join(AUTHOR_KINDS)}")
         name = _text(a, "name", who, errors)
         if name in seen_names:
             errors.append(f"{who} duplicate name")
@@ -198,6 +211,76 @@ def check_author_entries(entries, routes, errors, where="authors.toml"):
             seen_credits[c].append(name)
             if name and name.lower() not in c.lower():
                 errors.append(f"{who} credit {c!r} does not contain the name")
+        if a.get("kind") == "organisation":
+            for k in AUTHOR_ABOUT:
+                if k in a:
+                    errors.append(f"{who} is an organisation: {k} is for people only")
+            _url(a, "url", who, errors)
+        else:
+            check_author_about(a, name, who, errors)
+
+
+def _date(value, where, field, errors):
+    """A date written YYYY-MM-DD (a string, or a TOML date), real and not in the future."""
+    text = value.isoformat() if isinstance(value, datetime.date) and not isinstance(value, datetime.datetime) else value
+    if not isinstance(text, str) or not DATE_RE.fullmatch(text):
+        errors.append(f"{where} {field} must be a date (YYYY-MM-DD)")
+        return
+    try:
+        day = datetime.date.fromisoformat(text)
+    except ValueError:
+        errors.append(f"{where} {field} {text!r} is not a real date")
+        return
+    if day > datetime.date.today():
+        errors.append(f"{where} {field} {text} is in the future")
+
+
+def check_author_about(a, name, who, errors):
+    """The words about an author: url, summary, bio, checked and [[author.source]]."""
+    _url(a, "url", who, errors)
+    summary = _text(a, "summary", who, errors, required=False)
+    bio = _text(a, "bio", who, errors, required=False)
+    if summary:
+        if len(summary) > SUMMARY_MAX:
+            errors.append(f"{who} summary is {len(summary)} characters; at most {SUMMARY_MAX}")
+        if name and not summary.lower().startswith(name.lower()):
+            errors.append(f"{who} summary must begin with the name {name!r}")
+        if "\n" in summary or not summary.endswith("."):
+            errors.append(f"{who} summary must be one sentence on one line, ending with a full stop")
+        if DASH_RE.search(summary):
+            errors.append(f"{who} summary uses a dash as punctuation")
+    if bio:
+        n = len(bio.split())
+        if not BIO_WORDS[0] <= n <= BIO_WORDS[1]:
+            errors.append(f"{who} bio is {n} words; it must be {BIO_WORDS[0]} to {BIO_WORDS[1]}")
+        if "\n" in bio.strip():
+            errors.append(f"{who} bio must be one paragraph on one line")
+        if not bio.rstrip().endswith((".", "?", "!")):
+            errors.append(f"{who} bio must end with a full stop")
+        if DASH_RE.search(bio):
+            errors.append(f"{who} bio uses a dash as punctuation")
+    about = bool(summary or bio)
+    if "checked" in a:
+        _date(a["checked"], who, "checked", errors)
+    elif about:
+        errors.append(f"{who} has a summary or bio but no checked date")
+    sources = a.get("source")
+    if sources is None:
+        if about:
+            errors.append(f"{who} has a summary or bio but no [[author.source]]")
+    elif not isinstance(sources, list) or not sources or not all(isinstance(x, dict) for x in sources):
+        errors.append(f"{who} source must be one or more [[author.source]] tables")
+    else:
+        for i, src in enumerate(sources, 1):
+            where = f"{who} source {i}"
+            check_unknown(src, AUTHOR_SOURCE_KEYS, where, errors)
+            _url(src, "url", where, errors, required=True)
+            _text(src, "publisher", where, errors)
+        urls = [x.get("url") for x in sources]
+        if len(set(urls)) != len(urls):
+            errors.append(f"{who} lists a source twice")
+    if not about and ("checked" in a or sources is not None):
+        errors.append(f"{who} has checked or [[author.source]] but no summary or bio")
 
 
 def check_datafiles(root, trails, errors):

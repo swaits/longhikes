@@ -7,6 +7,9 @@ These do not need the built site.
     python3 -m unittest discover -s web/tests
 """
 import os
+import re
+import shutil
+import tempfile
 import sys
 import unittest
 
@@ -225,7 +228,69 @@ class CollectionTest(unittest.TestCase):
         self.assertIsNone(standing.collection_page(self.coll, self.recs, SITE))
 
 
+BIO = "Jo Walker has walked " + "a long way " * 20 + "and written guides to it."
+AUTHORS_FIXTURE = f'''
+[[author]]
+name = "Jo Walker"
+credits = ["Jo Walker", "Jo Walker and Sam Hill"]
+url = "https://jowalker.example/"
+summary = "Jo Walker is a hiker who works out long desert routes."
+bio = "{BIO}"
+checked = 2026-11-17
+[[author.source]]
+url = "https://jowalker.example/about/"
+publisher = "Jo Walker's site"
+[[author.source]]
+url = "https://magazine.example/jo/"
+publisher = "A Magazine"
+
+[[author]]
+name = "Sam Hill"
+credits = ["Jo Walker and Sam Hill"]
+
+[[author]]
+name = "Ann and Bo"
+kind = "people"
+credits = ["Ann and Bo"]
+summary = "Ann and Bo are a couple who hike long routes together."
+checked = 2026-11-17
+[[author.source]]
+url = "https://annandbo.example/"
+publisher = "Ann and Bo"
+
+[[author]]
+name = "Big Club"
+kind = "organisation"
+credits = ["Big Club"]
+summary = "Big Club is a club that the checker would refuse to describe."
+bio = "{BIO}"
+'''
+PRONOUN = re.compile(r"\b(he|she|him|his|her|hers|they|them|their|theirs)\b", re.I)
+
+
 class AuthorTest(unittest.TestCase):
+    def fixture_root(self):
+        d = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, d)
+        with open(os.path.join(d, "authors.toml"), "w") as f:
+            f.write(AUTHORS_FIXTURE)
+        return d
+
+    def fixture(self, credits):
+        root = self.fixture_root()
+        recs = self.routes(credits)
+        gs = authors.author_pages(recs, root)
+        return recs, root, {g["name"]: g for g in gs}, gs
+
+    def page(self, name, credits):
+        recs, root, by, gs = self.fixture(credits)
+        return authors.author_page(by[name], recs, SITE, gs)
+
+    @staticmethod
+    def head(body):
+        html = str(body)
+        return html[:html.index('class="container section place"')]
+
     def routes(self, credits):
         out = []
         for i, c in enumerate(credits):
@@ -249,7 +314,7 @@ class AuthorTest(unittest.TestCase):
         self.assertEqual(gs["Ryan Jordan"]["others"][recs[0]["id"]], ["Andrew Skurka"])
         g = gs["Ryan Jordan"]
         _, _, body, _, _, person = authors.author_page(g, recs, SITE, list(gs.values()))
-        self.assertIn("also credited to <a href=\"/authors/andrew-skurka/\">Andrew Skurka</a>", str(body))
+        self.assertIn('<p class="entry__by">With <a href="/authors/andrew-skurka/">Andrew Skurka</a></p>', str(body))
         self.assertEqual(person["@type"], "Person")
 
     def test_featured_authors_lead_the_page_with_their_routes_as_the_site_s_rows(self):
@@ -281,7 +346,7 @@ class AuthorTest(unittest.TestCase):
         self.assertIn('<li class="entry"', str(body))
         self.assertLessEqual(len(title), 60)
         self.assertEqual(person["name"], one["name"])
-        club = next(g for g in gs if g["name"] == "Wilderness Mindset")
+        club = next(g for g in gs if g["kind"] == "")  # a credit with no entry in authors.toml
         self.assertEqual(club["kind"], "")
         self.assertIsNone(authors.author_page(club, real, SITE, gs)[5])
 
@@ -291,7 +356,8 @@ class AuthorTest(unittest.TestCase):
         top = authors.prominent(gs)
         self.assertTrue(top)
         self.assertTrue(all(len(g["routes"]) >= authors.PROMINENT_MIN for g in top))
-        self.assertEqual(len(top), sum(1 for g in gs if len(g["routes"]) >= authors.PROMINENT_MIN))
+        self.assertEqual(len(top), sum(1 for g in gs if len(g["routes"]) >= authors.PROMINENT_MIN and authors.is_human(g)))
+        self.assertTrue(all(authors.is_human(g) for g in top))  # only people lead
         counts = [len(g["routes"]) for g in top]
         self.assertEqual(counts, sorted(counts, reverse=True))
         body = str(authors.index_page(real, SITE, ROOT)[2])
@@ -319,6 +385,108 @@ class AuthorTest(unittest.TestCase):
             for c in a["credits"]:
                 self.assertIn(c, creators)
 
+
+    def test_the_head_is_the_name_the_summary_and_a_line_of_facts(self):
+        title, desc, body, _, _, _ = self.page("Jo Walker", ["Jo Walker", "Jo Walker", "Jo Walker and Sam Hill"])
+        head = self.head(body)
+        self.assertIn('<p class="kicker">Route author</p><h1>Jo Walker</h1>', head)
+        self.assertIn('<p class="page-head__lede">Jo Walker is a hiker who works out long desert routes.</p>', head)
+        self.assertIn('<p class="page-head__facts"><span>3 routes</span>', head)
+        self.assertIn('<a href="https://jowalker.example/">jowalker.example</a>', head)
+        self.assertNotIn("Routes by", head)
+        self.assertNotIn("Sam Hill", head)  # the joint credit is in its row only
+        self.assertNotIn("credit", head.lower())
+        self.assertTrue(desc.startswith("Jo Walker is a hiker"))
+        self.assertLessEqual(len(desc), common.DESCRIPTION_LIMIT)
+        self.assertLessEqual(len(title), authors.TITLE_LIMIT)
+        self.assertTrue(title.startswith("Jo Walker"))
+
+    def test_the_joint_credit_is_named_on_its_row_and_nowhere_else(self):
+        _, _, body, _, _, _ = self.page("Jo Walker", ["Jo Walker", "Jo Walker and Sam Hill"])
+        html = str(body)
+        row = '<p class="entry__by">With <a href="/authors/sam-hill/">Sam Hill</a></p>'
+        self.assertEqual(html.count(row), 1)
+        rows = html[:html.index('class="browse-about"')]
+        self.assertEqual(rows.count("Sam Hill"), 1)  # (each route's "In brief" after the rows gives its credit as written)
+        self.assertEqual(html.count('class="entry__by"'), 1)  # the route that is Jo's alone has no author line
+        self.assertNotIn("also credited", html)
+
+    def test_the_rest_of_a_credit_that_names_no_one_else_is_given_on_its_row(self):
+        recs = self.routes(["Andrew Skurka", "Andrew Skurka and friends"])
+        g = {"name": "Andrew Skurka", "slug": "andrew-skurka", "kind": "person", "entry": {}, "credits": set(),
+             "routes": recs, "others": {}}
+        self.assertEqual(authors.with_html(g, recs[0], {}), "")
+        self.assertEqual(str(authors.with_html(g, recs[1], {})), "With friends")
+
+    def test_the_about_section_follows_the_rows_with_its_sources(self):
+        _, _, body, _, _, _ = self.page("Jo Walker", ["Jo Walker"])
+        html = str(body)
+        self.assertIn('<h2 id="about-author">About Jo Walker</h2>', html)
+        self.assertLess(html.index('class="entries"'), html.index('id="about-author"'))
+        self.assertLess(html.index('id="about-author"'), html.index('id="in-brief"'))
+        about = html[html.index('id="about-author"'):html.index('id="in-brief"')]
+        self.assertIn(f'<p class="author-about__bio">{BIO}</p>', about.replace("&#x27;", "'"))
+        self.assertIn('<a href="https://jowalker.example/about/">Jo Walker&#x27;s site</a>', about.replace("&#39;", "&#x27;"))
+        self.assertIn('<a href="https://magazine.example/jo/">A Magazine</a>', about)
+        self.assertIn('<time datetime="2026-11-17">2026-11-17</time>', about)
+
+    def test_with_no_summary_the_head_is_a_plain_sentence_of_fact_and_no_pronoun(self):
+        for name, credits in (("Sam Hill", ["Jo Walker and Sam Hill", "Jo Walker and Sam Hill"]),
+                              ("Lone Hiker", ["Lone Hiker"]), ("Big Club", ["Big Club", "Big Club"])):
+            title, desc, body, _, _, _ = self.page(name, credits)
+            head = self.head(body)
+            self.assertIn(f'<p class="page-head__lede">{name} is credited with ', head)
+            self.assertNotIn('id="about-author"', str(body))
+            text = re.sub(r"<[^>]+>", " ", str(body))
+            self.assertIsNone(PRONOUN.search(re.sub(r"In brief\..*", "", text, flags=re.S)), name)
+            self.assertIsNone(PRONOUN.search(title + " " + desc), name)
+
+    def test_an_organisation_shows_nothing_about_itself_and_is_not_a_person(self):
+        _, desc, body, _, _, jsonld = self.page("Big Club", ["Big Club"])
+        html = str(body)
+        self.assertNotIn("checker would refuse", html + desc)
+        self.assertNotIn("a long way", html)
+        self.assertIsNone(jsonld)
+
+    def test_each_kind(self):
+        recs, root, by, gs = self.fixture(["Jo Walker", "Ann and Bo", "Big Club", "Nobody Listed"])
+        self.assertEqual({n: g["kind"] for n, g in by.items()},
+                         {"Jo Walker": "person", "Ann and Bo": "people", "Big Club": "organisation", "Nobody Listed": ""})
+        self.assertEqual([n for n, g in by.items() if authors.is_human(g)], ["Ann and Bo", "Jo Walker"])
+        _, _, body, _, _, jsonld = authors.author_page(by["Ann and Bo"], recs, SITE, gs)
+        self.assertIn('<p class="kicker">Route authors</p><h1>Ann and Bo</h1>', str(body))
+        self.assertIn("Ann and Bo are a couple", str(body))
+        self.assertIsNone(jsonld)  # a pair is not one Person
+        self.assertIsNone(authors.author_page(by["Nobody Listed"], recs, SITE, gs)[5])
+
+    def test_a_person_s_json_ld_carries_the_summary_and_own_site(self):
+        _, _, _, _, _, node = self.page("Jo Walker", ["Jo Walker"])
+        self.assertEqual(node["@type"], "Person")
+        self.assertEqual(node["name"], "Jo Walker")
+        self.assertEqual(node["description"], "Jo Walker is a hiker who works out long desert routes.")
+        self.assertEqual(node["url"], "https://jowalker.example/")
+        self.assertEqual(node["sameAs"], ["https://jowalker.example/"])
+        _, _, _, _, _, bare = self.page("Sam Hill", ["Jo Walker and Sam Hill"])
+        self.assertNotIn("description", bare)
+
+    def test_only_people_lead_the_index(self):
+        credits = ["Jo Walker"] * 3 + ["Ann and Bo"] * 3 + ["Big Club"] * 4 + ["Nobody Listed"] * 5 + ["Sam Hill and Jo Walker"]
+        recs = self.routes(credits)
+        root = self.fixture_root()
+        gs = authors.author_pages(recs, root)
+        self.assertEqual([g["name"] for g in authors.prominent(gs)], ["Ann and Bo", "Jo Walker"])
+        html = str(authors.index_page(recs, SITE, root)[2])
+        lead = html[:html.index('class="browse-about"')]
+        self.assertIn('<div class="results__lead"><h2 class="results__group"><a href="/authors/jo-walker/">Jo Walker</a>', lead)
+        self.assertIn('<p class="results__intro">Jo Walker is a hiker who works out long desert routes.</p>', lead)
+        self.assertIn('/authors/ann-and-bo/">Ann and Bo</a>', lead)
+        for name in ("big-club", "nobody-listed"):
+            self.assertNotIn(f'class="results__group"><a href="/authors/{name}/"', lead)
+            self.assertIn(f'/authors/{name}/', html)
+        rest = html[html.index('class="author-list"'):]
+        self.assertGreater(rest.index("/authors/big-club/"), rest.index("/authors/nobody-listed/"))  # organisations last
+        self.assertNotIn("checker would refuse", html)
+        self.assertNotIn("<table", html)
 
 class RecentTest(unittest.TestCase):
     def rec(self, i, added, changes=()):
@@ -381,6 +549,23 @@ class SummaryTest(unittest.TestCase):
         text = str(summary.facts(recs, recs))
         self.assertIn("The longest is", text)
         self.assertLess(text.index("Namet2"), text.index("Namet1"))
+
+    def test_the_routes_and_authors_clause_can_be_left_out(self):
+        recs = [fake(i, km=mi(100 * i)) for i in (1, 2, 3)]
+        for r in recs:
+            r["name"] = f"Name{r['id']}"
+            r["derived"] = {**r.get("derived", {}), "kind": "route"}
+            r["route"] = {"creator": "A" if r["id"] == "t1" else "B"}
+        self.assertIn("routes by 2 authors", str(summary.facts(recs, recs)))
+        self.assertNotIn("routes by", str(summary.facts(recs, recs, by_authors=False)))
+        self.assertNotIn("are routes", str(summary.facts(recs, recs, by_authors=False)))
+
+    def test_a_publisher_with_two_pages_is_named_once_with_numbered_links(self):
+        html = authors.source_links([
+            {"publisher": "The Trek", "url": "https://a/1"}, {"publisher": "Gear", "url": "https://g"},
+            {"publisher": "The Trek", "url": "https://a/2"}])
+        self.assertEqual(html, ['The Trek (<a href="https://a/1">1</a>, <a href="https://a/2">2</a>)',
+                                '<a href="https://g">Gear</a>'])
 
     def test_a_small_place_gets_a_paragraph_for_each_trail(self):
         recs = [fake(1, hike={"summary": "First sentence. Second sentence here.", "high_point_m": 2000, "high_point": "Top"})]

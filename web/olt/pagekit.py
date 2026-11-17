@@ -5,15 +5,18 @@ from . import words
 from .markup import Markup, esc
 
 
-def head(h1, lede_html, crumbs, *, kicker=""):
-    """The page-head block. crumbs: [(text, href)] leading to this page; lede_html is HTML."""
+def head(h1, lede_html, crumbs, *, kicker="", facts=()):
+    """The page-head block. crumbs: [(text, href)] leading to this page; lede_html is HTML.
+    facts: short facts (HTML) set as one quiet line under the lede."""
     items = "".join(f'<li><a href="{esc(h)}">{esc(t)}</a></li>' for t, h in crumbs)
     kick = f'<p class="kicker">{esc(kicker)}</p>' if kicker else ""
+    line = "".join(f"<span>{f}</span>" for f in facts if str(f).strip())
+    line = f'\n  <p class="page-head__facts">{line}</p>' if line else ""
     return f"""<div class="page-head"><div class="container">
   <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{items}<li aria-current="page">{esc(h1)}</li></ol></nav>
   <header class="titleblock"><div class="titleblock__text">
   {kick}<h1>{esc(h1)}</h1>
-  <p class="page-head__lede">{lede_html}</p>
+  <p class="page-head__lede">{lede_html}</p>{line}
   </div></header>
 </div></div>"""
 

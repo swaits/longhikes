@@ -56,8 +56,9 @@ def holder_counts(recs, records):
     return out
 
 
-def facts(recs, records):
-    """The summary of a set of trails: one short paragraph (Markup). Empty for no trails."""
+def facts(recs, records, by_authors=True):
+    """The summary of a set of trails: one short paragraph (Markup). Empty for no trails. With
+    by_authors False (an author's own page) the routes-and-authors clause is left out."""
     if not recs:
         return Markup("")
     by_length = sorted(recs, key=lambda r: (r["length_km"], r["id"]))
@@ -73,7 +74,7 @@ def facts(recs, records):
     parts = []
     if loops:
         parts.append(f"{loops} {'is a loop' if loops == 1 else 'are loops'}")
-    if routes:
+    if routes and by_authors:
         authors = {facets.author(r) for r in routes if facets.author(r)}
         n = len(routes)
         parts.append(f"{n} {'is a route' if n == 1 else 'are routes'}"

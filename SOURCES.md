@@ -217,7 +217,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | route-in-between | Kevin "LarryBoy" DeVries (publishes the route) | [source page](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) | none-stated | record only |
 | san-diego-trans-county-trail | Sea to Sea Trail Foundation (folded); current guide by Liz Thomas, Treeline Review | [source page](https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail) | none-stated | record only |
 | santa-fe-to-taos | Pam Neely and the Santa Fe to Taos Trail non-profit (publish the route) | [source page](https://santafetotaos.org/route/) | none-stated | record only |
-| sawtooth-wilderness-high-route | the author of the SeekingLost blog, who publishes the route | [source page](https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/) | none-stated | record only |
+| sawtooth-wilderness-high-route | Eric Poulin, who publishes the route | [source page](https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/) | none-stated | record only |
 | sea-to-sea-route | Ron Strickland, with the overview published by Andrew Skurka | [source page](https://andrewskurka.com/adventures/sea-to-sea-route/overview/) | none-stated | record only |
 | sentier-international-appalaches | Sentier international des Appalaches (Québec); IAT New Brunswick (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/9318808) | ODbL-1.0 | track |
 | shawangunk-ridge-trail | New York-New Jersey Trail Conference (publishes the trail) | [source page](https://www.openstreetmap.org/relation/3934864) | ODbL-1.0 | track |

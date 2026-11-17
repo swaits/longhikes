@@ -1,17 +1,26 @@
 # Route authors, by the exact credit each route's record gives (`route.creator`). Fields are in
 # docs/schema.md (the authors section).
 #
-# A route's credit is free text. An author with an entry here is a named person or organisation, and
-# every exact credit that names them is listed, so one page lists all their routes:
+# A route's credit is free text. An author with an entry here is a named person, a pair of people,
+# or an organisation, and every exact credit that names them is listed, so one page lists all their
+# routes:
 #   - one person credited in several forms (Andrew Skurka, Brett Tucker);
 #   - a credit that names two or more people ("Jake Blood and Jennifer Pharr Davis") is listed under
-#     each of them, so the route is on each page and each page says who else is credited. Only people
-#     the credit names in full are given an entry: "John and Monica Chapman" and "Amy and James
-#     (Doing Miles)" give no full name for each, so they stand as written, as one author;
-#   - a person credited in one form only, so that the page can mark them up as a person. `kind`
-#     is "person" (the default) or "organisation".
-# A credit that has no entry stands alone as its own author and is not marked up as a person: a
-# nickname, a company, an association and "the author of a blog" are all left that way.
+#     each of them, so the route is on each page and that route's row names who else is credited;
+#   - a person credited in one form only, so that the page can mark them up as a person.
+# `kind` is "person" (the default: one named person), "people" (human, but not one full name: a pair
+# credited together, such as "John and Monica Chapman", or a pair known by one name, such as "Wilderness Mindset"; `name`
+# is then the credit as written) or "organisation".
+#
+# The words about an author are for people only, never for an organisation, an agency or an
+# association (their own pages are a link away from each trail's page). A person or people entry may
+# carry `url` (their own site), `summary` (one sentence of at most 160 characters that begins with
+# the name), `bio` (one paragraph of 40 to 130 words), `checked` (YYYY-MM-DD) and one or more
+# [[author.source]] tables (`url`, `publisher`): the pages the summary and bio were read on. A
+# summary or bio needs both `checked` and a source. An organisation may carry `url`, and nothing else
+# about itself. Wording is ours: nothing is copied from a source.
+#
+# A credit that has no entry stands alone as its own author and is not marked up as a person.
 
 [[author]]
 name = "Andrew Skurka"
@@ -19,59 +28,243 @@ credits = [
   "Andrew Skurka",
   "Andrew Skurka and Ryan Jordan",
 ]
+url = "https://andrewskurka.com/"
+summary = "Andrew Skurka is a long-distance backpacker, guide and author, first to complete the Great Western Loop, the Sea-to-Sea Route and the Alaska-Yukon Expedition."
+bio = "Skurka was the first person to complete the Sea-to-Sea Route, the Great Western Loop and the Alaska-Yukon Expedition. The Great Western Loop took 208 days in 2007 and covers 6,875 miles. The Alaska-Yukon Expedition covered 4,700 miles in six months. Skurka has hiked more than 30,000 miles. Backpacker named Skurka Person of the Year in 2005, and National Geographic Adventure named Skurka Adventurer of the Year in 2007. Skurka wrote The Ultimate Hiker's Gear Guide, published by National Geographic, and sells guides to high routes in the Sierra Nevada, the Wind River Range and the Colorado Front Range. Skurka Adventures leads guided trips and courses in Utah, Alaska, the High Sierra and Yellowstone. The best known of Skurka's backpacking recipes, Skurka Beans and Rice, has inspired T-shirts and bumper stickers."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://thetrek.co/andrew-skurka-on-the-best-1-backpacking-meal-ever/"
+publisher = "The Trek"
+
+[[author.source]]
+url = "https://thetrek.co/backpacker-radio-live-with-andrew-skurka/"
+publisher = "The Trek"
+
+[[author.source]]
+url = "https://www.gearpatrol.com/archive/a96617/30-minutes-andrew-skurka/"
+publisher = "Gear Patrol"
+
+[[author.source]]
+url = "https://www.nationalgeographic.com/adventure/article/andrew-skurka-2007"
+publisher = "National Geographic"
+
+[[author.source]]
+url = "https://www.penguinrandomhouse.com/books/546764/the-ultimate-hikers-gear-guide-second-edition-by-andrew-skurka/"
+publisher = "Penguin Random House (for National Geographic Books)"
 
 [[author]]
 name = "Ryan Jordan"
 credits = ["Andrew Skurka and Ryan Jordan"]
+url = "https://ryanjordan.com/about-ryan-jordan"
+summary = "Ryan Jordan is the founder and publisher of Backpacking Light and shares credit for the concept of the Great Western Loop."
+bio = "Jordan is the founder and publisher of Backpacking Light, an outdoor media, education, membership and commerce company that Jordan has led for more than two decades. The concept of the 6,875-mile Great Western Loop dates to 2006 and to Jordan and Andrew Skurka, who later completed the loop."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://ryanjordan.com/about-ryan-jordan"
+publisher = "Ryan Jordan Consulting"
+
+[[author.source]]
+url = "https://www.planetware.com/2268539/great-western-loop-america-longest-hiking-trail-scenic-6800-mile-journey-outdoor-adventure/"
+publisher = "PlanetWare"
+
+[[author.source]]
+url = "https://thetrek.co/backpacker-radio-live-with-andrew-skurka/"
+publisher = "The Trek"
 
 [[author]]
 name = "Brett Tucker"
 credits = [
   "Brett Tucker",
-  'Brett Tucker ("Blisterfree")',
-  'Brett Tucker ("Blisterfree") and collaborators',
-  'Brett Tucker ("Blisterfree") and partner, simBLISSity Ultralight Designs',
+  "Brett Tucker (\"Blisterfree\")",
+  "Brett Tucker (\"Blisterfree\") and collaborators",
+  "Brett Tucker (\"Blisterfree\") and partner, simBLISSity Ultralight Designs",
 ]
+url = "https://www.simblissity.net/"
+summary = "Brett Tucker created the Grand Enchantment Trail, more than 770 miles across Arizona and New Mexico, and publishes long hiking routes through Simblissity."
+bio = "The Grand Enchantment Trail runs more than 770 miles across Arizona and New Mexico on foot trail, dirt road and cross-country travel, and it is Tucker's best-known route. The idea began on a 2003 hike of the Continental Divide Trail across New Mexico and took shape after Tucker hiked the Arizona Trail in 2004. The first thru-hike followed in the spring of 2005, and from 2005 to 2010 Tucker spent nearly every spring and fall on the route. Simblissity Ultralight Designs, a cottage company run by two long-distance hikers, sews ultralight gear. It also sells mapsets, GPS data and guidebook information for its routes, among them the Mogollon Rim Trail, which Tucker helped explore and develop."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://blisterfree.wordpress.com/"
+publisher = "blisterfree (Brett Tucker)"
+
+[[author.source]]
+url = "https://www.simblissity.net/about.shtml"
+publisher = "Simblissity Ultralight Designs"
+
+[[author.source]]
+url = "https://www.simblissity.net/get-about.shtml"
+publisher = "Simblissity Ultralight Designs"
+
+[[author.source]]
+url = "https://www.simblissity.net/"
+publisher = "Simblissity Ultralight Designs"
 
 [[author]]
 name = "Alan Dixon"
 credits = ["Alan Dixon and Don Wilson"]
+url = "https://www.adventurealan.com/"
+summary = "Alan Dixon is an ultralight backpacking writer and guide who founded the Adventure Alan website and, with Don Wilson, pioneered several high routes."
+bio = "Dixon launched AdventureAlan.com in 1999 to share what was known about ultralight backpacking, and co-founded BackpackingLight. Dixon is co-author of Lightweight Backpacking and Camping: A Field Guide to Wilderness Equipment and works as a writer, photographer and hiking guide. Dixon has long focused on high routes and canyoneering. With partner Don Wilson, Dixon pioneered the Wind River High Route (Dixon and Wilson), the Southern Sierra High Route and an extended Escalante Overland Route. Dixon stepped back from running the website in 2023 and remains a gear editor and technical advisor."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://www.adventurealan.com/alan-dixon-bio/"
+publisher = "Adventure Alan & Co"
+
+[[author.source]]
+url = "https://www.adventurealan.com/about/"
+publisher = "Adventure Alan & Co"
 
 [[author]]
 name = "Don Wilson"
 credits = ["Alan Dixon and Don Wilson"]
+summary = "Don Wilson is a high-route hiker who pioneered the Wind River High Route (Dixon and Wilson) and the Southern Sierra High Route with Alan Dixon."
+bio = "Wilson's published work is with Alan Dixon. The two are credited as authors of the Wind River High Route guide, which grew from a hike in the late summer of 2013 and was revised in January 2016. In 2014 Wilson and Dixon put together a line that extends the Sierra High Route south, near the Sierra crest, to Mount Whitney and beyond. Dixon's biography also credits the pair with an extended version of the Escalante Overland Route."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://www.adventurealan.com/wind-river-high-route-guide/"
+publisher = "Adventure Alan & Co"
+
+[[author.source]]
+url = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
+publisher = "Adventure Alan & Co"
+
+[[author.source]]
+url = "https://www.adventurealan.com/alan-dixon-bio/"
+publisher = "Adventure Alan & Co"
 
 [[author]]
 name = "Jake Blood"
 credits = ["Jake Blood and Jennifer Pharr Davis"]
+summary = "Jake Blood is a North Carolina hiker and trail association officer who co-created the Appalachian High Route with Jennifer Pharr Davis."
+bio = "Blood is a local hiker and an officer of the NC High Peaks Trail Association. With Jennifer Pharr Davis, Blood is co-creator of the Appalachian High Route, which unites the Appalachian Trail, the Mountains-to-Sea Trail and the Black Mountain Crest Trail through the Burnsville Connector. Pharr Davis helped Blood come up with the idea while the two studied maps of Yancey County."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://nchighpeaks.org/node/99"
+publisher = "North Carolina High Peaks Trail Association"
+
+[[author.source]]
+url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
+publisher = "Jennifer Pharr Davis"
 
 [[author]]
 name = "Jennifer Pharr Davis"
 credits = ["Jake Blood and Jennifer Pharr Davis"]
+url = "https://jenniferpharrdavis.com/about"
+summary = "Jennifer Pharr Davis is a long-distance hiker and author who set the Appalachian Trail fastest known time in 2011 and co-created the Appalachian High Route."
+bio = "Pharr Davis has covered over 14,000 miles as a hiker, on six continents. She has hiked the Appalachian Trail three times, and in 2011 she set the fastest known time on it, completing the 2,190-mile path in 46 days. She founded the outfitter Blue Ridge Hiking Company and sold it in 2023. She has written guidebooks, family hiking resources and adventure memoirs and has been named a National Geographic Adventurer of the Year. She helped her friend Jake Blood come up with the idea for the Appalachian High Route."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://jenniferpharrdavis.com/about"
+publisher = "Jennifer Pharr Davis"
+
+[[author.source]]
+url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
+publisher = "Jennifer Pharr Davis"
 
 [[author]]
 name = "Joe Mitchell"
 credits = ["Joe Mitchell and Mike Coronella"]
+url = "https://www.hayduketrail.org/"
+summary = "Joe Mitchell is a creator and co-founder of the Hayduke Trail, an 800-mile backcountry route across the Colorado Plateau."
+bio = "Mitchell and Mike Coronella pioneered the Hayduke Trail after concluding that a long trail was possible on the Colorado Plateau. Their guidebook, with a 2005 copyright, was featured in the March 2005 issue of National Geographic Adventure Magazine. The trail is named for George Washington Hayduke III, a character in Edward Abbey's novel The Monkey Wrench Gang. Mitchell remains the contact for the trail's website."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://www.hayduketrail.org/"
+publisher = "The Hayduke Trail"
+
+[[author.source]]
+url = "https://uofupress.com/books/the-hayduke-trail/"
+publisher = "University of Utah Press"
 
 [[author]]
 name = "Mike Coronella"
 credits = ["Joe Mitchell and Mike Coronella"]
+url = "https://www.hayduketrail.org"
+summary = "Mike Coronella is a guidebook author who pioneered the Hayduke Trail on the Colorado Plateau with Joe Mitchell."
+bio = "Coronella and Joe Mitchell pioneered the Hayduke Trail after concluding that a long trail was possible on the Colorado Plateau. Their guidebook presents the route as a challenging 800-mile backcountry trek and was featured in the March 2005 issue of National Geographic Adventure Magazine. Coronella owns Deep Desert Expeditions in Moab and is an officer with Grand County Search and Rescue."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://uofupress.com/books/the-hayduke-trail/"
+publisher = "University of Utah Press"
 
 [[author]]
 name = "Ky Harkey"
 credits = ["Ky Harkey and Anna Claire Eddington"]
+summary = "Ky Harkey is a backpacking guide in the Big Bend region of Texas who created the 100-mile Big Bend 100 route with Anna Claire Eddington."
+bio = "In January 2018 Harkey and Eddington set out to hike the Big Bend 100 from end to end, mostly on existing trail, to link Big Bend Ranch State Park with Big Bend National Park. Harkey described the nine-day hike in Texas Parks & Wildlife Magazine in April 2020. Harkey had spent years guiding trips in the region, and both had worked as backpacking instructors."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://thetrek.co/big-bend-100-newest-long-distance-trail-texas/"
+publisher = "The Trek"
+
+[[author.source]]
+url = "https://tpwmagazine.com/adventure-recreation/the-big-bend-100-a-hike-across-two-west-texas-parks/"
+publisher = "Texas Parks & Wildlife Magazine"
 
 [[author]]
 name = "Anna Claire Eddington"
 credits = ["Ky Harkey and Anna Claire Eddington"]
+summary = "Anna Claire Eddington is a backpacking instructor who created the 100-mile Big Bend 100 route in West Texas with Ky Harkey."
+bio = "Eddington and Ky Harkey set out in January 2018 to hike the Big Bend 100 from end to end, a route that links Big Bend Ranch State Park with Big Bend National Park. Both had worked as backpacking instructors. Eddington later went back with a group from Gossamer Gear to complete the first half of the route again, and advises desert hikers not to assume there will be water along the way."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://thetrek.co/big-bend-100-newest-long-distance-trail-texas/"
+publisher = "The Trek"
+
+[[author.source]]
+url = "https://tpwmagazine.com/adventure-recreation/the-big-bend-100-a-hike-across-two-west-texas-parks/"
+publisher = "Texas Parks & Wildlife Magazine"
 
 [[author]]
 name = "Luc Mehl"
 credits = ["Luc Mehl and Sarah Histand"]
+url = "https://thingstolucat.com/"
+summary = "Luc Mehl is an Alaska wilderness traveler and instructor who wrote The Packraft Handbook and traversed the Brooks Range with Sarah Histand."
+bio = "Mehl has traveled 10,000 miles of Alaska by packraft, ski, foot, bike and ice skate. The Brooks Range Traverse crosses the range from Kivalina to Kaktovik in three parts, and Mehl made the second leg through the Arctic National Wildlife Refuge in June 2017. Mehl wrote The Packraft Handbook, winner of the 2021 National Outdoor Book Award in Outdoor Adventure Guides. Mehl is an outdoor skills instructor, a certified instructor for the Swiftwater Safety Institute and a member of the education committee of the American Packraft Association."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://thingstolucat.com/packrafthandbook/"
+publisher = "Luc Mehl (Things To Luc At)"
+
+[[author.source]]
+url = "https://thingstolucat.com/brooks-range-traverse/"
+publisher = "Luc Mehl (Things To Luc At)"
+
+[[author.source]]
+url = "https://thingstolucat.com/arctic-refuge-traverse/"
+publisher = "Luc Mehl (Things To Luc At)"
 
 [[author]]
 name = "Sarah Histand"
 credits = ["Luc Mehl and Sarah Histand"]
+url = "https://www.mindandmountain.co/"
+summary = "Sarah Histand is an Alaska adventure fitness trainer who hiked and floated the Arctic National Wildlife Refuge with Luc Mehl on the Brooks Range Traverse."
+bio = "In June 2017 Histand and Luc Mehl hiked and floated 275 miles through the Arctic National Wildlife Refuge in three weeks. That trip was the second leg of the Brooks Range Traverse, which crosses the range from Kivalina to Kaktovik in three parts. Histand also founded Mind & Mountain, an online training program that offers workouts to build the strength needed for outdoor recreation."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://thingstolucat.com/arctic-refuge-traverse/"
+publisher = "Luc Mehl (Things To Luc At)"
+
+[[author.source]]
+url = "https://thingstolucat.com/brooks-range-traverse/"
+publisher = "Luc Mehl (Things To Luc At)"
+
+[[author.source]]
+url = "https://www.mindandmountain.co/"
+publisher = "Mind & Mountain"
 
 [[author]]
 name = "Liz Thomas"
@@ -79,6 +272,18 @@ credits = [
   "Liz Thomas",
   "Sea to Sea Trail Foundation (folded); guide by Liz Thomas",
 ]
+url = "https://www.eathomas.com/"
+summary = "Liz Thomas is a long-distance hiker and author who broke the women's self-supported speed record on the Appalachian Trail and wrote Long Trails."
+bio = "Thomas has completed the Triple Crown of Hiking and has hiked more than 20,000 miles on over 20 long trails. Thomas broke the women's self-supported speed record on the 2,181-mile Appalachian Trail and made first-known traverses of the Chinook Trail in the Columbia River Gorge and of the Wasatch Range in Utah. Thomas wrote Long Trails: Mastering the Art of the Thru-hike, which won the National Outdoor Book Award for Best Instructional Book. Thomas is also editor in chief of Treeline Review, an outdoor gear magazine."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://www.eathomas.com/about"
+publisher = "Liz Thomas Hiking"
+
+[[author.source]]
+url = "https://www.eathomas.com/"
+publisher = "Liz Thomas Hiking"
 
 [[author]]
 name = "Sea to Sea Trail Foundation"
@@ -88,83 +293,359 @@ kind = "organisation"
 [[author]]
 name = "Aria Zoner"
 credits = ["Aria Zoner"]
+url = "https://outsideways.com/routes/us/hot-springs-trail/"
+summary = "Aria Zoner is a thru-hiker and guidebook author who wrote The Hot Springs Trail Official Guidebook and The Nevada Trail Official Guidebook."
+bio = "The Hot Springs Trail is a 2,421-mile journey to 100 wild or resort hot spring areas, running from Santa Barbara, California, to Idaho's Canadian border. Zoner's 2016 journal records a total time of 110 days to complete it. The route has also been published as a template for an official Hot Springs National Scenic Trail. Besides the Hot Springs Trail guide, Zoner wrote a guidebook for the Nevada Trail."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://outsideways.com/routes/us/hot-springs-trail/"
+publisher = "Outsideways"
 
 [[author]]
 name = "Brian Lucido"
 credits = ["Brian Lucido"]
+url = "https://www.brianlucido.com/"
+summary = "Brian Lucido set the unsupported fastest known time on the Sierra High Route in August 2015, in 6 days, 13 hours and 35 minutes."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://fastestknowntime.com/route/sierra-high-route-ca"
+publisher = "Fastest Known Time"
 
 [[author]]
 name = "Cam Honan"
 credits = ["Cam Honan"]
+url = "https://thehikinglife.com/about/"
+summary = "Cam Honan is a long-distance hiker and author who completed the 12 Long Walks and has hiked more than 77,000 miles in 68 countries."
+bio = "As of 2026, Honan has hiked more than 77,000 miles in 68 countries and six continents. The best known of those hikes is the 12 Long Walks, a dozen consecutive long-distance hikes between July 2011 and December 2012 that totalled more than 14,300 miles through 29 US states and four Canadian provinces. Within that trip Honan completed a calendar year Triple Crown of the Pacific Crest, Appalachian and Continental Divide Trails in 236 days, and covered 10,244 miles in the calendar year. Honan has authored and co-edited seven books, among them Wanderlust USA, Wanderlust Himalaya and Hiking & Backpacking for Dummies. Honan also runs The Hiking Life, a website of trail guides, gear reviews and backpacking tips covering more than 200 hikes."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://thehikinglife.com/about/"
+publisher = "The Hiking Life"
+
+[[author.source]]
+url = "https://thehikinglife.com/"
+publisher = "The Hiking Life"
 
 [[author]]
 name = "Dan Stenziano"
 credits = ["Dan Stenziano"]
+url = "https://danstenziano.com/"
+summary = "Dan Stenziano is a backpacking guide who publishes the Eastern Sierra High Route Guide and has thru-hiked the Pacific Crest and Continental Divide Trails."
+bio = "Stenziano's first trip to the Sierra was a thru-hike of the John Muir Trail in 2016. Stenziano went on to complete multi-month thru-hikes of the Pacific Crest Trail and the Continental Divide Trail. In 2023 Stenziano began working as a backpacking guide in Yosemite, and now guides for Sierra Mountain Center. Away from guiding, Stenziano comes up with off-trail backpacking routes and explores new parts of the Sierra."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://danstenziano.com/"
+publisher = "Dan Stenziano"
+
+[[author.source]]
+url = "https://sierramountaincenter.com/meet-the-smc-staff/"
+publisher = "Sierra Mountain Center"
 
 [[author]]
 name = "Eric Poulin"
 credits = ["Eric Poulin"]
+url = "https://seekinglost.com/"
+summary = "Eric Poulin is a thru-hiker and filmmaker who created the Basin and Range Trail and the Mojave-Sonoran Trail and films long hikes for YouTube as Seeking Lost."
+bio = "Poulin thru-hiked the Continental Divide Trail, about 3,000 miles from Mexico to Canada, and filmed the journey for YouTube. Since then Poulin has worked out new routes and hiked them. The Basin and Range Trail, in 2020, runs more than 1,000 miles across Nevada. The Mojave-Sonoran Trail, in 2021, is a 625-mile off-trail route from southern Nevada to southern Arizona. In 2022 Poulin thru-hiked the Oregon Desert Trail. Seeking Lost is Poulin's site and YouTube channel of thru-hiking and backpacking trip films and hiking gear videos."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://voyagedenver.com/interview/check-out-eric-poulins-story/"
+publisher = "VoyageDenver"
+
+[[author.source]]
+url = "https://www.youtube.com/@SeekingLost"
+publisher = "YouTube (the Seeking Lost channel)"
 
 [[author]]
 name = "Erik Schlimmer"
 credits = ["Erik Schlimmer"]
+url = "https://erikschlimmer.com/"
+summary = "Erik Schlimmer is an Adirondack author who created the 242.7-mile Trans Adirondack Route in 2010 and wrote its guidebook, Blue Line to Blue Line."
+bio = "Schlimmer is the first name on the completers list of the Trans Adirondack Route in 2010 and completed a second thru-hike in 2018. The route is 242.7 miles through Adirondack Park, with 199.3 miles of it on trails. Blue Line to Blue Line, the first guide to the route, appeared in 2013, and a second edition was published in 2025. Schlimmer has also written books on the place names and history of the Adirondacks, including History Inside the Blue Line."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://erikschlimmer.com/tar-1"
+publisher = "Erik Schlimmer"
+
+[[author.source]]
+url = "https://erikschlimmer.com/books-sale-"
+publisher = "Erik Schlimmer"
 
 [[author]]
 name = "Jamal Green"
 credits = ["Jamal Green"]
+url = "http://www.acrossutah.com/wordpress/the_route/"
+summary = "Jamal Green is a long-distance hiker who has spent two decades putting together hiking routes across Utah, published at AcrossUtah.com."
+bio = "For the past two decades Green has been putting together long-distance hiking routes throughout Utah. AcrossUtah.com and an accompanying video channel are a source of logistical and cartographical information for a hike across southern Utah. The suggested route across Utah on that site was the framework for a 2017 hike by the authors of Doing Miles, who also thanked Green for answering their planning questions."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://thehikinglife.com/2025/07/southern-utah-traverse-an-800-mile-hike-from-nevada-to-colorado/"
+publisher = "The Hiking Life"
+
+[[author.source]]
+url = "https://doingmiles.com/2017-04-across-utah/"
+publisher = "Doing Miles"
 
 [[author]]
 name = "Kevin Silvernale"
 credits = ["Kevin Silvernale"]
+url = "https://www.northerncoloradotrail.org/"
+summary = "Kevin Silvernale designed the Northern Colorado Trail and in 2024 became the first person to complete it."
+bio = "Silvernale finished thru-hiking the Pacific Crest Trail in 2016 and went on to hike the Appalachian Trail in 2018, the Continental Divide Trail in 2021 and the Colorado Trail in 2022. In 2023 Silvernale began plotting a long-distance path, linking existing trails and roads, from Estes Park to Glenwood Springs. The Northern Colorado Trail runs between the Dunraven and Transfer trailheads for roughly 300 miles, and Silvernale first completed it in 2024."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://explorersweb.com/new-thru-hike-northern-colorado-trail-debuts-this-season/"
+publisher = "ExplorersWeb"
+
+[[author.source]]
+url = "https://5280.com/ways-to-hike-the-new-northern-colorado-trail/"
+publisher = "5280"
 
 [[author]]
 name = "Michael Kauffmann"
 credits = ["Michael Kauffmann"]
+url = "https://www.michaelkauffmann.net/"
+summary = "Michael Kauffmann is an ecologist and author who first walked the route that became the Bigfoot Trail in 2009 and wrote Conifer Country."
+bio = "Kauffmann presents as an educator, author and ecologist. After hiking the Continental Divide Trail, Kauffmann discussed the lack of connectivity between wilderness areas in the Klamath Mountains with the botanist John O. Sawyer. Kauffmann first walked the route that became the Bigfoot Trail in 2009. Kauffmann wrote Conifer Country, a natural history and hiking guide to the region, and in 2015 launched a Kickstarter campaign to establish the Bigfoot Trail Alliance as a nonprofit organization."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://www.michaelkauffmann.net/2015/01/creating-bigfoot-trail-alliance/"
+publisher = "Michael Kauffmann"
 
 [[author]]
 name = "Mike White"
 credits = ["Mike White"]
+summary = "Mike White is a hiking guidebook author whose guide presents 122 hikes in Sequoia and Kings Canyon National Parks and the southern High Sierra."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://shop.adventurewithkeen.com/product/sequoia-and-kings-canyon-national-parks/"
+publisher = "Wilderness Press (AdventureKEEN)"
 
 [[author]]
 name = "Pam Neely"
 credits = ["Pam Neely"]
+url = "https://santafetotaos.org"
+summary = "Pam Neely scouted and refined the Santa Fe to Taos Thru-Hike, a 132-mile route in northern New Mexico first completed as a thru-hike in 2018."
+bio = "The route of the Santa Fe to Taos Thru-Hike was more than ten years in the making and was scouted and refined by Neely beginning around 2014. It runs 132 miles through four counties, Santa Fe, Rio Arriba, Mora and Taos, and is broken into six sections of about 20 miles each. A guidebook to the route is on sale in Santa Fe."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://www.santafe.org/listing/the-santa-fe-to-taos-thru-hike/5127/amp/"
+publisher = "Tourism Santa Fe"
 
 [[author]]
 name = "Philip Stone"
 credits = ["Philip Stone"]
+url = "https://www.wildisle.ca/backbone/index.html"
+summary = "Philip Stone is credited with the Hiking Guide to the Vancouver Island Backbone, a route of about 200 miles, and wrote Island Alpine Climbing."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://www.wildisle.ca/backbone/index.html"
+publisher = "Wild Isle (Philip Stone)"
+
+[[author.source]]
+url = "https://www.wildisle.ca/islandalpineclimbing/index.html?campaign=WT-156218"
+publisher = "Wild Isle (Philip Stone)"
 
 [[author]]
 name = "Ron Strickland"
 credits = ["Ron Strickland"]
+summary = "Ron Strickland is the founder of the Pacific Northwest Trail and of the Pacific Northwest Trail Association, and the author of Pathfinder."
+bio = "Strickland began to envision the Pacific Northwest Trail after reading Harvey Manning's 1970 book, and spent years poring over maps, hiking segments and recruiting volunteers to piece the route together. A preliminary route was identified by 1974. In 1977 Strickland founded the Pacific Northwest Trail Association. The trail stretches 1,200 miles from Glacier National Park in Montana to Olympic National Park in Washington. Strickland's books include The Pacific Northwest Trail Guide, Shanks Mare: A Compendium of Remarkable Walks and Pathfinder, published in 2011."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://www.pnt.org/pnta/about-us/history/"
+publisher = "Pacific Northwest Trail Association"
+
+[[author.source]]
+url = "https://osupress.oregonstate.edu/author/ron-strickland"
+publisher = "Oregon State University Press"
 
 [[author]]
 name = "Steve Roper"
 credits = ["Steve Roper"]
+summary = "Steve Roper is a climbing writer who first published the Sierra High Route in 1982, in the guide Timberline Country: Sierra High Route."
+bio = "The idea for the Sierra High Route came to Roper around 1980 after a day of cross-country walking. The 1982 guide Timberline Country: Sierra High Route was the first publication of the route, an off-trail line along the narrow band bordering the 10,000 foot level in the High Sierra. Roper wrote A Climber's Guide to Yosemite Valley in 1964 and has published more than half a dozen guidebooks, among them Fifty Classic Climbs of North America. With Allen Steck, Roper founded and edited the climbing journal Ascent."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://adventuresportsjournal.com/sierra-high-route/"
+publisher = "Adventure Sports Journal"
 
 [[author]]
 name = "Thomas Winnett"
 credits = ["Thomas Winnett"]
+summary = "Thomas Winnett founded the hiking guide publisher Wilderness Press in 1967 and is credited with the Tahoe-Yosemite Trail."
+bio = "Winnett founded Wilderness Press in 1967 with the publication of Sierra North. Over the next 35 years the press built a list of hiking guides covering California, Alaska, Hawaii and other regions. Winnett sold the press to Keen Communications in April 2008 and died in 2011. The Tahoe-Yosemite Trail is credited to Winnett."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://www.publishersweekly.com/pw/by-topic/industry-news/people/article/46923-wilderness-press-founder-thomas-winnett-dies-at-89.html"
+publisher = "Publishers Weekly"
 
 [[author]]
 name = "Kevin \"LarryBoy\" DeVries"
-credits = ['Kevin "LarryBoy" DeVries']
+credits = ["Kevin \"LarryBoy\" DeVries"]
+url = "https://www.lbhikes.com/"
+summary = "Kevin \"LarryBoy\" DeVries is a long-distance hiker who created the Deseret Hiking Route, which links the Arizona Trail and the Idaho Centennial Trail."
+bio = "DeVries hikes as LarryBoy and writes the LB Hikes site. The About page lists thru-hikes of the Appalachian Trail in 2013, the Continental Divide Trail in 2018 and the Pacific Crest Trail in 2023. DeVries has a specific interest in route creation and planning and created the Deseret Hiking Route. The route joins the Arizona Trail to the Idaho Centennial Trail, so that hikers can walk from Mexico to Canada through Arizona, Utah and Idaho."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://www.lbhikes.com/p/about.html"
+publisher = "LB Hikes"
 
 [[author]]
 name = "Ryan \"Dirtmonger\" Sylva"
-credits = ['Ryan "Dirtmonger" Sylva']
+credits = ["Ryan \"Dirtmonger\" Sylva"]
+url = "https://www.freedirtmonger.com/"
+summary = "Ryan \"Dirtmonger\" Sylva is a long-distance hiker who developed and named the Great Basin Trail, a route contained in Nevada."
+bio = "Sylva writes the dirtmonger blog, which is dedicated to endurance, adventure and wandering and carries guides to a long list of routes. Sylva developed and named the Great Basin Trail in late 2019, a route contained entirely in Nevada. The blog also describes the Vagabond Loop, which Sylva started and which joins the Arizona Trail, the Hayduke Trail, the Grand Enchantment Trail and a Moab to Albuquerque connection."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://www.freedirtmonger.com/"
+publisher = "dirtmonger"
+
+[[author.source]]
+url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+publisher = "dirtmonger"
+
+[[author.source]]
+url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
+publisher = "Gossamer Gear"
 
 [[author]]
 name = "Donovan \"Iceman\" Rice"
-credits = ['Donovan "Iceman" Rice']
+credits = ["Donovan \"Iceman\" Rice"]
+url = "https://greatcoloradoroute.com/"
+summary = "Donovan \"Iceman\" Rice is a Colorado thru-hiker who envisioned the 2,000-mile Great Colorado Route and leads the project."
+bio = "Rice, a Colorado native, envisioned the Great Colorado Route and currently spearheads it. The route is a 2,000-mile hybrid of a high route and a traditional thru-hike, with sustained route finding, off-trail travel and scrambling. Rice has completed all of the state's 14ers and finished the Continental Divide Trail, in addition to other major thru-hikes."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://greatcoloradoroute.com/about"
+publisher = "Great Colorado Route"
+
+[[author.source]]
+url = "https://greatcoloradoroute.com/"
+publisher = "Great Colorado Route"
 
 [[author]]
 name = "M. J. Eberhart"
 credits = ["M. J. Eberhart (trail name Nimblewill Nomad)"]
+url = "https://nimblewillnomad.com/books/"
+summary = "M. J. Eberhart, who hikes as Nimblewill Nomad, walked from the Florida Keys to Quebec in 1998 and wrote Ten Million Steps about the Eastern Continental Trail."
+bio = "In January 1998 Eberhart set off on a foot journey of 4,400 miles from the Florida Keys to the far north of Quebec. The book Ten Million Steps tells the story of the walk along the Eastern Continental Trail. In 2000 and 2001 Eberhart made a 347 day journey of over 5,000 miles along the entire Appalachian Mountain Range, the subject of Where Less the Path Is Worn. A 2002 walk from Cape Hatteras to Point Loma, California, covered over 3,000 miles."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://nimblewillnomad.com/books/"
+publisher = "M. J. Eberhart (Nimblewill Nomad)"
+
+[[author.source]]
+url = "https://nimblewillnomad.com/about/"
+publisher = "M. J. Eberhart (Nimblewill Nomad)"
 
 [[author]]
 name = "Paul Mags"
 credits = ["Paul Mags (PMags.com)"]
+url = "https://pmags.com/"
+summary = "Paul Mags is an outdoor writer and Triple Crown hiker who publishes PMags.com and created the Grand-Moab Route."
+bio = "Mags writes PMags.com and has hiked the Triple Crown of hiking, made up of the Appalachian Trail, the Pacific Crest Trail and the Continental Divide Trail. Mags has guided, co-hosted the podcast The Trail Show and served as a volunteer board member for the Continental Divide Trail Coalition. Rock Ridge Press published a first print book by Mags in the fall of 2019. The Grand-Moab Route is about 140 miles from Grand Junction, Colorado, to Moab, Utah, and Mags hiked it in 2022."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://pmags.com/about-me"
+publisher = "Paul Mags (PMags.com)"
+
+[[author.source]]
+url = "https://pmags.com/the-grand-moab-route"
+publisher = "Paul Mags (PMags.com)"
 
 [[author]]
 name = "Lauren Lake"
 credits = ["Lauren Lake (PacificCoastalTrail blog)"]
+url = "https://pacificcoastaltrail.wordpress.com/"
+summary = "Lauren Lake writes the PacificCoastalTrail blog about section hikes of the entire west coast, started in 2021 and completed in 2026."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://pacificcoastaltrail.wordpress.com/"
+publisher = "PacificCoastalTrail blog"
+
+[[author]]
+name = "Wilderness Mindset"
+credits = ["Wilderness Mindset"]
+kind = "people"
+url = "https://wildernessmindset.com/"
+summary = "Wilderness Mindset is the name under which Alex Maier and Amy L. Robin hike, film and publish backpacking routes and outdoor documentaries."
+bio = "Wilderness Mindset began when Amy L. Robin and Alex Maier decided to combine their passions for the outdoors and photography. Maier thru-hikes and films long hikes, and Maier's stated purpose is to explore the wilderness and share what turns up in videos and photos. Robin came to backpacking through hunting, bushcraft and navigation. Their documentaries include films on the Continental Divide Trail, the Pacific Northwest Trail, the Hayduke Trail and the North Country Trail, and on speed records on the Missouri and Mississippi Rivers. The site also publishes backpacking routes, among them the Beartooth High Route, and sells map packs, books and prints. The stated goal is to inspire people to find their own meaningful experiences in nature."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://wildernessmindset.com/about/"
+publisher = "Wilderness Mindset"
+
+[[author.source]]
+url = "https://wildernessmindset.com/"
+publisher = "Wilderness Mindset"
+
+[[author]]
+name = "John and Monica Chapman"
+credits = ["John and Monica Chapman"]
+kind = "people"
+url = "https://www.john.chapman.name/pub-sierra.html"
+summary = "John and Monica Chapman are credited with the Sierra Grand Traverse, a 200-mile traverse of the Sierra Nevada, and its guidebook from The Mountaineers."
+bio = "The guidebook to the Sierra Grand Traverse, published by The Mountaineers, was a finalist in the Guidebooks category of the 2023 Banff Mountain Book Competition. John Chapman's walking guides began with South West Tasmania in 1978. Bushwalking in Australia, a joint effort of John and Monica Chapman, was first published in 1986 and went through three editions with Lonely Planet before a fourth was self-published in 2003. John Chapman has since written guides to walks in Victoria, Sydney and Tasmania."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://www.john.chapman.name/pub-sierra.html"
+publisher = "John Chapman"
+
+[[author.source]]
+url = "https://www.john.chapman.name/self.html"
+publisher = "John Chapman"
+
+[[author]]
+name = "Amy and James (Doing Miles)"
+credits = ["Amy and James (Doing Miles)"]
+kind = "people"
+url = "https://doingmiles.com/"
+summary = "Amy and James (Doing Miles) are hikers who designed and published the Big SEKI Loop, about 155 miles in Sequoia and Kings Canyon National Parks."
+bio = "Amy and James began thru-hiking mid-distance trails of 250 to 800 miles in 2002 and have completed about 35 such trips in the United States and overseas. They have also taken many dozens of wilderness backpacking trips of seven to eleven days, mostly in southern Utah and the southern Sierra Nevada. They completed the design of the Big SEKI Loop in 2013 and first published it on Backpackinglight.com in February of that year."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://doingmiles.com/about-us/"
+publisher = "Doing Miles"
+
+[[author.source]]
+url = "https://doingmiles.com/route-big-seki-loop/"
+publisher = "Doing Miles"
+
+[[author]]
+name = "Steve Myers"
+credits = ["Steve Myers (Great Plains Trail Alliance)"]
+kind = "person"
+url = "https://www.greatplainstrail.org/"
+summary = "Steve Myers (Great Plains Trail Alliance) is the founder and Director of Great Plains Trail, a planned long-distance trail through the Great Plains."
+bio = "The Great Plains Trail Alliance was formed from an inspiration that began in 1991, when Myers took a trip from Minnesota to Wyoming and wanted a fuller way to experience the open spaces west of the Missouri River. The Alliance exists to establish, develop, preserve and promote a long-distance, public, non-motorized trail running north and south through the Great Plains region for recreation, conservation, education and inspiration. Myers remains founder and Director of Great Plains Trail."
+checked = "2026-11-17"
+
+[[author.source]]
+url = "https://www.greatplainstrail.org/about-us/"
+publisher = "Great Plains Trail Alliance"

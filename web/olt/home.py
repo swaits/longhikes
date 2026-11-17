@@ -150,7 +150,7 @@ def route_by_html(rec):
     return Markup(text)
 
 
-def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=False, lead=None, rank=None, more=()):
+def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=False, lead=None, rank=None, more=(), by=None):
     """One trail in a list. Its data-* attributes drive the filters in app.js.
 
     level: the heading level of the trail's name. extra: HTML placed last in the row.
@@ -162,6 +162,8 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
     figure, or a figure a page compares). rank: the row's place in a ranking (data-rank, and
     "No. 3" before the figure). more: [(label, HTML)] of further facts, each with its label,
     after the others on the line of facts (a page that compares a few trails).
+    by(rec) -> HTML: the row's author line in place of "Route by" (an author's page, where it
+    names only the others a route is credited to); "" for none.
 
     The Save star follows the name in the markup (so it is the next stop for the
     keyboard) but is drawn under the logo, out of the row's flow (style.css
@@ -191,7 +193,8 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
     h = f"h{level}"
     tag_html = common.badges(rec, route_tag=not routes_list)
     kicker = f'\n    <p class="entry__kicker">{tag_html}</p>' if tag_html else ""
-    by = f'\n    <p class="entry__by">{route_by_html(rec)}</p>' if route and not routes_list else ""
+    by_line = by(rec) if by is not None else route_by_html(rec) if route and not routes_list else ""
+    by = f'\n    <p class="entry__by">{by_line}</p>' if by_line else ""
     desc = entry_desc(rec)
     desc_html = f'\n    <p class="entry__desc">{esc(desc)}</p>' if desc else ""
     time_html = esc(facets.time_text(rec)) + (' <small class="entry__est">estimate</small>' if est else "")
@@ -460,7 +463,7 @@ def key(official=True):
 
 
 def results(recs=None, *, finder=False, groups=None, routes_list=False, default_sort="name", saved=False, top=3,
-            ranked="", lead=None, more=None, tools=True):
+            ranked="", lead=None, more=None, tools=True, by=None):
     """The list of trails, as every page shows it: div.results > head, key, list head, ol.entries.
 
     Every list carries the same "Sort by" control. The rows are written in
@@ -469,7 +472,8 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
 
     finder: the home page's list, driven by the filters (live count, empty state).
     groups: [(heading, trails, extra_fn)] to list the trails under headings (level `top`);
-    sorting is within each group and the groups keep their order.
+    sorting is within each group and the groups keep their order. A heading may be a pair
+    (heading HTML, intro HTML): the intro is a sentence under the heading (an author's summary).
     top: the heading level of a trail's name where the trails are not in groups (and of a
     group's heading where they are; the names then sit one level lower). 3 under a page's
     own h2 (the home page); 2 on a page whose h1 is followed directly by the list.
@@ -507,9 +511,13 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
                                 routes_list=routes_list, hidden=saved,
                                 eager=not saved and seen + i < EAGER_ROWS,
                                 lead=lead(r) if lead else None, more=more(r) if more else (),
-                                rank=seen + i + 1 if ranked else None) for i, r in enumerate(items))
+                                rank=seen + i + 1 if ranked else None, by=by) for i, r in enumerate(items))
         seen += len(items)
-        if heading:
+        if isinstance(heading, tuple):
+            heading, intro = heading
+            intro = f'<p class="results__intro">{intro}</p>' if intro else ""
+            lists += f'\n      <div class="results__lead"><h{top} class="results__group">{heading}</h{top}>{intro}</div>'
+        elif heading:
             lists += f'\n      <h{top} class="results__group">{heading}</h{top}>'
         list_id = ' id="entries"' if finder else ""
         lists += f'\n      <ol class="entries"{list_id}{every}>\n{rows}\n      </ol>'
@@ -672,12 +680,17 @@ def browse_view(listing, map_html, *, about="", about_title="", about_id="about-
   <div class="browse__list">{listing}{map_html}</div>
 </div>"""
     if about:
-        grid += f"""
-<section class="browse-about" aria-labelledby="{esc(about_id)}">
-  <h2 id="{esc(about_id)}">{esc(about_title or "About these trails")}</h2>
-  <div class="prose">{about}</div>
-</section>"""
+        grid += about_section(about, about_title or "About these trails", about_id)
     return Markup(grid)
+
+
+def about_section(html, title, section_id):
+    """A section of text after the rows, under its own heading (browse_view's about)."""
+    return Markup(f"""
+<section class="browse-about" aria-labelledby="{esc(section_id)}">
+  <h2 id="{esc(section_id)}">{esc(title)}</h2>
+  <div class="prose">{html}</div>
+</section>""")
 
 
 def has_overview_map(recs, scope=""):

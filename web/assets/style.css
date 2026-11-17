@@ -1547,6 +1547,18 @@ html:not(.js) .list-head__arrow { display: none; }
 .block > .block__sub { margin-block-start: var(--space-5); }
 .block__sub + * { margin-block-start: var(--space-2) !important; }
 .page-head__lede { max-inline-size: 40rem; color: var(--ink-2); font-size: var(--step-1); }
+/* One quiet line of facts under a lede (an author's routes, their range, their own site). */
+.page-head__facts {
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  margin-inline-start: -1.1em; clip-path: inset(0 0 0 1.1em);
+  color: var(--ink-2); font: 400 var(--step--1)/1.5 var(--font-sans);
+}
+.page-head__facts > span { position: relative; padding-inline-start: 1.1em; }
+.page-head__facts > span::before { content: "\00B7"; position: absolute; inset-inline-start: 0.4em; }
+/* On a phone the sentence over such a line is set a step smaller, so the head stays short. */
+@media (max-width: 40rem) {
+  .page-head__lede:has(+ .page-head__facts) { font-size: var(--step-0); }
+}
 
 /* Downloads */
 .downloads { padding: 0; list-style: none; }
@@ -2216,6 +2228,11 @@ a.tag:hover { background: var(--sunken); }
 .entry__time dd { font: 500 var(--step-0)/1.3 var(--font-sans); }
 .entry__est { display: block; color: var(--ink-2); font: 400 var(--step--2)/1.3 var(--font-sans); letter-spacing: 0.04em; text-transform: uppercase; }
 .results__group { margin-block: var(--space-6) var(--space-2); font-size: var(--step-1); }
+/* A group led by a person (the authors index): the name, then the one sentence that says who they
+   are, set as the start of a short profile rather than a label over the rows. */
+.results__lead { margin-block: var(--space-6) var(--space-2); max-inline-size: var(--measure); }
+.results__lead .results__group { margin: 0; font-size: var(--step-2); line-height: 1.2; }
+.results__intro { margin-block-start: var(--space-1); color: var(--ink-2); font-size: var(--step-0); line-height: 1.45; text-wrap: pretty; }
 
 /* "What is a route?" beside the Kind line of a route's page */
 .define { font: 400 var(--step--1)/1.45 var(--font-sans); color: var(--ink-2); }
@@ -2399,6 +2416,12 @@ html:not(.js) .saved-body { display: none; }
 .shelf--author .shelf__more { margin: 0; padding-block-start: var(--space-2); }
 .author-list { padding: 0; list-style: none; max-inline-size: var(--measure); }
 .author-list li { padding-block: var(--space-2); border-block-start: 1px dotted var(--rule); line-height: 1.45; overflow-wrap: anywhere; }
+.author-list__name { font-weight: 600; }
+.author-list__summary { color: var(--ink-2); font-size: var(--step--1); }
+.author-list__routes { font-size: var(--step--1); }
+/* An author's page, after the rows: the bio, then where it was read, in small print. */
+.author-about__bio { font-size: var(--step-0); }
+.author-about__sources { color: var(--ink-3); font: 400 var(--step--2)/1.45 var(--font-sans); letter-spacing: 0.02em; }
 @media (max-width: 40rem) {
   .shelf--author { grid-template-rows: auto 1fr auto; padding: var(--space-4); }
   .shelf--author .shelf__items, .shelf--author .shelf__more { display: block; }

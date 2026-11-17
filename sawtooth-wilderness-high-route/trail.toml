@@ -8,12 +8,12 @@ length_km = 143
 length_note = "89 mi planned, per the trip report; the hike recorded was 67 mi (108 km)"
 kind = "route"
 tier = "regional"
-designation = "Person-defined route (the author of the SeekingLost blog, 2017); no agency or association"
+designation = "Person-defined route (Eric Poulin, 2017); no agency or association"
 wave = 1
 
 [source]
 status = "none"
-publisher = "the author of the SeekingLost blog (publishes the route)"
+publisher = "Eric Poulin (publishes the route)"
 publisher_url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
 url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
 format = "No line included"
@@ -36,17 +36,17 @@ note = "No route relation found when searched on 2026-11-10. Five relations matc
 [shield]
 status = "no-logo-exists"
 logo_source = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
-contact = "the author of the SeekingLost blog"
+contact = "Eric Poulin"
 note = "Looked at the trip report page and the SeekingLost home page. They show photos and the blog's own site icon only; no emblem for the route."
 logo_file = ""
-logo_owner = "the author of the SeekingLost blog"
+logo_owner = "Eric Poulin"
 
 [verification]
 verified = false
 note = "No line to measure."
 
 [route]
-creator = "the author of the SeekingLost blog"
+creator = "Eric Poulin"
 year = 2017
 line_policy = "open"
 creator_words = "Download GPX file of this hike"
@@ -55,7 +55,7 @@ note = "Planned as 89 miles with over 50 miles off-trail from Tin Cup Trailhead;
 
 [[guide]]
 title = "Sawtooth Wilderness High Route trip report and GPX"
-author = "the author of the SeekingLost blog"
+author = "Eric Poulin"
 access = "free"
 url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
 format = "web trip report with a GPX download and a CalTopo map"
@@ -99,5 +99,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-17"
+change = "The route's creator is now named as Eric Poulin, where the record had called him the author of the SeekingLost blog."
+fields = ["route.creator", "designation", "source.publisher", "guide.author", "shield.contact", "shield.logo_owner"]
+basis = "The author of Seeking Lost names himself as Eric Poulin in the description of his own Seeking Lost channel on YouTube and in a published interview, and this dataset already credits him by name for his other two routes on the same site, the Basin and Range Trail and the Mojave-Sonoran Trail."
+basis_url = "https://voyagedenver.com/interview/check-out-eric-poulins-story/"
 asked_by = "the dataset's own check"
 outcome = "applied"

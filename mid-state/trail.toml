@@ -24,7 +24,7 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 1022044. The publisher's own track is not licensed for redistribution and is not used."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM 1022044 'Mid-State Trail' (Pennsylvania, 513 km distance tag): the whole route in the main role. No alternates are mapped."
+mainline = "OSM 1022044 'Mid-State Trail' (Pennsylvania, 513 km distance tag): all its ways have the main role or none, so the relation does not mark which are alternates. The main track is one walk of its ways. At two places the relation holds two ways between the same two points, and the one that is not the trail moved to alternates.geojson (19 ways, 10.8 km). Near Arnot it is the 'High Water Route (MST)' with South Elk Run Road (5.1 km), against the trail by Maple Hill Road and Arnot Road (11.2 km). At Everett it is the road route north by North Spring Street and Raystown Road (5.7 km), against the trail through Tenley Park and by Lower Snake Spring Road to Tussey Ridge (8.8 km). The Mid-State Trail Association's Everett Region page describes two routes from downtown Everett onto the ridge, one fully blazed to the west and one partly roadwalk on the east, and says the trail is being moved to pass through Tenley Park."
 decision = "included-named"
 decision_text = "Included with its name and logo. The track is from OpenStreetMap."
 source_checked = "2026-11-09"
@@ -34,7 +34,7 @@ line_file = "line.geojson"
 
 [osm]
 relation = 1022044
-note = "Relation 1022044, 471 ways. Downloaded 2026-11-09."
+note = "Relation 1022044, 471 ways. Downloaded 2026-11-09. Re-cut 2026-11-16: 452 ways in the main track and 19 in alternates."
 
 [shield]
 status = "no-logo-exists"
@@ -46,11 +46,11 @@ logo_owner = "Mid State Trail Association"
 
 [verification]
 verified = true
-date = "2026-11-09"
-measured_km = 516.4
-difference_percent = 0.3
-parts = 3
-note = "OSM 1022044 gives 516.4 km in 3 parts, 0.3% over 515 km. Ten node members (guideposts) are not part of the track."
+date = "2026-11-16"
+measured_km = 505.6
+difference_percent = -1.8
+parts = 4
+note = "One walk of 505.6 km in 4 parts, 1.8% short of 515 km. The earlier track, 516.4 km, held both ways at two splits; the other ways, 10.8 km, are in alternates.geojson. Ten node members (guideposts) are not part of the track."
 
 [hike]
 summary = "The Mid State Trail stretches from near Flintstone, Maryland, through the center of Pennsylvania to the New York State line just north of Cowanesque Lake, crossing four regions from south to north. Its keepers call it the wildest footpath in Pennsylvania, and it runs along high ridgelines, deeply wooded plateau and rural low hills."
@@ -95,5 +95,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://hike-mst.org/index.php/the-organization"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track was re-cut to one walk (505.6 km): at Arnot and at Everett, where the track held two ways between the same two points, the high water route and the eastern road route moved to the alternates."
+fields = ["source.line_file", "source.mainline"]
+basis = "A way is named 'High Water Route (MST)'. The Mid-State Trail Association's Everett Region page describes two routes from downtown Everett onto the ridge, one fully blazed to the west and one partly roadwalk on the east, and says the trail is being moved through Everett's Tenley Park. The relation gives no roles. The blazed western route was taken as the trail."
+basis_url = "https://hike-mst.org/index.php/the-trail/everett-region"
 asked_by = "the dataset's own check"
 outcome = "applied"

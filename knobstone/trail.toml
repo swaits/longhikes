@@ -24,12 +24,12 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 4644135, relation 7240414."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM relations 4644135 (Knobstone Trail, 16 ways, all main) and 7240414 (Tecumseh Trail, 64 main ways and 3 alternate ways), joined."
+mainline = "OSM relations 4644135 (Knobstone Trail, 16 ways, all main) and 7240414 (Tecumseh Trail, 64 main ways and 3 alternate ways), joined. At the northern end of the Knobstone relation, near Delaney Park, the relation holds three ways between the same two points (a 4.1 km way, and two routes of 8.8 and 13.5 km that share part of their length) and gives no role to any of them. No page read says which is the trail, so the track keeps the direct 4.1 km way and the other four ways (15.3 km) are in alternates.geojson."
 source_checked = "2026-11-16"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "The included track joins OpenStreetMap relation 4644135 (the southern Knobstone section, from Deam Lake to Delaney Park, 82.6 km) and relation 7240414 (the Tecumseh Trail, 69.8 km). The Pioneer section and the Hoosier National Forest section are not included, because OpenStreetMap has no route relation for them, so the track is 40.7% short of the published 160 mi trail."
+length_gap_note = "The included track joins OpenStreetMap relation 4644135 (the southern Knobstone section, from Deam Lake to Delaney Park, 67.3 km once the doubled stretch at Delaney Park is taken out, 82.6 km before) and relation 7240414 (the Tecumseh Trail, 69.8 km). The Pioneer section and the Hoosier National Forest section are not included, because OpenStreetMap has no route relation for them, so the track is 46.7% short of the published 160 mi trail."
 
 [osm]
 relation = 4644135
@@ -46,10 +46,10 @@ logo_owner = "Knobstone Hiking Trail Association"
 [verification]
 verified = true
 date = "2026-11-16"
-measured_km = 152.4
-difference_percent = -40.7
-parts = 4
-note = "OSM relations 4644135 and 7240414, 80 ways: 152.4 km in 4 parts, 40.7% short of the published 257 km. The parts are separate because their ends are more than 100 m apart."
+measured_km = 137.1
+difference_percent = -46.7
+parts = 2
+note = "OSM relations 4644135 and 7240414, 76 ways: 137.1 km in 2 parts, 46.7% short of the published 257 km. The earlier track, 152.4 km in 4 parts, held three ways between the same two points at Delaney Park; four of them, 15.3 km, are in alternates.geojson. The parts are separate because their ends are more than 100 m apart."
 
 [hike]
 summary = "The Knobstone Hiking Trail runs along the Knobstone Escarpment in southern Indiana, from Deam Lake to Morgan-Monroe State Forest near Martinsville. It has four sections, Knobstone, Pioneer, Hoosier National Forest and Tecumseh, through forested bluffs with many steep climbs and descents. The Knobstone Hiking Trail Association publishes the whole trail."
@@ -149,5 +149,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "http://www.knobstonehikingtrail.org/wp-content/uploads/2015/03/khta-logo.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track was re-cut to one walk (137.1 km): at Delaney Park, where the relation held three ways between the same two points, the direct way was kept and the other four ways moved to the alternates."
+fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
+basis = "OpenStreetMap relation 4644135 gives no role to any of the three routes at Delaney Park, and no page read, among them the Knobstone Hiking Trail Association's page for the trail, says which is the trail. The way that makes the more direct walk was taken by default."
+basis_url = "https://www.openstreetmap.org/relation/4644135"
 asked_by = "the dataset's own check"
 outcome = "applied"

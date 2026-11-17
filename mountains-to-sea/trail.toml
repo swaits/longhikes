@@ -23,7 +23,7 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 1395404."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM 1395404 (network nwn) plus 24 segment relations. A state source was not found in this pass."
+mainline = "OSM 1395404 (network nwn) plus 24 segment relations. A state source was not found in this pass. The main track is one walk by the Sauratown Trail between Pilot Mountain and Hanging Rock State Parks (segment 7). The 22 ways (12.6 km) only in the relation 'Mountains-to-Sea Trail: Hunting Season Detour - Segment 7', which its note calls the recommended road route for times when sections of the Sauratown Trail are closed, are in alternates.geojson with the river paddle route and the Cedar Island ferry."
 source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
@@ -31,7 +31,7 @@ line_file = "line.geojson"
 
 [osm]
 relation = 1395404
-note = "Downloaded 2026-11-08; release.txt has the relation version and timestamp."
+note = "Downloaded 2026-11-08; release.txt has the relation version and timestamp. Re-cut 2026-11-16 from that download: the 22 ways only in the Hunting Season Detour relation (12.6 km) moved to the alternates."
 
 [shield]
 status = "use-real-logo"
@@ -43,11 +43,11 @@ logo_owner = "Friends of the Mountains-to-Sea Trail"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 1923.0
-difference_percent = 1.7
-parts = 9
-note = "The foot track (ways with a highway tag) gives 1,923.0 km, +1.7% over 1,890 km. The Neuse and Yadkin river paddle route and the Cedar Island ferry (377.2 km, ways with no highway tag) are in alternates.geojson. The earlier +21.7% counted the paddle route as foot track. line.osm still holds the whole relation as served."
+date = "2026-11-16"
+measured_km = 1910.4
+difference_percent = 1.1
+parts = 21
+note = "The foot track, with the seasonal road detour taken out, gives 1,910.4 km in 21 parts, +1.1% over 1,890 km. The earlier track was 1,923.0 km. The Hunting Season Detour (12.6 km), the Neuse and Yadkin river paddle route and the Cedar Island ferry (377.2 km, ways with no highway tag) are in alternates.geojson. line.osm still holds the whole relation as served."
 
 [hike]
 summary = "The Mountains-to-Sea Trail stretches across North Carolina from the Great Smoky Mountains to the Outer Banks, taking in mountain vistas, rolling Piedmont farms, hardwood and pine forests, coastal swamps, lighthouses, sand dunes and miles of seashore. About 720 miles are on natural surface or greenway trail, with connecting back roads and two optional paddle routes knitting the finished sections together."
@@ -103,5 +103,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://mountainstoseatrail.org/wp-content/uploads/2017/10/MST-icon-144.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track no longer holds the Hunting Season Detour, the road route around the Sauratown Trail (12.6 km), which moved to the alternates; the track is 1,910 km."
+fields = ["source.line_file", "source.mainline"]
+basis = "The Friends of the Mountains-to-Sea Trail's page for segment 7 says the privately owned stretches of the Sauratown Trail are closed for hunting season, November to early January, and that when it is closed hikers use the Sauratown Trail Hunting Season Detour. OpenStreetMap relation 16026135 is that detour; its note calls it the recommended road route for times when sections of the Sauratown Trail are closed."
+basis_url = "https://mountainstoseatrail.org/segment/7/"
 asked_by = "the dataset's own check"
 outcome = "applied"

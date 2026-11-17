@@ -23,8 +23,8 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 9318808."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM 9318808 plus six SIA section relations; New Brunswick 6544824."
-source_checked = "2026-11-08"
+mainline = "OSM 9318808 (Quebec) and 6544824 (New Brunswick), read again 2026-11-16 with tools/osm_track.py. The ways with the roles alternative (2) and excursion (4) are in alternates.geojson, 8.2 km in all. One of them doubled the walk: in New Brunswick, where the Border Trail (3.8 km) and Brayall Road (0.6 km) are marked alternative beside the road walk by Sam Everett Road and Boundary Line Road (6.2 km), which has the main role."
+source_checked = "2026-11-16"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
@@ -43,11 +43,11 @@ logo_owner = "Sentier international des Appalaches"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 1164.3
-difference_percent = -1.1
+date = "2026-11-16"
+measured_km = 1154.3
+difference_percent = -1.9
 parts = 2
-note = "Quebec (9318808) and New Brunswick (6544824) together: 1,164.3 km in 2 parts, -1.1% against 1,177 km (650 km Quebec plus 527 km New Brunswick). The earlier +16.4% used a 1,000 km published figure that understates New Brunswick."
+note = "Quebec (9318808) and New Brunswick (6544824) together: 1,154.3 km in 2 parts, -1.9% against 1,177 km (650 km Quebec plus 527 km New Brunswick). The earlier track, 1,164.3 km, also held the Border Trail and Brayall Road, which the relation marks alternative, and four excursion ways; the 6 ways, 8.2 km, are in alternates.geojson. The earlier +16.4% used a 1,000 km published figure that understates New Brunswick."
 
 [hike]
 summary = "The Sentier international des Appalaches listed here runs from Perth-Andover in New Brunswick to Forillon National Park in Quebec. It crosses Mount Carleton Provincial Park, then in Quebec passes through the Matapédia valley, the Chic-Choc summits of the Parc de la Gaspésie, and along the sea from village to village. Country ranges from farmland to forest to sea cliffs."
@@ -93,5 +93,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://static.wixstatic.com/media/c7871a_197e515e2e414022aa3cf96c71e26b2d~mv2.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track was re-cut to one walk (1,154 km): the ways the relation marks alternative or excursion, among them the Border Trail beside a road walk in New Brunswick, moved to the alternates."
+fields = ["source.line_file", "source.mainline"]
+basis = "OpenStreetMap relation 6544824 marks the Border Trail and Brayall Road with the role alternative, beside the road walk by Sam Everett Road and Boundary Line Road, which has the main role, and marks four more ways excursion."
+basis_url = "https://www.openstreetmap.org/relation/6544824"
 asked_by = "the dataset's own check"
 outcome = "applied"

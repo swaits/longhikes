@@ -24,12 +24,12 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 1024490."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM relation 1024490 holds the trail as a set of member relations of other named trails (for example Pinhoti, Tuscarora, Mid-State, C&O Canal Trail). 1,468 main ways; 12 ways with role route are kept apart in alternates.geojson."
+mainline = "OSM relation 1024490 holds the trail as a set of member relations of other named trails (for example Pinhoti, Tuscarora, Mid-State, C&O Canal Trail). It gives no role to tell a branch from the walk, so the main track is one walk of its ways and the second ways at five splits are in alternates.geojson with the 12 ways of role route. In Pennsylvania the Mid-State Trail relation holds two ways at Arnot and at Everett; the High Water Route and the eastern road route at Everett moved (10.8 km), as in the Mid-State Trail's record. Near Harlan, Kentucky, a 5.8 km stretch of the Pine Mountain Link was mapped twice, as the two carriageways of a divided road, and one was left out. Two stretches of 0.7 and 0.6 km, on Northwestern Pike and on Robert Dann Drive, moved to the alternates too."
 source_checked = "2026-11-16"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "The relation's own distance tag is 2600 km, not 2897 km (the association's 1,800 mi). The track is 34 parts: three long ones of 445, 428 and 351 km, and many short pieces with gaps between them. The sections that OpenStreetMap has not joined are missing, so the track is shorter than the published length."
+length_gap_note = "The relation's own distance tag is 2600 km, not 2897 km (the association's 1,800 mi). The track is 29 parts: three long ones of 445, 428 and 354 km, and many short pieces with gaps between them. The sections that OpenStreetMap has not joined are missing, so the track is shorter than the published length."
 
 [osm]
 relation = 1024490
@@ -46,10 +46,10 @@ logo_owner = "Great Eastern Trail Association"
 [verification]
 verified = true
 date = "2026-11-16"
-measured_km = 2366.2
-difference_percent = -18.3
-parts = 34
-note = "OSM relation 1024490: 2366.2 km in 34 parts, 18.3% short of 2897 km (about 1,800 mi). The relation reaches from central Alabama to the Finger Lakes Trail in New York. Its three longest parts are 445 km (Alabama to Tennessee), 428 km (Tennessee to Virginia) and 351 km (Pennsylvania to Maryland). The rest is short pieces, so there are gaps between sections."
+measured_km = 2348.2
+difference_percent = -18.9
+parts = 29
+note = "OSM relation 1024490: 2,348.2 km in 29 parts, 18.9% short of 2897 km (about 1,800 mi). The earlier track, 2,366.2 km in 34 parts, held a second way at five places, 12.1 km of which moved to alternates.geojson and 5.8 km of which was left out as a copy. The relation reaches from central Alabama to the Finger Lakes Trail in New York. Its three longest parts are 445 km (Alabama to Tennessee), 428 km (Tennessee to Virginia) and 354 km (Pennsylvania to Maryland). The rest is short pieces, so there are gaps between sections."
 
 [hike]
 summary = "The Great Eastern Trail links existing trails into a long footpath through the Appalachian Mountains, from Alabama to the Finger Lakes Trail in New York. It crosses nine states and is meant to be a non-motorized hiking trail. The linking is not finished, and new trail is still needed where there are gaps."
@@ -106,5 +106,14 @@ change = "The length was changed from about 2,000 miles (3,200 km) to about 1,80
 fields = ["length_km", "length_note", "source.length_gap_note", "verification.difference_percent", "verification.note"]
 basis = "The Great Eastern Trail Association's about page says: 'This path is 1800 miles long and crosses nine states.' Its home page says the logo 'is posted on many places on the 1800-mile trail.'"
 basis_url = "https://www.greateasterntrail.net/about-us/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track was re-cut to one walk (2,348 km): at Arnot and Everett in Pennsylvania and at two short places, a second way moved to the alternates, and a doubled carriageway near Harlan, Kentucky, was left out."
+fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
+basis = "A way is named 'High Water Route (MST)', and the Mid-State Trail Association's Everett Region page describes the western route onto the ridge as fully blazed. The Pine Mountain Link relation holds both carriageways of one road. The relation gives no roles at these places."
+basis_url = "https://hike-mst.org/index.php/the-trail/everett-region"
 asked_by = "the dataset's own check"
 outcome = "applied"

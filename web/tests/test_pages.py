@@ -175,7 +175,7 @@ class BuiltSiteTest(unittest.TestCase):
             v = raw.get("verification", {})
             if raw["source"].get("line_file") and v.get("verified") and abs(v.get("difference_percent", 0)) > 15:
                 expected.add(rec["id"])
-        self.assertEqual(len(expected), 17)
+        self.assertEqual(len(expected), 16)
         self.assertIn("knobstone", expected)
         for rec in self.records:
             page = self.pages[rec["id"]]

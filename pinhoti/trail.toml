@@ -21,7 +21,7 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 1642836."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM 1642836. An ArcGIS item 'The Pinhoti Trail' exists under a university account (Jacksonville State, 2022); provenance unknown, not used."
+mainline = "OSM 1642836. An ArcGIS item 'The Pinhoti Trail' exists under a university account (Jacksonville State, 2022); provenance unknown, not used. The relation gives the divided Walnut Avenue twice, as two carriageways 15 to 17 m apart, one on East Walnut Avenue (2.8 km) and one on West Walnut Avenue (1.2 km), both with the role forward. The track keeps one carriageway of each, and the two copies were left out."
 source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
@@ -29,7 +29,7 @@ line_file = "line.geojson"
 
 [osm]
 relation = 1642836
-note = "Downloaded 2026-11-08; release.txt has the relation version and timestamp."
+note = "Downloaded 2026-11-08; release.txt has the relation version and timestamp. Re-cut 2026-11-16: two ways that copied the other carriageway of Walnut Avenue were left out, so the track is 224 ways."
 
 [shield]
 status = "logo-not-found"
@@ -41,11 +41,11 @@ logo_owner = ""
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 537.1
-difference_percent = -0.5
+date = "2026-11-16"
+measured_km = 533.3
+difference_percent = -1.2
 parts = 1
-note = "226 ways, 537.1 km in 1 part, 0.5% short of 540 km."
+note = "224 ways, 533.3 km in 1 part, 1.2% short of 540 km. The earlier track, 537.1 km in 226 ways, held both carriageways of Walnut Avenue; the copies, 4.0 km, were left out."
 
 [hike]
 summary = "The Pinhoti Trail is a Southern Appalachian long-distance trail through Alabama and Georgia. It begins at Flagg Mountain in Alabama, in montane longleaf pine forest, and links in Georgia to the Benton MacKaye Trail toward Springer Mountain."
@@ -102,5 +102,14 @@ change = "The logo file was removed because it was the Alabama Trails Foundation
 fields = ["shield.status", "shield.logo_source", "shield.logo_file", "shield.logo_owner"]
 basis = "The foundation's pages and the Pinhoti master plan it links show the trail's emblem is a turkey footprint, and no standalone artwork of it is at an allowed source."
 basis_url = "https://www.alabamaforeverwild.com/weogufka-state-forest-addition-terminus-pinhoti-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track was re-cut (533 km): the second carriageway of Walnut Avenue, mapped as its own way at two places, was left out."
+fields = ["source.line_file", "source.mainline"]
+basis = "OpenStreetMap relation 1642836 holds both carriageways of one divided road, 15 to 17 m apart and both with the role forward, so the walk counted the road twice."
+basis_url = "https://www.openstreetmap.org/relation/1642836"
 asked_by = "the dataset's own check"
 outcome = "applied"

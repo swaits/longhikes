@@ -24,12 +24,12 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 10868744."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM 10868744. A single ArcGIS item 'Ozark Highlands Trail' exists under an unrelated account (an ArcGIS account); provenance unknown, not used."
+mainline = "OSM 10868744. A single ArcGIS item 'Ozark Highlands Trail' exists under an unrelated account (an ArcGIS account); provenance unknown, not used. The relation holds two ways between the same two points, the 8.6 km Ozark Highlands Trail and the 4.4 km OHT High Water Bypass. The bypass is named as a high water route, so it is in alternates.geojson and the track keeps the trail."
 source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "The track is 373.8 km against 523 km (325 mi) planned. OpenStreetMap holds the trail from Lake Fort Smith to the Matney Knob trailhead, mile 253 in the Association's markers, and not the Lower Buffalo Wilderness stretch, which has no built trail. The Norfork Lake pieces past Matney Knob, about 72 mi of markers to the Missouri line and themselves short of built trail by an 18 mi gap, are not in the relation."
+length_gap_note = "The track is 369.3 km against 523 km (325 mi) planned. OpenStreetMap holds the trail from Lake Fort Smith to the Matney Knob trailhead, mile 253 in the Association's markers, and not the Lower Buffalo Wilderness stretch, which has no built trail. The Norfork Lake pieces past Matney Knob, about 72 mi of markers to the Missouri line and themselves short of built trail by an 18 mi gap, are not in the relation."
 
 [osm]
 relation = 10868744
@@ -45,11 +45,11 @@ logo_owner = "Ozark Highlands Trail Association"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 373.8
-difference_percent = -28.5
+date = "2026-11-16"
+measured_km = 369.3
+difference_percent = -29.4
 parts = 3
-note = "68 ways in 3 parts, 373.8 km, 28.5% short of 523 km (325 mi planned). The ways run from Lake Fort Smith to the Matney Knob trailhead: 244.0 km named Ozark Highlands Trail, 60.7 km named for the Buffalo River Trail it shares, and 43.6 km named OHT Sylamore Section. The Lower Buffalo Wilderness stretch and everything past Matney Knob are missing, as source.length_gap_note says. Kept with that note."
+note = "67 ways in 3 parts, 369.3 km, 29.4% short of 523 km (325 mi planned). The earlier track, 373.8 km, also held the OHT High Water Bypass (4.4 km), which is in alternates.geojson. The ways run from Lake Fort Smith to the Matney Knob trailhead: 244.0 km named Ozark Highlands Trail, 60.7 km named for the Buffalo River Trail it shares, and 43.6 km named OHT Sylamore Section. The Lower Buffalo Wilderness stretch and everything past Matney Knob are missing, as source.length_gap_note says. Kept with that note."
 
 [hike]
 summary = "The Ozark Highlands Trail runs across northern Arkansas from Lake Fort Smith toward the Missouri border north of Norfork Lake. It crosses the Boston Mountains, then follows the Buffalo River Trail for 43 miles through the Buffalo River country, in rugged forested Ozark terrain. Fall through spring are its peak seasons."
@@ -129,5 +129,14 @@ change = "The built length, about 290 miles (467 km) of the 325-mile route, was 
 fields = ["length_note", "built_km", "hike.unfinished"]
 basis = "The association says about 290 miles have been built, with about 14 miles to do across the Lower Buffalo Wilderness and 18 miles near Norfork Lake; its FAQ says 'A complete thru hike is difficult but possible.'"
 basis_url = "https://ozarkhighlandstrail.com/trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track was re-cut to one walk (369 km): the OHT High Water Bypass, a second way between the same two points, moved to the alternates."
+fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
+basis = "OpenStreetMap relation 10868744 holds the bypass beside the trail and names it OHT High Water Bypass. The relation gives no roles."
+basis_url = "https://www.openstreetmap.org/relation/10868744"
 asked_by = "the dataset's own check"
 outcome = "applied"

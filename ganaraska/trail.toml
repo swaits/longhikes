@@ -24,16 +24,16 @@ attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
 decision = "included-named"
 decision_text = "Included with its name and logo. The track is from OpenStreetMap."
-mainline = "One relation. It covers the eastern half and ends near Barrie; the western sections to Glen Huron are not mapped."
+mainline = "One relation. It covers the eastern half and ends near Barrie; the western sections to Glen Huron are not mapped. The relation gives no roles. At one place it holds three ways joined in a triangle (Ganaraska (Wilderness), 7.2 km, between two ends, and Ganaraska (Devil's Lake), 4.8 km, and Ganaraska (Queen's Corridor), 3.7 km, by way of a third point). No page read says which is the trail, so the track keeps the direct way between the two ends and the other two ways (9.1 km with a short stub) are in alternates.geojson."
 source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "OSM relation 3696751 gives 238.4 km in 7 parts and ends near Barrie; it does not reach the Glen Huron terminus. The 500 km published figure is the main trail of ten sections. No usable whole track found on 2026-11-08. Held."
+length_gap_note = "OSM relation 3696751 gives 229.1 km in 11 parts and ends near Barrie; it does not reach the Glen Huron terminus. The 500 km published figure is the main trail of ten sections. No usable whole track found on 2026-11-08. Held."
 
 [osm]
 relation = 3696751
-note = "Found by a name search on 2026-11-08: relation 3696751 'Ganaraska Trail' (rwn). Downloaded; release.txt has the version."
+note = "Found by a name search on 2026-11-08: relation 3696751 'Ganaraska Trail' (rwn). Downloaded; release.txt has the version. Re-cut 2026-11-16: the main track is 263 ways and 2 are in alternates."
 
 [shield]
 status = "use-real-logo"
@@ -45,11 +45,11 @@ logo_owner = "Ganaraska Hiking Trail Association"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 238.4
-difference_percent = -52.3
-parts = 7
-note = "OSM relation 3696751 gives 238.4 km in 7 parts and ends near Barrie; it does not reach the Glen Huron terminus. The 500 km published figure is the main trail of ten sections. No usable whole track found on 2026-11-08. Held."
+date = "2026-11-16"
+measured_km = 229.1
+difference_percent = -54.2
+parts = 11
+note = "OSM relation 3696751 gives 229.1 km in 11 parts and ends near Barrie; it does not reach the Glen Huron terminus. The earlier track, 238.4 km, held a triangle of three ways at one place; two of them, 9.1 km, are in alternates.geojson. The 500 km published figure is the main trail of ten sections. No usable whole track found on 2026-11-08. Held."
 
 [hike]
 summary = "The Ganaraska Hiking Trail runs across southern Ontario from Port Hope on Lake Ontario to the Bruce Trail near Collingwood. Side trails reach Wasaga Beach and Midland. Local clubs lead hikes on it through the year."
@@ -90,5 +90,14 @@ change = "The length note was corrected: the 500 kilometres is the main trail of
 fields = ["length_note"]
 basis = "The association says: 'The full trail is approximately 500 km' and that hikers must complete the main trail of all ten sections for the End-to-End badge."
 basis_url = "https://www.ganaraska-hiking-trail.org/?page_id=713"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track was re-cut to one walk (229 km): at one place, where the track held a triangle of three ways, the direct way was kept and the other two moved to the alternates."
+fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
+basis = "OpenStreetMap relation 3696751 gives no roles, and the Ganaraska Hiking Trail Association's pages read do not describe the place. The more direct way was taken by default."
+basis_url = "https://www.openstreetmap.org/relation/3696751"
 asked_by = "the dataset's own check"
 outcome = "applied"

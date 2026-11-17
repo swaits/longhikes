@@ -77,6 +77,10 @@ class BuildTreeTest(unittest.TestCase):
         os.makedirs(self.root)
         for tid in SMALL:
             shutil.copytree(os.path.join(REAL_ROOT, tid), os.path.join(self.root, tid))
+        # These tests use avon as a record with no alternates file; its real one has one since the re-cut.
+        alt = os.path.join(self.root, "avon", "alternates.geojson")
+        if os.path.exists(alt):
+            os.remove(alt)
         for name in ("trails.csv", "index.geojson"):
             shutil.copyfile(os.path.join(REAL_ROOT, name), os.path.join(self.root, name))
         FakePages.calls = []

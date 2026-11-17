@@ -22,16 +22,15 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 3444520."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM relation 3444520: one hiking route relation, 446 main ways, no alternates. No member has a role, so side trails are not set apart."
+mainline = "OSM relation 3444520: one hiking route relation of 446 ways, all with no role, so the relation does not mark side trails or branches. The relation holds two ways between the same two points through the Fanshawe Conservation Area north of London, from the dam to Thorndale Road: a 7.9 km way up the west side of the lake, and a 12.0 km way up the east side by park paths, Wye Creek Drive, Lakeside Drive and Rebecca Road. No page read says which is the trail, so the track keeps the more direct west side, and the 28 ways (12.4 km) of the east side and a short side loop are in alternates.geojson."
 source_checked = "2026-11-15"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "The OpenStreetMap track is 134.2 km in 12 parts, 22.0% over the published 110 km. OpenStreetMap does not mark which of its ways are side trails, so none are set apart here. 46.5 km is on ways named Thames Valley Trail, 16.1 km on ways named Fanshawe Trail and 3.6 km on ways named Thames Valley Side Trail; the rest is on roads and park paths. The difference is not explained. The track is kept as mapped."
 
 [osm]
 relation = 3444520
-note = "Hiking route relation named Thames Valley Trail, version 135 (2026-10-25), ref TVT, 446 ways, no member roles. 26 of the ways are named Thames Valley Side Trail (3.6 km)."
+note = "Hiking route relation named Thames Valley Trail, version 135 (2026-10-25), ref TVT, 446 ways, no member roles. 26 of the ways are named Thames Valley Side Trail (3.6 km). Re-cut 2026-11-16: the main track is 419 ways and 28 are in alternates."
 
 [shield]
 status = "use-real-logo"
@@ -43,11 +42,11 @@ logo_owner = "Thames Valley Trail Association"
 
 [verification]
 verified = true
-date = "2026-11-15"
-measured_km = 134.2
-difference_percent = 22.0
-parts = 12
-note = "OSM relation 3444520, 446 ways: 134.2 km in 12 parts, 22.0% longer than 110 km. The relation gives no roles, so no loop trails could be set apart as alternates."
+date = "2026-11-16"
+measured_km = 121.8
+difference_percent = 10.7
+parts = 10
+note = "OSM relation 3444520: 121.8 km in 10 parts, 10.7% longer than 110 km. The earlier track, 134.2 km in 12 parts, held two ways through the Fanshawe Conservation Area; the east side, with a short side loop, is in alternates.geojson (12.4 km). The relation gives no roles, so no other side trails could be set apart."
 
 [hike]
 summary = "The Thames Valley Trail follows the Thames and North Thames rivers through southwestern Ontario, from the Elgin County line south of Delaware through London to St. Marys. It crosses farmland, parks and conservation areas, and most of it is on private land with the owners' permission. Loop trails join the main trail."
@@ -94,5 +93,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://tvta.ca/wp-content/uploads/ms-icon-310x310-1.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track was re-cut to one walk (121.8 km): through the Fanshawe Conservation Area, where the track held two ways between the same two points, the more direct west side was kept and the east side moved to the alternates."
+fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
+basis = "OpenStreetMap relation 3444520 gives no roles, and the Thames Valley Trail Association's pages read do not say which side of Fanshawe Lake the trail follows. The more direct way was taken by default."
+basis_url = "https://www.openstreetmap.org/relation/3444520"
 asked_by = "the dataset's own check"
 outcome = "applied"

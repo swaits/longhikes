@@ -23,15 +23,15 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 8310290."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OPRD layers exist (services, facilities); no track layer found yet. Much of it is beach and road walking."
-source_checked = "2026-11-08"
+mainline = "The main track is the Oregon Coast Trail walked once, from the mouth of the Columbia River to the California border: the ways of OpenStreetMap relation 8310290 with the role main or no role, in the relation's order. The 124 ways the relation marks 'alternative' are in alternates.geojson. They are the road routes through Garibaldi and along Bayocean Road (about 27 km) and on Highway 101 around Nehalem Bay (about 14 km, against the main route by the OCT ferry), and Ecola Park Road (about 3 km, against the Indian Beach Trail). One of two parallel ways for Bayocean Dike Road (1.5 km), both marked main, is there too. OPRD layers exist (services, facilities); no track layer found yet. Much of it is beach and road walking."
+source_checked = "2026-11-16"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
 
 [osm]
 relation = 8310290
-note = "OSM relation 8310290."
+note = "OSM relation 8310290, version 95 (2026-10-06), read again 2026-11-16 with tools/osm_track.py. The main track is 822 ways; 126 ways are in alternates."
 
 [shield]
 status = "use-real-logo"
@@ -43,11 +43,11 @@ logo_owner = "Oregon Parks and Recreation Department"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 675.5
-difference_percent = 3.9
-parts = 3
-note = "948 ways in 3 parts, 675.5 km, +3.9% over 650 km."
+date = "2026-11-16"
+measured_km = 629.5
+difference_percent = -3.2
+parts = 8
+note = "One walk of 629.5 km in 8 parts, 3.2% short of 650 km. The earlier track, 675.5 km, held both branches at three splits (Garibaldi and Bayocean, Nehalem Bay, Ecola Park); the 126 ways of the other branches, 45.9 km, are in alternates.geojson."
 
 [hike]
 summary = "The Oregon Coast Trail follows the Oregon coastline, crossing sandy beaches, forest-shaded corridors, majestic headlands and 28 coastal towns. Most of the route is on the beach, some segments wind through state parks or public lands, and about a tenth of it is on the shoulders of highways and city streets."
@@ -92,5 +92,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://stateparks.oregon.gov/ckFiles/files/OCT-Map-1.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track was re-cut to one walk by the main route of OpenStreetMap's Oregon Coast Trail relation (629.5 km); the ways it marks as alternatives moved to the alternates."
+fields = ["source.line_file", "source.mainline"]
+basis = "The relation marks 125 member ways with the role 'alternative', beside 141 with the role 'main'. They give a second way over the same ground at Garibaldi and Bayocean, at Nehalem Bay and at Ecola Park. The earlier track held both."
+basis_url = "https://www.openstreetmap.org/relation/8310290"
 asked_by = "the dataset's own check"
 outcome = "applied"

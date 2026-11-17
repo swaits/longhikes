@@ -24,16 +24,16 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 12779888."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM relation 12779888: a super route whose members are the trail's own relations; every member way is included once."
+mainline = "OSM relation 12779888: a super route whose members are the trail's own relations; every member way is included once, and the relation gives no roles. In Section 2, in Boxford, the relation holds two ways between the same two points: a 3.3 km road way by Killam Hill Road and Rowley Road, and a 6.6 km way by ways named BCT, Pingree Farm Road and King George Drive. The Bay Circuit Alliance publishes a hike map and a bike map for each section, and the way along the roads is the kind a bike map uses, so the track keeps the way named BCT, and the road way (3.5 km) is in alternates.geojson."
 source_checked = "2026-11-10"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "The published figure of more than 230 miles counts the whole greenway, including parts that are still road walks. OpenStreetMap maps the dedicated trail in 14 pieces, 296.9 km in all. The track is kept as mapped."
+length_gap_note = "The published figure of more than 230 miles counts the whole greenway, including parts that are still road walks. OpenStreetMap maps the dedicated trail in 23 pieces, 293.4 km in all, once the road way at Boxford is taken out. The track is kept as mapped."
 
 [osm]
 relation = 12779888
-note = "Downloaded 2026-11-10; 1162 ways in the main track. release.txt has the source and date."
+note = "Downloaded 2026-11-10; 1162 ways in the main track. release.txt has the source and date. Re-cut 2026-11-16: the main track is 1138 ways and 24 are in alternates."
 
 [shield]
 status = "use-real-logo"
@@ -45,11 +45,11 @@ logo_owner = "Appalachian Mountain Club"
 
 [verification]
 verified = true
-date = "2026-11-10"
-measured_km = 296.9
-difference_percent = -19.8
-parts = 14
-note = "OSM relation 12779888, 1162 ways: 296.9 km in 14 parts, 19.8% short of the published 370 km. The pieces do not all join: OpenStreetMap is missing the connectors between them."
+date = "2026-11-16"
+measured_km = 293.4
+difference_percent = -20.7
+parts = 23
+note = "OSM relation 12779888, 1138 ways: 293.4 km in 23 parts, 20.7% short of the published 370 km. The earlier track, 296.9 km, held two ways at Boxford; the road way, 3.5 km, is in alternates.geojson. The pieces do not all join: OpenStreetMap is missing the connectors between them."
 
 [hike]
 summary = "The Bay Circuit Trail is a multi-use trail in an arc around Boston, from the mouth of the Merrimack River to Kingston Bay in eastern Massachusetts. It passes through dozens of towns and can be reached by the Boston area's transit lines. The trail is not yet finished, and the Appalachian Mountain Club and its partners are closing the last gaps."
@@ -93,5 +93,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.baycircuit.org/wp-content/uploads/2022/03/bct-logo.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track was re-cut to one walk (293 km): at Boxford, where the track held two ways between the same two points, the way named BCT was kept and the road way moved to the alternates."
+fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
+basis = "OpenStreetMap relation 12779888 gives no roles. The Bay Circuit Alliance's maps page offers a hike map and a bike map for each section, and the trail way is named BCT."
+basis_url = "https://www.baycircuit.org/maps-guides/"
 asked_by = "the dataset's own check"
 outcome = "applied"

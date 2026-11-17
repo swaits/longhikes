@@ -23,15 +23,15 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 7406716."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM 7406716. The provincial recreation trail layer (FTEN_REC_TRAILS_SVW) is licensed 'Access Only', not open."
-source_checked = "2026-11-08"
+mainline = "OSM 7406716. The relation has no member roles and no side routes are marked. The main track is one walk of its ways, from Saltery Bay to Sarah Point, and the 29 ways (28.9 km) of the other branches at eight splits are in alternates.geojson. Where the relation gives two ways between the same two points, two were taken from the holder's pages and the rest by default. At Inland Lake the walk keeps the lake trail, because the Sunshine Coast Trail Society's hut pages put the trail's km 4 and km 9 markers on it. At the Saltery Bay end it keeps the shoreline by Fairview Bay, because the Society's multi-day routes page makes the return by the Saltery Bay Trail the second half of a loop. In the other six places no source read says which way is the trail, so the shorter way was kept, or the way that follows the trail rather than Spring Lake Road. The provincial recreation trail layer (FTEN_REC_TRAILS_SVW) is licensed 'Access Only', not open."
+source_checked = "2026-11-16"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
 
 [osm]
 relation = 7406716
-note = "Verified."
+note = "Re-cut 2026-11-16 from the relation as downloaded 2026-11-08: the main track is 182 ways and 29 ways are in alternates."
 
 [shield]
 status = "use-real-logo"
@@ -43,11 +43,11 @@ logo_owner = "Sunshine Coast Trail Society"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 197.3
-difference_percent = 9.6
-parts = 2
-note = "210 ways in 2 parts, 197.3 km, +9.6% over 180 km."
+date = "2026-11-16"
+measured_km = 168.0
+difference_percent = -6.7
+parts = 5
+note = "One walk of 168.0 km in 5 parts, 6.7% short of 180 km. The earlier track, 197.3 km, held both ways at eight splits; the other ways, 28.9 km, are in alternates.geojson. The parts are two long ones of about 80 km and three short pieces that OpenStreetMap does not join."
 
 [hike]
 summary = "The Sunshine Coast Trail stretches from Sarah Point in Desolation Sound to Saltery Bay on British Columbia's upper Sunshine Coast. It traverses coastal shorelines, creeks and lakes, old growth forest and panoramic mountaintops near Powell River. The society that built it maintains 14 free huts along the way."
@@ -98,5 +98,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://sunshinecoasttrail.com/wp-content/uploads/2022/04/SunCoast_Trail_icon.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-16"
+change = "The main track was re-cut to one walk (168.0 km): at eight places where the track held two ways between the same two points, one way moved to the alternates."
+fields = ["source.line_file", "source.mainline"]
+basis = "OpenStreetMap relation 7406716 has no member roles. The Sunshine Coast Trail Society's hut pages put the trail's km 4 and km 9 markers on the Inland Lake trail, and its multi-day routes page describes the Saltery Bay Trail as the return half of a loop from the southern terminus. Elsewhere no page names the main way, so the shorter way was kept."
+basis_url = "https://www.openstreetmap.org/relation/7406716"
 asked_by = "the dataset's own check"
 outcome = "applied"

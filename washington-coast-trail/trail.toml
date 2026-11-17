@@ -72,7 +72,10 @@ end = "Cape Flattery, Washington"
 shape = "point-to-point"
 days = [12, 12]
 terrain = ["coast"]
-caution = "The route is not on foot all the way. Its author rounded the two major bays in the south with a shuttle driver and says it could be done by bus, and used a bus again at Taholah and Queets and to Forks. At a couple of tide pinch points the author stopped just short and crossed on an early morning tide, and some days are scrambles over rocks and ladders. At least a few nights of wilderness camping are needed."
+caution = "The route is not on foot all the way. Its author rounded the two major bays in the south with a shuttle driver and says it could be done by bus, and used a bus again at Taholah and Queets and to Forks. The author says the bays and the tribal lands that cannot be hiked all have bus options to bypass them. At a couple of tide pinch points the author stopped just short and crossed on an early morning tide, and some days are scrambles over rocks and ladders. At least a few nights of wilderness camping are needed."
+season = "May to September, because of the tides and creeks on the Olympic Wilderness Coast"
+months = [5, 6, 7, 8, 9]
+permit = "A permit is required for the Olympic Wilderness Coast in those months, May to September."
 start_lonlat = [-124.076, 46.271]
 end_lonlat = [-124.718, 48.388]
 checked = "2026-11-17"
@@ -88,6 +91,11 @@ publisher = "Lauren Lake, PacificCoastalTrail blog (said by the route's author o
 facts = ["summary", "start", "end", "shape", "caution"]
 
 [[hike.source]]
+url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6958673541"
+publisher = "Lauren Lake, PacificCoastalTrail blog (said by the route's author on the dataset's issue tracker, 2026-11-17)"
+facts = ["season", "months", "permit", "caution"]
+
+[[hike.source]]
 url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6935845788"
 publisher = "Lauren Lake, PacificCoastalTrail blog (the author's GPX file, attached to the dataset's issue tracker)"
 facts = ["start_lonlat", "end_lonlat"]
@@ -101,5 +109,14 @@ change = "The record was added at the request of the route's author, as a person
 fields = ["record"]
 basis = "The route's author sent the track on the dataset's public issue tracker, named the route the Washington Coast Trail, gave its ends, Cape Disappointment and Cape Flattery, and its length, and named the itinerary page as the best page for it."
 basis_url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6935950983"
+asked_by = "the route's author"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-17"
+change = "The season, months and permit were added, and the caution now says that every bay and closed stretch has a bus option, all as the route's author said."
+fields = ["hike.season", "hike.months", "hike.permit", "hike.caution"]
+basis = "The route's author replied on the dataset's public issue tracker that the hiking season is May to September, because of tides and creeks on the Olympic Wilderness Coast, that a permit is required for the Olympic Wilderness Coast in those months, and that the bays and the tribal lands that cannot be hiked all have bus options to bypass."
+basis_url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6958673541"
 asked_by = "the route's author"
 outcome = "applied"

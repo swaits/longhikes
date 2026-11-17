@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-17 - The Washington Coast Trail gains its season, permit and bus options
+
+- The route's author, Lauren Lake, told us on the issue tracker that the Washington Coast Trail is hiked from May to September, because of the tides and creeks on the Olympic Wilderness Coast, and that a permit is required for the Olympic Wilderness Coast in those months. The record now has the season, its months and the permit, each credited to her comment.
+- She also said that the bays and the tribal lands that cannot be hiked all have bus options to bypass them, and the record's caution now says so.
+
 ## 2026-11-17 - Filters on every list and place, with numbers that are always true
 
 - Every list, every place and the Routes page now has the home page's search and filters over its rows, scoped to that page's own trails, when it holds at least 10 trails: 66 pages in all. The filters start closed on every page, and the Filters button says how many are set. Each page is still its own page with its own address; narrowing it does not change which page it is.

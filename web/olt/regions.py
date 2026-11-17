@@ -89,9 +89,9 @@ def regions_index_page(records, site):
             f'<span class="places__n">{_plural(len(i["records"]))}</span></li>'
             for i in infos)
         blocks += f"""<section class="places__group" aria-labelledby="{esc(g)}">
-  <h2 id="{esc(g)}">{esc(name)}</h2>
+  <h2 id="{esc(g)}"><a href="{esc(group_path(g))}">{esc(name)}</a></h2>
   <p class="places__sum">{_plural(len(recs))}, {_gpx_count(recs)} with a GPX here.
-  <a href="/?where=g:{esc(g)}">See them with the filters</a></p>
+  <a href="{esc(group_path(g))}">All {_plural(len(recs))} in {esc(name)}</a></p>
   <ul class="places__list">{rows}</ul>
 </section>"""
     if across:
@@ -116,6 +116,57 @@ def regions_index_page(records, site):
     return "Long Trails by State and Province: US and Canada", common.cut_at_word(description, common.DESCRIPTION_LIMIT), Markup(body)
 
 
+def group_path(g):
+    """The page of a part of the country: /regions/<group key>/ (state and province pages are
+    /regions/<us-xx or ca-xx>/, so the two never meet)."""
+    return f"/regions/{g}/"
+
+
+def group_page(g, records, site):
+    """(title, description, body, needs_map, recs) for /regions/<group>/: the trails in one part of
+    the country (facets.PLACE_GROUPS), or None when no trail is there. A trail that crosses all of
+    Canada is in every Canadian part, as the home page's Where filter counts it."""
+    recs = sorted(group_records(records, g), key=home.sort_name)
+    if not recs:
+        return None
+    name = facets.GROUP_NAME[g]
+    by_slug, _ = collect_regions(records)
+    keys = next(k for x, _, k in facets.PLACE_GROUPS if x == g)
+    places = sorted((by_slug[k.lower()] for k in keys if k.lower() in by_slug), key=lambda i: i["name"])
+    countries = {i["country"] for i in places}
+    country = words.COUNTRIES[next(iter(countries))] if len(countries) == 1 else ""
+    n_gpx = _gpx_count(recs)
+    states = words.join_names(esc(i["name"]) for i in places)
+    lede = f"{_plural(len(recs))} in {states}, {n_gpx} with a GPX here."
+    nav = (f'<nav class="region-nav" aria-label="Places in {esc(name)}">Places in {esc(name)}, and how many there: '
+           + " · ".join(f'<a href="{esc(facets.place_path(i["key"]))}">{esc(i["name"])}</a> ({len(i["records"])})'
+                        for i in places) + "</nav>")
+    others = [(x, n) for x, n, _ in facets.PLACE_GROUPS if x != g and group_records(records, x)]
+    nav += (f'<nav class="region-nav" aria-label="Other parts">Other parts: '
+            + " · ".join(f'<a href="{esc(group_path(x))}">{esc(n)}</a>' for x, n in others) + "</nav>")
+    body = f"""<div class="page-head"><div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/regions/">Places</a></li><li aria-current="page">{esc(name)}</li></ol></nav>
+  <header class="titleblock"><div class="titleblock__text">
+  <p class="kicker">{esc(country or "United States and Canada")}</p>
+  <h1>{esc(name)}</h1>
+  <p class="page-head__lede">{lede}</p>
+  </div></header>
+</div></div>
+<div class="container section place">
+  {home.browse_view(home.listing(recs, top=2, where="g:" + g), home.overview_map(recs, f"Map of the trails in {name}"),
+               about=f"{summary.facts(recs, records)}{summary.details(recs)}", about_title=f"About the trails in {name}")}
+  {nav}
+</div>"""
+    title = common.fit_title([f"Long Trails in {name}: {_plural(len(recs), 'Trail')}", f"Long Trails in {name}"], site)
+    by_length = sorted(recs, key=lambda r: (r["length_km"], r["id"]))
+    first = (f"{_plural(len(recs))} in {name} ({words.join_names(i['name'] for i in places)}), from "
+             f"{common.plain_name(by_length[0])}, {_miles(by_length[0])} miles, to {common.plain_name(by_length[-1])}, "
+             f"{_miles(by_length[-1])} miles.")
+    gpx = f" {_with_gpx(n_gpx, len(recs))[:1].upper()}{_with_gpx(n_gpx, len(recs))[1:]}." if n_gpx else ""
+    desc = _fit([first + gpx, first, f"{_plural(len(recs))} in {name}.{gpx}"])
+    return title, desc, Markup(body), home.has_overview_map(recs), recs
+
+
 def region_page(slug, records, site, facet_pages=()):
     """(title, description, body, needs_map) for /regions/<slug>/: the trails in one state or province.
 
@@ -130,7 +181,7 @@ def region_page(slug, records, site, facet_pages=()):
     n_gpx = _gpx_count(recs)
     crumbs = '<li><a href="/regions/">Places</a></li>'
     if group:
-        crumbs += f'<li><a href="/regions/#{esc(group)}">{esc(group_name)}</a></li>'
+        crumbs += f'<li><a href="{esc(group_path(group))}">{esc(group_name)}</a></li>'
     siblings = []
     if group:
         _, _, keys = next(x for x in facets.PLACE_GROUPS if x[0] == group)
@@ -151,12 +202,11 @@ def region_page(slug, records, site, facet_pages=()):
   <header class="titleblock"><div class="titleblock__text">
   <p class="kicker">{esc(group_name + " · " if group_name else "")}{esc(country)}</p>
   <h1>{esc(info["name"])}</h1>
-  <p class="page-head__lede">{_plural(len(recs))} in {esc(info["name"])}, {n_gpx} with a GPX here.
-  <a href="/?where={esc(key)}">Narrow them with the filters</a>.</p>
+  <p class="page-head__lede">{_plural(len(recs))} in {esc(info["name"])}, {n_gpx} with a GPX here.</p>
   </div></header>
 </div></div>
 <div class="container section place">
-  {home.browse_view(home.results(recs, top=2), home.overview_map(recs, f"Map of the trails in {info['name']}"),
+  {home.browse_view(home.listing(recs, top=2, where=""), home.overview_map(recs, f"Map of the trails in {info['name']}"),
                about=f"{summary.facts(recs, records)}{summary.details(recs)}",
                about_title=f"About the trails in {info['name']}")}
   {nav}
@@ -219,8 +269,7 @@ def routes_page(records, site, repo_root=None, after="", author_pages=None, n_au
   how rough it is: some routes are on maintained trail all the way, and some official trails have
   long road walks. The Walking line on each trail&rsquo;s page says what the walking is.</p>
   <p>{_plural(len(routes), "route")}, by {n_authors_said} authors. {n_gpx} {"has" if n_gpx == 1 else "have"} a GPX here; for the rest,
-  each route&rsquo;s page says whether its author gives the track away, sells it, or does not publish it.
-  <a href="/?kind=route">Narrow them with the filters</a>.</p>"""
+  each route&rsquo;s page says whether its author gives the track away, sells it, or does not publish it.</p>"""
     head_count = (f'\n  <p class="page-head__lede">{_plural(len(routes), "route")} by <a href="/authors/">{_plural(n_authors, "author")}</a></p>'
                   if n_authors else "")
     body = f"""<div class="page-head"><div class="container">
@@ -230,7 +279,7 @@ def routes_page(records, site, repo_root=None, after="", author_pages=None, n_au
   <p class="page-head__lede" id="what-is-a-route">{esc(facets.ROUTE_DEFINITION)}</p>{head_count}
   </div></header></div></div>
 <div class="container section place">
-  {home.browse_view(home.results(groups=groups, routes_list=True, top=2), home.overview_map(routes, "Map of the routes with a GPX here"),
+  {home.browse_view(home.listing(groups=groups, routes_list=True, top=2), home.overview_map(routes, "Map of the routes with a GPX here"),
                about=intro, about_title="About routes")}
   {after}
   <nav class="region-nav" aria-label="Other lists">{'<a href="/authors/">Route authors</a> · ' if linked else ""}<a href="/lists/">All lists</a> · <a href="/">Every trail</a></nav>
@@ -264,7 +313,7 @@ def list_page(lst, recs, total, site, *, records=None, before="", after="", lead
   </div></header>
 </div></div>
 <div class="container section place">
-  {home.browse_view(home.results(recs, default_sort=lst.sort, top=2, lead=lead),
+  {home.browse_view(home.listing(recs, default_sort=lst.sort, top=2, lead=lead),
                home.overview_map(recs, f"Map of the trails in the list {lst.title}"),
                about=f"{about}{before}{f'<p>{esc(note.strip())}</p>' if note else ''}<p class=\"finder__foot\">{rule}</p>",
                about_title="About this list")}

@@ -208,7 +208,7 @@ class MissingValuesTest(unittest.TestCase):
     def test_script_leaves_out_missing_values(self):
         with open(os.path.join(WEB, "assets", "app.js"), encoding="utf-8") as f:
             js = f.read()
-        self.assertIn("if (s.month && words(d.months).indexOf(s.month) === -1) return false;", js)
+        self.assertIn("if (skip !== 'month' && s.month && !has(d.months, s.month)) return false;", js)
         self.assertIn("note.hidden = !on[note.dataset.missing]", js)
 
     def test_clearing_returns_the_lengths_to_any(self):
@@ -216,14 +216,16 @@ class MissingValuesTest(unittest.TestCase):
         # "Any" is the last option of the longest-length list, so both the page and
         # the script (which rebuilds the lists in the reader's units) must mark it;
         # in the shortest-length list it is first.
-        form = home.finder_form(self.recs(3, 8))
+        # (lengths that differ: a Length filter is written only where it can narrow the trails)
+        form = home.finder_form(self.recs(3, 8) + [fake(300, km=900)])
         longest = re.search(r'<select[^>]* id="max"[^>]*>(.*?)</select>', form, re.S).group(1)
         self.assertEqual(re.findall(r'<option value="([^"]*)" selected', longest), [""])
         shortest = re.search(r'<select[^>]* id="min"[^>]*>(.*?)</select>', form, re.S).group(1)
         self.assertTrue(shortest.startswith('<option value="">Any</option>'))
         with open(os.path.join(WEB, "assets", "app.js"), encoding="utf-8") as f:
             js = f.read()
-        self.assertIn("if (value === '') o.defaultSelected = true;", js)
+        self.assertIn("if (p.o.def) opt.defaultSelected = true;", js)
+        self.assertIn("{ value: '', label: 'Any', counted: false, group: '', def: true }", js)
 
 
 # Words that must not appear on a browsing page (home, places, lists, Routes, and a

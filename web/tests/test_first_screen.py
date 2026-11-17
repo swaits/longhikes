@@ -91,9 +91,9 @@ class HomePageTest(unittest.TestCase):
         self.assertLess(grid.index('id="finder-form"'), grid.index('id="entries"'))
         self.assertNotIn("filters__maplink", self.body)
 
-    def test_the_open_filters_lie_over_the_rows_and_can_be_closed(self):
+    def test_the_open_filters_sit_between_the_bar_and_the_rows_and_can_be_closed(self):
         css = read(WEB, "assets", "style.css")
-        self.assertRegex(css, r"html\.js \.filters__panels \{[^}]*position: absolute;")
+        self.assertNotRegex(css, r"\.filters__panels \{[^}]*position: absolute;")
         self.assertIn('class="button filters__done"', self.body)
         js = read(WEB, "assets", "app.js")
         self.assertIn("e.key === 'Escape'", js)

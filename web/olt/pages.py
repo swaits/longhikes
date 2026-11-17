@@ -144,6 +144,14 @@ def render_site(records, out_dir, repo_root, site=None):
         path = f"/regions/{slug}/"
         region_paths.append(path)
         add(path, t, d, b, maps=needs_map, recs=by_slug[slug]["records"])
+    # The parts of the country (facets.PLACE_GROUPS), each a page of its own.
+    for g, _, _ in facets.PLACE_GROUPS:
+        built = regions.group_page(g, records, site)
+        if built:
+            t, d, b, needs_map, recs = built
+            path = regions.group_path(g)
+            region_paths.append(path)
+            add(path, t, d, b, maps=needs_map, recs=recs)
     # Pages for one kind of trail in one place (olt/placefacets.py).
     for p in facet_plan:
         t, d, b, needs_map = placefacets.page(p, records, site, facet_plan)

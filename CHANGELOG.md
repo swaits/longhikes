@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-17 - Filters on every list and place, with numbers that are always true
+
+- Every list, every place and the Routes page now has the home page's search and filters over its rows, scoped to that page's own trails, when it holds at least 10 trails: 66 pages in all. The filters start closed on every page, and the Filters button says how many are set. Each page is still its own page with its own address; narrowing it does not change which page it is.
+- The number beside each choice is now always the number of trails that choosing it would show, counted again from the page's own rows every time anything changes, in the menus as well as the pills. Before, the numbers were written once when the site was built, for every trail on the site whatever else was set, so "All of Central Canada (15)" could sit beside "A week or less 68".
+- A choice that would show no trails is no longer offered, unless it is the one chosen, and a filter that cannot narrow a page's trails is left out. A loops page has no Shape, the Routes page has no Kind, and a state's page has no Where. A page for a part of the country offers the whole part first and then only the places inside it.
+- Opened, the filters now sit between the bar and the trails, which move down, instead of lying over the first rows. Escape and "Show the trails" close them. A click outside no longer does.
+- Each part of the country (Central Canada, the West Coast and the rest) has a page of its own at `/regions/<part>/`, and they are in the sitemap. The Places page links to them ("All 15 trails in Central Canada"), and a state's breadcrumb leads to its part. The links that sent visitors to the home page "with the filters" are gone.
+- The counts, the hidden choices, Clear, the search, the address, Back and Forward, the sort and the live map were exercised by clicks in a real browser on the home page, a list, a part of the country, a state and the Routes page, at a desktop and a phone size. For the home page and the loops list, 498 choices were each chosen in turn and the rows counted. One fault was found and fixed before release: the numbers in the two length menus were double.
+- No trail's facts changed.
+
 ## 2026-11-17 - An author's page says who the author is
 
 - An author's page now opens with the author's name, under the small "Route author" label the list pages use, and one sentence that says who the author is. Under it is one quiet line: how many routes are on this site, their range in miles, and the author's own site. The sentence about how the records credit the author is gone, and so is "their own page": the page uses the name and no pronoun. Where there is no sentence yet, the page opens with a plain sentence of how many routes and how long. The routes follow as rows beside the map, as before.

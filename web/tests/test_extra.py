@@ -166,7 +166,7 @@ class ExtraPagesTest(unittest.TestCase):
         home_doc = read_out("index.html")
         by_slug, across = regions_mod.collect_regions(self.records)
         # each state or province option's count is the number of trails on its place page
-        found = re.findall(r'<option value="((?:US|CA)-[A-Z]{2})">[^<(]+\((\d+)\)</option>', home_doc)
+        found = re.findall(r'<option value="((?:US|CA)-[A-Z]{2})" data-label="[^"]*">[^<(]+\((\d+)\)</option>', home_doc)
         self.assertEqual({v for v, _ in found}, {i["key"] for i in by_slug.values()})
         for value, n in found:
             page = read_out(f"regions/{value.lower()}/index.html")
@@ -174,10 +174,10 @@ class ExtraPagesTest(unittest.TestCase):
             # and the rows that say they are there
             self.assertEqual(int(n), len(re.findall(rf'data-where="[^"]*\b{value}\b', home_doc)), value)
         for country, label in (("US", "United States"), ("CA", "Canada")):
-            n = int(re.search(rf'<option value="{country}">{label} \((\d+)\)</option>', home_doc).group(1))
+            n = int(re.search(rf'<option value="{country}" data-label="{label}">{label} \((\d+)\)</option>', home_doc).group(1))
             self.assertEqual(n, sum(1 for r in self.records if country in common.countries(r)), country)
         for g, name, _ in facets.PLACE_GROUPS:
-            m = re.search(rf'<option value="g:{g}">All of {re.escape(name)} \((\d+)\)</option>', home_doc)
+            m = re.search(rf'<option value="g:{g}" data-label="All of {re.escape(name)}">All of {re.escape(name)} \((\d+)\)</option>', home_doc)
             n = sum(1 for r in self.records if g in facets.place_groups(r))
             self.assertEqual(int(m.group(1)) if m else 0, n, g)
         # No trail spans a whole country now that the Trans Canada Trail is gone;
@@ -431,6 +431,26 @@ class SeoTest(unittest.TestCase):
                 self.assertIn(f"<loc>https://example.org{p}</loc>", xml, p)
             with open(os.path.join(tmp, "robots.txt"), encoding="utf-8") as f:
                 self.assertIn("Sitemap: https://example.org/sitemap.xml", f.read())
+
+
+
+class NoFilterInstructionsTest(unittest.TestCase):
+    """The pages that show a set of trails have the filter bar themselves: no page sends a visitor to
+    the home page "with the filters", and each part of the country has its own page."""
+
+    def test_no_page_in_the_build_says_with_the_filters(self):
+        for base, _, names in os.walk(OUT):
+            for n in names:
+                if n.endswith(".html"):
+                    with open(os.path.join(base, n), encoding="utf-8") as f:
+                        text = f.read()
+                    self.assertNotIn("with the filters", text, os.path.join(base, n))
+                    self.assertNotIn('href="/?where=', text, os.path.join(base, n))
+
+    def test_each_part_of_the_country_has_a_page_with_the_bar(self):
+        doc = read_out("regions/central-canada/index.html")
+        self.assertIn('id="finder-form"', doc)
+        self.assertIn('href="/regions/central-canada/"', read_out("regions/index.html"))
 
 
 if __name__ == "__main__":

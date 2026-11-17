@@ -13,7 +13,7 @@
       (data-frame), and the drawing gives way to it once it has drawn the tracks. Where
       the base map cannot load, the drawing stays. A trail page's map (data-outdoor) is an
       outdoor map, with relief and contours, and a switch to the plain one.
-   3. Trail finder (home page): search, filters, sort, URL query state, map/list highlight
+   3. The filter bar (home, lists, places, Routes): search, filters, counts, sort, URL state, highlight
    4. Copy-credit buttons
 
    Every page works without this script: the list holds every trail and each map
@@ -1452,7 +1452,7 @@
 
   function initSortableLists() {
     document.querySelectorAll('.results[data-sortable]').forEach(function (root) {
-      if (root.querySelector('#entries')) return; /* the finder wires its own list */
+      if (root.hasAttribute('data-finder')) return; /* the filter bar wires its own list */
       var select = root.querySelector('[data-sort-select]');
       var current = defaultSortOf(root);
       function setSort(key, updateUrl, announce) {
@@ -1468,32 +1468,111 @@
     });
   }
 
-  /* 3. Trail finder (home page) ------------------------------------------------
+  /* 3. The filter bar --------------------------------------------------------
+     One bar and one set of panels, on the home page and on every other page
+     that shows a set of trails large enough to narrow (olt/home.py listing()).
      The filters are the attributes every page names: Where, Length, Time,
      Season, Terrain, Kind, Walking, Shape and GPX. Each row carries its values
-     as data-* attributes (olt/home.py entry()). A filter on a facet that a
-     trail has no value for leaves that trail out, and the note under the
-     filter (data-missing) says how many trails have no value on file. */
+     as data-* attributes (olt/home.py entry()), and everything here is worked
+     out from the rows on the page: which rows show, the number beside each
+     choice, and which choices and filters are offered at all. A filter on a
+     facet that a trail has no value for leaves that trail out, and the note
+     under the filter (data-missing) says how many trails have no value on
+     file. The state is in the address (?where=…&time=…), so a narrowed page
+     can be shared, reloaded and gone back to; nothing is kept between pages. */
 
   var MULTI = ['time', 'terrain', 'walking', 'shape', 'gpx'];
   var MORE = ['walking', 'shape', 'gpx'];
   /* Addresses from before the site had these filters still work. */
   var OLD_POLICY = { open: 'free', sold: 'sold', withheld: 'unpublished', unclear: 'elsewhere' };
 
+  /* facet-counts:begin — pure, with no page: web/tests/test_filter_counts.py runs this under node.
+     A row: {search, where: [], km, time, months: [], terrain: [], kind, walking, shape, gpx}.
+     A state: {words: [], where, min, max (km; max may be Infinity), month, kind, and a list for
+     each of time, terrain, walking, shape, gpx}. */
+  var FacetCount = (function () {
+    var FACETS = ['where', 'length', 'time', 'month', 'terrain', 'kind', 'walking', 'shape', 'gpx'];
+    function has(list, v) { return list.indexOf(v) !== -1; }
+
+    /* Does the row pass the search and every filter but `skip`? Within Time, Terrain, Walking,
+       Shape and GPX the choices are alternatives: a row with any one of them passes. */
+    function passes(d, s, skip) {
+      if (s.words.some(function (w) { return d.search.indexOf(w) === -1; })) return false;
+      if (skip !== 'where' && s.where && !has(d.where, s.where)) return false;
+      if (skip !== 'length' && (d.km < s.min || d.km > s.max)) return false;
+      if (skip !== 'time' && s.time.length && !has(s.time, d.time)) return false;
+      if (skip !== 'month' && s.month && !has(d.months, s.month)) return false;
+      if (skip !== 'terrain' && s.terrain.length && !d.terrain.some(function (t) { return has(s.terrain, t); })) return false;
+      if (skip !== 'kind' && s.kind && d.kind !== s.kind) return false;
+      if (skip !== 'walking' && s.walking.length && !has(s.walking, d.walking)) return false;
+      if (skip !== 'shape' && s.shape.length && !has(s.shape, d.shape)) return false;
+      if (skip !== 'gpx' && s.gpx.length && !has(s.gpx, d.gpx)) return false;
+      return true;
+    }
+
+    function valuesOf(d, f) {
+      if (f === 'where') return d.where;
+      if (f === 'month') return d.months;
+      if (f === 'terrain') return d.terrain;
+      return d[f] ? [d[f]] : [];
+    }
+
+    /* The numbers for every choice. Each facet's choices are counted against the search and all
+       the other facets as they are set, never against the facet's own choice: the number beside a
+       choice is what choosing it (instead, in Where, Season and Kind; on its own, in a list of
+       boxes) shows. base[f]: the rows the other facets leave, which is what the facet's "any"
+       shows. steps: [[value, km]] of the length lists; min[value] counts the rows from that length
+       up to the chosen longest, max[value] those up to that length from the chosen shortest. */
+    function count(rows, s, steps) {
+      var out = { total: 0, base: {}, min: {}, max: {} };
+      FACETS.forEach(function (f) { out.base[f] = 0; if (f !== 'length') out[f] = {}; });
+      (steps || []).forEach(function (st) { out.min[st[0]] = 0; out.max[st[0]] = 0; });
+      rows.forEach(function (d) {
+        if (passes(d, s, '')) out.total += 1;
+        FACETS.forEach(function (f) {
+          if (!passes(d, s, f)) return;
+          out.base[f] += 1;
+          if (f === 'length') {
+            (steps || []).forEach(function (st) {
+              if (d.km >= st[1] && d.km <= s.max) out.min[st[0]] += 1;
+              if (d.km <= st[1] && d.km >= s.min) out.max[st[0]] += 1;
+            });
+            return;
+          }
+          valuesOf(d, f).forEach(function (v) { out[f][v] = (out[f][v] || 0) + 1; });
+        });
+      });
+      return out;
+    }
+
+    return { passes: passes, count: count };
+  })();
+  /* facet-counts:end */
+
   function initFinder(form) {
-    var list = document.getElementById('entries');
-    var items = Array.prototype.slice.call(list.querySelectorAll('.entry'));
-    var count = document.getElementById('results-count');
-    var empty = document.getElementById('empty-state');
+    var resultsRoot = document.querySelector('.results[data-finder]');
+    if (!resultsRoot) return;
+    function split(v) { return (v || '').split(' ').filter(Boolean); }
+    var rows = Array.prototype.map.call(resultsRoot.querySelectorAll('.entry[data-id]'), function (li) {
+      var d = li.dataset;
+      return { li: li, id: d.id, search: d.search || '', where: split(d.where), km: Number(d.km), time: d.time || '',
+               months: split(d.months), terrain: split(d.terrain), kind: d.kind || '', walking: d.walking || '',
+               shape: d.shape || '', gpx: d.gpx || '' };
+    });
+    var lists = Array.prototype.slice.call(resultsRoot.querySelectorAll('ol.entries'));
+    var count = resultsRoot.querySelector('.results-count');
+    var noun = (count && count.dataset.noun) || 'trails';
+    var empty = resultsRoot.querySelector('.empty-state');
     var active = form.querySelector('.filters__active');
     var lenHint = document.getElementById('len-hint');
-    var resultsRoot = list.closest('.results');
-    var listHead = resultsRoot ? resultsRoot.querySelector('.list-head') : document.querySelector('.list-head');
+    var listHead = resultsRoot.querySelector('.list-head');
     var el = form.elements;
-    var sort = document.getElementById('sort');
+    var sort = resultsRoot.querySelector('[data-sort-select]');
     var defaultSort = defaultSortOf(resultsRoot);
     var more = form.querySelector('.filters__more');
-    var total = items.length;
+    var none = form.querySelector('.filters__none');
+    var fields = Array.prototype.slice.call(form.querySelectorAll('[data-facet]'));
+    var total = rows.length;
     /* The bar: the Filters control opens the panels, and Clear shows only when something is set. */
     var toggle = form.querySelector('.filters__toggle');
     var panels = form.querySelector('.filters__panels');
@@ -1503,15 +1582,19 @@
       if (open) panels.setAttribute('data-open', ''); else panels.removeAttribute('data-open');
       if (toggle) toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
+    /* The open panels sit in the page between the bar and the rows, which move down: nothing is
+       laid over a row. Show the trails (or Escape) closes them and brings the bar, and the first
+       row under it, back into view. */
+    function closePanels() {
+      showPanels(false);
+      if (toggle) toggle.focus({ preventScroll: true });
+      if (form.getBoundingClientRect().top < 0) form.scrollIntoView({ block: 'start' });
+    }
     if (toggle) toggle.addEventListener('click', function () { showPanels(!panels.hasAttribute('data-open')); });
-    /* The open panels lie over the rows: Show the trails, Escape, or a click outside the form closes them. */
     var done = form.querySelector('.filters__done');
-    if (done) done.addEventListener('click', function () { showPanels(false); if (toggle) toggle.focus(); });
+    if (done) done.addEventListener('click', closePanels);
     form.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && panels && panels.hasAttribute('data-open')) { showPanels(false); if (toggle) toggle.focus(); }
-    });
-    document.addEventListener('click', function (e) {
-      if (panels && panels.hasAttribute('data-open') && !form.contains(e.target)) showPanels(false);
+      if (e.key === 'Escape' && panels && panels.hasAttribute('data-open')) closePanels();
     });
 
     /* The count is the one live region. Keep it quiet through the first
@@ -1548,72 +1631,105 @@
       var r = form.querySelector('input[name="' + name + '"]:checked');
       return r ? r.value : '';
     }
+    function value(field) { return field ? field.value : ''; }
+
+    /* The choices of Where and Season as the page wrote them, before any is taken out for
+       showing nothing: [{value, label, counted, group, def}]. */
+    function masterOf(select) {
+      if (!select) return [];
+      return Array.prototype.map.call(select.options, function (o) {
+        var group = o.parentNode && o.parentNode.tagName === 'OPTGROUP' ? o.parentNode.label : '';
+        return { value: o.value, label: o.dataset.label || o.textContent, counted: !!o.dataset.label, group: group,
+                 def: o.value === '' };
+      });
+    }
+    var masters = { where: masterOf(el.where), month: masterOf(el.month), min: [], max: [] };
 
     function read() {
-      var min = stepKm(el.min.value) || 0;
-      var max = stepKm(el.max.value) || Infinity;
-      var minRaw = el.min.value, maxRaw = el.max.value;
+      var min = stepKm(value(el.min)) || 0;
+      var max = stepKm(value(el.max)) || Infinity;
+      var minRaw = value(el.min), maxRaw = value(el.max);
       var swapped = min > max;
       if (swapped) { var keep = min; min = max; max = keep; keep = minRaw; minRaw = maxRaw; maxRaw = keep; }
+      var q = value(el.q).trim();
       var s = {
-        q: el.q.value.trim(),
-        words: el.q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),
-        where: el.where.value,
+        q: q,
+        words: q.toLowerCase().split(/\s+/).filter(Boolean),
+        where: value(el.where),
         min: min,
         max: max,
         minRaw: minRaw,
         maxRaw: maxRaw,
         swapped: swapped,
-        month: el.month ? el.month.value : '',
+        month: value(el.month),
         kind: radio('kind')
       };
       MULTI.forEach(function (name) { s[name] = checked(name); });
       return s;
     }
 
-    function words(value) { return (value || '').split(' ').filter(Boolean); }
-    function anyOf(chosen, value) { return !chosen.length || chosen.indexOf(value) !== -1; }
-
-    function matches(li, s) {
-      var d = li.dataset;
-      if (s.words.some(function (w) { return d.search.indexOf(w) === -1; })) return false;
-      if (s.where && words(d.where).indexOf(s.where) === -1) return false;
-      var km = Number(d.km);
-      if (km < s.min || km > s.max) return false;
-      if (!anyOf(s.time, d.time)) return false;
-      if (s.month && words(d.months).indexOf(s.month) === -1) return false;
-      if (s.terrain.length && !words(d.terrain).some(function (t) { return s.terrain.indexOf(t) !== -1; })) return false;
-      if (s.kind && d.kind !== s.kind) return false;
-      if (s.walking.length && !anyOf(s.walking, d.walking)) return false;
-      if (s.shape.length && !anyOf(s.shape, d.shape)) return false;
-      if (!anyOf(s.gpx, d.gpx)) return false;
-      return true;
-    }
-
     /* A length step's value is "100mi" or "160km": round in its own unit, so the
        list offered follows the reader's units. Filtering compares kilometres. */
-    function stepKm(value) {
-      var m = /^(\d+(?:\.\d+)?)(mi|km)$/.exec(value || '');
+    function stepKm(v) {
+      var m = /^(\d+(?:\.\d+)?)(mi|km)$/.exec(v || '');
       return m ? Number(m[1]) * (m[2] === 'mi' ? KM_PER_MI : 1) : 0;
     }
 
     function stepLabel(n, unit) {
       var km = unit === 'mi' ? n * KM_PER_MI : n;
       var other = unit === 'mi' ? fmt.format(Math.round(km)) + ' km' : fmt.format(Math.round(km / KM_PER_MI)) + ' mi';
-      return fmt.format(n) + ' ' + unit + ' \u00b7 ' + other;
+      return fmt.format(n) + ' ' + unit + ' · ' + other;
     }
 
     /* The value of the step in a list nearest to a length, or '' for none. */
     function nearestStep(select, km) {
       var best = '', gap = Infinity;
       if (!(km > 0)) return best;
-      Array.prototype.forEach.call(select.options, function (o) {
+      (masters[select.name] || []).forEach(function (o) {
         var k = stepKm(o.value);
         if (!k) return;
         var d = Math.abs(Math.log(k / km));
         if (d < gap) { gap = d; best = o.value; }
       });
       return best;
+    }
+
+    /* Write a select's choices from its master list: each with its number, and none that would
+       show nothing unless it is the one chosen (so it can be unchosen). The options themselves
+       are taken out, not hidden: a hidden option is not hidden in every browser. */
+    function renderSelect(select, n) {
+      if (!select) return;
+      var chosen = select.value;
+      var parts = [];
+      masters[select.name].forEach(function (o) {
+        var k = o.counted ? (n(o.value) || 0) : null;
+        if (o.value && k === 0 && o.value !== chosen) return;
+        parts.push({ o: o, k: k });
+      });
+      var sig = parts.map(function (p) { return p.o.value + ':' + p.k; }).join('|');
+      if (select.getAttribute('data-sig') === sig) return;
+      select.setAttribute('data-sig', sig);
+      select.textContent = '';
+      var groupEl = null;
+      parts.forEach(function (p) {
+        var opt = document.createElement('option');
+        opt.value = p.o.value;
+        opt.textContent = p.k === null ? p.o.label : p.o.label + ' (' + fmt.format(p.k) + ')';
+        /* A form's reset picks the option marked as default, or else the first one. */
+        if (p.o.def) opt.defaultSelected = true;
+        var parent = select;
+        if (p.o.group) {
+          if (!groupEl || groupEl.label !== p.o.group) {
+            groupEl = document.createElement('optgroup');
+            groupEl.label = p.o.group;
+            select.appendChild(groupEl);
+          }
+          parent = groupEl;
+        } else groupEl = null;
+        parent.appendChild(opt);
+      });
+      select.value = chosen;
+      if (select.value !== chosen) select.value = '';
     }
 
     /* Offer round steps in the reader's units. The server writes the mile steps;
@@ -1625,24 +1741,29 @@
         var kind = select.dataset.lengthOptions;
         var steps = (select.getAttribute('data-steps-' + unit) || '').split(',').filter(Boolean).map(Number);
         var wasKm = stepKm(select.value);
-        select.textContent = '';
-        function add(value, text, selected) {
-          var o = document.createElement('option');
-          o.value = value;
-          o.textContent = text;
-          /* "Any" is the default, so that the form's reset returns to it: a reset
-             picks the option marked as default, or else the first one. */
-          if (value === '') o.defaultSelected = true;
-          if (selected) o.selected = true;
-          select.appendChild(o);
-        }
-        if (kind === 'min') add('', 'Any', false);
+        var master = [];
+        if (kind === 'min') master.push({ value: '', label: 'Any', counted: false, group: '', def: true });
         steps.slice(kind === 'min' ? 0 : 1, kind === 'min' ? -1 : undefined).forEach(function (n) {
-          add(n + unit, stepLabel(n, unit), false);
+          master.push({ value: n + unit, label: stepLabel(n, unit), counted: true, group: '', def: false });
         });
-        if (kind === 'max') add('', 'Any', !wasKm);
-        if (wasKm) select.value = nearestStep(select, wasKm);
+        if (kind === 'max') master.push({ value: '', label: 'Any', counted: false, group: '', def: true });
+        masters[kind] = master;
+        /* Every step is written once, so the nearest can be found; counting then takes out the empty ones. */
+        select.removeAttribute('data-sig');
+        renderSelect(select, function () { return 1; });
+        select.value = wasKm ? nearestStep(select, wasKm) : '';
       });
+    }
+
+    function lengthSteps() {
+      /* Shortest and Longest offer the same steps: each is listed once, or it is counted twice. */
+      var out = [], seen = {};
+      ['min', 'max'].forEach(function (k) {
+        masters[k].forEach(function (o) {
+          if (o.value && !seen[o.value]) { seen[o.value] = true; out.push([o.value, stepKm(o.value)]); }
+        });
+      });
+      return out;
     }
 
     function describeLength(s) {
@@ -1657,7 +1778,6 @@
 
     function relabelLengths() {
       buildLengthOptions();
-      setText(lenHint, describeLength(read()));
       apply(true);
     }
 
@@ -1671,30 +1791,45 @@
       if (s.month) p.set('month', s.month);
       if (s.kind) p.set('kind', s.kind);
       MULTI.forEach(function (name) { if (s[name].length) p.set(name, s[name].join(',')); });
-      if (sort.value !== defaultSort) p.set('sort', sort.value);
+      if (sort && sort.value !== defaultSort) p.set('sort', sort.value);
       return p.toString();
+    }
+
+    /* Before reading the address, every choice the page has is offered, so that one the address
+       names is found even when the last counting took it out. */
+    function offerAll() {
+      ['where', 'month', 'min', 'max'].forEach(function (name) {
+        if (!el[name] || !el[name].tagName) return;
+        el[name].removeAttribute('data-sig');
+        renderSelect(el[name], function () { return 1; });
+      });
     }
 
     function fromQuery() {
       var p = new URLSearchParams(window.location.search);
+      offerAll();
       /* Left alone when it already says the same, so a space being typed stays. */
       if (el.q.value.trim() !== (p.get('q') || '').trim()) el.q.value = p.get('q') || '';
-      var where = p.get('where') || p.get('region') || '';
-      if (!where && (p.get('country') === 'US' || p.get('country') === 'CA')) where = p.get('country');
-      el.where.value = hasOption(el.where, where) ? where : '';
+      if (el.where) {
+        var where = p.get('where') || p.get('region') || '';
+        if (!where && (p.get('country') === 'US' || p.get('country') === 'CA')) where = p.get('country');
+        el.where.value = hasOption(el.where, where) ? where : '';
+      }
       /* A length in the address may be a step from the other unit's list (a link
          from a reader who uses kilometres, opened by one who uses miles), or a
          step this list no longer has: take the nearest step offered. */
-      ['min', 'max'].forEach(function (name) {
-        var v = p.get(name) || '';
-        el[name].value = hasOption(el[name], v) ? v : nearestStep(el[name], stepKm(v));
-      });
-      /* An address that gives them the wrong way round is rewritten by apply()
-         with the shorter one first: the controls say the same. */
-      if (stepKm(el.min.value) > stepKm(el.max.value) && stepKm(el.max.value)) {
-        var low = el.max.value, high = el.min.value;
-        el.min.value = hasOption(el.min, low) ? low : nearestStep(el.min, stepKm(low));
-        el.max.value = hasOption(el.max, high) ? high : nearestStep(el.max, stepKm(high));
+      if (el.min && el.max) {
+        ['min', 'max'].forEach(function (name) {
+          var v = p.get(name) || '';
+          el[name].value = hasOption(el[name], v) ? v : nearestStep(el[name], stepKm(v));
+        });
+        /* An address that gives them the wrong way round is rewritten by apply()
+           with the shorter one first: the controls say the same. */
+        if (stepKm(el.min.value) > stepKm(el.max.value) && stepKm(el.max.value)) {
+          var low = el.max.value, high = el.min.value;
+          el.min.value = hasOption(el.min, low) ? low : nearestStep(el.min, stepKm(low));
+          el.max.value = hasOption(el.max, high) ? high : nearestStep(el.max, stepKm(high));
+        }
       }
       if (el.month) {
         var month = p.get('month') || '';
@@ -1703,38 +1838,105 @@
       var kind = p.get('kind') || '';
       if (kind === 'designated') kind = 'trail';
       syncRadios('#finder-form input[name="kind"]', kind === 'trail' || kind === 'route' ? kind : '');
-      var lists = {};
-      MULTI.forEach(function (name) { lists[name] = (p.get(name) || '').split(',').filter(Boolean); });
-      if (p.get('line') === '1' && !lists.gpx.length) lists.gpx = ['here', 'partial'];
-      if (p.get('policy') && OLD_POLICY[p.get('policy')] && !lists.gpx.length) lists.gpx = [OLD_POLICY[p.get('policy')]];
+      var chosen = {};
+      MULTI.forEach(function (name) { chosen[name] = (p.get(name) || '').split(',').filter(Boolean); });
+      if (p.get('line') === '1' && !chosen.gpx.length) chosen.gpx = ['here', 'partial'];
+      if (p.get('policy') && OLD_POLICY[p.get('policy')] && !chosen.gpx.length) chosen.gpx = [OLD_POLICY[p.get('policy')]];
       MULTI.forEach(function (name) {
-        boxes(name).forEach(function (b) { b.checked = lists[name].indexOf(b.value) !== -1; });
+        boxes(name).forEach(function (b) { b.checked = chosen[name].indexOf(b.value) !== -1; });
       });
-      sort.value = normalizeSortKey(p.get('sort'), defaultSort);
+      if (sort) sort.value = normalizeSortKey(p.get('sort'), defaultSort);
     }
 
     function applySort() {
-      if (resultsRoot) applySortUI(resultsRoot, sort.value, false);
+      if (sort) applySortUI(resultsRoot, sort.value, false);
+    }
+
+    /* Is something chosen in the facet? */
+    function isSet(f, s) {
+      if (f === 'length') return !!s.min || s.max !== Infinity;
+      if (MULTI.indexOf(f) !== -1) return s[f].length > 0;
+      return !!s[f];
+    }
+
+    /* [[kind, value]] of every choice a field offers: kind is the facet, or min / max for length. */
+    function choicesOf(f) {
+      var out = [];
+      function from(list, k) { list.forEach(function (o) { if (o.value) out.push([k, o.value]); }); }
+      if (f === 'length') { from(masters.min, 'min'); from(masters.max, 'max'); }
+      else if (f === 'where' || f === 'month') from(masters[f], f);
+      else if (f === 'kind') { out.push([f, 'trail']); out.push([f, 'route']); }
+      else boxes(f).forEach(function (b) { out.push([f, b.value]); });
+      return out;
+    }
+
+    /* The numbers beside the choices, the choices that would show nothing taken out, and a
+       filter that can no longer narrow what the others leave put away with its heading. */
+    function relabel(s, c) {
+      renderSelect(el.where, function (v) { return v ? c.where[v] : c.base.where; });
+      renderSelect(el.month, function (v) { return c.month[v]; });
+      if (el.min && el.min.tagName) renderSelect(el.min, function (v) { return c.min[v]; });
+      if (el.max && el.max.tagName) renderSelect(el.max, function (v) { return c.max[v]; });
+      MULTI.forEach(function (name) {
+        boxes(name).forEach(function (b) {
+          var n = c[name][b.value] || 0;
+          var label = b.closest('label');
+          setText(label.querySelector('.check__count'), fmt.format(n));
+          label.hidden = n === 0 && !b.checked;
+        });
+      });
+      form.querySelectorAll('input[name="kind"]').forEach(function (b) {
+        var span = b.nextElementSibling;
+        if (!b.value || !span || !span.dataset.label) return;
+        var n = c.kind[b.value] || 0;
+        setText(span, span.dataset.label + ' (' + fmt.format(n) + ')');
+        b.closest('label').hidden = n === 0 && !b.checked;
+      });
+      var shown = 0;
+      fields.forEach(function (field) {
+        var f = field.dataset.facet;
+        var base = c.base[f];
+        /* Only the choices the field offers count: a row's other places (a trail that crosses
+           out of the page's part of the country) are not choices here. */
+        var counts = f === 'length' ? null : c[f];
+        var narrows = choicesOf(f).some(function (pair) {
+          var n = pair[0] === 'min' ? c.min[pair[1]] : pair[0] === 'max' ? c.max[pair[1]] : counts[pair[1]];
+          return n > 0 && n < base;
+        });
+        field.hidden = !narrows && !isSet(f, s);
+        if (!field.hidden) shown += 1;
+      });
+      if (more) more.hidden = !Array.prototype.some.call(more.querySelectorAll('[data-facet]'), function (f) { return !f.hidden; });
+      if (none) none.hidden = shown > 0;
     }
 
     function apply(updateUrl) {
       var s = read();
+      var c = FacetCount.count(rows, s, lengthSteps());
       var shown = [];
-      items.forEach(function (li) {
-        var ok = matches(li, s);
-        li.hidden = !ok;
-        if (ok) shown.push(li.dataset.id);
+      rows.forEach(function (d) {
+        var ok = FacetCount.passes(d, s, '');
+        d.li.hidden = !ok;
+        if (ok) shown.push(d.id);
       });
-      var noun = total === 1 ? ' trail' : ' trails';
-      if (count && count.textContent !== shown.length + ' of ' + total + noun) {
+      /* A heading over rows (Routes, by author) goes when none of its rows is left. */
+      lists.forEach(function (ol) {
+        var head = ol.previousElementSibling;
+        var any = !!ol.querySelector('.entry:not([hidden])');
+        ol.hidden = !any;
+        if (head && head.classList.contains('results__group')) head.hidden = !any;
+      });
+      var text = shown.length + ' of ' + total + ' ' + noun;
+      if (count && count.textContent !== text) {
         count.innerHTML = '';
         var strong = document.createElement('strong');
         strong.textContent = String(shown.length);
         count.appendChild(strong);
-        count.appendChild(document.createTextNode(' of ' + total + noun));
+        count.appendChild(document.createTextNode(' of ' + total + ' ' + noun));
       }
-      empty.hidden = shown.length > 0;
+      if (empty) empty.hidden = shown.length > 0;
       if (listHead) listHead.hidden = shown.length === 0;
+      relabel(s, c);
       setText(lenHint, describeLength(s));
 
       /* Say how many trails a filter leaves out for having no value on file. */
@@ -1742,7 +1944,7 @@
       form.querySelectorAll('[data-missing]').forEach(function (note) { note.hidden = !on[note.dataset.missing]; });
 
       var n = MORE.reduce(function (sum, name) { return sum + (s[name].length ? 1 : 0); }, 0);
-      active.textContent = n ? n + ' on' : '';
+      if (active) active.textContent = n ? n + ' on' : '';
       var all = (s.where ? 1 : 0) + (s.min ? 1 : 0) + (s.max !== Infinity ? 1 : 0) + (s.month ? 1 : 0) + (s.kind ? 1 : 0) +
         (s.time.length ? 1 : 0) + (s.terrain.length ? 1 : 0) + n;
       setText(form.querySelector('.filters__count'), all ? String(all) : '');
@@ -1760,16 +1962,17 @@
     form.addEventListener('change', function () { apply(true); });
     form.addEventListener('submit', function (e) { e.preventDefault(); });
     form.addEventListener('reset', function () { setTimeout(function () { apply(true); }, 0); });
-    document.querySelectorAll('[data-reset]').forEach(function (b) {
+    resultsRoot.querySelectorAll('[data-reset]').forEach(function (b) {
       b.addEventListener('click', function () { form.reset(); el.q.focus(); });
     });
-    sort.addEventListener('change', function () { applySort(); apply(true); announceSort(resultsRoot, sort.value); });
-    if (resultsRoot) wireSortHeads(resultsRoot, function () { return sort.value; }, function (k) {
+    if (sort) sort.addEventListener('change', function () { applySort(); apply(true); announceSort(resultsRoot, sort.value); });
+    if (sort) wireSortHeads(resultsRoot, function () { return sort.value; }, function (k) {
       sort.value = k; applySort(); apply(true); announceSort(resultsRoot, sort.value);
     });
     document.addEventListener('olt:units', relabelLengths);
 
-    items.forEach(function (li) {
+    rows.forEach(function (d) {
+      var li = d.li;
       li.addEventListener('mouseenter', function () { highlight(li.dataset.id); });
       li.addEventListener('mouseleave', function () { highlight(''); });
       li.addEventListener('focusin', function () { highlight(li.dataset.id); });
@@ -1787,9 +1990,9 @@
     /* The filters behind "More" stay folded, unless the address already sets one. */
     var s0 = read();
     if (more && MORE.some(function (name) { return s0[name].length; })) more.open = true;
-    /* The panels open from the bar; they start open when the address already sets a filter. */
-    var firstOn = s0.where || s0.min || s0.max !== Infinity || s0.month || s0.kind || s0.time.length || s0.terrain.length;
-    if (firstOn || MORE.some(function (name) { return s0[name].length; })) showPanels(true);
+    /* The panels start closed on every page, whatever the address sets (the Filters control
+       says how many are on). An address ending #filters opens them: a link can offer them. */
+    if (window.location.hash === '#filters') showPanels(true);
     window.addEventListener('popstate', function () { fromQuery(); applySort(); apply(false); });
     /* A page reached by Back, Forward or a reload: the browser may put the old
        values of the controls back after this script has run, or show an old copy

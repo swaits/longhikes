@@ -226,6 +226,15 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
 
 
 # The filters ------------------------------------------------------------------
+# One bar and one set of panels, on the home page and on every other page that shows a set of at
+# least FILTER_MIN trails (listing()). Everything is built from the page's own trails: a facet that
+# cannot narrow them is left out, and an option none of them has is not written. The numbers written
+# here are for the whole set; app.js counts again from the rows on the page every time anything
+# changes, and hides an option that would show nothing (its counting is facetCounts(), which
+# web/tests/test_filter_counts.py runs under node against counts made here from the records).
+
+FILTER_MIN = 10
+
 
 def _length_options(steps, selected_any_last, unit="mi"):
     opts = [f'<option value="{step_value(n, unit)}">{step_label(n, unit)}</option>' for n in steps]
@@ -234,24 +243,46 @@ def _length_options(steps, selected_any_last, unit="mi"):
     return '<option value="">Any</option>' + "".join(opts[:-1])
 
 
-def where_options(c):
-    """The Where filter: the two countries, then each place group with its states and provinces."""
-    opts = [f'<option value="">Anywhere ({c["total"]})</option>']
+def _opt(value, label, n):
+    """A counted option: its name in data-label, for app.js to write each new count after it."""
+    return f'<option value="{esc(value)}" data-label="{esc(label)}">{esc(label)} ({n})</option>'
+
+
+def where_options(c, scope="all"):
+    """The Where filter. scope "all": the two countries, then each place group with its states and
+    provinces. scope "g:<group>": the page of one group: all of it first (the page's whole set),
+    then only the places inside it. An option that would show every trail of the page is the same as
+    the first one, and one that would show none is not written."""
+    total = c["total"]
+
+    def useful(key):
+        return 0 < c["where:" + key] < total
+
+    if scope.startswith("g:"):
+        g = scope[2:]
+        keys = next(k for x, _, k in facets.PLACE_GROUPS if x == g)
+        opts = [_opt("", f"All of {facets.GROUP_NAME[g]}", total)]
+        opts += [_opt(k, facets.place_name(k), c["where:" + k]) for k in sorted(keys, key=facets.place_name) if useful(k)]
+        if g in {facets.GROUP_OF[k] for k in facets.GROUP_OF if k.startswith("CA-")} and useful(facets.ACROSS_CANADA):
+            opts.append(_opt(facets.ACROSS_CANADA, facets.ACROSS_CANADA_NAME, c["where:" + facets.ACROSS_CANADA]))
+        return "".join(opts)
+    opts = [_opt("", "Anywhere", total)]
     for code in ("US", "CA"):
-        if c["where:" + code]:
-            opts.append(f'<option value="{code}">{esc(words.COUNTRIES[code])} ({c["where:" + code]})</option>')
+        if useful(code):
+            opts.append(_opt(code, words.COUNTRIES[code], c["where:" + code]))
     for g, name, keys in facets.PLACE_GROUPS:
-        if not c["where:g:" + g]:
-            continue
-        inner = [f'<option value="g:{g}">All of {esc(name)} ({c["where:g:" + g]})</option>']
-        for key in sorted(keys, key=facets.place_name):
-            if c["where:" + key]:
-                inner.append(f'<option value="{key}">{esc(facets.place_name(key))} ({c["where:" + key]})</option>')
-        opts.append(f'<optgroup label="{esc(name)}">{"".join(inner)}</optgroup>')
-    if c["where:" + facets.ACROSS_CANADA]:
-        opts.append(f'<option value="{facets.ACROSS_CANADA}">{facets.ACROSS_CANADA_NAME} '
-                    f'({c["where:" + facets.ACROSS_CANADA]})</option>')
+        inner = [_opt("g:" + g, f"All of {name}", c["where:g:" + g])] if useful("g:" + g) else []
+        inner += [_opt(k, facets.place_name(k), c["where:" + k]) for k in sorted(keys, key=facets.place_name) if useful(k)]
+        if inner:
+            opts.append(f'<optgroup label="{esc(name)}">{"".join(inner)}</optgroup>')
+    if useful(facets.ACROSS_CANADA):
+        opts.append(_opt(facets.ACROSS_CANADA, facets.ACROSS_CANADA_NAME, c["where:" + facets.ACROSS_CANADA]))
     return "".join(opts)
+
+
+def _narrows(c, prefix, values):
+    """True when choosing some value of the facet would show some of the trails but not all."""
+    return any(0 < c[f"{prefix}:{v}"] < c["total"] for v in values)
 
 
 def _checks(name, items, c, prefix, hints=None):
@@ -277,17 +308,25 @@ def _missing(records, key):
             f'{esc(facets.missing_text(without, key))} They are left out while this filter is on.</p>')
 
 
-def finder_form(records, c=None, steps=None):
-    """Search and the first-rank filters in view; Walking, Shape and GPX behind "More"."""
+def finder_form(records, c=None, steps=None, where="all"):
+    """The bar (search, Filters, Clear) and the panels: the first-rank filters, then Walking, Shape and
+    GPX behind "More". records: the page's own trails. where: the Where filter's scope ("all",
+    "g:<group>" on a group's page, "" for none: a state's page). A facet is written only when it can
+    narrow these trails; each field carries data-facet, for app.js to hide it when it no longer can."""
     c = c or counts(records)
     steps = steps or length_steps(records)
     km_steps = length_steps(records, "km")
     first, more = [], []
-    first.append(f"""<div class="field">
+    if where:
+        opts = where_options(c, where)
+        if opts.count("<option") > 1:
+            first.append(f"""<div class="field" data-facet="where">
     <label class="field__label" for="where">{facets.WHERE}</label>
-    <select class="select" id="where" name="where">{where_options(c)}</select>
+    <select class="select" id="where" name="where">{opts}</select>
   </div>""")
-    first.append(f"""<fieldset class="field">
+    kms = [r["length_km"] for r in records]
+    if any(min(kms) < n * words.KM_PER_MI <= max(kms) for n in steps):
+        first.append(f"""<fieldset class="field" data-facet="length">
     <legend>{facets.LENGTH}</legend>
     <div class="range">
       <label class="vh" for="min">Shortest length</label>
@@ -298,51 +337,60 @@ def finder_form(records, c=None, steps=None):
     </div>
     <p class="field__hint" id="len-hint" aria-live="polite">Any length.</p>
   </fieldset>""")
-    first.append(f"""<fieldset class="field">
+    if _narrows(c, "time", [k for k, _, _ in facets.TIME_BANDS]):
+        first.append(f"""<fieldset class="field field--wide" data-facet="time">
     <legend>{facets.TIME}</legend>
     <div class="pills">{_checks("time", [(k, label) for k, label, _ in facets.TIME_BANDS], c, "time")}</div>
     <p class="field__hint">To walk it all. Where no source says, it is estimated from the length.</p>
   </fieldset>""")
-    if facets.offered(records, "season"):
-        month_opts = "".join(f'<option value="{i}">{esc(m)} ({c[f"month:{i}"]})</option>'
-                             for i, m in enumerate(facets.MONTHS, 1))
-        first.append(f"""<div class="field">
+    if facets.offered(records, "season") and _narrows(c, "month", range(1, 13)):
+        month_opts = "".join(_opt(str(i), m, c[f"month:{i}"]) for i, m in enumerate(facets.MONTHS, 1) if c[f"month:{i}"])
+        first.append(f"""<div class="field" data-facet="month">
     <label class="field__label" for="month">{facets.SEASON}</label>
     <select class="select" id="month" name="month"><option value="">Any month</option>{month_opts}</select>
     <p class="field__hint">Trails usually walked in that month.</p>
     {_missing(records, "season")}
   </div>""")
-    if facets.offered(records, "terrain"):
-        first.append(f"""<fieldset class="field">
+    if _narrows(c, "kind", facets.KINDS):
+        first.append(f"""<fieldset class="field" data-facet="kind">
+    <legend>{facets.KIND}</legend>
+    <div class="seg">
+      <label><input type="radio" name="kind" value="" checked><span>Any</span></label>
+      <label><input type="radio" name="kind" value="trail"><span data-label="Official">Official ({c["kind:trail"]})</span></label>
+      <label><input type="radio" name="kind" value="route"><span data-label="Routes">Routes ({c["kind:route"]})</span></label>
+    </div>
+    <p class="field__hint"><a href="/routes/">What is a route?</a></p>
+  </fieldset>""")
+    if facets.offered(records, "terrain") and _narrows(c, "terrain", facets.TERRAIN_VALUES):
+        first.append(f"""<fieldset class="field field--wide" data-facet="terrain">
     <legend>{facets.TERRAIN}</legend>
     <div class="pills">{_checks("terrain", facets.TERRAIN_VALUES.items(), c, "terrain")}</div>
     {_missing(records, "terrain")}
   </fieldset>""")
-    first.append(f"""<fieldset class="field">
-    <legend>{facets.KIND}</legend>
-    <div class="seg">
-      <label><input type="radio" name="kind" value="" checked><span>Any</span></label>
-      <label><input type="radio" name="kind" value="trail"><span>Official ({c["kind:trail"]})</span></label>
-      <label><input type="radio" name="kind" value="route"><span>Routes ({c["kind:route"]})</span></label>
-    </div>
-    <p class="field__hint"><a href="/routes/">What is a route?</a></p>
-  </fieldset>""")
-    if facets.offered(records, "walking"):
-        more.append(f"""<fieldset class="field">
+    if facets.offered(records, "walking") and _narrows(c, "walking", facets.WALKING_VALUES):
+        more.append(f"""<fieldset class="field" data-facet="walking">
         <legend>{facets.WALKING}</legend>
         {_checks("walking", facets.WALKING_VALUES.items(), c, "walking", facets.WALKING_HINT)}
         {_missing(records, "walking")}
       </fieldset>""")
-    if facets.offered(records, "shape"):
-        more.append(f"""<fieldset class="field">
+    if facets.offered(records, "shape") and _narrows(c, "shape", facets.SHAPES):
+        more.append(f"""<fieldset class="field" data-facet="shape">
         <legend>{facets.SHAPE}</legend>
         {_checks("shape", facets.SHAPES.items(), c, "shape")}
         {_missing(records, "shape")}
       </fieldset>""")
-    more.append(f"""<fieldset class="field">
+    if _narrows(c, "gpx", facets.GPX_FILTER):
+        more.append(f"""<fieldset class="field" data-facet="gpx">
         <legend>{facets.GPX}</legend>
         {_checks("gpx", facets.GPX_FILTER.items(), c, "gpx")}
       </fieldset>""")
+    more_html = f"""
+    <details class="filters__more">
+      <summary>More filters <span class="filters__active"></span></summary>
+      <div class="filters__form">
+        {"".join(more)}
+      </div>
+    </details>""" if more else ""
     return f"""<form class="filters" id="finder-form" role="search" aria-label="Find a trail">
   <div class="filters__bar">
     <div class="filters__search field">
@@ -358,16 +406,22 @@ def finder_form(records, c=None, steps=None):
       <div class="filters__first">
       {"".join(first)}
       </div>
-    </details>
-    <details class="filters__more">
-      <summary>More filters <span class="filters__active"></span></summary>
-      <div class="filters__form">
-        {"".join(more)}
-      </div>
-    </details>
+    </details>{more_html}
+    <p class="filters__none" hidden>Nothing here narrows these trails further.</p>
     <p class="filters__end js-only"><button class="button filters__done" type="button">Show the trails</button></p>
   </div>
 </form>"""
+
+
+def listing(recs=None, *, where="all", groups=None, **kw):
+    """The rows of a page that shows a set of trails, with the filter bar over them when the set
+    has at least FILTER_MIN trails (else results() alone). where: the Where filter's scope
+    (finder_form). The other arguments are results()'s."""
+    trails = [r for g in groups for r in g[1]] if groups is not None else list(recs)
+    if len(trails) < FILTER_MIN:
+        return results(recs, groups=groups, **kw)
+    return Markup(f"""<div class="finder__bar">{finder_form(trails, where=where)}</div>
+  {results(recs, groups=groups, finder=True, **kw)}""")
 
 
 # The list ---------------------------------------------------------------------
@@ -463,14 +517,15 @@ def key(official=True):
 
 
 def results(recs=None, *, finder=False, groups=None, routes_list=False, default_sort="name", saved=False, top=3,
-            ranked="", lead=None, more=None, tools=True, by=None):
+            ranked="", lead=None, more=None, tools=True, by=None, every=False):
     """The list of trails, as every page shows it: div.results > head, key, list head, ol.entries.
 
     Every list carries the same "Sort by" control. The rows are written in
     default_sort order (a key of facets.SORTS), so the page is right with
     JavaScript off; app.js reorders in place and keeps ?sort= in the address.
 
-    finder: the home page's list, driven by the filters (live count, empty state).
+    finder: a list driven by the filter bar over it (listing(): live count, empty state).
+    every: the list holds every trail (the home page's).
     groups: [(heading, trails, extra_fn)] to list the trails under headings (level `top`);
     sorting is within each group and the groups keep their order. A heading may be a pair
     (heading HTML, intro HTML): the intro is a sentence under the heading (an author's summary).
@@ -483,7 +538,7 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
     app.js shows the saved ones (or a link's) and writes the count; the sort
     control opens on the order saved.
 
-    A list that holds every trail (the finder's, the Saved page's) is marked
+    A list that holds every trail (the home page's, the Saved page's) is marked
     data-every-trail: there app.js knows every trail id, and drops the saved
     ids that match no trail.
 
@@ -503,7 +558,7 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
     only_routes = bool(shown) and all(facets.kind(r) == "route" for r in shown)
     noun = ("route" if only_routes else "trail") + ("" if total == 1 else "s")
     lists = ""
-    every = ' data-every-trail' if finder or saved else ""
+    every = ' data-every-trail' if every or saved else ""
     seen = 0
     for heading, items, extra_fn in groups:
         level = top + 1 if heading else top
@@ -519,14 +574,14 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
             lists += f'\n      <div class="results__lead"><h{top} class="results__group">{heading}</h{top}>{intro}</div>'
         elif heading:
             lists += f'\n      <h{top} class="results__group">{heading}</h{top}>'
-        list_id = ' id="entries"' if finder else ""
+        list_id = ' id="entries"' if finder and len(groups) == 1 else ""
         lists += f'\n      <ol class="entries"{list_id}{every}>\n{rows}\n      </ol>'
     if finder:
-        count = (f'<p class="results-count" id="results-count" role="status">'
+        count = (f'<p class="results-count" id="results-count" role="status" data-noun="{noun}">'
                  f'<strong>{total}</strong> of {total} {noun}</p>')
-        empty = """
+        empty = f"""
       <div class="empty-state" id="empty-state" hidden>
-        <p><strong>No trails match these filters.</strong></p>
+        <p><strong>No {noun} match these filters.</strong></p>
         <button class="button button--quiet" type="button" data-reset>Clear search and filters</button>
       </div>"""
     elif saved:
@@ -539,7 +594,8 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
         return Markup(f'<div class="results results--short">{lists}</div>')
     tools = sort_select(default_sort, saved=saved, ranked=ranked)
     dflt = SAVED_ORDER[0] if saved else "rank" if ranked else default_sort
-    return Markup(f"""<div class="results" data-sortable data-default-sort="{esc(dflt)}">
+    finder_attr = " data-finder" if finder else ""
+    return Markup(f"""<div class="results"{finder_attr} data-sortable data-default-sort="{esc(dflt)}">
       <div class="results-head">
         {count}
         <div class="results-tools">
@@ -743,8 +799,8 @@ def render(records, site, repo_root=""):
                       f'<a href="{esc(site.correction_url())}">Report a problem</a> or '
                       f'<a href="{esc(site.new_trail_url)}">suggest a trail</a>.</p>')
     picks = home_picks(datafiles.lists(repo_root))
-    listing = f"""<div class="home__bar">{finder_form(records, c, length_steps(records))}</div>
-  {results(recs, finder=True)}"""
+    listing = f"""<div class="finder__bar">{finder_form(records, c, length_steps(records))}</div>
+  {results(recs, finder=True, every=True)}"""
     return f"""<section class="intro" aria-labelledby="intro-title">
   <div class="container intro__inner">
     <h1 id="intro-title">{esc(site.tagline.rstrip("."))}</h1>

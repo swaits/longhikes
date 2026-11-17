@@ -105,7 +105,7 @@ def page(p, records, site, all_pages):
   </div></header>
 </div></div>
 <div class="container section place">
-  {home.browse_view(home.results(recs, default_sort=lst.sort, top=2), home.overview_map(recs, f"Map of the trails in {name}: {lst.title}"),
+  {home.browse_view(home.listing(recs, default_sort=lst.sort, top=2, where=""), home.overview_map(recs, f"Map of the trails in {name}: {lst.title}"),
                about=summary.facts(recs, records), about_title=f"About these trails in {name}")}
   <nav class="region-nav" aria-label="Lists"><a href="{esc(browse.path(lst))}">{esc(lst.title)} everywhere</a> · <a href="/lists/">All lists</a></nav>
   {nav}

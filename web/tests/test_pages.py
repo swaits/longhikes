@@ -566,11 +566,11 @@ class RenderUnitTest(unittest.TestCase):
                 f.write('id = "x"\n')
             rec = sample_record(name="A & B")
             n = pages.render_site([rec], out, repo, site=site.Site("N", "T"))
-            # trail page + home + 404 + places hub + 1 place + lists hub + routes,
+            # trail page + home + 404 + places hub + 1 place + its part of the country + lists hub + routes,
             # sources, logos, about, data, schema, changelog, left out, saved (no list holds MIN_SIZE trails),
             # and the two reference pages, the glossary and the method (the tables, authors, recent and
             # linked-trails pages need at least MIN_SIZE trails and are not built for one)
-            self.assertEqual(n, 17)
+            self.assertEqual(n, 18)
             with open(os.path.join(out, "trails", "x", "index.html"), encoding="utf-8") as f:
                 self.assertIn("A &amp; B", f.read())
             with open(os.path.join(out, "index.html"), encoding="utf-8") as f:

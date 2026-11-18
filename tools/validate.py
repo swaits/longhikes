@@ -580,7 +580,7 @@ def check_links(tid, rec, errors):
 LEFT_OUT_FILE = "left-out.toml"
 LEFT_OUT_REASONS = {
     "below-floor", "rail-trail-or-towpath", "driving-route", "not-mainly-walking",
-    "network", "cannot-be-walked-through", "mostly-unbuilt",
+    "network", "cannot-be-walked-through", "mostly-unbuilt", "requires-climbing",
     "not-published-as-route", "waiting",
 }
 LEFT_OUT_KEYS = {

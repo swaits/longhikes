@@ -125,7 +125,6 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | east-coast-trail | East Coast Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2199386) | ODbL-1.0 | track |
 | eastern-continental-trail | M. J. Eberhart (trail name Nimblewill Nomad), who publishes the route | [source page](https://nimblewillnomad.com/books/) | none-stated | record only |
 | eastern-sierra-high-route | Dan Stenziano (publishes the route) | [source page](https://danstenziano.com/products/eastern-sierra-high-route-guide) | none-stated | record only |
-| escalante-overland-route | Steve Allen (publishes the route) | [source page](https://www.adventurealan.com/escalante-overland-route/) | none-stated | record only |
 | finger-lakes | Finger Lakes Trail Conference (publishes the trail; the North Country Trail Association hosts its track as 'agol_flt') | [source page](https://www.openstreetmap.org/relation/12725656) | ODbL-1.0 | track |
 | florida | Florida Trail Association with the USDA Forest Service Southern Region | [source page](https://www.openstreetmap.org/relation/14480287) | ODbL-1.0 | track |
 | foothills | Foothills Trail Conservancy (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4572989) | ODbL-1.0 | track |

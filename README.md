@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-199 trails, 121 with a track and 78 with no track included. Of these, 59 are routes: 2 with a track and 57 without.
+198 trails, 121 with a track and 77 with no track included. Of these, 58 are routes: 2 with a track and 56 without.
 
 <!-- END COUNTS -->
 
@@ -19,6 +19,8 @@ The counts at this release:
 A long trail here is a named, continuous walking route, or a named loop, of at least 50 miles (80 km), in the United States or Canada: either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a route, as described below. The floor is 50 miles because that is about what multi-day wilderness backpacking takes. A small number of well-known multi-day trails between 60 km and 80 km are also listed.
 
 A trail's length is the end-to-end length of its canonical path: one walk from one end to the other, with one branch taken at a split, no side trails, no stretch counted twice and no system total. The floor applies to that length. A trail must also be walkable from one end to the other today. A trail published in separate pieces, or with gaps that have no way across, is not listed, and goes in `left-out.toml`. Road links that the holder publishes as the way through count as walkable, and so does evidence that people have walked it end to end. A ferry, shuttle or bus link across water or a closed stretch, named by the holder or the route's author as the way through, does not rule a trail out: the record says how each such link is made, and the track has a gap there, with no line drawn across. This is a judgement the maintainer makes case by case, not a mechanical test. A trail that can be walked through but is partly unbuilt is listed: its length is the holder's end-to-end route, and the built length is stated beside it. A larger figure that the holder publishes, such as a system total or a planned total, is kept as a separate, labelled fact.
+
+Every trail or route needs a published length, and a route with no stated length is not listed. The length rule is at least 50 miles (80 km), or, for an author's route that is short on miles, at least five days as its author gives the trip; the five days never replace a published length. Cross-country travel, route finding and hard terrain count in that judgement. The climbing rule is that nothing harder than Class 3 may be required. A route with a harder section is listed only where that section is optional, and the record says so.
 
 Not listed: paths made mainly for cycling, such as gravel rail trails and canal towpaths, and historic trails that are mainly driving routes with short walkable pieces.
 
@@ -209,7 +211,6 @@ A route is a trail that a hiker worked out and published. The record names the a
 | desert-winter-thru-hike | Desert Winter Thru-Hike | US | AZ, CA | 1287 | Brett Tucker ("Blisterfree") and partner, simBLISSity Ultralight Designs | withheld | no | [Desert WTH! topo mapset](https://www.simblissity.net/desert-wth-mapset.shtml) (free) |
 | eastern-continental-trail | Eastern Continental Trail | US | FL, AL, GA, TN, NC, VA, WV, MD, PA, NJ, NY, CT, MA, VT, NH, ME, QC, NB | 7081 | M. J. Eberhart (trail name Nimblewill Nomad) | open | no | [Ten Million Steps](https://nimblewillnomad.com/books/) (purchase) |
 | eastern-sierra-high-route | Eastern Sierra High Route | US | CA | 113 | Dan Stenziano | sold | no | [Eastern Sierra High Route Guide](https://danstenziano.com/products/eastern-sierra-high-route-guide) (purchase) |
-| escalante-overland-route | Escalante Overland Route | US | UT | 129 | Steve Allen | sold | no | [Canyoneering 3: Loop Hikes in Utah's Escalante](https://uofupress.com/books/canyoneering-3/) (purchase) |
 | georgia-loop | Georgia Loop | US | GA | 89 | Benton MacKaye Trail Association | unclear | no | [Georgia Loop](https://bmta.org/backpacking-hikes/) (free) |
 | grand-enchantment | Grand Enchantment Trail | US | AZ, NM | 1239 | Brett Tucker | sold | no | [Grand Enchantment Trail Official Mapset](http://www.simblissity.net/get/) (purchase) |
 | grand-moab-route | Grand-Moab Route | US | CO, UT | 225 | Paul Mags (PMags.com) | open | no | [The Grand-Moab Route](https://pmags.com/the-grand-moab-route) (free) |

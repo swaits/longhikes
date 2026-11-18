@@ -43,7 +43,7 @@ body:
     id: length
     attributes:
       label: Length
-      description: The published length, in miles or kilometres, and where that figure comes from if you know it. The floor is 50 miles (80 km), apart from a few well-known trails of 60–80 km.
+      description: The published length, in miles or kilometres, and where that figure comes from if you know it. A trail or route with no published length is not listed. The floor is 50 miles (80 km), or, for an author's route that is short on miles, five days as its author gives the trip, apart from a few well-known trails of 60–80 km.
       placeholder: "e.g. 120 miles (193 km)"
     validations:
       required: true

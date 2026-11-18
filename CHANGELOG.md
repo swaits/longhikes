@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-18 - Two rules, a published length for every route, and two routes left out
+
+- Every trail or route needs a published length. A route with no stated length is not listed.
+- The length rule now reads: at least 50 miles (80 km), or, for an author's route that is short on miles, at least five days as its author gives the trip. Cross-country travel, route finding and hard terrain count in that judgement. The five days never replace a published length. The small band of well-known built trails below the floor is unchanged.
+- A new climbing rule: nothing harder than Class 3 may be required. A route with a harder section is listed only where that section is optional, and the record says so.
+- The Escalante Overland Route, added earlier today, is removed. Steve Allen's guidebook says most of it suits only experienced rock climbers, with difficult climbing on steep walls, and Alan Dixon calls it semi-technical, so it fails the climbing rule. It now sits on the left-out list as a trail that was listed, with Dixon's 80 mile figure. Steve Allen, who had no other route here, no longer has an author page.
+- Muddy Creek in the San Rafael Swell is recorded as left out. It is a six day loop from Tomsich Butte in Steve Allen's Canyoneering 2: Technical Loop Hikes in Southern Utah, and the book gives six days minimum but prints no mileage, so it has no published length. Nothing else from that book is listed.
+- The left-out page has a new reason, "Requires climbing harder than Class 3".
+- The rules are written in the README, the contributing guide, the schema, the About and method pages, the left-out page and the new-trail issue form. The count returns to 198 trails, 58 of them routes.
+
 ## 2026-11-18 - The Escalante Overland Route, and two notes on trails left out
 
 - The Escalante Overland Route is new: an off-trail rim route above the Escalante River canyon in southern Utah, from Utah Highway 12 near Calf Creek Falls to just before Lake Powell. Steve Allen published it in 1997 in his guidebook Canyoneering 3: Loop Hikes in Utah's Escalante. Alan Dixon's trip report gives Allen's route as 80 miles (129 km) and describes a 20 mile extension from the town of Escalante that makes 100, and the record's length note says so.

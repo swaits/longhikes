@@ -19,7 +19,8 @@ REAL_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fi
 # Ordered as the inclusion rule states them; the page follows this order.
 REASONS = {
     "below-floor": ("Below the 50 mile floor",
-                    "The floor for this list is 50 miles (80 km), apart from a few well known shorter trails."),
+                    "The floor for this list is 50 miles (80 km), or, for an author's route that is short on miles, five days as its author gives the trip, "
+                    "apart from a few well known shorter trails. A listed trail or route also needs a published length."),
     "rail-trail-or-towpath": ("Rail trails and canal towpaths",
                               "Paths made mainly for cycling, such as gravel rail trails and canal towpaths, are not listed."),
     "driving-route": ("Mainly driving or motor routes",
@@ -33,6 +34,8 @@ REASONS = {
                                  "a ferry, shuttle or bus link its holder or author names as the way through."),
     "mostly-unbuilt": ("Mostly unbuilt or still proposed",
                        "A trail that does not yet exist on the ground cannot be listed."),
+    "requires-climbing": ("Requires climbing harder than Class 3",
+                          "Nothing harder than Class 3 may be required. A route with a harder section is listed only where that section is optional."),
     "not-published-as-route": ("Not published as a route by its author",
                                "A route is listed when its author has published it as a route, with a stated length."),
     "waiting": ("Waiting",

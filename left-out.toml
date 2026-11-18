@@ -146,6 +146,19 @@ decided = "2026-11-16"
 was_listed = true
 
 [[trail]]
+id = "escalante-overland-route"
+name = "Escalante Overland Route"
+country = "US"
+regions = ["UT"]
+length_mi = 80
+length_km = 129
+reason = "requires-climbing"
+note = "Steve Allen's guidebook Canyoneering 3: Loop Hikes in Utah's Escalante (University of Utah Press, 1997) says most sections of the route suit only hardcore canyoneers who are also experienced rock climbers, with difficult climbing on steep walls, and prints no total mileage. Alan Dixon's report gives the route as 80 miles and calls it semi-technical. It was listed on 2026-11-18 and removed the same day, because it requires climbing harder than Class 3."
+source_url = "https://www.adventurealan.com/escalante-overland-route/"
+decided = "2026-11-18"
+was_listed = true
+
+[[trail]]
 id = "florida-keys-overseas-heritage-trail"
 name = "Florida Keys Overseas Heritage Trail"
 country = "US"
@@ -363,6 +376,17 @@ reason = "not-mainly-walking"
 note = "This 120 mile Deschutes National Forest trail was built mainly as a long distance horse trail, served by horse camps along the way. Hikers and mountain bikers may use it, but it was not built mainly as a walking trail."
 source_url = "https://www.nrtapplication.org/trails/metolius-windigo-trail"
 decided = "2026-11-16"
+was_listed = false
+
+[[trail]]
+id = "muddy-creek-san-rafael-swell"
+name = "Muddy Creek in the San Rafael Swell"
+country = "US"
+regions = ["UT"]
+reason = "not-published-as-route"
+note = "Steve Allen describes a loop from Tomsich Butte in Canyoneering 2: Technical Loop Hikes in Southern Utah (University of Utah Press, 1995), pages 29 to 49, and gives its time as six days minimum. The book prints no mileage, so the route has no published length."
+source_url = "https://uofupress.com/books/canyoneering-2/"
+decided = "2026-11-18"
 was_listed = false
 
 [[trail]]

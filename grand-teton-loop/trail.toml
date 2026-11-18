@@ -1,0 +1,94 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "grand-teton-loop"
+name = "Grand Teton Loop"
+country = "US"
+regions = ["WY"]
+length_km = 78
+length_note = "48.5 mi, as the book gives it for Trip 12 (page 104), with 9,100 ft of elevation gain and 5 to 8 days. The page also prints 61 mi and 11,800 ft in brackets without saying what they are. The figures are the book's own and are not measured from a track. This is under the 50 mile floor; it is listed as an exception by the ruling of the owner of the dataset. The book gives it five to eight days."
+kind = "route"
+tier = "short"
+designation = "Guidebook route (Douglas Lorain, 2010, in Backpacking Wyoming); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 104-106, read from a printed copy of the 1st edition (2010) on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-wyoming/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Backpacking Wyoming."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Douglas Lorain"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-wyoming/, read 2026-11-18) show the title and the publisher's and shop's own logos only; this is a guidebook route over national forest and wilderness land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Douglas Lorain"
+year = 2010
+line_policy = "sold"
+note = "Trip 12 in the book, on pages 104-106. A loop from the Lupine Meadows Trailhead in Grand Teton National Park, walked counterclockwise past Death Canyon, Fox Creek Pass, Alaska Basin, Hurricane Pass, Lake Solitude and Paintbrush Divide, with 48.5 miles and five to eight days in the book. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins"
+author = "Douglas Lorain"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+format = "book, 1st edition, 2010; the route is Trip 12, pages 104-106"
+price = "$18.95"
+price_checked = "2026-11-18"
+publisher = "Wilderness Press"
+isbn = "978-0-89997-505-4"
+
+[hike]
+summary = "The Grand Teton Loop is a backpacking loop of five to eight days in Grand Teton National Park, Wyoming, from the Lupine Meadows Trailhead, which the book walks counterclockwise. By the book's map it climbs through Death Canyon and over Death Canyon Shelf and Fox Creek Pass to Alaska Basin, then crosses Hurricane Pass, goes down South Fork Cascade Canyon past Lake Solitude, and returns over Paintbrush Divide and down Paintbrush Canyon to String Lake. The pages read do not name the Teton Crest Trail, but the loop runs along the same crest and ends at String Lake, where the Teton Crest Trail record in this dataset ends; it is a loop, which that trail is not. Douglas Lorain describes it as Trip 12 in Backpacking Wyoming, at 48.5 miles under the 50 mile floor, and it is listed as an exception."
+official_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+start = "Lupine Meadows Trailhead, Grand Teton National Park, Wyoming"
+shape = "loop"
+days = [5, 8]
+season = "Usually open mid-July to mid-October, best late July and August"
+months = [7, 8, 9, 10]
+terrain = ["alpine", "lakes"]
+travel = "trail"
+permit = "Required, as the book states, and reservations are strongly advised. The book says the backcountry office at the Moose Junction Visitors Center opens at 8 A.M. and that hikers without a reservation should arrive well before then to get in line."
+caution = "The book says black bears are common, the trails and camps are very popular and getting a permit is difficult. Camping is allowed only in designated camping zones or sites and fires only at specified camps, all food must be stored away from bears at all times, and since 2008 every backpacker must use a bear canister, on loan from the ranger stations at Moose Junction and Colter Bay. The pages read say nothing about scrambling or climbing. The author rates its difficulty 8 out of 10."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 104-106 of the 1st edition (2010), read from a printed copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Grand Teton Loop, 48.5 miles (78 km), Trip 12 in Douglas Lorain's guidebook Backpacking Wyoming, listed as an exception under the 50 mile floor, with no track."
+fields = ["record"]
+basis = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins, by Douglas Lorain (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4), pages 104-106, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it as an exception under the 50 mile floor."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"

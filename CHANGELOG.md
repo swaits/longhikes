@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-18 - The Grand Teton Loop added as an exception, and three Wyoming trips recorded as left out
+
+- The Grand Teton Loop is new: Trip 12 in Douglas Lorain's guidebook Backpacking Wyoming (Wilderness Press, 1st edition 2010). It is 48.5 miles, five to eight days, a loop from the Lupine Meadows Trailhead in Grand Teton National Park. That is under the 50 mile floor, and it is listed as an exception by the owner's ruling, as the Rae Lakes Loop is. Like the other routes from the book it has no track, and the record gives the book's own figures; the book's second, bracketed length of 61 miles is given with a note that the pages read do not explain it. The pages say nothing about scrambling or climbing.
+- Three other trips from the same book are recorded as left out, all below the 50 mile floor: the Bighorn Pass & Sportsman Lake Loop (45.7 miles), Lamar River to Hoodoo Basin (47.8 miles) and the Lonesome & Baptiste Lakes Loop (39.3 miles).
+- Douglas Lorain now has five routes in the dataset.
+- The home page, lists and the place page for Wyoming each count one more trail.
+
 ## 2026-11-18 - Four guidebook routes from Douglas Lorain's Backpacking Wyoming
 
 - Four routes are new, all from trips in Douglas Lorain's guidebook Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4). The Teton Wilderness Loop (60.2 miles, 5 to 7 days) is in Bridger-Teton National Forest. The Heart Lake & Two Ocean Plateau Loop (61.5 miles, 5 to 10 days) is in Yellowstone National Park. The Green River Lakes & Titcomb Basin Loop (70.9 miles, 6 to 14 days) and the Central Wind Rivers Loop (61.7 miles, 6 to 10 days) are in the Wind River Range.

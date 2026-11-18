@@ -137,6 +137,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | grand-enchantment | Brett Tucker, simBLISSity Ultralight Designs (publishes the route and sells the mapset) | [source page](http://www.simblissity.net/get/) | none-stated | record only |
 | grand-moab-route | Paul Mags, PMags.com (publishes the route) | [source page](https://pmags.com/the-grand-moab-route) | none-stated | record only |
 | grand-sawtooth-loop | USDA Forest Service, National Forest System trails (no track included; the guides publish none) | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | none-stated | record only |
+| grand-teton-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) | none-stated | record only |
 | grand-valley-trail | Grand Valley Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3637768) | ODbL-1.0 | track |
 | great-basin-trail | Ryan "Dirtmonger" Sylva, who publishes the route | [source page](https://www.gossamergear.com/blogs/our-blog/great-basin-trail) | none-stated | record only |
 | great-colorado-route | Donovan "Iceman" Rice, who publishes the route | [source page](https://www.greatcoloradoroute.com/route) | none-stated | record only |

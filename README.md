@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-209 trails, 122 with a track and 87 with no track included. Of these, 67 are routes: 2 with a track and 65 without.
+210 trails, 122 with a track and 88 with no track included. Of these, 68 are routes: 2 with a track and 66 without.
 
 <!-- END COUNTS -->
 
@@ -218,6 +218,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | georgia-loop | Georgia Loop | US | GA | 89 | Benton MacKaye Trail Association | unclear | no | [Georgia Loop](https://bmta.org/backpacking-hikes/) (free) |
 | grand-enchantment | Grand Enchantment Trail | US | AZ, NM | 1239 | Brett Tucker | sold | no | [Grand Enchantment Trail Official Mapset](http://www.simblissity.net/get/) (purchase) |
 | grand-moab-route | Grand-Moab Route | US | CO, UT | 225 | Paul Mags (PMags.com) | open | no | [The Grand-Moab Route](https://pmags.com/the-grand-moab-route) (free) |
+| grand-teton-loop | Grand Teton Loop | US | WY | 78 | Douglas Lorain | sold | no | [Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) (purchase) |
 | great-basin-trail | Great Basin Trail | US | NV | 1931 | Ryan "Dirtmonger" Sylva | unclear | no | [Great Basin Trail article](https://www.gossamergear.com/blogs/our-blog/great-basin-trail) (free) |
 | great-colorado-route | Great Colorado Route | US | CO | 3219 | Donovan "Iceman" Rice | open | no | [Great Colorado Route route page and GPX](https://www.greatcoloradoroute.com/route) (free) |
 | great-plains-trail | Great Plains Trail | US | SK, ND, SD, NE, TX | 3540 | Steve Myers (Great Plains Trail Alliance) | open | no | [Great Plains Trail map](https://www.greatplainstrail.org/gpt-map/) (free) |

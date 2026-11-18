@@ -45,6 +45,19 @@ decided = "2026-11-16"
 was_listed = true
 
 [[trail]]
+id = "bighorn-pass-sportsman-lake-loop"
+name = "Bighorn Pass & Sportsman Lake Loop"
+country = "US"
+regions = ["WY"]
+length_mi = 45.7
+length_km = 74
+reason = "below-floor"
+note = "Douglas Lorain gives this loop in Yellowstone National Park as 45.7 miles, including a 3.9 mile roadwalk, for three to five days, as Trip 1 of Backpacking Wyoming (Wilderness Press, 2010). That is below the 50 mile floor."
+source_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+decided = "2026-11-18"
+was_listed = false
+
+[[trail]]
 id = "black-forest-trail"
 name = "Black Forest Trail"
 country = "US"
@@ -350,6 +363,32 @@ reason = "below-floor"
 note = "Ontario Parks list this Lake Superior Provincial Park backpacking trail at 65 km. That is below the floor for this list."
 source_url = "https://www.ontarioparks.ca/park/lakesuperior/activities"
 decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "lamar-river-to-hoodoo-basin"
+name = "Lamar River to Hoodoo Basin"
+country = "US"
+regions = ["WY"]
+length_mi = 47.8
+length_km = 77
+reason = "below-floor"
+note = "Douglas Lorain gives this trip in Yellowstone National Park as 47.8 miles, for four to six days, as Trip 3 of Backpacking Wyoming (Wilderness Press, 2010). That is below the 50 mile floor. The pages read do not say whether it is a loop or one way."
+source_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+decided = "2026-11-18"
+was_listed = false
+
+[[trail]]
+id = "lonesome-baptiste-lakes-loop"
+name = "Lonesome & Baptiste Lakes Loop"
+country = "US"
+regions = ["WY"]
+length_mi = 39.3
+length_km = 63
+reason = "below-floor"
+note = "Douglas Lorain gives this loop in the Wind River Range as 39.3 miles, for four to seven days, as Trip 17 of Backpacking Wyoming (Wilderness Press, 2010). That is below the 50 mile floor."
+source_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+decided = "2026-11-18"
 was_listed = false
 
 [[trail]]

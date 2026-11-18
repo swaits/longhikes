@@ -368,7 +368,7 @@ class AuthorTest(unittest.TestCase):
         old = authors.PROMINENT_MIN
         try:
             authors.PROMINENT_MIN = 5
-            self.assertEqual({g["name"] for g in authors.prominent(gs)}, {"Brett Tucker", "Andrew Skurka", "Bruce Grubbs"})
+            self.assertEqual({g["name"] for g in authors.prominent(gs)}, {"Brett Tucker", "Andrew Skurka", "Bruce Grubbs", "Douglas Lorain"})
         finally:
             authors.PROMINENT_MIN = old
 

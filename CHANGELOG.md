@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-18 - The Rae Lakes Loop, in California
+
+- The Rae Lakes Loop is new: 41.4 miles (67 km) on foot in Kings Canyon National Park, California, a loop from Road's End in Cedar Grove past Paradise Valley and the Rae Lakes, over Glen Pass (11,978 feet) and back down Bubbs Creek. The National Park Service's page gives it as 41.4 miles.
+- It is under the 50 mile floor. It joins the small band of well-known multi-day trails of 60 to 80 km that are listed below the floor, with the West Coast Trail, the Kekekabic Trail, the Teton Crest Trail, the Timberline Trail and the Pukaskwa Coastal Hiking Trail.
+- It has no track. The National Park Service's public Trails dataset holds no trails for Sequoia and Kings Canyon National Parks, and no other open track from the Park Service was found.
+- The record carries what the Park Service's pages say: the high point at Glen Pass, the wilderness permits with a daily limit on starts, the bear canister rule, the camping limits, the ban on campfires above 10,000 feet, the high water and late snow on Glen Pass, and the South Fork Kings River bridge that washed out in 2016-2017. It gives no number of days or season, which the Park Service does not state.
+- The home page, lists and the place page for California each count one more trail.
+
 ## 2026-11-18 - The Grand Sawtooth Loop, in Idaho
 
 - The Grand Sawtooth Loop is new: 70 miles (113 km) on foot in the Sawtooth Wilderness of central Idaho, a loop of Forest Service trails from the Grandjean Campground Trailhead past Trail Creek Lakes, Sawtooth Lake, the Baron Lakes and Ardeth Lake. The Sawtooth Association gives about 70 miles; CleverHiker gives 60 to 70 and Fastest Known Time about 75, and the record's length note says the figures differ because the loop is not a designated trail and each publisher's version has different side trips.

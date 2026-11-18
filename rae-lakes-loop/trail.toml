@@ -1,0 +1,83 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "rae-lakes-loop"
+name = "Rae Lakes Loop"
+country = "US"
+regions = ["CA"]
+length_km = 67
+length_note = "41.4 mi, as the National Park Service gives it: 'The loop is 41.4 miles long, and climbs from 5035' (1535m) at the trailhead to 11,978' (3651m) at Glen Pass.' This is under the 50 mile floor; the loop is one of the small band of well-known multi-day trails of 60 to 80 km listed below it."
+tier = "short"
+designation = "National Park Service trails in Kings Canyon National Park, walked as a loop from Road's End and described as one on the Park Service's Rae Lakes Loop page"
+wave = 1
+
+[source]
+status = "none"
+publisher = "National Park Service (no track included)"
+publisher_url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
+url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
+format = "No track included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. The Park Service's public Trails dataset, which was queried for a track and holds none for this loop, is a United States federal government work, public domain in the United States under 17 U.S.C. 105."
+attribution = "none (no track included)"
+osm_only = false
+mainline = "No track was built. The National Park Service's public Trails dataset (the layer named in url, and the NPS_Public_Trails service) holds no feature for Sequoia and Kings Canyon National Parks: a query on 2026-11-18 for UNITCODE = 'SEKI' returned 0 features, a query on the envelope around the loop (lon -118.7 to -118.2, lat 36.7 to 37.1) returned 0 features, and a name search for the Woods Creek, Bubbs Creek, Glen Pass and Rae Lakes trails found only trails of other parks."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The National Park Service's public Trails dataset has no features for Sequoia and Kings Canyon National Parks, and no other open track from the Park Service was found, so no track is included."
+
+[osm]
+relation = 0
+note = "Searched through Overpass on 2026-11-18. OpenStreetMap has a route relation named Rae Lakes Loop, relation 1710944 (version 22, edited 2025-05-05), with 16 main ways and 4 approach ways. Its main ways join into one part of 57.6 km (35.8 mi), 13.5% under the 41.4 mi (67 km) the National Park Service gives, so it is not the loop from Road's End and was not used and no track is included. Nothing was downloaded."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "NPS Sequoia and Kings Canyon"
+note = "No emblem of the loop was found. The Park Service's Rae Lakes Loop page, read on 2026-11-18 as text, describes it in words and gives no mark for it; the Service's arrowhead is the agency's own."
+logo_file = ""
+logo_owner = "NPS Sequoia and Kings Canyon"
+
+[verification]
+verified = false
+note = "No track to measure. The National Park Service's public Trails dataset was queried on 2026-11-18 and holds no feature for the park."
+
+[hike]
+summary = "The Rae Lakes Loop is a backpacking loop in Kings Canyon National Park, California, from Road's End in Cedar Grove up the Kings River canyon past Paradise Valley and the Woods Creek crossing to the Rae Lakes, over Glen Pass and down Bubbs Creek by way of Vidette Meadow and Junction Meadow. The Park Service gives it as 41.4 miles, climbing from about 5,035 feet at the trailhead to 11,978 feet at Glen Pass. It is most often started from the Woods Creek trailhead to walk it clockwise or from the Bubbs Creek trailhead to walk it counter-clockwise."
+official_url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
+start = "Road's End, Cedar Grove, Kings Canyon National Park, California"
+shape = "loop"
+high_point = "Glen Pass"
+high_point_m = 3651
+permit = "The Park Service issues wilderness permits for overnight trips in Sequoia and Kings Canyon National Parks, limits the number of people starting each day by entry point, and takes reservations on Recreation.gov up to six months ahead; a recreation fee is required."
+caution = "The Park Service says hikers must carry portable bear-resistant canisters and that campfires are prohibited above 10,000 feet. Camping is limited to two nights in Paradise Valley, one night per lake at Rae Lakes and two nights at Charlotte Lake, and Bullfrog Lake is closed to camping. High water at stream crossings can be a problem in May and early June, and Glen Pass may be impassable to hikers until mid to late July. The South Fork Kings River bridge above Paradise Valley washed out in the winter of 2016-2017 and a replacement will not be started before 2027; the Park Service says crossing the river can be extremely hazardous, depending on conditions."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
+publisher = "National Park Service"
+facts = ["summary", "official_url", "start", "shape", "high_point", "caution"]
+
+[[hike.source]]
+url = "https://www.nps.gov/seki/planyourvisit/cedar-grove.htm"
+publisher = "National Park Service"
+facts = ["start"]
+
+[[hike.source]]
+url = "https://www.nps.gov/seki/planyourvisit/wilderness_permits.htm"
+publisher = "National Park Service"
+facts = ["permit"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: the Rae Lakes Loop, 41.4 miles (67 km) from Road's End in Kings Canyon National Park, California, listed as one of the small band of well-known multi-day trails below the 50 mile floor. It has no track."
+fields = ["record"]
+basis = "The National Park Service's Rae Lakes Loop page gives the loop as 41.4 miles long. The owner of the dataset ruled that it joins the well-known multi-day trails of 60 to 80 km that are listed under the 50 mile floor."
+basis_url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"

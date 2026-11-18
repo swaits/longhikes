@@ -185,7 +185,7 @@ class ResultsHtmlTest(unittest.TestCase):
 
 
 def sketch_rec(id_="sk", name="Sketch Trail", start=(-110.0, 40.0), end=(-100.0, 45.0), **kw):
-    hike_table = {"start": "Start Town", "shape": "point-to-point"}
+    hike_table = {"start": "Start Town", "shape": kw.pop("shape", "point-to-point")}
     if start is not None:
         hike_table["start_lonlat"] = list(start)
     if end is not None:
@@ -198,16 +198,30 @@ def sketch_rec(id_="sk", name="Sketch Trail", start=(-110.0, 40.0), end=(-100.0,
 class SketchPointsTest(unittest.TestCase):
     def test_points_are_read_and_checked(self):
         self.assertEqual(hike.sketch_points(sketch_rec()), [[-110.0, 40.0], [-100.0, 45.0]])
-        self.assertEqual(hike.sketch_points(sketch_rec(end=None)), [[-110.0, 40.0]])
-        self.assertEqual(hike.sketch_points(sketch_rec(start=None)), [[-100.0, 45.0]])
-        self.assertEqual(hike.sketch_end(sketch_rec(start=None)), "end")
-        self.assertEqual(hike.sketch_end(sketch_rec(end=None)), "start")
+        # One end of a point-to-point trail alone is never a map.
+        self.assertEqual(hike.sketch_points(sketch_rec(end=None)), [])
+        self.assertEqual(hike.sketch_points(sketch_rec(start=None)), [])
+        # A loop (shape "loop") has one place, its start and its end.
+        self.assertEqual(hike.sketch_points(sketch_rec(end=None, shape="loop")), [[-110.0, 40.0]])
+        self.assertEqual(hike.sketch_end(sketch_rec(end=None, shape="loop")), "start")
         self.assertEqual(hike.sketch_end(sketch_rec()), "")
-        bad = sketch_rec(end=None)
+        # The same place for both ends is one point too.
+        self.assertEqual(hike.sketch_points(sketch_rec(end=(-110.0, 40.0))), [[-110.0, 40.0]])
+        bad = sketch_rec(end=None, shape="loop")
         bad["hike"]["start_lonlat"] = [999, 40]
         self.assertEqual(hike.sketch_points(bad), [])
         bad["hike"]["start_lonlat"] = "not a place"
         self.assertEqual(hike.sketch_points(bad), [])
+
+    def test_termini_are_read_from_the_record_only(self):
+        marks = hike.termini(sketch_rec())
+        self.assertEqual([(m["role"], m["label"]) for m in marks],
+                         [("start", "Start: Start Town"), ("end", "End: End Town")])
+        self.assertEqual([m["lonlat"] for m in marks], [[-110.0, 40.0], [-100.0, 45.0]])
+        loop = hike.termini(sketch_rec(end=None, shape="loop"))
+        self.assertEqual([(m["role"], m["label"]) for m in loop], [("both", "Start and end: Start Town")])
+        self.assertEqual(hike.termini(sketch_rec(end=None)), [])
+        self.assertEqual(hike.termini(make("plain", "Plain")), [])
 
     def test_a_track_suppresses_the_sketch(self):
         rec = sketch_rec()
@@ -230,10 +244,19 @@ class SketchPointsTest(unittest.TestCase):
             self.assertIs(f["properties"]["sketch"], True)
             self.assertEqual(f["properties"]["id"], "sk")
             self.assertEqual(f["properties"]["name"], "Sketch Trail")
-        one = build.sketch_features(sketch_rec(end=None))
+        one = build.sketch_features(sketch_rec(end=None, shape="loop"))
         self.assertEqual([f["geometry"]["type"] for f in one], ["MultiPoint"])
         self.assertEqual(one[0]["geometry"]["coordinates"], [[-110.0, 40.0]])
+        self.assertEqual(build.sketch_features(sketch_rec(end=None)), [])
         self.assertEqual(build.sketch_features(make("plain", "Plain")), [])
+
+    def test_trail_page_data_is_points_only_never_a_line(self):
+        feats = build.termini_features(sketch_rec())
+        self.assertEqual([f["geometry"]["type"] for f in feats], ["Point", "Point"])
+        self.assertEqual([f["properties"]["label"] for f in feats], ["Start: Start Town", "End: End Town"])
+        self.assertEqual([f["geometry"]["coordinates"] for f in feats], [[-110.0, 40.0], [-100.0, 45.0]])
+        self.assertEqual(len(build.termini_features(sketch_rec(end=None, shape="loop"))), 1)
+        self.assertEqual(build.termini_features(sketch_rec(end=None)), [])
 
     def test_overview_includes_sketches_only(self):
         fc = build.overview_geojson([sketch_rec(), make("plain", "Plain")], "/nonexistent")
@@ -272,27 +295,67 @@ class SketchMapTest(unittest.TestCase):
         self.assertIn("3 tracks, simplified for display.", doc)
         self.assertNotIn("start and end only", doc)
 
-    def test_trail_page_shows_a_sketch_map(self):
+    def test_trail_page_shows_a_map_with_both_ends_and_keeps_the_notice(self):
         _t, _d, body, needs_map = trail.render(sketch_rec(), GH)
         self.assertTrue(needs_map)
         self.assertIn('data-map="sketch"', body)
         self.assertIn("/trails/sk/sketch.json", body)
-        self.assertIn("Start Town", body)
-        self.assertIn("End Town", body)
-        self.assertIn("not the trail&rsquo;s path", body)
-        self.assertIn("No GPX here", body)
         self.assertNotIn("map--empty", body)
+        # both ends are marked, each named from the record, with text for screen readers
+        self.assertEqual(body.count('class="terminus-item"'), 2)
+        self.assertIn('data-label="Start: Start Town"', body)
+        self.assertIn('data-label="End: End Town"', body)
+        self.assertIn('data-lon="-110.0" data-lat="40.0"', body)
+        self.assertIn('data-lon="-100.0" data-lat="45.0"', body)
+        self.assertIn('aria-describedby="termini-sk"', body)
+        # the notice stays, beside the map and not inside its frame
+        self.assertIn("GPX: ", body)
+        self.assertIn("A trail is listed without a GPX when no track for it may be passed on.", body)
+        self.assertIn("Where to ask for the track", body)
+        frame = body[body.index('<div class="mapfig__frame">'):body.index('<div class="termini-notice">')]
+        self.assertNotIn("map__message", frame)
+        # the words say what is shown, and never call the track a line
+        self.assertIn("Only the start and the end are shown. There is no track for this trail here, "
+                      "and the site does not guess one.", body)
+        self.assertNotIn("dotted", body)
+        caption = body[body.index("<figcaption"):body.index("</figcaption>")]
+        self.assertNotIn("line", caption.lower())
 
-    def test_trail_page_with_only_a_start_shows_a_ring(self):
-        _t, _d, body, needs_map = trail.render(sketch_rec(end=None), GH)
+    def test_no_track_element_for_a_trail_with_no_track(self):
+        for rec in (sketch_rec(), sketch_rec(end=None, shape="loop")):
+            self.assertEqual(build.trail_outputs(rec["id"], {}, rec), ["sketch.json"])
+            self.assertEqual([f["geometry"]["type"] for f in build.termini_features(rec)],
+                             ["Point"] * len(hike.termini(rec)))
+            _t, _d, body, _m = trail.render(rec, GH)
+            self.assertNotIn("map.json", body)
+            self.assertNotIn("line.geojson", body)
+            self.assertNotIn('class="fallback__line', body)
+
+    def test_a_loop_with_one_point_shows_one_marker_for_both_ends(self):
+        _t, _d, body, needs_map = trail.render(sketch_rec(end=None, shape="loop"), GH)
         self.assertTrue(needs_map)
-        self.assertIn("The ring marks Start Town", body)
+        self.assertEqual(body.count('class="terminus-item"'), 1)
+        self.assertIn('data-label="Start and end: Start Town"', body)
+        self.assertIn("Only the place where it starts and ends is shown.", body)
+        self.assertIn("A trail is listed without a GPX when no track for it may be passed on.", body)
+
+    def test_a_point_to_point_trail_with_one_point_keeps_the_empty_frame(self):
+        for rec in (sketch_rec(end=None), sketch_rec(start=None)):
+            _t, _d, body, needs_map = trail.render(rec, GH)
+            self.assertFalse(needs_map)
+            self.assertIn("map--empty", body)
+            self.assertNotIn("sketch.json", body)
+            self.assertNotIn("terminus-item", body)
+            self.assertIn("No map is drawn: there is no track for this trail here, and the site does not guess one.",
+                          body)
 
     def test_trail_page_without_a_point_keeps_the_empty_frame(self):
         _t, _d, body, needs_map = trail.render(make("plain", "Plain Trail"), GH)
         self.assertFalse(needs_map)
         self.assertIn("map--empty", body)
         self.assertNotIn("sketch.json", body)
+        self.assertIn("No map is drawn: there is no track for this trail here, and the site does not guess one.", body)
+        self.assertIn("Nothing drawn", body)
 
 
 class ScriptAndDocsTest(unittest.TestCase):
@@ -300,6 +363,7 @@ class ScriptAndDocsTest(unittest.TestCase):
         with open(os.path.join(WEB, "assets", "app.js"), encoding="utf-8") as f:
             js = f.read()
         for part in ("dash: [0, 2]", "olt-sketch-points", "No GPX here. The dotted line only joins",
+                     "placeTermini", "terminus__label", "map__termini",
                      "normalizeSortKey", "replaceState", "data-sort-col", "'long': 'length-desc'",
                      "fallback__ring", "fallback__line--sketch"):
             self.assertIn(part, js, part)

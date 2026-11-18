@@ -112,6 +112,18 @@ def sketch_features(rec):
     return features
 
 
+def termini_features(rec):
+    """GeoJSON for the trail page's map of a trail with no track: one Point per marker (the start
+    and the end, or one point for a loop), labelled with the record's own place names. Never a
+    line: nothing here can be read as the route."""
+    props = {"id": rec["id"], "name": rec["name"], "kind": rec["derived"]["kind"],
+             "country": rec["country"], "length_km": rec["length_km"], "sketch": True}
+    return [{"type": "Feature",
+             "properties": dict(props, role=m["role"], place=m["place"], label=m["label"]),
+             "geometry": {"type": "Point", "coordinates": m["lonlat"]}}
+            for m in hike.termini(rec)]
+
+
 def trail_outputs(tid, files, rec=None):
     """Names of the data files written into _site/trails/<id>/ for these files."""
     names = []
@@ -247,7 +259,7 @@ def build_trail(rec, out_dir, code_mtime, force, stats):
             box = geo.merge_bbox([geo.bbox(m["geometry"]["coordinates"]) for m in maps])
             fc = {"type": "FeatureCollection", "bbox": box, "features": maps}
             write_json(os.path.join(tdir, "map.json"), fc, stats)
-        sketches = sketch_features(rec) if "line" not in files else []
+        sketches = termini_features(rec) if "line" not in files else []
         if sketches:
             box = hike.sketch_bbox(hike.sketch_points(rec), pad=True)
             write_json(os.path.join(tdir, "sketch.json"),

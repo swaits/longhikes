@@ -214,7 +214,7 @@ def _extent(rec):
     the one point on file. Coordinates come from the record or its track, never made up."""
     box = rec.get("derived", {}).get("bbox") or rec.get("derived", {}).get("map_bbox")
     if not box:
-        pts = hike.sketch_points(rec)
+        pts = [p for p in (hike.start_point(rec), hike.end_point(rec)) if p]  # the record's own points, map or no map
         if len(pts) == 1:
             return {"@type": "GeoCoordinates", "longitude": pts[0][0], "latitude": pts[0][1]}
         if pts:

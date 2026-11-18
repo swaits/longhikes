@@ -807,63 +807,53 @@ def empty_frame(rec):
 
 
 def sketch_figure(rec):
-    """A real map for a trail with no track but a known start or end: a dotted
-    straight line between the two, or one ring. It says plainly that the line only
-    joins the start and the end, and keeps the words about where to get a track."""
+    """A real map for a trail with no track whose start and end are on file (or a loop's one place):
+    the base map fitted to those points, with each one marked and named. No line joins them and
+    nothing is drawn that could be read as the route. The notice about where to get a track sits
+    beside the map, not over it."""
     points = hike.sketch_points(rec)
     box = hike.sketch_bbox(points, pad=True)
     bbox_attr = f' data-bbox="{",".join(str(v) for v in box)}"' if box else ""
     route = common.is_route(rec)
-    h = hike.table(rec)
-    start = h.get("start") if isinstance(h.get("start"), str) else ""
-    end = h.get("end") if isinstance(h.get("end"), str) else ""
-    start, end = start.strip(), end.strip()
-    if len(points) == 2:
-        if start and end:
-            where = (f"The dotted line runs straight from {esc(start)} to {esc(end)}. "
-                     "It only joins the start and the end; that is not the trail&rsquo;s path.")
-        elif start:
-            where = (f"The dotted line runs straight from {esc(start)} to where it ends. "
-                     "It only joins the start and the end; that is not the trail&rsquo;s path.")
-        else:
-            where = ("The dotted line runs straight between its start and its end. "
-                     "It only joins the two; that is not the trail&rsquo;s path.")
-        legend_text = "No GPX here: start and end only"
+    marks = hike.termini(rec)
+    items = "".join(
+        f'<li class="terminus-item" data-lon="{m["lonlat"][0]}" data-lat="{m["lonlat"][1]}" '
+        f'data-role="{m["role"]}" data-label="{esc(m["label"])}">'
+        f'<strong>{"Start and end" if m["role"] == "both" else m["role"].capitalize()}</strong>'
+        f'{" " + esc(m["place"]) if m["place"] else ""}</li>' for m in marks)
+    if len(marks) == 1:
+        caption = ("Only the place where it starts and ends is shown. There is no track for this trail here, "
+                   "and the site does not guess one.")
     else:
-        if hike.sketch_end(rec) == "end":
-            where = (f"The ring marks {esc(end)}, where it ends. " if end else "The ring marks where it ends. ")
-            where += "No position is on file for the start, so no line is drawn."
-            legend_text = "No GPX here: end only"
-        elif h.get("shape") == "loop":
-            where = (f"The ring marks {esc(start)}, where the loop starts and ends. " if start
-                     else "The ring marks where the loop starts and ends. ")
-            where += "It shows where the trail is, not its path."
-            legend_text = "No GPX here: start only"
-        else:
-            where = (f"The ring marks {esc(start)}, where it starts. " if start else "The ring marks where it starts. ")
-            where += "No position is on file for the end, so no line is drawn."
-            legend_text = "No GPX here: start only"
-    _title, status, reason, rule, actions_html = _no_gpx_parts(rec)
+        caption = ("Only the start and the end are shown. There is no track for this trail here, "
+                   "and the site does not guess one.")
+    title, status, reason, rule, actions_html = _no_gpx_parts(rec)
     reason_html = reason if isinstance(reason, Markup) else common.rich(reason)
     frame_attr, drawing = sketch_of(box, sketch.trail_features(rec["id"]), route_main=route)
-    return f"""<figure class="mapfig mapfig--detail detail__map" id="track" data-map="sketch" data-src="/trails/{esc(rec["id"])}/sketch.json" data-route="{"yes" if route else "no"}"{bbox_attr}{frame_attr} data-outdoor="{OUTDOOR_STYLE}">
+    rid = esc(rec["id"])
+    return f"""<figure class="mapfig mapfig--detail mapfig--termini detail__map" id="track" data-map="sketch" data-src="/trails/{rid}/sketch.json" data-route="{"yes" if route else "no"}"{bbox_attr}{frame_attr} data-outdoor="{OUTDOOR_STYLE}">
   <div class="mapfig__frame">
     <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
-    <div class="map" role="region" aria-label="Map showing the start and end of the {esc(rec["name"])}; no GPX here">
+    <div class="map" role="region" aria-label="Map of where the {esc(rec["name"])} starts and ends. No track is drawn." aria-describedby="termini-{rid}">
       <div class="map__fallback">{drawing}</div>
       <div class="map__canvas"></div>
-      <p class="map__status" role="status">The map needs JavaScript. The ends of the trail are named below it.</p>
+      <div class="map__termini" aria-hidden="true"></div>
+      <p class="map__status" role="status">The map needs JavaScript. The ends of the trail are named beside it.</p>
     </div>
     <span class="mapfig__corner mapfig__corner--se" aria-hidden="true"></span>
   </div>
-  <figcaption class="mapfig__caption mapfig__caption--sketch">
-    <ul class="legend" aria-label="Legend"><li>{common.SWATCH_SKETCH}{esc(legend_text)}</li></ul>
-    <div class="sketch-note">
-    <p><strong>No GPX here.</strong> {where}</p>
-    <p>{reason_html}</p>
-    <p class="note">{esc(rule)}</p>
-    {actions_html}
+  <div class="termini-notice">
+    <div class="map__message">
+      <p class="kicker">GPX: {esc(facets.GPX_STATUS[status])}</p>
+      <h2 id="noline-title">{esc(title)}</h2>
+      <p class="map__reason">{reason_html}</p>
+      <p class="note">{esc(rule)}</p>
+      {actions_html}
     </div>
+  </div>
+  <figcaption class="mapfig__caption mapfig__caption--termini">
+    <ul class="termini-list" id="termini-{rid}" aria-label="Marked on the map">{items}</ul>
+    <p>{caption}</p>
   </figcaption>
 </figure>"""
 

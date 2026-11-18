@@ -669,12 +669,12 @@ def overview_map(recs, label, *, wide=False, scope="", saved=False):
         s = len(sketches)
         sentences.append(f'{s} trail{"s" if s != 1 else ""} with no GPX here '
                          f'{"are" if s != 1 else "is"} shown as a dotted straight line between '
-                         'their start and end, or a ring where only one end is known. '
+                         'their start and end, or a ring for a loop, which starts and ends in one place. '
                          'That is not the trail&rsquo;s path.')
     if saved:
         sentences = ["Tracks are simplified for display. Select one for its name.",
                      "A trail with no GPX here is shown by its start and end only: dots straight from one "
-                     "to the other, or a ring where only one end is known."]
+                     "to the other, or a ring for a loop."]
         ids_attr += f' data-drawable="{esc(" ".join(ids))}"'
     sentences.append("Each trail&rsquo;s page names its source, credit and licence. "
                      "Base map: OpenFreeMap, &copy;&nbsp;OpenMapTiles, data &copy;&nbsp;OpenStreetMap contributors.")

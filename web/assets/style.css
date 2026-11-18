@@ -825,9 +825,63 @@ html.js .map__status:not([data-say]) { display: none; }
 .legend li { display: inline-flex; align-items: center; gap: var(--space-2); }
 /* Under a map of many trails the legend keeps a row to itself, however short it is. */
 .mapfig[data-map="overview"] .legend { flex-basis: 100%; }
-.mapfig__caption--sketch { align-items: start; }
-.sketch-note { display: grid; gap: var(--space-2); max-inline-size: 42rem; }
-.sketch-note .cluster { margin-block-start: var(--space-1); }
+/* A trail with no track and a known start and end (olt/trail.py sketch_figure): the map with a
+   labelled marker at each end, and the notice about where to get a track beside or under it,
+   never over it. No line joins the two. */
+.mapfig--termini { display: grid; gap: var(--space-4); align-content: start; }
+.mapfig--termini .mapfig__frame { grid-area: frame; }
+.mapfig--termini .termini-notice { grid-area: notice; min-inline-size: 0; }
+.mapfig--termini .mapfig__caption { grid-area: caption; margin-block-start: 0; }
+.mapfig--termini { grid-template-areas: "frame" "caption" "notice"; gap: var(--space-3); }
+.mapfig--termini .map__message { max-inline-size: none; padding: var(--space-4); box-shadow: 4px 4px 0 var(--rule); }
+.mapfig--termini .map__message > * + * { margin-block-start: var(--space-2); }
+.mapfig--termini .map__message h2 { font-size: var(--step-1); }
+.mapfig--termini .map { aspect-ratio: 16 / 10; }
+/* Wide: the notice stands beside the map, so both ends and the notice are in the first screen. */
+@media (min-width: 64rem) {
+  .mapfig--termini {
+    grid-template-columns: minmax(0, 1fr) 17.5rem;
+    grid-template-areas: "frame notice" "caption caption";
+    gap: var(--space-3) var(--space-4);
+  }
+  .mapfig--termini .map { aspect-ratio: auto; block-size: clamp(17rem, calc(100svh - 28rem), 26rem); }
+}
+.termini-list { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-5); padding: 0; margin: 0 0 var(--space-1); list-style: none; }
+/* With the script the labels on the map say the same; the list stays for screen readers. */
+html.js .termini-list { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); }
+.mapfig--termini .map__reason { font-size: var(--step-0); line-height: 1.5; }
+.termini-list strong { margin-inline-end: var(--space-1); }
+.map__termini { position: absolute; inset: 0; z-index: 2; overflow: hidden; pointer-events: none; }
+.terminus { position: absolute; inset-block-start: 0; inset-inline-start: 0; }
+.terminus__dot {
+  position: absolute;
+  inset-block-start: -8px;
+  inset-inline-start: -8px;
+  inline-size: 16px;
+  block-size: 16px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--casing);
+  border: 3.5px solid var(--trail);
+  box-shadow: 0 0 0 2px var(--casing);
+}
+.mapfig[data-route="yes"] .terminus__dot { border-color: var(--route); }
+.terminus__label {
+  position: absolute;
+  inset-inline-start: 0;
+  inline-size: max-content;
+  max-inline-size: 15rem;
+  padding: 2px var(--space-2);
+  transform: translateX(calc(-50% + var(--dx, 0px)));
+  background: var(--surface);
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font: 600 var(--step--1)/1.3 var(--font-sans);
+  text-align: center;
+}
+.terminus--above .terminus__label { inset-block-end: 13px; }
+.terminus--below .terminus__label { inset-block-start: 13px; }
+@media (max-width: 40rem) { .terminus__label { max-inline-size: 10rem; font-size: var(--step--2); } }
 
 /* Empty frame: the record has no line, so nothing is drawn */
 .map--empty {

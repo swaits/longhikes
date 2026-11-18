@@ -123,8 +123,10 @@ def end_point(rec):
 
 def sketch_points(rec):
     """The points a map may sketch for a trail with no track: [start, end]
-    when both are on file, or the one that is. Empty when the trail has a
-    track or neither point (see sketch_end for which end a lone point is).
+    when both are on file, or the one point of a loop (shape "loop", or the
+    same place for both ends), which is its start and its end. Empty when the
+    trail has a track, or when only one end of a point-to-point trail is known:
+    one end alone says nothing a reader can use, so that trail gets no map.
 
     A sketch is only ever these points. It is never a track: nothing here
     feeds a download, a GPX status or an elevation figure.
@@ -132,8 +134,12 @@ def sketch_points(rec):
     derived = rec.get("derived", {})
     if derived.get("has_line") or "line" in derived.get("files", {}):
         return []
-    points = [p for p in (start_point(rec), end_point(rec)) if p]
-    return points[:1] if len(points) == 2 and points[0] == points[1] else points
+    start, end = start_point(rec), end_point(rec)
+    if start and end:
+        return [start] if start == end else [start, end]
+    if start and shape(rec) == "loop":
+        return [start]
+    return []
 
 
 def sketch_end(rec):
@@ -141,6 +147,29 @@ def sketch_end(rec):
     if len(sketch_points(rec)) != 1:
         return ""
     return "start" if start_point(rec) else "end"
+
+
+def termini(rec):
+    """The markers of the trail page's map for a trail with no track, from the
+    record only: [{"role": "start" | "end" | "both", "lonlat": [lon, lat],
+    "place": name or "", "label": text}]. A loop has one marker that is both
+    its start and its end. Empty whenever sketch_points is."""
+    points = sketch_points(rec)
+    if not points:
+        return []
+    h = table(rec)
+
+    def name(key):
+        v = h.get(key)
+        return v.strip() if isinstance(v, str) else ""
+
+    def marker(role, point, place):
+        head = {"start": "Start", "end": "End", "both": "Start and end"}[role]
+        return {"role": role, "lonlat": point, "place": place,
+                "label": f"{head}: {place}" if place else head}
+    if len(points) == 1:
+        return [marker("both", points[0], name("start") or name("end"))]
+    return [marker("start", points[0], name("start")), marker("end", points[1], name("end"))]
 
 
 def sketch_bbox(points, *, pad=False):

@@ -800,15 +800,9 @@
         { id: 'olt-sketch-points', type: 'circle', strokeByKind: true, strokeWidth: 2, radius: [3, 3, 9, 6], filter: IS_SKETCH, hit: true }
       ];
     }
-    if (kind === 'sketch') {
-      var col = routeMain ? '--route' : '--trail';
-      /* A pale band under the dots lifts them off relief and contours. */
-      return [
-        { id: 'olt-sketch-halo', color: '--casing', width: [5, 6, 12, 9], opacity: 0.6, filter: IS_SKETCH },
-        { id: 'olt-sketch', color: col, width: [5, 3, 12, 5], dash: [0, 2], cap: 'round', filter: IS_SKETCH },
-        { id: 'olt-sketch-points', type: 'circle', stroke: col, strokeWidth: 2.5, radius: [5, 5, 12, 8], filter: IS_SKETCH }
-      ];
-    }
+    /* A trail page with no track: the map draws no layer at all. The start and the end are
+       labelled markers (placeTermini in initMap), and nothing joins them. */
+    if (kind === 'sketch') return [];
     return [
       { id: 'olt-casing', color: '--casing', width: [5, 4, 12, 8] },
       { id: 'olt-alt', color: '--trail', width: [5, 1.5, 12, 3], dash: [2, 1.6], filter: ['==', ['get', 'role'], 'alternate'] },
@@ -942,7 +936,89 @@
       if (!frame || !hasSketch()) return;
       var r = host.getBoundingClientRect();
       if (r.width && r.height) corners(extentOf(frame, r.width, r.height, 0));
+      placeTermini();
     }
+
+    /* The start and the end of a trail with no track: a dot and a label each, from the
+       page's own list of them (.terminus-item: the record's places and positions). They sit
+       over the drawing and over the live map alike, and are text for screen readers in that
+       list, so the layer is hidden from them. A northern end's label goes above its dot, a
+       southern one's below, and each is kept inside the frame. */
+    var termini = [];
+    var terminiLayer = host.querySelector('.map__termini');
+    if (terminiLayer) {
+      Array.prototype.forEach.call(fig.querySelectorAll('.terminus-item'), function (li) {
+        var el = document.createElement('div');
+        el.className = 'terminus terminus--' + li.dataset.role;
+        var dot = document.createElement('span');
+        dot.className = 'terminus__dot';
+        var label = document.createElement('span');
+        label.className = 'terminus__label';
+        label.textContent = li.dataset.label;
+        el.appendChild(dot);
+        el.appendChild(label);
+        terminiLayer.appendChild(el);
+        termini.push({ el: el, label: label, lon: Number(li.dataset.lon), lat: Number(li.dataset.lat) });
+      });
+    }
+    function placeTermini() {
+      if (!termini.length) return;
+      var r = host.getBoundingClientRect();
+      if (!r.width || !r.height) return;
+      var W = r.width, H = r.height;
+      var ext = entry.ready && entry.map ? null : (frame ? extentOf(frame, W, H, 0) : null);
+      var xy = termini.map(function (t) {
+        if (ext) return { x: W / 2 + (t.lon - ext.cx) * ext.rad * ext.k, y: H / 2 - (mercY(t.lat) - ext.cy) * ext.k };
+        var p = entry.map.project([t.lon, t.lat]);
+        return { x: p.x, y: p.y };
+      });
+      /* Each label goes above or below its dot, as far as possible outward (the northern end's
+         above, the southern end's below), kept inside the frame, and never over the other label
+         or the other dot: the four ways of placing two labels are scored and the best one used. */
+      var HALF = 13;
+      var boxes = termini.map(function (t, i) {
+        var w = t.label.offsetWidth, h = t.label.offsetHeight, p = xy[i];
+        var x0 = p.x - w / 2;
+        var dx = x0 < 8 ? 8 - x0 : (x0 + w > W - 8 ? (W - 8) - (x0 + w) : 0);
+        return { w: w, h: h, dx: dx, left: x0 + dx };
+      });
+      function rect(i, above) {
+        var b = boxes[i], p = xy[i];
+        var top = above ? p.y - HALF - b.h : p.y + HALF;
+        return { l: b.left, r: b.left + b.w, t: top, b: top + b.h };
+      }
+      function overlap(a, c) {
+        var w = Math.min(a.r, c.r) - Math.max(a.l, c.l), h = Math.min(a.b, c.b) - Math.max(a.t, c.t);
+        return w > 0 && h > 0 ? w * h : 0;
+      }
+      function dotBox(i) { return { l: xy[i].x - 10, r: xy[i].x + 10, t: xy[i].y - 10, b: xy[i].y + 10 }; }
+      function cost(sides) {
+        var c = 0;
+        var rs = sides.map(function (above, i) { return rect(i, above); });
+        rs.forEach(function (r, i) {
+          c += Math.max(0, 4 - r.t) * 40 + Math.max(0, r.b - (H - 4)) * 40;
+          xy.forEach(function (_, j) { if (j !== i) c += overlap(r, dotBox(j)) * 20; });
+          if (i > 0) c += overlap(r, rs[0]) * 20;
+        });
+        return c;
+      }
+      var outward = xy.length > 1 && xy[1].y < xy[0].y ? [false, true] : [true, false];
+      var choices = xy.length === 1 ? [[true], [false]]
+        : [outward, [!outward[0], !outward[1]], [true, true], [false, false]];
+      var best = choices[0], bestCost = Infinity;
+      choices.forEach(function (c) {
+        var k = cost(c);
+        if (k < bestCost) { best = c; bestCost = k; }
+      });
+      termini.forEach(function (t, i) {
+        var p = xy[i];
+        t.el.style.transform = 'translate(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px)';
+        t.el.classList.toggle('terminus--above', best[i]);
+        t.el.classList.toggle('terminus--below', !best[i]);
+        t.label.style.setProperty('--dx', boxes[i].dx.toFixed(1) + 'px');
+      });
+    }
+    entry.placeTermini = placeTermini;
     function redrawFallback() {
       if (hasSketch()) { sketchCorners(); return; }
       if (!entry.ready && entry.fc) {
@@ -1100,6 +1176,7 @@
         }
         entry.ready = true;
         settled = true;
+        placeTermini();
         /* The live map shows (and the drawing gives way, in the CSS) once it has drawn its first
            frame with the tracks: the base map fills in behind a track that holds still. */
         var shown = false;
@@ -1161,6 +1238,11 @@
         corners({ w: b.getWest(), e: b.getEast(), n: b.getNorth(), s: b.getSouth() });
       }
       map.on('moveend', function () { if (entry.ready) mapCorners(); });
+      if (termini.length) {
+        map.on('move', placeTermini);
+        map.on('resize', placeTermini);
+        map.on('load', placeTermini);
+      }
       document.addEventListener('olt:theme', function () {
         if (!entry.ready || !settled) return;  /* a style still loading is dressed in the new theme */
         if (current === 'outdoor') restyle();
@@ -1253,7 +1335,7 @@
           var pointOnly = (g.type === 'MultiPoint' && g.coordinates.length === 1) || g.type === 'Point';
           var note = document.createElement('p');
           note.textContent = pointOnly
-            ? 'No GPX here. The ring only marks one end of it; it is not the trail\u2019s path.'
+            ? 'No GPX here. The ring only marks where it starts and ends; it is not the trail\u2019s path.'
             : 'No GPX here. The dotted line only joins the start and the end; it is not the trail\u2019s path.';
           box.appendChild(note);
         }

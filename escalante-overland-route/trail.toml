@@ -1,0 +1,91 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "escalante-overland-route"
+name = "Escalante Overland Route"
+country = "US"
+regions = ["UT"]
+length_km = 129
+length_note = "80 mi, Steve Allen's figure as Alan Dixon reports it. Dixon's 20 mile extension from the town of Escalante makes 100 mi."
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Steve Allen); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Steve Allen (publishes the route)"
+publisher_url = "https://uofupress.com/books/canyoneering-3/"
+url = "https://www.adventurealan.com/escalante-overland-route/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://www.adventurealan.com/escalante-overland-route/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the route is described in the author's guidebook."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is published as a description in the author's guidebook, and no track from the author is published. Get the route from Canyoneering 3: Loop Hikes in Utah's Escalante."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's author does not publish a track."
+
+[shield]
+status = "no-logo-exists"
+logo_source = "https://www.adventurealan.com/escalante-overland-route/"
+contact = "Steve Allen"
+note = "Looked at https://www.adventurealan.com/escalante-overland-route/ and the University of Utah Press page for the guidebook. They show photos and the book's details only; no emblem for the route."
+logo_file = ""
+logo_owner = "Steve Allen"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Steve Allen"
+year = 1997
+line_policy = "sold"
+note = "Described as the Overland Route in a few short paragraphs at the end of the guidebook Canyoneering 3: Loop Hikes in Utah's Escalante (University of Utah Press, 1997), which starts on page 306 as Alan Dixon reports it. Dixon's page is a trip report on the route; it does not give a track."
+
+[[guide]]
+title = "Canyoneering 3: Loop Hikes in Utah's Escalante"
+author = "Steve Allen"
+access = "purchase"
+url = "https://uofupress.com/books/canyoneering-3/"
+format = "book"
+publisher = "University of Utah Press"
+isbn = "9780874805451"
+
+[hike]
+summary = "The Escalante Overland Route follows the rim above the Escalante River canyon in southern Utah, from Utah Highway 12 near Calf Creek Falls to where the route leaves the canyon just before Lake Powell. It has no trails and is described as semi-technical, for experienced canyoneers who also climb. Water is scarce above the river."
+official_url = "https://www.adventurealan.com/escalante-overland-route/"
+start = "Utah Highway 12 near Calf Creek Falls, Utah"
+end = "Escalante River canyon just before Lake Powell, Utah"
+shape = "point-to-point"
+days = [6, 10]
+season = "April to mid-May, and mid-September to mid-November"
+months = [4, 5, 9, 10, 11]
+terrain = ["desert", "canyon"]
+travel = "mostly-cross-country"
+caution = "The route is semi-technical, for experienced canyoneers who also climb. One party used a rope to lower packs on a hard downclimb, and there is no built trail."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://www.adventurealan.com/escalante-overland-route/"
+publisher = "Adventure Alan & Co (a trip report by Alan Dixon)"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Escalante Overland Route."
+fields = ["record"]
+basis = "The record's own source entry: Steve Allen."
+asked_by = "the dataset's own check"
+outcome = "applied"

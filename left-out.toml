@@ -202,7 +202,7 @@ name = "Grand Gulch"
 country = "US"
 regions = ["UT"]
 reason = "not-published-as-route"
-note = "The Bureau of Land Management publish Grand Gulch as a canyon in a Wilderness Study Area, reached by separate short access trails, and state no through length. No land manager publishes it as a named walk with a length."
+note = "The Bureau of Land Management publish Grand Gulch as a canyon in a Wilderness Study Area, reached by separate short access trails, and state no through length. A guide site, Road Trip Ryan, says people generally mean about 50 miles from the Kane Gulch Ranger Station down to the San Juan River, but the land manager still publishes no named through walk with a length. The Bureau's page lists trailheads at Kane Gulch and at canyon heads and mouths draining into Comb Wash, and none where the gulch meets the San Juan River. Re-read 2026-11-18."
 source_url = "https://www.blm.gov/visit/grand-gulch"
 decided = "2026-11-16"
 was_listed = false
@@ -414,6 +414,19 @@ note = "The Palmetto Conservation Foundation say it will span 500 miles when com
 source_url = "https://www.palmettotrail.org/about/the-palmetto-trail"
 decided = "2026-11-16"
 was_listed = true
+
+[[trail]]
+id = "paria-canyon"
+name = "Paria Canyon"
+country = "US"
+regions = ["UT", "AZ"]
+length_mi = 38
+length_km = 61
+reason = "below-floor"
+note = "DesertUSA, in text it credits to the Bureau of Land Management, gives the walk from the White House Trailhead to Lees Ferry as 38 miles. The Bureau's own permit page for the canyon gives no length. That is below the 50 mile floor."
+source_url = "https://www.desertusa.com/blm/blm_az_hike.html"
+decided = "2026-11-18"
+was_listed = false
 
 [[trail]]
 id = "pine-mountain-state-scenic-trail"

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-18 - The Escalante Overland Route, and two notes on trails left out
+
+- The Escalante Overland Route is new: an off-trail rim route above the Escalante River canyon in southern Utah, from Utah Highway 12 near Calf Creek Falls to just before Lake Powell. Steve Allen published it in 1997 in his guidebook Canyoneering 3: Loop Hikes in Utah's Escalante. Alan Dixon's trip report gives Allen's route as 80 miles (129 km) and describes a 20 mile extension from the town of Escalante that makes 100, and the record's length note says so.
+- It has no track. The route is described in the book, and no author's track is published. The record carries Dixon's caution that it is semi-technical, for experienced canyoneers who also climb, that one party used a rope to lower packs on a hard downclimb, and that there is no built trail. Steve Allen has an author page with a short biography from the University of Utah Press and Dixon's report.
+- Paria Canyon, 38 miles (61 km) from the White House Trailhead to Lees Ferry on a Bureau of Land Management permit, is now on the left-out list as below the 50 mile floor. The small band of well-known trails below the floor is unchanged.
+- The Grand Gulch note on the left-out list now says that a guide site describes about 50 miles from the Kane Gulch Ranger Station to the San Juan River, and that the Bureau of Land Management still publishes no named through walk with a length. Grand Gulch stays left out.
+- The home page, lists and the place page for Utah each count one more trail.
+- Author biographies now use the pronoun that their cited sources use for the person, in place of repeating the surname in every sentence. 17 biographies changed. Where no cited source uses a pronoun for the person, the biography still repeats the surname, and the schema states the rule.
+
 ## 2026-11-18 - The Thorofare and South Boundary Trail, in Yellowstone
 
 - The Thorofare and South Boundary Trail is new: 68 miles (109 km) on foot through Yellowstone National Park in Wyoming, from the Nine Mile Trailhead on the east side of Yellowstone Lake, south on the Thorofare Trail, then west on the South Boundary Trail to the South Entrance. Frommer's gives the 68 miles for the hike; other outlets say 69 to 70. The Park Service gives only the parts, 33.1 miles for the Thorofare Trail alone, and the record's length note says so.

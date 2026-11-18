@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-198 trails, 121 with a track and 77 with no track included. Of these, 58 are routes: 2 with a track and 56 without.
+199 trails, 121 with a track and 78 with no track included. Of these, 59 are routes: 2 with a track and 57 without.
 
 <!-- END COUNTS -->
 
@@ -209,6 +209,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | desert-winter-thru-hike | Desert Winter Thru-Hike | US | AZ, CA | 1287 | Brett Tucker ("Blisterfree") and partner, simBLISSity Ultralight Designs | withheld | no | [Desert WTH! topo mapset](https://www.simblissity.net/desert-wth-mapset.shtml) (free) |
 | eastern-continental-trail | Eastern Continental Trail | US | FL, AL, GA, TN, NC, VA, WV, MD, PA, NJ, NY, CT, MA, VT, NH, ME, QC, NB | 7081 | M. J. Eberhart (trail name Nimblewill Nomad) | open | no | [Ten Million Steps](https://nimblewillnomad.com/books/) (purchase) |
 | eastern-sierra-high-route | Eastern Sierra High Route | US | CA | 113 | Dan Stenziano | sold | no | [Eastern Sierra High Route Guide](https://danstenziano.com/products/eastern-sierra-high-route-guide) (purchase) |
+| escalante-overland-route | Escalante Overland Route | US | UT | 129 | Steve Allen | sold | no | [Canyoneering 3: Loop Hikes in Utah's Escalante](https://uofupress.com/books/canyoneering-3/) (purchase) |
 | georgia-loop | Georgia Loop | US | GA | 89 | Benton MacKaye Trail Association | unclear | no | [Georgia Loop](https://bmta.org/backpacking-hikes/) (free) |
 | grand-enchantment | Grand Enchantment Trail | US | AZ, NM | 1239 | Brett Tucker | sold | no | [Grand Enchantment Trail Official Mapset](http://www.simblissity.net/get/) (purchase) |
 | grand-moab-route | Grand-Moab Route | US | CO, UT | 225 | Paul Mags (PMags.com) | open | no | [The Grand-Moab Route](https://pmags.com/the-grand-moab-route) (free) |

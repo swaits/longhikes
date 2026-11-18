@@ -578,7 +578,7 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
         lists += f'\n      <ol class="entries"{list_id}{every}>\n{rows}\n      </ol>'
     if finder:
         count = (f'<p class="results-count" id="results-count" role="status" data-noun="{noun}">'
-                 f'<strong>{total}</strong> of {total} {noun}</p>')
+                 f'<strong>{total}</strong> {noun}</p>')
         empty = f"""
       <div class="empty-state" id="empty-state" hidden>
         <p><strong>No {noun} match these filters.</strong></p>

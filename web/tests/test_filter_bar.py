@@ -319,6 +319,39 @@ class CountsAreTrueTest(unittest.TestCase):
         self.assertIn("var c = FacetCount.count(rows, s, lengthSteps());", js)
 
 
+class CountWordsTest(unittest.TestCase):
+    """The count above a list: "35 trails" when none is left out, "12 of 35 trails" when some are."""
+
+    @staticmethod
+    def count_of(body):
+        m = re.search(r'<p class="results-count"[^>]*><strong>([^<]*)</strong>([^<]*)</p>', str(body))
+        return m.group(1) + m.group(2)
+
+    def test_a_page_with_nothing_filtered_reads_the_plain_count(self):
+        records = Pages.recs()
+        lst = browse.LISTS[0]
+        recs = browse.members(lst, records)
+        pages = {"home": home.render(records, SITE, ROOT),
+                 "list": regions.list_page(lst, recs, len(records), SITE, records=records)[2]}
+        for name, body in pages.items():
+            if 'id="results-count"' not in str(body):
+                continue
+            text = self.count_of(body)
+            self.assertRegex(text, r"^[\d,]+ (trails?|routes?)$", name)
+            self.assertNotRegex(str(body), r"\b(\d[\d,]*) of \1\b", name)
+
+    @unittest.skipUnless(NODE, "node is not installed")
+    def test_the_script_words_the_count_both_ways(self):
+        prog = facet_count_source() + """
+var c = [[35, 35, 'trails'], [12, 35, 'trails'], [1, 1, 'trail'], [1, 58, 'routes'], [0, 58, 'routes'], [58, 58, 'routes']]
+  .map(function (a) { return a[0] + ' ' + FacetCount.countWords(a[0], a[1], a[2]); });
+process.stdout.write(JSON.stringify(c));
+"""
+        out = subprocess.run([NODE, "-e", prog], capture_output=True, text=True, check=True)
+        self.assertEqual(json.loads(out.stdout), ["35 trails", "12 of 35 trails", "1 trail", "1 of 58 routes",
+                                                  "0 of 58 routes", "58 routes"])
+
+
 class PanelInTheFlowTest(unittest.TestCase):
     def test_the_open_panel_is_not_laid_over_the_rows(self):
         css = read(WEB, "assets", "style.css")

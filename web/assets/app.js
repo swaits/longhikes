@@ -1545,7 +1545,13 @@
       return out;
     }
 
-    return { passes: passes, count: count };
+    /* The words after the figure of the count above a list: "trails" when every one is shown,
+       "of 35 trails" when some are left out. */
+    function countWords(shown, total, noun) {
+      return (shown === total ? '' : 'of ' + total + ' ') + noun;
+    }
+
+    return { passes: passes, count: count, countWords: countWords };
   })();
   /* facet-counts:end */
 
@@ -1926,13 +1932,14 @@
         ol.hidden = !any;
         if (head && head.classList.contains('results__group')) head.hidden = !any;
       });
-      var text = shown.length + ' of ' + total + ' ' + noun;
+      var words = FacetCount.countWords(shown.length, total, noun);
+      var text = shown.length + ' ' + words;
       if (count && count.textContent !== text) {
         count.innerHTML = '';
         var strong = document.createElement('strong');
         strong.textContent = String(shown.length);
         count.appendChild(strong);
-        count.appendChild(document.createTextNode(' of ' + total + ' ' + noun));
+        count.appendChild(document.createTextNode(' ' + words));
       }
       if (empty) empty.hidden = shown.length > 0;
       if (listHead) listHead.hidden = shown.length === 0;

@@ -297,7 +297,8 @@ class BuiltVocabularyTest(unittest.TestCase):
         doc = self.read("index.html")
         n = len(re.findall(r'<li class="entry" ', doc))
         self.assertEqual(n, len(records.load_records(ROOT)))
-        self.assertIn(f"<strong>{n}</strong> of {n} trails", doc)
+        self.assertIn(f"<strong>{n}</strong> trails</p>", doc)
+        self.assertNotIn(f"{n} of {n}", doc)
         self.assertIn(f"{n} trails. Narrow them", doc)
 
     def test_route_badges_link_to_the_routes_list(self):

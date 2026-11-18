@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-18 - The count above a list drops "of" when nothing is left out
+
+- The count above a list of trails now reads "35 trails" when every trail is shown, instead of "35 of 35 trails". When a search or a filter leaves some out it still reads "12 of 35 trails", and it goes back to "35 trails" when everything is cleared. Lists of routes read the same way ("58 routes", "1 of 58 routes").
+- The page and the script that updates it use the same wording, so the count reads the same before and after the script runs.
 ## 2026-11-18 - The Rae Lakes Loop now has a track
 
 - The Rae Lakes Loop now has a track from OpenStreetMap (relation 1710944, under the Open Database Licence, credited to OpenStreetMap contributors). The loop itself is 57.6 km (35.8 miles) in one part, from the junction of the Paradise Valley and Bubbs Creek trails by Woods Creek, the Rae Lakes and Glen Pass. The 1.9 mile stem from Road's End to that junction is kept apart, as an alternate.

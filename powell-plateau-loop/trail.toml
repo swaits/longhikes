@@ -5,7 +5,7 @@ name = "Powell Plateau Loop"
 country = "US"
 regions = ["AZ"]
 length_km = 88
-length_note = "54.6 mi, as the book gives it for Trip 6 (page 75), with 7,250 ft of elevation gain, 9 days and no shuttle. The figure is the book's own and is not measured from a track."
+length_note = "54.6 mi, as the book gives it for Trip 6 (page 75), with 7,250 ft of elevation gain, 9 days and no shuttle. The book's days assume about 8 miles a day, and it calls its itinerary a minimum: 12 days would not be excessive. The figure is the book's own and is not measured from a track."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
@@ -73,7 +73,7 @@ months = [9, 10, 11]
 terrain = ["canyon"]
 travel = "mostly-cross-country"
 permit = "A permit is required to camp within Grand Canyon National Park, as the book states."
-caution = "The book calls this a strenuous cross-country hike, says every member of the party should be fit and that the leader should have experience hiking cross-country in the Grand Canyon. The author rates its difficulty 10 out of 10. The book lists water at Muav Saddle Spring, Tapeats Creek, the Colorado River, Key Spring, Hakatai Canyon, Shinumo Creek and White Creek. Campfires are not allowed in the park's backcountry, and pets are not allowed on trails or in the backcountry."
+caution = "The book calls this a strenuous cross-country hike, says every member of the party should be fit and that the leader should have experience hiking cross-country in the Grand Canyon. The author rates its difficulty 10 out of 10. The book advises carrying a short rope to haul packs, and says one polished chute needs care. The book lists water at Muav Saddle Spring, Tapeats Creek, the Colorado River, Key Spring, Hakatai Canyon, Shinumo Creek and White Creek. Campfires are not allowed in the park's backcountry, and pets are not allowed on trails or in the backcountry."
 checked = "2026-11-18"
 
 [[hike.source]]
@@ -89,6 +89,15 @@ date = "2026-11-18"
 change = "The record was added: Powell Plateau Loop, 54.6 miles (88 km), Trip 6 in Bruce Grubbs's guidebook Backpacking Arizona, with no track."
 fields = ["record"]
 basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition September 2003, ISBN 978-0-89997-324-1), pages 74-75, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now says the book's days assume about 8 miles a day and that its itinerary is a minimum, and the caution adds the rope for hauling packs and the polished chute."
+fields = ["length_note", "hike.caution"]
+basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition September 2003, ISBN 978-0-89997-324-1), checked against the full text of the owner's copy."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 asked_by = "the dataset's own check"
 outcome = "applied"

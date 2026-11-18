@@ -5,7 +5,7 @@ name = "Deadman Creek Loop"
 country = "US"
 regions = ["AZ"]
 length_km = 93
-length_note = "57.7 mi, as the book gives it for Trip 16 (page 157), with 11,510 ft of elevation gain, 7 days and no shuttle. The page also prints 63.6 mi, 14,680 ft and 7 days in brackets without saying what they are; the same page describes a Willow Spring Trail and Deadman Trail option that it says is entirely on trail. The figures are the book's own and are not measured from a track."
+length_note = "57.7 mi, as the book gives it for Trip 16 (page 157), with 11,510 ft of elevation gain, 7 days and no shuttle. The book's days assume about 8 miles a day. The page also prints 63.6 mi, 14,680 ft and 7 days in brackets: the option by the Willow Spring and Deadman trails, which is 5.9 mi longer and entirely on trail. The figures are the book's own and are not measured from a track."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
@@ -89,6 +89,15 @@ date = "2026-11-18"
 change = "The record was added: Deadman Creek Loop, 57.7 miles (93 km), Trip 16 in Bruce Grubbs's guidebook Backpacking Arizona, with no track."
 fields = ["record"]
 basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition September 2003, ISBN 978-0-89997-324-1), pages 156-157, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now explains the bracketed 63.6 miles as the all-trail option by the Willow Spring and Deadman trails, 5.9 miles longer."
+fields = ["length_note"]
+basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition September 2003, ISBN 978-0-89997-324-1), checked against the full text of the owner's copy."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 asked_by = "the dataset's own check"
 outcome = "applied"

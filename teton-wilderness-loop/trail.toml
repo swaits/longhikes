@@ -5,7 +5,7 @@ name = "Teton Wilderness Loop"
 country = "US"
 regions = ["WY"]
 length_km = 97
-length_note = "60.2 mi, as the book gives it for Trip 11 (page 95), with 6,000 ft of elevation gain and 5 to 7 days. The page also prints 63.8 mi and 7,900 ft in brackets without saying what they are. The figures are the book's own and are not measured from a track."
+length_note = "60.2 mi, as the book gives it for Trip 11 (page 95), with 6,000 ft of elevation gain and 5 to 7 days. The book's days assume about 10 miles a day. The page also prints 63.8 mi and 7,900 ft in brackets: the trip with the recommended side trips added. The stated mileage walks a stem of 5.3 miles twice; with nothing counted twice the loop is 54.9 miles. The figures are the book's own and are not measured from a track."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Douglas Lorain, 2010, in Backpacking Wyoming); no agency or association"
@@ -89,6 +89,15 @@ date = "2026-11-18"
 change = "The record was added: Teton Wilderness Loop, 60.2 miles (97 km), Trip 11 in Douglas Lorain's guidebook Backpacking Wyoming, with no track."
 fields = ["record"]
 basis = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins, by Douglas Lorain (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4), pages 95-99, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now explains the bracketed figure, the days and the stem walked twice."
+fields = ["length_note"]
+basis = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins, by Douglas Lorain (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4), checked against the full text of the owner's copy."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 asked_by = "the dataset's own check"
 outcome = "applied"

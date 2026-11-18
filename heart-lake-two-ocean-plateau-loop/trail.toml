@@ -5,7 +5,7 @@ name = "Heart Lake & Two Ocean Plateau Loop"
 country = "US"
 regions = ["WY"]
 length_km = 99
-length_note = "61.5 mi, as the book gives it for Trip 5 (page 45), with 5,750 ft of elevation gain and 5 to 10 days. The page also prints 72 mi and 9,000 ft in brackets without saying what they are. The figures are the book's own and are not measured from a track."
+length_note = "61.5 mi, as the book gives it for Trip 5 (page 45), with 5,750 ft of elevation gain and 5 to 10 days. The book's days assume about 10 miles a day. The page also prints 72 mi and 9,000 ft in brackets: the trip with the recommended side trips added. The stated mileage walks a stem of 7.5 miles twice; with nothing counted twice the loop is 54.0 miles. The figures are the book's own and are not measured from a track."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Douglas Lorain, 2010, in Backpacking Wyoming); no agency or association"
@@ -73,7 +73,7 @@ months = [7, 8, 9, 10]
 terrain = ["forest", "lakes"]
 travel = "trail"
 permit = "A permit is required, as the book states. It advises reservations, especially for camps near Heart Lake, and names the Old Faithful Ranger Station as the nearest place to pick one up."
-caution = "The book says grizzly bears are very common, that the trail has several potentially difficult river fords early in the season, and that there are many miles of shadeless burned areas and lots of mosquitoes in early summer. Camping permits near Heart Lake are hard to get. Access to Heart Lake is closed from April 1 to June 30, the Trail Creek Trail along the south shore of Yellowstone Lake is closed before July 14, and off-trail travel in the Two Ocean Plateau Bear Management Area needs a permit from July 15 to August 21 and is prohibited the rest of the hiking season. Fires are allowed only at specified camps and all food must be stored away from bears at all times. The author rates its difficulty 7 out of 10."
+caution = "The book says grizzly bears are common, that the trail has several potentially difficult river fords early in the season, and that there are many miles of shadeless burned areas and lots of mosquitoes in early summer. Camping permits near Heart Lake are hard to get. Access to Heart Lake is closed from April 1 to June 30, the Trail Creek Trail along the south shore of Yellowstone Lake is closed before July 14, and off-trail travel in the Two Ocean Plateau Bear Management Area needs a permit from July 15 to August 21 and is prohibited the rest of the hiking season. Fires are allowed only at specified camps and all food must be stored away from bears at all times. The author rates its difficulty 7 out of 10."
 checked = "2026-11-18"
 
 [[hike.source]]
@@ -89,6 +89,15 @@ date = "2026-11-18"
 change = "The record was added: Heart Lake & Two Ocean Plateau Loop, 61.5 miles (99 km), Trip 5 in Douglas Lorain's guidebook Backpacking Wyoming, with no track."
 fields = ["record"]
 basis = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins, by Douglas Lorain (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4), pages 45-49, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now explains the bracketed figure, the days and the stem walked twice, and the caution now says grizzly bears are common, as the book does."
+fields = ["length_note", "hike.caution"]
+basis = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins, by Douglas Lorain (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4), checked against the full text of the owner's copy."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 asked_by = "the dataset's own check"
 outcome = "applied"

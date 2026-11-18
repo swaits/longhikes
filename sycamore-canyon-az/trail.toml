@@ -5,7 +5,7 @@ name = "Sycamore Canyon"
 country = "US"
 regions = ["AZ"]
 length_km = 90
-length_note = "55.7 mi, as the book gives it for Trip 8 (page 99), with 6,120 ft of elevation gain, 6 days and no shuttle. The figure is the book's own and is not measured from a track. The book says several optional trails can be used to make a shorter loop."
+length_note = "55.7 mi, as the book gives it for Trip 8 (page 99), with 6,120 ft of elevation gain, 6 days and no shuttle. The book's days assume about 8 miles a day. The figure is the book's own and is not measured from a track. The book says several optional trails can be used to make a shorter loop."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
@@ -49,7 +49,7 @@ note = "No line to measure."
 creator = "Bruce Grubbs"
 year = 2003
 line_policy = "sold"
-note = "Trip 8 in the book, on pages 98-99. A loop from the Sycamore Trailhead up Sycamore Canyon to Geronimo Spring, then over the Mogollon Rim and back by the Winter Cabin, Taylor Cabin, Sycamore Basin and Packard Mesa trails. The book's maps are the track; none is copied here."
+note = "Trip 8 in the book, on pages 98-99. A loop from the Sycamore Trailhead up Sycamore Canyon to Geronimo Spring, then over the Mogollon Rim, going out by the Taylor Cabin Trail and coming back by the Winter Cabin Trail, the Casner Mountain road and trail, and the Dogie, Sycamore Basin and Packard Mesa trails. The book's maps are the track; none is copied here."
 
 [[guide]]
 title = "Backpacking Arizona: From Deep Canyons to Sky Islands"
@@ -63,7 +63,7 @@ publisher = "Wilderness Press"
 isbn = "978-0-89997-324-1"
 
 [hike]
-summary = "Sycamore Canyon is a six day backpacking loop in the Mogollon Rim country of northern Arizona, from the Sycamore Trailhead in the Coconino and Prescott National Forests. It goes up Sycamore Canyon past Parsons Spring to Geronimo Spring, then climbs onto the rim and returns by the Winter Cabin, Taylor Cabin, Sycamore Basin and Packard Mesa trails. Bruce Grubbs describes it as Trip 8 in Backpacking Arizona, and is not to be confused with other canyons of the same name."
+summary = "Sycamore Canyon is a six day backpacking loop in the Mogollon Rim country of northern Arizona, from the Sycamore Trailhead in the Coconino and Prescott National Forests. It goes up Sycamore Canyon past Parsons Spring to Geronimo Spring, then climbs onto the rim. It goes out by the Taylor Cabin Trail and returns by the Winter Cabin Trail, the Casner Mountain road and trail, and the Dogie, Sycamore Basin and Packard Mesa trails. Bruce Grubbs describes it as Trip 8 in Backpacking Arizona, and is not to be confused with other canyons of the same name."
 official_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 start = "Sycamore Trailhead, Coconino and Prescott National Forests, Arizona"
 shape = "loop"
@@ -89,6 +89,15 @@ date = "2026-11-18"
 change = "The record was added: Sycamore Canyon, 55.7 miles (90 km), Trip 8 in Bruce Grubbs's guidebook Backpacking Arizona, with no track."
 fields = ["record"]
 basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition September 2003, ISBN 978-0-89997-324-1), pages 98-99, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now says the book's days assume about 8 miles a day, and the way out and the way back are corrected in the summary."
+fields = ["length_note", "hike.summary"]
+basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition September 2003, ISBN 978-0-89997-324-1), checked against the full text of the owner's copy."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 asked_by = "the dataset's own check"
 outcome = "applied"

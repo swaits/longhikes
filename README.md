@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-198 trails, 121 with a track and 77 with no track included. Of these, 58 are routes: 2 with a track and 56 without.
+199 trails, 121 with a track and 78 with no track included. Of these, 58 are routes: 2 with a track and 56 without.
 
 <!-- END COUNTS -->
 
@@ -88,6 +88,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | fremont | Fremont National Recreation Trail | US | OR | 216 | yes | us-gov-public-domain |
 | ganaraska | Ganaraska Hiking Trail | CA | ON | 500 | yes | ODbL-1.0 |
 | general-george-crook | General George Crook National Recreation Trail | US | AZ | 222 | yes | us-gov-public-domain |
+| grand-sawtooth-loop | Grand Sawtooth Loop | US | ID | 113 | no | none-stated |
 | grand-valley-trail | Grand Valley Trail | CA | ON | 240 | yes | ODbL-1.0 |
 | great-divide-trail | Great Divide Trail | CA | AB, BC | 1130 | yes | ODbL-1.0 |
 | great-eastern | Great Eastern Trail | US | AL, GA, TN, KY, VA, WV, MD, PA, NY | 2897 | yes | ODbL-1.0 |

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-18 - The Grand Sawtooth Loop, in Idaho
+
+- The Grand Sawtooth Loop is new: 70 miles (113 km) on foot in the Sawtooth Wilderness of central Idaho, a loop of Forest Service trails from the Grandjean Campground Trailhead past Trail Creek Lakes, Sawtooth Lake, the Baron Lakes and Ardeth Lake. The Sawtooth Association gives about 70 miles; CleverHiker gives 60 to 70 and Fastest Known Time about 75, and the record's length note says the figures differ because the loop is not a designated trail and each publisher's version has different side trips.
+- It has no track. No guide publishes one, and the Forest Service trails the guides name join into a loop of about 60 miles, well under the published length, so the trails could not be picked to match it.
+- The record carries CleverHiker's five to seven days and its mid-July to mid-September season, the free Wilderness Use Permit the Forest Service requires, and the cautions about climbing, river fords, late snow on the passes and no ground campfires.
+- The home page, lists and the place page for Idaho each count one more trail.
+
+
 ## 2026-11-18 - The climbing rule is refined
 
 - The climbing rule is refined. Nothing harder than Class 3 may be required, apart from a few short Class 4 scrambles. A route that needs a rope, a belay or rock-climbing skill is not listed, unless that section is optional and the record says so.

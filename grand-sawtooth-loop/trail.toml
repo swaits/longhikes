@@ -1,0 +1,102 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "grand-sawtooth-loop"
+name = "Grand Sawtooth Loop"
+country = "US"
+regions = ["ID"]
+length_km = 113
+length_note = "70 mi, as the Sawtooth Association gives it (about 70 mi) for the loop from the Grandjean Trailhead; it says the loop is not a designated trail but a connection of trails with many variations and many trailheads. CleverHiker gives 60 to 70 mi, adding or subtracting for side trips and route variations, a 2025 trip report gives six days adding up to about 70 mi, and Fastest Known Time gives \"75(ish)\". The figures differ because the loop is not fixed: each publisher's version includes different side trips and trails."
+tier = "regional"
+designation = "A loop of Forest Service trails in the Sawtooth Wilderness, Idaho, that guides publish under this name; not a designated or official trail"
+wave = 1
+
+[source]
+status = "none"
+publisher = "USDA Forest Service, National Forest System trails (no track included)"
+publisher_url = "https://discoversawtooth.org/grand-sawtooth-loop"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+format = "No track included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track, and none of the guides read publishes one. The Forest Service's National Forest System trails layer, used here only to place the start and to measure the trails the guides name, is a United States federal government work, public domain in the United States under 17 U.S.C. 105."
+attribution = "none (no track included)"
+osm_only = false
+mainline = "No track was built. The guides name the trails of the loop but publish no track and no single fixed path, and the Forest Service trails that the sources read name (Trail Creek, Iron Creek-Stanley Lake, N. Fk. Baron-Sawtooth Lk., Redfish Creek-Baron Creek, Mt. Cramer, South Fork Payette River, Ardeth Lake, Ten Lake Basin and Benedict) join in the layer into a loop of 60.0 mi from Grandjean, 14% under the 70 mi the record gives."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The loop is not an official trail and publishers give no single fixed path for it. The Forest Service trails that the guides name make a loop of about 60 mi in the layer, against about 70 mi published (the other figures read are 60 to 70 mi and about 75 mi), so the trails could not be chosen to match a published length; no track is included."
+
+[osm]
+relation = 0
+note = "Not searched: the Overpass service refused the one plain request made on 2026-11-18, and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Sawtooth National Forest"
+note = "No emblem of the loop was found. The pages read on 2026-11-18 (CleverHiker's guide, the Sawtooth Association's page and the Forest Service's Sawtooth Wilderness pages) describe it in words and mention no mark for it; they were read as text and their images were not inspected."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No track to measure. The Forest Service's trails layer was queried on 2026-11-18 and the trails the guides name join into a loop of 60.0 mi, against the 70 mi given as the length."
+
+[hike]
+summary = "The Grand Sawtooth Loop is a backpacking loop in the Sawtooth Wilderness of central Idaho, starting and ending at the Grandjean Campground Trailhead. It passes high alpine lakes such as Sawtooth Lake, the Baron Lakes and Ardeth Lake and crosses mountain passes on maintained trails. It is not a designated trail: the Sawtooth Association calls it a connection of trails that make a loop, with many variations."
+official_url = "https://discoversawtooth.org/grand-sawtooth-loop"
+start = "Grandjean Campground Trailhead, Sawtooth Mountains, Idaho"
+start_lonlat = [-115.151, 44.149]
+shape = "loop"
+days = [5, 7]
+season = "Mid-July to mid-September"
+months = [7, 8, 9]
+terrain = ["alpine", "lakes"]
+travel = "trail"
+permit = "A free Wilderness Use Permit is required for the Sawtooth Wilderness, self-registered at the trailhead or wilderness boundary; groups of eight or more must contact a Forest Service office."
+caution = "CleverHiker's guide warns of a lot of climbing, roughly 3,000 feet of gain or loss a day, several river fords and exposed high-elevation sections. The Sawtooth Association says creeks can be hard to cross early in the season, which can last through July, and that passes hold snow later than anywhere else. The Forest Service allows no ground campfires anywhere in the Sawtooth Wilderness."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://www.cleverhiker.com/backpacking/a-complete-guide-to-hiking-the-grand-sawtooth-loop/"
+publisher = "CleverHiker"
+facts = ["summary", "start", "shape", "days", "season", "months", "travel", "caution"]
+
+[[hike.source]]
+url = "https://discoversawtooth.org/grand-sawtooth-loop"
+publisher = "Sawtooth Interpretive & Historical Association (Sawtooth Association)"
+facts = ["summary", "official_url", "caution", "permit"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r04/sawtooth/wilderness/sawtooth-wilderness-regulations"
+publisher = "USDA Forest Service, Sawtooth National Forest"
+facts = ["permit", "caution"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r04/sawtooth/recreation/sawtooth-wilderness"
+publisher = "USDA Forest Service, Sawtooth National Forest"
+facts = ["terrain", "permit"]
+
+[[hike.source]]
+url = "https://fastestknowntime.com/route/grand-sawtooth-loop-id"
+publisher = "Fastest Known Time"
+facts = ["start"]
+
+[[hike.source]]
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+publisher = "USDA Forest Service, National Forest System trails (the start of the South Fork Payette River trail at Grandjean)"
+facts = ["start_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: the Grand Sawtooth Loop, 70 miles (113 km) from the Grandjean Trailhead in the Sawtooth Wilderness, Idaho, with no track."
+fields = ["record"]
+basis = "CleverHiker, the Sawtooth Association and Fastest Known Time each describe a loop on Forest Service trails under this name, from the Grandjean Trailhead; the Sawtooth Association gives about 70 miles, CleverHiker 60 to 70 and Fastest Known Time about 75. The owner of the dataset ruled that it belongs in it."
+basis_url = "https://www.cleverhiker.com/backpacking/a-complete-guide-to-hiking-the-grand-sawtooth-loop/"
+asked_by = "the dataset's own check"
+outcome = "applied"

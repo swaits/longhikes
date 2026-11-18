@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-18 - The climbing rule is refined
+
+- The climbing rule is refined. Nothing harder than Class 3 may be required, apart from a few short Class 4 scrambles. A route that needs a rope, a belay or rock-climbing skill is not listed, unless that section is optional and the record says so.
+- The left-out reason is renamed from "Requires climbing harder than Class 3" to "Requires roped or technical climbing". Its id is unchanged, and the Escalante Overland Route's note now says it requires technical climbing.
+- Two listed routes whose cautions mention short Class 4 sections, the Southwestern Horseshoe and the Wind River High Route (Dixon and Wilson), by Alan Dixon and Don Wilson, stay listed under the refined rule.
+
 ## 2026-11-18 - Two rules, a published length for every route, and two routes left out
 
 - Every trail or route needs a published length. A route with no stated length is not listed.

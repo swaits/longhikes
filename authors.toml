@@ -423,12 +423,26 @@ publisher = "Michael Kauffmann"
 
 [[author]]
 name = "Mike White"
-credits = ["Mike White"]
+credits = [
+  "Mike White",
+  "Mike White and Douglas Lorain",
+  "Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett",
+  "Elizabeth Wenk and Mike White",
+]
 summary = "Mike White is a hiking guidebook author whose guide presents 122 hikes in Sequoia and Kings Canyon National Parks and the southern High Sierra."
-checked = "2026-11-17"
+bio = "Mike White is a full-time writer who speaks for outdoor and conservation organizations. He is the author or coauthor of many hiking guides, including 50 Classic Hikes in Nevada, Best Backpacking Trips in California and Nevada, and Best Backpacking Trips in Utah, Arizona, and New Mexico. With Douglas Lorain he wrote Best Backpacking Trips in Montana, Wyoming, and Colorado, published by University Press of Colorado in 2019. He is also named with Elizabeth Wenk on Sierra South, published by Wilderness Press in 2021."
+checked = "2026-11-18"
 
 [[author.source]]
 url = "https://shop.adventurewithkeen.com/product/sequoia-and-kings-canyon-national-parks/"
+publisher = "Wilderness Press (AdventureKEEN)"
+
+[[author.source]]
+url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
+publisher = "University Press of Colorado"
+
+[[author.source]]
+url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
 publisher = "Wilderness Press (AdventureKEEN)"
 
 [[author]]
@@ -486,7 +500,10 @@ publisher = "Adventure Sports Journal"
 
 [[author]]
 name = "Thomas Winnett"
-credits = ["Thomas Winnett"]
+credits = [
+  "Thomas Winnett",
+  "Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett",
+]
 summary = "Thomas Winnett founded the hiking guide publisher Wilderness Press in 1967 and is credited with the Tahoe-Yosemite Trail."
 bio = "Winnett founded Wilderness Press in 1967 with the publication of Sierra North. Over the next 35 years the press built a list of hiking guides covering California, Alaska, Hawaii and other regions. He sold the press to Keen Communications in April 2008 and died in 2011. The Tahoe-Yosemite Trail is credited to him."
 checked = "2026-11-17"
@@ -673,7 +690,10 @@ publisher = "Wilderness Press (AdventureKEEN)"
 
 [[author]]
 name = "Douglas Lorain"
-credits = ["Douglas Lorain"]
+credits = [
+  "Douglas Lorain",
+  "Mike White and Douglas Lorain",
+]
 kind = "person"
 url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 summary = "Douglas Lorain is a hiking guidebook author and photographer whose Backpacking Wyoming describes 28 backpacking trips across the state."
@@ -687,3 +707,52 @@ publisher = "Wilderness Press (AdventureKEEN)"
 [[author.source]]
 url = "https://newsouthbooks.com.au/books/backpacking-wyoming"
 publisher = "New South Books (bookseller; contributor bio)"
+
+[[author]]
+name = "Kathy Morey"
+credits = ["Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett"]
+kind = "person"
+summary = "Kathy Morey writes Wilderness Press hiking guides to the Sierra Nevada and Hawaii, including a Kauai trails guide and a John Muir Trail guide."
+bio = "Morey writes hiking and backpacking guidebooks for Wilderness Press about the Sierra Nevada and Hawaii. The author page Morey wrote says a first backpack trip in the mid-1970s, on the west side of the Sierra Nevada, began a lasting love of the range. Morey wrote a guide to the trails of Kauai and, with Elizabeth Wenk, a guide to the John Muir Trail, and is named as an author of Sierra South."
+checked = "2026-11-18"
+
+[[author.source]]
+url = "https://www.abebooks.co.uk/author/b001kmh67c/kathy-morey"
+publisher = "AbeBooks (author page written by Kathy Morey)"
+
+[[author]]
+name = "Stacy Corless"
+credits = ["Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett"]
+kind = "person"
+
+[[author]]
+name = "Elizabeth Wenk"
+credits = ["Elizabeth Wenk and Mike White"]
+kind = "person"
+summary = "Elizabeth Wenk is a Sierra Nevada guidebook author whose Wilderness Press titles include Sierra South, John Muir Trail and One Best Hike: Mount Whitney."
+bio = "Elizabeth Wenk, known as Lizzy, has hiked and climbed in the Sierra Nevada since childhood. She writes guidebooks to share her knowledge of the range and spends her summers hiking on and off trail throughout it. Her Wilderness Press titles include John Muir Trail, One Best Hike: Mount Whitney, One Best Hike: Grand Canyon, 50 Best Short Hikes: Yosemite and a wildflower guide to the High Sierra and the John Muir Trail. With Mike White she wrote the 9th edition of Sierra South, published in 2021, which won a National Outdoor Book Award in the classic category."
+checked = "2026-11-18"
+
+[[author.source]]
+url = "https://www.porchlightbooks.com/pages/author/elizabeth_wenk-3981633"
+publisher = "Porchlight Book Company"
+
+[[author.source]]
+url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+publisher = "Wilderness Press (AdventureKEEN)"
+
+[[author]]
+name = "Eli Boschetto"
+credits = ["Eli Boschetto"]
+kind = "person"
+summary = "Eli Boschetto is a hiker, writer and photographer whose Mountaineers Books titles include Hiking the Pacific Crest Trail: Oregon and Backpacking Oregon."
+bio = "Eli Boschetto is a professional hiker, writer and author who has hiked more than 6,000 miles in the mountains and wilderness areas of the western United States and Canada. He wrote Hiking the Pacific Crest Trail: Oregon and Urban Trails Portland, both published by Mountaineers Books, and is an outdoor photographer. He has worked as a Northwest correspondent for Backpacker magazine and as editor of Washington Trails magazine. Mountaineers Books published his Backpacking Oregon in 2026."
+checked = "2026-11-18"
+
+[[author.source]]
+url = "https://www.mountaineers.org/members/eli-boschetto-1"
+publisher = "Mountaineers Books"
+
+[[author.source]]
+url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+publisher = "Mountaineers Books"

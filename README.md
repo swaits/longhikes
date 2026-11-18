@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-210 trails, 122 with a track and 88 with no track included. Of these, 68 are routes: 2 with a track and 66 without.
+217 trails, 122 with a track and 95 with no track included. Of these, 75 are routes: 2 with a track and 73 without.
 
 <!-- END COUNTS -->
 
@@ -209,13 +209,16 @@ A route is a trail that a hiker worked out and published. The record names the a
 | chinese-wall-circuit | The Chinese Wall Circuit | US | MT | 127 | Wilderness Mindset | open | no | [The Chinese Wall Circuit route page](https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/) (free) |
 | circle-of-solitude | Circle of Solitude | US | CA | 109 | Mike White | unclear | no | [Kings Canyon National Park](https://shop.adventurewithkeen.com/wilderness-press/) (purchase) |
 | condor-trail | Condor Trail | US | CA | 644 | Condor Trail Association | open | no | [Maps & Trail Descriptions (county KML files and mileage sheet)](http://www.condortrail.com/maps-trail-descriptions/) (free) |
+| deadman-and-cloud-canyons | Deadman and Cloud Canyons | US | CA | 182 | Elizabeth Wenk and Mike White | sold | no | [Sierra South: Backcountry Trips in California's Sierra Nevada](https://shop.adventurewithkeen.com/product/sierra-south-2/) (purchase) |
 | deadman-creek-loop | Deadman Creek Loop | US | AZ | 93 | Bruce Grubbs | sold | no | [Backpacking Arizona: From Deep Canyons to Sky Islands](https://shop.adventurewithkeen.com/product/backpacking-arizona/) (purchase) |
 | deseret-hiking-route | Deseret Hiking Route | US | UT, ID | 1609 | Kevin "LarryBoy" DeVries | open | no | [A Complete Guide to the Deseret Hiking Route](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) (free) |
 | desert-trail | Desert Trail | US | CA, NV, OR | 2552 | Desert Trail Association, with the route scouted by Russel Pengely, D. W. "Old Creosote" Tomer and Steve Tabor | unclear | no | [Desert Trail site](https://deserttrail.net) (free) |
 | desert-winter-thru-hike | Desert Winter Thru-Hike | US | AZ, CA | 1287 | Brett Tucker ("Blisterfree") and partner, simBLISSity Ultralight Designs | withheld | no | [Desert WTH! topo mapset](https://www.simblissity.net/desert-wth-mapset.shtml) (free) |
+| eagle-cap-traverse | Eagle Cap Traverse | US | OR | 88 | Eli Boschetto | sold | no | [Backpacking Oregon: Overnight and Multiday Routes](https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes) (purchase) |
 | eastern-continental-trail | Eastern Continental Trail | US | FL, AL, GA, TN, NC, VA, WV, MD, PA, NJ, NY, CT, MA, VT, NH, ME, QC, NB | 7081 | M. J. Eberhart (trail name Nimblewill Nomad) | open | no | [Ten Million Steps](https://nimblewillnomad.com/books/) (purchase) |
 | eastern-sierra-high-route | Eastern Sierra High Route | US | CA | 113 | Dan Stenziano | sold | no | [Eastern Sierra High Route Guide](https://danstenziano.com/products/eastern-sierra-high-route-guide) (purchase) |
 | georgia-loop | Georgia Loop | US | GA | 89 | Benton MacKaye Trail Association | unclear | no | [Georgia Loop](https://bmta.org/backpacking-hikes/) (free) |
+| gospel-hump-loop | Gospel Hump Loop | US | ID | 109 | Douglas Lorain | sold | no | [Backpacking Idaho: From Alpine Peaks to Desert Canyons](https://shop.adventurewithkeen.com/product/backpacking-idaho/) (purchase) |
 | grand-enchantment | Grand Enchantment Trail | US | AZ, NM | 1239 | Brett Tucker | sold | no | [Grand Enchantment Trail Official Mapset](http://www.simblissity.net/get/) (purchase) |
 | grand-moab-route | Grand-Moab Route | US | CO, UT | 225 | Paul Mags (PMags.com) | open | no | [The Grand-Moab Route](https://pmags.com/the-grand-moab-route) (free) |
 | grand-teton-loop | Grand Teton Loop | US | WY | 78 | Douglas Lorain | sold | no | [Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) (purchase) |
@@ -231,6 +234,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | kanab-canyon-loop | Kanab Canyon Loop | US | AZ | 84 | Bruce Grubbs | sold | no | [Backpacking Arizona: From Deep Canyons to Sky Islands](https://shop.adventurewithkeen.com/product/backpacking-arizona/) (purchase) |
 | kings-canyon-high-basin-route | Kings Canyon High Basin Route | US | CA | 200 | Andrew Skurka | sold | no | [Kings Canyon High Basin Route Guide](https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/) (purchase) |
 | lowest-to-highest-route | Lowest to Highest Route | US | CA | 209 | Brett Tucker ("Blisterfree") and partner, simBLISSity Ultralight Designs | open | no | [L2H Navigation Bundle](http://simblissity.net/L2H.shtml) (free) |
+| milestone-basin-and-the-upper-kern | Milestone Basin and the Upper Kern | US | CA | 89 | Elizabeth Wenk and Mike White | sold | no | [Sierra South: Backcountry Trips in California's Sierra Nevada](https://shop.adventurewithkeen.com/product/sierra-south-2/) (purchase) |
 | mogollon-rim-trail | Mogollon Rim Trail | US | AZ, NM | 805 | Brett Tucker ("Blisterfree") | sold | no | [Mogollon Rim Trail Mapset & Resource Bundle](https://www.simblissity.net/mogollon-rim-trail-mapset.shtml) (purchase) |
 | mojave-sonoran-trail | Mojave-Sonoran Trail | US | NV, CA, AZ | 1006 | Eric Poulin | open | no | [Mojave Sonoran Trail: A 625 Mile Thru-Hiking Route](https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/) (free) |
 | montana-trail | Montana Trail 406 | US | MT | 2934 | Montana Trail 406 Association | open | no | [Montana Trail hike sections and complete hike GPX](https://montanatrail.org/montana-trail-hike-sections/) (free) |
@@ -239,7 +243,9 @@ A route is a trail that a hiker worked out and published. The record names the a
 | northern-new-mexico-loop | Northern New Mexico Loop | US | NM | 805 | Brett Tucker ("Blisterfree") and collaborators | sold | no | [Northern New Mexico Loop Mapset & Resource Bundle](https://simblissity.net/northern-nm-loop-mapset.shtml) (purchase) |
 | pfiffner-traverse | Pfiffner Traverse | US | CO | 124 | Andrew Skurka | sold | no | [Pfiffner Traverse Guide](https://andrewskurka.com/product/pfiffner-traverse-guide-maps/) (purchase) |
 | powell-plateau-loop | Powell Plateau Loop | US | AZ | 88 | Bruce Grubbs | sold | no | [Backpacking Arizona: From Deep Canyons to Sky Islands](https://shop.adventurewithkeen.com/product/backpacking-arizona/) (purchase) |
+| ptarmigan-glenns-lake-highline-loop | Ptarmigan–Glenns Lake–Highline Loop | US | MT | 84 | Mike White and Douglas Lorain | sold | no | [Best Backpacking Trips in Montana, Wyoming, and Colorado](https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado) (purchase) |
 | route-in-between | Route In Between | US | AZ, UT, ID | 4344 | Kevin "LarryBoy" DeVries | open | no | [A Complete Guide to the Deseret Hiking Route](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) (free) |
+| rutherford-lake-loop | Rutherford Lake Loop | US | CA | 115 | Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett | sold | no | [Sierra North: Backcountry Trips in California's Sierra Nevada](https://shop.adventurewithkeen.com/product/sierra-north-2/) (purchase) |
 | san-diego-trans-county-trail | San Diego Trans County Trail | US | CA | 249 | Sea to Sea Trail Foundation (folded); guide by Liz Thomas | unclear | no | [San Diego Trans County Trail](https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail) (free) |
 | santa-fe-to-taos | Santa Fe to Taos Thru-Hike | US | NM | 212 | Pam Neely | sold | no | [The Santa Fe to Taos Thru-Hike Guidebook](https://santafetotaos.org/guidebook/) (purchase) |
 | sawtooth-wilderness-high-route | Sawtooth Wilderness High Route | US | ID | 143 | Eric Poulin | open | no | [Sawtooth Wilderness High Route trip report and GPX](https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/) (free) |
@@ -247,6 +253,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | sierra-grand-traverse | Sierra Grand Traverse | US | CA | 322 | John and Monica Chapman | sold | no | [Sierra Grand Traverse: An Epic Route Across the Range of Light](https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light) (purchase) |
 | sierra-high-route | Sierra High Route | US | CA | 314 | Steve Roper | sold | no | [Sierra High Route, 2nd Edition: Traversing Timberline Country](https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country) (purchase) |
 | sky-islands-traverse | Sky Islands Traverse | US | AZ | 837 | Brett Tucker ("Blisterfree") | withheld | no | [Sky Islands Traverse page](http://simblissity.net/skit.shtml) (free) |
+| south-lake-to-north-lake | South Lake to North Lake | US | CA | 89 | Elizabeth Wenk and Mike White | sold | no | [Sierra South: Backcountry Trips in California's Sierra Nevada](https://shop.adventurewithkeen.com/product/sierra-south-2/) (purchase) |
 | southeastern-serpentine-trail | Southeastern Serpentine Trail | US | SC, NC, GA, TN | 938 | Cam Honan | open | no | [Southeastern Serpentine Trail](https://thehikinglife.com/2016/07/southeastern-serpentine-trail/) (free) |
 | southern-sierra-high-route | Southern Sierra High Route | US | CA | 161 | Alan Dixon and Don Wilson | open | no | [Southern Sierra High Route (SoSHR) guide](http://www.adventurealan.com/southern-sierra-high-route-soshr-guide/) (free) |
 | southwestern-horseshoe | Southwestern Horseshoe | US | UT, AZ, NM | 2867 | Cam Honan | open | no | [Southwestern Horseshoe](https://thehikinglife.com/2019/03/southwestern-horseshoe/) (free) |

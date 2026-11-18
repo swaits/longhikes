@@ -1,0 +1,98 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "rutherford-lake-loop"
+name = "Rutherford Lake Loop"
+country = "US"
+regions = ["CA"]
+length_km = 115
+length_note = "71.5 mi, as the book gives it for Trip 72 (pages 246-250), with 10 hiking days and 1 layover day. The book gives no elevation gain figure for the trip. It is a true loop from one trailhead, but two branches are walked out and back: the lateral to Rutherford Lake and the branch to Chain Lakes. The book gives no figure for them; the dataset's own estimate is about 2 miles walked twice, which leaves about 69.5 miles with nothing counted twice, uncertain by about half a mile. The figures are the book's own, except that estimate, and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett, 2005, in Sierra North); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 246-250, read from the owner's copy of the 9th edition, 2005 on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/sierra-north-2/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Sierra North."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/sierra-north-2/, read 2026-11-18) show the title and the publisher's own logo only; this is a guidebook route over national park land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett"
+year = 2005
+line_policy = "sold"
+note = "Trip 72 in the book, on pages 246-250, from the 9th edition (2005); the first edition of the book dates from 1967 and the pages read do not show whether this trip was in it. A loop from the Glacier Point and Panorama trailhead down to Little Yosemite Valley, past Merced Lake, Lyell Fork and Post Peak Pass to Rutherford Lake, then by Fernandez Pass, Chain Lakes, Buck Camp and Royal Arch Lake back to Glacier Point, with 71.5 miles and 10 hiking days in the book. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Sierra North: Backcountry Trips in California's Sierra Nevada"
+author = "Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+format = "book, 9th edition, 2005; the route is Trip 72, pages 246-250 (the publisher's page now lists the 10th edition)"
+publisher = "Wilderness Press"
+isbn = "978-0-89997-396-8"
+
+[hike]
+summary = "The Rutherford Lake Loop is a 10 day backpacking loop in Yosemite National Park's South Boundary country, California, from the Glacier Point and Panorama trailhead. It descends to Little Yosemite Valley and Merced Lake, climbs Post Peak Pass to Rutherford Lake, and returns by Fernandez Pass, Chain Lakes, Buck Camp and Royal Arch Lake. Kathy Morey, Mike White, Stacy Corless and Thomas Winnett describe it as Trip 72 in the 9th edition of Sierra North."
+official_url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+start = "Glacier Point–Panorama Trailhead, Yosemite National Park, California"
+start_lonlat = [-119.573, 37.728]
+shape = "loop"
+days = [10, 10]
+season = "Mid to late season, about early July to early October"
+months = [7, 8, 9]
+terrain = ["alpine", "lakes"]
+travel = "trail"
+permit = "A Yosemite wilderness permit is required, as the book states."
+caution = "The book says the trip is designed for the experienced backpacker and rates its pace moderate. It crosses three major passes, including a steep, loose, rocky descent of 600 feet below Post Peak Pass, and fords the South Fork Merced River, which the book calls wet in early season. Bear canisters are required in Yosemite, and pets and firearms are prohibited."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 72, pages 246-250 of the 9th edition, 2005, read from the owner's copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=8282371290"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Glacier Point Trailhead, OpenStreetMap node 8282371290, at the start of the Panorama Trail"
+facts = ["start_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Rutherford Lake Loop, 71.5 miles (115 km), Trip 72, pages 246-250 in Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett's guidebook Sierra North, with no track."
+fields = ["record"]
+basis = "Sierra North: Backcountry Trips in California's Sierra Nevada, by Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett (Wilderness Press, 9th edition, 2005, ISBN 978-0-89997-396-8). Trip 72, pages 246-250, gives the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"

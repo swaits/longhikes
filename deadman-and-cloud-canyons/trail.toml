@@ -1,0 +1,100 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "deadman-and-cloud-canyons"
+name = "Deadman and Cloud Canyons"
+country = "US"
+regions = ["CA"]
+length_km = 182
+length_note = "113.4 mi, as the book gives it for Trip 25, with 11 hiking days and 2 layover days; the book gives no elevation gain figure for the trip. It is a semiloop: the 23.0 miles from the Twin Lakes Trailhead to the Roaring River Ranger Station are walked out on the first two days and retraced on the last, so the book's figure counts that stem twice. With nothing counted twice the walk is 90.4 miles (the 23.0 mile stem and a 67.4 mile loop). The book's days run from 6.8 to 15.8 miles. The figures are the book's own and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Elizabeth Wenk and Mike White, 2021, in Sierra South); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's Trip 25, read from the owner's copy of the 9th edition, 2021 on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/sierra-south-2/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Sierra South."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Elizabeth Wenk and Mike White"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/sierra-south-2/, read 2026-11-18) show the title and the publisher's own logo only; this is a guidebook route over national park land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Elizabeth Wenk and Mike White"
+year = 2021
+line_policy = "sold"
+note = "Trip 25 in the book (9th edition, 2021). A semiloop from the Twin Lakes Trailhead at Lodgepole Campground to the Roaring River Ranger Station, then a loop by Deadman Canyon, Elizabeth Pass, Kaweah Gap, Big Arroyo, the Kern River canyon and Colby Pass to Cloud Canyon, with 113.4 miles in the book. About 47 miles of it, from the Roaring River Ranger Station through Deadman Canyon and Kaweah Gap to Junction Meadow, are shared with the Big SEKI Loop by the dataset's own check against that record's track; that is a little over half of the 90.4 miles walked once. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Sierra South: Backcountry Trips in California's Sierra Nevada"
+author = "Elizabeth Wenk and Mike White"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+format = "book, 9th edition, 2021; the route is Trip 25"
+price = "$21.95"
+price_checked = "2026-11-18"
+publisher = "Wilderness Press"
+isbn = "978-0-89997-884-0"
+
+[hike]
+summary = "Deadman and Cloud Canyons is a backpacking semiloop of 11 hiking days in Sequoia and Kings Canyon National Parks, California, from the Twin Lakes Trailhead at Lodgepole Campground. After a stem to the Roaring River Ranger Station it loops through Deadman Canyon and over Elizabeth Pass, Kaweah Gap and Colby Pass by the Kern River canyon and Cloud Canyon, and about 47 miles are shared with the Big SEKI Loop. Elizabeth Wenk and Mike White describe it as Trip 25 in the 9th edition of Sierra South."
+official_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+start = "Twin Lakes Trailhead, Lodgepole Campground, Sequoia National Park, California"
+start_lonlat = [-118.723, 36.605]
+shape = "loop"
+days = [11, 11]
+season = "July to mid-October, the book's mid to late season"
+months = [7, 8, 9, 10]
+terrain = ["alpine", "canyon"]
+travel = "trail"
+permit = "A permit is required for overnight stays, with quotas, as the book states; it names the Twin Lakes trailhead permit and says it is picked up in person at the Lodgepole Visitor Center."
+caution = "The book rates the pace strenuous and does not recommend the trip for beginners. Days run from 6.8 to 15.8 miles, with long stretches with few campsites, and the book says fitting enough food in a bear canister is one of the trip's greatest challenges, with no bear boxes along Deadman Canyon. The day over Elizabeth Pass climbs 2,200 feet and then drops 3,200 feet on steep ground where the trail briefly fades and cairns must be followed; the descent from Colby Pass drops 700 feet in half a mile down an active rockslide. A 2020 fire burned several miles of the Kern River canyon. The route is on trail, with fords; the book flags no cross-country, rope or climbing."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 25 of the 9th edition, 2021, read from the owner's copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=11123870828"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Twin Lakes Trailhead, OpenStreetMap node 11123870828"
+facts = ["start_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Deadman and Cloud Canyons, 113.4 miles (182 km), Trip 25 in Elizabeth Wenk and Mike White's guidebook Sierra South, with no track."
+fields = ["record"]
+basis = "Sierra South: Backcountry Trips in California's Sierra Nevada, by Elizabeth Wenk and Mike White (Wilderness Press, 9th edition, 2021, ISBN 978-0-89997-884-0). Trip 25 gives the length, days, season, permit and cautions; the book gives no page numbers for it in the copy read, so the trip number is cited. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"

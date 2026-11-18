@@ -1,0 +1,100 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "ptarmigan-glenns-lake-highline-loop"
+name = "Ptarmigan–Glenns Lake–Highline Loop"
+country = "US"
+regions = ["MT"]
+length_km = 84
+length_note = "52 mi, as the book gives it for Trip 1 (pages 16-42) as the minimum loop, with 10,750 ft of elevation gain and 5 to 13 days. The book's own day table adds up to 52.2 mi for the loop, and nothing in it is walked twice apart from short spurs to camps. The book also prints 106 mi and 16,200 ft for the trip with its recommended side trips added (its day table sums to 105.6 mi), the longest being the out-and-back to Boulder Pass. The figures are the book's own and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Mike White and Douglas Lorain, 2019, in Best Backpacking Trips in Montana, Wyoming, and Colorado); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "University Press of Colorado (publishes the route in the guidebook)"
+publisher_url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
+url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 16-42, read from the owner's copy of the 2019 (no edition is stated) on 2026-11-18, and the publisher's page for the book (https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Best Backpacking Trips in Montana, Wyoming, and Colorado."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Mike White and Douglas Lorain"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado, read 2026-11-18) show the title and the publisher's own logo only; this is a guidebook route over national park land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Mike White and Douglas Lorain"
+year = 2019
+line_policy = "sold"
+note = "Trip 1 in the book, on pages 16-42. A loop from the Swiftcurrent Picnic Area near Many Glacier past Ptarmigan Tunnel, the Belly River, Cosley and Glenns lakes, Stoney Indian Pass, Fifty Mountain and the Highline Trail, and back over Swiftcurrent Pass, with 52 miles as the minimum loop and 5 to 13 days in the book. About half of the loop follows the Continental Divide Trail: by the dataset's own check against its Continental Divide Trail track, about 25 of the 52 miles, from Swiftcurrent Pass by Granite Park and the Highline Trail to the Waterton Valley junction below Stoney Indian Lake, lie on it. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Best Backpacking Trips in Montana, Wyoming, and Colorado"
+author = "Mike White and Douglas Lorain"
+access = "purchase"
+url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
+format = "book, 2019 (no edition is stated); the route is Trip 1, pages 16-42"
+price = "$24.95"
+price_checked = "2026-11-18"
+publisher = "University Press of Colorado"
+isbn = "978-1-60732-837-7"
+
+[hike]
+summary = "The Ptarmigan–Glenns Lake–Highline Loop is a backpacking loop of 5 to 13 days in the northeast of Glacier National Park, Montana, from the Swiftcurrent Picnic Area near Many Glacier. It passes through Ptarmigan Tunnel, follows the Belly River and Glenns Lake to Stoney Indian Pass and returns by Fifty Mountain and the Highline Trail, and about half of it follows the Continental Divide Trail. Mike White and Douglas Lorain describe it as Trip 1 in Best Backpacking Trips in Montana, Wyoming, and Colorado."
+official_url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
+start = "Swiftcurrent Picnic Area, Glacier National Park, Montana"
+start_lonlat = [-113.668, 48.797]
+shape = "loop"
+days = [5, 13]
+season = "Late July to mid-October, best in August"
+months = [8, 9, 10]
+terrain = ["alpine", "lakes"]
+travel = "trail"
+permit = "A permit is required, and the book says camping is only allowed at designated campsites. Advance reservations are made online, with requests received on the opening day processed in a random order; without a reservation the book says hikers must queue very early for a first-come permit and the odds are poor."
+caution = "The book says Glacier is grizzly bear country, that hikers should carry bear spray and store all food away from bears, and that solo travel is not recommended. Snowfields lie across the trail on steep north-facing slopes into late July or early August and can be dangerously icy, which the book says makes parts of the loop too hazardous for most hikers before late summer. Seasonal bridges may be missing, leaving tricky fords, and the trail is often brushy and wet with dew. Campsites are designated, usually full all summer, and close together. The authors rate the technical difficulty 6 and the physical difficulty 7, each out of 10. The 52 mile loop is on maintained trail, with an optional side trip on a sketchy cairned boot path; the book mentions no scrambling or rope."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
+publisher = "University Press of Colorado (the publisher's page for the book); the facts are from the book's Trip 1, pages 16-42 of the 2019 (no edition is stated), read from the owner's copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=13121882204"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Swiftcurrent Picnic Area Trailhead, OpenStreetMap node 13121882204"
+facts = ["start_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Ptarmigan–Glenns Lake–Highline Loop, 52 miles (84 km), Trip 1, pages 16-42 in Mike White and Douglas Lorain's guidebook Best Backpacking Trips in Montana, Wyoming, and Colorado, with no track."
+fields = ["record"]
+basis = "Best Backpacking Trips in Montana, Wyoming, and Colorado, by Mike White and Douglas Lorain (University Press of Colorado, 2019 (no edition is stated), ISBN 978-1-60732-837-7). Trip 1, pages 16-42, gives the length, days, season, permits and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -118,11 +118,13 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | cranberry-lake-50 | Cranberry Lake 50 volunteer trail crew (publishes the loop; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7580730) | ODbL-1.0 | track |
 | cross-vermont | Cross Vermont Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2750828) | ODbL-1.0 | track |
 | dan-zhur-donjek | Parks Canada (Kluane National Park and Reserve) (publishes the trail) | [source page](https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur) | none-stated | record only |
+| deadman-and-cloud-canyons | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/sierra-south-2/) | none-stated | record only |
 | deadman-creek-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-arizona/) | none-stated | record only |
 | deseret-hiking-route | Kevin "LarryBoy" DeVries (publishes the route) | [source page](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) | none-stated | record only |
 | desert-trail | Desert Trail Association, whose route was scouted by Russel Pengely, D. W. "Old Creosote" Tomer and Steve Tabor; the site is now run by Desert Survivors | [source page](https://deserttrail.net) | none-stated | record only |
 | desert-winter-thru-hike | simBLISSity Ultralight Designs (Brett Tucker and partner; publish the route) | [source page](https://www.simblissity.net/desert-wth-mapset.shtml) | none-stated | record only |
 | donut-hole | Keystone Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13780803) | ODbL-1.0 | track |
+| eagle-cap-traverse | Mountaineers Books (publishes the route in the guidebook) | [source page](https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes) | none-stated | record only |
 | east-beach-trail | BC Parks (Naikoon Provincial Park) (publishes the trail) | [source page](https://bcparks.ca/naikoon-park/) | none-stated | record only |
 | east-coast-trail | East Coast Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2199386) | ODbL-1.0 | track |
 | eastern-continental-trail | M. J. Eberhart (trail name Nimblewill Nomad), who publishes the route | [source page](https://nimblewillnomad.com/books/) | none-stated | record only |
@@ -134,6 +136,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | ganaraska | Ganaraska Hiking Trail Association (publishes the trail; no open track found) | [source page](https://www.openstreetmap.org/relation/3696751) | ODbL-1.0 | track |
 | general-george-crook | USDA Forest Service, National Forest System trails | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | georgia-loop | Benton MacKaye Trail Association (publishes the loop) | [source page](https://bmta.org/backpacking-hikes/) | none-stated | record only |
+| gospel-hump-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-idaho/) | none-stated | record only |
 | grand-enchantment | Brett Tucker, simBLISSity Ultralight Designs (publishes the route and sells the mapset) | [source page](http://www.simblissity.net/get/) | none-stated | record only |
 | grand-moab-route | Paul Mags, PMags.com (publishes the route) | [source page](https://pmags.com/the-grand-moab-route) | none-stated | record only |
 | grand-sawtooth-loop | USDA Forest Service, National Forest System trails (no track included; the guides publish none) | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | none-stated | record only |
@@ -187,6 +190,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | middle-fork-trail | USDA Forest Service (National Forest System Trails, Enterprise Data Warehouse) | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | midland-to-mackinac-trail | USDA Forest Service, Huron-Manistee National Forests (publishes the National Forest segment) | [source page](https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail) | none-stated | record only |
 | midstate-ma | Midstate Trail Committee (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/5503042) | ODbL-1.0 | track |
+| milestone-basin-and-the-upper-kern | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/sierra-south-2/) | none-stated | record only |
 | mogollon-rim-trail | Brett Tucker ("Blisterfree"), who publishes the route | [source page](https://www.simblissity.net/mogollon-rim-trail-mapset.shtml) | none-stated | record only |
 | mojave-sonoran-trail | Eric Poulin (publishes the route) | [source page](https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/) | none-stated | record only |
 | monadnock-sunapee | Monadnock-Sunapee Greenway Trail Club (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3888871) | ODbL-1.0 | track |
@@ -218,6 +222,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | pinhoti | Pinhoti Trail Alliance (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1642836) | ODbL-1.0 | track |
 | powell-plateau-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-arizona/) | none-stated | record only |
 | prescott-circle | City of Prescott and Prescott National Forest (manage the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4717133) | ODbL-1.0 | track |
+| ptarmigan-glenns-lake-highline-loop | University Press of Colorado (publishes the route in the guidebook) | [source page](https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado) | none-stated | record only |
 | pukaskwa-coastal | Parks Canada (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/15361195) | ODbL-1.0 | track |
 | quehanna | Keystone Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7236114) | ODbL-1.0 | track |
 | rae-lakes-loop | National Park Service (publishes the loop; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1710944) | ODbL-1.0 | track |
@@ -225,6 +230,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | ring-the-peak | Friends of the Peak (publishes the trail and offers GPX tracks) | [source page](https://friendsofthepeak.org/ring-the-peak-2/) | none-stated | record only |
 | river-to-river | River to River Trail Society (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4645742) | ODbL-1.0 | track |
 | route-in-between | Kevin "LarryBoy" DeVries (publishes the route) | [source page](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) | none-stated | record only |
+| rutherford-lake-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/sierra-north-2/) | none-stated | record only |
 | san-diego-trans-county-trail | Sea to Sea Trail Foundation (folded); current guide by Liz Thomas, Treeline Review | [source page](https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail) | none-stated | record only |
 | santa-fe-to-taos | Pam Neely and the Santa Fe to Taos Trail non-profit (publish the route) | [source page](https://santafetotaos.org/route/) | none-stated | record only |
 | sawtooth-wilderness-high-route | Eric Poulin, who publishes the route | [source page](https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/) | none-stated | record only |
@@ -238,6 +244,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | sky-islands-traverse | Brett Tucker ("Blisterfree"), who publishes the route | [source page](http://simblissity.net/skit.shtml) | none-stated | record only |
 | solitude-loop | USDA Forest Service (National Forest System Trails, Enterprise Data Warehouse) | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | south-boundary | Parks Canada, Jasper National Park (publishes the trail; no open geometry found) | [source page](https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/south-boundary) | none-stated | record only |
+| south-lake-to-north-lake | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/sierra-south-2/) | none-stated | record only |
 | southeastern-serpentine-trail | Cam Honan, The Hiking Life (publishes the route) | [source page](https://thehikinglife.com/2016/07/southeastern-serpentine-trail/) | none-stated | record only |
 | southern-sierra-high-route | Alan Dixon and Don Wilson (publish the route) | [source page](http://www.adventurealan.com/southern-sierra-high-route-soshr-guide/) | none-stated | record only |
 | southwestern-horseshoe | Cam Honan, The Hiking Life (publishes the route) | [source page](https://thehikinglife.com/2019/03/southwestern-horseshoe/) | none-stated | record only |

@@ -1,0 +1,98 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "gospel-hump-loop"
+name = "Gospel Hump Loop"
+country = "US"
+regions = ["ID"]
+length_km = 109
+length_note = "68 mi, as the book gives it for Trip 9, with 12,600 ft of elevation gain and 5 to 8 days. The book's mileage is the trip in its basic form, rounded to the nearest mile and, the author says, accurate to about 10 per cent. The book also prints 70 mi and 13,600 ft in brackets: the trip with the recommended side trips added (its day table adds to 70 mi). It is a true loop with no stem, so nothing is walked twice, and the Hump Lake and Crystal Lake side trips are not in either figure. The figures are the book's own and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Douglas Lorain, 2004, in Backpacking Idaho); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
+url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's Trip 9, read from the owner's copy of the 1st edition, March 2004 on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-idaho/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Backpacking Idaho."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Douglas Lorain"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-idaho/, read 2026-11-18) show the title and the publisher's own logo only; this is a guidebook route over national forest and wilderness land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Douglas Lorain"
+year = 2004
+line_policy = "sold"
+note = "Trip 9 in the book (1st edition, 2004). A loop from the Moores Guard Station trailhead through the Gospel Hump Wilderness by Anchor Meadows, Black Butte, the Salmon River canyon, Shepp Ranch and Jumbo Camp, with 68 miles and 5 to 8 days in the book. The book rates its difficulty 10 out of 10, its hardest rating. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Idaho: From Alpine Peaks to Desert Canyons"
+author = "Douglas Lorain"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
+format = "book, 1st edition, March 2004; the route is Trip 9 (the publisher's page now lists the 2nd edition)"
+publisher = "Wilderness Press"
+isbn = "0-89997-346-9"
+
+[hike]
+summary = "The Gospel Hump Loop is a backpacking loop of 5 to 8 days in the Gospel Hump Wilderness in Idaho, from the Moores Guard Station trailhead. It crosses high subalpine ridges and descends to the Salmon River canyon before climbing back out by way of Jumbo Camp. Douglas Lorain describes it as Trip 9 in Backpacking Idaho."
+official_url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
+start = "Moores Guard Station trailhead, Gospel Hump Wilderness, Idaho"
+start_lonlat = [-115.886, 45.595]
+shape = "loop"
+days = [5, 8]
+season = "July to October, best in early to mid July or in September"
+months = [7, 8, 9, 10]
+terrain = ["forest", "canyon"]
+travel = "trail"
+permit = "None required, as the book states; groups are limited to 20 people and 20 stock animals."
+caution = "The book rates the difficulty 10 out of 10, its hardest rating, and says to take the hike only in top physical condition, with many steep ups and downs over extremely rugged terrain. Rattlesnakes are abundant and poison ivy grows in the Salmon River canyon, which is very hot in summer, and some trails are brushy and poorly maintained, including a faint one. About 5 miles near Jumbo Camp follow a primitive jeep road. The book mentions no cross-country, rope or climbing; its lookout side trips are on trail."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 9 of the 1st edition, March 2004, read from the owner's copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=777859855"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Moores Guard Station, OpenStreetMap way 777859855; the book puts the trailhead directly opposite the station"
+facts = ["start_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Gospel Hump Loop, 68 miles (109 km), Trip 9 in Douglas Lorain's guidebook Backpacking Idaho, with no track."
+fields = ["record"]
+basis = "Backpacking Idaho: From Alpine Peaks to Desert Canyons, by Douglas Lorain (Wilderness Press, 1st edition, March 2004, ISBN 0-89997-346-9). Trip 9 gives the length, days, season, permit and cautions; the book gives no page numbers in the copy read, so the trip number is cited. Stated figures are read from the trip's stat block and day table. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
+asked_by = "the dataset's own check"
+outcome = "applied"

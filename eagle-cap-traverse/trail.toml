@@ -1,0 +1,95 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "eagle-cap-traverse"
+name = "Eagle Cap Traverse"
+country = "US"
+regions = ["OR"]
+length_km = 88
+length_note = "54.7 mi one way, as the book gives it for Trip 48 (pages 218-224), with 12,210 ft of elevation gain (up and down) and a high point of 8,880 ft. The text calls it a weeklong trip and lays out six hiking days. Two spurs are walked out and back, the 0.3 mile side trail to Dollar Lake and the 1.3 mile spur to Chimney Lake, and the book's mileposts count both ways, so about 1.6 miles of the total are the return legs; with nothing counted twice the walk is about 53.1 miles (the dataset's own reckoning from the mileposts). The book's trip planner and text differ by about a mile in the middle of the trip, and agree at the end. The figures are the book's own, except the 53.1, and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Eli Boschetto, 2026, in Backpacking Oregon); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Mountaineers Books (publishes the route in the guidebook)"
+publisher_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 218-224, read from the owner's copy of the 1st edition, 2026 on 2026-11-18, and the publisher's page for the book (https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Backpacking Oregon."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Eli Boschetto"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes, read 2026-11-18) show the title and the publisher's own logo only; this is a guidebook route over national forest and wilderness land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Eli Boschetto"
+year = 2026
+line_policy = "sold"
+note = "Trip 48 in the book, on pages 218-224. A one way traverse of the Eagle Cap Wilderness from the Tenderfoot Trailhead in the east to the Bowman-Francis Trailhead in the west, by Dollar Lake, Polaris Pass, Frazier Lake, Glacier Lake, Mirror Lake, Minam Lake, Elkhorn Meadows and the Minam River, with 54.7 miles in the book. The book says it links three of its other hikes (47, 51 and 53). The next few miles after the West Fork Wallowa trail junction share ground with the Blue Mountains Trail, about 1.6 miles by the dataset's own reckoning. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Oregon: Overnight and Multiday Routes"
+author = "Eli Boschetto"
+access = "purchase"
+url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+format = "book, 1st edition, 2026; the route is Trip 48, pages 218-224"
+price = "$24.95"
+price_checked = "2026-11-18"
+publisher = "Mountaineers Books"
+isbn = "978-1-68051-626-5"
+
+[hike]
+summary = "The Eagle Cap Traverse is a six day one way backpacking route through the Eagle Cap Wilderness in the Wallowa Mountains of Oregon, from the Tenderfoot Trailhead to the Bowman-Francis Trailhead. It crosses Polaris Pass and passes Frazier, Glacier, Mirror and Minam lakes before descending the Minam River country. Eli Boschetto describes it as Trip 48 in Backpacking Oregon."
+official_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+start = "Tenderfoot Trailhead, Eagle Cap Wilderness, Oregon"
+end = "Bowman-Francis Trailhead, Eagle Cap Wilderness, Oregon"
+shape = "point-to-point"
+days = [6, 7]
+season = "July to October"
+months = [7, 8, 9, 10]
+terrain = ["alpine", "lakes"]
+travel = "trail"
+permit = "A self-issue wilderness permit is required, as the book states; wilderness rules apply and campfires are prohibited within a quarter mile of most lakes."
+caution = "The book rates the difficulty 4 on its scale of 5 and calls the trip strenuous, with several high passes and more than two vertical miles of climbing. It lists numerous creek crossings, high elevations and exposure as concerns. It is a one way hike that needs a shuttle vehicle. The route is on numbered trails; the book describes an optional 0.7 mile knife-edge arete to Sentinel Peak as not for the acrophobic and an optional exposed trail to the Eagle Cap summit, neither part of the route."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+publisher = "Mountaineers Books (the publisher's page for the book); the facts are from the book's Trip 48, pages 218-224 of the 1st edition, 2026, read from the owner's copy"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Eagle Cap Traverse, 54.7 miles (88 km), Trip 48, pages 218-224 in Eli Boschetto's guidebook Backpacking Oregon, with no track."
+fields = ["record"]
+basis = "Backpacking Oregon: Overnight and Multiday Routes, by Eli Boschetto (Mountaineers Books, 1st edition, 2026, ISBN 978-1-68051-626-5). Trip 48, pages 218-224, gives the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+asked_by = "the dataset's own check"
+outcome = "applied"

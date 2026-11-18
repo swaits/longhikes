@@ -1,0 +1,107 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "milestone-basin-and-the-upper-kern"
+name = "Milestone Basin and the Upper Kern"
+country = "US"
+regions = ["CA"]
+length_km = 89
+length_note = "55.6 mi, as the book gives it for Trip 79, with 7 hiking days and 3 layover days; the book gives no elevation gain figure for the trip. It is a shuttle with the middle retraced: the book has hikers walk 0.7 mile of trail and 0.4 mile of John Muir Trail twice, and the spur into Milestone Basin is walked out and back as well, about 2.6 miles walked twice in all. With nothing counted twice the walk is about 53 miles. The 2.6 mile and 53 mile figures are the dataset's own reckoning from the book's day figures and are uncertain by about half a mile. The figures are the book's own, except those, and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Elizabeth Wenk and Mike White, 2021, in Sierra South); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's Trip 79, read from the owner's copy of the 9th edition, 2021 on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/sierra-south-2/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Sierra South."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Elizabeth Wenk and Mike White"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/sierra-south-2/, read 2026-11-18) show the title and the publisher's own logo only; this is a guidebook route over national forest and national park land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Elizabeth Wenk and Mike White"
+year = 2021
+line_policy = "sold"
+note = "Trip 79 in the book (9th edition, 2021). A shuttle from the Cottonwood Pass Trailhead by Chicken Spring Lake, Rock Creek and Crabtree Meadow to the John Muir Trail near Tyndall Creek, then Milestone Basin and the headwaters of the Kern River by Lake South America, and out over Shepherd Pass to the Symmes Creek trailhead, with 55.6 miles in the book. About 20 of its miles follow the Pacific Crest Trail, which the John Muir Trail shares for part of the way, by the dataset's own check against those records. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Sierra South: Backcountry Trips in California's Sierra Nevada"
+author = "Elizabeth Wenk and Mike White"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+format = "book, 9th edition, 2021; the route is Trip 79"
+price = "$21.95"
+price_checked = "2026-11-18"
+publisher = "Wilderness Press"
+isbn = "978-0-89997-884-0"
+
+[hike]
+summary = "Milestone Basin and the Upper Kern is a 7 day backpacking trip in the southern Sierra Nevada, California, from the Cottonwood Pass Trailhead to the Symmes Creek Trailhead on Shepherd Pass Trail. It follows the Pacific Crest Trail and John Muir Trail corridor to Tyndall Creek, then visits Milestone Basin and the headwaters of the Kern River at Lake South America before crossing Shepherd Pass. Elizabeth Wenk and Mike White describe it as Trip 79 in the 9th edition of Sierra South."
+official_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+start = "Cottonwood Pass Trailhead, Inyo National Forest, California"
+start_lonlat = [-118.171, 36.448]
+end = "Symmes Creek (Shepherd Pass) Trailhead, Inyo National Forest, California"
+end_lonlat = [-118.279, 36.727]
+shape = "point-to-point"
+days = [7, 7]
+season = "July to mid-October, the book's mid to late season"
+months = [7, 8, 9, 10]
+terrain = ["alpine", "lakes"]
+travel = "trail"
+permit = "A permit is required for overnight stays, with quotas, as the book states; it names the Cottonwood Pass permit, with the Shepherd Pass exit."
+caution = "The book rates the pace moderate to strenuous. The Tyndall Creek ford is very difficult in early season, and other fords can be hard then too. The trail fades in Milestone Basin, where the book says there is no consistent use trail and exploring is optional cross-country; the book's mileage ends there. The book mentions optional peaks of Class 2 and 3 from the basin, none of them part of the itinerary, and no rope. The Shepherd Pass descent is long and dry, with rerouted switchbacks across debris flow channels."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 79 of the 9th edition, 2021, read from the owner's copy"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=3708813289"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Cottonwood Pass Trailhead, OpenStreetMap node 3708813289"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=88231836"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Shepherd Pass Trailhead, OpenStreetMap node 88231836"
+facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Milestone Basin and the Upper Kern, 55.6 miles (89 km), Trip 79 in Elizabeth Wenk and Mike White's guidebook Sierra South, with no track."
+fields = ["record"]
+basis = "Sierra South: Backcountry Trips in California's Sierra Nevada, by Elizabeth Wenk and Mike White (Wilderness Press, 9th edition, 2021, ISBN 978-0-89997-884-0). Trip 79 gives the length, days, season, permit and cautions; the book gives no page numbers for it in the copy read, so the trip number is cited. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"

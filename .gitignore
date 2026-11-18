@@ -7,3 +7,6 @@ web/.cache/
 /sources/
 /references/
 /refresh/
+
+# Agent worktrees
+.claude/worktrees/

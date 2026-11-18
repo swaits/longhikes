@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-18 - Four guidebook routes from Douglas Lorain's Backpacking Wyoming
+
+- Four routes are new, all from trips in Douglas Lorain's guidebook Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4). The Teton Wilderness Loop (60.2 miles, 5 to 7 days) is in Bridger-Teton National Forest. The Heart Lake & Two Ocean Plateau Loop (61.5 miles, 5 to 10 days) is in Yellowstone National Park. The Green River Lakes & Titcomb Basin Loop (70.9 miles, 6 to 14 days) and the Central Wind Rivers Loop (61.7 miles, 6 to 10 days) are in the Wind River Range.
+- They are guidebook routes with no track. The way is shown on the book's maps, which are not copied here, and no track from any source is included. Each record gives the length, days, season and permit from the book's trip pages and carries the book's cautions: the dangerous early-season fords on the Teton Wilderness Loop, the closures and bear rules in Yellowstone, and the cross-country sections of the Central Wind Rivers Loop. Where the book prints a second, bracketed length, the record gives it and says the pages read do not explain it. Nothing the book does not state, such as a high point, is recorded.
+- Douglas Lorain is now an author with a page of his own, with a short biography from the publisher's page and a bookseller's page.
+- The home page, lists and the place page for Wyoming each count four more trails.
+
 ## 2026-11-18 - Five guidebook routes from Bruce Grubbs's Backpacking Arizona
 
 - Five routes are new, all from trips in Bruce Grubbs's guidebook Backpacking Arizona: From Deep Canyons to Sky Islands (Wilderness Press, 1st edition 2003, ISBN 978-0-89997-324-1). Three are in the Grand Canyon: the Kanab Canyon Loop (52.2 miles, 7 days), the Powell Plateau Loop (54.6 miles, 9 days) and the Nankoweap–Bright Angel Loop (82.2 miles, 11 days). Sycamore Canyon (55.7 miles, 6 days) is on the Mogollon Rim, and the Deadman Creek Loop (57.7 miles, 7 days) is in the Mazatzal Mountains.

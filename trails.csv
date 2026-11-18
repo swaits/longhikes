@@ -36,6 +36,7 @@ buckeye,Buckeye Trail,US,OH,2250,included,OpenStreetMap,ODbL-1.0,designated,
 california-coastal,California Coastal Trail,US,CA,1931,included,A hiker's own walk of the coast (GPX file attached to the dataset's issue 1),CC-BY-4.0,designated,
 canol,Canol Heritage Trail,CA,NT,371,included,OpenStreetMap,ODbL-1.0,designated,
 centennial-sd,Centennial Trail,US,SD,179,included,OpenStreetMap,ODbL-1.0,designated,
+central-wind-rivers-loop,Central Wind Rivers Loop,US,WY,99,record-only,none (no line included),none-stated,route,sold
 chinese-wall-circuit,The Chinese Wall Circuit,US,MT,127,record-only,none (no line included),none-stated,route,open
 circle-of-solitude,Circle of Solitude,US,CA,109,record-only,none (no line included),none-stated,route,unclear
 cohos,Cohos Trail,US,NH,270,included,OpenStreetMap,ODbL-1.0,designated,
@@ -76,8 +77,10 @@ great-eastern,Great Eastern Trail,US,AL;GA;TN;KY;VA;WV;MD;PA;NY,2897,included,Op
 great-plains-trail,Great Plains Trail,US,SK;ND;SD;NE;TX,3540,record-only,none (no line included),none-stated,route,open
 great-western-divide-loop,Sequoia Great Western Divide Loop,US,CA,93,record-only,none (no line included),none-stated,route,open
 great-western-loop,Great Western Loop,US,AZ;NM;CO;WY;ID;MT;CA;OR;WA,11064,record-only,none (no line included),none-stated,route,withheld
+green-river-lakes-titcomb-basin-loop,Green River Lakes & Titcomb Basin Loop,US,WY,114,record-only,none (no line included),none-stated,route,sold
 guadalupe-ridge-trail,Guadalupe Ridge Trail,US,TX;NM,161,record-only,none (no line included),none-stated,designated,
 hayduke-trail,Hayduke Trail,US,UT;AZ,1287,record-only,none (no line included),none-stated,route,sold
+heart-lake-two-ocean-plateau-loop,Heart Lake & Two Ocean Plateau Loop,US,WY,99,record-only,none (no line included),none-stated,route,sold
 high-country-pathway,High Country Pathway,US,MI,132,included,OpenStreetMap,ODbL-1.0,designated,
 high-sierra,High Sierra Trail,US,CA,116,included,OpenStreetMap,ODbL-1.0,designated,
 highlands,Highlands Trail,US,NJ;NY;PA;CT,290,included,OpenStreetMap,ODbL-1.0,designated,
@@ -181,6 +184,7 @@ tahoe-yosemite-trail,Tahoe–Yosemite Trail,US,CA,299,record-only,none (no line 
 teton-crest,Teton Crest Trail,US,WY,64,record-only,none (no line included),ODbL-1.0,designated,
 teton-crest-route,Teton Crest Route,US,WY,95,record-only,none (no line included),none-stated,route,sold
 teton-range-traverse,Teton Range Traverse,US,WY,171,record-only,none (no line included),none-stated,route,open
+teton-wilderness-loop,Teton Wilderness Loop,US,WY,97,record-only,none (no line included),none-stated,route,sold
 thames-valley-trail,Thames Valley Trail,CA,ON,110,included,OpenStreetMap,ODbL-1.0,designated,
 thorofare-and-south-boundary-trail,Thorofare and South Boundary Trail,US,WY,109,included,National Park Service (public Trails dataset),us-gov-public-domain,designated,
 timberline,Timberline Trail (Mount Hood),US,OR,64,included,OpenStreetMap,ODbL-1.0,designated,

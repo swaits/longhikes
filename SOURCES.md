@@ -104,6 +104,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | california-coastal | California Coastal Commission; Coastal Trails Alliance (the track is a hiker's own, not theirs) | [source page](https://services9.arcgis.com/wwVnNW92ZHUIr0V0/arcgis/rest/services/California_Coastal_Trail_April_2021/FeatureServer) | CC-BY-4.0 | track |
 | canol | Northwest Territories Parks (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13591414) | ODbL-1.0 | track |
 | centennial-sd | USDA Forest Service, Black Hills National Forest (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7330792) | ODbL-1.0 | track |
+| central-wind-rivers-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) | none-stated | record only |
 | chinese-wall-circuit | Wilderness Mindset (publishes the route) | [source page](https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/) | none-stated | record only |
 | circle-of-solitude | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/wilderness-press/) | none-stated | record only |
 | cohos | Cohos Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/14765821) | ODbL-1.0 | track |
@@ -144,8 +145,10 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | great-plains-trail | Steve Myers, Great Plains Trail Alliance (publishes the route) | [source page](https://www.greatplainstrail.org/gpt-map/) | none-stated | record only |
 | great-western-divide-loop | Brian Lucido (publishes the route) | [source page](https://www.brianlucido.com/sequoia-great-western-divide-loop/) | none-stated | record only |
 | great-western-loop | Andrew Skurka and Ryan Jordan (publish the route) | [source page](https://andrewskurka.com/adventures/great-western-loop/route-description/) | none-stated | record only |
+| green-river-lakes-titcomb-basin-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) | none-stated | record only |
 | guadalupe-ridge-trail | National Park Service (publishes the trail) | [source page](https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0) | none-stated | record only |
 | hayduke-trail | Joe Mitchell and Mike Coronella (publish the route) | [source page](https://uofupress.com/books/the-hayduke-trail/) | none-stated | record only |
+| heart-lake-two-ocean-plateau-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) | none-stated | record only |
 | high-country-pathway | Michigan Department of Natural Resources (manages the land; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2450544) | ODbL-1.0 | track |
 | high-sierra | National Park Service, Sequoia and Kings Canyon National Parks (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1714300) | ODbL-1.0 | track |
 | highlands | New York-New Jersey Trail Conference (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/6335422) | ODbL-1.0 | track |
@@ -249,6 +252,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | teton-crest | National Park Service; USFS (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3895101) | ODbL-1.0 | record only |
 | teton-crest-route | Wilderness Mindset (publishes the route) | [source page](https://wildernessmindset.com/product/teton-crest-route-map-pack/) | none-stated | record only |
 | teton-range-traverse | Cam Honan, The Hiking Life (publishes the route) | [source page](https://thehikinglife.com/2017/07/teton-range-traverse/) | none-stated | record only |
+| teton-wilderness-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) | none-stated | record only |
 | thames-valley-trail | Thames Valley Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3444520) | ODbL-1.0 | track |
 | thorofare-and-south-boundary-trail | National Park Service (public Trails dataset) | [source page](https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0) | us-gov-public-domain | track |
 | timberline | USDA Forest Service, Mount Hood National Forest | [source page](https://www.openstreetmap.org/relation/7641482) | ODbL-1.0 | track |

@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-205 trails, 122 with a track and 83 with no track included. Of these, 63 are routes: 2 with a track and 61 without.
+209 trails, 122 with a track and 87 with no track included. Of these, 67 are routes: 2 with a track and 65 without.
 
 <!-- END COUNTS -->
 
@@ -205,6 +205,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | bitterroots-80-mile-route | Bitterroots 80-mile Route | US | MT | 126 | Wilderness Mindset | sold | no | [Bitterroots 80-mile Route Map Pack](https://wildernessmindset.com/product/bitterroots-80-mile-route-map-pack/) (purchase) |
 | blue-mountains-trail | Blue Mountains Trail | US | OR | 853 | Greater Hells Canyon Council | open | no | [Blue Mountains Trail Caltopo maps and Databook](https://www.hellscanyon.org/blue-mountains-trail/maps) (free) |
 | brooks-range-traverse | Brooks Range Traverse | US | AK | 1609 | Luc Mehl and Sarah Histand | open | no | [Brooks Range Traverse trip reports](https://thingstolucat.com/brooks-range-traverse/) (free) |
+| central-wind-rivers-loop | Central Wind Rivers Loop | US | WY | 99 | Douglas Lorain | sold | no | [Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) (purchase) |
 | chinese-wall-circuit | The Chinese Wall Circuit | US | MT | 127 | Wilderness Mindset | open | no | [The Chinese Wall Circuit route page](https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/) (free) |
 | circle-of-solitude | Circle of Solitude | US | CA | 109 | Mike White | unclear | no | [Kings Canyon National Park](https://shop.adventurewithkeen.com/wilderness-press/) (purchase) |
 | condor-trail | Condor Trail | US | CA | 644 | Condor Trail Association | open | no | [Maps & Trail Descriptions (county KML files and mileage sheet)](http://www.condortrail.com/maps-trail-descriptions/) (free) |
@@ -222,7 +223,9 @@ A route is a trail that a hiker worked out and published. The record names the a
 | great-plains-trail | Great Plains Trail | US | SK, ND, SD, NE, TX | 3540 | Steve Myers (Great Plains Trail Alliance) | open | no | [Great Plains Trail map](https://www.greatplainstrail.org/gpt-map/) (free) |
 | great-western-divide-loop | Sequoia Great Western Divide Loop | US | CA | 93 | Brian Lucido | open | no | [Sequoia Great Western Divide Loop route page](https://www.brianlucido.com/sequoia-great-western-divide-loop/) (free) |
 | great-western-loop | Great Western Loop | US | AZ, NM, CO, WY, ID, MT, CA, OR, WA | 11064 | Andrew Skurka and Ryan Jordan | withheld | no | [Great Western Loop route description](https://andrewskurka.com/adventures/great-western-loop/route-description/) (free) |
+| green-river-lakes-titcomb-basin-loop | Green River Lakes & Titcomb Basin Loop | US | WY | 114 | Douglas Lorain | sold | no | [Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) (purchase) |
 | hayduke-trail | Hayduke Trail | US | UT, AZ | 1287 | Joe Mitchell and Mike Coronella | sold | no | [The Hayduke Trail: A Guide to the Backcountry Hiking Trail on the Colorado Plateau](https://uofupress.com/books/the-hayduke-trail/) (purchase) |
+| heart-lake-two-ocean-plateau-loop | Heart Lake & Two Ocean Plateau Loop | US | WY | 99 | Douglas Lorain | sold | no | [Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) (purchase) |
 | hot-springs-trail | Hot Springs Trail | US | CA, OR, ID | 3896 | Aria Zoner | sold | no | [The Hot Springs Trail: Official Guidebook](https://www.amazon.com/Hot-Springs-Trail-Official-Guidebook/dp/1505613922) (purchase) |
 | kanab-canyon-loop | Kanab Canyon Loop | US | AZ | 84 | Bruce Grubbs | sold | no | [Backpacking Arizona: From Deep Canyons to Sky Islands](https://shop.adventurewithkeen.com/product/backpacking-arizona/) (purchase) |
 | kings-canyon-high-basin-route | Kings Canyon High Basin Route | US | CA | 200 | Andrew Skurka | sold | no | [Kings Canyon High Basin Route Guide](https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/) (purchase) |
@@ -250,6 +253,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | tahoe-yosemite-trail | Tahoe–Yosemite Trail | US | CA | 299 | Thomas Winnett | sold | no | [The Tahoe–Yosemite Trail](https://shop.adventurewithkeen.com/wilderness-press/) (purchase) |
 | teton-crest-route | Teton Crest Route | US | WY | 95 | Wilderness Mindset | sold | no | [Teton Crest Route Map Pack](https://wildernessmindset.com/product/teton-crest-route-map-pack/) (purchase) |
 | teton-range-traverse | Teton Range Traverse | US | WY | 171 | Cam Honan | open | no | [Teton Range Traverse](https://thehikinglife.com/2017/07/teton-range-traverse/) (free) |
+| teton-wilderness-loop | Teton Wilderness Loop | US | WY | 97 | Douglas Lorain | sold | no | [Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) (purchase) |
 | trans-adirondack-route | Trans Adirondack Route | US | NY | 391 | Erik Schlimmer | sold | no | [Blue Line to Blue Line, with a map set](https://erikschlimmer.com/books-sale-/) (purchase) |
 | vagabond-loop | Vagabond Loop | US | AZ, UT, CO, NM | 5632 | Ryan "Dirtmonger" Sylva | open | no | [Vagabond Loop route description](https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html) (free) |
 | vancouver-island-backbone | Vancouver Island Backbone | CA | BC | 300 | Philip Stone | open | no | [Hiking Guide to the Vancouver Island Backbone](https://www.wildisle.ca/backbone/index.html) (free) |

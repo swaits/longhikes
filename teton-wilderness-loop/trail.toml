@@ -1,0 +1,94 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "teton-wilderness-loop"
+name = "Teton Wilderness Loop"
+country = "US"
+regions = ["WY"]
+length_km = 97
+length_note = "60.2 mi, as the book gives it for Trip 11 (page 95), with 6,000 ft of elevation gain and 5 to 7 days. The page also prints 63.8 mi and 7,900 ft in brackets without saying what they are. The figures are the book's own and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Douglas Lorain, 2010, in Backpacking Wyoming); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 95-99, read from a printed copy of the 1st edition (2010) on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-wyoming/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Backpacking Wyoming."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Douglas Lorain"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-wyoming/, read 2026-11-18) show the title and the publisher's and shop's own logos only; this is a guidebook route over national forest and wilderness land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Douglas Lorain"
+year = 2010
+line_policy = "sold"
+note = "Trip 11 in the book, on pages 95-99. A loop from the Turpin Meadows Trailhead through the Soda Fork and North Fork meadows, Two Ocean Pass and the Yellowstone River, past Ferry and Crater lakes and back, with 60.2 miles and five to seven days in the book. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins"
+author = "Douglas Lorain"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+format = "book, 1st edition, 2010; the route is Trip 11, pages 95-99"
+price = "$18.95"
+price_checked = "2026-11-18"
+publisher = "Wilderness Press"
+isbn = "978-0-89997-505-4"
+
+[hike]
+summary = "The Teton Wilderness Loop is a backpacking loop of five to seven days in the Teton Wilderness of Bridger-Teton National Forest, Wyoming, from the Turpin Meadows Trailhead. It crosses the Soda Fork and North Fork meadows and Two Ocean Pass on the Continental Divide, fords the Yellowstone River, and returns past Ferry Lake and Crater Lake. Douglas Lorain describes it as Trip 11 in Backpacking Wyoming."
+official_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+start = "Turpin Meadows Trailhead, Bridger-Teton National Forest, Wyoming"
+shape = "loop"
+days = [5, 7]
+season = "Usually open mid-July to October, best late July to September"
+months = [7, 8, 9, 10]
+terrain = ["forest", "lakes"]
+travel = "trail"
+permit = "None required, as the book states."
+caution = "The book warns that the fords of the Yellowstone River and the North Buffalo Fork can be very difficult or impossible early in the summer and extremely difficult and dangerous until at least the middle of July. Even then the Yellowstone River may be almost waist deep, very swift and extremely cold, and the book says most hikers should not try it before late July, and that wading shoes with good traction and a sturdy walking stick are necessary. Grizzly bears are very common, there are miles of horse-pounded trails, and mosquitoes are thick in July. All food and odorous items must be stored away from bears, and livestock grazing is prohibited within 0.5 mile of Crater and Ferry lakes. The author rates its difficulty 7 out of 10."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 95-99 of the 1st edition (2010), read from a printed copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Teton Wilderness Loop, 60.2 miles (97 km), Trip 11 in Douglas Lorain's guidebook Backpacking Wyoming, with no track."
+fields = ["record"]
+basis = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins, by Douglas Lorain (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4), pages 95-99, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"

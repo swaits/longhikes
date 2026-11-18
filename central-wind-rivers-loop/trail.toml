@@ -1,0 +1,94 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "central-wind-rivers-loop"
+name = "Central Wind Rivers Loop"
+country = "US"
+regions = ["WY"]
+length_km = 99
+length_note = "61.7 mi, as the book gives it for Trip 16 (page 141), with 7,700 ft of elevation gain and 6 to 10 days. The page also prints 79.9 mi and 10,100 ft in brackets without saying what they are. The figures are the book's own and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Douglas Lorain, 2010, in Backpacking Wyoming); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 141-145, read from a printed copy of the 1st edition (2010) on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-wyoming/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Backpacking Wyoming."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Douglas Lorain"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-wyoming/, read 2026-11-18) show the title and the publisher's and shop's own logos only; this is a guidebook route over national forest and wilderness land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Douglas Lorain"
+year = 2010
+line_policy = "sold"
+note = "Trip 16 in the book, on pages 141-145. A loop from the Scab Creek trailhead into the Bridger Wilderness by the Boulder Creek country, Halls Creek and the North Fork country, with 61.7 miles and six to ten days in the book. The book says it has long cross-country sections, mostly easy ones on use paths. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins"
+author = "Douglas Lorain"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+format = "book, 1st edition, 2010; the route is Trip 16, pages 141-145"
+price = "$18.95"
+price_checked = "2026-11-18"
+publisher = "Wilderness Press"
+isbn = "978-0-89997-505-4"
+
+[hike]
+summary = "The Central Wind Rivers Loop is a backpacking loop of six to ten days in the Bridger Wilderness in the central Wind River Range of Wyoming, from the Scab Creek trailhead. It passes Little Divide Lake and the Boulder Creek meadows, Sandpoint, Middle Fork and Rainbow lakes and the Halls Creek and North Fork country, with long stretches off the official trails. Douglas Lorain describes it as Trip 16 in Backpacking Wyoming."
+official_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+start = "Scab Creek trailhead, Bridger Wilderness, Wyoming"
+shape = "loop"
+days = [6, 10]
+season = "Usually open July to October, best mid-July through August"
+months = [7, 8, 9, 10]
+terrain = ["alpine", "lakes"]
+travel = "some-cross-country"
+permit = "None required, as the book states; it says to sign in at the trailhead."
+caution = "The book calls this a long, rugged trip with several relatively long cross-country sections, most of them fairly easy, with sketchy use paths for much of the distance, and tells hikers to bring a good contour map and navigation skills. Thunderstorms are frequent and some stream crossings are involved, which the book calls relatively easy. It warns that the junction where the loop leaves the official trail near Bobs Lake is very hard to find if the loop is done in the opposite direction. Fires are prohibited above treeline, groups are limited to 15 people and 25 stock, and camping is prohibited within 100 feet of streams and 200 feet of lakes or trails. The author rates its difficulty 7 out of 10."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 141-145 of the 1st edition (2010), read from a printed copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Central Wind Rivers Loop, 61.7 miles (99 km), Trip 16 in Douglas Lorain's guidebook Backpacking Wyoming, with no track."
+fields = ["record"]
+basis = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins, by Douglas Lorain (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4), pages 141-145, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"

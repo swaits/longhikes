@@ -1,0 +1,94 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "heart-lake-two-ocean-plateau-loop"
+name = "Heart Lake & Two Ocean Plateau Loop"
+country = "US"
+regions = ["WY"]
+length_km = 99
+length_note = "61.5 mi, as the book gives it for Trip 5 (page 45), with 5,750 ft of elevation gain and 5 to 10 days. The page also prints 72 mi and 9,000 ft in brackets without saying what they are. The figures are the book's own and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Douglas Lorain, 2010, in Backpacking Wyoming); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 45-49, read from a printed copy of the 1st edition (2010) on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-wyoming/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Backpacking Wyoming."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Douglas Lorain"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-wyoming/, read 2026-11-18) show the title and the publisher's and shop's own logos only; this is a guidebook route over national park land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Douglas Lorain"
+year = 2010
+line_policy = "sold"
+note = "Trip 5 in the book, on pages 45-49. A loop from the Heart Lake Trailhead past Heart Lake, through the Trail Creek country and Two Ocean Plateau and back up the Snake River, with 61.5 miles and five to ten days in the book. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins"
+author = "Douglas Lorain"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+format = "book, 1st edition, 2010; the route is Trip 5, pages 45-49"
+price = "$18.95"
+price_checked = "2026-11-18"
+publisher = "Wilderness Press"
+isbn = "978-0-89997-505-4"
+
+[hike]
+summary = "The Heart Lake & Two Ocean Plateau Loop is a backpacking loop of five to ten days in the southeast of Yellowstone National Park, Wyoming, from the Heart Lake Trailhead on the south entrance road. It passes the Heart Lake Geyser Basin and Heart Lake, follows the Trail Creek Trail past Outlet Lake and over the Continental Divide, crosses Two Ocean Plateau and returns up the Snake River. Douglas Lorain describes it as Trip 5 in Backpacking Wyoming."
+official_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+start = "Heart Lake Trailhead, Yellowstone National Park, Wyoming"
+shape = "loop"
+days = [5, 10]
+season = "Usually open mid-July to October, best mid-August through September"
+months = [7, 8, 9, 10]
+terrain = ["forest", "lakes"]
+travel = "trail"
+permit = "A permit is required, as the book states. It advises reservations, especially for camps near Heart Lake, and names the Old Faithful Ranger Station as the nearest place to pick one up."
+caution = "The book says grizzly bears are very common, that the trail has several potentially difficult river fords early in the season, and that there are many miles of shadeless burned areas and lots of mosquitoes in early summer. Camping permits near Heart Lake are hard to get. Access to Heart Lake is closed from April 1 to June 30, the Trail Creek Trail along the south shore of Yellowstone Lake is closed before July 14, and off-trail travel in the Two Ocean Plateau Bear Management Area needs a permit from July 15 to August 21 and is prohibited the rest of the hiking season. Fires are allowed only at specified camps and all food must be stored away from bears at all times. The author rates its difficulty 7 out of 10."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 45-49 of the 1st edition (2010), read from a printed copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Heart Lake & Two Ocean Plateau Loop, 61.5 miles (99 km), Trip 5 in Douglas Lorain's guidebook Backpacking Wyoming, with no track."
+fields = ["record"]
+basis = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins, by Douglas Lorain (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4), pages 45-49, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"

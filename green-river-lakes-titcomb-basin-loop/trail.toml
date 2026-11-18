@@ -1,0 +1,94 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "green-river-lakes-titcomb-basin-loop"
+name = "Green River Lakes & Titcomb Basin Loop"
+country = "US"
+regions = ["WY"]
+length_km = 114
+length_note = "70.9 mi, as the book gives it for Trip 15 (page 131), with 10,100 ft of elevation gain and 6 to 14 days. The figures are the book's own and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Douglas Lorain, 2010, in Backpacking Wyoming); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 131-135, read from a printed copy of the 1st edition (2010) on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-wyoming/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Backpacking Wyoming."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Douglas Lorain"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-wyoming/, read 2026-11-18) show the title and the publisher's and shop's own logos only; this is a guidebook route over national forest and wilderness land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Douglas Lorain"
+year = 2010
+line_policy = "sold"
+note = "Trip 15 in the book, on pages 131-135. A loop from the Green River Lakes trailhead up the Green River and along the Highline Trail to Titcomb Basin, and back past Elbow Lake, Summit Lake and Porcupine Creek, with 70.9 miles and six to fourteen days in the book. It shares its start and the Titcomb Basin country with the Wind River High Route records but is a different route. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins"
+author = "Douglas Lorain"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+format = "book, 1st edition, 2010; the route is Trip 15, pages 131-135"
+price = "$18.95"
+price_checked = "2026-11-18"
+publisher = "Wilderness Press"
+isbn = "978-0-89997-505-4"
+
+[hike]
+summary = "The Green River Lakes & Titcomb Basin Loop is a backpacking loop of six to fourteen days in the northern Wind River Range of Wyoming, from the Green River Lakes trailhead. It follows the Green River and the Highline Trail past Three Forks Park, Vista Pass, Cube Rock Pass and Shannon Pass to Island Lake and Titcomb Basin, and returns by Elbow Lake, Summit Lake, Palmer Canyon and Porcupine Creek. Douglas Lorain describes it as Trip 15 in Backpacking Wyoming."
+official_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+start = "Green River Lakes trailhead, Bridger-Teton National Forest, Wyoming"
+shape = "loop"
+days = [6, 14]
+season = "Usually open mid-July to early October, best late July and August"
+months = [7, 8, 9, 10]
+terrain = ["alpine", "lakes"]
+travel = "trail"
+permit = "None required, as the book states; it says to sign in at the trailhead."
+caution = "The book says the trail can be quite crowded, especially around Island Lake and Titcomb Basin, with mosquitoes in July and early August and frequent thunderstorms. A few stream crossings are potentially difficult if the bridges are not in place, and the book says a washed-out bridge over Clear Creek leaves a tricky ford that can be difficult before midsummer. Fires are prohibited above treeline, groups are limited to 15 people and 25 stock, and camping is prohibited within 100 feet of streams and 200 feet of lakes or trails. The author rates its difficulty 6 out of 10."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 131-135 of the 1st edition (2010), read from a printed copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Green River Lakes & Titcomb Basin Loop, 70.9 miles (114 km), Trip 15 in Douglas Lorain's guidebook Backpacking Wyoming, with no track."
+fields = ["record"]
+basis = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins, by Douglas Lorain (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4), pages 131-135, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"

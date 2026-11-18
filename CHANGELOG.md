@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-18 - A map of the start and end on pages with no track
+
+- A trail page with no track now shows the map with the start and the end marked and labelled, when the record has both points. A loop shows its one trailhead, labelled as the start and end. Nothing is drawn between the points, and the caption says so.
+- The notice that says where to get the track ("The author sells the route as a guide" and the others) keeps all its wording and its button. It now sits beside the map on wide screens and under it on phones, where it used to cover the whole box.
+- A trail that runs from one place to another and has only one of its two ends on record keeps the plain box, because one end alone would mislead. So does a record with no points.
+- The home, list and place maps are unchanged: they still join a trackless trail's two ends with a dotted straight line, labelled as not the trail's path, so the two points read as one trail.
+
 ## 2026-11-18 - Guidebook routes checked against the full books and corrected
 
 - The five routes from Bruce Grubbs's Backpacking Arizona and the five from Douglas Lorain's Backpacking Wyoming were checked against the full books and corrected. Two were wrong: the Grand Teton Loop was given backwards and ending at String Lake, when the book climbs Paintbrush Canyon on the first day and finishes on the Valley Trail at Lupine Meadows, and the Sycamore Canyon summary muddled the way out and the way back, when the book goes out by the Taylor Cabin Trail and returns by the Winter Cabin Trail and others.

@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-200 trails, 122 with a track and 78 with no track included. Of these, 58 are routes: 2 with a track and 56 without.
+205 trails, 122 with a track and 83 with no track included. Of these, 63 are routes: 2 with a track and 61 without.
 
 <!-- END COUNTS -->
 
@@ -208,6 +208,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | chinese-wall-circuit | The Chinese Wall Circuit | US | MT | 127 | Wilderness Mindset | open | no | [The Chinese Wall Circuit route page](https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/) (free) |
 | circle-of-solitude | Circle of Solitude | US | CA | 109 | Mike White | unclear | no | [Kings Canyon National Park](https://shop.adventurewithkeen.com/wilderness-press/) (purchase) |
 | condor-trail | Condor Trail | US | CA | 644 | Condor Trail Association | open | no | [Maps & Trail Descriptions (county KML files and mileage sheet)](http://www.condortrail.com/maps-trail-descriptions/) (free) |
+| deadman-creek-loop | Deadman Creek Loop | US | AZ | 93 | Bruce Grubbs | sold | no | [Backpacking Arizona: From Deep Canyons to Sky Islands](https://shop.adventurewithkeen.com/product/backpacking-arizona/) (purchase) |
 | deseret-hiking-route | Deseret Hiking Route | US | UT, ID | 1609 | Kevin "LarryBoy" DeVries | open | no | [A Complete Guide to the Deseret Hiking Route](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) (free) |
 | desert-trail | Desert Trail | US | CA, NV, OR | 2552 | Desert Trail Association, with the route scouted by Russel Pengely, D. W. "Old Creosote" Tomer and Steve Tabor | unclear | no | [Desert Trail site](https://deserttrail.net) (free) |
 | desert-winter-thru-hike | Desert Winter Thru-Hike | US | AZ, CA | 1287 | Brett Tucker ("Blisterfree") and partner, simBLISSity Ultralight Designs | withheld | no | [Desert WTH! topo mapset](https://www.simblissity.net/desert-wth-mapset.shtml) (free) |
@@ -223,14 +224,17 @@ A route is a trail that a hiker worked out and published. The record names the a
 | great-western-loop | Great Western Loop | US | AZ, NM, CO, WY, ID, MT, CA, OR, WA | 11064 | Andrew Skurka and Ryan Jordan | withheld | no | [Great Western Loop route description](https://andrewskurka.com/adventures/great-western-loop/route-description/) (free) |
 | hayduke-trail | Hayduke Trail | US | UT, AZ | 1287 | Joe Mitchell and Mike Coronella | sold | no | [The Hayduke Trail: A Guide to the Backcountry Hiking Trail on the Colorado Plateau](https://uofupress.com/books/the-hayduke-trail/) (purchase) |
 | hot-springs-trail | Hot Springs Trail | US | CA, OR, ID | 3896 | Aria Zoner | sold | no | [The Hot Springs Trail: Official Guidebook](https://www.amazon.com/Hot-Springs-Trail-Official-Guidebook/dp/1505613922) (purchase) |
+| kanab-canyon-loop | Kanab Canyon Loop | US | AZ | 84 | Bruce Grubbs | sold | no | [Backpacking Arizona: From Deep Canyons to Sky Islands](https://shop.adventurewithkeen.com/product/backpacking-arizona/) (purchase) |
 | kings-canyon-high-basin-route | Kings Canyon High Basin Route | US | CA | 200 | Andrew Skurka | sold | no | [Kings Canyon High Basin Route Guide](https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/) (purchase) |
 | lowest-to-highest-route | Lowest to Highest Route | US | CA | 209 | Brett Tucker ("Blisterfree") and partner, simBLISSity Ultralight Designs | open | no | [L2H Navigation Bundle](http://simblissity.net/L2H.shtml) (free) |
 | mogollon-rim-trail | Mogollon Rim Trail | US | AZ, NM | 805 | Brett Tucker ("Blisterfree") | sold | no | [Mogollon Rim Trail Mapset & Resource Bundle](https://www.simblissity.net/mogollon-rim-trail-mapset.shtml) (purchase) |
 | mojave-sonoran-trail | Mojave-Sonoran Trail | US | NV, CA, AZ | 1006 | Eric Poulin | open | no | [Mojave Sonoran Trail: A 625 Mile Thru-Hiking Route](https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/) (free) |
 | montana-trail | Montana Trail 406 | US | MT | 2934 | Montana Trail 406 Association | open | no | [Montana Trail hike sections and complete hike GPX](https://montanatrail.org/montana-trail-hike-sections/) (free) |
+| nankoweap-bright-angel-loop | Nankoweap–Bright Angel Loop | US | AZ | 132 | Bruce Grubbs | sold | no | [Backpacking Arizona: From Deep Canyons to Sky Islands](https://shop.adventurewithkeen.com/product/backpacking-arizona/) (purchase) |
 | northern-colorado-trail | Northern Colorado Trail | US | CO | 490 | Kevin Silvernale | open | no | [Northern Colorado Trail Guides](https://www.northerncoloradotrail.org/noco-trail-guides) (free) |
 | northern-new-mexico-loop | Northern New Mexico Loop | US | NM | 805 | Brett Tucker ("Blisterfree") and collaborators | sold | no | [Northern New Mexico Loop Mapset & Resource Bundle](https://simblissity.net/northern-nm-loop-mapset.shtml) (purchase) |
 | pfiffner-traverse | Pfiffner Traverse | US | CO | 124 | Andrew Skurka | sold | no | [Pfiffner Traverse Guide](https://andrewskurka.com/product/pfiffner-traverse-guide-maps/) (purchase) |
+| powell-plateau-loop | Powell Plateau Loop | US | AZ | 88 | Bruce Grubbs | sold | no | [Backpacking Arizona: From Deep Canyons to Sky Islands](https://shop.adventurewithkeen.com/product/backpacking-arizona/) (purchase) |
 | route-in-between | Route In Between | US | AZ, UT, ID | 4344 | Kevin "LarryBoy" DeVries | open | no | [A Complete Guide to the Deseret Hiking Route](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) (free) |
 | san-diego-trans-county-trail | San Diego Trans County Trail | US | CA | 249 | Sea to Sea Trail Foundation (folded); guide by Liz Thomas | unclear | no | [San Diego Trans County Trail](https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail) (free) |
 | santa-fe-to-taos | Santa Fe to Taos Thru-Hike | US | NM | 212 | Pam Neely | sold | no | [The Santa Fe to Taos Thru-Hike Guidebook](https://santafetotaos.org/guidebook/) (purchase) |
@@ -242,6 +246,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | southeastern-serpentine-trail | Southeastern Serpentine Trail | US | SC, NC, GA, TN | 938 | Cam Honan | open | no | [Southeastern Serpentine Trail](https://thehikinglife.com/2016/07/southeastern-serpentine-trail/) (free) |
 | southern-sierra-high-route | Southern Sierra High Route | US | CA | 161 | Alan Dixon and Don Wilson | open | no | [Southern Sierra High Route (SoSHR) guide](http://www.adventurealan.com/southern-sierra-high-route-soshr-guide/) (free) |
 | southwestern-horseshoe | Southwestern Horseshoe | US | UT, AZ, NM | 2867 | Cam Honan | open | no | [Southwestern Horseshoe](https://thehikinglife.com/2019/03/southwestern-horseshoe/) (free) |
+| sycamore-canyon-az | Sycamore Canyon | US | AZ | 90 | Bruce Grubbs | sold | no | [Backpacking Arizona: From Deep Canyons to Sky Islands](https://shop.adventurewithkeen.com/product/backpacking-arizona/) (purchase) |
 | tahoe-yosemite-trail | Tahoe–Yosemite Trail | US | CA | 299 | Thomas Winnett | sold | no | [The Tahoe–Yosemite Trail](https://shop.adventurewithkeen.com/wilderness-press/) (purchase) |
 | teton-crest-route | Teton Crest Route | US | WY | 95 | Wilderness Mindset | sold | no | [Teton Crest Route Map Pack](https://wildernessmindset.com/product/teton-crest-route-map-pack/) (purchase) |
 | teton-range-traverse | Teton Range Traverse | US | WY | 171 | Cam Honan | open | no | [Teton Range Traverse](https://thehikinglife.com/2017/07/teton-range-traverse/) (free) |

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-18 - Five guidebook routes from Bruce Grubbs's Backpacking Arizona
+
+- Five routes are new, all from trips in Bruce Grubbs's guidebook Backpacking Arizona: From Deep Canyons to Sky Islands (Wilderness Press, 1st edition 2003, ISBN 978-0-89997-324-1). Three are in the Grand Canyon: the Kanab Canyon Loop (52.2 miles, 7 days), the Powell Plateau Loop (54.6 miles, 9 days) and the Nankoweap–Bright Angel Loop (82.2 miles, 11 days). Sycamore Canyon (55.7 miles, 6 days) is on the Mogollon Rim, and the Deadman Creek Loop (57.7 miles, 7 days) is in the Mazatzal Mountains.
+- They are guidebook routes with no track. The way is shown on the book's maps, which are not copied here, and no track from any source is included. Each record gives the length, days, season and permit from the book's trip pages and carries the book's cautions: much of each route is cross-country, the leader should have experience, and water is seasonal. Nothing the book does not state, such as a high point, is recorded.
+- Bruce Grubbs is now an author with a page of his own, with a short biography from his own site and the publisher's page.
+- The Sycamore Canyon record has the id sycamore-canyon-az and says Mogollon Rim in its summary, so it is not mistaken for other canyons of that name.
+- The home page, lists and the place page for Arizona each count five more trails.
+
 ## 2026-11-18 - The count above a list drops "of" when nothing is left out
 
 - The count above a list of trails now reads "35 trails" when every trail is shown, instead of "35 of 35 trails". When a search or a filter leaves some out it still reads "12 of 35 trails", and it goes back to "35 trails" when everything is cleared. Lists of routes read the same way ("58 routes", "1 of 58 routes").

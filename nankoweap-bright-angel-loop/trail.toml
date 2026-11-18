@@ -1,0 +1,94 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "nankoweap-bright-angel-loop"
+name = "Nankoweap–Bright Angel Loop"
+country = "US"
+regions = ["AZ"]
+length_km = 132
+length_note = "82.2 mi, as the book gives it for Trip 7 (page 87), with 16,830 ft of elevation gain, 11 days and no shuttle. The page also prints 63.7 mi, 14,190 ft and 10 days in brackets, with a shuttle of 179 mi; the opening pages do not say what that variant is. The figures are the book's own and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 86-87, read from a printed copy of the 1st edition (3rd printing 2012) on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-arizona/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Backpacking Arizona."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Bruce Grubbs"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-arizona/, read 2026-11-18) show the title and the publisher's and shop's own logos only; this is a guidebook route over park and forest land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Bruce Grubbs"
+year = 2003
+line_policy = "sold"
+note = "Trip 7 in the book, on pages 86-87. A loop from the Saddle Mountain Trailhead down the Nankoweap Trail, cross-country along the Colorado River to Unkar Creek, by Vishnu Creek to Clear Creek and Bright Angel Campground, then up the North Kaibab Trail to the North Rim and back by the Ken Patrick Trail past Point Imperial. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Arizona: From Deep Canyons to Sky Islands"
+author = "Bruce Grubbs"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+format = "book, 1st edition, September 2003 (3rd printing 2012); the route is Trip 7, pages 86-87"
+price = "$19.95"
+price_checked = "2026-11-18"
+publisher = "Wilderness Press"
+isbn = "978-0-89997-324-1"
+
+[hike]
+summary = "The Nankoweap–Bright Angel Loop is an eleven day backpacking loop through the eastern Grand Canyon in Arizona, from the Saddle Mountain Trailhead on the North Rim. It goes down the Nankoweap Trail, then cross-country south past Nankoweap Butte and Kwagunt, Malgosa, Awatubi and Sixtymile creeks to Lava Canyon and Unkar Creek, by Vishnu Creek to Clear Creek, and on to Bright Angel Campground, the North Kaibab Trail and the Ken Patrick Trail back to the start. Bruce Grubbs describes it as Trip 7 in Backpacking Arizona."
+official_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+start = "Saddle Mountain Trailhead, North Rim, Grand Canyon National Park, Arizona"
+shape = "loop"
+days = [11, 11]
+season = "Mid September to May"
+months = [1, 2, 3, 4, 5, 9, 10, 11, 12]
+terrain = ["canyon"]
+travel = "some-cross-country"
+permit = "A permit is required to camp within Grand Canyon National Park, as the book states."
+caution = "The book calls this a strenuous cross-country hike, says every member of the party should be fit and that the leader should have experience hiking cross-country in the Grand Canyon, and says most of the loop is seldom travelled and hikers are unlikely to meet anyone on its cross-country section. The author rates its difficulty 10 out of 10. The book lists water at Nankoweap Creek, Kwagunt Creek, the Colorado River and Unkar Creek, and only seasonally in Vishnu Creek, Clear Creek and Bright Angel Creek. Campfires are not allowed in the park's backcountry; along the North Kaibab Trail near the end of the loop, camping is allowed only in designated campgrounds. Pets are not allowed on trails or in the backcountry."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 86-87 and the Featured Trips Summary Chart on page xiii of the 1st edition, 3rd printing, read from a printed copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Nankoweap–Bright Angel Loop, 82.2 miles (132 km), Trip 7 in Bruce Grubbs's guidebook Backpacking Arizona, with no track."
+fields = ["record"]
+basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition September 2003, ISBN 978-0-89997-324-1), pages 86-87, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -1,0 +1,94 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "powell-plateau-loop"
+name = "Powell Plateau Loop"
+country = "US"
+regions = ["AZ"]
+length_km = 88
+length_note = "54.6 mi, as the book gives it for Trip 6 (page 75), with 7,250 ft of elevation gain, 9 days and no shuttle. The figure is the book's own and is not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 74-75, read from a printed copy of the 1st edition (3rd printing 2012) on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-arizona/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Backpacking Arizona."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Bruce Grubbs"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-arizona/, read 2026-11-18) show the title and the publisher's and shop's own logos only; this is a guidebook route over park and forest land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Bruce Grubbs"
+year = 2003
+line_policy = "sold"
+note = "Trip 6 in the book, on pages 74-75. A loop from Swamp Point around Powell Plateau along the Colorado River, with 54.6 miles and nine days in the book. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Arizona: From Deep Canyons to Sky Islands"
+author = "Bruce Grubbs"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+format = "book, 1st edition, September 2003 (3rd printing 2012); the route is Trip 6, pages 74-75"
+price = "$19.95"
+price_checked = "2026-11-18"
+publisher = "Wilderness Press"
+isbn = "978-0-89997-324-1"
+
+[hike]
+summary = "The Powell Plateau Loop is a nine day backpacking loop in the Grand Canyon in Arizona, from the Swamp Point Trailhead around Powell Plateau along the Colorado River. It uses the North Bass Trail and runs through Shinumo Creek, Tapeats Creek and Saddle Canyon, and through Middle Granite Gorge, Conquistador Aisle, Stephen Aisle and Granite Gorge. Bruce Grubbs describes it as Trip 6 in Backpacking Arizona."
+official_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+start = "Swamp Point Trailhead, Grand Canyon National Park, Arizona"
+shape = "loop"
+days = [9, 9]
+season = "Mid September to November"
+months = [9, 10, 11]
+terrain = ["canyon"]
+travel = "mostly-cross-country"
+permit = "A permit is required to camp within Grand Canyon National Park, as the book states."
+caution = "The book calls this a strenuous cross-country hike, says every member of the party should be fit and that the leader should have experience hiking cross-country in the Grand Canyon. The author rates its difficulty 10 out of 10. The book lists water at Muav Saddle Spring, Tapeats Creek, the Colorado River, Key Spring, Hakatai Canyon, Shinumo Creek and White Creek. Campfires are not allowed in the park's backcountry, and pets are not allowed on trails or in the backcountry."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 74-75 and the Featured Trips Summary Chart on page xiii of the 1st edition, 3rd printing, read from a printed copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Powell Plateau Loop, 54.6 miles (88 km), Trip 6 in Bruce Grubbs's guidebook Backpacking Arizona, with no track."
+fields = ["record"]
+basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition September 2003, ISBN 978-0-89997-324-1), pages 74-75, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"

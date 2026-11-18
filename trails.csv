@@ -49,6 +49,7 @@ cottonwood-trail,Cottonwood Trail,CA,YT,85,record-only,none (no line included),n
 cranberry-lake-50,Cranberry Lake 50,US,NY,80,included,OpenStreetMap,ODbL-1.0,designated,
 cross-vermont,Cross Vermont Trail,US,VT,145,included,OpenStreetMap,ODbL-1.0,designated,
 dan-zhur-donjek,Dän Zhùr (Donjek) Route,CA,YT,110,record-only,none (no track included),none-stated,designated,
+deadman-creek-loop,Deadman Creek Loop,US,AZ,93,record-only,none (no line included),none-stated,route,sold
 deseret-hiking-route,Deseret Hiking Route,US,UT;ID,1609,record-only,none (no line included),none-stated,route,open
 desert-trail,Desert Trail,US,CA;NV;OR,2552,record-only,none (no line included),none-stated,route,unclear
 desert-winter-thru-hike,Desert Winter Thru-Hike,US,AZ;CA,1287,record-only,none (no line included),none-stated,route,withheld
@@ -91,6 +92,7 @@ international-appalachian-trail-maine,"International Appalachian Trail, Maine se
 island-walk,The Island Walk,CA,PE,700,included,OpenStreetMap,ODbL-1.0,designated,
 itijjagiaq-trail,Itijjagiaq Trail,CA,NU,120,record-only,none (no line included),none-stated,designated,
 john-muir,John Muir Trail,US,CA,340,included,OpenStreetMap,ODbL-1.0,designated,
+kanab-canyon-loop,Kanab Canyon Loop,US,AZ,84,record-only,none (no line included),none-stated,route,sold
 kekekabic,Kekekabic Trail,US,MN,66,included,OpenStreetMap,ODbL-1.0,designated,
 kings-canyon-high-basin-route,Kings Canyon High Basin Route,US,CA,200,record-only,none (no line included),none-stated,route,sold
 knobstone,Knobstone Hiking Trail,US,IN,257,included,OpenStreetMap,ODbL-1.0,designated,
@@ -118,6 +120,7 @@ mojave-sonoran-trail,Mojave-Sonoran Trail,US,NV;CA;AZ,1006,record-only,none (no 
 monadnock-sunapee,Monadnock-Sunapee Greenway,US,NH,80,included,OpenStreetMap,ODbL-1.0,designated,
 montana-trail,Montana Trail 406,US,MT,2934,record-only,none (no line included),none-stated,route,open
 mountains-to-sea,Mountains-to-Sea Trail,US,NC,1890,included,OpenStreetMap,ODbL-1.0,designated,
+nankoweap-bright-angel-loop,Nankoweap–Bright Angel Loop,US,AZ,132,record-only,none (no line included),none-stated,route,sold
 nepisiguit-migmaq-trail,Sentier Nepisiguit Mi'gmaq Trail,CA,NB,150,included,OpenStreetMap,ODbL-1.0,designated,
 new-england,New England National Scenic Trail,US,CT;MA,378,included,National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club,us-gov-public-domain,designated,
 north-boundary,North Boundary Trail,CA,AB,159,record-only,none (no line included),none-stated,designated,
@@ -141,6 +144,7 @@ pacific-northwest,Pacific Northwest National Scenic Trail,US,MT;ID;WA,1931,inclu
 paumanok-path,Paumanok Path,US,NY,201,included,OpenStreetMap,ODbL-1.0,designated,
 pfiffner-traverse,Pfiffner Traverse,US,CO,124,record-only,none (no line included),none-stated,route,sold
 pinhoti,Pinhoti Trail,US,AL;GA,540,included,OpenStreetMap,ODbL-1.0,designated,
+powell-plateau-loop,Powell Plateau Loop,US,AZ,88,record-only,none (no line included),none-stated,route,sold
 prescott-circle,Prescott Circle Trail,US,AZ,90,included,OpenStreetMap,ODbL-1.0,designated,
 pukaskwa-coastal,Pukaskwa Coastal Hiking Trail,CA,ON,60,included,OpenStreetMap,ODbL-1.0,designated,
 quehanna,Quehanna Trail,US,PA,119,included,OpenStreetMap,ODbL-1.0,designated,
@@ -171,6 +175,7 @@ sunapee-ragged-kearsarge,Sunapee-Ragged-Kearsarge Greenway,US,NH,121,included,Op
 sunshine-coast,Sunshine Coast Trail,CA,BC,180,included,OpenStreetMap,ODbL-1.0,designated,
 superior-hiking,Superior Hiking Trail,US,MN,499,included,OpenStreetMap,ODbL-1.0,designated,
 susquehannock,Susquehannock Trail System,US,PA,135,included,OpenStreetMap,ODbL-1.0,designated,
+sycamore-canyon-az,Sycamore Canyon,US,AZ,90,record-only,none (no line included),none-stated,route,sold
 tahoe-rim,Tahoe Rim Trail,US,CA;NV,266,included,OpenStreetMap,ODbL-1.0,designated,
 tahoe-yosemite-trail,Tahoe–Yosemite Trail,US,CA,299,record-only,none (no line included),none-stated,route,sold
 teton-crest,Teton Crest Trail,US,WY,64,record-only,none (no line included),ODbL-1.0,designated,

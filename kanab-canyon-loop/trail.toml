@@ -1,0 +1,94 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "kanab-canyon-loop"
+name = "Kanab Canyon Loop"
+country = "US"
+regions = ["AZ"]
+length_km = 84
+length_note = "52.2 mi, as the book gives it for Trip 5 (page 67), with 5,570 ft of elevation gain, 7 days and no shuttle. The figure is the book's own and is not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 66-67, read from a printed copy of the 1st edition (3rd printing 2012) on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-arizona/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Backpacking Arizona."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Bruce Grubbs"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-arizona/, read 2026-11-18) show the title and the publisher's and shop's own logos only; this is a guidebook route over park and forest land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Bruce Grubbs"
+year = 2003
+line_policy = "sold"
+note = "Trip 5 in the book, on pages 66-67. A loop from the Indian Hollow Trailhead through Jumpup and Kanab canyons to the Colorado River, along the river to Deer Creek and back. The book describes an optional side hike to Thunder River. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Arizona: From Deep Canyons to Sky Islands"
+author = "Bruce Grubbs"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+format = "book, 1st edition, September 2003 (3rd printing 2012); the route is Trip 5, pages 66-67"
+price = "$19.95"
+price_checked = "2026-11-18"
+publisher = "Wilderness Press"
+isbn = "978-0-89997-324-1"
+
+[hike]
+summary = "The Kanab Canyon Loop is a seven day backpacking loop in the Grand Canyon in Arizona, from the Indian Hollow Trailhead and Campground. It goes down Jumpup and Kanab canyons to the Colorado River, follows the river to Deer Creek and returns by Deer Spring. Bruce Grubbs describes it as Trip 5 in Backpacking Arizona, with 5,570 feet of climbing and much strenuous cross-country walking."
+official_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+start = "Indian Hollow Trailhead and Campground, Grand Canyon National Park, Arizona"
+shape = "loop"
+days = [7, 7]
+season = "March to mid May and mid September to November"
+months = [3, 4, 5, 9, 10, 11]
+terrain = ["canyon"]
+travel = "some-cross-country"
+permit = "A permit is required to camp within Grand Canyon National Park, as the book states."
+caution = "The book says much of this loop is strenuous cross-country hiking, that every member of the party should be fit and that the leader should have experience hiking cross-country in the Grand Canyon; it tells parties without that experience to choose an on-trail Grand Canyon hike instead. The author rates its difficulty 9 out of 10. The book lists water at Kanab Creek, the Colorado River and Deer Creek, and only seasonally in Indian Hollow and at Mountain Sheep Spring. Campfires are not allowed in the park's backcountry, and pets are not allowed on trails or in the backcountry."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 66-67 and the Featured Trips Summary Chart on page xiii of the 1st edition, 3rd printing, read from a printed copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Kanab Canyon Loop, 52.2 miles (84 km), Trip 5 in Bruce Grubbs's guidebook Backpacking Arizona, with no track."
+fields = ["record"]
+basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition September 2003, ISBN 978-0-89997-324-1), pages 66-67, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"

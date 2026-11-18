@@ -1,0 +1,94 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "sycamore-canyon-az"
+name = "Sycamore Canyon"
+country = "US"
+regions = ["AZ"]
+length_km = 90
+length_note = "55.7 mi, as the book gives it for Trip 8 (page 99), with 6,120 ft of elevation gain, 6 days and no shuttle. The figure is the book's own and is not measured from a track. The book says several optional trails can be used to make a shorter loop."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 98-99, read from a printed copy of the 1st edition (3rd printing 2012) on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-arizona/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Backpacking Arizona."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Bruce Grubbs"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-arizona/, read 2026-11-18) show the title and the publisher's and shop's own logos only; this is a guidebook route over park and forest land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Bruce Grubbs"
+year = 2003
+line_policy = "sold"
+note = "Trip 8 in the book, on pages 98-99. A loop from the Sycamore Trailhead up Sycamore Canyon to Geronimo Spring, then over the Mogollon Rim and back by the Winter Cabin, Taylor Cabin, Sycamore Basin and Packard Mesa trails. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Arizona: From Deep Canyons to Sky Islands"
+author = "Bruce Grubbs"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+format = "book, 1st edition, September 2003 (3rd printing 2012); the route is Trip 8, pages 98-99"
+price = "$19.95"
+price_checked = "2026-11-18"
+publisher = "Wilderness Press"
+isbn = "978-0-89997-324-1"
+
+[hike]
+summary = "Sycamore Canyon is a six day backpacking loop in the Mogollon Rim country of northern Arizona, from the Sycamore Trailhead in the Coconino and Prescott National Forests. It goes up Sycamore Canyon past Parsons Spring to Geronimo Spring, then climbs onto the rim and returns by the Winter Cabin, Taylor Cabin, Sycamore Basin and Packard Mesa trails. Bruce Grubbs describes it as Trip 8 in Backpacking Arizona, and is not to be confused with other canyons of the same name."
+official_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+start = "Sycamore Trailhead, Coconino and Prescott National Forests, Arizona"
+shape = "loop"
+days = [6, 6]
+season = "March to November"
+months = [3, 4, 5, 6, 7, 8, 9, 10, 11]
+terrain = ["canyon", "forest", "desert"]
+travel = "some-cross-country"
+permit = "The book lists only a Red Rock Pass, which is required for vehicle parking, and no camping permit."
+caution = "The book says the canyon drains a large area of the western Mogollon Rim and often floods during the spring snowmelt, so the trip may be impossible from March through mid April. After the melt the creek dries up quickly, and there may be no water at all from Parsons Spring to Geronimo Spring, which the book says is 20 miles of mostly cross-country hiking. The author rates its difficulty 7 out of 10. Sycamore Canyon is closed to camping from Parsons Spring to the Verde River."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 98-99 and the Featured Trips Summary Chart on page xiii of the 1st edition, 3rd printing, read from a printed copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Sycamore Canyon, 55.7 miles (90 km), Trip 8 in Bruce Grubbs's guidebook Backpacking Arizona, with no track."
+fields = ["record"]
+basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition September 2003, ISBN 978-0-89997-324-1), pages 98-99, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"

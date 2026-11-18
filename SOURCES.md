@@ -117,6 +117,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | cranberry-lake-50 | Cranberry Lake 50 volunteer trail crew (publishes the loop; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7580730) | ODbL-1.0 | track |
 | cross-vermont | Cross Vermont Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2750828) | ODbL-1.0 | track |
 | dan-zhur-donjek | Parks Canada (Kluane National Park and Reserve) (publishes the trail) | [source page](https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur) | none-stated | record only |
+| deadman-creek-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-arizona/) | none-stated | record only |
 | deseret-hiking-route | Kevin "LarryBoy" DeVries (publishes the route) | [source page](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) | none-stated | record only |
 | desert-trail | Desert Trail Association, whose route was scouted by Russel Pengely, D. W. "Old Creosote" Tomer and Steve Tabor; the site is now run by Desert Survivors | [source page](https://deserttrail.net) | none-stated | record only |
 | desert-winter-thru-hike | simBLISSity Ultralight Designs (Brett Tucker and partner; publish the route) | [source page](https://www.simblissity.net/desert-wth-mapset.shtml) | none-stated | record only |
@@ -159,6 +160,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | island-walk | Island Walk PEI Inc. (publishes the route; no open geometry found) | [source page](https://www.openstreetmap.org/relation/12307947) | ODbL-1.0 | track |
 | itijjagiaq-trail | Nunavut Parks (Government of Nunavut) (publishes the trail) | [source page](https://nunavutparks.com/nunavut_parks/katannilik-territorial-park/) | none-stated | record only |
 | john-muir | No single publisher: NPS Yosemite and Sequoia-Kings Canyon, USFS Inyo and Sierra National Forests | [source page](https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0) | ODbL-1.0 | track |
+| kanab-canyon-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-arizona/) | none-stated | record only |
 | kekekabic | Kekekabic Trail Club; USFS (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/10831114) | ODbL-1.0 | track |
 | kings-canyon-high-basin-route | Andrew Skurka (publishes the route) | [source page](https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/) | none-stated | record only |
 | knobstone | Indiana Department of Natural Resources (publishes the southern Knobstone section; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4644135) | ODbL-1.0 | track |
@@ -186,6 +188,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | monadnock-sunapee | Monadnock-Sunapee Greenway Trail Club (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3888871) | ODbL-1.0 | track |
 | montana-trail | Montana Trail 406 Association (publishes the route) | [source page](https://montanatrail.org/montana-trail-hike-sections/) | none-stated | record only |
 | mountains-to-sea | North Carolina Division of Parks and Recreation; Friends of the Mountains-to-Sea Trail (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1395404) | ODbL-1.0 | track |
+| nankoweap-bright-angel-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-arizona/) | none-stated | record only |
 | nepisiguit-migmaq-trail | Sentier Nepisiguit Mi'gmaq Trail Inc. (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13656926) | ODbL-1.0 | track |
 | new-england | National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/NEEN_BND_NationalScenicTrailCenterline_ln/FeatureServer/0) | us-gov-public-domain | track |
 | north-boundary | Parks Canada, Jasper National Park (publishes the trail; no open geometry found) | [source page](https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary) | none-stated | record only |
@@ -209,6 +212,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | paumanok-path | Southampton Trails Preservation Society and Long Island Greenbelt Trail Conference (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/12900097) | ODbL-1.0 | track |
 | pfiffner-traverse | Andrew Skurka (publishes the route) | [source page](https://andrewskurka.com/product/pfiffner-traverse-guide-maps/) | none-stated | record only |
 | pinhoti | Pinhoti Trail Alliance (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1642836) | ODbL-1.0 | track |
+| powell-plateau-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-arizona/) | none-stated | record only |
 | prescott-circle | City of Prescott and Prescott National Forest (manage the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4717133) | ODbL-1.0 | track |
 | pukaskwa-coastal | Parks Canada (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/15361195) | ODbL-1.0 | track |
 | quehanna | Keystone Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7236114) | ODbL-1.0 | track |
@@ -239,6 +243,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | sunshine-coast | Sunshine Coast Trail Society (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7406716) | ODbL-1.0 | track |
 | superior-hiking | North Country Trail Association (hosts the Superior Hiking Trail Association's track) | [source page](https://www.openstreetmap.org/relation/1612587) | ODbL-1.0 | track |
 | susquehannock | Susquehannock Trail Club (publishes the loop; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13079897) | ODbL-1.0 | track |
+| sycamore-canyon-az | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-arizona/) | none-stated | record only |
 | tahoe-rim | Tahoe Rim Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3094865) | ODbL-1.0 | track |
 | tahoe-yosemite-trail | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/wilderness-press/) | none-stated | record only |
 | teton-crest | National Park Service; USFS (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3895101) | ODbL-1.0 | record only |

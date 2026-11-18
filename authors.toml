@@ -649,3 +649,24 @@ checked = "2026-11-17"
 [[author.source]]
 url = "https://www.greatplainstrail.org/about-us/"
 publisher = "Great Plains Trail Alliance"
+
+[[author]]
+name = "Bruce Grubbs"
+credits = ["Bruce Grubbs"]
+kind = "person"
+url = "https://author.brucegrubbs.com/"
+summary = "Bruce Grubbs is an outdoor writer and photographer whose hiking guidebooks include Backpacking Arizona, with its long Grand Canyon cross-country loops."
+bio = "Bruce Grubbs is an outdoor writer and photographer who writes hiking and backpacking guidebooks. His own site says hiking and backpacking matter most to him, especially long, rough, cross-country trips in places like the Grand Canyon. He wrote Backpacking Arizona, published by Wilderness Press in 2003, which describes 32 backpacking trips across the state and, according to its copyright page, carries his own maps and most of his own photographs. His site also lists revised editions of his guidebooks, including Exploring Grand Canyon and Hiking Northern Arizona, and says he shares what he has learned through his books and websites."
+checked = "2026-11-18"
+
+[[author.source]]
+url = "https://author.brucegrubbs.com/about/"
+publisher = "Bruce Grubbs"
+
+[[author.source]]
+url = "https://author.brucegrubbs.com/"
+publisher = "Bruce Grubbs"
+
+[[author.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+publisher = "Wilderness Press (AdventureKEEN)"

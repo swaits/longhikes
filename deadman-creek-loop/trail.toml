@@ -1,0 +1,94 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "deadman-creek-loop"
+name = "Deadman Creek Loop"
+country = "US"
+regions = ["AZ"]
+length_km = 93
+length_note = "57.7 mi, as the book gives it for Trip 16 (page 157), with 11,510 ft of elevation gain, 7 days and no shuttle. The page also prints 63.6 mi, 14,680 ft and 7 days in brackets without saying what they are; the same page describes a Willow Spring Trail and Deadman Trail option that it says is entirely on trail. The figures are the book's own and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Wilderness Press (publishes the route in the guidebook)"
+publisher_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 156-157, read from a printed copy of the 1st edition (3rd printing 2012) on 2026-11-18, and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-arizona/, read 2026-11-18)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Backpacking Arizona."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Bruce Grubbs"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://shop.adventurewithkeen.com/product/backpacking-arizona/, read 2026-11-18) show the title and the publisher's and shop's own logos only; this is a guidebook route over park and forest land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Bruce Grubbs"
+year = 2003
+line_policy = "sold"
+note = "Trip 16 in the book, on pages 156-157. A loop from the Sheep Bridge Trailhead through Sonoran desert, along part of the Mazatzal Divide Trail (Arizona Trail) and back by the Deadman and Willow Spring trails. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Arizona: From Deep Canyons to Sky Islands"
+author = "Bruce Grubbs"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+format = "book, 1st edition, September 2003 (3rd printing 2012); the route is Trip 16, pages 156-157"
+price = "$19.95"
+price_checked = "2026-11-18"
+publisher = "Wilderness Press"
+isbn = "978-0-89997-324-1"
+
+[hike]
+summary = "The Deadman Creek Loop is a seven day backpacking loop in the Mazatzal Wilderness of central Arizona, from the Sheep Bridge Trailhead in the Tonto National Forest. It is a cross-country walk through Sonoran desert, followed by the Davenport and Sheep Creek trails, a section of the Mazatzal Divide Trail (Arizona Trail) along the pine-forested crest, and the Deadman and Willow Spring trails back. Bruce Grubbs describes it as Trip 16 in Backpacking Arizona."
+official_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+start = "Sheep Bridge Trailhead, Mazatzal Wilderness, Tonto National Forest, Arizona"
+shape = "loop"
+days = [7, 7]
+season = "October to April"
+months = [1, 2, 3, 4, 10, 11, 12]
+terrain = ["desert", "forest"]
+travel = "some-cross-country"
+permit = "No permit is required, as the book states."
+caution = "The book says a section of the main loop is cross-country, so at least one member of the party should have cross-country desert hiking experience; it tells less experienced groups to take the Willow Spring Trail and Deadman Trail option, which it says is entirely on trail. The author rates its difficulty 8 out of 10. Most of the springs and creeks are seasonal and may go dry in drought years. The maximum group size is 15 and the maximum stay is 14 days."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 156-157 and the Featured Trips Summary Chart on page xiii of the 1st edition, 3rd printing, read from a printed copy"
+facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Deadman Creek Loop, 57.7 miles (93 km), Trip 16 in Bruce Grubbs's guidebook Backpacking Arizona, with no track."
+fields = ["record"]
+basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition September 2003, ISBN 978-0-89997-324-1), pages 156-157, give the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"

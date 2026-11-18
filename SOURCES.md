@@ -14,7 +14,7 @@ Page: https://www.openstreetmap.org/copyright (read 2026-11-09). Full text: LICE
 
 ## United States federal agencies (public domain)
 
-Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 15 trails with an included track (Alpine Trail #7, Appalachian, Black Canyon, Colorado Trail in part, Fremont, General George Crook, Highline, Middle Fork Trail, Natchez Trace, New England, North Umpqua, Pacific Northwest, Potomac Heritage, Solitude Loop, Toiyabe Crest).
+Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 16 trails with an included track (Alpine Trail #7, Appalachian, Black Canyon, Colorado Trail in part, Fremont, General George Crook, Highline, Middle Fork Trail, Natchez Trace, New England, North Umpqua, Pacific Northwest, Potomac Heritage, Solitude Loop, Thorofare and South Boundary Trail, Toiyabe Crest).
 
 Quoted terms: "Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105."
 
@@ -243,6 +243,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | teton-crest-route | Wilderness Mindset (publishes the route) | [source page](https://wildernessmindset.com/product/teton-crest-route-map-pack/) | none-stated | record only |
 | teton-range-traverse | Cam Honan, The Hiking Life (publishes the route) | [source page](https://thehikinglife.com/2017/07/teton-range-traverse/) | none-stated | record only |
 | thames-valley-trail | Thames Valley Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3444520) | ODbL-1.0 | track |
+| thorofare-and-south-boundary-trail | National Park Service (public Trails dataset) | [source page](https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0) | us-gov-public-domain | track |
 | timberline | USDA Forest Service, Mount Hood National Forest | [source page](https://www.openstreetmap.org/relation/7641482) | ODbL-1.0 | track |
 | toiyabe-crest | USDA Forest Service, National Forest System trails | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | tonto-trail | National Park Service, Grand Canyon National Park (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2836546) | ODbL-1.0 | track |

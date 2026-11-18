@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-18 - The Thorofare and South Boundary Trail, in Yellowstone
+
+- The Thorofare and South Boundary Trail is new: 68 miles (109 km) on foot through Yellowstone National Park in Wyoming, from the Nine Mile Trailhead on the east side of Yellowstone Lake, south on the Thorofare Trail, then west on the South Boundary Trail to the South Entrance. Frommer's gives the 68 miles for the hike; other outlets say 69 to 70. The Park Service gives only the parts, 33.1 miles for the Thorofare Trail alone, and the record's length note says so.
+- It has a track, taken from the Park Service's public Trails dataset, which is a federal work in the public domain. The track measures 68.6 miles (110.4 km), 1.3% over the published length, in 2 parts. The dataset has no trail for 0.3 miles (0.5 km) near the Thorofare Ranger Station, so the track has a gap there.
+- The record carries a backcountry permit for overnight stays, the mid-July to early September season Frommer's gives, and the Park Service's cautions about creek fords, a waist-deep Snake River ford and bear country. Loops through Heart Lake that people walk by themselves are not recorded, because no one publishes them as a route.
+- The home page, lists and the place page for Wyoming each count one more trail.
+
 ## 2026-11-17 - The Washington Coast Trail gains its season, permit and bus options
 
 - The route's author, Lauren Lake, told us on the issue tracker that the Washington Coast Trail is hiked from May to September, because of the tides and creeks on the Olympic Wilderness Coast, and that a permit is required for the Olympic Wilderness Coast in those months. The record now has the season, its months and the permit, each credited to her comment.

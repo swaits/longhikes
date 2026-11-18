@@ -1,0 +1,101 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "thorofare-and-south-boundary-trail"
+name = "Thorofare and South Boundary Trail"
+country = "US"
+regions = ["WY"]
+length_km = 109
+length_note = "68 mi, as Frommer's gives it for the point-to-point hike on the Thorofare Trail and the South Boundary Trail. Other outlets give 69 to 70 mi, which is within what a start at the trailhead, the exact path walked and rounding account for. The National Park Service gives only the parts: 33.1 mi for the Thorofare Trail alone, from the Nine Mile Trailhead, and 11.6 mi for the South Boundary Trail's South Entrance to Harebell section."
+tier = "regional"
+designation = "Two National Park Service trails in Yellowstone National Park, the Thorofare Trail and the South Boundary Trail, walked end to end as one hike"
+wave = 1
+
+[source]
+status = "verified"
+publisher = "National Park Service (public Trails dataset)"
+publisher_url = "https://www.nps.gov/yell/planyourvisit/backcountryhiking.htm"
+url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
+discovery = "arcgis-query-hash: GET <url>/query with where UNITCODE = 'YELL' AND (TRLNAME LIKE '%Thorofare%' OR TRLNAME LIKE '%South Boundary%') (outSR=4326, f=geojson); hash the answer body and count its rows; fetch again when either changes. 78 features on 2026-11-18."
+format = "ArcGIS FeatureServer layer 0, outSR=4326, f=geojson, 78 features for the query"
+crs = "EPSG:4326"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-18). The layer is the Service's public Trails dataset, a National Park Service service."
+attribution = "National Park Service"
+osm_only = false
+mainline = "Features of Yellowstone National Park (UNITCODE YELL) named Thorofare Trail, Thorofare-South Boundary Cutoff Trail, and South Boundary Trail: Lynx Creek, Harebell-Fox Creek Trail and South Entrance-Harebell. The walk is the shortest chain of them from the Nine Mile Trailhead to the South Entrance: the Thorofare Trail to where the cutoff trail leaves it, the cutoff, then, after a gap, the South Boundary Trail. The Thorofare Trail's last 1.4 mi, beyond the cutoff, and two tiny duplicate pieces are left out. The layer's South Boundary Trail sections west of the South Entrance (Grassy Lake and Bechler) and the Thorofare Cabin Trail are not part of the walk."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "National Park Service (public Trails dataset)"
+line_file = "line.geojson"
+
+[osm]
+relation = 0
+note = "Not searched: the National Park Service publishes the track."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "NPS Yellowstone"
+note = "No emblem of the hike was found. The Park Service pages read on 2026-11-18 (the Nine Mile Trailhead, South Entrance Trailhead and Backcountry Camping pages) describe the trails in words and carry no mark for them; the Service's arrowhead is the agency's own."
+logo_file = ""
+logo_owner = "NPS Yellowstone"
+
+[verification]
+verified = true
+date = "2026-11-18"
+measured_km = 110.4
+difference_percent = 1.3
+parts = 2
+note = "The NPS public Trails dataset, 58 pieces joined end to end in two parts: 110.4 km (68.6 mi), 1.3% over the 68 mi (109 km) Frommer's gives. There is one gap of 0.5 km (0.3 mi) where the dataset has no feature, between the end of the Thorofare-South Boundary Cutoff Trail and the start of the South Boundary Trail's Lynx Creek section, near the Thorofare Ranger Station."
+
+[hike]
+summary = "The Thorofare and South Boundary Trail is a point-to-point walk in Yellowstone National Park, Wyoming, from the Nine Mile Trailhead on the east side of Yellowstone Lake south on the Thorofare Trail, then west on the South Boundary Trail along the Snake River to the South Entrance. The Park Service describes the Thorofare Trail as heading into some of the most remote parts of the park. Frommer's gives the whole hike as 68 miles."
+official_url = "https://www.nps.gov/places/000/nine-mile-trailhead-5k5.htm"
+start = "Nine Mile Trailhead, Yellowstone National Park, Wyoming"
+start_lonlat = [-110.276, 44.506]
+end = "South Entrance, Yellowstone National Park, Wyoming"
+end_lonlat = [-110.666, 44.136]
+shape = "point-to-point"
+travel = "trail"
+permit = "A backcountry permit is required for all overnight stays in Yellowstone's backcountry, and campsites can be reserved on Recreation.gov."
+season = "Mid-July to early September"
+months = [7, 8, 9]
+caution = "The Park Service says the Thorofare Trail goes through or near three bear management areas and that a hiker should be prepared to ford creeks, and that the Snake River ford near the South Entrance can be dangerous and, even in low water, waist-deep. Grizzly and black bears live throughout the park, and food must be kept in a bear-resistant container or hung."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://www.nps.gov/places/000/nine-mile-trailhead-5k5.htm"
+publisher = "National Park Service"
+facts = ["summary", "official_url", "start", "shape", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.nps.gov/places/000/south-entrance-trailhead-8k7.htm"
+publisher = "National Park Service"
+facts = ["end", "caution"]
+
+[[hike.source]]
+url = "https://www.nps.gov/yell/planyourvisit/backcountryhiking.htm"
+publisher = "National Park Service"
+facts = ["permit"]
+
+[[hike.source]]
+url = "https://www.frommers.com/destinations/yellowstone-national-park/exploring-the-backcountry/hiking-trails"
+publisher = "Frommer's"
+facts = ["summary", "shape", "season", "months"]
+
+[[hike.source]]
+url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
+publisher = "National Park Service (public Trails dataset: the ends of the track)"
+facts = ["start_lonlat", "end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: the Thorofare and South Boundary Trail, 68 miles (109 km) from the Nine Mile Trailhead to the South Entrance of Yellowstone National Park, with a track from the National Park Service's public Trails dataset."
+fields = ["record"]
+basis = "Frommer's describes the 68-mile point-to-point hike on the Thorofare Trail and the South Boundary Trail, and the Park Service's own pages describe the two trails and their ends. The owner of the dataset ruled that the hike belongs in it."
+basis_url = "https://www.frommers.com/destinations/yellowstone-national-park/exploring-the-backcountry/hiking-trails"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-197 trails, 120 with a track and 77 with no track included. Of these, 58 are routes: 2 with a track and 56 without.
+198 trails, 121 with a track and 77 with no track included. Of these, 58 are routes: 2 with a track and 56 without.
 
 <!-- END COUNTS -->
 
@@ -166,6 +166,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | tahoe-rim | Tahoe Rim Trail | US | CA, NV | 266 | yes | ODbL-1.0 |
 | teton-crest | Teton Crest Trail | US | WY | 64 | no | ODbL-1.0 |
 | thames-valley-trail | Thames Valley Trail | CA | ON | 110 | yes | ODbL-1.0 |
+| thorofare-and-south-boundary-trail | Thorofare and South Boundary Trail | US | WY | 109 | yes | us-gov-public-domain |
 | timberline | Timberline Trail (Mount Hood) | US | OR | 64 | yes | ODbL-1.0 |
 | toiyabe-crest | Toiyabe Crest National Recreation Trail | US | NV | 101 | yes | us-gov-public-domain |
 | tonto-trail | Tonto Trail | US | AZ | 153 | yes | ODbL-1.0 |

@@ -1,0 +1,5 @@
+Source: https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0 (National Park Service, public Trails dataset)
+Licence: us-gov-public-domain (see trail.toml and SOURCES.md in this repository)
+Attribution: National Park Service
+Source read: 2026-11-18
+Published copy: features of Yellowstone National Park (UNITCODE = 'YELL') named Thorofare Trail, Thorofare-South Boundary Cutoff Trail, South Boundary Trail: Lynx Creek, South Boundary Trail: Harebell-Fox Creek Trail and South Boundary Trail: South Entrance-Harebell (69 pieces, of which 58 lie on the walk; the other 11 are a spur of the Thorofare Trail beyond the cutoff, 1.4 mi, and two tiny pieces that double others). The pieces on the walk are joined end to end, each oriented from the Nine Mile Trailhead to the South Entrance, in two LineStrings with a gap of 0.3 mi between them where the dataset has no feature. Coordinates rounded to 6 decimal places and written as compact JSON; the layer's NAD83 coordinates were requested as WGS84 (outSR=4326).

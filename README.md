@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-200 trails, 121 with a track and 79 with no track included. Of these, 58 are routes: 2 with a track and 56 without.
+200 trails, 122 with a track and 78 with no track included. Of these, 58 are routes: 2 with a track and 56 without.
 
 <!-- END COUNTS -->
 
@@ -151,7 +151,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | prescott-circle | Prescott Circle Trail | US | AZ | 90 | yes | ODbL-1.0 |
 | pukaskwa-coastal | Pukaskwa Coastal Hiking Trail | CA | ON | 60 | yes | ODbL-1.0 |
 | quehanna | Quehanna Trail | US | PA | 119 | yes | ODbL-1.0 |
-| rae-lakes-loop | Rae Lakes Loop | US | CA | 67 | no | none-stated |
+| rae-lakes-loop | Rae Lakes Loop | US | CA | 67 | yes | ODbL-1.0 |
 | rideau-trail | Rideau Trail | CA | ON | 387 | yes | ODbL-1.0 |
 | ring-the-peak | Ring the Peak Trail | US | CO | 101 | no | none-stated |
 | river-to-river | River to River Trail | US | IL | 257 | yes | ODbL-1.0 |

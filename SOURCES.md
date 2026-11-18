@@ -6,7 +6,7 @@ A track is included in this repository only when its source's terms allow redist
 
 ## OpenStreetMap (ODbL-1.0)
 
-Used by: 107 trails with an included track, and part of the Colorado Trail track (about 38 km; the rest is United States Forest Service data). Also named as the recorded source for 2 record-only trails, where no track was downloaded or none was usable. One of the person-defined routes has a track from OpenStreetMap (the Big SEKI Loop, relation 11628437); the other 49 name no source licence for a track.
+Used by: 108 trails with an included track, and part of the Colorado Trail track (about 38 km; the rest is United States Forest Service data). Also named as the recorded source for 2 record-only trails, where no track was downloaded or none was usable. One of the person-defined routes has a track from OpenStreetMap (the Big SEKI Loop, relation 11628437); the other 49 name no source licence for a track.
 
 Quoted terms: "You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors."
 
@@ -212,7 +212,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | prescott-circle | City of Prescott and Prescott National Forest (manage the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4717133) | ODbL-1.0 | track |
 | pukaskwa-coastal | Parks Canada (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/15361195) | ODbL-1.0 | track |
 | quehanna | Keystone Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7236114) | ODbL-1.0 | track |
-| rae-lakes-loop | National Park Service (no track included; the public Trails dataset has none for the park) | [source page](https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm) | none-stated | record only |
+| rae-lakes-loop | National Park Service (publishes the loop; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1710944) | ODbL-1.0 | track |
 | rideau-trail | Rideau Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7675635) | ODbL-1.0 | track |
 | ring-the-peak | Friends of the Peak (publishes the trail and offers GPX tracks) | [source page](https://friendsofthepeak.org/ring-the-peak-2/) | none-stated | record only |
 | river-to-river | River to River Trail Society (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4645742) | ODbL-1.0 | track |

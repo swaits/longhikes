@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-18 - The Rae Lakes Loop now has a track
+
+- The Rae Lakes Loop now has a track from OpenStreetMap (relation 1710944, under the Open Database Licence, credited to OpenStreetMap contributors). The loop itself is 57.6 km (35.8 miles) in one part, from the junction of the Paradise Valley and Bubbs Creek trails by Woods Creek, the Rae Lakes and Glen Pass. The 1.9 mile stem from Road's End to that junction is kept apart, as an alternate.
+- The National Park Service's 41.4 miles counts the stem out and back. The loop plus the stem twice is 39.5 miles, 4.5% short of that figure.
+- The record's start is now placed at Road's End. The home page, lists and the places that count trails with a track each count one more.
+
 ## 2026-11-18 - The Rae Lakes Loop, in California
 
 - The Rae Lakes Loop is new: 41.4 miles (67 km) on foot in Kings Canyon National Park, California, a loop from Road's End in Cedar Grove past Paradise Valley and the Rae Lakes, over Glen Pass (11,978 feet) and back down Bubbs Creek. The National Park Service's page gives it as 41.4 miles.

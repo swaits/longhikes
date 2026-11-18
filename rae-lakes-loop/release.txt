@@ -1,0 +1,7 @@
+rae-lakes-loop
+
+Source: https://www.openstreetmap.org/relation/1710944
+Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
+Attribution: OpenStreetMap contributors (ODbL)
+Source read: 2026-11-18
+Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

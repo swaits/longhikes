@@ -11,26 +11,26 @@ designation = "National Park Service trails in Kings Canyon National Park, walke
 wave = 1
 
 [source]
-status = "none"
-publisher = "National Park Service (no track included)"
+status = "osm-only"
+publisher = "National Park Service (publishes the loop; no open geometry found)"
 publisher_url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
-url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
-format = "No track included"
+url = "https://www.openstreetmap.org/relation/1710944"
+discovery = "osm-relation-version: Overpass `rel(1710944); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
 crs = "EPSG:4326"
-licence = "none-stated"
-licence_text = "No track is included, so no source licence applies to a track. The Park Service's public Trails dataset, which was queried for a track and holds none for this loop, is a United States federal government work, public domain in the United States under 17 U.S.C. 105."
-attribution = "none (no track included)"
-osm_only = false
-mainline = "No track was built. The National Park Service's public Trails dataset (the layer named in url, and the NPS_Public_Trails service) holds no feature for Sequoia and Kings Canyon National Parks: a query on 2026-11-18 for UNITCODE = 'SEKI' returned 0 features, a query on the envelope around the loop (lon -118.7 to -118.2, lat 36.7 to 37.1) returned 0 features, and a name search for the Woods Creek, Bubbs Creek, Glen Pass and Rae Lakes trails found only trails of other parks."
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 1710944."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 1710944: 16 main ways, which join into the loop from the junction of the Paradise Valley and Bubbs Creek trails (Paradise Valley Trail, Woods Creek Trail, John Muir Trail and Bubbs Creek Trail), and 4 ways with the role approach, the Paradise Valley Trail from Road's End to that junction, kept in alternates.geojson. The National Park Service's public Trails dataset has no features for the park."
 source_checked = "2026-11-18"
 redistributable = true
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "The National Park Service's public Trails dataset has no features for Sequoia and Kings Canyon National Parks, and no other open track from the Park Service was found, so no track is included."
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
 
 [osm]
-relation = 0
-note = "Searched through Overpass on 2026-11-18. OpenStreetMap has a route relation named Rae Lakes Loop, relation 1710944 (version 22, edited 2025-05-05), with 16 main ways and 4 approach ways. Its main ways join into one part of 57.6 km (35.8 mi), 13.5% under the 41.4 mi (67 km) the National Park Service gives, so it is not the loop from Road's End and was not used and no track is included. Nothing was downloaded."
+relation = 1710944
+note = "Downloaded 2026-11-18 (version 22, edited 2025-05-05); 16 ways in the main track and 4 approach ways in alternates.geojson. release.txt has the source and date."
 
 [shield]
 status = "no-logo-exists"
@@ -41,13 +41,18 @@ logo_file = ""
 logo_owner = "NPS Sequoia and Kings Canyon"
 
 [verification]
-verified = false
-note = "No track to measure. The National Park Service's public Trails dataset was queried on 2026-11-18 and holds no feature for the park."
+verified = true
+date = "2026-11-18"
+measured_km = 63.6
+difference_percent = -4.5
+parts = 1
+note = "OSM relation 1710944: the main track, the loop, is 57.6 km (35.8 mi) in 1 part; the 4 approach ways, the stem from Road's End to the loop, are 3.0 km (1.9 mi). The Park Service's 41.4 mi counts the stem out and back, so the loop plus the stem twice is 63.6 km (39.5 mi), 4.5% short of 66.6 km (41.4 mi). The loop alone is 57.6 km against the 37.6 mi (60.5 km) the Park Service's mileage table gives without the stem."
 
 [hike]
 summary = "The Rae Lakes Loop is a backpacking loop in Kings Canyon National Park, California, from Road's End in Cedar Grove up the Kings River canyon past Paradise Valley and the Woods Creek crossing to the Rae Lakes, over Glen Pass and down Bubbs Creek by way of Vidette Meadow and Junction Meadow. The Park Service gives it as 41.4 miles, climbing from about 5,035 feet at the trailhead to 11,978 feet at Glen Pass. It is most often started from the Woods Creek trailhead to walk it clockwise or from the Bubbs Creek trailhead to walk it counter-clockwise."
 official_url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
 start = "Road's End, Cedar Grove, Kings Canyon National Park, California"
+start_lonlat = [-118.583, 36.795]
 shape = "loop"
 high_point = "Glen Pass"
 high_point_m = 3651
@@ -70,6 +75,11 @@ url = "https://www.nps.gov/seki/planyourvisit/wilderness_permits.htm"
 publisher = "National Park Service"
 facts = ["permit"]
 
+[[hike.source]]
+url = "https://www.openstreetmap.org/relation/1710944"
+publisher = "OpenStreetMap contributors (the end of the approach ways, Road's End)"
+facts = ["start_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -79,5 +89,14 @@ change = "The record was added: the Rae Lakes Loop, 41.4 miles (67 km) from Road
 fields = ["record"]
 basis = "The National Park Service's Rae Lakes Loop page gives the loop as 41.4 miles long. The owner of the dataset ruled that it joins the well-known multi-day trails of 60 to 80 km that are listed under the 50 mile floor."
 basis_url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "A track was added from OpenStreetMap relation 1710944: the loop of 57.6 km (35.8 mi) and, in alternates.geojson, the stem from Road's End of 3.0 km (1.9 mi). The record had no track before."
+fields = ["source", "osm.relation", "hike.start_lonlat"]
+basis = "OpenStreetMap relation 1710944 maps the Rae Lakes Loop with 16 main ways and 4 approach ways. The loop plus the approach walked out and back is 39.5 mi, 4.5% short of the 41.4 mi the National Park Service gives, which counts the stem both ways."
+basis_url = "https://www.openstreetmap.org/relation/1710944"
 asked_by = "the dataset's own check"
 outcome = "applied"

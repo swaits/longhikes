@@ -16,7 +16,7 @@ class RecordsTest(unittest.TestCase):
         self.assertEqual(len(self.recs), 200)
         self.assertEqual(sum(r["derived"]["kind"] == "route" for r in self.recs), 58)
         self.assertEqual(sum(r["derived"]["kind"] == "designated" for r in self.recs), 142)
-        self.assertEqual(sum(r["derived"]["has_line"] for r in self.recs), 121)
+        self.assertEqual(sum(r["derived"]["has_line"] for r in self.recs), 122)
 
     def test_sorted_by_id(self):
         ids = [r["id"] for r in self.recs]

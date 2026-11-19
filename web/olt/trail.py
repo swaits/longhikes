@@ -8,7 +8,7 @@ import os
 import re
 import urllib.parse
 
-from . import browse, common, elevation, facets, hike, related, seo, sketch, words
+from . import browse, common, elevation, facets, hike, regions, related, seo, sketch, words
 from .layout import OUTDOOR_STYLE
 from .markup import Markup, esc
 
@@ -405,7 +405,7 @@ def page_head(rec, author_links=None):
     groups = facets.place_groups(rec)
     if keys and keys[0] in facets.GROUP_OF:
         g = facets.GROUP_OF[keys[0]]
-        crumbs.append(f'<li><a href="/regions/#{esc(g)}">{esc(facets.GROUP_NAME[g])}</a></li>')
+        crumbs.append(f'<li><a href="{esc(regions.group_path(g))}">{esc(facets.GROUP_NAME[g])}</a></li>')
         crumbs.append(f'<li><a href="{esc(facets.place_path(keys[0]))}">{esc(facets.place_name(keys[0]))}</a></li>')
     elif groups:
         crumbs.append(f'<li><a href="/regions/#across-canada">{esc(facets.ACROSS_CANADA_NAME)}</a></li>')

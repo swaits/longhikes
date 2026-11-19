@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-18 - Group crumbs go to the group's page
+
+- The group in a breadcrumb ("West Coast" in Places / West Coast / California / Sierra High Route) now links to that group's own page, `/regions/west-coast/`, instead of an anchor on the places index. Across Canada has no page of its own and still links to its place on the index.
+
 ## 2026-11-18 - Place maps open on the place
 
 - A state, province or group page now opens its map on the place itself. Before, the map fitted every trail that touches the place, so one coast-to-coast trail opened Utah's map on the whole United States.

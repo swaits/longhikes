@@ -169,7 +169,7 @@ class PlaceTest(unittest.TestCase):
         body = trail.render(fake(1, regions=["CO"]), GH)[2]
         crumbs = body[body.index('<nav class="breadcrumb"'):body.index("</nav>")]
         self.assertIn('<a href="/regions/">Places</a>', crumbs)
-        self.assertIn('<a href="/regions/#mountain-west">Mountain West</a>', crumbs)
+        self.assertIn('<a href="/regions/mountain-west/">Mountain West</a>', crumbs)
         self.assertIn('<a href="/regions/us-co/">Colorado</a>', crumbs)
 
 

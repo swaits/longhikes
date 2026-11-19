@@ -233,6 +233,37 @@ class JsonLdTest(unittest.TestCase):
             self.assertEqual("geo" in place, bool(built.get("bbox") or h.get("start_lonlat") or h.get("end_lonlat")),
                              rec["id"])
 
+    def test_group_crumbs_go_to_the_group_page(self):
+        from olt import facets
+        names = {facets.GROUP_NAME[g]: g for g in facets.GROUP_NAME}
+        seen_trail = seen_state = 0
+        for path, doc in self.pages.items():
+            if not (path.startswith(("trails/", "regions/")) and path.endswith("index.html")):
+                continue
+            crumbs = visible_crumbs(doc)
+            for text, href in crumbs[:-1]:
+                g = names.get(text)
+                if g is None or not href:
+                    continue
+                self.assertEqual(href, regions.group_path(g), path)
+                self.assertIn(regions.group_path(g).strip("/") + "/index.html", self.pages, path)
+                seen_trail += path.startswith("trails/")
+                seen_state += path.startswith("regions/")
+            # ...and the BreadcrumbList item for it is the same address
+            lists = [n for n in nodes_of(doc) if n["@type"] == "BreadcrumbList"]
+            for i, (text, href) in zip(lists[0]["itemListElement"] if lists else [], crumbs):
+                if names.get(i["name"]) and href:
+                    self.assertEqual(i["item"], BASE + regions.group_path(names[i["name"]]), path)
+        self.assertGreater(seen_trail, 0)
+        self.assertGreater(seen_state, 0)
+
+    def test_no_page_links_to_a_group_anchor_that_has_a_page(self):
+        from olt import facets
+        for path, doc in self.pages.items():
+            for g in facets.GROUP_NAME:
+                if regions.group_path(g).strip("/") + "/index.html" in self.pages:
+                    self.assertNotIn(f'href="/regions/#{g}"', doc, path)
+
     def test_breadcrumbs_equal_the_visible_ones(self):
         counted = 0
         for path, doc in self.pages.items():

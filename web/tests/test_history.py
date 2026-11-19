@@ -114,7 +114,7 @@ class HistorySectionTest(unittest.TestCase):
 
     def test_real_records_all_show_their_history(self):
         recs = records.load_records()
-        self.assertEqual(len(recs), 220)
+        self.assertEqual(len(recs), 223)
         for rec in recs:
             part = trail.history_section(rec)
             self.assertIn("History of this record", part, rec["id"])

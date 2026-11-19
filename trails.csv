@@ -36,6 +36,7 @@ buckeye,Buckeye Trail,US,OH,2250,included,OpenStreetMap,ODbL-1.0,designated,
 california-coastal,California Coastal Trail,US,CA,1931,included,A hiker's own walk of the coast (GPX file attached to the dataset's issue 1),CC-BY-4.0,designated,
 canol,Canol Heritage Trail,CA,NT,371,included,OpenStreetMap,ODbL-1.0,designated,
 centennial-sd,Centennial Trail,US,SD,179,included,OpenStreetMap,ODbL-1.0,designated,
+central-wilderness-grand-tour,Central Wilderness Grand Tour,US,CA,127,record-only,none (no line included),none-stated,route,sold
 central-wind-rivers-loop,Central Wind Rivers Loop,US,WY,99,record-only,none (no line included),none-stated,route,sold
 chinese-wall-circuit,The Chinese Wall Circuit,US,MT,127,record-only,none (no line included),none-stated,route,unclear
 circle-of-solitude,Circle of Solitude,US,CA,109,record-only,none (no line included),none-stated,route,unclear
@@ -119,6 +120,7 @@ massanutten,Massanutten Trail,US,VA,114,included,OpenStreetMap,ODbL-1.0,designat
 mattabesett,Mattabesett Trail,US,CT,105,included,OpenStreetMap,ODbL-1.0,designated,
 metacomet-monadnock,Metacomet-Monadnock Trail,US,CT;MA;NH,185,included,OpenStreetMap,ODbL-1.0,designated,
 mid-state,Mid State Trail,US,PA,515,included,OpenStreetMap,ODbL-1.0,designated,
+middle-fork-kings-river,Middle Fork Kings River,US,CA,133,record-only,none (no line included),none-stated,route,sold
 middle-fork-trail,Middle Fork Trail,US,ID,132,included,USDA Forest Service (National Forest System Trails),us-gov-public-domain,designated,
 midland-to-mackinac-trail,Midland to Mackinac Trail,US,MI,338,record-only,none (no track included),none-stated,designated,
 midstate-ma,Midstate Trail (Massachusetts),US,MA,148,included,OpenStreetMap,ODbL-1.0,designated,
@@ -219,3 +221,4 @@ wind-river-highline-trail,Wind River Highline Trail,US,WY,103,record-only,none (
 wonderland,Wonderland Trail,US,WA,150,included,OpenStreetMap,ODbL-1.0,designated,
 wyoming-range,Wyoming Range National Recreation Trail,US,WY,113,included,OpenStreetMap,ODbL-1.0,designated,
 yosemite-high-route,Yosemite High Route,US,CA,261,record-only,none (no line included),none-stated,route,sold
+yosemite-high-sierra-camp-loop,High Sierra Camp Loop,US,CA,78,record-only,none (no line included),none-stated,designated,

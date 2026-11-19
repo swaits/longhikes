@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-20 - Three guidebook trips added, three near-misses left out
+
+- Middle Fork Kings River, 82.6 miles (133 km), from the Crown Valley Trailhead near Wishon Reservoir to the Maxson Trailhead near Courtright Reservoir, California: Trip 7, page 171 of Mike White and Douglas Lorain's Best Backpacking Trips in California and Nevada.
+- Central Wilderness Grand Tour, 79.1 miles (127 km), a loop from the Jerkey Meadow Trailhead in the Golden Trout Wilderness, California: Trip 16 of Suzanne Swedo's Hiking California's Golden Trout Wilderness.
+- High Sierra Camp Loop, 48.2 miles (78 km) as the Park Service gives it, a loop from Tuolumne Meadows in Yosemite National Park: the Park Service names it, and the same book describes it as Trip 3, page 53, at 51.2 miles.
+- Left out as below the 50 mile floor: the High Trinity Alps Traverse (36.4 miles), the Ruby Crest Trail (33 miles by the Forest Service) and the Northern Golden Trout Tour (49.1 miles, with a stem walked both ways).
+
 ## 2026-11-20 - Long saved lists share a short link
 
 - A saved list of more than ten trails now shares a short link: a list of 49 trails was a 1,013-character link and is now 70 characters, and no list is longer than that. Lists of ten trails or fewer keep the readable link. Links shared before still open.

@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-220 trails, 123 with a track and 97 with no track included. Of these, 76 are routes: 2 with a track and 74 without.
+223 trails, 123 with a track and 100 with no track included. Of these, 78 are routes: 2 with a track and 76 without.
 
 <!-- END COUNTS -->
 
@@ -186,6 +186,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | wind-river-highline-trail | Wind River Highline Trail | US | WY | 103 | no | none-stated |
 | wonderland | Wonderland Trail | US | WA | 150 | yes | ODbL-1.0 |
 | wyoming-range | Wyoming Range National Recreation Trail | US | WY | 113 | yes | ODbL-1.0 |
+| yosemite-high-sierra-camp-loop | High Sierra Camp Loop | US | CA | 78 | no | none-stated |
 
 <!-- END TRAIL TABLE -->
 
@@ -207,6 +208,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | bitterroots-80-mile-route | Bitterroots 80-mile Route | US | MT | 126 | Wilderness Mindset | sold | no | [Bitterroots 80-mile Route Map Pack](https://wildernessmindset.com/product/bitterroots-80-mile-route-map-pack/) (purchase) |
 | blue-mountains-trail | Blue Mountains Trail | US | OR | 853 | Greater Hells Canyon Council | open | no | [Blue Mountains Trail Caltopo maps and Databook](https://www.hellscanyon.org/blue-mountains-trail/maps) (free) |
 | brooks-range-traverse | Brooks Range Traverse | US | AK | 1609 | Luc Mehl and Sarah Histand | unclear | no | [Brooks Range Traverse trip reports](https://thingstolucat.com/brooks-range-traverse/) (free) |
+| central-wilderness-grand-tour | Central Wilderness Grand Tour | US | CA | 127 | Suzanne Swedo | sold | no | [Hiking California's Golden Trout Wilderness: A Guide to Backpacking and Day Hiking in the Golden Trout and South Sierra Wilderness Areas](https://openlibrary.org/books/OL39988398M) (purchase) |
 | central-wind-rivers-loop | Central Wind Rivers Loop | US | WY | 99 | Douglas Lorain | sold | no | [Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) (purchase) |
 | chinese-wall-circuit | The Chinese Wall Circuit | US | MT | 127 | Wilderness Mindset | unclear | no | [The Chinese Wall Circuit route page](https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/) (free) |
 | circle-of-solitude | Circle of Solitude | US | CA | 109 | Mike White | unclear | no | [Sequoia and Kings Canyon National Parks: Your Complete Hiking Guide](https://shop.adventurewithkeen.com/product/sequoia-and-kings-canyon-national-parks/) (purchase) |
@@ -236,6 +238,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | kanab-canyon-loop | Kanab Canyon Loop | US | AZ | 84 | Bruce Grubbs | sold | no | [Backpacking Arizona: From Deep Canyons to Sky Islands](https://shop.adventurewithkeen.com/product/backpacking-arizona/) (purchase) |
 | kings-canyon-high-basin-route | Kings Canyon High Basin Route | US | CA | 200 | Andrew Skurka | sold | no | [Kings Canyon High Basin Route Guide](https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/) (purchase) |
 | lowest-to-highest-route | Lowest to Highest Route | US | CA | 209 | Brett Tucker ("Blisterfree") and partner, simBLISSity Ultralight Designs | open | no | [L2H Navigation Bundle](http://simblissity.net/L2H.shtml) (free) |
+| middle-fork-kings-river | Middle Fork Kings River | US | CA | 133 | Mike White and Douglas Lorain | sold | no | [Best Backpacking Trips in California and Nevada](https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/) (purchase) |
 | milestone-basin-and-the-upper-kern | Milestone Basin and the Upper Kern | US | CA | 89 | Elizabeth Wenk and Mike White | sold | no | [Sierra South: Backcountry Trips in California's Sierra Nevada](https://shop.adventurewithkeen.com/product/sierra-south-2/) (purchase) |
 | mogollon-rim-trail | Mogollon Rim Trail | US | AZ, NM | 805 | Brett Tucker ("Blisterfree") | sold | no | [Mogollon Rim Trail Mapset & Resource Bundle](https://www.simblissity.net/mogollon-rim-trail-mapset.shtml) (purchase) |
 | mojave-sonoran-trail | Mojave-Sonoran Trail | US | NV, CA, AZ | 1006 | Eric Poulin | open | no | [Mojave Sonoran Trail: A 625 Mile Thru-Hiking Route](https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/) (free) |

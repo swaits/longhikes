@@ -1,0 +1,115 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "middle-fork-kings-river"
+name = "Middle Fork Kings River"
+country = "US"
+regions = ["CA"]
+length_km = 133
+length_note = "82.6 mi, as the book gives it for Trip 7, with 8 to 12 days and 18,195 ft of gain. It is a point-to-point trip, and the book's day figures (8.0, 8.5, 11.0, 10.8, 11.9, 8.1, 10.6 and 13.75 mi) add up to the 82.6 mi. The book prints the side trips to Dusy Basin and to Devils Punchbowl separately and does not count them in the 82.6 mi. The figures are the book's own and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Guidebook route (Mike White and Douglas Lorain, 2015, in Best Backpacking Trips in California and Nevada); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "University of Nevada Press (publishes the route in the guidebook)"
+publisher_url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
+url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the place of the route in the book: Trip 7, page 171 of the 2015 printing (the book states no edition). The publisher's page for the book (https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/) was read on 2026-11-19."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-19"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its authors was found. No track is included from any source. Get the route from the book Best Backpacking Trips in California and Nevada."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Mike White and Douglas Lorain"
+note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/, read 2026-11-19) show the title and the publisher's own name only; this is a guidebook route over national forest and national park land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Mike White and Douglas Lorain"
+year = 2015
+line_policy = "sold"
+note = "A shuttle from the Crown Valley Trailhead near Wishon Reservoir by Crown Valley, Tehipite Valley and the Middle Fork Kings River trail to the John Muir Trail, then north by Le Conte Canyon, Muir Pass and Evolution Basin to Goddard Canyon, over Hell-for-Sure Pass and out by Red Mountain Basin and Post Corral Meadows to the Maxson Trailhead near Courtright Reservoir, with 82.6 miles and 8 to 12 days in the book. By the book's own day figures, about 24 of the 82.6 miles follow the John Muir Trail, and about 20 of those (Le Conte Canyon to the Goddard Canyon junction) are also on the South Lake to North Lake route. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Best Backpacking Trips in California and Nevada"
+author = "Mike White and Douglas Lorain"
+access = "purchase"
+url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
+format = "book"
+price = "$24.95"
+price_checked = "2026-11-19"
+publisher = "University of Nevada Press"
+isbn = "978-0-87417-971-2"
+edition = "2015 (the book states no edition)"
+where = "Trip 7, page 171"
+link_is = "publisher"
+
+[hike]
+summary = "The Middle Fork Kings River is a point-to-point backpacking trip of 8 to 12 days in Sierra National Forest and Kings Canyon National Park, California, from the Crown Valley Trailhead near Wishon Reservoir to the Maxson Trailhead near Courtright Reservoir. It drops to Tehipite Valley, follows the Middle Fork Kings River upstream to the John Muir Trail, then goes by Le Conte Canyon, Muir Pass and Evolution Basin and returns west over Hell-for-Sure Pass. Mike White and Douglas Lorain describe it as Trip 7 in Best Backpacking Trips in California and Nevada."
+official_url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
+start = "Crown Valley Trailhead, near Wishon Reservoir, Sierra National Forest, California"
+start_lonlat = [-118.956, 36.975]
+end = "Maxson Trailhead, near Courtright Reservoir, Sierra National Forest, California"
+end_lonlat = [-118.963, 37.083]
+shape = "point-to-point"
+days = [8, 12]
+season = "Mid-July to early October, best late August to early September"
+months = [7, 8, 9, 10]
+terrain = ["alpine", "canyon"]
+travel = "trail"
+permit = "The Forest Service says wilderness permit reservations for the Crown Valley trailhead are made at recreation.gov and that trailhead quotas apply year-round."
+caution = "The book says trails in this part of Sierra National Forest are infrequently traveled and seldom maintained, that a map, compass and GPS are absolute necessities for the first part, and that the tread disappears near Cow and Wet Meadows. It calls the junction for Hell-for-Sure Pass in Goddard Canyon faint, not signed and easily missed. It describes the 3,000 foot descent to Tehipite Valley as steep and unrelenting, and says that the lower Middle Fork canyon has a notorious reputation for rattlesnakes and poison oak lines the lower trail. The route has fords, including of the Middle Fork Kings River and Palisade Creek, which the book says may be dangerous at high water. A 2008 fire burned over 4,000 acres in Kings Canyon National Park along the Tehipite Valley trail. The book rates the technical difficulty 8 and the physical difficulty 9, each out of 10, describes the route as on trail, and mentions no rope or climbing."
+checked = "2026-11-19"
+
+[[hike.source]]
+url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
+publisher = "University of Nevada Press (the publisher's page for the book); the facts are from the book's Trip 7, on page 171 of the 2015 printing (no edition is stated)"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r05/sierra/recreation/trails/j52-crown-rancheria-trailhead"
+publisher = "USDA Forest Service, Sierra National Forest (the page for the Crown/Rancheria Trailhead, which serves the Crown Valley Trail)"
+facts = ["permit"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=1527888043"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Rancheria Trailhead, also named Crown Valley Trailhead, OpenStreetMap node 1527888043"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=6091197564"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Maxson Trailhead, OpenStreetMap node 6091197564"
+facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-20"
+change = "The record was added: Middle Fork Kings River, 82.6 miles (133 km), Trip 7, page 171 in Mike White and Douglas Lorain's guidebook Best Backpacking Trips in California and Nevada, with no track."
+fields = ["record"]
+basis = "Best Backpacking Trips in California and Nevada, by Mike White and Douglas Lorain (University of Nevada Press, 2015, no edition stated, ISBN 978-0-87417-971-2). Trip 7, page 171, gives the length, days, season and cautions; the Forest Service's page for the Crown/Rancheria Trailhead gives the permit reservation and quota. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
+asked_by = "the dataset's own check"
+outcome = "applied"

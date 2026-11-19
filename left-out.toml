@@ -300,6 +300,19 @@ decided = "2026-11-16"
 was_listed = false
 
 [[trail]]
+id = "high-trinity-alps-traverse"
+name = "High Trinity Alps Traverse"
+country = "US"
+regions = ["CA"]
+length_mi = 36.4
+length_km = 59
+reason = "below-floor"
+note = "Best Backpacking Trips in California and Nevada (2015), Trip 1, page 5, gives this trip through the Trinity Alps Wilderness as 36.4 miles from the Big Flat Trailhead to the Long Canyon Trailhead, over 4 to 7 days. It is left out because it is below the 50 mile floor. The book sends the hiker a few miles cross-country on a mostly on-trail trip, which the owner ruled is not enough real cross-country travel to list a trip under the floor."
+source_url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
+decided = "2026-11-20"
+was_listed = false
+
+[[trail]]
 id = "highline-bear-river-range"
 name = "Highline National Recreation Trail (Bear River Range)"
 country = "US"
@@ -481,6 +494,20 @@ decided = "2026-11-14"
 was_listed = true
 
 [[trail]]
+id = "northern-golden-trout-tour"
+name = "Northern Golden Trout Tour"
+country = "US"
+regions = ["CA"]
+length_mi = 49.1
+length_km = 79
+length_note = "49.1 miles as Hiking California's Golden Trout Wilderness gives it; left out because the stem is walked twice, which leaves about 37 miles"
+reason = "below-floor"
+note = "Hiking California's Golden Trout Wilderness (1st edition, 2004), Trip 20, gives this loop from the Farewell Gap Trailhead at Mineral King in Sequoia National Park as 49.1 miles, with no day count. It is left out because the 50 mile floor is tested on the length with nothing counted twice: the loop is reached by a stem of about 12 miles that the book's figure walks both ways, which leaves about 37 miles, below the floor."
+source_url = "https://openlibrary.org/books/OL39988398M"
+decided = "2026-11-20"
+was_listed = false
+
+[[trail]]
 id = "overmountain-victory"
 name = "Overmountain Victory National Historic Trail"
 country = "US"
@@ -596,6 +623,20 @@ reason = "below-floor"
 note = "The Bureau of Land Management gives the Rogue River National Recreation Trail as 40 miles, from Grave Creek to Big Bend. Boschetto's Backpacking Oregon (2026), Trip 1, gives 40.5 miles from Grave Creek to Foster Bar. Both are below the 50 mile floor."
 source_url = "https://www.blm.gov/visit/rogue-river-national-recreation-trail"
 decided = "2026-11-18"
+was_listed = false
+
+[[trail]]
+id = "ruby-crest-trail"
+name = "Ruby Crest Trail"
+country = "US"
+regions = ["NV"]
+length_mi = 33
+length_km = 53
+length_note = "33 miles as the Forest Service gives it; Best Backpacking Trips in California and Nevada, Trip 12, page 303, gives 37.7 miles for its trip from Harrison Pass to Roads End"
+reason = "below-floor"
+note = "The Humboldt-Toiyabe National Forest says the Ruby Crest National Recreation Trail is a 33 mile long trail, from the Roads End Trailhead in Lamoille Canyon on the north to Harrison Pass on the south. The guidebook's trip along it is 37.7 miles over 3 to 5 days. Both figures are below the 50 mile floor."
+source_url = "https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/trails/ruby-crest-national-recreation-trail"
+decided = "2026-11-20"
 was_listed = false
 
 [[trail]]

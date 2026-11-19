@@ -10,7 +10,7 @@ length_km = 66
 length_note = "41 mi"
 tier = "short"
 designation = "Boundary Waters, Superior National Forest"
-wave = "held"
+wave = 1
 
 [source]
 status = "osm-only"
@@ -110,5 +110,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://northcountrytrail.org/trail/minnesota/kek/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The record is no longer marked as held. Its page said that something about it was not settled, but the record never said what, and nothing is outstanding."
+fields = ["wave"]
+basis = "The record names no open question, and it has a track. The changelog lists it in the small band of well-known built trails of 60 to 80 km that are listed below the 50 mile floor."
+basis_url = "https://www.openstreetmap.org/relation/10831114"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -1,12 +1,12 @@
 # Sources
 
-Each trail's record (`<id>/trail.toml`) names its source, the page to ask for the track, and the terms that apply. This file collects the distinct terms, the sentence that states them, the page they were read on, and the date read. Dates read: records were first read on 2026-11-08; the licence pages below were read again on 2026-11-09; 40 designated records and 34 person-defined routes were added and read on 2026-11-10.
+Each trail's record (`<id>/trail.toml`) names its source, the page to ask for the track, and the terms that apply. This file collects the distinct terms, the sentence that states them, the page they were read on, and the date read. Dates read: records were first read on 2026-11-08; the licence pages below were read again on 2026-11-09; 40 designated records and 34 person-defined routes were added and read on 2026-11-10; records added after that were read on the day each was added, which its `source.source_checked` gives.
 
 A track is included in this repository only when its source's terms allow redistribution. Where they do not, the trail is a record only and `source.line_absent_reason` in its record says why.
 
 ## OpenStreetMap (ODbL-1.0)
 
-Used by: 109 trails with an included track, and part of the Colorado Trail track (about 38 km; the rest is United States Forest Service data). Also named as the recorded source for 2 record-only trails, where no track was downloaded or none was usable. One of the person-defined routes has a track from OpenStreetMap (the Big SEKI Loop, relation 11628437); the other 49 name no source licence for a track.
+Used by: 105 trails with an included track, among them the Colorado Trail, whose track is also about 95% United States Forest Service data and is labelled ODbL as a whole. Also named as the recorded source for 1 record-only trail, where no track was downloaded or none was usable. One of the person-defined routes has a track from OpenStreetMap (the Big SEKI Loop, relation 11628437); the other 72 name no source licence for a track.
 
 Quoted terms: "You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors."
 
@@ -14,7 +14,7 @@ Page: https://www.openstreetmap.org/copyright (read 2026-11-09). Full text: LICE
 
 ## United States federal agencies (public domain)
 
-Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 18 trails with an included track (Alpine Trail #7, Appalachian, Black Canyon, Colorado Trail in part, Fremont, General George Crook, Highline, Middle Fork Trail, Natchez Trace, New England, North Umpqua, Pacific Northwest, Potomac Heritage, Selway River Trail, Solitude Loop, Teton Crest Trail, Thorofare and South Boundary Trail, Toiyabe Crest).
+Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 15 trails with an included track and the Colorado Trail in part (Alpine Trail #7, Appalachian, Black Canyon, Colorado Trail in part, Fremont, General George Crook, Highline, Middle Fork Trail, New England, North Umpqua, Pacific Northwest, Selway River Trail, Solitude Loop, Teton Crest Trail, Thorofare and South Boundary Trail, Toiyabe Crest).
 
 Quoted terms: "Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105."
 
@@ -108,7 +108,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | chinese-wall-circuit | Wilderness Mindset (publishes the route) | [source page](https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/) | none-stated | record only |
 | circle-of-solitude | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/wilderness-press/) | none-stated | record only |
 | cohos | Cohos Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/14765821) | ODbL-1.0 | track |
-| colorado-trail | USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
+| colorado-trail | USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | ODbL-1.0 | track |
 | condor-trail | Condor Trail Association (publishes the route) | [source page](http://www.condortrail.com/maps-trail-descriptions/) | none-stated | record only |
 | conestoga-trail | Lancaster Hiking Club (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/6827091) | ODbL-1.0 | track |
 | conservation-trail | Foothills Trail Club of Western New York (built and maintains the trail) | [source page](https://sites.google.com/view/foothillstrailclub/about-the-trail) | none-stated | record only |

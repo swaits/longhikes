@@ -8,7 +8,7 @@ length_km = 64
 length_note = "about 40 mi"
 tier = "short"
 designation = "USFS trail #600, Mount Hood National Forest"
-wave = "held"
+wave = 1
 
 [source]
 status = "osm-only"
@@ -93,6 +93,15 @@ date = "2026-11-16"
 change = "A track was added from OpenStreetMap relation 7641482, which is named Mt. Hood Timberline Trail: 40.1 miles (64.5 km) in 1 part, 0.8% longer than the published 64 km. It replaces the Forest Service layer that the record named as the source but had not downloaded."
 fields = ["osm.relation", "source.attribution", "source.licence", "source.licence_text", "source.line_absent_reason", "source.line_file", "source.line_source", "source.osm_only", "source.status", "source.url"]
 basis = "OpenStreetMap relation 7641482, read on 2026-11-16 under the ODbL."
+basis_url = "https://www.openstreetmap.org/relation/7641482"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The record is no longer marked as held. Its page said that something about it was not settled, but the record never said what, and nothing is outstanding."
+fields = ["wave"]
+basis = "The record names no open question, and it has a track. The changelog lists it in the small band of well-known built trails of 60 to 80 km that are listed below the 50 mile floor."
 basis_url = "https://www.openstreetmap.org/relation/7641482"
 asked_by = "the dataset's own check"
 outcome = "applied"

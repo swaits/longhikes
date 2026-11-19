@@ -13,7 +13,7 @@ designation = "Santa Monica Mountains National Recreation Area trail"
 wave = 1
 
 [source]
-status = "found"
+status = "osm-only"
 publisher = "National Park Service, Santa Monica Mountains NRA"
 url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
 discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read the layer's last edit date, when it exposes one (and the feature count); fetch again when either changes"
@@ -102,5 +102,14 @@ change = "The logo record now says an emblem exists or may exist but no usable a
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
 basis_url = "https://www.nps.gov/samo/planyourvisit/backbonetrail.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track status is now \"osm-only\", in place of \"found\", which means a source located but not downloaded. The record's track was downloaded and is published."
+fields = ["source.status"]
+basis = "The record has a published track file and a measured length in its verification, and the record's only source is an OpenStreetMap relation."
+basis_url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
 asked_by = "the dataset's own check"
 outcome = "applied"

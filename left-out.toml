@@ -190,11 +190,11 @@ id = "fundy-footpath"
 name = "Fundy Footpath"
 country = "CA"
 regions = ["NB"]
-length_mi = 25.5
-length_km = 41
+length_mi = 40.0
+length_km = 64.3
 reason = "below-floor"
-note = "This Fundy Hiking Trail Association trail along the Bay of Fundy coast is 41 km long. That is below the floor for this list."
-source_url = "http://www.fundyhikingtrails.com"
+note = "The Fundy Hiking Trail Association's safety guide gives the Fundy Footpath as 64.3 km (about 40 miles) from the Fundy National Park visitor centre in Alma to the Big Salmon River Interpretive Centre. That is below the 50 mile floor for this list."
+source_url = "https://fundyhikingtrails.com/safety-guide/"
 decided = "2026-11-14"
 was_listed = true
 

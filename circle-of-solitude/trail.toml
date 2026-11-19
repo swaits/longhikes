@@ -58,6 +58,7 @@ format = "book; the publisher's Wilderness Press page, as the book's own page wa
 publisher = "Wilderness Press"
 
 [hike]
+summary = "The Circle of Solitude is a loop of about 68 miles in Kings Canyon National Park, California, from Road's End. It circles the Great Western Divide and the Kings-Kern Divide by Avalanche Pass, Colby Pass and Forester Pass. Mike White describes it in his Wilderness Press guidebook Kings Canyon National Park."
 start = "Road's End, Kings Canyon National Park, California"
 start_lonlat = [-118.583, 36.795]
 shape = "loop"
@@ -66,7 +67,7 @@ checked = "2026-11-18"
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/wilderness-press/"
 publisher = "Wilderness Press (the publisher's page, the one the route note rests on): the route starts from Road's End in Kings Canyon"
-facts = ["start"]
+facts = ["summary", "start"]
 
 [[hike.source]]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=279697028"
@@ -104,5 +105,14 @@ change = "The walk is now recorded as a loop that starts and ends at Road's End,
 fields = ["hike.shape"]
 basis = "The route page on fastestknowntime.com says the Circle of Solitude starts and ends at Road's End; the record's own note already describes a loop from Road's End."
 basis_url = "https://fastestknowntime.com/route/circle-solitude"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A summary was written. The record had none, so the \"In brief\" part of its page was empty."
+fields = ["hike.summary", "hike.source"]
+basis = "The summary uses only what the record already holds: the length note's 68 miles, the route note's description of the loop from Road's End by Avalanche Pass, Colby Pass and Forester Pass, and the guidebook entry."
+basis_url = "https://shop.adventurewithkeen.com/wilderness-press/"
 asked_by = "the dataset's own check"
 outcome = "applied"

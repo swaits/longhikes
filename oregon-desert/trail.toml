@@ -6,7 +6,7 @@ short_name = "ODT"
 short_name_url = "https://onda.org/regions/oregon-desert-trail/"
 country = "US"
 regions = ["OR"]
-length_km = 1200
+length_km = 1207
 length_note = "750 mi, per the Oregon Natural Desert Association"
 tier = "regional"
 designation = "Oregon Natural Desert Association route; no formal designation"
@@ -124,5 +124,14 @@ change = "The start is now named as the Tumulus Trailhead, and its position was 
 fields = ["hike.start", "hike.start_lonlat"]
 basis = "The Oregon Natural Desert Association's town guide says the western end of the Oregon Desert Trail starts at the Tumulus Trailhead, and OpenStreetMap contributors (ODbL) give its position, OpenStreetMap node 4707732733."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=4707732733"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The length is now 1,207 km, which is the 750 miles the association gives, in place of 1,200 km, which showed on the page as 746 miles."
+fields = ["length_km"]
+basis = "The Oregon Natural Desert Association's page for the trail calls it a 750-mile route and gives no figure in kilometres."
+basis_url = "https://onda.org/regions/oregon-desert-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

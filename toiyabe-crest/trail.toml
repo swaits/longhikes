@@ -11,7 +11,7 @@ designation = "National Recreation Trail (Forest Service, Humboldt-Toiyabe Natio
 wave = 1
 
 [source]
-status = "found"
+status = "verified"
 publisher = "USDA Forest Service, National Forest System trails"
 url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
 discovery = "arcgis-query-hash: GET <url>/query with where trail_no = '23050' AND trail_name = 'TOIYABE CREST NATL REC TRAIL' (outSR=4326, f=geojson), hash the answer body and count its rows; fetch again when either changes. Three features on 2026-11-14."
@@ -78,5 +78,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/trails/toiyabe-crest-national-recreation-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track status is now \"verified\", in place of \"found\", which means a source located but not downloaded. The record's track was downloaded and is published."
+fields = ["source.status"]
+basis = "The record has a published track file and a measured length in its verification, and its track was downloaded and measured."
+basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
 asked_by = "the dataset's own check"
 outcome = "applied"

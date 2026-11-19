@@ -55,7 +55,7 @@ parts = 40
 note = "Segments and connecting routes in order, by the eastern branch: 1,788.5 km in 40 parts, 7.4% short of 1,931 km (about 1,200 mi). The earlier track, the built segments alone, was 1,141.0 km in 89 parts. Alternates (225.0 km) hold the western branch, side trails and the rest."
 
 [hike]
-summary = "The Ice Age Trail is a thousand-mile footpath across Wisconsin that traces the landscape left by the last continental glacier, from Interstate State Park at St. Croix Falls to Potawatomi State Park at Sturgeon Bay. It crosses some of the state's most beautiful natural areas and leads hikers right down the main streets of Wisconsin communities. The trail is managed by a partnership of the National Park Service, the Wisconsin Department of Natural Resources and the Ice Age Trail Alliance."
+summary = "The Ice Age Trail is a footpath of about 1,200 miles across Wisconsin that traces the landscape left by the last continental glacier, from Interstate State Park at St. Croix Falls to Potawatomi State Park at Sturgeon Bay. It crosses some of the state's most beautiful natural areas and leads hikers right down the main streets of Wisconsin communities. The trail is managed by a partnership of the National Park Service, the Wisconsin Department of Natural Resources and the Ice Age Trail Alliance."
 official_url = "https://www.iceagetrail.org/explore/explore-the-trail/ice-age-trail/"
 start = "Interstate State Park, St. Croix Falls, Wisconsin"
 end = "Potawatomi State Park, Sturgeon Bay, Wisconsin"
@@ -130,5 +130,14 @@ change = "The main track was rebuilt as the trail segments plus the connecting r
 fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
 basis = "OpenStreetMap relation 2381423 holds the trail's segments and its connecting routes, which the Ice Age Trail Alliance counts in the trail's 1,200 miles. No source read names either central Wisconsin branch as the main route, so the eastern branch was taken by default."
 basis_url = "https://www.openstreetmap.org/relation/2381423"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The summary now gives the trail's length as about 1,200 miles, as the record's length does, in place of \"a thousand-mile footpath\"."
+fields = ["hike.summary"]
+basis = "The record's length note gives about 1,200 miles for the whole route, as the Ice Age Trail Alliance gives it."
+basis_url = "https://www.iceagetrail.org/explore/explore-the-trail/ice-age-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

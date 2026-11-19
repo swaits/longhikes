@@ -12,7 +12,7 @@ designation = "National Recreation Trail (certified 2008), managed by the Bureau
 wave = 1
 
 [source]
-status = "found"
+status = "verified"
 publisher = "Bureau of Land Management (Ground Transportation Linear Features)"
 url = "https://gis.blm.gov/arcgis/rest/services/transportation/BLM_Natl_GTLF_Public_Display/MapServer/7"
 discovery = "arcgis-query-hash: GET <url>/query with where ROUTE_PRMRY_NM = 'Black Canyon Trail' AND ADMIN_ST = 'AZ' (outSR=4326, f=geojson); hash the answer body and count its rows; fetch again when either changes. 170 features on 2026-11-14."
@@ -98,5 +98,14 @@ change = "The name hikers use, Black Canyon Trail, was added as the common name.
 fields = ["common_name"]
 basis = "The Bureau of Land Management page says 'The 80-mile Black Canyon Trail' and uses the formal name in its heading."
 basis_url = "https://www.blm.gov/visit/black-canyon-national-recreation-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track status is now \"verified\", in place of \"found\", which means a source located but not downloaded. The record's track was downloaded and is published."
+fields = ["source.status"]
+basis = "The record has a published track file and a measured length in its verification, and its track was downloaded and measured."
+basis_url = "https://gis.blm.gov/arcgis/rest/services/transportation/BLM_Natl_GTLF_Public_Display/MapServer/7"
 asked_by = "the dataset's own check"
 outcome = "applied"

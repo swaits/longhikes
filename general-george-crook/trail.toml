@@ -13,7 +13,7 @@ wave = "held"
 wave_note = "Held: the Forest Service publishes the trail as three pieces on three national forests and gives no length for the whole. The Apache-Sitgreaves page gives 58.9 mi for its piece alone. The Forest Service track for all three pieces measures 193.5 km. The Coconino and Apache-Sitgreaves pieces join and make one walkable trail of about 177 km; the Prescott piece lies about 20 km west of them with a gap between. What would settle it: a Forest Service statement of the whole trail's length and ends."
 
 [source]
-status = "found"
+status = "verified"
 publisher = "USDA Forest Service, National Forest System trails"
 url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
 discovery = "arcgis-query-hash: GET <url>/query with where trail_no IN ('130','140','0064') AND trail_name IN ('GENERAL GEORGE CROOK','GENERAL CROOK') (outSR=4326, f=geojson), hash the answer body and count its rows; fetch again when either changes. Six features on 2026-11-14."
@@ -103,5 +103,14 @@ change = "The length was changed from 59 miles (95 km), which is one forest's pa
 fields = ["length_km", "length_note"]
 basis = "The National Recreation Trail record's table gives the length as 138 miles; its text, from the same 1979 application, says 58.9 miles. The current Apache-Sitgreaves page gives 58.9 miles for its Black Mesa part only. A retired Forest Service page that gave 138 miles maintained, of 200 originally, was found through a search and could not be read again."
 basis_url = "https://www.nrtapplication.org/trails/general-george-crook"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track status is now \"verified\", in place of \"found\", which means a source located but not downloaded. The record's track was downloaded and is published."
+fields = ["source.status"]
+basis = "The record has a published track file and a measured length in its verification, and its track was downloaded and measured."
+basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
 asked_by = "the dataset's own check"
 outcome = "applied"

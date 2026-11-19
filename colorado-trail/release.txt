@@ -1,7 +1,7 @@
 colorado-trail
 
 Source: https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0
-Licence: us-gov-public-domain (see trail.toml and SOURCES.md in this repository)
+Licence: ODbL-1.0 for the track as a whole; the Forest Service part (line-usfs.geojson) is public domain, the OpenStreetMap part (line-osm.geojson) is ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
 Attribution: USDA Forest Service; OpenStreetMap contributors (ODbL)
 Source read: 2026-11-08
 Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

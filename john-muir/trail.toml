@@ -13,7 +13,7 @@ designation = "USFS and NPS trail, shares the PCT for about 150 mi"
 wave = 1
 
 [source]
-status = "found"
+status = "osm-only"
 publisher = "No single publisher: NPS Yosemite and Sequoia-Kings Canyon, USFS Inyo and Sierra National Forests"
 url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
 discovery = "arcgis-layer-edit-date: GET <layer>?f=json and read the layer's last edit date, when it exposes one (and the feature count); fetch again when either changes; plus OSM version for the whole route"
@@ -88,5 +88,14 @@ date = "2026-11-09"
 change = "The record was added: John Muir Trail."
 fields = ["record"]
 basis = "The record's own source entry: No single publisher: NPS Yosemite and Sequoia-Kings Canyon."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track status is now \"osm-only\", in place of \"found\", which means a source located but not downloaded. The record's track was downloaded and is published."
+fields = ["source.status"]
+basis = "The record has a published track file and a measured length in its verification, and the record's only source is an OpenStreetMap relation."
+basis_url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
 asked_by = "the dataset's own check"
 outcome = "applied"

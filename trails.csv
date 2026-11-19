@@ -40,7 +40,7 @@ central-wind-rivers-loop,Central Wind Rivers Loop,US,WY,99,record-only,none (no 
 chinese-wall-circuit,The Chinese Wall Circuit,US,MT,127,record-only,none (no line included),none-stated,route,open
 circle-of-solitude,Circle of Solitude,US,CA,109,record-only,none (no line included),none-stated,route,unclear
 cohos,Cohos Trail,US,NH,270,included,OpenStreetMap,ODbL-1.0,designated,
-colorado-trail,Colorado Trail,US,CO,782,included,"USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment",us-gov-public-domain,designated,
+colorado-trail,Colorado Trail,US,CO,782,included,"USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment",ODbL-1.0,designated,
 condor-trail,Condor Trail,US,CA,644,record-only,none (no line included),none-stated,route,open
 conestoga-trail,Conestoga Trail,US,PA,103,included,OpenStreetMap,ODbL-1.0,designated,
 conservation-trail,Conservation Trail,US,NY,285,record-only,none (no line included),none-stated,designated,
@@ -142,7 +142,7 @@ northville-placid,Northville-Placid Trail,US,NY,220,included,OpenStreetMap,ODbL-
 oak-ridges,Oak Ridges Trail,CA,ON,270,included,OpenStreetMap,ODbL-1.0,designated,
 ocean-to-lake,Ocean to Lake Hiking Trail,US,FL,99,included,OpenStreetMap,ODbL-1.0,designated,
 oregon-coast,Oregon Coast Trail,US,OR,650,included,OpenStreetMap,ODbL-1.0,designated,
-oregon-desert,Oregon Desert Trail,US,OR,1200,record-only,none (no line included),ODbL-1.0,designated,
+oregon-desert,Oregon Desert Trail,US,OR,1207,record-only,none (no line included),ODbL-1.0,designated,
 ottawa-temiskaming-highland-trail,Ottawa-Temiskaming Highland Trail,CA,ON,142,record-only,none (no line included),none-stated,designated,
 ouachita,Ouachita National Recreation Trail,US,AR;OK,359,included,OpenStreetMap,ODbL-1.0,designated,
 ozark-highlands,Ozark Highlands Trail,US,AR,523,included,OpenStreetMap,ODbL-1.0,designated,

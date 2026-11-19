@@ -10,7 +10,7 @@ length_km = 63
 length_note = "39 mi (62.8 km), as the Park Service's routes page gives it: 'a 39-mile point to point route starting outside the park at Phillips Pass and ending at String Lake'. The record gave 64 km (about 40 mi) until 2026-11-19, a figure that cited no source. The track measures 58.7 km (36.5 mi) from the agencies' trail data, which is 6.9% under the Park Service's figure."
 tier = "short"
 designation = "Grand Teton National Park and Caribou-Targhee National Forest"
-wave = "held"
+wave = 1
 
 [source]
 status = "verified"
@@ -109,4 +109,13 @@ fields = ["source.line_file", "source.line_source", "source.line_absent_reason",
 basis = "The Park Service's routes page gives the trail as a 39-mile route from Phillips Pass to String Lake, and says it meets Forest Service land at Fox Creek Pass and Alaska Basin. The Forest Service layer labels the Phillips Pass stretch 6008A TETON CREST SOUTH and the Park Service layer labels two stretches Teton Crest Trail; the rest of the route is on trails with local names in the Park Service layer, joined along the published route. The record's earlier 64 km cited no source."
 basis_url = "https://www.nps.gov/grte/planyourvisit/backcountryroutesandzones.htm"
 asked_by = "the dataset's owner"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The record is no longer marked as held. Its page said that something about it was not settled, but the record never said what, and nothing is outstanding."
+fields = ["wave"]
+basis = "The record names no open question, and it has a track. The changelog lists it in the small band of well-known built trails of 60 to 80 km that are listed below the 50 mile floor."
+basis_url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
+asked_by = "the dataset's own check"
 outcome = "applied"

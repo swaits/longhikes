@@ -29,7 +29,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "OSM relation 3696751 gives 229.1 km in 11 parts and ends near Barrie; it does not reach the Glen Huron terminus. The 500 km published figure is the main trail of ten sections. No usable whole track found on 2026-11-08. Held."
+length_gap_note = "OSM relation 3696751 gives 229.1 km in 11 parts and ends near Barrie; it does not reach the Glen Huron terminus. The 500 km published figure is the main trail of ten sections. No usable whole track found on 2026-11-08."
 
 [osm]
 relation = 3696751
@@ -49,7 +49,7 @@ date = "2026-11-16"
 measured_km = 229.1
 difference_percent = -54.2
 parts = 11
-note = "OSM relation 3696751 gives 229.1 km in 11 parts and ends near Barrie; it does not reach the Glen Huron terminus. The earlier track, 238.4 km, held a triangle of three ways at one place; two of them, 9.1 km, are in alternates.geojson. The 500 km published figure is the main trail of ten sections. No usable whole track found on 2026-11-08. Held."
+note = "OSM relation 3696751 gives 229.1 km in 11 parts and ends near Barrie; it does not reach the Glen Huron terminus. The earlier track, 238.4 km, held a triangle of three ways at one place; two of them, 9.1 km, are in alternates.geojson. The 500 km published figure is the main trail of ten sections. No usable whole track found on 2026-11-08."
 
 [hike]
 summary = "The Ganaraska Hiking Trail runs across southern Ontario from Port Hope on Lake Ontario to the Bruce Trail near Collingwood. Side trails reach Wasaga Beach and Midland. Local clubs lead hikes on it through the year."
@@ -99,5 +99,14 @@ change = "The main track was re-cut to one walk (229 km): at one place, where th
 fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
 basis = "OpenStreetMap relation 3696751 gives no roles, and the Ganaraska Hiking Trail Association's pages read do not describe the place. The more direct way was taken by default."
 basis_url = "https://www.openstreetmap.org/relation/3696751"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The word \"Held.\" was taken off the end of the length gap note and the verification note, which now say only what was found. The record's own note says why it is held."
+fields = ["source.length_gap_note", "verification.note"]
+basis = "The two notes ended in a word that only repeated the record's held mark; the reason is in the record's wave note."
+basis_url = "https://www.ganaraska-hiking-trail.org/"
 asked_by = "the dataset's own check"
 outcome = "applied"

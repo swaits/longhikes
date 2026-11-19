@@ -8,7 +8,7 @@ length_km = 60
 length_note = "60 km"
 tier = "short"
 designation = "Parks Canada, Pukaskwa National Park"
-wave = "held"
+wave = 1
 
 [source]
 status = "osm-only"
@@ -94,5 +94,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://parks.canada.ca/pn-np/on/pukaskwa/activ/experience/arriere-back"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The record is no longer marked as held. Its page said that something about it was not settled, but the record never said what, and nothing is outstanding."
+fields = ["wave"]
+basis = "The record names no open question, and it has a track. The changelog lists it in the small band of well-known built trails of 60 to 80 km that are listed below the 50 mile floor."
+basis_url = "https://www.openstreetmap.org/relation/15361195"
 asked_by = "the dataset's own check"
 outcome = "applied"

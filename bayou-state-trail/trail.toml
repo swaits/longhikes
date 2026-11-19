@@ -53,7 +53,7 @@ end = "Morgan City, Louisiana"
 end_lonlat = [-91.207, 29.699]
 shape = "point-to-point"
 terrain = ["forest"]
-caution = "The association does not say how much of the route is trail and how much is road or town walking. It reports that the Hwy 182 bridge over the Atchafalaya River, between Berwick and Morgan City, is closed until the fall of 2026, and that the southern end is for now at the Berwick Branch Library, 3512 5th Street."
+caution = "The association does not say how much of the route is trail and how much is road or town walking. Its trails page, read on 2026-11-19, lists the Hwy 182 bridge over the Atchafalaya River, between Berwick and Morgan City, as closed, and gives a temporary southern end at the Berwick Branch Library, 3512 5th Street. The notice carries no date of its own and gives the reopening as fall 2026. Check with the association before going."
 checked = "2026-11-16"
 
 [[hike.source]]
@@ -121,5 +121,14 @@ change = "The start is now named as Ivan Lake Recreation Area in Bodcau Wildlife
 fields = ["hike.start", "hike.start_lonlat"]
 basis = "The association's about page names Ivan Lake Recreation Area as the northern start, and the Louisiana Department of Wildlife and Fisheries' boat launches layer gives the position of the Ivan Lake Boat Ramp on Ivan Lake Road."
 basis_url = "https://www.bayoustatetrail.com/about"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The caution about the Hwy 182 bridge now says when the association's page was read and that the notice has no date, in place of stating the closure as current."
+fields = ["hike.caution"]
+basis = "The association's trails page, read on 2026-11-19, still lists the bridge closure and the temporary southern end at the Berwick Branch Library, and gives no date for the notice."
+basis_url = "https://www.bayoustatetrail.com/trails"
 asked_by = "the dataset's own check"
 outcome = "applied"

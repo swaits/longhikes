@@ -29,7 +29,7 @@ source_checked = "2026-11-08"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "OSM holds only fragment relations (28.8 km in the named relation, 21.1 km more in alternates), about 50 km of 500 km. No usable whole track found on 2026-11-08. Held."
+length_gap_note = "OSM holds only fragment relations (28.8 km in the named relation, 21.1 km more in alternates), about 50 km of 500 km. No usable whole track found on 2026-11-08."
 
 [osm]
 relation = 1772789
@@ -49,7 +49,7 @@ date = "2026-11-08"
 measured_km = 28.8
 difference_percent = -94.2
 parts = 1
-note = "OSM holds only fragment relations (28.8 km in the named relation, 21.1 km more in alternates), about 50 km of 500 km. No usable whole track found on 2026-11-08. Held."
+note = "OSM holds only fragment relations (28.8 km in the named relation, 21.1 km more in alternates), about 50 km of 500 km. No usable whole track found on 2026-11-08."
 
 [hike]
 summary = "The Allegheny Trail runs south through West Virginia from the Mason-Dixon Line at the Pennsylvania border to the Appalachian Trail on Peters Mountain, near the Virginia border. It crosses rugged mountains and river valleys, with long stretches in the Monongahela National Forest. It is built and kept by volunteers."
@@ -108,5 +108,14 @@ change = "The length was changed from about 330 miles (530 km), which counted mi
 fields = ["length_km", "length_note"]
 basis = "The West Virginia Scenic Trail Association's about page says it stewards 'this challenging and scenic 316-mile footpath running south from the Mason-Dixon Line through West Virginia and Virginia to the Appalachian Trail at Peters Mountain'. West Virginia State Parks gives 311 miles for the same trail."
 basis_url = "https://hikethealleghenytrail.org/about/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The word \"Held.\" was taken off the end of the length gap note and the verification note, which now say only what was found. The record's own note says why it is held."
+fields = ["source.length_gap_note", "verification.note"]
+basis = "The two notes ended in a word that only repeated the record's held mark; the reason is in the record's wave note."
+basis_url = "https://hikethealleghenytrail.org/"
 asked_by = "the dataset's own check"
 outcome = "applied"

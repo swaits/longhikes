@@ -63,7 +63,7 @@ high_point = "Mount Baden-Powell"
 high_point_m = 2865
 terrain = ["forest", "alpine"]
 travel = "trail"
-caution = "The Forest Service has closed the Pacific Crest Trail between Eagles Roost on Highway 2 and the Burkhart Trail, which is the same tread as this trail, to protect the mountain yellow-legged frog; Forest Order 05-01-24-04 runs through 2026-12-31. Harris's chapter walks the bypass by the Burkhart Trail, Buckhorn Campground and the shoulder of Highway 2, 2.6 miles of it on the road, which he describes as dangerous. The book also warns that the ridge near Mount Baden-Powell is icy in winter and needs an ice ax and crampons."
+caution = "The Forest Service's alert, last updated November 10, 2026, says it has closed the Pacific Crest Trail between Eagles Roost on Highway 2 and the Burkhart Trail, which is the same tread as this trail, to protect the mountain yellow-legged frog; Forest Order 05-01-24-04 runs through December 31, 2026, and the alert gives no later date. Harris's chapter walks the bypass by the Burkhart Trail, Buckhorn Campground and the shoulder of Highway 2, 2.6 miles of it on the road, which he describes as dangerous. The book also warns that the ridge near Mount Baden-Powell is icy in winter and needs an ice ax and crampons."
 checked = "2026-11-18"
 
 [[hike.source]]
@@ -110,5 +110,14 @@ change = "The page of the trail's chapter in Backpacking California is now given
 fields = ["length_note", "hike.source"]
 basis = "The contents listing of Backpacking California (Wilderness Press, 3rd edition, 2020, ISBN 978-0-89997-958-8) gives the title Silver Moccasin Trail on page 67."
 basis_url = "https://www.gbv.de/dms/bowker/toc/9780899979588.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The caution about the closure now says that it reports the Forest Service's alert as last updated on November 10, 2026."
+fields = ["hike.caution"]
+basis = "The Forest Service's alert for the Williamson Rock closure, read on 2026-11-19, says it was last updated November 10, 2026, and that Forest Order 05-01-24-04 is in effect through December 31, 2026."
+basis_url = "https://www.fs.usda.gov/r05/angeles/alerts/williamson-rock-area-and-trail-closure"
 asked_by = "the dataset's own check"
 outcome = "applied"

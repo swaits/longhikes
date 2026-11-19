@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-19 - Stale, contradictory and wrong statements corrected
+
+- The Kekekabic, Pukaskwa Coastal, Teton Crest, Timberline and West Coast trails are no longer marked as held, so their pages no longer say that something is not settled with no note saying what. The word "Held." is gone from the notes of the Allegheny and Ganaraska trails.
+- The Bayou State Trail's caution about the Hwy 182 bridge now says when the association's page was read and that the notice carries no date. The Silver Moccasin Trail's caution now gives the date of the Forest Service alert it reports.
+- The Fundy Footpath stays in the left-out list, now with the 64.3 km (about 40 miles) its association gives, which is still under the 50 mile floor.
+- The Ice Age Trail summary now says about 1,200 miles, as its length does. The Circle of Solitude has a summary. The Oregon Desert Trail's length is now 1,207 km, the association's 750 miles, and shows as 750 miles.
+- The Colorado Trail's track is now labelled ODbL as a whole, because about 38 km of it is from OpenStreetMap; its record says which part is public domain.
+- Eleven records (Alpine Trail #7, Backbone, Black Canyon, Fremont, General George Crook, Highline, John Muir, Middle Fork, North Umpqua, Solitude Loop and Toiyabe Crest) no longer say their track was only found: it was downloaded and is published.
+- `SOURCES.md` no longer lists the Natchez Trace and Potomac Heritage trails as included, and its counts match the records. The Rae Lakes Loop's measured length is now 57.6 km, the length of its track file.
+
 ## 2026-11-19 - Teton Crest Trail has a track
 
 - The Teton Crest Trail page now shows a track, 58.7 km (36.5 mi) from Phillips Pass to String Lake in Grand Teton National Park, in place of the notice that it had none. The track is built from the National Park Service's and the Forest Service's public trail data, both public domain: the stretches the agencies label Teton Crest Trail, joined by the Middle Fork Granite Canyon, Fox Creek Pass, Death Canyon Shelf, Hurricane Pass, South Fork and North Fork Cascade Canyon, Paintbrush Canyon and String Lake trails, along the route the Park Service describes.

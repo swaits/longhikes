@@ -11,7 +11,7 @@ designation = "National Recreation Trail #160 (Forest Service, Fremont-Winema Na
 wave = 1
 
 [source]
-status = "found"
+status = "verified"
 publisher = "USDA Forest Service, National Forest System trails"
 url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
 discovery = "arcgis-query-hash: GET <url>/query with where trail_no = '160' AND trail_name = 'SOUTHERN OREGON INTERTIE TRAIL' (outSR=4326, f=geojson), hash the answer body and count its rows; fetch again when either changes. Seven features on 2026-11-14."
@@ -102,5 +102,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.fs.usda.gov/r06/fremont-winema/recreation/trails/fremont-national-recreation-trail-160"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track status is now \"verified\", in place of \"found\", which means a source located but not downloaded. The record's track was downloaded and is published."
+fields = ["source.status"]
+basis = "The record has a published track file and a measured length in its verification, and its track was downloaded and measured."
+basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
 asked_by = "the dataset's own check"
 outcome = "applied"

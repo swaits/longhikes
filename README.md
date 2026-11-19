@@ -70,7 +70,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | canol | Canol Heritage Trail | CA | NT | 371 | yes | ODbL-1.0 |
 | centennial-sd | Centennial Trail | US | SD | 179 | yes | ODbL-1.0 |
 | cohos | Cohos Trail | US | NH | 270 | yes | ODbL-1.0 |
-| colorado-trail | Colorado Trail | US | CO | 782 | yes | us-gov-public-domain |
+| colorado-trail | Colorado Trail | US | CO | 782 | yes | ODbL-1.0 |
 | conestoga-trail | Conestoga Trail | US | PA | 103 | yes | ODbL-1.0 |
 | conservation-trail | Conservation Trail | US | NY | 285 | no | none-stated |
 | continental-divide | Continental Divide National Scenic Trail | US | NM, CO, WY, ID, MT | 4989 | yes | CC-BY |
@@ -139,7 +139,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | oak-ridges | Oak Ridges Trail | CA | ON | 270 | yes | ODbL-1.0 |
 | ocean-to-lake | Ocean to Lake Hiking Trail | US | FL | 99 | yes | ODbL-1.0 |
 | oregon-coast | Oregon Coast Trail | US | OR | 650 | yes | ODbL-1.0 |
-| oregon-desert | Oregon Desert Trail | US | OR | 1200 | no | ODbL-1.0 |
+| oregon-desert | Oregon Desert Trail | US | OR | 1207 | no | ODbL-1.0 |
 | ottawa-temiskaming-highland-trail | Ottawa-Temiskaming Highland Trail | CA | ON | 142 | no | none-stated |
 | ouachita | Ouachita National Recreation Trail | US | AR, OK | 359 | yes | ODbL-1.0 |
 | ozark-highlands | Ozark Highlands Trail | US | AR | 523 | yes | ODbL-1.0 |

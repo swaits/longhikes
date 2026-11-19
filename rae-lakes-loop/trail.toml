@@ -43,10 +43,10 @@ logo_owner = "NPS Sequoia and Kings Canyon"
 [verification]
 verified = true
 date = "2026-11-18"
-measured_km = 63.6
-difference_percent = -4.5
+measured_km = 57.6
+difference_percent = -14.0
 parts = 1
-note = "OSM relation 1710944: the main track, the loop, is 57.6 km (35.8 mi) in 1 part; the 4 approach ways, the stem from Road's End to the loop, are 3.0 km (1.9 mi). The Park Service's 41.4 mi counts the stem out and back, so the loop plus the stem twice is 63.6 km (39.5 mi), 4.5% short of 66.6 km (41.4 mi). The loop alone is 57.6 km against the 37.6 mi (60.5 km) the Park Service's mileage table gives without the stem."
+note = "OSM relation 1710944: the track in line.geojson is the loop, 57.6 km (35.8 mi) in 1 part. The 4 approach ways, the stem from Road's End to the loop, are 3.0 km (1.9 mi) and are kept in alternates.geojson, not in the track. The Park Service's 41.4 mi walks that stem out and back."
 
 [hike]
 summary = "The Rae Lakes Loop is a backpacking loop in Kings Canyon National Park, California, from Road's End in Cedar Grove up the Kings River canyon past Paradise Valley and the Woods Creek crossing to the Rae Lakes, over Glen Pass and down Bubbs Creek by way of Vidette Meadow and Junction Meadow. The Park Service gives it as 41.4 miles, climbing from about 5,035 feet at the trailhead to 11,978 feet at Glen Pass. It is most often started from the Woods Creek trailhead to walk it clockwise or from the Bubbs Creek trailhead to walk it counter-clockwise."
@@ -116,5 +116,14 @@ change = "The length note now gives only the published length and says which str
 fields = ["length_note"]
 basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The measured length is now 57.6 km, the length of the track file, in place of 63.6 km, which counted the 3.0 km approach stem twice although the stem is not in the track."
+fields = ["verification.measured_km", "verification.difference_percent", "verification.note"]
+basis = "Measured by haversine over the 16 features of line.geojson: 57.6 km. The approach ways are in alternates.geojson."
+basis_url = "https://www.openstreetmap.org/relation/1710944"
 asked_by = "the dataset's own check"
 outcome = "applied"

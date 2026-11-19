@@ -1,7 +1,5 @@
-bartram
-
-Source: https://www.openstreetmap.org/relation/9955138
-Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
-Attribution: OpenStreetMap contributors (ODbL)
-Source read: 2026-11-10
-Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.
+Source: https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0 (USDA Forest Service, National Forest System Trails, Enterprise Data Warehouse)
+Licence: us-gov-public-domain (see trail.toml and SOURCES.md in this repository)
+Attribution: USDA Forest Service
+Source read: 2026-11-19
+Published copy: 5 features in line.geojson, in order from Russell Bridge, Georgia, to Cheoah Bald, North Carolina: trail_no 164, trail_name BARTRAM, objectid 12144623, admin_org and managing_org 080306, trail_type TERRA, national_trail_designation 2 (parts 2, 3 and 4 of its 4 parts; part 1, 0.19 km, a short loop beside the through route, is left out); trail_no TR67-11, trail_name BARTRAM NRT - NANTAHALA RD, objectid 12180767, admin_org and managing_org 081111, trail_type TERRA, national_trail_designation 2, hiker_pedestrian_managed 01/01-12/31, terra_motorized N; trail_no TR67-02, trail_name BARTRAM NRT - CHEOAH RD, objectid 12180946, admin_org and managing_org 081102, trail_type TERRA, national_trail_designation 2. Left out: trail 90 BARTRAM (Alabama), trail 213 BARTRAM CHATTOOGA CONNECTOR and TR67-02A BARTRAM TRAIL EXTENSION. Each feature is oriented from Russell Bridge to Cheoah Bald; joins are 0 m except 75 m between trail 164 and TR67-11 near the state line, which is left open. Coordinates rounded to 6 decimal places and written as compact JSON, with the agency, layer name, trail number and name kept as properties. Geometry is otherwise as served (outSR=4326).

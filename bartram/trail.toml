@@ -13,26 +13,27 @@ designation = "Blue Ridge Bartram Trail Conservancy; USDA Forest Service"
 wave = 1
 
 [source]
-status = "osm-only"
-publisher = "Blue Ridge Bartram Trail Conservancy (publishes the trail; no open geometry found)"
+status = "verified"
+publisher = "USDA Forest Service, National Forests in Georgia and North Carolina (National Forest System Trails: Chattahoochee-Oconee and Nantahala National Forests)"
 publisher_url = "https://blueridgebartram.org/"
-url = "https://www.openstreetmap.org/relation/9955138"
-discovery = "osm-relation-version: Overpass `rel(9955138); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
-format = "OpenStreetMap route relation, read through Overpass with all member ways"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+discovery = "arcgis-query-hash: GET <url>/query with where upper(trail_name) like '%BARTRAM%' (outSR=4326, f=geojson); hash the answer body and count its rows; fetch again when either changes. 7 Forest Service features on 2026-11-19, 3 used."
+format = "ArcGIS MapServer layer 0 (Forest Service, National Forest System Trails), outSR=4326, f=geojson, 3 features used: trail 164, TR67-11 and TR67-02"
 crs = "EPSG:4326"
-licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 9955138."
-attribution = "OpenStreetMap contributors (ODbL)"
-osm_only = true
-mainline = "OSM relation 9955138: one route relation, main ways only."
-source_checked = "2026-11-10"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The USDA Forest Service metadata for its trails dataset (https://data.fs.usda.gov/geodata/edw/edw_resources/meta/Trans_Trail_NFS_Publish.xml, read 2026-11-16) gives access constraints 'None' and, as use constraints, only a disclaimer of warranty and liability. The layer states copyright text 'USDA Forest Service'; it is a dataset made by federal employees, a federal government work. The National Park Service's statement of the same rule: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-18)."
+attribution = "USDA Forest Service"
+osm_only = false
+mainline = "One track from the Forest Service's own lines for the Bartram Trail, from Russell Bridge, Georgia, to Cheoah Bald, North Carolina, in 3 features. Trail 164, named BARTRAM (Chattahoochee-Oconee National Forest, managing unit 080306, 4 parts, 57.5 km on the track), carries the Georgia end; trail TR67-11, named BARTRAM NRT - NANTAHALA RD (Nantahala National Forest, unit 081111, 110.4 km), carries the trail across North Carolina; trail TR67-02, named BARTRAM NRT - CHEOAH RD (Cheoah Ranger District, unit 081102, 7.8 km), carries the climb to Cheoah Bald. All 3 carry the Bartram Trail's name in the layer and national trail designation 2; the Forest Service's page for the trail gives its number as TR67. The names TR67-11 and TR67-02 are the district's own labels; the layer's attributes show hiker use, not motor use, and native-material tread. Left out: trail 90 BARTRAM (Tuskegee National Forest, Alabama, 12.6 km, a different trail), the connector 213 BARTRAM CHATTOOGA CONNECTOR (1.2 km) and the Forest Service's TR67-02A BARTRAM TRAIL EXTENSION (13.9 km, west of Cheoah Bald, beyond the end of the trail). In the layer, trail 164 holds a short loop beside the through route at the Georgia state-line area (0.19 km), which the track leaves out. Near the association's Section 7 (Hickory Knoll Road to Wallace Branch) the track follows the Forest Service's line for the Bartram Trail, which differs from the OpenStreetMap line there (about 9.8 km on the layer against 5.4 km); the Forest Service's page gives that section as 15.2 miles by road and greenway, so part of the track near it runs along a road or greenway. The layer does not mark that stretch separately."
+source_checked = "2026-11-19"
 redistributable = true
-line_source = "OpenStreetMap"
+line_source = "USDA Forest Service National Forest System Trails data"
 line_file = "line.geojson"
+length_gap_note = "The track is 175.6 km in 1 part, 2.5% under the published 180 km (112 mi), which the Forest Service's page and the Blue Ridge Bartram Trail Conservancy give. The Forest Service's line is traced in more detail than OpenStreetMap's, which measured 164.2 km, 8.8% under, over the same ground. The Chattahoochee-Oconee line and the Nantahala line stop 75 m apart near the state line; the gap is left open in the file."
 
 [osm]
 relation = 9955138
-note = "Downloaded 2026-11-10; 138 ways in the main track. release.txt has the source and date."
+note = "Relation 9955138 (138 ways, 164.2 km in 1 part) maps the same route end to end but is no longer the source of the track; the Forest Service layer is."
 
 [shield]
 status = "use-real-logo"
@@ -44,11 +45,11 @@ logo_owner = "Blue Ridge Bartram Trail Conservancy"
 
 [verification]
 verified = true
-date = "2026-11-10"
-measured_km = 164.2
-difference_percent = -8.8
+date = "2026-11-19"
+measured_km = 175.6
+difference_percent = -2.5
 parts = 1
-note = "OSM relation 9955138, 138 ways: 164.2 km in 1 part, 8.8% short of the published 180 km."
+note = "Forest Service trail 164, TR67-11 and TR67-02: 175.6 km (109.1 mi) in 1 part, 2.5% under the published 180 km. Every join is 0 m except 75 m between trail 164 and TR67-11 near the state line, which the site's 100 m joining closes and the track leaves open. The track runs from Russell Bridge to Cheoah Bald, the record's ends."
 
 [hike]
 summary = "The Bartram Trail is a footpath in the Blue Ridge of Georgia and North Carolina, running from Russell Bridge to Cheoah Bald. It has steep climbs and descents, rocky ground and many stream crossings. Spring and fall are the most pleasant seasons to walk it."
@@ -94,4 +95,13 @@ fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://blueridgebartram.org/wp-content/themes/blue-ridge-bartram/assets/images/header-logo.svg"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The Bartram Trail's track is now built from the Forest Service's own lines for the trail (trail 164 in Georgia, TR67-11 and TR67-02 in North Carolina), 175.6 km from Russell Bridge to Cheoah Bald, in place of OpenStreetMap relation 9955138, 164.2 km. The licence is now public domain (us-gov-public-domain), where it was ODbL."
+fields = ["source.line_file", "source.status", "source.publisher", "source.url", "source.discovery", "source.format", "source.licence", "source.licence_text", "source.attribution", "source.osm_only", "source.mainline", "source.source_checked", "source.line_source", "source.length_gap_note", "osm.note", "verification"]
+basis = "The Forest Service's page for the Bartram Trail gives the trail as 112 miles from the Chattooga River in Georgia to Cheoah Bald, trail number TR67, and its layer of National Forest System trails holds the trail under the Bartram name in the Chattahoochee-Oconee and Nantahala National Forests, hiker use only, where the Forest Service itself says where its trail runs."
+basis_url = "https://www.fs.usda.gov/r08/northcarolina/recreation/trails/bartram-trail"
+asked_by = "the dataset's owner"
 outcome = "applied"

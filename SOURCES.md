@@ -14,7 +14,7 @@ Page: https://www.openstreetmap.org/copyright (read 2026-11-09). Full text: LICE
 
 ## United States federal agencies (public domain)
 
-Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 16 trails with an included track and the Colorado Trail in part (Alpine Trail #7, Appalachian, Black Canyon, Colorado Trail in part, Fremont, General George Crook, High Sierra Trail, Middle Fork Trail, New England, North Umpqua, Pacific Northwest, Rae Lakes Loop, Selway River Trail, Solitude Loop, Teton Crest Trail, Thorofare and South Boundary Trail, Toiyabe Crest).
+Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 17 trails with an included track and the Colorado Trail in part (Alpine Trail #7, Appalachian, Bartram, Black Canyon, Colorado Trail in part, Fremont, General George Crook, High Sierra Trail, Middle Fork Trail, New England, North Umpqua, Pacific Northwest, Rae Lakes Loop, Selway River Trail, Solitude Loop, Teton Crest Trail, Thorofare and South Boundary Trail, Toiyabe Crest).
 
 Quoted terms: "Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105."
 
@@ -79,7 +79,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | avon | Avon Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3442182) | ODbL-1.0 | track |
 | backbone | National Park Service, Santa Monica Mountains NRA | [source page](https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0) | ODbL-1.0 | track |
 | baker | Rachel Carson Trails Conservancy (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/9078832) | ODbL-1.0 | track |
-| bartram | Blue Ridge Bartram Trail Conservancy (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/9955138) | ODbL-1.0 | track |
+| bartram | Forest Service, National Forests in Georgia and North Carolina (National Forest System trails: Bartram Trail 164, TR67-11 and TR67-02) | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | basin-and-range-trail | Eric Poulin (publishes the route) | [source page](https://basinandrangetrail.com/shop/) | none-stated | record only |
 | batona | Batona Hiking Club (publishes the trail with the New Jersey State Park Service; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4129027) | ODbL-1.0 | track |
 | bay-circuit | Appalachian Mountain Club (leads the trail's partners; no open geometry found) | [source page](https://www.openstreetmap.org/relation/12779888) | ODbL-1.0 | track |

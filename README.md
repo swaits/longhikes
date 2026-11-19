@@ -52,7 +52,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | avon | Avon Trail | CA | ON | 130 | yes | ODbL-1.0 |
 | backbone | Backbone Trail | US | CA | 108 | yes | ODbL-1.0 |
 | baker | Baker Trail | US | PA | 216 | yes | ODbL-1.0 |
-| bartram | Bartram Trail | US | GA, NC | 180 | yes | ODbL-1.0 |
+| bartram | Bartram Trail | US | GA, NC | 180 | yes | us-gov-public-domain |
 | batona | Batona Trail | US | NJ | 80 | yes | ODbL-1.0 |
 | bay-circuit | Bay Circuit Trail | US | MA | 370 | yes | ODbL-1.0 |
 | bayou-state-trail | Bayou State Trail | US | LA | 772 | no | none-stated |

@@ -56,12 +56,18 @@ shape = "loop"
 terrain = ["alpine", "forest", "lakes"]
 travel = "trail"
 caution = "Part of the trail lies in a special regulation area where visitors must pack out all human waste, and uses allowed vary from segment to segment."
-checked = "2026-11-16"
+permit = "A free self-issued Forest Service registration, signed and dated for each visit, is needed to enter Cloud Peak Wilderness, which the loop circles."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r02/bighorn/recreation/trails/solitude-loop-trail-038"
 publisher = "U.S. Forest Service, Bighorn National Forest"
 facts = ["summary", "official_url", "start", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r02/bighorn/alerts/forest-special-order-02-02-26-01-cloud-peak-wilderness-regulations"
+publisher = "USDA Forest Service, Bighorn National Forest"
+facts = ["permit"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -90,5 +96,14 @@ change = "The track status is now \"verified\", in place of \"found\", which mea
 fields = ["source.status"]
 basis = "The record has a published track file and a measured length in its verification, and its track was downloaded and measured."
 basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of USDA Forest Service, Bighorn National Forest says: \"Entering or being in Cloud Peak Wilderness ... free self-issued registration, signed and dated by the person or groups for that visit\""
+basis_url = "https://www.fs.usda.gov/r02/bighorn/alerts/forest-special-order-02-02-26-01-cloud-peak-wilderness-regulations"
 asked_by = "the dataset's own check"
 outcome = "applied"

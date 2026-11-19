@@ -48,7 +48,7 @@ note = "No line to measure."
 [route]
 creator = "Paul Mags (PMags.com)"
 year = 2022
-line_policy = "open"
+line_policy = "withheld"
 creator_words = "I don’t have a GPX file to share."
 creator_words_url = "https://pmags.com/the-grand-moab-route"
 note = "From Grand Junction, Colorado, to Moab, Utah, over the La Sal Mountains. The author hiked it in May 2022 and updated the page in January 2026. The page is an outline of the route, its terrain and its navigation sources, and says an experienced backpacker who plots their own routes should be able to build a track from it. The site names its owner as Paul Mags; the sweep that listed this route gave the name Paul Magnanti, which the site does not state."
@@ -110,4 +110,13 @@ fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://pmags.com/the-grand-moab-route"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to withheld, because the author says he has no track to share. The page no longer says a free track is offered."
+fields = ["route.line_policy"]
+basis = "The author's page says: \"I don’t have a GPX file to share.\""
+basis_url = "https://pmags.com/the-grand-moab-route"
+asked_by = "a reviewer"
 outcome = "applied"

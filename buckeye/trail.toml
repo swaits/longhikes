@@ -54,7 +54,8 @@ summary = "The Buckeye Trail is a continuous loop around the state of Ohio, with
 official_url = "https://www.buckeyetrail.org/"
 shape = "loop"
 terrain = ["forest", "farmland"]
-checked = "2026-11-13"
+days = [90, 120]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.buckeyetrail.org/"
@@ -65,6 +66,11 @@ facts = ["official_url", "summary", "shape"]
 url = "https://www.buckeyetrail.org/about"
 publisher = "Buckeye Trail Association"
 facts = ["summary", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://www.buckeyetrail.org/hike/backpacking"
+publisher = "Buckeye Trail Association"
+facts = ["days"]
 
 [[link]]
 title = "Buckeye Trail"
@@ -88,5 +94,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.buckeyetrail.org/media/site/5f6f0e4a9e-1760709600/buckeye-trail-association-logo.svg"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual time to walk the whole trail, 90 to 120 days, was added."
+fields = ["hike.days"]
+basis = "The page of Buckeye Trail Association says: \"A full thru-hike typically takes three to four months, depending on pace, route, and weather conditions.\""
+basis_url = "https://www.buckeyetrail.org/hike/backpacking"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -62,7 +62,8 @@ months = [5, 6, 7, 8, 9, 10]
 terrain = ["forest", "canyon"]
 travel = "trail"
 caution = "The Forest Service's news release of August 26, 2026 reported that Selway River Trail 4 was closed, because of the Cascade Fire, from its junction with Trail 607 at Cupboard Creek to its junction with Big Rock Trail 693. Lorain's book needs a shuttle of about 250 miles between the two ends."
-checked = "2026-11-18"
+permit = "No permit is needed for general travel in the Selway-Bitterroot Wilderness, where the trail runs."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r01/nezperce-clearwater/recreation/race-creek-campground"
@@ -84,6 +85,11 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=32112
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Paradise Campground, OpenStreetMap node 3211267403"
 facts = ["end_lonlat"]
 
+[[hike.source]]
+url = "https://www.fs.usda.gov/r01/bitterroot/wilderness/selway-bitterroot-wilderness"
+publisher = "USDA Forest Service, Bitterroot National Forest"
+facts = ["permit"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -93,5 +99,14 @@ change = "The record was added: the Selway River Trail, 50 miles (80 km) from Ra
 fields = ["record"]
 basis = "The Nez Perce-Clearwater National Forests' page for Selway River Trail 4, which has moved and could not be read again, gave 50 miles long; Lorain's Backpacking Idaho gives 50 miles one way, and the Forest Service's trail data for Trail 4 and Trail 4.3 measures 49.7 miles. The trail has its own name and its own published length."
 basis_url = "https://www.fs.usda.gov/r01/nezperce-clearwater/recreation/race-creek-campground"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of USDA Forest Service, Bitterroot National Forest says: \"No permits are required for general travel in the Selway-Bitterroot Wilderness.\""
+basis_url = "https://www.fs.usda.gov/r01/bitterroot/wilderness/selway-bitterroot-wilderness"
 asked_by = "the dataset's own check"
 outcome = "applied"

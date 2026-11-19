@@ -74,7 +74,8 @@ months = [5, 6, 7, 8, 9, 10]
 terrain = ["alpine", "canyon"]
 travel = "some-cross-country"
 caution = "The route needs sustained route-finding, off-trail travel and scrambling."
-checked = "2026-11-13"
+permit = "Several areas along the route require day-use fees or overnight permits."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.greatcoloradoroute.com"
@@ -90,6 +91,11 @@ facts = ["start", "shape"]
 url = "https://www.wikidata.org/wiki/Q305880"
 publisher = "Wikidata"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.greatcoloradoroute.com/resources"
+publisher = "Great Colorado Route (the route's author)"
+facts = ["permit"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -108,5 +114,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://images.squarespace-cdn.com/content/v1/69a4c90bd5639b4cc1a0d2cc/bf651c31-d4d6-4ca0-9a3b-e083df90ba25/favicon.ico"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of Great Colorado Route (the route's author) says: \"require day-use fees, overnight permits\""
+basis_url = "https://www.greatcoloradoroute.com/resources"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -75,7 +75,9 @@ end_lonlat = [-118.176, 36.445]
 shape = "point-to-point"
 terrain = ["alpine"]
 travel = "mostly-cross-country"
-checked = "2026-11-13"
+season = "Mid-July to mid-September"
+months = [7, 8, 9]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
@@ -91,6 +93,11 @@ facts = ["start_lonlat"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/271655"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://www.john.chapman.name/pub-sierra.html"
+publisher = "John Chapman (the route's author)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -109,5 +116,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual season, m, and its months were addedid-July to mid-September."
+fields = ["hike.season", "hike.months"]
+basis = "The page of John Chapman (the route's author) says: \"The ideal time for walking this route is from mid-July through to mid-September.\""
+basis_url = "https://www.john.chapman.name/pub-sierra.html"
 asked_by = "the dataset's own check"
 outcome = "applied"

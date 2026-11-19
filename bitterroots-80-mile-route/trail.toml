@@ -74,7 +74,8 @@ high_point_m = 2422
 terrain = ["alpine", "forest"]
 travel = "some-cross-country"
 caution = "Parts of the route have no trail, and burned areas, snowfields and deep river fords are described on the author's page."
-checked = "2026-11-14"
+permit = "No permit is needed for general travel in the Selway-Bitterroot Wilderness, where the route lies."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://wildernessmindset.com/80-miles-in-the-selway-bitterroot-wilderness/"
@@ -90,6 +91,11 @@ facts = ["start_lonlat"]
 url = "https://www.fs.usda.gov/r01/bitterroot/recreation/big-creek-trailhead-picnic-area"
 publisher = "USDA Forest Service, Bitterroot National Forest (public domain): Big Creek Trailhead & Picnic Area"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r01/bitterroot/wilderness/selway-bitterroot-wilderness"
+publisher = "USDA Forest Service, Bitterroot National Forest"
+facts = ["permit"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -126,5 +132,14 @@ change = "The position of the end was added, so that the page can show a map of 
 fields = ["hike.end_lonlat"]
 basis = "The Forest Service's page for the Big Creek Trailhead & Picnic Area gives its position and says it gives access to the Selway-Bitterroot Wilderness; the author's page names the Big Creek Trailhead as the end."
 basis_url = "https://www.fs.usda.gov/r01/bitterroot/recreation/big-creek-trailhead-picnic-area"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of USDA Forest Service, Bitterroot National Forest says: \"No permits are required for general travel in the Selway-Bitterroot Wilderness\""
+basis_url = "https://www.fs.usda.gov/r01/bitterroot/wilderness/selway-bitterroot-wilderness"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -26,7 +26,7 @@ source_checked = "2026-11-16"
 redistributable = true
 line_source = "none (no track included)"
 line_file = ""
-line_absent_reason = "No track has been added yet. The 2018 guide states there is no GPS track for the trail, and no track with a stated licence was found on the pages that were read."
+line_absent_reason = "The 2018 guide states there is no GPS track for the trail, and no track with a stated licence was found on the pages that were read."
 
 [osm]
 relation = 0
@@ -54,12 +54,13 @@ shape = "point-to-point"
 terrain = ["forest"]
 travel = "trail"
 caution = "The 2018 guide states there is no GPS track for the trail and that its maps are bound to be wrong in places."
-checked = "2026-11-16"
+permit = "Camping along the trail on public land is free, but camping on state land needs a Michigan DNR permit."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
 publisher = "USDA Forest Service, Huron-Manistee National Forests"
-facts = ["official_url", "summary"]
+facts = ["official_url", "summary", "permit"]
 
 [[hike.source]]
 url = "https://michigantrails.us/midland-mackinac-trail/"
@@ -104,4 +105,22 @@ fields = ["hike.end_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Mackinaw City, OpenStreetMap relation 134987."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=R&osmid=134987"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of USDA Forest Service, Huron-Manistee NF says: \"Camping along the trail on public lands is free, but Michigan DNRE permits are needed on state land.\""
+basis_url = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The note on why no track is included now says one thing: the guide states there is no GPS track for the trail. It no longer also says that no track has been added yet."
+fields = ["source.line_absent_reason"]
+basis = "The record's own sources: the 2018 guide states there is no GPS track for the trail."
+basis_url = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
+asked_by = "a reviewer"
 outcome = "applied"

@@ -58,7 +58,8 @@ shape = "point-to-point"
 terrain = ["coast", "forest"]
 travel = "trail-and-road"
 caution = "Completing the trail takes planning: some sections need challenging scrambles, pre-planned supply drops and an understanding of tides."
-checked = "2026-11-13"
+days = [21, 28]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://stateparks.oregon.gov/index.cfm?do=v.page&id=95"
@@ -69,6 +70,11 @@ facts = ["official_url", "summary", "terrain", "travel"]
 url = "https://stateparks.oregon.gov/?do=park.profile&parkId=193"
 publisher = "Oregon Parks and Recreation Department"
 facts = ["summary", "start", "end", "shape", "caution"]
+
+[[hike.source]]
+url = "https://www.oregoncoasttrail.org/hiking-basics"
+publisher = "Oregon Coast Trail Foundation"
+facts = ["days"]
 
 [[link]]
 title = "Oregon Coast Trail"
@@ -101,5 +107,14 @@ change = "The main track was re-cut to one walk by the main route of OpenStreetM
 fields = ["source.line_file", "source.mainline"]
 basis = "The relation marks 125 member ways with the role 'alternative', beside 141 with the role 'main'. They give a second way over the same ground at Garibaldi and Bayocean, at Nehalem Bay and at Ecola Park. The earlier track held both."
 basis_url = "https://www.openstreetmap.org/relation/8310290"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual time to walk the whole trail, 21 to 28 days, was added."
+fields = ["hike.days"]
+basis = "The page of Oregon Coast Trail Foundation says: \"not everyone will have three to four week window necessary for thru-hiking the trail ... most will need four weeks to hike the full trail\""
+basis_url = "https://www.oregoncoasttrail.org/hiking-basics"
 asked_by = "the dataset's own check"
 outcome = "applied"

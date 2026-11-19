@@ -57,7 +57,8 @@ shape = "loop"
 days = [3, 5]
 terrain = ["forest", "lakes"]
 travel = "trail"
-checked = "2026-11-13"
+permit = "A free permit from the local forest ranger is needed for groups of ten or more, or to camp more than three days in one spot."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://cranberrylake50.org/"
@@ -68,6 +69,11 @@ facts = ["official_url", "summary", "shape", "terrain", "travel"]
 url = "https://cranberrylake50.org/faq/"
 publisher = "Cranberry Lake 50"
 facts = ["days"]
+
+[[hike.source]]
+url = "https://cranberrylake50.org/plan-your-trip/"
+publisher = "Cranberry Lake 50 (Five Ponds Partners)"
+facts = ["permit"]
 
 [[link]]
 title = "Cranberry Lake 50"
@@ -91,5 +97,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://cranberrylake50.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of Cranberry Lake 50 (Five Ponds Partners) says: \"groups of 10 or more, or groups camping in the same spot for more than 3 days, require a permit from the local forest ranger. The permits are free.\""
+basis_url = "https://cranberrylake50.org/plan-your-trip/"
 asked_by = "the dataset's own check"
 outcome = "applied"

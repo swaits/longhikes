@@ -49,7 +49,7 @@ note = "No line to measure."
 
 [route]
 creator = "Jake Blood and Jennifer Pharr Davis"
-line_policy = "open"
+line_policy = "unclear"
 note = "A loop of about 330 miles linking the Appalachian Trail (about 135 mi, Clingmans Dome to Flat Top Road near Spivey Gap), the Mountains-to-Sea Trail (about 155 mi, Clingmans Dome to Mount Mitchell), the Black Mountain Crest Trail (about 12 mi) and a Burnsville Connector (about 26 mi, of which about 18 mi are paved roads and sidewalks). The page says Pharr Davis helped Blood come up with the idea. The page says its authors plan finished maps as printed copies at the Burnsville Visitor Center, online and in apps."
 
 [[guide]]
@@ -96,4 +96,13 @@ fields = ["shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to unclear, because the author's page offers no track file, so whether one is shared is not settled. The page no longer says a free track is offered."
+fields = ["route.line_policy"]
+basis = "The authors' page gives basic maps as PDF and PNG images and no GPS file, and says finished maps will come later."
+basis_url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
+asked_by = "a reviewer"
 outcome = "applied"

@@ -11,6 +11,7 @@ length_note = "39 mi (62.8 km), as the Park Service's routes page gives it: 'a 3
 tier = "short"
 designation = "Grand Teton National Park and Caribou-Targhee National Forest"
 wave = 1
+short_reason = "It is very popular: the Park Service says its camping zones fill almost every night from late July through early September."
 
 [source]
 status = "verified"
@@ -32,7 +33,7 @@ line_file = "line.geojson"
 
 [osm]
 relation = 3895101
-note = "Relation 3895101 maps only 5.4 km of the 63, so it is not used for the track; the agencies' trail data is."
+note = "Relation 3895101, measured from the OpenStreetMap API on 2026-11-19, holds 57.5 km in 49 ways, in one continuous piece, at version 21, last edited on 2024-09-21. It is a complete alternative to the track and is not used: the track is built from the National Park Service and Forest Service trail layers."
 
 [shield]
 status = "no-logo-exists"
@@ -117,5 +118,23 @@ change = "The record is no longer marked as held. Its page said that something a
 fields = ["wave"]
 basis = "The record names no open question, and it has a track. The changelog lists it in the small band of well-known built trails of 60 to 80 km that are listed below the 50 mile floor."
 basis_url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The record now says why this trail under the 50 mile floor is listed."
+fields = ["short_reason"]
+basis = "The Park Service's routes page says the camping zones along the trail fill almost every night from late July through early September."
+basis_url = "https://www.nps.gov/grte/planyourvisit/backcountryroutesandzones.htm"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The note on OpenStreetMap relation 3895101 was corrected. It had said the relation maps only 5.4 km and is not usable; that figure was the Park Service's national layer, and the relation had not been fetched. Measured from the OpenStreetMap API, the relation holds 57.5 km in 49 ways in one continuous piece. The track still comes from the agencies' trail layers, and the relation is recorded as a complete alternative that is not used."
+fields = ["osm.note"]
+basis = "The OpenStreetMap API, read on 2026-11-19, gave 57.5 km in 49 ways, one continuous piece, version 21, last edited 2024-09-21."
+basis_url = "https://www.openstreetmap.org/relation/3895101"
 asked_by = "the dataset's own check"
 outcome = "applied"

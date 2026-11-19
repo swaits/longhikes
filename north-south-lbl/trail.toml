@@ -56,7 +56,8 @@ end = "South Welcome Station, Land Between the Lakes, Tennessee"
 shape = "point-to-point"
 terrain = ["forest", "lakes"]
 travel = "trail"
-checked = "2026-11-16"
+permit = "Each person aged 18 or older needs a Land Between the Lakes Backcountry Camping Permit."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.landbetweenthelakes.us/outdoors-recreation/trails-3/"
@@ -67,6 +68,11 @@ facts = ["official_url", "summary", "shape", "terrain", "travel"]
 url = "https://kentuckylakegateway.com/project/north-south-trail/"
 publisher = "Livingston County, Kentucky Area Trails"
 facts = ["summary", "start", "end"]
+
+[[hike.source]]
+url = "https://www.landbetweenthelakes.us/help-center/rules-and-regulations/"
+publisher = "USDA Forest Service, Land Between the Lakes NRA"
+facts = ["permit"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -86,5 +92,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.landbetweenthelakes.us/outdoors-recreation/trails-3/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of USDA Forest Service, Land Between the Lakes NRA says: \"Each person 18 and older must possess a Backcountry Camping Permit\""
+basis_url = "https://www.landbetweenthelakes.us/help-center/rules-and-regulations/"
 asked_by = "the dataset's own check"
 outcome = "applied"

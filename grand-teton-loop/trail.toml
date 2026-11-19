@@ -10,6 +10,7 @@ kind = "route"
 tier = "short"
 designation = "Guidebook route (Douglas Lorain, 2010, in Backpacking Wyoming); no agency or association"
 wave = 1
+short_reason = "The book gives it five to eight days and describes optional cross-country scrambles."
 
 [source]
 status = "none"
@@ -115,4 +116,13 @@ fields = ["hike.start_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Lupine Meadows Trailhead, OpenStreetMap node 13122765355."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=13122765355"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The record now says why this trail under the 50 mile floor is listed."
+fields = ["short_reason"]
+basis = "The record's own source, the guidebook Backpacking Wyoming, gives five to eight days (Trip 12) and describes optional cross-country scrambles."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the owner of the dataset"
 outcome = "applied"

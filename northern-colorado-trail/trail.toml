@@ -74,7 +74,8 @@ high_point = "Comanche Peak"
 high_point_m = 3812
 terrain = ["alpine", "forest"]
 travel = "trail-and-road"
-checked = "2026-11-16"
+permit = "The only mandatory permit along the trail is a day-use permit for State Forest State Park."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.northerncoloradotrail.org/"
@@ -95,6 +96,11 @@ facts = ["start_lonlat"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/204659"
 publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Glenwood Springs, feature 204659"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://www.northerncoloradotrail.org/noco-trail-blog/required-permits-for-hiking-the-noco-trail"
+publisher = "Northern Colorado Trail association"
+facts = ["permit"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -123,5 +129,14 @@ change = "The positions of the start and the end were added, so that the page ca
 fields = ["hike.start_lonlat", "hike.end_lonlat"]
 basis = "U.S. Geological Survey, Geographic Names Information System (public domain): Estes Park, feature 204674; U.S. Geological Survey, Geographic Names Information System (public domain): Glenwood Springs, feature 204659."
 basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/204674"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of Northern Colorado Trail association says: \"The only mandatory permit along the NOCO Trail is the day-use permit for State Forest State Park.\""
+basis_url = "https://www.northerncoloradotrail.org/noco-trail-blog/required-permits-for-hiking-the-noco-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

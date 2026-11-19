@@ -58,7 +58,8 @@ terrain = ["alpine", "lakes", "forest"]
 travel = "trail"
 season = "Late July to early September"
 months = [7, 8, 9]
-checked = "2026-11-13"
+permit = "No permit is needed in the High Uintas Wilderness."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r04/uinta-wasatch-cache/recreation/trails/highline-trail-105"
@@ -69,6 +70,11 @@ facts = ["summary", "official_url", "start", "end", "shape", "high_point", "terr
 url = "https://www.visitutah.com/articles/backpacking-high-uintas"
 publisher = "Utah Office of Tourism"
 facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r04/ashley/recreation/high-uintas-wilderness"
+publisher = "USDA Forest Service, Ashley National Forest"
+facts = ["permit"]
 
 [[link]]
 title = "Uinta Highline Trail"
@@ -83,5 +89,14 @@ date = "2026-11-09"
 change = "The record was added: Uinta Highline Trail."
 fields = ["record"]
 basis = "The record's own source entry: USDA Forest Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of USDA Forest Service, Ashley National Forest says: \"Permits are not required for the High Uintas Wilderness.\""
+basis_url = "https://www.fs.usda.gov/r04/ashley/recreation/high-uintas-wilderness"
 asked_by = "the dataset's own check"
 outcome = "applied"

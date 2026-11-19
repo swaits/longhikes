@@ -56,12 +56,24 @@ official_url = "https://stc-hike.org/"
 shape = "loop"
 terrain = ["forest"]
 travel = "trail"
-checked = "2026-11-13"
+permit = "No permit is needed to hike the Susquehannock Trail System."
+days = [7, 7]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://stc-hike.org/"
 publisher = "Susquehannock Trail Club"
 facts = ["summary", "official_url", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://stc-hike.org/f-a-q"
+publisher = "Susquehannock Trail Club"
+facts = ["permit"]
+
+[[hike.source]]
+url = "https://img1.wsimg.com/blobby/go/abd0f2cd-7530-4000-b744-4cabcde2a139/STS%20Publication%20Map%20r00v01.pdf"
+publisher = "Susquehannock Trail Club"
+facts = ["days"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -71,5 +83,23 @@ date = "2026-11-10"
 change = "The record was added: Susquehannock Trail System."
 fields = ["record"]
 basis = "The record's own source entry: Susquehannock Trail Club."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of Susquehannock Trail Club says: \"Are permits needed? No permits needed ever, anytime, anywhere.\""
+basis_url = "https://stc-hike.org/f-a-q"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual time to walk the whole trail, 7 days, was added."
+fields = ["hike.days"]
+basis = "The page of Susquehannock Trail Club says: \"7 Day Circuit Hike Day 1 (14miles) Northern Gateway - Cherry Springs Tower ... Day 7 (13miles) Rock Ridge Road - Northern Gateway\""
+basis_url = "https://img1.wsimg.com/blobby/go/abd0f2cd-7530-4000-b744-4cabcde2a139/STS%20Publication%20Map%20r00v01.pdf"
 asked_by = "the dataset's own check"
 outcome = "applied"

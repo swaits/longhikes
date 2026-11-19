@@ -60,7 +60,8 @@ high_point_m = 652
 terrain = ["forest"]
 travel = "trail"
 caution = "Fires are banned along parts of the trail and during the spring fire season, and the club advises hikers to stay off the trail during bear and deer season, which runs about three weeks from the Monday before Thanksgiving."
-checked = "2026-11-14"
+permit = "No permit is needed to camp one night at a site; a free Loyalsock State Forest camping permit is needed to stay more than one night at one location."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://alpineclubofwilliamsport.com/loyalsock-trail-information/"
@@ -71,6 +72,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 url = "https://alpineclubofwilliamsport.com/history-of-the-loyalsock-trail/"
 publisher = "Alpine Club of Williamsport"
 facts = ["high_point"]
+
+[[hike.source]]
+url = "https://alpineclubofwilliamsport.com/faqs/"
+publisher = "Alpine Club of Williamsport"
+facts = ["permit"]
 
 [[link]]
 title = "Loyalsock Trail"
@@ -94,5 +100,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://alpineclubofwilliamsport.com/wp-content/uploads/2017/06/lt-blaze-transparentbg.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of Alpine Club of Williamsport says: \"You don't need a permit to camp if only camping one night at a site. If camping more than one night at a location, you'll need a free camping permit from Loyalsock State Forest\""
+basis_url = "https://alpineclubofwilliamsport.com/faqs/"
 asked_by = "the dataset's own check"
 outcome = "applied"

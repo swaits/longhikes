@@ -29,7 +29,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "Only the middle third has a track from its author, in the Deseret Hiking Route guide; the two end trails are published separately and are each listed here with their own tracks. Get the middle section from the guide page."
+line_absent_reason = "Only the middle third has a track from its author, in the Deseret Hiking Route guide; the two end trails are published separately and are each listed here with their own tracks. The guide page sends the middle section only after proof of a day of trail work."
 
 [osm]
 relation = 0
@@ -50,7 +50,7 @@ note = "No line to measure."
 [route]
 creator = "Kevin \"LarryBoy\" DeVries"
 year = 2019
-line_policy = "open"
+line_policy = "withheld"
 creator_words = "The combined AZT-DHR-ICT (collectively, the Route In Between, or RIB) offers hikers the opportunity to walk from Mexico to Canada through oft-overlooked terrain."
 creator_words_url = "http://www.lbhikes.com/2019/12/dhr.html"
 note = "A link-up of the Arizona Trail, the Deseret Hiking Route and the Idaho Centennial Trail, from Mexico to Canada through Arizona, Utah and Idaho. The author walked it in 2019; only the middle third has a track from him."
@@ -87,4 +87,13 @@ change = "The record was added: Route In Between."
 fields = ["record"]
 basis = "The record's own source entry: Kevin \"LarryBoy\" DeVries."
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to withheld, because the author sends the track only on a condition, so it is not published freely. The page no longer says a free track is offered."
+fields = ["route.line_policy", "source.line_absent_reason"]
+basis = "The author's guide page sends the maps, data book and GPX for the middle third only after proof of a day of trail work."
+basis_url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
+asked_by = "a reviewer"
 outcome = "applied"

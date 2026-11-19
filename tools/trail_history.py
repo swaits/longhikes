@@ -19,7 +19,7 @@ URL_RE = re.compile(r"^https?://[^\s/]+\S*$")
 # names these. A table name on its own ("source", "hike.source") names every field in it.
 _TABLES = {
     "": ("id", "name", "common_name", "short_name", "short_name_url", "country", "regions", "length_km",
-         "length_note", "system_km", "system_note", "built_km", "kind", "tier", "designation", "wave", "wave_note", "inclusion"),
+         "length_note", "system_km", "system_note", "built_km", "kind", "tier", "designation", "wave", "wave_note", "inclusion", "short_reason"),
     "source": ("status", "publisher", "publisher_url", "url", "discovery", "format", "crs",
                "licence", "licence_text", "permission_quote", "permission_by",
                "permission_date", "permission_url", "attribution", "osm_only", "mainline",

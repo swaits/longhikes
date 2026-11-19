@@ -47,7 +47,7 @@ note = "No line to measure."
 
 [route]
 creator = "Liz Thomas"
-line_policy = "open"
+line_policy = "unclear"
 creator_words = "As with all the routes I walk, what inspires me is the idea that with more planning and research, this can be an amazing trip that someone would want to replicate."
 creator_words_url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
 note = "The length of the Wasatch Range in Utah, from the Wellsville Wilderness to the southwest side of the Mt. Nebo Wilderness, on trails, off-trail, jeep roads and paved roads, with 85,000 feet of gain. Route beta and maps came from Jeremy Howlett; the page lists the paper maps she used and offers no track."
@@ -85,4 +85,13 @@ change = "The record was added: Wasatch Traverse."
 fields = ["record"]
 basis = "The record's own source entry: Liz Thomas."
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to unclear, because the author's page offers no track file, so whether one is shared is not settled. The page no longer says a free track is offered."
+fields = ["route.line_policy"]
+basis = "The route page lists the paper maps the author used and offers no track."
+basis_url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
+asked_by = "a reviewer"
 outcome = "applied"

@@ -29,7 +29,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The alliance publishes the route as an online map with no GPX and no licence that allows passing the track on. Get the track from the alliance's map page."
+line_absent_reason = "The alliance publishes the route as an online map with no GPX and no licence that allows passing the track on. The route is shown on the alliance's map page."
 
 [osm]
 relation = 0
@@ -49,7 +49,7 @@ note = "No line to measure."
 
 [route]
 creator = "Steve Myers (Great Plains Trail Alliance)"
-line_policy = "open"
+line_policy = "unclear"
 creator_words = "This map represents the best routing to date for the entire length of the trail. That said, the route and the map will likely remain 'works in progress' for quite some time to come."
 creator_words_url = "https://www.greatplainstrail.org/gpt-map/"
 note = "From Grassland National Park in Canada to Guadalupe Peak in Texas, through the Black Hills, the Dakota and Nebraska grasslands and the Texas panhandle, using public roads for long stretches. The alliance publishes the route as an online map and offers no GPX."
@@ -109,4 +109,13 @@ fields = ["shield.status", "shield.logo_source", "shield.contact", "shield.logo_
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.greatplainstrail.org/wp-content/uploads/2012/07/logo_alone.jpg"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to unclear, because the author's page offers no track file, so whether one is shared is not settled. The page no longer says a free track is offered."
+fields = ["route.line_policy", "source.line_absent_reason"]
+basis = "The alliance's map page shows the route as an online map and offers no GPX."
+basis_url = "https://www.greatplainstrail.org/gpt-map/"
+asked_by = "a reviewer"
 outcome = "applied"

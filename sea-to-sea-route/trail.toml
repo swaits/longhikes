@@ -50,7 +50,7 @@ note = "No line to measure."
 [route]
 creator = "Ron Strickland"
 year = 1996
-line_policy = "open"
+line_policy = "unclear"
 creator_words = "The Sea-to-Sea Route (C2C) is a 7,800-mile network of existing long-distance hiking trails that spans almost continuously between the Atlantic and Pacific Oceans, with the exception of an 800-mile gap in North Dakota and Montana along the Missouri River and a less formidable 30-mile gap in Vermont."
 creator_words_url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
 note = "A network of existing long-distance trails, with an 800-mile gap in North Dakota and Montana and a 30-mile gap in Vermont, joining the North Country, Pacific Northwest and other trails. Ron Strickland started thinking about it in 1996; Andrew Skurka made the first thru-hike from August 2004 to July 2005."
@@ -99,4 +99,13 @@ fields = ["shield.status", "shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
 basis_url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to unclear, because the author's page offers no track file, so whether one is shared is not settled. The page no longer says a free track is offered."
+fields = ["route.line_policy"]
+basis = "The overview page describes a network of existing trails, and no track or GPX for the route was found."
+basis_url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
+asked_by = "a reviewer"
 outcome = "applied"

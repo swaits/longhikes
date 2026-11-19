@@ -63,7 +63,9 @@ high_point_m = 4421
 terrain = ["forest", "alpine", "canyon"]
 travel = "trail"
 permit = "A wilderness permit for the High Sierra Trail is required, and only a High Sierra Trail permit is valid for the stretch between Seven Mile Hill and Kaweah Gap."
-checked = "2026-11-14"
+season = "July to early September"
+months = [7, 8]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
@@ -74,6 +76,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "days", "high_point
 url = "https://www.nps.gov/seki/planyourvisit/whitney.htm"
 publisher = "National Park Service, Sequoia and Kings Canyon National Parks"
 facts = ["high_point"]
+
+[[hike.source]]
+url = "https://www.treelinereview.com/where-to-go/backpacking-high-sierra-trail"
+publisher = "Treeline Review"
+facts = ["season", "months"]
 
 [[link]]
 title = "High Sierra Trail"
@@ -97,5 +104,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual season, j, and its months were addeduly to early September."
+fields = ["hike.season", "hike.months"]
+basis = "The page of Treeline Review says: \"The best season is July, August, or early September.\""
+basis_url = "https://www.treelinereview.com/where-to-go/backpacking-high-sierra-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

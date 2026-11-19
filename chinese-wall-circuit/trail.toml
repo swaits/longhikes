@@ -47,7 +47,7 @@ note = "No line to measure."
 
 [route]
 creator = "Wilderness Mindset"
-line_policy = "open"
+line_policy = "unclear"
 creator_words = "This route first takes you under the wall on the Continental Divide Trail, then back along the top of the wall completely off-trail."
 creator_words_url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/"
 note = "A loop in the Bob Marshall Wilderness, Montana, under the 12-mile Chinese Wall on the Continental Divide Trail and back along the top of the wall. The route page is written in the first person and names no person; no GPX link was seen on it."
@@ -102,4 +102,13 @@ fields = ["shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to unclear, because the author's page offers no track file, so whether one is shared is not settled. The page no longer says a free track is offered."
+fields = ["route.line_policy"]
+basis = "The route page gives a description and a map, and offers no GPX."
+basis_url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/"
+asked_by = "a reviewer"
 outcome = "applied"

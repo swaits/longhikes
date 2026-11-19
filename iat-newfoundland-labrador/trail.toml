@@ -60,7 +60,8 @@ start_lonlat = [-59.135, 47.596]
 shape = "point-to-point"
 travel = "trail-and-road"
 unfinished = "The chapter's stated goal is a 750 km extension of the trail; as of 2023 it is made of T'Railway sections, gravel logging roads, backcountry trails and routes, and secondary highways."
-checked = "2026-11-14"
+days = [35, 50]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://iatnl.org/thru-hikers/"
@@ -76,6 +77,11 @@ facts = ["summary", "unfinished"]
 url = "https://geogratis.gc.ca/services/geoname/en/geonames/AADVG"
 publisher = "Natural Resources Canada (Canadian Geographical Names)"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://iatnl.org/services/thru-hiker-route-details-directions/"
+publisher = "International Appalachian Trail Newfoundland and Labrador"
+facts = ["days"]
 
 [[link]]
 title = "International Appalachian Trail"
@@ -117,5 +123,14 @@ change = "The word \"Held:\" was taken off the start of the wave note, which now
 fields = ["wave_note"]
 basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://iatnl.org/wp-content/uploads/2023/04/cropped-IAT-IATNL2023-1s.gif"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual time to walk the whole trail, 35 to 50 days, was added."
+fields = ["hike.days"]
+basis = "The page of International Appalachian Trail Newfoundland and Labrador says: \"Time: 35-50 days\""
+basis_url = "https://iatnl.org/services/thru-hiker-route-details-directions/"
 asked_by = "the dataset's own check"
 outcome = "applied"

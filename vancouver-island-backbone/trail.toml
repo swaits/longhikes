@@ -48,7 +48,7 @@ note = "No line to measure."
 [route]
 creator = "Philip Stone"
 year = 1996
-line_policy = "open"
+line_policy = "unclear"
 creator_words = "No part of this book may be reproduced or transmitted in any form by any means, electronic or mechanical, including photocopying and recording, or by any information storage or retrieval system without written permission from the author, except for brief passages quoted in a review."
 creator_words_url = "https://www.wildisle.ca/downloads/books/Van_Isle_Backbone_Guide.pdf"
 note = "A wilderness route up the interior of Vancouver Island in eight sections, from the Beaufort Range near Port Alberni to the Nimpkish River at Port McNeill. The first edition is out of print and its PDF is offered as a free download. The site calls the guide a little out of date. It is a different route from the Vancouver Island Trail (record vancouver-island)."
@@ -123,4 +123,13 @@ fields = ["hike.start_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Stamp Falls, OpenStreetMap node 1652413166."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=1652413166"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to unclear, because the author's page offers no track file, so whether one is shared is not settled. The page no longer says a free track is offered."
+fields = ["route.line_policy"]
+basis = "The author's guide holds the route as text and maps, and no GPS file was found."
+basis_url = "https://www.wildisle.ca/backbone/index.html"
+asked_by = "a reviewer"
 outcome = "applied"

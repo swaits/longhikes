@@ -60,7 +60,8 @@ season = "Spring, summer and fall"
 months = [3, 4, 5, 6, 7, 8, 9, 10, 11]
 terrain = ["forest", "desert"]
 travel = "trail"
-checked = "2026-11-14"
+permit = "No permit is needed to hike the trail; camping and some trailhead parking require fees."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://prescott-az.gov/?p=25791"
@@ -75,7 +76,7 @@ facts = ["summary", "shape"]
 [[hike.source]]
 url = "https://www.treelinereview.com/where-to-go/prescott-circle-trail"
 publisher = "Treeline Review (hiking guide site; trail data attributed to the City of Prescott)"
-facts = ["start", "days", "terrain"]
+facts = ["start", "days", "terrain", "permit"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -94,5 +95,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://yavapai-trails.org/wp-content/uploads/2019/08/pct-logo.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of Treeline Review says: \"A permit is not necessary to hike the trail, but camping, and sometimes parking, do require fees\""
+basis_url = "https://www.treelinereview.com/where-to-go/prescott-circle-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -49,6 +49,7 @@ line_file = "line.geojson"
 | `wave` | integer or string | `1` for trails in the first set; `"held"` where listing is undecided. | `1` |
 | `wave_note` | string, where present | Why a held trail is held. | `"Held: no usable whole track exists."` |
 | `inclusion` | string, where present | `nst-unconditional` for every National Scenic Trail that is listed; `candidate-decision-pending` for a candidate. Absent otherwise. | `"nst-unconditional"` |
+| `short_reason` | string, with `length_km` under 80 | One plain sentence saying why a trail under the 50 mile (80 km) floor is listed, by the owner's test: it has real cross-country travel, it genuinely takes five or more days, or it is very well known and popular. It rests on what the record already says. Required on every record with `length_km` under 80, and refused on any other. A record whose own text supports none of the three carries the sentence `"Listed before the test was written; under review."`; the validator prints a warning for it, and the owner decides whether the trail stays. | `"The book gives it five to eight days."` |
 
 ### What `length_km` counts
 

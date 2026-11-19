@@ -57,7 +57,8 @@ shape = "point-to-point"
 high_point_m = 1707
 travel = "trail"
 permit = "Rules for backcountry camping, permits and overnight parking vary by agency, so check with each one."
-checked = "2026-11-13"
+days = [5, 8]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r02/blackhills/recreation/centennial-trailheads-trail-89-central-hills"
@@ -68,6 +69,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel", "permit"]
 url = "https://www.fs.usda.gov/r02/blackhills/recreation/non-motorized-trail-brochures"
 publisher = "USDA Forest Service, Black Hills National Forest"
 facts = ["high_point"]
+
+[[hike.source]]
+url = "https://www.treelinereview.com/where-to-go/centennial-trail-south-dakota"
+publisher = "Treeline Review"
+facts = ["days"]
 
 [[link]]
 title = "South Dakota Centennial Trail"
@@ -91,5 +97,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.fs.usda.gov/r02/blackhills/recreation/centennial-trailheads-trail-89-central-hills"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual time to walk the whole trail, 5 to 8 days, was added."
+fields = ["hike.days"]
+basis = "The page of Treeline Review says: \"Distance: 125 miles Days: 5-8\""
+basis_url = "https://www.treelinereview.com/where-to-go/centennial-trail-south-dakota"
 asked_by = "the dataset's own check"
 outcome = "applied"

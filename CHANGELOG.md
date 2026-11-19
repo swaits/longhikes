@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-19 - Sourced day counts, seasons and permit notes, honest track policies, and a reason for every short trail
+
+- Twenty-nine trails gained facts that were read on a named page: nine gained the usual days to walk the whole trail, five a season, and seventeen a permit note (two of the trails gained two of these). Each fact names its page in the record.
+- Fifteen routes no longer say a free track is offered when none is. Twelve (the Appalachian High Route, Brooks Range Traverse, Chinese Wall Circuit, Eastern Continental Trail, Great Plains Trail, Sea-to-Sea Route, Southeastern Serpentine Trail, Southwestern Horseshoe, Teton Range Traverse, Vagabond Loop, Vancouver Island Backbone and Wasatch Traverse) are now recorded as unclear, because their author's page offers no track file. Three (the Grand Moab Route, Deseret Hiking Route and Route In Between) are recorded as withheld: the Grand Moab author says he has no track to share, and the other two are sent only on a condition. The Great Plains Trail note no longer says to get the track from the alliance.
+- The Midland to Mackinac Trail note now says one thing: its 2018 guide states there is no GPS track for the trail.
+- Every record under the 50 mile floor now carries `short_reason`, one sentence on why it is listed, and the data check requires it on those records and refuses it on others. Kekekabic, Pukaskwa Coastal and Timberline carry "Listed before the test was written; under review.", because their records support none of the owner's three tests; the check warns for them. No page changes.
+- The Teton Crest Trail's note on OpenStreetMap relation 3895101 is corrected: the relation holds 57.5 km in 49 ways, in one piece, and is recorded as a complete alternative that is not used.
+
 ## 2026-11-19 - Stale, contradictory and wrong statements corrected
 
 - The Kekekabic, Pukaskwa Coastal, Teton Crest, Timberline and West Coast trails are no longer marked as held, so their pages no longer say that something is not settled with no note saying what. The word "Held." is gone from the notes of the Allegheny and Ganaraska trails.

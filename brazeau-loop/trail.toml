@@ -56,7 +56,8 @@ season = "Early July to mid-September, when the alpine trails are typically free
 months = [7, 8, 9]
 terrain = ["alpine"]
 travel = "trail"
-checked = "2026-11-13"
+permit = "A Parks Canada backcountry camping permit is needed for any overnight trip on the loop, booked online or by phone."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas"
@@ -72,6 +73,11 @@ facts = ["start", "season", "months", "high_point"]
 url = "https://geogratis.gc.ca/services/geoname/en/geonames/IANPN"
 publisher = "Natural Resources Canada, Canadian Geographical Names Database"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/Brazeau"
+publisher = "Parks Canada, Jasper National Park"
+facts = ["permit"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -90,5 +96,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of Parks Canada, Jasper National Park says: \"A backcountry camping permit is mandatory for all overnight trips and can be obtained online at reservation.pc.gc.ca or by calling 1-877-737-3783.\""
+basis_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/Brazeau"
 asked_by = "the dataset's own check"
 outcome = "applied"

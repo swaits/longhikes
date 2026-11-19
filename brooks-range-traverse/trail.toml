@@ -48,7 +48,7 @@ note = "No line to measure."
 [route]
 creator = "Luc Mehl and Sarah Histand"
 year = 2016
-line_policy = "open"
+line_policy = "unclear"
 creator_words = "The Brooks Range, from Kivalina to Kaktovik, in three parts."
 creator_words_url = "https://thingstolucat.com/brooks-range-traverse/"
 note = "From Kivalina to Kaktovik in three parts, walked in 2016, 2017 and 2019, with friends on the first two legs. Hiking and packrafting: much of it is float. The trip reports give routes, maps and photos, but no GPX link."
@@ -116,4 +116,13 @@ fields = ["shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://thingstolucat.com/brooks-range-traverse/"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to unclear, because the author's page offers no track file, so whether one is shared is not settled. The page no longer says a free track is offered."
+fields = ["route.line_policy"]
+basis = "The trip reports give routes, maps and photos but no track file or GPX link."
+basis_url = "https://thingstolucat.com/brooks-range-traverse/"
+asked_by = "a reviewer"
 outcome = "applied"

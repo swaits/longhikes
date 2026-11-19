@@ -29,7 +29,7 @@ source_checked = "2026-11-10"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "The author gives the maps and GPX free after proof of a day of manual trail maintenance, and states no licence that allows passing the track on. Get it from the guide page."
+line_absent_reason = "The author sends the maps and GPX only after proof of a day of manual trail maintenance, and states no licence that allows passing the track on. Get it from the guide page."
 
 [osm]
 relation = 0
@@ -50,7 +50,7 @@ note = "No line to measure."
 [route]
 creator = "Kevin \"LarryBoy\" DeVries"
 year = 2019
-line_policy = "open"
+line_policy = "withheld"
 creator_words = "My goal with the DHR was not only to piece together a beautiful route, but one that I could responsibly share with others."
 creator_words_url = "http://www.lbhikes.com/2019/12/dhr.html"
 note = "About 1,000 miles through Utah from the Arizona border to Alturas Lake Creek in Idaho, half on singletrack, much on dirt road, with cross-country and paved sections; it links the Arizona Trail and the Idaho Centennial Trail. The author walked it in 2019."
@@ -111,4 +111,13 @@ fields = ["hike.start_lonlat"]
 basis = "The Bureau of Land Management's page for Stateline Campground gives its position and says it is the northern end of the Arizona National Scenic Trail, which the author's page names as the route's southern end."
 basis_url = "https://www.blm.gov/visit/stateline-campground"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to withheld, because the author sends the track only on a condition, so it is not published freely. The page no longer says a free track is offered."
+fields = ["route.line_policy", "source.line_absent_reason"]
+basis = "The author's guide page sends the maps, data book and GPX only after proof of a day of trail work."
+basis_url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
+asked_by = "a reviewer"
 outcome = "applied"

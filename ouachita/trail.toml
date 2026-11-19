@@ -60,7 +60,9 @@ shape = "point-to-point"
 high_point_m = 792
 terrain = ["forest"]
 travel = "trail"
-checked = "2026-11-14"
+days = [14, 21]
+permit = "No permits are required for the trail."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.friendsoftheouachita.org/about-the-ot"
@@ -71,6 +73,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 url = "https://www.fs.usda.gov/r08/ouachita/recreation/trails/ouachita-national-recreation-trail"
 publisher = "USDA Forest Service, Ouachita National Forest"
 facts = ["high_point"]
+
+[[hike.source]]
+url = "https://www.treelinereview.com/where-to-go/ouachita-trail"
+publisher = "Treeline Review"
+facts = ["days", "permit"]
 
 [[link]]
 title = "Ouachita Trail"
@@ -103,5 +110,14 @@ change = "The name hikers use, Ouachita Trail, was added as the common name. The
 fields = ["common_name"]
 basis = "The Friends of the Ouachita Trail say: 'The 'Ouachita Trail', as it is more commonly known'."
 basis_url = "https://www.friendsoftheouachita.org/about-the-ot"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual time to walk the whole trail, 14 to 21 days, was added. A note on permits was added."
+fields = ["hike.days", "hike.permit"]
+basis = "The page of Treeline Review says: \"Time to hike the entire trail: 2-3 weeks\" and \"Permits: No permits are required.\""
+basis_url = "https://www.treelinereview.com/where-to-go/ouachita-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

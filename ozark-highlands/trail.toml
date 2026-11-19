@@ -63,7 +63,8 @@ unfinished = "About 290 miles of the 325-mile route are built, with no built tra
 caution = "East of Dillard's Ferry on AR-14, the way to the Spring Creek trailhead is a bushwhack of about 15 miles with no built trail, mostly through the Lower Buffalo Wilderness, and past the Matney Knob trailhead the trail goes on as separate pieces along Norfork Lake, joined by a road walk of about 10 miles."
 season = "October to early June"
 months = [10, 11, 12, 1, 2, 3, 4, 5]
-checked = "2026-11-16"
+permit = "No permit is needed to hike or camp along the trail."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://ozarkhighlandstrail.com/trail/"
@@ -78,7 +79,7 @@ facts = ["summary"]
 [[hike.source]]
 url = "https://ozarkhighlandstrail.com/faq/"
 publisher = "Ozark Highlands Trail Association"
-facts = ["season", "months", "unfinished"]
+facts = ["season", "months", "unfinished", "permit"]
 
 [[link]]
 title = "Ozark Highlands Trail"
@@ -138,5 +139,14 @@ change = "The main track was re-cut to one walk (369 km): the OHT High Water Byp
 fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
 basis = "OpenStreetMap relation 10868744 holds the bypass beside the trail and names it OHT High Water Bypass. The relation gives no roles."
 basis_url = "https://www.openstreetmap.org/relation/10868744"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of Ozark Highlands Trail Association says: \"No permits are required to hike or camp along the OHT.\""
+basis_url = "https://ozarkhighlandstrail.com/faq/"
 asked_by = "the dataset's own check"
 outcome = "applied"

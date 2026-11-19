@@ -59,7 +59,8 @@ terrain = ["coast", "forest", "lakes"]
 travel = "trail"
 high_point = "Mount Troubridge"
 high_point_m = 1300
-checked = "2026-11-13"
+days = [10, 12]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://sunshinecoasttrail.com/"
@@ -75,6 +76,11 @@ facts = ["summary"]
 url = "https://sunshinecoasttrail.com/plan-your-hike/multi-day-routes/"
 publisher = "Sunshine Coast Trail (qathet Parks and Wilderness Society)"
 facts = ["high_point"]
+
+[[hike.source]]
+url = "https://www.wta.org/news/magazine/northwest-weekends/hike-hut-to-hut-sunshine-coast"
+publisher = "Washington Trails Association"
+facts = ["days"]
 
 [[link]]
 title = "Sunshine Coast Trail"
@@ -107,5 +113,14 @@ change = "The main track was re-cut to one walk (168.0 km): at eight places wher
 fields = ["source.line_file", "source.mainline"]
 basis = "OpenStreetMap relation 7406716 has no member roles. The Sunshine Coast Trail Society's hut pages put the trail's km 4 and km 9 markers on the Inland Lake trail, and its multi-day routes page describes the Saltery Bay Trail as the return half of a loop from the southern terminus. Elsewhere no page names the main way, so the shorter way was kept."
 basis_url = "https://www.openstreetmap.org/relation/7406716"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual time to walk the whole trail, 10 to 12 days, was added."
+fields = ["hike.days"]
+basis = "The page of Washington Trails Association says: \"It takes 10 to 12 days to hike the full trail.\""
+basis_url = "https://www.wta.org/news/magazine/northwest-weekends/hike-hut-to-hut-sunshine-coast"
 asked_by = "the dataset's own check"
 outcome = "applied"

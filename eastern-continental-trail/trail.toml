@@ -49,7 +49,7 @@ note = "No line to measure."
 
 [route]
 creator = "M. J. Eberhart (trail name Nimblewill Nomad)"
-line_policy = "open"
+line_policy = "unclear"
 note = "The author's books page describes a walk from the Florida Keys to the far north of Quebec. His 2000 journal walks it the other way, from Cap Gaspé to Key West, on the International Appalachian Trail, the Appalachian Trail, the Benton MacKaye Trail and the Pinhoti Trail, with a road walk of about 175 miles to Key West at the end."
 
 [[guide]]
@@ -123,4 +123,13 @@ fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://nimblewillnomad.com/books/"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to unclear, because the author's page offers no track file, so whether one is shared is not settled. The page no longer says a free track is offered."
+fields = ["route.line_policy"]
+basis = "The record's notes say the route is a link-up of published trails with no whole track of its own, and no track for it was found on the author's pages."
+basis_url = "https://nimblewillnomad.com/books/"
+asked_by = "a reviewer"
 outcome = "applied"

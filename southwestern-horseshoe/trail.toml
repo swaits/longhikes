@@ -50,7 +50,7 @@ note = "No line to measure."
 [route]
 creator = "Cam Honan"
 year = 2012
-line_policy = "open"
+line_policy = "unclear"
 note = "The Hayduke Trail from Arches National Park to the South Rim of the Grand Canyon, the Arizona Trail to Rogers Trough, and the Grand Enchantment Trail to Albuquerque. The author walked it from 24 February to 29 April 2012. The page credits other people's overview maps and lists third-party map sources, some of them sold."
 
 [[guide]]
@@ -109,4 +109,13 @@ fields = ["hike.start_lonlat"]
 basis = "U.S. Geological Survey, Geographic Names Information System (public domain): Tower Arch, feature 1433609."
 basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1433609"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to unclear, because the author's page offers no track file, so whether one is shared is not settled. The page no longer says a free track is offered."
+fields = ["route.line_policy"]
+basis = "The author's page gives route notes and links to maps and offers no GPX file."
+basis_url = "https://thehikinglife.com/2019/03/southwestern-horseshoe/"
+asked_by = "a reviewer"
 outcome = "applied"

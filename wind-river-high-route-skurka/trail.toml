@@ -76,7 +76,8 @@ travel = "mostly-cross-country"
 permit = "A permit should be obtained for the portion of the route on the Wind River Indian Reservation."
 season = "August to mid-September"
 months = [8, 9]
-checked = "2026-11-13"
+days = [7, 10]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://andrewskurka.com/adventures/wind-river-high-route/"
@@ -102,6 +103,11 @@ facts = ["start_lonlat"]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=2029153766"
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Trail Lake Trailhead, OpenStreetMap node 2029153766"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://andrewskurka.com/adventures/wind-river-high-route/section-hikes/"
+publisher = "Andrew Skurka (the route's author)"
+facts = ["days"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -138,5 +144,14 @@ change = "The position of the end was added, so that the page can show a map of 
 fields = ["hike.end_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Trail Lake Trailhead, OpenStreetMap node 2029153766, matched to the author's northern end at Trail Lakes."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=2029153766"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual time to walk the whole trail, 7 to 10 days, was added."
+fields = ["hike.days"]
+basis = "The page of Andrew Skurka (the route's author) says: \"Few can dedicate 7-10 days to the Primary Route, or longer once travel time is considered\""
+basis_url = "https://andrewskurka.com/adventures/wind-river-high-route/section-hikes/"
 asked_by = "the dataset's own check"
 outcome = "applied"

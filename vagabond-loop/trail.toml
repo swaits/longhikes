@@ -50,7 +50,7 @@ note = "No line to measure."
 [route]
 creator = "Ryan \"Dirtmonger\" Sylva"
 year = 2013
-line_policy = "open"
+line_policy = "unclear"
 note = "A loop through the Southwest and Rockies connecting the Arizona Trail, the Hayduke Trail, the Colorado Trail and the Grand Enchantment Trail. The author set out on 4 April 2013; his page carries a description and no track, and the domain no longer resolves."
 
 [[guide]]
@@ -91,4 +91,13 @@ fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to unclear, because the author's page offers no track file, so whether one is shared is not settled. The page no longer says a free track is offered."
+fields = ["route.line_policy"]
+basis = "The author's page carried a description and no track, and its domain no longer resolves."
+basis_url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+asked_by = "a reviewer"
 outcome = "applied"

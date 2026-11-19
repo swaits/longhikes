@@ -6,7 +6,7 @@ allegheny-trail,Allegheny Trail,US,WV,509,included,OpenStreetMap,ODbL-1.0,design
 alpine-trail-7,Alpine Trail #7,US,MT,88,included,USDA Forest Service (National Forest System Trails),us-gov-public-domain,designated,
 american-discovery-trail,American Discovery Trail,US,DE;MD;DC;WV;OH;KY;IN;IL;IA;MO;KS;NE;CO;UT;NV;CA,8060,included,OpenStreetMap,ODbL-1.0,designated,
 appalachian,Appalachian National Scenic Trail,US,GA;NC;TN;VA;WV;MD;PA;NJ;NY;CT;MA;VT;NH;ME,3537,included,National Park Service Appalachian NST and Appalachian Trail Conservancy,us-gov-public-domain,designated,
-appalachian-high-route,Appalachian High Route,US,NC;TN,531,record-only,none (no line included),none-stated,route,open
+appalachian-high-route,Appalachian High Route,US,NC;TN,531,record-only,none (no line included),none-stated,route,unclear
 arizona,Arizona National Scenic Trail,US,AZ,1287,included,OpenStreetMap,ODbL-1.0,designated,
 avon,Avon Trail,CA,ON,130,included,OpenStreetMap,ODbL-1.0,designated,
 backbone,Backbone Trail,US,CA,108,included,OpenStreetMap,ODbL-1.0,designated,
@@ -30,14 +30,14 @@ boundary-trail-mount-st-helens,Boundary Trail #1 (Mount St. Helens),US,WA,86,inc
 boundary-trail-pasayten,Boundary Trail (Pasayten Wilderness),US,WA,117,included,OpenStreetMap,ODbL-1.0,designated,
 brazeau-loop,Brazeau Loop,CA,AB,81,record-only,none (no line included),none-stated,designated,
 bristol-hills-trail,Bristol Hills Trail,US,NY,89,included,OpenStreetMap,ODbL-1.0,designated,
-brooks-range-traverse,Brooks Range Traverse,US,AK,1609,record-only,none (no line included),none-stated,route,open
+brooks-range-traverse,Brooks Range Traverse,US,AK,1609,record-only,none (no line included),none-stated,route,unclear
 bruce-trail,Bruce Trail,CA,ON,890,included,OpenStreetMap,ODbL-1.0,designated,
 buckeye,Buckeye Trail,US,OH,2250,included,OpenStreetMap,ODbL-1.0,designated,
 california-coastal,California Coastal Trail,US,CA,1931,included,A hiker's own walk of the coast (GPX file attached to the dataset's issue 1),CC-BY-4.0,designated,
 canol,Canol Heritage Trail,CA,NT,371,included,OpenStreetMap,ODbL-1.0,designated,
 centennial-sd,Centennial Trail,US,SD,179,included,OpenStreetMap,ODbL-1.0,designated,
 central-wind-rivers-loop,Central Wind Rivers Loop,US,WY,99,record-only,none (no line included),none-stated,route,sold
-chinese-wall-circuit,The Chinese Wall Circuit,US,MT,127,record-only,none (no line included),none-stated,route,open
+chinese-wall-circuit,The Chinese Wall Circuit,US,MT,127,record-only,none (no line included),none-stated,route,unclear
 circle-of-solitude,Circle of Solitude,US,CA,109,record-only,none (no line included),none-stated,route,unclear
 cohos,Cohos Trail,US,NH,270,included,OpenStreetMap,ODbL-1.0,designated,
 colorado-trail,Colorado Trail,US,CO,782,included,"USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment",ODbL-1.0,designated,
@@ -52,14 +52,14 @@ cross-vermont,Cross Vermont Trail,US,VT,145,included,OpenStreetMap,ODbL-1.0,desi
 dan-zhur-donjek,Dän Zhùr (Donjek) Route,CA,YT,110,record-only,none (no track included),none-stated,designated,
 deadman-and-cloud-canyons,Deadman and Cloud Canyons,US,CA,182,record-only,none (no line included),none-stated,route,sold
 deadman-creek-loop,Deadman Creek Loop,US,AZ,93,record-only,none (no line included),none-stated,route,sold
-deseret-hiking-route,Deseret Hiking Route,US,UT;ID,1609,record-only,none (no line included),none-stated,route,open
+deseret-hiking-route,Deseret Hiking Route,US,UT;ID,1609,record-only,none (no line included),none-stated,route,withheld
 desert-trail,Desert Trail,US,CA;NV;OR,2552,record-only,none (no line included),none-stated,route,unclear
 desert-winter-thru-hike,Desert Winter Thru-Hike,US,AZ;CA,1287,record-only,none (no line included),none-stated,route,withheld
 donut-hole,Donut Hole Trail,US,PA,152,included,OpenStreetMap,ODbL-1.0,designated,
 eagle-cap-traverse,Eagle Cap Traverse,US,OR,88,record-only,none (no line included),none-stated,route,sold
 east-beach-trail,East Beach Trail (Naikoon),CA,BC,90,record-only,none (no line included),none-stated,designated,
 east-coast-trail,East Coast Trail (Newfoundland),CA,NL,336,included,OpenStreetMap,ODbL-1.0,designated,
-eastern-continental-trail,Eastern Continental Trail,US,FL;AL;GA;TN;NC;VA;WV;MD;PA;NJ;NY;CT;MA;VT;NH;ME;QC;NB,7081,record-only,none (no line included),none-stated,route,open
+eastern-continental-trail,Eastern Continental Trail,US,FL;AL;GA;TN;NC;VA;WV;MD;PA;NJ;NY;CT;MA;VT;NH;ME;QC;NB,7081,record-only,none (no line included),none-stated,route,unclear
 eastern-sierra-high-route,Eastern Sierra High Route,US,CA,113,record-only,none (no line included),none-stated,route,sold
 finger-lakes,Finger Lakes Trail,US,NY,933,included,OpenStreetMap,ODbL-1.0,designated,
 florida,Florida National Scenic Trail,US,FL,1818,included,OpenStreetMap,ODbL-1.0,designated,
@@ -70,7 +70,7 @@ general-george-crook,General George Crook National Recreation Trail,US,AZ,222,in
 georgia-loop,Georgia Loop,US,GA,89,record-only,none (no track included),none-stated,route,unclear
 gospel-hump-loop,Gospel Hump Loop,US,ID,109,record-only,none (no line included),none-stated,route,sold
 grand-enchantment,Grand Enchantment Trail,US,AZ;NM,1239,record-only,none (no line included),none-stated,route,sold
-grand-moab-route,Grand-Moab Route,US,CO;UT,225,record-only,none (no line included),none-stated,route,open
+grand-moab-route,Grand-Moab Route,US,CO;UT,225,record-only,none (no line included),none-stated,route,withheld
 grand-sawtooth-loop,Grand Sawtooth Loop,US,ID,113,record-only,none (no line included),none-stated,designated,
 grand-teton-loop,Grand Teton Loop,US,WY,78,record-only,none (no line included),none-stated,route,sold
 grand-valley-trail,Grand Valley Trail,CA,ON,240,included,OpenStreetMap,ODbL-1.0,designated,
@@ -78,7 +78,7 @@ great-basin-trail,Great Basin Trail,US,NV,1931,record-only,none (no line include
 great-colorado-route,Great Colorado Route,US,CO,3219,record-only,none (no line included),none-stated,route,open
 great-divide-trail,Great Divide Trail,CA,AB;BC,1130,included,OpenStreetMap,ODbL-1.0,designated,
 great-eastern,Great Eastern Trail,US,AL;GA;TN;KY;VA;WV;MD;PA;NY,2897,included,OpenStreetMap,ODbL-1.0,designated,
-great-plains-trail,Great Plains Trail,US,SK;ND;SD;NE;TX,3540,record-only,none (no line included),none-stated,route,open
+great-plains-trail,Great Plains Trail,US,SK;ND;SD;NE;TX,3540,record-only,none (no line included),none-stated,route,unclear
 great-western-divide-loop,Sequoia Great Western Divide Loop,US,CA,93,record-only,none (no line included),none-stated,route,open
 great-western-loop,Great Western Loop,US,AZ;NM;CO;WY;ID;MT;CA;OR;WA,11064,record-only,none (no line included),none-stated,route,withheld
 green-river-lakes-titcomb-basin-loop,Green River Lakes & Titcomb Basin Loop,US,WY,114,record-only,none (no line included),none-stated,route,sold
@@ -161,12 +161,12 @@ rae-lakes-loop,Rae Lakes Loop,US,CA,67,included,OpenStreetMap,ODbL-1.0,designate
 rideau-trail,Rideau Trail,CA,ON,387,included,OpenStreetMap,ODbL-1.0,designated,
 ring-the-peak,Ring the Peak Trail,US,CO,101,record-only,none (no line included),none-stated,designated,
 river-to-river,River to River Trail,US,IL,257,included,OpenStreetMap,ODbL-1.0,designated,
-route-in-between,Route In Between,US,AZ;UT;ID,4344,record-only,none (no line included),none-stated,route,open
+route-in-between,Route In Between,US,AZ;UT;ID,4344,record-only,none (no line included),none-stated,route,withheld
 rutherford-lake-loop,Rutherford Lake Loop,US,CA,115,record-only,none (no line included),none-stated,route,sold
 san-diego-trans-county-trail,San Diego Trans County Trail,US,CA,249,record-only,none (no line included),none-stated,route,unclear
 santa-fe-to-taos,Santa Fe to Taos Thru-Hike,US,NM,212,record-only,none (no line included),none-stated,route,sold
 sawtooth-wilderness-high-route,Sawtooth Wilderness High Route,US,ID,143,record-only,none (no line included),none-stated,route,open
-sea-to-sea-route,Sea-to-Sea Route,US,ND;MN;WI;MI;OH;PA;NY;VT;MT;ID;WA,12513,record-only,none (no line included),none-stated,route,open
+sea-to-sea-route,Sea-to-Sea Route,US,ND;MN;WI;MI;OH;PA;NY;VT;MT;ID;WA,12513,record-only,none (no line included),none-stated,route,unclear
 selway-river-trail,Selway River Trail,US,ID,80,included,USDA Forest Service (National Forest System Trails),us-gov-public-domain,designated,
 sentier-international-appalaches,"Sentier international des Appalaches (International Appalachian Trail, Quebec and New Brunswick)",CA,QC;NB,1177,included,OpenStreetMap,ODbL-1.0,designated,
 shawangunk-ridge-trail,Shawangunk Ridge Trail,US,NJ;NY,114,included,OpenStreetMap,ODbL-1.0,designated,
@@ -179,9 +179,9 @@ sky-islands-traverse,Sky Islands Traverse,US,AZ,837,record-only,none (no line in
 solitude-loop,Solitude Loop Trail,US,WY,89,included,USDA Forest Service (National Forest System Trails),us-gov-public-domain,designated,
 south-boundary,South Boundary Trail,CA,AB,121,record-only,none (no line included),none-stated,designated,
 south-lake-to-north-lake,South Lake to North Lake,US,CA,89,record-only,none (no line included),none-stated,route,sold
-southeastern-serpentine-trail,Southeastern Serpentine Trail,US,SC;NC;GA;TN,938,record-only,none (no line included),none-stated,route,open
+southeastern-serpentine-trail,Southeastern Serpentine Trail,US,SC;NC;GA;TN,938,record-only,none (no line included),none-stated,route,unclear
 southern-sierra-high-route,Southern Sierra High Route,US,CA,161,record-only,none (no line included),none-stated,route,open
-southwestern-horseshoe,Southwestern Horseshoe,US,UT;AZ;NM,2867,record-only,none (no line included),none-stated,route,open
+southwestern-horseshoe,Southwestern Horseshoe,US,UT;AZ;NM,2867,record-only,none (no line included),none-stated,route,unclear
 standing-stone,Standing Stone Trail,US,PA,137,included,OpenStreetMap,ODbL-1.0,designated,
 stein-valley-traverse,Stein Valley Traverse,CA,BC,80,included,OpenStreetMap,ODbL-1.0,designated,
 sunapee-ragged-kearsarge,Sunapee-Ragged-Kearsarge Greenway,US,NH,121,included,OpenStreetMap,ODbL-1.0,designated,
@@ -193,7 +193,7 @@ tahoe-rim,Tahoe Rim Trail,US,CA;NV,266,included,OpenStreetMap,ODbL-1.0,designate
 tahoe-yosemite-trail,Tahoe–Yosemite Trail,US,CA,299,record-only,none (no line included),none-stated,route,sold
 teton-crest,Teton Crest Trail,US,WY,63,included,National Park Service and USDA Forest Service trail data,us-gov-public-domain,designated,
 teton-crest-route,Teton Crest Route,US,WY,95,record-only,none (no line included),none-stated,route,sold
-teton-range-traverse,Teton Range Traverse,US,WY,171,record-only,none (no line included),none-stated,route,open
+teton-range-traverse,Teton Range Traverse,US,WY,171,record-only,none (no line included),none-stated,route,unclear
 teton-wilderness-loop,Teton Wilderness Loop,US,WY,97,record-only,none (no line included),none-stated,route,sold
 thames-valley-trail,Thames Valley Trail,CA,ON,110,included,OpenStreetMap,ODbL-1.0,designated,
 thorofare-and-south-boundary-trail,Thorofare and South Boundary Trail,US,WY,109,included,National Park Service (public Trails dataset),us-gov-public-domain,designated,
@@ -204,11 +204,11 @@ trans-adirondack-route,Trans Adirondack Route,US,NY,391,record-only,none (no lin
 traversee-charlevoix,Traversée de Charlevoix,CA,QC,105,included,OpenStreetMap,ODbL-1.0,designated,
 tuscarora,Tuscarora Trail,US,PA;MD;VA;WV,406,included,OpenStreetMap,ODbL-1.0,designated,
 uinta-highline,Uinta Highline Trail,US,UT,167,included,OpenStreetMap,ODbL-1.0,designated,
-vagabond-loop,Vagabond Loop,US,AZ;UT;CO;NM,5632,record-only,none (no line included),none-stated,route,open
+vagabond-loop,Vagabond Loop,US,AZ;UT;CO;NM,5632,record-only,none (no line included),none-stated,route,unclear
 vancouver-island,Vancouver Island Trail,CA,BC,800,included,OpenStreetMap,ODbL-1.0,designated,
-vancouver-island-backbone,Vancouver Island Backbone,CA,BC,300,record-only,none (no line included),none-stated,route,open
+vancouver-island-backbone,Vancouver Island Backbone,CA,BC,300,record-only,none (no line included),none-stated,route,unclear
 warrior-trail,Warrior Trail,US,PA;WV,108,record-only,none (no line included),none-stated,designated,
-wasatch-traverse,Wasatch Traverse,US,UT,455,record-only,none (no line included),none-stated,route,open
+wasatch-traverse,Wasatch Traverse,US,UT,455,record-only,none (no line included),none-stated,route,unclear
 washington-coast-trail,Washington Coast Trail,US,WA,290,included,Lauren Lake (the author's GPX file),CC-BY-4.0,route,open
 waskahegan,Waskahegan Trail,CA,AB,309,record-only,none (no line included),none-stated,designated,
 west-coast-trail,West Coast Trail,CA,BC,75,included,OpenStreetMap,ODbL-1.0,designated,

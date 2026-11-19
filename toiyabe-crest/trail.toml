@@ -54,12 +54,19 @@ start = "Kingston Trailhead, Nevada"
 end = "North/South Twin Trailhead, Nevada"
 shape = "point-to-point"
 travel = "trail"
-checked = "2026-11-14"
+season = "Mid-June to early October"
+months = [6, 7, 8, 9]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/trails/toiyabe-crest-national-recreation-trail"
 publisher = "USDA Forest Service, Humboldt-Toiyabe National Forest"
 facts = ["official_url", "summary", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://www.nvtrailfinder.com/trails/trail/toiyabe-crest-national-recreation-trail/1000"
+publisher = "Nevada Division of Outdoor Recreation (Nevada Trail Finder)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -87,5 +94,14 @@ change = "The track status is now \"verified\", in place of \"found\", which mea
 fields = ["source.status"]
 basis = "The record has a published track file and a measured length in its verification, and its track was downloaded and measured."
 basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual season, m, and its months were addedid-June to early October."
+fields = ["hike.season", "hike.months"]
+basis = "The page of Nevada Division of Outdoor Recreation (Nevada Trail Finder) says: \"The best time to hike or ride this trail is from mid-June to early October.\""
+basis_url = "https://www.nvtrailfinder.com/trails/trail/toiyabe-crest-national-recreation-trail/1000"
 asked_by = "the dataset's own check"
 outcome = "applied"

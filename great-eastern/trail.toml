@@ -59,7 +59,8 @@ end = "Finger Lakes Trail, New York"
 shape = "point-to-point"
 travel = "trail"
 unfinished = "The trail is made of existing trails that are still being linked, and new trail is needed where gaps remain. Backpacker reported in 2022 that the association had completed over 70 percent since 2007, and that the first end-to-end thru-hike, by two hikers, was in 2013."
-checked = "2026-11-13"
+days = [120, 180]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.greateasterntrail.net/about-us/"
@@ -69,7 +70,7 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel", "unfinish
 [[hike.source]]
 url = "https://www.backpacker.com/trips/trips-by-state/pennsylvania-trails/the-great-eastern-trail-could-be-the-next-appalachian-trail-heres-how-to-hike-part-of-it-now/"
 publisher = "Backpacker"
-facts = ["unfinished"]
+facts = ["unfinished", "days"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -124,5 +125,14 @@ change = "The word \"Held:\" was taken off the start of the wave note, which now
 fields = ["wave_note"]
 basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://hike-mst.org/index.php/the-trail/everett-region"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual time to walk the whole trail, 120 to 180 days, was added."
+fields = ["hike.days"]
+basis = "The page of Backpacker magazine says: \"Better plan to take 4 to 6 months off to hike the Great Eastern Trail once it's completed.\""
+basis_url = "https://www.backpacker.com/trips/trips-by-state/pennsylvania-trails/the-great-eastern-trail-could-be-the-next-appalachian-trail-heres-how-to-hike-part-of-it-now/"
 asked_by = "the dataset's own check"
 outcome = "applied"

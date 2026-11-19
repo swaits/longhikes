@@ -48,7 +48,7 @@ note = "No line to measure."
 [route]
 creator = "Cam Honan"
 year = 2016
-line_policy = "open"
+line_policy = "unclear"
 note = "Walked by the author and Greg Gressel in early October 2016. The page says the author heard of a version of the route from Francis Tapon and that its notes follow Tapon's northbound route as far as Jackass Pass. It follows the Teton Crest Trail, then goes north by Grassy Lake Road and the Bechler River Trail to Old Faithful. The page gives no GPX file; a reader asked for one in 2021."
 
 [[guide]]
@@ -117,4 +117,13 @@ fields = ["hike.start_lonlat"]
 basis = "U.S. Geological Survey, Geographic Names Information System (public domain): Phillips Pass, feature 1602124."
 basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1602124"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to unclear, because the author's page offers no track file, so whether one is shared is not settled. The page no longer says a free track is offered."
+fields = ["route.line_policy"]
+basis = "The author's page gives step-by-step directions and no GPX file."
+basis_url = "https://thehikinglife.com/2017/07/teton-range-traverse/"
+asked_by = "a reviewer"
 outcome = "applied"

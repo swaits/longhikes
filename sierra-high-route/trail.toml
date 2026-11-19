@@ -83,7 +83,8 @@ shape = "point-to-point"
 terrain = ["alpine", "lakes"]
 travel = "mostly-cross-country"
 days = [14, 21]
-checked = "2026-11-13"
+permit = "A permit is needed from the agency that manages the trailhead where you start."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
@@ -104,6 +105,11 @@ facts = ["start_lonlat"]
 url = "https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/horse-creek-trailhead"
 publisher = "USDA Forest Service, Humboldt-Toiyabe National Forest (public domain): Horse Creek Trailhead, just past Mono Village at Twin Lakes"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://andrewskurka.com/adventures/sierra-high-route/logistical-considerations/"
+publisher = "Andrew Skurka (the route's author)"
+facts = ["permit"]
 
 [[link]]
 title = "Sierra High Route"
@@ -136,5 +142,14 @@ change = "The start and end are now placed at Road's End in Kings Canyon Nationa
 fields = ["hike.start", "hike.start_lonlat", "hike.end", "hike.end_lonlat"]
 basis = "The guidebook starts the route at Road's End and ends it just past Mono Village at Twin Lakes. OpenStreetMap contributors (ODbL) give the position of Road's End, and the Forest Service's page for the Horse Creek Trailhead, just past Mono Village, gives the position of the end."
 basis_url = "https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/horse-creek-trailhead"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of Andrew Skurka (the route's author) says: \"you only need a permit from the agency that manages the trailhead from which you are starting.\""
+basis_url = "https://andrewskurka.com/adventures/sierra-high-route/logistical-considerations/"
 asked_by = "the dataset's own check"
 outcome = "applied"

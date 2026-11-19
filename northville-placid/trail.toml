@@ -58,7 +58,8 @@ shape = "point-to-point"
 days = [8, 11]
 terrain = ["forest", "lakes"]
 travel = "trail"
-checked = "2026-11-14"
+permit = "A permit from a DEC Forest Ranger is needed to camp more than three consecutive nights in one place or in a group of ten or more."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://albany.adk.org/about-our-chapter/northville-placid-trail/"
@@ -69,6 +70,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "days", "terrain", 
 url = "https://dec.ny.gov/places-to-go/maps/northville-placid-trail-map-blue-mountain"
 publisher = "New York State Department of Environmental Conservation"
 facts = ["summary"]
+
+[[hike.source]]
+url = "https://dec.ny.gov/nature/forests-trees/state-forests/rules-for-use"
+publisher = "NYS Department of Environmental Conservation"
+facts = ["permit"]
 
 [[link]]
 title = "Northville Placid Trail"
@@ -92,5 +98,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://nptrail.org/wp-content/uploads/2026/02/image.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of NYS Department of Environmental Conservation says: \"Camping for more than three consecutive nights or in a group of ten or more requires a permit from a DEC Forest Ranger.\""
+basis_url = "https://dec.ny.gov/nature/forests-trees/state-forests/rules-for-use"
 asked_by = "the dataset's own check"
 outcome = "applied"

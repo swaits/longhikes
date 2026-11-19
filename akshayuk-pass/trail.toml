@@ -56,7 +56,9 @@ terrain = ["alpine"]
 travel = "mostly-cross-country"
 permit = "Parks Canada's 2019 visitor information package says all visitors must attend a mandatory orientation session, register, pay the fees and get a park entry permit."
 caution = "Parks Canada says there is no designated trail to follow, and the most rugged section, between Thor Peak and Glacier Lake, crosses glacier moraines and many rivers."
-checked = "2026-11-14"
+season = "Mid-July to early September"
+months = [7, 8]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking"
@@ -67,6 +69,11 @@ facts = ["summary", "official_url", "start", "end", "shape", "days", "terrain", 
 url = "https://pcweb2.azureedge.net/-/media/pn-np/nu/auyuittuq/archive/pdf/anp_visitorinformationpackage2019.pdf"
 publisher = "Parks Canada"
 facts = ["permit"]
+
+[[hike.source]]
+url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/visit/meteo-weather"
+publisher = "Parks Canada"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -94,5 +101,14 @@ change = "The word \"Held:\" was taken off the start of the wave note, which now
 fields = ["wave_note"]
 basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual season, m, and its months were addedid-July to early September."
+fields = ["hike.season", "hike.months"]
+basis = "The page of Parks Canada says: \"Mid-July/August/early September (summer) The fiords are normally ice-free. ... Hiking / Climbing season.\""
+basis_url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/visit/meteo-weather"
 asked_by = "the dataset's own check"
 outcome = "applied"

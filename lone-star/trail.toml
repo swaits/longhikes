@@ -60,7 +60,9 @@ shape = "point-to-point"
 terrain = ["forest"]
 travel = "trail"
 permit = "No fee or permit is required."
-checked = "2026-11-13"
+season = "January to April"
+months = [1, 2, 3, 4]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r08/texas/recreation/trails/lone-star-hiking-trail"
@@ -71,6 +73,11 @@ facts = ["official_url", "summary", "terrain", "permit", "end"]
 url = "https://lonestartrail.org/content.aspx?club_id=738078&module_id=676893&page_id=22"
 publisher = "Lone Star Hiking Trail Club"
 facts = ["summary", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://thetrek.co/trail-profile-how-to-hike-the-96-mile-lone-star-hiking-trail/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "Lone Star Hiking Trail"
@@ -94,5 +101,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://images.clubexpress.com/738078/graphics/clublogo_150x150_noBackground_1062358180.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual season, j, and its months were addedanuary to April."
+fields = ["hike.season", "hike.months"]
+basis = "The page of The Trek says: \"The most ideal season to hike the LSHT is January – April.\""
+basis_url = "https://thetrek.co/trail-profile-how-to-hike-the-96-mile-lone-star-hiking-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

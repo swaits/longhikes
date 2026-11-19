@@ -50,7 +50,7 @@ note = "No line to measure."
 [route]
 creator = "Cam Honan"
 year = 2011
-line_policy = "open"
+line_policy = "unclear"
 note = "Pieced together by the author from the Foothills Trail, the Bartram Trail, the Smokies section of the Appalachian Trail and the Benton MacKaye Trail, and walked in November 2011 as the sixth of his 12 Long Walks. The page gives an overview map and no GPX file for the whole route. The site names the author as Cam Honan, who also writes as Swami."
 
 [[guide]]
@@ -114,4 +114,13 @@ fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track policy was changed from open to unclear, because the author's page offers no track file, so whether one is shared is not settled. The page no longer says a free track is offered."
+fields = ["route.line_policy"]
+basis = "The author's page gives an overview map and route notes and no GPX file."
+basis_url = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
+asked_by = "a reviewer"
 outcome = "applied"

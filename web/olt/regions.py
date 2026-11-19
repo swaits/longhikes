@@ -63,6 +63,12 @@ def _miles(rec):
     return words.fmt_int(rec["derived"]["length_mi"])
 
 
+def trail_miles(rec, keys):
+    """"5,008 miles in all" for a trail that also lies outside keys (a place's state keys), "50 miles"
+    for one wholly inside: a place's description never gives a whole trail's length as the place's."""
+    return f"{_miles(rec)} miles" + ("" if summary.wholly_in(rec, keys) else " in all")
+
+
 def _fit(options, limit=common.DESCRIPTION_LIMIT):
     """The first of options (fullest first) that fits; else the last, cut at a word."""
     return common.cut_at_word(next((o for o in options if len(o) <= limit), options[-1]), limit)
@@ -161,14 +167,14 @@ def group_page(g, records, site):
 </div></div>
 <div class="container section place">
   {home.browse_view(home.listing(recs, top=2, where="g:" + g), home.overview_map(recs, f"Map of the trails in {name}", place=group_box(g, by_slug)),
-               about=f"{summary.facts(recs, records)}{summary.details(recs)}", about_title=f"About the trails in {name}")}
+               about=f"{summary.facts(recs, records, place=(name, keys))}{summary.details(recs)}", about_title=f"About the trails in {name}")}
   {nav}
 </div>"""
     title = common.fit_title([f"Long Trails in {name}: {_plural(len(recs), 'Trail')}", f"Long Trails in {name}"], site)
     by_length = sorted(recs, key=lambda r: (r["length_km"], r["id"]))
     first = (f"{_plural(len(recs))} in {name} ({words.join_names(i['name'] for i in places)}), from "
-             f"{common.plain_name(by_length[0])}, {_miles(by_length[0])} miles, to {common.plain_name(by_length[-1])}, "
-             f"{_miles(by_length[-1])} miles.")
+             f"{common.plain_name(by_length[0])}, {trail_miles(by_length[0], keys)}, to {common.plain_name(by_length[-1])}, "
+             f"{trail_miles(by_length[-1], keys)}.")
     gpx = f" {_with_gpx(n_gpx, len(recs))[:1].upper()}{_with_gpx(n_gpx, len(recs))[1:]}." if n_gpx else ""
     desc = _fit([first + gpx, first, f"{_plural(len(recs))} in {name}.{gpx}"])
     return title, desc, Markup(body), home.has_overview_map(recs), recs
@@ -214,7 +220,7 @@ def region_page(slug, records, site, facet_pages=()):
 </div></div>
 <div class="container section place">
   {home.browse_view(home.listing(recs, top=2, where=""), home.overview_map(recs, f"Map of the trails in {info['name']}", place=bounds.place_box(key)),
-               about=f"{summary.facts(recs, records)}{summary.details(recs)}",
+               about=f"{summary.facts(recs, records, place=(info['name'], [key]))}{summary.details(recs)}",
                about_title=f"About the trails in {info['name']}")}
   {nav}
 </div>"""
@@ -236,10 +242,10 @@ def region_page(slug, records, site, facet_pages=()):
         what = _plural(len(recs), "route")
     gpx = f" {_with_gpx(n_gpx, len(recs))[:1].upper()}{_with_gpx(n_gpx, len(recs))[1:]}." if n_gpx else ""
     if len(recs) == 1:
-        first = f"{common.plain_name(longest)}, {_miles(longest)} miles, is the one long trail listed in {name}, {country}."
+        first = f"{common.plain_name(longest)}, {trail_miles(longest, [key])}, is the one long trail listed in {name}, {country}."
     else:
-        first = (f"{what[:1].upper() + what[1:]} in {name}, {country}, from {common.plain_name(shortest)}, {_miles(shortest)} miles, "
-                 f"to {common.plain_name(longest)}, {_miles(longest)} miles.")
+        first = (f"{what[:1].upper() + what[1:]} in {name}, {country}, from {common.plain_name(shortest)}, {trail_miles(shortest, [key])}, "
+                 f"to {common.plain_name(longest)}, {trail_miles(longest, [key])}.")
     desc = _fit([first + gpx, first, f"{what[:1].upper() + what[1:]} in {name}, {country}.{gpx}"])
     return title, desc, Markup(body), home.has_overview_map(recs)
 

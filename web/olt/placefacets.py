@@ -106,12 +106,12 @@ def page(p, records, site, all_pages):
 </div></div>
 <div class="container section place">
   {home.browse_view(home.listing(recs, default_sort=lst.sort, top=2, where=""), home.overview_map(recs, f"Map of the trails in {name}: {lst.title}", place=bounds.place_box(info["key"])),
-               about=summary.facts(recs, records), about_title=f"About these trails in {name}")}
+               about=summary.facts(recs, records, place=(name, [info["key"]])), about_title=f"About these trails in {name}")}
   <nav class="region-nav" aria-label="Lists"><a href="{esc(browse.path(lst))}">{esc(lst.title)} everywhere</a> · <a href="/lists/">All lists</a></nav>
   {nav}
 </div>"""
     by_length = sorted(recs, key=lambda r: (r["length_km"], r["id"]))
-    first = (f"{count} in {name}, from {common.plain_name(by_length[0])}, {regions._miles(by_length[0])} miles, "
-             f"to {common.plain_name(by_length[-1])}, {regions._miles(by_length[-1])} miles.")
+    first = (f"{count} in {name}, from {common.plain_name(by_length[0])}, {regions.trail_miles(by_length[0], [info["key"]])}, "
+             f"to {common.plain_name(by_length[-1])}, {regions.trail_miles(by_length[-1], [info["key"]])}.")
     desc = regions._fit([f"{lst.blurb} {first}", f"{lst.noun} in {name}: {first}"])
     return title, desc, Markup(body), home.has_overview_map(recs)

@@ -466,6 +466,12 @@ def _whole_km(value):
     return isinstance(value, int) and not isinstance(value, bool) and value > 0
 
 
+def check_held_note(tid, rec, errors):
+    """A held record says why in wave_note: the page quotes it, and says nothing when there is none."""
+    if str(rec.get("wave", "")) == "held" and not str(rec.get("wave_note", "")).strip():
+        errors.append(f"{tid}: wave is held but wave_note does not say why")
+
+
 def check_length_facts(tid, rec, errors):
     """system_km, system_note and built_km (docs/schema.md, "What length_km counts").
 
@@ -754,6 +760,7 @@ def main():
         check_short_name(tid, rec, errors)
         check_common_name(tid, rec, errors)
         check_length_facts(tid, rec, errors)
+        # check_held_note(tid, rec, errors)  # to switch on once the five held records have their notes
         if rec.get("id") != tid:
             errors.append(f"{tid}: id {rec.get('id')!r} does not match directory name")
         if rec.get("country") not in ("US", "CA"):

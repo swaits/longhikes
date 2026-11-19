@@ -959,7 +959,7 @@ html.js .termini-list { position: absolute; inline-size: 1px; block-size: 1px; o
   border-radius: var(--radius);
   color: var(--ink);
 }
-.maplibregl-ctrl-attrib-button { background-color: transparent; }
+.maplibregl-ctrl-attrib-button { background-color: transparent; background-repeat: no-repeat; background-position: center; }
 .maplibregl-ctrl-attrib.maplibregl-compact-show .maplibregl-ctrl-attrib-button { background-color: transparent; }
 @media (pointer: coarse) {
   .maplibregl-ctrl-group button { inline-size: 2.75rem; block-size: 2.75rem; width: 2.75rem; height: 2.75rem; }
@@ -2038,9 +2038,11 @@ td .linklist a { font-weight: 400; }
   .trail-actions__gpx { grid-column: 1 / -1; }
 }
 @media (max-width: 39.99rem) {
-  .trail-actions { flex-wrap: nowrap; }
+  .trail-actions { flex-wrap: wrap; }
   .trail-actions .button { flex: 0 1 auto; min-inline-size: 0; padding-inline: var(--space-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .trail-actions .trail-actions__gpx { flex: 1 1 auto; }
+  /* The GPX button says where the GPX is ("Not here, see the official site"): it wraps, on a line of its
+     own when it does not fit, and never cuts its words. */
+  .trail-actions .trail-actions__gpx { flex: 1 1 auto; white-space: normal; overflow: visible; text-overflow: clip; text-align: center; line-height: 1.25; }
 }
 /* Under the map: the summary in full, the "In brief" paragraph, the date of the last check (small
    print), and the other pages about the trail. */

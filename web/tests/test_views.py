@@ -634,7 +634,8 @@ class RealDataTest(unittest.TestCase):
             _, _, body, _ = regions.region_page(slug, self.records, SITE)
             self.assertIn('class="browse-about"', str(body))
             if len(by_slug[slug]["records"]) > 1:
-                self.assertIn("The longest is", str(body))
+                # "The longest is" where every trail is wholly in the place, else "passes through" (olt/summary.py)
+                self.assertTrue("The longest is" in str(body) or "The longest trail that passes through" in str(body))
 
 
 if __name__ == "__main__":

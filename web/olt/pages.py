@@ -166,8 +166,9 @@ def render_site(records, out_dir, repo_root, site=None):
 
     pending = []     # (path, title, description, body, add() options): written once every view is known
 
-    def view(path, group, link_label, blurb, built):
-        """Hold a view page built as (title, description, body, recs...) and note it for /lists/."""
+    def view(path, group, link_label, blurb, built, count=None):
+        """Hold a view page built as (title, description, body, recs...) and note it for /lists/.
+        count: what the page's tile counts, when that is not the trails it lists (the authors page lists routes)."""
         t, d, b = built[:3]
         recs = built[3] if len(built) > 3 and isinstance(built[3], list) else None
         pending.append((path, t, d, b, {"recs": recs, "maps": 'data-map="overview"' in str(b)}))
@@ -175,7 +176,7 @@ def render_site(records, out_dir, repo_root, site=None):
         layout.UNDER_LISTS.add(path)  # its header item is Lists
         labels[path] = link_label
         if group:
-            extras.append((group, link_label, blurb, path, len(recs) if recs else 0))
+            extras.append((group, link_label, blurb, path, count if count is not None else len(recs) if recs else 0))
 
     for c in datafiles.collections(repo_root):
         built = standing.collection_page(c, records, site)
@@ -198,7 +199,7 @@ def render_site(records, out_dir, repo_root, site=None):
     if authors_built:
         t, d, b, routes = authors.index_page(records, site, repo_root)
         view(authors.INDEX, "standing", "Route authors", f"The {len(routes)} routes by who published them, and where.",
-             (t, d, b, routes))
+             (t, d, b, routes), count=len(author_groups))
         for g in author_groups:
             t, d, b, needs_map, routes, person = authors.author_page(g, records, site, author_groups)
             path = authors.path(g)

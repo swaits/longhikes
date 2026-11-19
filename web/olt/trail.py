@@ -199,6 +199,14 @@ GPX_CLAUSE = {
 }
 
 
+def gpx_clause(rec):
+    """The clause of the "In brief" paragraph about the GPX; "" when the status has none."""
+    status = facets.gpx(rec)
+    if status == "sold" and not common.sells_gpx(rec):
+        return "its author sells it as a guide, and this site has no GPX for it"
+    return GPX_CLAUSE.get(status, "")
+
+
 def _name_html(rec):
     """The name for the start of a sentence: "The Appalachian Trail", with no "The" before a
     name that has one or is not in English; marked with its language when it is not English."""
@@ -361,7 +369,7 @@ def brief_sentences(rec):
                             f"and {esc(climb)}, {esc(how)}."))
 
     # When to walk it and whether this site has a GPX: one sentence where the season is a plain range.
-    clause = GPX_CLAUSE.get(facets.gpx(rec)) or ("this site has no GPX for it" + (", so see the official site" if official_link(rec) else ""))
+    clause = gpx_clause(rec) or ("this site has no GPX for it" + (", so see the official site" if official_link(rec) else ""))
     season = season_sentence(rec)
     if season and not re.search(r"[,;]", season[1]):
         # "The usual season is May to July, and this page has a GPX of the track to download."
@@ -447,7 +455,7 @@ def action_buttons(rec):
     if rec["derived"].get("downloads"):
         actions.append(f'<a class="button button--primary trail-actions__gpx" href="#download">{common.ICON_DOWNLOAD}Download the GPX</a>')
     else:
-        actions.append(f'<a class="button button--quiet trail-actions__gpx" href="#track">GPX: {esc(facets.GPX_STATUS[facets.gpx(rec)])}</a>')
+        actions.append(f'<a class="button button--quiet trail-actions__gpx" href="#track">GPX: {esc(facets.gpx_status_text(rec))}</a>')
     official = official_link(rec)
     if official:
         actions.append(f'<a class="button button--link" href="{esc(official[0])}">{esc(official[1])} {common.ICON_EXTERNAL}</a>')
@@ -601,11 +609,11 @@ def glance(rec, records=None):
     rows.append(glance_row(facets.WHERE, Markup(f'{region_names(rec)}, {esc(country)}'), wide=True))
     status = facets.gpx(rec)
     if facets.gpx_here(rec):
-        text = facets.GPX_STATUS[status]
+        text = facets.gpx_status_text(rec)
         value = Markup(f'<a href="#download">{esc(text)}</a>') if rec["derived"].get("downloads") else text
         note = common.partial_short_text(rec) if common.line_differs(rec) else ""
     else:
-        value = Markup(f'<a href="#track">{esc(facets.GPX_STATUS[status])}</a>')
+        value = Markup(f'<a href="#track">{esc(facets.gpx_status_text(rec))}</a>')
         note = ""
     rows.append(glance_row(facets.GPX, value, note, wide=True))
     halves = [i for i, r in enumerate(rows) if 'glance__wide' not in r.split(">", 1)[0]]
@@ -730,28 +738,30 @@ def free_guides(rec):
 
 
 ROUTE_NO_GPX = {
-    # GPX status -> (heading, what this site does about it)
+    # GPX status -> (heading, what this site does about it); "" for nothing to add to the reason.
     "free": ("Get the GPX from its author",
              "A GPX is included here only where the author's terms allow passing it on, or where "
              "OpenStreetMap maps the route. Otherwise the author's own page is the place to get it."),
-    "sold": ("The author sells the route as a guide",
-             "No GPX is included here from any source, OpenStreetMap included, so the author's work is respected."),
+    "sold": ("The author sells the route as a guide", ""),
     "unpublished": ("The author does not publish a track",
                     "No GPX is included here from any source, OpenStreetMap included, so the author's choice is respected."),
     "elsewhere": ("No GPX here",
                   "No GPX is included here until it is clear that the author allows it."),
 }
+# A route whose author sells a GPX (common.sells_gpx).
+ROUTE_SOLD_GPX = ("The author sells a GPX",
+                  "A GPX that is sold is not passed on here, and OpenStreetMap's version is not used in its place.")
 
 
 def _no_gpx_parts(rec):
     """(title, status, reason, rule, actions_html): why there is no GPX here
     and where to get one, for the empty frame and the sketch map alike."""
     src = rec["source"]
-    reason = src.get("line_absent_reason", "")
+    reason = common.visitor_text(src.get("line_absent_reason", ""))
     actions = []
     status = facets.gpx(rec)
     if common.is_route(rec):
-        title, rule = ROUTE_NO_GPX.get(status, ROUTE_NO_GPX["elsewhere"])
+        title, rule = ROUTE_SOLD_GPX if status == "sold" and common.sells_gpx(rec) else ROUTE_NO_GPX.get(status, ROUTE_NO_GPX["elsewhere"])
         if status == "free" and free_guides(rec):
             g = free_guides(rec)[0]
             actions.append(f'<a class="button button--primary" href="{esc(g["url"])}">'
@@ -763,7 +773,8 @@ def _no_gpx_parts(rec):
     else:
         title = "No GPX here"
         reason = common.absent_reason_short(rec)
-        rule = "A trail is listed without a GPX when no track for it may be passed on."
+        # "No track may be passed on" is for a trail whose track is held back, not one not added yet.
+        rule = "" if common.not_added_yet(rec) else "A trail is listed without a GPX when no track for it may be passed on."
         official = official_link(rec)
         if official:
             actions.append(f'<a class="button button--link" href="{esc(official[0])}">'
@@ -788,15 +799,16 @@ def _no_gpx_parts(rec):
 def empty_frame(rec):
     """The map frame of a trail with no GPX here and no known start or end point."""
     title, status, reason, rule, actions_html = _no_gpx_parts(rec)
+    rule_html = f'<p class="note">{esc(rule)}</p>' if rule else ""
     return f"""<figure class="mapfig mapfig--empty detail__map" id="track" aria-labelledby="noline-title">
   <div class="mapfig__frame">
     <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true">No GPX here</span>
     <div class="map map--empty">
       <div class="map__message">
-        <p class="kicker">GPX: {esc(facets.GPX_STATUS[status])}</p>
+        <p class="kicker">GPX: {esc(facets.gpx_status_text(rec))}</p>
         <h2 id="noline-title">{esc(title)}</h2>
         <p class="map__reason">{reason if isinstance(reason, Markup) else common.rich(reason)}</p>
-        <p class="note">{esc(rule)}</p>
+        {rule_html}
         {actions_html}
       </div>
     </div>
@@ -828,6 +840,7 @@ def sketch_figure(rec):
         caption = ("Only the start and the end are shown. There is no track for this trail here, "
                    "and the site does not guess one.")
     title, status, reason, rule, actions_html = _no_gpx_parts(rec)
+    rule_html = f'<p class="note">{esc(rule)}</p>' if rule else ""
     reason_html = reason if isinstance(reason, Markup) else common.rich(reason)
     frame_attr, drawing = sketch_of(box, sketch.trail_features(rec["id"]), route_main=route)
     rid = esc(rec["id"])
@@ -844,10 +857,10 @@ def sketch_figure(rec):
   </div>
   <div class="termini-notice">
     <div class="map__message">
-      <p class="kicker">GPX: {esc(facets.GPX_STATUS[status])}</p>
+      <p class="kicker">GPX: {esc(facets.gpx_status_text(rec))}</p>
       <h2 id="noline-title">{esc(title)}</h2>
       <p class="map__reason">{reason_html}</p>
-      <p class="note">{esc(rule)}</p>
+      {rule_html}
       {actions_html}
     </div>
   </div>
@@ -1116,7 +1129,7 @@ def listing_note(rec):
     meaning = words.meaning(words.WAVES, wave)
     if note:
         return Markup(f"{esc(meaning)}. The record&rsquo;s note: &ldquo;{common.rich(note)}&rdquo;")
-    return f"{meaning}. The record has no note saying what."
+    return meaning  # no note: say no more than the status (tools/validate.py check_held_note catches the gap in the data)
 
 
 def abbreviation_fact(rec):

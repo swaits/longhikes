@@ -214,9 +214,36 @@ def rich(text):
     return Markup("".join(f"<code>{p}</code>" if i % 2 else p for i, p in enumerate(parts)))
 
 
+# Services the maintainers search with. A search is a note for maintainers (the record's own notes), not
+# something a visitor is told on the page.
+INTERNAL_SERVICE = re.compile(r"\b(Overpass|Nominatim|Geofabrik)\b")
+
+
+def visitor_text(text):
+    """text without the sentences that name a maintainers' search service."""
+    parts = re.split(r"(?<=[.!?])\s+", text.strip())
+    return " ".join(p for p in parts if not INTERNAL_SERVICE.search(p))
+
+
+def not_added_yet(rec):
+    """True when the record says only that no track has been added yet: a public track exists, or may,
+    and the page must not give a reason of the kind "no track may be passed on"."""
+    src = rec.get("source", {})
+    return src.get("status") == "osm-only" or src.get("line_absent_reason", "").startswith("No track has been added")
+
+
+def sells_gpx(rec):
+    """True when a guide the author sells names a GPX or GPS track in what it holds (its format or
+    title); a route sold only as a book or map set has no GPX to sell."""
+    return any(g.get("access") == "purchase" and re.search(r"GPX|GPS", f'{g.get("format", "")} {g.get("title", "")}', re.I)
+               for g in rec.get("guide", []))
+
+
 def absent_reason_short(rec):
     """line_absent_reason without the opening "No line is included." or "No track is included." (the status already says so)."""
-    reason = rec.get("source", {}).get("line_absent_reason", "")
+    reason = visitor_text(rec.get("source", {}).get("line_absent_reason", ""))
+    if not_added_yet(rec):
+        return visitor_text(reason.split(". ")[0].rstrip(".") + ".") if reason else reason
     return re.sub(r"^No (?:line|track) is included\.\s*", "", reason) or reason
 
 

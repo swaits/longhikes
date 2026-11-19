@@ -286,6 +286,15 @@ def gpx(rec):
     return "elsewhere"
 
 
+def gpx_status_text(rec):
+    """GPX_STATUS for the trail's page. A route sold only as a book or map set has no GPX to sell, so
+    it is not "Sold by its author" as a GPX is."""
+    status = gpx(rec)
+    if status == "sold" and not common.sells_gpx(rec):
+        return "Not here, sold as a guide"
+    return GPX_STATUS[status]
+
+
 def gpx_here(rec):
     return gpx(rec) in ("here", "partial")
 

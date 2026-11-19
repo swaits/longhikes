@@ -56,15 +56,35 @@ def holder_counts(recs, records):
     return out
 
 
-def facts(recs, records, by_authors=True):
+def wholly_in(rec, keys):
+    """True when every state or province the record names is one of keys (olt/facets.py place keys).
+    A trail that names a place outside them only passes through, so its length and high point are
+    not the place's. The record names whole states, never where a trail enters one, so this is the
+    cautious reading."""
+    return set(facets.place_keys(rec)) <= set(keys)
+
+
+def facts(recs, records, by_authors=True, place=None):
     """The summary of a set of trails: one short paragraph (Markup). Empty for no trails. With
-    by_authors False (an author's own page) the routes-and-authors clause is left out."""
+    by_authors False (an author's own page) the routes-and-authors clause is left out.
+
+    place: (name, keys) on a page for a place, so no figure of a whole trail is given as the place's.
+    The length of a trail that also lies elsewhere is said to be its length "in all", and the highest
+    point is taken only from the trails wholly in the place (a high point on file has no location)."""
     if not recs:
         return Markup("")
     by_length = sorted(recs, key=lambda r: (r["length_km"], r["id"]))
     shortest, longest = by_length[0], by_length[-1]
+    name, keys = place if place else ("", ())
+    inside = [r for r in recs if wholly_in(r, keys)] if place else recs
+    crossing = len(inside) < len(recs)
     sentences = []
-    if len(recs) > 1:
+    if crossing and len(recs) > 1:
+        sentences.append(f"The longest trail that passes through {esc(name)} is {_name_link(longest)}, {_miles(longest)} in all, "
+                         f"and the shortest {_name_link(shortest)}, {_miles(shortest)} in all.")
+    elif crossing:
+        sentences.append(f"{_name_link(longest)} passes through {esc(name)} and is {_miles(longest)} long in all.")
+    elif len(recs) > 1:
         sentences.append(f"The longest is {_name_link(longest)}, {_miles(longest)}, "
                          f"and the shortest {_name_link(shortest)}, {_miles(shortest)}.")
     else:
@@ -87,10 +107,11 @@ def facts(recs, records, by_authors=True):
         shown = _join(
             f'{_list_link(records, "terrain-" + t, words.TERRAIN[t].lower(), n)}' for t, n in terrain[:3])
         sentences.append(f"The most common terrain is {shown}.")
-    high = [(hike.table(r).get("high_point_m"), r) for r in recs if isinstance(hike.table(r).get("high_point_m"), (int, float))]
+    high = [(hike.table(r).get("high_point_m"), r) for r in inside if isinstance(hike.table(r).get("high_point_m"), (int, float))]
     if high:
         m, top = max(high, key=lambda t: (t[0], t[1]["id"]))
-        sentences.append(f"The highest point on file is {words.elevation(m)}, on {_name_link(top)}.")
+        which = f"The highest point on file among the trails wholly in {esc(name)}" if crossing else "The highest point on file"
+        sentences.append(f"{which} is {words.elevation(m)}, on {_name_link(top)}.")
     return Markup(f"<p>{' '.join(sentences)}</p>")
 
 

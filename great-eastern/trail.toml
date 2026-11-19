@@ -24,12 +24,12 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-16). The track included here is from OpenStreetMap, relation 1024490."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM relation 1024490 holds the trail as a set of member relations of other named trails (for example Pinhoti, Tuscarora, Mid-State, C&O Canal Trail). It gives no role to tell a branch from the walk, so the main track is one walk of its ways and the second ways at five splits are in alternates.geojson with the 12 ways of role route. In Pennsylvania the Mid-State Trail relation holds two ways at Arnot and at Everett; the High Water Route and the eastern road route at Everett moved (10.8 km), as in the Mid-State Trail's record. Near Harlan, Kentucky, a 5.8 km stretch of the Pine Mountain Link was mapped twice, as the two carriageways of a divided road, and one was left out. Two stretches of 0.7 and 0.6 km, on Northwestern Pike and on Robert Dann Drive, moved to the alternates too."
+mainline = "OSM relation 1024490 holds the trail as a set of member relations of other named trails (for example Pinhoti, Tuscarora, Mid-State, C&O Canal Trail). It gives no role to tell a branch from the walk, so the main track is one walk of its ways and the second ways at five splits are in alternates.geojson. The 12 ways with the role route (10.4 km, on the CT - North Chickamauga Creek trail) are main: OpenStreetMap's wiki gives the role route as the old name of the empty role. They were in alternates.geojson until 2026-11-19. In Pennsylvania the Mid-State Trail relation holds two ways at Arnot and at Everett; the High Water Route and the eastern road route at Everett moved (10.8 km), as in the Mid-State Trail's record. Near Harlan, Kentucky, a 5.8 km stretch of the Pine Mountain Link was mapped twice, as the two carriageways of a divided road, and one was left out. Two stretches of 0.7 and 0.6 km, on Northwestern Pike and on Robert Dann Drive, moved to the alternates too."
 source_checked = "2026-11-16"
 redistributable = true
 line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "The relation's own distance tag is 2600 km, not 2897 km (the association's 1,800 mi). The track is 29 parts: three long ones of 445, 428 and 354 km, and many short pieces with gaps between them. The sections that OpenStreetMap has not joined are missing, so the track is shorter than the published length."
+length_gap_note = "The relation's own distance tag is 2600 km, not 2897 km (the association's 1,800 mi). The track is 28 parts: three long ones of 445, 428 and 354 km, and many short pieces with gaps between them. The sections that OpenStreetMap has not joined are missing, so the track is shorter than the published length."
 
 [osm]
 relation = 1024490
@@ -46,10 +46,10 @@ logo_owner = "Great Eastern Trail Association"
 [verification]
 verified = true
 date = "2026-11-16"
-measured_km = 2348.2
-difference_percent = -18.9
-parts = 29
-note = "OSM relation 1024490: 2,348.2 km in 29 parts, 18.9% short of 2897 km (about 1,800 mi). The earlier track, 2,366.2 km in 34 parts, held a second way at five places, 12.1 km of which moved to alternates.geojson and 5.8 km of which was left out as a copy. The relation reaches from central Alabama to the Finger Lakes Trail in New York. Its three longest parts are 445 km (Alabama to Tennessee), 428 km (Tennessee to Virginia) and 354 km (Pennsylvania to Maryland). The rest is short pieces, so there are gaps between sections."
+measured_km = 2358.7
+difference_percent = -18.6
+parts = 28
+note = "OSM relation 1024490: 2,358.7 km in 28 parts, 18.6% short of 2897 km (about 1,800 mi). The earlier track, 2,366.2 km in 34 parts, held a second way at five places, 12.1 km of which moved to alternates.geojson and 5.8 km of which was left out as a copy. The relation reaches from central Alabama to the Finger Lakes Trail in New York. Its three longest parts are 445 km (Alabama to Tennessee), 428 km (Tennessee to Virginia) and 354 km (Pennsylvania to Maryland). The rest is short pieces, so there are gaps between sections."
 
 [hike]
 summary = "The Great Eastern Trail links existing trails into a long footpath through the Appalachian Mountains, from Alabama to the Finger Lakes Trail in New York. It crosses nine states and is meant to be a non-motorized hiking trail. The linking is not finished, and new trail is still needed where there are gaps."
@@ -134,5 +134,14 @@ change = "The usual time to walk the whole trail, 120 to 180 days, was added."
 fields = ["hike.days"]
 basis = "The page of Backpacker magazine says: \"Better plan to take 4 to 6 months off to hike the Great Eastern Trail once it's completed.\""
 basis_url = "https://www.backpacker.com/trips/trips-by-state/pennsylvania-trails/the-great-eastern-trail-could-be-the-next-appalachian-trail-heres-how-to-hike-part-of-it-now/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The Great Eastern Trail's track now holds 12 relation ways tagged with the role route, 10.4 km on the North Chickamauga Creek trail, that an earlier rule had put in alternates. The track is 2,358.7 km in 28 parts, where it was 2,348.2 km in 29."
+fields = ["source.line_file", "source.mainline", "source.length_gap_note", "verification.measured_km", "verification.difference_percent", "verification.parts", "verification.note"]
+basis = "OpenStreetMap's wiki page for route relations says the empty role should be used instead of the role route, which was used sometimes with the older public transport tagging. The 12 ways joined two parts of the main track end to end, so they carry the trail; the track tool had read the role as a side trail."
+basis_url = "https://wiki.openstreetmap.org/wiki/Relation:route"
 asked_by = "the dataset's own check"
 outcome = "applied"

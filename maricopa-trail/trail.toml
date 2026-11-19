@@ -22,7 +22,7 @@ licence = "ODbL-1.0"
 licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 4020964. The county's own map service (Parks and Trails (County), https://gis.maricopa.gov/arcgis/rest/services/PNR/ParkAndTrail/MapServer, layers 9 to 12) is not used: its licence text says 'Any download for commercial intent or resale of this information is prohibited, except in accordance with a sublicensing agreement' (item page at https://www.arcgis.com/home/item.html?id=38384e9dca8b4fe9b764bab613a2a2d1, read 2026-11-15), so it does not allow the data to be passed on."
 attribution = "OpenStreetMap contributors (ODbL)"
 osm_only = true
-mainline = "OSM relation 4020964: one route relation tagged route=mtb, ref MT. Its 697 main ways are the loop. Its 160 ways with the roles excursion (135) and route (25) are kept apart as alternates, which holds the side routes. Of the main track, 149.7 km is on ways named Maricopa Trail, 72.1 km on ways with no name, 46.6 km on ways named Sun Circle Trail (a regional trail that overlaps parts of the Maricopa Trail, as the county's FAQ says), and the rest on named park trails the loop uses."
+mainline = "OSM relation 4020964: one route relation tagged route=mtb, ref MT. Its 722 main ways are the loop: 697 with the empty role and 25 with the role route, which OpenStreetMap's wiki gives as the old name of the empty role (the 25 were in alternates.geojson until 2026-11-19). Its 135 ways with the role excursion are kept apart as alternates, which holds the side routes. The named and unnamed shares of the main track were counted before the 25 ways were added."
 source_checked = "2026-11-15"
 redistributable = true
 line_source = "OpenStreetMap"
@@ -30,7 +30,7 @@ line_file = "line.geojson"
 
 [osm]
 relation = 4020964
-note = "Route relation named Maricopa Trail, version 239 (2026-11-08), type route, route=mtb, ref MT. 697 main ways and 160 alternate ways (135 excursion, 25 route)."
+note = "Route relation named Maricopa Trail, version 239 (2026-11-08), type route, route=mtb, ref MT. 722 main ways (697 empty role, 25 route) and 135 alternate ways (excursion)."
 
 [shield]
 status = "no-logo-exists"
@@ -43,10 +43,10 @@ logo_owner = "Maricopa County Parks and Recreation"
 [verification]
 verified = true
 date = "2026-11-15"
-measured_km = 458.8
-difference_percent = -9.5
-parts = 20
-note = "OSM relation 4020964: 458.8 km of main track in 20 parts, 9.5% short of 507 km (315 mi). The 160 alternate ways are not counted in that figure. The county says the trail continues to grow, so its published length may include connections that the mapped relation does not."
+measured_km = 470.5
+difference_percent = -7.2
+parts = 18
+note = "OSM relation 4020964: 470.5 km of main track in 18 parts, 7.2% short of 507 km (315 mi). The 135 alternate ways are not counted in that figure. The county says the trail continues to grow, so its published length may include connections that the mapped relation does not."
 
 [hike]
 summary = "The Maricopa Trail is a loop around the Phoenix area that links the regional parks of Maricopa County. The county says it uses existing trails, canal corridors, utility easements and public lands, and the foundation says its segments tie together existing trails, roads and new paths. It passes through 15 municipalities and is open to hikers, mountain bikers and horse riders."
@@ -108,5 +108,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.maricopacountyparks.net/park-locator/maricopa-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The Maricopa Trail's track now holds 25 relation ways tagged with the role route, 11.7 km, that an earlier rule had put in alternates. The track is 470.5 km in 18 parts, where it was 458.8 km in 20."
+fields = ["source.line_file", "source.mainline", "osm.note", "verification.measured_km", "verification.difference_percent", "verification.parts", "verification.note"]
+basis = "OpenStreetMap's wiki page for route relations says the empty role should be used instead of the role route. The 25 ways joined parts of the main track end to end, so they carry the trail; the track tool had read the role as a side trail."
+basis_url = "https://wiki.openstreetmap.org/wiki/Relation:route"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-19 - The Rae Lakes Loop comes from the Park Service's own layer
+
+- The Rae Lakes Loop's track is now built from the National Park Service's Park Atlas layer for the loop, public domain: the loop itself, 57.3 km in 1 part, 14 features that join end to end and close, in place of OpenStreetMap's 57.6 km. The 3.0 km stem from Road's End to the loop is kept apart in the alternates, because the published 41.4 miles walks it both ways. The licence is now public domain where it was ODbL.
+- Three other trails whose track falls short of their published length were checked against public layers and left as they are: the Bartram Trail (the Forest Service layer covers the same ground as the OpenStreetMap track), the Bay Circuit Trail (the Massachusetts layer is the Bay Circuit Alliance's own data, 2014) and the Western Uplands Backpacking Trail (Ontario Parks does not say which loops make up its 88 km).
+
 ## 2026-11-19 - Every route's page names the exact book or guide
 
 - Every route's page now names the exact book or guide: its title, author, edition, ISBN where there is one, and where in it the route is.

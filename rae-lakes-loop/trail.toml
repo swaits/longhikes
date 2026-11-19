@@ -12,26 +12,26 @@ wave = 1
 short_reason = "Very well known and popular: the Park Service limits the number of people starting each day by entry point and takes reservations up to six months ahead."
 
 [source]
-status = "osm-only"
-publisher = "National Park Service (publishes the loop; no open geometry found)"
+status = "verified"
+publisher = "National Park Service, Sequoia and Kings Canyon National Parks (Park Atlas, Hiking and Backpacking, Rae Lakes Loop layer)"
 publisher_url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
-url = "https://www.openstreetmap.org/relation/1710944"
-discovery = "osm-relation-version: Overpass `rel(1710944); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
-format = "OpenStreetMap route relation, read through Overpass with all member ways"
+url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/SEKI_ParkAtlas2_4_HikingandBackpacking_MASTER/FeatureServer/12"
+discovery = "arcgis-query-hash: GET <url>/query with where 1=1 (outSR=4326, f=geojson); hash the answer body and count its rows; fetch again when either changes. 16 features on 2026-11-19."
+format = "ArcGIS FeatureServer layer 12 (Park Atlas, National Park Service), outSR=4326, f=geojson, 16 features: 14 in the loop and 2 in the stem"
 crs = "EPSG:4326"
-licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 1710944."
-attribution = "OpenStreetMap contributors (ODbL)"
-osm_only = true
-mainline = "OSM relation 1710944: 16 main ways, which join into the loop from the junction of the Paradise Valley and Bubbs Creek trails (Paradise Valley Trail, Woods Creek Trail, John Muir Trail and Bubbs Creek Trail), and 4 ways with the role approach, the Paradise Valley Trail from Road's End to that junction, kept in alternates.geojson. The National Park Service's public Trails dataset has no features for the park."
-source_checked = "2026-11-18"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The Park Atlas service names the National Park Service, Sequoia and Kings Canyon National Parks as its publisher and states no licence of its own (its licence field is empty, read 2026-11-19); the National Park Service states, of its data: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-18). The layer is a dataset made by federal employees, a federal government work."
+attribution = "National Park Service"
+osm_only = false
+mainline = "Layer 12 holds 16 features, the layer the Park Service names Rae Lakes Loop. 14 of them join end to end into the loop, 57.3 km, from the junction of the Paradise Valley and Bubbs Creek trails (Bailey Bridge junction): Mist Falls, Paradise Valley, Woods Creek, Woods Creek Crossing - Dollar Lake, two Rae Lakes pieces, Glen Pass South, three Vidette Switchbacks pieces, Junction Meadow Switchbacks - Bubbs, Bubbs Creek and two Bubbs Creek Switchbacks pieces; every join is 0 to 1 m and the loop closes at its start. The Park Service's own table of distances runs the same places in this order (Road's End, Paradise/Bubbs junction, Mist Falls, Lower, Middle and Upper Paradise, Woods Creek Crossing, Dollar Lake, Rae Lakes, Glen Pass, Charlotte Lake junction, Vidette Meadow, Junction Meadow, Charlotte Creek, Sphinx Junction, back to the junction). The 2 features named Cedar Grove Sand Flats are the stem from Road's End to that junction, 3.0 km (1.9 mi, as the Park Service's table gives it), kept in alternates.geojson. The pieces carry local names (Mist Falls, Bubbs Creek and so on) and list Rae Lakes Loop among their alternate names. The track keeps the loop and leaves the stem out."
+source_checked = "2026-11-19"
 redistributable = true
-line_source = "OpenStreetMap"
+line_source = "National Park Service trail data (Park Atlas)"
 line_file = "line.geojson"
 
 [osm]
 relation = 1710944
-note = "Downloaded 2026-11-18 (version 22, edited 2025-05-05); 16 ways in the main track and 4 approach ways in alternates.geojson. release.txt has the source and date."
+note = "Relation 1710944 (version 22, edited 2025-05-05) maps the same loop in 16 ways, 57.6 km, and the stem in 4 approach ways, 3.0 km; it is no longer the source of the track, which is the Park Service layer."
 
 [shield]
 status = "no-logo-exists"
@@ -43,11 +43,11 @@ logo_owner = "NPS Sequoia and Kings Canyon"
 
 [verification]
 verified = true
-date = "2026-11-18"
-measured_km = 57.6
-difference_percent = -14.0
+date = "2026-11-19"
+measured_km = 57.3
+difference_percent = -14.5
 parts = 1
-note = "OSM relation 1710944: the track in line.geojson is the loop, 57.6 km (35.8 mi) in 1 part. The 4 approach ways, the stem from Road's End to the loop, are 3.0 km (1.9 mi) and are kept in alternates.geojson, not in the track. The Park Service's 41.4 mi walks that stem out and back."
+note = "Park Atlas layer 12: the track in line.geojson is the loop, 14 features in 1 part, 57.3 km (35.6 mi); every join is 0 to 1 m and the loop closes. The 2 features of the stem from Road's End to the loop, 3.0 km (1.9 mi), are in alternates.geojson, not in the track. The published 41.4 mi (67 km) walks that stem both ways: the loop and the stem walked out and back come to 63.3 km (39.3 mi), 5.5% under it; the track alone is 14.5% under."
 
 [hike]
 summary = "The Rae Lakes Loop is a backpacking loop in Kings Canyon National Park, California, from Road's End in Cedar Grove up the Kings River canyon past Paradise Valley and the Woods Creek crossing to the Rae Lakes, over Glen Pass and down Bubbs Creek by way of Vidette Meadow and Junction Meadow. The Park Service gives it as 41.4 miles, climbing from about 5,035 feet at the trailhead to 11,978 feet at Glen Pass. It is most often started from the Woods Creek trailhead to walk it clockwise or from the Bubbs Creek trailhead to walk it counter-clockwise."
@@ -77,8 +77,8 @@ publisher = "National Park Service"
 facts = ["permit"]
 
 [[hike.source]]
-url = "https://www.openstreetmap.org/relation/1710944"
-publisher = "OpenStreetMap contributors (the end of the approach ways, Road's End)"
+url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/SEKI_ParkAtlas2_4_HikingandBackpacking_MASTER/FeatureServer/12"
+publisher = "National Park Service, Park Atlas (the Road's End end of the stem)"
 facts = ["start_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
@@ -144,5 +144,14 @@ change = "The reason for listing the trail under the 50 mile floor, and the matc
 fields = ["short_reason", "length_note"]
 basis = "The National Park Service's Rae Lakes Loop wilderness permit page limits the people starting each day by entry point and takes reservations up to six months ahead."
 basis_url = "https://www.nps.gov/seki/planyourvisit/wilderness_permits.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The track is now built from the National Park Service's Park Atlas layer for the Rae Lakes Loop: the loop, 57.3 km in 14 features, and in alternates.geojson the stem from Road's End, 3.0 km in 2 features, which the published 41.4 miles walks both ways. It replaces the OpenStreetMap track of 57.6 km. The licence is now public domain (us-gov-public-domain), where it was ODbL."
+fields = ["source.line_file", "source.status", "source.publisher", "source.url", "source.discovery", "source.format", "source.licence", "source.licence_text", "source.attribution", "source.osm_only", "source.mainline", "source.source_checked", "source.line_source", "osm.note", "verification"]
+basis = "The Park Service's Rae Lakes Loop page gives the loop as 41.4 miles and a table of miles from Road's End, 1.9 miles to the Paradise and Bubbs Creek junction, which the loop reaches again before it returns to Road's End. The Park Service's Park Atlas layer for the Rae Lakes Loop holds 14 features that join into that loop and 2 for the stem from Road's End."
+basis_url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

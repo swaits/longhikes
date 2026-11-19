@@ -150,7 +150,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | pinhoti | Pinhoti Trail | US | AL, GA | 540 | yes | ODbL-1.0 |
 | prescott-circle | Prescott Circle Trail | US | AZ | 90 | yes | ODbL-1.0 |
 | quehanna | Quehanna Trail | US | PA | 119 | yes | ODbL-1.0 |
-| rae-lakes-loop | Rae Lakes Loop | US | CA | 67 | yes | ODbL-1.0 |
+| rae-lakes-loop | Rae Lakes Loop | US | CA | 67 | yes | us-gov-public-domain |
 | rideau-trail | Rideau Trail | CA | ON | 387 | yes | ODbL-1.0 |
 | ring-the-peak | Ring the Peak Trail | US | CO | 101 | no | none-stated |
 | river-to-river | River to River Trail | US | IL | 257 | yes | ODbL-1.0 |

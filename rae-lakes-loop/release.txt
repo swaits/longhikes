@@ -1,7 +1,5 @@
-rae-lakes-loop
-
-Source: https://www.openstreetmap.org/relation/1710944
-Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
-Attribution: OpenStreetMap contributors (ODbL)
-Source read: 2026-11-18
-Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.
+Source: https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/SEKI_ParkAtlas2_4_HikingandBackpacking_MASTER/FeatureServer/12 (National Park Service, Sequoia and Kings Canyon National Parks, Park Atlas, Rae Lakes Loop layer)
+Licence: us-gov-public-domain (see trail.toml and SOURCES.md in this repository)
+Attribution: National Park Service
+Source read: 2026-11-19
+Published copy: 14 features in line.geojson, in order round the loop from the Paradise Valley and Bubbs Creek junction (Bailey Bridge junction): OBJECTIDs 15, 16, 14, 7, 6, 5, 4, 3, 2, 1, 8, 9, 10 and 13. alternates.geojson holds OBJECTIDs 11 and 12, the stem from Road's End to that junction. Each feature is oriented along the walk; joins are 0 to 1 m and the loop closes at its start. Coordinates rounded to 6 decimal places and written as compact JSON, with the agency and layer name kept as properties. Geometry is otherwise as served (outSR=4326).

@@ -14,7 +14,7 @@ Page: https://www.openstreetmap.org/copyright (read 2026-11-09). Full text: LICE
 
 ## United States federal agencies (public domain)
 
-Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 15 trails with an included track and the Colorado Trail in part (Alpine Trail #7, Appalachian, Black Canyon, Colorado Trail in part, Fremont, General George Crook, High Sierra Trail, Middle Fork Trail, New England, North Umpqua, Pacific Northwest, Selway River Trail, Solitude Loop, Teton Crest Trail, Thorofare and South Boundary Trail, Toiyabe Crest).
+Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 16 trails with an included track and the Colorado Trail in part (Alpine Trail #7, Appalachian, Black Canyon, Colorado Trail in part, Fremont, General George Crook, High Sierra Trail, Middle Fork Trail, New England, North Umpqua, Pacific Northwest, Rae Lakes Loop, Selway River Trail, Solitude Loop, Teton Crest Trail, Thorofare and South Boundary Trail, Toiyabe Crest).
 
 Quoted terms: "Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105."
 
@@ -223,7 +223,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | prescott-circle | City of Prescott and Prescott National Forest (manage the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4717133) | ODbL-1.0 | track |
 | ptarmigan-glenns-lake-highline-loop | University Press of Colorado (publishes the route in the guidebook) | [source page](https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado) | none-stated | record only |
 | quehanna | Keystone Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7236114) | ODbL-1.0 | track |
-| rae-lakes-loop | National Park Service (publishes the loop; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1710944) | ODbL-1.0 | track |
+| rae-lakes-loop | National Park Service, Sequoia and Kings Canyon National Parks (Park Atlas, Rae Lakes Loop layer) | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/SEKI_ParkAtlas2_4_HikingandBackpacking_MASTER/FeatureServer/12) | us-gov-public-domain | track |
 | rideau-trail | Rideau Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7675635) | ODbL-1.0 | track |
 | ring-the-peak | Friends of the Peak (publishes the trail and offers GPX tracks) | [source page](https://friendsofthepeak.org/ring-the-peak-2/) | none-stated | record only |
 | river-to-river | River to River Trail Society (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4645742) | ODbL-1.0 | track |

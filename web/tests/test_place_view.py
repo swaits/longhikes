@@ -103,6 +103,26 @@ class PlaceViewTest(unittest.TestCase):
         whole = figure(home.overview_map(self.records, "Map", scope="all"))
         self.assertEqual(attr(whole, "bbox"), rounded(home.overview_box(self.records)))
 
+    def test_a_place_page_declares_its_place_and_no_other_page_does(self):
+        self.assertIn(" data-place", self.region_figure("us-ut"))
+        self.assertIn(" data-place", figure(regions.group_page("mountain-west", self.records, self.site)[2]))
+        self.assertNotIn("data-place", figure(home.overview_map(self.records[:12], "Map")))
+        self.assertNotIn("data-place", figure(home.overview_map(self.records, "Map", scope="all")))
+        with mock.patch.object(bounds, "_boxes", {}):
+            self.assertNotIn("data-place", self.region_figure("us-ut"))
+
+    def test_the_script_keeps_a_place_page_on_its_place_when_the_list_holds_trails_it_cannot_draw(self):
+        # The list of a place page holds every trail there, drawn or not; the filters hand fitToVisible
+        # that list. Comparing it with the drawn trails (data-ids) alone sent Utah and Mountain West to
+        # the extent of the American Discovery Trail. Only trails with geometry count.
+        with open(os.path.join(WEB, "assets", "app.js"), encoding="utf-8") as f:
+            js = f.read()
+        fit = re.search(r"function fitToVisible\(.*?\n  \}\n", js, re.S).group(0)
+        self.assertIn("entry.place", fit)
+        self.assertIn("entry.boundsById[id]", fit)
+        self.assertIn("if (entry.frame && same) { target = entry.frame; padding = 0; }", fit)
+        self.assertIn("entry.place = fig.hasAttribute('data-place');", js)
+
 
 if __name__ == "__main__":
     unittest.main()

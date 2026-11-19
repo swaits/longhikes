@@ -916,6 +916,8 @@
     var frame = (fig.dataset.frame || '').split(',').map(Number);
     if (frame.length !== 4 || frame.some(isNaN)) frame = null;
     entry.frame = frame;
+    /* A place page (data-place) is about its place: what its map settles on is the place's box. */
+    entry.place = fig.hasAttribute('data-place');
     entry.initialIds = onlyIds.length ? onlyIds : null;
 
     /* The page's own drawing of the tracks (class map__sketch) stays until the live map has
@@ -1368,6 +1370,13 @@
     /* The trails the page opened on are the ground its drawing shows: that view needs no move. */
     var first = entry.initialIds || Object.keys(entry.boundsById);
     var same = ids.length === first.length && ids.every(function (id) { return first.indexOf(id) !== -1; });
+    /* The list of a place page holds trails the map cannot draw (no track, no known start or end), and
+       the trails the map drew are the page's own data-ids. The same trails drawn is the same view. */
+    if (!same && entry.place && entry.initialIds) {
+      var drawn = function (list) { return list.filter(function (id) { return entry.boundsById[id]; }); };
+      var now = drawn(ids), then = drawn(first);
+      same = now.length === then.length && now.every(function (id) { return then.indexOf(id) !== -1; });
+    }
     if (entry.frame && same) { target = entry.frame; padding = 0; }
     map.fitBounds([[target[0], target[1]], [target[2], target[3]]],
       { padding: padding, maxZoom: 11, animate: !reduceMotion });

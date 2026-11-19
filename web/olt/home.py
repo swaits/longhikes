@@ -694,7 +694,8 @@ def overview_map(recs, label, *, wide=False, scope="", saved=False, place=None):
         # The frame takes the shape of the ground it shows, within calm bounds, so the tracks fill it
         # (style.css .browse__map); the drawing and the live map fit the same ground either way.
         frame_attr += f' style="--frame-n: {frame_ratio(fr):.3f}"'
-    return Markup(f"""<figure class="mapfig{" mapfig--wide" if wide else ""}" data-map="overview" data-src="/data/overview.geojson"{ids_attr}{overview_bbox(recs, place)}{frame_attr}>
+    place_attr = " data-place" if place and not saved else ""
+    return Markup(f"""<figure class="mapfig{" mapfig--wide" if wide else ""}" data-map="overview" data-src="/data/overview.geojson"{ids_attr}{overview_bbox(recs, place)}{frame_attr}{place_attr}>
   <div class="mapfig__frame">
     <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
     <div class="map" role="region" aria-label="{esc(label)}">

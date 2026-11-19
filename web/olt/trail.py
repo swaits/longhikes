@@ -4,6 +4,7 @@ The main sections say what the record says, in plain words. Every field of
 the record, with its exact value, is in the table at the end of the page
 (raw_record); the main flow carries no coded values.
 """
+import math
 import os
 import re
 import urllib.parse
@@ -1773,13 +1774,19 @@ def _onward_list(title, recs, more_href, more_text, heading_id, meta=None):
             f'<h3 id="{heading_id}">{esc(title)}</h3><ul class="onward__list">{items}</ul>{more}</section>')
 
 
+def nearest_length(rec, other):
+    """A sort key for the trails of a place on a trail's page: the closest in length first (by ratio, so
+    300 and 600 miles are as far apart as 30 and 60), then by name."""
+    return (abs(math.log(other["length_km"] / rec["length_km"])), facets.sort_name(other))
+
+
 RELATED_WHY = {"name": "same name", "named": "named here", "names": "mentions this"}
 
 
 def onward(rec, records):
     """Ways onward at the foot of the page, all worked out from the records (olt/related.py):
     trails tied to this one by name or by what the descriptions say; other trails in the
-    same state or province (up to three of them); trails like this one in length, terrain
+    same state or province (up to three of them), the closest in length first; trails like this one in length, terrain
     and shape; and for a route, other routes by the same author."""
     if not records:
         return ""
@@ -1793,7 +1800,7 @@ def onward(rec, records):
     for i, key in enumerate(k for k in facets.place_keys(rec) if k != facets.ACROSS_CANADA):
         if i >= 3:
             break
-        here = sorted((r for r in others if key in facets.place_keys(r)), key=lambda r: -r["length_km"])
+        here = sorted((r for r in others if key in facets.place_keys(r)), key=lambda r: nearest_length(rec, r))
         if not here:
             continue
         name = facets.place_name(key)

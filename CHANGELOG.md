@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-19 - Hayduke Trail maps its start and end
+
+- The Hayduke Trail page now shows a map of its start in Salt Valley, at the northern boundary of Arches National Park, and its end in Zion Canyon. Its caution now gives the Park Service's report of 5 September 2025 that the Weeping Rock Trail reopened while the East Rim Trail to Observation Point stayed closed.
+
 ## 2026-11-19 - Seventeen more trail pages show a map of their start and end
 
 - Seventeen trail pages now show a map of their start and end: the Heart Lake & Two Ocean Plateau Loop, the Circle of Solitude, the Bitterroots 80-mile Route, the Wind River High Route (Skurka), the Teton Crest Route, the Eagle Cap Traverse, the Mogollon Rim Trail, the North Boundary, the South Boundary, the Cottonwood Trail, the International Appalachian Trail in Maine, the Pfiffner Traverse, the Oregon Desert Trail, the Sierra High Route, the Sycamore Canyon loop, the Bayou State Trail and the Great Western Loop. The positions come from Forest Service, National Park Service and other agency pages and from OpenStreetMap.

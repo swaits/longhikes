@@ -66,7 +66,8 @@ isbn = "9780874808131"
 [hike]
 summary = "The Hayduke Trail is an extremely challenging backcountry route linking six national parks of the Colorado Plateau, from Arches to Zion across southern Utah and northern Arizona. It lies entirely on public land, taking in Canyonlands, Capitol Reef, Bryce Canyon and Grand Canyon as well as the wild country between them. It is named for a character in Edward Abbey's novel The Monkey Wrench Gang."
 official_url = "https://www.hayduketrail.org"
-start = "Arches National Park, Utah"
+start = "Salt Valley, at the northern boundary of Arches National Park, Utah"
+start_lonlat = [-109.685, 38.815]
 end = "Weeping Wall (mapped as Weeping Rock), Zion Canyon, Zion National Park, Utah"
 end_lonlat = [-112.939, 37.271]
 shape = "point-to-point"
@@ -77,7 +78,7 @@ high_point_m = 3481
 terrain = ["desert", "canyon"]
 travel = "mostly-cross-country"
 permit = "Permits are needed from each national park and monument the route crosses, among them Arches, Canyonlands, Capitol Reef, Grand Canyon and Zion."
-caution = "The route is largely off-trail and unsigned, and its creators warn that only very experienced desert backpackers in peak condition should attempt it."
+caution = "The route is largely off-trail and unsigned, and its creators warn that only very experienced desert backpackers in peak condition should attempt it. The National Park Service said on 5 September 2025 that it had reopened the Weeping Rock Trail and its shuttle stop in Zion Canyon, and that the East Rim Trail to Observation Point, which starts there, remained closed."
 checked = "2026-11-14"
 
 [[hike.source]]
@@ -99,6 +100,16 @@ facts = ["season", "months"]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=13121914017"
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Weeping Rock Trailhead in Zion Canyon, OpenStreetMap node 13121914017; the route's Weeping Wall is the place mapped as Weeping Rock"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=11866946196"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): the cattle grid where Salt Valley Road crosses the boundary of Arches National Park, OpenStreetMap node 11866946196"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.nps.gov/zion/learn/news/zion-national-park-reopens-weeping-rock-trail-shuttle-stop.htm"
+publisher = "National Park Service, Zion National Park (news release of 5 September 2025)"
+facts = ["caution"]
 
 [[link]]
 title = "Hayduke"
@@ -131,5 +142,14 @@ change = "The position of the end was added, at the Weeping Rock Trailhead in Zi
 fields = ["hike.end", "hike.end_lonlat"]
 basis = "The publisher's route page ends the route at the Weeping Wall at the bottom of Zion Canyon, by the East Rim Trail; OpenStreetMap contributors (ODbL) map the East Rim trailhead on the canyon floor as the Weeping Rock Trailhead, OpenStreetMap node 13121914017."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=13121914017"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The start is now named as Salt Valley at the northern boundary of Arches National Park, and its position was added, so that the page can show a map of the whole trail. The caution now gives the Park Service's 5 September 2025 report on the Weeping Rock Trail and the East Rim Trail."
+fields = ["hike.start", "hike.start_lonlat", "hike.caution"]
+basis = "The trail's own site says the trail begins at the northern boundary of Arches National Park in Salt Valley; Andrew Skurka's Hayduke Trail Hiking Resources Bundle describes the same boundary. OpenStreetMap contributors (ODbL) map the cattle grid where Salt Valley Road crosses that boundary, OpenStreetMap node 11866946196. The Park Service's news release gives the Weeping Rock reopening and says the East Rim Trail to Observation Point remained closed."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=11866946196"
 asked_by = "the dataset's own check"
 outcome = "applied"

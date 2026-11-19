@@ -6,33 +6,33 @@ short_name = "TCT"
 short_name_url = "https://www.nps.gov/grte/planyourvisit/backcountryroutesandzones.htm"
 country = "US"
 regions = ["WY"]
-length_km = 64
-length_note = "about 40 mi"
+length_km = 63
+length_note = "39 mi (62.8 km), as the Park Service's routes page gives it: 'a 39-mile point to point route starting outside the park at Phillips Pass and ending at String Lake'. The record gave 64 km (about 40 mi) until 2026-11-19, a figure that cited no source. The track measures 58.7 km (36.5 mi) from the agencies' trail data, which is 6.9% under the Park Service's figure."
 tier = "short"
 designation = "Grand Teton National Park and Caribou-Targhee National Forest"
 wave = "held"
 
 [source]
-status = "osm-only"
-publisher = "National Park Service; USFS (publishes the trail; no open geometry found)"
-url = "https://www.openstreetmap.org/relation/3895101"
-discovery = "osm-relation-version: Overpass `rel(ID); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
-format = "OpenStreetMap relation, read through Overpass or a Geofabrik extract"
+status = "verified"
+publisher = "National Park Service (public Trails dataset, Grand Teton National Park) and USDA Forest Service (National Forest System Trails, Caribou-Targhee and Bridger-Teton National Forests)"
+publisher_url = "https://www.nps.gov/grte/planyourvisit/backcountryroutesandzones.htm"
+url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
+discovery = "arcgis-query-hash: GET <url>/query with where UNITCODE = 'GRTE' (outSR=4326, f=geojson) for the Park Service layer, and GET https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0/query with the envelope -111.1,43.5,-110.7,43.95 (inSR=4326, outSR=4326, f=geojson) for the Forest Service layer; hash each answer body and count its rows; fetch again when either changes. 345 Park Service features and 113 Forest Service features on 2026-11-19."
+format = "ArcGIS FeatureServer layer 0 (Park Service) and ArcGIS MapServer layer 0 (Forest Service), outSR=4326, f=geojson, 23 features used"
 crs = "EPSG:4326"
-licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 3895101."
-attribution = "OpenStreetMap contributors (ODbL)"
-osm_only = true
-mainline = "OSM 3895101. The NPS national layer holds only 4 pieces (5.4 km)."
-source_checked = "2026-11-08"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-18). The USDA Forest Service metadata for its trails dataset (https://data.fs.usda.gov/geodata/edw/edw_resources/meta/Trans_Trail_NFS_Publish.xml, read 2026-11-16) gives access constraints 'None' and, as use constraints, only a disclaimer of warranty and liability. Both layers are datasets made by federal employees, federal government works."
+attribution = "National Park Service; USDA Forest Service"
+osm_only = false
+mainline = "One track of 23 features, from Phillips Pass to String Lake. The two features the Forest Service labels 6008A TETON CREST SOUTH (Phillips Pass to the park boundary, 6.0 km and 0.1 km) and the two the Park Service labels Teton Crest Trail (1.1 km north of the boundary, and 4.0 km at Alaska Basin) are the stretches the agencies themselves call the Teton Crest Trail. The rest is carried on trails with local names in the Park Service layer, joined along the trail's published route: Middle Fork Granite Canyon Trail, Fox Creek Pass Trail, Death Canyon Shelf Trail, Hurricane Pass Trail, South Fork Cascade Canyon Trail, North Fork Cascade Canyon Trail, Paintbrush Canyon Trail, String Lake Loop Trail and String Lake Trail. Where both agencies map the same stretch (Fox Creek Pass and Alaska Basin, 11.1 km of Forest Service 6008A TETON CREST SOUTH), the Park Service line is used and the Forest Service copy is left out. A 0.3 km Park Service Teton Crest Trail piece beside the boundary, which doubles the Forest Service line there, is left out. Forest Service TETON CREST NORTH and TETON CREST (6008B, 2008), which run north of Moran, are not part of this trail."
+source_checked = "2026-11-19"
 redistributable = true
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "No track has been added for this trail yet."
+line_source = "National Park Service and USDA Forest Service trail data"
+line_file = "line.geojson"
 
 [osm]
 relation = 3895101
-note = "Not downloaded."
+note = "Relation 3895101 maps only 5.4 km of the 63, so it is not used for the track; the agencies' trail data is."
 
 [shield]
 status = "no-logo-exists"
@@ -44,11 +44,11 @@ logo_owner = "NPS Grand Teton"
 
 [verification]
 verified = true
-date = "2026-11-08"
-measured_km = 5.4
-difference_percent = -91.6
-parts = 2
-note = "The NPS national layer has only 5.4 km of the 64 km: not usable as a source."
+date = "2026-11-19"
+measured_km = 58.7
+difference_percent = -6.9
+parts = 1
+note = "23 agency features joined end to end in 1 part: 58.7 km (36.5 mi), 6.9% under the Park Service's 39 mi (63 km). Joins are 0 to 11 m. The track lies along the trail where the two agencies' lines differ by tens of metres, so it is a little short of the Park Service's rounded figure."
 
 [hike]
 summary = "The Teton Crest Trail is a point to point route along the crest of the Teton Range in Wyoming, starting outside Grand Teton National Park at Phillips Pass and ending at String Lake. The park service says it climbs over 9,000 feet and is best enjoyed over multiple days. Camping zones along it fill almost every night from late July through early September."
@@ -100,4 +100,13 @@ change = "The record was added: Teton Crest Trail."
 fields = ["record"]
 basis = "The record's own source entry: National Park Service."
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The Teton Crest Trail now has a track, 58.7 km from Phillips Pass to String Lake, assembled from the Park Service's and the Forest Service's public trail data. The length is now the Park Service's 39 miles (63 km), where it was 64 km."
+fields = ["source.line_file", "source.line_source", "source.line_absent_reason", "source.status", "source.publisher", "source.publisher_url", "source.url", "source.licence", "source.licence_text", "source.attribution", "source.osm_only", "length_km", "length_note"]
+basis = "The Park Service's routes page gives the trail as a 39-mile route from Phillips Pass to String Lake, and says it meets Forest Service land at Fox Creek Pass and Alaska Basin. The Forest Service layer labels the Phillips Pass stretch 6008A TETON CREST SOUTH and the Park Service layer labels two stretches Teton Crest Trail; the rest of the route is on trails with local names in the Park Service layer, joined along the published route. The record's earlier 64 km cited no source."
+basis_url = "https://www.nps.gov/grte/planyourvisit/backcountryroutesandzones.htm"
+asked_by = "the dataset's owner"
 outcome = "applied"

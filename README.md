@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-220 trails, 124 with a track and 96 with no track included. Of these, 75 are routes: 2 with a track and 73 without.
+220 trails, 125 with a track and 95 with no track included. Of these, 75 are routes: 2 with a track and 73 without.
 
 <!-- END COUNTS -->
 
@@ -170,7 +170,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | superior-hiking | Superior Hiking Trail | US | MN | 499 | yes | ODbL-1.0 |
 | susquehannock | Susquehannock Trail System | US | PA | 135 | yes | ODbL-1.0 |
 | tahoe-rim | Tahoe Rim Trail | US | CA, NV | 266 | yes | ODbL-1.0 |
-| teton-crest | Teton Crest Trail | US | WY | 64 | no | ODbL-1.0 |
+| teton-crest | Teton Crest Trail | US | WY | 63 | yes | us-gov-public-domain |
 | thames-valley-trail | Thames Valley Trail | CA | ON | 110 | yes | ODbL-1.0 |
 | thorofare-and-south-boundary-trail | Thorofare and South Boundary Trail | US | WY | 109 | yes | us-gov-public-domain |
 | timberline | Timberline Trail (Mount Hood) | US | OR | 64 | yes | ODbL-1.0 |

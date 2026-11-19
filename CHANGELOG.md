@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-19 - Teton Crest Trail has a track
+
+- The Teton Crest Trail page now shows a track, 58.7 km (36.5 mi) from Phillips Pass to String Lake in Grand Teton National Park, in place of the notice that it had none. The track is built from the National Park Service's and the Forest Service's public trail data, both public domain: the stretches the agencies label Teton Crest Trail, joined by the Middle Fork Granite Canyon, Fox Creek Pass, Death Canyon Shelf, Hurricane Pass, South Fork and North Fork Cascade Canyon, Paintbrush Canyon and String Lake trails, along the route the Park Service describes.
+- The trail's length is now the Park Service's 39 miles (63 km), where the record gave 64 km with no source.
+
 ## 2026-11-19 - Hayduke Trail maps its start and end
 
 - The Hayduke Trail page now shows a map of its start in Salt Valley, at the northern boundary of Arches National Park, and its end in Zion Canyon. Its caution now gives the Park Service's report of 5 September 2025 that the Weeping Rock Trail reopened while the East Rim Trail to Observation Point stayed closed.

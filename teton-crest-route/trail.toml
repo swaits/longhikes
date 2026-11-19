@@ -64,6 +64,7 @@ summary = "The Teton Crest Route is a 59-mile traverse of most of Wyoming's Teto
 official_url = "https://wildernessmindset.com/teton-crest-trail/"
 start = "Hominy Peak trailhead, Wyoming"
 end = "Phillips Bench trailhead at Teton Pass, Wyoming"
+end_lonlat = [-110.927, 43.507]
 shape = "point-to-point"
 days = [4, 4]
 high_point = "Littles Peak"
@@ -83,6 +84,11 @@ url = "https://wildernessmindset.com/product/teton-crest-route-map-pack/"
 publisher = "Wilderness Mindset (the route's author)"
 facts = ["summary", "terrain", "travel"]
 
+[[hike.source]]
+url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/phillips-bench-trailhead"
+publisher = "USDA Forest Service, Bridger-Teton National Forest (public domain): Phillips Bench Trailhead"
+facts = ["end_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -101,5 +107,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://wildernessmindset.com/teton-crest-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The position of the end was added, so that the page can show a map of it."
+fields = ["hike.end_lonlat"]
+basis = "The Forest Service's page for the Phillips Bench Trailhead gives its position; the author's page names it as the south end of the route."
+basis_url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/phillips-bench-trailhead"
 asked_by = "the dataset's own check"
 outcome = "applied"

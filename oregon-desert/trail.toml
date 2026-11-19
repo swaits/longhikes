@@ -50,7 +50,8 @@ note = "Not downloaded. Could be an author-style route (see excluded list); unde
 [hike]
 summary = "The Oregon Desert Trail is a route of about 750 miles across Oregon's high desert, from outside Bend in the west to Lake Owyhee State Park in the east. It links existing hiking trails, old jeep tracks and wagon roads with cross-country travel, and water can be very limited. Hart Mountain, Steens Mountain and the Owyhee Canyonlands are among its highlights."
 official_url = "https://onda.org/regions/oregon-desert-trail/"
-start = "Outside Bend, Oregon"
+start = "Tumulus Trailhead, outside Bend, Oregon"
+start_lonlat = [-121.038, 44.045]
 end = "Lake Owyhee State Park, Oregon"
 end_lonlat = [-117.286, 43.617]
 shape = "point-to-point"
@@ -72,6 +73,16 @@ facts = ["summary", "terrain"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1125099"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://onda.org/wp-content/uploads/2024/02/ODT-Town-Guide-2024-winter_s.pdf"
+publisher = "Oregon Natural Desert Association (the trail's town guide, which names the Tumulus Trailhead as the western end)"
+facts = ["start"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=4707732733"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Tumulus Trailhead, OpenStreetMap node 4707732733"
+facts = ["start_lonlat"]
 
 [[link]]
 title = "Oregon Desert Trail"
@@ -104,5 +115,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://onda.org/wp-content/uploads/2017/10/ODT_guidebook_cover.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The start is now named as the Tumulus Trailhead, and its position was added, so that the page can show a map of the trail."
+fields = ["hike.start", "hike.start_lonlat"]
+basis = "The Oregon Natural Desert Association's town guide says the western end of the Oregon Desert Trail starts at the Tumulus Trailhead, and OpenStreetMap contributors (ODbL) give its position, OpenStreetMap node 4707732733."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=4707732733"
 asked_by = "the dataset's own check"
 outcome = "applied"

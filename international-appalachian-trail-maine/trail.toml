@@ -49,7 +49,8 @@ note = "No line to measure."
 [hike]
 summary = "The Maine section of the International Appalachian Trail starts in Katahdin Woods and Waters National Monument, east of Baxter State Park, and runs north and east to Fort Fairfield on the Canadian border. It follows trail, logging roads, an old tote road, rail-trail and road, then crosses Mars Hill Mountain and follows the border north."
 official_url = "https://maineiat.org/?p=412"
-start = "Katahdin Loop Road, Katahdin Woods and Waters National Monument, Maine"
+start = "Barnard Mountain Trailhead, Katahdin Loop Road, Katahdin Woods and Waters National Monument, Maine"
+start_lonlat = [-68.761, 45.916]
 end = "Fort Fairfield, Maine"
 end_lonlat = [-67.834, 46.772]
 shape = "point-to-point"
@@ -73,6 +74,16 @@ url = "https://www.usgs.gov/us-board-on-geographic-names/domestic-names"
 publisher = "U.S. Geological Survey, Geographic Names Information System (GNIS 566405 Fort Fairfield, ME)"
 facts = ["end_lonlat"]
 
+[[hike.source]]
+url = "https://www.nps.gov/places/barnard-mountain-trailhead.htm"
+publisher = "National Park Service, Katahdin Woods and Waters National Monument: Barnard Mountain Trailhead, which the page gives as a starting place of the International Appalachian Trail"
+facts = ["start"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=12949585422"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Barnard Mountain Trailhead, OpenStreetMap node 12949585422"
+facts = ["start_lonlat"]
+
 [[link]]
 title = "International Appalachian Trail"
 publisher = "LongTrailsWiki"
@@ -95,5 +106,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://maineiat.org/wp-content/uploads/2019/11/IAT-SIA-blaze-85x252.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The start is now named as the Barnard Mountain Trailhead on the Katahdin Loop Road, and its position was added, so that the page can show a map of it."
+fields = ["hike.start", "hike.start_lonlat"]
+basis = "The National Park Service's page for the Barnard Mountain Trailhead says the International Appalachian Trail also starts from it, and OpenStreetMap contributors (ODbL) give the trailhead's position, OpenStreetMap node 12949585422."
+basis_url = "https://www.nps.gov/places/barnard-mountain-trailhead.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

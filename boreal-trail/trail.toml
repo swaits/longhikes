@@ -48,6 +48,7 @@ note = "No line to measure."
 summary = "The Boreal Trail crosses Meadow Lake Provincial Park in northwest Saskatchewan, from the Cold River campground in the west to the park office at Dorintosh in the east. It runs through boreal forest past lakes and links front-country campgrounds, with backcountry campsites between. The trail is marked with posts about every kilometre."
 official_url = "https://tourismsaskatchewan.com/listings/900/meadow-lake-provincial-park-boreal-trail"
 start = "Cold River Rustic Campground, Meadow Lake Provincial Park, Saskatchewan"
+start_lonlat = [-109.841, 54.565]
 end = "Dorintosh Administration Office, Meadow Lake Provincial Park, Saskatchewan"
 shape = "point-to-point"
 season = "All year"
@@ -61,7 +62,7 @@ checked = "2026-11-14"
 [[hike.source]]
 url = "https://saskparks.tourismsaskatchewan.com/media/media-library/pdfs/park-downloads/meadow-lake/meadow-lake-all.pdf"
 publisher = "Saskatchewan Provincial Parks"
-facts = ["summary", "start", "end", "shape", "season", "months", "terrain", "travel", "permit", "caution"]
+facts = ["summary", "start", "start_lonlat", "end", "shape", "season", "months", "terrain", "travel", "permit", "caution"]
 
 [[hike.source]]
 url = "https://tourismsaskatchewan.com/listings/900/meadow-lake-provincial-park-boreal-trail"
@@ -85,5 +86,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://tourismsaskatchewan.com/listings/900/meadow-lake-provincial-park-boreal-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The position of the start was added, at the Cold Lake Trailhead (BT 1) beside the Cold River Rustic Campground, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "Saskatchewan Provincial Parks' guide to Meadow Lake Provincial Park gives the position of the Cold Lake Trailhead BT 1 and says the trail starts from the Cold River Rustic Campground."
+basis_url = "https://saskparks.tourismsaskatchewan.com/media/media-library/pdfs/park-downloads/meadow-lake/meadow-lake-all.pdf"
 asked_by = "the dataset's own check"
 outcome = "applied"

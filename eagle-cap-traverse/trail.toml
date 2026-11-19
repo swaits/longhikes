@@ -66,7 +66,9 @@ isbn = "978-1-68051-626-5"
 summary = "The Eagle Cap Traverse is a six day one way backpacking route through the Eagle Cap Wilderness in the Wallowa Mountains of Oregon, from the Tenderfoot Trailhead to the Bowman-Francis Trailhead. It crosses Polaris Pass and passes Frazier, Glacier, Mirror and Minam lakes before descending the Minam River country. Eli Boschetto describes it as Trip 48 in Backpacking Oregon."
 official_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
 start = "Tenderfoot Trailhead, Eagle Cap Wilderness, Oregon"
+start_lonlat = [-117.103, 45.177]
 end = "Bowman-Francis Trailhead, Eagle Cap Wilderness, Oregon"
+end_lonlat = [-117.395, 45.294]
 shape = "point-to-point"
 days = [6, 7]
 season = "July to October"
@@ -81,6 +83,16 @@ checked = "2026-11-18"
 url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
 publisher = "Mountaineers Books (the publisher's page for the book); the facts are from the book's Trip 48, pages 218-224 of the 1st edition, 2026, read from the owner's copy"
 facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r06/wallowa-whitman/recreation/tenderfoot-trailhead"
+publisher = "USDA Forest Service, Wallowa-Whitman National Forest (public domain): Tenderfoot Trailhead"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_RecreationOpportunities_01/MapServer/0"
+publisher = "USDA Forest Service, Recreation Opportunities layer (public domain): Bowman-Francis Lake Trailhead, Wallowa-Whitman National Forest"
+facts = ["end_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -100,5 +112,14 @@ change = "The length note now gives only the published length and says which str
 fields = ["length_note"]
 basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The positions of the start and the end were added, so that the page can show a map of both."
+fields = ["hike.start_lonlat", "hike.end_lonlat"]
+basis = "The Forest Service's page for the Tenderfoot Trailhead gives its position, and its recreation layer gives the position of the Bowman-Francis Lake Trailhead, the one trailhead the Service lists for the Bowman and Francis Lake trails."
+basis_url = "https://www.fs.usda.gov/r06/wallowa-whitman/recreation/tenderfoot-trailhead"
 asked_by = "the dataset's own check"
 outcome = "applied"

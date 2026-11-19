@@ -50,6 +50,7 @@ official_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrier
 start = "Rock Lake, Alberta"
 start_lonlat = [-118.263, 53.46]
 end = "Berg Lake trailhead, Mount Robson Provincial Park, British Columbia"
+end_lonlat = [-119.214, 53.051]
 shape = "point-to-point"
 days = [7, 10]
 season = "Best travelled in the later part of the summer, and it can be hiked into early October; the trail is closed from November 1 to May 15 for caribou conservation"
@@ -70,6 +71,11 @@ url = "https://geogratis.gc.ca/services/geoname/en/geonames/IAFNS"
 publisher = "Natural Resources Canada, Canadian Geographical Names Database"
 facts = ["start_lonlat"]
 
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=281772999"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): the southern end of the Berg Lake Trail at the Kinney Lake Road car park, OpenStreetMap node 281772999"
+facts = ["end_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -87,5 +93,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The position of the end was added, so that the page can show a map of it."
+fields = ["hike.end_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): the end of the Berg Lake Trail at the Kinney Lake Road car park, OpenStreetMap node 281772999, matched to the Berg Lake trailhead that Parks Canada names as the end."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=281772999"
 asked_by = "the dataset's own check"
 outcome = "applied"

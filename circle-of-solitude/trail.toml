@@ -60,6 +60,7 @@ publisher = "Wilderness Press"
 [hike]
 start = "Road's End, Kings Canyon National Park, California"
 start_lonlat = [-118.583, 36.795]
+shape = "loop"
 checked = "2026-11-18"
 
 [[hike.source]]
@@ -71,6 +72,11 @@ facts = ["start"]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=279697028"
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Roads End Permit Station, at Road's End, OpenStreetMap way 279697028"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://fastestknowntime.com/route/circle-solitude"
+publisher = "fastestknowntime.com (its page for the route says it starts and ends at Road's End)"
+facts = ["shape"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -89,5 +95,14 @@ change = "The start, Road's End, was added as a place name and a position, so th
 fields = ["hike.start", "hike.start_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Roads End Permit Station, at Road's End, OpenStreetMap way 279697028."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=279697028"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The walk is now recorded as a loop that starts and ends at Road's End, so its page maps the trailhead."
+fields = ["hike.shape"]
+basis = "The route page on fastestknowntime.com says the Circle of Solitude starts and ends at Road's End; the record's own note already describes a loop from Road's End."
+basis_url = "https://fastestknowntime.com/route/circle-solitude"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-19 - Start and end points for sixteen trails
+
+- The pages for the Heart Lake & Two Ocean Plateau Loop, the Circle of Solitude, the Bitterroots 80-mile Route, the Wind River High Route (Skurka), the Eagle Cap Traverse, the Mogollon Rim Trail, the North Boundary, the International Appalachian Trail in Maine, the Pfiffner Traverse, the Oregon Desert Trail and the Great Western Loop now show a map of their start and end, from Forest Service, National Park Service and OpenStreetMap positions.
+- Start or end points were added to the Boreal Trail, the Teton Crest Route and the Deseret Hiking Route, which still lack the other end. The Waskahegan Trail is now recorded as a loop, and the Sierra High Route now gives 1982 as the year of its guidebook's first edition.
+
 ## 2026-11-18 - Great Western Divide Loop maps its trailhead
 
 - The Great Western Divide Loop page now shows a map marking its trailhead at Crescent Meadow. The walk is recorded as a loop, which it is, so the one trailhead is both its start and its end.

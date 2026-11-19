@@ -70,8 +70,10 @@ url = "https://andrewskurka.com/product/slideshows-on-disk-great-western-loop-an
 format = "slideshow on disk (not a route track)"
 
 [hike]
-summary = "The Great Western Loop links the Pacific Crest, Pacific Northwest, Continental Divide, Grand Enchantment and Arizona trails together with a trail-less stretch through the Sonoran and Mojave Deserts into one circuit of the American West. It passes through 12 national parks and more than 75 wilderness areas, and there is nothing official about it."
+summary = "The Great Western Loop links the Pacific Crest, Pacific Northwest, Continental Divide, Grand Enchantment and Arizona trails together with a trail-less stretch through the Sonoran and Mojave Deserts into one circuit of the American West. It passes through 12 national parks and more than 75 wilderness areas, and there is nothing official about it. Andrew Skurka began and finished at Grandview Point on the South Rim of the Grand Canyon, but the loop has no fixed start."
 official_url = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+start = "Grandview Point, Grand Canyon South Rim, Arizona"
+start_lonlat = [-111.988, 35.998]
 shape = "loop"
 days = [208, 208]
 high_point = "Forester Pass"
@@ -91,7 +93,7 @@ facts = ["summary", "shape", "high_point", "terrain", "travel"]
 [[hike.source]]
 url = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
 publisher = "Andrew Skurka"
-facts = ["official_url", "summary", "high_point", "terrain", "caution"]
+facts = ["official_url", "summary", "start", "high_point", "terrain", "caution"]
 
 [[hike.source]]
 url = "https://andrewskurka.com/adventures/great-western-loop/itinerary-final/"
@@ -102,6 +104,11 @@ facts = ["season", "months", "summary"]
 url = "https://andrewskurka.com/slideshow-great-western-loop-6875-miles-around-the-american-west/"
 publisher = "Andrew Skurka"
 facts = ["days"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=4437250889"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Grandview Point, OpenStreetMap node 4437250889"
+facts = ["start_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -120,5 +127,14 @@ change = "The logo record now says an emblem exists or may exist but no usable a
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
 basis_url = "https://andrewskurka.com/adventures/great-western-loop/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A start was added, Grandview Point on the South Rim of the Grand Canyon, with its position, so that the page can show a map. The summary now says that the author began and finished there and that the loop has no fixed start."
+fields = ["hike.start", "hike.start_lonlat", "hike.summary"]
+basis = "The author's route description says it starts at Grandview Point for the sake of the description and that the expedition began and ended there, while saying the loop has no official termini; OpenStreetMap contributors (ODbL) give the position of Grandview Point, OpenStreetMap node 4437250889."
+basis_url = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
 asked_by = "the dataset's own check"
 outcome = "applied"

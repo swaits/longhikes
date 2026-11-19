@@ -66,6 +66,7 @@ format = "guide, maps, data book and GPX, sent after proof of a day of trail wor
 summary = "The Deseret Hiking Route runs about 1,000 miles through Utah, from the Arizona border to Alturas Lake Creek in Idaho. It is about half singletrack and 40 percent dirt road, with short cross-country and paved sections. It passes Paria Canyon, Bryce Canyon National Park, the Wasatch Mountains and the Pioneer Mountains."
 official_url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
 start = "Stateline Trailhead, Utah-Arizona border"
+start_lonlat = [-112.035, 37.001]
 end = "Alturas Lake Creek, Idaho"
 shape = "point-to-point"
 terrain = ["canyon", "alpine"]
@@ -77,6 +78,11 @@ checked = "2026-11-13"
 url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
 publisher = "Kevin DeVries (LarryBoy)"
 facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.blm.gov/visit/stateline-campground"
+publisher = "Bureau of Land Management (public domain): Stateline Campground, given as the northern end of the Arizona National Scenic Trail"
+facts = ["start_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -95,5 +101,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The position of the start was added, at the Stateline site on the Utah-Arizona border, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "The Bureau of Land Management's page for Stateline Campground gives its position and says it is the northern end of the Arizona National Scenic Trail, which the author's page names as the route's southern end."
+basis_url = "https://www.blm.gov/visit/stateline-campground"
 asked_by = "the dataset's own check"
 outcome = "applied"

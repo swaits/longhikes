@@ -69,6 +69,7 @@ official_url = "https://andrewskurka.com/adventures/wind-river-high-route/"
 start = "Bruce Bridge near Lander, Wyoming"
 start_lonlat = [-108.857, 42.729]
 end = "Trail Lakes near Dubois, Wyoming"
+end_lonlat = [-109.574, 43.426]
 shape = "point-to-point"
 terrain = ["alpine", "lakes"]
 travel = "mostly-cross-country"
@@ -97,6 +98,11 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=10587
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Bruce's Bridge Trailhead, OpenStreetMap node 10587941394"
 facts = ["start_lonlat"]
 
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=2029153766"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Trail Lake Trailhead, OpenStreetMap node 2029153766"
+facts = ["end_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -123,5 +129,14 @@ change = "The position of the start was added, so that the page can show a map o
 fields = ["hike.start_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Bruce's Bridge Trailhead, OpenStreetMap node 10587941394."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=10587941394"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The position of the end was added, so that the page can show a map of it."
+fields = ["hike.end_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): Trail Lake Trailhead, OpenStreetMap node 2029153766, matched to the author's northern end at Trail Lakes."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=2029153766"
 asked_by = "the dataset's own check"
 outcome = "applied"

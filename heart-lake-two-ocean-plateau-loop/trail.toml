@@ -66,6 +66,7 @@ isbn = "978-0-89997-505-4"
 summary = "The Heart Lake & Two Ocean Plateau Loop is a backpacking loop of five to ten days in the southeast of Yellowstone National Park, Wyoming, from the Heart Lake Trailhead on the south entrance road. It passes the Heart Lake Geyser Basin and Heart Lake, follows the Trail Creek Trail past Outlet Lake and over the Continental Divide, crosses Two Ocean Plateau and returns up the Snake River. Douglas Lorain describes it as Trip 5 in Backpacking Wyoming."
 official_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 start = "Heart Lake Trailhead, Yellowstone National Park, Wyoming"
+start_lonlat = [-110.598, 44.317]
 shape = "loop"
 days = [5, 10]
 season = "Usually open mid-July to October, best mid-August through September"
@@ -80,6 +81,16 @@ checked = "2026-11-18"
 url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 45-49 of the 1st edition (2010), read from a printed copy"
 facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://www.nps.gov/places/000/heart-lake-trailhead-8n1.htm"
+publisher = "National Park Service, Yellowstone National Park: Heart Lake Trailhead"
+facts = ["start"]
+
+[[hike.source]]
+url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/YELL_TRAILHEADS_public_view/FeatureServer/0"
+publisher = "National Park Service, Yellowstone National Park, public trailheads layer (public domain): Heart Lake Trailhead"
+facts = ["start_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -108,5 +119,14 @@ change = "The length note now gives only the published length and says which str
 fields = ["length_note"]
 basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The position of the start was added, so that the page can show a map of the trailhead."
+fields = ["hike.start_lonlat"]
+basis = "The National Park Service's public trailheads layer for Yellowstone gives the position of the Heart Lake Trailhead, and the Service's page for the trailhead names it."
+basis_url = "https://www.nps.gov/places/000/heart-lake-trailhead-8n1.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

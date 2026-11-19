@@ -65,6 +65,7 @@ format = "PDF mapset, data book, town guide, GPS tracks"
 summary = "The Mogollon Rim Trail is a route across Arizona's Rim Country, from the Parsons Trailhead outside Cottonwood through Sedona's redrock country, the Highline Trail, the White Mountains and the Blue Range to the New Mexico border, where it joins the Grand Enchantment Trail near Alma. It strings together recreation trails, quiet forest roads and cross-country travel through canyons, mesas, ponderosa forest and desert."
 official_url = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
 start = "Parsons Trailhead, near Cottonwood, Arizona"
+start_lonlat = [-112.070, 34.864]
 end = "Alma, New Mexico"
 end_lonlat = [-108.903, 33.38]
 shape = "point-to-point"
@@ -90,6 +91,11 @@ url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/903113"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
 
+[[hike.source]]
+url = "https://www.fs.usda.gov/r03/coconino/recreation/trails/parsons-trail-no-144"
+publisher = "USDA Forest Service, Coconino National Forest (public domain): Parsons Trail No. 144, whose page gives the position of the trailhead"
+facts = ["start_lonlat"]
+
 [[link]]
 title = "Mogollon Rim Trail"
 publisher = "LongTrailsWiki"
@@ -112,5 +118,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://blisterfree.wordpress.com/wp-content/uploads/2019/02/mrt_logo_final.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The position of the start was added, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "The Forest Service's page for Parsons Trail No. 144 gives the GPS position of its trailhead, and the author's page says the route begins at the trailhead for the Parsons Trail."
+basis_url = "https://www.fs.usda.gov/r03/coconino/recreation/trails/parsons-trail-no-144"
 asked_by = "the dataset's own check"
 outcome = "applied"

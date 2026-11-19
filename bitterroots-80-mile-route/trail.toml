@@ -65,6 +65,7 @@ official_url = "https://wildernessmindset.com/80-miles-in-the-selway-bitterroot-
 start = "Lake Como (south side), Montana"
 start_lonlat = [-114.261, 46.055]
 end = "Big Creek Trailhead"
+end_lonlat = [-114.213, 46.465]
 shape = "point-to-point"
 days = [6, 6]
 season = "Mid-July to early September"
@@ -84,6 +85,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/781549"
 publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Lake Como, feature 781549"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r01/bitterroot/recreation/big-creek-trailhead-picnic-area"
+publisher = "USDA Forest Service, Bitterroot National Forest (public domain): Big Creek Trailhead & Picnic Area"
+facts = ["end_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -111,5 +117,14 @@ change = "The position of the start was added, so that the page can show a map o
 fields = ["hike.start_lonlat"]
 basis = "U.S. Geological Survey, Geographic Names Information System (public domain): Lake Como, feature 781549."
 basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/781549"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The position of the end was added, so that the page can show a map of it."
+fields = ["hike.end_lonlat"]
+basis = "The Forest Service's page for the Big Creek Trailhead & Picnic Area gives its position and says it gives access to the Selway-Bitterroot Wilderness; the author's page names the Big Creek Trailhead as the end."
+basis_url = "https://www.fs.usda.gov/r01/bitterroot/recreation/big-creek-trailhead-picnic-area"
 asked_by = "the dataset's own check"
 outcome = "applied"

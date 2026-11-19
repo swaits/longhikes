@@ -49,11 +49,12 @@ note = "No line to measure."
 
 [route]
 creator = "Steve Roper"
+year = 1982
 line_policy = "sold"
 creator_words = "No, there is not, intentionally. I would encourage you to ask yourself whether you need or want one. If you need one, the SHR is probably not the right route for you."
 creator_words_url = "https://andrewskurka.com/adventures/sierra-high-route/maps-mapping/"
 creator_words_by = "Andrew Skurka"
-note = "Roper conceived and pioneered the route; the guidebook's second edition is dated April 1997, and the first edition is not dated on the pages read. The words quoted are Andrew Skurka's, not Roper's; Roper's own statement on tracks was not found."
+note = "Roper conceived and pioneered the route; the guidebook's first edition, Timberline Country: The Sierra High Route (Sierra Club Books), is dated 1982 in library records, and its second edition is dated April 1997. The words quoted are Andrew Skurka's, not Roper's; Roper's own statement on tracks was not found."
 
 [[guide]]
 title = "Sierra High Route, 2nd Edition: Traversing Timberline Country"
@@ -105,5 +106,14 @@ date = "2026-11-10"
 change = "The record was added: Sierra High Route."
 fields = ["record"]
 basis = "The record's own source entry: Steve Roper."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The route's year is now 1982, the date of the guidebook's first edition, and the note no longer says that edition is undated."
+fields = ["route.year", "route.note"]
+basis = "The Open Library record for Timberline Country: The Sierra High Route (Sierra Club Books) gives 1982, and the National Diet Library of Japan's catalogue record gives the same year."
+basis_url = "https://openlibrary.org/isbn/0871562987"
 asked_by = "the dataset's own check"
 outcome = "applied"

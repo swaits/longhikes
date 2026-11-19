@@ -1531,12 +1531,12 @@ def correction_block(rec, site):
 </div>""")
     if site.is_github:
         report = esc(site.correction_url(rec["id"], rec.get("name", "")))
-        edit = esc(site.edit_url(rec["id"]))
+        record = esc(site.blob_url(f"{rec['id']}/trail.toml"))
         history = esc(site.history_url(rec["id"]))
         parts.append(f"""<p class="prose">This record is a text file anyone can correct. Please say where a correction can be checked: a source page, a map, or a measured track.</p>
 <ul class="linklist">
-  <li><a href="{report}">Report a problem</a><small>No git needed: a short form, with this record ({code(rec["id"])}) filled in</small></li>
-  <li><a href="{edit}">Edit this record</a><small>The record file (trail.toml) on GitHub</small></li>
+  <li><a href="{report}">Report a correction</a><small>No git needed: a short form, with this record ({code(rec["id"])}) filled in</small></li>
+  <li><a href="{record}">The record file</a><small>trail.toml on GitHub, to read it as it is written</small></li>
   <li><a href="{history}">History</a><small>Changes to this record on GitHub</small></li>
 </ul>""")
     elif site.repo_url:

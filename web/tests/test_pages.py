@@ -500,11 +500,14 @@ class RenderUnitTest(unittest.TestCase):
         gh = site.Site("N", "T", repo_url="https://github.com/swaits/longhikes")
         _, _, body, _ = trail.render(sample_record("A & B Trail"), gh)
         plain = html.unescape(body)
-        self.assertIn("Report a problem", plain)
+        self.assertIn("Report a correction", plain)
         self.assertIn("https://github.com/swaits/longhikes/issues/new?"
                       "template=correction.yml&title=Correction%3A+A+%26+B+Trail+%28x%29&trail=x", plain)
-        self.assertIn("Edit this record", plain)
-        self.assertIn("https://github.com/swaits/longhikes/edit/main/x/trail.toml", plain)
+        # the raw editor, which a web contributor cannot finish a change in, is no longer offered
+        self.assertNotIn("Edit this record", plain)
+        self.assertNotIn("/edit/", plain)
+        self.assertIn("The record file", plain)
+        self.assertIn("https://github.com/swaits/longhikes/blob/main/x/trail.toml", plain)
         self.assertIn("History", plain)
         self.assertIn("https://github.com/swaits/longhikes/commits/main/x", plain)
 
@@ -523,7 +526,7 @@ class RenderUnitTest(unittest.TestCase):
     def test_trail_correction_links_github_branch(self):
         gh = site.Site("N", "T", repo_url="https://github.com/o/r/", repo_branch="dev")
         block = html.unescape(trail.correction_block(sample_record("X Trail"), gh))
-        self.assertIn("https://github.com/o/r/edit/dev/x/trail.toml", block)
+        self.assertIn("https://github.com/o/r/blob/dev/x/trail.toml", block)
         self.assertIn("https://github.com/o/r/commits/dev/x", block)
 
     def test_trail_correction_links_non_github_fall_back_to_repo(self):
@@ -532,6 +535,7 @@ class RenderUnitTest(unittest.TestCase):
         self.assertIn('href="https://example.org/repo"', block)
         self.assertNotIn("template=correction.yml", block)
         self.assertNotIn("/edit/", block)
+        self.assertNotIn("/blob/", block)
         self.assertNotIn("/commits/", block)
         self.assertNotIn("Edit this record", block)
 

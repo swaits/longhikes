@@ -606,6 +606,11 @@ def time_note(rec, records):
     return Markup(f"{note} {list_anchor(records, key, text)}" if note else str(list_anchor(records, key, text)))
 
 
+# A trail with no permit sentence in its record has no row for it, as with season, terrain and walking:
+# the panel's note says the fact is not on file, so a missing row is not read as "no permit needed".
+PERMITS = "Permits"
+
+
 def glance(rec, records=None):
     """The hiker's facts at a glance, under the attribute names every page uses.
 
@@ -664,7 +669,7 @@ def glance(rec, records=None):
                                  for t in terrain))
         rows.append(glance_row(facets.TERRAIN, names, wide=True))
     if h.get("permit"):
-        rows.append(glance_row("Permits", common.sentence(h["permit"]), wide=True))
+        rows.append(glance_row(PERMITS, common.sentence(h["permit"]), wide=True))
     country = " and ".join(words.COUNTRIES.get(c, c) for c in common.countries(rec))
     rows.append(glance_row(facets.WHERE, Markup(f'{region_names(rec)}, {esc(country)}'), wide=True))
     status = facets.gpx(rec)
@@ -688,11 +693,12 @@ def glance(rec, records=None):
     if h.get("unfinished"):
         unfinished = f'<p class="glance__warn"><strong>Not finished.</strong> {common.rich(common.sentence(h["unfinished"]))}</p>'
     missing = [name for name, have in ((facets.SEASON, season), (facets.TERRAIN, terrain),
-                                       (facets.WALKING, facets.walking(rec))) if not have]
+                                       (facets.WALKING, facets.walking(rec)),
+                                       (PERMITS, h.get("permit"))) if not have]
     pending = ""
     if missing:
         names = words.join_names([missing[0]] + [m.lower() for m in missing[1:]])
-        verb = "is" if len(missing) == 1 else "are"
+        verb = "is" if len(missing) == 1 and missing[0] != PERMITS else "are"
         pending = f'<p class="note">{esc(names)} {verb} not on file for this trail yet.</p>'
     elev_caveat = elevation.coverage_caveat(elev) if elev else ""
     elev_note = f'<p class="note">{esc(elev_caveat)}</p>' if elev_caveat else ""

@@ -132,13 +132,26 @@ class TrailPageTest(unittest.TestCase):
         t = text(top)
         self.assertIn("Shape Loop. Starts and ends at Lake Camp", t)
         self.assertIn("Time 4 to 6 days", t)
-        self.assertIn("Season, terrain and walking are not on file for this trail yet.", t)
+        self.assertIn("Season, terrain, walking and permits are not on file for this trail yet.", t)
         for absent in ("Season March", "High point", "Terrain Alpine", "Permits", "Not finished", "Official site"):
             self.assertNotIn(absent, t, absent)
         # no summary: the lede is built from the record
         self.assertIn("A trail of 62 mi 100 km in Arizona, United States.", t)
         about = render(rec)[render(rec).index('<details class="about-data"'):]
         self.assertIn("The record names no page for these facts.", about)
+
+    def test_a_missing_permit_is_said_to_be_not_on_file(self):
+        rec = sample_record("X Trail")
+        rec["hike"] = {"shape": "loop", "start": "Lake Camp", "days": [4, 6], "terrain": ["alpine"],
+                       "travel": "trail", "months": [6, 7], "checked": "2026-11-13"}
+        t = text(top_part(render(rec)))
+        self.assertIn("Permits are not on file for this trail yet.", t)
+        self.assertNotIn("Permits A permit", t)  # no row that could be read as "none needed"
+        rec["hike"]["permit"] = "No permit is needed."
+        t = text(top_part(render(rec)))
+        self.assertIn("Permits No permit is needed.", t)
+        self.assertNotIn("Permits are not on file", t)
+        self.assertNotIn("permits are not on file", t)
 
     def test_no_hike_table(self):
         rec = sample_record("X Trail")
@@ -150,7 +163,7 @@ class TrailPageTest(unittest.TestCase):
         self.assertIn("Where Arizona , United States", t)
         # every trail has a time: here estimated from its 100 km, and labelled so
         self.assertIn("Time About 4 to 5 days Estimated from the length, at 12 to 19 mi 20 to 30 km a day.", t)
-        self.assertIn("Season, terrain and walking are not on file for this trail yet.", t)
+        self.assertIn("Season, terrain, walking and permits are not on file for this trail yet.", t)
         self.assertNotIn("Where the hiking facts come from", body)
         # no track: the page says so plainly and points at the source
         self.assertIn("No GPX here", t)

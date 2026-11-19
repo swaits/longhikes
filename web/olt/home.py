@@ -489,6 +489,10 @@ SAVED_ORDER = ("saved", "Order saved")
 
 HERE_ORDER = "here"
 
+# The last order of every list: nearest to the visitor. app.js asks the browser for the position when
+# it is chosen and keeps it in the page only; it is never in the address, so no list opens in it.
+NEAREST = ("nearest", "Nearest to me")
+
 
 def sort_select(default_sort="name", saved=False, ranked="", wholly=None):
     """The one sort control of every list of trails, with the page's
@@ -510,7 +514,7 @@ def sort_select(default_sort="name", saved=False, ranked="", wholly=None):
         default_sort = facets.normalize_sort(default_sort)
     options = "".join(
         f'\n              <option value="{esc(k)}"{" selected" if k == default_sort else ""}>{esc(label)}</option>'
-        for k, label in sorts)
+        for k, label in tuple(sorts) + (NEAREST,))
     return f"""<label class="results-sort"><span class="results-sort__label">Sort by</span>
             <select class="select" id="sort" name="sort" data-sort-select>{options}
             </select>

@@ -84,7 +84,8 @@ class SortKeysTest(unittest.TestCase):
         self.assertIn('<span class="results-sort__label">Sort by</span>', select)
         self.assertIn('<option value="length-asc" selected>Length, shortest first</option>', select)
         self.assertEqual([m for m in re.findall(r'<option value="([^"]+)"', select)],
-                         [k for k, _ in facets.SORTS])
+                         [k for k, _ in facets.SORTS] + ["nearest"])
+        self.assertIn('<option value="nearest">Nearest to me</option>', select)
 
     def test_old_address_keys_still_work(self):
         for old, new in [("long", "length-desc"), ("short", "length-asc"),

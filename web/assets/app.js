@@ -1468,6 +1468,87 @@
      finder and the other controls below never wait for a map. */
   document.querySelectorAll('.mapfig[data-map]').forEach(initMap);
 
+  /* near:begin — pure, with no page: web/tests/test_near.py runs this under node.
+     Distance from a position to each trail, over the geometry the overview map draws
+     (/data/overview.geojson): for a trail with a track, every point of the track as drawn (simplified
+     to about 750 m), reached along its lines; for a trail with no track, the points of its sketch
+     (its start and its end). A trail the file does not hold has no position. */
+  var Near = (function () {
+    var EARTH_KM = 6371.0088;
+    function vec(lon, lat) {
+      var a = lon * Math.PI / 180, b = lat * Math.PI / 180, c = Math.cos(b);
+      return [c * Math.cos(a), c * Math.sin(a), Math.sin(b)];
+    }
+    function dot(u, v) { return u[0] * v[0] + u[1] * v[1] + u[2] * v[2]; }
+    function cross(u, v) { return [u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0]]; }
+    function len(u) { return Math.sqrt(dot(u, u)); }
+    function angle(u, v) { return Math.atan2(len(cross(u, v)), dot(u, v)); }
+
+    /* The angle (radians) from p to the nearest point of the great-circle arc a to b. */
+    function toArc(p, a, b) {
+      var n = cross(a, b), nn = len(n);
+      if (nn < 1e-12) return angle(p, a);
+      n = [n[0] / nn, n[1] / nn, n[2] / nn];
+      var pn = dot(p, n);
+      var c = [p[0] - pn * n[0], p[1] - pn * n[1], p[2] - pn * n[2]], cn = len(c);
+      if (cn > 1e-12) {
+        c = [c[0] / cn, c[1] / cn, c[2] / cn];
+        if (dot(cross(a, c), n) >= 0 && dot(cross(c, b), n) >= 0) return angle(p, c);
+      }
+      return Math.min(angle(p, a), angle(p, b));
+    }
+
+    /* The shapes of a FeatureCollection, by trail id: {points: [vec], lines: [[vec]]}. */
+    function shapesOf(fc) {
+      var out = {};
+      ((fc && fc.features) || []).forEach(function (f) {
+        var p = f.properties || {}, g = f.geometry || {};
+        if (!p.id) return;
+        var shape = out[p.id] || (out[p.id] = { points: [], lines: [] });
+        function line(coords) { return coords.map(function (c) { return vec(c[0], c[1]); }); }
+        if (p.sketch) {
+          /* a sketch's dotted line is not the trail; its points are */
+          if (g.type === 'MultiPoint') g.coordinates.forEach(function (c) { shape.points.push(vec(c[0], c[1])); });
+        } else if (g.type === 'LineString') shape.lines.push(line(g.coordinates));
+        else if (g.type === 'MultiLineString') g.coordinates.forEach(function (l) { shape.lines.push(line(l)); });
+      });
+      return out;
+    }
+
+    /* Kilometres from a position to the nearest point of one shape, or null for a shape with none. */
+    function kmTo(shape, lon, lat) {
+      var p = vec(lon, lat), best = Infinity;
+      shape.points.forEach(function (v) { best = Math.min(best, angle(p, v)); });
+      shape.lines.forEach(function (l) {
+        if (l.length === 1) best = Math.min(best, angle(p, l[0]));
+        for (var i = 1; i < l.length; i++) best = Math.min(best, toArc(p, l[i - 1], l[i]));
+      });
+      return best === Infinity ? null : best * EARTH_KM;
+    }
+
+    /* {id: km} for every shape that has a point. */
+    function distances(shapes, lon, lat) {
+      var out = {};
+      Object.keys(shapes).forEach(function (id) {
+        var km = kmTo(shapes[id], lon, lat);
+        if (km !== null) out[id] = km;
+      });
+      return out;
+    }
+
+    /* Order two rows ({km: number or null, name}): the nearer first; a row with no position last. */
+    function compare(a, b) {
+      if (a.km === null || b.km === null) {
+        if (a.km === null && b.km === null) return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+        return a.km === null ? 1 : -1;
+      }
+      return a.km - b.km || (a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
+    }
+
+    return { kmTo: kmTo, shapesOf: shapesOf, distances: distances, compare: compare };
+  })();
+  /* near:end */
+
   /* 2b. Sorting every list of trails -----------------------------------------
      The same orders as facets.SORTS in Python, over the rows' data-*
      attributes. The "Sort by" select is the one control for keyboard and
@@ -1478,7 +1559,7 @@
      on load and on back/forward. */
 
   var SORT_KEYS = { 'name': 1, 'name-desc': 1, 'length-desc': 1, 'length-asc': 1,
-                    'time-asc': 1, 'time-desc': 1, 'climb-desc': 1, 'climb-asc': 1 };
+                    'time-asc': 1, 'time-desc': 1, 'climb-desc': 1, 'climb-asc': 1, 'nearest': 1 };
   var SORT_OLD = { 'long': 'length-desc', 'short': 'length-asc', 'quick': 'time-asc', 'climb': 'climb-desc' };
   var SORT_COLUMN = { 'here': 'name', 'name': 'name', 'name-desc': 'name', 'length-desc': 'length', 'length-asc': 'length',
                       'time-asc': 'time', 'time-desc': 'time', 'climb-desc': 'climb', 'climb-asc': 'climb' };
@@ -1509,6 +1590,11 @@
        the filter bar: 0 name, 1 author, 2 places, 3 summary); within each, the order chosen. */
     if (a.dataset.match !== b.dataset.match && a.dataset.match !== undefined && b.dataset.match !== undefined) {
       return cmpNum(Number(a.dataset.match), Number(b.dataset.match));
+    }
+    if (key === 'nearest') {
+      var ad = a.dataset.away, bd = b.dataset.away;
+      return Near.compare({ km: ad === '' || ad == null ? null : Number(ad), name: an },
+                          { km: bd === '' || bd == null ? null : Number(bd), name: bn });
     }
     if (key === 'saved') {
       var ao = a.dataset.order ? Number(a.dataset.order) : Infinity;
@@ -1569,8 +1655,134 @@
     if (status.textContent !== text) status.textContent = text;
   }
 
+  /* Nearest to me. Choosing it asks the browser for the visitor's position, once a page, and fetches
+     the overview geometry (the file the maps draw, usually in the cache already). Both stay in
+     this page: the position is held in a variable, never put in the address, stored or sent.
+     Each row then carries data-away (km, or '' with no position) and a "From you" figure in its
+     facts, in the reader's units by CSS. If the position or the geometry is not to be had, the list goes
+     back to the order it had and a line says so. root.dataset.near: 'wait', 'on' or 'fail'. */
+  var nearAway = null;      /* {id: km}, once known */
+  var nearLoading = null;
+  var NEAR_PRIVACY = 'Straight-line distance from where you are. Your position stays in this browser: it is not stored, sent or put in the address.';
+
+  function loadNear() {
+    if (nearLoading) return nearLoading;
+    var position = new Promise(function (resolve, reject) {
+      if (!navigator.geolocation) { reject('position'); return; }
+      navigator.geolocation.getCurrentPosition(function (p) { resolve(p.coords); }, function () { reject('position'); },
+        { timeout: 20000, maximumAge: 600000 });
+    });
+    var shapes = fetch('/data/overview.geojson', { credentials: 'same-origin' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(Near.shapesOf)
+      .catch(function () { throw 'data'; });
+    nearLoading = Promise.all([position, shapes]).then(function (v) {
+      nearAway = Near.distances(v[1], v[0].longitude, v[0].latitude);
+      return nearAway;
+    }).catch(function (e) { nearLoading = null; throw e; });
+    return nearLoading;
+  }
+
+  function awayHtml(km) {
+    function one(v, unit) { return fmt.format(v < 10 ? Math.round(v * 10) / 10 : Math.round(v)) + ' ' + unit; }
+    return '<span class="len len--inline"><span class="len__mi">' + one(km / KM_PER_MI, 'mi') +
+      '</span><span class="len__km">' + one(km, 'km') + '</span></span>';
+  }
+
+  function showAway(root, away) {
+    root.querySelectorAll('.entry[data-id]').forEach(function (li) {
+      var fact = li.querySelector('.entry__away');
+      if (!away) {
+        if (fact) fact.remove();
+        delete li.dataset.away;
+        return;
+      }
+      var km = away[li.dataset.id];
+      li.dataset.away = km === undefined ? '' : String(km);
+      var facts = li.querySelector('.entry__facts');
+      if (!fact && facts) {
+        fact = document.createElement('div');
+        fact.className = 'entry__more entry__away';
+        fact.innerHTML = '<dt>From you</dt><dd></dd>';
+        facts.appendChild(fact);
+      }
+      if (fact) fact.querySelector('dd').innerHTML = km === undefined ? 'no position on file' : awayHtml(km);
+    });
+  }
+
+  /* The line under the count while Nearest to me is on (and the plain line when it could not be). The
+     number of trails with no position is of the rows shown, so it follows the filters. */
+  function refreshNearNote(root) {
+    var note = root.querySelector('[data-near-note]');
+    var mode = root.dataset.near || '';
+    if (!mode) { if (note) note.hidden = true; return; }
+    if (!note) {
+      var head = root.querySelector('.results-head');
+      if (!head) return;
+      note = document.createElement('p');
+      note.className = 'results-note';
+      note.setAttribute('data-near-note', '');
+      head.parentNode.insertBefore(note, head.nextSibling);
+    }
+    var text = mode === 'wait' ? 'Waiting for your position…' : mode === 'fail' ? (root._nearFail || '') : NEAR_PRIVACY;
+    if (mode === 'on') {
+      var none = 0;
+      root.querySelectorAll('.entry[data-id]').forEach(function (li) { if (!li.hidden && li.dataset.away === '') none += 1; });
+      if (none) text += ' ' + none + (none === 1 ? ' trail has' : ' trails have') + ' no position on file and ' + (none === 1 ? 'is' : 'are') + ' listed last.';
+    }
+    setNodeText(note, text);
+    note.hidden = !text;
+  }
+  function setNodeText(node, text) { if (node.textContent !== text) node.textContent = text; }
+
+  function nearFallback(root, why) {
+    var select = root.querySelector('[data-sort-select]');
+    var back = root._lastKey || defaultSortOf(root);
+    root._nearFail = why === 'data' ? 'Distances could not be loaded, so the list is back in its earlier order.'
+      : 'Your position was not available, so the list is back in its earlier order.';
+    root.dataset.near = '';
+    applySortUI(root, back, false);
+    root.dataset.near = 'fail';
+    root._failKey = back;
+    refreshNearNote(root);
+    var status = root.querySelector('[data-sort-status]');
+    if (status) status.textContent = root._nearFail;
+    root.dispatchEvent(new CustomEvent('olt:sortfallback', { detail: { key: back } }));
+  }
+
+  function applyNearest(root, announce) {
+    var select = root.querySelector('[data-sort-select]');
+    if (select && select.value !== 'nearest') select.value = 'nearest';
+    if (nearAway) {
+      root.dataset.near = 'on';
+      showAway(root, nearAway);
+      sortEntriesIn(root, 'nearest');
+      syncSortHeads(root, 'nearest');
+      refreshNearNote(root);
+      if (announce) announceSort(root, 'nearest');
+      return 'nearest';
+    }
+    if (root.dataset.near !== 'wait') {
+      root.dataset.near = 'wait';
+      refreshNearNote(root);
+      loadNear().then(function () {
+        if (root.dataset.near === 'wait' && (!select || select.value === 'nearest')) applyNearest(root, announce);
+      }, function (why) {
+        if (root.dataset.near === 'wait' && (!select || select.value === 'nearest')) nearFallback(root, why);
+      });
+    }
+    return 'nearest';
+  }
+
   function applySortUI(root, key, announce) {
     key = normalizeSortKey(key, defaultSortOf(root));
+    if (key === 'nearest') return applyNearest(root, announce);
+    if (root.dataset.near && !(root.dataset.near === 'fail' && key === root._failKey)) {
+      delete root.dataset.near;
+      showAway(root, null);
+      refreshNearNote(root);
+    }
+    root._lastKey = key;
     sortEntriesIn(root, key);
     var select = root.querySelector('[data-sort-select]');
     if (select && select.value !== key) select.value = key;
@@ -1591,12 +1803,19 @@
   }
 
   function sortFromUrl(root) {
-    return normalizeSortKey(new URLSearchParams(window.location.search).get('sort'), defaultSortOf(root));
+    return normalizeSortKey(sortInAddress(), defaultSortOf(root));
+  }
+
+  /* The order the address names. Nearest to me is never in an address: a link is opened by someone
+     else, who has not chosen to be asked where they are. */
+  function sortInAddress() {
+    var key = new URLSearchParams(window.location.search).get('sort');
+    return key === 'nearest' ? '' : key;
   }
 
   function replaceSortInUrl(root, key) {
     var p = new URLSearchParams(window.location.search);
-    if (key === defaultSortOf(root)) p.delete('sort'); else p.set('sort', key);
+    if (key === defaultSortOf(root) || key === 'nearest') p.delete('sort'); else p.set('sort', key);
     var q = p.toString().replace(/%2C/g, ',');  /* a Saved list's t=a,b,c stays readable */
     window.history.replaceState(null, '', (q ? '?' + q : window.location.pathname) + window.location.hash);
   }
@@ -1606,6 +1825,7 @@
       if (root.hasAttribute('data-finder')) return; /* the filter bar wires its own list */
       var select = root.querySelector('[data-sort-select]');
       var current = defaultSortOf(root);
+      root.addEventListener('olt:sortfallback', function (e) { current = e.detail.key; });
       function setSort(key, updateUrl, announce) {
         current = applySortUI(root, key, announce);
         if (updateUrl) replaceSortInUrl(root, current);
@@ -1987,7 +2207,7 @@
       if (s.month) p.set('month', s.month);
       if (s.kind) p.set('kind', s.kind);
       MULTI.forEach(function (name) { if (s[name].length) p.set(name, s[name].join(',')); });
-      if (sort && sort.value !== defaultSort) p.set('sort', sort.value);
+      if (sort && sort.value !== defaultSort && sort.value !== 'nearest') p.set('sort', sort.value);
       return p.toString();
     }
 
@@ -2041,7 +2261,7 @@
       MULTI.forEach(function (name) {
         boxes(name).forEach(function (b) { b.checked = chosen[name].indexOf(b.value) !== -1; });
       });
-      if (sort) sort.value = normalizeSortKey(p.get('sort'), defaultSort);
+      if (sort) sort.value = normalizeSortKey(p.get('sort') === 'nearest' ? '' : p.get('sort'), defaultSort);
     }
 
     function applySort() {
@@ -2185,6 +2405,7 @@
       /* Clear is offered only when something is set: a search, or any filter. */
       if (clear) clear.hidden = !(s.q || all);
 
+      refreshNearNote(resultsRoot);
       maps.forEach(function (m) { if (m.kind === 'overview') setVisible(m, shown); });
       if (updateUrl) {
         var q = toQuery(s);

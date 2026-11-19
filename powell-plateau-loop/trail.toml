@@ -5,7 +5,7 @@ name = "Powell Plateau Loop"
 country = "US"
 regions = ["AZ"]
 length_km = 88
-length_note = "54.6 mi, as the book gives it for Trip 6 (page 75), with 7,250 ft of elevation gain, 9 days and no shuttle. The book's days assume about 8 miles a day, and it calls its itinerary a minimum: 12 days would not be excessive. The figure is the book's own and is not measured from a track. The only ground walked twice lies within the 0.6 mile between the trailhead and the spring at Muav Saddle, so at least 54.0 miles are walked once. The published figure stays as the length."
+length_note = "54.6 mi, as the book gives it for Trip 6 (page 75), with 7,250 ft of elevation gain, 9 days and no shuttle. The book's days assume about 8 miles a day, and it calls its itinerary a minimum: 12 days would not be excessive. The figure is the book's own and is not measured from a track. The only ground walked both ways lies within the 0.6 mile between the trailhead and the spring at Muav Saddle."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
@@ -110,7 +110,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-18"
-change = "The length note now says the only repeated ground lies within the first 0.6 mile, so at least 54.0 miles are walked once."
+change = "The length note now says the only ground walked both ways lies within the first 0.6 mile."
 fields = ["length_note"]
 basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition, September 2003, ISBN 978-0-89997-324-1). The text of Trip 6 has the loop leave and rejoin the North Bass Trail at Muav Saddle, and the trip's map prints 0.6 mile between the trailhead and the spring at the saddle."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
@@ -123,5 +123,14 @@ change = "The position of the start was added, so that the page can show a map o
 fields = ["hike.start_lonlat"]
 basis = "U.S. Geological Survey, Geographic Names Information System (public domain): Swamp Point, feature 12031."
 basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/12031"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now gives only the published length and says which stretches are walked both ways."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 asked_by = "the dataset's own check"
 outcome = "applied"

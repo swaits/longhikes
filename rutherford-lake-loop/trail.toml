@@ -5,7 +5,7 @@ name = "Rutherford Lake Loop"
 country = "US"
 regions = ["CA"]
 length_km = 115
-length_note = "71.5 mi, as the book gives it for Trip 72 (pages 246-250), with 10 hiking days and 1 layover day. The book gives no elevation gain figure for the trip. It is a true loop from one trailhead, but two branches are walked out and back: the lateral to Rutherford Lake and the branch to Chain Lakes. The book gives no figure for them; the dataset's own estimate is about 2 miles walked twice, which leaves about 69.5 miles with nothing counted twice, uncertain by about half a mile. The figures are the book's own, except that estimate, and are not measured from a track."
+length_note = "71.5 mi, as the book gives it for Trip 72 (pages 246-250), with 10 hiking days and 1 layover day. The book gives no elevation gain figure for the trip. It is a true loop from one trailhead, but two branches are walked out and back: the lateral to Rutherford Lake and the branch to Chain Lakes. The figures are the book's own and are not measured from a track."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett, 2005, in Sierra North); no agency or association"
@@ -93,6 +93,15 @@ date = "2026-11-18"
 change = "The record was added: Rutherford Lake Loop, 71.5 miles (115 km), Trip 72, pages 246-250 in Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett's guidebook Sierra North, with no track."
 fields = ["record"]
 basis = "Sierra North: Backcountry Trips in California's Sierra Nevada, by Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett (Wilderness Press, 9th edition, 2005, ISBN 978-0-89997-396-8). Trip 72, pages 246-250, gives the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now gives only the published length and says which stretches are walked both ways."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
 asked_by = "the dataset's own check"
 outcome = "applied"

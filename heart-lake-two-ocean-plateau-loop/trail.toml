@@ -5,7 +5,7 @@ name = "Heart Lake & Two Ocean Plateau Loop"
 country = "US"
 regions = ["WY"]
 length_km = 99
-length_note = "61.5 mi, as the book gives it for Trip 5 (page 45), with 5,750 ft of elevation gain and 5 to 10 days. The book's days assume about 10 miles a day. The page also prints 72 mi and 9,000 ft in brackets: the trip with the recommended side trips added. The stated mileage walks a stem of 7.5 miles twice; with nothing counted twice the loop is 54.0 miles. The figures are the book's own and are not measured from a track."
+length_note = "61.5 mi, as the book gives it for Trip 5 (page 45), with 5,750 ft of elevation gain and 5 to 10 days. The book's days assume about 10 miles a day. The page also prints 72 mi and 9,000 ft in brackets: the trip with the recommended side trips added. The stated mileage includes the 7.5 miles between the trailhead and the loop, walked both ways. The figures are the book's own and are not measured from a track."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Douglas Lorain, 2010, in Backpacking Wyoming); no agency or association"
@@ -95,9 +95,18 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-18"
-change = "The length note now explains the bracketed figure, the days and the stem walked twice, and the caution now says grizzly bears are common, as the book does."
+change = "The length note now explains the bracketed figure, the days and the stem walked both ways, and the caution now says grizzly bears are common, as the book does."
 fields = ["length_note", "hike.caution"]
 basis = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins, by Douglas Lorain (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4), checked against the full text of the owner's copy."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now gives only the published length and says which stretches are walked both ways."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 asked_by = "the dataset's own check"
 outcome = "applied"

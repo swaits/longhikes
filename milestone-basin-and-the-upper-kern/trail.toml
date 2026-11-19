@@ -5,7 +5,7 @@ name = "Milestone Basin and the Upper Kern"
 country = "US"
 regions = ["CA"]
 length_km = 89
-length_note = "55.6 mi, as the book gives it for Trip 79, with 7 hiking days and 3 layover days; the book gives no elevation gain figure for the trip. It is a shuttle with the middle retraced: the book has hikers walk 0.7 mile of trail and 0.4 mile of John Muir Trail twice, and the spur into Milestone Basin is walked out and back as well, about 2.6 miles walked twice in all. With nothing counted twice the walk is about 53 miles. The 2.6 mile and 53 mile figures are the dataset's own reckoning from the book's day figures and are uncertain by about half a mile. The figures are the book's own, except those, and are not measured from a track."
+length_note = "55.6 mi, as the book gives it for Trip 79, with 7 hiking days and 3 layover days; the book gives no elevation gain figure for the trip. It is a shuttle with the middle walked both ways: the book has hikers walk 0.7 mile of trail and 0.4 mile of John Muir Trail out and back, and the spur into Milestone Basin is walked out and back as well. The figures are the book's own and are not measured from a track."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Elizabeth Wenk and Mike White, 2021, in Sierra South); no agency or association"
@@ -102,6 +102,15 @@ date = "2026-11-18"
 change = "The record was added: Milestone Basin and the Upper Kern, 55.6 miles (89 km), Trip 79 in Elizabeth Wenk and Mike White's guidebook Sierra South, with no track."
 fields = ["record"]
 basis = "Sierra South: Backcountry Trips in California's Sierra Nevada, by Elizabeth Wenk and Mike White (Wilderness Press, 9th edition, 2021, ISBN 978-0-89997-884-0). Trip 79 gives the length, days, season, permit and cautions; the book gives no page numbers for it in the copy read, so the trip number is cited. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now gives only the published length and says which stretches are walked both ways."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
 asked_by = "the dataset's own check"
 outcome = "applied"

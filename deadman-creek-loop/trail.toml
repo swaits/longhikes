@@ -5,7 +5,7 @@ name = "Deadman Creek Loop"
 country = "US"
 regions = ["AZ"]
 length_km = 93
-length_note = "57.7 mi, as the book gives it for Trip 16 (page 157), with 11,510 ft of elevation gain, 7 days and no shuttle. The book's days assume about 8 miles a day. The page also prints 63.6 mi, 14,680 ft and 7 days in brackets: the option by the Willow Spring and Deadman trails, which is 5.9 mi longer and entirely on trail. The figures are the book's own and are not measured from a track. The first 1.4 miles from Sheep Bridge are walked again at the end; the book's own map segments sum to 56.3 miles with nothing counted twice. The published figure stays as the length."
+length_note = "57.7 mi, as the book gives it for Trip 16 (page 157), with 11,510 ft of elevation gain, 7 days and no shuttle. The book's days assume about 8 miles a day. The page also prints 63.6 mi, 14,680 ft and 7 days in brackets: the option by the Willow Spring and Deadman trails, which is 5.9 mi longer and entirely on trail. The figures are the book's own and are not measured from a track. The first 1.4 miles from Sheep Bridge are walked again at the end."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
@@ -110,7 +110,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-18"
-change = "The length note now says the first 1.4 miles are walked again and that the book's map segments sum to 56.3 miles with nothing counted twice."
+change = "The length note now says the first 1.4 miles are walked again at the end."
 fields = ["length_note"]
 basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition, September 2003, ISBN 978-0-89997-324-1). The text of Trip 16 and its map give 1.4 miles on the Willow Spring Trail at the start and again at the end; the map's one-way segments sum to 56.3 miles."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
@@ -123,5 +123,14 @@ change = "The position of the start was added, so that the page can show a map o
 fields = ["hike.start_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Verde River Sheep Bridge, at the trailhead, OpenStreetMap way 818277281."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=818277281"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now gives only the published length and says which stretches are walked both ways."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 asked_by = "the dataset's own check"
 outcome = "applied"

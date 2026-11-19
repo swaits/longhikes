@@ -42,11 +42,34 @@ The text of a record is read by the public, and the same rules apply to what you
 
 ## What a length is, and what is walkable
 
-- A record's `length_km` is the end-to-end length of the trail's canonical path: one walk from one end to the other, one branch at a split, no side trails, no system total. A loop reached by a stem keeps the published figure, which walks the stem both ways, and its `length_note` gives the length with the stem counted once; the floor is tested on the length with nothing counted twice, so an out-and-back is judged one way. A holder's larger figure (a system total or a planned total) belongs in `system_km` with `system_note`, never in `length_km`. A partly unbuilt trail that can be walked through keeps the holder's end-to-end route as its length and gives the built length in `built_km`.
+- A record's `length_km` is the end-to-end length of the trail's canonical path: one walk from one end to the other, one branch at a split, no side trails, no system total. A loop reached by a stem keeps the published figure, which walks the stem both ways, and its `length_note` says which stretch is walked out and back, without stating any shorter length. The floor is tested on the length with nothing counted twice, so an out-and-back is judged one way. The figures used for that test are kept in the section "Floor checks" below, which the site never shows. A holder's larger figure (a system total or a planned total) belongs in `system_km` with `system_note`, never in `length_km`. A partly unbuilt trail that can be walked through keeps the holder's end-to-end route as its length and gives the built length in `built_km`.
 - A trail must be walkable from one end to the other today. Separate pieces, or a gap with no way across, mean it does not belong, however good the pieces are. Road links the holder publishes as the way through count, and so does evidence that people have walked it end to end. A ferry, shuttle or bus link across water or a closed stretch, named by the holder or the route's author as the way through, does not rule a trail out: the record says how each such link is made, and the track has a gap there, with no line drawn across. This is a judgement the maintainer makes case by case, not a mechanical test. A refresh worker must not propose removing a trail only because of such a link; a borderline case goes to the owner with a recommendation.
 - Length: every trail or route needs a published length; with none stated it is not listed. The length is at least 50 miles (80 km), or, for an author's route that is short on miles, at least five days as its author gives the trip. The five days count only for an author's route that is mostly cross-country or on hard terrain: a trail trip that a guidebook paces over five or more days does not qualify. The five days never replace a published length. A trail with its own name and its own published length is listed even where it lies on a longer listed trail, as the John Muir Trail lies on the Pacific Crest Trail. A guidebook's cut of a longer trail is not listed.
 - Climbing: Nothing harder than Class 3 may be required, apart from a few short Class 4 scrambles. A route that needs a rope, a belay or rock-climbing skill is not listed, unless that section is optional and the record says so.
 - Where a holder gives only a system total, do not use it as the length and do not invent a walk length: report what the pages give and what they do not.
+
+## Floor checks
+
+Maintainers only: the site never renders this file, and no record or page states these figures. The 50 mile floor is tested on the length with nothing counted twice; a visitor is shown only the published length. One line per record: id, published figure, miles walked twice, figure used for the floor test, and where the numbers came from. "Book" means the book's own figures or map segments, "sum" a sum of its figures, "estimate" the dataset's own reckoning.
+
+- kanab-canyon-loop: 52.2 mi published; 1.8 mi twice; 50.4 mi for the floor; book (map prints 1.8 mi trailhead to Little Saddle).
+- powell-plateau-loop: 54.6 mi published; at most 0.6 mi twice; at least 54.0 mi for the floor; book (map prints 0.6 mi to the spring at Muav Saddle).
+- nankoweap-bright-angel-loop: 82.2 mi published; 2.9 mi twice; 79.3 mi for the floor (75.8 mi on the itinerary table's 78.7 mi); book (2.9 mi to Boundary Ridge).
+- sycamore-canyon-az: 55.7 mi published; 0.2 mi twice; 55.5 mi for the floor; book.
+- deadman-creek-loop: 57.7 mi published; 1.4 mi twice; 56.3 mi for the floor; sum of the book's map segments.
+- heart-lake-two-ocean-plateau-loop: 61.5 mi published; 7.5 mi twice; 54.0 mi for the floor; book (stem figure subtracted).
+- teton-wilderness-loop: 60.2 mi published; 5.3 mi twice; 54.9 mi for the floor; book (stem figure subtracted).
+- central-wind-rivers-loop: 61.7 mi published; 9.6 mi twice; 52.1 mi for the floor; book (stem figure subtracted).
+- green-river-lakes-titcomb-basin-loop: 70.9 mi published; the Titcomb Basin spur is about 11.8 mi each way (about 11.8 mi twice); about 59 mi for the floor; the loop alone is about 47 to 48 mi; sum of the book's map segments.
+- rae-lakes-loop: 41.4 mi published; 1.9 mi twice; about 39.5 mi for the floor; Park Service table of miles from Road's End (listed as the owner's exception under the floor).
+- deadman-and-cloud-canyons: 113.4 mi published; 23.0 mi twice; 90.4 mi for the floor (23.0 mi stem and a 67.4 mi loop); book.
+- rutherford-lake-loop: 71.5 mi published; about 2 mi twice; about 69.5 mi for the floor, uncertain by about half a mile; estimate (the book gives no figure for the two out-and-back branches).
+- milestone-basin-and-the-upper-kern: 55.6 mi published; about 2.6 mi twice (0.7 mi of trail and 0.4 mi of John Muir Trail, plus the Milestone Basin spur); about 53 mi for the floor, uncertain by about half a mile; estimate from the book's day figures.
+- eagle-cap-traverse: 54.7 mi published; about 1.6 mi twice (0.3 mi to Dollar Lake and 1.3 mi to Chimney Lake, per the mileposts); about 53.1 mi for the floor; estimate from the mileposts.
+- ptarmigan-glenns-lake-highline-loop: 52 mi published; short spurs to camps, no figure; 52 mi for the floor (the day table adds to 52.2 mi); book.
+- gospel-hump-loop: 68 mi published; none (a true loop); 68 mi for the floor; book.
+- south-lake-to-north-lake: 55.0 mi published; none (a one-way shuttle); 55.0 mi for the floor; book.
+- grand-canyon-of-the-tuolumne (left out, in `left-out.toml`): 50.0 mi published; a stem of just under a mile twice; about 49.2 mi for the floor; book.
 
 ## What belongs
 

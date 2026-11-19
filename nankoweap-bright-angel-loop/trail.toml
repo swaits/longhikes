@@ -5,7 +5,7 @@ name = "Nankoweap–Bright Angel Loop"
 country = "US"
 regions = ["AZ"]
 length_km = 132
-length_note = "82.2 mi, as the book gives it for Trip 7 (page 87), with 16,830 ft of elevation gain, 11 days and no shuttle. The book's days assume about 8 miles a day. The page also prints 63.7 mi, 14,190 ft and 10 days in brackets, with a shuttle of 179 mi. The book does not label this variant; it fits the optional finish at the South Rim by the Bright Angel Trail, which needs a vehicle left at that trailhead. The book's itinerary table sums to 78.7 mi against the 82.2 mi it states. The figures are the book's own and are not measured from a track. The 2.9-mile stem from the trailhead to Boundary Ridge is walked both ways, so on the stated 82.2 miles the loop walked once is 79.3 miles (75.8 on the itinerary table's 78.7). The published figure stays as the length."
+length_note = "82.2 mi, as the book gives it for Trip 7 (page 87), with 16,830 ft of elevation gain, 11 days and no shuttle. The book's days assume about 8 miles a day. The page also prints 63.7 mi, 14,190 ft and 10 days in brackets, with a shuttle of 179 mi. The book does not label this variant; it fits the optional finish at the South Rim by the Bright Angel Trail, which needs a vehicle left at that trailhead. The book's itinerary table sums to 78.7 mi against the 82.2 mi it states. The figures are the book's own and are not measured from a track. The stated 82.2 miles includes the 2.9 miles between the trailhead and Boundary Ridge, walked both ways."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
@@ -110,7 +110,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-18"
-change = "The length note now says the 2.9-mile stem to Boundary Ridge is walked both ways and that 79.3 miles are walked once."
+change = "The length note now says the 2.9-mile stretch to Boundary Ridge is walked both ways."
 fields = ["length_note"]
 basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition, September 2003, ISBN 978-0-89997-324-1). The text of Trip 7 puts Boundary Ridge 2.9 miles from the trailhead and calls the same trail the return route; the trip's map labels the 2.9 miles."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
@@ -123,5 +123,14 @@ change = "The position of the start was added, so that the page can show a map o
 fields = ["hike.start_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Saddle Mountain Trailhead, OpenStreetMap node 2225293648."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=2225293648"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now gives only the published length and says which stretches are walked both ways."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 asked_by = "the dataset's own check"
 outcome = "applied"

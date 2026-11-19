@@ -5,7 +5,7 @@ name = "Gospel Hump Loop"
 country = "US"
 regions = ["ID"]
 length_km = 109
-length_note = "68 mi, as the book gives it for Trip 9, with 12,600 ft of elevation gain and 5 to 8 days. The book's mileage is the trip in its basic form, rounded to the nearest mile and, the author says, accurate to about 10 per cent. The book also prints 70 mi and 13,600 ft in brackets: the trip with the recommended side trips added (its day table adds to 70 mi). It is a true loop with no stem, so nothing is walked twice, and the Hump Lake and Crystal Lake side trips are not in either figure. The figures are the book's own and are not measured from a track."
+length_note = "68 mi, as the book gives it for Trip 9, with 12,600 ft of elevation gain and 5 to 8 days. The book's mileage is the trip in its basic form, rounded to the nearest mile and, the author says, accurate to about 10 per cent. The book also prints 70 mi and 13,600 ft in brackets: the trip with the recommended side trips added (its day table adds to 70 mi). It is a true loop with no stem, and the Hump Lake and Crystal Lake side trips are not in either figure. The figures are the book's own and are not measured from a track."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Douglas Lorain, 2004, in Backpacking Idaho); no agency or association"
@@ -93,6 +93,15 @@ date = "2026-11-18"
 change = "The record was added: Gospel Hump Loop, 68 miles (109 km), Trip 9 in Douglas Lorain's guidebook Backpacking Idaho, with no track."
 fields = ["record"]
 basis = "Backpacking Idaho: From Alpine Peaks to Desert Canyons, by Douglas Lorain (Wilderness Press, 1st edition, March 2004, ISBN 0-89997-346-9). Trip 9 gives the length, days, season, permit and cautions; the book gives no page numbers in the copy read, so the trip number is cited. Stated figures are read from the trip's stat block and day table. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note was reworded to give only the published length."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
 asked_by = "the dataset's own check"
 outcome = "applied"

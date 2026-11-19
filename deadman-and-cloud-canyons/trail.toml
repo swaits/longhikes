@@ -5,7 +5,7 @@ name = "Deadman and Cloud Canyons"
 country = "US"
 regions = ["CA"]
 length_km = 182
-length_note = "113.4 mi, as the book gives it for Trip 25, with 11 hiking days and 2 layover days; the book gives no elevation gain figure for the trip. It is a semiloop: the 23.0 miles from the Twin Lakes Trailhead to the Roaring River Ranger Station are walked out on the first two days and retraced on the last, so the book's figure counts that stem twice. With nothing counted twice the walk is 90.4 miles (the 23.0 mile stem and a 67.4 mile loop). The book's days run from 6.8 to 15.8 miles. The figures are the book's own and are not measured from a track."
+length_note = "113.4 mi, as the book gives it for Trip 25, with 11 hiking days and 2 layover days; the book gives no elevation gain figure for the trip. It is a semiloop: the 23.0 miles from the Twin Lakes Trailhead to the Roaring River Ranger Station are walked out on the first two days and back on the last, so the book's figure includes that stretch both ways. The book's days run from 6.8 to 15.8 miles. The figures are the book's own and are not measured from a track."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Elizabeth Wenk and Mike White, 2021, in Sierra South); no agency or association"
@@ -49,7 +49,7 @@ note = "No line to measure."
 creator = "Elizabeth Wenk and Mike White"
 year = 2021
 line_policy = "sold"
-note = "Trip 25 in the book (9th edition, 2021). A semiloop from the Twin Lakes Trailhead at Lodgepole Campground to the Roaring River Ranger Station, then a loop by Deadman Canyon, Elizabeth Pass, Kaweah Gap, Big Arroyo, the Kern River canyon and Colby Pass to Cloud Canyon, with 113.4 miles in the book. About 47 miles of it, from the Roaring River Ranger Station through Deadman Canyon and Kaweah Gap to Junction Meadow, are shared with the Big SEKI Loop by the dataset's own check against that record's track; that is a little over half of the 90.4 miles walked once. The book's maps are the track; none is copied here."
+note = "Trip 25 in the book (9th edition, 2021). A semiloop from the Twin Lakes Trailhead at Lodgepole Campground to the Roaring River Ranger Station, then a loop by Deadman Canyon, Elizabeth Pass, Kaweah Gap, Big Arroyo, the Kern River canyon and Colby Pass to Cloud Canyon, with 113.4 miles in the book. About 47 miles of it, from the Roaring River Ranger Station through Deadman Canyon and Kaweah Gap to Junction Meadow, are shared with the Big SEKI Loop by the dataset's own check against that record's track. The book's maps are the track; none is copied here."
 
 [[guide]]
 title = "Sierra South: Backcountry Trips in California's Sierra Nevada"
@@ -95,6 +95,15 @@ date = "2026-11-18"
 change = "The record was added: Deadman and Cloud Canyons, 113.4 miles (182 km), Trip 25 in Elizabeth Wenk and Mike White's guidebook Sierra South, with no track."
 fields = ["record"]
 basis = "Sierra South: Backcountry Trips in California's Sierra Nevada, by Elizabeth Wenk and Mike White (Wilderness Press, 9th edition, 2021, ISBN 978-0-89997-884-0). Trip 25 gives the length, days, season, permit and cautions; the book gives no page numbers for it in the copy read, so the trip number is cited. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now gives only the published length and says which stretches are walked both ways."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
 asked_by = "the dataset's own check"
 outcome = "applied"

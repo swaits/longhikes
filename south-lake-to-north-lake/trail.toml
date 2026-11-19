@@ -5,7 +5,7 @@ name = "South Lake to North Lake"
 country = "US"
 regions = ["CA"]
 length_km = 89
-length_note = "55.0 mi, as the book gives it for Trip 67, with 8 hiking days and 1 layover day, a shuttle with nothing walked twice; the book gives no elevation gain figure for the trip, only 2,750 ft for its third day. Mike White's chapter on the same walk in Backpacking California (3rd edition, 2020, Trip 47) gives 55.1 mi, with 9,240 ft of gain and 9,790 ft of loss, 5 to 7 recommended days and a strenuous rating. The 2.0 miles of North Lake Road between the trailheads are not counted. The figures are the books' own and are not measured from a track."
+length_note = "55.0 mi, as the book gives it for Trip 67, with 8 hiking days and 1 layover day, a one-way shuttle; the book gives no elevation gain figure for the trip, only 2,750 ft for its third day. Mike White's chapter on the same walk in Backpacking California (3rd edition, 2020, Trip 47) gives 55.1 mi, with 9,240 ft of gain and 9,790 ft of loss, 5 to 7 recommended days and a strenuous rating. The 2.0 miles of North Lake Road between the trailheads are not counted. The figures are the books' own and are not measured from a track."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Elizabeth Wenk and Mike White, 2021, in Sierra South); no agency or association"
@@ -102,6 +102,15 @@ date = "2026-11-18"
 change = "The record was added: South Lake to North Lake, 55.0 miles (89 km), Trip 67 in Elizabeth Wenk and Mike White's guidebook Sierra South, with no track."
 fields = ["record"]
 basis = "Sierra South: Backcountry Trips in California's Sierra Nevada, by Elizabeth Wenk and Mike White (Wilderness Press, 9th edition, 2021, ISBN 978-0-89997-884-0). Trip 67 gives the length, days, season, permit and cautions; the book gives no page numbers for it in the copy read, so the trip number is cited. Backpacking California (Wilderness Press, 3rd edition 2020, ISBN 978-0-89997-958-8), Trip 47, gives the same walk as 55.1 miles. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note was reworded to give only the published length."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -21,7 +21,7 @@ REASONS = {
     "below-floor": ("Below the 50 mile floor",
                     "The floor for this list is 50 miles (80 km), or, for an author's route that is mostly cross-country or on hard terrain and short on miles, five days as its author gives the trip, "
                     "apart from a few well known shorter trails. A trail trip that a guidebook paces over five or more days does not qualify on the days. "
-                    "The floor is tested on the length with nothing counted twice, so a loop reached by a stem is counted with the stem once and an out-and-back is judged one way. "
+                    "The floor is tested on the length with nothing counted twice, so an out-and-back is judged one way. "
                     "A trail with its own name and its own published length is listed even where it lies on a longer listed trail; a guidebook's cut of a longer trail is not. "
                     "A listed trail or route also needs a published length."),
     "rail-trail-or-towpath": ("Rail trails and canal towpaths",

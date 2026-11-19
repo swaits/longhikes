@@ -5,7 +5,7 @@ name = "Kanab Canyon Loop"
 country = "US"
 regions = ["AZ"]
 length_km = 84
-length_note = "52.2 mi, as the book gives it for Trip 5 (page 67), with 5,570 ft of elevation gain, 7 days and no shuttle. The book's days assume about 8 miles a day, and it calls its itinerary a minimum: 9 or 10 days would not be excessive. The figure is the book's own and is not measured from a track. The stated 52.2 miles walks the 1.8 miles between the trailhead and Little Saddle twice; with nothing counted twice the loop is 50.4 miles, which is the length the 50 mile floor is tested on. The published figure stays as the length."
+length_note = "52.2 mi, as the book gives it for Trip 5 (page 67), with 5,570 ft of elevation gain, 7 days and no shuttle. The book's days assume about 8 miles a day, and it calls its itinerary a minimum: 9 or 10 days would not be excessive. The figure is the book's own and is not measured from a track. The stated 52.2 miles includes the 1.8 miles between the trailhead and Little Saddle, walked both ways."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
@@ -110,7 +110,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-18"
-change = "The length note now says the stated 52.2 miles walks 1.8 miles twice and that 50.4 miles are walked once."
+change = "The length note now says the stated 52.2 miles includes 1.8 miles walked both ways."
 fields = ["length_note"]
 basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition, September 2003, ISBN 978-0-89997-324-1). The text of Trip 5 has the walker leave the Thunder River Trail westbound and return past the same point to Little Saddle, and the trip's map prints 1.8 miles between the trailhead and Little Saddle."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
@@ -123,5 +123,14 @@ change = "The position of the start was added, so that the page can show a map o
 fields = ["hike.start_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Indian Hollow Trailhead, OpenStreetMap node 2244809444."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=2244809444"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now gives only the published length and says which stretches are walked both ways."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 asked_by = "the dataset's own check"
 outcome = "applied"

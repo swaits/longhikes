@@ -5,7 +5,7 @@ name = "Ptarmigan–Glenns Lake–Highline Loop"
 country = "US"
 regions = ["MT"]
 length_km = 84
-length_note = "52 mi, as the book gives it for Trip 1 (pages 16-42) as the minimum loop, with 10,750 ft of elevation gain and 5 to 13 days. The book's own day table adds up to 52.2 mi for the loop, and nothing in it is walked twice apart from short spurs to camps. The book also prints 106 mi and 16,200 ft for the trip with its recommended side trips added (its day table sums to 105.6 mi), the longest being the out-and-back to Boulder Pass. The figures are the book's own and are not measured from a track."
+length_note = "52 mi, as the book gives it for Trip 1 (pages 16-42) as the minimum loop, with 10,750 ft of elevation gain and 5 to 13 days. The book's own day table adds up to 52.2 mi for the loop, with short spurs to camps walked out and back. The book also prints 106 mi and 16,200 ft for the trip with its recommended side trips added (its day table sums to 105.6 mi), the longest being the out-and-back to Boulder Pass. The figures are the book's own and are not measured from a track."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Mike White and Douglas Lorain, 2019, in Best Backpacking Trips in Montana, Wyoming, and Colorado); no agency or association"
@@ -95,6 +95,15 @@ date = "2026-11-18"
 change = "The record was added: Ptarmigan–Glenns Lake–Highline Loop, 52 miles (84 km), Trip 1, pages 16-42 in Mike White and Douglas Lorain's guidebook Best Backpacking Trips in Montana, Wyoming, and Colorado, with no track."
 fields = ["record"]
 basis = "Best Backpacking Trips in Montana, Wyoming, and Colorado, by Mike White and Douglas Lorain (University Press of Colorado, 2019 (no edition is stated), ISBN 978-1-60732-837-7). Trip 1, pages 16-42, gives the length, days, season, permits and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now gives only the published length and says which stretches are walked both ways."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
 asked_by = "the dataset's own check"
 outcome = "applied"

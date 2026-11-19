@@ -5,7 +5,7 @@ name = "Rae Lakes Loop"
 country = "US"
 regions = ["CA"]
 length_km = 67
-length_note = "41.4 mi, as the National Park Service gives it: 'The loop is 41.4 miles long, and climbs from 5035' (1535m) at the trailhead to 11,978' (3651m) at Glen Pass.' This is under the 50 mile floor; it is listed as an exception by the ruling of the owner of the dataset. The Park Service's 41.4 miles walks the 1.9 miles between Road's End and the loop junction twice; with nothing counted twice the trail is about 39.5 miles."
+length_note = "41.4 mi, as the National Park Service gives it: 'The loop is 41.4 miles long, and climbs from 5035' (1535m) at the trailhead to 11,978' (3651m) at Glen Pass.' This is under the 50 mile floor; it is listed as an exception by the ruling of the owner of the dataset. The Park Service's 41.4 miles includes the 1.9 miles between Road's End and the loop junction, walked both ways."
 tier = "short"
 designation = "National Park Service trails in Kings Canyon National Park, walked as a loop from Road's End and described as one on the Park Service's Rae Lakes Loop page"
 wave = 1
@@ -96,16 +96,25 @@ outcome = "applied"
 date = "2026-11-18"
 change = "A track was added from OpenStreetMap relation 1710944: the loop of 57.6 km (35.8 mi) and, in alternates.geojson, the stem from Road's End of 3.0 km (1.9 mi). The record had no track before."
 fields = ["source", "osm.relation", "hike.start_lonlat"]
-basis = "OpenStreetMap relation 1710944 maps the Rae Lakes Loop with 16 main ways and 4 approach ways. The loop plus the approach walked out and back is 39.5 mi, 4.5% short of the 41.4 mi the National Park Service gives, which counts the stem both ways."
+basis = "OpenStreetMap relation 1710944 maps the Rae Lakes Loop with 16 main ways and 4 approach ways. The loop plus the approach walked out and back comes within 4.5% of the 41.4 mi the National Park Service gives, which counts the stem both ways."
 basis_url = "https://www.openstreetmap.org/relation/1710944"
 asked_by = "the dataset's own check"
 outcome = "applied"
 
 [[history]]
 date = "2026-11-18"
-change = "The length note now says in plain words that the trail is listed under the 50 mile floor as the owner's exception, and that the Park Service's 41.4 miles walks 1.9 miles twice, leaving about 39.5 miles."
+change = "The length note now says in plain words that the trail is listed under the 50 mile floor as the owner's exception, and that the Park Service's 41.4 miles includes 1.9 miles walked both ways."
 fields = ["length_note"]
 basis = "The National Park Service's Rae Lakes Loop page gives the loop as 41.4 miles and a table of miles from Road's End, with 1.9 miles from Road's End to the junction with the Paradise and Bubbs Creek trails, which the loop reaches again before it returns to Road's End."
+basis_url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now gives only the published length and says which stretches are walked both ways."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -5,7 +5,7 @@ name = "Green River Lakes & Titcomb Basin Loop"
 country = "US"
 regions = ["WY"]
 length_km = 114
-length_note = "70.9 mi, as the book gives it for Trip 15 (page 131), with 10,100 ft of elevation gain and 6 to 14 days. The book's days assume about 10 miles a day. The 70.9 miles includes the out-and-back into Titcomb Basin. The figures are the book's own and are not measured from a track. The loop alone is about 47 to 48 miles. The rest of the 70.9 miles is the spur into Titcomb Basin, about 11.8 miles each way by the book's map figures, which is walked both ways; counted once, the trip is about 59 miles. The book's text calls the spur a long side trip, while the trip's name and its main figure include it, and this record keeps it as part of the trip as the author names and measures it. The published figure stays as the length."
+length_note = "70.9 mi, as the book gives it for Trip 15 (page 131), with 10,100 ft of elevation gain and 6 to 14 days. The book's days assume about 10 miles a day. The 70.9 miles is the loop plus the walk into Titcomb Basin and back out: the spur into the basin is about 11.8 miles each way by the book's map figures. The figures are the book's own and are not measured from a track. The book's text calls the spur a long side trip, while the trip's name and its main figure include it, and this record keeps it as part of the trip as the author names and measures it. The published figure stays as the length."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Douglas Lorain, 2010, in Backpacking Wyoming); no agency or association"
@@ -110,7 +110,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-18"
-change = "The length note now says the loop alone is about 47 to 48 miles, that the spur into Titcomb Basin is about 11.8 miles each way, and that counted once the trip is about 59 miles."
+change = "The length note now says the 70.9 miles is the loop plus the walk into Titcomb Basin and back out, with the spur about 11.8 miles each way."
 fields = ["length_note"]
 basis = "Backpacking Wyoming, by Douglas Lorain (Wilderness Press, 2010). Trip 15 gives 70.9 miles with no bracketed figure, includes the Titcomb Basin spur in its itinerary, and calls the spur a long side trip; the trip's map prints the spur's segments, which total 11.8 miles each way."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
@@ -123,5 +123,14 @@ change = "The position of the start was added, so that the page can show a map o
 fields = ["hike.start_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Green River Lakes Campground, at the road end where the trailhead is, OpenStreetMap way 391050079."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=391050079"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now gives only the published length and says which stretches are walked both ways."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 asked_by = "the dataset's own check"
 outcome = "applied"

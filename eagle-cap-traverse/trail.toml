@@ -5,7 +5,7 @@ name = "Eagle Cap Traverse"
 country = "US"
 regions = ["OR"]
 length_km = 88
-length_note = "54.7 mi one way, as the book gives it for Trip 48 (pages 218-224), with 12,210 ft of elevation gain (up and down) and a high point of 8,880 ft. The text calls it a weeklong trip and lays out six hiking days. Two spurs are walked out and back, the 0.3 mile side trail to Dollar Lake and the 1.3 mile spur to Chimney Lake, and the book's mileposts count both ways, so about 1.6 miles of the total are the return legs; with nothing counted twice the walk is about 53.1 miles (the dataset's own reckoning from the mileposts). The book's trip planner and text differ by about a mile in the middle of the trip, and agree at the end. The figures are the book's own, except the 53.1, and are not measured from a track."
+length_note = "54.7 mi one way, as the book gives it for Trip 48 (pages 218-224), with 12,210 ft of elevation gain (up and down) and a high point of 8,880 ft. The text calls it a weeklong trip and lays out six hiking days. Two spurs are walked out and back, the 0.3 mile side trail to Dollar Lake and the 1.3 mile spur to Chimney Lake, and the book's mileposts count both ways. The book's trip planner and text differ by about a mile in the middle of the trip, and agree at the end. The figures are the book's own and are not measured from a track."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Eli Boschetto, 2026, in Backpacking Oregon); no agency or association"
@@ -90,6 +90,15 @@ date = "2026-11-18"
 change = "The record was added: Eagle Cap Traverse, 54.7 miles (88 km), Trip 48, pages 218-224 in Eli Boschetto's guidebook Backpacking Oregon, with no track."
 fields = ["record"]
 basis = "Backpacking Oregon: Overnight and Multiday Routes, by Eli Boschetto (Mountaineers Books, 1st edition, 2026, ISBN 978-1-68051-626-5). Trip 48, pages 218-224, gives the length, days, season, permit and cautions. The owner of the dataset has the book and ruled that the route belongs in it."
+basis_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now gives only the published length and says which stretches are walked both ways."
+fields = ["length_note"]
+basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -16,7 +16,12 @@ try:
 except ModuleNotFoundError:  # Python < 3.11: minimal fallback for this repo's TOML subset
     tomllib = None
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
+sys.path.insert(0, HERE)
+
+import trail_numbers  # noqa: E402
+
 BEGIN = "<!-- BEGIN TRAIL TABLE -->"
 END = "<!-- END TRAIL TABLE -->"
 COUNT_BEGIN = "<!-- BEGIN COUNTS -->"
@@ -271,9 +276,15 @@ def main():
         f.write(idx_data)
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write(readme_data)
+    appended = trail_numbers.append(ROOT, [t["id"] for t in trails])
     with_line = sum(1 for t in trails if t.get("source", {}).get("line_file"))
     print(f"Wrote trails.csv, index.geojson and README table: "
           f"{len(trails)} trails, {with_line} with a track.")
+    if appended:
+        print(f"Appended {len(appended)} to {trail_numbers.FILE}, in sorted order: "
+              f"{', '.join(appended)}. Commit the file with the record.")
+    else:
+        print(f"{trail_numbers.FILE} is complete: every record has a number.")
     return 0
 
 

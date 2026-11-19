@@ -13,6 +13,8 @@ For every trail.toml (or track file) that differs from the base, it
     that field with the outcome "applied" (it says which record and which fields);
   * FAILS when an entry that was already in the base history was changed or removed
     (history is only added to; use --allow-history-edits for a typing mistake);
+  * FAILS when a line of trail-numbers.txt that was in the base was changed, moved or removed
+    (the registry is only appended to; tools/trail_numbers.py);
   * PRINTS, for every changed fact, the earlier history entries about the same field, and
     prints "!!" lines when one of them was declined or was asked for by someone other than
     the dataset's own check: that is where two requests may conflict.
@@ -37,6 +39,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
 import build_index  # noqa: E402
+import trail_numbers  # noqa: E402
 import trail_history as H  # noqa: E402
 
 DEFAULT_BASES = ("origin/main", "github/main", "main")
@@ -199,6 +202,18 @@ def analyse(tid, old, new, track_changed=False, allow_edits=False):
     return failures, loud, notes
 
 
+def check_numbers(root, mb, out=print):
+    """Failure messages when trail-numbers.txt changed an earlier line. Appending is allowed."""
+    done = git(root, "show", f"{mb}:{trail_numbers.FILE}", check=False)
+    path = os.path.join(root, trail_numbers.FILE)
+    if done.returncode != 0:
+        return []  # the base has no registry yet: this change introduces it
+    if not os.path.isfile(path):
+        return [f"{trail_numbers.FILE} was deleted; a retired trail keeps its line and its number"]
+    with open(path, encoding="utf-8") as f:
+        return trail_numbers.only_appended(done.stdout, f.read())
+
+
 def run(root, base=None, allow_edits=False, out=print):
     """Check the work in `root` against `base`. Return the exit status."""
     rev, mb = merge_base(root, base)
@@ -222,10 +237,16 @@ def run(root, base=None, allow_edits=False, out=print):
             if os.environ.get("GITHUB_ACTIONS") and not line.startswith("    "):
                 out(f"::error file={tid}/trail.toml::{line}")
         failed = failed or bool(failures)
+    for line in check_numbers(root, mb):
+        failed = True
+        out(f"FAIL  {line}")
+        if os.environ.get("GITHUB_ACTIONS"):
+            out(f"::error file={trail_numbers.FILE}::{line}")
     if failed:
         out("History check FAILED.")
         return 1
-    out(f"OK history: {count} changed record{'s' if count != 1 else ''} checked.")
+    out(f"OK history: {count} changed record{'s' if count != 1 else ''} checked, "
+        f"{trail_numbers.FILE} only appended to.")
     return 0
 
 

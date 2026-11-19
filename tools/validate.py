@@ -54,6 +54,11 @@ trail_history = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(trail_history)
 
 spec = importlib.util.spec_from_file_location(
+    "trail_numbers", os.path.join(ROOT, "tools", "trail_numbers.py"))
+trail_numbers = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(trail_numbers)
+
+spec = importlib.util.spec_from_file_location(
     "check_datafiles", os.path.join(ROOT, "tools", "check_datafiles.py"))
 check_datafiles = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(check_datafiles)
@@ -928,6 +933,7 @@ def main():
 
     check_left_out(ROOT, trails, errors)
     check_datafiles.check_datafiles(ROOT, trails, errors)
+    trail_numbers.check(ROOT, trail_ids, errors)
 
     for dirpath, dirnames, filenames in os.walk(ROOT):
         if ".git" in dirpath:

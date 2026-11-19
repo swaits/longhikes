@@ -14,9 +14,9 @@ jobs:
           python-version: "3.12"
       - run: python3 tools/validate.py
 
-  # A change to a fact needs a new [[history]] entry (docs/schema.md). The check compares the
-  # work with its base, so it needs the history of the base branch: a full clone, not the
-  # shallow one that checkout makes by default.
+  # A change to a fact needs a new [[history]] entry (docs/schema.md), and trail-numbers.txt may
+  # only be appended to. The check compares the work with its base, so it needs the history of
+  # the base branch: a full clone, not the shallow one that checkout makes by default.
   history:
     runs-on: ubuntu-latest
     steps:
@@ -41,6 +41,7 @@ jobs:
           fi
           python3 tools/check_history.py --base "$base"
       - run: python3 -m unittest discover tools/tests -p "test_history.py"
+      - run: python3 -m unittest discover tools/tests -p "test_trail_numbers.py"
 
   site:
     runs-on: ubuntu-latest

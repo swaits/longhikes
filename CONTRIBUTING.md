@@ -59,7 +59,7 @@ To add one:
    To point to other good pages about the trail (a wiki or encyclopedia article), add a `[[link]]` table for each; the trail's own page goes in `hike.official_url` instead.
 4. Add a logo only as `shield.svg` or `shield.png`, and name its holder in `shield.logo_owner` and where the art came from in `shield.logo_source`.
 5. Write the first `[[history]]` entry, with `fields = ["record"]`, the date, who asked for the trail (by role) and the page that shows it.
-6. Run the three commands above.
+6. Run the three commands above. `python3 tools/build_index.py` also adds the new `id` to the end of `trail-numbers.txt`, which gives every trail a number for the Saved page's short links; commit that line with the record, and never edit or reorder the lines already there (`tools/check_history.py` refuses it).
 
 ## Refresh a trail from its source
 

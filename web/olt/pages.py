@@ -144,6 +144,13 @@ def render_site(records, out_dir, repo_root, site=None):
         path = f"/regions/{slug}/"
         region_paths.append(path)
         add(path, t, d, b, maps=needs_map, recs=by_slug[slug]["records"])
+    # A place the site holds a box for and no trail is in: a page that says so, and what was left out there.
+    left_out = leftout.load_entries(repo_root)
+    for key in regions.empty_places(records):
+        t, d, b = regions.empty_place_page(key, records, site, left_out)
+        path = facets.place_path(key)
+        region_paths.append(path)
+        add(path, t, d, b)
     # The parts of the country (facets.PLACE_GROUPS), each a page of its own.
     for g, _, _ in facets.PLACE_GROUPS:
         built = regions.group_page(g, records, site)

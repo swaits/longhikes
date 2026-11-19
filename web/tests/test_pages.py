@@ -17,7 +17,7 @@ WEB = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(WEB)
 sys.path.insert(0, WEB)
 
-from olt import home, layout, pages, records, site, trail, words  # noqa: E402
+from olt import home, layout, pages, records, regions, site, trail, words  # noqa: E402
 
 OUT = os.path.join(WEB, ".cache", "test-site")
 
@@ -570,7 +570,8 @@ class RenderUnitTest(unittest.TestCase):
             # sources, logos, about, data, schema, changelog, left out, saved (no list holds MIN_SIZE trails),
             # and the two reference pages, the glossary and the method (the tables, authors, recent and
             # linked-trails pages need at least MIN_SIZE trails and are not built for one)
-            self.assertEqual(n, 18)
+            # and a page for each state and province with no listed trail (regions.empty_places)
+            self.assertEqual(n, 18 + len(regions.empty_places([rec])))
             with open(os.path.join(out, "trails", "x", "index.html"), encoding="utf-8") as f:
                 self.assertIn("A &amp; B", f.read())
             with open(os.path.join(out, "index.html"), encoding="utf-8") as f:

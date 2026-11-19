@@ -102,10 +102,15 @@ def _opening(entries, site):
     return Markup(" ".join(parts))
 
 
-def left_out_page(entries, site, repo_root):
-    """(title, description, body) for /left-out/, from left-out.toml entries."""
-    bread = Markup('<nav class="breadcrumb" aria-label="Breadcrumb"><ol>'
-                   '<li><a href="/about/">About</a></li>')
+def entries_for_place(entries, key):
+    """The entries whose regions include the place `key` ("US-HI", "CA-MB")."""
+    return [e for e in entries
+            if key in {words.region_key(str(c), e.get("country", "")) for c in e.get("regions", [])}]
+
+
+def groups_html(entries):
+    """The entries as the page shows them: a section for each reason, in REASON_ORDER, with the
+    reason's heading and meaning over its rows. Used by /left-out/ and by the page of a place."""
     groups = ""
     for reason in REASON_ORDER:
         listed = [e for e in entries if e.get("reason") == reason]
@@ -131,6 +136,14 @@ def left_out_page(entries, site, repo_root):
   <p>{esc(meaning)}</p></div>
   {pagekit.plain_list(items)}
 </section>"""
+    return groups
+
+
+def left_out_page(entries, site, repo_root):
+    """(title, description, body) for /left-out/, from left-out.toml entries."""
+    bread = Markup('<nav class="breadcrumb" aria-label="Breadcrumb"><ol>'
+                   '<li><a href="/about/">About</a></li>')
+    groups = groups_html(entries)
     body = f"""<div class="page-head"><div class="container">{bread}<li aria-current="page">Considered and left out</li></ol></nav><header class="titleblock">
   <div class="titleblock__text"><h1>Considered and left out</h1>
   <p class="page-head__lede">Trails and routes that were looked at for this dataset and left out, and why.</p>

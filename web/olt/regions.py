@@ -6,7 +6,7 @@ The section is called Places; its pages keep their /regions/ URLs.
 """
 import collections
 
-from . import bounds, browse, common, facets, home, summary, words
+from . import bounds, browse, common, facets, home, leftout, summary, words
 from .markup import Markup, esc
 
 
@@ -31,6 +31,55 @@ def collect_regions(records):
         info["records"].sort(key=home.sort_name)
     across.sort(key=home.sort_name)
     return by_slug, across
+
+
+def empty_places(records):
+    """The keys ("US-HI", "CA-MB") of the states, provinces and territories the site holds a box for
+    (place-bounds.toml) that no listed trail is in, by name. Each has a page that says so
+    (empty_place_page); none is a choice of any filter, since none matches a trail."""
+    by_slug, _ = collect_regions(records)
+    return sorted((k for k in bounds.boxes() if k.lower() not in by_slug), key=facets.place_name)
+
+
+def empty_place_page(key, records, site, entries):
+    """(title, description, body) for /regions/<us-xx or ca-xx>/ of a place with no listed trail: the
+    plain fact, what the left-out list holds for the place (entries: left-out.toml's, as the left-out
+    page shows them), and the way to the whole list and the rules. No map: there is nothing to draw."""
+    name = facets.place_name(key)
+    country = words.COUNTRIES[key.split("-", 1)[0]]
+    group = facets.GROUP_OF.get(key, "")
+    group_name = facets.GROUP_NAME.get(group, "")
+    crumbs = '<li><a href="/regions/">Places</a></li>'
+    if group and group_records(records, group):
+        crumbs += f'<li><a href="{esc(group_path(group))}">{esc(group_name)}</a></li>'
+    here = leftout.entries_for_place(entries, key)
+    n = len(here)
+    if n:
+        left = (f"{n} {'trail' if n == 1 else 'trails'} considered here "
+                f"{'was' if n == 1 else 'were'} left out, with the reason for each below.")
+    else:
+        left = f"Nothing in {esc(name)} is on the left-out list either."
+    body = f"""<div class="page-head"><div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{crumbs}<li aria-current="page">{esc(name)}</li></ol></nav>
+  <header class="titleblock"><div class="titleblock__text">
+  <p class="kicker">{esc(group_name + " · " if group_name else "")}{esc(country)}</p>
+  <h1>{esc(name)}</h1>
+  <p class="page-head__lede">No trail of 50 miles or more is listed in {esc(name)}.</p>
+  </div></header>
+</div></div>
+<div class="container section place left-out">
+  <p class="prose">{left} See everything <a href="{leftout.PATH}">considered and left out</a>, and
+  <a href="/about/#how-trails-are-chosen">how trails are chosen</a>.</p>
+  {leftout.groups_html(here)}
+</div>"""
+    title = f"No Long Trails Listed in {name}"
+    if n:
+        description = (f"No trail of 50 miles or more is listed in {name}, {country}. "
+                       f"{n} {'trail' if n == 1 else 'trails'} considered there "
+                       f"{'was' if n == 1 else 'were'} left out, with the reason for each.")
+    else:
+        description = f"No trail of 50 miles or more is listed in {name}, {country}, and none considered there was left out."
+    return title, common.cut_at_word(description, common.DESCRIPTION_LIMIT), Markup(body)
 
 
 def group_box(g, by_slug):
@@ -125,6 +174,11 @@ def regions_index_page(records, site):
   <p class="places__sum">{_plural(len(across))} that {"crosses" if len(across) == 1 else "cross"} the whole country rather than one province: {links}.
   {"It is" if len(across) == 1 else "They are"} counted in every Canadian group, and on no single province&rsquo;s page.</p>
 </section>"""
+    none = empty_places(records)
+    foot = ""
+    if none:
+        links = ", ".join(f'<a href="{esc(facets.place_path(k))}">{esc(facets.place_name(k))}</a>' for k in none)
+        foot = f'\n<div class="container"><p class="places__sum">Places with no listed trail: {links}.</p></div>'
     n_us = sum(1 for r in records if "US" in common.countries(r))
     n_ca = sum(1 for r in records if "CA" in common.countries(r))
     body = f"""<div class="page-head"><div class="container"><header class="titleblock">
@@ -133,7 +187,7 @@ def regions_index_page(records, site):
   United States ({n_us}) and Canada ({n_ca}). A trail that crosses several states is on each one&rsquo;s page.</p>
   </div></header>
   <nav class="lists-row" aria-label="Jump to a part of the country"><ul>{"".join(jump)}</ul></nav></div></div>
-<div class="container section places">{blocks}</div>"""
+<div class="container section places">{blocks}</div>{foot}"""
     description = (f"Where the {len(records)} long trails and routes are: {n_us} in the United States and {n_ca} in Canada, "
                    f"by state and province, with the number in each.")
     return "Long Trails by State and Province: US and Canada", common.cut_at_word(description, common.DESCRIPTION_LIMIT), Markup(body)

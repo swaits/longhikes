@@ -1715,6 +1715,8 @@
     var count = resultsRoot.querySelector('.results-count');
     var noun = (count && count.dataset.noun) || 'trails';
     var empty = resultsRoot.querySelector('.empty-state');
+    var unseasoned = resultsRoot.querySelector('[data-unseasoned]');
+    var unseasonedText = resultsRoot.querySelector('[data-unseasoned-text]');
     var active = form.querySelector('.filters__active');
     var lenHint = document.getElementById('len-hint');
     var listHead = resultsRoot.querySelector('.list-head');
@@ -2088,6 +2090,17 @@
         count.appendChild(document.createTextNode(' ' + words));
       }
       if (empty) empty.hidden = shown.length > 0;
+      /* With a month chosen, say how many trails that pass everything else are left out for having no
+         season on file, counted over the same rows as the list. */
+      if (unseasoned && el.month) {
+        var noSeason = 0;
+        if (s.month) rows.forEach(function (d) { if (!d.months.length && FacetCount.passes(d, s, 'month')) noSeason++; });
+        unseasoned.hidden = noSeason === 0;
+        if (noSeason) {
+          unseasonedText.textContent = noSeason + (noSeason === 1 ? ' trail with no season on file is not shown.'
+                                                                   : ' trails with no season on file are not shown.');
+        }
+      }
       if (listHead) listHead.hidden = shown.length === 0;
       relabel(s, c);
       setText(lenHint, describeLength(s));
@@ -2115,6 +2128,14 @@
     form.addEventListener('change', function () { apply(true); });
     form.addEventListener('submit', function (e) { e.preventDefault(); });
     form.addEventListener('reset', function () { setTimeout(function () { apply(true); }, 0); });
+    resultsRoot.querySelectorAll('[data-unseasoned-show]').forEach(function (b) {
+      /* Showing them is clearing the month; the rest of the filters stay. */
+      b.addEventListener('click', function () {
+        if (!el.month) return;
+        el.month.value = '';
+        el.month.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
     resultsRoot.querySelectorAll('[data-reset]').forEach(function (b) {
       b.addEventListener('click', function () { form.reset(); el.q.focus(); });
     });

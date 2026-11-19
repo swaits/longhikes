@@ -618,13 +618,18 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
     tools = sort_select(default_sort, saved=saved, ranked=ranked, wholly=wholly)
     dflt = SAVED_ORDER[0] if saved else "rank" if ranked else HERE_ORDER if wholly else default_sort
     finder_attr = " data-finder" if finder else ""
+    # Under the count, while a month is chosen: how many trails are left out for having no season on
+    # file, and a way to see them (app.js fills it in from the rows, the same ones the list is).
+    unseasoned = ('\n      <p class="results-note" data-unseasoned hidden><span data-unseasoned-text></span> '
+                  '<button class="results-note__show" type="button" data-unseasoned-show>Show them</button></p>'
+                  if finder else "")
     return Markup(f"""<div class="results"{finder_attr} data-sortable data-default-sort="{esc(dflt)}">
       <div class="results-head">
         {count}
         <div class="results-tools">
           {tools}
         </div>
-      </div>
+      </div>{unseasoned}
       {key(official=not only_routes)}
       {list_head(default_sort)}{lists}{empty}
     </div>""")

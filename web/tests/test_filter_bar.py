@@ -365,5 +365,46 @@ class PanelInTheFlowTest(unittest.TestCase):
         self.assertIn("if (window.location.hash === '#filters') showPanels(true);", js)
 
 
+class UnseasonedNoteTest(unittest.TestCase):
+    """A month filter says how many trails it leaves out for having no season on file."""
+
+    def test_a_finder_list_has_the_note_and_it_starts_hidden(self):
+        recs = recordsmod.load_records(ROOT)
+        body = str(home.results(recs, finder=True))
+        self.assertIn('<p class="results-note" data-unseasoned hidden>', body)
+        self.assertIn('data-unseasoned-show>Show them</button>', body)
+        self.assertNotIn("data-unseasoned", str(home.results(recs)))
+
+    def test_the_script_counts_it_over_the_rows_of_the_list_and_show_them_clears_the_month(self):
+        js = read(WEB, "assets", "app.js")
+        self.assertIn("if (!d.months.length && FacetCount.passes(d, s, 'month')) noSeason++;", js)
+        self.assertIn("' trails with no season on file are not shown.'", js)
+        self.assertIn("el.month.value = '';", js)
+
+    @unittest.skipUnless(NODE, "node is not installed")
+    def test_the_number_is_the_trails_that_pass_everything_else_and_have_no_season(self):
+        recs = recordsmod.load_records(ROOT)
+        rows = rows_of(home.render(recs, SITE, ROOT))
+        prog = facet_count_source() + """
+var input = JSON.parse(require('fs').readFileSync(0, 'utf8'));
+input.s.max = Infinity;
+var n = 0, shown = 0;
+input.rows.forEach(function (d) {
+  if (FacetCount.passes(d, input.s, '')) shown++;
+  else if (!d.months.length && FacetCount.passes(d, input.s, 'month')) n++;
+});
+process.stdout.write(JSON.stringify([shown, n]));
+"""
+        for s in (state(month="8"), state(month="8", kind="route"), state(month="8", where="US-CA")):
+            out = subprocess.run([NODE, "-e", prog], input=json.dumps({"rows": rows, "s": s}),
+                                 capture_output=True, text=True, check=True)
+            shown, n = json.loads(out.stdout)
+            def base(r):
+                return ((not s["kind"] or facets.kind(r) == s["kind"])
+                        and (not s["where"] or s["where"] in facets.where_tokens(r)))
+            self.assertEqual(shown, sum(1 for r in recs if base(r) and 8 in facets.months(r)))
+            self.assertEqual(n, sum(1 for r in recs if base(r) and not facets.months(r)))
+
+
 if __name__ == "__main__":
     unittest.main()

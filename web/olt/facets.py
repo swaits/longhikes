@@ -292,6 +292,11 @@ def gpx_status_text(rec):
     status = gpx(rec)
     if status == "sold" and not common.sells_gpx(rec):
         return "Not here, sold as a guide"
+    if status == "elsewhere":
+        # What the page really offers is read from the same link the page's button uses.
+        from . import trail
+        return {"guide": "Not here, see the guide", "": "Not here"}.get(trail.see_kind(rec),
+                                                                       GPX_STATUS[status])
     return GPX_STATUS[status]
 
 

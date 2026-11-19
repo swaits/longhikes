@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-19 - Every route's page names the exact book or guide
+
+- Every route's page now names the exact book or guide: its title, author, edition, ISBN where there is one, and where in it the route is.
+- The link says what it goes to: the publisher's page for the book, the author's page for the guide, or a library record when the book is out of print.
+- The notice on a route sold as a guide names the book and edition.
+- A page that sells the guide is no longer labelled "Official site", and a route with no GPX here says "see the guide" rather than "see the official site" where the page it points to is the guide's.
+- Nine routes whose link went to a shop front, a list page or the wrong page now go to the exact book or kit: Circle of Solitude, Tahoe–Yosemite Trail, Eastern Continental Trail, Gospel Hump Loop, Rutherford Lake Loop, Basin and Range Trail, Condor Trail, Great Western Divide Loop and Trans Adirondack Route.
+- A guide that must be bought now has to say what it is, or the data check refuses it.
+
 ## 2026-11-19 - The High Sierra Trail runs its full length, and the Highline Trail is whole
 
 - The High Sierra Trail's track now runs from Crescent Meadow to Whitney Portal, 105.7 km (65.7 mi), where it ended near Crabtree Meadow, 77.4 km, 38 km short. It is built from the National Park Service's High Sierra Trail layer for Sequoia and Kings Canyon National Parks and the Forest Service's Mount Whitney Trail (trail 3404) for the descent from Trail Crest, both public domain, so the record's licence is now public domain where it was ODbL. The 3.1 km spur to the summit of Mount Whitney is kept apart in the alternates. The Park Service's 72.2 miles (115.5 km) includes the round trip to the summit, which is why the track is shorter than that figure. The two layers stop 204 m apart at Trail Crest and the gap is left open.

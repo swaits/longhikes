@@ -196,6 +196,15 @@ def sold_guide_page(rec, url):
 GUIDE_LABELS = set(LINK_IS_TEXT.values()) | {"The guide's page", "The route's guide"}
 
 
+def see_kind(rec):
+    """What a page with no GPX here sends the reader to: "guide" when its link is a guide's,
+    "" when it has no link at all, else "official"."""
+    link = official_link(rec)
+    if not link:
+        return ""
+    return "guide" if link[1] in GUIDE_LABELS else "official"
+
+
 def _see_clause(rec):
     """", so see the official site", or ", so see the guide" when the page on offer is a guide's."""
     link = official_link(rec)

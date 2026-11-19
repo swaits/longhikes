@@ -61,6 +61,9 @@ url = "https://www.abebooks.com/9781983447525/Siskiyou-Peaks-Trail-Ashland-Shast
 format = "book"
 publisher = "CreateSpace Independent Publishing Platform"
 isbn = "9781983447525"
+edition = "2017 paperback"
+where = "The whole book: this route is its one subject"
+link_is = "seller"
 
 [hike]
 summary = "The Siskiyou Peaks Trail is a 448-mile route from Ashland, Oregon, to Mt Shasta, California, that reaches the highest point in each of seven wilderness areas. It follows a mix of backcountry roads and trails, passes more than 40 glacial cirque lakes, and its last summit is Mt Shasta, which has no trail to its top. Aria Zoner worked it out and first walked it in 2013."
@@ -112,5 +115,14 @@ change = "The record was added: the Siskiyou Peaks Trail, 448 miles (721 km) fro
 fields = ["record"]
 basis = "The author's route page gives the length as 448 miles and Mt Shasta as the final summit, and the guidebook's listing credits the route to Aria Zoner. The guide's description of the equipment needed is worded two ways by booksellers, and the author's own pages do not state it; the record says so in its caution. The end is placed at the town of Mt Shasta, as the guidebook's title writes it; the pages read do not say whether the route finishes at the summit or in the town."
 basis_url = "https://outsideways.com/routes/us/siskiyou-peaks-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says its edition (the 2017 paperback), where the route is in it (the whole book) and what its link points at (a bookseller's listing, since the guide's address is the AbeBooks listing)."
+fields = ["guide"]
+basis = "The AbeBooks listing gives the 2017 CreateSpace paperback with ISBN 9781983447525, and the book's whole subject is this route. The address the record already holds is that bookseller's listing, so the link is marked as a seller's page."
+basis_url = "https://www.abebooks.com/9781983447525/Siskiyou-Peaks-Trail-Ashland-Shasta-1983447528/plp"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -154,7 +154,7 @@ class TrailPageTest(unittest.TestCase):
         self.assertNotIn("Where the hiking facts come from", body)
         # no track: the page says so plainly and points at the source
         self.assertIn("No GPX here", t)
-        self.assertIn("GPX Not here, see the official site", t)
+        self.assertIn("GPX Not here", t)
         self.assertIn('href="#track"', top)
         self.assertIn('id="track"', top)
 

@@ -13,16 +13,16 @@ wave = 1
 
 [source]
 status = "none"
-publisher = "Wilderness Press (publishes the route in the guidebook)"
-url = "https://shop.adventurewithkeen.com/wilderness-press/"
+publisher = "Wilderness Press (publishes the route in the guidebook); the page that credits the book is fastestknowntime.com's"
+url = "https://fastestknowntime.com/route/circle-solitude"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://shop.adventurewithkeen.com/wilderness-press/, read 2026-11-10)."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://fastestknowntime.com/route/circle-solitude, read 2026-11-19)."
 attribution = "none (no line included)"
 osm_only = false
 mainline = "No track is included; whether the creator shares one is not settled."
-source_checked = "2026-11-10"
+source_checked = "2026-11-19"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
@@ -36,7 +36,7 @@ note = "Not recorded: whether the creator shares the track is not settled."
 status = "no-logo-exists"
 logo_source = ""
 contact = "Mike White"
-note = "No emblem of the route exists at an allowed source. The route is a named loop in Mike White's Wilderness Press guidebook Kings Canyon National Park; the publisher's page https://shop.adventurewithkeen.com/wilderness-press/ was read and is a bookshop listing with no mark for this route, and the author publishes no route page of his own. A route known only as a guidebook name has no crest, badge or blaze of its own."
+note = "No emblem of the route exists at an allowed source. The route is a named loop in Mike White's Wilderness Press guidebook Kings Canyon National Park; fastestknowntime.com's page for the route (https://fastestknowntime.com/route/circle-solitude), which credits the book, was read and shows no mark for this route, and the author publishes no route page of his own. A route known only as a guidebook name has no crest, badge or blaze of its own."
 logo_file = ""
 logo_owner = "Mike White"
 
@@ -69,19 +69,14 @@ permit = "A Sequoia and Kings Canyon National Parks wilderness permit is needed 
 checked = "2026-11-19"
 
 [[hike.source]]
-url = "https://shop.adventurewithkeen.com/wilderness-press/"
-publisher = "Wilderness Press (the publisher's page, the one the route note rests on): the route starts from Road's End in Kings Canyon"
-facts = ["summary", "start"]
-
-[[hike.source]]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=279697028"
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Roads End Permit Station, at Road's End, OpenStreetMap way 279697028"
 facts = ["start_lonlat"]
 
 [[hike.source]]
 url = "https://fastestknowntime.com/route/circle-solitude"
-publisher = "fastestknowntime.com (its page for the route says it starts and ends at Road's End)"
-facts = ["shape"]
+publisher = "fastestknowntime.com (its page for the route: a loop of about 68 miles that starts and ends at Road's End, by Avalanche Pass, Colby Pass and Forester Pass, named and described by Mike White in his Wilderness Press guide Kings Canyon National Park)"
+facts = ["summary", "start", "shape"]
 
 [[hike.source]]
 url = "https://www.nps.gov/seki/planyourvisit/trailcond.htm"
@@ -142,4 +137,13 @@ fields = ["guide", "route.note"]
 basis = "The Open Library record gives Kings Canyon National Park, A Complete Hiker's Guide, Wilderness Press, March 2004, 305 pages, ISBN 9780899973357. The credit to this book is on fastestknowntime.com's page for the route; no contents list confirms the route is in it."
 basis_url = "https://openlibrary.org/books/OL8277201M"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The shop front of the book's publisher is no longer cited. It supports no fact here, so the source and the shield note now rest on the fastestknowntime.com page that credits the book, and the summary and the start are listed under that page."
+fields = ["source", "shield.note", "hike.source"]
+basis = "The shop page is a list of the publisher's books and says nothing about this route. The fastestknowntime.com page for the route names the Mike White guide Kings Canyon National Park, the loop of about 68 miles from Road's End, and Avalanche, Colby and Forester Passes. The book itself is identified by its Open Library record. No fact was left without a source."
+basis_url = "https://fastestknowntime.com/route/circle-solitude"
+asked_by = "the owner of the dataset"
 outcome = "applied"

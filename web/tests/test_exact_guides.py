@@ -83,6 +83,21 @@ class ExactGuideTest(unittest.TestCase):
         rec["guide"] = [dict(BOOK, access="free", url="https://author.example/route", link_is="author")]
         self.assertEqual(trail.official_link(rec)[1], "Official site")
 
+    def test_the_no_gpx_wording_follows_what_the_page_offers(self):
+        from olt import facets
+        unclear = {"creator": "A", "line_policy": "unclear"}
+        rec = route(hike={"official_url": "https://author.example/route"}, route=unclear)
+        self.assertEqual(facets.gpx(rec), "elsewhere")
+        self.assertEqual(facets.gpx_status_text(rec), "Not here, see the official site")
+        rec = route(hike={"official_url": "https://shop.example/sierra-south"}, route=unclear)
+        self.assertEqual(facets.gpx_status_text(rec), "Not here, see the guide")
+        rec = route(route=unclear)
+        self.assertEqual(facets.gpx_status_text(rec), "Not here, see the guide")
+        rec = route(route=unclear, guide=None)
+        rec["guide"] = []
+        self.assertEqual(facets.gpx_status_text(rec), "Not here")
+        self.assertNotIn("official site", facets.gpx_status_text(route(route=unclear)))
+
 
 if __name__ == "__main__":
     unittest.main()

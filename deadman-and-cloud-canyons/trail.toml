@@ -49,14 +49,14 @@ note = "No line to measure."
 creator = "Elizabeth Wenk and Mike White"
 year = 2021
 line_policy = "sold"
-note = "Trip 25 in the book (9th edition, 2021). A semiloop from the Twin Lakes Trailhead at Lodgepole Campground to the Roaring River Ranger Station, then a loop by Deadman Canyon, Elizabeth Pass, Kaweah Gap, Big Arroyo, the Kern River canyon and Colby Pass to Cloud Canyon, with 113.4 miles in the book. About 47 miles of it, from the Roaring River Ranger Station through Deadman Canyon and Kaweah Gap to Junction Meadow, are shared with the Big SEKI Loop by the dataset's own check against that record's track. The book's maps are the track; none is copied here."
+note = "Trip 25 in the book, on page 149 (9th edition, 2021). A semiloop from the Twin Lakes Trailhead at Lodgepole Campground to the Roaring River Ranger Station, then a loop by Deadman Canyon, Elizabeth Pass, Kaweah Gap, Big Arroyo, the Kern River canyon and Colby Pass to Cloud Canyon, with 113.4 miles in the book. About 47 miles of it, from the Roaring River Ranger Station through Deadman Canyon and Kaweah Gap to Junction Meadow, are shared with the Big SEKI Loop by the dataset's own check against that record's track. The book's maps are the track; none is copied here."
 
 [[guide]]
 title = "Sierra South: Backcountry Trips in California's Sierra Nevada"
 author = "Elizabeth Wenk and Mike White"
 access = "purchase"
 url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
-format = "book, 9th edition, 2021; the route is Trip 25"
+format = "book, 9th edition, 2021; the route is Trip 25, on page 149"
 price = "$21.95"
 price_checked = "2026-11-18"
 publisher = "Wilderness Press"
@@ -79,7 +79,7 @@ checked = "2026-11-18"
 
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
-publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 25 of the 9th edition, 2021, read from the owner's copy"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 25, on page 149 of the 9th edition, 2021, read from the owner's copy"
 facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
 
 [[hike.source]]
@@ -105,5 +105,14 @@ change = "The length note now gives only the published length and says which str
 fields = ["length_note"]
 basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now gives the page of the trip in the book: Trip 25 is on page 149 of the 9th edition."
+fields = ["guide", "route.note"]
+basis = "The contents listing of Sierra South: Backcountry Trips in California's Sierra Nevada, by Elizabeth Wenk and Mike White (Wilderness Press, 9th edition, 2021, ISBN 978-0-89997-884-0), gives the trip's title and page."
+basis_url = "https://www.gbv.de/dms/bowker/toc/9780899978840.pdf"
 asked_by = "the dataset's own check"
 outcome = "applied"

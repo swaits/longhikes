@@ -47,7 +47,8 @@ note = "No track to measure. No OpenStreetMap relation was found."
 [hike]
 summary = "The Bayou State Trail crosses Louisiana from Bodcau Wildlife Management Area in the north to Morgan City in the south. It passes through public lands such as Kisatchie National Forest and Chicot State Park, then the Atchafalaya Basin and Cajun towns. The Bayou State Trail Association, formed in 2021, published the route in August 2024."
 official_url = "https://www.bayoustatetrail.com/"
-start = "Bodcau Wildlife Management Area, Louisiana"
+start = "Ivan Lake Recreation Area, Bodcau Wildlife Management Area, Louisiana"
+start_lonlat = [-93.493, 32.831]
 end = "Morgan City, Louisiana"
 end_lonlat = [-91.207, 29.699]
 shape = "point-to-point"
@@ -73,12 +74,17 @@ facts = ["summary", "shape"]
 [[hike.source]]
 url = "https://www.bayoustatetrail.com/about"
 publisher = "Bayou State Trail Association"
-facts = ["summary", "terrain"]
+facts = ["summary", "start", "terrain"]
 
 [[hike.source]]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=R&osmid=131919"
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Morgan City, OpenStreetMap relation 131919"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://services1.arcgis.com/fXHQyq63u0UsTeSM/ArcGIS/rest/services/LDWF_Boat_Launches/FeatureServer/0"
+publisher = "Louisiana Department of Wildlife and Fisheries, boat launches layer: Ivan Lake Boat Ramp on Ivan Lake Road, inside Ivan Lake Recreation Area; the point is the wildlife agency's boat ramp, not a surveyed trailhead"
+facts = ["start_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -106,5 +112,14 @@ change = "The position of the end was added, so that the page can show a map of 
 fields = ["hike.end_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Morgan City, OpenStreetMap relation 131919."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=R&osmid=131919"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The start is now named as Ivan Lake Recreation Area in Bodcau Wildlife Management Area, and its position was added, at the boat ramp inside the recreation area, so that the page can show a map of the whole trail."
+fields = ["hike.start", "hike.start_lonlat"]
+basis = "The association's about page names Ivan Lake Recreation Area as the northern start, and the Louisiana Department of Wildlife and Fisheries' boat launches layer gives the position of the Ivan Lake Boat Ramp on Ivan Lake Road."
+basis_url = "https://www.bayoustatetrail.com/about"
 asked_by = "the dataset's own check"
 outcome = "applied"

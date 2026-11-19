@@ -50,6 +50,7 @@ official_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrier
 start = "Nigel Creek trailhead, Jasper National Park, Alberta"
 start_lonlat = [-117.038, 52.166]
 end = "Rocky Pass trailhead, Alberta"
+end_lonlat = [-117.232, 52.890]
 shape = "point-to-point"
 days = [7, 10]
 season = "The trail can be hiked late into the season, to early October; the Brazeau and Poboktan portions are closed from November 1 to May 15 for caribou conservation"
@@ -75,6 +76,11 @@ url = "https://geogratis.gc.ca/services/geoname/en/geonames/IANPN"
 publisher = "Natural Resources Canada, Canadian Geographical Names Database"
 facts = ["start_lonlat"]
 
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=363050778"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): the parking lot on Forestry Trunk Road 734, 1.7 km past Cardinal Divide, OpenStreetMap way 363050778; it is the trailhead parking lot that Parks Canada's directions describe"
+facts = ["end_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -92,5 +98,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/south-boundary"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The position of the end was added, at the trailhead parking lot beyond Cardinal Divide, so that the page can show a map of it."
+fields = ["hike.end_lonlat"]
+basis = "Parks Canada's page for the trail puts the trailhead parking lot 1.7 km down the far side of Cardinal Divide, on the west side of the road; OpenStreetMap contributors (ODbL) map the one parking lot there, OpenStreetMap way 363050778."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=363050778"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -5,7 +5,7 @@ name = "Silver Moccasin Trail"
 country = "US"
 regions = ["CA"]
 length_km = 82
-length_note = "51 mi, the Length field of the National Recreation Trails database record for the trail, which comes from its 1979 application and may be out of date. The same record's description says 53 mi, as do Wikipedia and Fastest Known Time. David Harris's chapter in Backpacking California (3rd edition, 2020, Trip 12) gives 51.7 mi one way, which includes the walk by the bypass of the closed stretch and 2.6 mi on the shoulder of Highway 2. About 55% of the trail, from Three Points to Vincent Gap, is the Pacific Crest Trail."
+length_note = "51 mi, the Length field of the National Recreation Trails database record for the trail, which comes from its 1979 application and may be out of date. The same record's description says 53 mi, as do Wikipedia and Fastest Known Time. David Harris's chapter in Backpacking California (3rd edition, 2020, Trip 12, page 67) gives 51.7 mi one way, which includes the walk by the bypass of the closed stretch and 2.6 mi on the shoulder of Highway 2. About 55% of the trail, from Three Points to Vincent Gap, is the Pacific Crest Trail."
 tier = "regional"
 designation = "National Recreation Trail in the Angeles National Forest, from Chantry Flat to Vincent Gap; about 55% of it, from Three Points to Vincent Gap, is the Pacific Crest Trail, a longer listed trail"
 wave = 1
@@ -78,7 +78,7 @@ facts = ["caution"]
 
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/product/backpacking-california/"
-publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 12 (David Harris) in the 3rd edition, 2020"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 12 (David Harris), on page 67 of the 3rd edition, 2020"
 facts = ["summary", "days", "season", "months", "terrain", "travel", "caution"]
 
 [[hike.source]]
@@ -101,5 +101,14 @@ change = "The record was added: the Silver Moccasin Trail, 51 miles (82 km) from
 fields = ["record"]
 basis = "The National Recreation Trails database gives the trail's length as 51 miles, from Chantry Flat to Vincent Gap. The trail has its own name and its own published length, and is listed even though about 55% of it lies on the Pacific Crest Trail. The track is the relation less three ways that lead away from the trail, and measures 50.8 miles."
 basis_url = "https://www.nrtapplication.org/trails/silver-moccasin"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The page of the trail's chapter in Backpacking California is now given: Trip 12 is on page 67 of the 3rd edition."
+fields = ["length_note", "hike.source"]
+basis = "The contents listing of Backpacking California (Wilderness Press, 3rd edition, 2020, ISBN 978-0-89997-958-8) gives the title Silver Moccasin Trail on page 67."
+basis_url = "https://www.gbv.de/dms/bowker/toc/9780899979588.pdf"
 asked_by = "the dataset's own check"
 outcome = "applied"

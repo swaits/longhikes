@@ -75,8 +75,10 @@ format = "map set with breadcrumbs (not a continuous track)"
 [hike]
 summary = "The Sierra High Route is Steve Roper's timberline route through California's High Sierra from Kings Canyon National Park to northern Yosemite. It follows a general direction but no particular trail through the sub-alpine country. Its guidebook leads hikers point to point and favours cross-country travel over maintained trails."
 official_url = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
-start = "Kings Canyon National Park, California"
-end = "Northern Yosemite National Park, California"
+start = "Road's End, Kings Canyon National Park"
+start_lonlat = [-118.583, 36.795]
+end = "Mono Village at Twin Lakes, near Bridgeport"
+end_lonlat = [-119.379, 38.144]
 shape = "point-to-point"
 terrain = ["alpine", "lakes"]
 travel = "mostly-cross-country"
@@ -92,6 +94,16 @@ facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"
 url = "https://backpackingroutes.com/category/difficult-terrain/page/3/"
 publisher = "Backpacking Routes"
 facts = ["days"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=279697028"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Roads End Permit Station, at Road's End, OpenStreetMap way 279697028; the route leaves Road's End by the Copper Creek Trail"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/horse-creek-trailhead"
+publisher = "USDA Forest Service, Humboldt-Toiyabe National Forest (public domain): Horse Creek Trailhead, just past Mono Village at Twin Lakes"
+facts = ["end_lonlat"]
 
 [[link]]
 title = "Sierra High Route"
@@ -115,5 +127,14 @@ change = "The route's year is now 1982, the date of the guidebook's first editio
 fields = ["route.year", "route.note"]
 basis = "The Open Library record for Timberline Country: The Sierra High Route (Sierra Club Books) gives 1982, and the National Diet Library of Japan's catalogue record gives the same year."
 basis_url = "https://openlibrary.org/isbn/0871562987"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The start and end are now placed at Road's End in Kings Canyon National Park and at Mono Village at Twin Lakes, near Bridgeport, as the guidebook gives them, with positions from OpenStreetMap and the Forest Service. The route leaves Road's End by the Copper Creek Trail."
+fields = ["hike.start", "hike.start_lonlat", "hike.end", "hike.end_lonlat"]
+basis = "The guidebook starts the route at Road's End and ends it just past Mono Village at Twin Lakes. OpenStreetMap contributors (ODbL) give the position of Road's End, and the Forest Service's page for the Horse Creek Trailhead, just past Mono Village, gives the position of the end."
+basis_url = "https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/horse-creek-trailhead"
 asked_by = "the dataset's own check"
 outcome = "applied"

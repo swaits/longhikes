@@ -1,9 +1,11 @@
 # Changelog
 
-## 2026-11-19 - Start and end points for sixteen trails
+## 2026-11-19 - Seventeen more trail pages show a map of their start and end
 
-- The pages for the Heart Lake & Two Ocean Plateau Loop, the Circle of Solitude, the Bitterroots 80-mile Route, the Wind River High Route (Skurka), the Eagle Cap Traverse, the Mogollon Rim Trail, the North Boundary, the International Appalachian Trail in Maine, the Pfiffner Traverse, the Oregon Desert Trail and the Great Western Loop now show a map of their start and end, from Forest Service, National Park Service and OpenStreetMap positions.
-- Start or end points were added to the Boreal Trail, the Teton Crest Route and the Deseret Hiking Route, which still lack the other end. The Waskahegan Trail is now recorded as a loop, and the Sierra High Route now gives 1982 as the year of its guidebook's first edition.
+- Seventeen trail pages now show a map of their start and end: the Heart Lake & Two Ocean Plateau Loop, the Circle of Solitude, the Bitterroots 80-mile Route, the Wind River High Route (Skurka), the Teton Crest Route, the Eagle Cap Traverse, the Mogollon Rim Trail, the North Boundary, the South Boundary, the Cottonwood Trail, the International Appalachian Trail in Maine, the Pfiffner Traverse, the Oregon Desert Trail, the Sierra High Route, the Sycamore Canyon loop, the Bayou State Trail and the Great Western Loop. The positions come from Forest Service, National Park Service and other agency pages and from OpenStreetMap.
+- The Boreal Trail, the Deseret Hiking Route and the Hayduke Trail gained a start or an end and still lack the other. The Waskahegan Trail is now recorded as a loop, with no start, because it has no official one.
+- The Sierra High Route now starts at Road's End in Kings Canyon National Park and ends at Mono Village at Twin Lakes, as its guidebook gives them, and gives 1982 as the year of the guidebook's first edition.
+- Five guidebook records now give the page of the trip in the book: Deadman and Cloud Canyons, Milestone Basin and the Upper Kern and South Lake to North Lake in Sierra South, and Silver Moccasin Trail and South Lake to North Lake in Backpacking California.
 
 ## 2026-11-18 - Great Western Divide Loop maps its trailhead
 

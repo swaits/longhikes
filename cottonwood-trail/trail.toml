@@ -50,6 +50,7 @@ official_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/c
 start = "Kathleen Lake day-use area, Yukon"
 end = "Mush Lake Road, Haines Highway, Yukon"
 start_lonlat = [-137.304, 60.575]
+end_lonlat = [-137.058, 60.372]
 shape = "point-to-point"
 days = [4, 6]
 season = "June to early September"
@@ -71,6 +72,11 @@ url = "https://geogratis.gc.ca/services/geoname/en/geonames/KADGP"
 publisher = "Natural Resources Canada (Canadian Geographical Names)"
 facts = ["start_lonlat"]
 
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=2182047607"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): the junction of Mush Lake Road and the Haines Highway, OpenStreetMap node 2182047607"
+facts = ["end_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -88,5 +94,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/cottonwood"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The position of the end was added, at the Haines Highway end of Mush Lake Road, so that the page can show a map of it."
+fields = ["hike.end_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): the junction of Mush Lake Road and the Haines Highway, OpenStreetMap node 2182047607, matched to the Mush Lake Road end that Parks Canada names."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=2182047607"
 asked_by = "the dataset's own check"
 outcome = "applied"

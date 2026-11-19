@@ -63,6 +63,7 @@ price_checked = "2026-11-16"
 summary = "The Teton Crest Route is a 59-mile traverse of most of Wyoming's Teton Range, from the Hominy Peak trailhead in the north to the Phillips Bench trailhead at Teton Pass in the south. It adds a northern extension and one cross-country link over Littles Peak to the designated Teton Crest Trail, which alone runs about 40 miles from Phillips Pass to String Lake and has its own record in this dataset. It also differs from the Teton Range Traverse in this dataset, which is longer and ends at Old Faithful."
 official_url = "https://wildernessmindset.com/teton-crest-trail/"
 start = "Hominy Peak trailhead, Wyoming"
+start_lonlat = [-110.960, 44.044]
 end = "Phillips Bench trailhead at Teton Pass, Wyoming"
 end_lonlat = [-110.927, 43.507]
 shape = "point-to-point"
@@ -88,6 +89,11 @@ facts = ["summary", "terrain", "travel"]
 url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/phillips-bench-trailhead"
 publisher = "USDA Forest Service, Bridger-Teton National Forest (public domain): Phillips Bench Trailhead"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_InfraRecreationSites_01/MapServer/0"
+publisher = "USDA Forest Service, Recreation Sites layer (public domain): Hominy Peak Trailhead"
+facts = ["start_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -116,5 +122,14 @@ change = "The position of the end was added, so that the page can show a map of 
 fields = ["hike.end_lonlat"]
 basis = "The Forest Service's page for the Phillips Bench Trailhead gives its position; the author's page names it as the south end of the route."
 basis_url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/phillips-bench-trailhead"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The position of the start was added, so that the page can show a map of both ends."
+fields = ["hike.start_lonlat"]
+basis = "The Forest Service's recreation sites layer lists a trailhead named Hominy Peak Trailhead and gives its position; the author's page names it as the start."
+basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_InfraRecreationSites_01/MapServer/0"
 asked_by = "the dataset's own check"
 outcome = "applied"

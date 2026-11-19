@@ -66,6 +66,7 @@ isbn = "978-0-89997-324-1"
 summary = "Sycamore Canyon is a six day backpacking loop in the Mogollon Rim country of northern Arizona, from the Sycamore Trailhead in the Coconino and Prescott National Forests. It goes up Sycamore Canyon past Parsons Spring to Geronimo Spring, then climbs onto the rim. It goes out by the Taylor Cabin Trail and returns by the Winter Cabin Trail, the Casner Mountain road and trail, and the Dogie, Sycamore Basin and Packard Mesa trails. Bruce Grubbs describes it as Trip 8 in Backpacking Arizona, and is not to be confused with other canyons of the same name."
 official_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 start = "Sycamore Trailhead, Coconino and Prescott National Forests, Arizona"
+start_lonlat = [-112.070, 34.864]
 shape = "loop"
 days = [6, 6]
 season = "March to November"
@@ -80,6 +81,11 @@ checked = "2026-11-18"
 url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 98-99 and the Featured Trips Summary Chart on page xiii of the 1st edition, 3rd printing, read from a printed copy"
 facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r03/coconino/recreation/trails/parsons-trail-no-144"
+publisher = "USDA Forest Service, Coconino National Forest (public domain): Parsons Trail No. 144, whose page gives the position of its trailhead at the end of Forest Road 131; the book's Sycamore Trailhead is this Parsons Trail trailhead, which the loop's last 0.2 mile returns to"
+facts = ["start_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -117,5 +123,14 @@ change = "The length note now gives only the published length and says which str
 fields = ["length_note"]
 basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The position of the start was added, at the Parsons Trail trailhead at the end of Forest Road 131, which is the Sycamore Trailhead of the book, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "The Forest Service's page for Parsons Trail No. 144 gives the GPS position of its trailhead at the end of Forest Road 131, and the record's own walk closes with 0.2 mile on the Parsons Trail to the trailhead where it starts."
+basis_url = "https://www.fs.usda.gov/r03/coconino/recreation/trails/parsons-trail-no-144"
 asked_by = "the dataset's own check"
 outcome = "applied"

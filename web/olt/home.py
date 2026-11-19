@@ -402,7 +402,7 @@ def finder_form(records, c=None, steps=None, where="all"):
   <div class="filters__bar">
     <div class="filters__search field">
       <label class="vh" for="q">Search</label>
-      <input class="input" id="q" name="q" type="search" placeholder="Search by name, abbreviation or author" autocomplete="off" spellcheck="false">
+      <input class="input" id="q" name="q" type="search" placeholder="Search by name, place or author" autocomplete="off" spellcheck="false">
     </div>
     <button class="button filters__toggle js-only" type="button" aria-expanded="false" aria-controls="filters-panels">Filters <span class="filters__count"></span></button>
     <button class="button button--quiet filters__clear" type="reset" hidden>Clear</button>

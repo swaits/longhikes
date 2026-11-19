@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-19 - Search reads more than the name, and lists can be sorted by distance
+
+- Search now reads more than a trail's name: its summary, the full names of the states, provinces and countries it lies in, where it starts and ends, the land unit or body that manages it, and a route's author. Matches in the name come first, and a row that matched elsewhere says where.
+- Every list can be sorted by "Nearest to me". The browser asks for your position once; it stays in the page and is never stored, sent or put in the address.
+- The search box's hint now reads "Search by name, place or author".
+
 ## 2026-11-19 - Easier browsing: places, shortcuts, the left-out list and corrections
 
 - Place and region pages now open with the trails that lie wholly in the place, then the ones that also lie elsewhere.

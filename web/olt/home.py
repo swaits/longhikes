@@ -7,7 +7,7 @@ attributes in olt/facets.py, under the same names the trail pages use.
 import collections
 import math
 
-from . import browse, common, datafiles, facets, hike, sketch, words
+from . import browse, common, datafiles, facets, hike, searchtext, sketch, words
 from .markup import Markup, esc
 
 # Length range choices for the filters, round in the unit they are written in.
@@ -151,7 +151,7 @@ def route_by_html(rec):
     return Markup(text)
 
 
-def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=False, lead=None, rank=None, more=(), by=None, here=None):
+def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=False, lead=None, rank=None, more=(), by=None, here=None, search=True):
     """One trail in a list. Its data-* attributes drive the filters in app.js.
 
     level: the heading level of the trail's name. extra: HTML placed last in the row.
@@ -167,6 +167,8 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
     names only the others a route is credited to); "" for none.
     here: 0 for a trail wholly in the place a place page is about, 1 for one that lies elsewhere too
     (data-here, the order that page opens in; see results()).
+    search: write the row's words for the search box (data-search, olt/searchtext.py); results() leaves
+    them out of a list with no search box over it.
 
     The Save star follows the name in the markup (so it is the next stop for the
     keyboard) but is drawn under the logo, out of the row's flow (style.css
@@ -174,8 +176,6 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
     """
     route = facets.kind(rec) == "route"
     lo, hi, est = facets.time_days(rec)
-    search = " ".join([rec["name"], rec.get("common_name", ""), rec.get("short_name", ""), rec["id"],
-                       facets.author(rec)]).lower()
     abbr = rec.get("short_name", "")
     abbr_cls = "entry__abbr" if common.shield_url(rec) else "entry__abbr vh"
     abbr_html = f' <span class="{abbr_cls}">{esc(abbr)}</span>' if abbr else ""
@@ -188,8 +188,10 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
         "climb": climb_m if climb_m is not None else "",
         "days": hi, "time": facets.time_band(rec), "months": " ".join(map(str, facets.months(rec))),
         "terrain": " ".join(facets.terrain(rec)), "kind": facets.kind(rec), "walking": facets.walking(rec),
-        "shape": facets.shape(rec), "gpx": facets.gpx(rec), "name": sort_name(rec), "search": search.strip(),
+        "shape": facets.shape(rec), "gpx": facets.gpx(rec), "name": sort_name(rec),
     }
+    if search:
+        data["search"] = searchtext.attribute(rec)
     attrs = "".join(f' data-{k}="{esc(v)}"' for k, v in data.items())
     if common.line_differs(rec):
         attrs += ' data-partial="yes"'
@@ -588,7 +590,7 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
                                 eager=not saved and seen + i < EAGER_ROWS,
                                 lead=lead(r) if lead else None, more=more(r) if more else (),
                                 rank=seen + i + 1 if ranked else None, by=by,
-                                here=(0 if wholly(r) else 1) if wholly else None) for i, r in enumerate(items))
+                                here=(0 if wholly(r) else 1) if wholly else None, search=finder) for i, r in enumerate(items))
         seen += len(items)
         if isinstance(heading, tuple):
             heading, intro = heading

@@ -234,7 +234,7 @@ def rows_of(body):
     for attrs in re.findall(r'<li class="entry"([^>]*)>', str(body)):
         d = {k: html.unescape(v) for k, v in re.findall(r' data-([a-z]+)="([^"]*)"', attrs)}
         split = lambda v: [x for x in v.split(" ") if x]  # noqa: E731
-        out.append({"id": d["id"], "search": d["search"], "where": split(d["where"]), "km": float(d["km"]),
+        out.append({"id": d["id"], "search": [" " + t + " " for t in d["search"].split("|")], "where": split(d["where"]), "km": float(d["km"]),
                     "time": d["time"], "months": split(d["months"]), "terrain": split(d["terrain"]),
                     "kind": d["kind"], "walking": d["walking"], "shape": d["shape"], "gpx": d["gpx"]})
     return out
@@ -306,9 +306,10 @@ class CountsAreTrueTest(unittest.TestCase):
 
     def test_search_counts_too(self):
         c = run_counts(self.rows, state(words=["trail"], kind="route"))
-        want = [r for r in self.rows if "trail" in r["search"] and r["kind"] == "route"]
+        said = lambda r: any(" trail" in t for t in r["search"])  # noqa: E731 (a word at the start of a word of any text)
+        want = [r for r in self.rows if said(r) and r["kind"] == "route"]
         self.assertEqual(c["total"], len(want))
-        self.assertEqual(c["kind"]["trail"], sum(1 for r in self.rows if "trail" in r["search"] and r["kind"] == "trail"))
+        self.assertEqual(c["kind"]["trail"], sum(1 for r in self.rows if said(r) and r["kind"] == "trail"))
 
     def test_the_script_takes_out_what_would_show_nothing(self):
         js = read(WEB, "assets", "app.js")

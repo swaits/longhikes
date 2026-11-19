@@ -1505,6 +1505,11 @@
   function compareEntries(a, b, key) {
     key = normalizeSortKey(key, 'name');
     var an = a.dataset.name || '', bn = b.dataset.name || '';
+    /* While words are typed in the search box, the strongest matches come first (data-match, set by
+       the filter bar: 0 name, 1 author, 2 places, 3 summary); within each, the order chosen. */
+    if (a.dataset.match !== b.dataset.match && a.dataset.match !== undefined && b.dataset.match !== undefined) {
+      return cmpNum(Number(a.dataset.match), Number(b.dataset.match));
+    }
     if (key === 'saved') {
       var ao = a.dataset.order ? Number(a.dataset.order) : Infinity;
       var bo = b.dataset.order ? Number(b.dataset.order) : Infinity;
@@ -1633,17 +1638,53 @@
   var OLD_POLICY = { open: 'free', sold: 'sold', withheld: 'unpublished', unclear: 'elsewhere' };
 
   /* facet-counts:begin — pure, with no page: web/tests/test_filter_counts.py runs this under node.
-     A row: {search, where: [], km, time, months: [], terrain: [], kind, walking, shape, gpx}.
+     A row: {search: [name, author, places, summary], where: [], km, time, months: [], terrain: [], kind, walking, shape, gpx}.
      A state: {words: [], where, min, max (km; max may be Infinity), month, kind, and a list for
      each of time, terrain, walking, shape, gpx}. */
   var FacetCount = (function () {
     var FACETS = ['where', 'length', 'time', 'month', 'terrain', 'kind', 'walking', 'shape', 'gpx'];
     function has(list, v) { return list.indexOf(v) !== -1; }
 
+    /* The search. A row's search is four texts, strongest first: [name, author, places, summary],
+       each its words with a space before and after (olt/searchtext.py writes them; fold() here is
+       its fold(): lower case, no accents, apostrophes dropped, anything else that is not a letter
+       or a digit a space). A typed word matches at the start of a word of a text; the summary is
+       looked in only for a typed word of three letters or more. */
+    var SUMMARY = 3, SUMMARY_MIN = 3, NOT_FOUND = 9;
+    function fold(text) {
+      return String(text || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+        .replace(/[’‘'`´]/g, '').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+    }
+    function wordsOf(text) { return fold(text).split(' ').filter(Boolean); }
+    function textsOf(attr) {
+      var texts = String(attr || '').split('|').map(function (t) { return ' ' + t + ' '; });
+      while (texts.length < 4) texts.push('  ');
+      return texts;
+    }
+    /* The strongest text a typed word is found in (0 name ... 3 summary), or -1. */
+    function tierOf(texts, w) {
+      for (var t = 0; t < texts.length; t++) {
+        if (t === SUMMARY && w.length < SUMMARY_MIN) break;
+        if (texts[t].indexOf(' ' + w) !== -1) return t;
+      }
+      return -1;
+    }
+    /* How well a row matches the typed words: the weakest text any of them needs (0 name, 1 author,
+       2 places, 3 summary), NOT_FOUND when a word is in none, 0 when nothing is typed. */
+    function match(texts, typed) {
+      var worst = 0;
+      for (var i = 0; i < typed.length; i++) {
+        var t = tierOf(texts, typed[i]);
+        if (t === -1) return NOT_FOUND;
+        if (t > worst) worst = t;
+      }
+      return worst;
+    }
+
     /* Does the row pass the search and every filter but `skip`? Within Time, Terrain, Walking,
        Shape and GPX the choices are alternatives: a row with any one of them passes. */
     function passes(d, s, skip) {
-      if (s.words.some(function (w) { return d.search.indexOf(w) === -1; })) return false;
+      if (match(d.search, s.words) === NOT_FOUND) return false;
       if (skip !== 'where' && s.where && !has(d.where, s.where)) return false;
       if (skip !== 'length' && (d.km < s.min || d.km > s.max)) return false;
       if (skip !== 'time' && s.time.length && !has(s.time, d.time)) return false;
@@ -1697,7 +1738,8 @@
       return (shown === total ? '' : 'of ' + total + ' ') + noun;
     }
 
-    return { passes: passes, count: count, countWords: countWords };
+    return { passes: passes, count: count, countWords: countWords, fold: fold, wordsOf: wordsOf, textsOf: textsOf, match: match,
+             NOT_FOUND: NOT_FOUND };
   })();
   /* facet-counts:end */
 
@@ -1707,7 +1749,7 @@
     function split(v) { return (v || '').split(' ').filter(Boolean); }
     var rows = Array.prototype.map.call(resultsRoot.querySelectorAll('.entry[data-id]'), function (li) {
       var d = li.dataset;
-      return { li: li, id: d.id, search: d.search || '', where: split(d.where), km: Number(d.km), time: d.time || '',
+      return { li: li, id: d.id, search: FacetCount.textsOf(d.search), where: split(d.where), km: Number(d.km), time: d.time || '',
                months: split(d.months), terrain: split(d.terrain), kind: d.kind || '', walking: d.walking || '',
                shape: d.shape || '', gpx: d.gpx || '' };
     });
@@ -1808,7 +1850,7 @@
       var q = value(el.q).trim();
       var s = {
         q: q,
-        words: q.toLowerCase().split(/\s+/).filter(Boolean),
+        words: FacetCount.wordsOf(q),
         where: value(el.where),
         min: min,
         max: max,
@@ -2064,8 +2106,34 @@
       if (none) none.hidden = shown > 0;
     }
 
+    /* With words typed, every row is marked with how well it matches them (data-match: 0 name,
+       1 author, 2 places, 3 summary, 9 not at all), for the list to put the strongest first, and a
+       row that matched only beyond its name says where, in one quiet line. */
+    var MATCH_SAYS = ['', 'author', 'place names', 'summary'];
+    function markMatches(typed) {
+      rows.forEach(function (d) {
+        var m = typed.length ? FacetCount.match(d.search, typed) : -1;
+        if (m === -1) delete d.li.dataset.match; else d.li.dataset.match = String(m);
+        var says = m > 0 && m < FacetCount.NOT_FOUND ? 'Matches: ' + MATCH_SAYS[m] : '';
+        if (says && !d.note) {
+          var body = d.li.querySelector('.entry__body');
+          if (body) {
+            d.note = document.createElement('p');
+            d.note.className = 'entry__small entry__match';
+            body.appendChild(d.note);
+          }
+        }
+        if (d.note) {
+          d.note.hidden = !says;
+          setText(d.note, says);
+        }
+      });
+    }
+
     function apply(updateUrl) {
       var s = read();
+      markMatches(s.words);
+      applySort();
       var c = FacetCount.count(rows, s, lengthSteps());
       var shown = [];
       rows.forEach(function (d) {

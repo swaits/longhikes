@@ -351,7 +351,8 @@ class PageTopsTest(unittest.TestCase):
         _, _, body, _ = regions.region_page("us-co", recs, SITE)
         body = str(body)
         self.assertLess(body.index('class="browse__list"'), body.index('class="browse-about"'))
-        self.assertNotIn("percent", body)
+        # (the words a row's search reads, in its data-search, are not the page's text)
+        self.assertNotIn("percent", re.sub(r' data-search="[^"]*"', "", body))
 
     def test_every_page_head_is_compact(self):
         css = read(WEB, "assets", "style.css")

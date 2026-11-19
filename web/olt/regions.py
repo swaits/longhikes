@@ -40,6 +40,16 @@ def group_box(g, by_slug):
     return bounds.union([k for k in keys if k.lower() in by_slug])
 
 
+def wholly_in(recs, keys):
+    """A test for a trail that lies wholly in a place: every state and province in its record is one
+    of keys (a state's own key, or the keys of a part of the country). A trail that names all of Canada
+    is not in any one place. None when the trails are all of one kind, so the page keeps plain A to Z."""
+    keys = set(keys)
+    def test(rec):
+        return bool(facets.place_keys(rec)) and all(k in keys for k in facets.place_keys(rec))
+    return test if len({test(r) for r in recs}) > 1 else None
+
+
 def group_records(records, group):
     return [r for r in records if group in facets.place_groups(r)]
 
@@ -166,7 +176,7 @@ def group_page(g, records, site):
   </div></header>
 </div></div>
 <div class="container section place">
-  {home.browse_view(home.listing(recs, top=2, where="g:" + g), home.overview_map(recs, f"Map of the trails in {name}", place=group_box(g, by_slug)),
+  {home.browse_view(home.listing(recs, top=2, where="g:" + g, wholly=wholly_in(recs, keys)), home.overview_map(recs, f"Map of the trails in {name}", place=group_box(g, by_slug)),
                about=f"{summary.facts(recs, records, place=(name, keys))}{summary.details(recs)}", about_title=f"About the trails in {name}")}
   {nav}
 </div>"""
@@ -219,7 +229,7 @@ def region_page(slug, records, site, facet_pages=()):
   </div></header>
 </div></div>
 <div class="container section place">
-  {home.browse_view(home.listing(recs, top=2, where=""), home.overview_map(recs, f"Map of the trails in {info['name']}", place=bounds.place_box(key)),
+  {home.browse_view(home.listing(recs, top=2, where="", wholly=wholly_in(recs, [key])), home.overview_map(recs, f"Map of the trails in {info['name']}", place=bounds.place_box(key)),
                about=f"{summary.facts(recs, records, place=(info['name'], [key]))}{summary.details(recs)}",
                about_title=f"About the trails in {info['name']}")}
   {nav}

@@ -1480,17 +1480,19 @@
   var SORT_KEYS = { 'name': 1, 'name-desc': 1, 'length-desc': 1, 'length-asc': 1,
                     'time-asc': 1, 'time-desc': 1, 'climb-desc': 1, 'climb-asc': 1 };
   var SORT_OLD = { 'long': 'length-desc', 'short': 'length-asc', 'quick': 'time-asc', 'climb': 'climb-desc' };
-  var SORT_COLUMN = { 'name': 'name', 'name-desc': 'name', 'length-desc': 'length', 'length-asc': 'length',
+  var SORT_COLUMN = { 'here': 'name', 'name': 'name', 'name-desc': 'name', 'length-desc': 'length', 'length-asc': 'length',
                       'time-asc': 'time', 'time-desc': 'time', 'climb-desc': 'climb', 'climb-asc': 'climb' };
-  var SORT_ARROW = { 'name': '↑', 'name-desc': '↓', 'length-desc': '↓', 'length-asc': '↑',
+  var SORT_ARROW = { 'here': '↑', 'name': '↑', 'name-desc': '↓', 'length-desc': '↓', 'length-asc': '↑',
                      'time-asc': '↑', 'time-desc': '↓', 'climb-desc': '↓', 'climb-asc': '↑' };
   var COLUMN_PRIMARY = { 'name': 'name', 'length': 'length-desc', 'time': 'time-asc', 'climb': 'climb-desc' };
-  var COLUMN_TOGGLE = { 'name': 'name-desc', 'name-desc': 'name', 'length-desc': 'length-asc', 'length-asc': 'length-desc',
+  var COLUMN_TOGGLE = { 'here': 'name', 'name': 'name-desc', 'name-desc': 'name', 'length-desc': 'length-asc', 'length-asc': 'length-desc',
                         'time-asc': 'time-desc', 'time-desc': 'time-asc', 'climb-desc': 'climb-asc', 'climb-asc': 'climb-desc' };
   /* The Saved page's list also has the order saved (rows numbered in data-order by section 1c). */
   if (savedPage) SORT_KEYS.saved = 1;
   /* A ranking (/numbers/) has its rank as an order (rows numbered in data-rank by the page). */
   if (document.querySelector('.entry[data-rank]')) SORT_KEYS.rank = 1;
+  /* A place page opens with the trails wholly in the place first (data-here 0, then 1), each A to Z. */
+  if (document.querySelector('.entry[data-here]')) SORT_KEYS.here = 1;
 
   function normalizeSortKey(value, dflt) {
     if (SORT_KEYS[value]) return value;
@@ -1509,6 +1511,7 @@
       return cmpNum(ao, bo) || cmpStr(an, bn);
     }
     if (key === 'rank') return cmpNum(Number(a.dataset.rank || Infinity), Number(b.dataset.rank || Infinity));
+    if (key === 'here') return cmpNum(Number(a.dataset.here || 0), Number(b.dataset.here || 0)) || cmpStr(an, bn);
     if (key === 'name') return cmpStr(an, bn);
     if (key === 'name-desc') return cmpStr(bn, an);
     if (key === 'climb-desc' || key === 'climb-asc') {

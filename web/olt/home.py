@@ -151,7 +151,7 @@ def route_by_html(rec):
     return Markup(text)
 
 
-def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=False, lead=None, rank=None, more=(), by=None):
+def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=False, lead=None, rank=None, more=(), by=None, here=None):
     """One trail in a list. Its data-* attributes drive the filters in app.js.
 
     level: the heading level of the trail's name. extra: HTML placed last in the row.
@@ -165,6 +165,8 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
     after the others on the line of facts (a page that compares a few trails).
     by(rec) -> HTML: the row's author line in place of "Route by" (an author's page, where it
     names only the others a route is credited to); "" for none.
+    here: 0 for a trail wholly in the place a place page is about, 1 for one that lies elsewhere too
+    (data-here, the order that page opens in; see results()).
 
     The Save star follows the name in the markup (so it is the next stop for the
     keyboard) but is drawn under the logo, out of the row's flow (style.css
@@ -206,6 +208,8 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
     lead_html = ""
     if rank is not None:
         attrs += f' data-rank="{rank}"'
+    if here is not None:
+        attrs += f' data-here="{here}"'
     if lead:
         no = f'<span class="entry__rank">No. {rank}</span> ' if rank is not None else ""
         lead_html = (f'\n    <div class="entry__lead"><dt>{esc(lead[0])}</dt><dd>{no}'
@@ -481,11 +485,15 @@ def list_head(sort_key="name"):
 SAVED_ORDER = ("saved", "Order saved")
 
 
-def sort_select(default_sort="name", saved=False, ranked=""):
+HERE_ORDER = "here"
+
+
+def sort_select(default_sort="name", saved=False, ranked="", wholly=None):
     """The one sort control of every list of trails, with the page's
     default order selected. Hidden without JavaScript (style.css):
     it cannot work then, and the HTML is already in the default order.
-    saved: the Saved page's list, which opens in the order saved."""
+    saved: the Saved page's list, which opens in the order saved.
+    wholly: a place page's list, which opens with the trails wholly in the place first (results())."""
     sorts = facets.SORTS
     if saved:
         sorts = (SAVED_ORDER,) + tuple(sorts)
@@ -493,6 +501,9 @@ def sort_select(default_sort="name", saved=False, ranked=""):
     elif ranked:
         sorts = (("rank", f"Rank: {ranked}"),) + tuple(sorts)
         default_sort = "rank"
+    elif wholly:
+        sorts = ((HERE_ORDER, "Wholly here first, then A to Z"),) + tuple(sorts)
+        default_sort = HERE_ORDER
     else:
         default_sort = facets.normalize_sort(default_sort)
     options = "".join(
@@ -518,7 +529,7 @@ def key(official=True):
 
 
 def results(recs=None, *, finder=False, groups=None, routes_list=False, default_sort="name", saved=False, top=3,
-            ranked="", lead=None, more=None, tools=True, by=None, every=False):
+            ranked="", lead=None, more=None, tools=True, by=None, every=False, wholly=None):
     """The list of trails, as every page shows it: div.results > head, key, list head, ol.entries.
 
     Every list carries the same "Sort by" control. The rows are written in
@@ -548,12 +559,21 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
     that leads each row's line of facts (the ranked figure, or one a page compares). more(rec) ->
     [(label, HTML)]: further facts for each row (entry()). tools: False for a short list inside a
     page that has its own (no count and no sort control).
+
+    wholly(rec) -> bool: a place page's test for a trail that lies wholly in the place. The page opens
+    with those first, then the trails that lie elsewhere too, each group A to Z (data-here, and a first
+    sort option that app.js and this agree on); the other orders stay as everywhere.
     """
     default_sort = facets.normalize_sort(default_sort)
     if groups is None:
         groups = [(None, recs, None)]
-    groups = [(heading, list(items) if ranked else facets.sort_records(list(items), default_sort), extra_fn)
-              for heading, items, extra_fn in groups]
+    if wholly:
+        default_sort = "name"
+        groups = [(heading, sorted(items, key=lambda r: (not wholly(r), sort_name(r))), extra_fn)
+                  for heading, items, extra_fn in groups]
+    else:
+        groups = [(heading, list(items) if ranked else facets.sort_records(list(items), default_sort), extra_fn)
+                  for heading, items, extra_fn in groups]
     total = sum(len(g[1]) for g in groups)
     shown = [r for g in groups for r in g[1]]
     only_routes = bool(shown) and all(facets.kind(r) == "route" for r in shown)
@@ -567,7 +587,8 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
                                 routes_list=routes_list, hidden=saved,
                                 eager=not saved and seen + i < EAGER_ROWS,
                                 lead=lead(r) if lead else None, more=more(r) if more else (),
-                                rank=seen + i + 1 if ranked else None, by=by) for i, r in enumerate(items))
+                                rank=seen + i + 1 if ranked else None, by=by,
+                                here=(0 if wholly(r) else 1) if wholly else None) for i, r in enumerate(items))
         seen += len(items)
         if isinstance(heading, tuple):
             heading, intro = heading
@@ -593,8 +614,8 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
         empty = ""
     if not tools:
         return Markup(f'<div class="results results--short">{lists}</div>')
-    tools = sort_select(default_sort, saved=saved, ranked=ranked)
-    dflt = SAVED_ORDER[0] if saved else "rank" if ranked else default_sort
+    tools = sort_select(default_sort, saved=saved, ranked=ranked, wholly=wholly)
+    dflt = SAVED_ORDER[0] if saved else "rank" if ranked else HERE_ORDER if wholly else default_sort
     finder_attr = " data-finder" if finder else ""
     return Markup(f"""<div class="results"{finder_attr} data-sortable data-default-sort="{esc(dflt)}">
       <div class="results-head">

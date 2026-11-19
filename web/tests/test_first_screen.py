@@ -19,7 +19,7 @@ ROOT = os.path.dirname(WEB)
 sys.path.insert(0, WEB)
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 
-from olt import browse, common, datafiles, home, layout, pagekit, records, site, sketch, trail  # noqa: E402
+from olt import browse, common, datafiles, facets, home, layout, pagekit, records, site, sketch, trail  # noqa: E402
 
 SITE = site.load()
 
@@ -58,6 +58,8 @@ class HomePageTest(unittest.TestCase):
                                 "a-week-or-less", "one-to-two-weeks", "a-month-or-more", "with-gpx", "canada"])
         row = home.lists_row(self.recs, keys)
         titles = re.findall(r'<li><a href="[^"]+">(.*?)<span class="lists-row__n">', row)
+        # the file's lists in its order, with the trip-length band it leaves out added where it belongs
+        keys = keys[:7] + ["two-to-four-weeks"] + keys[7:]
         self.assertEqual(titles, [browse.by_key(k).title for k in keys])
         self.assertTrue(row.rstrip().endswith("</nav>"))
         self.assertIn('<li class="lists-row__all"><a href="/lists/">All lists</a></li></ul>', row)
@@ -67,6 +69,25 @@ class HomePageTest(unittest.TestCase):
         other = home.home_picks([{"key": "loops", "home": 2}, {"key": "routes", "home": 1}, {"key": "canada"}])
         self.assertEqual(other, ["routes", "loops"])
         self.assertEqual(re.findall(r'<li><a href="[^"]+">(.*?)<span', home.lists_row(self.recs, other)), ["Routes", "Loops"])
+
+    def test_the_row_offers_every_trip_length_band_the_time_filter_does(self):
+        row = home.lists_row(self.recs, home.home_picks(datafiles.lists(ROOT)))
+        linked = [browse.by_key(k) for k in re.findall(r'href="/lists/([^/"]+)/"', row)]
+        for band, label, _ in facets.TIME_BANDS:
+            members = [r for r in self.recs if facets.time_band(r) == band]
+            self.assertTrue(members, band)
+            self.assertTrue(any(all(lst.test(r) for r in members) for lst in linked if lst.group == "time"),
+                            f"no chip for {label}")
+        self.assertIn("Two weeks to a month", row)
+        self.assertNotIn("weekend", row.lower())
+        # a row the data file gives with no trip length is not given one
+        self.assertNotIn("weeks", home.lists_row(self.recs, ["loops", "routes"]))
+
+    def test_a_row_that_scrolls_sideways_fades_at_its_edge(self):
+        css = read(WEB, "assets", "style.css")
+        phone = css[css.index(".lists-row ul {\n    flex-wrap: nowrap"):]
+        phone = phone[:phone.index("}")]
+        self.assertIn("mask-image: linear-gradient(to right", phone)
 
     def test_the_introduction_is_the_headline_its_sentence_and_the_lists(self):
         intro = self.body[:self.body.index('class="container home"')]

@@ -782,15 +782,42 @@ def has_overview_map(recs, scope=""):
     return n > 0 and (scope == "all" or n >= MAP_MIN)
 
 
+def time_band_keys(keys, have, records):
+    """keys (list keys, in the row's order) with a list added for each of the filter's trip-length bands
+    (facets.TIME_BANDS) that none of them covers, so the row offers every band the Time filter does. A list
+    covers a band when every trail in the band is in it; the one with the fewest trails is the one that
+    stands for the band. The added list goes after the last list that covers an earlier band. A row that
+    holds no trip length at all is returned as it is."""
+    time_lists = [(lst, recs) for lst, recs in have.values() if lst.group == "time" and lst.key != "weekend"]
+    keys = list(keys)
+    if not any(k in {lst.key for lst, _ in time_lists} for k in keys):
+        return keys  # a row with no trip length in it (a data file that left them out) is left as it is
+    last = None
+    for band, _, _ in facets.TIME_BANDS:
+        members = [r for r in records if facets.time_band(r) == band]
+        covering = [(len(recs), lst.key) for lst, recs in time_lists if members and all(lst.test(r) for r in members)]
+        if not covering:
+            continue
+        if any(k in keys for _, k in covering):
+            last = max(keys.index(k) for _, k in covering if k in keys)
+            continue
+        key = min(covering)[1]
+        at = last + 1 if last is not None else len(keys)
+        keys.insert(at, key)
+        last = at
+    return keys
+
+
 def lists_row(records, picks=()):
     """The row of lists under the home page's headline: the lists the data file marks for it (picks,
     from datafiles.home_lists: key and position), in that order, each with its count, then "All
     lists". A marked list that is not shown today (too few trails, or nearly all of them) is left out."""
     have = {lst.key: (lst, recs) for lst, recs in browse.shown(records)}
+    keys = time_band_keys([k for k in picks if k in have], have, records)
     items = "".join(
         f'<li><a href="{esc(browse.path(have[key][0]))}">{esc(have[key][0].title)}'
         f'<span class="lists-row__n">{len(have[key][1])}</span></a></li>'
-        for key in picks if key in have)
+        for key in keys)
     if not items:
         return ""
     return f"""<nav class="lists-row" aria-labelledby="lists-title">

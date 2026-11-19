@@ -2276,7 +2276,10 @@ td .linklist a { font-weight: 400; }
 @media (max-width: 39.99rem) {
   .lists-row ul {
     flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; clip-path: none;
-    margin-inline: calc(-1 * var(--gutter)); padding-inline: calc(var(--gutter) - 0.8em) var(--gutter);
+    margin-inline: calc(-1 * var(--gutter)); padding-inline: calc(var(--gutter) - 0.8em) 2rem;
+    /* The last 2rem fades out, the one cue that the line goes on; at the end of the scroll the padding sits under it. */
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2rem), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 2rem), transparent);
   }
   .lists-row li:first-child::before { visibility: hidden; }
   .lists-row ul::-webkit-scrollbar { display: none; }

@@ -77,6 +77,7 @@ terrain = ["alpine"]
 travel = "mostly-cross-country"
 season = "Mid-July to mid-September"
 months = [7, 8, 9]
+days = [25, 45]
 checked = "2026-11-19"
 
 [[hike.source]]
@@ -97,7 +98,7 @@ facts = ["end_lonlat"]
 [[hike.source]]
 url = "https://www.john.chapman.name/pub-sierra.html"
 publisher = "John Chapman (the route's author)"
-facts = ["season", "months"]
+facts = ["season", "months", "days"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -121,9 +122,18 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-19"
-change = "The usual season, m, and its months were addedid-July to mid-September."
+change = "The usual season was added, \"Mid-July to mid-September\", with its months."
 fields = ["hike.season", "hike.months"]
 basis = "The page of John Chapman (the route's author) says: \"The ideal time for walking this route is from mid-July through to mid-September.\""
+basis_url = "https://www.john.chapman.name/pub-sierra.html"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual time to walk the whole trail, 25 to 45 days, was added."
+fields = ["hike.days"]
+basis = "The page of John Chapman (the route's author) says: \"We suggest to allow between 25 and 45 days to walk the entire route.\""
 basis_url = "https://www.john.chapman.name/pub-sierra.html"
 asked_by = "the dataset's own check"
 outcome = "applied"

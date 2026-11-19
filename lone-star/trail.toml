@@ -106,7 +106,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-19"
-change = "The usual season, j, and its months were addedanuary to April."
+change = "The usual season was added, \"January to April\", with its months."
 fields = ["hike.season", "hike.months"]
 basis = "The page of The Trek says: \"The most ideal season to hike the LSHT is January – April.\""
 basis_url = "https://thetrek.co/trail-profile-how-to-hike-the-96-mile-lone-star-hiking-trail/"

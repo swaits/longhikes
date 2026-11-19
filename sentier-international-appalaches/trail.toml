@@ -59,7 +59,8 @@ season = "Mid-June to the end of October"
 months = [6, 7, 8, 9, 10]
 terrain = ["farmland", "forest", "coast"]
 travel = "trail"
-checked = "2026-11-13"
+permit = "A right of access is required for the Gaspésie and Forillon National Park sections."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.sia-iat.com/a-propos-du-sia?lang=en"
@@ -70,6 +71,11 @@ facts = ["summary", "official_url", "end", "shape", "season", "months", "terrain
 url = "https://tourismnewbrunswick.ca/listing/international-appalachian-trail-tide-head-perth-andover"
 publisher = "Tourism New Brunswick"
 facts = ["summary", "start", "terrain"]
+
+[[hike.source]]
+url = "https://www.sia-iat.com/modalitesreglements?lang=en"
+publisher = "Sentier international des Appalaches (Québec)"
+facts = ["permit"]
 
 [[link]]
 title = "International Appalachian Trail"
@@ -102,5 +108,14 @@ change = "The main track was re-cut to one walk (1,154 km): the ways the relatio
 fields = ["source.line_file", "source.mainline"]
 basis = "OpenStreetMap relation 6544824 marks the Border Trail and Brayall Road with the role alternative, beside the road walk by Sam Everett Road and Boundary Line Road, which has the main role, and marks four more ways excursion."
 basis_url = "https://www.openstreetmap.org/relation/6544824"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of Sentier international des Appalaches (Québec) says: \"Access rights are required to enter national parks. ... Gaspesie National Park ... Forillon National Park\""
+basis_url = "https://www.sia-iat.com/modalitesreglements?lang=en"
 asked_by = "the dataset's own check"
 outcome = "applied"

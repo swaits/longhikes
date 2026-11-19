@@ -64,7 +64,8 @@ terrain = ["forest", "prairie", "lakes"]
 travel = "trail-and-road"
 unfinished = "The trail is about half complete: nearly 700 miles are yellow-blazed Ice Age Trail, and about 500 miles of unmarked connecting routes, mostly on quiet country roads, link the blazed segments."
 caution = "Primitive camping is not permitted on many segments, so overnight plans vary widely from night to night."
-checked = "2026-11-13"
+permit = "No National Park Pass or fee is needed to use the trail."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.iceagetrail.org/explore/explore-the-trail/ice-age-trail/"
@@ -80,6 +81,11 @@ facts = ["travel", "unfinished", "caution"]
 url = "https://www.nps.gov/iatr/index.htm"
 publisher = "National Park Service"
 facts = ["summary", "terrain"]
+
+[[hike.source]]
+url = "https://www.nps.gov/iatr/planyourvisit/fees.htm"
+publisher = "National Park Service"
+facts = ["permit"]
 
 [[link]]
 title = "Ice Age National Scenic Trail"
@@ -139,5 +145,14 @@ change = "The summary now gives the trail's length as about 1,200 miles, as the 
 fields = ["hike.summary"]
 basis = "The record's length note gives about 1,200 miles for the whole route, as the Ice Age Trail Alliance gives it."
 basis_url = "https://www.iceagetrail.org/explore/explore-the-trail/ice-age-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of National Park Service says: \"A National Park Pass is not required for the Ice Age National Scenic Trail. Using the Ice Age National Scenic Trail is free of charge.\""
+basis_url = "https://www.nps.gov/iatr/planyourvisit/fees.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

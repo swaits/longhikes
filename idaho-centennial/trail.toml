@@ -61,7 +61,9 @@ end = "the northern boundary of Idaho, at the Canadian border"
 shape = "point-to-point"
 terrain = ["desert", "alpine", "forest"]
 caution = "Only a few people have completed the trail; the Bureau of Land Management notes the challenge and time commitment involved."
-checked = "2026-11-13"
+season = "South-to-north hikes start in early June and finish by late September or early October"
+months = [6, 7, 8, 9]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://idpr-data-idaho.hub.arcgis.com/datasets/idaho::idaho-centennial-trail-official-route/about"
@@ -72,6 +74,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain"]
 url = "https://muleapi.blm.gov/visit/idaho-centennial-roadtrail"
 publisher = "Bureau of Land Management"
 facts = ["summary", "caution"]
+
+[[hike.source]]
+url = "https://parksandrecreation.idaho.gov/wp-content/uploads/activities/hiking/Centennial-guide.pdf"
+publisher = "Idaho Department of Parks and Recreation"
+facts = ["season", "months"]
 
 [[link]]
 title = "Idaho Centennial Trail"
@@ -95,5 +102,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://parksandrecreation.idaho.gov/?p=2905"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual season was added, \"South-to-north hikes start in early June and finish by late September or early October\", with its months."
+fields = ["hike.season", "hike.months"]
+basis = "The page of Idaho Department of Parks and Recreation says: \"Most people start at the southern trailhead ... in early June ... reach the Idaho-British Columbia border by late September or early October.\""
+basis_url = "https://parksandrecreation.idaho.gov/wp-content/uploads/activities/hiking/Centennial-guide.pdf"
 asked_by = "the dataset's own check"
 outcome = "applied"

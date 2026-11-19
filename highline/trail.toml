@@ -55,12 +55,18 @@ start = "Pine Trailhead, near Pine, Arizona"
 shape = "point-to-point"
 terrain = ["forest", "canyon"]
 travel = "trail"
-checked = "2026-11-14"
+days = [4, 7]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r03/tonto/recreation/trails/highline"
 publisher = "USDA Forest Service, Tonto National Forest"
 facts = ["official_url", "summary", "start", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.arizonahighways.com/archive/issues/chapter/Doc.825.Chapter.5"
+publisher = "Arizona Highways"
+facts = ["days"]
 
 [[link]]
 title = "Arizona Highline Trail"
@@ -93,5 +99,14 @@ change = "The track status is now \"verified\", in place of \"found\", which mea
 fields = ["source.status"]
 basis = "The record has a published track file and a measured length in its verification, and its track was downloaded and measured."
 basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual time to walk the whole trail, 4 to 7 days, was added."
+fields = ["hike.days"]
+basis = "The page of Arizona Highways says: \"you can easily hike the entire Highline Trail in four to seven days\""
+basis_url = "https://www.arizonahighways.com/archive/issues/chapter/Doc.825.Chapter.5"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -59,7 +59,8 @@ months = [3, 4, 5, 9, 10, 11]
 terrain = ["forest"]
 travel = "trail"
 caution = "Hunting is permitted in state forests and other properties the trail crosses; wear orange during hunting season."
-checked = "2026-11-14"
+permit = "No paid permit or fee is needed to use the New England Trail, of which the Mattabesett Trail is a part."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://ctwoodlands.org/trails/mattabesett-trail"
@@ -69,7 +70,7 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 [[hike.source]]
 url = "https://newenglandtrail.org/thru-hiking/"
 publisher = "New England Trail"
-facts = ["season", "months"]
+facts = ["season", "months", "permit"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -88,5 +89,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://ctwoodlands.org/trails/mattabesett-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of New England Trail (the Mattabesett Trail is part of it) says: \"No fees or paid permits are required to use or access the NET.\""
+basis_url = "https://newenglandtrail.org/thru-hiking/"
 asked_by = "the dataset's own check"
 outcome = "applied"

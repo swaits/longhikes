@@ -75,6 +75,8 @@ high_point_m = 3812
 terrain = ["alpine", "forest"]
 travel = "trail-and-road"
 permit = "The only mandatory permit along the trail is a day-use permit for State Forest State Park."
+season = "Mid-June to late September"
+months = [6, 7, 8, 9]
 checked = "2026-11-19"
 
 [[hike.source]]
@@ -101,6 +103,11 @@ facts = ["end_lonlat"]
 url = "https://www.northerncoloradotrail.org/noco-trail-blog/required-permits-for-hiking-the-noco-trail"
 publisher = "Northern Colorado Trail association"
 facts = ["permit"]
+
+[[hike.source]]
+url = "https://www.northerncoloradotrail.org/noco-trail-blog/when-is-the-best-time-to-hike-the-northern-colorado-trail"
+publisher = "Northern Colorado Trail association"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -138,5 +145,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of Northern Colorado Trail association says: \"The only mandatory permit along the NOCO Trail is the day-use permit for State Forest State Park.\""
 basis_url = "https://www.northerncoloradotrail.org/noco-trail-blog/required-permits-for-hiking-the-noco-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual season was added, \"Mid-June to late September\", with its months."
+fields = ["hike.season", "hike.months"]
+basis = "The page of Northern Colorado Trail association says: \"The NOCO Trail is passable from mid-June through late September\""
+basis_url = "https://www.northerncoloradotrail.org/noco-trail-blog/when-is-the-best-time-to-hike-the-northern-colorado-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -106,7 +106,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-19"
-change = "The usual season, m, and its months were addedid-July to early September."
+change = "The usual season was added, \"Mid-July to early September\", with its months."
 fields = ["hike.season", "hike.months"]
 basis = "The page of Parks Canada says: \"Mid-July/August/early September (summer) The fiords are normally ice-free. ... Hiking / Climbing season.\""
 basis_url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/visit/meteo-weather"

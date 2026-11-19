@@ -62,7 +62,8 @@ summary = "The Circle of Solitude is a loop of about 68 miles in Kings Canyon Na
 start = "Road's End, Kings Canyon National Park, California"
 start_lonlat = [-118.583, 36.795]
 shape = "loop"
-checked = "2026-11-18"
+permit = "A Sequoia and Kings Canyon National Parks wilderness permit is needed for overnight travel on this loop."
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/wilderness-press/"
@@ -78,6 +79,11 @@ facts = ["start_lonlat"]
 url = "https://fastestknowntime.com/route/circle-solitude"
 publisher = "fastestknowntime.com (its page for the route says it starts and ends at Road's End)"
 facts = ["shape"]
+
+[[hike.source]]
+url = "https://www.nps.gov/seki/planyourvisit/trailcond.htm"
+publisher = "National Park Service, Sequoia & Kings Canyon National Parks"
+facts = ["permit"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -114,5 +120,14 @@ change = "A summary was written. The record had none, so the \"In brief\" part o
 fields = ["hike.summary", "hike.source"]
 basis = "The summary uses only what the record already holds: the length note's 68 miles, the route note's description of the loop from Road's End by Avalanche Pass, Colby Pass and Forester Pass, and the guidebook entry."
 basis_url = "https://shop.adventurewithkeen.com/wilderness-press/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "A note on permits was added."
+fields = ["hike.permit"]
+basis = "The page of National Park Service, Sequoia & Kings Canyon National Parks says: \"Wilderness permits are required for overnight trips.\""
+basis_url = "https://www.nps.gov/seki/planyourvisit/trailcond.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -109,7 +109,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-19"
-change = "The usual season, j, and its months were addeduly to early September."
+change = "The usual season was added, \"July to early September\", with its months."
 fields = ["hike.season", "hike.months"]
 basis = "The page of Treeline Review says: \"The best season is July, August, or early September.\""
 basis_url = "https://www.treelinereview.com/where-to-go/backpacking-high-sierra-trail"

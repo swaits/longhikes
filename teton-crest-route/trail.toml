@@ -73,12 +73,14 @@ high_point_m = 3265
 terrain = ["alpine", "lakes"]
 travel = "some-cross-country"
 permit = "The author says the route passes through Grand Teton National Park but can be timed so that every night is camped outside the park, in which case no park permit is needed."
-checked = "2026-11-16"
+season = "Mid-July to mid-August"
+months = [7, 8]
+checked = "2026-11-19"
 
 [[hike.source]]
 url = "https://wildernessmindset.com/teton-crest-trail/"
 publisher = "Wilderness Mindset (the route's author)"
-facts = ["summary", "official_url", "start", "end", "shape", "days", "high_point", "terrain", "travel", "permit"]
+facts = ["summary", "official_url", "start", "end", "shape", "days", "high_point", "terrain", "travel", "permit", "season", "months"]
 
 [[hike.source]]
 url = "https://wildernessmindset.com/product/teton-crest-route-map-pack/"
@@ -131,5 +133,14 @@ change = "The position of the start was added, so that the page can show a map o
 fields = ["hike.start_lonlat"]
 basis = "The Forest Service's recreation sites layer lists a trailhead named Hominy Peak Trailhead and gives its position; the author's page names it as the start."
 basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_InfraRecreationSites_01/MapServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The usual season was added, \"Mid-July to mid-August\", with its months."
+fields = ["hike.season", "hike.months"]
+basis = "The page of Wilderness Mindset (the route's author) says: \"Mid-July to mid-August would be the best time to hike this trail\""
+basis_url = "https://wildernessmindset.com/teton-crest-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -1,6 +1,6 @@
 # Changelog
 
-## 2026-11-20 - Three guidebook trips added, three near-misses left out
+## 2026-11-20 - Two guidebook routes and the High Sierra Camp Loop added, three near-misses left out
 
 - Middle Fork Kings River, 82.6 miles (133 km), from the Crown Valley Trailhead near Wishon Reservoir to the Maxson Trailhead near Courtright Reservoir, California: Trip 7, page 171 of Mike White and Douglas Lorain's Best Backpacking Trips in California and Nevada.
 - Central Wilderness Grand Tour, 79.1 miles (127 km), a loop from the Jerkey Meadow Trailhead in the Golden Trout Wilderness, California: Trip 16 of Suzanne Swedo's Hiking California's Golden Trout Wilderness.

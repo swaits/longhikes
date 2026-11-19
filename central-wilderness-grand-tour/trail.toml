@@ -13,13 +13,13 @@ wave = 1
 
 [source]
 status = "none"
-publisher = "The Globe Pequot Press, a Falcon Guide (publishes the route in the guidebook)"
-publisher_url = "https://openlibrary.org/books/OL39988398M"
-url = "https://openlibrary.org/books/OL39988398M"
+publisher = "Falcon (publishes the route in the guidebook)"
+publisher_url = "https://openlibrary.org/books/OL8034582M"
+url = "https://openlibrary.org/books/OL8034582M"
 format = "No line included"
 crs = "EPSG:4326"
 licence = "none-stated"
-licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the place of the route in the book: Trip 16 of the 1st edition, 2004 (the book's trip numbers are what is cited). The Open Library record for the edition (https://openlibrary.org/books/OL39988398M) was read on 2026-11-19."
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the place of the route in the book: Trip 16 of the 1st edition, 2004. The Open Library record for the edition (https://openlibrary.org/books/OL8034582M) was read on 2026-11-19."
 attribution = "none (no line included)"
 osm_only = false
 mainline = "No track is included; the track is the book's maps."
@@ -37,7 +37,7 @@ note = "Not recorded: the route is a guidebook route and no track is included."
 status = "no-logo-exists"
 logo_source = ""
 contact = "Suzanne Swedo"
-note = "No emblem of its own was found. The trip's heading in the book and the Open Library record for the book (https://openlibrary.org/books/OL39988398M, read 2026-11-19) show the title only; this is a guidebook route in a national forest wilderness that keeps its own marking."
+note = "No emblem of its own was found. The trip's heading in the book and the Open Library record for the book (https://openlibrary.org/books/OL8034582M, read 2026-11-19) show the title only; this is a guidebook route in a national forest wilderness that keeps its own marking."
 logo_file = ""
 logo_owner = ""
 
@@ -52,20 +52,20 @@ line_policy = "sold"
 note = "A loop from the Jerkey Meadow Trailhead at Lloyd Meadows by the Little Kern River, Deep Creek, Coyote Lakes, Coyote Lakes Pass, the Kern River at the Kern Canyon Ranger Station, Golden Trout Creek, Little Whitney Meadow, Templeton Meadows, Redrock Meadows, Jordan Hot Springs and Kern Flat, then back by the Trout Meadows trail, with 79.1 miles in the book. The book marks the Sequoia National Park boundary at Coyote Lakes Pass. The book's maps are the track; none is copied here."
 
 [[guide]]
-title = "Hiking California's Golden Trout Wilderness: A Guide to Backpacking and Day Hiking in the Golden Trout and South Sierra Wilderness Areas"
+title = "Hiking California's Golden Trout Wilderness: A Guide to Backpacking and Day Hiking in the Golden Trout and South Sierra Wildernesses"
 author = "Suzanne Swedo"
 access = "purchase"
-url = "https://openlibrary.org/books/OL39988398M"
-format = "book (a Falcon Guide)"
-publisher = "The Globe Pequot Press"
-isbn = "978-0-7627-9748-6"
-edition = "1st edition, 2004"
+url = "https://openlibrary.org/books/OL8034582M"
+format = "book"
+publisher = "Falcon"
+isbn = "978-0-7627-2655-4"
+edition = "1st edition, 2004 (paperback)"
 where = "Trip 16"
 link_is = "library"
 
 [hike]
-summary = "The Central Wilderness Grand Tour is a backpacking loop of 79.1 miles in the Golden Trout Wilderness of the southern Sierra Nevada, California, from the Jerkey Meadow Trailhead at Lloyd Meadows. It crosses the Little Kern River and Coyote Lakes Pass to the Kern River, then returns by Templeton and Redrock Meadows and Kern Flat, using the two bridges over the main fork of the Kern. Suzanne Swedo describes it as Trip 16 in Hiking California's Golden Trout Wilderness."
-official_url = "https://openlibrary.org/books/OL39988398M"
+summary = "The Central Wilderness Grand Tour is a backpacking loop of 79.1 miles in the Golden Trout Wilderness and Sequoia National Park, in the southern Sierra Nevada, California, from the Jerkey Meadow Trailhead at Lloyd Meadows. It crosses the Little Kern River, enters Sequoia National Park at Coyote Lakes Pass to reach the Kern River, then returns by Templeton and Redrock Meadows and Kern Flat, using the two bridges over the main fork of the Kern. Suzanne Swedo describes it as Trip 16 in Hiking California's Golden Trout Wilderness."
+official_url = "https://openlibrary.org/books/OL8034582M"
 start = "Jerkey Meadow Trailhead, Lloyd Meadows, Golden Trout Wilderness, California"
 start_lonlat = [-118.486, 36.168]
 shape = "loop"
@@ -73,12 +73,12 @@ season = "July through October"
 months = [7, 8, 9, 10]
 terrain = ["forest", "alpine"]
 travel = "trail"
-permit = "The Forest Service says an overnight stay in the Golden Trout Wilderness requires a Golden Trout Wilderness Pass, and that overnight permits are free and issued at forest offices near the wilderness entry points."
-caution = "The book rates the trip strenuous, calls it a real expedition with a lot of climbing and descent, and says to check with rangers that streams are safe to cross before early July. It describes a faint path and a very steep climb at mile 12.4, a descent through deep scree from Coyote Lakes Pass, and cow paths at Templeton Meadows where it is easy to lose the trail. It reports fords at Deep Creek and Hockett Peak Creek. As of 2026-11-19 the Forest Service pages for the Jerkey Meadow Trailhead and the Lewis Camp Trail, which leads to the Little Kern River suspension bridge, say that due to recent fires and flooding the trail may have washouts and downed trees and may intermittently disappear. The Sequoia and Inyo National Forest pages read list no closure for this country and give no condition for the Kern River bridges. The book dates from 2004, before the 2020 and 2021 fires there. The book mentions no cross-country travel, scrambling or rope."
+permit = "The Forest Service requires a free Golden Trout Wilderness Pass (its overnight visitor permit), issued at forest offices near the wilderness entry points."
+caution = "The book rates the trip strenuous, calls it a real expedition with a lot of climbing and descent, and says to check with rangers that streams are safe to cross before early July. It describes a faint path and a very steep climb at mile 12.4, a descent through deep scree from Coyote Lakes Pass, and cow paths at Templeton Meadows where it is easy to lose the trail, and it reports fords at Deep Creek and Hockett Peak Creek. The Forest Service pages for the Jerkey Meadow Trailhead (updated 2026-08-31), the Lewis Camp Trail (2025-07-18) and the Kern Flat Trail (2026-09-11) say that due to recent fires and flooding the trail may have washouts and downed trees and may intermittently disappear; the Lewis Camp page describes a suspension bridge over the Little Kern River, and the Forks of the Kern page (2026-09-01) says a bridge crosses the Kern River 1.5 miles above Kern Flat. No Forest Service or Park Service page read says whether the Kern River bridge at the Kern Canyon Ranger Station, in Sequoia National Park, is in place, so its state is not confirmed and a hiker should check with the forest and the park before going. The book mentions no cross-country travel, scrambling or rope."
 checked = "2026-11-19"
 
 [[hike.source]]
-url = "https://openlibrary.org/books/OL39988398M"
+url = "https://openlibrary.org/books/OL8034582M"
 publisher = "Open Library (the library record for the book); the facts are from the book's Trip 16 in the 1st edition, 2004"
 facts = ["summary", "official_url", "start", "shape", "season", "months", "terrain", "travel", "caution"]
 
@@ -86,6 +86,21 @@ facts = ["summary", "official_url", "start", "shape", "season", "months", "terra
 url = "https://www.fs.usda.gov/r05/sequoia/recreation/jerkey-meadow-trailhead"
 publisher = "USDA Forest Service, Sequoia National Forest (the page for the Jerkey Meadow Trailhead, last updated 2026-08-31)"
 facts = ["permit", "caution", "start_lonlat"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r05/sequoia/recreation/forks-kern-trailhead"
+publisher = "USDA Forest Service, Sequoia National Forest (the page for the Forks of the Kern Trailhead, last updated 2026-09-01)"
+facts = ["caution"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r05/sequoia/recreation/trails/kern-flat-trail"
+publisher = "USDA Forest Service, Sequoia National Forest (the page for the Kern Flat Trail, last updated 2026-09-11)"
+facts = ["caution"]
+
+[[hike.source]]
+url = "https://www.nps.gov/seki/planyourvisit/trailcond.htm"
+publisher = "National Park Service, Sequoia and Kings Canyon National Parks (trail conditions page, last updated 2026-11-12; it lists Kern Canyon with no bridge or closure note)"
+facts = ["caution"]
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r05/sequoia/recreation/trails/lewis-camp-trail"
@@ -100,7 +115,7 @@ facts = ["permit", "caution"]
 [[hike.source]]
 url = "https://www.fs.usda.gov/r05/inyo/wilderness/golden-trout-wilderness"
 publisher = "USDA Forest Service, Inyo National Forest (the page for the Golden Trout Wilderness, last updated 2025-12-09)"
-facts = ["caution"]
+facts = ["permit"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -109,7 +124,7 @@ facts = ["caution"]
 date = "2026-11-20"
 change = "The record was added: Central Wilderness Grand Tour, 79.1 miles (127 km), Trip 16 in Suzanne Swedo's guidebook Hiking California's Golden Trout Wilderness, with no track."
 fields = ["record"]
-basis = "Hiking California's Golden Trout Wilderness, by Suzanne Swedo (The Globe Pequot Press, a Falcon Guide, 1st edition, 2004, ISBN 978-0-7627-9748-6). Trip 16 gives the length, season, permit and cautions; the book gives no page numbers for it in the copy read, so the trip number is cited, and it gives no day count. The Sequoia and Inyo National Forest pages for the Golden Trout Wilderness and the Jerkey Meadow Trailhead were read on 2026-11-19 and list no closure. The owner of the dataset has the book and ruled that the route belongs in it."
-basis_url = "https://openlibrary.org/books/OL39988398M"
+basis = "Hiking California's Golden Trout Wilderness, by Suzanne Swedo (Falcon, 1st edition, 2004, ISBN 978-0-7627-2655-4). Trip 16, cited by trip number, gives the length, season and cautions and no day count; the Forest Service pages for the Golden Trout Wilderness and the Jerkey Meadow Trailhead give the permit and the position of the start. The route was ruled to belong in the dataset."
+basis_url = "https://openlibrary.org/books/OL8034582M"
 asked_by = "the dataset's own check"
 outcome = "applied"

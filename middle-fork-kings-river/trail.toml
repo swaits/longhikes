@@ -69,7 +69,6 @@ link_is = "publisher"
 summary = "The Middle Fork Kings River is a point-to-point backpacking trip of 8 to 12 days in Sierra National Forest and Kings Canyon National Park, California, from the Crown Valley Trailhead near Wishon Reservoir to the Maxson Trailhead near Courtright Reservoir. It drops to Tehipite Valley, follows the Middle Fork Kings River upstream to the John Muir Trail, then goes by Le Conte Canyon, Muir Pass and Evolution Basin and returns west over Hell-for-Sure Pass. Mike White and Douglas Lorain describe it as Trip 7 in Best Backpacking Trips in California and Nevada."
 official_url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
 start = "Crown Valley Trailhead, near Wishon Reservoir, Sierra National Forest, California"
-start_lonlat = [-118.956, 36.975]
 end = "Maxson Trailhead, near Courtright Reservoir, Sierra National Forest, California"
 end_lonlat = [-118.963, 37.083]
 shape = "point-to-point"
@@ -93,11 +92,6 @@ publisher = "USDA Forest Service, Sierra National Forest (the page for the Crown
 facts = ["permit"]
 
 [[hike.source]]
-url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=1527888043"
-publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Rancheria Trailhead, also named Crown Valley Trailhead, OpenStreetMap node 1527888043"
-facts = ["start_lonlat"]
-
-[[hike.source]]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=6091197564"
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Maxson Trailhead, OpenStreetMap node 6091197564"
 facts = ["end_lonlat"]
@@ -109,7 +103,7 @@ facts = ["end_lonlat"]
 date = "2026-11-20"
 change = "The record was added: Middle Fork Kings River, 82.6 miles (133 km), Trip 7, page 171 in Mike White and Douglas Lorain's guidebook Best Backpacking Trips in California and Nevada, with no track."
 fields = ["record"]
-basis = "Best Backpacking Trips in California and Nevada, by Mike White and Douglas Lorain (University of Nevada Press, 2015, no edition stated, ISBN 978-0-87417-971-2). Trip 7, page 171, gives the length, days, season and cautions; the Forest Service's page for the Crown/Rancheria Trailhead gives the permit reservation and quota. The owner of the dataset has the book and ruled that the route belongs in it."
+basis = "Best Backpacking Trips in California and Nevada, by Mike White and Douglas Lorain (University of Nevada Press, 2015, no edition stated, ISBN 978-0-87417-971-2). Trip 7, page 171, gives the length, days, season and cautions; the Forest Service's page for the Crown/Rancheria Trailhead gives the permit reservation and quota. The route was ruled to belong in the dataset."
 basis_url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
 asked_by = "the dataset's own check"
 outcome = "applied"

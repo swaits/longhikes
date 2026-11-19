@@ -5,11 +5,11 @@ name = "High Sierra Camp Loop"
 country = "US"
 regions = ["CA"]
 length_km = 78
-length_note = "48.2 mi (77.6 km), as the National Park Service gives it on its Tuolumne Meadows backpacking trails page, with 6,450 ft (1,970 m) of elevation gain, for the loop that links Tuolumne Meadows to the Vogelsang, Merced Lake, Sunrise, May Lake and Glen Aulin High Sierra Camps. The loop is not one designated trail: the Park Service's page gives it no trailhead (\"various possibilities\"). Other publishers give other figures. Mike White and Douglas Lorain's Best Backpacking Trips in California and Nevada, Trip 3, page 53, gives 51.2 mi from the Soda Springs Trailhead, with a 3 mi side trip to Vogelsang Lake and Pass not counted. Yosemite Hospitality's page for the camps gives 49 mi. The record keeps the Park Service's 48.2 mi as the length."
+length_note = "48.2 mi (77.6 km), as the National Park Service gives it on its Tuolumne Meadows backpacking trails page, with 6,450 ft (1,970 m) of elevation gain, for the loop that links Tuolumne Meadows to the Vogelsang, Merced Lake, Sunrise, May Lake and Glen Aulin High Sierra Camps. The loop is not one designated trail: the Park Service's page gives it no trailhead (\"various possibilities\"). Other publishers give other figures. Mike White and Douglas Lorain's Best Backpacking Trips in California and Nevada, Trip 3, page 53, gives 51.2 mi from the Soda Springs Trailhead, with a 3 mi side trip to Vogelsang Lake and Pass not counted. Yosemite Hospitality's page for the camps gives 49 mi. The start, days and season in this record are the book's, for its 51.2 mile version from the Soda Springs Trailhead; the Park Service gives the loop no single trailhead. The record keeps the Park Service's 48.2 mi as the length."
 tier = "short"
 designation = "A named loop on National Park Service trails in Yosemite National Park that the Park Service lists as the High Sierra Camp Loop; the loop itself is not one designated trail"
 wave = 1
-short_reason = "Very well known and popular: the Park Service lists the loop as visiting the most popular areas of Yosemite's high country and rates its permit demand High."
+short_reason = "Very well known and popular: the Park Service describes it as a long loop through the most popular areas of Yosemite's high country, rates its permit demand High, and lists the High Sierra Camps it links as booked by lottery."
 
 [source]
 status = "none"
@@ -60,7 +60,7 @@ where = "Trip 3, page 53"
 link_is = "publisher"
 
 [hike]
-summary = "The High Sierra Camp Loop is a backpacking loop in Yosemite National Park, California, from Tuolumne Meadows, on trails that link the park's High Sierra Camps at Glen Aulin, May Lake, Sunrise, Merced Lake and Vogelsang. The Park Service gives it as 48.2 miles with 6,450 feet of gain, and describes it as a long loop through the most popular areas of Yosemite's high country. The Park Service's lodging page lists the camps among the lodging managed by Yosemite Hospitality, with reservations by lottery."
+summary = "The High Sierra Camp Loop is a backpacking loop in Yosemite National Park, California, from Tuolumne Meadows, on trails that link the park's High Sierra Camps at Glen Aulin, May Lake, Sunrise, Merced Lake and Vogelsang. The Park Service gives it as 48.2 miles with 6,450 feet of gain, and describes it as a long loop through the most popular areas of Yosemite's high country."
 official_url = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
 start = "Soda Springs Trailhead, Tuolumne Meadows, Yosemite National Park, California"
 start_lonlat = [-119.371, 37.872]
@@ -80,7 +80,7 @@ facts = ["summary", "official_url", "terrain", "travel"]
 
 [[hike.source]]
 url = "https://www.nps.gov/yose/planyourvisit/lodging.htm"
-publisher = "National Park Service, Yosemite National Park (lodging page)"
+publisher = "National Park Service, Yosemite National Park (lodging page: the five High Sierra Camps, reservations by lottery; also the support for the short_reason)"
 facts = ["summary"]
 
 [[hike.source]]
@@ -105,7 +105,7 @@ facts = ["start_lonlat"]
 date = "2026-11-20"
 change = "The record was added: the High Sierra Camp Loop, 48.2 miles (78 km) from Tuolumne Meadows in Yosemite National Park, with no track."
 fields = ["record"]
-basis = "The Park Service's Tuolumne Meadows backpacking trails page names the High Sierra Camp Loop and gives 48.2 miles; Mike White and Douglas Lorain's Best Backpacking Trips in California and Nevada (University of Nevada Press, 2015, no edition stated, ISBN 978-0-87417-971-2) describes it as Trip 3, page 53, at 51.2 miles from the Soda Springs Trailhead over 5 to 8 days. The owner of the dataset ruled that it belongs in it."
+basis = "The Park Service's Tuolumne Meadows backpacking trails page names the High Sierra Camp Loop and gives 48.2 miles; Mike White and Douglas Lorain's Best Backpacking Trips in California and Nevada (University of Nevada Press, 2015, no edition stated, ISBN 978-0-87417-971-2) describes it as Trip 3, page 53, at 51.2 miles from the Soda Springs Trailhead over 5 to 8 days. The loop was ruled to belong in the dataset."
 basis_url = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

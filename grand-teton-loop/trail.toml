@@ -5,7 +5,7 @@ name = "Grand Teton Loop"
 country = "US"
 regions = ["WY"]
 length_km = 78
-length_note = "48.5 mi, as the book gives it for Trip 12 (page 104), with 9,100 ft of elevation gain and 5 to 8 days. The book's days assume about 10 miles a day. The page also prints 61 mi and 11,800 ft in brackets: the trip with the recommended side trips added. The figures are the book's own and are not measured from a track. This is under the 50 mile floor; it is listed as an exception by the ruling of the owner of the dataset. The book gives it five to eight days."
+length_note = "48.5 mi, as the book gives it for Trip 12 (page 104), with 9,100 ft of elevation gain and 5 to 8 days. The book's days assume about 10 miles a day. The page also prints 61 mi and 11,800 ft in brackets: the trip with the recommended side trips added. The figures are the book's own and are not measured from a track. This is under the 50 mile floor; it is listed because the book gives it five to eight days and describes optional cross-country scrambles."
 kind = "route"
 tier = "short"
 designation = "Guidebook route (Douglas Lorain, 2010, in Backpacking Wyoming); no agency or association"
@@ -125,4 +125,13 @@ fields = ["short_reason"]
 basis = "The record's own source, the guidebook Backpacking Wyoming, gives five to eight days (Trip 12) and describes optional cross-country scrambles."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The length note now gives the reason the trail is listed under the 50 mile floor in plain words, the same as its short reason."
+fields = ["length_note"]
+basis = "The record's own source, the guidebook Backpacking Wyoming, gives five to eight days (Trip 12) and describes optional cross-country scrambles."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
 outcome = "applied"

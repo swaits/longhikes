@@ -5,11 +5,11 @@ name = "Rae Lakes Loop"
 country = "US"
 regions = ["CA"]
 length_km = 67
-length_note = "41.4 mi, as the National Park Service gives it: 'The loop is 41.4 miles long, and climbs from 5035' (1535m) at the trailhead to 11,978' (3651m) at Glen Pass.' This is under the 50 mile floor; it is listed as an exception by the ruling of the owner of the dataset. The Park Service's 41.4 miles includes the 1.9 miles between Road's End and the loop junction, walked both ways."
+length_note = "41.4 mi, as the National Park Service gives it: 'The loop is 41.4 miles long, and climbs from 5035' (1535m) at the trailhead to 11,978' (3651m) at Glen Pass.' This is under the 50 mile floor; it is listed because it is very well known and popular. The Park Service's 41.4 miles includes the 1.9 miles between Road's End and the loop junction, walked both ways."
 tier = "short"
 designation = "National Park Service trails in Kings Canyon National Park, walked as a loop from Road's End and described as one on the Park Service's Rae Lakes Loop page"
 wave = 1
-short_reason = "It is very well known and popular, as the owner ruled: the Park Service limits the number of people starting each day by entry point and takes reservations up to six months ahead."
+short_reason = "Very well known and popular: the Park Service limits the number of people starting each day by entry point and takes reservations up to six months ahead."
 
 [source]
 status = "osm-only"
@@ -136,4 +136,13 @@ fields = ["short_reason"]
 basis = "The owner's ruling names the Rae Lakes Loop as a very well known and popular trail, and the Park Service's page limits the people starting each day by entry point and takes reservations up to six months ahead."
 basis_url = "https://www.nps.gov/seki/planyourvisit/wilderness_permits.htm"
 asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The reason for listing the trail under the 50 mile floor, and the matching sentence in the length note, now state it plainly: the trail is very well known and popular."
+fields = ["short_reason", "length_note"]
+basis = "The National Park Service's Rae Lakes Loop wilderness permit page limits the people starting each day by entry point and takes reservations up to six months ahead."
+basis_url = "https://www.nps.gov/seki/planyourvisit/wilderness_permits.htm"
+asked_by = "the dataset's own check"
 outcome = "applied"

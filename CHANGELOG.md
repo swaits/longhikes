@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-11-19 - Clicks on tracks land, data files open to other sites, and trail pages print cleanly
+
+- Clicking or tapping close to a track on the map now opens that trail.
+- The data files and the per-trail GPX and GeoJSON downloads can now be fetched by web apps on other sites.
+- Page descriptions in search results and link previews now end at a full sentence.
+- Addresses made from a trail's name, such as `/trails/pacific-crest-trail/`, now lead to the trail's page.
+- Trail pages print cleanly.
+- Keyboard users get "Skip the map" and "Skip to the list of trails" links.
+- Logos in lists load as smaller images.
+- A `CITATION.cff` file says how to cite the dataset.
+- The Rae Lakes Loop, Timberline Trail and Grand Teton Loop now say plainly why they are listed under the 50 mile floor.
+
 ## 2026-11-19 - Two trails added, the Solomons Trail waiting, two short trails moved to the left-out list, and the rule for shorter trails written out
 
 - Two trails are new. The Gila Wilderness Centennial Loop in New Mexico is a 100-mile (161 km) loop the Forest Service designated in 2024; it has no track, because the Forest Service publishes it as a map over numbered trails and no page that could be opened lists which trails it uses, and it has no start, because the Forest Service names none. The Siskiyou Peaks Trail is a 448 mile route by its author; it has no track, because it is sold as a guidebook with maps and no track is published.

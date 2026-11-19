@@ -191,11 +191,16 @@ class GuessableAddressTest(unittest.TestCase):
             self.assertNotIn(slug, ids, f"{source} shadows a trail page")
             self.assertFalse(os.path.exists(os.path.join(OUT, "trails", slug)), f"{source} shadows a built path")
             self.assertEqual(status, "301")
+            if dest.startswith("/left-out/"):  # the hand-written lines for trails moved to the left-out list
+                self.assertIn(slug, ("kekekabic", "pukaskwa-coastal"), source)
+                continue
             self.assertRegex(dest, r"^/trails/[^/]+/$")
             self.assertIn(dest.split("/")[2], ids, dest)
             self.assertTrue(os.path.isfile(os.path.join(OUT, *dest.strip("/").split("/"), "index.html")), dest)
         # the one address a hiker types for a trail named differently from its id
         self.assertIn(["/trails/pacific-crest-trail/", "/trails/pacific-crest/", "301"], rules)
+        for gone in ("kekekabic", "pukaskwa-coastal"):  # the removed trails keep their hand-written lines
+            self.assertIn([f"/trails/{gone}/", "/left-out/#left-out-below-floor", "301"], rules)
         # one destination per slug: no slug is given by two records
         by_slug = {}
         for source, dest, _ in trail_rules:

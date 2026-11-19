@@ -168,6 +168,8 @@ a:hover { text-decoration-thickness: 2px; }
 }
 
 abbr[title] { text-decoration: none; cursor: help; }
+/* An abbreviation inside a link is a link: it keeps the link's pointer */
+a abbr[title] { cursor: inherit; }
 
 code { font-family: var(--font-mono); font-size: 0.875em; overflow-wrap: anywhere; }
 /* A record's coded value shown beside its plain words */

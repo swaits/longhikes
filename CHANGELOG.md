@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-18 - State codes in links keep the link pointer
+
+- Hovering a state or province code such as UT in a trail row showed the question-mark cursor, because every abbreviation with a tooltip was given it. An abbreviation inside a link now keeps the ordinary link pointer. The tooltip with the place's full name is unchanged.
+
 ## 2026-11-18 - Group crumbs go to the group's page
 
 - The group in a breadcrumb ("West Coast" in Places / West Coast / California / Sierra High Route) now links to that group's own page, `/regions/west-coast/`, instead of an anchor on the places index. Across Canada has no page of its own and still links to its place on the index.

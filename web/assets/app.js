@@ -1312,38 +1312,90 @@
     popup.on('close', function () { shown = null; });
     entry.closePopupUnless = function (set) { if (shown && !set[shown.id]) popup.remove(); };
     document.addEventListener('olt:units', function () { if (shown) shown.meta.textContent = shown.text(); });
-    defs.filter(function (d) { return d.hit; }).forEach(function (def) {
-      map.on('mousemove', def.id, function (e) {
-        map.getCanvas().style.cursor = 'pointer';
-        highlight(e.features[0].properties.id);
+    var hitIds = defs.filter(function (d) { return d.hit; }).map(function (d) { return d.id; });
+
+    /* Squared distance, in pixels, from the point (px, py) to the segment a-b. */
+    function segDist2(px, py, a, b) {
+      var dx = b.x - a.x, dy = b.y - a.y;
+      var len2 = dx * dx + dy * dy;
+      var t = len2 ? Math.max(0, Math.min(1, ((px - a.x) * dx + (py - a.y) * dy) / len2)) : 0;
+      var cx = a.x + t * dx - px, cy = a.y + t * dy - py;
+      return cx * cx + cy * cy;
+    }
+    function partDist2(px, py, coords, isLine) {
+      var pts = coords.map(function (c) { return map.project(c); });
+      if (!isLine || pts.length < 2) {
+        return pts.reduce(function (m, q) { return Math.min(m, (q.x - px) * (q.x - px) + (q.y - py) * (q.y - py)); }, Infinity);
+      }
+      var best = Infinity;
+      for (var i = 1; i < pts.length; i++) best = Math.min(best, segDist2(px, py, pts[i - 1], pts[i]));
+      return best;
+    }
+    /* Squared pixel distance from the pointer to a feature's geometry. */
+    function featureDist2(px, py, g) {
+      if (!g) return Infinity;
+      if (g.type === 'Point') return partDist2(px, py, [g.coordinates], false);
+      if (g.type === 'MultiPoint') return partDist2(px, py, g.coordinates, false);
+      if (g.type === 'LineString') return partDist2(px, py, g.coordinates, true);
+      if (g.type === 'MultiLineString') {
+        return g.coordinates.reduce(function (m, part) { return Math.min(m, partDist2(px, py, part, true)); }, Infinity);
+      }
+      return Infinity;
+    }
+    /* The tracks and markers within a few pixels of the pointer (a few more for a finger than for a
+       mouse; a track is only about 1.6 px wide), and the nearest one: so that a click or tap close
+       to a track opens that trail, not only a click exactly on the line. */
+    function nearestFeature(e) {
+      var coarse = (e.originalEvent && (e.originalEvent.pointerType === 'touch' || e.originalEvent.type === 'touchend')) ||
+        (window.matchMedia && matchMedia('(pointer: coarse)').matches);
+      var pad = coarse ? 14 : 6;
+      var layers = hitIds.filter(function (id) { return map.getLayer(id); });
+      if (!layers.length) return null;
+      var x = e.point.x, y = e.point.y;
+      var found = map.queryRenderedFeatures([[x - pad, y - pad], [x + pad, y + pad]], { layers: layers });
+      var best = null, bestD = Infinity;
+      found.forEach(function (f) {
+        var d = featureDist2(x, y, f.geometry);
+        if (d < bestD) { best = f; bestD = d; }
       });
-      map.on('mouseleave', def.id, function () {
-        map.getCanvas().style.cursor = '';
-        highlight('');
-      });
-      map.on('click', def.id, function (e) {
-        var p = e.features[0].properties;
-        var box = document.createElement('div');
-        var a = document.createElement('a');
-        a.href = '/trails/' + encodeURIComponent(p.id) + '/';
-        a.textContent = p.name;
-        var meta = document.createElement('p');
-        var text = function () { return lengthText(Number(p.length_km)) + (p.kind === 'route' ? ' · Route' : ''); };
-        meta.textContent = text();
-        box.appendChild(a);
-        box.appendChild(meta);
-        if (p.sketch) {
-          var g = e.features[0].geometry || {};
-          var pointOnly = (g.type === 'MultiPoint' && g.coordinates.length === 1) || g.type === 'Point';
-          var note = document.createElement('p');
-          note.textContent = pointOnly
-            ? 'No GPX here. The ring only marks where it starts and ends; it is not the trail\u2019s path.'
-            : 'No GPX here. The dotted line only joins the start and the end; it is not the trail\u2019s path.';
-          box.appendChild(note);
-        }
-        popup.setLngLat(e.lngLat).setDOMContent(box).addTo(map);
-        shown = { id: p.id, meta: meta, text: text };
-      });
+      return best && bestD <= pad * pad ? best : null;
+    }
+    var overId = '';
+    map.on('mousemove', function (e) {
+      var f = nearestFeature(e);
+      var id = f ? f.properties.id : '';
+      map.getCanvas().style.cursor = f ? 'pointer' : '';
+      if (id !== overId) { overId = id; highlight(id); }
+    });
+    map.on('mouseout', function () {
+      map.getCanvas().style.cursor = '';
+      if (overId) { overId = ''; highlight(''); }
+    });
+    map.on('click', function (e) {
+      var hit = nearestFeature(e);
+      if (!hit) return;
+      e.features = [hit];
+      var p = e.features[0].properties;
+      var box = document.createElement('div');
+      var a = document.createElement('a');
+      a.href = '/trails/' + encodeURIComponent(p.id) + '/';
+      a.textContent = p.name;
+      var meta = document.createElement('p');
+      var text = function () { return lengthText(Number(p.length_km)) + (p.kind === 'route' ? ' · Route' : ''); };
+      meta.textContent = text();
+      box.appendChild(a);
+      box.appendChild(meta);
+      if (p.sketch) {
+        var g = e.features[0].geometry || {};
+        var pointOnly = (g.type === 'MultiPoint' && g.coordinates.length === 1) || g.type === 'Point';
+        var note = document.createElement('p');
+        note.textContent = pointOnly
+          ? 'No GPX here. The ring only marks where it starts and ends; it is not the trail\u2019s path.'
+          : 'No GPX here. The dotted line only joins the start and the end; it is not the trail\u2019s path.';
+        box.appendChild(note);
+      }
+      popup.setLngLat(e.lngLat).setDOMContent(box).addTo(map);
+      shown = { id: p.id, meta: meta, text: text };
     });
   }
 

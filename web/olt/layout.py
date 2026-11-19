@@ -200,6 +200,19 @@ def structured_data(jsonld, body, path, site, noindex=False):
     return str(_ld_json_block(obj))
 
 
+def skip_links(body):
+    """More skip links, for a page with a map before a long list of rows: past the map to the
+    filters and the list, and on to the rows themselves. Each shows only while it has keyboard focus
+    (style.css .skip-link) and is left out of a page without its target."""
+    body = str(body)
+    out = ""
+    if 'id="browse-list"' in body and 'class="browse__map"' in body:
+        out += '<a class="skip-link" href="#browse-list">Skip the map</a>'
+    if 'id="entries"' in body:
+        out += '<a class="skip-link" href="#entries">Skip to the list of trails</a>'
+    return out
+
+
 def layout(title, body, *, path, description="", maps=False, outdoor=False, scripts=(), data=None, site=None,
            jsonld=None, og_type="website", noindex=False, image="", image_alt="", alternates=()):
     """Return a complete HTML document.
@@ -311,7 +324,7 @@ def layout(title, body, *, path, description="", maps=False, outdoor=False, scri
 {chr(10).join(head)}
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>{skip_links(body)}
 {header(path, site)}
 <main id="main">
 {body}

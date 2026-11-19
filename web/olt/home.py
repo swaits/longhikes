@@ -735,11 +735,11 @@ def browse_view(listing, map_html, *, about="", about_title="", about_id="about-
     if has_map:
         grid = f"""<div class="browse">
   <div class="browse__map" id="map">{map_html}</div>
-  <div class="browse__list">{listing}</div>
+  <div class="browse__list" id="browse-list">{listing}</div>
 </div>"""
     else:
         grid = f"""<div class="browse browse--no-map">
-  <div class="browse__list">{listing}{map_html}</div>
+  <div class="browse__list" id="browse-list">{listing}{map_html}</div>
 </div>"""
     if about:
         grid += about_section(about, about_title or "About these trails", about_id)

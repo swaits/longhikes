@@ -98,10 +98,30 @@ _DANGLING = {"and", "or", "but", "nor", "with", "to", "of", "the", "a", "an", "i
 _ABBREVIATIONS = {"st", "mt", "mts", "ft", "no", "vs", "u.s", "d.c", "dr", "jr", "sr", "approx", "e.g", "i.e"}
 
 
+def cut_clean(text, limit):
+    """text if it fits, else cut at the end of a word within limit characters and closed with a
+    full stop, never with an ellipsis: a cut never leaves a comma, a colon or a conjunction (or other
+    joining word) last."""
+    text = re.sub(r"\s+", " ", text).strip()
+    if len(text) <= limit:
+        return text
+    head = text[:limit - 1]
+    if text[limit - 1] != " ":
+        head = head.rsplit(" ", 1)[0] if " " in head else head
+    head = head.rstrip(" ,;:.")
+    while True:
+        word = head.rsplit(" ", 1)[-1].lower().rstrip(",;:")
+        if " " in head and (word in _DANGLING or head[-1] in ",;:"):
+            head = head.rsplit(" ", 1)[0].rstrip(" ,;:.")
+        else:
+            break
+    return head + "."
+
+
 def share_description(text, limit=SHARE_DESCRIPTION_LIMIT):
     """text for a social preview: at most `limit` characters, cut from the search description at the
-    end of a sentence where one falls past half the limit, else at the end of a word, with an
-    ellipsis. A cut never leaves a comma, a colon or a conjunction (or other joining word) last."""
+    end of its last whole sentence that fits (one past a quarter of the limit), else at the end of a
+    word, closed with a full stop (cut_clean). Never an ellipsis."""
     text = re.sub(r"\s+", " ", text).strip()
     if len(text) <= limit:
         return text
@@ -113,19 +133,9 @@ def share_description(text, limit=SHARE_DESCRIPTION_LIMIT):
         if last in _ABBREVIATIONS:
             continue
         best = m.end()
-    if best >= limit // 2:
+    if best >= limit // 4:
         return text[:best]
-    head = text[:limit - 1]
-    if text[limit - 1] != " ":
-        head = head.rsplit(" ", 1)[0] if " " in head else head
-    head = head.rstrip(" ,;:.")
-    while True:
-        word = head.rsplit(" ", 1)[-1].lower().rstrip(",;:")
-        if " " in head and (word in _DANGLING or head[-1] in ",;:"):
-            head = head.rsplit(" ", 1)[0].rstrip(" ,;:.")
-        else:
-            break
-    return head + "\u2026"
+    return cut_clean(text, limit)
 
 
 def plain_name(rec):
@@ -265,9 +275,11 @@ def policy_chip(value):
                   f'<span class="vh">Track policy: </span>{esc(lab)}</span>')
 
 
-def logo_img(rec, alt, eager=False):
-    """The logo <img>: the PNG thumbnail at its real size when there is one (olt/thumbs.py), else the file."""
-    logo = rec["derived"].get("logo_img")
+def logo_img(rec, alt, eager=False, listed=False):
+    """The logo <img>: the PNG thumbnail at its real size when there is one (olt/thumbs.py), else the file.
+
+    listed: the list-size thumbnail (twice the size a list shows a logo at), when there is one."""
+    logo = (rec["derived"].get("list_img") if listed else None) or rec["derived"].get("logo_img")
     src, dims = (logo["src"], f' width="{logo["width"]}" height="{logo["height"]}"') if logo \
         else (shield_url(rec), "")
     loading = "" if eager else ' loading="lazy"'
@@ -291,7 +303,7 @@ def plate(rec, *, size="", link=False, eager=False, alt=None):
     if url:
         if alt is None:
             alt = f"{rec['name']} logo" if size else ""
-        img = logo_img(rec, alt, eager)
+        img = logo_img(rec, alt, eager, listed=not size)
         if link:
             label = "" if alt else f'<span class="vh">Full-size logo: {name(rec)}</span>'
             img = f'<a href="{esc(url)}">{img}{label}</a>'

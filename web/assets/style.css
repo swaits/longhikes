@@ -2521,3 +2521,28 @@ html:not(.js) .saved-body { display: none; }
 .numbers > section > h2 { margin-block-end: var(--space-3); font-size: var(--step-2); }
 .numbers > section > ul { padding-inline-start: 1.2em; }
 .left-out > section { margin-block-start: var(--space-7); }
+
+/* 15. Print ------------------------------------------------------------------ */
+
+/* A trail page printed: the title, facts, summary, sources, the page's drawing of the track and the
+   elevation profile, in black on white. The navigation, the finder's filters, the buttons, the live
+   map and its controls are left off, and an outside link shows where it goes. Every rule is inside
+   @media print, so nothing on a screen changes. */
+@media print {
+  :root { color-scheme: light; }
+  @page { margin: 1.6cm; }
+  html, body { background: #fff; color: #000; }
+  body { font-size: 11pt; }
+  .skip-link, .site-header, .breadcrumb, .site-footer__base,
+  .filters, .button, button, .js-only, .save, .glance__toggle,
+  .map__canvas, .map__status, .map__termini, .maplibregl-ctrl, .maplibregl-popup, .basemap-switch,
+  .onward, .morelinks { display: none !important; }
+  /* The live map is a canvas that does not print; the page's own drawing of the track does. */
+  .map[data-state="ready"] .map__fallback { visibility: visible; transition: none; }
+  .map { background: #fff; }
+  main a { color: #000; text-decoration: underline; }
+  main a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; overflow-wrap: anywhere; }
+  main a[href^="http"]:has(img)::after, main a[href^="http"].vh::after { content: none; }
+  figure, .block, .panel, .entry, tr { break-inside: avoid; }
+  h1, h2, h3 { break-after: avoid; }
+}

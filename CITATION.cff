@@ -1,0 +1,15 @@
+# Citation metadata (https://citation-file-format.github.io/). Every fact here is
+# stated in README.md; no author, version or identifier is given because the
+# README names none.
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+type: dataset
+title: "Long Hikes"
+abstract: "A public dataset of long-distance hiking trails in the United States and Canada: one directory per trail, with a written record, the trail's track where it may be shared, and the trail's logo where one exists."
+authors:
+  - name: "Long Hikes"
+repository-code: "https://github.com/swaits/longhikes"
+url: "https://longhikes.org"
+# The records, documents and compiled index are CC0-1.0 (see LICENSE). Tracks keep
+# their sources' terms, and trail logos are not covered; see README.md, Licences.
+license: CC0-1.0

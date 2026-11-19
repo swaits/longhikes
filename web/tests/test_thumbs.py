@@ -157,17 +157,17 @@ class BuiltPagesTest(unittest.TestCase):
     def test_list_pages_show_thumbnails_not_full_size_pngs(self):
         for path, img in self.all_imgs:
             self.assertFalse(img.get("src", "").endswith("/shield.png"), f"{path} shows {img.get('src')}")
-        for page in ("index.html", os.path.join("logos", "index.html")):
+        for page, name in (("index.html", thumbs.LIST_THUMB_NAME), (os.path.join("logos", "index.html"), thumbs.THUMB_NAME)):
             with open(os.path.join(OUT, page), encoding="utf-8") as f:
                 doc = f.read()
             for tid in self.png:
-                self.assertIn(f'src="/trails/{tid}/shield-thumb.png"', doc, f"{page} for {tid}")
+                self.assertIn(f'src="/trails/{tid}/{name}"', doc, f"{page} for {tid}")
 
     def test_thumbnail_width_and_height_match_the_file(self):
         seen = 0
         for path, img in self.all_imgs:
             src = img.get("src", "")
-            if not src.endswith("/" + thumbs.THUMB_NAME):
+            if not src.endswith(("/" + thumbs.THUMB_NAME, "/" + thumbs.LIST_THUMB_NAME)):
                 continue
             seen += 1
             w, h = thumbs.png_size(os.path.join(OUT, src.lstrip("/")))

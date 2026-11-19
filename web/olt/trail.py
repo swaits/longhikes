@@ -1635,26 +1635,32 @@ def places_short(rec):
 def description(rec):
     """The meta description, from the record's own fields and at most DESCRIPTION_LIMIT
     characters: what it is, how long, where, the usual time where a source states one,
-    then the first sentence of the summary (or the designation where there is none)."""
+    then the first sentence of the summary (or the designation where there is none).
+    Always whole sentences, whatever fits of those."""
     mi = words.fmt_int(rec["derived"]["length_mi"])
     km = words.fmt_km(rec["length_km"])
     built = ""
     if rec.get("built_km"):
         built = f", {words.fmt_int(words.km_to_mi(rec['built_km']))} miles built,"
-    text = f"A {kind_word(rec)} of {mi} miles ({km} km){built} {places_short(rec)}"
+    lead = f"A {kind_word(rec)} of {mi} miles ({km} km){built} {places_short(rec)}"
     days = hike.days(rec)
-    if days:
-        text += f", usually {days}"
-    text += "."
     tail = hike.one_line(rec)
     if not tail and rec.get("designation"):
         tail = rec["designation"].strip()
         tail = tail[:1].upper() + tail[1:]
         if not tail.endswith("."):
             tail += "."
-    if tail:
-        text += " " + tail
-    return common.cut_at_word(re.sub(r"\s+", " ", text.replace("`", "")), common.DESCRIPTION_LIMIT)
+    # Whole sentences, the richest that fits first: the facts with the usual time and the summary's
+    # first sentence, then without the time, then the facts alone; only a first sentence that is
+    # itself too long is cut, at a word and with no ellipsis (common.cut_clean).
+    sentences = [lead + (f", usually {days}" if days else "") + "."]
+    if days:
+        sentences.append(lead + ".")
+    options = [f"{o} {tail}" for o in sentences] if tail else []
+    options += sentences
+    options = [re.sub(r"\s+", " ", o.replace("`", "")) for o in options]
+    return next((o for o in options if len(o) <= common.DESCRIPTION_LIMIT),
+                common.cut_clean(options[-1], common.DESCRIPTION_LIMIT))
 
 
 # Ways onward ------------------------------------------------------------------

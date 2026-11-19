@@ -31,17 +31,25 @@
 # Site data. Matched by file type, not /data/*, so the pages under /data/
 # (/data/, /data/schema/, /data/changelog/) revalidate like every other page.
 # overview.geojson and trails.json are fetched by page scripts; index.geojson,
-# trails.csv and the two archives are downloads.
+# trails.csv and the two archives are downloads. These public data files, and the
+# trail downloads below (GPX and GeoJSON), also allow cross-origin GET
+# (Access-Control-Allow-Origin: *), so that a browser app on another site can fetch
+# them. No HTML page and no other file carries it; the security headers above are
+# unchanged.
 /data/*.json
+  Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=300, must-revalidate
 
 /data/*.geojson
+  Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=300, must-revalidate
 
 /data/*.csv
+  Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=300, must-revalidate
 
 /data/*.zip
+  Access-Control-Allow-Origin: *
   Content-Type: application/zip
   Content-Disposition: attachment
   Cache-Control: public, max-age=300, must-revalidate
@@ -88,12 +96,14 @@
 
 # Trail downloads: correct media types and a download disposition.
 /trails/*/*.gpx
+  Access-Control-Allow-Origin: *
   Content-Type: application/gpx+xml
   Content-Disposition: attachment
   Cache-Control: public, max-age=3600
   X-Robots-Tag: noindex
 
 /trails/*/*.geojson
+  Access-Control-Allow-Origin: *
   Content-Type: application/geo+json
   Content-Disposition: attachment
   Cache-Control: public, max-age=3600

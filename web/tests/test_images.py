@@ -100,7 +100,7 @@ class BuiltSiteTest(unittest.TestCase):
     def test_the_first_rows_of_a_list_are_eager_and_the_rest_are_lazy(self):
         for rel in ("index.html", os.path.join("lists", "under-100-miles", "index.html")):
             logos = [i for i in page_imgs(os.path.join(OUT, rel))
-                     if i["_row"] and i.get("src", "").endswith(thumbs.THUMB_NAME)]
+                     if i["_row"] and i.get("src", "").endswith((thumbs.THUMB_NAME, thumbs.LIST_THUMB_NAME))]
             self.assertGreater(len(logos), home.EAGER_ROWS + 2, rel)
             for img in logos:
                 if img["_row"] <= home.EAGER_ROWS:

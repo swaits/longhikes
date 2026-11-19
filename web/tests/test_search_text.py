@@ -113,14 +113,28 @@ class TrailDescriptionTest(unittest.TestCase):
         self.assertTrue(text.startswith("A trail of 2,198 miles (3,537 km) across 14 states, usually 5 to 7 months."), text)
         self.assertIn("A long walk along the crest of the Example Range", text)
 
-    def test_at_most_155_characters_cut_at_a_word(self):
+    def test_at_most_155_characters_in_whole_sentences(self):
         rec = at()
         rec["hike"]["summary"] = "The walk goes " + "on and on and on " * 20 + "to the end."
         text = trail.description(rec)
         self.assertLessEqual(len(text), common.DESCRIPTION_LIMIT)
-        self.assertTrue(text.endswith("…"))
-        self.assertFalse(text[:-1].endswith(" "))
-        self.assertTrue(text[:-1].rsplit(" ", 1)[1] in ("on", "and", "goes", "walk", "The"))
+        self.assertEqual(text, "A trail of 2,198 miles (3,537 km) across 14 states, usually 5 to 7 months.")
+        self.assertNotIn("\u2026", text)
+
+    def test_a_first_sentence_too_long_is_cut_at_a_word_with_no_ellipsis(self):
+        rec = at()
+        rec["common_name"] = rec["name"] = "N" * 58
+        rec["regions"] = ["GA", "NC", "TN", "VA", "WV", "MD", "PA", "NJ", "NY", "CT", "MA", "VT", "NH", "ME"]
+        text = trail.description(rec)
+        self.assertLessEqual(len(text), common.DESCRIPTION_LIMIT)
+        self.assertTrue(text.endswith("."))
+        self.assertNotIn("\u2026", text)
+
+    def test_the_summary_sentence_follows_when_it_fits(self):
+        rec = at()
+        rec["hike"]["summary"] = "A short walk."
+        self.assertEqual(trail.description(rec),
+                         "A trail of 2,198 miles (3,537 km) across 14 states, usually 5 to 7 months. A short walk.")
 
     def test_no_stock_sentence(self):
         for rec in (at(), fake(1), fake(2, hike={})):
@@ -234,13 +248,14 @@ class TitleAndShareTextTest(unittest.TestCase):
                  "following the crest of the Appalachian Mountains from Georgia to Maine, and more")
         got = common.share_description(words)
         self.assertLessEqual(len(got), 125)
-        self.assertTrue(got.endswith("\u2026"))
+        self.assertTrue(got.endswith("."))
+        self.assertNotIn("\u2026", got)
         self.assertTrue(words.startswith(got[:-1]))
-        self.assertIsNone(re.search(r"(,|\b(and|or|but|with|to|of|the|in))\u2026$", got), got)
+        self.assertIsNone(re.search(r"(,|\b(and|or|but|with|to|of|the|in))\.$", got), got)
         for limit in range(40, 125):
             cut = common.share_description(words, limit)
             self.assertLessEqual(len(cut), limit)
-            self.assertIsNone(re.search(r"([,;:]|\b(and|or|but|with|to|of|the|a|in|by|from))\u2026?$", cut), cut)
+            self.assertIsNone(re.search(r"([,;:]|\b(and|or|but|with|to|of|the|a|in|by|from))\.?$", cut), cut)
 
     def test_the_search_description_is_unchanged_and_the_share_one_is_cut_from_it(self):
         desc = ("A trail of 2,198 miles (3,537 km) across 14 states, usually 5 to 7 months. "

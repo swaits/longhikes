@@ -11,7 +11,7 @@ writes:
     /index.html                 home: overview map and the trail finder with every record
     /trails/<id>/index.html     one page per record
     /trails/<id>/trail.toml     the raw record; release.txt beside it where the trail has one
-    /trails/<id>/shield-thumb.png  the list-size copy of a PNG logo (olt/thumbs.py)
+    /trails/<id>/shield-thumb.png  the 256 px copy of a PNG logo; shield-list.png the list-size copy (olt/thumbs.py)
     /trails/<id>/card.png       the trail's social card, from web/cards/ (olt/cards.py)
     /regions/, /regions/<slug>/ Places: the hub and one page per state or province
     /lists/, /lists/<key>/      the lists shown today (olt/browse.py); /routes/ is the Routes list

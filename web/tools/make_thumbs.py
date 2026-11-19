@@ -11,6 +11,11 @@ the site build itself is standard library only and does not run this.
 
     python3 web/tools/make_thumbs.py [--force]
 
+It also writes web/thumbs-list/<id>.png, the same logo fitted within LIST_W x LIST_H
+(twice the largest box the lists draw a logo in, 7 rem plate less its padding and
+border: about 99 x 62 CSS px), for the lists, so a list does not download 256 px
+images to show them at a third of that. The trail page header and the Logos page
+keep the 256 px thumbnail.
 A thumbnail newer than its source is left alone unless --force is given.
 Thumbnails whose source no longer exists are removed.
 """
@@ -23,7 +28,9 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 THUMBS = os.path.join(os.path.dirname(HERE), "thumbs")
+LIST_THUMBS = os.path.join(os.path.dirname(HERE), "thumbs-list")
 MAX_SIDE = 256
+LIST_W, LIST_H = 200, 124  # 2 x (99 x 62 CSS px), for high-density screens
 
 
 def sources():
@@ -41,14 +48,14 @@ def sources():
     return found
 
 
-def make_thumb(src, dst):
+def make_thumb(src, dst, box=(MAX_SIDE, MAX_SIDE)):
     """Write one thumbnail with ImageMagick, then optimise it when optipng is present."""
     if src.endswith(".svg"):
         # Drawn at 384 dpi (so the drawing is larger than the thumbnail), then fitted.
         cmd = ["magick", "-background", "none", "-density", "384", src, "-strip",
-               "-resize", f"{MAX_SIDE}x{MAX_SIDE}>", "PNG32:" + dst]
+               "-resize", f"{box[0]}x{box[1]}>", "PNG32:" + dst]
     else:
-        cmd = ["magick", src, "-strip", "-resize", f"{MAX_SIDE}x{MAX_SIDE}>", "PNG32:" + dst]
+        cmd = ["magick", src, "-strip", "-resize", f"{box[0]}x{box[1]}>", "PNG32:" + dst]
     try:
         subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     except subprocess.CalledProcessError as e:
@@ -68,26 +75,27 @@ def main(argv=None):
     if shutil.which("magick") is None:
         sys.exit("make_thumbs: 'magick' (ImageMagick 7) was not found on the PATH; install ImageMagick and retry")
 
-    os.makedirs(THUMBS, exist_ok=True)
     srcs = sources()
     written = skipped = removed = 0
     total = 0
-    for tid, src in srcs.items():
-        dst = os.path.join(THUMBS, f"{tid}.png")
-        if not args.force and os.path.isfile(dst) and os.path.getmtime(dst) >= os.path.getmtime(src):
-            skipped += 1
-            continue
-        make_thumb(src, dst)
-        size = os.path.getsize(dst)
-        total += size
-        written += 1
-        print(f"wrote {os.path.relpath(dst, ROOT)} ({size} bytes)")
+    for out_dir, box in ((THUMBS, (MAX_SIDE, MAX_SIDE)), (LIST_THUMBS, (LIST_W, LIST_H))):
+        os.makedirs(out_dir, exist_ok=True)
+        for tid, src in srcs.items():
+            dst = os.path.join(out_dir, f"{tid}.png")
+            if not args.force and os.path.isfile(dst) and os.path.getmtime(dst) >= os.path.getmtime(src):
+                skipped += 1
+                continue
+            make_thumb(src, dst, box)
+            size = os.path.getsize(dst)
+            total += size
+            written += 1
+            print(f"wrote {os.path.relpath(dst, ROOT)} ({size} bytes)")
 
-    for name in sorted(os.listdir(THUMBS)):
-        if name.endswith(".png") and name[:-4] not in srcs:
-            os.remove(os.path.join(THUMBS, name))
-            removed += 1
-            print(f"removed {os.path.relpath(os.path.join(THUMBS, name), ROOT)} (no source)")
+        for name in sorted(os.listdir(out_dir)):
+            if name.endswith(".png") and name[:-4] not in srcs:
+                os.remove(os.path.join(out_dir, name))
+                removed += 1
+                print(f"removed {os.path.relpath(os.path.join(out_dir, name), ROOT)} (no source)")
 
     print(f"total: {written} written ({total} bytes), {skipped} up to date, {removed} removed")
     return 0

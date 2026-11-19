@@ -1,5 +1,9 @@
 """PNG logo thumbnails for the list and trail pages.
 
+Two sizes: web/thumbs/<id>.png (up to 256 px) for the trail page header and the Logos
+page, and web/thumbs-list/<id>.png (up to 200 x 124 px, twice the largest box a list
+draws a logo in) for the lists; a logo with no list thumbnail uses the first.
+
 web/thumbs/<id>.png is made by web/tools/make_thumbs.py and committed, from a
 PNG logo or (where the logo is a vector) an SVG one. The pages step copies it to
 trails/<id>/shield-thumb.png, and the pages show that copy at its real pixel size
@@ -16,7 +20,9 @@ import sys
 
 WEB_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 THUMB_DIR = os.path.join(WEB_DIR, "thumbs")
+LIST_THUMB_DIR = os.path.join(WEB_DIR, "thumbs-list")  # web/thumbs-list/<id>.png: for the lists, twice the size they are shown at
 THUMB_NAME = "shield-thumb.png"
+LIST_THUMB_NAME = "shield-list.png"
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 THUMB_MAX = 256  # the longest side of a thumbnail, as make_thumbs.py draws it
 
@@ -57,7 +63,7 @@ def svg_size(path):
     return max(1, round(w * scale)), max(1, round(h * scale))
 
 
-def prepare(rec, out_dir, repo_root, thumb_dir=THUMB_DIR):
+def prepare(rec, out_dir, repo_root, thumb_dir=THUMB_DIR, list_thumb_dir=LIST_THUMB_DIR):
     """Copy the record's PNG thumbnail into its output directory and set
     rec["derived"]["logo_img"] = {"src", "width", "height"}, the image the pages
     show. Without a logo the key is absent and any old copy is removed.
@@ -66,11 +72,21 @@ def prepare(rec, out_dir, repo_root, thumb_dir=THUMB_DIR):
     tdir = os.path.join(out_dir, "trails", tid)
     dest = os.path.join(tdir, THUMB_NAME)
     rec["derived"].pop("logo_img", None)
+    rec["derived"].pop("list_img", None)
+    list_dest = os.path.join(tdir, LIST_THUMB_NAME)
     shield = rec["derived"]["files"].get("shield", "")
     if not shield.endswith((".png", ".svg")):
-        if os.path.isfile(dest):
-            os.remove(dest)
+        for stale in (dest, list_dest):
+            if os.path.isfile(stale):
+                os.remove(stale)
         return
+    list_thumb = os.path.join(list_thumb_dir, f"{tid}.png")
+    if os.path.isfile(list_thumb):
+        shutil.copyfile(list_thumb, list_dest)
+        w, h = png_size(list_dest)
+        rec["derived"]["list_img"] = {"src": f"/trails/{tid}/{LIST_THUMB_NAME}", "width": w, "height": h}
+    elif os.path.isfile(list_dest):
+        os.remove(list_dest)
     thumb = os.path.join(thumb_dir, f"{tid}.png")
     if os.path.isfile(thumb):
         shutil.copyfile(thumb, dest)

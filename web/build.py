@@ -19,7 +19,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 
-from olt import fingerprint, geo, hike, records  # noqa: E402
+from olt import fingerprint, geo, hike, records, redirects  # noqa: E402
 
 GPX_TOL_M = 5.0
 MAP_TOL_M = 30.0
@@ -516,6 +516,8 @@ def main(argv=None):
         build_archive(name, recs, out_dir, stats)
 
     copy_static(STATIC_DIR, out_dir, stats)
+    # The guessable trail addresses (/trails/pacific-crest-trail/) follow the fixed ones in _redirects.
+    redirects.append_to(out_dir, recs)
 
     pages = import_pages()
     if pages is None:

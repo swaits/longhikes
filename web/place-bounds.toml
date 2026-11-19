@@ -1,0 +1,80 @@
+# Where each state, province and territory is: the ground a place page's map opens on.
+#
+# One box per place the site has a page for (every key of olt/facets.py PLACE_GROUPS), as
+# [west, south, east, north] in degrees (WGS 84), rounded to two decimals. olt/bounds.py reads this
+# file; a group page takes the union of its members' boxes, and a place with no entry here keeps the
+# map fitted to its trails. Nothing is fetched at build time or in the browser.
+#
+# Source: Natural Earth 1:10m Admin 1 - States, Provinces (ne_10m_admin_1_states_provinces,
+# 2022 release), https://www.naturalearthdata.com/. Licence: public domain (Natural Earth's terms of
+# use put no restriction on use, with or without credit). Each box is the extent of the place's
+# polygons, leaving out small outlying islands (polygons under 1% of the place's largest) so that,
+# for example, Hawaii's box is the main islands. Alaska's box is the mainland and the Alaska
+# Peninsula only: the Aleutian Islands cross the antimeridian (longitude 180) and would make a box
+# that wraps the world, and no trail is there. No box crosses the antimeridian.
+
+[box]
+"CA-AB" = [-120.00, 48.99, -110.00, 60.00]
+"CA-BC" = [-139.06, 48.31, -114.04, 60.00]
+"CA-MB" = [-102.00, 48.99, -88.95, 60.00]
+"CA-NB" = [-69.06, 45.06, -63.77, 48.08]
+"CA-NL" = [-67.81, 46.62, -52.62, 60.30]
+"CA-NS" = [-66.21, 43.47, -59.80, 47.03]
+"CA-NT" = [-136.45, 60.00, -101.99, 77.56]
+"CA-NU" = [-120.68, 60.00, -61.09, 83.12]
+"CA-ON" = [-95.16, 41.67, -74.35, 56.86]
+"CA-PE" = [-64.42, 45.95, -61.98, 47.07]
+"CA-QC" = [-79.77, 45.00, -57.10, 62.59]
+"CA-SK" = [-110.00, 48.99, -101.36, 60.00]
+"CA-YT" = [-141.01, 60.00, -123.82, 69.65]
+"US-AK" = [-168.14, 54.76, -129.99, 71.41]
+"US-AL" = [-88.49, 30.22, -84.90, 35.01]
+"US-AR" = [-94.62, 33.01, -89.67, 36.50]
+"US-AZ" = [-114.82, 31.33, -109.05, 37.00]
+"US-CA" = [-124.41, 32.53, -114.12, 42.00]
+"US-CO" = [-109.05, 37.00, -102.04, 41.00]
+"US-CT" = [-73.72, 41.00, -71.80, 42.05]
+"US-DC" = [-77.12, 38.80, -76.91, 39.00]
+"US-DE" = [-75.79, 38.45, -75.04, 39.84]
+"US-FL" = [-87.63, 25.12, -80.03, 31.00]
+"US-GA" = [-85.61, 30.36, -80.84, 35.00]
+"US-HI" = [-160.25, 18.91, -154.81, 22.24]
+"US-IA" = [-96.64, 40.38, -90.14, 43.50]
+"US-ID" = [-117.22, 42.00, -111.05, 48.99]
+"US-IL" = [-91.52, 36.98, -87.02, 42.51]
+"US-IN" = [-88.11, 37.78, -84.78, 41.76]
+"US-KS" = [-102.05, 37.00, -94.61, 40.00]
+"US-KY" = [-89.42, 36.50, -81.97, 39.15]
+"US-LA" = [-94.04, 28.93, -89.01, 33.01]
+"US-MA" = [-73.51, 41.30, -69.92, 42.89]
+"US-MD" = [-79.49, 37.93, -75.08, 39.72]
+"US-ME" = [-71.08, 43.08, -66.98, 47.46]
+"US-MI" = [-90.41, 41.70, -82.15, 48.31]
+"US-MN" = [-97.23, 43.50, -89.50, 49.37]
+"US-MO" = [-95.77, 35.99, -89.12, 40.62]
+"US-MS" = [-91.66, 30.18, -88.09, 35.00]
+"US-MT" = [-116.05, 44.38, -104.04, 48.99]
+"US-NC" = [-84.32, 33.87, -75.72, 36.61]
+"US-ND" = [-104.05, 45.94, -96.56, 48.99]
+"US-NE" = [-104.05, 40.00, -95.32, 43.00]
+"US-NH" = [-72.56, 42.70, -70.70, 45.30]
+"US-NJ" = [-75.56, 38.92, -73.91, 41.36]
+"US-NM" = [-109.05, 31.33, -103.00, 37.00]
+"US-NV" = [-120.00, 35.00, -114.04, 42.00]
+"US-NY" = [-79.76, 40.54, -71.86, 45.01]
+"US-OH" = [-84.82, 38.41, -80.52, 42.32]
+"US-OK" = [-103.00, 33.65, -94.44, 37.00]
+"US-OR" = [-124.57, 42.00, -116.45, 46.24]
+"US-PA" = [-80.52, 39.72, -74.70, 42.54]
+"US-RI" = [-71.88, 41.15, -71.12, 42.02]
+"US-SC" = [-83.36, 32.03, -78.57, 35.22]
+"US-SD" = [-104.06, 42.52, -96.45, 45.94]
+"US-TN" = [-90.31, 34.98, -81.66, 36.69]
+"US-TX" = [-106.66, 25.84, -93.51, 36.50]
+"US-UT" = [-114.04, 37.00, -109.05, 42.00]
+"US-VA" = [-83.67, 36.54, -75.38, 39.45]
+"US-VT" = [-73.44, 42.73, -71.51, 45.01]
+"US-WA" = [-124.73, 45.57, -116.88, 48.99]
+"US-WI" = [-92.90, 42.49, -86.25, 47.31]
+"US-WV" = [-82.64, 37.20, -77.73, 40.65]
+"US-WY" = [-111.05, 41.00, -104.05, 45.00]

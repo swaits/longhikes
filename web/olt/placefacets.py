@@ -5,7 +5,7 @@ least MIN_SIZE trails in the list, no more than MAX_SHARE of the place's trails 
 would repeat the place page), and its trails are not nearly the same set as another such page of
 the same place. A new trail or a corrected record moves pages in and out with no change here.
 """
-from . import browse, common, facets, home, regions, summary
+from . import bounds, browse, common, facets, home, regions, summary
 from .markup import Markup, esc
 
 SAME_SET = 0.8   # two pages of one place whose trails overlap by this share (of the smaller union) are one page
@@ -105,7 +105,7 @@ def page(p, records, site, all_pages):
   </div></header>
 </div></div>
 <div class="container section place">
-  {home.browse_view(home.listing(recs, default_sort=lst.sort, top=2, where=""), home.overview_map(recs, f"Map of the trails in {name}: {lst.title}"),
+  {home.browse_view(home.listing(recs, default_sort=lst.sort, top=2, where=""), home.overview_map(recs, f"Map of the trails in {name}: {lst.title}", place=bounds.place_box(info["key"])),
                about=summary.facts(recs, records), about_title=f"About these trails in {name}")}
   <nav class="region-nav" aria-label="Lists"><a href="{esc(browse.path(lst))}">{esc(lst.title)} everywhere</a> · <a href="/lists/">All lists</a></nav>
   {nav}

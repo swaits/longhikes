@@ -80,9 +80,10 @@ def overview_box(records):
     return [min(b[0] for b in boxes), min(b[1] for b in boxes), max(b[2] for b in boxes), max(b[3] for b in boxes)]
 
 
-def overview_bbox(records):
-    """data-bbox attribute: the extent of every track and sketch, so the map opens on it before the data loads."""
-    box = overview_box(records)
+def overview_bbox(records, box=None):
+    """data-bbox attribute: the extent of every track and sketch, so the map opens on it before the data loads.
+    box: the ground to open on instead (a place page's, olt/bounds.py)."""
+    box = box or overview_box(records)
     return f' data-bbox="{",".join(f"{v:.4f}" for v in box)}"' if box else ""
 
 
@@ -627,7 +628,7 @@ def drawable_ids(recs):
     return [r["id"] for r in recs if r["id"] in tracks or hike.sketch_points(r)]
 
 
-def overview_map(recs, label, *, wide=False, scope="", saved=False):
+def overview_map(recs, label, *, wide=False, scope="", saved=False, place=None):
     """The map of the given trails (the overview geometry, limited to their ids
     unless every trail is shown). A note instead when too little can be drawn.
 
@@ -635,6 +636,10 @@ def overview_map(recs, label, *, wide=False, scope="", saved=False):
     app.js limits it to the trails shown; the figure lists the ids it can draw
     (data-drawable), so app.js leaves the map out when it would be empty, and
     its caption counts nothing, since the list is the visitor's.
+
+    place: [west, south, east, north] of the place a place page is about. The map opens on it, and
+    returns to it when the filters are cleared; the tracks are drawn in full, and those that run
+    beyond it leave the opening view. Without it the map opens on the extent of the tracks.
     """
     ids = drawable_ids(recs)
     if not ids:
@@ -681,7 +686,7 @@ def overview_map(recs, label, *, wide=False, scope="", saved=False):
     # The tracks are drawn into the page, on the ground the live map opens on (olt/sketch.py). The
     # Saved page has none: which trails it draws is the visitor's own, so app.js draws them.
     frame_attr, drawing = "", ""
-    box = overview_box(recs)
+    box = place or overview_box(recs)
     if box and not saved:
         fr = sketch.frame(box)
         frame_attr = f' data-frame="{",".join(f"{v:g}" for v in fr)}"'
@@ -689,7 +694,7 @@ def overview_map(recs, label, *, wide=False, scope="", saved=False):
         # The frame takes the shape of the ground it shows, within calm bounds, so the tracks fill it
         # (style.css .browse__map); the drawing and the live map fit the same ground either way.
         frame_attr += f' style="--frame-n: {frame_ratio(fr):.3f}"'
-    return Markup(f"""<figure class="mapfig{" mapfig--wide" if wide else ""}" data-map="overview" data-src="/data/overview.geojson"{ids_attr}{overview_bbox(recs)}{frame_attr}>
+    return Markup(f"""<figure class="mapfig{" mapfig--wide" if wide else ""}" data-map="overview" data-src="/data/overview.geojson"{ids_attr}{overview_bbox(recs, place)}{frame_attr}>
   <div class="mapfig__frame">
     <span class="mapfig__corner mapfig__corner--nw" aria-hidden="true"></span>
     <div class="map" role="region" aria-label="{esc(label)}">

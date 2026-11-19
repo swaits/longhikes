@@ -6,7 +6,7 @@ The section is called Places; its pages keep their /regions/ URLs.
 """
 import collections
 
-from . import browse, common, facets, home, summary, words
+from . import bounds, browse, common, facets, home, summary, words
 from .markup import Markup, esc
 
 
@@ -31,6 +31,13 @@ def collect_regions(records):
         info["records"].sort(key=home.sort_name)
     across.sort(key=home.sort_name)
     return by_slug, across
+
+
+def group_box(g, by_slug):
+    """The ground a group page opens on: the union of the boxes of its members that have trails,
+    or None when one of them has no box (the map then opens on its trails)."""
+    keys = next(k for x, _, k in facets.PLACE_GROUPS if x == g)
+    return bounds.union([k for k in keys if k.lower() in by_slug])
 
 
 def group_records(records, group):
@@ -153,7 +160,7 @@ def group_page(g, records, site):
   </div></header>
 </div></div>
 <div class="container section place">
-  {home.browse_view(home.listing(recs, top=2, where="g:" + g), home.overview_map(recs, f"Map of the trails in {name}"),
+  {home.browse_view(home.listing(recs, top=2, where="g:" + g), home.overview_map(recs, f"Map of the trails in {name}", place=group_box(g, by_slug)),
                about=f"{summary.facts(recs, records)}{summary.details(recs)}", about_title=f"About the trails in {name}")}
   {nav}
 </div>"""
@@ -206,7 +213,7 @@ def region_page(slug, records, site, facet_pages=()):
   </div></header>
 </div></div>
 <div class="container section place">
-  {home.browse_view(home.listing(recs, top=2, where=""), home.overview_map(recs, f"Map of the trails in {info['name']}"),
+  {home.browse_view(home.listing(recs, top=2, where=""), home.overview_map(recs, f"Map of the trails in {info['name']}", place=bounds.place_box(key)),
                about=f"{summary.facts(recs, records)}{summary.details(recs)}",
                about_title=f"About the trails in {info['name']}")}
   {nav}

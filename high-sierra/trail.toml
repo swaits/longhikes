@@ -7,33 +7,33 @@ short_name_url = "https://www.treelinereview.com/where-to-go/backpacking-high-si
 country = "US"
 regions = ["CA"]
 length_km = 116
-length_note = "72.2 mi, from the Sequoia and Kings Canyon National Parks page"
+length_note = "72.2 mi (115.5 km) from Crescent Meadow to Whitney Portal, as the Sequoia and Kings Canyon National Parks page gives it. The Park Service's own table says these distances include the 4.8-mile (7.7 km) round trip on the spur trail to the summit of Mount Whitney, so the walk from Crescent Meadow to Whitney Portal without the summit is 67.4 mi (108.5 km). The track measures 105.7 km (65.7 mi) without the summit spur, 2.6% under that."
 tier = "regional"
 designation = "National Park Service, Sequoia and Kings Canyon National Parks"
 wave = 1
 
 [source]
-status = "osm-only"
-publisher = "National Park Service, Sequoia and Kings Canyon National Parks (publishes the trail; no open geometry found)"
+status = "verified"
+publisher = "National Park Service, Sequoia and Kings Canyon National Parks (Park Atlas, Hiking and Backpacking, High Sierra Trail layer) and USDA Forest Service, Inyo National Forest (National Forest System Trails)"
 publisher_url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
-url = "https://www.openstreetmap.org/relation/1714300"
-discovery = "osm-relation-version: Overpass `rel(1714300); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
-format = "OpenStreetMap route relation, read through Overpass with all member ways"
+url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/SEKI_ParkAtlas2_4_HikingandBackpacking_MASTER/FeatureServer/11"
+discovery = "arcgis-query-hash: GET <url>/query with where 1=1 (outSR=4326, f=geojson) for the Park Atlas layer, and GET https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0/query with the envelope -118.31,36.54,-118.20,36.62 (inSR=4326, outSR=4326, f=geojson) for the Forest Service layer; hash each answer body and count its rows; fetch again when either changes. 33 Park Atlas features and 17 Forest Service features on 2026-11-19."
+format = "ArcGIS FeatureServer layer 11 (Park Atlas, National Park Service) and ArcGIS MapServer layer 0 (Forest Service), outSR=4326, f=geojson, 33 features used (6 from the Forest Service)"
 crs = "EPSG:4326"
-licence = "ODbL-1.0"
-licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-10). The track included here is from OpenStreetMap, relation 1714300."
-attribution = "OpenStreetMap contributors (ODbL)"
-osm_only = true
-mainline = "OSM relation 1714300: one route relation, main ways only."
-source_checked = "2026-11-10"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The Park Atlas service names the National Park Service, Sequoia and Kings Canyon National Parks as its publisher and states no licence of its own (its licence field is empty, read 2026-11-19); the National Park Service states, of its data: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-18). The USDA Forest Service metadata for its trails dataset (https://data.fs.usda.gov/geodata/edw/edw_resources/meta/Trans_Trail_NFS_Publish.xml, read 2026-11-16) gives access constraints 'None' and, as use constraints, only a disclaimer of warranty and liability. Both layers are datasets made by federal employees, federal government works."
+attribution = "National Park Service; USDA Forest Service"
+osm_only = false
+mainline = "One track of 33 features, from Crescent Meadow to Whitney Portal, in the order the Park Service describes the trail. 27 features are the Park Service's own High Sierra Trail layer (the trail within the parks), which carries the trail from Crescent Meadow trailhead by Bearpaw Meadow, Hamilton Lakes, Kaweah Gap, the Chagoopa Plateau and the Kern Canyon to the junction with the John Muir Trail at Wallace Creek, and then the John Muir Trail past Crabtree to Trail Crest (the layer lists the John Muir Trail's Sandy Meadow, Crabtree Sand Flats and Mount Whitney features as part of the High Sierra Trail). The 6 features of Forest Service trail 3404, Mount Whitney, carry the descent from Trail Crest to Whitney Portal. Left out: the 3.1 km spur trail from Trail Crest to the summit of Mount Whitney, which is in alternates.geojson; the layer's other side trails (Nine Lakes at Big Arroyo, 5.7 km, and four small loops at Hamilton Lakes and Bobcat Point, 0.1 km together); the Moraine Lake route, which the layer does not hold and which the Park Service gives as a side trip."
+source_checked = "2026-11-19"
 redistributable = true
-line_source = "OpenStreetMap"
+line_source = "National Park Service and USDA Forest Service trail data"
 line_file = "line.geojson"
-length_gap_note = "The OpenStreetMap relation is incomplete: 77.4 km in 22 ways against 115.5 km published, and it reaches neither trailhead. The track is kept as mapped."
+length_gap_note = "The track is 105.7 km in 2 parts, 8.7% under the published 115.5 km, which counts the round trip to the summit (6.3 km on the layer's spur, 7.7 km in the Park Service's figure). Without the summit trip the Park Service's distance is 108.5 km and the track is 2.6% under it. The 2 parts are the Park Service line and the Forest Service line, which stop 204 m apart at Trail Crest, where the two layers do not meet; the gap is left open."
 
 [osm]
 relation = 1714300
-note = "Downloaded 2026-11-10; 22 ways in the main track. release.txt has the source and date."
+note = "Relation 1714300 is incomplete (22 ways, 77.4 km in 1 piece, ending near Crabtree Meadow, about 38 km short of Whitney Portal), so it is no longer the source of the track; the agencies' trail data is."
 
 [shield]
 status = "no-logo-exists"
@@ -45,11 +45,11 @@ logo_owner = "National Park Service"
 
 [verification]
 verified = true
-date = "2026-11-10"
-measured_km = 77.4
-difference_percent = -33.3
-parts = 1
-note = "OSM relation 1714300, 22 ways: 77.4 km in 1 part, 33.3% short of the published 116 km."
+date = "2026-11-19"
+measured_km = 105.7
+difference_percent = -8.5
+parts = 2
+note = "33 agency features in 2 parts: 105.7 km (65.7 mi). Against the Park Service's 72.2 mi (115.5 km), which includes the 4.8 mi round trip to the summit, it is 8.5% under; against 67.4 mi (108.5 km) without the summit trip it is 2.6% under. Joins inside each part are 0 to 20 m; the Park Service and Forest Service lines stop 204 m apart at Trail Crest."
 
 [hike]
 summary = "The High Sierra Trail leads from Crescent Meadow in Sequoia National Park over the Great Western Divide at Kaweah Gap and down to the Kern River canyon, joining the John Muir Trail for the climb to Mount Whitney. It starts in giant sequoia forest, crosses alpine country above the treeline and ends with a descent to Whitney Portal."
@@ -114,4 +114,13 @@ fields = ["hike.season", "hike.months"]
 basis = "The page of Treeline Review says: \"The best season is July, August, or early September.\""
 basis_url = "https://www.treelinereview.com/where-to-go/backpacking-high-sierra-trail"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The High Sierra Trail's track now runs from Crescent Meadow to Whitney Portal, 105.7 km, built from the Park Service's High Sierra Trail layer for Sequoia and Kings Canyon National Parks and the Forest Service's trail data for the descent from Trail Crest. It replaces the OpenStreetMap track, which ended near Crabtree Meadow, 77.4 km, 38 km short. The licence is now public domain (us-gov-public-domain), where it was ODbL."
+fields = ["source.line_file", "source.status", "source.publisher", "source.url", "source.discovery", "source.format", "source.licence", "source.licence_text", "source.attribution", "source.osm_only", "source.mainline", "source.line_source", "source.length_gap_note", "osm.note", "verification", "length_note"]
+basis = "The Park Service's page for the trail gives the route from Crescent Meadow to the junction with the John Muir Trail at Wallace Creek, 49 miles, then the John Muir Trail to Mount Whitney, and the descent to Whitney Portal; its table of distances ends at Whitney Portal at 72.2 miles (115.5 km) and says the distances include the 4.8-mile round trip to the summit. The Park Service's Park Atlas layer holds the trail within the parks and the Forest Service layer holds the Mount Whitney Trail to Whitney Portal."
+basis_url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
+asked_by = "the dataset's owner"
 outcome = "applied"

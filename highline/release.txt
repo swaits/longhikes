@@ -1,7 +1,7 @@
 highline
 
-Source: https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0
-Licence: us-gov-public-domain (see trail.toml and SOURCES.md in this repository)
-Attribution: USDA Forest Service
-Source read: 2026-11-14
+Source: https://www.openstreetmap.org/relation/4188405
+Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
+Attribution: OpenStreetMap contributors (ODbL)
+Source read: 2026-11-19
 Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.

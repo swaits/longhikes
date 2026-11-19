@@ -14,7 +14,7 @@ Page: https://www.openstreetmap.org/copyright (read 2026-11-09). Full text: LICE
 
 ## United States federal agencies (public domain)
 
-Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 15 trails with an included track and the Colorado Trail in part (Alpine Trail #7, Appalachian, Black Canyon, Colorado Trail in part, Fremont, General George Crook, Highline, Middle Fork Trail, New England, North Umpqua, Pacific Northwest, Selway River Trail, Solitude Loop, Teton Crest Trail, Thorofare and South Boundary Trail, Toiyabe Crest).
+Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 15 trails with an included track and the Colorado Trail in part (Alpine Trail #7, Appalachian, Black Canyon, Colorado Trail in part, Fremont, General George Crook, High Sierra Trail, Middle Fork Trail, New England, North Umpqua, Pacific Northwest, Selway River Trail, Solitude Loop, Teton Crest Trail, Thorofare and South Boundary Trail, Toiyabe Crest).
 
 Quoted terms: "Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105."
 
@@ -154,9 +154,9 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | hayduke-trail | Joe Mitchell and Mike Coronella (publish the route) | [source page](https://uofupress.com/books/the-hayduke-trail/) | none-stated | record only |
 | heart-lake-two-ocean-plateau-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) | none-stated | record only |
 | high-country-pathway | Michigan Department of Natural Resources (manages the land; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2450544) | ODbL-1.0 | track |
-| high-sierra | National Park Service, Sequoia and Kings Canyon National Parks (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1714300) | ODbL-1.0 | track |
+| high-sierra | National Park Service, Sequoia and Kings Canyon National Parks (Park Atlas trail layer) and USDA Forest Service, Inyo National Forest | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/SEKI_ParkAtlas2_4_HikingandBackpacking_MASTER/FeatureServer/11) | us-gov-public-domain | track |
 | highlands | New York-New Jersey Trail Conference (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/6335422) | ODbL-1.0 | track |
-| highline | USDA Forest Service, National Forest System trails | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
+| highline | USDA Forest Service, Tonto National Forest (publishes the trail; its trail layer was read and not used for the track) | [source page](https://www.openstreetmap.org/relation/4188405) | ODbL-1.0 | track |
 | hoosier-heritage-trail | Hoosier Heritage Trail Association (publishes the trail) | [source page](https://hoosierheritagetrail.org/downloads/) | stated-permission | track |
 | horse-shoe | Horse-Shoe Trail Conservancy (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1596895) | ODbL-1.0 | track |
 | hot-springs-trail | Aria Zoner (publishes the route) | [source page](https://www.amazon.com/Hot-Springs-Trail-Official-Guidebook/dp/1505613922) | none-stated | record only |

@@ -11,26 +11,27 @@ designation = "National Recreation Trail #31 (Forest Service, Tonto National For
 wave = 1
 
 [source]
-status = "verified"
-publisher = "USDA Forest Service, National Forest System trails"
-url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
-discovery = "arcgis-query-hash: GET <url>/query with where trail_no = '31' AND trail_name = 'HIGHLINE' AND admin_org = '031204' (outSR=4326, f=geojson), hash the answer body and count its rows; fetch again when either changes. 13 features on 2026-11-14."
-format = "ArcGIS MapServer layer, queried with trail_no = '31' AND trail_name = 'HIGHLINE' AND admin_org = '031204' (13 features); outSR=4326, f=geojson"
+status = "osm-only"
+publisher = "USDA Forest Service, Tonto National Forest, Payson Ranger District (publishes the trail; its trail layer was read and not used for the track)"
+publisher_url = "https://www.fs.usda.gov/r03/tonto/recreation/trails/highline"
+url = "https://www.openstreetmap.org/relation/4188405"
+discovery = "osm-relation-version: Overpass `rel(4188405); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation (route=hiking), read through Overpass with all member ways"
 crs = "EPSG:4326"
-licence = "us-gov-public-domain"
-licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The National Park Service states: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-09). The Forest Service layer is a federal government work."
-attribution = "USDA Forest Service"
-osm_only = false
-mainline = "One trail number (31) and name (HIGHLINE) on the Payson Ranger District. The 13 features carry two designation codes in the layer (7 and 6 features); both are the Highline."
-source_checked = "2026-11-14"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 4188405."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 4188405 'Highline Trail #31' (operator United States Forest Service, ref 31), version 20 (2026-07-30): one route relation of 21 ways, every one with the empty role, so all of it is the main line; there are no alternates."
+source_checked = "2026-11-19"
 redistributable = true
-line_source = "USDA Forest Service (EDW National Forest System trails)"
+line_source = "OpenStreetMap"
 line_file = "line.geojson"
-length_gap_note = "The Forest Service layer holds 71.5 km (about 44 mi) of the Highline in 3 parts, with two gaps of a few hundred metres, against the 55 mi the Forest's page gives. The page says the Payson Ranger District rerouted and rebuilt sections in 2022; the layer may not hold all of the current trail. OpenStreetMap relation 4188405 measures 93.2 km in one part."
+length_gap_note = "The track is 93.2 km in one part, 4.7% over the 89 km (55 mi) the Forest Service's page gives. The Forest Service's own trail layer (trail 31, HIGHLINE, 13 features) follows the same route from Pine to the east end near Washington Park but measures 71.5 km in 3 parts with two gaps of 0.3 and 0.7 km, 23% less than the relation along the same route and 11.5% less than the 50.2 miles its own milepost fields give; it was the track until 2026-11-19. Over about 14 km east of Pine (between 9 and 13 km along the trail) the two lines differ by up to 0.8 km, which may be the 2022 reroute the Forest's page mentions. The relation traces the tread with its bends and switchbacks, which the layer's lines smooth, and it is the whole route in one piece."
 
 [osm]
 relation = 4188405
-note = "OSM relation 4188405 'Highline Trail #31' (operator United States Forest Service) measures 93.2 km in 1 part. It was not used, because the Forest Service publishes the trail's track."
+note = "OSM relation 4188405 'Highline Trail #31' (operator United States Forest Service), version 20, 21 ways, 93.2 km in 1 part. Read again with tools/osm_track.py on 2026-11-19; it is now the source of the track."
 
 [shield]
 status = "no-logo-exists"
@@ -42,11 +43,11 @@ logo_owner = "USDA Forest Service"
 
 [verification]
 verified = true
-date = "2026-11-14"
-measured_km = 71.5
-difference_percent = -19.7
-parts = 3
-note = "Forest Service layer, 13 features: 71.5 km in 3 parts, 19.7% short of 89 km (55 mi). The Forest's page and OpenStreetMap give more trail than the layer holds."
+date = "2026-11-19"
+measured_km = 93.2
+difference_percent = 4.7
+parts = 1
+note = "OSM relation 4188405, 21 ways: 93.2 km in 1 part, 4.7% over the Forest Service's 55 mi (89 km). The Forest Service layer on the same route measures 71.5 km in 3 parts."
 
 [hike]
 summary = "The Highline Trail runs east and west below the Mogollon Rim in Tonto National Forest, Arizona, with Pine as its main starting point. It crosses rim canyons, brushy hills and stands of ponderosa pine, and part of it, between Washington Park and Pine, is a passage of the Arizona National Scenic Trail. It is open to hikers, horse riders and mountain bikers."
@@ -109,4 +110,13 @@ fields = ["hike.days"]
 basis = "The page of Arizona Highways says: \"you can easily hike the entire Highline Trail in four to seven days\""
 basis_url = "https://www.arizonahighways.com/archive/issues/chapter/Doc.825.Chapter.5"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The Highline Trail's track is now OpenStreetMap relation 4188405, 93.2 km in one piece, in place of the Forest Service trail layer's 71.5 km in 3 parts. The licence is now ODbL, where it was public domain."
+fields = ["source.line_file", "source.status", "source.publisher", "source.publisher_url", "source.url", "source.discovery", "source.format", "source.licence", "source.licence_text", "source.attribution", "source.osm_only", "source.mainline", "source.source_checked", "source.line_source", "source.length_gap_note", "osm.note", "verification"]
+basis = "The Forest Service layer (trail 31, HIGHLINE, 13 features) covers the whole route from Pine to the east end but holds only 71.5 km of it in 3 parts, with two gaps, against 93.2 km on the relation along the same route and 11.5% less than its own milepost span of 50.2 miles. It holds no other trail number or name for the Highline, so no missing stretch could be completed from it. The relation is one piece with the Forest Service named as operator."
+basis_url = "https://www.fs.usda.gov/r03/tonto/recreation/trails/highline"
+asked_by = "the dataset's owner"
 outcome = "applied"

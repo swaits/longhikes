@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-19 - The High Sierra Trail runs its full length, and the Highline Trail is whole
+
+- The High Sierra Trail's track now runs from Crescent Meadow to Whitney Portal, 105.7 km (65.7 mi), where it ended near Crabtree Meadow, 77.4 km, 38 km short. It is built from the National Park Service's High Sierra Trail layer for Sequoia and Kings Canyon National Parks and the Forest Service's Mount Whitney Trail (trail 3404) for the descent from Trail Crest, both public domain, so the record's licence is now public domain where it was ODbL. The 3.1 km spur to the summit of Mount Whitney is kept apart in the alternates. The Park Service's 72.2 miles (115.5 km) includes the round trip to the summit, which is why the track is shorter than that figure. The two layers stop 204 m apart at Trail Crest and the gap is left open.
+- The Highline Trail's track is now OpenStreetMap's relation 4188405, 93.2 km in one piece, in place of the Forest Service layer's 71.5 km in 3 parts. The layer covers the same route but smooths it, and it holds up to 0.8 km of what may be the old alignment east of Pine; the relation carries the current tread. The licence is now ODbL.
+- The track tool no longer drops relation members tagged with the role "route": OpenStreetMap's wiki gives it as the old name of the empty role. A role the wiki does not define now stops the run with a message unless every member has it. The Great Eastern Trail (12 ways, 10.4 km) and the Maricopa Trail (25 ways, 11.7 km) had such ways in their alternates and now carry them in the track: 2,358.7 km in 28 parts and 470.5 km in 18 parts.
+
 ## 2026-11-19 - Clicks on tracks land, data files open to other sites, and trail pages print cleanly
 
 - Clicking or tapping close to a track on the map now opens that trail.

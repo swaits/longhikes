@@ -1,7 +1,5 @@
-high-sierra
-
-Source: https://www.openstreetmap.org/relation/1714300
-Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
-Attribution: OpenStreetMap contributors (ODbL)
-Source read: 2026-11-10
-Published copy: coordinates rounded to 6 decimal places and written as compact JSON. Geometry is otherwise as served.
+Source: https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/SEKI_ParkAtlas2_4_HikingandBackpacking_MASTER/FeatureServer/11 (National Park Service, Sequoia and Kings Canyon National Parks, Park Atlas, High Sierra Trail layer) and https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0 (USDA Forest Service, National Forest System Trails, Enterprise Data Warehouse)
+Licence: us-gov-public-domain (see trail.toml and SOURCES.md in this repository)
+Attribution: National Park Service; USDA Forest Service
+Source read: 2026-11-19
+Published copy: 33 features in line.geojson, in order from Crescent Meadow to Whitney Portal: Park Service OBJECTIDs 25, 24, 22, 21, 20, 18, 19, 29, 28, 30, 27, 26, 31 (the 3.3 km part; its three small loops are left out), 32, 2, 17, 13, 12, 11, 3, 4, 5, 6, 7, 8, 9 and 1 (27 features), then Forest Service trail 3404 Mount Whitney objectids 12164541, 12161750, 12161405, 12165378, 12161778 and 12151409 (6 features). alternates.geojson holds Park Service OBJECTID 10, the spur trail from Trail Crest to the summit. Left out of both: Park Service OBJECTID 23 and the Nine Lakes features 14, 15, 16 and 33. Each feature is oriented from Crescent Meadow to Whitney Portal; joins are 0 to 20 m, except 204 m at Trail Crest between the Park Service and Forest Service lines, which is left open. Coordinates rounded to 6 decimal places and written as compact JSON, with the agency and layer name kept as properties. Geometry is otherwise as served (outSR=4326).

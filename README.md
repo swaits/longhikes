@@ -95,9 +95,9 @@ A trail may be listed with no track included, when no track for it may be shared
 | great-eastern | Great Eastern Trail | US | AL, GA, TN, KY, VA, WV, MD, PA, NY | 2897 | yes | ODbL-1.0 |
 | guadalupe-ridge-trail | Guadalupe Ridge Trail | US | TX, NM | 161 | no | none-stated |
 | high-country-pathway | High Country Pathway | US | MI | 132 | yes | ODbL-1.0 |
-| high-sierra | High Sierra Trail | US | CA | 116 | yes | ODbL-1.0 |
+| high-sierra | High Sierra Trail | US | CA | 116 | yes | us-gov-public-domain |
 | highlands | Highlands Trail | US | NJ, NY, PA, CT | 290 | yes | ODbL-1.0 |
-| highline | Highline National Recreation Trail | US | AZ | 89 | yes | us-gov-public-domain |
+| highline | Highline National Recreation Trail | US | AZ | 89 | yes | ODbL-1.0 |
 | hoosier-heritage-trail | Hoosier Heritage Trail | US | IN | 259 | yes | stated-permission |
 | horse-shoe | Horse-Shoe Trail | US | PA | 225 | yes | ODbL-1.0 |
 | iat-newfoundland-labrador | International Appalachian Trail, Newfoundland and Labrador | CA | NL | 750 | yes | ODbL-1.0 |

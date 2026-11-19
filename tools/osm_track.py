@@ -34,10 +34,17 @@ record's [verification] and [osm] sections need: ways in main and in
 alternates, measured length of the main track, and the number of parts left
 after joining way ends within 100 m (the rule tools/elevation.py uses).
 
-Roles. A member way or sub-relation with an empty or main-type role (see
-MAIN_ROLES) is main. Anything with a side role (SIDE_ROLES) is alternate, and
-so is every way inside a side sub-relation. An unknown role is treated as
-side, with a warning. The count per role is printed. A way listed more than
+Roles, following the OpenStreetMap wiki (Relation:route, "Members", and
+Roles for recreational route relations). A member way or sub-relation with an
+empty role, main, route (the old name for the empty role), forward, backward,
+or a cardinal direction (north, south, east, west: the route's own directions
+in a single relation) is main. alternative, excursion, approach and connection
+are side, as are the informal alternate, link, side_trail, spur, detour and
+variant; every way inside a side sub-relation is alternate. A role the wiki
+does not define is reported loudly. If every way and sub-relation member of the
+relation tree carries that one role it is treated as main; otherwise the tool
+stops with an error naming the roles and counts, and nothing is dropped
+silently. The count per role is printed. A way listed more than
 once is kept once, at its first place; a way that is main in one place and
 side in another (a side relation sharing ways with the main route) is main.
 
@@ -68,7 +75,8 @@ RETRY_WAITS_S = (10, 30, 60)       # between rounds of all endpoints
 JOIN_GAP_M = 100.0                  # same distance as tools/elevation.py
 EARTH_R = 6371008.8                 # metres; same as tools/elevation.py
 
-MAIN_ROLES = {"", "main", "forward", "backward"}
+MAIN_ROLES = {"", "main", "route", "forward", "backward",
+              "north", "south", "east", "west"}
 SIDE_ROLES = {"alternate", "alternative", "excursion", "approach", "connection",
               "link", "side_trail", "spur", "detour", "variant"}
 
@@ -228,11 +236,40 @@ def parse(doc, relation_id, warn=None, exclude_names=()):
         key = f"{kind}:{role or '(empty)'}"
         roles[key] = roles.get(key, 0) + 1
 
+    # Roles the wiki does not define: find them all first, so that the tool
+    # can stop before writing anything rather than drop ways quietly.
+    members_seen, unknown = [], {}
+    stack0, done = [int(relation_id)], set()
+    while stack0:
+        rid = stack0.pop()
+        if rid in done or rid not in rels:
+            continue
+        done.add(rid)
+        for m in rels[rid].get("members", []):
+            if m.get("type") in ("way", "relation"):
+                r = m.get("role", "")
+                members_seen.append(r)
+                if r not in MAIN_ROLES and r not in SIDE_ROLES:
+                    unknown[r] = unknown.get(r, 0) + 1
+                if m["type"] == "relation":
+                    stack0.append(m["ref"])
+    unknown_as_main = set()
+    if unknown:
+        listing = ", ".join(f"{r!r} x{n}" for r, n in sorted(unknown.items()))
+        if len(unknown) == 1 and all(r in unknown for r in members_seen):
+            unknown_as_main = set(unknown)
+            warn(f"UNKNOWN ROLE {listing}: not defined by OpenStreetMap, but every "
+                 "way and sub-relation member has it, so all are treated as main")
+        else:
+            raise TrackError(
+                f"relation {relation_id}: member roles the OpenStreetMap wiki does not "
+                f"define: {listing} (of {len(members_seen)} way and sub-relation "
+                "members). They are neither main nor side by any rule, so nothing was "
+                "written; decide what they mean and extend MAIN_ROLES or SIDE_ROLES")
+
     def classify(role, inherited_side, what):
-        if role in MAIN_ROLES:
+        if role in MAIN_ROLES or role in unknown_as_main:
             return inherited_side
-        if role not in SIDE_ROLES:
-            warn(f"unknown role {role!r} on {what}; treated as side")
         return True
 
     def walk(rel, is_side, stack):

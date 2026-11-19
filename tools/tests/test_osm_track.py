@@ -64,7 +64,7 @@ def response():
                     {"type": "way", "ref": 13, "role": "backward"},
                     {"type": "relation", "ref": 2, "role": ""},
                     {"type": "relation", "ref": 3, "role": "connection"},
-                    {"type": "way", "ref": 11, "role": "oddity"},    # already seen
+                    {"type": "way", "ref": 11, "role": "route"},     # already seen
                 ]})
     return {"elements": els}
 
@@ -97,7 +97,7 @@ class ParseTests(unittest.TestCase):
         self.assertEqual(r["way:(empty)"], 3)
         self.assertEqual(r["way:alternative"], 1)
         self.assertEqual(r["relation:connection"], 1)
-        self.assertEqual(r["way:oddity"], 1)
+        self.assertEqual(r["way:route"], 1)
 
     def test_version_and_properties(self):
         self.assertEqual((self.track["version"], self.track["timestamp"]),
@@ -106,20 +106,72 @@ class ParseTests(unittest.TestCase):
         self.assertEqual((w["name"], w["highway"]), ("Main", "path"))
         self.assertNotIn("name", self.track["main"][1])
 
-    def test_unknown_role_is_side_with_warning(self):
+    def test_wiki_main_roles_are_main(self):
         doc = response()
-        for el in doc["elements"]:
-            if el["id"] == 1 and el["type"] == "relation":
-                el["members"].append({"type": "way", "ref": 40, "role": "odd"})
-        # way 40 was already seen through the sub-relation, so use a new way
+        for i, role in enumerate(["route", "north", "south", "east", "west"]):
+            wid = 100 + i
+            doc["elements"].append({"type": "way", "id": wid, "nodes": [1, 2]})
+            for el in doc["elements"]:
+                if el["type"] == "relation" and el["id"] == 1:
+                    el["members"].append({"type": "way", "ref": wid, "role": role})
+        track = T.parse(doc, 1, warn=lambda m: None)
+        ids = [w["osm_id"] for w in track["main"]]
+        for i in range(5):
+            self.assertIn(str(100 + i), ids)
+
+    def test_wiki_side_roles_are_side(self):
+        doc = response()
+        for i, role in enumerate(["alternative", "excursion", "approach", "connection"]):
+            wid = 200 + i
+            doc["elements"].append({"type": "way", "id": wid, "nodes": [1, 2]})
+            for el in doc["elements"]:
+                if el["type"] == "relation" and el["id"] == 1:
+                    el["members"].append({"type": "way", "ref": wid, "role": role})
+        track = T.parse(doc, 1, warn=lambda m: None)
+        for i in range(4):
+            self.assertIn(str(200 + i), [w["osm_id"] for w in track["side"]])
+            self.assertNotIn(str(200 + i), [w["osm_id"] for w in track["main"]])
+
+    def test_unknown_role_among_other_roles_stops_the_tool(self):
+        doc = response()
         doc["elements"].append({"type": "way", "id": 50, "nodes": [1, 2]})
         for el in doc["elements"]:
             if el["id"] == 1 and el["type"] == "relation":
                 el["members"].append({"type": "way", "ref": 50, "role": "odd"})
+        with self.assertRaisesRegex(T.TrackError, "odd.*do not define|do(es)? not define.*odd"):
+            T.parse(doc, 1, warn=lambda m: None)
+
+    def test_unknown_role_on_every_member_is_main_with_loud_warning(self):
+        doc = {"elements": [
+            {"type": "node", "id": 1, "lon": 0.0, "lat": 0.0},
+            {"type": "node", "id": 2, "lon": 0.0, "lat": 0.01},
+            {"type": "way", "id": 5, "nodes": [1, 2]},
+            {"type": "relation", "id": 1, "tags": {"type": "route"},
+             "members": [{"type": "way", "ref": 5, "role": "odd"}]}]}
         msgs, warn = quiet()
         track = T.parse(doc, 1, warn=warn)
-        self.assertIn("50", [w["osm_id"] for w in track["side"]])
-        self.assertTrue(any("odd" in m for m in msgs))
+        self.assertEqual([w["osm_id"] for w in track["main"]], ["5"])
+        self.assertTrue(any("UNKNOWN ROLE" in m and "odd" in m for m in msgs))
+
+    def test_teton_shaped_relation_keeps_route_role_ways(self):
+        # Relation 3895101 (Teton Crest Trail): 36 of 49 ways carry the role
+        # "route", the other 13 the empty role; all are the main line, 57.5 km.
+        step = 0.0146                      # degrees of longitude, about 1.17 km at 43.7 N
+        els, members = [], []
+        for i in range(50):
+            els.append({"type": "node", "id": 1000 + i, "lon": -110.9 + step * i, "lat": 43.7})
+        for i in range(49):
+            els.append({"type": "way", "id": 2000 + i, "nodes": [1000 + i, 1001 + i]})
+            members.append({"type": "way", "ref": 2000 + i,
+                            "role": "" if i % 4 == 0 and i < 49 and sum(
+                                1 for j in range(i) if j % 4 == 0) < 13 else "route"})
+        roles = [m["role"] for m in members]
+        self.assertEqual((roles.count("route"), roles.count("")), (36, 13))
+        els.append({"type": "relation", "id": 3895101, "version": 1, "tags": {"type": "route"},
+                    "members": members})
+        track = T.parse({"elements": els}, 3895101, warn=lambda m: None)
+        self.assertEqual((len(track["main"]), len(track["side"])), (49, 0))
+        self.assertAlmostEqual(T.figures(track)["measured_km"], 57.5, delta=0.3)
 
     def test_way_main_in_one_place_and_side_in_another_is_main(self):
         doc = response()

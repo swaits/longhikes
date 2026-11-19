@@ -295,10 +295,64 @@
   }
   syncSaved();
 
+  /* The short link to a saved list ---------------------------------------------
+     Up to SAVED_READABLE_MAX trails the link names them (?t=id,id,...); with more it is
+     ?s=<code>, which does not grow with the list. The code is a bit set over the trails'
+     permanent numbers (trail-numbers.txt): bit N is 1 when trail N is in the list, packed
+     into bytes with bit 0 the least significant bit of byte 0, trailing zero bytes dropped,
+     written as base64url without padding after one version character, SAVED_CODE_VERSION.
+     A later format takes another version character; this one is read for good. The order
+     of a list is not kept. decode never throws: it gives null for a code it cannot read
+     (wrong version, bad characters, impossible length) and otherwise the numbers, in
+     ascending order. docs/schema.md describes it; test_short_links.py runs it under node. */
+  /* short-codes:begin */
+  var SAVED_READABLE_MAX = 10;
+  var SAVED_CODE_VERSION = '1';
+  var SavedCode = (function () {
+    var ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+    var MAX_CODE = 2000;
+    function encode(numbers) {
+      var top = -1;
+      numbers.forEach(function (n) { if (n > top) top = n; });
+      var bytes = [];
+      for (var i = 0; i <= top >> 3; i++) bytes.push(0);
+      numbers.forEach(function (n) { bytes[n >> 3] |= 1 << (n & 7); });
+      var out = '';
+      for (var j = 0; j < bytes.length; j += 3) {
+        var b0 = bytes[j], b1 = j + 1 < bytes.length ? bytes[j + 1] : 0, b2 = j + 2 < bytes.length ? bytes[j + 2] : 0;
+        var chunk = [b0 >> 2, ((b0 & 3) << 4) | (b1 >> 4), ((b1 & 15) << 2) | (b2 >> 6), b2 & 63];
+        var keep = Math.min(bytes.length - j, 3) + 1;
+        for (var k = 0; k < keep; k++) out += ALPHABET.charAt(chunk[k]);
+      }
+      return SAVED_CODE_VERSION + out;
+    }
+    function decode(code) {
+      if (typeof code !== 'string' || code.length < 1 || code.length > MAX_CODE) return null;
+      if (code.charAt(0) !== SAVED_CODE_VERSION) return null;
+      var text = code.slice(1);
+      if (text.length % 4 === 1) return null;
+      var bytes = [], acc = 0, bits = 0;
+      for (var i = 0; i < text.length; i++) {
+        var v = ALPHABET.indexOf(text.charAt(i));
+        if (v < 0) return null;
+        acc = (acc << 6) | v;
+        bits += 6;
+        if (bits >= 8) { bits -= 8; bytes.push((acc >> bits) & 255); acc &= (1 << bits) - 1; }
+      }
+      var numbers = [];
+      bytes.forEach(function (b, at) {
+        for (var bit = 0; bit < 8; bit++) if (b & (1 << bit)) numbers.push(at * 8 + bit);
+      });
+      return numbers;
+    }
+    return { encode: encode, decode: decode };
+  })();
+  /* short-codes:end */
+
   /* 1c. The Saved page ---------------------------------------------------------
-     /saved/ holds every trail's row, hidden (olt/saved.py). With no t= in the
-     address it shows the visitor's saved trails; with t=<id>,<id>,... it shows
-     that list, marked as from a link, and changes nothing until "Save these".
+     /saved/ holds every trail's row, hidden (olt/saved.py). With no t= or s= in the
+     address it shows the visitor's saved trails; with t=<id>,<id>,... or s=<code>
+     (the short link above) it shows that list, marked as from a link, and changes nothing until "Save these".
      A link that holds the visitor's own list is shown as theirs. On their own
      list a trail they unsave stays in place, dimmed, so it can be saved again;
      trails saved meanwhile (in another tab) are added at the end. The map
@@ -325,11 +379,25 @@
     var rows = {};
     results.querySelectorAll('.entry[data-id]').forEach(function (li) { rows[li.dataset.id] = li; });
 
+    /* The trails' permanent numbers, from the build: the ids in number order, "-" for a retired one. */
+    var idAt = (page.dataset.savedNumbers || '').split(' ');
+    var numberOf = {};
+    idAt.forEach(function (id, n) { if (id && id !== '-') numberOf[id] = n; });
+
     var params = new URLSearchParams(window.location.search);
-    var fromLink = params.has('t');
+    var shortLink = params.has('s');          /* ?s= wins over ?t= when both are there */
+    var fromLink = shortLink || params.has('t');
     var linkIds = [];
     var dropped = 0;
-    if (fromLink) {
+    if (shortLink) {
+      /* A number that is retired or unknown is ignored without a word; a code that cannot be
+         read lists nothing, which the page says as "None of the trails in this link...". */
+      var numbers = SavedCode.decode(params.get('s')) || [];
+      numbers.forEach(function (n) {
+        var id = idAt[n];
+        if (id && rows.hasOwnProperty(id)) linkIds.push(id);
+      });
+    } else if (fromLink) {
       var seen = {};
       (params.get('t') || '').split(',').forEach(function (id) {
         id = id.trim().toLowerCase();
@@ -344,12 +412,26 @@
            trail is unsaved a reload does not show the old list as someone's link. */
         fromLink = false;
         params.delete('t');
+        params.delete('s');
         var rest = params.toString();
         window.history.replaceState(null, '', window.location.pathname + (rest ? '?' + rest : '') + window.location.hash);
       }
     }
     var shown = fromLink ? linkIds.slice() : readSaved();
     var mapOn = false;
+    /* A short link does not keep the order the trails were saved in, so such a list opens
+       A to Z, the page's usual order, and its rows carry no saved order. */
+    var unordered = fromLink && shortLink;
+    if (unordered) results.dataset.defaultSort = 'name';
+
+    /* The link to a list of these ids: readable up to SAVED_READABLE_MAX, a short code after. */
+    function linkTo(ids) {
+      var query = '?t=' + ids.join(',');
+      if (ids.length > SAVED_READABLE_MAX && ids.every(function (id) { return numberOf.hasOwnProperty(id); })) {
+        query = '?s=' + SavedCode.encode(ids.map(function (id) { return numberOf[id]; }));
+      }
+      return window.location.origin + '/saved/' + query;
+    }
 
     function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
 
@@ -379,7 +461,7 @@
         var li = rows[id];
         var listed = order.hasOwnProperty(id);
         li.hidden = !listed;
-        if (listed) li.dataset.order = String(order[id]); else delete li.dataset.order;
+        if (listed && !unordered) li.dataset.order = String(order[id]); else delete li.dataset.order;
         li.classList.toggle('is-unsaved', view === 'own' && listed && !ownSet[id]);
       });
       var n = fromLink ? linkIds.length : own.length;
@@ -391,7 +473,7 @@
 
       var ids = fromLink ? linkIds : own;
       share.hidden = view === 'none' || !ids.length;
-      url.textContent = window.location.origin + '/saved/?t=' + ids.join(',');
+      url.textContent = linkTo(ids);
 
       var onMap = shown.filter(function (id) { return drawable[id]; });
       if (fig) fig.hidden = !onMap.length;

@@ -10,17 +10,17 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-222 trails, 125 with a track and 97 with no track included. Of these, 76 are routes: 2 with a track and 74 without.
+220 trails, 123 with a track and 97 with no track included. Of these, 76 are routes: 2 with a track and 74 without.
 
 <!-- END COUNTS -->
 
 ## Inclusion rule
 
-A long trail here is a named, continuous walking route, or a named loop, of at least 50 miles (80 km), in the United States or Canada: either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a route, as described below. The floor is 50 miles because that is about what multi-day wilderness backpacking takes. A small number of well-known multi-day trails between 60 km and 80 km are also listed.
+A long trail here is a named, continuous walking route, or a named loop, of at least 50 miles (80 km), in the United States or Canada: either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a route, as described below. The floor is 50 miles because that is about what multi-day wilderness backpacking takes. A trail under 50 miles is listed only for a stated reason, given below.
 
 A trail's length is the end-to-end length of its canonical path: one walk from one end to the other, with one branch taken at a split, no side trails and no system total. A loop reached by a stem is shown at the published figure, which walks the stem both ways, and its `length_note` says which stretch is walked out and back. The 50-mile floor is tested on the length with nothing counted twice, so an out-and-back is judged one way; that figure is never shown as a trail's length. A trail must also be walkable from one end to the other today. A trail published in separate pieces, or with gaps that have no way across, is not listed, and goes in `left-out.toml`. Road links that the holder publishes as the way through count as walkable, and so does evidence that people have walked it end to end. A ferry, shuttle or bus link across water or a closed stretch, named by the holder or the route's author as the way through, does not rule a trail out: the record says how each such link is made, and the track has a gap there, with no line drawn across. This is a judgement the maintainer makes case by case, not a mechanical test. A trail that can be walked through but is partly unbuilt is listed: its length is the holder's end-to-end route, and the built length is stated beside it. A larger figure that the holder publishes, such as a system total or a planned total, is kept as a separate, labelled fact.
 
-Every trail or route needs a published length, and a route with no stated length is not listed. The length rule is at least 50 miles (80 km), or, for an author's route that is short on miles, at least five days as its author gives the trip. The five days count only for an author's route that is mostly cross-country or on hard terrain: a trail trip that a guidebook paces over five or more days does not qualify. The five days never replace a published length. A trail with its own name and its own published length is listed even where it lies on a longer listed trail, as the John Muir Trail lies on the Pacific Crest Trail. A guidebook's cut of a longer trail is not listed. The climbing rule is that nothing harder than Class 3 may be required, apart from a few short Class 4 scrambles. A route that needs a rope, a belay or rock-climbing skill is not listed, unless that section is optional and the record says so.
+Every trail or route needs a published length, and a route with no stated length is not listed. The length rule is at least 50 miles (80 km). A trail or route under 50 miles (80 km) is listed only when it is still reasonably long and at least one of these is true: it has real cross-country travel; it genuinely takes five or more days to walk, as its author or managing body gives the trip (a guidebook spreading an ordinary trail trip over five days does not count); or it is very well known and popular, as the Rae Lakes Loop is. Each such record gives its reason in `short_reason`. Being close to 50 miles is never a reason. The days never replace a published length. A trail with its own name and its own published length is listed even where it lies on a longer listed trail, as the John Muir Trail lies on the Pacific Crest Trail. A guidebook's cut of a longer trail is not listed. The climbing rule is that nothing harder than Class 3 may be required, apart from a few short Class 4 scrambles. A route that needs a rope, a belay or rock-climbing skill is not listed, unless that section is optional and the record says so.
 
 Not listed: paths made mainly for cycling, such as gravel rail trails and canal towpaths, and historic trails that are mainly driving routes with short walkable pieces.
 
@@ -107,7 +107,6 @@ A trail may be listed with no track included, when no track for it may be shared
 | island-walk | The Island Walk | CA | PE | 700 | yes | ODbL-1.0 |
 | itijjagiaq-trail | Itijjagiaq Trail | CA | NU | 120 | no | none-stated |
 | john-muir | John Muir Trail | US | CA | 340 | yes | ODbL-1.0 |
-| kekekabic | Kekekabic Trail | US | MN | 66 | yes | ODbL-1.0 |
 | knobstone | Knobstone Hiking Trail | US | IN | 257 | yes | ODbL-1.0 |
 | koroc-palmer-loop | Koroc River and Palmer River Loop (Boucle des rivières Koroc et Palmer) | CA | QC, NL | 90 | no | none-stated |
 | la-cloche | La Cloche Silhouette Trail | CA | ON | 80 | yes | ODbL-1.0 |
@@ -150,7 +149,6 @@ A trail may be listed with no track included, when no track for it may be shared
 | paumanok-path | Paumanok Path | US | NY | 201 | yes | ODbL-1.0 |
 | pinhoti | Pinhoti Trail | US | AL, GA | 540 | yes | ODbL-1.0 |
 | prescott-circle | Prescott Circle Trail | US | AZ | 90 | yes | ODbL-1.0 |
-| pukaskwa-coastal | Pukaskwa Coastal Hiking Trail | CA | ON | 60 | yes | ODbL-1.0 |
 | quehanna | Quehanna Trail | US | PA | 119 | yes | ODbL-1.0 |
 | rae-lakes-loop | Rae Lakes Loop | US | CA | 67 | yes | ODbL-1.0 |
 | rideau-trail | Rideau Trail | CA | ON | 387 | yes | ODbL-1.0 |

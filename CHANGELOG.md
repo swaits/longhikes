@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-19 - Two trails added, the Solomons Trail waiting, two short trails moved to the left-out list, and the rule for shorter trails written out
+
+- Two trails are new. The Gila Wilderness Centennial Loop in New Mexico is a 100-mile (161 km) loop the Forest Service designated in 2024; it has no track, because the Forest Service publishes it as a map over numbered trails and no page that could be opened lists which trails it uses, and it has no start, because the Forest Service names none. The Siskiyou Peaks Trail is a 448 mile route by its author; it has no track, because it is sold as a guidebook with maps and no track is published.
+- The Theodore Solomons Trail is on the left-out list as waiting, until a length is published for it.
+- The Kekekabic Trail (the Forest Service gives 46 miles) and the Pukaskwa Coastal Hiking Trail (Parks Canada gives 60 km, about 37 miles) were moved to the left-out list as under 50 miles. Each is under 50 miles and meets none of the conditions for a shorter trail. The Timberline Trail stays, as very well known and popular, as the owner ruled.
+- The rule for shorter trails is now written out wherever the floor is stated: a trail under 50 miles (80 km) is listed only when it is still reasonably long and has real cross-country travel, genuinely takes five or more days, or is very well known and popular, as the Rae Lakes Loop is. Being close to 50 miles is never a reason. The five days no longer apply only to an author's route, and a guidebook spreading an ordinary trail trip over five days still does not count. Each short trail's record gives its reason in `short_reason`, and the data check now refuses a short trail with no reason, and refuses the earlier "under review" sentence.
+
 ## 2026-11-19 - Sourced day counts, seasons and permit notes, honest track policies, and a reason for every short trail
 
 - Thirty-six trails gained facts that were read on a named page: eleven gained the usual days to walk the whole trail, eight a season, and twenty-one a permit note (four of the trails gained two of these). Each fact names its page in the record.

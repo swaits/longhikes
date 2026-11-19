@@ -36,7 +36,7 @@ note = "No OpenStreetMap route relation for the loop was found on 2026-11-19 (a 
 status = "logo-not-found"
 logo_source = ""
 contact = "USDA Forest Service, Gila National Forest"
-note = "The Forest Service's Gila Wilderness page, its Middle Fork trailhead page and the two map listings were read as text on 2026-11-19. They name the loop and show no emblem for it; no artwork was found at an allowed source."
+note = "The Forest Service's Gila Wilderness page and the two map listings were read as text on 2026-11-19. They name the loop and show no emblem for it; no artwork was found at an allowed source."
 logo_file = ""
 logo_owner = ""
 
@@ -45,10 +45,8 @@ verified = false
 note = "No track to measure."
 
 [hike]
-summary = "The Gila Wilderness Centennial Loop is a 100-mile loop through the Gila Wilderness of southwestern New Mexico. The Forest Service designated it in 2024 for the wilderness's 100th anniversary, and publishes it as a free map. The Forest Service describes the wilderness's river corridor as deeply incised, with vertical cliffs and cathedral spires."
+summary = "The Gila Wilderness Centennial Loop is a 100-mile loop through the Gila Wilderness of southwestern New Mexico. The Forest Service designated it in 2024 for the wilderness's 100th anniversary, and publishes it as a free map; it names no starting trailhead for the loop. The Forest Service describes the wilderness's river corridor as deeply incised, with vertical cliffs and cathedral spires."
 official_url = "https://www.fs.usda.gov/r03/gila/recreation/gila-wilderness-area"
-start = "Middle Fork Trailhead, Gila Cliff Dwellings Visitor Center, New Mexico"
-start_lonlat = [-108.241, 33.226]
 shape = "loop"
 terrain = ["canyon"]
 travel = "trail"
@@ -65,11 +63,6 @@ facts = ["official_url", "summary", "permit", "terrain", "travel"]
 url = "https://store.avenza.com/collections/us-forest-service-r3.atom"
 publisher = "USDA Forest Service, Southwestern Region (its map listings in the Avenza store feed)"
 facts = ["summary", "shape", "caution"]
-
-[[hike.source]]
-url = "https://www.fs.usda.gov/r03/gila/recreation/middle-fork-157-trailhead"
-publisher = "USDA Forest Service, Gila National Forest (Middle Fork Trailhead page, which gives its latitude and longitude)"
-facts = ["start", "start_lonlat"]
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r03/gila/recreation/trails/west-fork-trail-151"
@@ -96,9 +89,9 @@ publisher = "US Forest Service R3"
 
 [[history]]
 date = "2026-11-19"
-change = "The record was added: the Gila Wilderness Centennial Loop, 100 miles (161 km), designated by the Forest Service in 2024, with no track."
+change = "The record was added: the Gila Wilderness Centennial Loop, 100 miles (161 km), designated by the Forest Service in 2024, with no track, and no start, because the Forest Service names none."
 fields = ["record"]
-basis = "The Forest Service's Gila Wilderness page says the 100-mile Centennial Loop was designated in 2024, and its two loop maps give the length as 100 miles. The loop has its own name and its own published length. No track is included because no page that could be opened lists the trails the loop uses."
+basis = "The Forest Service's Gila Wilderness page says the 100-mile Centennial Loop was designated in 2024, and its two loop maps give the length as 100 miles. The loop has its own name and its own published length. The Forest Service names no starting trailhead for the loop, so the record gives none. No track is included because no page that could be opened lists the trails the loop uses."
 basis_url = "https://www.fs.usda.gov/r03/gila/recreation/gila-wilderness-area"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -467,27 +467,24 @@ def _whole_km(value):
 
 
 SHORT_FLOOR_KM = 80  # 50 miles: the inclusion floor in README.md
-UNDER_REVIEW = "Listed before the test was written; under review."
 
 
-def check_short_reason(tid, rec, errors, warnings=None):
+def check_short_reason(tid, rec, errors):
     """short_reason (docs/schema.md): the one sentence saying why a trail under the floor is listed.
 
-    Required on every record whose length_km is under SHORT_FLOOR_KM and refused on any other. The
-    sentence UNDER_REVIEW is accepted, as a warning, for a record whose own text supports none of
-    the owner's three tests; the owner decides whether it stays."""
+    Required on every record whose length_km is under SHORT_FLOOR_KM and refused on any other."""
     length = rec.get("length_km")
     reason = rec.get("short_reason")
     short = isinstance(length, (int, float)) and not isinstance(length, bool) and length < SHORT_FLOOR_KM
     if reason is not None and not (isinstance(reason, str) and reason.strip()):
         errors.append(f"{tid}: short_reason must be a non-empty sentence")
+    elif isinstance(reason, str) and "under review" in reason.lower():
+        errors.append(f"{tid}: short_reason must give a reason, not say the trail is under review")
     elif short and reason is None:
         errors.append(f"{tid}: length_km {length} is under the {SHORT_FLOOR_KM} km floor, so "
                       "short_reason must say why it is listed")
     elif not short and reason is not None:
         errors.append(f"{tid}: short_reason is only for a trail under {SHORT_FLOOR_KM} km")
-    elif short and reason.strip() == UNDER_REVIEW and warnings is not None:
-        warnings.append(f"{tid}: under {SHORT_FLOOR_KM} km and no reason for listing it is supported yet")
 
 
 def check_held_note(tid, rec, errors):
@@ -786,7 +783,7 @@ def main():
         check_common_name(tid, rec, errors)
         check_length_facts(tid, rec, errors)
         check_held_note(tid, rec, errors)
-        check_short_reason(tid, rec, errors, warnings)
+        check_short_reason(tid, rec, errors)
         if rec.get("id") != tid:
             errors.append(f"{tid}: id {rec.get('id')!r} does not match directory name")
         if rec.get("country") not in ("US", "CA"):

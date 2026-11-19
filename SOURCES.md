@@ -168,7 +168,6 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | itijjagiaq-trail | Nunavut Parks (Government of Nunavut) (publishes the trail) | [source page](https://nunavutparks.com/nunavut_parks/katannilik-territorial-park/) | none-stated | record only |
 | john-muir | No single publisher: NPS Yosemite and Sequoia-Kings Canyon, USFS Inyo and Sierra National Forests | [source page](https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0) | ODbL-1.0 | track |
 | kanab-canyon-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-arizona/) | none-stated | record only |
-| kekekabic | Kekekabic Trail Club; USFS (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/10831114) | ODbL-1.0 | track |
 | kings-canyon-high-basin-route | Andrew Skurka (publishes the route) | [source page](https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/) | none-stated | record only |
 | knobstone | Indiana Department of Natural Resources (publishes the southern Knobstone section; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4644135) | ODbL-1.0 | track |
 | koroc-palmer-loop | Parks Canada (Torngat Mountains National Park) (publishes the trail) | [source page](https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc) | none-stated | record only |
@@ -223,7 +222,6 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | powell-plateau-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-arizona/) | none-stated | record only |
 | prescott-circle | City of Prescott and Prescott National Forest (manage the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4717133) | ODbL-1.0 | track |
 | ptarmigan-glenns-lake-highline-loop | University Press of Colorado (publishes the route in the guidebook) | [source page](https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado) | none-stated | record only |
-| pukaskwa-coastal | Parks Canada (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/15361195) | ODbL-1.0 | track |
 | quehanna | Keystone Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7236114) | ODbL-1.0 | track |
 | rae-lakes-loop | National Park Service (publishes the loop; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1710944) | ODbL-1.0 | track |
 | rideau-trail | Rideau Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7675635) | ODbL-1.0 | track |

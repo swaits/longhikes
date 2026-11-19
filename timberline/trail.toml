@@ -9,7 +9,7 @@ length_note = "about 40 mi"
 tier = "short"
 designation = "USFS trail #600, Mount Hood National Forest"
 wave = 1
-short_reason = "Listed before the test was written; under review."
+short_reason = "It is very well known and popular, as the owner ruled: Travel Oregon calls it a classic multiday backpacking circuit and says starting clockwise at Timberline Lodge is one of the most popular ways to hike it."
 
 [source]
 status = "osm-only"
@@ -113,5 +113,14 @@ change = "The record now carries the reason it is listed under the 50 mile floor
 fields = ["short_reason"]
 basis = "The record's own sources give three to four days, trail travel and no statement that it is very well known or popular, so no part of the owner's test is supported yet."
 basis_url = "https://www.fs.usda.gov/r06/mthood/recreation/trails/timberline-trail-600"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The reason for listing the trail under the 50 mile floor now reads that it is very well known and popular, as the owner ruled. The sentence \"Listed before the test was written; under review.\" is gone."
+fields = ["short_reason"]
+basis = "The owner, asked which of the three trails under review should be listed, chose the Timberline Trail as very well known and popular. The Forest Service's page for the trail says nothing about how well known or popular it is; Travel Oregon, the state tourism office, calls it a classic multiday backpacking circuit and says that starting clockwise at Timberline Lodge is one of the most popular ways to hike it."
+basis_url = "https://traveloregon.com/things-to-do/outdoor-recreation/4-day-backpacking-trip-on-oregons-timberline-trail/"
 asked_by = "the owner of the dataset"
 outcome = "applied"

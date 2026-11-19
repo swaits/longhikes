@@ -354,6 +354,19 @@ decided = "2026-11-14"
 was_listed = false
 
 [[trail]]
+id = "kekekabic"
+name = "Kekekabic Trail"
+country = "US"
+regions = ["MN"]
+length_mi = 46
+length_km = 74
+reason = "below-floor"
+note = "The Forest Service's pages for the Kekekabic Trail in the Superior National Forest give it as a 46 mile trail. That is under 50 miles, and it meets none of the conditions for a shorter trail: it has no cross-country travel, it is not five or more days as its managing body gives it, and it is not among the very widely known."
+source_url = "https://www.fs.usda.gov/r09/superior/recreation/trails/kekekabic-trail-west"
+decided = "2026-11-19"
+was_listed = true
+
+[[trail]]
 id = "kettle-valley-rail-trail"
 name = "Kettle Valley Rail Trail"
 country = "CA"
@@ -532,6 +545,19 @@ reason = "network"
 note = "The National Park Service describe it as a network of trails stretching over 900 miles. They publish no single route to walk from end to end."
 source_url = "https://www.nps.gov/pohe/index.htm"
 decided = "2026-11-16"
+was_listed = true
+
+[[trail]]
+id = "pukaskwa-coastal"
+name = "Pukaskwa Coastal Hiking Trail"
+country = "CA"
+regions = ["ON"]
+length_mi = 37.3
+length_km = 60
+reason = "below-floor"
+note = "Parks Canada gives the Coastal Hiking Trail in Pukaskwa National Park as 60 kilometres (about 37 miles). That is under 50 miles, and it meets none of the conditions for a shorter trail: it has no cross-country travel, it is not five or more days as its managing body gives it, and it is not among the very widely known."
+source_url = "https://parks.canada.ca/pn-np/on/pukaskwa/activ/experience/arriere-back"
+decided = "2026-11-19"
 was_listed = true
 
 [[trail]]

@@ -34,7 +34,7 @@ ALL_CANADA = "all provinces and territories"
 TIERS = {
     "national": ("National Scenic Trail", "A United States National Scenic Trail"),
     "regional": ("Regional", "A long trail of 50 miles (80 km) or more"),
-    "short": ("Short", "A well-known multi-day trail of 37 to 50 miles (60 to 80 km)"),
+    "short": ("Short", "A trail of 37 to 50 miles (60 to 80 km) listed for a stated reason"),
     "deferred": ("Deferred", "Listed, but something about it is not settled; the record's note says what"),
     "candidate": ("Candidate", "Listing not yet decided"),
 }

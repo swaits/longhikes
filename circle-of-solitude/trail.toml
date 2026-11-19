@@ -5,7 +5,7 @@ name = "Circle of Solitude"
 country = "US"
 regions = ["CA"]
 length_km = 109
-length_note = "about 68 mi, per the route description; another figure on the same page gives 71.4 mi"
+length_note = "about 68 mi, the figure a hiker who walked it in 2014 quotes from the guidebook; another figure on the fastestknowntime.com page gives 71.4 mi, and the daily totals of one hiker's account come to 72 mi"
 kind = "route"
 tier = "regional"
 designation = "Person-defined route (Mike White); no agency or association"
@@ -13,7 +13,7 @@ wave = 1
 
 [source]
 status = "none"
-publisher = "Wilderness Press (publishes the route in the guidebook); the page that credits the book is fastestknowntime.com's"
+publisher = "Wilderness Press (publishes the route in its guidebooks); the page that credits the route to Mike White is fastestknowntime.com's"
 url = "https://fastestknowntime.com/route/circle-solitude"
 format = "No line included"
 crs = "EPSG:4326"
@@ -26,7 +26,7 @@ source_checked = "2026-11-19"
 redistributable = true
 line_source = "none (no line included)"
 line_file = ""
-line_absent_reason = "Whether the route's author shares the track is not settled: no page of the author's or the publisher's for the book was found. The route is described in the guidebook Kings Canyon National Park."
+line_absent_reason = "Whether the route's author shares the track is not settled: no page of the author's was found. The route is described in Mike White's Wilderness Press guidebooks."
 
 [osm]
 relation = 0
@@ -36,7 +36,7 @@ note = "Not recorded: whether the creator shares the track is not settled."
 status = "no-logo-exists"
 logo_source = ""
 contact = "Mike White"
-note = "No emblem of the route exists at an allowed source. The route is a named loop in Mike White's Wilderness Press guidebook Kings Canyon National Park; fastestknowntime.com's page for the route (https://fastestknowntime.com/route/circle-solitude), which credits the book, was read and shows no mark for this route, and the author publishes no route page of his own. A route known only as a guidebook name has no crest, badge or blaze of its own."
+note = "No emblem of the route exists at an allowed source. The route is a named loop in Mike White's Wilderness Press guidebooks; fastestknowntime.com's page for the route (https://fastestknowntime.com/route/circle-solitude), which credits Mike White's guide, was read and shows no mark for this route, and the author publishes no route page of his own. A route known only as a guidebook name has no crest, badge or blaze of its own."
 logo_file = ""
 logo_owner = "Mike White"
 
@@ -47,7 +47,20 @@ note = "No line to measure."
 [route]
 creator = "Mike White"
 line_policy = "unclear"
-note = "A loop from Road's End in Kings Canyon that circles the Great Western Divide and the Kings-Kern Divide by Avalanche Pass, Colby Pass and Forester Pass. The page that names the book is https://fastestknowntime.com/route/circle-solitude, which credits the route to Mike White's Kings Canyon National Park (Wilderness Press); no page of the publisher's or the author's confirms it, and no contents list shows where in the book the route is. The 2004 edition (ISBN 9780899973357) is out of print at its publisher, so the guide links to a library record. The route is not in Sierra South (9th edition) or Backpacking California (3rd edition). No page of the author's was found, and no statement about a track."
+note = "A loop from Road's End in Kings Canyon that circles the Great Western Divide and the Kings-Kern Divide by Avalanche Pass, Colby Pass and Forester Pass. Mike White named and described the loop in his Wilderness Press guidebooks. Two hikers' own accounts, from 2014, name the book they used as Mike White's Sequoia and Kings Canyon National Parks: Your Complete Hiking Guide (2012) and say the author named the loop; both walked it counter-clockwise, and their accounts agree on the order of places. Open Library's record of that 2012 book says it compiles the Kings Canyon and Sequoia National Park guides published in 2004, so the earlier Kings Canyon National Park: A Complete Hiker's Guide (2004, ISBN 9780899973357), also from Wilderness Press, is listed as the second guide; it is out of print at its publisher, so it links to a library record. The trip's number and page are given on no page read, in either book. The route is not in Sierra South (9th edition) or Backpacking California (3rd edition). No page of the author's was found, and no statement about a track."
+
+[[guide]]
+title = "Sequoia and Kings Canyon National Parks: Your Complete Hiking Guide"
+author = "Mike White"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/sequoia-and-kings-canyon-national-parks/"
+format = "book"
+price = "$24.95"
+price_checked = "2026-11-20"
+publisher = "Wilderness Press"
+isbn = "9780899976723"
+edition = "2012"
+link_is = "publisher"
 
 [[guide]]
 title = "Kings Canyon National Park: A Complete Hiker's Guide"
@@ -57,16 +70,16 @@ url = "https://openlibrary.org/books/OL8277201M"
 format = "book"
 publisher = "Wilderness Press"
 isbn = "9780899973357"
-edition = "2004"
+edition = "2004, the earlier book, out of print at its publisher"
 link_is = "library"
 
 [hike]
-summary = "The Circle of Solitude is a loop of about 68 miles in Kings Canyon National Park, California, from Road's End. It circles the Great Western Divide and the Kings-Kern Divide by Avalanche Pass, Colby Pass and Forester Pass. Mike White describes it in his Wilderness Press guidebook Kings Canyon National Park."
+summary = "The Circle of Solitude is a loop of about 68 miles in Kings Canyon and Sequoia National Parks, California, from Road's End. It crosses Avalanche Pass, follows the Roaring River and Cloud Canyon to Colby Pass, then the Kern-Kaweah River to Junction Meadow in Kern Canyon, and returns by the John Muir Trail over Forester Pass and down Bubbs Creek. Mike White describes it in his Wilderness Press guidebooks."
 start = "Road's End, Kings Canyon National Park, California"
 start_lonlat = [-118.583, 36.795]
 shape = "loop"
 permit = "A Sequoia and Kings Canyon National Parks wilderness permit is needed for overnight travel on this loop."
-checked = "2026-11-19"
+checked = "2026-11-20"
 
 [[hike.source]]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=279697028"
@@ -75,8 +88,23 @@ facts = ["start_lonlat"]
 
 [[hike.source]]
 url = "https://fastestknowntime.com/route/circle-solitude"
-publisher = "fastestknowntime.com (its page for the route: a loop of about 68 miles that starts and ends at Road's End, by Avalanche Pass, Colby Pass and Forester Pass, named and described by Mike White in his Wilderness Press guide Kings Canyon National Park)"
+publisher = "fastestknowntime.com (its page for the route: a loop of about 68 miles that starts and ends at Road's End, by Avalanche Pass, Colby Pass and Forester Pass, named and described by Mike White in his Wilderness Press guide)"
 facts = ["summary", "start", "shape"]
+
+[[hike.source]]
+url = "https://www.spratt.us/COS2014/COS.html"
+publisher = "A hiker's own account of a 2014 walk (personal page), used only for which book it names and the order of places on the loop"
+facts = ["summary"]
+
+[[hike.source]]
+url = "https://left404.com/2015/01/12/circle-of-solitude-backpack-trip/"
+publisher = "A hiker's own account of a 2014 walk (personal page), used only for who named the loop and the order of places on the loop"
+facts = ["summary"]
+
+[[hike.source]]
+url = "https://openlibrary.org/books/OL27136404M"
+publisher = "Open Library, the library record of Sequoia & Kings Canyon National Parks: Your Complete Hiking Guide (Wilderness Press, 2012), which says it compiles the 2004 Kings Canyon and Sequoia guides"
+facts = ["summary"]
 
 [[hike.source]]
 url = "https://www.nps.gov/seki/planyourvisit/trailcond.htm"
@@ -145,5 +173,14 @@ change = "The shop front of the book's publisher is no longer cited. It supports
 fields = ["source", "shield.note", "hike.source"]
 basis = "The shop page is a list of the publisher's books and says nothing about this route. The fastestknowntime.com page for the route names the Mike White guide Kings Canyon National Park, the loop of about 68 miles from Road's End, and Avalanche, Colby and Forester Passes. The book itself is identified by its Open Library record. No fact was left without a source."
 basis_url = "https://fastestknowntime.com/route/circle-solitude"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The guide a visitor is sent to is now Mike White's Sequoia and Kings Canyon National Parks: Your Complete Hiking Guide (Wilderness Press, 2012), linked to the publisher's page; the 2004 Kings Canyon book stays as a second, earlier guide. The source publisher, the absent-track reason and the shield note no longer name the 2004 title alone. The summary now names the country the loop crosses, the route note says what is and is not known, and the length note adds the 72 miles one hiker's daily totals came to."
+fields = ["guide", "route.note", "length_note", "hike.summary", "hike.source", "source.publisher", "source.line_absent_reason", "shield.note"]
+basis = "Two hikers' own accounts of 2014 walks name Mike White as the one who named the loop and the 2012 guide as the book (one says so in its own words), and agree on the order of places; the publisher's page gives the 2012 title, author, ISBN and price; Open Library's record says the 2012 book compiles the 2004 guides. No page read gives the trip's number or page."
+basis_url = "https://www.spratt.us/COS2014/COS.html"
 asked_by = "the owner of the dataset"
 outcome = "applied"

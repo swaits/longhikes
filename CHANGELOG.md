@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-20 - The Circle of Solitude page sends you to the guidebook in print
+
+- The Circle of Solitude page now sends visitors to Mike White's Sequoia and Kings Canyon National Parks: Your Complete Hiking Guide (Wilderness Press, 2012), the guidebook in print that carries the loop, and keeps the earlier out-of-print Kings Canyon book as a second entry.
+- The page now describes the loop's course: Avalanche Pass, the Roaring River and Cloud Canyon, Colby Pass, the Kern-Kaweah River and Junction Meadow, then the John Muir Trail over Forester Pass and down Bubbs Creek.
+
 ## 2026-11-19 - Search reads more than the name, and lists can be sorted by distance
 
 - Search now reads more than a trail's name: its summary, the full names of the states, provinces and countries it lies in, where it starts and ends, the land unit or body that manages it, and a route's author. Matches in the name come first, and a row that matched elsewhere says where.

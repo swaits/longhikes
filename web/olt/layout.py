@@ -165,6 +165,8 @@ def footer(site):
         <li><a href="/sources/">Sources and their terms</a></li>
         <li><a href="/logos/">Logos</a></li>
         <li><a href="/left-out/">Considered and left out</a></li>
+        <li><a href="/about/#how-trails-are-chosen">How trails are chosen</a></li>
+        <li><a href="/data/changelog/">Changelog</a></li>
         {report}
       </ul>
     </nav>

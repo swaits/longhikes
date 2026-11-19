@@ -11,7 +11,7 @@ WEB = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(WEB)
 sys.path.insert(0, WEB)
 
-from olt import leftout, seo, site  # noqa: E402
+from olt import home, layout, leftout, records, seo, site  # noqa: E402
 
 ENTRIES = [
     {
@@ -100,6 +100,27 @@ class PageTest(unittest.TestCase):
         self.assertEqual(names, sorted(names))
         reasons = {e["reason"] for e in entries}
         self.assertTrue(reasons <= set(leftout.REASON_ORDER))
+
+
+class ReachTest(unittest.TestCase):
+    """The list is linked where a visitor who cannot find a trail would look."""
+
+    def test_the_empty_state_of_every_list_of_trails_links_to_it(self):
+        recs = records.load_records(ROOT)
+        for finder in (True,):
+            html = str(home.results(recs, finder=finder))
+            empty = html[html.index('id="empty-state"'):]
+            empty = empty[:empty.index("</div>")]
+            self.assertIn("Not finding a trail?", empty)
+            self.assertIn('<a href="/left-out/">Some are left out, with the reason for each.</a>', empty)
+        # a list that is not driven by the filter bar has no empty state, so no link
+        self.assertNotIn("/left-out/", str(home.results(recs)))
+
+    def test_the_footer_links_the_list_the_changelog_and_the_rules(self):
+        footer = str(layout.footer(site.Site("N", "T")))
+        self.assertIn('<a href="/left-out/">Considered and left out</a>', footer)
+        self.assertIn('<a href="/data/changelog/">Changelog</a>', footer)
+        self.assertIn('<a href="/about/#how-trails-are-chosen">How trails are chosen</a>', footer)
 
 
 if __name__ == "__main__":

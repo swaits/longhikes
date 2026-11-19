@@ -605,6 +605,7 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
       <div class="empty-state" id="empty-state" hidden>
         <p><strong>No {noun} match these filters.</strong></p>
         <button class="button button--quiet" type="button" data-reset>Clear search and filters</button>
+        <p>Not finding a trail? <a href="/left-out/">Some are left out, with the reason for each.</a></p>
       </div>"""
     elif saved:
         count = '<p class="results-count" data-saved-total><strong>0</strong> trails</p>'

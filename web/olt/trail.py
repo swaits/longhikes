@@ -158,11 +158,61 @@ def route_definition():
                   f'<p>{esc(facets.ROUTE_DEFINITION)} <a href="/routes/">Every route</a>.</p></details>')
 
 
+# What a guide's address is, by the record's `link_is`, as the link's words.
+LINK_IS_TEXT = {
+    "publisher": "The publisher's page for this book",
+    "author": "The author's page for this guide",
+    "library": "Library record (out of print)",
+    "seller": "Bookseller's page",
+}
+
+
+def _same_page(a, b):
+    """True when two addresses are the same page (scheme, www and a trailing slash aside)."""
+    def key(u):
+        parts = urllib.parse.urlsplit(str(u or "").strip())
+        return (parts.netloc.lower().removeprefix("www."), parts.path.rstrip("/"), parts.query)
+    return bool(a) and bool(b) and key(a) == key(b)
+
+
+def guide_link_text(g):
+    """What the guide's link says it is; today's words when the record does not say."""
+    return LINK_IS_TEXT.get(g.get("link_is")) or f"Guide page on {host(g.get('url', ''))}"
+
+
+def sold_guide_page(rec, url):
+    """The purchase guide whose address `url` is, or whose host it shares when that guide's page
+    is the publisher's or a bookseller's: a page that sells the guide is not the route's own page.
+    None when `url` is the route's own."""
+    for g in rec.get("guide", []):
+        if g.get("access") != "purchase" or not g.get("url"):
+            continue
+        if _same_page(g["url"], url) or (host(g["url"]) == host(url)
+                                         and g.get("link_is") in ("publisher", "seller")):
+            return g
+    return None
+
+
+GUIDE_LABELS = set(LINK_IS_TEXT.values()) | {"The guide's page", "The route's guide"}
+
+
+def _see_clause(rec):
+    """", so see the official site", or ", so see the guide" when the page on offer is a guide's."""
+    link = official_link(rec)
+    if not link:
+        return ""
+    return ", so see the guide" if link[1] in GUIDE_LABELS else ", so see the official site"
+
+
 def official_link(rec):
     """(url, label) of the trail's own page: the [hike] official site, else the
-    publisher's page for the trail, else a route's free guide; None when the record has none."""
+    publisher's page for the trail, else a route's free guide; None when the record has none.
+    An "official site" that is the page selling a guide to the route is labelled as that page."""
     url = hike.official_url(rec)
     if url:
+        sold = sold_guide_page(rec, url)
+        if sold:
+            return url, LINK_IS_TEXT.get(sold.get("link_is")) or "The guide's page"
         return url, "Official site"
     src = rec.get("source", {})
     if src.get("publisher_url"):
@@ -369,7 +419,7 @@ def brief_sentences(rec):
                             f"and {esc(climb)}, {esc(how)}."))
 
     # When to walk it and whether this site has a GPX: one sentence where the season is a plain range.
-    clause = gpx_clause(rec) or ("this site has no GPX for it" + (", so see the official site" if official_link(rec) else ""))
+    clause = gpx_clause(rec) or ("this site has no GPX for it" + _see_clause(rec))
     season = season_sentence(rec)
     if season and not re.search(r"[,;]", season[1]):
         # "The usual season is May to July, and this page has a GPX of the track to download."
@@ -737,6 +787,25 @@ def free_guides(rec):
     return [g for g in rec.get("guide", []) if g.get("access") == "free"]
 
 
+def purchase_guide(rec):
+    """The first guide that is bought, for a route; None when there is none."""
+    if common.is_route(rec):
+        for g in rec.get("guide", []):
+            if g.get("access") == "purchase" and g.get("title"):
+                return g
+    return None
+
+
+def guide_sentence(g):
+    """"The route is in <title> (<edition>), <where>." from what the guide says of itself."""
+    edition = g.get("edition", "")
+    title = g["title"] + (f" ({edition})" if edition and edition.lower() not in g["title"].lower() else "")
+    where = str(g.get("where", "")).strip().rstrip(".")
+    if where.lower().startswith("the whole guide"):
+        return f"The whole of {title} is this route."
+    return f"The route is in {title}" + (f", {where[:1].lower() + where[1:]}" if where else "") + "."
+
+
 ROUTE_NO_GPX = {
     # GPX status -> (heading, what this site does about it); "" for nothing to add to the reason.
     "free": ("Get the GPX from its author",
@@ -766,8 +835,12 @@ def _no_gpx_parts(rec):
             g = free_guides(rec)[0]
             actions.append(f'<a class="button button--primary" href="{esc(g["url"])}">'
                            f'{esc(g["title"])} {common.ICON_EXTERNAL}</a>')
+        bought = purchase_guide(rec)
+        if bought:
+            rule = f"{guide_sentence(bought)} {rule}".strip()
         if not actions:
-            actions.append('<a class="button button--link" href="#guides-title">See where to get the route</a>')
+            label = f"Where to get {bought['title']}" if bought else "See where to get the route"
+            actions.append(f'<a class="button button--link" href="#guides-title">{esc(label)}</a>')
         elif len(rec.get("guide", [])) > 1:
             actions.append('<a class="button button--link" href="#guides-title">All guides</a>')
     else:
@@ -780,6 +853,7 @@ def _no_gpx_parts(rec):
             actions.append(f'<a class="button button--link" href="{esc(official[0])}">'
                            f'{esc(official[1])} {common.ICON_EXTERNAL}</a>')
         places = [official[1][:1].lower() + official[1][1:] if official[1] == "Official site"
+                  else official[1][:1].lower() + official[1][1:] if official[1].startswith("The ")
                   else "the " + official[1]] if official else []
         if src.get("url") and (not official or src["url"] != official[0]):
             osm = host(src["url"]).endswith("openstreetmap.org")
@@ -975,11 +1049,16 @@ def downloads_panel(rec):
 
 def guide_card(g, i):
     rows = [fact("Author", g.get("author", ""))]
+    if g.get("edition"):
+        rows.append(fact("Edition", g["edition"]))
+    if g.get("where"):
+        rows.append(fact("Where in it", g["where"]))
     if g.get("publisher"):
         rows.append(fact("Publisher", g["publisher"]))
     if g.get("isbn"):
         rows.append(Markup(f'<div><dt>ISBN</dt><dd><span class="nowrap">{esc(g["isbn"])}</span></dd></div>'))
-    rows.append(fact("Format", g.get("format", "")))
+    if g.get("format"):
+        rows.append(fact("Form", g["format"]))
     if g.get("price"):
         rows.append(fact("Price", g["price"], f"As the page stated it on {g.get('price_checked', '')}"
                          if g.get("price_checked") else ""))
@@ -988,7 +1067,7 @@ def guide_card(g, i):
   <p class="guide__tags"><span class="access access--{esc(access)}">{esc(words.ACCESS.get(access, access))}</span></p>
   <h3 id="guide-{i}">{esc(g.get("title", ""))}</h3>
   {facts(*rows)}
-  <a class="button button--link" href="{esc(g.get("url", ""))}" aria-describedby="guide-{i}">Guide page on {esc(host(g.get("url", "")))} {common.ICON_EXTERNAL}</a>
+  <a class="button button--link" href="{esc(g.get("url", ""))}" aria-describedby="guide-{i}">{esc(guide_link_text(g))} {common.ICON_EXTERNAL}</a>
 </li>"""
 
 
@@ -1018,11 +1097,15 @@ def guides_panel(rec):
     if not guides:
         return ""
     cards = "".join(guide_card(g, i) for i, g in enumerate(guides, 1))
+    if any(g.get("link_is") for g in guides):
+        note = "Each link says what it goes to."
+    else:
+        note = f"Links go to the {'author&rsquo;s or publisher&rsquo;s' if common.is_route(rec) else 'holder&rsquo;s'} own page for each guide."
     return f"""<section class="panel" aria-labelledby="guides-title">
   <h2 class="panel__head" id="guides-title">{"Where to get the route" if common.is_route(rec) else "Maps and guides"}</h2>
   <div class="panel__body">
     <ul class="guides">{cards}</ul>
-    <p class="note">Links go to the {"author&rsquo;s or publisher&rsquo;s" if common.is_route(rec) else "holder&rsquo;s"} own page for each guide.</p>
+    <p class="note">{note}</p>
   </div>
 </section>"""
 

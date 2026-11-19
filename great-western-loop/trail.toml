@@ -68,6 +68,7 @@ author = "Andrew Skurka"
 access = "purchase"
 url = "https://andrewskurka.com/product/slideshows-on-disk-great-western-loop-and-sea-to-sea-route/"
 format = "slideshow on disk (not a route track)"
+link_is = "author"
 
 [hike]
 summary = "The Great Western Loop links the Pacific Crest, Pacific Northwest, Continental Divide, Grand Enchantment and Arizona trails together with a trail-less stretch through the Sonoran and Mojave Deserts into one circuit of the American West. It passes through 12 national parks and more than 75 wilderness areas, and there is nothing official about it. Andrew Skurka began and finished at Grandview Point on the South Rim of the Grand Canyon, but the loop has no fixed start."
@@ -136,5 +137,14 @@ change = "A start was added, Grandview Point on the South Rim of the Grand Canyo
 fields = ["hike.start", "hike.start_lonlat", "hike.summary"]
 basis = "The author's route description says it starts at Grandview Point for the sake of the description and that the expedition began and ended there, while saying the loop has no official termini; OpenStreetMap contributors (ODbL) give the position of Grandview Point, OpenStreetMap node 4437250889."
 basis_url = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide)."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Great Western Loop and Sea-to-Sea Route Slideshows - Skurka Adventures\"."
+basis_url = "https://andrewskurka.com/product/slideshows-on-disk-great-western-loop-and-sea-to-sea-route/"
 asked_by = "the dataset's own check"
 outcome = "applied"

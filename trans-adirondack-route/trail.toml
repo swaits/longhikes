@@ -61,6 +61,10 @@ author = "Erik Schlimmer"
 access = "purchase"
 url = "https://erikschlimmer.com/books-sale-/"
 format = "book and map set"
+publisher = "Beechwood Books"
+edition = "2nd edition, 2025, with the 3rd edition map set"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Trans Adirondack Route crosses the whole Adirondack Park in New York from its southern blue line to its northern one. Erik Schlimmer's route links trails, roads and a little cross-country travel through river valleys, deep wilderness and a few small communities. Its author reports that only about half of attempted thru-hikes succeed."
@@ -99,5 +103,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://erikschlimmer.com/tar-1"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide's entry now names the publisher and the edition on sale, and its link is marked as the author's own page. The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The author's page for his books lists Blue Line to Blue Line + Map Set as the second edition guidebook (222 pages, 2025) and the third edition map set, published by Beechwood Books."
+basis_url = "https://erikschlimmer.com/books-sale-/"
 asked_by = "the dataset's own check"
 outcome = "applied"

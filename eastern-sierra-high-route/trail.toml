@@ -60,6 +60,8 @@ url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
 format = "Download package: field guide, trip planning document, section hikes, printable map set (PDF), waypoints (JSON), datasheet"
 price = "$15.00 USD"
 price_checked = "2026-11-15"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Eastern Sierra High Route runs along the east side of California's Sierra Nevada, from the Duck Pass trailhead above Mammoth Lakes to the Bishop Pass trailhead at South Lake near Bishop. It is 65 to 70 miles, with 70 to 80 percent of it off-trail and 13 cross-country passes. The author says nothing on it is harder than class 3, and that it takes about a week or less."
@@ -103,5 +105,14 @@ date = "2026-11-15"
 change = "The record was added: Eastern Sierra High Route."
 fields = ["record"]
 basis = "The record's own source entry: Dan Stenziano."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide). The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Eastern Sierra High Route Guide – Dan Stenziano\"."
+basis_url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
 asked_by = "the dataset's own check"
 outcome = "applied"

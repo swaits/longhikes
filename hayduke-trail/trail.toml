@@ -62,6 +62,8 @@ format = "book"
 price = "$19.95"
 price_checked = "2026-11-10"
 isbn = "9780874808131"
+link_is = "publisher"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Hayduke Trail is an extremely challenging backcountry route linking six national parks of the Colorado Plateau, from Arches to Zion across southern Utah and northern Arizona. It lies entirely on public land, taking in Canyonlands, Capitol Reef, Bryce Canyon and Grand Canyon as well as the wild country between them. It is named for a character in Edward Abbey's novel The Monkey Wrench Gang."
@@ -151,5 +153,14 @@ change = "The start is now named as Salt Valley at the northern boundary of Arch
 fields = ["hike.start", "hike.start_lonlat", "hike.caution"]
 basis = "The trail's own site says the trail begins at the northern boundary of Arches National Park in Salt Valley; Andrew Skurka's Hayduke Trail Hiking Resources Bundle describes the same boundary. OpenStreetMap contributors (ODbL) map the cattle grid where Salt Valley Road crosses that boundary, OpenStreetMap node 11866946196. The Park Service's news release gives the Weeping Rock reopening and says the East Rim Trail to Observation Point remained closed."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=11866946196"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the publisher's page for this book). The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"University of Utah Press | The Hayduke Trail\"."
+basis_url = "https://uofupress.com/books/the-hayduke-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

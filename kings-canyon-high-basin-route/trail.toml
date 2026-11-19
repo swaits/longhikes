@@ -60,6 +60,8 @@ url = "https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/"
 format = "PDF guidebook, data sheets, complete topographic map set"
 price = "$25.00"
 price_checked = "2026-11-10"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Kings Canyon High Basin Route wraps around the upper watershed of the Kings River in the High Sierra, entirely within Kings Canyon National Park. Two-thirds of it is committing off-trail travel or long-abandoned trail, and it averages 725 vertical feet of change per mile between 6,000 and 12,400 feet."
@@ -136,5 +138,14 @@ change = "The positions of the start and the end were added, so that the page ca
 fields = ["hike.start_lonlat", "hike.end_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Lodgepole Visitor Center, OpenStreetMap way 181002967; OpenStreetMap contributors, via Nominatim (ODbL): Roads End Permit Station, OpenStreetMap way 279697028."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=181002967"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide). The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Kings Canyon High Basin Route Guide - Skurka Adventures\"."
+basis_url = "https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/"
 asked_by = "the dataset's own check"
 outcome = "applied"

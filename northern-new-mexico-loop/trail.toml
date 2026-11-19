@@ -58,6 +58,8 @@ author = "Brett Tucker"
 access = "purchase"
 url = "https://simblissity.net/northern-nm-loop-mapset.shtml"
 format = "PDF mapset, data book, GPS tracks and waypoints"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Northern New Mexico Loop starts and ends at Santa Fe Plaza, touring the Jemez Mountains, the Continental Divide and the Sangre de Cristo Mountains on a clockwise circuit of northern New Mexico. It crosses sere deserts, lush boreal forest and lofty alpine terrain, uncovering the human history and cultural diversity of the region."
@@ -109,5 +111,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "http://www.simblissity.net/images/nnm-loop-logo.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide). The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Northern New Mexico Loop mapset | Simblissity\"."
+basis_url = "https://simblissity.net/northern-nm-loop-mapset.shtml"
 asked_by = "the dataset's own check"
 outcome = "applied"

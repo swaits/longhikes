@@ -60,6 +60,8 @@ url = "https://andrewskurka.com/product/yosemite-high-route-guide/"
 format = "PDF guidebook, annotated map set, datasheets, rudimentary GPX"
 price = "$25.00"
 price_checked = "2026-11-10"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Yosemite High Route explores the upper headwaters of the Tuolumne and Merced Rivers in Yosemite National Park, California. Its core runs from Grace Meadow near the park's northern boundary to the base of Quartzite Peak at the Merced River, through remote canyons, alpine areas and lake basins. Seventy percent of the core is off-trail, between 8,000 and 11,000 feet."
@@ -117,5 +119,14 @@ change = "The logo record now says an emblem exists or may exist but no usable a
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
 basis_url = "https://andrewskurka.com/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide). The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Yosemite High Route Guide - Skurka Adventures\"."
+basis_url = "https://andrewskurka.com/product/yosemite-high-route-guide/"
 asked_by = "the dataset's own check"
 outcome = "applied"

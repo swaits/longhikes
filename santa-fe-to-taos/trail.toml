@@ -61,6 +61,8 @@ author = "The Santa Fe to Taos Trail (Pam Neely)"
 access = "purchase"
 url = "https://santafetotaos.org/guidebook/"
 format = "book"
+link_is = "author"
+where = "The whole guide is this route"
 
 [[guide]]
 title = "Route page with section maps and the 2026 GPX offer"
@@ -128,5 +130,14 @@ change = "The logo record now names where an emblem was looked for and who holds
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
 basis_url = "https://santafetotaos.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide). The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"The Santa Fe to Taos Thru-Hike Guidebook -\"."
+basis_url = "https://santafetotaos.org/guidebook/"
 asked_by = "the dataset's own check"
 outcome = "applied"

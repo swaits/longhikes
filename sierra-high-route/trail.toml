@@ -64,6 +64,9 @@ url = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-tr
 format = "book"
 publisher = "Mountaineers Books"
 isbn = "978-0-89886-506-6"
+edition = "2nd edition"
+link_is = "publisher"
+where = "The whole guide is this route"
 
 [[guide]]
 title = "Sierra High Route Mapset & Databook"
@@ -71,6 +74,8 @@ author = "Andrew Skurka"
 access = "purchase"
 url = "https://andrewskurka.com/product/sierra-high-route-map-set-databook/"
 format = "map set with breadcrumbs (not a continuous track)"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Sierra High Route is Steve Roper's timberline route through California's High Sierra from Kings Canyon National Park to northern Yosemite. It follows a general direction but no particular trail through the sub-alpine country. Its guidebook leads hikers point to point and favours cross-country travel over maintained trails."
@@ -151,5 +156,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of Andrew Skurka (the route's author) says: \"you only need a permit from the agency that manages the trailhead from which you are starting.\""
 basis_url = "https://andrewskurka.com/adventures/sierra-high-route/logistical-considerations/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide and the publisher's page for this book) and the details found on that page. The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Sierra High Route Mapset & Databook - Skurka Adventures\"."
+basis_url = "https://andrewskurka.com/product/sierra-high-route-map-set-databook/"
 asked_by = "the dataset's own check"
 outcome = "applied"

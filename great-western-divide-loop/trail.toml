@@ -62,7 +62,7 @@ format = "web page with an exportable route map (GPX)"
 
 [hike]
 summary = "The Sequoia Great Western Divide Loop is a backpacking loop from Crescent Meadow in Sequoia National Park that crosses the Great Western Divide at Kaweah Gap, past Precipice Lake and the Hamilton Lakes. The walk starts in giant sequoia forest and reaches alpine country above the treeline on the divide."
-official_url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
+official_url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
 start = "Crescent Meadow, Sequoia National Park"
 start_lonlat = [-118.748, 36.559]
 shape = "loop"
@@ -72,7 +72,12 @@ checked = "2026-11-13"
 [[hike.source]]
 url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
 publisher = "National Park Service, Sequoia and Kings Canyon National Parks"
-facts = ["official_url", "summary", "start", "terrain"]
+facts = ["summary", "start", "terrain"]
+
+[[hike.source]]
+url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
+publisher = "Brian Lucido, the route's author (his page for the route; it refused automated reads, so it could not be re-read when this was set)"
+facts = ["official_url"]
 
 [[hike.source]]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/258914"
@@ -109,6 +114,15 @@ date = "2026-11-18"
 change = "The walk is now recorded as a loop that starts and ends at Crescent Meadow, so its page maps the trailhead."
 fields = ["hike.shape"]
 basis = "The route's own record and the author's page describe a loop from Crescent Meadow that comes back by Redwood Meadow."
+basis_url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The official site is now the route's author's own page for the loop. It was a National Park Service page about the High Sierra Trail, a different trail."
+fields = ["hike.official_url", "hike.source"]
+basis = "The record's own guide and source entries already cite the author's page for the Sequoia Great Western Divide Loop; the National Park Service page is about the High Sierra Trail. The author's page refused a plain request (403), so it could not be re-read."
 basis_url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
 asked_by = "the dataset's own check"
 outcome = "applied"

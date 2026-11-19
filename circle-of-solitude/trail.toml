@@ -47,15 +47,18 @@ note = "No line to measure."
 [route]
 creator = "Mike White"
 line_policy = "unclear"
-note = "A loop from Road's End in Kings Canyon that circles the Great Western Divide and the Kings-Kern Divide by Avalanche Pass, Colby Pass and Forester Pass. Mike White named and described it in his Wilderness Press guide; no page of the author's was found, and no statement about a track."
+note = "A loop from Road's End in Kings Canyon that circles the Great Western Divide and the Kings-Kern Divide by Avalanche Pass, Colby Pass and Forester Pass. The page that names the book is https://fastestknowntime.com/route/circle-solitude, which credits the route to Mike White's Kings Canyon National Park (Wilderness Press); no page of the publisher's or the author's confirms it, and no contents list shows where in the book the route is. The 2004 edition (ISBN 9780899973357) is out of print at its publisher, so the guide links to a library record. The route is not in Sierra South (9th edition) or Backpacking California (3rd edition). No page of the author's was found, and no statement about a track."
 
 [[guide]]
-title = "Kings Canyon National Park"
+title = "Kings Canyon National Park: A Complete Hiker's Guide"
 author = "Mike White"
 access = "purchase"
-url = "https://shop.adventurewithkeen.com/wilderness-press/"
-format = "book; the publisher's Wilderness Press page, as the book's own page was not found"
+url = "https://openlibrary.org/books/OL8277201M"
+format = "book"
 publisher = "Wilderness Press"
+isbn = "9780899973357"
+edition = "2004"
+link_is = "library"
 
 [hike]
 summary = "The Circle of Solitude is a loop of about 68 miles in Kings Canyon National Park, California, from Road's End. It circles the Great Western Divide and the Kings-Kern Divide by Avalanche Pass, Colby Pass and Forester Pass. Mike White describes it in his Wilderness Press guidebook Kings Canyon National Park."
@@ -129,5 +132,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of National Park Service, Sequoia & Kings Canyon National Parks says: \"Wilderness permits are required for overnight trips.\""
 basis_url = "https://www.nps.gov/seki/planyourvisit/trailcond.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide entry now names the exact book, Kings Canyon National Park: A Complete Hiker's Guide (Wilderness Press, 2004, ISBN 9780899973357), and links to a library record for it, because the publisher no longer lists it. The route note now says what is known: the route is credited to that book by one page, the book is out of print at its publisher, and the route is not in Sierra South or Backpacking California."
+fields = ["guide", "route.note"]
+basis = "The Open Library record gives Kings Canyon National Park, A Complete Hiker's Guide, Wilderness Press, March 2004, 305 pages, ISBN 9780899973357. The credit to this book is on fastestknowntime.com's page for the route; no contents list confirms the route is in it."
+basis_url = "https://openlibrary.org/books/OL8277201M"
 asked_by = "the dataset's own check"
 outcome = "applied"

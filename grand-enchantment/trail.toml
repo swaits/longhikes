@@ -62,6 +62,8 @@ access = "purchase"
 url = "http://www.simblissity.net/get/"
 format = "map set with GPS tracks, digital download"
 publisher = "simBLISSity Ultralight Designs"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Grand Enchantment Trail is a route of over 770 miles from the edge of Phoenix in Arizona to the edge of Albuquerque in New Mexico. It crosses desert, volcanic ranges, canyons and forested sky-island mountains, and passes through the Gila Wilderness. About half is foot trail, and the rest is dirt road and some cross-country travel."
@@ -145,5 +147,14 @@ change = "The position of the start was added, so that the page can show a map o
 fields = ["hike.start_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): First Water Trailhead, OpenStreetMap way 137483519."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=137483519"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide). The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"The Grand Enchantment Trail\"."
+basis_url = "http://www.simblissity.net/get/"
 asked_by = "the dataset's own check"
 outcome = "applied"

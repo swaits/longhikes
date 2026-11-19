@@ -58,6 +58,8 @@ url = "https://wildernessmindset.com/product/bitterroots-80-mile-route-map-pack/
 format = "topographic maps, route description, mileage and camp dataset, and GPX track"
 price = "$10.00"
 price_checked = "2026-11-14"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Bitterroots 80-mile Route is a six-day backpacking route in the Selway-Bitterroot Wilderness, starting at Lake Como. Parts of it are off-trail, across talus and scree and through burned forest. The author's page describes a south-to-north route, with day-by-day directions."
@@ -141,5 +143,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of USDA Forest Service, Bitterroot National Forest says: \"No permits are required for general travel in the Selway-Bitterroot Wilderness\""
 basis_url = "https://www.fs.usda.gov/r01/bitterroot/wilderness/selway-bitterroot-wilderness"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide). The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Bitterroots 80-mile Route Map Pack - Wilderness Mindset\"."
+basis_url = "https://wildernessmindset.com/product/bitterroots-80-mile-route-map-pack/"
 asked_by = "the dataset's own check"
 outcome = "applied"

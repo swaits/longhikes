@@ -59,6 +59,11 @@ author = "Aria Zoner"
 access = "purchase"
 url = "https://www.amazon.com/Hot-Springs-Trail-Official-Guidebook/dp/1505613922"
 format = "book"
+isbn = "9781505613926"
+publisher = "CreateSpace Independent Publishing Platform"
+edition = "2015"
+link_is = "seller"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Hot Springs Trail is a route from Santa Barbara, California, to the Canadian border in Idaho that links 100 wild and resort hot spring areas. It is mainly a hiking trail with official mountain biking and whitewater rafting options, and it mixes roads, trails and trail-less ridge running."
@@ -104,5 +109,14 @@ change = "The logo record now says an emblem exists or may exist but no usable a
 fields = ["shield.status", "shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
 basis_url = "https://outsideways.com/routes/us/hot-springs-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide's entry now gives the ISBN, publisher and year. Its link stays on the bookseller's page; the author's site could not be reached. The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The Open Library record gives The Hot Springs Trail: Official Guidebook, Aria Zoner, CreateSpace, 2015, ISBN 9781505613926, which matches the ISBN-10 in the bookseller's address."
+basis_url = "https://www.amazon.com/Hot-Springs-Trail-Official-Guidebook/dp/1505613922"
 asked_by = "the dataset's own check"
 outcome = "applied"

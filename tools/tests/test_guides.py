@@ -38,6 +38,21 @@ class GuideTest(unittest.TestCase):
         self.assertTrue(check([dict(GOOD, price="$5")]))
         self.assertEqual(check([dict(GOOD, price="$5", price_checked="2026-11-16")]), [])
 
+    def test_new_fields_are_checked(self):
+        self.assertEqual(check([dict(GOOD, edition="9th edition, 2021", where="Trip 25, page 149", link_is="author")]), [])
+        self.assertTrue(check([dict(GOOD, edition=" ")]))
+        self.assertTrue(check([dict(GOOD, where=3)]))
+        self.assertTrue(check([dict(GOOD, link_is="shop")]))
+        for kind in ("publisher", "author", "library", "seller"):
+            self.assertEqual(check([dict(GOOD, link_is=kind)]), [])
+
+    def test_a_purchase_must_say_what_it_is(self):
+        bought = dict(GOOD, access="purchase")
+        self.assertTrue(check([bought]))
+        for field, value in (("isbn", "978-0-89997-884-0"), ("edition", "2nd edition"), ("link_is", "seller")):
+            self.assertEqual(check([dict(bought, **{field: value})]), [], field)
+        self.assertEqual(check([dict(GOOD)]), [])  # a free guide needs none
+
 
 if __name__ == "__main__":
     unittest.main()

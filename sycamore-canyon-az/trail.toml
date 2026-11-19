@@ -49,18 +49,21 @@ note = "No line to measure."
 creator = "Bruce Grubbs"
 year = 2003
 line_policy = "sold"
-note = "Trip 8 in the book, on pages 98-99. A loop from the Sycamore Trailhead up Sycamore Canyon to Geronimo Spring, then over the Mogollon Rim, going out by the Taylor Cabin Trail and coming back by the Winter Cabin Trail, the Casner Mountain road and trail, and the Dogie, Sycamore Basin and Packard Mesa trails. The book's maps are the track; none is copied here."
+note = "A loop from the Sycamore Trailhead up Sycamore Canyon to Geronimo Spring, then over the Mogollon Rim, going out by the Taylor Cabin Trail and coming back by the Winter Cabin Trail, the Casner Mountain road and trail, and the Dogie, Sycamore Basin and Packard Mesa trails. The book's maps are the track; none is copied here."
 
 [[guide]]
 title = "Backpacking Arizona: From Deep Canyons to Sky Islands"
 author = "Bruce Grubbs"
 access = "purchase"
 url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
-format = "book, 1st edition, September 2003 (3rd printing 2012); the route is Trip 8, pages 98-99"
+format = "book"
 price = "$19.95"
 price_checked = "2026-11-18"
 publisher = "Wilderness Press"
 isbn = "978-0-89997-324-1"
+edition = "1st edition, September 2003 (3rd printing 2012)"
+where = "Trip 8, pages 98-99"
+link_is = "publisher"
 
 [hike]
 summary = "Sycamore Canyon is a six day backpacking loop in the Mogollon Rim country of northern Arizona, from the Sycamore Trailhead in the Coconino and Prescott National Forests. It goes up Sycamore Canyon past Parsons Spring to Geronimo Spring, then climbs onto the rim. It goes out by the Taylor Cabin Trail and returns by the Winter Cabin Trail, the Casner Mountain road and trail, and the Dogie, Sycamore Basin and Packard Mesa trails. Bruce Grubbs describes it as Trip 8 in Backpacking Arizona, and is not to be confused with other canyons of the same name."
@@ -132,5 +135,14 @@ change = "The position of the start was added, at the Parsons Trail trailhead at
 fields = ["hike.start_lonlat"]
 basis = "The Forest Service's page for Parsons Trail No. 144 gives the GPS position of its trailhead at the end of Forest Road 131, and the record's own walk closes with 0.2 mile on the Parsons Trail to the trailhead where it starts."
 basis_url = "https://www.fs.usda.gov/r03/coconino/recreation/trails/parsons-trail-no-144"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
+fields = ["guide", "route.note"]
+basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 asked_by = "the dataset's own check"
 outcome = "applied"

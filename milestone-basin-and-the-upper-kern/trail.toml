@@ -49,18 +49,21 @@ note = "No line to measure."
 creator = "Elizabeth Wenk and Mike White"
 year = 2021
 line_policy = "sold"
-note = "Trip 79 in the book, on page 427 (9th edition, 2021). A shuttle from the Cottonwood Pass Trailhead by Chicken Spring Lake, Rock Creek and Crabtree Meadow to the John Muir Trail near Tyndall Creek, then Milestone Basin and the headwaters of the Kern River by Lake South America, and out over Shepherd Pass to the Symmes Creek trailhead, with 55.6 miles in the book. About 20 of its miles follow the Pacific Crest Trail, which the John Muir Trail shares for part of the way, by the dataset's own check against those records. The book's maps are the track; none is copied here."
+note = "A shuttle from the Cottonwood Pass Trailhead by Chicken Spring Lake, Rock Creek and Crabtree Meadow to the John Muir Trail near Tyndall Creek, then Milestone Basin and the headwaters of the Kern River by Lake South America, and out over Shepherd Pass to the Symmes Creek trailhead, with 55.6 miles in the book. About 20 of its miles follow the Pacific Crest Trail, which the John Muir Trail shares for part of the way, by the dataset's own check against those records. The book's maps are the track; none is copied here."
 
 [[guide]]
 title = "Sierra South: Backcountry Trips in California's Sierra Nevada"
 author = "Elizabeth Wenk and Mike White"
 access = "purchase"
 url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
-format = "book, 9th edition, 2021; the route is Trip 79, on page 427"
+format = "book"
 price = "$21.95"
 price_checked = "2026-11-18"
 publisher = "Wilderness Press"
 isbn = "978-0-89997-884-0"
+edition = "9th edition, 2021"
+where = "Trip 79, page 427"
+link_is = "publisher"
 
 [hike]
 summary = "Milestone Basin and the Upper Kern is a 7 day backpacking trip in the southern Sierra Nevada, California, from the Cottonwood Pass Trailhead to the Symmes Creek Trailhead on Shepherd Pass Trail. It follows the Pacific Crest Trail and John Muir Trail corridor to Tyndall Creek, then visits Milestone Basin and the headwaters of the Kern River at Lake South America before crossing Shepherd Pass. Elizabeth Wenk and Mike White describe it as Trip 79 in the 9th edition of Sierra South."
@@ -121,5 +124,14 @@ change = "The guide now gives the page of the trip in the book: Trip 79 is on pa
 fields = ["guide", "route.note"]
 basis = "The contents listing of Sierra South: Backcountry Trips in California's Sierra Nevada, by Elizabeth Wenk and Mike White (Wilderness Press, 9th edition, 2021, ISBN 978-0-89997-884-0), gives the trip's title and page."
 basis_url = "https://www.gbv.de/dms/bowker/toc/9780899978840.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
+fields = ["guide", "route.note"]
+basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
 asked_by = "the dataset's own check"
 outcome = "applied"

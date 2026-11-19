@@ -54,14 +54,15 @@ note = "From Meeks Bay on Lake Tahoe to Tuolumne Meadows, mixing maintained trai
 title = "The Tahoe–Yosemite Trail"
 author = "Thomas Winnett"
 access = "purchase"
-url = "https://shop.adventurewithkeen.com/wilderness-press/"
-format = "book; the publisher's Wilderness Press page, as the book's own page was not found"
+url = "https://openlibrary.org/books/OL2377803M"
+format = "book"
 publisher = "Wilderness Press"
 isbn = "0-89997-084-2"
+edition = "5th edition, 1987"
+link_is = "library"
 
 [hike]
 summary = "The Tahoe-Yosemite Trail is Thomas Winnett's route through California's Sierra Nevada from Meeks Bay at Lake Tahoe to Tuolumne Meadows in Yosemite National Park. It links maintained trails with road walks, unmaintained trail and cross-country travel. The route stayed unofficial."
-official_url = "https://shop.adventurewithkeen.com/wilderness-press/"
 start = "Meeks Bay, Lake Tahoe, California"
 start_lonlat = [-120.124, 39.034]
 end = "Tuolumne Meadows, Yosemite National Park, California"
@@ -75,7 +76,7 @@ checked = "2026-11-13"
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/wilderness-press/"
 publisher = "Wilderness Press (AdventureKEEN)"
-facts = ["summary", "official_url"]
+facts = ["summary"]
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/recarea/ltbmu/recreation/camping-cabins/recarea/?recid=11826&actid=50"
@@ -114,5 +115,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://shop.adventurewithkeen.com/wilderness-press/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide's link now goes to a library record for the 5th edition (1987), which the record's ISBN belongs to, because the publisher's shop has no page for the book. The \"official site\" was the publisher's shop page, which is not the route's own page, so it is removed."
+fields = ["guide", "hike.official_url", "hike.source"]
+basis = "The Open Library record gives The Tahoe-Yosemite Trail, Thomas Winnett, 5th edition, Wilderness Press, 1987, 130 pages, ISBN 0899970842."
+basis_url = "https://openlibrary.org/books/OL2377803M"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -56,6 +56,8 @@ author = "Benton MacKaye Trail Association"
 access = "free"
 url = "https://bmta.org/backpacking-hikes/"
 format = "web page, as a section of Backpacking Hikes"
+where = "The Georgia Loop section of the page"
+link_is = "author"
 
 [[guide]]
 title = "Benton MacKaye Trail Guide, Georgia Section"
@@ -65,6 +67,7 @@ url = "https://bmta.org/product/benton-mackaye-trail-guide-ga/"
 format = "guidebook for the Georgia section of the Benton MacKaye Trail, recommended on the loop page; 48 pages"
 price = "$12.00"
 price_checked = "2026-11-16"
+link_is = "author"
 
 [hike]
 summary = "The Georgia Loop is a 55-mile loop in northern Georgia made of parts of three trails, the Appalachian Trail, the Benton MacKaye Trail and the Duncan Ridge Trail. The triangle can be started at Three Forks on FS 58, at Skeenah Creek on GA 60 or at Woody Gap on GA 60. The Benton MacKaye Trail Association publishes it as a backpacking hike and rates its difficulty Intermediate to Difficult, with dogs on leash allowed."
@@ -98,5 +101,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://bmta.org/backpacking-hikes/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide) and the details found on that page."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Benton MacKaye Trail Guide – Georgia Section - Benton MacKaye Trail Association\"."
+basis_url = "https://bmta.org/product/benton-mackaye-trail-guide-ga/"
 asked_by = "the dataset's own check"
 outcome = "applied"

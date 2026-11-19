@@ -62,10 +62,13 @@ publisher = "Condor Trail Association"
 
 [[guide]]
 title = "Hiker's Guide to the 400 Mile Condor Trail Through the Los Padres National Forest in California"
-author = "Brian Sarvis"
+author = "Brian Sarvis (with Bryan Conant)"
 access = "purchase"
-url = "http://www.condortrail.com/"
-format = "book"
+url = "https://store.forestwatch.org/products/new-condor-trail-guide-hikers-guide-to-the-400-mile-condor-trail"
+format = "paperback book, 198 pages"
+edition = "2021"
+link_is = "seller"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Condor Trail is a long thru-hiking route through the Los Padres National Forest of coastal central California. It links existing trails from Lake Piru in the south to Bottchers Gap near Monterey in the north. The Condor Trail Association says it is a series of existing trails linked into a route, and that parts need route finding and bushwhacking."
@@ -127,5 +130,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "http://www.condortrail.com/wp-content/uploads/2018/08/logo.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guidebook's link now goes to the Los Padres ForestWatch store page for the book, not the association's home page, and the guide entry names the edition (2021) and the form. The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The ForestWatch store page for the book says: \"by Brian Sarvis with Bryan Conant, 2021. Paperback, 198 pages.\" The association's own page recommends buying it on Amazon, so the link is to a bookseller."
+basis_url = "https://store.forestwatch.org/products/new-condor-trail-guide-hikers-guide-to-the-400-mile-condor-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

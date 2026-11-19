@@ -49,18 +49,21 @@ note = "No line to measure."
 creator = "Bruce Grubbs"
 year = 2003
 line_policy = "sold"
-note = "Trip 7 in the book, on pages 86-87. A loop from the Saddle Mountain Trailhead down the Nankoweap Trail, cross-country along the Colorado River to Unkar Creek, by Vishnu Creek to Clear Creek and Bright Angel Campground, then up the North Kaibab Trail to the North Rim and back by the Ken Patrick Trail past Point Imperial. The book's maps are the track; none is copied here."
+note = "A loop from the Saddle Mountain Trailhead down the Nankoweap Trail, cross-country along the Colorado River to Unkar Creek, by Vishnu Creek to Clear Creek and Bright Angel Campground, then up the North Kaibab Trail to the North Rim and back by the Ken Patrick Trail past Point Imperial. The book's maps are the track; none is copied here."
 
 [[guide]]
 title = "Backpacking Arizona: From Deep Canyons to Sky Islands"
 author = "Bruce Grubbs"
 access = "purchase"
 url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
-format = "book, 1st edition, September 2003 (3rd printing 2012); the route is Trip 7, pages 86-87"
+format = "book"
 price = "$19.95"
 price_checked = "2026-11-18"
 publisher = "Wilderness Press"
 isbn = "978-0-89997-324-1"
+edition = "1st edition, September 2003 (3rd printing 2012)"
+where = "Trip 7, pages 86-87"
+link_is = "publisher"
 
 [hike]
 summary = "The Nankoweap–Bright Angel Loop is an eleven day backpacking loop through the eastern Grand Canyon in Arizona, from the Saddle Mountain Trailhead on the North Rim. It goes down the Nankoweap Trail, then cross-country south past Nankoweap Butte and Kwagunt, Malgosa, Awatubi and Sixtymile creeks to Lava Canyon and Unkar Creek, by Vishnu Creek to Clear Creek, and on to Bright Angel Campground, the North Kaibab Trail and the Ken Patrick Trail back to the start. Bruce Grubbs describes it as Trip 7 in Backpacking Arizona."
@@ -131,6 +134,15 @@ date = "2026-11-18"
 change = "The length note now gives only the published length and says which stretches are walked both ways."
 fields = ["length_note"]
 basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
+fields = ["guide", "route.note"]
+basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 asked_by = "the dataset's own check"
 outcome = "applied"

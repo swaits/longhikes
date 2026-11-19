@@ -59,20 +59,26 @@ title = "Bigfoot Trail Mapset: Printed"
 author = "Bigfoot Trail Alliance"
 access = "purchase"
 url = "https://www.bigfoottrail.org/product/bigfoot-trail-mapset-printed/"
-format = "52-page printed map set with mile-by-mile descriptions, updated May 2023"
+format = "52-page printed map set with mile-by-mile descriptions"
 price = "$40.00"
 price_checked = "2026-11-14"
 publisher = "Bigfoot Trail Alliance"
+edition = "Updated May 2023"
+link_is = "author"
+where = "The whole guide is this route"
 
 [[guide]]
 title = "Bigfoot Trail Mapset: Digital"
 author = "Bigfoot Trail Alliance"
 access = "purchase"
 url = "https://www.bigfoottrail.org/product/bigfoot-trail-mapset-digital/"
-format = "52-page PDF map set with mile-by-mile descriptions, updated 2023"
+format = "52-page PDF map set with mile-by-mile descriptions"
 price = "$20.00"
 price_checked = "2026-11-14"
 publisher = "Bigfoot Trail Alliance"
+edition = "Updated 2023"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Bigfoot Trail is a long route through the Klamath Mountains of northwest California and, briefly, southwest Oregon. It runs from the Yolla Bolly-Middle Eel Wilderness north to the Pacific Ocean near Crescent City, through six wilderness areas, and is known for the many conifer species it passes. It is a rough route, not a continuously maintained trail."
@@ -143,5 +149,14 @@ change = "The position of the start was added, so that the page can show a map o
 fields = ["hike.start_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Ides Cove Trailhead, OpenStreetMap node 93489630."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=93489630"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide) and the details found on that page. The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Bigfoot Trail Mapset: Digital - Bigfoot Trail\"."
+basis_url = "https://www.bigfoottrail.org/product/bigfoot-trail-mapset-digital/"
 asked_by = "the dataset's own check"
 outcome = "applied"

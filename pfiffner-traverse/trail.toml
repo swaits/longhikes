@@ -60,6 +60,8 @@ url = "https://andrewskurka.com/product/pfiffner-traverse-guide-maps/"
 format = "planning information, route descriptions, data sheets, annotated topographic map set"
 price = "$25.00"
 price_checked = "2026-11-10"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Pfiffner Traverse follows the Continental Divide and the crest of Colorado's Front Range between Trail Ridge Road and Berthoud Pass. It passes through Rocky Mountain National Park and the Indian Peaks and James Peak Wilderness Areas, staying high with five 13,000-foot peaks. About forty percent of it is off-trail."
@@ -126,5 +128,14 @@ change = "The start is now named as Milner Pass on Trail Ridge Road, and its pos
 fields = ["hike.start", "hike.start_lonlat"]
 basis = "The author's overview map page names Milner Pass (US-34/Trail Ridge Road) as the northern end, and OpenStreetMap contributors (ODbL) give the position of Milner Pass, OpenStreetMap node 4527663577."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=4527663577"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide). The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Pfiffner Traverse Guide -- Download\"."
+basis_url = "https://andrewskurka.com/product/pfiffner-traverse-guide-maps/"
 asked_by = "the dataset's own check"
 outcome = "applied"

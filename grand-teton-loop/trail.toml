@@ -50,18 +50,21 @@ note = "No line to measure."
 creator = "Douglas Lorain"
 year = 2010
 line_policy = "sold"
-note = "Trip 12 in the book, on pages 104-106. A loop from the Lupine Meadows Trailhead in Grand Teton National Park, climbing Paintbrush Canyon on the first day and returning by Death Canyon and the Valley Trail to Lupine Meadows, with 48.5 miles and five to eight days in the book. The book's maps are the track; none is copied here."
+note = "A loop from the Lupine Meadows Trailhead in Grand Teton National Park, climbing Paintbrush Canyon on the first day and returning by Death Canyon and the Valley Trail to Lupine Meadows, with 48.5 miles and five to eight days in the book. The book's maps are the track; none is copied here."
 
 [[guide]]
 title = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins"
 author = "Douglas Lorain"
 access = "purchase"
 url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
-format = "book, 1st edition, 2010; the route is Trip 12, pages 104-106"
+format = "book"
 price = "$18.95"
 price_checked = "2026-11-18"
 publisher = "Wilderness Press"
 isbn = "978-0-89997-505-4"
+edition = "1st edition, 2010"
+where = "Trip 12, pages 104-106"
+link_is = "publisher"
 
 [hike]
 summary = "The Grand Teton Loop is a backpacking loop of five to eight days in Grand Teton National Park, Wyoming, from the Lupine Meadows Trailhead. By the book's map it goes north past Jenny Lake to String Lake and climbs Paintbrush Canyon to Paintbrush Divide on the first day, then passes Lake Solitude, goes up South Fork Cascade Canyon, crosses Hurricane Pass, and runs through Alaska Basin and along Death Canyon Shelf to Fox Creek Pass, where the book names the Teton Crest Trail. It then goes down Death Canyon and finishes on the Valley Trail past Bradley and Taggart lakes to Lupine Meadows. The book describes optional cross-country scrambles. Douglas Lorain describes it as Trip 12 in Backpacking Wyoming, at 48.5 miles under the 50 mile floor, and it is listed as an exception."
@@ -132,6 +135,15 @@ date = "2026-11-19"
 change = "The length note now gives the reason the trail is listed under the 50 mile floor in plain words, the same as its short reason."
 fields = ["length_note"]
 basis = "The record's own source, the guidebook Backpacking Wyoming, gives five to eight days (Trip 12) and describes optional cross-country scrambles."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
+fields = ["guide", "route.note"]
+basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 asked_by = "the dataset's own check"
 outcome = "applied"

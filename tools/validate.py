@@ -186,6 +186,10 @@ def check_shield(tid, shield, tdir, errors):
         errors.append(f"{tid}: declared logo file {logo_file} does not exist")
 
 
+# What a guide's url points at (the `link_is` field).
+GUIDE_LINK_IS = ("publisher", "author", "library", "seller")
+
+
 def check_guides(tid, guides, errors):
     """[[guide]]: a route needs at least one (checked with the route); any trail may have its holder's own."""
     if guides is None:
@@ -203,6 +207,18 @@ def check_guides(tid, guides, errors):
                 f"not {g.get('access')!r}")
         if not str(g.get("url", "")).startswith(("https://", "http://")):
             errors.append(f"{tid}: guide {i} url must be an http(s) URL")
+        for field in ("edition", "where"):
+            if field in g and (not isinstance(g[field], str) or not g[field].strip()):
+                errors.append(f"{tid}: guide {i} {field} must be a non-empty string")
+        if "link_is" in g and g["link_is"] not in GUIDE_LINK_IS:
+            errors.append(
+                f"{tid}: guide {i} link_is must be one of {', '.join(GUIDE_LINK_IS)}, "
+                f"not {g['link_is']!r}")
+        if (g.get("access") == "purchase"
+                and not any(str(g.get(f, "")).strip() for f in ("isbn", "edition", "link_is"))):
+            errors.append(
+                f"{tid}: guide {i} is a purchase but says nothing of what it is: "
+                "give an isbn, an edition or link_is, so a visitor knows exactly what to get")
         if (str(g.get("price", "")).strip()
                 and not DATE_RE.match(str(g.get("price_checked", "")))):
             errors.append(

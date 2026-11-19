@@ -49,18 +49,21 @@ note = "No line to measure."
 creator = "Elizabeth Wenk and Mike White"
 year = 2021
 line_policy = "sold"
-note = "Trip 25 in the book, on page 149 (9th edition, 2021). A semiloop from the Twin Lakes Trailhead at Lodgepole Campground to the Roaring River Ranger Station, then a loop by Deadman Canyon, Elizabeth Pass, Kaweah Gap, Big Arroyo, the Kern River canyon and Colby Pass to Cloud Canyon, with 113.4 miles in the book. About 47 miles of it, from the Roaring River Ranger Station through Deadman Canyon and Kaweah Gap to Junction Meadow, are shared with the Big SEKI Loop by the dataset's own check against that record's track. The book's maps are the track; none is copied here."
+note = "A semiloop from the Twin Lakes Trailhead at Lodgepole Campground to the Roaring River Ranger Station, then a loop by Deadman Canyon, Elizabeth Pass, Kaweah Gap, Big Arroyo, the Kern River canyon and Colby Pass to Cloud Canyon, with 113.4 miles in the book. About 47 miles of it, from the Roaring River Ranger Station through Deadman Canyon and Kaweah Gap to Junction Meadow, are shared with the Big SEKI Loop by the dataset's own check against that record's track. The book's maps are the track; none is copied here."
 
 [[guide]]
 title = "Sierra South: Backcountry Trips in California's Sierra Nevada"
 author = "Elizabeth Wenk and Mike White"
 access = "purchase"
 url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
-format = "book, 9th edition, 2021; the route is Trip 25, on page 149"
+format = "book"
 price = "$21.95"
 price_checked = "2026-11-18"
 publisher = "Wilderness Press"
 isbn = "978-0-89997-884-0"
+edition = "9th edition, 2021"
+where = "Trip 25, page 149"
+link_is = "publisher"
 
 [hike]
 summary = "Deadman and Cloud Canyons is a backpacking semiloop of 11 hiking days in Sequoia and Kings Canyon National Parks, California, from the Twin Lakes Trailhead at Lodgepole Campground. After a stem to the Roaring River Ranger Station it loops through Deadman Canyon and over Elizabeth Pass, Kaweah Gap and Colby Pass by the Kern River canyon and Cloud Canyon, and about 47 miles are shared with the Big SEKI Loop. Elizabeth Wenk and Mike White describe it as Trip 25 in the 9th edition of Sierra South."
@@ -114,5 +117,14 @@ change = "The guide now gives the page of the trip in the book: Trip 25 is on pa
 fields = ["guide", "route.note"]
 basis = "The contents listing of Sierra South: Backcountry Trips in California's Sierra Nevada, by Elizabeth Wenk and Mike White (Wilderness Press, 9th edition, 2021, ISBN 978-0-89997-884-0), gives the trip's title and page."
 basis_url = "https://www.gbv.de/dms/bowker/toc/9780899978840.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
+fields = ["guide", "route.note"]
+basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
 asked_by = "the dataset's own check"
 outcome = "applied"

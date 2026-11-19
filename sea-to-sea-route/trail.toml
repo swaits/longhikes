@@ -68,6 +68,7 @@ author = "Andrew Skurka"
 access = "purchase"
 url = "https://andrewskurka.com/product/slideshows-on-disk-great-western-loop-and-sea-to-sea-route/"
 format = "slideshow on disk (not a route track)"
+link_is = "author"
 
 [hike]
 summary = "The Sea-to-Sea Route is a network of existing long-distance hiking trails spanning almost continuously between the Atlantic and Pacific Oceans. Ron Strickland began developing the idea in 1996, and Andrew Skurka made its first thru-hike in 2004 and 2005."
@@ -108,4 +109,13 @@ fields = ["route.line_policy"]
 basis = "The overview page describes a network of existing trails, and no track or GPX for the route was found."
 basis_url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide)."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Great Western Loop and Sea-to-Sea Route Slideshows - Skurka Adventures\"."
+basis_url = "https://andrewskurka.com/product/slideshows-on-disk-great-western-loop-and-sea-to-sea-route/"
+asked_by = "the dataset's own check"
 outcome = "applied"

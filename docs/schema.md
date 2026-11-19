@@ -173,7 +173,7 @@ Present only when `kind = "route"`. A route is a high route, a traverse or a loo
 
 ## `[[guide]]`: where the route is got from
 
-An array of tables, one per guide, and at least one for every route. A guide is the book, map set or page that gives the route. Any other trail may have one too: its holder's own guide or map set, shown as "Maps and guides".
+An array of tables, one per guide, and at least one for every route. A guide is the book, map set or page that gives the route. A guide that is bought must say exactly what it is: at least one of `isbn`, `edition` or `link_is`. Where the publisher now sells a newer edition than the one the record was read from, `url` is a library record of the edition read (`link_is = "library"`), and a second guide entry names the newer edition at the publisher's page, with a `where` that says the trip may be numbered differently. Any other trail may have one too: its holder's own guide or map set, shown as "Maps and guides".
 
 | Field | Type | Meaning | Example |
 | --- | --- | --- | --- |
@@ -181,11 +181,14 @@ An array of tables, one per guide, and at least one for every route. A guide is 
 | `author` | string | Who wrote or published it. | `"Steve Roper"` |
 | `access` | string | `"free"` or `"purchase"`. | `"purchase"` |
 | `url` | string | The author's or publisher's own page for the guide. | `"https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"` |
-| `format` | string | What the guide is: book, map set, web page, GPX file, and so on. | `"book"` |
+| `format` | string | What the guide is as a thing: book, map set, web page, GPX file, and so on. The edition and the place in it go in `edition` and `where`. | `"book"` |
 | `price` | string, where known | The price exactly as the page states it, with the date read in `price_checked`. | `"$24.95"` |
 | `price_checked` | string (date), where `price` is present | Date the price was read, `YYYY-MM-DD`. | `"2026-11-10"` |
 | `publisher` | string, where known | The publisher, where it is not the author. | `"Mountaineers Books"` |
 | `isbn` | string, where known | The book's ISBN. | `"978-0-89886-506-6"` |
+| `edition` | string, where known | The edition and year the record's facts were read from; for a guide that is not a book, its version or year where the author states one. | `"9th edition, 2021"` |
+| `where` | string, where the record says | Where in the guide this route is, in a few words. Left out when no source says. | `"Trip 25, page 149"` |
+| `link_is` | string, where known | What `url` points at: `publisher` (the publisher's page for this exact title), `author` (the author's own page or shop page for this exact guide), `library` (a library catalogue record, for a title that is out of print or has no publisher's page for this edition), or `seller` (a bookseller, only where the author sells only there). | `"publisher"` |
 
 ## `[[link]]`: other pages about the trail
 

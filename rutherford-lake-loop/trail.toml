@@ -49,16 +49,30 @@ note = "No line to measure."
 creator = "Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett"
 year = 2005
 line_policy = "sold"
-note = "Trip 72 in the book, on pages 246-250, from the 9th edition (2005); the first edition of the book dates from 1967 and the pages read do not show whether this trip was in it. A loop from the Glacier Point and Panorama trailhead down to Little Yosemite Valley, past Merced Lake, Lyell Fork and Post Peak Pass to Rutherford Lake, then by Fernandez Pass, Chain Lakes, Buck Camp and Royal Arch Lake back to Glacier Point, with 71.5 miles and 10 hiking days in the book. The book's maps are the track; none is copied here."
+note = "A loop from the Glacier Point and Panorama trailhead down to Little Yosemite Valley, past Merced Lake, Lyell Fork and Post Peak Pass to Rutherford Lake, then by Fernandez Pass, Chain Lakes, Buck Camp and Royal Arch Lake back to Glacier Point, with 71.5 miles and 10 hiking days in the book. The book's maps are the track; none is copied here."
 
 [[guide]]
 title = "Sierra North: Backcountry Trips in California's Sierra Nevada"
 author = "Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett"
 access = "purchase"
-url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
-format = "book, 9th edition, 2005; the route is Trip 72, pages 246-250 (the publisher's page now lists the 10th edition)"
+url = "https://openlibrary.org/books/OL8277252M"
+format = "book"
 publisher = "Wilderness Press"
 isbn = "978-0-89997-396-8"
+edition = "9th edition, 2005"
+where = "Trip 72, pages 246-250"
+link_is = "library"
+
+[[guide]]
+title = "Sierra North: Backcountry Trips in California's Sierra Nevada"
+author = "Elizabeth Wenk, with Mike White"
+access = "purchase"
+url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+format = "book"
+publisher = "Wilderness Press"
+edition = "10th edition, the one the publisher now sells"
+where = "Not checked in this edition: the trip may be numbered differently"
+link_is = "publisher"
 
 [hike]
 summary = "The Rutherford Lake Loop is a 10 day backpacking loop in Yosemite National Park's South Boundary country, California, from the Glacier Point and Panorama trailhead. It descends to Little Yosemite Valley and Merced Lake, climbs Post Peak Pass to Rutherford Lake, and returns by Fernandez Pass, Chain Lakes, Buck Camp and Royal Arch Lake. Kathy Morey, Mike White, Stacy Corless and Thomas Winnett describe it as Trip 72 in the 9th edition of Sierra North."
@@ -102,6 +116,15 @@ date = "2026-11-18"
 change = "The length note now gives only the published length and says which stretches are walked both ways."
 fields = ["length_note"]
 basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The first guide now links to a library record for the 9th edition (2005) that the facts were read from, with the trip number, pages and edition in their own fields; a second guide entry names the 10th edition that the publisher now sells, where the trip may be numbered differently."
+fields = ["guide", "route.note"]
+basis = "The Open Library record gives Sierra North, Backcountry Trips in California's Sierra Nevada, 9th edition, Wilderness Press, July 2005, ISBN 0899973965. The publisher's page is headed 10th Edition."
 basis_url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
 asked_by = "the dataset's own check"
 outcome = "applied"

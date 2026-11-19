@@ -49,18 +49,21 @@ note = "No line to measure."
 creator = "Eli Boschetto"
 year = 2026
 line_policy = "sold"
-note = "Trip 48 in the book, on pages 218-224. A one way traverse of the Eagle Cap Wilderness from the Tenderfoot Trailhead in the east to the Bowman-Francis Trailhead in the west, by Dollar Lake, Polaris Pass, Frazier Lake, Glacier Lake, Mirror Lake, Minam Lake, Elkhorn Meadows and the Minam River, with 54.7 miles in the book. The book says it links three of its other hikes (47, 51 and 53). The next few miles after the West Fork Wallowa trail junction share ground with the Blue Mountains Trail, about 1.6 miles by the dataset's own reckoning. The book's maps are the track; none is copied here."
+note = "A one way traverse of the Eagle Cap Wilderness from the Tenderfoot Trailhead in the east to the Bowman-Francis Trailhead in the west, by Dollar Lake, Polaris Pass, Frazier Lake, Glacier Lake, Mirror Lake, Minam Lake, Elkhorn Meadows and the Minam River, with 54.7 miles in the book. The book says it links three of its other hikes (47, 51 and 53). The next few miles after the West Fork Wallowa trail junction share ground with the Blue Mountains Trail, about 1.6 miles by the dataset's own reckoning. The book's maps are the track; none is copied here."
 
 [[guide]]
 title = "Backpacking Oregon: Overnight and Multiday Routes"
 author = "Eli Boschetto"
 access = "purchase"
 url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
-format = "book, 1st edition, 2026; the route is Trip 48, pages 218-224"
+format = "book"
 price = "$24.95"
 price_checked = "2026-11-18"
 publisher = "Mountaineers Books"
 isbn = "978-1-68051-626-5"
+edition = "1st edition, 2026"
+where = "Trip 48, pages 218-224"
+link_is = "publisher"
 
 [hike]
 summary = "The Eagle Cap Traverse is a six day one way backpacking route through the Eagle Cap Wilderness in the Wallowa Mountains of Oregon, from the Tenderfoot Trailhead to the Bowman-Francis Trailhead. It crosses Polaris Pass and passes Frazier, Glacier, Mirror and Minam lakes before descending the Minam River country. Eli Boschetto describes it as Trip 48 in Backpacking Oregon."
@@ -121,5 +124,14 @@ change = "The positions of the start and the end were added, so that the page ca
 fields = ["hike.start_lonlat", "hike.end_lonlat"]
 basis = "The Forest Service's page for the Tenderfoot Trailhead gives its position, and its recreation layer gives the position of the Bowman-Francis Lake Trailhead, the one trailhead the Service lists for the Bowman and Francis Lake trails."
 basis_url = "https://www.fs.usda.gov/r06/wallowa-whitman/recreation/tenderfoot-trailhead"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
+fields = ["guide", "route.note"]
+basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
+basis_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
 asked_by = "the dataset's own check"
 outcome = "applied"

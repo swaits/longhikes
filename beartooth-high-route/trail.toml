@@ -60,6 +60,8 @@ url = "https://wildernessmindset.com/product/beartooth-high-route-map-pack/"
 format = "PDF map set, route description, data set with campsites, GPX"
 price = "$20.00"
 price_checked = "2026-11-10"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Beartooth High Route is a 90-mile route across the Beartooth Range of Montana and Wyoming. It stays high on the plateau and is almost entirely off-trail, with a lot of boulder hopping above 10,000 feet. Its author suggests planning on no more than ten miles a day."
@@ -94,5 +96,14 @@ date = "2026-11-10"
 change = "The record was added: Beartooth High Route."
 fields = ["record"]
 basis = "The record's own source entry: Wilderness Mindset."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide). The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Beartooth High Route Map Pack - Wilderness Mindset\"."
+basis_url = "https://wildernessmindset.com/product/beartooth-high-route-map-pack/"
 asked_by = "the dataset's own check"
 outcome = "applied"

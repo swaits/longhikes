@@ -58,6 +58,8 @@ url = "https://wildernessmindset.com/product/teton-crest-route-map-pack/"
 format = "Download package: topographic maps, route description, mileage and campsite dataset, GPX track"
 price = "$10.00"
 price_checked = "2026-11-16"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Teton Crest Route is a 59-mile traverse of most of Wyoming's Teton Range, from the Hominy Peak trailhead in the north to the Phillips Bench trailhead at Teton Pass in the south. It adds a northern extension and one cross-country link over Littles Peak to the designated Teton Crest Trail, which alone runs about 40 miles from Phillips Pass to String Lake and has its own record in this dataset. It also differs from the Teton Range Traverse in this dataset, which is longer and ends at Old Faithful."
@@ -142,5 +144,14 @@ change = "The usual season was added, \"Mid-July to mid-August\", with its month
 fields = ["hike.season", "hike.months"]
 basis = "The page of Wilderness Mindset (the route's author) says: \"Mid-July to mid-August would be the best time to hike this trail\""
 basis_url = "https://wildernessmindset.com/teton-crest-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide). The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Teton Crest Route Map Pack - Wilderness Mindset\"."
+basis_url = "https://wildernessmindset.com/product/teton-crest-route-map-pack/"
 asked_by = "the dataset's own check"
 outcome = "applied"

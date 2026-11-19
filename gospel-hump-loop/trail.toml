@@ -49,16 +49,30 @@ note = "No line to measure."
 creator = "Douglas Lorain"
 year = 2004
 line_policy = "sold"
-note = "Trip 9 in the book (1st edition, 2004). A loop from the Moores Guard Station trailhead through the Gospel Hump Wilderness by Anchor Meadows, Black Butte, the Salmon River canyon, Shepp Ranch and Jumbo Camp, with 68 miles and 5 to 8 days in the book. The book rates its difficulty 10 out of 10, its hardest rating. The book's maps are the track; none is copied here."
+note = "A loop from the Moores Guard Station trailhead through the Gospel Hump Wilderness by Anchor Meadows, Black Butte, the Salmon River canyon, Shepp Ranch and Jumbo Camp, with 68 miles and 5 to 8 days in the book. The book rates its difficulty 10 out of 10, its hardest rating. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Idaho: From Alpine Peaks to Desert Canyons"
+author = "Douglas Lorain"
+access = "purchase"
+url = "https://openlibrary.org/books/OL8277207M"
+format = "book"
+publisher = "Wilderness Press"
+isbn = "0-89997-346-9"
+edition = "1st edition, March 2004"
+where = "Trip 9"
+link_is = "library"
 
 [[guide]]
 title = "Backpacking Idaho: From Alpine Peaks to Desert Canyons"
 author = "Douglas Lorain"
 access = "purchase"
 url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
-format = "book, 1st edition, March 2004; the route is Trip 9 (the publisher's page now lists the 2nd edition)"
+format = "book"
 publisher = "Wilderness Press"
-isbn = "0-89997-346-9"
+edition = "2nd edition, the one the publisher now sells"
+where = "Not checked in this edition: the trip may be numbered differently"
+link_is = "publisher"
 
 [hike]
 summary = "The Gospel Hump Loop is a backpacking loop of 5 to 8 days in the Gospel Hump Wilderness in Idaho, from the Moores Guard Station trailhead. It crosses high subalpine ridges and descends to the Salmon River canyon before climbing back out by way of Jumbo Camp. Douglas Lorain describes it as Trip 9 in Backpacking Idaho."
@@ -102,6 +116,15 @@ date = "2026-11-18"
 change = "The length note was reworded to give only the published length."
 fields = ["length_note"]
 basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The first guide now links to a library record for the 1st edition (March 2004) that the facts were read from, with the trip number and edition in their own fields; a second guide entry names the 2nd edition that the publisher now sells, where the trip may be numbered differently."
+fields = ["guide", "route.note"]
+basis = "The Open Library record gives Backpacking Idaho, From Alpine Peaks to Desert Canyons, Wilderness Press, March 2004, ISBN 0899973469. The publisher's page is headed 2nd Edition, by Douglas Lorain."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
 asked_by = "the dataset's own check"
 outcome = "applied"

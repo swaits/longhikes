@@ -56,13 +56,15 @@ creator_words_url = "https://seekinglost.com/basin-and-range-trail/"
 note = "A route through Nevada's Basin and Range country, mostly cross-country and on 4x4 roads. The author's page says the kit is free to those who join the trail's Facebook group; the shop page says that offer is for a limited time and for hikers considering a thru-hike. Neither page states terms for passing a track on."
 
 [[guide]]
-title = "Basin and Range Trail Planning Kit (guidebook, GPX, maps, waypoints, water chart)"
+title = "Complete Basin and Range Trail Planning Kit: Guidebook, GPX, Maps, Waypoints, Water Chart"
 author = "Eric Poulin"
 access = "purchase"
-url = "https://basinandrangetrail.com/shop/"
+url = "https://basinandrangetrail.com/product/complete-basin-and-range-trail-planning-kit/"
 format = "guidebook, GPX file, PDF maps, waypoint sheet and water chart"
 price = "$55.00"
 price_checked = "2026-11-14"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Basin and Range Trail is a route of about 1,090 miles through Nevada's Basin and Range country. Most of it is cross-country or on 4x4 roads. It begins at Ely and its author says it ends at Wheeler Peak."
@@ -112,5 +114,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://basinandrangetrail.com/wp-content/uploads/2021/02/nevada-scenic-trail.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide's link now goes to the page for the planning kit itself, not the shop's list of products. The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page is titled \"Complete Basin and Range Trail Planning Kit: Guidebook, Maps\" on the trail's own site and names the kit at $55.00."
+basis_url = "https://basinandrangetrail.com/product/complete-basin-and-range-trail-planning-kit/"
 asked_by = "the dataset's own check"
 outcome = "applied"

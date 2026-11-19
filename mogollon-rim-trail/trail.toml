@@ -60,6 +60,8 @@ author = "Brett Tucker"
 access = "purchase"
 url = "https://www.simblissity.net/mogollon-rim-trail-mapset.shtml"
 format = "PDF mapset, data book, town guide, GPS tracks"
+link_is = "author"
+where = "The whole guide is this route"
 
 [hike]
 summary = "The Mogollon Rim Trail is a route across Arizona's Rim Country, from the Parsons Trailhead outside Cottonwood through Sedona's redrock country, the Highline Trail, the White Mountains and the Blue Range to the New Mexico border, where it joins the Grand Enchantment Trail near Alma. It strings together recreation trails, quiet forest roads and cross-country travel through canyons, mesas, ponderosa forest and desert."
@@ -127,5 +129,14 @@ change = "The position of the start was added, so that the page can show a map o
 fields = ["hike.start_lonlat"]
 basis = "The Forest Service's page for Parsons Trail No. 144 gives the GPS position of its trailhead, and the author's page says the route begins at the trailhead for the Parsons Trail."
 basis_url = "https://www.fs.usda.gov/r03/coconino/recreation/trails/parsons-trail-no-144"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now says what its link points at (the author's own page for this guide). The whole guide is this route, as its title says."
+fields = ["guide"]
+basis = "The page the guide links to is titled \"Mogollon Rim Trail mapset | Simblissity\"."
+basis_url = "https://www.simblissity.net/mogollon-rim-trail-mapset.shtml"
 asked_by = "the dataset's own check"
 outcome = "applied"

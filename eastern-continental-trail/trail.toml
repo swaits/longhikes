@@ -53,11 +53,15 @@ line_policy = "unclear"
 note = "The author's books page describes a walk from the Florida Keys to the far north of Quebec. His 2000 journal walks it the other way, from Cap Gaspé to Key West, on the International Appalachian Trail, the Appalachian Trail, the Benton MacKaye Trail and the Pinhoti Trail, with a road walk of about 175 miles to Key West at the end."
 
 [[guide]]
-title = "Ten Million Steps"
+title = "Ten Million Steps: Nimblewill Nomad's Epic 10-Month Trek from the Florida Keys to Quebec"
 author = "M. J. Eberhart (Nimblewill Nomad)"
 access = "purchase"
-url = "https://nimblewillnomad.com/books/"
+url = "https://openlibrary.org/books/OL8257206M"
 format = "book"
+publisher = "Menasha Ridge Press"
+isbn = "9780897329798"
+edition = "2007"
+link_is = "library"
 
 [hike]
 summary = "The Eastern Continental Trail is a route of about 4,400 miles that M. J. Eberhart, who goes by Nimblewill Nomad, walked in 1998 from the Florida Keys to northern Quebec. It crosses 16 states and two Canadian provinces. His book is the only written account of a thru-hike of it."
@@ -132,4 +136,13 @@ fields = ["route.line_policy"]
 basis = "The record's notes say the route is a link-up of published trails with no whole track of its own, and no track for it was found on the author's pages."
 basis_url = "https://nimblewillnomad.com/books/"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide's link now goes to a library record for the book, not the author's page of all his books; the entry gives the full title, publisher, ISBN and year."
+fields = ["guide"]
+basis = "The Open Library record gives Ten Million Steps: Nimblewill Nomad's Epic 10-Month Trek from the Florida Keys to Quebec, Menasha Ridge Press, March 22, 2007, ISBN 9780897329798, 400 pages."
+basis_url = "https://openlibrary.org/books/OL8257206M"
+asked_by = "the dataset's own check"
 outcome = "applied"

@@ -49,18 +49,21 @@ note = "No line to measure."
 creator = "Bruce Grubbs"
 year = 2003
 line_policy = "sold"
-note = "Trip 5 in the book, on pages 66-67. A loop from the Indian Hollow Trailhead through Jumpup and Kanab canyons to the Colorado River, along the river to Deer Creek and back. The book describes an optional side hike to Thunder River. The book's maps are the track; none is copied here."
+note = "A loop from the Indian Hollow Trailhead through Jumpup and Kanab canyons to the Colorado River, along the river to Deer Creek and back. The book describes an optional side hike to Thunder River. The book's maps are the track; none is copied here."
 
 [[guide]]
 title = "Backpacking Arizona: From Deep Canyons to Sky Islands"
 author = "Bruce Grubbs"
 access = "purchase"
 url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
-format = "book, 1st edition, September 2003 (3rd printing 2012); the route is Trip 5, pages 66-67"
+format = "book"
 price = "$19.95"
 price_checked = "2026-11-18"
 publisher = "Wilderness Press"
 isbn = "978-0-89997-324-1"
+edition = "1st edition, September 2003 (3rd printing 2012)"
+where = "Trip 5, pages 66-67"
+link_is = "publisher"
 
 [hike]
 summary = "The Kanab Canyon Loop is a seven day backpacking loop in the Grand Canyon in Arizona, from the Indian Hollow Trailhead and Campground. It goes down Jumpup and Kanab canyons to the Colorado River, follows the river to Deer Creek and returns by Deer Spring. On the way back it goes cross-country along the Esplanade to the saddle below Fishtail Mesa, down into Indian Hollow, then north to the Sowats Trail. Bruce Grubbs describes it as Trip 5 in Backpacking Arizona, with 5,570 feet of climbing and much strenuous cross-country walking."
@@ -131,6 +134,15 @@ date = "2026-11-18"
 change = "The length note now gives only the published length and says which stretches are walked both ways."
 fields = ["length_note"]
 basis = "The dataset's own rule that a trail's length is shown as the whole distance walked."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
+fields = ["guide", "route.note"]
+basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 asked_by = "the dataset's own check"
 outcome = "applied"

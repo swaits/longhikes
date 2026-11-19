@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-19 - Easier browsing: places, shortcuts, the left-out list and corrections
+
+- Place and region pages now open with the trails that lie wholly in the place, then the ones that also lie elsewhere.
+- The home page's shortcut row now offers every trip-length band the Time filter has, including two weeks to a month.
+- A search or filter with no results now links to the left-out list, and the footer links the rules and the changelog.
+- Every state and province with no listed trail now has a page saying so, with what was left out there: Hawaii, Manitoba, Mississippi and Nova Scotia.
+- "Where next" on a trail page lists the trails of the same state closest in length first.
+- A trail with no season or permit information now says so.
+- A month filter now says how many trails it leaves out for having no season on file, and lets you show them.
+- The correction link on a trail page now opens the correction form, not the raw file editor.
+
 ## 2026-11-19 - The Rae Lakes Loop and the Bartram Trail come from the agencies' own layers
 
 - The Rae Lakes Loop's track is now built from the National Park Service's Park Atlas layer for the loop, public domain: the loop itself, 57.3 km in 1 part, 14 features that join end to end and close, in place of OpenStreetMap's 57.6 km. The 3.0 km stem from Road's End to the loop is kept apart in the alternates, because the published 41.4 miles walks it both ways. The licence is now public domain where it was ODbL.

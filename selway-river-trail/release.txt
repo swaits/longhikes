@@ -1,0 +1,7 @@
+selway-river-trail
+
+Source: https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0 (USDA Forest Service, National Forest System Trails, Enterprise Data Warehouse)
+Licence: us-gov-public-domain (see trail.toml and SOURCES.md in this repository)
+Attribution: USDA Forest Service
+Source read: 2026-11-18
+Published copy: features with trail_no '4' (SELWAY RIVER TRAIL, Race Creek to the Nez Perce-Clearwater boundary) and '4.3' (SELWAY RIVER - SBW, on to Paradise); 2 features, in that order from Race Creek to Paradise. Trail 4.4 (SELWAY RIVER - FCRONR), which begins beyond Paradise, is left out. Coordinates rounded to 6 decimal places and written as compact JSON, with the layer's trail_no, trail_name and gis_miles kept as properties. Geometry is otherwise as served.

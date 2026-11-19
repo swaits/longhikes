@@ -1,0 +1,105 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "silver-moccasin-trail"
+name = "Silver Moccasin Trail"
+country = "US"
+regions = ["CA"]
+length_km = 82
+length_note = "51 mi, the Length field of the National Recreation Trails database record for the trail, which comes from its 1979 application and may be out of date. The same record's description says 53 mi, as do Wikipedia and Fastest Known Time. David Harris's chapter in Backpacking California (3rd edition, 2020, Trip 12) gives 51.7 mi one way, which includes the walk by the bypass of the closed stretch and 2.6 mi on the shoulder of Highway 2. About 55% of the trail, from Three Points to Vincent Gap, is the Pacific Crest Trail."
+tier = "regional"
+designation = "National Recreation Trail in the Angeles National Forest, from Chantry Flat to Vincent Gap; about 55% of it, from Three Points to Vincent Gap, is the Pacific Crest Trail, a longer listed trail"
+wave = 1
+
+[source]
+status = "osm-only"
+publisher = "USDA Forest Service, Angeles National Forest (manages the trail; no whole-trail geometry found)"
+publisher_url = "https://www.nrtapplication.org/trails/silver-moccasin"
+url = "https://www.openstreetmap.org/relation/2748610"
+discovery = "osm-relation-version: Overpass `rel(2748610); out meta;` (version and timestamp), or the Geofabrik replication diff; fetch again when it changes"
+format = "OpenStreetMap route relation, read through Overpass with all member ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, ODbL 1.0 (share-alike). Credit: © OpenStreetMap contributors. The OpenStreetMap copyright page states: 'You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors.' (https://www.openstreetmap.org/copyright, read 2026-11-09). The track included here is from OpenStreetMap, relation 2748610."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "OSM relation 2748610 (version 19, 2025-12-24): 31 ways with no roles, from Vincent Gap to Chantry Flat. Three are left out: two named Shortcut Pass Road (ways 1190143359 and 1190144248, 13.5 km together), which leave the trail at the Shortcut Saddle trailhead on the Angeles Crest Highway and run away from it, south and then east, while the trail goes on down Shortcut Canyon by way 31305671, and a 0.2 km stub of the Silver Moccasin Trail (way 186473856) that branches off the trail's line at the same trailhead. The other 28 ways join end to end in one part: the Pacific Crest Trail from Vincent Gap to Three Points (45.2 km), then the Silver Moccasin Trail and the Gabrielino Trail to Chantry Flat. The relation's 31 ways measure 95.4 km (59.3 mi), more than any published figure; without the three it is 81.7 km (50.8 mi). The Pacific Crest Trail ways include the stretch between Eagles Roost and the Burkhart Trail that the Forest Service has closed, not the bypass. The track follows the Pacific Crest Trail below Mount Baden-Powell: its highest point is 2,819 m (9,249 ft), under the 9,399 ft the National Recreation Trails page gives for the summit, so the track does not go over the summit."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 2748610
+note = "Downloaded 2026-11-18 (version 19, edited 2025-12-24); 31 ways, of which 28 are in the track. release.txt has the source, the date and the three ways left out."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "USDA Forest Service, Angeles National Forest"
+note = "The trail's National Recreation Trails page (https://www.nrtapplication.org/trails/silver-moccasin) was read as text on 2026-11-18 and its images were not inspected. The Silver Moccasin is also the name of a Boy Scout hiking award, so a badge exists, but no emblem of the trail itself, and no artwork at an allowed source, was found."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = true
+date = "2026-11-18"
+measured_km = 81.7
+difference_percent = -0.4
+parts = 1
+note = "OSM relation 2748610 less three ways that lead away from the trail: 81.7 km (50.8 mi) in 1 part, 0.4% under 82 km (51 mi). The whole relation measures 95.4 km (59.3 mi) in 3 parts."
+
+[hike]
+summary = "The Silver Moccasin Trail is a National Recreation Trail through the San Gabriel Mountains of the Angeles National Forest, California, from Chantry Flat above Arcadia to Vincent Gap on the Angeles Crest Highway near Wrightwood, by way of Mount Baden-Powell. About 55% of it, from Three Points to Vincent Gap, is also the Pacific Crest Trail. The trail was recorded as a 53-mile trail in its 1979 application, and a recent guidebook walks it in 51.7 miles."
+official_url = "https://www.nrtapplication.org/trails/silver-moccasin"
+start = "Chantry Flat, above Arcadia, California"
+start_lonlat = [-118.022, 34.195]
+end = "Vincent Gap, Angeles Crest Highway, near Wrightwood, California"
+end_lonlat = [-117.752, 34.373]
+shape = "point-to-point"
+days = [4, 7]
+season = "May to November"
+months = [5, 6, 7, 8, 9, 10, 11]
+high_point = "Mount Baden-Powell"
+high_point_m = 2865
+terrain = ["forest", "alpine"]
+travel = "trail"
+caution = "The Forest Service has closed the Pacific Crest Trail between Eagles Roost on Highway 2 and the Burkhart Trail, which is the same tread as this trail, to protect the mountain yellow-legged frog; Forest Order 05-01-24-04 runs through 2026-12-31. Harris's chapter walks the bypass by the Burkhart Trail, Buckhorn Campground and the shoulder of Highway 2, 2.6 miles of it on the road, which he describes as dangerous. The book also warns that the ridge near Mount Baden-Powell is icy in winter and needs an ice ax and crampons."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://www.nrtapplication.org/trails/silver-moccasin"
+publisher = "National Recreation Trails database (a public record of the trail's 1979 application)"
+facts = ["summary", "official_url", "start", "end", "shape", "high_point"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r05/angeles/alerts/williamson-rock-area-and-trail-closure"
+publisher = "USDA Forest Service, Angeles National Forest"
+facts = ["caution"]
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-california/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 12 (David Harris) in the 3rd edition, 2020"
+facts = ["summary", "days", "season", "months", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.openstreetmap.org/relation/2748610"
+publisher = "OpenStreetMap contributors (the ends of the track: Chantry Flat and Vincent Gap, OpenStreetMap node 123064732)"
+facts = ["start_lonlat", "end_lonlat"]
+
+[[link]]
+title = "Silver Moccasin Trail"
+publisher = "Fastest Known Time"
+url = "https://fastestknowntime.com/route/silver-moccasin-trail-ca"
+note = "Gives the trail as 53 miles, with comments on the bypass of the closed stretch."
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: the Silver Moccasin Trail, 51 miles (82 km) from Chantry Flat to Vincent Gap in the Angeles National Forest, California, with a track from OpenStreetMap relation 2748610."
+fields = ["record"]
+basis = "The National Recreation Trails database gives the trail's length as 51 miles, from Chantry Flat to Vincent Gap. The trail has its own name and its own published length, and is listed even though about 55% of it lies on the Pacific Crest Trail. The track is the relation less three ways that lead away from the trail, and measures 50.8 miles."
+basis_url = "https://www.nrtapplication.org/trails/silver-moccasin"
+asked_by = "the dataset's own check"
+outcome = "applied"

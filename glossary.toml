@@ -104,7 +104,7 @@ see = ["/lists/a-month-or-more/"]
 [[term]]
 id = "published-length"
 term = "Published length"
-definition = "The end-to-end length of a trail's canonical path, as its holder or author gives it: one walk from one end to the other, with one branch at a split, no side trails and no system total. It is shown in miles with kilometres after. Where a track is included, its measured length is checked against it."
+definition = "The end-to-end length of a trail's canonical path, as its holder or author gives it: one walk from one end to the other, with one branch at a split, no side trails and no system total. For a loop reached by a stem it is the published figure, which walks the stem both ways. It is shown in miles with kilometres after. Where a track is included, its measured length is checked against it."
 see = ["/method/", "/numbers/"]
 
 [[term]]

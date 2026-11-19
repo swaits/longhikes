@@ -1,0 +1,99 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "wind-river-highline-trail"
+name = "Wind River Highline Trail"
+country = "US"
+regions = ["WY"]
+length_km = 103
+length_note = "64 mi, the minimum figure in White and Lorain's Best Backpacking Trips in Montana, Wyoming, and Colorado (2019, Trip 9, 'Wind River Highline Traverse', pages 184-216), which gives 124 mi with its recommended side trips and 8 to 15 days. The Forest Service names the ends of the Highline Trail but publishes no length for the whole trail. Douglas Lorain's Backpacking Wyoming (2010, Trip 35, 'Wind River Highline Trail') gives 72.5 mi. The Forest Service's trail data measures about 71 to 74 mi between the ends: 70.8 mi by way of the Fremont Trail and 74.3 mi along the Highline Trail's own tread south of where the two part. Big Sky Journal gives 64 mi for the same walk. Nearly all of it is the Continental Divide Trail."
+tier = "regional"
+designation = "The Highline Trail and the Fremont Trail (numbers 7094 and 7096 in the Forest Service's trail data), Bridger Wilderness, Bridger-Teton National Forest, from Green River Lakes to Big Sandy; the Forest Service names the ends but gives no length for the whole. Nearly all of it is the Continental Divide National Scenic Trail, a longer listed trail"
+wave = 1
+
+[source]
+status = "none"
+publisher = "USDA Forest Service, Bridger-Teton National Forest (no track included)"
+publisher_url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/pinedale-ranger-district"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+format = "No track included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. The Forest Service's National Forest System trails layer, used here only to measure the trails, is a United States federal government work, public domain in the United States under 17 U.S.C. 105."
+attribution = "none (no track included)"
+osm_only = false
+mainline = "No track was built. In the Forest Service's trail data the Highline Trail (trail_no 7094) and the Fremont Trail (trail_no 7096) run side by side for about the southern 36 miles and meet at one point. Green River Lakes to Big Sandy measures 74.3 mi along the Highline Trail the whole way and 70.8 mi by way of the Fremont Trail."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The Highline Trail and the Fremont Trail run side by side for about the southern half of the walk and the Forest Service names both. Either can be walked, and no page read says which is the trail, so a track would mean choosing between them. No track is included."
+
+[osm]
+relation = 0
+note = "No OpenStreetMap route relation covers the whole walk: the Highline Trail relation 7332770 is about 13 mi at the Big Sandy end, and the rest is in the Continental Divide Trail's Wyoming relation 19113147. No track is included."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "USDA Forest Service, Bridger-Teton National Forest"
+note = "The Pinedale Ranger District page was read as text on 2026-11-18 and its images were not inspected. It describes the trail in words and shows no emblem for it; no artwork was found at an allowed source."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No track to measure. The Forest Service's trail data measures 70.8 mi (by the Fremont Trail) or 74.3 mi (by the Highline Trail) between the ends, against the 64 mi the record gives."
+
+[hike]
+summary = "The Wind River Highline Trail runs the length of the Bridger Wilderness in Wyoming, from Green River Lakes south to Big Sandy, along a bench on the west side of the Wind River Range. The Forest Service says the Highline Trail follows the spine of the Continental Divide, and nearly all of this walk is the Continental Divide Trail. The Forest Service gives no length for the whole trail; White and Lorain give it as 64 miles at the minimum."
+official_url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/pinedale-ranger-district"
+start = "Green River Lakes, Bridger-Teton National Forest, Wyoming"
+start_lonlat = [-109.862, 43.313]
+end = "Big Sandy Opening Trailhead, Wind River Range, Wyoming"
+end_lonlat = [-109.271, 42.688]
+shape = "point-to-point"
+days = [8, 15]
+season = "July to October"
+months = [7, 8, 9, 10]
+terrain = ["alpine", "lakes"]
+travel = "trail"
+permit = "The guidebook says no permit is required, with no fires above timberline, groups of 15 people or fewer, and no camping within 100 feet of streams or 200 feet of lakes or trails."
+caution = "The guidebook's side trips off the trail need navigation and scrambling skills and are optional. It needs a car shuttle of about 107 miles between the ends, on access roads that can be rough and slippery after rain. Big Sky Journal advises checking with the Pinedale Ranger District which route the Highline Trail follows south of Pole Creek."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/pinedale-ranger-district"
+publisher = "USDA Forest Service, Bridger-Teton National Forest, Pinedale Ranger District"
+facts = ["summary", "official_url", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
+publisher = "University Press of Colorado (the publisher's page for the book); the facts are from the book's Trip 9, pages 184-216, 2019"
+facts = ["summary", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://bigskyjournal.com/wind-river-range/"
+publisher = "Big Sky Journal"
+facts = ["summary", "caution"]
+
+[[hike.source]]
+url = "https://www.openstreetmap.org/way/391050079"
+publisher = "OpenStreetMap contributors (ODbL): Green River Lakes Campground, OpenStreetMap way 391050079"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=1042137527"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Big Sandy Trailhead, OpenStreetMap node 1042137527"
+facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: the Wind River Highline Trail, 64 miles (103 km) from Green River Lakes to Big Sandy in the Bridger Wilderness, Wyoming. It has no track."
+fields = ["record"]
+basis = "The Forest Service's Pinedale Ranger District page names the Highline Trail from Green River Lakes to Big Sandy Opening but gives no whole-trail length. White and Lorain's Best Backpacking Trips in Montana, Wyoming, and Colorado gives 64 miles as the minimum, and the record uses that figure. Nearly all of the trail lies on the Continental Divide Trail, a longer listed trail."
+basis_url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/pinedale-ranger-district"
+asked_by = "the dataset's own check"
+outcome = "applied"

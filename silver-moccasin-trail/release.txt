@@ -1,0 +1,7 @@
+silver-moccasin-trail
+
+Source: https://www.openstreetmap.org/relation/2748610
+Licence: ODbL-1.0 (see trail.toml and SOURCES.md in this repository)
+Attribution: OpenStreetMap contributors (ODbL)
+Source read: 2026-11-18
+Published copy: the relation's 31 ways, less three. Coordinates rounded to 6 decimal places and written as compact JSON; geometry is otherwise as served. Left out are ways 1190143359 and 1190144248, both named Shortcut Pass Road, which run 13.5 km south and east from the Shortcut Saddle trailhead on the Angeles Crest Highway and away from the trail, which goes on by way 31305671, the Silver Moccasin Trail in Shortcut Canyon, and way 186473856, a 0.2 km stub of the Silver Moccasin Trail that branches off at the same trailhead. The remaining 28 ways join end to end in one part.

@@ -212,6 +212,20 @@ decided = "2026-11-14"
 was_listed = false
 
 [[trail]]
+id = "grand-canyon-of-the-tuolumne"
+name = "Grand Canyon of the Tuolumne"
+country = "US"
+regions = ["CA"]
+length_mi = 50.0
+length_km = 80
+length_note = "50.0 miles as Sierra North gives it; about 49.2 miles with the stem counted once"
+reason = "below-floor"
+note = "Sierra North (9th edition, 2005), Trip 48, gives this loop from White Wolf in Yosemite National Park as 50.0 miles, over six hiking days. The loop is reached by a stem of just under a mile that the book's figure walks both ways, so with nothing counted twice it is about 49.2 miles, below the 50 mile floor."
+source_url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+decided = "2026-11-18"
+was_listed = false
+
+[[trail]]
 id = "grand-escalante-loop"
 name = "Grand Escalante Loop"
 country = "US"
@@ -486,7 +500,7 @@ regions = ["UT", "AZ"]
 length_mi = 38
 length_km = 61
 reason = "below-floor"
-note = "DesertUSA, in text it credits to the Bureau of Land Management, gives the walk from the White House Trailhead to Lees Ferry as 38 miles. The Bureau's own permit page for the canyon gives no length. That is below the 50 mile floor."
+note = "DesertUSA, in text it credits to the Bureau of Land Management, gives the walk from the White House Trailhead to Lees Ferry as 38 miles. The Bureau's own permit page for the canyon gives no length. That is below the 50 mile floor. White and Lorain's Buckskin Gulch and Paria trip reaches 47.9 miles only by going down the Paria and back, so about 13 miles are walked twice."
 source_url = "https://www.desertusa.com/blm/blm_az_hike.html"
 decided = "2026-11-18"
 was_listed = false
@@ -546,6 +560,33 @@ decided = "2026-11-16"
 was_listed = false
 
 [[trail]]
+id = "rogue-river-trail"
+name = "Rogue River Trail"
+country = "US"
+regions = ["OR"]
+length_mi = 40
+length_km = 64
+reason = "below-floor"
+note = "The Bureau of Land Management gives the Rogue River National Recreation Trail as 40 miles, from Grave Creek to Big Bend. Boschetto's Backpacking Oregon (2026), Trip 1, gives 40.5 miles from Grave Creek to Foster Bar. Both are below the 50 mile floor."
+source_url = "https://www.blm.gov/visit/rogue-river-national-recreation-trail"
+decided = "2026-11-18"
+was_listed = false
+
+[[trail]]
+id = "salt-creek-canyon-and-chesler-park-traverse"
+name = "Salt Creek Canyon and Chesler Park Traverse"
+country = "US"
+regions = ["UT"]
+length_mi = 48.9
+length_km = 79
+length_note = "48.9 miles including all of the recommended side trips"
+reason = "below-floor"
+note = "White and Lorain's Best Backpacking Trips in Utah, Arizona, and New Mexico (2016), Trip 5, gives this shuttle trip in the Needles District of Canyonlands National Park as 48.9 miles including all of its recommended side trips, over four to seven days. That is below the 50 mile floor, and a trail trip that a guidebook paces over five days or more does not qualify on the days."
+source_url = "https://unpress.nevada.edu/9780874179965/best-backpacking-trips-in-utah-arizona-and-new-mexico/"
+decided = "2026-11-18"
+was_listed = false
+
+[[trail]]
 id = "sea-to-sky-trail"
 name = "Sea to Sky Trail"
 country = "CA"
@@ -582,6 +623,21 @@ note = "The club publish more than 200 km of forest walking trails in separate s
 source_url = "https://lessentiersdelestrie.qc.ca/"
 decided = "2026-11-14"
 was_listed = false
+
+[[trail]]
+id = "skyline-trail-pecos-wilderness"
+name = "Skyline Trail (Pecos Wilderness)"
+country = "US"
+regions = ["NM"]
+length_mi = 50
+length_km = 80
+length_note = "About 50 miles, as the Santa Fe National Forest's page for Sky Line Trail 251 gives it"
+reason = "waiting"
+note = "The Santa Fe National Forest's page for Forest Service Trail 251, last updated February 27, 2026, gives the trail as approximately 50 miles and says the Skyline Trail south of its junction with Lost Lake Trail 380 is closed because of the Hermits Peak and Calf Canyon Fire. The page names no way around the closure, so the trail cannot be walked from end to end today."
+source_url = "https://www.fs.usda.gov/r03/santafe/recreation/trails/sky-line-trail-251"
+decided = "2026-11-18"
+was_listed = false
+waiting_for = "The closed stretch south of the Lost Lake Trail junction reopens."
 
 [[trail]]
 id = "great-trail"

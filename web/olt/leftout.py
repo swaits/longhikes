@@ -19,8 +19,11 @@ REAL_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fi
 # Ordered as the inclusion rule states them; the page follows this order.
 REASONS = {
     "below-floor": ("Below the 50 mile floor",
-                    "The floor for this list is 50 miles (80 km), or, for an author's route that is short on miles, five days as its author gives the trip, "
-                    "apart from a few well known shorter trails. A listed trail or route also needs a published length."),
+                    "The floor for this list is 50 miles (80 km), or, for an author's route that is mostly cross-country or on hard terrain and short on miles, five days as its author gives the trip, "
+                    "apart from a few well known shorter trails. A trail trip that a guidebook paces over five or more days does not qualify on the days. "
+                    "The floor is tested on the length with nothing counted twice, so a loop reached by a stem is counted with the stem once and an out-and-back is judged one way. "
+                    "A trail with its own name and its own published length is listed even where it lies on a longer listed trail; a guidebook's cut of a longer trail is not. "
+                    "A listed trail or route also needs a published length."),
     "rail-trail-or-towpath": ("Rail trails and canal towpaths",
                               "Paths made mainly for cycling, such as gravel rail trails and canal towpaths, are not listed."),
     "driving-route": ("Mainly driving or motor routes",

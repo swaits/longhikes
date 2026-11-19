@@ -167,12 +167,14 @@ san-diego-trans-county-trail,San Diego Trans County Trail,US,CA,249,record-only,
 santa-fe-to-taos,Santa Fe to Taos Thru-Hike,US,NM,212,record-only,none (no line included),none-stated,route,sold
 sawtooth-wilderness-high-route,Sawtooth Wilderness High Route,US,ID,143,record-only,none (no line included),none-stated,route,open
 sea-to-sea-route,Sea-to-Sea Route,US,ND;MN;WI;MI;OH;PA;NY;VT;MT;ID;WA,12513,record-only,none (no line included),none-stated,route,open
+selway-river-trail,Selway River Trail,US,ID,80,included,USDA Forest Service (National Forest System Trails),us-gov-public-domain,designated,
 sentier-international-appalaches,"Sentier international des Appalaches (International Appalachian Trail, Quebec and New Brunswick)",CA,QC;NB,1177,included,OpenStreetMap,ODbL-1.0,designated,
 shawangunk-ridge-trail,Shawangunk Ridge Trail,US,NJ;NY,114,included,OpenStreetMap,ODbL-1.0,designated,
 sheltowee-trace,Sheltowee Trace National Recreation Trail,US,KY;TN,552,included,OpenStreetMap,ODbL-1.0,designated,
 shenipsit-trail,Shenipsit Trail,US,CT,80,included,OpenStreetMap,ODbL-1.0,designated,
 sierra-grand-traverse,Sierra Grand Traverse,US,CA,322,record-only,none (no line included),none-stated,route,sold
 sierra-high-route,Sierra High Route,US,CA,314,record-only,none (no line included),none-stated,route,sold
+silver-moccasin-trail,Silver Moccasin Trail,US,CA,82,included,OpenStreetMap,ODbL-1.0,designated,
 sky-islands-traverse,Sky Islands Traverse,US,AZ,837,record-only,none (no line included),none-stated,route,withheld
 solitude-loop,Solitude Loop Trail,US,WY,89,included,USDA Forest Service (National Forest System Trails),us-gov-public-domain,designated,
 south-boundary,South Boundary Trail,CA,AB,121,record-only,none (no line included),none-stated,designated,
@@ -213,6 +215,7 @@ west-coast-trail,West Coast Trail,CA,BC,75,included,OpenStreetMap,ODbL-1.0,desig
 western-uplands,Western Uplands Backpacking Trail,CA,ON,88,included,OpenStreetMap,ODbL-1.0,designated,
 wind-river-high-route-dixon-wilson,Wind River High Route (Dixon and Wilson),US,WY,129,record-only,none (no line included),none-stated,route,open
 wind-river-high-route-skurka,Wind River High Route (Skurka guide),US,WY,156,record-only,none (no line included),none-stated,route,sold
+wind-river-highline-trail,Wind River Highline Trail,US,WY,103,record-only,none (no line included),none-stated,designated,
 wonderland,Wonderland Trail,US,WA,150,included,OpenStreetMap,ODbL-1.0,designated,
 wyoming-range,Wyoming Range National Recreation Trail,US,WY,113,included,OpenStreetMap,ODbL-1.0,designated,
 yosemite-high-route,Yosemite High Route,US,CA,261,record-only,none (no line included),none-stated,route,sold

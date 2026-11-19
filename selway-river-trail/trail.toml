@@ -1,0 +1,97 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "selway-river-trail"
+name = "Selway River Trail"
+country = "US"
+regions = ["ID"]
+length_km = 80
+length_note = "50 mi, as the Nez Perce-Clearwater National Forests' page for Selway River Trail 4 gives it ('50 miles long'); that page has moved and could not be read again on 2026-11-18, so the figure is as it was seen in search results on that day. The same page gave 41.2 mi for part of the trail. Douglas Lorain's Backpacking Idaho (2004, Trip 5) gives 50 mi one way from Race Creek to Paradise, good to about 10% by his own account. Other figures for the same walk range from 46.6 to 56 mi. The Forest Service's trail data for Trail 4 and the section that continues it to Paradise (Trail 4.3) sums to 49.7 mi."
+tier = "regional"
+designation = "Forest Service Trail 4 in the Selway-Bitterroot Wilderness, Nez Perce-Clearwater National Forests (with Trail 4.3 of the Bitterroot National Forest, which carries it on to Paradise)"
+wave = 1
+
+[source]
+status = "verified"
+publisher = "USDA Forest Service (National Forest System Trails, Enterprise Data Warehouse)"
+publisher_url = "https://www.fs.usda.gov/r01/nezperce-clearwater/recreation/race-creek-campground"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+discovery = "arcgis-query-hash: GET <url>/query with where TRAIL_NO IN ('4','4.3') AND upper(TRAIL_NAME) LIKE 'SELWAY RIVER%' (outSR=4326, f=geojson); hash the answer body and count its rows; fetch again when either changes. 2 features on 2026-11-18."
+format = "ArcGIS MapServer layer 0, outSR=4326, f=geojson, 2 features"
+crs = "EPSG:4326"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The USDA Forest Service metadata for this dataset (https://data.fs.usda.gov/geodata/edw/edw_resources/meta/Trans_Trail_NFS_Publish.xml, read 2026-11-16) gives access constraints 'None' and, as use constraints, only a disclaimer of warranty and liability; it states no restriction on use. The layer is a Forest Service dataset made by federal employees, a federal government work."
+attribution = "USDA Forest Service"
+osm_only = false
+mainline = "Two features: trail_no 4 (SELWAY RIVER TRAIL, 38.3 mi, from the Race Creek trailhead) and trail_no 4.3 (SELWAY RIVER - SBW, 11.4 mi, on to Paradise), which join end to end 25 m apart. Trail 4.4 (SELWAY RIVER - FCRONR) begins beyond Paradise, is not joined to it in the layer and is left out."
+source_checked = "2026-11-18"
+redistributable = true
+line_source = "USDA Forest Service (National Forest System Trails)"
+line_file = "line.geojson"
+
+[osm]
+relation = 0
+note = "No OpenStreetMap route relation was found on 2026-11-18: two ways named Selway River Trail with ref 4 (13881006 and 842822945) are members of no relation. The Forest Service layer is used."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "USDA Forest Service, Nez Perce-Clearwater National Forests"
+note = "The Forest Service's Race Creek Campground and Selway River Corridor pages were read as text on 2026-11-18, and their images were not inspected. They describe the trail in words and show no emblem for it; no artwork was found at an allowed source."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = true
+date = "2026-11-18"
+measured_km = 79.9
+difference_percent = -0.1
+parts = 1
+note = "Forest Service trail data, Trail 4 and Trail 4.3 joined end to end in 1 part: 79.9 km (49.7 mi), 0.1% under 80 km (50 mi). The layer's own gis_miles for the two sum to 49.7."
+
+[hike]
+summary = "The Selway River Trail follows the Selway River through the Selway-Bitterroot Wilderness of Idaho, from the Race Creek trailhead, at the end of the Selway River Road, upriver to Paradise. Douglas Lorain's guidebook gives it as 50 miles one way, walked in four to six days."
+official_url = "https://www.fs.usda.gov/r01/nezperce-clearwater/recreation/race-creek-campground"
+start = "Race Creek Campground trailhead, Selway River Road, Idaho"
+start_lonlat = [-115.285, 46.045]
+end = "Paradise, Forest Road 6223, Selway River, Idaho"
+end_lonlat = [-114.738, 45.861]
+shape = "point-to-point"
+days = [4, 6]
+season = "May to early November"
+months = [5, 6, 7, 8, 9, 10]
+terrain = ["forest", "canyon"]
+travel = "trail"
+caution = "The Forest Service's news release of August 26, 2026 reported that Selway River Trail 4 was closed, because of the Cascade Fire, from its junction with Trail 607 at Cupboard Creek to its junction with Big Rock Trail 693. Lorain's book needs a shuttle of about 250 miles between the two ends."
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r01/nezperce-clearwater/recreation/race-creek-campground"
+publisher = "USDA Forest Service, Nez Perce-Clearwater National Forests"
+facts = ["official_url", "start", "start_lonlat"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r01/nezperce-clearwater/newsroom/releases/current-active-fires-nez-perce-clearwater-national"
+publisher = "USDA Forest Service, Nez Perce-Clearwater National Forests (news release of August 26, 2026)"
+facts = ["caution"]
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
+publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 5, 1st edition, 2004, which has no page numbers in the copy read"
+facts = ["summary", "end", "shape", "days", "season", "months", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=3211267403"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Paradise Campground, OpenStreetMap node 3211267403"
+facts = ["end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: the Selway River Trail, 50 miles (80 km) from Race Creek to Paradise in the Selway-Bitterroot Wilderness, Idaho, with a track from the Forest Service's trail data."
+fields = ["record"]
+basis = "The Nez Perce-Clearwater National Forests' page for Selway River Trail 4, which has moved and could not be read again, gave 50 miles long; Lorain's Backpacking Idaho gives 50 miles one way, and the Forest Service's trail data for Trail 4 and Trail 4.3 measures 49.7 miles. The trail has its own name and its own published length."
+basis_url = "https://www.fs.usda.gov/r01/nezperce-clearwater/recreation/race-creek-campground"
+asked_by = "the dataset's own check"
+outcome = "applied"

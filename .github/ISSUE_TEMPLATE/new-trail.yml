@@ -43,7 +43,7 @@ body:
     id: length
     attributes:
       label: Length
-      description: The published length, in miles or kilometres, and where that figure comes from if you know it. A trail or route with no published length is not listed. The floor is 50 miles (80 km), or, for an author's route that is short on miles, five days as its author gives the trip, apart from a few well-known trails of 60–80 km.
+      description: The published length, in miles or kilometres, and where that figure comes from if you know it. A trail or route with no published length is not listed. The floor is 50 miles (80 km), or, for an author's route that is mostly cross-country or on hard terrain and short on miles, five days as its author gives the trip (a trail trip that a guidebook paces over five days or more does not qualify), apart from a few well-known trails of 60–80 km. The floor is tested on the length with nothing counted twice, so a loop reached by a stem is counted with the stem once. A trail with its own name and its own published length is listed even where it lies on a longer listed trail; a guidebook's cut of a longer trail is not.
       placeholder: "e.g. 120 miles (193 km)"
     validations:
       required: true

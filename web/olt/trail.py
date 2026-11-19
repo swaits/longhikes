@@ -1155,8 +1155,8 @@ def record_block(rec):
     rows += [
         Markup(f'<div><dt>Where</dt><dd>{where}</dd></div>'),
         Markup(f'<div><dt>Length</dt><dd>{words.length(rec["length_km"], "inline", rec["derived"]["length_mi"])}'
-               f'<small>{esc(common.sentence(rec.get("length_note", "")))} The end-to-end length of the trail&rsquo;s '
-               f'canonical path, a check value, not measured from the track.</small></dd></div>'),
+               f'<small>{esc(common.sentence(rec.get("length_note", "")))} The published length of walking the whole '
+               f'trail from end to end (for a loop reached by a stem, with the stem both ways), a check value, not measured from the track.</small></dd></div>'),
         fact("Built length", common.built_text(rec), "How much of the trail is built, as the holder states it.")
         if rec.get("built_km") else "",
         fact("Whole system", Markup(f'{words.length(rec["system_km"], "inline")}, counting '

@@ -6,7 +6,7 @@ A track is included in this repository only when its source's terms allow redist
 
 ## OpenStreetMap (ODbL-1.0)
 
-Used by: 108 trails with an included track, and part of the Colorado Trail track (about 38 km; the rest is United States Forest Service data). Also named as the recorded source for 2 record-only trails, where no track was downloaded or none was usable. One of the person-defined routes has a track from OpenStreetMap (the Big SEKI Loop, relation 11628437); the other 49 name no source licence for a track.
+Used by: 109 trails with an included track, and part of the Colorado Trail track (about 38 km; the rest is United States Forest Service data). Also named as the recorded source for 2 record-only trails, where no track was downloaded or none was usable. One of the person-defined routes has a track from OpenStreetMap (the Big SEKI Loop, relation 11628437); the other 49 name no source licence for a track.
 
 Quoted terms: "You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors."
 
@@ -14,7 +14,7 @@ Page: https://www.openstreetmap.org/copyright (read 2026-11-09). Full text: LICE
 
 ## United States federal agencies (public domain)
 
-Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 16 trails with an included track (Alpine Trail #7, Appalachian, Black Canyon, Colorado Trail in part, Fremont, General George Crook, Highline, Middle Fork Trail, Natchez Trace, New England, North Umpqua, Pacific Northwest, Potomac Heritage, Solitude Loop, Thorofare and South Boundary Trail, Toiyabe Crest).
+Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 17 trails with an included track (Alpine Trail #7, Appalachian, Black Canyon, Colorado Trail in part, Fremont, General George Crook, Highline, Middle Fork Trail, Natchez Trace, New England, North Umpqua, Pacific Northwest, Potomac Heritage, Selway River Trail, Solitude Loop, Thorofare and South Boundary Trail, Toiyabe Crest).
 
 Quoted terms: "Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105."
 
@@ -235,12 +235,14 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | santa-fe-to-taos | Pam Neely and the Santa Fe to Taos Trail non-profit (publish the route) | [source page](https://santafetotaos.org/route/) | none-stated | record only |
 | sawtooth-wilderness-high-route | Eric Poulin, who publishes the route | [source page](https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/) | none-stated | record only |
 | sea-to-sea-route | Ron Strickland, with the overview published by Andrew Skurka | [source page](https://andrewskurka.com/adventures/sea-to-sea-route/overview/) | none-stated | record only |
+| selway-river-trail | USDA Forest Service (National Forest System Trails, Enterprise Data Warehouse) | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | sentier-international-appalaches | Sentier international des Appalaches (Québec); IAT New Brunswick (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/9318808) | ODbL-1.0 | track |
 | shawangunk-ridge-trail | New York-New Jersey Trail Conference (publishes the trail) | [source page](https://www.openstreetmap.org/relation/3934864) | ODbL-1.0 | track |
 | sheltowee-trace | USDA Forest Service, Daniel Boone National Forest; Sheltowee Trace Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/12041542) | ODbL-1.0 | track |
 | shenipsit-trail | Connecticut Forest and Park Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/11242812) | ODbL-1.0 | track |
 | sierra-grand-traverse | John and Monica Chapman (publish the route) | [source page](https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light) | none-stated | record only |
 | sierra-high-route | Steve Roper; Mountaineers Books publishes the route in its guidebook | [source page](https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country) | none-stated | record only |
+| silver-moccasin-trail | USDA Forest Service, Angeles National Forest (manages the trail; no whole-trail geometry found) | [source page](https://www.openstreetmap.org/relation/2748610) | ODbL-1.0 | track |
 | sky-islands-traverse | Brett Tucker ("Blisterfree"), who publishes the route | [source page](http://simblissity.net/skit.shtml) | none-stated | record only |
 | solitude-loop | USDA Forest Service (National Forest System Trails, Enterprise Data Warehouse) | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | south-boundary | Parks Canada, Jasper National Park (publishes the trail; no open geometry found) | [source page](https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/south-boundary) | none-stated | record only |
@@ -275,12 +277,13 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 | vancouver-island-backbone | Philip Stone, Alpine Pacific Images (publishes the route) | [source page](https://www.wildisle.ca/backbone/index.html) | none-stated | record only |
 | warrior-trail | Warrior Trail Association (publishes the trail; no site of its own found, the Association is on Facebook) | [source page](https://visitgreene.org/?p=1265) | none-stated | record only |
 | wasatch-traverse | Liz Thomas (publishes the route) | [source page](https://www.eathomas.com/other-long-trails/wasatchoverview) | none-stated | record only |
-| waskahegan | Waskahegan Trail Association (publishes the trail) | [source page](https://waskahegantrail.ca/about-2) | none-stated | record only |
 | washington-coast-trail | Lauren Lake, PacificCoastalTrail blog (publishes the route) | [source page](https://pacificcoastaltrail.wordpress.com/2022/03/23/itinerary-washington-coast/) | CC-BY-4.0 | track |
+| waskahegan | Waskahegan Trail Association (publishes the trail) | [source page](https://waskahegantrail.ca/about-2) | none-stated | record only |
 | west-coast-trail | Parks Canada (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/6955341) | ODbL-1.0 | track |
 | western-uplands | Ontario Parks (Algonquin Provincial Park) (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/11851825) | ODbL-1.0 | track |
 | wind-river-high-route-dixon-wilson | Alan Dixon and Don Wilson (publish the route) | [source page](https://www.adventurealan.com/wind-river-high-route/) | none-stated | record only |
 | wind-river-high-route-skurka | Andrew Skurka (publishes the route) | [source page](https://andrewskurka.com/product/wind-river-high-route-guide/) | none-stated | record only |
+| wind-river-highline-trail | USDA Forest Service, Bridger-Teton National Forest (no track included) | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | none-stated | record only |
 | wonderland | National Park Service (Mount Rainier National Park) publishes the trail; the NPS Public Trails layer holds only part of the loop | [source page](https://www.openstreetmap.org/relation/4111743) | ODbL-1.0 | track |
 | wyoming-range | U.S. Forest Service, Bridger-Teton National Forest (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13395352) | ODbL-1.0 | track |
 | yosemite-high-route | Andrew Skurka (publishes the route) | [source page](https://andrewskurka.com/product/yosemite-high-route-guide/) | none-stated | record only |

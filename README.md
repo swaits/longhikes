@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-217 trails, 122 with a track and 95 with no track included. Of these, 75 are routes: 2 with a track and 73 without.
+220 trails, 124 with a track and 96 with no track included. Of these, 75 are routes: 2 with a track and 73 without.
 
 <!-- END COUNTS -->
 
@@ -18,9 +18,9 @@ The counts at this release:
 
 A long trail here is a named, continuous walking route, or a named loop, of at least 50 miles (80 km), in the United States or Canada: either a trail that a land agency or a trail association designates, maintains and publishes as one trail, or a route, as described below. The floor is 50 miles because that is about what multi-day wilderness backpacking takes. A small number of well-known multi-day trails between 60 km and 80 km are also listed.
 
-A trail's length is the end-to-end length of its canonical path: one walk from one end to the other, with one branch taken at a split, no side trails, no stretch counted twice and no system total. The floor applies to that length. A trail must also be walkable from one end to the other today. A trail published in separate pieces, or with gaps that have no way across, is not listed, and goes in `left-out.toml`. Road links that the holder publishes as the way through count as walkable, and so does evidence that people have walked it end to end. A ferry, shuttle or bus link across water or a closed stretch, named by the holder or the route's author as the way through, does not rule a trail out: the record says how each such link is made, and the track has a gap there, with no line drawn across. This is a judgement the maintainer makes case by case, not a mechanical test. A trail that can be walked through but is partly unbuilt is listed: its length is the holder's end-to-end route, and the built length is stated beside it. A larger figure that the holder publishes, such as a system total or a planned total, is kept as a separate, labelled fact.
+A trail's length is the end-to-end length of its canonical path: one walk from one end to the other, with one branch taken at a split, no side trails and no system total. A loop reached by a stem is shown at the published figure, which walks the stem both ways, and its `length_note` gives the length with the stem counted once. The floor is tested on the length with nothing counted twice, so an out-and-back is judged one way. A trail must also be walkable from one end to the other today. A trail published in separate pieces, or with gaps that have no way across, is not listed, and goes in `left-out.toml`. Road links that the holder publishes as the way through count as walkable, and so does evidence that people have walked it end to end. A ferry, shuttle or bus link across water or a closed stretch, named by the holder or the route's author as the way through, does not rule a trail out: the record says how each such link is made, and the track has a gap there, with no line drawn across. This is a judgement the maintainer makes case by case, not a mechanical test. A trail that can be walked through but is partly unbuilt is listed: its length is the holder's end-to-end route, and the built length is stated beside it. A larger figure that the holder publishes, such as a system total or a planned total, is kept as a separate, labelled fact.
 
-Every trail or route needs a published length, and a route with no stated length is not listed. The length rule is at least 50 miles (80 km), or, for an author's route that is short on miles, at least five days as its author gives the trip; the five days never replace a published length. Cross-country travel, route finding and hard terrain count in that judgement. The climbing rule is that nothing harder than Class 3 may be required, apart from a few short Class 4 scrambles. A route that needs a rope, a belay or rock-climbing skill is not listed, unless that section is optional and the record says so.
+Every trail or route needs a published length, and a route with no stated length is not listed. The length rule is at least 50 miles (80 km), or, for an author's route that is short on miles, at least five days as its author gives the trip. The five days count only for an author's route that is mostly cross-country or on hard terrain: a trail trip that a guidebook paces over five or more days does not qualify. The five days never replace a published length. A trail with its own name and its own published length is listed even where it lies on a longer listed trail, as the John Muir Trail lies on the Pacific Crest Trail. A guidebook's cut of a longer trail is not listed. The climbing rule is that nothing harder than Class 3 may be required, apart from a few short Class 4 scrambles. A route that needs a rope, a belay or rock-climbing skill is not listed, unless that section is optional and the record says so.
 
 Not listed: paths made mainly for cycling, such as gravel rail trails and canal towpaths, and historic trails that are mainly driving routes with short walkable pieces.
 
@@ -155,10 +155,12 @@ A trail may be listed with no track included, when no track for it may be shared
 | rideau-trail | Rideau Trail | CA | ON | 387 | yes | ODbL-1.0 |
 | ring-the-peak | Ring the Peak Trail | US | CO | 101 | no | none-stated |
 | river-to-river | River to River Trail | US | IL | 257 | yes | ODbL-1.0 |
+| selway-river-trail | Selway River Trail | US | ID | 80 | yes | us-gov-public-domain |
 | sentier-international-appalaches | Sentier international des Appalaches (International Appalachian Trail, Quebec and New Brunswick) | CA | QC, NB | 1177 | yes | ODbL-1.0 |
 | shawangunk-ridge-trail | Shawangunk Ridge Trail | US | NJ, NY | 114 | yes | ODbL-1.0 |
 | sheltowee-trace | Sheltowee Trace National Recreation Trail | US | KY, TN | 552 | yes | ODbL-1.0 |
 | shenipsit-trail | Shenipsit Trail | US | CT | 80 | yes | ODbL-1.0 |
+| silver-moccasin-trail | Silver Moccasin Trail | US | CA | 82 | yes | ODbL-1.0 |
 | solitude-loop | Solitude Loop Trail | US | WY | 89 | yes | us-gov-public-domain |
 | south-boundary | South Boundary Trail | CA | AB | 121 | no | none-stated |
 | standing-stone | Standing Stone Trail | US | PA | 137 | yes | ODbL-1.0 |
@@ -182,6 +184,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | waskahegan | Waskahegan Trail | CA | AB | 309 | no | none-stated |
 | west-coast-trail | West Coast Trail | CA | BC | 75 | yes | ODbL-1.0 |
 | western-uplands | Western Uplands Backpacking Trail | CA | ON | 88 | yes | ODbL-1.0 |
+| wind-river-highline-trail | Wind River Highline Trail | US | WY | 103 | no | none-stated |
 | wonderland | Wonderland Trail | US | WA | 150 | yes | ODbL-1.0 |
 | wyoming-range | Wyoming Range National Recreation Trail | US | WY | 113 | yes | ODbL-1.0 |
 

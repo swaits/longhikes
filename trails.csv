@@ -68,6 +68,7 @@ fremont,Fremont National Recreation Trail,US,OR,216,included,USDA Forest Service
 ganaraska,Ganaraska Hiking Trail,CA,ON,500,included,OpenStreetMap,ODbL-1.0,designated,
 general-george-crook,General George Crook National Recreation Trail,US,AZ,222,included,USDA Forest Service (EDW National Forest System trails),us-gov-public-domain,designated,
 georgia-loop,Georgia Loop,US,GA,89,record-only,none (no track included),none-stated,route,unclear
+gila-centennial-loop,Gila Wilderness Centennial Loop,US,NM,161,record-only,none (no line included),none-stated,designated,
 gospel-hump-loop,Gospel Hump Loop,US,ID,109,record-only,none (no line included),none-stated,route,sold
 grand-enchantment,Grand Enchantment Trail,US,AZ;NM,1239,record-only,none (no line included),none-stated,route,sold
 grand-moab-route,Grand-Moab Route,US,CO;UT,225,record-only,none (no line included),none-stated,route,withheld
@@ -175,6 +176,7 @@ shenipsit-trail,Shenipsit Trail,US,CT,80,included,OpenStreetMap,ODbL-1.0,designa
 sierra-grand-traverse,Sierra Grand Traverse,US,CA,322,record-only,none (no line included),none-stated,route,sold
 sierra-high-route,Sierra High Route,US,CA,314,record-only,none (no line included),none-stated,route,sold
 silver-moccasin-trail,Silver Moccasin Trail,US,CA,82,included,OpenStreetMap,ODbL-1.0,designated,
+siskiyou-peaks-trail,Siskiyou Peaks Trail,US,OR;CA,721,record-only,none (no line included),none-stated,route,sold
 sky-islands-traverse,Sky Islands Traverse,US,AZ,837,record-only,none (no line included),none-stated,route,withheld
 solitude-loop,Solitude Loop Trail,US,WY,89,included,USDA Forest Service (National Forest System Trails),us-gov-public-domain,designated,
 south-boundary,South Boundary Trail,CA,AB,121,record-only,none (no line included),none-stated,designated,

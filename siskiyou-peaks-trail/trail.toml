@@ -1,0 +1,116 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "siskiyou-peaks-trail"
+name = "Siskiyou Peaks Trail"
+short_name = "SPT"
+short_name_url = "https://outsideways.com/routes/us/siskiyou-peaks-trail/"
+country = "US"
+regions = ["OR", "CA"]
+length_km = 721
+length_note = "448 mi, per the author's route page and the guidebook's listing"
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Aria Zoner, 2013); no agency or association"
+wave = 1
+
+[source]
+status = "none"
+publisher = "Aria Zoner (publishes the route)"
+publisher_url = "https://outsideways.com/routes/us/siskiyou-peaks-trail/"
+url = "https://www.abebooks.com/9781983447525/Siskiyou-Peaks-Trail-Ashland-Shasta-1983447528/plp"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on (https://outsideways.com/routes/us/siskiyou-peaks-trail/ and https://www.abebooks.com/9781983447525/Siskiyou-Peaks-Trail-Ashland-Shasta-1983447528/plp, read 2026-11-19)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the maps are in the guidebook."
+source_checked = "2026-11-19"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is sold as a guidebook with its maps, and no track is published. Get the maps from The Siskiyou Peaks Trail guidebook."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's creator does not publish a track. A name search on 2026-11-19 found no route relation."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "Aria Zoner"
+note = "No usable artwork is at an allowed live source. The author's own sites for the route, siskiyoupeakstrail.org (named in the guidebook's listing) and wholefoodhiker.com (named on a 2018 podcast page), no longer resolve. The live route page on Outsideways was read as text and shows no emblem. Whether the guidebook uses a route badge could not be confirmed from an allowed source."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Aria Zoner"
+year = 2013
+line_policy = "sold"
+note = "From Ashland, Oregon, to Mt Shasta, California, reaching the highest point in each of seven wilderness areas. The author first walked it in 2013 in 26 days, and the guidebook was published in 2017."
+
+[[guide]]
+title = "The Siskiyou Peaks Trail: From Ashland, OR to Mt Shasta, CA - Thru the Klamath Knot"
+author = "Aria Zoner"
+access = "purchase"
+url = "https://www.abebooks.com/9781983447525/Siskiyou-Peaks-Trail-Ashland-Shasta-1983447528/plp"
+format = "book"
+publisher = "CreateSpace Independent Publishing Platform"
+isbn = "9781983447525"
+
+[hike]
+summary = "The Siskiyou Peaks Trail is a 448-mile route from Ashland, Oregon, to Mt Shasta, California, that reaches the highest point in each of seven wilderness areas. It follows a mix of backcountry roads and trails, passes more than 40 glacial cirque lakes, and its last summit is Mt Shasta, which has no trail to its top. Aria Zoner worked it out and first walked it in 2013."
+official_url = "https://outsideways.com/routes/us/siskiyou-peaks-trail/"
+start = "Ashland, Oregon"
+start_lonlat = [-122.715, 42.197]
+end = "Mt Shasta, California"
+end_lonlat = [-122.313, 41.314]
+shape = "point-to-point"
+high_point = "Mount Shasta"
+high_point_m = 4322
+terrain = ["alpine", "lakes"]
+travel = "some-cross-country"
+permit = "The Forest Service requires a free wilderness permit to enter the Mount Shasta Wilderness, and a Summit Pass above 10,000 feet on the mountain."
+caution = "The route's last summit is Mt Shasta, a glaciated volcano that the Forest Service says has no trail to its top. Booksellers' copies of the guidebook's description disagree (read 2026-11-19): one says no advanced mountaineering equipment or specialty training is required in summer, though basic rock scrambling and navigation skills are, and another says advanced mountaineering equipment and specialty training may be required."
+checked = "2026-11-19"
+
+[[hike.source]]
+url = "https://outsideways.com/routes/us/siskiyou-peaks-trail/"
+publisher = "Aria Zoner (route page on Outsideways)"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.abebooks.com/9781983447525/Siskiyou-Peaks-Trail-Ashland-Shasta-1983447528/plp"
+publisher = "AbeBooks (listing of the guidebook, with the publisher's synopsis)"
+facts = ["start", "end", "summary", "caution"]
+
+[[hike.source]]
+url = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
+publisher = "Booktopia (listing of the guidebook, with its synopsis)"
+facts = ["caution"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r05/shasta-trinity/recreation/mt-shasta-wilderness"
+publisher = "USDA Forest Service, Shasta-Trinity National Forest"
+facts = ["high_point", "permit", "caution", "summary", "travel"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/lookup?osm_ids=R186688,R12859263&format=json"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): the town boundaries of Ashland (relation 186688) and Mount Shasta (relation 12859263), at their centres"
+facts = ["start_lonlat", "end_lonlat"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-19"
+change = "The record was added: the Siskiyou Peaks Trail, 448 miles (721 km) from Ashland, Oregon, to Mt Shasta, California, with no track."
+fields = ["record"]
+basis = "The author's route page gives the length as 448 miles and Mt Shasta as the final summit, and the guidebook's listing credits the route to Aria Zoner. The guide's description of the equipment needed is worded two ways by booksellers, and the author's own pages do not state it; the record says so in its caution. The end is placed at the town of Mt Shasta, as the guidebook's title writes it; the pages read do not say whether the route finishes at the summit or in the town."
+basis_url = "https://outsideways.com/routes/us/siskiyou-peaks-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"

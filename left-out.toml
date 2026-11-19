@@ -640,6 +640,19 @@ was_listed = false
 waiting_for = "The closed stretch south of the Lost Lake Trail junction reopens."
 
 [[trail]]
+id = "theodore-solomons-trail"
+name = "Theodore Solomons Trail"
+country = "US"
+regions = ["CA"]
+length_note = "No length is stated on a page that could be read; a bookseller's listing of a 1983 guidebook gives 290 miles"
+reason = "waiting"
+note = "The route's own guidebook, by Dennis R. Gagnon, can only be borrowed from a library, and its catalogue record gives no length. A bookseller's listing of Gary Buscombe's 1983 guidebook to the route says 290 miles, and a hiker's page says about 250 miles; neither is the route's author."
+source_url = "https://archive.org/details/guidetotheodores0000gagn"
+decided = "2026-11-19"
+was_listed = false
+waiting_for = "A page by the route's author or the guidebook's publisher states its length."
+
+[[trail]]
 id = "great-trail"
 name = "Trans Canada Trail"
 country = "CA"

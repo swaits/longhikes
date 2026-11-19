@@ -1,0 +1,104 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "gila-centennial-loop"
+name = "Gila Wilderness Centennial Loop"
+country = "US"
+regions = ["NM"]
+length_km = 161
+length_note = "100 mi, as the Forest Service's Gila Wilderness page and its two loop maps (Avenza listings, 24,000 and 63,360 scale) give it."
+tier = "regional"
+designation = "Loop designated by the Forest Service in 2024 for the centennial of the Gila Wilderness, Gila National Forest"
+wave = 1
+
+[source]
+status = "none"
+publisher = "USDA Forest Service, Gila National Forest (no track included)"
+publisher_url = "https://www.fs.usda.gov/r03/gila/recreation/gila-wilderness-area"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+format = "No track included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. The Forest Service's National Forest System trails layer is a United States federal government work, public domain in the United States under 17 U.S.C. 105, but it holds the numbered trails and no feature for the loop (a name search of the layer on 2026-11-19 found none)."
+attribution = "none (no track included)"
+osm_only = false
+mainline = "No track was built. The Forest Service publishes the loop as a map and names no list of its trails on a page that could be opened, so the trails to join could not be chosen."
+source_checked = "2026-11-19"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The Forest Service publishes the loop as a free map over numbered trails. Its trail data holds those trails but no feature for the loop, and no page that could be opened lists which trails the loop uses, so a track would be a guess. No track is included."
+
+[osm]
+relation = 0
+note = "No OpenStreetMap route relation for the loop was found on 2026-11-19 (a name search returned nothing)."
+
+[shield]
+status = "logo-not-found"
+logo_source = ""
+contact = "USDA Forest Service, Gila National Forest"
+note = "The Forest Service's Gila Wilderness page, its Middle Fork trailhead page and the two map listings were read as text on 2026-11-19. They name the loop and show no emblem for it; no artwork was found at an allowed source."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No track to measure."
+
+[hike]
+summary = "The Gila Wilderness Centennial Loop is a 100-mile loop through the Gila Wilderness of southwestern New Mexico. The Forest Service designated it in 2024 for the wilderness's 100th anniversary, and publishes it as a free map. The Forest Service describes the wilderness's river corridor as deeply incised, with vertical cliffs and cathedral spires."
+official_url = "https://www.fs.usda.gov/r03/gila/recreation/gila-wilderness-area"
+start = "Middle Fork Trailhead, Gila Cliff Dwellings Visitor Center, New Mexico"
+start_lonlat = [-108.241, 33.226]
+shape = "loop"
+terrain = ["canyon"]
+travel = "trail"
+permit = "Individual hikers need no pass or permit; organised groups need a permit from the Forest Service."
+caution = "The Forest Service says the stretch of West Fork Trail 151 along Cooper Canyon to Turkeyfeather Pass is not passable, so check the loop map there. A local trail group reported in November 2024 that the Forest Service crew had cleared the last impassable part of the loop, and that walkers found rough tread in places, such as Trail 159 above Turkey Creek and Trail 101 near private land at Double Spring. The Forest Service says West Fork Trail 151 has many river crossings per mile, and that water in the Gila can be unreliable and must be treated."
+checked = "2026-11-19"
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r03/gila/recreation/gila-wilderness-area"
+publisher = "USDA Forest Service, Gila National Forest"
+facts = ["official_url", "summary", "permit", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://store.avenza.com/collections/us-forest-service-r3.atom"
+publisher = "USDA Forest Service, Southwestern Region (its map listings in the Avenza store feed)"
+facts = ["summary", "shape", "caution"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r03/gila/recreation/middle-fork-157-trailhead"
+publisher = "USDA Forest Service, Gila National Forest (Middle Fork Trailhead page, which gives its latitude and longitude)"
+facts = ["start", "start_lonlat"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r03/gila/recreation/trails/west-fork-trail-151"
+publisher = "USDA Forest Service, Gila National Forest"
+facts = ["caution", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://myemail.constantcontact.com/Gila-Trails-News.html?soid=1140320514802&aid=afNx6JmU3qM"
+publisher = "Gila Trails News (Gila Back Country Horsemen and Gila Trails Info), November 2024 update"
+facts = ["caution"]
+
+[[guide]]
+title = "Gila Wilderness Centennial Loop Trail Map - 24K"
+author = "USDA Forest Service, Gila National Forest"
+access = "free"
+url = "https://store.avenza.com/products/gila-wilderness-centennial-loop-trail-map-24k-us-forest-service-r3-map"
+format = "digital map (PDF for the Avenza Maps app), 1:24,000"
+price = "0.00"
+price_checked = "2026-11-19"
+publisher = "US Forest Service R3"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-19"
+change = "The record was added: the Gila Wilderness Centennial Loop, 100 miles (161 km), designated by the Forest Service in 2024, with no track."
+fields = ["record"]
+basis = "The Forest Service's Gila Wilderness page says the 100-mile Centennial Loop was designated in 2024, and its two loop maps give the length as 100 miles. The loop has its own name and its own published length. No track is included because no page that could be opened lists the trails the loop uses."
+basis_url = "https://www.fs.usda.gov/r03/gila/recreation/gila-wilderness-area"
+asked_by = "the dataset's own check"
+outcome = "applied"

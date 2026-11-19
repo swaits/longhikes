@@ -295,12 +295,20 @@ name = "Aria Zoner"
 credits = ["Aria Zoner"]
 url = "https://outsideways.com/routes/us/hot-springs-trail/"
 summary = "Aria Zoner is a thru-hiker and guidebook author who wrote The Hot Springs Trail Official Guidebook and The Nevada Trail Official Guidebook."
-bio = "The Hot Springs Trail is a 2,421-mile journey to 100 wild or resort hot spring areas, running from Santa Barbara, California, to Idaho's Canadian border. Zoner's 2016 journal records a total time of 110 days to complete it. The route has also been published as a template for an official Hot Springs National Scenic Trail. Besides the Hot Springs Trail guide, Zoner wrote a guidebook for the Nevada Trail."
-checked = "2026-11-17"
+bio = "The Hot Springs Trail is a 2,421-mile journey to 100 wild or resort hot spring areas, running from Santa Barbara, California, to Idaho's Canadian border. Zoner's 2016 journal records a total time of 110 days to complete it. The route has also been published as a template for an official Hot Springs National Scenic Trail. Besides the Hot Springs Trail guide, Zoner wrote a guidebook for the Nevada Trail. Zoner also worked out the 448-mile Siskiyou Peaks Trail, from Ashland, Oregon, to Mt Shasta, California, first walked in 2013, and wrote its guidebook."
+checked = "2026-11-19"
 
 [[author.source]]
 url = "https://outsideways.com/routes/us/hot-springs-trail/"
 publisher = "Outsideways"
+
+[[author.source]]
+url = "https://outsideways.com/routes/us/siskiyou-peaks-trail/"
+publisher = "Outsideways"
+
+[[author.source]]
+url = "https://www.abebooks.com/9781983447525/Siskiyou-Peaks-Trail-Ashland-Shasta-1983447528/plp"
+publisher = "AbeBooks (listing of the guidebook)"
 
 [[author]]
 name = "Brian Lucido"

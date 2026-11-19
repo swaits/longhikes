@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-220 trails, 125 with a track and 95 with no track included. Of these, 75 are routes: 2 with a track and 73 without.
+222 trails, 125 with a track and 97 with no track included. Of these, 76 are routes: 2 with a track and 74 without.
 
 <!-- END COUNTS -->
 
@@ -88,6 +88,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | fremont | Fremont National Recreation Trail | US | OR | 216 | yes | us-gov-public-domain |
 | ganaraska | Ganaraska Hiking Trail | CA | ON | 500 | yes | ODbL-1.0 |
 | general-george-crook | General George Crook National Recreation Trail | US | AZ | 222 | yes | us-gov-public-domain |
+| gila-centennial-loop | Gila Wilderness Centennial Loop | US | NM | 161 | no | none-stated |
 | grand-sawtooth-loop | Grand Sawtooth Loop | US | ID | 113 | no | none-stated |
 | grand-valley-trail | Grand Valley Trail | CA | ON | 240 | yes | ODbL-1.0 |
 | great-divide-trail | Great Divide Trail | CA | AB, BC | 1130 | yes | ODbL-1.0 |
@@ -255,6 +256,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | sea-to-sea-route | Sea-to-Sea Route | US | ND, MN, WI, MI, OH, PA, NY, VT, MT, ID, WA | 12513 | Ron Strickland | unclear | no | [Sea-to-Sea Route overview and route description](https://andrewskurka.com/adventures/sea-to-sea-route/overview/) (free) |
 | sierra-grand-traverse | Sierra Grand Traverse | US | CA | 322 | John and Monica Chapman | sold | no | [Sierra Grand Traverse: An Epic Route Across the Range of Light](https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light) (purchase) |
 | sierra-high-route | Sierra High Route | US | CA | 314 | Steve Roper | sold | no | [Sierra High Route, 2nd Edition: Traversing Timberline Country](https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country) (purchase) |
+| siskiyou-peaks-trail | Siskiyou Peaks Trail | US | OR, CA | 721 | Aria Zoner | sold | no | [The Siskiyou Peaks Trail: From Ashland, OR to Mt Shasta, CA - Thru the Klamath Knot](https://www.abebooks.com/9781983447525/Siskiyou-Peaks-Trail-Ashland-Shasta-1983447528/plp) (purchase) |
 | sky-islands-traverse | Sky Islands Traverse | US | AZ | 837 | Brett Tucker ("Blisterfree") | withheld | no | [Sky Islands Traverse page](http://simblissity.net/skit.shtml) (free) |
 | south-lake-to-north-lake | South Lake to North Lake | US | CA | 89 | Elizabeth Wenk and Mike White | sold | no | [Sierra South: Backcountry Trips in California's Sierra Nevada](https://shop.adventurewithkeen.com/product/sierra-south-2/) (purchase) |
 | southeastern-serpentine-trail | Southeastern Serpentine Trail | US | SC, NC, GA, TN | 938 | Cam Honan | unclear | no | [Southeastern Serpentine Trail](https://thehikinglife.com/2016/07/southeastern-serpentine-trail/) (free) |

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-20 - Long saved lists share a short link
+
+- A saved list of more than ten trails now shares a short link: a list of 49 trails was a 1,013-character link and is now 70 characters, and no list is longer than that. Lists of ten trails or fewer keep the readable link. Links shared before still open.
+- A short link does not carry the order the trails were saved in, so it opens the list from A to Z.
+- For contributors: every trail now has a permanent number in `trail-numbers.txt`. Running `python3 tools/build_index.py` appends a new record's line; commit it with the record, and do not edit or reorder the lines already there (the history check refuses it).
+
 ## 2026-11-20 - The Circle of Solitude page sends you to the guidebook in print
 
 - The Circle of Solitude page now sends visitors to Mike White's Sequoia and Kings Canyon National Parks: Your Complete Hiking Guide (Wilderness Press, 2012), the guidebook in print that carries the loop, and keeps the earlier out-of-print Kings Canyon book as a second entry.

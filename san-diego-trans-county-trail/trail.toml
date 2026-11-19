@@ -12,7 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Route built in the 2000s by the Sea to Sea Trail Foundation (since folded) with agencies; current guide by Liz Thomas, Treeline Review"
 wave = "held"
-wave_note = "Held: no living holder or author is settled. The Sea to Sea Trail Foundation built it with the US Forest Service and the City of Poway and the Counties of San Diego, and has since folded. The Treeline Review guide (Liz Thomas, dated 2026-08-29) calls it a route and not a trail, and says its tracks and maps are kept by a Facebook group and are subject to change."
+wave_note = "No living holder or author is settled. The Sea to Sea Trail Foundation built it with the US Forest Service and the City of Poway and the Counties of San Diego, and has since folded. The Treeline Review guide (Liz Thomas, dated 2026-08-29) calls it a route and not a trail, and says its tracks and maps are kept by a Facebook group and are subject to change."
 
 [source]
 status = "none"
@@ -120,6 +120,15 @@ date = "2026-11-18"
 change = "The positions of the start and the end were added, so that the page can show a map of both."
 fields = ["hike.start_lonlat", "hike.end_lonlat"]
 basis = "U.S. Geological Survey, Geographic Names Information System (public domain): Iberia Wash, feature 243761; OpenStreetMap contributors, via Nominatim (ODbL): Torrey Pines State Beach, OpenStreetMap relation 7102568."
+basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/243761"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The word \"Held:\" was taken off the start of the wave note, which now reads as a sentence on its own. Nothing else in the note changed."
+fields = ["wave_note"]
+basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/243761"
 asked_by = "the dataset's own check"
 outcome = "applied"

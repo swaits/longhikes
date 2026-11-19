@@ -12,7 +12,7 @@ built_km = 1408
 tier = "regional"
 designation = "State of California trail (Coastal Commission, State Coastal Conservancy)"
 wave = "held"
-wave_note = "Held: mostly road and sidewalk."
+wave_note = "It is mostly road and sidewalk."
 
 [source]
 status = "verified"
@@ -119,4 +119,13 @@ fields = ["source.status", "source.licence", "source.licence_text", "source.attr
 basis = "A hiker who walked the whole coast in eight section hikes attached the GPX file to the dataset's public issue tracker and wrote that CC BY 4.0 suits them and that crediting them as the source, with a link to their blog, works for them."
 basis_url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6928214012"
 asked_by = "a hiker"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The word \"Held:\" was taken off the start of the wave note, which now reads as a sentence on its own. Nothing else in the note changed."
+fields = ["wave_note"]
+basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
+basis_url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6928214012"
+asked_by = "the dataset's own check"
 outcome = "applied"

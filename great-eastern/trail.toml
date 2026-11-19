@@ -11,7 +11,7 @@ length_note = "About 1,800 mi, as the Great Eastern Trail Association gives it: 
 tier = "regional"
 designation = "Great Eastern Trail Association; links existing trails"
 wave = "held"
-wave_note = "Held: a composite of existing trails, not one designated trail."
+wave_note = "It is a composite of existing trails, not one designated trail."
 
 [source]
 status = "osm-only"
@@ -114,6 +114,15 @@ date = "2026-11-16"
 change = "The main track was re-cut to one walk (2,348 km): at Arnot and Everett in Pennsylvania and at two short places, a second way moved to the alternates, and a doubled carriageway near Harlan, Kentucky, was left out."
 fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
 basis = "A way is named 'High Water Route (MST)', and the Mid-State Trail Association's Everett Region page describes the western route onto the ridge as fully blazed. The Pine Mountain Link relation holds both carriageways of one road. The relation gives no roles at these places."
+basis_url = "https://hike-mst.org/index.php/the-trail/everett-region"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The word \"Held:\" was taken off the start of the wave note, which now reads as a sentence on its own. Nothing else in the note changed."
+fields = ["wave_note"]
+basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://hike-mst.org/index.php/the-trail/everett-region"
 asked_by = "the dataset's own check"
 outcome = "applied"

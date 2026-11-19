@@ -11,7 +11,7 @@ length_note = "750 mi, per the Oregon Natural Desert Association"
 tier = "regional"
 designation = "Oregon Natural Desert Association route; no formal designation"
 wave = "held"
-wave_note = "Held: an association route with no formal designation."
+wave_note = "It is an association route with no formal designation."
 
 [source]
 status = "osm-only"
@@ -132,6 +132,15 @@ date = "2026-11-19"
 change = "The length is now 1,207 km, which is the 750 miles the association gives, in place of 1,200 km, which showed on the page as 746 miles."
 fields = ["length_km"]
 basis = "The Oregon Natural Desert Association's page for the trail calls it a 750-mile route and gives no figure in kilometres."
+basis_url = "https://onda.org/regions/oregon-desert-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The word \"Held:\" was taken off the start of the wave note, which now reads as a sentence on its own. Nothing else in the note changed."
+fields = ["wave_note"]
+basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://onda.org/regions/oregon-desert-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

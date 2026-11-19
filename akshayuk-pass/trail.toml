@@ -9,7 +9,7 @@ length_note = "97 km, from the Parks Canada page on hiking in Auyuittuq National
 tier = "regional"
 designation = "Parks Canada (Auyuittuq National Park)"
 wave = "held"
-wave_note = "Held: Parks Canada publishes Akshayuk Pass as a named 97 km route with 9 emergency shelters, and calls it a trail in places, but its page says there is no designated trail to follow. Whether it is a designated trail or a route is undecided, and no track is included."
+wave_note = "Parks Canada publishes Akshayuk Pass as a named 97 km route with 9 emergency shelters, and calls it a trail in places, but its page says there is no designated trail to follow. Whether it is a designated trail or a route is undecided, and no track is included."
 
 [source]
 status = "none"
@@ -84,6 +84,15 @@ date = "2026-11-16"
 change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
 fields = ["shield.status", "shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The word \"Held:\" was taken off the start of the wave note, which now reads as a sentence on its own. Nothing else in the note changed."
+fields = ["wave_note"]
+basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking"
 asked_by = "the dataset's own check"
 outcome = "applied"

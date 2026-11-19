@@ -11,7 +11,7 @@ length_note = "316 mi, as the West Virginia Scenic Trail Association gives it on
 tier = "regional"
 designation = "West Virginia Scenic Trails Association"
 wave = "held"
-wave_note = "Held: no usable whole track exists. OSM holds about 50 km of the 500 km trail in fragment relations, and the West Virginia Scenic Trails Association publishes no open track. What would fix it: a track from the Association, or complete OSM route mapping."
+wave_note = "No usable whole track exists. OSM holds about 50 km of the 500 km trail in fragment relations, and the West Virginia Scenic Trails Association publishes no open track. What would fix it: a track from the Association, or complete OSM route mapping."
 
 [source]
 status = "osm-only"
@@ -116,6 +116,15 @@ date = "2026-11-19"
 change = "The word \"Held.\" was taken off the end of the length gap note and the verification note, which now say only what was found. The record's own note says why it is held."
 fields = ["source.length_gap_note", "verification.note"]
 basis = "The two notes ended in a word that only repeated the record's held mark; the reason is in the record's wave note."
+basis_url = "https://hikethealleghenytrail.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The word \"Held:\" was taken off the start of the wave note, which now reads as a sentence on its own. Nothing else in the note changed."
+fields = ["wave_note"]
+basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://hikethealleghenytrail.org/"
 asked_by = "the dataset's own check"
 outcome = "applied"

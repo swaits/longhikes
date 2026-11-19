@@ -760,7 +760,7 @@ def main():
         check_short_name(tid, rec, errors)
         check_common_name(tid, rec, errors)
         check_length_facts(tid, rec, errors)
-        # check_held_note(tid, rec, errors)  # to switch on once the five held records have their notes
+        check_held_note(tid, rec, errors)
         if rec.get("id") != tid:
             errors.append(f"{tid}: id {rec.get('id')!r} does not match directory name")
         if rec.get("country") not in ("US", "CA"):

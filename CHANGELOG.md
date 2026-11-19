@@ -9,6 +9,12 @@
 - The Colorado Trail's track is now labelled ODbL as a whole, because about 38 km of it is from OpenStreetMap; its record says which part is public domain.
 - Eleven records (Alpine Trail #7, Backbone, Black Canyon, Fremont, General George Crook, Highline, John Muir, Middle Fork, North Umpqua, Solitude Loop and Toiyabe Crest) no longer say their track was only found: it was downloaded and is published.
 - `SOURCES.md` no longer lists the Natchez Trace and Potomac Heritage trails as included, and its counts match the records. The Rae Lakes Loop's measured length is now 57.6 km, the length of its track file.
+- Ten trail records no longer begin their note with the internal word "Held:" (Allegheny, California Coastal, Ganaraska, Great Eastern, Oregon Desert, Akshayuk Pass, International Appalachian Trail in Newfoundland and Labrador, San Diego Trans-County, General George Crook and Montana trails); each note now reads as a sentence on its own.
+- Place pages no longer give a whole trail's length or high point as the place's own: they say a trail passes through the place and give its length "in all", and give a high point only from trails that lie wholly in the place.
+- The notice on pages with no track no longer contradicts itself: a trail with no track yet no longer says none may be passed on, and a route sold only as a guidebook no longer says its author sells a GPX. The names of the map services searched are no longer shown in notices.
+- A held record with no reason no longer prints "the record has no note saying what", and the data check now refuses such a record.
+- On phones, the download button on pages with no track is no longer cut off, and the map's attribution button shows one icon, not four.
+- The Lists tile "Route authors" now counts authors, not routes.
 
 ## 2026-11-19 - Teton Crest Trail has a track
 

@@ -10,7 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Montana Trail 406 Association, founded 2017); no agency or state designation is stated on the Association's pages"
 wave = "held"
-wave_note = "Held: on the Association's own section pages, five sections at the east end (21 to 25) are given in river miles (149, 157, 68, 77 and 29), and the pages for them describe travel by canoe, kayak or boat, or by bike on gravel roads. The FAQ says the whole route can be travelled on foot but also that there is no trail along the 149 miles of the Wild and Scenic River section. That is about a quarter of the length, so whether this is one continuous walking route is undecided."
+wave_note = "On the Association's own section pages, five sections at the east end (21 to 25) are given in river miles (149, 157, 68, 77 and 29), and the pages for them describe travel by canoe, kayak or boat, or by bike on gravel roads. The FAQ says the whole route can be travelled on foot but also that there is no trail along the 149 miles of the Wild and Scenic River section. That is about a quarter of the length, so whether this is one continuous walking route is undecided."
 
 [source]
 status = "none"
@@ -122,6 +122,15 @@ date = "2026-11-16"
 change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
+basis_url = "https://montanatrail.org/wp-content/uploads/2021/11/montana-trail-logo.webp"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The word \"Held:\" was taken off the start of the wave note, which now reads as a sentence on its own. Nothing else in the note changed."
+fields = ["wave_note"]
+basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://montanatrail.org/wp-content/uploads/2021/11/montana-trail-logo.webp"
 asked_by = "the dataset's own check"
 outcome = "applied"

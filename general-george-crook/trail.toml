@@ -10,7 +10,7 @@ length_note = "138 mi, the length in the National Recreation Trail record's tabl
 tier = "regional"
 designation = "National Recreation Trail (certified 1979), managed by the Forest Service: trail 140 on the Apache-Sitgreaves National Forests, trail 130 on the Coconino National Forest and trail 64 on the Prescott National Forest"
 wave = "held"
-wave_note = "Held: the Forest Service publishes the trail as three pieces on three national forests and gives no length for the whole. The Apache-Sitgreaves page gives 58.9 mi for its piece alone. The Forest Service track for all three pieces measures 193.5 km. The Coconino and Apache-Sitgreaves pieces join and make one walkable trail of about 177 km; the Prescott piece lies about 20 km west of them with a gap between. What would settle it: a Forest Service statement of the whole trail's length and ends."
+wave_note = "The Forest Service publishes the trail as three pieces on three national forests and gives no length for the whole. The Apache-Sitgreaves page gives 58.9 mi for its piece alone. The Forest Service track for all three pieces measures 193.5 km. The Coconino and Apache-Sitgreaves pieces join and make one walkable trail of about 177 km; the Prescott piece lies about 20 km west of them with a gap between. What would settle it: a Forest Service statement of the whole trail's length and ends."
 
 [source]
 status = "verified"
@@ -111,6 +111,15 @@ date = "2026-11-19"
 change = "The track status is now \"verified\", in place of \"found\", which means a source located but not downloaded. The record's track was downloaded and is published."
 fields = ["source.status"]
 basis = "The record has a published track file and a measured length in its verification, and its track was downloaded and measured."
+basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-19"
+change = "The word \"Held:\" was taken off the start of the wave note, which now reads as a sentence on its own. Nothing else in the note changed."
+fields = ["wave_note"]
+basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
 asked_by = "the dataset's own check"
 outcome = "applied"

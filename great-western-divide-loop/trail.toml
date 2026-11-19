@@ -65,6 +65,7 @@ summary = "The Sequoia Great Western Divide Loop is a backpacking loop from Cres
 official_url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
 start = "Crescent Meadow, Sequoia National Park"
 start_lonlat = [-118.748, 36.559]
+shape = "loop"
 terrain = ["forest", "alpine"]
 checked = "2026-11-13"
 
@@ -77,6 +78,11 @@ facts = ["official_url", "summary", "start", "terrain"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/258914"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
+publisher = "Brian Lucido"
+facts = ["shape"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -94,6 +100,15 @@ date = "2026-11-16"
 change = "The logo record now says an emblem exists or may exist but no usable artwork of it was found at an allowed source."
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
+basis_url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The walk is now recorded as a loop that starts and ends at Crescent Meadow, so its page maps the trailhead."
+fields = ["hike.shape"]
+basis = "The route's own record and the author's page describe a loop from Crescent Meadow that comes back by Redwood Meadow."
 basis_url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
 asked_by = "the dataset's own check"
 outcome = "applied"

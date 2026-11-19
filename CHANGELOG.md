@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-18 - Great Western Divide Loop maps its trailhead
+
+- The Great Western Divide Loop page now shows a map marking its trailhead at Crescent Meadow. The walk is recorded as a loop, which it is, so the one trailhead is both its start and its end.
+
 ## 2026-11-18 - State codes in links keep the link pointer
 
 - Hovering a state or province code such as UT in a trail row showed the question-mark cursor, because every abbreviation with a tooltip was given it. An abbreviation inside a link now keeps the ordinary link pointer. The tooltip with the place's full name is unchanged.

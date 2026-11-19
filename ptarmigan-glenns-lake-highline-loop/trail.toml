@@ -1,55 +1,52 @@
 # Long-trail record. Field meanings: docs/schema.md in this repository.
 
 id = "ptarmigan-glenns-lake-highline-loop"
-name = "Ptarmigan–Glenns Lake–Highline Loop"
+name = "North Circle"
 country = "US"
 regions = ["MT"]
 length_km = 84
-length_note = "52 mi, as the book gives it for Trip 1 (pages 16-42) as the minimum loop, with 10,750 ft of elevation gain and 5 to 13 days. The book's own day table adds up to 52.2 mi for the loop, with short spurs to camps walked out and back. The book also prints 106 mi and 16,200 ft for the trip with its recommended side trips added (its day table sums to 105.6 mi), the longest being the out-and-back to Boulder Pass. The figures are the book's own and are not measured from a track."
-kind = "route"
+length_note = "52 mi (84 km), the modern loop as published: Mike White and Douglas Lorain's Best Backpacking Trips in Montana, Wyoming, and Colorado gives it as 52 mi for Trip 1 (pages 16-42), the minimum loop, with 10,750 ft of elevation gain and 5 to 13 days, and one trip-report page gives about 52 mi; Backpacker magazine and 10adventures give 55.5 mi. The book's own day table adds up to 52.2 mi for the loop, with short spurs to camps walked out and back. The book also prints 106 mi and 16,200 ft for the trip with its recommended side trips added (its day table sums to 105.6 mi), the longest being the out-and-back to Boulder Pass. The park's historic loop went down to Goat Haunt on Waterton Lake and back and was about 65 mi as the Park Service's National Register record gives its legs (14, 19, 10, 13 and 9 mi). The track from the park's trails layer measures 83.1 km (51.6 mi), 0.7% under 52 mi."
 tier = "regional"
-designation = "Guidebook route (Mike White and Douglas Lorain, 2019, in Best Backpacking Trips in Montana, Wyoming, and Colorado); no agency or association"
+designation = "A named loop on National Park Service trails in Glacier National Park that the Park Service's National Register record lists as the North Circle; the loop itself is not one designated trail"
 wave = 1
 
 [source]
-status = "none"
-publisher = "University Press of Colorado (publishes the route in the guidebook)"
-publisher_url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
-url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
-format = "No line included"
+status = "verified"
+publisher = "National Park Service, Glacier National Park (GIS Program), Glacier National Park Trails layer"
+publisher_url = "https://npgallery.nps.gov/NRHP/GetAsset/NRHP/95001579_text"
+url = "https://services2.arcgis.com/DRQySz3VhPgOv7Bo/ArcGIS/rest/services/Glacier_National_Park_Trails/FeatureServer/0"
+discovery = "arcgis-query-hash: GET <url>/query with where 1=1 (outFields=*, outSR=4326, f=geojson); hash the answer body and count its rows; fetch again when either changes. 396 features on 2026-11-19; the item was last modified 2023-07-12."
+format = "ArcGIS FeatureServer layer 0 (trails_public), outSR=4326, f=geojson, 26 features used (28 pieces: 2 multi-part features contribute 2 pieces each)"
 crs = "EPSG:4326"
-licence = "none-stated"
-licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the pages its facts were read on: the book's pages 16-42, read from the owner's copy of the 2019 (no edition is stated) on 2026-11-18, and the publisher's page for the book (https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado, read 2026-11-18)."
-attribution = "none (no line included)"
+licence = "us-gov-public-domain"
+licence_text = "United States federal government work, public domain in the United States under 17 U.S.C. 105. The feature service's copyright text reads 'Glacier National Park GIS Program' and its access information the same; its terms text says: 'This version of Glacier's Trail GIS data is for public use in mapping applications.' (item page https://www.arcgis.com/home/item.html?id=4c7190ee69914d6bb66592607f8042b1, read 2026-11-19). Its metadata (https://www.arcgis.com/sharing/rest/content/items/4c7190ee69914d6bb66592607f8042b1/info/metadata/metadata.xml, read 2026-11-19) names National Park Service, Glacier National Park as the originator and publisher of the data and gives access and use constraints as 'None.'. The service is hosted in an ArcGIS Online organisation of the Montana Department of Natural Resources and Conservation, so the Park Service is the maker of the data and not the host of the service; the data are the Park Service's own and carry no licence of their own. The National Park Service states, of its data: 'Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105.' (https://irma.nps.gov/DataStore/Reference/Profile/2311077, read 2026-11-18)."
+attribution = "National Park Service, Glacier National Park GIS Program"
 osm_only = false
-mainline = "No track is included; the track is the book's maps."
-source_checked = "2026-11-18"
+mainline = "One closed track of 28 pieces (26 features) from the junction of the Ptarmigan and Swiftcurrent Pass trails at Many Glacier, by the trail the layer names Ptarmigan (to the Ptarmigan Tunnel, Elizabeth Lake and the Belly River to the foot of Cosley Lake), Stoney Indian Pass (Cosley Lake, Glenns Lake, Mokowanis Junction, Stoney Indian Pass and Stoney Indian Lake to the Waterton Valley junction), Waterton Valley (to Fifty Mountain), Highline (Fifty Mountain to the Granite Park trail junction) and Swiftcurrent Pass (to Many Glacier). Where two layer trails run between the same places, the Ptarmigan Trail between the Belly River Ranger Station junction and the foot of Cosley Lake is used and the longer way by the Belly Ranger Station and the Cosley Lake Cutoff is not, because the Ptarmigan Trail is the one trail that runs through, and published itineraries name Elizabeth Lake and Cosley Lake with no stop at the ranger station. Left out: the Goat Haunt detour (Waterton Valley and Waterton Lake trails), the Redgap Pass trail (the way round when the tunnel is closed: its trailhead is on the Many Glacier Road, 2.8 km from the loop's start, and no layer trail joins them), the spurs to Cosley Lake and Granite Park campgrounds and the spur to Granite Park Chalet, the Mokowanis Lake and Iceberg Lake trails, and the Swiftcurrent Lake trail to the picnic area."
+source_checked = "2026-11-19"
 redistributable = true
-line_source = "none (no line included)"
-line_file = ""
-line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Best Backpacking Trips in Montana, Wyoming, and Colorado."
+line_source = "National Park Service, Glacier National Park trails layer"
+line_file = "line.geojson"
 
 [osm]
 relation = 0
-note = "Not recorded: the route is a guidebook route and no track is included."
+note = "No OpenStreetMap relation exists for the loop (searched 2026-11-19); the track comes from the Park Service's trails layer."
 
 [shield]
 status = "no-logo-exists"
 logo_source = ""
-contact = "Mike White and Douglas Lorain"
-note = "No emblem of its own was found. The trip's heading in the book and the publisher's page for the book (https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado, read 2026-11-18) show the title and the publisher's own logo only; this is a guidebook route over national park land that keeps its own marking."
+contact = "NPS Glacier"
+note = "No emblem of the loop was found. The Park Service pages read on 2026-11-19 (wilderness permit and trail status pages) and its National Register record describe it in words and carry no mark for it; the Service's arrowhead is the agency's own."
 logo_file = ""
-logo_owner = ""
+logo_owner = "NPS Glacier"
 
 [verification]
-verified = false
-note = "No line to measure."
-
-[route]
-creator = "Mike White and Douglas Lorain"
-year = 2019
-line_policy = "sold"
-note = "A loop from the Swiftcurrent Picnic Area near Many Glacier past Ptarmigan Tunnel, the Belly River, Cosley and Glenns lakes, Stoney Indian Pass, Fifty Mountain and the Highline Trail, and back over Swiftcurrent Pass, with 52 miles as the minimum loop and 5 to 13 days in the book. About half of the loop follows the Continental Divide Trail: by the dataset's own check against its Continental Divide Trail track, about 25 of the 52 miles, from Swiftcurrent Pass by Granite Park and the Highline Trail to the Waterton Valley junction below Stoney Indian Lake, lie on it. The book's maps are the track; none is copied here."
+verified = true
+date = "2026-11-19"
+measured_km = 83.1
+difference_percent = -0.7
+parts = 1
+note = "28 pieces of 26 layer features joined end to end in 1 closed part: 83.1 km (51.6 mi), 0.7% under the 52 mi (84 km) the guide gives. Joins are 0 to 4.2 m. The loop starts and ends at the junction of the Ptarmigan and Swiftcurrent Pass trails at Many Glacier, 303 m from the Swiftcurrent Picnic Area."
 
 [[guide]]
 title = "Best Backpacking Trips in Montana, Wyoming, and Colorado"
@@ -62,28 +59,53 @@ price_checked = "2026-11-18"
 publisher = "University Press of Colorado"
 isbn = "978-1-60732-837-7"
 edition = "2019 (the book states no edition)"
-where = "Trip 1, pages 16-42"
+where = "Trip 1, pages 16-42; the book titles it the Ptarmigan–Glenns Lake–Highline Loop"
 link_is = "publisher"
 
 [hike]
-summary = "The Ptarmigan–Glenns Lake–Highline Loop is a backpacking loop of 5 to 13 days in the northeast of Glacier National Park, Montana, from the Swiftcurrent Picnic Area near Many Glacier. It passes through Ptarmigan Tunnel, follows the Belly River and Glenns Lake to Stoney Indian Pass and returns by Fifty Mountain and the Highline Trail, and about half of it follows the Continental Divide Trail. Mike White and Douglas Lorain describe it as Trip 1 in Best Backpacking Trips in Montana, Wyoming, and Colorado."
-official_url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
+summary = "The North Circle is a backpacking loop in the northeast of Glacier National Park, Montana, from Many Glacier by Ptarmigan Tunnel, the Belly River, Cosley and Glenns lakes, Stoney Indian Pass, Fifty Mountain and the Highline Trail, returning over Swiftcurrent Pass. It is also called the Many Glacier Loop and, in a guidebook, the Ptarmigan–Glenns Lake–Highline Loop. The Park Service's National Register record of the park's tourist trails lists it as the North Circle."
+official_url = "https://npgallery.nps.gov/NRHP/GetAsset/NRHP/95001579_text"
 start = "Swiftcurrent Picnic Area, Glacier National Park, Montana"
 start_lonlat = [-113.668, 48.797]
 shape = "loop"
 days = [5, 13]
-season = "Late July to mid-October, best in August"
-months = [8, 9, 10]
+season = "Mid-July to late September"
+months = [7, 8, 9]
 terrain = ["alpine", "lakes"]
 travel = "trail"
-permit = "A permit is required, and the book says camping is only allowed at designated campsites. Advance reservations are made online, with requests received on the opening day processed in a random order; without a reservation the book says hikers must queue very early for a first-come permit and the odds are poor."
-caution = "The book says Glacier is grizzly bear country, that hikers should carry bear spray and store all food away from bears, and that solo travel is not recommended. Snowfields lie across the trail on steep north-facing slopes into late July or early August and can be dangerously icy, which the book says makes parts of the loop too hazardous for most hikers before late summer. Seasonal bridges may be missing, leaving tricky fords, and the trail is often brushy and wet with dew. Campsites are designated, usually full all summer, and close together. The authors rate the technical difficulty 6 and the physical difficulty 7, each out of 10. The 52 mile loop is on maintained trail, with an optional side trip on a sketchy cairned boot path; the book mentions no scrambling or rope."
-checked = "2026-11-18"
+permit = "The Park Service requires a wilderness use permit for all overnight camping in the park."
+caution = "On 2026-11-19 the Park Service's trail status page said: \"Generally, Ptarmigan Tunnel doors open in mid-July\" and \"Ptarmigan Tunnel doors usually close by late September\"; the loop cannot be walked by the tunnel outside that time. The guide says Glacier is grizzly bear country, that hikers should carry bear spray and store all food away from bears, and that snowfields on steep north-facing slopes can be dangerously icy into late July or early August."
+checked = "2026-11-19"
+
+[[hike.source]]
+url = "https://npgallery.nps.gov/NRHP/GetAsset/NRHP/95001579_text"
+publisher = "National Park Service (National Register of Historic Places registration form, Glacier National Park Tourist Trails: Inside Trail; South Circle; North Circle, 1995: names the North Circle and describes its legs from Many Glacier by Cosley Lake, Goat Haunt, Fifty Mountain and Granite Park)"
+facts = ["summary", "official_url", "shape"]
+
+[[hike.source]]
+url = "https://www.backpacker.com/trips/glacier-national-park-many-glacier-loop/"
+publisher = "Backpacker magazine (the loop under the title Many Glacier Loop, with its stops from the Ptarmigan Tunnel trailhead by Elizabeth Lake, Cosley and Glenns lakes, Stoney Indian Pass, Fifty Mountain and Granite Park to Swiftcurrent Pass, published 2013)"
+facts = ["summary"]
+
+[[hike.source]]
+url = "https://backpackers-review.com/trip-reports/glacier-north-circle-backpacking/"
+publisher = "Backpackers Review (a trip report titled North Circle Loop, 52 miles, which shows the name in use today)"
+facts = ["summary"]
+
+[[hike.source]]
+url = "https://www.nps.gov/glac/planyourvisit/how-to-wilderness-permit.htm"
+publisher = "National Park Service, Glacier National Park (wilderness permit page)"
+facts = ["permit"]
+
+[[hike.source]]
+url = "https://www.nps.gov/glac/planyourvisit/trailstatusreports.htm"
+publisher = "National Park Service, Glacier National Park (trail status page, last updated 2026-08-28). The season and months are the Ptarmigan Tunnel's season, on which the loop depends: the tunnel doors generally open in mid-July and usually close by late September; July, August and September each have half a month or more in season"
+facts = ["season", "months", "caution"]
 
 [[hike.source]]
 url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
-publisher = "University Press of Colorado (the publisher's page for the book); the facts are from the book's Trip 1, pages 16-42 of the 2019 (no edition is stated), read from the owner's copy"
-facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+publisher = "University Press of Colorado (the publisher's page for the book); the days, terrain, travel and the book's cautions are from the book's Trip 1, pages 16-42 of the 2019 printing (no edition is stated)"
+facts = ["start", "days", "terrain", "travel", "caution"]
 
 [[hike.source]]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=13121882204"
@@ -118,4 +140,13 @@ fields = ["guide", "route.note"]
 basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
 basis_url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The loop is now recorded as the North Circle, its common name, a named loop on the park's trails that several parties publish, and no longer as a guidebook route under the book's title, the Ptarmigan–Glenns Lake–Highline Loop. The book is now a guide to it, and the loop now has a track of 83.1 km from the park's trails layer."
+fields = ["name", "kind", "route", "guide", "designation", "length_note", "hike.summary", "hike.official_url", "hike.season", "hike.months", "hike.permit", "hike.caution", "hike.source", "source", "osm", "shield.contact", "shield.logo_owner", "verification"]
+basis = "The Park Service's National Register form for the Glacier National Park Tourist Trails names the North Circle and its legs from Many Glacier by Cosley Lake, Goat Haunt, Fifty Mountain and Granite Park; Backpacker magazine publishes the same loop as the Many Glacier Loop, and other published pages call it the North Circle. The park's Glacier National Park Trails layer carries every trail on it by name."
+basis_url = "https://npgallery.nps.gov/NRHP/GetAsset/NRHP/95001579_text"
+asked_by = "the dataset's owner"
 outcome = "applied"

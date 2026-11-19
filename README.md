@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-223 trails, 123 with a track and 100 with no track included. Of these, 78 are routes: 2 with a track and 76 without.
+223 trails, 124 with a track and 99 with no track included. Of these, 77 are routes: 2 with a track and 75 without.
 
 <!-- END COUNTS -->
 
@@ -149,6 +149,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | paumanok-path | Paumanok Path | US | NY | 201 | yes | ODbL-1.0 |
 | pinhoti | Pinhoti Trail | US | AL, GA | 540 | yes | ODbL-1.0 |
 | prescott-circle | Prescott Circle Trail | US | AZ | 90 | yes | ODbL-1.0 |
+| ptarmigan-glenns-lake-highline-loop | North Circle | US | MT | 84 | yes | us-gov-public-domain |
 | quehanna | Quehanna Trail | US | PA | 119 | yes | ODbL-1.0 |
 | rae-lakes-loop | Rae Lakes Loop | US | CA | 67 | yes | us-gov-public-domain |
 | rideau-trail | Rideau Trail | CA | ON | 387 | yes | ODbL-1.0 |
@@ -248,7 +249,6 @@ A route is a trail that a hiker worked out and published. The record names the a
 | northern-new-mexico-loop | Northern New Mexico Loop | US | NM | 805 | Brett Tucker ("Blisterfree") and collaborators | sold | no | [Northern New Mexico Loop Mapset & Resource Bundle](https://simblissity.net/northern-nm-loop-mapset.shtml) (purchase) |
 | pfiffner-traverse | Pfiffner Traverse | US | CO | 124 | Andrew Skurka | sold | no | [Pfiffner Traverse Guide](https://andrewskurka.com/product/pfiffner-traverse-guide-maps/) (purchase) |
 | powell-plateau-loop | Powell Plateau Loop | US | AZ | 88 | Bruce Grubbs | sold | no | [Backpacking Arizona: From Deep Canyons to Sky Islands](https://shop.adventurewithkeen.com/product/backpacking-arizona/) (purchase) |
-| ptarmigan-glenns-lake-highline-loop | Ptarmigan–Glenns Lake–Highline Loop | US | MT | 84 | Mike White and Douglas Lorain | sold | no | [Best Backpacking Trips in Montana, Wyoming, and Colorado](https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado) (purchase) |
 | route-in-between | Route In Between | US | AZ, UT, ID | 4344 | Kevin "LarryBoy" DeVries | withheld | no | [A Complete Guide to the Deseret Hiking Route](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) (free) |
 | rutherford-lake-loop | Rutherford Lake Loop | US | CA | 115 | Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett | sold | no | [Sierra North: Backcountry Trips in California's Sierra Nevada](https://openlibrary.org/books/OL8277252M) (purchase) |
 | san-diego-trans-county-trail | San Diego Trans County Trail | US | CA | 249 | Sea to Sea Trail Foundation (folded); guide by Liz Thomas | unclear | no | [San Diego Trans County Trail](https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail) (free) |

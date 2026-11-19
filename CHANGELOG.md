@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-20 - The Glacier loop is now listed as the North Circle, with a track
+
+- The 52 mile loop from Many Glacier in Glacier National Park is now listed as the North Circle, its common name, which the Park Service's National Register record of the park's tourist trails uses. Its other names are in its summary: the Many Glacier Loop, and the Ptarmigan–Glenns Lake–Highline Loop, the title Mike White and Douglas Lorain's Best Backpacking Trips in Montana, Wyoming, and Colorado gives it. Its page address is unchanged, and the old name still finds it.
+- It is recorded as a named loop on the park's trails that several parties publish, no longer as a guidebook route: the book is now a guide to it, and the Park Service is its source.
+- It now has a track, 83.1 km (51.6 miles), built from Glacier National Park's own trails layer. The park's historic loop, which went down to Goat Haunt and back, was about 65 miles; the track is the 52 mile loop.
+
 ## 2026-11-20 - Two guidebook routes and the High Sierra Camp Loop added, three near-misses left out
 
 - Middle Fork Kings River, 82.6 miles (133 km), from the Crown Valley Trailhead near Wishon Reservoir to the Maxson Trailhead near Courtright Reservoir, California: Trip 7, page 171 of Mike White and Douglas Lorain's Best Backpacking Trips in California and Nevada.

@@ -64,6 +64,7 @@ format = "web page with route notes and links to maps"
 summary = "The Southwestern Horseshoe is a route of about 1,782 miles that joins the Hayduke Trail, the Arizona Trail and the Grand Enchantment Trail in a horseshoe through Utah, Arizona and New Mexico. It runs from Arches National Park to Albuquerque. The author calls it definitely a spring or fall trip."
 official_url = "https://thehikinglife.com/2019/03/southwestern-horseshoe/"
 start = "Tower Arch, Arches National Park, Utah"
+start_lonlat = [-109.687, 38.79]
 end = "Sandia Crest, Albuquerque, New Mexico"
 end_lonlat = [-106.448, 35.209]
 shape = "point-to-point"
@@ -85,6 +86,11 @@ url = "https://www.wikidata.org/wiki/Q104720600"
 publisher = "Wikidata (CC0)"
 facts = ["end_lonlat"]
 
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1433609"
+publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Tower Arch, feature 1433609"
+facts = ["start_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -93,5 +99,14 @@ date = "2026-11-14"
 change = "The record was added: Southwestern Horseshoe."
 fields = ["record"]
 basis = "The record's own source entry: Cam Honan."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the start was added, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "U.S. Geological Survey, Geographic Names Information System (public domain): Tower Arch, feature 1433609."
+basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1433609"
 asked_by = "the dataset's own check"
 outcome = "applied"

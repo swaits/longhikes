@@ -65,7 +65,9 @@ format = "web page with PDF data sheets for each segment, in four segments; the 
 summary = "The Northern Colorado Trail crosses northern Colorado from Estes Park to Glenwood Springs. The author counts 304.4 miles in four segments through Rocky Mountain National Park and the Flat Tops Wilderness, with the towns of Walden, Steamboat Springs, Oak Creek and Yampa between the ends. It links existing trails and roads."
 official_url = "https://www.northerncoloradotrail.org/"
 start = "Estes Park, Colorado"
+start_lonlat = [-105.522, 40.377]
 end = "Glenwood Springs, Colorado"
+end_lonlat = [-107.325, 39.551]
 shape = "point-to-point"
 days = [21, 21]
 high_point = "Comanche Peak"
@@ -83,6 +85,16 @@ facts = ["summary", "official_url", "start", "end", "shape", "high_point", "terr
 url = "https://5280.com/ways-to-hike-the-new-northern-colorado-trail/"
 publisher = "5280 magazine"
 facts = ["summary", "days", "travel"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/204674"
+publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Estes Park, feature 204674"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/204659"
+publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Glenwood Springs, feature 204659"
+facts = ["end_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -102,5 +114,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://images.squarespace-cdn.com/content/v1/66a10c313ce1973b392b1403/f5001852-1a8d-41a8-bb81-0e119a66b6f7/NOCO+Trail+LOGO+2-17-2025.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The positions of the start and the end were added, so that the page can show a map of both."
+fields = ["hike.start_lonlat", "hike.end_lonlat"]
+basis = "U.S. Geological Survey, Geographic Names Information System (public domain): Estes Park, feature 204674; U.S. Geological Survey, Geographic Names Information System (public domain): Glenwood Springs, feature 204659."
+basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/204674"
 asked_by = "the dataset's own check"
 outcome = "applied"

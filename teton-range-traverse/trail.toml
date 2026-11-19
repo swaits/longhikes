@@ -62,6 +62,7 @@ format = "web page with step-by-step directions"
 summary = "The Teton Range Traverse goes north from Phillips Pass near Jackson Hole, Wyoming, along the Teton Crest Trail and on into Yellowstone National Park, to Old Faithful. It is about 106 miles, mostly on trail, with a short cross-country stretch and some dirt road. It has no resupply."
 official_url = "https://thehikinglife.com/2017/07/teton-range-traverse/"
 start = "Phillips Pass Trailhead, Wyoming"
+start_lonlat = [-110.932, 43.548]
 end = "Old Faithful, Yellowstone National Park"
 end_lonlat = [-110.828, 44.46]
 shape = "point-to-point"
@@ -84,6 +85,11 @@ url = "https://www.wikidata.org/wiki/Q858794"
 publisher = "Wikidata (CC0)"
 facts = ["end_lonlat"]
 
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1602124"
+publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Phillips Pass, feature 1602124"
+facts = ["start_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -101,5 +107,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://thehikinglife.com/2017/07/teton-range-traverse/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the start was added, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "U.S. Geological Survey, Geographic Names Information System (public domain): Phillips Pass, feature 1602124."
+basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1602124"
 asked_by = "the dataset's own check"
 outcome = "applied"

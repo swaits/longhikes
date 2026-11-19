@@ -5,7 +5,7 @@ name = "Green River Lakes & Titcomb Basin Loop"
 country = "US"
 regions = ["WY"]
 length_km = 114
-length_note = "70.9 mi, as the book gives it for Trip 15 (page 131), with 10,100 ft of elevation gain and 6 to 14 days. The book's days assume about 10 miles a day. The 70.9 miles includes the out-and-back into Titcomb Basin. The figures are the book's own and are not measured from a track."
+length_note = "70.9 mi, as the book gives it for Trip 15 (page 131), with 10,100 ft of elevation gain and 6 to 14 days. The book's days assume about 10 miles a day. The 70.9 miles includes the out-and-back into Titcomb Basin. The figures are the book's own and are not measured from a track. The loop alone is about 47 to 48 miles. The rest of the 70.9 miles is the spur into Titcomb Basin, about 11.8 miles each way by the book's map figures, which is walked both ways; counted once, the trip is about 59 miles. The book's text calls the spur a long side trip, while the trip's name and its main figure include it, and this record keeps it as part of the trip as the author names and measures it. The published figure stays as the length."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Douglas Lorain, 2010, in Backpacking Wyoming); no agency or association"
@@ -66,6 +66,7 @@ isbn = "978-0-89997-505-4"
 summary = "The Green River Lakes & Titcomb Basin Loop is a backpacking loop of six to fourteen days in the northern Wind River Range of Wyoming, from the Green River Lakes trailhead. It follows the Green River and the Highline Trail past Three Forks Park, Vista Pass, Cube Rock Pass and Shannon Pass to Island Lake and Titcomb Basin, and returns by Elbow Lake, Summit Lake, Palmer Canyon and Porcupine Creek. Douglas Lorain describes it as Trip 15 in Backpacking Wyoming."
 official_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 start = "Green River Lakes trailhead, Bridger-Teton National Forest, Wyoming"
+start_lonlat = [-109.862, 43.313]
 shape = "loop"
 days = [6, 14]
 season = "Usually open mid-July to early October, best late July and August"
@@ -80,6 +81,11 @@ checked = "2026-11-18"
 url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 131-135 of the 1st edition (2010), read from a printed copy"
 facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=391050079"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Green River Lakes Campground, at the road end where the trailhead is, OpenStreetMap way 391050079"
+facts = ["start_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -99,5 +105,23 @@ change = "The length note now gives the days and says the length includes the ou
 fields = ["length_note"]
 basis = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins, by Douglas Lorain (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4), checked against the full text of the owner's copy."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now says the loop alone is about 47 to 48 miles, that the spur into Titcomb Basin is about 11.8 miles each way, and that counted once the trip is about 59 miles."
+fields = ["length_note"]
+basis = "Backpacking Wyoming, by Douglas Lorain (Wilderness Press, 2010). Trip 15 gives 70.9 miles with no bracketed figure, includes the Titcomb Basin spur in its itinerary, and calls the spur a long side trip; the trip's map prints the spur's segments, which total 11.8 miles each way."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the start was added, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): Green River Lakes Campground, at the road end where the trailhead is, OpenStreetMap way 391050079."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=391050079"
 asked_by = "the dataset's own check"
 outcome = "applied"

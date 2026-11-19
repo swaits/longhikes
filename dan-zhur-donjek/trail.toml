@@ -48,6 +48,7 @@ note = "No track to measure."
 summary = "The Dän Zhùr (Donjek) Route is a 110 km loop in and beside Kluane National Park and Reserve in southwest Yukon. It crosses the Burwash Uplands, descends to the Donjek River and the toe of the Donjek Glacier, and returns over Atlas Pass. Parks Canada calls it Parcours Dän Zhùr (Donjek) in French."
 official_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
 start = "Duke River Bridge, Alaska Highway, Yukon"
+start_lonlat = [-139.145, 61.376]
 shape = "loop"
 days = [8, 10]
 season = "Mid-June to mid-September"
@@ -69,6 +70,11 @@ url = "https://parcs.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
 publisher = "Parks Canada"
 facts = ["summary"]
 
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=1476065695"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Duke River Bridge, OpenStreetMap way 1476065695"
+facts = ["start_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -87,5 +93,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the start was added, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): Duke River Bridge, OpenStreetMap way 1476065695."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=1476065695"
 asked_by = "the dataset's own check"
 outcome = "applied"

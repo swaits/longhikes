@@ -49,6 +49,7 @@ summary = "The Conservation Trail runs north through western New York from the P
 official_url = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
 start = "Pennsylvania border, Allegany State Park, New York"
 end = "Rainbow Bridge, Niagara Falls, New York"
+end_lonlat = [-79.067, 43.09]
 shape = "point-to-point"
 terrain = ["forest"]
 checked = "2026-11-14"
@@ -62,6 +63,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain"]
 title = "Conservation Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Conservation_Trail"
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=990979149"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Rainbow Bridge, United States side, OpenStreetMap way 990979149"
+facts = ["end_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -80,5 +86,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the end was added, so that the page can show a map of it."
+fields = ["hike.end_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): Rainbow Bridge, United States side, OpenStreetMap way 990979149."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=990979149"
 asked_by = "the dataset's own check"
 outcome = "applied"

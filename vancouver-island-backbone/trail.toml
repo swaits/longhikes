@@ -66,6 +66,7 @@ isbn = "0-9680766-1-0"
 summary = "The Vancouver Island Backbone is a wilderness route of over 300 km along the mountainous interior of Vancouver Island, from south to north. It links trails, alpine ridges, logging roads, river valleys and lakes. It is a route and not a trail: no trail was cut or marked for it."
 official_url = "https://www.wildisle.ca/backbone/index.html"
 start = "Stamp Falls Park near Port Alberni, British Columbia"
+start_lonlat = [-124.919, 49.332]
 end = "Port McNeill, British Columbia"
 end_lonlat = [-127.086, 50.591]
 shape = "point-to-point"
@@ -90,6 +91,11 @@ url = "https://www.wikidata.org/wiki/Q2104736"
 publisher = "Wikidata (CC0)"
 facts = ["end_lonlat"]
 
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=1652413166"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Stamp Falls, OpenStreetMap node 1652413166"
+facts = ["start_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -107,5 +113,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.wildisle.ca/backbone/index.html"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the start was added, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): Stamp Falls, OpenStreetMap node 1652413166."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=1652413166"
 asked_by = "the dataset's own check"
 outcome = "applied"

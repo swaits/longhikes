@@ -57,6 +57,21 @@ url = "https://shop.adventurewithkeen.com/wilderness-press/"
 format = "book; the publisher's Wilderness Press page, as the book's own page was not found"
 publisher = "Wilderness Press"
 
+[hike]
+start = "Road's End, Kings Canyon National Park, California"
+start_lonlat = [-118.583, 36.795]
+checked = "2026-11-18"
+
+[[hike.source]]
+url = "https://shop.adventurewithkeen.com/wilderness-press/"
+publisher = "Wilderness Press (the publisher's page, the one the route note rests on): the route starts from Road's End in Kings Canyon"
+facts = ["start"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=279697028"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Roads End Permit Station, at Road's End, OpenStreetMap way 279697028"
+facts = ["start_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -65,5 +80,14 @@ date = "2026-11-10"
 change = "The record was added: Circle of Solitude."
 fields = ["record"]
 basis = "The record's own source entry: Wilderness Press."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The start, Road's End, was added as a place name and a position, so that the page can show a map of the trailhead."
+fields = ["hike.start", "hike.start_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): Roads End Permit Station, at Road's End, OpenStreetMap way 279697028."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=279697028"
 asked_by = "the dataset's own check"
 outcome = "applied"

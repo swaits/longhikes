@@ -49,6 +49,7 @@ summary = "The Midland to Mackinac Trail runs from Midland County to Mackinaw Ci
 official_url = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
 start = "Midland County, Michigan"
 end = "Mackinaw City, Michigan"
+end_lonlat = [-84.728, 45.784]
 shape = "point-to-point"
 terrain = ["forest"]
 travel = "trail"
@@ -70,6 +71,11 @@ url = "https://www.ebook.de/de/product/34763345/joan_h_young_midland_to_mackinac
 publisher = "ebook.de (guide description)"
 facts = ["summary", "caution"]
 
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=R&osmid=134987"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Mackinaw City, OpenStreetMap relation 134987"
+facts = ["end_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -88,5 +94,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the end was added, so that the page can show a map of it."
+fields = ["hike.end_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): Mackinaw City, OpenStreetMap relation 134987."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=R&osmid=134987"
 asked_by = "the dataset's own check"
 outcome = "applied"

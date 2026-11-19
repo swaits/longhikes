@@ -65,7 +65,9 @@ price_checked = "2026-11-10"
 summary = "The Kings Canyon High Basin Route wraps around the upper watershed of the Kings River in the High Sierra, entirely within Kings Canyon National Park. Two-thirds of it is committing off-trail travel or long-abandoned trail, and it averages 725 vertical feet of change per mile between 6,000 and 12,400 feet."
 official_url = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/"
 start = "Lodgepole, Sequoia National Park"
+start_lonlat = [-118.732, 36.604]
 end = "Road's End, Kings Canyon National Park"
+end_lonlat = [-118.583, 36.795]
 shape = "point-to-point"
 days = [9, 10]
 season = "August and September are the most reliable months; June and July bring high water, lingering snowfields and mosquitoes"
@@ -98,6 +100,16 @@ url = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/route-d
 publisher = "Andrew Skurka"
 facts = ["high_point"]
 
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=181002967"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Lodgepole Visitor Center, OpenStreetMap way 181002967"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=279697028"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Roads End Permit Station, OpenStreetMap way 279697028"
+facts = ["end_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -115,5 +127,14 @@ change = "The logo record now says an emblem exists or may exist but no usable a
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
 basis_url = "https://andrewskurka.com/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The positions of the start and the end were added, so that the page can show a map of both."
+fields = ["hike.start_lonlat", "hike.end_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): Lodgepole Visitor Center, OpenStreetMap way 181002967; OpenStreetMap contributors, via Nominatim (ODbL): Roads End Permit Station, OpenStreetMap way 279697028."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=181002967"
 asked_by = "the dataset's own check"
 outcome = "applied"

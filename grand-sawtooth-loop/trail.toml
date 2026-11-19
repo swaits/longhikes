@@ -5,9 +5,9 @@ name = "Grand Sawtooth Loop"
 country = "US"
 regions = ["ID"]
 length_km = 113
-length_note = "70 mi, as the Sawtooth Association gives it (about 70 mi) for the loop from the Grandjean Trailhead; it says the loop is not a designated trail but a connection of trails with many variations and many trailheads. CleverHiker gives 60 to 70 mi, adding or subtracting for side trips and route variations, a 2025 trip report gives six days adding up to about 70 mi, and Fastest Known Time gives \"75(ish)\". The figures differ because the loop is not fixed: each publisher's version includes different side trips and trails."
+length_note = "70 mi, as the Sawtooth Association gives it: its page says \"round trip 70 +/- miles\" with the trailhead \"various\", and says the loop is not a designated trail but a connection of trails with many variations and many trailheads. The page does not say that the 70 miles are from Grandjean. Douglas Lorain's Backpacking Idaho (Wilderness Press, 2004), Trip 15, \"Grand Sawtooths Loop\", from the Grandjean trailhead, gives 63 mi, or 65 mi with side trips. CleverHiker gives 60 to 70 mi, adding or subtracting for side trips and route variations, and Fastest Known Time gives \"75(ish)\". The figures differ because the loop is not fixed: each publisher's version includes different side trips and trails. This record keeps the Association's 70 mi as the length."
 tier = "regional"
-designation = "A loop of Forest Service trails in the Sawtooth Wilderness, Idaho, that guides publish under this name; not a designated or official trail"
+designation = "A named loop that joins designated Forest Service trails in the Sawtooth Wilderness, Idaho, and that the Sawtooth Association among others publishes under this name; the loop itself is not one designated trail"
 wave = 1
 
 [source]
@@ -45,7 +45,7 @@ verified = false
 note = "No track to measure. The Forest Service's trails layer was queried on 2026-11-18 and the trails the guides name join into a loop of 60.0 mi, against the 70 mi given as the length."
 
 [hike]
-summary = "The Grand Sawtooth Loop is a backpacking loop in the Sawtooth Wilderness of central Idaho, starting and ending at the Grandjean Campground Trailhead. It passes high alpine lakes such as Sawtooth Lake, the Baron Lakes and Ardeth Lake and crosses mountain passes on maintained trails. It is not a designated trail: the Sawtooth Association calls it a connection of trails that make a loop, with many variations."
+summary = "The Grand Sawtooth Loop is a backpacking loop in the Sawtooth Wilderness of central Idaho, starting and ending at the Grandjean Campground Trailhead. It passes high alpine lakes such as Sawtooth Lake, the Baron Lakes and Ardeth Lake and crosses mountain passes on maintained trails. The loop is not one designated trail: it joins designated Forest Service trails, and the Sawtooth Association, which publishes it as a named loop, calls it a connection of trails with many variations."
 official_url = "https://discoversawtooth.org/grand-sawtooth-loop"
 start = "Grandjean Campground Trailhead, Sawtooth Mountains, Idaho"
 start_lonlat = [-115.151, 44.149]
@@ -98,5 +98,14 @@ change = "The record was added: the Grand Sawtooth Loop, 70 miles (113 km) from 
 fields = ["record"]
 basis = "CleverHiker, the Sawtooth Association and Fastest Known Time each describe a loop on Forest Service trails under this name, from the Grandjean Trailhead; the Sawtooth Association gives about 70 miles, CleverHiker 60 to 70 and Fastest Known Time about 75. The owner of the dataset ruled that it belongs in it."
 basis_url = "https://www.cleverhiker.com/backpacking/a-complete-guide-to-hiking-the-grand-sawtooth-loop/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The classification text no longer says the opposite of itself: the designation now says the loop joins designated Forest Service trails and is published as a named loop by the Sawtooth Association among others, and is not one designated trail. The length note gives Douglas Lorain's figures from Backpacking Idaho (63 miles from Grandjean, 65 with side trips), states what the Association's page says, and no longer mentions an unsourced 2025 trip report; the length stays 70 miles."
+fields = ["designation", "length_note"]
+basis = "Backpacking Idaho, by Douglas Lorain (Wilderness Press, 1st edition, March 2004), Trip 15, gives 63 miles (65 with side trips) from Grandjean. The Sawtooth Association's page says the loop is not designated and gives a round trip of 70 +/- miles from various trailheads. No source for the 2025 trip report was in the record, so the claim was removed."
+basis_url = "https://discoversawtooth.org/grand-sawtooth-loop"
 asked_by = "the dataset's own check"
 outcome = "applied"

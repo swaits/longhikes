@@ -49,6 +49,7 @@ summary = "The Bayou State Trail crosses Louisiana from Bodcau Wildlife Manageme
 official_url = "https://www.bayoustatetrail.com/"
 start = "Bodcau Wildlife Management Area, Louisiana"
 end = "Morgan City, Louisiana"
+end_lonlat = [-91.207, 29.699]
 shape = "point-to-point"
 terrain = ["forest"]
 caution = "The association does not say how much of the route is trail and how much is road or town walking. It reports that the Hwy 182 bridge over the Atchafalaya River, between Berwick and Morgan City, is closed until the fall of 2026, and that the southern end is for now at the Berwick Branch Library, 3512 5th Street."
@@ -74,6 +75,11 @@ url = "https://www.bayoustatetrail.com/about"
 publisher = "Bayou State Trail Association"
 facts = ["summary", "terrain"]
 
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=R&osmid=131919"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Morgan City, OpenStreetMap relation 131919"
+facts = ["end_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -91,5 +97,14 @@ change = "The association's round badge was added as the trail's emblem. The rec
 fields = ["shield.status", "shield.logo_source", "shield.logo_file", "shield.logo_owner"]
 basis = "The badge is the brand logo in the header of the association's own site, and the file was taken from there."
 basis_url = "https://www.bayoustatetrail.com/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the end was added, so that the page can show a map of it."
+fields = ["hike.end_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): Morgan City, OpenStreetMap relation 131919."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=R&osmid=131919"
 asked_by = "the dataset's own check"
 outcome = "applied"

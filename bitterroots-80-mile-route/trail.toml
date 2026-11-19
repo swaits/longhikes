@@ -63,6 +63,7 @@ price_checked = "2026-11-14"
 summary = "The Bitterroots 80-mile Route is a six-day backpacking route in the Selway-Bitterroot Wilderness, starting at Lake Como. Parts of it are off-trail, across talus and scree and through burned forest. The author's page describes a south-to-north route, with day-by-day directions."
 official_url = "https://wildernessmindset.com/80-miles-in-the-selway-bitterroot-wilderness/"
 start = "Lake Como (south side), Montana"
+start_lonlat = [-114.261, 46.055]
 end = "Big Creek Trailhead"
 shape = "point-to-point"
 days = [6, 6]
@@ -78,6 +79,11 @@ checked = "2026-11-14"
 url = "https://wildernessmindset.com/80-miles-in-the-selway-bitterroot-wilderness/"
 publisher = "Wilderness Mindset (the route's author)"
 facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "high_point", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/781549"
+publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Lake Como, feature 781549"
+facts = ["start_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -96,5 +102,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://wildernessmindset.com/80-miles-in-the-selway-bitterroot-wilderness/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the start was added, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "U.S. Geological Survey, Geographic Names Information System (public domain): Lake Como, feature 781549."
+basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/781549"
 asked_by = "the dataset's own check"
 outcome = "applied"

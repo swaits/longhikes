@@ -5,7 +5,7 @@ name = "Thorofare and South Boundary Trail"
 country = "US"
 regions = ["WY"]
 length_km = 109
-length_note = "68 mi, as Frommer's gives it for the point-to-point hike on the Thorofare Trail and the South Boundary Trail. Other outlets give 69 to 70 mi, which is within what a start at the trailhead, the exact path walked and rounding account for. The National Park Service gives only the parts: 33.1 mi for the Thorofare Trail alone, from the Nine Mile Trailhead, and 11.6 mi for the South Boundary Trail's South Entrance to Harebell section."
+length_note = "68 mi, as Frommer's gives it for the point-to-point hike on the Thorofare Trail and the South Boundary Trail. Three other outlets publish the same through-hike at 69 mi (Visit Bozeman) and 70 mi (Campman, and Mountain House), which is within what the exact path walked and rounding account for; the record keeps 68 mi as the length. The National Park Service gives only the parts: 33.1 mi for the Thorofare Trail alone, from the Nine Mile Trailhead, and 11.6 mi for the South Boundary Trail's South Entrance to Harebell section."
 tier = "regional"
 designation = "Two National Park Service trails in Yellowstone National Park, the Thorofare Trail and the South Boundary Trail, walked end to end as one hike"
 wave = 1
@@ -84,6 +84,21 @@ publisher = "Frommer's"
 facts = ["summary", "shape", "season", "months"]
 
 [[hike.source]]
+url = "https://blog.visit-bozeman.com/blog/off-the-beaten-path-hikes-to-check-out-in-yellowstone"
+publisher = "Visit Bozeman (Bozeman Chamber of Commerce)"
+facts = ["summary", "shape"]
+
+[[hike.source]]
+url = "https://www.campman.com/blog/the-10-best-hikes-in-yellowstone-national-park/"
+publisher = "Campman (written by Ethan Shaw for RootsRated)"
+facts = ["summary", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://mountainhouse.com/blogs/backpacking-hiking/10-epic-backpacking-trips-to-take-in-the-us"
+publisher = "Mountain House"
+facts = ["summary", "shape"]
+
+[[hike.source]]
 url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
 publisher = "National Park Service (public Trails dataset: the ends of the track)"
 facts = ["start_lonlat", "end_lonlat"]
@@ -97,5 +112,14 @@ change = "The record was added: the Thorofare and South Boundary Trail, 68 miles
 fields = ["record"]
 basis = "Frommer's describes the 68-mile point-to-point hike on the Thorofare Trail and the South Boundary Trail, and the Park Service's own pages describe the two trails and their ends. The owner of the dataset ruled that the hike belongs in it."
 basis_url = "https://www.frommers.com/destinations/yellowstone-national-park/exploring-the-backcountry/hiking-trails"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now gives the other published figures for the same through-hike (69 and 70 miles) and three more pages that publish it are cited as sources; the length stays 68 miles."
+fields = ["length_note", "hike.shape"]
+basis = "Frommer's gives the 68-mile point-to-point hike on the Thorofare Trail and the South Boundary Trail. Visit Bozeman gives the Thorofare and the South Boundary Trail as 69 miles needing a shuttle; Campman gives 70 miles from the Nine Mile Trailhead to the South Entrance; Mountain House gives a 70-mile trip from the East Entrance Road to the South Entrance."
+basis_url = "https://www.campman.com/blog/the-10-best-hikes-in-yellowstone-national-park/"
 asked_by = "the dataset's own check"
 outcome = "applied"

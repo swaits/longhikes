@@ -66,6 +66,7 @@ isbn = "978-0-89997-505-4"
 summary = "The Teton Wilderness Loop is a backpacking loop of five to seven days in the Teton Wilderness of Bridger-Teton National Forest, Wyoming, from the Turpin Meadows Trailhead. It crosses the Soda Fork and North Fork meadows and Two Ocean Pass on the Continental Divide, fords the Yellowstone River, and returns past Ferry Lake and Crater Lake. Douglas Lorain describes it as Trip 11 in Backpacking Wyoming."
 official_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 start = "Turpin Meadows Trailhead, Bridger-Teton National Forest, Wyoming"
+start_lonlat = [-110.266, 43.861]
 shape = "loop"
 days = [5, 7]
 season = "Usually open mid-July to October, best late July to September"
@@ -80,6 +81,11 @@ checked = "2026-11-18"
 url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 95-99 of the 1st edition (2010), read from a printed copy"
 facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1603804"
+publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Turpin Meadow, feature 1603804"
+facts = ["start_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -99,5 +105,14 @@ change = "The length note now explains the bracketed figure, the days and the st
 fields = ["length_note"]
 basis = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins, by Douglas Lorain (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4), checked against the full text of the owner's copy."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the start was added, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "U.S. Geological Survey, Geographic Names Information System (public domain): Turpin Meadow, feature 1603804."
+basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1603804"
 asked_by = "the dataset's own check"
 outcome = "applied"

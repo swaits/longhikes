@@ -67,7 +67,9 @@ format = "web page with turn-by-turn guide"
 summary = "The San Diego Trans County Trail runs about 155 miles from the Salton Sea to the Pacific Ocean at Torrey Pines State Beach. It crosses desert washes, mountains and suburbs, with road walks and some bushwhacking. The guide calls it a route, not a trail."
 official_url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
 start = "Iberia Wash at the Salton Sea, California"
+start_lonlat = [-115.917, 33.3]
 end = "Torrey Pines State Beach, California"
+end_lonlat = [-117.26, 32.931]
 shape = "point-to-point"
 days = [7, 12]
 season = "November to February"
@@ -82,6 +84,16 @@ checked = "2026-11-14"
 url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
 publisher = "Liz Thomas, Treeline Review (author of the current guide)"
 facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "high_point", "terrain", "permit", "caution"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/243761"
+publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Iberia Wash, feature 243761"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=R&osmid=7102568"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Torrey Pines State Beach, OpenStreetMap relation 7102568"
+facts = ["end_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -100,5 +112,14 @@ change = "The logo record now says an emblem exists or may exist but no usable a
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
 basis_url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The positions of the start and the end were added, so that the page can show a map of both."
+fields = ["hike.start_lonlat", "hike.end_lonlat"]
+basis = "U.S. Geological Survey, Geographic Names Information System (public domain): Iberia Wash, feature 243761; OpenStreetMap contributors, via Nominatim (ODbL): Torrey Pines State Beach, OpenStreetMap relation 7102568."
+basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/243761"
 asked_by = "the dataset's own check"
 outcome = "applied"

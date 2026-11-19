@@ -66,6 +66,7 @@ isbn = "978-0-89997-505-4"
 summary = "The Grand Teton Loop is a backpacking loop of five to eight days in Grand Teton National Park, Wyoming, from the Lupine Meadows Trailhead. By the book's map it goes north past Jenny Lake to String Lake and climbs Paintbrush Canyon to Paintbrush Divide on the first day, then passes Lake Solitude, goes up South Fork Cascade Canyon, crosses Hurricane Pass, and runs through Alaska Basin and along Death Canyon Shelf to Fox Creek Pass, where the book names the Teton Crest Trail. It then goes down Death Canyon and finishes on the Valley Trail past Bradley and Taggart lakes to Lupine Meadows. The book describes optional cross-country scrambles. Douglas Lorain describes it as Trip 12 in Backpacking Wyoming, at 48.5 miles under the 50 mile floor, and it is listed as an exception."
 official_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 start = "Lupine Meadows Trailhead, Grand Teton National Park, Wyoming"
+start_lonlat = [-110.742, 43.735]
 shape = "loop"
 days = [5, 8]
 season = "Usually open mid-July to mid-October, best late July and August"
@@ -80,6 +81,11 @@ checked = "2026-11-18"
 url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 104-106 of the 1st edition (2010), read from a printed copy"
 facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=13122765355"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Lupine Meadows Trailhead, OpenStreetMap node 13122765355"
+facts = ["start_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -99,5 +105,14 @@ change = "The summary now gives the loop in the book's direction and finish, the
 fields = ["length_note", "hike.summary", "hike.caution"]
 basis = "Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins, by Douglas Lorain (Wilderness Press, 1st edition 2010, ISBN 978-0-89997-505-4), checked against the full text of the owner's copy."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the start was added, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): Lupine Meadows Trailhead, OpenStreetMap node 13122765355."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=13122765355"
 asked_by = "the dataset's own check"
 outcome = "applied"

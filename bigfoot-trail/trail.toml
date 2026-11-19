@@ -78,6 +78,7 @@ publisher = "Bigfoot Trail Alliance"
 summary = "The Bigfoot Trail is a long route through the Klamath Mountains of northwest California and, briefly, southwest Oregon. It runs from the Yolla Bolly-Middle Eel Wilderness north to the Pacific Ocean near Crescent City, through six wilderness areas, and is known for the many conifer species it passes. It is a rough route, not a continuously maintained trail."
 official_url = "https://www.bigfoottrail.org/"
 start = "Ides Cove, Yolla Bolly-Middle Eel Wilderness, California"
+start_lonlat = [-122.829, 40.038]
 end = "The Pacific Ocean near Crescent City, California"
 end_lonlat = [-124.202, 41.756]
 shape = "point-to-point"
@@ -111,6 +112,11 @@ title = "Bigfoot Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Bigfoot_Trail"
 
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=93489630"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Ides Cove Trailhead, OpenStreetMap node 93489630"
+facts = ["start_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -128,5 +134,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://bigfootdev2.wpengine.com/wp-content/uploads/2019/06/Header-300x300.gif"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the start was added, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): Ides Cove Trailhead, OpenStreetMap node 93489630."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=93489630"
 asked_by = "the dataset's own check"
 outcome = "applied"

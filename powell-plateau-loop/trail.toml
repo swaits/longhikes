@@ -5,7 +5,7 @@ name = "Powell Plateau Loop"
 country = "US"
 regions = ["AZ"]
 length_km = 88
-length_note = "54.6 mi, as the book gives it for Trip 6 (page 75), with 7,250 ft of elevation gain, 9 days and no shuttle. The book's days assume about 8 miles a day, and it calls its itinerary a minimum: 12 days would not be excessive. The figure is the book's own and is not measured from a track."
+length_note = "54.6 mi, as the book gives it for Trip 6 (page 75), with 7,250 ft of elevation gain, 9 days and no shuttle. The book's days assume about 8 miles a day, and it calls its itinerary a minimum: 12 days would not be excessive. The figure is the book's own and is not measured from a track. The only ground walked twice lies within the 0.6 mile between the trailhead and the spring at Muav Saddle, so at least 54.0 miles are walked once. The published figure stays as the length."
 kind = "route"
 tier = "regional"
 designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
@@ -66,6 +66,7 @@ isbn = "978-0-89997-324-1"
 summary = "The Powell Plateau Loop is a nine day backpacking loop in the Grand Canyon in Arizona, from the Swamp Point Trailhead around Powell Plateau along the Colorado River. It uses the North Bass Trail and runs through Shinumo Creek, Tapeats Creek and Saddle Canyon, and through Middle Granite Gorge, Conquistador Aisle, Stephen Aisle and Granite Gorge. Bruce Grubbs describes it as Trip 6 in Backpacking Arizona."
 official_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 start = "Swamp Point Trailhead, Grand Canyon National Park, Arizona"
+start_lonlat = [-112.354, 36.335]
 shape = "loop"
 days = [9, 9]
 season = "Mid September to November"
@@ -80,6 +81,11 @@ checked = "2026-11-18"
 url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 publisher = "Wilderness Press (the publisher's page for the book); the facts are from the book's pages 74-75 and the Featured Trips Summary Chart on page xiii of the 1st edition, 3rd printing, read from a printed copy"
 facts = ["summary", "official_url", "start", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/12031"
+publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Swamp Point, feature 12031"
+facts = ["start_lonlat"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -99,5 +105,23 @@ change = "The length note now says the book's days assume about 8 miles a day an
 fields = ["length_note", "hike.caution"]
 basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition September 2003, ISBN 978-0-89997-324-1), checked against the full text of the owner's copy."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The length note now says the only repeated ground lies within the first 0.6 mile, so at least 54.0 miles are walked once."
+fields = ["length_note"]
+basis = "Backpacking Arizona: From Deep Canyons to Sky Islands, by Bruce Grubbs (Wilderness Press, 1st edition, September 2003, ISBN 978-0-89997-324-1). The text of Trip 6 has the loop leave and rejoin the North Bass Trail at Muav Saddle, and the trip's map prints 0.6 mile between the trailhead and the spring at the saddle."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the start was added, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "U.S. Geological Survey, Geographic Names Information System (public domain): Swamp Point, feature 12031."
+basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/12031"
 asked_by = "the dataset's own check"
 outcome = "applied"

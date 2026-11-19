@@ -67,6 +67,7 @@ price_checked = "2026-11-10"
 summary = "Andrew Skurka's Wind River High Route follows the alpine crest of Wyoming's Wind River Range between Wind River Peak in the south and Downs Mountain in the north. It stays mostly between 10,000 and 12,000 feet, dropping into glacier-carved valleys past hundreds of lakes. Two thirds of it is off-trail, including a continuous stretch of 30 miles."
 official_url = "https://andrewskurka.com/adventures/wind-river-high-route/"
 start = "Bruce Bridge near Lander, Wyoming"
+start_lonlat = [-108.857, 42.729]
 end = "Trail Lakes near Dubois, Wyoming"
 shape = "point-to-point"
 terrain = ["alpine", "lakes"]
@@ -91,6 +92,11 @@ url = "https://andrewskurka.com/product/wind-river-high-route-guide/"
 publisher = "Andrew Skurka"
 facts = ["summary"]
 
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=10587941394"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Bruce's Bridge Trailhead, OpenStreetMap node 10587941394"
+facts = ["start_lonlat"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -108,5 +114,14 @@ change = "The logo record now says an emblem exists or may exist but no usable a
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
 basis_url = "https://andrewskurka.com/adventures/wind-river-high-route/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-18"
+change = "The position of the start was added, so that the page can show a map of it."
+fields = ["hike.start_lonlat"]
+basis = "OpenStreetMap contributors, via Nominatim (ODbL): Bruce's Bridge Trailhead, OpenStreetMap node 10587941394."
+basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=10587941394"
 asked_by = "the dataset's own check"
 outcome = "applied"

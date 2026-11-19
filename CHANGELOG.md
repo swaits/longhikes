@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-18 - Place maps open on the place
+
+- A state, province or group page now opens its map on the place itself. Before, the map fitted every trail that touches the place, so one coast-to-coast trail opened Utah's map on the whole United States.
+- Trails that run beyond the place are still drawn in full and run off the edge of the opening view. Clearing the filters returns the map to the place.
+- The place boxes are a new data file, `web/place-bounds.toml`: 64 states, provinces and territories, from Natural Earth (public domain). A group page uses the combined box of its members that have trails.
+- This also fixes a second fit that zoomed back out a moment after opening on any place with a trail that has no track.
+
 ## 2026-11-18 - Lengths are shown as walked
 
 - Records and pages no longer state a length with repeated ground taken out. The length shown for a trail or route is the whole distance walked, and where a stem or spur is walked out and back the record says so without giving a shorter figure. The 50 mile floor is still tested on the length with nothing counted twice, but that figure is kept for the maintainers and is shown only on the left-out list, where it is the reason a trip is left out.

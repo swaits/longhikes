@@ -26,7 +26,7 @@ HASH_RE = re.compile(r"[0-9a-f]{16}")
 
 # Ship 1 validates shape only. Ship 2 turns this on once every record is placed,
 # so a new trail or a new track cannot ship unplaced.
-REQUIRE_PLACES_CHECKED = False
+REQUIRE_PLACES_CHECKED = True
 
 
 def track_hash(path):

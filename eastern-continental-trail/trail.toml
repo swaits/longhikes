@@ -121,12 +121,6 @@ source = "https://nimblewillnomad.com/books/"
 
 [[place]]
 kind = "range"
-slug = "great-smoky-mountains"
-basis = "stated"
-source = "https://nimblewillnomad.com/books/"
-
-[[place]]
-kind = "range"
 slug = "green-mountains"
 basis = "stated"
 source = "https://nimblewillnomad.com/books/"
@@ -186,7 +180,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Great Smoky Mountains National Park, Shenandoah National Park, Blue Ridge Mountains, Great Smoky Mountains, Green Mountains and White Mountains from published pages, as it has no track to measure."
+change = "The trail was placed in Great Smoky Mountains National Park, Shenandoah National Park, Blue Ridge Mountains, Green Mountains and White Mountains from published pages, as it has no track to measure."
 fields = ["place"]
 basis = "The trail's own description says: \"(record route note) on the International Appalachian Trail, the Appalachian Trail, the Benton MacKaye Trail and the Pinhoti Trail\""
 basis_url = "https://nimblewillnomad.com/books/"

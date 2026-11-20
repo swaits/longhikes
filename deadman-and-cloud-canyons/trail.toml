@@ -98,12 +98,6 @@ slug = "sequoia-and-kings-canyon"
 basis = "stated"
 source = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
 
-[[place]]
-kind = "range"
-slug = "great-western-divide"
-basis = "stated"
-source = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
-
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -154,9 +148,9 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Sequoia and Kings Canyon National Parks and Great Western Divide from published pages, as it has no track to measure."
+change = "The trail was placed in Sequoia and Kings Canyon National Parks from published pages, as it has no track to measure."
 fields = ["place"]
-basis = "The trail's own description says: \"Deadman and Cloud Canyons is a backpacking semiloop of 11 hiking days in Sequoia and Kings Canyon National Parks, California, from the Twin Lakes Trailhead at Lodgepole Campground.\" (Sequoia and Kings Canyon National Parks) The trail's own description says: \"it loops through Deadman Canyon and over Elizabeth Pass, Kaweah Gap and Colby Pass by the Kern River canyon and Cloud Canyon\" (Great Western Divide)"
+basis = "The trail's own description says: \"Deadman and Cloud Canyons is a backpacking semiloop of 11 hiking days in Sequoia and Kings Canyon National Parks, California, from the Twin Lakes Trailhead at Lodgepole Campground.\" (Sequoia and Kings Canyon National Parks)"
 basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -346,12 +346,6 @@ km = 17.0
 
 [[place]]
 kind = "wilderness"
-slug = "russian-wilderness"
-basis = "track"
-km = 12.0
-
-[[place]]
-kind = "wilderness"
 slug = "san-gorgonio-wilderness"
 basis = "track"
 km = 30.5
@@ -441,7 +435,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Crater Lake National Park, Lassen Volcanic National Park, Mount Rainier National Park, North Cascades National Park, Sequoia and Kings Canyon National Parks, Yosemite National Park, Klamath Mountains, North Cascades, Oregon Cascades, Palisades, Transverse Ranges, Alpine Lakes Wilderness, Ansel Adams Wilderness, Bucks Lake Wilderness, Carson-Iceberg Wilderness, Castle Crags Wilderness, Chimney Peak Wilderness, Desolation Wilderness, Diamond Peak Wilderness, Domeland Wilderness, Emigrant Wilderness, Glacier Peak Wilderness, Goat Rocks Wilderness, Golden Trout Wilderness, Granite Chief Wilderness, Henry M. Jackson Wilderness, Hoover Wilderness, Indian Heaven Wilderness, John Muir Wilderness, Kiavah Wilderness, Marble Mountain Wilderness, Mark O. Hatfield Wilderness, Mokelumne Wilderness, Mount Adams Wilderness, Mount Hood Wilderness, Mount Jefferson Wilderness, Mount Thielsen Wilderness, Mount Washington Wilderness, Norse Peak Wilderness, Owens Peak Wilderness, Pasayten Wilderness, Pleasant View Ridge Wilderness, Russian Wilderness, San Gorgonio Wilderness, San Jacinto Wilderness, Sheep Mountain Wilderness, Sky Lakes Wilderness, Soda Mountain Wilderness, South Sierra Wilderness, Stephen Mather Wilderness, Three Sisters Wilderness, Trinity Alps Wilderness, William O. Douglas Wilderness."
+change = "The trail was placed in Crater Lake National Park, Lassen Volcanic National Park, Mount Rainier National Park, North Cascades National Park, Sequoia and Kings Canyon National Parks, Yosemite National Park, Klamath Mountains, North Cascades, Oregon Cascades, Palisades, Transverse Ranges, Alpine Lakes Wilderness, Ansel Adams Wilderness, Bucks Lake Wilderness, Carson-Iceberg Wilderness, Castle Crags Wilderness, Chimney Peak Wilderness, Desolation Wilderness, Diamond Peak Wilderness, Domeland Wilderness, Emigrant Wilderness, Glacier Peak Wilderness, Goat Rocks Wilderness, Golden Trout Wilderness, Granite Chief Wilderness, Henry M. Jackson Wilderness, Hoover Wilderness, Indian Heaven Wilderness, John Muir Wilderness, Kiavah Wilderness, Marble Mountain Wilderness, Mark O. Hatfield Wilderness, Mokelumne Wilderness, Mount Adams Wilderness, Mount Hood Wilderness, Mount Jefferson Wilderness, Mount Thielsen Wilderness, Mount Washington Wilderness, Norse Peak Wilderness, Owens Peak Wilderness, Pasayten Wilderness, Pleasant View Ridge Wilderness, San Gorgonio Wilderness, San Jacinto Wilderness, Sheep Mountain Wilderness, Sky Lakes Wilderness, Soda Mountain Wilderness, South Sierra Wilderness, Stephen Mather Wilderness, Three Sisters Wilderness, Trinity Alps Wilderness, William O. Douglas Wilderness."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"

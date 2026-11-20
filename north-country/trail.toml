@@ -95,12 +95,6 @@ km = 223.8
 
 [[place]]
 kind = "range"
-slug = "finger-lakes"
-basis = "track"
-km = 8.4
-
-[[place]]
-kind = "range"
 slug = "green-mountains"
 basis = "track"
 km = 61.3
@@ -172,7 +166,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Adirondack Mountains, Finger Lakes, Green Mountains, Beaver Basin Wilderness, Boundary Waters Canoe Area Wilderness, Joseph Battell Wilderness, McCormick Wilderness, Porcupine Lake Wilderness, Rainbow Lake Wilderness."
+change = "The trail was placed in Adirondack Mountains, Green Mountains, Beaver Basin Wilderness, Boundary Waters Canoe Area Wilderness, Joseph Battell Wilderness, McCormick Wilderness, Porcupine Lake Wilderness, Rainbow Lake Wilderness."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"

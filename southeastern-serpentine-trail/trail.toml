@@ -110,12 +110,6 @@ slug = "blue-ridge-mountains"
 basis = "stated"
 source = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
 
-[[place]]
-kind = "range"
-slug = "great-smoky-mountains"
-basis = "stated"
-source = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
-
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -156,7 +150,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Great Smoky Mountains National Park, Blue Ridge Mountains and Great Smoky Mountains from published pages, as it has no track to measure."
+change = "The trail was placed in Great Smoky Mountains National Park and Blue Ridge Mountains from published pages, as it has no track to measure."
 fields = ["place"]
 basis = "The trail's own description says: \"It joins the Foothills Trail, the Bartram Trail, the Appalachian Trail through the Great Smoky Mountains and the Benton MacKaye Trail.\""
 basis_url = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"

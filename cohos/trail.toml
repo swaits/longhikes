@@ -84,12 +84,6 @@ url = "https://www.longtrailswiki.net/wiki/Cohos_Trail"
 
 [[place]]
 kind = "range"
-slug = "longfellow-mountains"
-basis = "track"
-km = 5.1
-
-[[place]]
-kind = "range"
 slug = "white-mountains"
 basis = "track"
 km = 169.6
@@ -122,7 +116,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Longfellow Mountains, White Mountains, Presidential Range-Dry River Wilderness."
+change = "The trail was placed in White Mountains, Presidential Range-Dry River Wilderness."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"

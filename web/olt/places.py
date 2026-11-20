@@ -143,13 +143,29 @@ def _doubled(park_name, wild_name):
     return bool(_core(a)) and _core(a) == _core(b)
 
 
+_STEM_FILLER = {"national", "provincial", "park", "parks", "preserve", "wilderness", "area",
+                "and", "the", "of", "mountains", "mountain", "range", "ranges"}
+
+
+def _stem(name):
+    return {w for w in str(name).lower().replace("-", " ").split() if w not in _STEM_FILLER}
+
+
+def _same_stem(park_name, range_name):
+    """True when a park and a mountain range have the same name once the kind words are
+    taken away: Olympic National Park and Olympic Mountains, Great Smoky Mountains National
+    Park and Great Smoky Mountains. Grand Teton National Park and the Teton Range do not."""
+    a, b = _stem(park_name), _stem(range_name)
+    return bool(a) and a == b
+
+
 def collect(records, registry):
     """(kind, slug) -> info for every place with a page: PAGE_MIN or more trails.
 
     An info holds kind, slug, key ("<kind>/<slug>"), name, where, box, records, path
-    and title_name. A wilderness area that holds exactly the trails of a national park
-    of much the same name gets no page: one page for the one set, under the park. The
-    registry normally already leaves such a wilderness out; the builder stays safe."""
+    and title_name. A wilderness area or a mountain range that holds exactly the
+    trails of a park of much the same name gets no page: one page for the one set, under
+    the park. The registry normally already leaves such a place out; the builder stays safe."""
     mem = membership(records, registry)
     out = {}
     for (kind, slug), recs in mem.items():
@@ -163,10 +179,11 @@ def collect(records, registry):
         out[(kind, slug)] = info
     parks = [i for i in out.values() if i["kind"] == "park"]
     for key, info in list(out.items()):
-        if info["kind"] != "wilderness":
+        if info["kind"] not in ("wilderness", "range"):
             continue
         ids = {r["id"] for r in info["records"]}
-        if any({r["id"] for r in p["records"]} == ids and _doubled(p["name"], info["name"])
+        same = _doubled if info["kind"] == "wilderness" else _same_stem
+        if any({r["id"] for r in p["records"]} == ids and same(p["name"], info["name"])
                for p in parks):
             del out[key]
     return out

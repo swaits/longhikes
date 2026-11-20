@@ -107,18 +107,6 @@ km = 163.9
 
 [[place]]
 kind = "range"
-slug = "gore-range"
-basis = "track"
-km = 39.2
-
-[[place]]
-kind = "range"
-slug = "mosquito-range"
-basis = "track"
-km = 21.0
-
-[[place]]
-kind = "range"
 slug = "san-juan-mountains"
 basis = "track"
 km = 317.1
@@ -195,7 +183,7 @@ asked_by = "the dataset's own check"
 outcome = "applied"
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Front Range, Gore Range, Mosquito Range, San Juan Mountains, Sawatch Range, Collegiate Peaks Wilderness, Holy Cross Wilderness, La Garita Wilderness, Lost Creek Wilderness, Mount Massive Wilderness, Weminuche Wilderness."
+change = "The trail was placed in Front Range, San Juan Mountains, Sawatch Range, Collegiate Peaks Wilderness, Holy Cross Wilderness, La Garita Wilderness, Lost Creek Wilderness, Mount Massive Wilderness, Weminuche Wilderness."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"

@@ -256,6 +256,26 @@ class ProposalTest(unittest.TestCase):
         stated = {("park", "alpha"): {"a", "b", "z"}, ("wilderness", "alpha-wilderness"): {"a", "b"}}
         self.assertEqual(P.doubled_places(stated, names), set())
 
+    def test_a_range_with_a_parks_trails_and_name_stem_is_not_a_second_page(self):
+        names = {("park", "great-smoky-mountains-national-park"): "Great Smoky Mountains National Park",
+                 ("range", "great-smoky-mountains"): "Great Smoky Mountains",
+                 ("park", "olympic-national-park"): "Olympic National Park",
+                 ("range", "olympic-mountains"): "Olympic Mountains",
+                 ("park", "grand-teton-national-park"): "Grand Teton National Park",
+                 ("range", "teton-range"): "Teton Range"}
+        sets = {k: {"a", "b", "c"} for k in names}
+        self.assertEqual(P.doubled_places(sets, names),
+                         {("range", "great-smoky-mountains"), ("range", "olympic-mountains")})
+        sets[("range", "olympic-mountains")] = {"a", "b", "c", "d"}
+        self.assertEqual(P.doubled_places(sets, names), {("range", "great-smoky-mountains")})
+
+    def test_the_deny_list_names_every_place_that_gets_no_page_with_a_reason(self):
+        for key in (("range", "gmba-v2", "12330"), ("range", "gmba-v2", "15906"),
+                    ("range", "gmba-v2", "11356"), ("range", "gmba-v2", "17612"),
+                    ("range", "gmba-v2", "17240"), ("wilderness", "wilderness-connect", "507")):
+            self.assertIn(key, P.DENY)
+            self.assertGreater(len(P.DENY[key]), 20)
+
     def test_a_denied_place_is_not_in_the_catalogue(self):
         arch = outline("park", "JEFF", "Gateway Arch National Park", self.park.geometry)
         keep = outline("park", "YOSE", "Yosemite National Park", self.range.geometry)

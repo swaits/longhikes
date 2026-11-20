@@ -89,12 +89,6 @@ slug = "sequoia-and-kings-canyon"
 basis = "track"
 km = 57.3
 
-[[place]]
-kind = "range"
-slug = "great-western-divide"
-basis = "track"
-km = 13.3
-
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -172,7 +166,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Sequoia and Kings Canyon National Parks, Great Western Divide."
+change = "The trail was placed in Sequoia and Kings Canyon National Parks."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"

@@ -504,6 +504,17 @@ def assign_slugs(outlines):
 # (kind, source, source id). A trail that merely passes through one is not "in" it in the
 # way a place page means.
 DENY = {
+    ("range", "gmba-v2", "12330"): "Longfellow Mountains is an obscure source name, no hiker's, and "
+                                   "its outline spills over into New Hampshire",
+    ("range", "gmba-v2", "15906"): "Finger Lakes is a lake district, not a mountain range",
+    ("range", "gmba-v2", "11356"): "Gore Range holds the same trails as the Mosquito "
+                                   "Range, so the two would be one page twice",
+    ("range", "gmba-v2", "17612"): "Mosquito Range holds the same trails as the Gore "
+                                   "Range, so the two would be one page twice",
+    ("range", "gmba-v2", "17240"): "Great Western Divide is a ridge inside Sequoia and Kings Canyon "
+                                   "National Parks, whose page lists all of its trails",
+    ("wilderness", "wilderness-connect", "507"): "Russian Wilderness holds the same trails as "
+                                   "the two neighbouring wilderness pages",
     ("park", "nps", "JEFF"): "Gateway Arch National Park is the memorial grounds in "
                              "downtown St. Louis; a trail crossing it is an urban pass-through",
 }
@@ -763,21 +774,38 @@ def _core_name(name):
     return {w for w in re.split(r"[^a-z0-9]+", name.lower()) if w and w not in _NAME_FILLER}
 
 
+_RANGE_WORDS = {"mountains", "mountain", "range", "ranges"}
+
+
+def _stem(name):
+    """The words of a name that say which place it is: the kind words of a park, a wilderness
+    area and a range (National Park, Wilderness, Mountains, Range) taken away."""
+    return _core_name(name) - _RANGE_WORDS
+
+
 def doubled_places(sets, names):
-    """Wilderness areas that would be a second page for a park: same trails exactly, and
-    one name's words contain the other's (Sequoia-Kings Canyon Wilderness beside Sequoia
-    and Kings Canyon). The park is kept; the wilderness is returned. sets is
-    {(kind, slug): set of trail ids}, tracked and stated together; names {(kind, slug): name}."""
+    """Places that would be a second page for a park: the same trails exactly, and a name
+    that matches. A wilderness area is a double when one name's words contain the other's
+    (Sequoia-Kings Canyon Wilderness beside Sequoia and Kings Canyon); a mountain range
+    when the names are the same once the kind words are taken away (Great Smoky Mountains
+    beside Great Smoky Mountains National Park, Olympic Mountains beside Olympic National
+    Park). The park is kept; the others are returned. sets is {(kind, slug): set of trail
+    ids}, tracked and stated together; names {(kind, slug): name}."""
     drop = set()
     for wk, wset in sets.items():
-        if wk[0] != "wilderness" or not wset:
+        if wk[0] not in ("wilderness", "range") or not wset:
             continue
         wc = _core_name(names.get(wk, wk[1]))
+        ws = _stem(names.get(wk, wk[1]))
         for pk, pset in sets.items():
             if pk[0] != "park" or pset != wset:
                 continue
             pc = _core_name(names.get(pk, pk[1]))
-            if wc and pc and (wc <= pc or pc <= wc):
+            ps = _stem(names.get(pk, pk[1]))
+            if wk[0] == "wilderness":
+                if wc and pc and (wc <= pc or pc <= wc):
+                    drop.add(wk)
+            elif ws and ws == ps:
                 drop.add(wk)
     return drop
 

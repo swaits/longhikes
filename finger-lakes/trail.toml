@@ -78,12 +78,6 @@ slug = "catskill-mountains"
 basis = "track"
 km = 117.4
 
-[[place]]
-kind = "range"
-slug = "finger-lakes"
-basis = "track"
-km = 8.4
-
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -106,7 +100,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Catskill Mountains, Finger Lakes."
+change = "The trail was placed in Catskill Mountains."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"

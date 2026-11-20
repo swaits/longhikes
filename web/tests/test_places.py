@@ -104,6 +104,26 @@ class CollectTest(unittest.TestCase):
         recs.append(rec(4, ("wilderness", "example", "track")))
         self.assertIn(("wilderness", "example"), places.collect(recs, reg))
 
+    def test_a_range_gets_no_page_when_a_park_of_the_same_stem_holds_the_same_trails(self):
+        park = entry("park", "olympic-national-park", "Olympic National Park", where=("WA",))
+        rng = entry("range", "olympic-mountains", "Olympic Mountains", where=("WA",))
+        other = entry("range", "teton-range", "Teton Range", where=("WY",))
+        gt = entry("park", "grand-teton-national-park", "Grand Teton National Park")
+        reg = registry(park, rng, other, gt)
+        recs = [rec(i, ("park", "olympic-national-park", "track"),
+                    ("range", "olympic-mountains", "track"),
+                    ("park", "grand-teton-national-park", "track"),
+                    ("range", "teton-range", "track")) for i in (1, 2, 3)]
+        got = places.collect(recs, reg)
+        self.assertIn(("park", "olympic-national-park"), got)
+        self.assertNotIn(("range", "olympic-mountains"), got)
+        # Grand Teton and the Teton Range do not share a stem: both keep their pages
+        self.assertIn(("park", "grand-teton-national-park"), got)
+        self.assertIn(("range", "teton-range"), got)
+        # a range with a different set of trails keeps its page
+        recs.append(rec(4, ("range", "olympic-mountains", "track")))
+        self.assertIn(("range", "olympic-mountains"), places.collect(recs, reg))
+
     def test_records_are_a_to_z(self):
         reg = registry(WIND)
         recs = [rec(1, ("range", "wind-river-range", "track"), name="Zebra Trail"),

@@ -118,12 +118,6 @@ slug = "sequoia-and-kings-canyon"
 basis = "stated"
 source = "https://fastestknowntime.com/route/circle-solitude"
 
-[[place]]
-kind = "range"
-slug = "great-western-divide"
-basis = "stated"
-source = "https://fastestknowntime.com/route/circle-solitude"
-
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -200,9 +194,9 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Sequoia and Kings Canyon National Parks and Great Western Divide from published pages, as it has no track to measure."
+change = "The trail was placed in Sequoia and Kings Canyon National Parks from published pages, as it has no track to measure."
 fields = ["place"]
-basis = "The trail's own description says: \"The Circle of Solitude is a loop of about 68 miles in Kings Canyon and Sequoia National Parks, California, from Road's End.\" (Sequoia and Kings Canyon National Parks) The trail's own description says: \"Colby Pass (record: 'follows the Roaring River and Cloud Canyon to Colby Pass, then the Kern-Kaweah River')\" (Great Western Divide)"
+basis = "The trail's own description says: \"The Circle of Solitude is a loop of about 68 miles in Kings Canyon and Sequoia National Parks, California, from Road's End.\" (Sequoia and Kings Canyon National Parks)"
 basis_url = "https://fastestknowntime.com/route/circle-solitude"
 asked_by = "the dataset's own check"
 outcome = "applied"

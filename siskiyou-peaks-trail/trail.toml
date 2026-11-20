@@ -139,12 +139,6 @@ source = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/
 
 [[place]]
 kind = "wilderness"
-slug = "russian-wilderness"
-basis = "stated"
-source = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
-
-[[place]]
-kind = "wilderness"
 slug = "siskiyou-wilderness"
 basis = "stated"
 source = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
@@ -178,7 +172,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Trinity Alps, Castle Crags Wilderness, Marble Mountain Wilderness, Mt. Shasta Wilderness, Red Buttes Wilderness, Russian Wilderness, Siskiyou Wilderness and Trinity Alps Wilderness from published pages, as it has no track to measure."
+change = "The trail was placed in Trinity Alps, Castle Crags Wilderness, Marble Mountain Wilderness, Mt. Shasta Wilderness, Red Buttes Wilderness, Siskiyou Wilderness and Trinity Alps Wilderness from published pages, as it has no track to measure."
 fields = ["place"]
 basis = "The page says: \"Wilderness areas high-pointed on this trail include: - Red Buttes Wilderness - Siskiyou Wilderness - Marble Mountain Wilderness - Russian Wilderness - Trinity Alps Wilderness - Castle Crags Wilderness - Mt Shasta Wilderness\""
 basis_url = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"

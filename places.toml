@@ -1154,16 +1154,6 @@ source_version = "2026-11-20"
 box = [-113.95, 32.87, -106.16, 40.2]
 
 [[place]]
-slug = "finger-lakes"
-kind = "range"
-name = "Finger Lakes"
-where = ["NY"]
-source = "gmba-v2"
-source_id = "15906"
-source_version = "2026-11-20"
-box = [-77.57, 42.27, -76.12, 42.89]
-
-[[place]]
 slug = "front-range"
 kind = "range"
 name = "Front Range"
@@ -1173,39 +1163,6 @@ source = "gmba-v2"
 source_id = "11337"
 source_version = "2026-11-20"
 box = [-106.38, 38.36, -104.82, 40.71]
-
-[[place]]
-slug = "gore-range"
-kind = "range"
-name = "Gore Range"
-where = ["CO"]
-within = ["rocky-mountains"]
-source = "gmba-v2"
-source_id = "11356"
-source_version = "2026-11-20"
-box = [-106.94, 39.27, -106.08, 40.4]
-
-[[place]]
-slug = "great-smoky-mountains"
-kind = "range"
-name = "Great Smoky Mountains"
-where = ["NC", "TN"]
-within = ["appalachian-mountains"]
-source = "gmba-v2"
-source_id = "12342"
-source_version = "2026-11-20"
-box = [-84.09, 35.42, -82.99, 35.97]
-
-[[place]]
-slug = "great-western-divide"
-kind = "range"
-name = "Great Western Divide"
-where = ["CA"]
-within = ["sierra-nevada"]
-source = "gmba-v2"
-source_id = "17240"
-source_version = "2026-11-20"
-box = [-118.65, 36.14, -118.35, 36.8]
 
 [[place]]
 slug = "green-mountains"
@@ -1240,17 +1197,6 @@ source_version = "2026-11-20"
 box = [-109.61, 38.05, -108.8, 38.81]
 
 [[place]]
-slug = "longfellow-mountains"
-kind = "range"
-name = "Longfellow Mountains"
-where = ["ME"]
-within = ["appalachian-mountains"]
-source = "gmba-v2"
-source_id = "12330"
-source_version = "2026-11-20"
-box = [-71.27, 44.47, -68.64, 46.15]
-
-[[place]]
 slug = "mogollon-rim"
 kind = "range"
 name = "Mogollon Rim"
@@ -1259,17 +1205,6 @@ source = "gmba-v2"
 source_id = "11633"
 source_version = "2026-11-20"
 box = [-111.79, 33.67, -110.22, 34.57]
-
-[[place]]
-slug = "mosquito-range"
-kind = "range"
-name = "Mosquito Range"
-where = ["CO"]
-within = ["rocky-mountains"]
-source = "gmba-v2"
-source_id = "17612"
-source_version = "2026-11-20"
-box = [-106.32, 38.8, -105.98, 39.65]
 
 [[place]]
 slug = "north-cascades"
@@ -1281,16 +1216,6 @@ source = "gmba-v2"
 source_id = "15510"
 source_version = "2026-11-20"
 box = [-122.51, 47.46, -119.4, 50.43]
-
-[[place]]
-slug = "olympic-mountains"
-kind = "range"
-name = "Olympic Mountains"
-where = ["WA"]
-source = "gmba-v2"
-source_id = "11688"
-source_version = "2026-11-20"
-box = [-124.73, 47.28, -122.85, 48.4]
 
 [[place]]
 slug = "oregon-cascades"
@@ -3183,16 +3108,6 @@ source = "wilderness-connect"
 source_id = "505"
 source_version = "2026-11-20"
 box = [-115.57, 40.36, -115.22, 40.81]
-
-[[place]]
-slug = "russian-wilderness"
-kind = "wilderness"
-name = "Russian Wilderness"
-where = ["CA"]
-source = "wilderness-connect"
-source_id = "507"
-source_version = "2026-11-20"
-box = [-123.0, 41.26, -122.9, 41.37]
 
 [[place]]
 slug = "saguaro-wilderness"

@@ -97,12 +97,6 @@ basis = "track"
 km = 92.9
 
 [[place]]
-kind = "range"
-slug = "great-western-divide"
-basis = "track"
-km = 46.2
-
-[[place]]
 kind = "wilderness"
 slug = "john-muir-wilderness"
 basis = "track"
@@ -156,7 +150,7 @@ asked_by = "the dataset's own check"
 outcome = "applied"
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Sequoia and Kings Canyon National Parks, Great Western Divide, John Muir Wilderness."
+change = "The trail was placed in Sequoia and Kings Canyon National Parks, John Muir Wilderness."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"

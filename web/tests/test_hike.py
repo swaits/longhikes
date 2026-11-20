@@ -125,6 +125,18 @@ class TrailPageTest(unittest.TestCase):
         self.assertTrue(trail.description(rec).startswith(
             "A trail of 62 miles (100 km) in Arizona, usually 5 to 7 months. A long walk along the crest"))
 
+    def test_about_this_data_says_where_the_season_came_from(self):
+        from olt import facets
+        rec = sample_record("X Trail")
+        rec["hike"] = dict(FULL_HIKE, season_basis="primary")
+        block = trail.hike_sources_block(rec)
+        self.assertIn("The season comes from the page of the body that manages the trail or, for a route, its author.",
+                      html.unescape(block))
+        self.assertEqual(facets.season_basis(rec), "primary")
+        rec["hike"] = {k: v for k, v in FULL_HIKE.items() if k not in ("season", "months")}
+        self.assertNotIn("The season comes from", trail.hike_sources_block(rec))
+        self.assertEqual(facets.season_basis(rec), "")
+
     def test_partial_hike_table(self):
         rec = sample_record("X Trail")
         rec["hike"] = {"shape": "loop", "start": "Lake Camp", "days": [4, 6], "checked": "2026-11-13"}

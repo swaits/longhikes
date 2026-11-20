@@ -185,6 +185,30 @@ def season_text(rec):
     return words.join_names(MONTHS[m - 1] for m in ms)
 
 
+SEASON_BASIS_TEXT = {
+    "primary": "The season comes from the page of the body that manages the trail or, for a route, its author.",
+    "sources": "Two or more pages from different publishers agree on the season.",
+    "source": "One page states the season. It is not the trail's own page.",
+}
+
+
+def season_basis(rec):
+    """Where the season came from: primary, sources, source or estimate; "" when it has none."""
+    h = hike.table(rec)
+    if not h.get("season") and not h.get("months"):
+        return ""
+    return h.get("season_basis") or ""
+
+
+def season_basis_line(rec):
+    """One sentence for "About this data"; "" when the season has no recorded basis."""
+    basis = season_basis(rec)
+    if basis == "estimate":
+        method = (hike.table(rec).get("season_method") or "").strip()
+        return (method + " No page states a season.").strip()
+    return SEASON_BASIS_TEXT.get(basis, "")
+
+
 # Terrain, Walking, Shape ----------------------------------------------------
 
 TERRAIN_VALUES = words.TERRAIN

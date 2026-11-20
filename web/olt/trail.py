@@ -1563,7 +1563,9 @@ def hike_sources_block(rec):
     body = f'<ul class="linklist">{items}</ul>' if items else \
         '<p class="record-text">The record names no page for these facts.</p>'
     checked = f'<p class="note">Checked {esc(h["checked"])}.</p>' if h.get("checked") else ""
-    return block("hike-title", "Where the hiking facts come from", Markup(body + checked))
+    basis = facets.season_basis_line(rec)
+    basis = f'<p class="note">{esc(basis)}</p>' if basis else ""
+    return block("hike-title", "Where the hiking facts come from", Markup(body + checked + basis))
 
 
 def about_data(rec, site, author_links=None):

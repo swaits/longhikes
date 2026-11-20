@@ -17,6 +17,11 @@ import os
 import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+spec = importlib.util.spec_from_file_location(
+    "season", os.path.join(ROOT, "tools", "season.py"))
+season = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(season)
 MAX_BYTES = 50 * 1024 * 1024
 ALLOWED_LICENCES = {
     "us-gov-public-domain", "CC-BY-4.0", "CC-BY", "ODbL-1.0", "stated-permission",
@@ -34,7 +39,7 @@ HIKE_FACTS = {"summary", "official_url", "start", "end", "shape", "days", "seaso
               "months", "travel", "start_lonlat", "end_lonlat"}
 LONLAT_BOUNDS = (-180.0, -50.0, 24.0, 75.0)  # lon min, lon max, lat min, lat max
 HIKE_TRAVEL = {"trail", "trail-and-road", "some-cross-country", "mostly-cross-country"}
-HIKE_KEYS = HIKE_FACTS | {"checked"}
+HIKE_KEYS = HIKE_FACTS | {"checked"} | season.PROVENANCE_KEYS
 ELEVATION_KEYS = {"highest", "lowest", "ascent_m", "descent_m", "track_km", "published_km",
                   "coverage", "parts", "orientation", "profile", "part_starts_km", "source"}
 ELEVATION_REQUIRED = ELEVATION_KEYS - {"part_starts_km"}
@@ -366,9 +371,10 @@ def check_hike(tid, rec, errors):
                 covered.update(("high_point", "high_point_m"))
             else:
                 covered.add(fact)
-    for name in sorted(set(hike) & HIKE_KEYS - {"checked"}) if sources else []:
+    for name in sorted(set(hike) & HIKE_KEYS - {"checked"} - season.PROVENANCE_KEYS) if sources else []:
         if name not in covered:
             errors.append(f"{tid}: hike.{name} is not named in the facts of any hike source")
+    season.check_season(tid, hike, errors)
 
 
 def check_elevation(tid, tdir, rec, errors):

@@ -12,6 +12,8 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import season  # noqa: E402
+import validate as V  # noqa: E402
+import refresh  # noqa: E402
 
 
 def src(publisher, facts=("season", "months"), url="https://example.org/trail"):
@@ -104,6 +106,22 @@ class SeasonBasisTest(unittest.TestCase):
     def test_method_without_season_is_an_error(self):
         errors = check(season=None, months=None, season_basis=None, season_method="Some method.")
         self.assertTrue(errors)
+
+    def test_every_record_with_a_season_passes_the_validator(self):
+        errors = []
+        for tid in refresh.trail_ids(V.ROOT):
+            rec = refresh.load_toml(os.path.join(V.ROOT, tid, "trail.toml"))
+            if (rec.get("hike") or {}).get("season"):
+                V.check_hike(tid, rec, errors)
+        self.assertEqual(errors, [])
+
+    def test_provenance_keys_need_no_source_fact(self):
+        hike = {"season": "June to September", "months": [6, 7, 8, 9], "season_basis": "primary",
+                "source": [src("Park Service", facts=("season", "months"))]}
+        errors = []
+        V.check_hike("t", {"hike": hike}, errors)
+        self.assertFalse([e for e in errors if "not named in the facts" in e], errors)
+        self.assertFalse([e for e in errors if "not a known field" in e], errors)
 
 
 if __name__ == "__main__":

@@ -60,10 +60,10 @@ terrain = ["coast"]
 travel = "trail-and-road"
 unfinished = "The state counts about 875 miles, about 70 percent, as built along a coastline of about 1,230 miles, and there is no official through route. A hiker reports having walked the whole coast from end to end, in eight section hikes, by connecting the built parts with their own choices."
 checked = "2026-11-20"
-season = "April to October"
-months = [4, 5, 6, 7, 8, 9, 10]
+season = "All year"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 season_basis = "estimate"
-season_method = "Judged from the climate at the trail's elevation and from similar trails. The coast can be walked all year, but winter storms bring heavy rain in the north and leave some sections passable only at low tide, so a full walk suits the dry months. Confidence: low."
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The coast is walked all year, and the southern sections are at their best in winter. Confidence: low."
 
 [[hike.source]]
 url = "https://www.coastal.ca.gov/coastal-trail/"
@@ -203,7 +203,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "A season was estimated: April to October."
+change = "A season was estimated: All year."
 fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
 basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
 basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"

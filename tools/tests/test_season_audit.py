@@ -53,7 +53,7 @@ class AuditChecklistTest(unittest.TestCase):
 
     def test_the_estimates_command_prints_one_id_a_line(self):
         ids = E.estimates(ROOT)
-        self.assertEqual(len(ids), 69)
+        self.assertEqual(len(ids), 72)
         self.assertEqual(ids, sorted(ids))
 
     def test_house_wording_in_the_audit_doc_and_workflow(self):

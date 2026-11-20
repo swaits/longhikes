@@ -99,13 +99,13 @@ class SeasonBasisTest(unittest.TestCase):
     def test_method_is_allowed_with_sources_only_besides_estimate(self):
         two = [src("Park Service"), src("Blog", url="https://example.org/b")]
         ok = check(season_basis="sources", source=two,
-                   season_method="The pages differ; set from both and the climate estimate.")
+                   season_method="The pages differ; set from both and the climate estimate. Confidence: low.")
         self.assertEqual(ok, [])
         self.assertEqual(check(season_basis="sources", source=two), [])
         for basis in ("primary", "source"):
             errors = check(season_basis=basis, season_method="Some sentence.")
             self.assertTrue(any("season_method" in e for e in errors), (basis, errors))
-        long = check(season_basis="sources", source=two, season_method="x" * 401)
+        long = check(season_basis="sources", source=two, season_method="x" * 401 + " Confidence: low.")
         self.assertTrue(any("400" in e for e in long), long)
         blank = check(season_basis="sources", source=two, season_method=" ")
         self.assertTrue(any("season_method" in e for e in blank), blank)
@@ -164,13 +164,34 @@ class SeasonBasisTest(unittest.TestCase):
             season.CLIMATE_HOSTS,
             frozenset({urllib.parse.urlparse(season_climate.SOURCE["url"]).hostname}))
 
-    def test_sources_judged_from_pages_that_differ_may_share_a_publisher(self):
-        two = [src("The Trek", url="https://t.example/1"), src("The Trek", url="https://t.example/2")]
-        errors = check(season_basis="sources", source=two)
-        self.assertTrue(errors)
-        self.assertEqual(
-            check(season_basis="sources", source=two,
-                  season_method="The pages differ. Confidence: low."), [])
+    def test_sources_judged_from_pages_that_differ_need_two_publishers(self):
+        # two pages from one publisher are one voice, with or without a method
+        one = [src("The Trek", url="https://t.example/1"), src("The Trek", url="https://t.example/2")]
+        self.assertTrue(check(season_basis="sources", source=one))
+        errors = check(season_basis="sources", source=one,
+                       season_method="The pages differ. Confidence: low.")
+        self.assertTrue(any("two" in e and "publishers" in e for e in errors), errors)
+        # a single page, even one that contradicts itself, is not enough either
+        alone = check(season_basis="sources", source=[src("The Trek")],
+                      season_method="The page differs from itself. Confidence: low.")
+        self.assertTrue(any("publishers" in e for e in alone), alone)
+        two = [src("The Trek"), src("Other Guide", url="https://o.example/1")]
+        self.assertEqual(check(season_basis="sources", source=two,
+                               season_method="The pages differ. Confidence: low."), [])
+        # publishers are told apart however they are capitalised or spaced
+        same = [src("The Trek"), src(" the trek ", url="https://o.example/1")]
+        self.assertTrue(check(season_basis="sources", source=same,
+                              season_method="The pages differ. Confidence: low."))
+
+    def test_the_method_of_sources_judged_from_pages_ends_with_a_confidence(self):
+        two = [src("The Trek"), src("Other Guide", url="https://o.example/1")]
+        errors = check(season_basis="sources", source=two, season_method="The pages differ.")
+        self.assertTrue(any("must end with" in e for e in errors), errors)
+        for word in ("high", "medium", "low"):
+            self.assertEqual(check(season_basis="sources", source=two,
+                                   season_method=f"The pages differ. Confidence: {word}."), [])
+        self.assertTrue(check(season_basis="sources", source=two,
+                              season_method="The pages differ. Confidence: certain."))
 
     def test_judged_from_pages_that_differ_needs_a_page(self):
         errors = check(season_basis="sources", source=[src("The Trek", facts=("days",))],

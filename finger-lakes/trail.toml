@@ -63,8 +63,8 @@ travel = "trail"
 checked = "2026-11-20"
 season = "April to October"
 months = [4, 5, 6, 7, 8, 9, 10]
-season_basis = "sources"
-season_method = "The pages differ: one Trek page gives winter, spring, summer and fall, and a table on the same page gives spring, summer and fall. It was set by judgement from both and from the climate, since snow lies from December to March and early spring is muddy. Confidence: medium."
+season_basis = "estimate"
+season_method = "A page was found but it contradicts itself, giving winter, spring, summer and fall in one place and spring, summer and fall in another, so no page is relied on. The season was estimated from the climate and similar trails: snow lies from December to March and early spring is muddy. Confidence: medium."
 
 [[hike.source]]
 url = "https://fingerlakestrail.org/"
@@ -72,8 +72,8 @@ publisher = "Finger Lakes Trail Conference"
 facts = ["official_url", "summary", "start", "end", "shape", "travel"]
 
 [[hike.source]]
-url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
-publisher = "The Trek"
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
 facts = ["season", "months"]
 
 [[link]]
@@ -118,9 +118,9 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "A season was set from pages that differ: April to October."
+change = "A season was estimated: April to October."
 fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
-basis = "The pages that state a season differ and none is the managing body, association or route author, so it was set by judgement from all of them and the climate estimate."
-basis_url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+basis = "No page states a season: the one page found contradicts itself. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

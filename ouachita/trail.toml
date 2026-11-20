@@ -65,10 +65,10 @@ travel = "trail"
 days = [14, 21]
 permit = "No permits are required for the trail."
 checked = "2026-11-20"
-season = "March to May and October to November"
-months = [3, 4, 5, 10, 11]
+season = "October to May"
+months = [1, 2, 3, 4, 5, 10, 11, 12]
 season_basis = "sources"
-season_method = "The pages differ: one gives April to November, one gives late October to late March, and one gives all year. It was set by judgement from all three and from the climate, since summers are hot and humid with ticks and winters are cold but walkable. Confidence: medium."
+season_method = "The pages differ: one gives April to November, one gives late October to late March, and one gives all year. It was set by judgement from all three and the climate: a classic cool-season trail, since summers are hot, humid and full of ticks. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.friendsoftheouachita.org/about-the-ot"
@@ -172,7 +172,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "A season was set from pages that differ: March to May and October to November."
+change = "A season was set from pages that differ: October to May."
 fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
 basis = "The pages that state a season differ and none is the managing body, association or route author, so it was set by judgement from all of them and the climate estimate."
 basis_url = "https://thehikinglife.com/2014/07/ouachita-trail/"

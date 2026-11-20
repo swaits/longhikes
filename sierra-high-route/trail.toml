@@ -118,7 +118,7 @@ facts = ["end_lonlat"]
 
 [[hike.source]]
 url = "https://andrewskurka.com/adventures/sierra-high-route/logistical-considerations/"
-publisher = "Andrew Skurka (the route's author)"
+publisher = "Andrew Skurka (Skurka Adventures)"
 facts = ["permit", "season", "months"]
 
 [[hike.source]]
@@ -234,6 +234,15 @@ date = "2026-11-20"
 change = "A season was set from pages that differ: July to September."
 fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
 basis = "The pages that state a season differ and none is the managing body, association or route author, so it was set by judgement from all of them and the climate estimate."
+basis_url = "https://andrewskurka.com/adventures/sierra-high-route/logistical-considerations/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The permit page's publisher was corrected: Andrew Skurka's own site, Skurka Adventures. It is not the route's author, who is Steve Roper."
+fields = ["hike.source.publisher"]
+basis = "The earlier entry about the permit note called the page's author the route's author. The route's creator in this record is Steve Roper (the guidebook's author); Skurka wrote the route's map set and a series of pages about it."
 basis_url = "https://andrewskurka.com/adventures/sierra-high-route/logistical-considerations/"
 asked_by = "the dataset's own check"
 outcome = "applied"

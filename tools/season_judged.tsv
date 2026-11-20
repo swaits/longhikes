@@ -12,7 +12,7 @@ backbone	1,2,3,4,5,10,11,12	October to May	medium	Santa Monica Mountains chaparr
 baker	4,5,6,9,10	April to June and September to October	medium	Humid, buggy summers and icy, muddy winters in western Pennsylvania make spring and fall the usual walking months.
 bartram	3,4,5,9,10,11	Spring and fall	medium	Blue Ridge route with summer heat and haze below and winter ice on the 5,000-foot balds, so spring and fall are best.
 basin-and-range-trail	4,5,9,10	Spring and fall	high	Nevada desert route with scorching summer heat and little water and snow on the high ranges in winter, so spring and fall are the windows.
-batona	3,4,5,9,10,11	March to May and September to November	medium	Flat Pine Barrens walking is best when it is cool, away from summer heat, ticks and biting flies.
+batona	10,11,12,1,2,3,4	October to April	medium	Flat Pine Barrens walking has no high ground to wait out, so the cool months are the season; summer brings heat, ticks and biting flies.
 bay-circuit	3,4,5,9,10,11	March to May and September to November	medium	Humid, buggy summers and icy winters in low-lying eastern Massachusetts leave spring and fall, though it can be walked all year.
 bayou-state-trail	1,2,3,4,11,12	November to April	medium	Summer heat, humidity, mosquitoes and storms in Louisiana push hiking into the cool, dry winter and early spring.
 beartooth-high-route	7,8,9	July to September	high	Cross-country route at about 11,000 feet in the Beartooths where snow lingers into July and returns by late September, so only mid-summer works.
@@ -32,7 +32,7 @@ bristol-hills-trail	5,6,7,8,9,10	May to October	medium	Snow and mud make winter 
 brooks-range-traverse	6,7,8,9	June to September	low	Arctic tundra is frozen and snowbound most of the year, with river breakup in early June and freeze-up and snow by mid-September.
 bruce-trail	4,5,6,7,8,9,10	April to October	medium	The Niagara Escarpment is icy and muddy through winter and early spring, so end-to-end hikes run from the April thaw to the end of October.
 buckeye	3,4,5,9,10,11	Spring and fall	medium	Ohio summers are hot, humid and buggy and winters are cold and muddy, so spring and fall are the comfortable thru-hiking windows.
-california-coastal	4,5,6,7,8,9,10	April to October	low	The coast can be walked all year, but winter storms bring heavy rain in the north and leave some sections passable only at low tide, so a full walk suits the dry months.
+california-coastal	1,2,3,4,5,6,7,8,9,10,11,12	All year	low	The coast is walked all year, and the southern sections are at their best in winter.
 canol	7,8	July and August	medium	Mackenzie Mountains trail where snow lingers on the passes into late June and the first snow returns in early September, leaving July and August.
 centennial-sd	5,6,9,10	May to June and September to October	medium	Black Hills summer heat and thunderstorms and winter snow leave late spring and early fall as the best months.
 central-wilderness-grand-tour	6,7,8,9,10	June to October	medium	Mid-elevation Golden Trout Wilderness melts out early, but Coyote Lakes Pass and Kern crossings need low snow and low water, so summer through early fall.
@@ -61,7 +61,7 @@ east-beach-trail	5,6,7,8,9	May to September	medium	Haida Gwaii beach walking is 
 east-coast-trail	6,7,8,9	June to September	medium	Newfoundland's cold, foggy shoulder seasons and lingering snow and ice leave summer into early fall as the comfortable window.
 eastern-continental-trail	1,2,3,4,5,6,7,8,9,10	January to October	low	A thru-hike of about 300 days starts in the Florida winter and has to finish in the Gaspe before the November snows.
 eastern-sierra-high-route	7,8,9	July to September	high	Cross-country passes above 10,500 feet need the snow to have melted, which is from mid-July through September.
-finger-lakes	4,5,6,7,8,9,10	April to October	medium	The pages differ: one Trek page gives winter, spring, summer and fall, and a table on the same page gives spring, summer and fall. It was set by judgement from both and from the climate, since snow lies from December to March and early spring is muddy.
+finger-lakes	4,5,6,7,8,9,10	April to October	medium	A page was found but it contradicts itself, giving winter, spring, summer and fall in one place and spring, summer and fall in another, so no page is relied on. The season was estimated from the climate and similar trails: snow lies from December to March and early spring is muddy.
 florida	1,2,3,11,12	November to March	high	Subtropical heat, wet-season flooding and bugs from May to October make the cool dry months the thru-hiking season.
 foothills	3,4,5,9,10,11	Spring and fall	medium	Blue Ridge escarpment trail is comfortable in spring and fall, with hot humid summers and some winter ice at the higher end.
 fremont	6,7,8,9,10	June to October	medium	Oregon ridge route at 6,000 to 8,000 feet is snow-covered into early June and snowy again by November, with dry summers.
@@ -94,7 +94,7 @@ hoosier-heritage-trail	3,4,5,9,10,11	March to May and September to November	medi
 horse-shoe	3,4,5,9,10,11	March to May and September to November	medium	Southeast Pennsylvania has humid, buggy summers and icy winters, which leaves spring and fall.
 hot-springs-trail	4,5,6,7,8,9	April to September	low	A northbound route of about 110 days from coastal California to Idaho needs the Sierra and the northern mountains clear of snow, so it runs from spring to early fall.
 iat-newfoundland-labrador	6,7,8,9	June to September	medium	Western Newfoundland is cold, snowy and boggy until June, and storms and snow return in October.
-ice-age	5,6,7,8,9,10	May to October	medium	The pages differ: one Trek page gives summer and fall and another gives summer only. It was set by judgement from both and from the climate, since snow and mud last through April and a hard freeze comes by November.
+ice-age	5,6,7,8,9,10	May to October	medium	One publisher's two pages were found and they differ, one giving summer and fall and the other summer only, so no page is relied on. The season was estimated from the climate and similar trails: snow and mud last through April and a hard freeze comes by November.
 idaho-centennial	6,7,8,9	June to September	medium	Snow on the mountain sections lasts into June while the southern desert gets hot, so a north-bound walk runs June through September.
 international-appalachian-trail-maine	6,7,8,9,10	June to October	medium	Northern Maine is snowbound and muddy until late May and frozen from November, and fall is best once the bugs fade.
 island-walk	6,7,8,9,10	June to October	medium	Prince Edward Island is cold and wet in spring and late fall, so the walk is done in the warm months.
@@ -145,9 +145,9 @@ ocean-to-lake	1,2,3,11,12	November to March	high	South Florida is hot, wet and b
 oregon-coast	5,6,7,8,9	May to September	medium	The coast gets 10-16 inches of rain a month from November to March and the drier months from May to September make beach walking and creek crossings workable.
 oregon-desert	4,5,6,9,10	Spring and fall	medium	High desert at 3,000-8,000 ft is hot and waterless in July and August and cold in winter, so spring and fall are the walking windows.
 ottawa-temiskaming-highland-trail	6,7,8,9,10	June to October	medium	Northeastern Ontario forest is snowbound and muddy until May, with black flies in early summer, and cold by November.
-ouachita	3,4,5,10,11	March to May and October to November	medium	The pages differ: one gives April to November, one gives late October to late March, and one gives all year. It was set by judgement from all three and from the climate, since summers are hot and humid with ticks and winters are cold but walkable.
+ouachita	10,11,12,1,2,3,4,5	October to May	medium	The pages differ: one gives April to November, one gives late October to late March, and one gives all year. It was set by judgement from all three and the climate: a classic cool-season trail, since summers are hot, humid and full of ticks.
 ozark-highlands	3,4,5,10,11	Spring and fall	medium	Arkansas Ozark summers are hot, humid and buggy and winters are cold but popular for leaf-off views, so spring and fall are the typical seasons.
-ozark-trail	3,4,5,9,10,11	March to May and September to November	medium	The pages differ: one Trek page gives spring or fall and another adds winter. It was set by judgement from both and from the climate, since the heat, humidity and ticks of July and August make summer a poor choice.
+ozark-trail	9,10,11,12,1,2,3,4,5	September to May	medium	One publisher's two pages were found and they differ, one giving spring or fall and the other adding winter, so no page is relied on. The season was estimated from the climate and similar trails: it runs fall through spring, and the heat, humidity and ticks of summer set the gap.
 pacific-crest	4,5,6,7,8,9,10	April to October	medium	A thru-hike starts at the desert border in April or May, crosses the Sierra after the June to July snowmelt, and must finish the Washington Cascades by early October.
 pacific-northwest	7,8,9	July to September	medium	An east-to-west thru-hike starts in Glacier after the snow clears in early July and must finish through the wet Olympic coast before October rain and early snow.
 paumanok-path	3,4,5,9,10,11	March to May and September to November	medium	Long Island is humid and tick-heavy in summer, and the pine barrens are pleasant in the cool shoulder seasons.
@@ -166,7 +166,7 @@ rutherford-lake-loop	7,8,9	July to September	high	Yosemite's south boundary pass
 san-diego-trans-county-trail	1,2,3,4,11,12	November to April	medium	The Salton Sea end and the desert washes are over 100F in summer, so the cool months are used, with the 4,900-foot mountains still mild in winter.
 santa-fe-to-taos	7,8,9	July to September	medium	Sangre de Cristo peaks near 12,000 ft are snowbound until late June and afternoon monsoon storms peak in July and August.
 sawtooth-wilderness-high-route	7,8,9	July to September	high	Mostly cross-country passes near 9,000 feet and above need the snow gone, which is from mid-July through September.
-sea-to-sea-route	4,5,6,7,8,9,10	April to October	low	A 7,775-mile coast-to-coast network across the northern prairie, the Rockies and the Cascades can only be walked from spring thaw to autumn snow.
+sea-to-sea-route	1,2,3,4,5,6,7,8,9,10,11,12	All year	low	A transcontinental route of about 7,775 miles takes about a year to walk, so no single window fits and it is listed for all twelve months.
 selway-river-trail	4,5,6,9,10	Spring and fall	medium	A low river canyon at 2,000 to 3,000 feet is free of snow early but reaches the mid-80s with fire risk in July and August, so spring and early fall are used.
 sentier-international-appalaches	6,7,8,9	June to September	medium	Gaspesie's Chic-Choc summits keep snow into June and the cold and snow return in October, so summer is the window.
 shawangunk-ridge-trail	3,4,5,9,10,11	March to May and September to November	medium	A Hudson Valley ridge with humid, buggy summers and icy winters, so spring and fall are the most comfortable months.

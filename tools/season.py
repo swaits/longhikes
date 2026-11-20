@@ -83,9 +83,9 @@ def check_season(tid, hike, errors):
             errors.append(f"{tid}: hike.season_method must not be empty")
         elif len(method) >= 400:
             errors.append(f"{tid}: hike.season_method must be under 400 characters")
-        elif basis == "estimate" and not _CONFIDENCE_END.search(method):
+        elif not _CONFIDENCE_END.search(method):
             errors.append(
-                f"{tid}: hike.season_method of an estimate must end with "
+                f"{tid}: hike.season_method must end with "
                 "\"Confidence: high.\", \"Confidence: medium.\" or \"Confidence: low.\"")
     elif basis == "estimate":
         errors.append(f"{tid}: hike.season_method is required with season_basis \"estimate\"")
@@ -120,12 +120,12 @@ def check_season(tid, hike, errors):
         if not naming_season:
             errors.append(
                 f"{tid}: hike.season_basis \"sources\" needs a [[hike.source]] naming season")
-        elif has_method:
-            pass  # set by judgement from pages that differ; they may share a publisher
         elif len(publishers) < 2:
             errors.append(
-                f"{tid}: hike.season_basis \"sources\" needs two sources from different "
-                "publishers naming season")
+                f"{tid}: hike.season_basis \"sources\" needs pages from at least two different "
+                "publishers naming season" + (", also when the season is set by judgement from pages that "
+                                              "differ (a page or two from one publisher is an estimate)"
+                                              if has_method else ""))
     elif basis == "estimate":
         naming = {id(x): x for x in _naming(sources, "season") + _naming(sources, "months")}
         if len(naming) != 1:

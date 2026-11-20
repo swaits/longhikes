@@ -77,10 +77,10 @@ official_url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
 shape = "network"
 unfinished = "An 800-mile gap in North Dakota and Montana along the Missouri River and a 30-mile gap in Vermont interrupt the network."
 checked = "2026-11-20"
-season = "April to October"
-months = [4, 5, 6, 7, 8, 9, 10]
+season = "All year"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 season_basis = "estimate"
-season_method = "Judged from the climate at the trail's elevation and from similar trails. A 7,775-mile coast-to-coast network across the northern prairie, the Rockies and the Cascades can only be walked from spring thaw to autumn snow. Confidence: low."
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A transcontinental route of about 7,775 miles takes about a year to walk, so no single window fits and it is listed for all twelve months. Confidence: low."
 
 [[hike.source]]
 url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
@@ -189,7 +189,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "A season was estimated: April to October."
+change = "A season was estimated: All year."
 fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
 basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
 basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"

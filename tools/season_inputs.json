@@ -6,7 +6,8 @@
    6,
    9,
    10
-  ]
+  ],
+  "points": "5b3280ac815e9040"
  },
  "alpine-trail-7": {
   "digest": "efd5e277fbf3b6c1",
@@ -14,7 +15,8 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "66d1a158cf32328a"
  },
  "avon": {
   "digest": "a9120a59a9a1907d",
@@ -25,7 +27,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "a133f33fe3b019f9"
  },
  "batona": {
   "digest": "3dbdb3e8b17d2b98",
@@ -35,7 +38,8 @@
    9,
    10,
    11
-  ]
+  ],
+  "points": "560955c481df42f5"
  },
  "bay-circuit": {
   "digest": "bdb128943b1900ae",
@@ -46,7 +50,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "90eafebf6ec4f76a"
  },
  "bayou-state-trail": {
   "digest": "c7c4147060628fa7",
@@ -57,7 +62,8 @@
    4,
    11,
    12
-  ]
+  ],
+  "points": "a8467e9a59501dd8"
  },
  "boundary-trail-mount-st-helens": {
   "digest": "01312d045fd17c20",
@@ -65,7 +71,8 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "f54416dc9b67f3a3"
  },
  "boundary-trail-pasayten": {
   "digest": "e97c07b0f68a15a9",
@@ -73,7 +80,8 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "d95317240cb4b500"
  },
  "bristol-hills-trail": {
   "digest": "a5fa7af7ebab8d67",
@@ -84,13 +92,15 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "7a56b636555fa553"
  },
  "brooks-range-traverse": {
   "digest": "8a3c5ef0f30bc7f8",
   "machine": [
    8
-  ]
+  ],
+  "points": "3e4bc0ab7ded98aa"
  },
  "bruce-trail": {
   "digest": "ed62c99709c54267",
@@ -99,7 +109,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "e6e985acbfb0c18a"
  },
  "california-coastal": {
   "digest": "5c7fa4913f78b36c",
@@ -109,7 +120,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "46d88fdd32b7c0c8"
  },
  "conestoga-trail": {
   "digest": "31f1d48bf322e3a7",
@@ -118,7 +130,8 @@
    5,
    9,
    10
-  ]
+  ],
+  "points": "8b710f69e6901943"
  },
  "conservation-trail": {
   "digest": "21bfcf5403bcbfdf",
@@ -128,7 +141,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "2ef8a2830d82f390"
  },
  "cranberry-lake-50": {
   "digest": "87772fc46ebb73ca",
@@ -136,7 +150,8 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "61231407b018812f"
  },
  "cross-vermont": {
   "digest": "de8f9f0acea8bd21",
@@ -145,7 +160,8 @@
    6,
    9,
    10
-  ]
+  ],
+  "points": "0cad6fec0d9afc44"
  },
  "deseret-hiking-route": {
   "digest": "191f5e4f5cc698cb",
@@ -155,7 +171,8 @@
    5,
    10,
    11
-  ]
+  ],
+  "points": "6079d15e9d183d7f"
  },
  "desert-trail": {
   "digest": "132108d83a002b0d",
@@ -164,7 +181,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "aa33dec22b7500b8"
  },
  "donut-hole": {
   "digest": "dcc41463939e95a7",
@@ -174,7 +192,8 @@
    6,
    9,
    10
-  ]
+  ],
+  "points": "284c0ef8512572a6"
  },
  "eastern-continental-trail": {
   "digest": "d40390952a719154",
@@ -184,7 +203,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "a6e0ee1c73858dcb"
  },
  "eastern-sierra-high-route": {
   "digest": "34c0558ddeedd3f2",
@@ -192,7 +212,11 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "55b8981509ad0893"
+ },
+ "finger-lakes": {
+  "points": "338c0f525d32224b"
  },
  "ganaraska": {
   "digest": "b414a50c65a31b82",
@@ -203,7 +227,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "2bdcc55e79a5f683"
  },
  "general-george-crook": {
   "digest": "f2896d5fe13e417f",
@@ -212,7 +237,8 @@
    5,
    9,
    10
-  ]
+  ],
+  "points": "64014e2e7644af9c"
  },
  "georgia-loop": {
   "digest": "35f1d5133569d0c0",
@@ -224,7 +250,8 @@
    10,
    11,
    12
-  ]
+  ],
+  "points": "441770b746069082"
  },
  "gila-centennial-loop": {
   "digest": "08f4ed745b5d2560",
@@ -235,7 +262,8 @@
    9,
    10,
    11
-  ]
+  ],
+  "points": "1bde178eb296427c"
  },
  "grand-valley-trail": {
   "digest": "5f4505a160f8f245",
@@ -244,7 +272,8 @@
    6,
    9,
    10
-  ]
+  ],
+  "points": "8d3f4d42f8553ba0"
  },
  "great-eastern": {
   "digest": "b77ec5d870bbcc88",
@@ -252,7 +281,8 @@
    4,
    5,
    10
-  ]
+  ],
+  "points": "f75851e040957980"
  },
  "great-western-divide-loop": {
   "digest": "dd7b6f503f72081b",
@@ -261,7 +291,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "64bab16e50d60757"
  },
  "high-country-pathway": {
   "digest": "b59fdbbf3b1ac6f8",
@@ -271,7 +302,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "0ea28ef5b9723b8d"
  },
  "highlands": {
   "digest": "8212eeadd24218c3",
@@ -280,7 +312,8 @@
    5,
    9,
    10
-  ]
+  ],
+  "points": "28d7e27072f8cc8b"
  },
  "hoosier-heritage-trail": {
   "digest": "f550667eab910362",
@@ -290,7 +323,8 @@
    5,
    10,
    11
-  ]
+  ],
+  "points": "27fe12298613e61c"
  },
  "horse-shoe": {
   "digest": "aeff26cf6c7e0143",
@@ -299,7 +333,8 @@
    5,
    9,
    10
-  ]
+  ],
+  "points": "ffe09d582ca7a623"
  },
  "hot-springs-trail": {
   "digest": "fc73ad4cf711d615",
@@ -310,7 +345,8 @@
    5,
    10,
    11
-  ]
+  ],
+  "points": "f64b708fe0a66d2a"
  },
  "iat-newfoundland-labrador": {
   "digest": "91eadce2b4ef4c7f",
@@ -318,7 +354,11 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "658a452a468fffd1"
+ },
+ "ice-age": {
+  "points": "6123e99c6a3082fe"
  },
  "international-appalachian-trail-maine": {
   "digest": "8f488d4dc2b03636",
@@ -326,13 +366,15 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "4cac64a291020a9a"
  },
  "koroc-palmer-loop": {
   "digest": "e18e82c08b6dfd5d",
   "machine": [
    8
-  ]
+  ],
+  "points": "84ce0d6f0fd7b454"
  },
  "la-cloche": {
   "digest": "61ce29ac5892d1b8",
@@ -340,7 +382,8 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "32195bb88992a86c"
  },
  "lost-coast": {
   "digest": "971c47b8714b706f",
@@ -350,7 +393,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "46726fb00eebd4cf"
  },
  "loyalsock": {
   "digest": "7e8067a31ec5da6c",
@@ -360,7 +404,8 @@
    6,
    9,
    10
-  ]
+  ],
+  "points": "589a23f3e8bf86e0"
  },
  "mason-dixon": {
   "digest": "54cad0c500a1e861",
@@ -369,7 +414,8 @@
    5,
    9,
    10
-  ]
+  ],
+  "points": "b67b7d3e33ed925f"
  },
  "midland-to-mackinac-trail": {
   "digest": "c5ed1765cac4534f",
@@ -377,7 +423,8 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "3df8a157582012ce"
  },
  "midstate-ma": {
   "digest": "edc133c6ae5007c7",
@@ -386,7 +433,8 @@
    6,
    9,
    10
-  ]
+  ],
+  "points": "99a2fcf36b45e796"
  },
  "north-south": {
   "digest": "86641545fa67fd0c",
@@ -396,7 +444,8 @@
    6,
    9,
    10
-  ]
+  ],
+  "points": "b0c1b0a0708e708e"
  },
  "north-south-lbl": {
   "digest": "25b3d5d788753ae6",
@@ -406,14 +455,16 @@
    5,
    10,
    11
-  ]
+  ],
+  "points": "3d0f9ffedba5dd16"
  },
  "north-umpqua": {
   "digest": "14231792880f7042",
   "machine": [
    5,
    10
-  ]
+  ],
+  "points": "81a26b35ce4a2b65"
  },
  "oak-ridges": {
   "digest": "0646d355131c000c",
@@ -423,7 +474,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "ed723136e55593f2"
  },
  "ottawa-temiskaming-highland-trail": {
   "digest": "77fbbe8137415f41",
@@ -431,7 +483,11 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "89d2a7d8f17525e7"
+ },
+ "ozark-trail": {
+  "points": "48f5b65c51e0a605"
  },
  "paumanok-path": {
   "digest": "588eea3017f04c4c",
@@ -440,7 +496,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "803699c022c3c997"
  },
  "pfiffner-traverse": {
   "digest": "61965112f0b75445",
@@ -448,7 +505,8 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "d3eecf6f0442939d"
  },
  "rideau-trail": {
   "digest": "55d2219b607959d1",
@@ -458,7 +516,8 @@
    8,
    9,
    10
-  ]
+  ],
+  "points": "7a16758637f5c4fc"
  },
  "ring-the-peak": {
   "digest": "858d219cc4ecd8f6",
@@ -466,7 +525,8 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "f13e0b5aeec19a5c"
  },
  "sawtooth-wilderness-high-route": {
   "digest": "0f4f2e2bf5e9bc6e",
@@ -474,7 +534,8 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "986a243b2dec421d"
  },
  "sea-to-sea-route": {
   "digest": "eb6dbcb347f7a83d",
@@ -482,7 +543,8 @@
    6,
    9,
    10
-  ]
+  ],
+  "points": "18927e8fccda17e4"
  },
  "shawangunk-ridge-trail": {
   "digest": "d3b38e00538fd900",
@@ -492,7 +554,8 @@
    6,
    9,
    10
-  ]
+  ],
+  "points": "6fe7bf6b493b24a4"
  },
  "shenipsit-trail": {
   "digest": "a713c4e4a679b6fa",
@@ -501,7 +564,8 @@
    5,
    9,
    10
-  ]
+  ],
+  "points": "a4533e0f9dfca3b2"
  },
  "siskiyou-peaks-trail": {
   "digest": "2b4dff26c8e71b80",
@@ -509,7 +573,8 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "6ff6148206cdf66b"
  },
  "sky-islands-traverse": {
   "digest": "eed4f15ecdf6114d",
@@ -520,7 +585,8 @@
    9,
    10,
    11
-  ]
+  ],
+  "points": "840db2e4fcb1de1c"
  },
  "solitude-loop": {
   "digest": "c091a7bb7336deb5",
@@ -528,7 +594,8 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "3f2a5bcfbaf1ebe2"
  },
  "standing-stone": {
   "digest": "cdc4f7ed39a2c205",
@@ -537,28 +604,32 @@
    5,
    9,
    10
-  ]
+  ],
+  "points": "30d3a7085e711b49"
  },
  "stein-valley-traverse": {
   "digest": "59cd7e9a35c5c732",
   "machine": [
    6,
    9
-  ]
+  ],
+  "points": "4bf13dd8bff38e69"
  },
  "sunapee-ragged-kearsarge": {
   "digest": "f5d7131d547be861",
   "machine": [
    8,
    9
-  ]
+  ],
+  "points": "401dd7ea1ce18086"
  },
  "tahoe-yosemite-trail": {
   "digest": "23aa94cfbefd3f86",
   "machine": [
    8,
    9
-  ]
+  ],
+  "points": "e77f9a0b7900a3d1"
  },
  "tuscarora": {
   "digest": "606d9fe137a8347d",
@@ -567,14 +638,16 @@
    5,
    9,
    10
-  ]
+  ],
+  "points": "9e75f481d596079f"
  },
  "vagabond-loop": {
   "digest": "33378ec42f73f8d5",
   "machine": [
    4,
    10
-  ]
+  ],
+  "points": "b56fa26d9315370d"
  },
  "warrior-trail": {
   "digest": "cecd19f5c7ba6ae4",
@@ -583,7 +656,8 @@
    5,
    9,
    10
-  ]
+  ],
+  "points": "a1fa2f53436ddcbd"
  },
  "wasatch-traverse": {
   "digest": "1582bd31f8f00ced",
@@ -592,7 +666,8 @@
    6,
    9,
    10
-  ]
+  ],
+  "points": "5b3280ac815e9040"
  },
  "waskahegan": {
   "digest": "d7993fbe810051fd",
@@ -600,7 +675,8 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "3d85be5f038811c6"
  },
  "western-uplands": {
   "digest": "464d6cd6bfe3257c",
@@ -608,7 +684,8 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "57288e3504dc6d55"
  },
  "yosemite-high-route": {
   "digest": "eee24b0c39473ab0",
@@ -616,6 +693,7 @@
    7,
    8,
    9
-  ]
+  ],
+  "points": "10d56319fea3c478"
  }
 }

@@ -1,7 +1,8 @@
 name: Season check
 
-# Once a month, rerun the machine estimate for every estimated season and the fit against the
-# sourced seasons. A failure lists the estimates whose inputs have changed; see docs/audit.md.
+# Once a month, check offline that every estimated season is still on the track or location it
+# was estimated for. Nothing is downloaded: the climate normals are a fixed published dataset. A
+# failure lists the estimates whose inputs have changed; see docs/audit.md.
 on:
   schedule:
     - cron: "17 6 1 * *"
@@ -10,17 +11,10 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - id: month
-        run: echo "month=$(date +%Y-%m)" >> "$GITHUB_OUTPUT"
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/longhikes-climate
-          key: climate-${{ steps.month.outputs.month }}
-          restore-keys: climate-
       - run: python3 tools/estimate_season.py check

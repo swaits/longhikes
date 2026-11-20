@@ -403,10 +403,8 @@ class ProposeCheckTest(unittest.TestCase):
             json.dump(doc, f)
 
     def record_inputs(self, root, tid="aaa", **change):
-        params = E.load_params(root)
         rec = E.refresh.load_toml(os.path.join(root, tid, "trail.toml"))
-        sig = E.inputs_signature(E.estimate(root, dict(rec, id=tid), params, mild_fetch,
-                                            E.references(root, mild_fetch)))
+        sig = {"points": E.points_signature(root, dict(rec, id=tid))}
         sig.update(change)
         with open(os.path.join(root, "tools", "season_inputs.json"), "w") as f:
             json.dump({tid: sig}, f)
@@ -417,68 +415,82 @@ class ProposeCheckTest(unittest.TestCase):
         self.blind_doc(root, **kw)
         return root
 
-    def test_check_passes_when_nothing_changed(self):
+    @staticmethod
+    def no_network(lat, lon, elev):
+        raise AssertionError("the monthly check must not read the climate")
+
+    def test_check_passes_when_nothing_changed_and_reads_no_climate(self):
         tmp = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, tmp, True)
         root = self.checked_repo(tmp)
-        E._REFS.clear()
         self.record_inputs(root)
-        ok, lines = E.check(root, mild_fetch)
+        ok, lines = E.check(root, self.no_network)
+        self.assertTrue(ok, lines)
+        ok, lines = E.check(root)
         self.assertTrue(ok, lines)
 
-    def test_check_flags_an_estimate_whose_machine_estimate_changed(self):
+    def test_check_flags_an_estimate_whose_location_moved(self):
         tmp = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, tmp, True)
         root = self.checked_repo(tmp)
-        E._REFS.clear()
-        self.record_inputs(root, machine=[6, 7])
-        ok, lines = E.check(root, mild_fetch)
+        self.record_inputs(root)
+        path = os.path.join(root, "aaa", "trail.toml")
+        with open(path, encoding="utf-8") as f:
+            text = f.read()
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(text.replace("end_lonlat = [-110.0, 43.2]", "end_lonlat = [-111.5, 44.2]"))
+        ok, lines = E.check(root, self.no_network)
         self.assertFalse(ok)
-        self.assertTrue(any("aaa" in line and "inputs changed" in line and "[6, 7]" in line
+        self.assertTrue(any("aaa" in line and "inputs changed" in line and "track or location" in line
                             for line in lines), lines)
 
-    def test_check_flags_an_estimate_whose_climate_digest_changed(self):
+    def test_check_flags_an_estimate_whose_recorded_inputs_differ(self):
         tmp = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, tmp, True)
         root = self.checked_repo(tmp)
-        E._REFS.clear()
-        self.record_inputs(root, digest="0" * 16)
-        ok, lines = E.check(root, mild_fetch)
+        self.record_inputs(root, points="0" * 16)
+        ok, lines = E.check(root, self.no_network)
         self.assertFalse(ok)
         self.assertTrue(any("aaa" in line and "inputs changed" in line for line in lines), lines)
+
+    def test_the_points_signature_does_not_move_for_changes_that_are_not_the_location(self):
+        tmp = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, tmp, True)
+        root = self.checked_repo(tmp)
+        rec = E.refresh.load_toml(os.path.join(root, "aaa", "trail.toml"))
+        before = E.points_signature(root, dict(rec, id="aaa"))
+        rec["hike"]["summary"] = "Something else."
+        self.assertEqual(E.points_signature(root, dict(rec, id="aaa")), before)
 
     def test_check_flags_an_estimate_with_no_recorded_inputs(self):
         tmp = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, tmp, True)
         root = self.checked_repo(tmp)
-        E._REFS.clear()
-        ok, lines = E.check(root, mild_fetch)
+        ok, lines = E.check(root, self.no_network)
         self.assertFalse(ok)
         self.assertTrue(any("aaa" in line and "no inputs are recorded" in line for line in lines), lines)
 
-    def test_check_fails_when_the_blind_test_is_under_the_bar(self):
+    def test_check_flags_inputs_recorded_for_a_trail_that_is_no_longer_an_estimate(self):
+        tmp = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, tmp, True)
+        root = self.checked_repo(tmp)
+        self.record_inputs(root)
+        with open(os.path.join(root, "tools", "season_inputs.json"), "w") as f:
+            json.dump({"aaa": {"points": E.points_signature(
+                root, dict(E.refresh.load_toml(os.path.join(root, "aaa", "trail.toml")), id="aaa"))},
+                "gone": {"points": "x"}}, f)
+        ok, lines = E.check(root)
+        self.assertFalse(ok)
+        self.assertTrue(any("gone" in line for line in lines), lines)
+
+    def test_check_fails_when_the_blind_test_is_under_the_bar_on_the_ends_only_measure(self):
         tmp = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, tmp, True)
         root = self.checked_repo(tmp, share=0.6)
-        E._REFS.clear()
         self.record_inputs(root)
-        ok, lines = E.check(root, mild_fetch)
+        ok, lines = E.check(root)
         self.assertFalse(ok)
-        self.assertTrue(any("blind test" in line for line in lines), lines)
-
-    def test_check_fails_when_the_fit_got_worse(self):
-        tmp = tempfile.mkdtemp()
-        self.addCleanup(shutil.rmtree, tmp, True)
-        # one sourced trail that mild all-year normals cannot match
-        extra = ('season = "June"\nmonths = [6]\n'
-                 'season_basis = "source"\n' + self.ENDS)
-        root = self.repo_with(tmp, [("only", "Only", {"extra_hike": extra})])
-        self.fit_doc(root, within1=4, n=4)
-        self.blind_doc(root)
-        E._REFS.clear()
-        ok, lines = E.check(root, mild_fetch)
-        self.assertFalse(ok)
-        self.assertTrue(any("fit got worse" in line for line in lines), lines)
+        self.assertTrue(any("blind test" in line and "ends-only" in line for line in lines), lines)
 
     def test_the_estimates_command_lists_only_estimates(self):
         tmp = tempfile.mkdtemp()

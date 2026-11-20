@@ -20,8 +20,9 @@ Commands:
              tools/season_blind_test.json)
   proposals  stage the judged seasons for the trails with no season, for
              python3 tools/refresh.py collect and apply
-  inputs     record the machine estimate and the inputs of every estimate,
-             so the monthly check can see when they change
+  inputs     record what every estimate rests on (the digest of its track
+             and location, and the machine estimate), so the monthly check,
+             which runs offline, can see when a track or location changes
 
 An answer file is tab separated, one trail a line, no header: id, months
 (comma separated, 1 to 12), season phrase, confidence (high, medium or
@@ -608,13 +609,37 @@ def cmd_proposals(args):
 
 
 def cmd_inputs(args):
-    fetch = E._fetch_with_cache(args.cache)
-    params = E.load_params(ROOT)
-    refs = E.references(ROOT, fetch)
-    doc = {}
-    for tid, rec in E._records(ROOT):
-        if (rec.get("hike") or {}).get("season_basis") == "estimate":
-            doc[tid] = E.inputs_signature(E.estimate(ROOT, dict(rec, id=tid), params, fetch, refs))
+    """Record what each estimate rests on: the digest of the trail's track and location (offline,
+    all the monthly check compares) and, unless --points, the machine estimate and the digest of the
+    climate and similar trails at the time (which reads the climate, so it needs the network)."""
+    try:
+        with open(args.write, encoding="utf-8") as f:
+            doc = json.load(f)
+    except OSError:
+        doc = {}
+    params = refs = fetch = None
+    if not args.points:
+        fetch = E._fetch_with_cache(args.cache)
+        params = E.load_params(ROOT)
+        refs = E.references(ROOT, fetch)
+    estimates = {tid: rec for tid, rec in E._records(ROOT)
+                 if (rec.get("hike") or {}).get("season_basis") == "estimate"}
+    unknown = [t for t in args.ids if t not in estimates]
+    if unknown:
+        print("not an estimate: " + ", ".join(unknown))
+        return 1
+    for tid in sorted(set(doc) - set(estimates)):
+        del doc[tid]
+    for tid, rec in estimates.items():
+        if args.ids and tid not in args.ids:
+            continue
+        entry = dict(doc.get(tid, {}))
+        if not args.points:
+            entry.update(E.inputs_signature(E.estimate(ROOT, dict(rec, id=tid), params, fetch, refs)))
+        entry["points"] = E.points_signature(ROOT, dict(rec, id=tid))
+        doc[tid] = entry
+    for tid, rec in estimates.items():   # every estimate has its digest, even when only some were asked for
+        doc.setdefault(tid, {"points": E.points_signature(ROOT, dict(rec, id=tid))})
     with open(args.write, "w", encoding="utf-8") as f:
         json.dump(doc, f, indent=1, sort_keys=True)
         f.write("\n")
@@ -642,7 +667,10 @@ def main(argv=None):
     p.add_argument("--pages", default=PAGES)
     p.add_argument("--dir", default=None)
     p.set_defaults(func=cmd_proposals)
-    p = sub.add_parser("inputs", help="record the inputs of every estimate")
+    p = sub.add_parser("inputs", help="record the inputs of every estimate (or of the trail ids named)")
+    p.add_argument("ids", nargs="*", help="only these estimates; default every estimate")
+    p.add_argument("--points", action="store_true",
+                   help="record only the digest of the track and location (offline, quick)")
     p.add_argument("--write", default=INPUTS)
     p.add_argument("--cache", default=None)
     p.set_defaults(func=cmd_inputs)

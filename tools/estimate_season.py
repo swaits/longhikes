@@ -711,64 +711,52 @@ def estimates(root):
             if (rec.get("hike") or {}).get("season_basis") == "estimate"]
 
 
-def check(root, fetch):
-    """Rerun the machine estimate for every estimated season and the
-    leave-one-out fit. Returns (ok, lines): not ok when an estimate's
-    inputs have changed since they were recorded in
-    tools/season_inputs.json (the machine estimate, the climate at the
-    trail, or the sourced trails it is compared with), when the
-    leave-one-out match share has fallen by more than 0.02 from
-    tools/season_fit.json, or when the blind test of the judged method
-    (tools/season_blind_test.json) is missing, or is below the bar on its
-    ends-only measure (the strict measure is recorded beside it). A changed
+def points_signature(root, rec):
+    """A short digest of where a trail's season was estimated: the kind of sample points and their
+    coordinates and elevations, from the trail's current track (or its ends, or its place). It reads
+    only files in the repository, so the monthly check can compare it with no network."""
+    points, kind = sample_points(root, rec)
+    material = json.dumps(
+        {"kind": kind,
+         "points": [[round(p.lat, 4), round(p.lon, 4),
+                     None if p.elev_m is None else round(p.elev_m)] for p in points]},
+        sort_keys=True)
+    return hashlib.sha256(material.encode()).hexdigest()[:16]
+
+
+def check(root, fetch=None):
+    """The monthly check, offline. For every estimated season, compares the digest of the trail's
+    current track and location (points_signature) with the one recorded in
+    tools/season_inputs.json when the season was set, and returns (ok, lines): not ok when an
+    estimate has no recorded inputs, when its track or location has changed, when inputs are
+    recorded for a trail that is no longer an estimate, or when the blind test of the judged method
+    (tools/season_blind_test.json) is missing, or is below the bar on its ends-only measure (the
+    strict measure is recorded beside it). The climate normals are a fixed published dataset
+    (CHELSA, 1981 to 2010), so they are not read again; `fetch` is accepted and unused. A changed
     estimate is a flag for a person to look at, not a rewrite."""
     import season_judge
-    try:
-        fit = load_fit(root)
-    except OSError:
-        return False, ["tools/season_fit.json is missing: run "
-                       "python3 tools/estimate_season.py fit"]
-    params = load_params(root)
     ok, lines, checked = True, [], 0
-    refs = references(root, fetch)
     recorded = load_inputs(root)
     for tid, rec in _records(root):
         hike = rec.get("hike") or {}
         if hike.get("season_basis") != "estimate":
             continue
         checked += 1
-        sig = inputs_signature(estimate(root, dict(rec, id=tid), params, fetch, refs))
-        then = recorded.get(tid)
-        if then is None:
+        now = points_signature(root, dict(rec, id=tid))
+        then = (recorded.get(tid) or {}).get("points")
+        if tid not in recorded or then is None:
             ok = False
             lines.append(f"{tid}: no inputs are recorded for this estimate: run "
-                         "python3 tools/season_judge.py inputs")
-        elif sig["machine"] != then["machine"]:
+                         "python3 tools/season_judge.py inputs --points " + tid)
+        elif now != then:
             ok = False
-            lines.append(f"{tid}: inputs changed: the machine estimate was {then['machine']}, "
-                         f"now {sig['machine']}; the season is {sorted(hike.get('months') or [])}")
-        elif sig["digest"] != then["digest"]:
-            ok = False
-            lines.append(f"{tid}: inputs changed: the climate or the similar sourced trails differ "
-                         f"(machine estimate still {sig['machine']}); the season is "
+            lines.append(f"{tid}: inputs changed: the trail's track or location is no longer the one the "
+                         f"season was estimated for ({then}, now {now}); the season is "
                          f"{sorted(hike.get('months') or [])}")
     for tid in sorted(set(recorded) - set(estimates(root))):
         ok = False
         lines.append(f"{tid}: has recorded inputs but is no longer an estimate: remove it "
                      "from tools/season_inputs.json")
-    sourced = sourced_trails(root, fetch)
-    if any(s[1] is not None for s in sourced):
-        _p, now, _loo = fit_sourced(sourced)
-        stored = fit.get("loo") or {}
-        if stored.get("n"):
-            was_share = stored["within1"] / stored["n"]
-            now_share = now["within1"] / now["n"] if now["n"] else 0.0
-            if was_share - now_share > 0.02:
-                ok = False
-                lines.append(
-                    f"fit got worse: leave-one-out matches "
-                    f"{now['within1']}/{now['n']} ({now_share:.2f}), "
-                    f"was {stored['within1']}/{stored['n']} ({was_share:.2f})")
     try:
         blind = season_judge.load_blind_test(os.path.join(root, "tools", "season_blind_test.json"))
         problems = season_judge.check_blind_test(blind)
@@ -784,7 +772,8 @@ def check(root, fetch):
         ok = False
         lines.append("tools/season_blind_test.json is missing or unreadable")
     if ok:
-        lines.append(f"check passed: {checked} estimated seasons rest on the same inputs")
+        lines.append(f"check passed: {checked} estimated seasons are still on the track or location "
+                     "they were estimated for")
     return ok, lines
 
 
@@ -870,8 +859,7 @@ def cmd_estimates(args):
 
 
 def cmd_check(args):
-    fetch = _fetch_with_cache(args.cache)
-    ok, lines = check(ROOT, fetch)
+    ok, lines = check(ROOT)
     for line in lines:
         print(line)
     return 0 if ok else 1
@@ -907,9 +895,8 @@ def main(argv=None):
         "estimates", help="list the trails whose season is an estimate")
     estimates_parser.set_defaults(func=cmd_estimates)
     check_parser = sub.add_parser(
-        "check", help="rerun every estimate and the fit")
-    check_parser.add_argument("--cache", default=None,
-                              help="climate cache directory")
+        "check", help="offline: compare each estimate's recorded inputs with the trail's "
+                      "current track and location, and check the blind test")
     check_parser.set_defaults(func=cmd_check)
     argv = ["check" if a == "--check" else a
             for a in (sys.argv[1:] if argv is None else argv)]

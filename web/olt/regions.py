@@ -200,6 +200,7 @@ def regions_index_page(records, site, infos=()):
             f'<li><a href="{esc(i["path"])}">{esc(i["name"])}</a>'
             f'<span class="places__n">{_plural(len(i["records"]))}</span></li>'
             for i in mine)
+        jump.append(f'<li><a href="#{esc(kind.segment)}">{esc(kind.hub_title)}<span class="lists-row__n">{len(mine)}</span></a></li>')
         blocks += f"""<section class="places__group" aria-labelledby="{esc(kind.segment)}">
   <h2 id="{esc(kind.segment)}">{esc(kind.hub_title)}</h2>
   <ul class="places__list">{rows}</ul>
@@ -218,7 +219,7 @@ def regions_index_page(records, site, infos=()):
   <p class="page-head__lede">The {len(records)} trails by state and province, grouped into parts of the
   United States ({n_us}) and Canada ({n_ca}). A trail that crosses several states is on each one&rsquo;s page.{lede_more}</p>
   </div></header>
-  <nav class="lists-row" aria-label="Jump to a part of the country"><ul>{"".join(jump)}</ul></nav></div></div>
+  <nav class="lists-row" aria-label="Jump to a part of the country or a kind of place"><ul>{"".join(jump)}</ul></nav></div></div>
 <div class="container section places">{blocks}</div>{foot}"""
     description = (f"Where the {len(records)} long trails and routes are: {n_us} in the United States and {n_ca} in Canada, "
                    f"by state and province, with the number in each.")

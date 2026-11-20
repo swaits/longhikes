@@ -48,11 +48,25 @@ class HubTest(unittest.TestCase):
         self.assertIn("Parks, mountain ranges and wilderness areas with three or more "
                       "trails have pages too.", re.sub(r"\s+", " ", body))
 
+    def test_the_shortcut_strip_links_each_kind_that_has_pages(self):
+        _, _, body = regions.regions_index_page(self.records, S, infos=self.infos)
+        strip = str(body)[str(body).index('<nav class="lists-row"'):]
+        strip = strip[:strip.index("</nav>")]
+        self.assertIn('<a href="#parks">Parks<span class="lists-row__n">1</span></a>', strip)
+        self.assertIn('<a href="#ranges">Mountain ranges<span class="lists-row__n">1</span></a>', strip)
+        self.assertNotIn("#wilderness", strip)  # no wilderness page here: no shortcut
+        # the regional groups are still there, before the kinds
+        self.assertLess(strip.index('href="#west-coast"') if 'href="#west-coast"' in strip
+                        else strip.index("<li>"), strip.index('href="#parks"'))
+        _, _, plain = regions.regions_index_page(self.records, S)
+        self.assertNotIn('href="#parks"', str(plain))
+
     def test_the_hub_still_lists_every_state_group_as_before(self):
         _, _, plain = regions.regions_index_page(self.records, S)
         _, _, with_places = regions.regions_index_page(self.records, S, infos=self.infos)
         stripped = re.sub(r'<section class="places__group" aria-labelledby="(?:parks|ranges|wilderness)">.*?</section>',
                           "", str(with_places), flags=re.S)
+        stripped = re.sub(r'<li><a href="#(?:parks|ranges|wilderness)">.*?</li>', "", stripped)
         stripped = stripped.replace(
             " Parks, mountain ranges and wilderness areas with three or more trails have pages too.", "")
         self.assertEqual(stripped, str(plain))

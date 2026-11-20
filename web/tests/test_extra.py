@@ -407,7 +407,7 @@ class HeadersTest(unittest.TestCase):
         self.assertIn("img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com;", csp)
         with open(os.path.join(WEB, "assets", "map", "outdoor.json"), encoding="utf-8") as f:
             dem = json.load(f)["sources"]["olt-dem"]["tiles"][0]
-        self.assertTrue(dem.startswith(connect[2]), dem)
+        self.assertTrue(dem.startswith(connect[-1]), dem)
 
 
 class SeoTest(unittest.TestCase):

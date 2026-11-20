@@ -166,7 +166,7 @@ def regions_index_page(records, site, infos=()):
     a page (olt/places.py collect); each kind that has any gets a section of its own."""
     by_slug, across = collect_regions(records)
     place_infos = list(infos.values()) if isinstance(infos, dict) else list(infos or ())
-    blocks = '<span id="states-and-provinces"></span>'
+    blocks = ""
     jump = []
     kinds = []
     for g, name, keys in facets.PLACE_GROUPS:
@@ -226,6 +226,7 @@ def regions_index_page(records, site, infos=()):
   United States ({n_us}) and Canada ({n_ca}). A trail that crosses several states is on each one&rsquo;s page.{lede_more}</p>
   </div></header>
   <nav class="lists-row" aria-label="Jump to a part of the country"><ul>{"".join(jump)}</ul></nav></div></div>
+<span id="states-and-provinces"></span>
 <div class="container section places">{blocks}</div>{foot}"""
     description = (f"Where the {len(records)} long trails and routes are: {n_us} in the United States and {n_ca} in Canada, "
                    f"by state and province, with the number in each.")

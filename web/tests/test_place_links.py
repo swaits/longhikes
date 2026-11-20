@@ -66,6 +66,7 @@ class HubTest(unittest.TestCase):
         _, _, with_places = regions.regions_index_page(self.records, S, infos=self.infos)
         stripped = re.sub(r'<section class="places__group" aria-labelledby="(?:parks|ranges|wilderness)">.*?</section>',
                           "", str(with_places), flags=re.S)
+        stripped = stripped.replace(" or a kind of place", "")
         stripped = re.sub(r'<li><a href="#(?:parks|ranges|wilderness)">.*?</li>', "", stripped)
         stripped = stripped.replace(
             " Parks, mountain ranges and wilderness areas with three or more trails have pages too.", "")

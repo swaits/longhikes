@@ -1,170 +1,108 @@
-"""Monthly climate normals for a point, downloaded once and cached.
+"""Monthly climate normals for a point, read from bulk gridded files.
 
 Python 3 standard library only. The estimator (tools/estimate_season.py)
-asks this module for the normals at a trail's sample points. Network use
-happens only when the cache lacks a point. Every response is cached
-outside the repository, requests go one at a time with a short pause, and
-the same point is never requested twice (a point with no data is cached
-as having no data). Run the trial with:
-
-    python3 tools/estimate_season.py trial
+asks this module for the normals at a trail's sample points. The grids
+are large public files read in place: only the 512 pixel tiles that
+cover a point are fetched (HTTP range requests), each tile is cached
+outside the repository once, and the values for a point are cached as
+one small file. There is no rate limit to wait out; a tile is never
+fetched twice, and an interrupted run resumes from the cache.
 
 Source chosen
 =============
-ERA5-Land through the Open-Meteo Historical Weather API: daily maximum
-temperature and daily maximum snow depth, averaged by month over
-2018-2020, at the elevation asked for (the API adjusts both values to
-that elevation). SOURCE below names it for the record entries. The
-three years are a limit of the free API, not a preference; see the
-licence note below. The trial tables at the end were run on 2011-2020
-means, before that limit was measured. The choice does not turn on
-the years: the losing sources lack snow depth, values at the asked
-elevation and the other country on any years.
+CHELSA V2.1 climatologies (monthly mean daily maximum near-surface air
+temperature, 1981-2010, about 1 km, global land), from WSL, with the
+elevation of the grid cell taken from NOAA's ETOPO 2022 relief model
+(60 arc second, unrestricted version). The temperature at a trail's own
+elevation is the cell's value plus a lapse rate of 6.5 C per km times
+the cell's elevation minus the trail's. The source carries no snow
+variable, so snow-free months are derived from the temperature at the
+trail's high ground (the rule's cold limit stands in for snow) and the
+estimate says so.
 
-Licences, read on each publisher's own terms page (2026-11-20):
+Why the first choice was dropped. The previous choice was ERA5-Land
+served by the Open-Meteo Historical Weather API. Its free tier
+allows 5000 weighted units an hour, and one point-year of daily data
+for two variables costs about 5 units, so a thirty year normal for the
+roughly 900 sample points needs about 139000 units (some 28 hours) and
+ten years about 9 hours; only three years fit in about three hours, and
+three years is too short to call a normal. Its terms also limit the
+free tier to non-commercial use. A bulk grid read locally has no such
+limit.
 
-- Open-Meteo licence page, https://open-meteo.com/en/licence:
-  "API data are offered under Attribution 4.0 International (CC BY 4.0)".
-  Its terms page, https://open-meteo.com/en/terms, adds for the free
-  API: "You may only use the free API services for non-commercial
-  purposes." and "Less than 10'000 API calls per day, 5'000 per hour
-  and 600 per minute." This dataset is a public, non-commercial one, and
-  the CC BY 4.0 data licence is met by the attribution in NOTICE.md and
-  the source entry on each estimated record. The binding limit in
-  practice is the hourly one the API reports on a refusal: 5000
-  weighted units an hour, where one point costs about 5 units per
-  year of daily data for the two measures. All thirty normals years
-  for the roughly 900 sample points would cost about 139000 units,
-  some 28 hours of throttled requests, and ten years about 9 hours,
-  so the period is three years (about 14000 units, under 3 hours from
-  an empty cache, and nothing once cached). The rule's thresholds are
-  fitted on the same three years, so a steady offset between those
-  years and the thirty year normals is mostly absorbed by the fit.
-  Widening the period later only refills the cache, which is keyed
-  by period so the two never mix. Requests that meet the hourly
-  limit wait as long as the API asks and then retry, so a long run
-  pauses instead of failing.
-- NOAA (US only), https://www.weather.gov/disclaimer: "The information
-  on National Weather Service (NWS) Web pages are in the public domain,
-  unless specifically noted otherwise, and may be used without charge
-  for any lawful purpose". The 1991-2020 monthly normals are station
-  values, and the product carries temperature and precipitation only:
-  its station files have no snow depth variable, so the snow test
-  would be dropped. SNODAS snow depth is a separate daily US grid with
-  no point service.
-- Environment and Climate Change Canada (Canada only), normals under
-  the Open Government Licence, Canada,
-  https://open.canada.ca/en/open-government-licence-canada: "The
-  Information Provider grants you a worldwide, royalty-free, perpetual,
-  non-exclusive licence to use the Information, including for
-  commercial purposes", with acknowledgement of the source. The MSC
-  GeoMet normals collection trialled here is the 1981-2010 station
-  normals. It has mean daily maximum temperature but no snow depth
-  (total snowfall is not depth), and its features carry no station
-  elevation, so no lapse adjustment to a trail's high ground is
-  possible.
+Why not the other bulk grids. WorldClim 2.1 (monthly 1970-2000, free
+download) states at https://www.worldclim.org/about.html: "The data are
+freely available for academic use and other non-commercial use.
+Redistribution or commercial use is not allowed without prior
+permission." That fails the public domain or open licence test. NOAA
+and Environment Canada station normals lack the coverage of both
+countries and a value at a trail's elevation (see the earlier trial in
+the repository history).
 
-Why the others lost: neither station product covers both countries,
-neither gives snow depth, and neither gives values at the elevation of
-a trail's high ground, which is what decides when an alpine trail
-opens. Stations also thin out exactly where trails are wildest (the
-trial's far north point has no station in range). Open-Meteo returns
-temperature and snow depth at the elevation asked for, for every
-trial trail in both countries. Its weakness is the free API's
-non-commercial access term, recorded above for the owner.
+Licences, read on each publisher's own page (2026-11-20):
 
-Trial (twelve sourced trails, 2026-11-20, one coarse default rule
-for every candidate: the high point at least 5 C and at most 10 cm of
-snow where snow exists, the low point at most 32 C; high and low track
-points only, place centres for akshayuk-pass and
-desert-winter-thru-hike, which have no track or ends; rerun with the
-trial command above once the estimator exists). The akshayuk-pass
-place centre falls in water, where the land model has no values, and
-no station is in range, so every candidate lacks data there. NOAA
-reached west-coast-trail across the border from a US station.
+- CHELSA, https://www.chelsa-climate.org/datasets/chelsa_climatologies,
+  field License: "Creative Commons Zero - No Rights Reserved (CC0 1.0)".
+  The same page asks for the citation: Karger, D. N., Conrad, O.,
+  Boehner, J., Kawohl, T., Kreft, H., Soria-Auza, R. W., Zimmermann,
+  N. E., Linder, H. P., Kessler, M. (2017). Climatologies at high
+  resolution for the earth's land surface areas. Scientific Data 4,
+  170122. https://doi.org/10.1038/sdata.2017.122. It is credited in
+  NOTICE.md although CC0 does not require it.
+- ETOPO 2022, https://www.ncei.noaa.gov/products/etopo-global-relief-model:
+  the Unrestricted version is described as "Full global coverage, no
+  copyright or security distribution restrictions". NOAA NCEI, DOI
+  10.25921/fd45-gt74.
 
-  open-meteo: trail (sourced months) gives estimated months, grade
-    akshayuk-pass (7,8): no data
-    great-divide-trail (7,8,9): 7,8,9, exact
-    west-coast-trail (5,6,7,8,9): all year, worse
-    john-muir (7,8,9): 6,7,8,9, within1
-    colorado-trail (7,8,9): 7,8,9, exact
-    uinta-highline (7,8,9): 7,8,9, exact
-    desert-winter-thru-hike (12,1,2): 1,2,3,4,5,8,9,10,11,12, worse
-    arizona (2,3,9,10): 3,4,10,11, within1
-    florida (10,11,12,1,2,3,4): all year, worse
-    washington-coast-trail (5,6,7,8,9): all year, worse
-    maah-daah-hey (all year): 3,4,5,6,7,8,9,10,11, worse
-    superior-hiking (6,7,8,9): 5,6,7,8,9,10, within1
-  Data for 11 of 12, exact or within one month for 6 of the 11.
-
-  noaa: trail (sourced months) gives estimated months, grade
-    akshayuk-pass (7,8): no data
-    great-divide-trail (7,8,9): no data
-    west-coast-trail (5,6,7,8,9): all year, worse
-    john-muir (7,8,9): 5,6,7,8,9,10, worse
-    colorado-trail (7,8,9): 5,6,7,8,9,10, worse
-    uinta-highline (7,8,9): 5,6,7,8,9, worse
-    desert-winter-thru-hike (12,1,2): 1,2,3,4,5,9,10,11,12, worse
-    arizona (2,3,9,10): 4,10, worse
-    florida (10,11,12,1,2,3,4): all year, worse
-    washington-coast-trail (5,6,7,8,9): all year, worse
-    maah-daah-hey (all year): 3,4,5,6,7,8,9,10,11, worse
-    superior-hiking (6,7,8,9): 4,5,6,7,8,9,10, worse
-  Data for 10 of 12, exact or within one month for 0 of the 10. With
-  no snow measure the alpine seasons all open about two months early.
-
-  eccc: trail (sourced months) gives estimated months, grade
-    akshayuk-pass (7,8): no data
-    great-divide-trail (7,8,9): 4,5,6,7,8,9,10, worse
-    west-coast-trail (5,6,7,8,9): all year, worse
-    john-muir (7,8,9): no data
-    colorado-trail (7,8,9): no data
-    uinta-highline (7,8,9): no data
-    desert-winter-thru-hike (12,1,2): no data
-    arizona (2,3,9,10): no data
-    florida (10,11,12,1,2,3,4): no data
-    washington-coast-trail (5,6,7,8,9): partial data
-    maah-daah-hey (all year): no data
-    superior-hiking (6,7,8,9): partial data
-  Data for 2 of 12 (the Canadian trails), exact or within one month
-  for 0 of the 2.
+Reading the files. Both are tiled GeoTIFFs. CHELSA's tiles are LZW with a
+horizontal predictor, 16 bit unsigned, value times 0.1 in kelvin; ETOPO's
+are deflate with the floating point predictor. The small readers below
+handle exactly those two layouts and refuse anything else, so no library
+is needed in CI or in `web/`.
 """
 import sys
 
 sys.dont_write_bytecode = True
 
-import csv
-import io
+import array
+import hashlib
 import json
 import math
 import os
+import re
+import struct
+import tempfile
+import threading
 import time
 import urllib.error
-import urllib.parse
 import urllib.request
+import zlib
 from dataclasses import dataclass
 
 CACHE_DIR = os.environ.get("LONGHIKES_CLIMATE_CACHE") or os.path.join(
     os.path.expanduser("~"), ".cache", "longhikes-climate")
 
 SOURCE = {
-    "name": "ERA5-Land via Open-Meteo",
-    "publisher": "Open-Meteo.com",
-    "url": "https://open-meteo.com/en/docs/historical-weather-api",
-    "licence": "CC BY 4.0",
-    "period": "2018-2020",
+    "name": "CHELSA V2.1 climatologies, with ETOPO 2022 elevation",
+    "publisher": "WSL (CHELSA) and NOAA NCEI (ETOPO)",
+    "url": "https://www.chelsa-climate.org/datasets/chelsa_climatologies",
+    "licence": "CC0 1.0 (CHELSA); NOAA ETOPO 2022 unrestricted",
+    "period": "1981-2010",
 }
 
-USER_AGENT = "Mozilla/5.0"
-DELAY_S = 0.15
-LAPSE_C_PER_KM = 6.5
-ERA5_YEARS = (2018, 2020)
-NOAA_MAX_KM = 150.0
-ECCC_MAX_KM = 250.0
+CHELSA_URL = ("https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/"
+              "climatologies/tasmax/1981-2010/"
+              "CHELSA_tasmax_{month:02d}_1981-2010_V.2.1.tif")
+ETOPO_URL = ("https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO2022/data/"
+             "60s/60s_surface_elev_gtif/"
+             "ETOPO_2022_v1_60s_N90W180_surface.tif")
 
-_LAST_AT = [0.0]
-_REMAINING = [None]
+USER_AGENT = "Mozilla/5.0"
+LAPSE_C_PER_KM = 6.5
+HEADER_BYTES = 65536
+SEARCH_RADIUS = 3  # cells to look for land when the nearest cell is sea
+
+_LOCK = threading.RLock()
 
 
 @dataclass(frozen=True)
@@ -188,54 +126,268 @@ def haversine_km(lat1, lon1, lat2, lon2):
     return 2 * radius * math.asin(math.sqrt(h))
 
 
-def _pace():
-    """One request at a time, a short pause, and respect for the free
-    API's per-minute allowance when it reports one."""
-    if _REMAINING[0] is not None and _REMAINING[0] < 60:
-        time.sleep(61)
-        _REMAINING[0] = None
-    wait = DELAY_S - (time.time() - _LAST_AT[0])
-    if wait > 0:
-        time.sleep(wait)
+# ---------------------------------------------------------------------------
+# Range reads, cached on disk.
 
-
-def _retry_after_s(exc):
-    headers = getattr(exc, "headers", None) or getattr(exc, "hdrs", None) or {}
-    try:
-        return max(5.0, min(float(headers.get("Retry-After")), 1200.0))
-    except (TypeError, ValueError):
-        return 65.0
-
-
-def _get_bytes(url, opener, timeout=180):
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    for attempt in range(20):
-        _pace()
+def default_getter(url, start, end):
+    req = urllib.request.Request(url, headers={
+        "User-Agent": USER_AGENT, "Range": f"bytes={start}-{end}"})
+    last = None
+    for attempt in range(6):
         try:
-            with opener(req, timeout=timeout) as resp:
-                raw = resp.read()
-                headers = getattr(resp, "headers", None) or {}
-                try:
-                    _REMAINING[0] = float(headers.get("X-RateLimit-Remaining"))
-                except (TypeError, ValueError):
-                    pass
-            _LAST_AT[0] = time.time()
-            return raw
-        except urllib.error.HTTPError as exc:
-            _LAST_AT[0] = time.time()
-            if exc.code == 429 and attempt < 19:
-                # The hourly allowance refills as old requests age out.
-                # Wait as long as the API asks, then try the same
-                # request again; the point is fetched once either way.
-                _REMAINING[0] = None
-                time.sleep(_retry_after_s(exc) + 5)
-                continue
-            raise
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                return resp.read()
+        except (urllib.error.URLError, OSError) as exc:
+            last = exc
+            if isinstance(exc, urllib.error.HTTPError) and exc.code in (403, 404):
+                raise
+            time.sleep(2 * (attempt + 1))
+    raise last
 
 
-def _cache_path(cache, source, lat, lon, elev_m):
+class Source:
+    """One tiled GeoTIFF read by range requests."""
+
+    def __init__(self, url, cache=CACHE_DIR, getter=default_getter):
+        self.url = url
+        self.cache = os.path.join(cache, "tiles")
+        self.getter = getter
+        self._tiles = {}
+        self._ready = False
+
+    # -- cached ranges
+    def _range(self, start, end):
+        key = hashlib.sha256(f"{self.url}|{start}|{end}".encode()).hexdigest()[:40]
+        path = os.path.join(self.cache, key[:2], key + ".bin")
+        if os.path.exists(path):
+            with open(path, "rb") as f:
+                return f.read()
+        raw = self.getter(self.url, start, end)
+        if len(raw) != end - start + 1 and start != 0:
+            raise OSError(f"short read {len(raw)} of {end - start + 1} at {start}")
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        fd, tmp = tempfile.mkstemp(dir=os.path.dirname(path))
+        with os.fdopen(fd, "wb") as f:
+            f.write(raw)
+        os.replace(tmp, path)
+        return raw
+
+    # -- header
+    def _load(self):
+        with _LOCK:
+            if self._ready:
+                return
+            head = self._range(0, HEADER_BYTES - 1)
+            if head[:4] != b"II*\x00":
+                raise ValueError("not a little-endian classic TIFF: " + self.url)
+            off = struct.unpack("<I", head[4:8])[0]
+            n = struct.unpack("<H", head[off:off + 2])[0]
+            sizes = {1: 1, 2: 1, 3: 2, 4: 4, 5: 8, 12: 8}
+            fmts = {1: "B", 3: "H", 4: "I", 12: "d"}
+            tags = {}
+            for i in range(n):
+                e = head[off + 2 + i * 12: off + 14 + i * 12]
+                tag, typ, cnt = struct.unpack("<HHI", e[:8])
+                if typ not in sizes or typ == 5:
+                    continue
+                size = sizes[typ] * cnt
+                if size <= 4:
+                    data = e[8:8 + size]
+                else:
+                    vo = struct.unpack("<I", e[8:12])[0]
+                    data = head[vo:vo + size] if vo + size <= len(head) else \
+                        self._range(vo, vo + size - 1)
+                if typ == 2:
+                    tags[tag] = data.rstrip(b"\x00").decode("latin-1")
+                else:
+                    tags[tag] = struct.unpack("<%d%s" % (cnt, fmts[typ]), data)
+            self.width = tags[256][0]
+            self.height = tags[257][0]
+            self.bits = tags[258][0]
+            self.compression = tags[259][0]
+            self.predictor = tags.get(317, (1,))[0]
+            self.sampleformat = tags.get(339, (1,))[0]
+            self.tw = tags[322][0]
+            self.th = tags[323][0]
+            self.offsets = tags[324]
+            self.counts = tags[325]
+            self.xres, self.yres = tags[33550][0], tags[33550][1]
+            self.x0, self.y0 = tags[33922][3], tags[33922][4]
+            meta = tags.get(42112, "")
+            m = re.search(r'name="SCALE"[^>]*>([^<]+)<', meta)
+            self.scale = float(m.group(1)) if m else 1.0
+            m = re.search(r'name="OFFSET"[^>]*>([^<]+)<', meta)
+            self.offset = float(m.group(1)) if m else 0.0
+            nd = tags.get(42113)
+            self.nodata = float(nd) if nd not in (None, "") else None
+            self.tiles_across = (self.width + self.tw - 1) // self.tw
+            if self.compression not in (5, 8):
+                raise ValueError("unsupported compression %d" % self.compression)
+            self._ready = True
+
+    # -- tile decoding
+    def _decode(self, idx):
+        with _LOCK:
+            got = self._tiles.get(idx)
+        if got is not None:
+            return got
+        raw = self._range(self.offsets[idx], self.offsets[idx] + self.counts[idx] - 1)
+        data = lzw_decode(raw) if self.compression == 5 else zlib.decompress(raw)
+        tile = self._to_values(data)
+        with _LOCK:
+            if len(self._tiles) > 24:
+                self._tiles.clear()
+            self._tiles[idx] = tile
+        return tile
+
+    def _to_values(self, data):
+        w, h = self.tw, self.th
+        if self.sampleformat == 3 and self.bits == 32 and self.predictor == 3:
+            out = array.array("f")
+            for r in range(h):
+                row = bytearray(data[r * w * 4:(r + 1) * w * 4])
+                acc = 0
+                for i in range(len(row)):
+                    acc = (acc + row[i]) & 255
+                    row[i] = acc
+                be = bytearray(w * 4)
+                for k in range(4):
+                    be[k::4] = row[k * w:(k + 1) * w]
+                out.extend(struct.unpack(">%df" % w, bytes(be)))
+            return out
+        if self.bits == 16 and self.sampleformat in (1, 2):
+            code = "H" if self.sampleformat == 1 else "h"
+            out = array.array(code)
+            out.frombytes(data[: w * h * 2])
+            if sys.byteorder != "little":
+                out.byteswap()
+            if self.predictor == 2:
+                for r in range(h):
+                    acc = 0
+                    base = r * w
+                    for i in range(w):
+                        acc = (acc + out[base + i]) & 0xFFFF
+                        out[base + i] = acc
+            elif self.predictor != 1:
+                raise ValueError("unsupported predictor")
+            return out
+        raise ValueError("unsupported sample layout")
+
+    # -- pixels
+    def pixel(self, col, row):
+        """Raw value at an integer cell, or None for outside or nodata."""
+        self._load()
+        if row < 0 or row >= self.height:
+            return None
+        col %= self.width
+        idx = (row // self.th) * self.tiles_across + col // self.tw
+        tile = self._decode(idx)
+        v = tile[(row % self.th) * self.tw + (col % self.tw)]
+        if self.nodata is not None and v == self.nodata:
+            return None
+        return v
+
+    def value_nearest(self, lon, lat):
+        """Scaled value of the nearest cell that has data, searching a
+        few cells outward when the nearest is sea; None if none."""
+        self._load()
+        col = int(math.floor((lon - self.x0) / self.xres + 0.5))
+        row = int(math.floor((self.y0 - lat) / self.yres + 0.5))
+        for radius in range(SEARCH_RADIUS + 1):
+            best = None
+            for dr in range(-radius, radius + 1):
+                for dc in range(-radius, radius + 1):
+                    if max(abs(dr), abs(dc)) != radius:
+                        continue
+                    v = self.pixel(col + dc, row + dr)
+                    if v is None:
+                        continue
+                    d = dr * dr + dc * dc
+                    if best is None or d < best[0]:
+                        best = (d, v)
+            if best is not None:
+                return best[1] * self.scale + self.offset
+        return None
+
+    def value_bilinear(self, lon, lat):
+        self._load()
+        fx = (lon - self.x0) / self.xres
+        fy = (self.y0 - lat) / self.yres
+        c0, r0 = int(math.floor(fx)), int(math.floor(fy))
+        tx, ty = fx - c0, fy - r0
+        total = weight = 0.0
+        for dr, wy in ((0, 1 - ty), (1, ty)):
+            for dc, wx in ((0, 1 - tx), (1, tx)):
+                v = self.pixel(c0 + dc, r0 + dr)
+                if v is None:
+                    continue
+                total += v * wx * wy
+                weight += wx * wy
+        if weight <= 0:
+            return None
+        return (total / weight) * self.scale + self.offset
+
+
+def lzw_decode(data):
+    """TIFF LZW (MSB first, early change)."""
+    out = []
+    base = [bytes([i]) for i in range(256)] + [b"", b""]
+    table = list(base)
+    bits = 9
+    buf = nb = pos = 0
+    n = len(data)
+    prev = None
+    while True:
+        while nb < bits:
+            if pos >= n:
+                return b"".join(out)
+            buf = (buf << 8) | data[pos]
+            pos += 1
+            nb += 8
+        code = (buf >> (nb - bits)) & ((1 << bits) - 1)
+        nb -= bits
+        buf &= (1 << nb) - 1
+        if code == 257:
+            break
+        if code == 256:
+            table = list(base)
+            bits = 9
+            prev = None
+            continue
+        if prev is None:
+            entry = table[code]
+        elif code < len(table):
+            entry = table[code]
+            table.append(prev + entry[:1])
+        else:
+            entry = prev + prev[:1]
+            table.append(entry)
+        out.append(entry)
+        prev = entry
+        ln = len(table)
+        bits = 12 if ln >= 2047 else 11 if ln >= 1023 else 10 if ln >= 511 else 9
+    return b"".join(out)
+
+
+# ---------------------------------------------------------------------------
+# Normals for a point.
+
+_SOURCES = {}
+
+
+def _sources(cache, getter):
+    key = (cache, id(getter))
+    with _LOCK:
+        if key not in _SOURCES:
+            _SOURCES[key] = (
+                [Source(CHELSA_URL.format(month=m), cache, getter) for m in range(1, 13)],
+                Source(ETOPO_URL, cache, getter))
+        return _SOURCES[key]
+
+
+def _cache_path(cache, lat, lon, elev_m):
     elev_key = "cell" if elev_m is None else str(int(round(elev_m)))
-    return os.path.join(cache, f"{source}_{lat:.3f}_{lon:.3f}_{elev_key}.json")
+    return os.path.join(cache, "points", f"chelsa_{lat:.3f}_{lon:.3f}_{elev_key}.json")
 
 
 def _read_cache(path):
@@ -262,249 +414,42 @@ def _write_cache(path, normals):
         doc = {"lat": normals.lat, "lon": normals.lon, "elev_m": normals.elev_m,
                "tmax_c": list(normals.tmax_c),
                "snow_cm": None if normals.snow_cm is None else list(normals.snow_cm)}
-    with open(path, "w", encoding="utf-8") as f:
+    fd, tmp = tempfile.mkstemp(dir=os.path.dirname(path))
+    with os.fdopen(fd, "w", encoding="utf-8") as f:
         json.dump(doc, f, sort_keys=True)
         f.write("\n")
+    os.replace(tmp, path)
 
 
-def _rounded(lat, lon):
-    return round(float(lat), 3), round(float(lon), 3)
-
-
-# ---------------------------------------------------------------------------
-# Open-Meteo (ERA5-Land), the chosen source.
-
-def _open_meteo_url(lat, lon, elev_m):
-    params = {
-        "latitude": lat, "longitude": lon,
-        "start_date": f"{ERA5_YEARS[0]}-01-01", "end_date": f"{ERA5_YEARS[1]}-12-31",
-        "daily": "temperature_2m_max,snow_depth_max",
-        "timezone": "UTC", "models": "era5_land",
-    }
-    if elev_m is not None:
-        params["elevation"] = int(round(elev_m))
-    return ("https://archive-api.open-meteo.com/v1/archive?"
-            + urllib.parse.urlencode(params))
-
-
-def parse_open_meteo(raw, lat, lon, elev_m):
-    """Daily ERA5-Land values averaged by month, or None. Snow depths
-    arrive in metres and leave in cm. A month with no temperature value
-    at all is missing data, never zero; a point whose snow values are
-    absent (open water) keeps its temperatures with snow_cm None."""
-    try:
-        doc = json.loads(raw.decode("utf-8"))
-    except (ValueError, UnicodeDecodeError):
-        return None
-    daily = doc.get("daily") or {}
-    days = daily.get("time") or []
-    tmax = daily.get("temperature_2m_max") or []
-    snow = daily.get("snow_depth_max") or []
-    if not days or len(tmax) != len(days):
-        return None
-    by_month_t = [[] for _ in range(12)]
-    by_month_s = [[] for _ in range(12)]
-    for i, day in enumerate(days):
-        try:
-            month = int(day[5:7])
-        except (TypeError, ValueError, IndexError):
-            return None
-        if tmax[i] is not None:
-            by_month_t[month - 1].append(float(tmax[i]))
-        if i < len(snow) and snow[i] is not None:
-            by_month_s[month - 1].append(float(snow[i]))
-    if any(not values for values in by_month_t):
-        return None
-    tmax_c = tuple(round(sum(v) / len(v), 1) for v in by_month_t)
-    if all(by_month_s):
-        snow_cm = tuple(round(sum(v) / len(v) * 100.0, 1) for v in by_month_s)
+def fetch_normals(lat, lon, elev_m, cache=CACHE_DIR, opener=None, getter=None):
+    """Normals at the point, at elev_m (the grid cell's own elevation
+    when None), or None when the grid has no land value there. Never
+    returns invented zeros. `getter(url, start, end)` replaces the
+    network for tests; `opener` is accepted and ignored."""
+    lat, lon = round(float(lat), 3), round(float(lon), 3)
+    path = _cache_path(cache, lat, lon, elev_m)
+    found, normals = _read_cache(path)
+    if found:
+        return normals
+    months, dem = _sources(cache, getter or default_getter)
+    cell_elev = dem.value_bilinear(lon, lat)
+    values = []
+    for src in months:
+        v = src.value_nearest(lon, lat)
+        if v is None:
+            values = None
+            break
+        values.append(v - 273.15)
+    if values is None or cell_elev is None:
+        normals = None
     else:
-        snow_cm = None
-    elev = float(elev_m) if elev_m is not None else float(doc.get("elevation") or 0.0)
-    return PointNormals(lat=lat, lon=lon, elev_m=elev, tmax_c=tmax_c, snow_cm=snow_cm)
+        use = cell_elev if elev_m is None else float(elev_m)
+        shift = LAPSE_C_PER_KM * (cell_elev - use) / 1000.0
+        normals = PointNormals(
+            lat=lat, lon=lon, elev_m=use,
+            tmax_c=tuple(round(v + shift, 1) for v in values), snow_cm=None)
+    _write_cache(path, normals)
+    return normals
 
 
-def fetch_open_meteo(lat, lon, elev_m, cache=CACHE_DIR, opener=urllib.request.urlopen):
-    lat, lon = _rounded(lat, lon)
-    # The years are in the cache name so a widened period later never
-    # reads means computed over different years.
-    path = _cache_path(cache, f"open-meteo-{ERA5_YEARS[0]}-{ERA5_YEARS[1]}",
-                       lat, lon, elev_m)
-    hit, got = _read_cache(path)
-    if hit:
-        return got
-    raw = _get_bytes(_open_meteo_url(lat, lon, elev_m), opener)
-    got = parse_open_meteo(raw, lat, lon, elev_m)
-    _write_cache(path, got)
-    return got
-
-
-# ---------------------------------------------------------------------------
-# NOAA 1991-2020 monthly station normals (US only, temperature only).
-
-NOAA_STATIONS_URL = "https://www.ncei.noaa.gov/pub/data/ghcn/daily/ghcnd-stations.txt"
-NOAA_NORMALS_URL = ("https://www.ncei.noaa.gov/data/normals-monthly/"
-                    "1991-2020/access/{sid}.csv")
-
-
-def _noaa_stations(cache, opener):
-    path = os.path.join(cache, "noaa_ghcnd-stations.txt")
-    if not os.path.exists(path):
-        raw = _get_bytes(NOAA_STATIONS_URL, opener)
-        os.makedirs(cache, exist_ok=True)
-        with open(path, "wb") as f:
-            f.write(raw)
-    stations = []
-    with open(path, encoding="utf-8", errors="replace") as f:
-        for line in f:
-            parts = line.split()
-            if len(parts) < 4 or not parts[0].startswith("US"):
-                continue
-            try:
-                stations.append((parts[0], float(parts[1]), float(parts[2]),
-                                 float(parts[3])))
-            except ValueError:
-                continue
-    return stations
-
-
-def parse_noaa_csv(raw, lat, lon, elev_m):
-    """MLY-TMAX-NORMAL is in degrees F. Temperatures are lapse adjusted
-    from the station elevation to the elevation asked for. The product
-    has no snow depth, so snow_cm is None."""
-    text = raw.decode("utf-8", errors="replace")
-    rows = {}
-    station_elev = None
-    for row in csv.DictReader(io.StringIO(text)):
-        try:
-            month = int(row.get("month") or 0)
-            value = float(row.get("MLY-TMAX-NORMAL") or "")
-            station_elev = float(row.get("ELEVATION") or 0.0)
-        except ValueError:
-            continue
-        if 1 <= month <= 12:
-            rows[month] = value
-    if len(rows) != 12 or station_elev is None:
-        return None
-    lapse = 0.0
-    if elev_m is not None:
-        lapse = LAPSE_C_PER_KM * (float(elev_m) - station_elev) / 1000.0
-    tmax_c = tuple(round((rows[m] - 32.0) * 5.0 / 9.0 - lapse, 1)
-                   for m in range(1, 13))
-    elev = float(elev_m) if elev_m is not None else station_elev
-    return PointNormals(lat=lat, lon=lon, elev_m=elev, tmax_c=tmax_c, snow_cm=None)
-
-
-def fetch_noaa(lat, lon, elev_m, cache=CACHE_DIR, opener=urllib.request.urlopen):
-    lat, lon = _rounded(lat, lon)
-    path = _cache_path(cache, "noaa", lat, lon, elev_m)
-    hit, got = _read_cache(path)
-    if hit:
-        return got
-    near = sorted(
-        ((haversine_km(lat, lon, slat, slon), sid)
-         for sid, slat, slon, _selev in _noaa_stations(cache, opener)),
-    )
-    got = None
-    tried = 0
-    # Most GHCN stations have no normals file, so walk past the ones
-    # that answer 404; the nearest normals station is rarely the
-    # nearest station of any kind.
-    for dist, sid in near:
-        if dist > NOAA_MAX_KM or tried >= 30:
-            break
-        tried += 1
-        csv_path = os.path.join(cache, f"noaa_{sid}.csv")
-        if os.path.exists(csv_path):
-            with open(csv_path, "rb") as f:
-                raw = f.read()
-        else:
-            try:
-                raw = _get_bytes(NOAA_NORMALS_URL.format(sid=sid), opener)
-            except urllib.error.HTTPError:
-                continue
-            os.makedirs(cache, exist_ok=True)
-            with open(csv_path, "wb") as f:
-                f.write(raw)
-        got = parse_noaa_csv(raw, lat, lon, elev_m)
-        if got is not None:
-            break
-    _write_cache(path, got)
-    return got
-
-
-# ---------------------------------------------------------------------------
-# MSC GeoMet climate normals (Canada only, 1981-2010 stations).
-
-ECCC_ELEMENT = "Mean daily max temperature deg C"
-ECCC_URL = "https://api.weather.gc.ca/collections/climate-normals/items"
-
-
-def _eccc_url(lat, lon):
-    bbox = f"{lon - 1.5},{lat - 1.0},{lon + 1.5},{lat + 1.0}"
-    params = {"bbox": bbox, "limit": 10000, "f": "json",
-              "E_NORMAL_ELEMENT_NAME": ECCC_ELEMENT}
-    return ECCC_URL + "?" + urllib.parse.urlencode(params)
-
-
-def parse_eccc(raw, lat, lon, elev_m):
-    """The nearest station with all twelve months of mean daily maximum
-    temperature. The features carry no station elevation and no snow
-    depth, so neither can be given."""
-    try:
-        doc = json.loads(raw.decode("utf-8"))
-    except (ValueError, UnicodeDecodeError):
-        return None
-    stations = {}
-    for feat in doc.get("features") or []:
-        props = feat.get("properties") or {}
-        if props.get("E_NORMAL_ELEMENT_NAME") != ECCC_ELEMENT:
-            continue
-        try:
-            month = int(props.get("MONTH") or 0)
-            value = float(props.get("VALUE"))
-            slon, slat = (feat.get("geometry") or {}).get("coordinates") or (None, None)
-            slat, slon = float(slat), float(slon)
-        except (TypeError, ValueError):
-            continue
-        if not 1 <= month <= 12:
-            continue
-        entry = stations.setdefault(props.get("STN_ID"), (slat, slon, {}))
-        entry[2][month] = value
-    best = None
-    for slat, slon, months in stations.values():
-        if len(months) != 12:
-            continue
-        dist = haversine_km(lat, lon, slat, slon)
-        if best is None or dist < best[0]:
-            best = (dist, months)
-    if best is None or best[0] > ECCC_MAX_KM:
-        return None
-    tmax_c = tuple(round(best[1][m], 1) for m in range(1, 13))
-    elev = float(elev_m) if elev_m is not None else 0.0
-    return PointNormals(lat=lat, lon=lon, elev_m=elev, tmax_c=tmax_c, snow_cm=None)
-
-
-def fetch_eccc(lat, lon, elev_m, cache=CACHE_DIR, opener=urllib.request.urlopen):
-    lat, lon = _rounded(lat, lon)
-    path = _cache_path(cache, "eccc", lat, lon, elev_m)
-    hit, got = _read_cache(path)
-    if hit:
-        return got
-    raw = _get_bytes(_eccc_url(lat, lon), opener)
-    got = parse_eccc(raw, lat, lon, elev_m)
-    _write_cache(path, got)
-    return got
-
-
-def fetch_normals(lat, lon, elev_m, cache=CACHE_DIR, opener=urllib.request.urlopen):
-    """Normals from the chosen source (see SOURCE), or None when it has
-    no data for the point. Never returns invented zeros."""
-    return fetch_open_meteo(lat, lon, elev_m, cache=cache, opener=opener)
-
-
-CANDIDATES = {
-    "open-meteo": fetch_open_meteo,
-    "noaa": fetch_noaa,
-    "eccc": fetch_eccc,
-}
+CANDIDATES = {"chelsa": fetch_normals}

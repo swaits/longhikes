@@ -65,6 +65,7 @@ terrain = ["forest"]
 travel = "trail"
 permit = "No permit is needed for day use; overnight hikers must reserve shelter areas in advance and pay a per-night fee."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.pa.gov/agencies/dcnr/recreation/what-to-do/hiking/laurel-highlands-hiking-trail"
@@ -107,6 +108,15 @@ date = "2026-11-16"
 change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.pa.gov/agencies/dcnr/recreation/what-to-do/hiking/laurel-highlands-hiking-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Pennsylvania Department of Conservation and Natural Resources as: All year."
 basis_url = "https://www.pa.gov/agencies/dcnr/recreation/what-to-do/hiking/laurel-highlands-hiking-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -87,6 +87,7 @@ terrain = ["alpine", "forest"]
 permit = "No permit is needed to walk the route; overnight parking in Santa Fe needs a member pass and parking in Taos needs a waiver and placard."
 caution = "The route is not marked, and large sections of snow lie on or near it until early to mid June."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://santafetotaos.org"
@@ -139,5 +140,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"The Santa Fe to Taos Thru-Hike Guidebook -\"."
 basis_url = "https://santafetotaos.org/guidebook/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by The Santa Fe to Taos Trail (the route's non-profit) as: June to mid-October."
+basis_url = "https://santafetotaos.org/faqs/"
 asked_by = "the dataset's own check"
 outcome = "applied"

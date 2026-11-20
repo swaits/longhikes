@@ -62,6 +62,7 @@ season = "Mid-July to early September"
 months = [7, 8, 9]
 caution = "The Park Service says the Thorofare Trail goes through or near three bear management areas and that a hiker should be prepared to ford creeks, and that the Snake River ford near the South Entrance can be dangerous and, even in low water, waist-deep. Grizzly and black bears live throughout the park, and food must be kept in a bear-resistant container or hung."
 checked = "2026-11-18"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.nps.gov/places/000/nine-mile-trailhead-5k5.htm"
@@ -121,5 +122,14 @@ change = "The length note now gives the other published figures for the same thr
 fields = ["length_note", "hike.shape"]
 basis = "Frommer's gives the 68-mile point-to-point hike on the Thorofare Trail and the South Boundary Trail. Visit Bozeman gives the Thorofare and the South Boundary Trail as 69 miles needing a shuttle; Campman gives 70 miles from the Nine Mile Trailhead to the South Entrance; Mountain House gives a 70-mile trip from the East Entrance Road to the South Entrance."
 basis_url = "https://www.campman.com/blog/the-10-best-hikes-in-yellowstone-national-park/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Frommer's as: Mid-July to early September."
+basis_url = "https://www.frommers.com/destinations/yellowstone-national-park/exploring-the-backcountry/hiking-trails"
 asked_by = "the dataset's own check"
 outcome = "applied"

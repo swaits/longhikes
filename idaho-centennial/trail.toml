@@ -64,6 +64,7 @@ caution = "Only a few people have completed the trail; the Bureau of Land Manage
 season = "South-to-north hikes start in early June and finish by late September or early October"
 months = [6, 7, 8, 9]
 checked = "2026-11-19"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://idpr-data-idaho.hub.arcgis.com/datasets/idaho::idaho-centennial-trail-official-route/about"
@@ -110,6 +111,15 @@ date = "2026-11-19"
 change = "The usual season was added, \"South-to-north hikes start in early June and finish by late September or early October\", with its months."
 fields = ["hike.season", "hike.months"]
 basis = "The page of Idaho Department of Parks and Recreation says: \"Most people start at the southern trailhead ... in early June ... reach the Idaho-British Columbia border by late September or early October.\""
+basis_url = "https://parksandrecreation.idaho.gov/wp-content/uploads/activities/hiking/Centennial-guide.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Idaho Department of Parks and Recreation as: South-to-north hikes start in early June and finish by late September or early October."
 basis_url = "https://parksandrecreation.idaho.gov/wp-content/uploads/activities/hiking/Centennial-guide.pdf"
 asked_by = "the dataset's own check"
 outcome = "applied"

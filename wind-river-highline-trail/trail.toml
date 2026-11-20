@@ -60,6 +60,7 @@ travel = "trail"
 permit = "The guidebook says no permit is required, with no fires above timberline, groups of 15 people or fewer, and no camping within 100 feet of streams or 200 feet of lakes or trails."
 caution = "The guidebook's side trips off the trail need navigation and scrambling skills and are optional. It needs a car shuttle of about 107 miles between the ends, on access roads that can be rough and slippery after rain. Big Sky Journal advises checking with the Pinedale Ranger District which route the Highline Trail follows south of Pole Creek."
 checked = "2026-11-18"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/pinedale-ranger-district"
@@ -95,5 +96,14 @@ change = "The record was added: the Wind River Highline Trail, 64 miles (103 km)
 fields = ["record"]
 basis = "The Forest Service's Pinedale Ranger District page names the Highline Trail from Green River Lakes to Big Sandy Opening but gives no whole-trail length. White and Lorain's Best Backpacking Trips in Montana, Wyoming, and Colorado gives 64 miles as the minimum, and the record uses that figure. Nearly all of the trail lies on the Continental Divide Trail, a longer listed trail."
 basis_url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/pinedale-ranger-district"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by University Press of Colorado (the publisher's page for the book); the facts are from the book's Trip 9, pages 184-216, 2019 as: July to October."
+basis_url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
 asked_by = "the dataset's own check"
 outcome = "applied"

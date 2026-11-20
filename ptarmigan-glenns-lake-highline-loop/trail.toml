@@ -76,6 +76,7 @@ travel = "trail"
 permit = "The Park Service requires a wilderness use permit for all overnight camping in the park."
 caution = "On 2026-11-19 the Park Service's trail status page said: \"Generally, Ptarmigan Tunnel doors open in mid-July\" and \"Ptarmigan Tunnel doors usually close by late September\"; the loop cannot be walked by the tunnel outside that time. The guide says Glacier is grizzly bear country, that hikers should carry bear spray and store all food away from bears, and that snowfields on steep north-facing slopes can be dangerously icy into late July or early August."
 checked = "2026-11-19"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://npgallery.nps.gov/NRHP/GetAsset/NRHP/95001579_text"
@@ -149,4 +150,13 @@ fields = ["name", "kind", "route", "guide", "designation", "length_note", "hike.
 basis = "The Park Service's National Register form for the Glacier National Park Tourist Trails names the North Circle and its legs from Many Glacier by Cosley Lake, Goat Haunt, Fifty Mountain and Granite Park; Backpacker magazine publishes the same loop as the Many Glacier Loop, and other published pages call it the North Circle. The park's Glacier National Park Trails layer carries every trail on it by name."
 basis_url = "https://npgallery.nps.gov/NRHP/GetAsset/NRHP/95001579_text"
 asked_by = "the dataset's owner"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by National Park Service, Glacier National Park (trail status page, last updated 2026-08-28), as: Mid-July to late September. It is the Ptarmigan Tunnel's season, on which the loop depends. The tunnel doors generally open in mid-July and usually close by late September, so July, August and September each have half a month or more in season."
+basis_url = "https://www.nps.gov/glac/planyourvisit/trailstatusreports.htm"
+asked_by = "the dataset's own check"
 outcome = "applied"

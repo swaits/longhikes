@@ -81,6 +81,7 @@ travel = "trail"
 permit = "A self-issue wilderness permit is required, as the book states; wilderness rules apply and campfires are prohibited within a quarter mile of most lakes."
 caution = "The book rates the difficulty 4 on its scale of 5 and calls the trip strenuous, with several high passes and more than two vertical miles of climbing. It lists numerous creek crossings, high elevations and exposure as concerns. It is a one way hike that needs a shuttle vehicle. The route is on numbered trails; the book describes an optional 0.7 mile knife-edge arete to Sentinel Peak as not for the acrophobic and an optional exposed trail to the Eagle Cap summit, neither part of the route."
 checked = "2026-11-18"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
@@ -132,6 +133,15 @@ date = "2026-11-19"
 change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
 fields = ["guide", "route.note"]
 basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
+basis_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Mountaineers Books (the publisher's page for the book); the facts are from the book's Trip 48, pages 218-224 of the 1st edition, 2026, read from the owner's copy as: July to October."
 basis_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
 asked_by = "the dataset's own check"
 outcome = "applied"

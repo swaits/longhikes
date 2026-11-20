@@ -81,6 +81,7 @@ terrain = ["desert", "forest", "canyon"]
 travel = "some-cross-country"
 permit = "No permit is needed in the Forest Service wilderness areas, but Aravaipa Canyon requires a recreation permit."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "http://www.simblissity.net/get-about.shtml"
@@ -156,5 +157,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"The Grand Enchantment Trail\"."
 basis_url = "http://www.simblissity.net/get/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Brett Tucker (simBLISSity Ultralight Designs) as: Spring or autumn."
+basis_url = "http://www.simblissity.net/get_faq.shtml"
 asked_by = "the dataset's own check"
 outcome = "applied"

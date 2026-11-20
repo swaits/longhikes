@@ -59,6 +59,7 @@ travel = "mostly-cross-country"
 permit = "Overnight trips need a Wilderness Permit and an approved bear resistant food canister, from the Kluane visitor centres in Haines Junction or at Thechàl Dhâl."
 caution = "Parks Canada says this route is not marked and not maintained, about half of it lies outside the park boundary, and route finding and wilderness experience are essential."
 checked = "2026-11-16"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
@@ -102,5 +103,14 @@ change = "The position of the start was added, so that the page can show a map o
 fields = ["hike.start_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Duke River Bridge, OpenStreetMap way 1476065695."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=1476065695"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Parks Canada as: Mid-June to mid-September."
+basis_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
 asked_by = "the dataset's own check"
 outcome = "applied"

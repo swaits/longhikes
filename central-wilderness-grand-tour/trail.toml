@@ -76,6 +76,7 @@ travel = "trail"
 permit = "The Forest Service requires a free Golden Trout Wilderness Pass (its overnight visitor permit), issued at forest offices near the wilderness entry points."
 caution = "The book rates the trip strenuous, calls it a real expedition with a lot of climbing and descent, and says to check with rangers that streams are safe to cross before early July. It describes a faint path and a very steep climb at mile 12.4, a descent through deep scree from Coyote Lakes Pass, and cow paths at Templeton Meadows where it is easy to lose the trail, and it reports fords at Deep Creek and Hockett Peak Creek. The Forest Service pages for the Jerkey Meadow Trailhead (updated 2026-08-31), the Lewis Camp Trail (2025-07-18) and the Kern Flat Trail (2026-09-11) say that due to recent fires and flooding the trail may have washouts and downed trees and may intermittently disappear; the Lewis Camp page describes a suspension bridge over the Little Kern River, and the Forks of the Kern page (2026-09-01) says a bridge crosses the Kern River 1.5 miles above Kern Flat. No Forest Service or Park Service page read says whether the Kern River bridge at the Kern Canyon Ranger Station, in Sequoia National Park, is in place, so its state is not confirmed and a hiker should check with the forest and the park before going. The book mentions no cross-country travel, scrambling or rope."
 checked = "2026-11-19"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://openlibrary.org/books/OL8034582M"
@@ -125,6 +126,15 @@ date = "2026-11-20"
 change = "The record was added: Central Wilderness Grand Tour, 79.1 miles (127 km), Trip 16 in Suzanne Swedo's guidebook Hiking California's Golden Trout Wilderness, with no track."
 fields = ["record"]
 basis = "Hiking California's Golden Trout Wilderness, by Suzanne Swedo (Falcon, 1st edition, 2004, ISBN 978-0-7627-2655-4). Trip 16, cited by trip number, gives the length, season and cautions and no day count; the Forest Service pages for the Golden Trout Wilderness and the Jerkey Meadow Trailhead give the permit and the position of the start. The route was ruled to belong in the dataset."
+basis_url = "https://openlibrary.org/books/OL8034582M"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Open Library (the library record for the book); the facts are from the book's Trip 16 in the 1st edition, 2004 as: July through October."
 basis_url = "https://openlibrary.org/books/OL8034582M"
 asked_by = "the dataset's own check"
 outcome = "applied"

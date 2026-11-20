@@ -61,6 +61,7 @@ terrain = ["farmland", "forest", "coast"]
 travel = "trail"
 permit = "A right of access is required for the Gaspésie and Forillon National Park sections."
 checked = "2026-11-19"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.sia-iat.com/a-propos-du-sia?lang=en"
@@ -117,5 +118,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of Sentier international des Appalaches (Québec) says: \"Access rights are required to enter national parks. ... Gaspesie National Park ... Forillon National Park\""
 basis_url = "https://www.sia-iat.com/modalitesreglements?lang=en"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Sentier international des Appalaches (Québec) as: Mid-June to the end of October."
+basis_url = "https://www.sia-iat.com/a-propos-du-sia?lang=en"
 asked_by = "the dataset's own check"
 outcome = "applied"

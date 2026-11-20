@@ -69,6 +69,7 @@ travel = "trail"
 permit = "Backcountry camping in Big Cypress National Preserve needs a permit."
 caution = "In Big Cypress, large sections of the trail are under standing water for much of the year."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://floridatrail.org/explore-the-florida-trail/"
@@ -144,5 +145,14 @@ change = "The main track was re-cut to one south-to-north walk by the east side 
 fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
 basis = "OpenStreetMap relations 14480287 to 14480290 and 14480373 hold the trail's regional routes. The branches were told apart by their geometry, which matches the branch lengths in the Florida Trail Association's data book."
 basis_url = "https://www.openstreetmap.org/relation/14480287"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Florida Trail Association as: Late October to April."
+basis_url = "https://floridatrail.org/faqs/"
 asked_by = "the dataset's own check"
 outcome = "applied"

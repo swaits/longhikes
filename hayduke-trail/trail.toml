@@ -82,6 +82,7 @@ travel = "mostly-cross-country"
 permit = "Permits are needed from each national park and monument the route crosses, among them Arches, Canyonlands, Capitol Reef, Grand Canyon and Zion."
 caution = "The route is largely off-trail and unsigned, and its creators warn that only very experienced desert backpackers in peak condition should attempt it. The National Park Service said on 5 September 2025 that it had reopened the Weeping Rock Trail and its shuttle stop in Zion Canyon, and that the East Rim Trail to Observation Point, which starts there, remained closed."
 checked = "2026-11-14"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.hayduketrail.org"
@@ -162,5 +163,14 @@ change = "The guide now says what its link points at (the publisher's page for t
 fields = ["guide"]
 basis = "The page the guide links to is titled \"University of Utah Press | The Hayduke Trail\"."
 basis_url = "https://uofupress.com/books/the-hayduke-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by National Park Service, Canyonlands National Park as: Spring and fall."
+basis_url = "https://www.nps.gov/cany/planyourvisit/hayduke.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

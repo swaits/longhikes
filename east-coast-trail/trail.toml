@@ -61,6 +61,7 @@ terrain = ["coast"]
 travel = "trail"
 permit = "The trail is free to use and no permit is needed."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.newfoundlandlabrador.com/plan-and-book/attractions/210995"
@@ -104,5 +105,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://eastcoasttrail.com/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by East Coast Trail Association as: April to November."
+basis_url = "https://eastcoasttrail.com/preparing-to-hike/"
 asked_by = "the dataset's own check"
 outcome = "applied"

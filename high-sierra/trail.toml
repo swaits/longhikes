@@ -66,6 +66,7 @@ permit = "A wilderness permit for the High Sierra Trail is required, and only a 
 season = "July to early September"
 months = [7, 8]
 checked = "2026-11-19"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
@@ -123,4 +124,13 @@ fields = ["source.line_file", "source.status", "source.publisher", "source.url",
 basis = "The Park Service's page for the trail gives the route from Crescent Meadow to the junction with the John Muir Trail at Wallace Creek, 49 miles, then the John Muir Trail to Mount Whitney, and the descent to Whitney Portal; its table of distances ends at Whitney Portal at 72.2 miles (115.5 km) and says the distances include the 4.8-mile round trip to the summit. The Park Service's Park Atlas layer holds the trail within the parks and the Forest Service layer holds the Mount Whitney Trail to Whitney Portal."
 basis_url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
 asked_by = "the dataset's owner"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Treeline Review as: July to early September."
+basis_url = "https://www.treelinereview.com/where-to-go/backpacking-high-sierra-trail"
+asked_by = "the dataset's own check"
 outcome = "applied"

@@ -59,6 +59,7 @@ months = [3, 4, 5, 9, 10, 11]
 terrain = ["forest"]
 travel = "trail"
 checked = "2026-11-13"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.alabamaforeverwild.com/weogufka-state-forest-addition-terminus-pinhoti-trail"
@@ -111,5 +112,14 @@ change = "The main track was re-cut (533 km): the second carriageway of Walnut A
 fields = ["source.line_file", "source.mainline"]
 basis = "OpenStreetMap relation 1642836 holds both carriageways of one divided road, 15 to 17 m apart and both with the role forward, so the walk counted the road twice."
 basis_url = "https://www.openstreetmap.org/relation/1642836"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Backpacking Routes as: Spring and fall."
+basis_url = "https://backpackingroutes.com/5-southern-long-distance-backpacking-trails/"
 asked_by = "the dataset's own check"
 outcome = "applied"

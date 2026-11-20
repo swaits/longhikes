@@ -64,6 +64,7 @@ terrain = ["alpine", "lakes"]
 travel = "trail"
 permit = "One wilderness permit from Yosemite covers the whole hike; a daily exit quota of 45 hikers over Donohue Pass limits entry."
 checked = "2026-11-14"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.nps.gov/yose/planyourvisit/jmt.htm"
@@ -97,5 +98,14 @@ change = "The track status is now \"osm-only\", in place of \"found\", which mea
 fields = ["source.status"]
 basis = "The record has a published track file and a measured length in its verification, and the record's only source is an OpenStreetMap relation."
 basis_url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Cicerone Press as: July to September."
+basis_url = "https://www.cicerone.co.uk/products/hiking-the-john-muir-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

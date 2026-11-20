@@ -60,6 +60,7 @@ season = "Late July to early September"
 months = [7, 8, 9]
 permit = "No permit is needed in the High Uintas Wilderness."
 checked = "2026-11-19"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r04/uinta-wasatch-cache/recreation/trails/highline-trail-105"
@@ -98,5 +99,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of USDA Forest Service, Ashley National Forest says: \"Permits are not required for the High Uintas Wilderness.\""
 basis_url = "https://www.fs.usda.gov/r04/ashley/recreation/high-uintas-wilderness"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Utah Office of Tourism as: Late July to early September."
+basis_url = "https://www.visitutah.com/articles/backpacking-high-uintas"
 asked_by = "the dataset's own check"
 outcome = "applied"

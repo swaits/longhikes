@@ -61,6 +61,7 @@ terrain = ["alpine", "forest"]
 travel = "trail"
 permit = "Mount Rainier National Park requires a wilderness permit for all overnight camping; reservations are encouraged, and an early-access lottery opens each February."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.nps.gov/mora/planyourvisit/the-wonderland-trail.htm"
@@ -95,5 +96,14 @@ date = "2026-11-09"
 change = "The record was added: Wonderland Trail."
 fields = ["record"]
 basis = "The record's own source entry: National Park Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by National Park Service, Mount Rainier National Park as: Mid-July to October."
+basis_url = "https://www.nps.gov/mora/planyourvisit/the-wonderland-trail.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

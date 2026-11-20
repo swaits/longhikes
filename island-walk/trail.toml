@@ -60,6 +60,7 @@ months = [5, 6, 7, 8, 9, 10]
 terrain = ["coast"]
 travel = "trail-and-road"
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://theislandwalk.ca/come-back-different/about-the-island-walk/"
@@ -93,5 +94,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://theislandwalk.ca/wp-content/uploads/2025/08/Island-Walk-logo-EN.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Island Walk PEI Inc. as: May to October."
+basis_url = "https://theislandwalk.ca/partner/"
 asked_by = "the dataset's own check"
 outcome = "applied"

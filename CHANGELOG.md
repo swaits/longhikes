@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-20 - Every season now says where it came from
+
+- The 109 trails that have a season now record where it came from: 86 are from the body that manages the trail or the trail's own association, or for a route its author, and 23 are from one page that is not the trail's own. None rests on several agreeing pages yet. A trail's "About this data" says which, in a sentence or two under the pages the facts were read on.
+- A season from a route author's guidebook, cited through the publisher's page, counts as the author's own.
+- This is the first step toward a season on every trail. The other 114 have none yet, and the "By month" lists still say so. A season that is worked out from climate rather than found on a page will be marked as an estimate wherever it appears.
+- For contributors: a season now needs a basis (`hike.season_basis`) and a page that states it, and the validator checks both. A change to the basis gets a history entry like any other fact.
+
 ## 2026-11-20 - Two more routes left out: one below the floor, one waiting
 
 - The Bomber Basin & Ross Lakes Loop in the Fitzpatrick Wilderness, Wyoming, is left out as below the 50 mile floor: a trip report gives the book's figure as 22 miles, most of it off trail, which was ruled too far below the floor.

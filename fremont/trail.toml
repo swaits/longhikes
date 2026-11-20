@@ -59,6 +59,7 @@ terrain = ["forest", "desert"]
 travel = "trail"
 caution = "A gap of about six miles between Cox Pass and Mill Trailhead is bypassed on the road system, and some segments near Winter Rim are hard to make out or very primitive."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r06/fremont-winema/recreation/trails/fremont-national-recreation-trail-160"
@@ -111,5 +112,14 @@ change = "The track status is now \"verified\", in place of \"found\", which mea
 fields = ["source.status"]
 basis = "The record has a published track file and a measured length in its verification, and its track was downloaded and measured."
 basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by USDA Forest Service, Fremont-Winema National Forest as: All year."
+basis_url = "https://www.fs.usda.gov/r06/fremont-winema/recreation/trails/fremont-national-recreation-trail-160"
 asked_by = "the dataset's own check"
 outcome = "applied"

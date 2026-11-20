@@ -58,6 +58,7 @@ high_point_m = 853
 terrain = ["forest"]
 travel = "trail"
 checked = "2026-11-14"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://nrtapplication.org/trails/massanutten-trail"
@@ -90,6 +91,15 @@ date = "2026-11-16"
 change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
 fields = ["shield.status", "shield.logo_source", "shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://nrtapplication.org/trails/massanutten-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by National Recreation Trails database (entry names the USDA Forest Service as manager) as: All year."
 basis_url = "https://nrtapplication.org/trails/massanutten-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

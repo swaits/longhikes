@@ -80,6 +80,7 @@ terrain = ["desert", "alpine"]
 travel = "some-cross-country"
 permit = "A Mount Whitney Zone permit from Recreation.gov is needed for the summit; from early November to late April the zone has no entry limits."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "http://simblissity.net/L2H.shtml"
@@ -117,6 +118,15 @@ date = "2026-11-16"
 change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "http://simblissity.net/L2H.shtml"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by simBLISSity Ultralight Designs (the route's authors) as: September and October."
 basis_url = "http://simblissity.net/L2H.shtml"
 asked_by = "the dataset's own check"
 outcome = "applied"

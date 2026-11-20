@@ -79,6 +79,7 @@ travel = "some-cross-country"
 permit = "No permit is required, as the book states."
 caution = "The book says a section of the main loop is cross-country, so at least one member of the party should have cross-country desert hiking experience; it tells less experienced groups to take the Willow Spring Trail and Deadman Trail option, which it says is entirely on trail. The author rates its difficulty 8 out of 10. Most of the springs and creeks are seasonal and may go dry in drought years. The maximum group size is 15 and the maximum stay is 14 days."
 checked = "2026-11-18"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
@@ -143,6 +144,15 @@ date = "2026-11-19"
 change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
 fields = ["guide", "route.note"]
 basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's pages 156-157 and the Featured Trips Summary Chart on page xiii of the 1st edition, 3rd printing, read from a printed copy as: October to April."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 asked_by = "the dataset's own check"
 outcome = "applied"

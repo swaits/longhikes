@@ -79,6 +79,7 @@ travel = "trail"
 permit = "A permit is required for overnight stays, with quotas, as the book states; it names the Twin Lakes trailhead permit and says it is picked up in person at the Lodgepole Visitor Center."
 caution = "The book rates the pace strenuous and does not recommend the trip for beginners. Days run from 6.8 to 15.8 miles, with long stretches with few campsites, and the book says fitting enough food in a bear canister is one of the trip's greatest challenges, with no bear boxes along Deadman Canyon. The day over Elizabeth Pass climbs 2,200 feet and then drops 3,200 feet on steep ground where the trail briefly fades and cairns must be followed; the descent from Colby Pass drops 700 feet in half a mile down an active rockslide. A 2020 fire burned several miles of the Kern River canyon. The route is on trail, with fords; the book flags no cross-country, rope or climbing."
 checked = "2026-11-18"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
@@ -125,6 +126,15 @@ date = "2026-11-19"
 change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
 fields = ["guide", "route.note"]
 basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 25, on page 149 of the 9th edition, 2021, read from the owner's copy as: July to mid-October, the book's mid to late season."
 basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
 asked_by = "the dataset's own check"
 outcome = "applied"

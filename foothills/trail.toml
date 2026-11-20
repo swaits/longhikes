@@ -61,6 +61,7 @@ months = [10, 11, 12, 1, 2, 3]
 terrain = ["forest"]
 permit = "No permit is needed to hike it."
 checked = "2026-11-13"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://foothillstrail.org/"
@@ -114,5 +115,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://foothillstrail.org/wp-content/uploads/2016/08/logo1.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Backpacking Routes as: Fall to early spring."
+basis_url = "https://backpackingroutes.com/5-southern-long-distance-backpacking-trails/"
 asked_by = "the dataset's own check"
 outcome = "applied"

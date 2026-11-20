@@ -81,6 +81,7 @@ travel = "mostly-cross-country"
 permit = "Overnight hikers get wilderness permits from Sequoia and Kings Canyon National Park; Road's End is a wilderness permit station."
 caution = "The route is not officially recognized by the National Park Service and has no signage or blazing anywhere along it."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/"
@@ -147,5 +148,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Kings Canyon High Basin Route Guide - Skurka Adventures\"."
 basis_url = "https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Andrew Skurka as: August and September are the most reliable months; June and July bring high water, lingering snowfields and mosquitoes."
+basis_url = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/scheduling-considerations/"
 asked_by = "the dataset's own check"
 outcome = "applied"

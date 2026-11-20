@@ -88,6 +88,7 @@ travel = "trail"
 permit = "A Yosemite wilderness permit is required, as the book states."
 caution = "The book says the trip is designed for the experienced backpacker and rates its pace moderate. It crosses three major passes, including a steep, loose, rocky descent of 600 feet below Post Peak Pass, and fords the South Fork Merced River, which the book calls wet in early season. Bear canisters are required in Yosemite, and pets and firearms are prohibited."
 checked = "2026-11-18"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
@@ -125,6 +126,15 @@ date = "2026-11-19"
 change = "The first guide now links to a library record for the 9th edition (2005) that the facts were read from, with the trip number, pages and edition in their own fields; a second guide entry names the 10th edition that the publisher now sells, where the trip may be numbered differently."
 fields = ["guide", "route.note"]
 basis = "The Open Library record gives Sierra North, Backcountry Trips in California's Sierra Nevada, 9th edition, Wilderness Press, July 2005, ISBN 0899973965. The publisher's page is headed 10th Edition."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 72, pages 246-250 of the 9th edition, 2005, read from the owner's copy as: Mid to late season, about early July to early October."
 basis_url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
 asked_by = "the dataset's own check"
 outcome = "applied"

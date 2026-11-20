@@ -57,6 +57,7 @@ travel = "trail"
 season = "Mid-June to early October"
 months = [6, 7, 8, 9]
 checked = "2026-11-19"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r04/humboldt-toiyabe/recreation/trails/toiyabe-crest-national-recreation-trail"
@@ -102,6 +103,15 @@ date = "2026-11-19"
 change = "The usual season was added, \"Mid-June to early October\", with its months."
 fields = ["hike.season", "hike.months"]
 basis = "The page of Nevada Division of Outdoor Recreation (Nevada Trail Finder) says: \"The best time to hike or ride this trail is from mid-June to early October.\""
+basis_url = "https://www.nvtrailfinder.com/trails/trail/toiyabe-crest-national-recreation-trail/1000"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Nevada Division of Outdoor Recreation (Nevada Trail Finder) as: Mid-June to early October."
 basis_url = "https://www.nvtrailfinder.com/trails/trail/toiyabe-crest-national-recreation-trail/1000"
 asked_by = "the dataset's own check"
 outcome = "applied"

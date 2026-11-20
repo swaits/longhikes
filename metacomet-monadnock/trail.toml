@@ -63,6 +63,7 @@ high_point = "Mount Monadnock"
 high_point_m = 965
 travel = "trail"
 checked = "2026-11-14"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://mmtrailnh.org/"
@@ -106,5 +107,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://mmtrailnh.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by New England Trail as: Spring and fall; summers tend to be humid and buggy and winters cold and icy."
+basis_url = "https://newenglandtrail.org/thru-hiking/"
 asked_by = "the dataset's own check"
 outcome = "applied"

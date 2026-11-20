@@ -11,6 +11,8 @@ tier = "national"
 designation = "National Scenic Trail (1980)"
 wave = 1
 inclusion = "nst-unconditional"
+places_checked = "2026-11-20"
+places_track = "591729ca16beee21"
 
 [source]
 status = "osm-only"
@@ -93,6 +95,54 @@ title = "North Country National Scenic Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/North_Country_National_Scenic_Trail"
 
+[[place]]
+kind = "range"
+slug = "adirondack-mountains"
+basis = "track"
+km = 223.8
+
+[[place]]
+kind = "range"
+slug = "green-mountains"
+basis = "track"
+km = 61.3
+
+[[place]]
+kind = "wilderness"
+slug = "beaver-basin-wilderness"
+basis = "track"
+km = 14.8
+
+[[place]]
+kind = "wilderness"
+slug = "boundary-waters-canoe-area-wilderness"
+basis = "track"
+km = 109.7
+
+[[place]]
+kind = "wilderness"
+slug = "joseph-battell-wilderness"
+basis = "track"
+km = 9.2
+
+[[place]]
+kind = "wilderness"
+slug = "mccormick-wilderness"
+basis = "track"
+km = 10.3
+
+[[place]]
+kind = "wilderness"
+slug = "porcupine-lake-wilderness"
+basis = "track"
+km = 11.0
+
+[[place]]
+kind = "wilderness"
+slug = "rainbow-lake-wilderness"
+basis = "track"
+km = 10.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -128,5 +178,14 @@ change = "The record now has a season: Spring, summer and fall."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from The Trek's page: Spring, summer and fall."
 basis_url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Adirondack Mountains, Green Mountains, Beaver Basin Wilderness, Boundary Waters Canoe Area Wilderness, Joseph Battell Wilderness, McCormick Wilderness, Porcupine Lake Wilderness, Rainbow Lake Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

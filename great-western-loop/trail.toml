@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Andrew Skurka and Ryan Jordan, 2006); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -112,6 +113,174 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=44372
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Grandview Point, OpenStreetMap node 4437250889"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "glacier-national-park"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "park"
+slug = "grand-canyon-national-park"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "park"
+slug = "joshua-tree-national-park"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "park"
+slug = "north-cascades-national-park"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon-national-parks"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "park"
+slug = "yellowstone-national-park"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "park"
+slug = "yosemite-national-park"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "range"
+slug = "colorado-plateau"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "range"
+slug = "mogollon-rim"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "range"
+slug = "north-cascades"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "range"
+slug = "san-juan-mountains"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "range"
+slug = "selkirk-mountains"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "range"
+slug = "transverse-ranges"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "range"
+slug = "wind-river-range"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "wilderness"
+slug = "anaconda-pintler-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "wilderness"
+slug = "ansel-adams-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "wilderness"
+slug = "bob-marshall-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "wilderness"
+slug = "emigrant-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "wilderness"
+slug = "four-peaks-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "wilderness"
+slug = "gila-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "wilderness"
+slug = "john-muir-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "wilderness"
+slug = "mazatzal-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "wilderness"
+slug = "mount-zirkel-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "wilderness"
+slug = "pasayten-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "wilderness"
+slug = "salmo-priest-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "wilderness"
+slug = "south-sierra-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
+[[place]]
+kind = "wilderness"
+slug = "superstition-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -156,5 +325,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Andrew Skurka as: Spring through early fall: the deserts are crossed early, and the high country must be entered as early as the snowpack allows and left before the first winter storms."
 basis_url = "https://andrewskurka.com/adventures/great-western-loop/itinerary-final/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in 28 places (7 parks, 8 ranges and 13 wilderness areas), all listed in the record, from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"before making one final and remarkable ascent to the Continental Divide in Glacier National Park.\" (Glacier National Park) The page says: \"Starting at Grandview Point, the Loop descends into the Grand Canyon and follows the Tonto Trail west to the South Bass Trail.\" (Grand Canyon National Park) The page says: \"The Loop enters the park where the Pinto Wash exits it, and then proceeds cross-country up the waterless Pinto Basin and eventually attains the higher west side of the park at Twin Lakes Campground.\" (Joshua Tree National Park) The page says: \"The Pacific Crest National Scenic Trail is a 2,665-mile footpath from Mexico to Canada that passes through the Sierra Nevada and Cascade Ranges of California, Oregon, and Washington.\" (North Cascades National Park, Sierra Nevada) The page says: \"the gateway to California's High Sierra, which includes three phenomenal National Parks (Kings Canyon, Sequoia, and Yosemite) and several gawk-inducing wilderness areas (South Sierra, John Muir, Ansel Adams, and Emigrant).\" (Sequoia and Kings Canyon National Parks, Yosemite National Park) The page says: \"In Wyoming, the geysers and wildlife of Yellowstone National Park are followed by the phenomenal Wind River Range\" (Yellowstone National Park, Wind River Range) The page says: \"the AZT/GWL climbs through the Mogollon Rim, a sandstone and limestone cliff escarpment that marks the geological boundary of the Colorado Plateau.\" (Colorado Plateau, Mogollon Rim) The page says: \"the PCT's northern terminus in Washington's Pasayten Wilderness.\" (North Cascades, Pasayten Wilderness) The page says: \"Colorado's climax is reached in the San Juan's, which are followed by New Mexico's San Pedro Peaks\" (San Juan Mountains) The page says: \"just before it ascends back up into the Selkirks, far north in Idaho's Panhandle.\" (Selkirk Mountains) The page says: \"the PCT/GWL travels 475 miles through the San Bernardino and San Gabriel Ranges, across the Mojave Desert's Antelope Arm, and along the Tehachapi Mountains\" (Transverse Ranges) The page says: \"The remaining 600 miles through Montana are highlighted by the Bob Marshall Wilderness, the Anaconda-Pintler Wilderness, the Centennial Mountains, and the Spanish Peaks.\" (Anaconda Pintler Wilderness, Bob Marshall Wilderness) The page says: \"several gawk-inducing wilderness areas (South Sierra, John Muir, Ansel Adams, and Emigrant).\" (Ansel Adams Wilderness, Emigrant Wilderness, John Muir Wilderness, South Sierra Wilderness) The page says: \"North of the dam is the Four Peaks Wilderness followed by the Mazatzal Wilderness, home to a view-filled 7,000-foot ridgeline.\" (Four Peaks Wilderness, Mazatzal Wilderness) The page says: \"The CDT/GWL enter the Gila Wilderness, and at the Gila Clif Dwellings National Monument Visitor Center the GWL leaves the CDT to join the Grand Enchantment Trail.\" (Gila Wilderness) The page says: \"the route descends into the high plains to cross the Great Divide Basin before entering Colorado in the Mt. Zirkel Wilderness.\" (Mount Zirkel Wilderness) The page says: \"It soon enters the Salmo-Priest Wilderness before dropping down into the Upper Priest Valley\" (Salmo-Priest Wilderness) The page says: \"where they all head north into the Tortilla Mountains and Superstition Wilderness.\" (Superstition Wilderness)"
+basis_url = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
 asked_by = "the dataset's own check"
 outcome = "applied"

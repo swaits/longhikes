@@ -9,6 +9,8 @@ length_note = "420 km from the Blackwater River to Bella Coola, with a suggested
 tier = "regional"
 designation = "Heritage trail under the Heritage Conservation Act (1987); forest recreation trail under the Forest Act (1987)"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "fd056793e7ddef4f"
 
 [source]
 status = "osm-only"
@@ -78,6 +80,31 @@ url = "https://britishcolumbia.com/things-to-do-and-see/recreation/northern-bc-a
 publisher = "BritishColumbia.com"
 facts = ["season", "months"]
 
+[[place]]
+kind = "park"
+slug = "kluskoil-lake-park"
+basis = "track"
+km = 18.2
+
+[[place]]
+kind = "park"
+slug = "titetown-park"
+basis = "track"
+km = 7.0
+
+[[place]]
+kind = "park"
+slug = "tweedsmuir-park"
+basis = "track"
+km = 72.3
+
+[[place]]
+kind = "range"
+slug = "coast-mountains"
+basis = "track"
+km = 19.3
+
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -113,5 +140,14 @@ change = "The record now has a season: Late summer to early fall."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from BritishColumbia.com's page: Late summer to early fall."
 basis_url = "https://britishcolumbia.com/things-to-do-and-see/recreation/northern-bc-and-haida-gwaii/north-west-bc/hiking-backpacking/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Kluskoil Lake Park, Titetown Park, Tweedsmuir Park, Coast Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20), the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
 asked_by = "the dataset's own check"
 outcome = "applied"

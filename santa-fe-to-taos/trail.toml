@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Pam Neely, first walked 2018); run by the Santa Fe to Taos Trail, a 501(c)(3) non-profit; no agency"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -114,6 +115,18 @@ url = "https://www.wikidata.org/wiki/Q7684310"
 publisher = "Wikidata (CC0)"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "sangre-de-cristo-mountains"
+basis = "stated"
+source = "https://santafetotaos.org"
+
+[[place]]
+kind = "wilderness"
+slug = "pecos-wilderness"
+basis = "stated"
+source = "https://santafetotaos.org"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -149,5 +162,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by The Santa Fe to Taos Trail (the route's non-profit) as: June to mid-October."
 basis_url = "https://santafetotaos.org/faqs/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sangre de Cristo Mountains and Pecos Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Santa Fe to Taos Thru-Hike crosses the Sangre de Cristo Mountains of northern New Mexico from Santa Fe Plaza to Taos Plaza.\" (Sangre de Cristo Mountains) The trail's own description says: \"It passes through the Santa Fe National Forest, the Pecos Wilderness and the Carson National Forest.\" (Pecos Wilderness)"
+basis_url = "https://santafetotaos.org"
 asked_by = "the dataset's own check"
 outcome = "applied"

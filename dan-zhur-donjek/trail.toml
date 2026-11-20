@@ -9,6 +9,7 @@ length_note = "110 km (68 mi) loop, from the Parks Canada page for the Dän Zhù
 tier = "regional"
 designation = "Parks Canada (Kluane National Park and Reserve)"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -76,6 +77,12 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=14760
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Duke River Bridge, OpenStreetMap way 1476065695"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "kluane-national-park-reserve"
+basis = "stated"
+source = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -111,6 +118,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Parks Canada as: Mid-June to mid-September."
+basis_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Kluane National Park Reserve from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"You will cross the park boundary again about 15 km before the Alaska Highway.\""
 basis_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/dan-zhur"
 asked_by = "the dataset's own check"
 outcome = "applied"

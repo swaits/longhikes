@@ -11,6 +11,8 @@ length_note = "more than 230 mi, from the Bay Circuit Alliance and Appalachian M
 tier = "regional"
 designation = "Appalachian Mountain Club with the Bay Circuit Alliance"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "d925be12bb618384"
 
 [source]
 status = "osm-only"

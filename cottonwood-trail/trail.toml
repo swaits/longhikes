@@ -9,6 +9,7 @@ length_note = "85 km (53 mi) published, from the Parks Canada page for the Cotto
 tier = "regional"
 designation = "Parks Canada (Kluane National Park and Reserve)"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -78,6 +79,12 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=21820
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): the junction of Mush Lake Road and the Haines Highway, OpenStreetMap node 2182047607"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "kluane-national-park-reserve"
+basis = "stated"
+source = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/cottonwood"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -112,6 +119,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Parks Canada as: June to early September."
+basis_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/cottonwood"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Kluane National Park Reserve from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Cottonwood Trail is a backpacking route in Kluane National Park and Reserve in southwest Yukon.\""
 basis_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/cottonwood"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -11,6 +11,7 @@ length_note = "222 km (138 mi), from the IAT/SIA Council's Maine page, which add
 tier = "regional"
 designation = "Maine Chapter of the International Appalachian Trail"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -89,6 +90,18 @@ title = "International Appalachian Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/International_Appalachian_Trail"
 
+[[place]]
+kind = "park"
+slug = "katahdin-woods-and-waters-national-monument"
+basis = "stated"
+source = "https://maineiat.org/?p=412"
+
+[[place]]
+kind = "range"
+slug = "appalachian-mountains"
+basis = "stated"
+source = "https://www.nps.gov/places/barnard-mountain-trailhead.htm"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -115,5 +128,14 @@ change = "The start is now named as the Barnard Mountain Trailhead on the Katahd
 fields = ["hike.start", "hike.start_lonlat"]
 basis = "The National Park Service's page for the Barnard Mountain Trailhead says the International Appalachian Trail also starts from it, and OpenStreetMap contributors (ODbL) give the trailhead's position, OpenStreetMap node 12949585422."
 basis_url = "https://www.nps.gov/places/barnard-mountain-trailhead.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Katahdin Woods and Waters National Monument and Appalachian Mountains from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Maine section of the International Appalachian Trail starts in Katahdin Woods and Waters National Monument, east of Baxter State Park, and runs north and east to Fort Fairfield on the Canadian border.\" (Katahdin Woods and Waters National Monument) The page says: \"The trail follows the ancient Appalachian Mountains, now separated by the North Atlantic Ocean.\" (Appalachian Mountains)"
+basis_url = "https://maineiat.org/?p=412"
 asked_by = "the dataset's own check"
 outcome = "applied"

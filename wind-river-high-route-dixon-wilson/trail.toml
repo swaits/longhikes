@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Alan Dixon and Don Wilson); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -93,6 +94,24 @@ url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1598168"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "wind-river-range"
+basis = "stated"
+source = "https://www.adventurealan.com/wind-river-high-route-guide/"
+
+[[place]]
+kind = "wilderness"
+slug = "bridger-wilderness"
+basis = "stated"
+source = "https://www.fs.usda.gov/r04/bridger-teton/recreation/bridger-wilderness"
+
+[[place]]
+kind = "wilderness"
+slug = "popo-agie-wilderness"
+basis = "stated"
+source = "https://www.adventurealan.com/wind-river-high-route-guide/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -118,6 +137,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Alan Dixon and Don Wilson (Adventure Alan) as: Late summer."
+basis_url = "https://www.adventurealan.com/wind-river-high-route-guide/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Wind River Range, Bridger Wilderness and Popo Agie Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"An elegant line closely following the crest of the Continental Divide along the finest section of the Wind River Range.\" (Wind River Range) The page says: \"The Bridger Wilderness rests within the Wind River Mountains and extends 80 miles along the Continental Divide, holding the headwaters of the Green River.\" (Bridger Wilderness) The page says: \"After passing through the legendary Cirque of the Towers, it ends at the Big Sandy Trailhead.\" (Popo Agie Wilderness)"
 basis_url = "https://www.adventurealan.com/wind-river-high-route-guide/"
 asked_by = "the dataset's own check"
 outcome = "applied"

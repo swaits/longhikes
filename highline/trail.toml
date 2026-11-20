@@ -9,6 +9,8 @@ length_note = "55 mi, as the Forest Service's Tonto National Forest page states 
 tier = "regional"
 designation = "National Recreation Trail #31 (Forest Service, Tonto National Forest); part of it is a passage of the Arizona National Scenic Trail"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "16c1eff493a7451f"
 
 [source]
 status = "osm-only"
@@ -82,6 +84,12 @@ title = "Arizona Highline Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Arizona_Highline_Trail"
 
+[[place]]
+kind = "range"
+slug = "mogollon-rim"
+basis = "track"
+km = 93.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -135,5 +143,14 @@ change = "The record now has a season: Spring and autumn (April-May, September-N
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from Outdoor Pilgrim's page: Spring and autumn (April-May, September-November)."
 basis_url = "https://outdoorpilgrim.com/highline-overview/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Mogollon Rim."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

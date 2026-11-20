@@ -11,6 +11,8 @@ length_note = "56 mi, as the City of Prescott states it; the Prescott National F
 tier = "regional"
 designation = "Loop of linked trails around Prescott, Arizona, managed jointly by the City of Prescott (25 mi) and Prescott National Forest (31 mi)"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "4b118a6ade58753a"
 
 [source]
 status = "osm-only"

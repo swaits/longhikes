@@ -11,6 +11,8 @@ length_note = "92 mi, from the Midstate Trail Committee page"
 tier = "regional"
 designation = "Midstate Trail Committee"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "cb687a4f64650f85"
 
 [source]
 status = "osm-only"

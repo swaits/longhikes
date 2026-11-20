@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (John and Monica Chapman, 2023); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -103,6 +104,48 @@ url = "https://www.john.chapman.name/pub-sierra.html"
 publisher = "John Chapman (the route's author)"
 facts = ["season", "months", "days"]
 
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon-national-parks"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
+
+[[place]]
+kind = "park"
+slug = "yosemite-national-park"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
+
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
+
+[[place]]
+kind = "wilderness"
+slug = "ansel-adams-wilderness"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
+
+[[place]]
+kind = "wilderness"
+slug = "john-muir-wilderness"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
+
+[[place]]
+kind = "wilderness"
+slug = "sequoia-kings-canyon-wilderness"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
+
+[[place]]
+kind = "wilderness"
+slug = "yosemite-wilderness"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -156,5 +199,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by John Chapman (the route's author) as: Mid-July to mid-September."
 basis_url = "https://www.john.chapman.name/pub-sierra.html"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sequoia and Kings Canyon National Parks, Yosemite National Park, Sierra Nevada, Ansel Adams Wilderness, John Muir Wilderness, Sequoia-Kings Canyon Wilderness and Yosemite Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"It winds through five wilderness areas across three national parks and two national forests\" (Sequoia and Kings Canyon National Parks, Ansel Adams Wilderness, John Muir Wilderness, Sequoia-Kings Canyon Wilderness) The trail's own description says: \"Tuolumne Meadows in Yosemite National Park\" (Yosemite National Park) The trail's own description says: \"The Sierra Grand Traverse crosses the High Sierra in California from Tuolumne Meadows in Yosemite National Park south past Mount Whitney to Horseshoe Meadows.\" (Sierra Nevada, Yosemite Wilderness)"
+basis_url = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
 asked_by = "the dataset's own check"
 outcome = "applied"

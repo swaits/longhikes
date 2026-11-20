@@ -5,13 +5,14 @@ name = "Hot Springs Trail"
 short_name = "HST"
 short_name_url = "https://outsideways.com/routes/us/hot-springs-trail/"
 country = "US"
-regions = ["CA", "OR", "ID"]
+regions = ["CA", "NV", "OR", "ID"]
 length_km = 3896
 length_note = "2,421 mi, per the route page"
 kind = "route"
 tier = "regional"
 designation = "Person-defined route (Aria Zoner, 2016); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -92,6 +93,30 @@ title = "Hot Springs Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Hot_Springs_Trail"
 
+[[place]]
+kind = "range"
+slug = "ruby-mountains"
+basis = "stated"
+source = "https://outsideways.com/routes/us/hot-springs-trail/"
+
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "stated"
+source = "https://tertulia.com/book/the-hot-springs-trail-official-guidebook-aria-zoner/9781505613926"
+
+[[place]]
+kind = "wilderness"
+slug = "east-humboldts-wilderness"
+basis = "stated"
+source = "https://outsideways.com/routes/us/hot-springs-trail/"
+
+[[place]]
+kind = "wilderness"
+slug = "jarbidge-wilderness"
+basis = "stated"
+source = "https://outsideways.com/routes/us/hot-springs-trail/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -118,5 +143,23 @@ change = "The guide's entry now gives the ISBN, publisher and year. Its link sta
 fields = ["guide"]
 basis = "The Open Library record gives The Hot Springs Trail: Official Guidebook, Aria Zoner, CreateSpace, 2015, ISBN 9781505613926, which matches the ISBN-10 in the bookseller's address."
 basis_url = "https://www.amazon.com/Hot-Springs-Trail-Official-Guidebook/dp/1505613922"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Ruby Mountains, Sierra Nevada, East Humboldts Wilderness and Jarbidge Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"These are undoubtedly some of the most striking miles of the trail as they overlook the Ruby Lakes basin and the Ruby Mountains, which are traversed during the next section.\" (Ruby Mountains) The page says: \"Part 2 - The High Sierra Hot Springs Trail\" (Sierra Nevada) The page says: \"At Solider Creek, the options rejoin and the trail follows singletrack into the East Humboldt Wilderness.\" (East Humboldts Wilderness) The page says: \"while the hike-thru option continues up Marys River, going thru the Jarbidge Wilderness area and the remote outpost of Jarbidge, which has a post office.\" (Jarbidge Wilderness)"
+basis_url = "https://outsideways.com/routes/us/hot-springs-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "Nevada is now listed among the states the route passes through, because the route page names its stretches in the Ruby Mountains, the East Humboldt Wilderness and the Jarbidge Wilderness, all in Nevada."
+fields = ["regions"]
+basis = "The route page says: \"These are undoubtedly some of the most striking miles of the trail as they overlook the Ruby Lakes basin and the Ruby Mountains, which are traversed during the next section.\" and \"the trail follows singletrack into the East Humboldt Wilderness.\""
+basis_url = "https://outsideways.com/routes/us/hot-springs-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

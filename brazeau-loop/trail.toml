@@ -9,6 +9,7 @@ length_note = "81 km loop, from the Jasper National Park page"
 tier = "regional"
 designation = "Parks Canada, Jasper National Park"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -80,6 +81,18 @@ url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-bac
 publisher = "Parks Canada, Jasper National Park"
 facts = ["permit"]
 
+[[place]]
+kind = "park"
+slug = "jasper-national-park"
+basis = "stated"
+source = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas"
+
+[[place]]
+kind = "range"
+slug = "canadian-rockies"
+basis = "stated"
+source = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -115,5 +128,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Parks Canada, Jasper National Park as: Early July to mid-September, when the alpine trails are typically free of snow."
 basis_url = "https://pcweb2.azureedge.net/-/media/pn-np/ab/jasper/WET4/pdf/visit/depliants-brochures/ete-summer/Backcountry-Guide-ENG-2019.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Jasper National Park and Canadian Rockies from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Brazeau Loop is a backcountry loop in Jasper National Park in Alberta.\""
+basis_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas"
 asked_by = "the dataset's own check"
 outcome = "applied"

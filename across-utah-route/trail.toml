@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Jamal Green); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -82,6 +83,48 @@ url = "http://www.acrossutah.com/wordpress/the_route/"
 publisher = "Jamal Green, Across Utah (the route's author)"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution"]
 
+[[place]]
+kind = "park"
+slug = "bryce-canyon-national-park"
+basis = "stated"
+source = "http://www.acrossutah.com/wordpress/the_route/"
+
+[[place]]
+kind = "park"
+slug = "canyonlands-national-park"
+basis = "stated"
+source = "http://www.acrossutah.com/wordpress/the_route/"
+
+[[place]]
+kind = "park"
+slug = "capitol-reef-national-park"
+basis = "stated"
+source = "http://www.acrossutah.com/wordpress/the_route/"
+
+[[place]]
+kind = "park"
+slug = "zion-national-park"
+basis = "stated"
+source = "http://www.acrossutah.com/wordpress/the_route/"
+
+[[place]]
+kind = "range"
+slug = "la-sal-mountains"
+basis = "stated"
+source = "http://www.acrossutah.com/wordpress/the_route/"
+
+[[place]]
+kind = "wilderness"
+slug = "canaan-mountain-wilderness"
+basis = "stated"
+source = "http://www.acrossutah.com/wordpress/the_route/"
+
+[[place]]
+kind = "wilderness"
+slug = "pine-valley-mountain-wilderness"
+basis = "stated"
+source = "http://www.acrossutah.com/wordpress/the_route/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -99,5 +142,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "http://www.acrossutah.com/wordpress/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Bryce Canyon National Park, Canyonlands National Park, Capitol Reef National Park, Zion National Park, La Sal Mountains, Canaan Mountain Wilderness and Pine Valley Mountain Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"and then follows the Grandview Trail through the pines and all the way to Bryce Canyon National Park to Rainbow Point.\" (Bryce Canyon National Park) The page says: \"The route continues through this unspoiled canyon system and into Canyonlands National Park near the Hans Flat Ranger Station.\" (Canyonlands National Park) The page says: \"then to a tough cross-country stretch to connect to Lower Muley Twist in Capitol Reef.\" (Capitol Reef National Park) The page says: \"The second section of the journey takes hikers through much of Zion National Park.\" (Zion National Park) The page says: \"The final section climbs up and over the highest peaks in southern Utah — the La Sal Mountains.\" (La Sal Mountains) The page says: \"a rockfall in 2019 indefinitely closed the route to the East Rim. Thus, the Canaan Mountain alternate is now the preferred route.\" (Canaan Mountain Wilderness) The page says: \"Leaving the Nevada/Utah state line, the route travels into Dixie National Forest as it winds its way up through the Pine Valley Mountains.\" (Pine Valley Mountain Wilderness)"
+basis_url = "http://www.acrossutah.com/wordpress/the_route/"
 asked_by = "the dataset's own check"
 outcome = "applied"

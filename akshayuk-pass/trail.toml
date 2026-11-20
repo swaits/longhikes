@@ -10,6 +10,7 @@ tier = "regional"
 designation = "Parks Canada (Auyuittuq National Park)"
 wave = "held"
 wave_note = "Parks Canada publishes Akshayuk Pass as a named 97 km route with 9 emergency shelters, and calls it a trail in places, but its page says there is no designated trail to follow. Whether it is a designated trail or a route is undecided, and no track is included."
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -76,6 +77,12 @@ url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/visit/meteo-weather"
 publisher = "Parks Canada"
 facts = ["season", "months"]
 
+[[place]]
+kind = "park"
+slug = "auyuittuq-national-park"
+basis = "stated"
+source = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -120,5 +127,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Parks Canada as: Mid-July to early September."
 basis_url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/visit/meteo-weather"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Auyuittuq National Park from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"Akshayuk Pass is a 97 km valley between mountains and ice that runs through Auyuittuq National Park on Baffin Island.\""
+basis_url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -9,6 +9,7 @@ length_note = "121 km one way, from the Jasper National Park page"
 tier = "regional"
 designation = "Parks Canada, Jasper National Park"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -82,6 +83,18 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=36305
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): the parking lot on Forestry Trunk Road 734, 1.7 km past Cardinal Divide, OpenStreetMap way 363050778; it is the trailhead parking lot that Parks Canada's directions describe"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "jasper-national-park"
+basis = "stated"
+source = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/south-boundary"
+
+[[place]]
+kind = "range"
+slug = "canadian-rockies"
+basis = "stated"
+source = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/south-boundary"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -117,5 +130,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Parks Canada, Jasper National Park as: The trail can be hiked late into the season, to early October; the Brazeau and Poboktan portions are closed from November 1 to May 15 for caribou conservation."
 basis_url = "https://pcweb2.azureedge.net/-/media/pn-np/ab/jasper/WET4/pdf/activ/guides-maps/backcountry-guide/south-boundary/South-boundary-backcountry-guide_Eng_2025.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Jasper National Park and Canadian Rockies from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The South Boundary Trail is a remote wilderness route in Jasper National Park, Alberta, recommended only for experienced backpackers.\" (Jasper National Park) The page says: \"The South Boundary is a remote wilderness route, recommended for users with significant backcountry skills and experience.\" (Canadian Rockies)"
+basis_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/south-boundary"
 asked_by = "the dataset's own check"
 outcome = "applied"

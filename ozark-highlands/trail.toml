@@ -12,6 +12,8 @@ built_km = 467
 tier = "regional"
 designation = "Ozark Highlands Trail Association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "80395b3ecc67ea1a"
 
 [source]
 status = "osm-only"
@@ -87,6 +89,12 @@ title = "Ozark Highlands Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Ozark_Highlands_Trail"
 
+[[place]]
+kind = "wilderness"
+slug = "hurricane-creek-wilderness"
+basis = "track"
+km = 20.3
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -158,5 +166,13 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Ozark Highlands Trail Association as: October to early June."
 basis_url = "https://ozarkhighlandstrail.com/faq/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Hurricane Creek Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://wilderness.net/visit-wilderness/gis-gps.php"
 asked_by = "the dataset's own check"
 outcome = "applied"

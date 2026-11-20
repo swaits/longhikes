@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Philip Stone, 1996 guide); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -97,6 +98,18 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=16524
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Stamp Falls, OpenStreetMap node 1652413166"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "strathcona-park"
+basis = "stated"
+source = "https://bcparks.ca/strathcona-park/"
+
+[[place]]
+kind = "range"
+slug = "vancouver-island-ranges"
+basis = "stated"
+source = "https://www.wildisle.ca/backbone/index.html"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -141,5 +154,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Philip Stone, Alpine Pacific Images as: July to September."
 basis_url = "https://www.wildisle.ca/downloads/books/Van_Isle_Backbone_Guide.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Strathcona Park and Vancouver Island Ranges from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Two areas, Buttle Lake and vicinity and Forbidden Plateau, offer a variety of visitor-oriented developments. (BC Parks, Strathcona Park page.) The Backbone's route section 2 is \"Forbidden Plateau, Cumberland to Augerpoint at Buttle Lake\" and section 3 is \"Buttle Lake, Augerpoint to Buttle Narrows\" (www.wildisle.ca/backbone/map.html).\" (Strathcona Park) The trail's own description says: \"The Vancouver Island Backbone is a wilderness route of over 300 km along the mountainous interior of Vancouver Island, from south to north.\" (Vancouver Island Ranges)"
+basis_url = "https://bcparks.ca/strathcona-park/"
 asked_by = "the dataset's own check"
 outcome = "applied"

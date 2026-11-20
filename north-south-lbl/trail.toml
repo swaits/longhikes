@@ -9,6 +9,8 @@ length_note = "59 mi published on the Land Between the Lakes trails page"
 tier = "regional"
 designation = "USDA Forest Service, Land Between the Lakes National Recreation Area. The 31 mi North End is open to hikers and bicycles. The 27 mi South End is for hikers, with horses allowed only between Road 342 and the Homeplace."
 wave = 1
+places_checked = "2026-11-20"
+places_track = "c5363d6dc3f617b7"
 
 [source]
 status = "osm-only"

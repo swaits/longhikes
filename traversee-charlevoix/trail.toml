@@ -9,6 +9,8 @@ length_note = "105 km, from the Traversée de Charlevoix page"
 tier = "regional"
 designation = "Traversée de Charlevoix"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "744fb1d85db4a048"
 
 [source]
 status = "osm-only"
@@ -67,6 +69,12 @@ url = "https://www.traverseedecharlevoix.qc.ca/en/hiking/the-complete-crossing"
 publisher = "La Traversée de Charlevoix"
 facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "months", "travel", "permit"]
 
+[[place]]
+kind = "park"
+slug = "hautes-gorges-de-la-riviere-malbaie-national-park"
+basis = "track"
+km = 7.0
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -93,5 +101,13 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by La Traversée de Charlevoix as: Late May to late October."
 basis_url = "https://www.traverseedecharlevoix.qc.ca/en/hiking/the-complete-crossing"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Hautes-Gorges-de-la-Rivière-Malbaie National Park."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
 asked_by = "the dataset's own check"
 outcome = "applied"

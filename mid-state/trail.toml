@@ -11,6 +11,8 @@ length_note = "about 320 mi"
 tier = "regional"
 designation = "Pennsylvania DCNR trail, Mid State Trail Association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "edc578bad8954fac"
 
 [source]
 status = "osm-only"
@@ -86,6 +88,12 @@ title = "Pennsylvania Mid-State Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Pennsylvania_Mid-State_Trail"
 
+[[place]]
+kind = "range"
+slug = "allegheny-plateau"
+basis = "track"
+km = 46.6
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -121,5 +129,14 @@ change = "The record now has a season: Spring to fall."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from The Trek's page: Spring to fall."
 basis_url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Allegheny Plateau."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

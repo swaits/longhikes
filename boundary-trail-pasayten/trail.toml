@@ -9,6 +9,8 @@ length_note = "Over 73 mi, as the Forest Service states it on its Pasayten Wilde
 tier = "regional"
 designation = "Okanogan-Wenatchee National Forest Trail 533, Pasayten Wilderness; open to hikers and horseback riders. Not Boundary Trail 1 in the Gifford Pinchot National Forest."
 wave = 1
+places_checked = "2026-11-20"
+places_track = "9ef293c1c192d7c7"
 
 [source]
 status = "osm-only"
@@ -74,6 +76,18 @@ url = "https://www.fs.usda.gov/trails/pacific-northwest-nst/geographic-areas"
 publisher = "U.S. Forest Service, Pacific Northwest National Scenic Trail"
 facts = ["summary"]
 
+[[place]]
+kind = "range"
+slug = "north-cascades"
+basis = "track"
+km = 112.4
+
+[[place]]
+kind = "wilderness"
+slug = "pasayten-wilderness"
+basis = "track"
+km = 112.3
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -92,5 +106,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.fs.usda.gov/r06/okanogan-wenatchee/recreation/trails/boundary-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in North Cascades, Pasayten Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

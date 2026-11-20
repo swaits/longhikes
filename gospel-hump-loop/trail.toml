@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Guidebook route (Douglas Lorain, 2004, in Backpacking Idaho); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -100,6 +101,12 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=77785
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Moores Guard Station, OpenStreetMap way 777859855; the book puts the trailhead directly opposite the station"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "wilderness"
+slug = "gospel-hump-wilderness"
+basis = "stated"
+source = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -135,6 +142,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 9 of the 1st edition, March 2004, read from the owner's copy as: July to October, best in early to mid July or in September."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Gospel-Hump Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Gospel Hump Loop is a backpacking loop of 5 to 8 days in the Gospel Hump Wilderness in Idaho, from the Moores Guard Station trailhead.\""
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
 asked_by = "the dataset's own check"
 outcome = "applied"

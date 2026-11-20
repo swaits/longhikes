@@ -11,6 +11,8 @@ length_note = "138 mi"
 tier = "regional"
 designation = "Adirondack Mountain Club; New York DEC"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "ec985a49ffee66db"
 
 [source]
 status = "osm-only"
@@ -89,6 +91,12 @@ title = "Northville Placid Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Northville_Placid_Trail"
 
+[[place]]
+kind = "range"
+slug = "adirondack-mountains"
+basis = "track"
+km = 221.0
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -124,5 +132,14 @@ change = "The record now has a season: Late summer to early fall."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from Treeline Review's page: Late summer to early fall."
 basis_url = "https://www.treelinereview.com/where-to-go/northville-placid-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Adirondack Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

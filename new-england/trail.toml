@@ -13,6 +13,8 @@ tier = "national"
 designation = "National Scenic Trail (2009)"
 wave = 1
 inclusion = "nst-unconditional"
+places_checked = "2026-11-20"
+places_track = "e8dc14eb6eb98f6b"
 
 [source]
 status = "verified"

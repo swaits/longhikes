@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Brett Tucker and partner, simBLISSity Ultralight Designs, 2026 mapset); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -79,6 +80,18 @@ url = "https://www.simblissity.net/desert-wth-mapset.shtml"
 publisher = "simBLISSity Ultralight Designs (the route's authors)"
 facts = ["official_url", "summary", "start", "end", "shape", "season", "months", "terrain"]
 
+[[place]]
+kind = "park"
+slug = "joshua-tree-national-park"
+basis = "stated"
+source = "https://www.simblissity.net/desert-wth-mapset.shtml"
+
+[[place]]
+kind = "park"
+slug = "saguaro-national-park"
+basis = "stated"
+source = "https://www.simblissity.net/desert-wth-mapset.shtml"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -104,6 +117,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by simBLISSity Ultralight Designs (the route's authors) as: December to February."
+basis_url = "https://www.simblissity.net/desert-wth-mapset.shtml"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Joshua Tree National Park and Saguaro National Park from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"View an interactive map of the Desert Winter Thru-Hike, showing the route from Saguaro National Park to Joshua Tree National Park as well as significant points along the course of the journey.\""
 basis_url = "https://www.simblissity.net/desert-wth-mapset.shtml"
 asked_by = "the dataset's own check"
 outcome = "applied"

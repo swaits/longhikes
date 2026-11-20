@@ -11,6 +11,8 @@ length_note = "about 115 mi"
 tier = "regional"
 designation = "Appalachian Mountain Club; the New England NST follows the Metacomet part"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "ae22997a04d16f32"
 
 [source]
 status = "osm-only"
@@ -90,6 +92,12 @@ title = "Metacomet-Monadnock Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Metacomet-Monadnock_Trail"
 
+[[place]]
+kind = "range"
+slug = "appalachian-mountains"
+basis = "track"
+km = 4.4
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -116,5 +124,13 @@ change = "The season is recorded as coming from one page that is not the trail's
 fields = ["hike.season_basis"]
 basis = "The season is stated by New England Trail as: Spring and fall; summers tend to be humid and buggy and winters cold and icy."
 basis_url = "https://newenglandtrail.org/thru-hiking/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Appalachian Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

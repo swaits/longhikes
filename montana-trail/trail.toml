@@ -11,6 +11,7 @@ tier = "regional"
 designation = "Person-defined route (Montana Trail 406 Association, founded 2017); no agency or state designation is stated on the Association's pages"
 wave = "held"
 wave_note = "On the Association's own section pages, five sections at the east end (21 to 25) are given in river miles (149, 157, 68, 77 and 29), and the pages for them describe travel by canoe, kayak or boat, or by bike on gravel roads. The FAQ says the whole route can be travelled on foot but also that there is no trail along the 149 miles of the Wild and Scenic River section. That is about a quarter of the length, so whether this is one continuous walking route is undecided."
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -107,6 +108,60 @@ url = "https://www.wikidata.org/wiki/Q2362959"
 publisher = "Wikidata (CC0), item for Fort Union Trading Post National Historic Site"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "glacier-national-park"
+basis = "stated"
+source = "https://montanatrail.org/faq/"
+
+[[place]]
+kind = "range"
+slug = "absaroka-range"
+basis = "stated"
+source = "https://montanatrail.org/faq/"
+
+[[place]]
+kind = "range"
+slug = "beartooth-mountains"
+basis = "stated"
+source = "https://montanatrail.org/faq/"
+
+[[place]]
+kind = "wilderness"
+slug = "absaroka-beartooth-wilderness"
+basis = "stated"
+source = "https://montanatrail.org/faq/"
+
+[[place]]
+kind = "wilderness"
+slug = "bob-marshall-wilderness"
+basis = "stated"
+source = "https://montanatrail.org/faq/"
+
+[[place]]
+kind = "wilderness"
+slug = "great-bear-wilderness"
+basis = "stated"
+source = "https://montanatrail.org/faq/"
+
+[[place]]
+kind = "wilderness"
+slug = "lee-metcalf-wilderness"
+basis = "stated"
+source = "https://montanatrail.org/faq/"
+
+[[place]]
+kind = "wilderness"
+slug = "scapegoat-wilderness"
+basis = "stated"
+source = "https://montanatrail.org/faq/"
+
+[[place]]
+kind = "wilderness"
+slug = "ul-bend-wilderness"
+basis = "stated"
+source = "https://montanatrail.org/faq/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -141,6 +196,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Montana Trail 406 Association as: Mid-June to mid-September."
+basis_url = "https://montanatrail.org/faq/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in 9 places (1 park, 2 ranges and 6 wilderness areas), all listed in the record, from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"The Montana Trail travels through Glacier National Park and passes very close to Yellowstone National Park.\" (Glacier National Park) The page says: \"Designated wilderness areas include Great Bear Wilderness, Bob Marshall Wilderness, Scapegoat Wilderness, Lee Metcalf Wilderness, Absaroka-Beartooth Wilderness, and UL Bend Wilderness.\" (Absaroka Range, Beartooth Mountains, Absaroka-Beartooth Wilderness, Bob Marshall Wilderness, Great Bear Wilderness, Lee Metcalf Wilderness, Scapegoat Wilderness, UL Bend Wilderness)"
 basis_url = "https://montanatrail.org/faq/"
 asked_by = "the dataset's own check"
 outcome = "applied"

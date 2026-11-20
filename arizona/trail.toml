@@ -13,6 +13,8 @@ tier = "national"
 designation = "National Scenic Trail (2009)"
 wave = 1
 inclusion = "nst-unconditional"
+places_checked = "2026-11-20"
+places_track = "1192931f2851a5c4"
 
 [source]
 status = "osm-only"
@@ -87,6 +89,60 @@ title = "Arizona National Scenic Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Arizona_National_Scenic_Trail"
 
+[[place]]
+kind = "park"
+slug = "grand-canyon-national-park"
+basis = "track"
+km = 63.0
+
+[[place]]
+kind = "park"
+slug = "saguaro-national-park"
+basis = "track"
+km = 26.9
+
+[[place]]
+kind = "range"
+slug = "mogollon-rim"
+basis = "track"
+km = 71.7
+
+[[place]]
+kind = "wilderness"
+slug = "four-peaks-wilderness"
+basis = "track"
+km = 15.2
+
+[[place]]
+kind = "wilderness"
+slug = "mazatzal-wilderness"
+basis = "track"
+km = 83.7
+
+[[place]]
+kind = "wilderness"
+slug = "miller-peak-wilderness"
+basis = "track"
+km = 18.3
+
+[[place]]
+kind = "wilderness"
+slug = "pusch-ridge-wilderness"
+basis = "track"
+km = 28.4
+
+[[place]]
+kind = "wilderness"
+slug = "rincon-mountain-wilderness"
+basis = "track"
+km = 3.4
+
+[[place]]
+kind = "wilderness"
+slug = "superstition-wilderness"
+basis = "track"
+km = 30.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -113,5 +169,13 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by USDA Forest Service as: Northbound hikes start in February or March; southbound hikes start in mid-September or October."
 basis_url = "https://www.fs.usda.gov/trails/arizona-nst/about-trail/faqs"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in 9 places (2 parks, 1 range and 6 wilderness areas), all listed in the record."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

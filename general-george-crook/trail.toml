@@ -11,6 +11,8 @@ tier = "regional"
 designation = "National Recreation Trail (certified 1979), managed by the Forest Service: trail 140 on the Apache-Sitgreaves National Forests, trail 130 on the Coconino National Forest and trail 64 on the Prescott National Forest"
 wave = "held"
 wave_note = "The Forest Service publishes the trail as three pieces on three national forests and gives no length for the whole. The Apache-Sitgreaves page gives 58.9 mi for its piece alone. The Forest Service track for all three pieces measures 193.5 km. The Coconino and Apache-Sitgreaves pieces join and make one walkable trail of about 177 km; the Prescott piece lies about 20 km west of them with a gap between. What would settle it: a Forest Service statement of the whole trail's length and ends."
+places_checked = "2026-11-20"
+places_track = "b0730cd19aaf7b95"
 
 [source]
 status = "verified"
@@ -68,6 +70,12 @@ url = "https://www.nrtapplication.org/trails/general-george-crook"
 publisher = "National Recreation Trails database (nrtapplication.org), from the trail's 1979 application"
 facts = ["summary", "caution"]
 
+[[place]]
+kind = "range"
+slug = "mogollon-rim"
+basis = "track"
+km = 77.4
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -121,5 +129,14 @@ change = "The word \"Held:\" was taken off the start of the wave note, which now
 fields = ["wave_note"]
 basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Mogollon Rim."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

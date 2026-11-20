@@ -11,6 +11,8 @@ length_note = "84 mi, from the Susquehannock Trail Club page"
 tier = "regional"
 designation = "Susquehannock Trail Club"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "60ed00a0b3842da0"
 
 [source]
 status = "osm-only"

@@ -9,6 +9,8 @@ length_note = "130 km, from the Avon Trail Association page"
 tier = "regional"
 designation = "Avon Trail Association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "ca751ef57d29015f"
 
 [source]
 status = "osm-only"

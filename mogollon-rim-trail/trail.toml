@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Brett Tucker); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -104,6 +105,66 @@ title = "Mogollon Rim Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Mogollon_Rim_Trail"
 
+[[place]]
+kind = "range"
+slug = "colorado-plateau"
+basis = "stated"
+source = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
+
+[[place]]
+kind = "range"
+slug = "mogollon-rim"
+basis = "stated"
+source = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
+
+[[place]]
+kind = "range"
+slug = "white-mountains-arizona"
+basis = "stated"
+source = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
+
+[[place]]
+kind = "wilderness"
+slug = "bear-wallow-wilderness"
+basis = "stated"
+source = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
+
+[[place]]
+kind = "wilderness"
+slug = "mount-baldy-wilderness"
+basis = "stated"
+source = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
+
+[[place]]
+kind = "wilderness"
+slug = "munds-mountain-wilderness"
+basis = "stated"
+source = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
+
+[[place]]
+kind = "wilderness"
+slug = "red-rock-secret-mountain-wilderness"
+basis = "stated"
+source = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
+
+[[place]]
+kind = "wilderness"
+slug = "sycamore-canyon-wilderness"
+basis = "stated"
+source = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
+
+[[place]]
+kind = "wilderness"
+slug = "west-clear-creek-wilderness"
+basis = "stated"
+source = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
+
+[[place]]
+kind = "wilderness"
+slug = "wet-beaver-wilderness"
+basis = "stated"
+source = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -147,6 +208,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Brett Tucker (Blisterfree) as: Spring and fall: April to May before the country dries out, and September to October after the monsoon and before winter returns."
+basis_url = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in 10 places (3 ranges and 7 wilderness areas), all listed in the record, from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"The Rim defines the southwestern edge of the Colorado Plateau and, as such, serves as a geographic and biological dividing line between this high, uplifted region to the north and subtropical desert basins and ranges to the south.\" (Colorado Plateau, Mogollon Rim) The page says: \"Welcome to the White Mountains of Arizona!\" (White Mountains) The page says: \"the Bear Wallow Wilderness, which the MRT explores for a number of miles, its permanent waters and abundant wildlife as noteworthy as its relative absence of people.\" (Bear Wallow Wilderness) The page says: \"Baldy Peak—at over 11,400 feet the state's highest summit outside of the San Francisco Peaks near Flagstaff—commands early attention as the route tours its namesake Wilderness area.\" (Mount Baldy Wilderness) The page says: \"Our route passes through no fewer than three Wilderness areas – Munds Mountain, Wet Beaver, and West Clear Creek.\" (Munds Mountain Wilderness, West Clear Creek Wilderness, Wet Beaver Wilderness) The page says: \"then enters the Redrock-Secret Mountain Wilderness via foot trail, descending Loy Canyon to the farther reaches of Arizona's famed redrock region surrounding Sedona.\" (Red Rock-Secret Mountain Wilderness) The page says: \"Where it rejoins Sycamore Canyon Wilderness a few miles on, one beholds a remote and seldom-accessed region below the Mogollon Rim\" (Sycamore Canyon Wilderness)"
 basis_url = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

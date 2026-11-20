@@ -11,6 +11,8 @@ length_note = "160 mi, from the Shawnee National Forest page"
 tier = "regional"
 designation = "River to River Trail Society; Shawnee National Forest"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "c4ea43ae92ba3b0f"
 
 [source]
 status = "osm-only"
@@ -77,6 +79,42 @@ title = "River to River Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/River_to_River_Trail"
 
+[[place]]
+kind = "wilderness"
+slug = "bald-knob-wilderness"
+basis = "track"
+km = 4.6
+
+[[place]]
+kind = "wilderness"
+slug = "clear-springs-wilderness"
+basis = "track"
+km = 7.7
+
+[[place]]
+kind = "wilderness"
+slug = "crab-orchard-wilderness"
+basis = "track"
+km = 3.1
+
+[[place]]
+kind = "wilderness"
+slug = "garden-of-the-gods-wilderness"
+basis = "track"
+km = 9.2
+
+[[place]]
+kind = "wilderness"
+slug = "lusk-creek-wilderness"
+basis = "track"
+km = 13.7
+
+[[place]]
+kind = "wilderness"
+slug = "panther-den-wilderness"
+basis = "track"
+km = 5.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -94,5 +132,13 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by USDA Forest Service, Shawnee National Forest as: All year."
 basis_url = "https://www.fs.usda.gov/r09/shawnee/recreation/trails/river-river-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Bald Knob Wilderness, Clear Springs Wilderness, Crab Orchard Wilderness, Garden of the Gods Wilderness, Lusk Creek Wilderness, Panther Den Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://wilderness.net/visit-wilderness/gis-gps.php"
 asked_by = "the dataset's own check"
 outcome = "applied"

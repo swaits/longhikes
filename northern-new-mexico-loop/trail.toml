@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Brett Tucker and collaborators); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -95,6 +96,12 @@ title = "Northern New Mexico Loop"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Northern_New_Mexico_Loop"
 
+[[place]]
+kind = "range"
+slug = "sangre-de-cristo-mountains"
+basis = "stated"
+source = "https://simblissity.net/northern-nm-loop-mapset.shtml"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -130,5 +137,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Brett Tucker (Blisterfree) as: Late spring to early summer, and again from early September into autumn: clockwise from Santa Fe in spring, counter-clockwise in autumn."
 basis_url = "https://blisterfree.wordpress.com/2023/03/24/northern-new-mexico-loop-2023-edition/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sangre de Cristo Mountains from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Hiked clockwise, the route first tours the Jemez Mountains and Continental Divide on a northerly tack, then joins the Sangre de Cristo Mountains for the return leg to Santa Fe.\""
+basis_url = "https://simblissity.net/northern-nm-loop-mapset.shtml"
 asked_by = "the dataset's own check"
 outcome = "applied"

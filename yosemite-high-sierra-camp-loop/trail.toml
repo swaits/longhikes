@@ -10,6 +10,7 @@ tier = "short"
 designation = "A named loop on National Park Service trails in Yosemite National Park that the Park Service lists as the High Sierra Camp Loop; the loop itself is not one designated trail"
 wave = 1
 short_reason = "Very well known and popular: the Park Service describes it as a long loop through the most popular areas of Yosemite's high country, rates its permit demand High, and lists the High Sierra Camps it links as booked by lottery."
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -99,6 +100,24 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=13121
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Soda Springs Trailhead, Tioga Road, OpenStreetMap node 13121990665"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "yosemite-national-park"
+basis = "stated"
+source = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
+
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "stated"
+source = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
+
+[[place]]
+kind = "wilderness"
+slug = "yosemite-wilderness"
+basis = "stated"
+source = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -117,5 +136,14 @@ change = "The season is recorded as coming from one page that is not the trail's
 fields = ["hike.season_basis"]
 basis = "The season is stated by University of Nevada Press (the publisher's page for the book); the start, shape, days, season and months are from the book's Trip 3, on page 53 of the 2015 printing (no edition is stated) as: Mid-July to early October."
 basis_url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Yosemite National Park, Sierra Nevada and Yosemite Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The High Sierra Camp Loop is a backpacking loop in Yosemite National Park, California, from Tuolumne Meadows, on trails that link the park's High Sierra Camps at Glen Aulin, May Lake, Sunrise, Merced Lake and Vogelsang.\""
+basis_url = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

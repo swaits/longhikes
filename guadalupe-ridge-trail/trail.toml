@@ -11,6 +11,7 @@ length_note = "100 mi (161 km), per the National Park Service"
 tier = "regional"
 designation = "National Recreation Trail (designated 2018), shared by Guadalupe Mountains National Park, Carlsbad Caverns National Park, the Lincoln National Forest and the Bureau of Land Management; the National Park Service publishes it"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -91,6 +92,30 @@ title = "Guadalupe Ridge Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Guadalupe_Ridge_Trail"
 
+[[place]]
+kind = "park"
+slug = "carlsbad-caverns-national-park"
+basis = "stated"
+source = "https://www.nps.gov/thingstodo/grt.htm"
+
+[[place]]
+kind = "park"
+slug = "guadalupe-mountains-national-park"
+basis = "stated"
+source = "https://www.nps.gov/thingstodo/grt.htm"
+
+[[place]]
+kind = "wilderness"
+slug = "carlsbad-caverns-wilderness"
+basis = "stated"
+source = "https://www.nps.gov/thingstodo/grt.htm"
+
+[[place]]
+kind = "wilderness"
+slug = "guadalupe-mountains-wilderness"
+basis = "stated"
+source = "https://www.nps.gov/thingstodo/grt.htm"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -116,6 +141,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by National Park Service as: Spring and fall."
+basis_url = "https://www.nps.gov/thingstodo/grt.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Carlsbad Caverns National Park, Guadalupe Mountains National Park, Carlsbad Caverns Wilderness and Guadalupe Mountains Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Over 20 miles (32 km) of the GRT is within Carlsbad Caverns National Park.\" (Carlsbad Caverns National Park) The page says: \"The 100 mile (161 km) Guadalupe Ridge Trail (GRT) starts in Guadalupe Mountains National Park, at the highest point in Texas—Guadalupe Peak (8751 ft/2667 m).\" (Guadalupe Mountains National Park) The page says: \"A Wilderness Use Permit is required for overnight use in Carlsbad Caverns and Guadalupe Mountains National Parks.\" (Carlsbad Caverns Wilderness, Guadalupe Mountains Wilderness)"
 basis_url = "https://www.nps.gov/thingstodo/grt.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

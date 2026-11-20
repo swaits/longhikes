@@ -234,7 +234,8 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
 
 # The filters ------------------------------------------------------------------
 # One bar and one set of panels, on the home page and on every other page that shows a set of at
-# least FILTER_MIN trails (listing()). Everything is built from the page's own trails: a facet that
+# least FILTER_MIN trails (listing()), and on every park, range and wilderness page whatever its
+# size (the owner's rule: every set of trails gets the bar). Everything is built from the page's own trails: a facet that
 # cannot narrow them is left out, and an option none of them has is not written. The numbers written
 # here are for the whole set; app.js counts again from the rows on the page every time anything
 # changes, and hides an option that would show nothing (its counting is facetCounts(), which
@@ -315,11 +316,13 @@ def _missing(records, key):
             f'{esc(facets.missing_text(without, key))} They are left out while this filter is on.</p>')
 
 
-def finder_form(records, c=None, steps=None, where="all"):
+def finder_form(records, c=None, steps=None, where="all", bare_if_empty=False):
     """The bar (search, Filters, Clear) and the panels: the first-rank filters, then Walking, Shape and
     GPX behind "More". records: the page's own trails. where: the Where filter's scope ("all",
     "g:<group>" on a group's page, "" for none: a state's page). A facet is written only when it can
-    narrow these trails; each field carries data-facet, for app.js to hide it when it no longer can."""
+    narrow these trails; each field carries data-facet, for app.js to hide it when it no longer can.
+    bare_if_empty: a set that nothing can narrow gets the search box alone, with no Filters
+    button and no empty panel."""
     c = c or counts(records)
     steps = steps or length_steps(records)
     km_steps = length_steps(records, "km")
@@ -398,6 +401,16 @@ def finder_form(records, c=None, steps=None, where="all"):
         {"".join(more)}
       </div>
     </details>""" if more else ""
+    if bare_if_empty and not first and not more:
+        return """<form class="filters" id="finder-form" role="search" aria-label="Find a trail">
+  <div class="filters__bar">
+    <div class="filters__search field">
+      <label class="vh" for="q">Search</label>
+      <input class="input" id="q" name="q" type="search" placeholder="Search by name, place or author" autocomplete="off" spellcheck="false">
+    </div>
+    <button class="button button--quiet filters__clear" type="reset" hidden>Clear</button>
+  </div>
+</form>"""
     return f"""<form class="filters" id="finder-form" role="search" aria-label="Find a trail">
   <div class="filters__bar">
     <div class="filters__search field">
@@ -420,14 +433,15 @@ def finder_form(records, c=None, steps=None, where="all"):
 </form>"""
 
 
-def listing(recs=None, *, where="all", groups=None, **kw):
+def listing(recs=None, *, where="all", groups=None, always=False, **kw):
     """The rows of a page that shows a set of trails, with the filter bar over them when the set
-    has at least FILTER_MIN trails (else results() alone). where: the Where filter's scope
-    (finder_form). The other arguments are results()'s."""
+    has at least FILTER_MIN trails (else results() alone); with always, whatever its size (the
+    bar then holds only the filters that have something to offer). where: the Where filter's
+    scope (finder_form). The other arguments are results()'s."""
     trails = [r for g in groups for r in g[1]] if groups is not None else list(recs)
-    if len(trails) < FILTER_MIN:
+    if len(trails) < FILTER_MIN and not always:
         return results(recs, groups=groups, **kw)
-    return Markup(f"""<div class="finder__bar">{finder_form(trails, where=where)}</div>
+    return Markup(f"""<div class="finder__bar">{finder_form(trails, where=where, bare_if_empty=always)}</div>
   {results(recs, groups=groups, finder=True, **kw)}""")
 
 

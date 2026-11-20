@@ -9,6 +9,8 @@ length_note = "roughly 55 mi, per Go Finger Lakes; CNY Hiking says over 50 mi"
 tier = "regional"
 designation = "A branch trail of the Finger Lakes Trail, as CNY Hiking and Go Finger Lakes describe it"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "69f6a84ced259132"
 
 [source]
 status = "osm-only"

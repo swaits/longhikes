@@ -9,6 +9,8 @@ length_note = "62.7 mi, from the trail's own page on the Humboldt-Toiyabe Nation
 tier = "regional"
 designation = "National Recreation Trail (Forest Service, Humboldt-Toiyabe National Forest, Austin-Tonopah Ranger District), trail number 23050"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "c9763bdf12cf99b7"
 
 [source]
 status = "verified"
@@ -69,6 +71,18 @@ url = "https://www.nvtrailfinder.com/trails/trail/toiyabe-crest-national-recreat
 publisher = "Nevada Division of Outdoor Recreation (Nevada Trail Finder)"
 facts = ["season", "months"]
 
+[[place]]
+kind = "range"
+slug = "toiyabe-range"
+basis = "track"
+km = 101.2
+
+[[place]]
+kind = "wilderness"
+slug = "arc-dome-wilderness"
+basis = "track"
+km = 44.7
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -113,5 +127,22 @@ change = "The season is recorded as coming from one page that is not the trail's
 fields = ["hike.season_basis"]
 basis = "The season is stated by Nevada Division of Outdoor Recreation (Nevada Trail Finder) as: Mid-June to early October."
 basis_url = "https://www.nvtrailfinder.com/trails/trail/toiyabe-crest-national-recreation-trail/1000"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Arc Dome Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://wilderness.net/visit-wilderness/gis-gps.php"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Toiyabe Range."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

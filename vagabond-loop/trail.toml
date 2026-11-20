@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Ryan \"Dirtmonger\" Sylva, 2013); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -73,6 +74,84 @@ url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.
 publisher = "Ryan \"Dirtmonger\" Sylva"
 facts = ["summary", "official_url", "start", "shape", "terrain"]
 
+[[place]]
+kind = "park"
+slug = "arches-national-park"
+basis = "stated"
+source = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+
+[[place]]
+kind = "park"
+slug = "bryce-canyon-national-park"
+basis = "stated"
+source = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+
+[[place]]
+kind = "park"
+slug = "canyonlands-national-park"
+basis = "stated"
+source = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+
+[[place]]
+kind = "park"
+slug = "capitol-reef-national-park"
+basis = "stated"
+source = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+
+[[place]]
+kind = "park"
+slug = "glen-canyon-national-recreation-area"
+basis = "stated"
+source = "http://hayduketrail.org/"
+
+[[place]]
+kind = "park"
+slug = "grand-canyon-national-park"
+basis = "stated"
+source = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+
+[[place]]
+kind = "park"
+slug = "saguaro-national-park"
+basis = "stated"
+source = "https://www.nps.gov/sagu/planyourvisit/rincon-valley-area.htm"
+
+[[place]]
+kind = "park"
+slug = "zion-national-park"
+basis = "stated"
+source = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+
+[[place]]
+kind = "range"
+slug = "colorado-plateau"
+basis = "stated"
+source = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+
+[[place]]
+kind = "range"
+slug = "san-juan-mountains"
+basis = "stated"
+source = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+
+[[place]]
+kind = "range"
+slug = "sangre-de-cristo-mountains"
+basis = "stated"
+source = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+
+[[place]]
+kind = "wilderness"
+slug = "saguaro-wilderness"
+basis = "stated"
+source = "https://www.nps.gov/sagu/planyourvisit/rincon-valley-area.htm"
+
+[[place]]
+kind = "wilderness"
+slug = "weminuche-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -100,4 +179,13 @@ fields = ["route.line_policy"]
 basis = "The author's page carried a description and no track, and its domain no longer resolves."
 basis_url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in 13 places (8 parks, 3 ranges and 2 wilderness areas), all listed in the record, from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Hayduke Trail: (844m) *Zion NP-Hack Canyon (70m) ... *Hack Canyon-North Rim (87m) ... *Moab-Arches NP (25m)\" (Arches National Park, Grand Canyon National Park, Zion National Park) The page says: \"Hayduke Trail (822m): :: From Zion :: From Arizona Strip :: From Grand Canyon :: From Bryce :: From Grand Staircase :: From Capital Reef :: From Canyonlands\" (Bryce Canyon National Park, Canyonlands National Park, Capitol Reef National Park) The page says: \"Encompassed in the route are Arches, Canyonlands, Capitol Reef, Bryce Canyon, Grand Canyon and Zion National Parks as well as Grand Staircase-Escalante National Monument, Glen Canyon National Recreation Area\" (Glen Canyon National Recreation Area) The page says: \"Passage 9 of the Arizona Trail runs through the Rincon Valley and Saguaro Wilderness Area.\" (Saguaro National Park, Saguaro Wilderness) The page says: \"Hayduke Trail (822m): :: From Zion ... From Canyonlands\" (Colorado Plateau) The page says: \"Moab to ABQ (643m): :: From Weminuche :: From South San Juans\" (San Juan Mountains) The page says: \"Moab to ABQ (643m): ... :: From Sangre de Cristos :: From Pecos\" (Sangre de Cristo Mountains) The page says: \"Moab to ABQ (643m): :: From Moab :: From Weminuche :: From South San Juans :: From Taos Plateau\" (Weminuche Wilderness)"
+basis_url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+asked_by = "the dataset's own check"
 outcome = "applied"

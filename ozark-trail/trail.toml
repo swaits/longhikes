@@ -11,6 +11,8 @@ length_note = "230 mi from Onondaga Cave State Park to the western edge of the M
 tier = "regional"
 designation = "Ozark Trail Association; Missouri State Parks and USFS"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "79a51e5aaaa9cd6d"
 
 [source]
 status = "osm-only"

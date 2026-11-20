@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Ky Harkey and Anna Claire Eddington); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -99,6 +100,12 @@ publisher = "The Trek"
 url = "https://thetrek.co/big-bend-100-newest-long-distance-trail-texas/"
 note = "News account naming Ky Harkey and Anna Claire Eddington as the route's authors."
 
+[[place]]
+kind = "park"
+slug = "big-bend-national-park"
+basis = "stated"
+source = "https://tpwmagazine.com/adventure-recreation/the-big-bend-100-a-hike-across-two-west-texas-parks/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -126,5 +133,14 @@ change = "The record now has a season: November to February."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from Gossamer Gear's page: November to February."
 basis_url = "https://www.gossamergear.com/blogs/our-blog/big-bend-100"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Big Bend National Park from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Big Bend 100 is a 100-mile route across two west Texas parks, Big Bend Ranch State Park and Big Bend National Park.\""
+basis_url = "https://tpwmagazine.com/adventure-recreation/the-big-bend-100-a-hike-across-two-west-texas-parks/"
 asked_by = "the dataset's own check"
 outcome = "applied"

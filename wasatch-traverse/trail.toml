@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Liz Thomas); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -76,6 +77,30 @@ url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
 publisher = "Liz Thomas"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution", "days"]
 
+[[place]]
+kind = "range"
+slug = "wasatch-range"
+basis = "stated"
+source = "https://www.eathomas.com/other-long-trails/wasatchoverview"
+
+[[place]]
+kind = "wilderness"
+slug = "mount-nebo-wilderness"
+basis = "stated"
+source = "https://www.eathomas.com/other-long-trails/wasatchoverview"
+
+[[place]]
+kind = "wilderness"
+slug = "mount-timpanogos-wilderness"
+basis = "stated"
+source = "https://www.eathomas.com/other-long-trails/wasatchoverview"
+
+[[place]]
+kind = "wilderness"
+slug = "wellsville-mountain-wilderness"
+basis = "stated"
+source = "https://www.eathomas.com/other-long-trails/wasatchoverview"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -94,4 +119,13 @@ fields = ["route.line_policy"]
 basis = "The route page lists the paper maps the author used and offers no track."
 basis_url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Wasatch Range, Mount Nebo Wilderness, Mount Timpanogos Wilderness and Wellsville Mountain Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Wasatch Traverse follows the length of Utah's Wasatch Range from the Wellsville Wilderness in the north to the southwest side of the Mount Nebo Wilderness.\" (Wasatch Range) The page says: \"Finish: Southwest side of Mt. Nebo Wilderness\" (Mount Nebo Wilderness) The page says: \"Highlights: Seeing fall colors in the Mt. Timpenogos and Mt. Nebo Wildernesses\" (Mount Timpanogos Wilderness) The page says: \"Start: the northernmost part of the Wasatch National Forest in the Wellsville Wilderness\" (Wellsville Mountain Wilderness)"
+basis_url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
+asked_by = "the dataset's own check"
 outcome = "applied"

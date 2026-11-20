@@ -93,7 +93,7 @@ highlands,Highlands Trail,US,NJ;NY;PA;CT,290,included,OpenStreetMap,ODbL-1.0,des
 highline,Highline National Recreation Trail,US,AZ,89,included,OpenStreetMap,ODbL-1.0,designated,
 hoosier-heritage-trail,Hoosier Heritage Trail,US,IN,259,included,Hoosier Heritage Trail Association (the holder's GPX file),stated-permission,designated,
 horse-shoe,Horse-Shoe Trail,US,PA,225,included,OpenStreetMap,ODbL-1.0,designated,
-hot-springs-trail,Hot Springs Trail,US,CA;OR;ID,3896,record-only,none (no line included),none-stated,route,sold
+hot-springs-trail,Hot Springs Trail,US,CA;NV;OR;ID,3896,record-only,none (no line included),none-stated,route,sold
 iat-newfoundland-labrador,"International Appalachian Trail, Newfoundland and Labrador",CA,NL,750,included,OpenStreetMap,ODbL-1.0,designated,
 ice-age,Ice Age National Scenic Trail,US,WI,1931,included,OpenStreetMap,ODbL-1.0,designated,
 idaho-centennial,Idaho Centennial Trail,US,ID,1448,included,OpenStreetMap,ODbL-1.0,designated,
@@ -133,7 +133,7 @@ mountains-to-sea,Mountains-to-Sea Trail,US,NC,1890,included,OpenStreetMap,ODbL-1
 nankoweap-bright-angel-loop,Nankoweap–Bright Angel Loop,US,AZ,132,record-only,none (no line included),none-stated,route,sold
 nepisiguit-migmaq-trail,Sentier Nepisiguit Mi'gmaq Trail,CA,NB,150,included,OpenStreetMap,ODbL-1.0,designated,
 new-england,New England National Scenic Trail,US,CT;MA,378,included,National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club,us-gov-public-domain,designated,
-north-boundary,North Boundary Trail,CA,AB,159,record-only,none (no line included),none-stated,designated,
+north-boundary,North Boundary Trail,CA,AB;BC,159,record-only,none (no line included),none-stated,designated,
 north-country,North Country National Scenic Trail,US,ND;MN;WI;MI;OH;PA;NY;VT,7403,included,OpenStreetMap,ODbL-1.0,designated,
 north-south,North-South Trail,US,RI,125,included,OpenStreetMap,ODbL-1.0,designated,
 north-south-lbl,North/South Trail (Land Between the Lakes),US,KY;TN,95,included,OpenStreetMap,ODbL-1.0,designated,

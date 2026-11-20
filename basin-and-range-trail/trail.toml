@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Eric Poulin, 2020); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -98,6 +99,30 @@ url = "https://www.wikidata.org/wiki/Q2513075"
 publisher = "Wikidata (CC0)"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "great-basin-national-park"
+basis = "stated"
+source = "https://seekinglost.com/basin-and-range-trail/"
+
+[[place]]
+kind = "range"
+slug = "ruby-mountains"
+basis = "stated"
+source = "https://seekinglost.com/basin-and-range-trail/"
+
+[[place]]
+kind = "range"
+slug = "toiyabe-range"
+basis = "stated"
+source = "https://seekinglost.com/basin-and-range-trail/"
+
+[[place]]
+kind = "wilderness"
+slug = "mt-moriah-wilderness"
+basis = "stated"
+source = "https://seekinglost.com/basin-and-range-trail/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -132,6 +157,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Eric Poulin (the route's author) as: May to July."
+basis_url = "https://seekinglost.com/basin-and-range-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Great Basin National Park, Ruby Mountains, Toiyabe Range and Mt. Moriah Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"The route ends at Wheeler Peak (13,065′) in Great Basin National Park\" (Great Basin National Park) The page says: \"There are practically no hiking trails along the route, except in the Toiyabes, Rubies, Mt. Moriah and Great Basin National Park.\" (Ruby Mountains, Toiyabe Range) The page says: \"The Snake Range, encompassing Mt Moriah and Great Basin National Park, is best hiked last along the BRT.\" (Mt. Moriah Wilderness)"
 basis_url = "https://seekinglost.com/basin-and-range-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

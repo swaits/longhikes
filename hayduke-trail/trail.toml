@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Joe Mitchell and Mike Coronella, 2005); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -119,6 +120,54 @@ title = "Hayduke"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Hayduke"
 
+[[place]]
+kind = "park"
+slug = "arches-national-park"
+basis = "stated"
+source = "https://www.nps.gov/cany/planyourvisit/hayduke.htm"
+
+[[place]]
+kind = "park"
+slug = "bryce-canyon-national-park"
+basis = "stated"
+source = "https://www.nps.gov/cany/planyourvisit/hayduke.htm"
+
+[[place]]
+kind = "park"
+slug = "canyonlands-national-park"
+basis = "stated"
+source = "https://www.nps.gov/cany/planyourvisit/hayduke.htm"
+
+[[place]]
+kind = "park"
+slug = "capitol-reef-national-park"
+basis = "stated"
+source = "https://www.nps.gov/cany/planyourvisit/hayduke.htm"
+
+[[place]]
+kind = "park"
+slug = "glen-canyon-national-recreation-area"
+basis = "stated"
+source = "https://www.hayduketrail.org"
+
+[[place]]
+kind = "park"
+slug = "grand-canyon-national-park"
+basis = "stated"
+source = "https://www.nps.gov/cany/planyourvisit/hayduke.htm"
+
+[[place]]
+kind = "park"
+slug = "zion-national-park"
+basis = "stated"
+source = "https://www.nps.gov/cany/planyourvisit/hayduke.htm"
+
+[[place]]
+kind = "range"
+slug = "colorado-plateau"
+basis = "stated"
+source = "https://www.hayduketrail.org"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -171,6 +220,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from one page that is not the trail's own."
 fields = ["hike.season_basis"]
 basis = "The season is stated by National Park Service, Canyonlands National Park as: Spring and fall."
+basis_url = "https://www.nps.gov/cany/planyourvisit/hayduke.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Arches National Park, Bryce Canyon National Park, Canyonlands National Park, Capitol Reef National Park, Glen Canyon National Recreation Area, Grand Canyon National Park, Zion National Park and Colorado Plateau from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Sections of the Hayduke pass through many national parks, including Arches, Bryce Canyon, Canyonlands, Capitol Reef, Grand Canyon, and Zion, and other public lands managed by the National Park Service, U.S.\" (Arches National Park, Bryce Canyon National Park, Canyonlands National Park, Capitol Reef National Park, Grand Canyon National Park, Zion National Park) The page says: \"Encompassed in the route are Arches, Canyonlands, Capitol Reef, Bryce Canyon, Grand Canyon and Zion National Parks as well as Grand Staircase-Escalante National Monument, Glen Canyon National Recreation Area and numerous National Forests, BLM Districts, Primitive Areas, Wilderness Areas and Wilderness Study Areas.\" (Glen Canyon National Recreation Area) The trail's own description says: \"The Hayduke Trail is an extremely challenging backcountry route linking six national parks of the Colorado Plateau, from Arches to Zion across southern Utah and northern Arizona.\" (Colorado Plateau)"
 basis_url = "https://www.nps.gov/cany/planyourvisit/hayduke.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

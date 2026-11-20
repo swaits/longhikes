@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Steve Myers, Great Plains Trail Alliance); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -92,6 +93,24 @@ url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1358489"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "guadalupe-mountains-national-park"
+basis = "stated"
+source = "https://www.greatplainstrail.org/about-the-trail/"
+
+[[place]]
+kind = "park"
+slug = "theodore-roosevelt-national-park"
+basis = "stated"
+source = "https://www.greatplainstrail.org/why-not-its-free/"
+
+[[place]]
+kind = "park"
+slug = "wind-cave-national-park"
+basis = "stated"
+source = "https://www.greatplainstrail.org/why-not-its-free/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -127,5 +146,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Great Plains Trail Alliance as: Spring and fall."
 basis_url = "https://www.greatplainstrail.org/great-plains-trail-newsletter-for-july-2022/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Guadalupe Mountains National Park, Theodore Roosevelt National Park and Wind Cave National Park from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"resulting in a trail that runs from Canada's Grassland National Park on the U.S./ Canada border to the summit of Guadalupe Peak in Guadalupe Mountains National Park, Texas.\" (Guadalupe Mountains National Park) The page says: \"Right on the Great Plains Trail route there are six options: Theodore Roosevelt National Park Wind Cave National Park Agate Fossil Beds National Monument Scottsbluff National Monument Capulin Volcano National Monument Guadalupe Mountains National Park\" (Theodore Roosevelt National Park, Wind Cave National Park)"
+basis_url = "https://www.greatplainstrail.org/about-the-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

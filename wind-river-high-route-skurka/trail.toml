@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Andrew Skurka); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -112,6 +113,24 @@ url = "https://andrewskurka.com/adventures/wind-river-high-route/section-hikes/"
 publisher = "Andrew Skurka (the route's author)"
 facts = ["days"]
 
+[[place]]
+kind = "range"
+slug = "wind-river-range"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/wind-river-high-route/"
+
+[[place]]
+kind = "wilderness"
+slug = "bridger-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/wind-river-high-route/"
+
+[[place]]
+kind = "wilderness"
+slug = "popo-agie-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/wind-river-high-route/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -173,6 +192,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Andrew Skurka as: August to mid-September."
+basis_url = "https://andrewskurka.com/adventures/wind-river-high-route/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Wind River Range, Bridger Wilderness and Popo Agie Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"For 97 miles, the world-class Wind River High Route follows the alpine crest of Wyoming's Wind River Range, which ranks among the lower 48's wildest and most magnificent.\" (Wind River Range) The page says: \"The lands through which the Wind River High Route passes are managed by Bridger-Teton National Forest , Shoshone National Forest , and the Wind River Indian Reservation\" (Bridger Wilderness) The page says: \"We'll explore the Divide south of Wind River Peak.\" (Popo Agie Wilderness)"
 basis_url = "https://andrewskurka.com/adventures/wind-river-high-route/"
 asked_by = "the dataset's own check"
 outcome = "applied"

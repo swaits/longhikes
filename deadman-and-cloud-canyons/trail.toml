@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Guidebook route (Elizabeth Wenk and Mike White, 2021, in Sierra South); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -91,6 +92,12 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=11123
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Twin Lakes Trailhead, OpenStreetMap node 11123870828"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon-national-parks"
+basis = "stated"
+source = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -135,6 +142,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 25, on page 149 of the 9th edition, 2021, read from the owner's copy as: July to mid-October, the book's mid to late season."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sequoia and Kings Canyon National Parks from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"Deadman and Cloud Canyons is a backpacking semiloop of 11 hiking days in Sequoia and Kings Canyon National Parks, California, from the Twin Lakes Trailhead at Lodgepole Campground.\" (Sequoia and Kings Canyon National Parks)"
 basis_url = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
 asked_by = "the dataset's own check"
 outcome = "applied"

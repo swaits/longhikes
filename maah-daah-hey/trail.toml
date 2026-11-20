@@ -9,6 +9,8 @@ length_note = "144 mi, from the Dakota Prairie Grasslands page"
 tier = "regional"
 designation = "USDA Forest Service, Dakota Prairie Grasslands"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "0bf0798bbb7b64ea"
 
 [source]
 status = "osm-only"
@@ -72,6 +74,12 @@ title = "Maah Daah Hey Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Maah_Daah_Hey_Trail"
 
+[[place]]
+kind = "park"
+slug = "theodore-roosevelt-national-park"
+basis = "track"
+km = 15.9
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -98,5 +106,13 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by USDA Forest Service, Dakota Prairie Grasslands as: All year."
 basis_url = "https://www.fs.usda.gov/r01/dpg/recreation/trails/maah-daah-hey-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Theodore Roosevelt National Park."
+fields = ["place"]
+basis = "Measured from the trail's main track against the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://irma.nps.gov/DataStore/Reference/Profile/2224545"
 asked_by = "the dataset's own check"
 outcome = "applied"

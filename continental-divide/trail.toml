@@ -13,6 +13,8 @@ tier = "national"
 designation = "National Scenic Trail (1978)"
 wave = 1
 inclusion = "nst-unconditional"
+places_checked = "2026-11-20"
+places_track = "348c8067f037fab3"
 
 [source]
 status = "verified"
@@ -94,6 +96,198 @@ title = "Continental Divide National Scenic Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Continental_Divide_National_Scenic_Trail"
 
+[[place]]
+kind = "park"
+slug = "glacier-national-park"
+basis = "track"
+km = 175.4
+
+[[place]]
+kind = "park"
+slug = "rocky-mountain-national-park"
+basis = "track"
+km = 53.3
+
+[[place]]
+kind = "park"
+slug = "yellowstone-national-park"
+basis = "track"
+km = 113.3
+
+[[place]]
+kind = "range"
+slug = "absaroka-range"
+basis = "track"
+km = 55.9
+
+[[place]]
+kind = "range"
+slug = "bitterroot-range"
+basis = "track"
+km = 470.0
+
+[[place]]
+kind = "range"
+slug = "colorado-plateau"
+basis = "track"
+km = 165.2
+
+[[place]]
+kind = "range"
+slug = "front-range"
+basis = "track"
+km = 287.0
+
+[[place]]
+kind = "range"
+slug = "san-juan-mountains"
+basis = "track"
+km = 548.3
+
+[[place]]
+kind = "range"
+slug = "sawatch-range"
+basis = "track"
+km = 224.4
+
+[[place]]
+kind = "range"
+slug = "wind-river-range"
+basis = "track"
+km = 227.8
+
+[[place]]
+kind = "wilderness"
+slug = "aldo-leopold-wilderness"
+basis = "track"
+km = 43.9
+
+[[place]]
+kind = "wilderness"
+slug = "anaconda-pintler-wilderness"
+basis = "track"
+km = 89.2
+
+[[place]]
+kind = "wilderness"
+slug = "bob-marshall-wilderness"
+basis = "track"
+km = 142.4
+
+[[place]]
+kind = "wilderness"
+slug = "bridger-wilderness"
+basis = "track"
+km = 120.5
+
+[[place]]
+kind = "wilderness"
+slug = "chama-river-canyon-wilderness"
+basis = "track"
+km = 15.1
+
+[[place]]
+kind = "wilderness"
+slug = "collegiate-peaks-wilderness"
+basis = "track"
+km = 29.5
+
+[[place]]
+kind = "wilderness"
+slug = "gila-wilderness"
+basis = "track"
+km = 17.5
+
+[[place]]
+kind = "wilderness"
+slug = "holy-cross-wilderness"
+basis = "track"
+km = 9.0
+
+[[place]]
+kind = "wilderness"
+slug = "huston-park-wilderness"
+basis = "track"
+km = 19.1
+
+[[place]]
+kind = "wilderness"
+slug = "indian-peaks-wilderness"
+basis = "track"
+km = 19.1
+
+[[place]]
+kind = "wilderness"
+slug = "james-peak-wilderness"
+basis = "track"
+km = 14.4
+
+[[place]]
+kind = "wilderness"
+slug = "la-garita-wilderness"
+basis = "track"
+km = 32.6
+
+[[place]]
+kind = "wilderness"
+slug = "mount-massive-wilderness"
+basis = "track"
+km = 14.9
+
+[[place]]
+kind = "wilderness"
+slug = "mount-zirkel-wilderness"
+basis = "track"
+km = 38.1
+
+[[place]]
+kind = "wilderness"
+slug = "never-summer-wilderness"
+basis = "track"
+km = 9.6
+
+[[place]]
+kind = "wilderness"
+slug = "san-pedro-parks-wilderness"
+basis = "track"
+km = 21.7
+
+[[place]]
+kind = "wilderness"
+slug = "scapegoat-wilderness"
+basis = "track"
+km = 64.8
+
+[[place]]
+kind = "wilderness"
+slug = "south-san-juan-wilderness"
+basis = "track"
+km = 54.4
+
+[[place]]
+kind = "wilderness"
+slug = "teton-wilderness"
+basis = "track"
+km = 68.9
+
+[[place]]
+kind = "wilderness"
+slug = "vasquez-peak-wilderness"
+basis = "track"
+km = 5.9
+
+[[place]]
+kind = "wilderness"
+slug = "weminuche-wilderness"
+basis = "track"
+km = 126.2
+
+[[place]]
+kind = "wilderness"
+slug = "west-malpais-wilderness"
+basis = "track"
+km = 12.3
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -129,5 +323,14 @@ change = "The record now has a season: May to October."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from Treeline Review's page: May to October."
 basis_url = "https://www.treelinereview.com/where-to-go/continental-divide-trail-gear-list-and-strategy"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in 32 places (3 parks, 7 ranges and 22 wilderness areas), all listed in the record."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

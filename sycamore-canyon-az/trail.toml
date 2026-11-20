@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -91,6 +92,24 @@ url = "https://www.fs.usda.gov/r03/coconino/recreation/trails/parsons-trail-no-1
 publisher = "USDA Forest Service, Coconino National Forest (public domain): Parsons Trail No. 144, whose page gives the position of its trailhead at the end of Forest Road 131; the book's Sycamore Trailhead is this Parsons Trail trailhead, which the loop's last 0.2 mile returns to"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "colorado-plateau"
+basis = "stated"
+source = "https://www.fs.usda.gov/r03/prescott/recreation/sycamore-canyon-wilderness"
+
+[[place]]
+kind = "range"
+slug = "mogollon-rim"
+basis = "stated"
+source = "https://www.fs.usda.gov/r03/prescott/recreation/sycamore-canyon-wilderness"
+
+[[place]]
+kind = "wilderness"
+slug = "sycamore-canyon-wilderness"
+basis = "stated"
+source = "https://www.fs.usda.gov/r03/coconino/recreation/trails/parsons-trail-no-144"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -154,5 +173,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's pages 98-99 and the Featured Trips Summary Chart on page xiii of the 1st edition, 3rd printing, read from a printed copy as: March to November."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Colorado Plateau, Mogollon Rim and Sycamore Canyon Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"The canyon cuts through the Mogollon Rim which marks the southern edge of the Colorado Plateau.\" (Colorado Plateau, Mogollon Rim) The page says: \"The trail leads through the lower reaches of this wilderness\" (Sycamore Canyon Wilderness)"
+basis_url = "https://www.fs.usda.gov/r03/prescott/recreation/sycamore-canyon-wilderness"
 asked_by = "the dataset's own check"
 outcome = "applied"

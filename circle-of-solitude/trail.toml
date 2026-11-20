@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Mike White); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -114,6 +115,12 @@ url = "https://www.nps.gov/seki/planyourvisit/trailcond.htm"
 publisher = "National Park Service, Sequoia & Kings Canyon National Parks"
 facts = ["permit"]
 
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon-national-parks"
+basis = "stated"
+source = "https://fastestknowntime.com/route/circle-solitude"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -193,6 +200,15 @@ date = "2026-11-20"
 change = "The record now has a season: Mid-July to early October."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from fastestknowntime.com's page: Mid-July to early October."
+basis_url = "https://fastestknowntime.com/route/circle-solitude"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sequoia and Kings Canyon National Parks from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Circle of Solitude is a loop of about 68 miles in Kings Canyon and Sequoia National Parks, California, from Road's End.\" (Sequoia and Kings Canyon National Parks)"
 basis_url = "https://fastestknowntime.com/route/circle-solitude"
 asked_by = "the dataset's own check"
 outcome = "applied"

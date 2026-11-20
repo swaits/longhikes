@@ -9,6 +9,8 @@ length_note = "50 mi, as the Nez Perce-Clearwater National Forests' page for Sel
 tier = "regional"
 designation = "Forest Service Trail 4 in the Selway-Bitterroot Wilderness, Nez Perce-Clearwater National Forests (with Trail 4.3 of the Bitterroot National Forest, which carries it on to Paradise)"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "ddd9766cf58ee604"
 
 [source]
 status = "verified"
@@ -91,6 +93,18 @@ url = "https://www.fs.usda.gov/r01/bitterroot/wilderness/selway-bitterroot-wilde
 publisher = "USDA Forest Service, Bitterroot National Forest"
 facts = ["permit"]
 
+[[place]]
+kind = "range"
+slug = "bitterroot-range"
+basis = "track"
+km = 15.8
+
+[[place]]
+kind = "wilderness"
+slug = "selway-bitterroot-wilderness"
+basis = "track"
+km = 77.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -118,5 +132,13 @@ change = "The season is recorded as coming from one page that is not the trail's
 fields = ["hike.season_basis"]
 basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 5, 1st edition, 2004, which has no page numbers in the copy read as: May to early November."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Bitterroot Range, Selway-Bitterroot Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

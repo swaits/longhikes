@@ -11,6 +11,8 @@ length_note = "160 mi published by the Knobstone Hiking Trail Association. Its f
 tier = "regional"
 designation = "Knobstone Hiking Trail Association; southern section managed by Indiana Department of Natural Resources"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "0e402f3f0276a5a2"
 
 [source]
 status = "osm-only"

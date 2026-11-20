@@ -16,8 +16,9 @@ Issues and pull requests are taken at https://github.com/swaits/longhikes. That 
 2. Keep every field name in `trail.toml` (see docs/schema.md). Say in the commit message which fields changed and why.
 3. If you change a track, name its source and licence. A track may only be included when its source's terms allow redistribution. United States federal data is public domain. OpenStreetMap data is ODbL and needs the credit "© OpenStreetMap contributors". A track whose holder, author or recorder has stated in writing that it may be shared, without naming a licence, uses `licence = "stated-permission"`: quote the statement exactly in `source.licence_text`, say who made it (by role), where (a page or issue address) and when. It is not public domain or Creative Commons, and nothing may present it as either. If a publisher's own track may not be passed on, do not include it: keep the record, use an OpenStreetMap track if one is already recorded for the trail, or include no track and say why in `source.line_absent_reason`.
 4. Update `release.txt` when track files change: source, licence, and the date read.
-5. Add an entry at the end of the record's `[[history]]`: the date, what changed, the fields, the page it was read on, who asked (by role, never a private person's name) and the outcome. See "History and conflicts" below.
-6. Rebuild the generated files and check everything:
+5. A new record, or one with a new track, needs its places: the validator fails a record with no `places_checked`. With a track, run `tools/place_trails.py` (its libraries are listed in `tools/place_trails.requirements.txt`); with none, name the page that puts the trail in each park, range or wilderness area, and use `place_trails.py stated`, or `place_trails.py stamp` when it is in none.
+6. Add an entry at the end of the record's `[[history]]`: the date, what changed, the fields, the page it was read on, who asked (by role, never a private person's name) and the outcome. See "History and conflicts" below.
+7. Rebuild the generated files and check everything:
 
 ```bash
 python3 tools/build_index.py

@@ -238,6 +238,13 @@ class ProposalTest(unittest.TestCase):
         stated = {("park", "alpha"): {"a", "b", "z"}, ("wilderness", "alpha-wilderness"): {"a", "b"}}
         self.assertEqual(P.doubled_places(stated, names), set())
 
+    def test_a_denied_place_is_not_in_the_catalogue(self):
+        arch = outline("park", "JEFF", "Gateway Arch National Park", self.park.geometry)
+        keep = outline("park", "YOSE", "Yosemite National Park", self.range.geometry)
+        self.assertEqual([o.source_id for o in P.apply_denylist([arch, keep])], ["YOSE"])
+        self.assertTrue(all(reason.strip() for reason in P.DENY.values()))
+        self.assertIn(("park", "nps", "JEFF"), P.DENY)
+
     def test_a_slug_collision_inside_a_kind_gets_the_state_code(self):
         a = outline("park", "P1", "Glacier", self.park.geometry, slug=None, hint=["MT"])
         b = outline("park", "P2", "Glacier", self.range.geometry, slug=None, hint=["BC"])

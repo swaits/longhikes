@@ -471,6 +471,21 @@ def assign_slugs(outlines):
     return outlines
 
 
+# Places the source offers that are never listed, with the reason beside each. Keyed by
+# (kind, source, source id). A trail that merely passes through one is not "in" it in the
+# way a place page means.
+DENY = {
+    ("park", "nps", "JEFF"): "Gateway Arch National Park is the memorial grounds in "
+                             "downtown St. Louis; a trail crossing it is an urban pass-through",
+}
+
+
+def apply_denylist(outlines, deny=None):
+    deny = DENY if deny is None else deny
+    return [o for o in outlines
+            if (o.kind, o.source, str(o.source_id)) not in {(k, s, str(i)) for (k, s, i) in deny}]
+
+
 def merge_same_name(outlines):
     """One name within a kind and source is one place: the outlines are unioned and the
     place carries every id. The source lists some ranges twice under different ids."""
@@ -546,7 +561,7 @@ def catalogue(cache, allowlist=None):
                                    slug=spec.get("slug") or "",
                                    within=tuple(spec.get("within") or ()), path=g["path"],
                                    where_hand=tuple(spec.get("where") or ())))
-    return assign_slugs(merge_same_name(out))
+    return assign_slugs(merge_same_name(apply_denylist(out)))
 
 
 _GMBA_CACHE = {}

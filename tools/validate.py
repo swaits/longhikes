@@ -945,7 +945,7 @@ def main():
         if ".git" in dirpath:
             dirnames[:] = []
             continue
-        dirnames[:] = [d for d in dirnames if d != ".git"]
+        dirnames[:] = [d for d in dirnames if d not in (".git", ".venv-places")]
         for fn in filenames:
             path = os.path.join(dirpath, fn)
             if os.path.getsize(path) > MAX_BYTES:

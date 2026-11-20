@@ -308,6 +308,7 @@ class PageKind:
     nav: object
     in_name: object = None
     phrase: object = None
+    always_filters: bool = False   # the filter bar whatever the number of trails
 
 
 def _state_kicker(info):
@@ -431,7 +432,7 @@ def place_page(info, records, site, kind, *, facet_pages=(), place_links=""):
   </div></header>
 </div></div>
 <div class="container section place">
-  {home.browse_view(home.listing(recs, top=2, where=kind.where, wholly=wholly), home.overview_map(recs, f"Map of the trails {phrase}", place=kind.box(info)),
+  {home.browse_view(home.listing(recs, top=2, where=kind.where, wholly=wholly, always=kind.always_filters), home.overview_map(recs, f"Map of the trails {phrase}", place=kind.box(info)),
                about=f"{summary.facts(recs, records, place=place)}{summary.details(recs)}",
                about_title=f"About the trails {phrase}")}
   {nav}{place_links}

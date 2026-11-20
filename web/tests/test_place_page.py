@@ -150,6 +150,38 @@ class LabelPrepositionAndTitleTest(unittest.TestCase):
                          "Long Hikes in the Vancouver Island Ranges: 18 Trails")
 
 
+class SmallPlaceHasTheBarTest(unittest.TestCase):
+    """The owner's rule: every set of trails gets the search box and the filters, at any size."""
+
+    def test_a_place_with_three_trails_has_the_search_box_and_the_finder(self):
+        built = built_with([entry_of("range", "wind-river-range", "Wind River Range", ["WY"])], n=3)
+        body = str(built["/ranges/wind-river-range/"].body)
+        self.assertIn('class="finder__bar"', body)
+        self.assertIn('id="q"', body)
+        self.assertIn("data-finder", body)
+        self.assertLess(body.index('class="finder__bar"'), body.index('<li class="entry"'))
+
+    def test_only_filters_that_have_something_to_offer_are_written(self):
+        # three identical trails: nothing narrows them, so the bar is the search box alone
+        built = built_with([entry_of("range", "wind-river-range", "Wind River Range", ["WY"])], n=3)
+        body = str(built["/ranges/wind-river-range/"].body)
+        form = body[body.index('<form class="filters"'):body.index("</form>")]
+        self.assertNotIn("data-facet", form)
+        self.assertNotIn("filters__toggle", form)
+        self.assertNotIn("Nothing here narrows", form)
+
+    def test_a_place_whose_trails_differ_offers_those_filters_with_a_button(self):
+        entries = [entry_of("range", "wind-river-range", "Wind River Range", ["WY", "CO"])]
+        records = [rec(400 + i, f"Differ {i}", [("range", "wind-river-range")], km=50 + i * 120,
+                       regs=("WY",) if i % 2 else ("CO",)) for i in range(1, 4)]
+        with tempfile.TemporaryDirectory() as d:
+            write_registry(d, entries)
+            body = str(placepages.build(records, S, d)[0].body)
+        form = body[body.index('<form class="filters"'):body.index("</form>")]
+        self.assertIn('data-facet="where"', form)
+        self.assertIn("filters__toggle", form)
+
+
 class PlacePageTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

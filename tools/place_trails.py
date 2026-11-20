@@ -493,6 +493,7 @@ class Proposal:
     no_track: list = field(default_factory=list)
     near: list = field(default_factory=list)
     names: dict = field(default_factory=dict)
+    versions: dict = field(default_factory=dict)
 
 
 def _measure(records, outlines):
@@ -573,6 +574,7 @@ def _mi(km):
 
 def proposal_json(p):
     return {
+        "versions": dict(p.versions),
         "per_trail": {tid: [{"kind": k[0], "slug": k[1], "km": round(km, 3)} for k, km in lst]
                       for tid, lst in p.per_trail.items()},
         "per_place": {f"{k[0]}/{k[1]}": {
@@ -665,6 +667,266 @@ def render_candidates(candidates, path, names=None):
                    for c in candidates], f, indent=1)
 
 
+# --- Writing records and the registry; stated, stamp, --check ----------------
+
+_KIND_ORDER = {"park": 0, "range": 1, "wilderness": 2}
+
+
+def _doc_of(root, rid):
+    import refresh
+    path = os.path.join(root, rid, "trail.toml")
+    with open(path, encoding="utf-8") as f:
+        return refresh.Doc(f.read()), path
+
+
+def _save(doc, path):
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(doc.text())
+
+
+def _set_top(doc, rec, key, new):
+    span = doc.span("")
+    if key in rec:
+        if rec[key] != new:
+            doc.set_value(span, key, new, rec[key], True)
+    else:
+        doc.set_value(span, key, new, None, False)
+
+
+def _remove_place_blocks(doc, rec):
+    for _ in list(rec.get("place") or []):
+        start, end = doc.span("place", 0)
+        header = start - 1
+        lo = header
+        while lo > 0 and doc.lines[lo - 1].strip() == "":
+            lo -= 1
+            break
+        del doc.lines[lo:end]
+
+
+def _history_entry(today, change, basis, basis_url):
+    import trail_history
+    entry = {"date": today, "change": change, "fields": ["place"], "basis": basis}
+    if basis_url:
+        entry["basis_url"] = basis_url
+    entry["asked_by"] = trail_history.OWN_CHECK
+    entry["outcome"] = "applied"
+    return entry
+
+
+def _place_names(keys, names):
+    return ", ".join(names.get(k, f"{k[0]}/{k[1]}") for k in keys)
+
+
+def write_registry(root, entries):
+    """Rewrite places.toml sorted by kind then slug, keeping the comments above
+    the first entry. Only places some record names are passed in."""
+    import refresh
+    path = os.path.join(root, "places.toml")
+    head = []
+    if os.path.isfile(path):
+        with open(path, encoding="utf-8") as f:
+            for line in f.read().splitlines():
+                if line.startswith("[[place]]"):
+                    break
+                head.append(line)
+    lines = list(head)
+    while lines and lines[-1].strip() == "":
+        lines.pop()
+    for e in sorted(entries, key=lambda e: (_KIND_ORDER.get(e["kind"], 9), e["slug"])):
+        lines += ["", "[[place]]"]
+        for key in ("slug", "kind", "name", "where", "within", "source", "source_id",
+                    "source_version", "box"):
+            if key in e and e[key] not in (None, [], ()):
+                lines.append(f"{key} = {refresh._scalar(e[key])}")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines).strip("\n") + "\n")
+
+
+def registry_entries(root):
+    path = os.path.join(root, "places.toml")
+    if not os.path.isfile(path):
+        return []
+    with open(path, "rb") as f:
+        return tomllib.load(f).get("place") or []
+
+
+def apply(proposal_path, root, today, exclude=frozenset()):
+    """Write an accepted proposal: [[place]] tables, stamps, history, the registry.
+    exclude holds (trail id, kind, slug) a reviewer rejected. Returns ids written."""
+    with open(proposal_path, encoding="utf-8") as f:
+        data = json.load(f)
+    versions = data.get("versions") or {}
+    per_place = data.get("per_place") or {}
+    names = {(v["kind"], v["slug"]): v["name"] for v in per_place.values()}
+    written = []
+    named = set()
+    for tid in sorted(data.get("per_trail") or {}):
+        tdir = os.path.join(root, tid)
+        if not os.path.isfile(os.path.join(tdir, "trail.toml")):
+            continue
+        doc, path = _doc_of(root, tid)
+        rec = doc.data()
+        new_places = [p for p in data["per_trail"][tid]
+                      if (tid, p["kind"], p["slug"]) not in exclude]
+        old = {(p.get("kind"), p.get("slug")): p for p in rec.get("place") or []}
+        new_keys = {(p["kind"], p["slug"]) for p in new_places}
+        for k in new_keys:
+            named.add(k)
+        fact_change = new_keys != set(old) or any(
+            (old[k].get("basis"), old[k].get("source")) != ("track", None) for k in new_keys & set(old))
+        _remove_place_blocks(doc, rec)
+        for p in sorted(new_places, key=lambda p: (_KIND_ORDER.get(p["kind"], 9), p["slug"])):
+            doc.append_block("place", {"kind": p["kind"], "slug": p["slug"],
+                                       "basis": "track", "km": round(float(p["km"]), 1)})
+        _set_top(doc, rec, "places_checked", today)
+        if line_file_of(tdir):
+            _set_top(doc, rec, "places_track", track_hash(tdir))
+        if fact_change:
+            added = sorted(new_keys - set(old))
+            removed = sorted(set(old) - new_keys)
+            parts = []
+            if added:
+                parts.append(f"placed in {_place_names(added, names)}")
+            if removed:
+                parts.append(f"no longer placed in {_place_names(removed, names)}")
+            sources = sorted({per_place[f"{k[0]}/{k[1]}"]["source"] for k in new_keys | set(old)
+                              if f"{k[0]}/{k[1]}" in per_place}) or sorted(versions)[:1]
+            basis_bits = ", ".join(f"the {SOURCES[s].credit} outlines ({s}, {versions.get(s, 'as downloaded')})"
+                                   for s in sources if s in SOURCES)
+            entry = _history_entry(
+                today, f"The trail was {' and '.join(parts) or 'given its places'}.",
+                f"Measured from the trail's main track against {basis_bits} by tools/place_trails.py.",
+                SOURCES[sources[0]].page if sources and sources[0] in SOURCES else "")
+            doc.append_history(entry)
+        new_text = doc.text()
+        with open(path, encoding="utf-8") as f:
+            if f.read() != new_text:
+                _save(doc, path)
+                written.append(tid)
+    entries = []
+    for key, v in per_place.items():
+        k = (v["kind"], v["slug"])
+        if k not in named:
+            continue
+        entry = {"slug": v["slug"], "kind": v["kind"], "name": v["name"], "where": v["where"],
+                 "source": v["source"], "source_id": v["source_id"],
+                 "source_version": versions.get(v["source"], ""), "box": v["box"]}
+        if v.get("within"):
+            entry["within"] = list(v["within"])
+        entries.append(entry)
+    # keep registry entries a record still names (stated placements apply never
+    # touches), and every within parent of a kept entry
+    import build_index
+    still_named = set(named)
+    for tid in build_index.trail_dirs(root):
+        rec = build_index.load_toml(os.path.join(root, tid, "trail.toml"))
+        for pl in rec.get("place") or []:
+            still_named.add((pl.get("kind"), pl.get("slug")))
+    have = {(x["kind"], x["slug"]) for x in entries}
+    for e in registry_entries(root):
+        if (e.get("kind"), e.get("slug")) not in have:
+            entries.append(e)
+    parents = {("range", s) for x in entries for s in (x.get("within") or [])}
+    entries = [e for e in entries if (e["kind"], e["slug"]) in still_named | parents]
+    write_registry(root, entries)
+    return written
+
+
+def add_stated(root, rid, kind, slug, source_url, quote, today):
+    """Place a trackless trail from a cited source, with its history entry."""
+    if not str(source_url).startswith(("https://", "http://")):
+        raise ValueError("stated needs an http(s) source address")
+    if not str(quote).strip():
+        raise ValueError("stated needs the sentence that puts the trail in the place")
+    tdir = os.path.join(root, rid)
+    if line_file_of(tdir):
+        raise ValueError(f"{rid} has a track; stated is only for a trail with no track")
+    registry = {(e.get("kind"), e.get("slug")): e for e in registry_entries(root)}
+    entry = registry.get((kind, slug))
+    if entry is None:
+        raise ValueError(f"{kind}/{slug} is not in places.toml; add its registry entry first")
+    doc, path = _doc_of(root, rid)
+    rec = doc.data()
+    if any((p.get("kind"), p.get("slug")) == (kind, slug) for p in rec.get("place") or []):
+        raise ValueError(f"{rid} already names {kind}/{slug}")
+    doc.append_block("place", {"kind": kind, "slug": slug, "basis": "stated", "source": source_url})
+    _set_top(doc, rec, "places_checked", today)
+    name = entry.get("name") or slug
+    doc.append_history(_history_entry(
+        today, f"The trail was placed in {name} from a published page, as it has no track to measure.",
+        f'The page says: "{quote}"', source_url))
+    _save(doc, path)
+
+
+def stamp_none(root, rid, today):
+    """Mark a trackless trail checked and in no place: places_checked only, no history."""
+    doc, path = _doc_of(root, rid)
+    rec = doc.data()
+    if rec.get("place"):
+        raise ValueError(f"{rid} already names places; stamp is for a trail in none")
+    _set_top(doc, rec, "places_checked", today)
+    _save(doc, path)
+
+
+def check(root, cache, outlines=None, versions=None, records=None):
+    """Re-measure every track against the current outlines; one difference per line."""
+    if outlines is None:
+        outlines = catalogue(cache)
+    if versions is None:
+        versions = source_versions(cache)
+    if records is None:
+        records = load_records(root)
+    p = propose(records, outlines)
+    diffs = []
+    current_counts = {}
+    for r in records:
+        for pl in (r.get("rec") or {}).get("place") or []:
+            current_counts[(pl.get("kind"), pl.get("slug"))] = \
+                current_counts.get((pl.get("kind"), pl.get("slug")), 0) + 1
+    for r in records:
+        rec = r.get("rec") or {}
+        if r.get("track") is None:
+            continue
+        old = {(pl.get("kind"), pl.get("slug")): pl for pl in rec.get("place") or []
+               if pl.get("basis") == "track"}
+        new = dict(p.per_trail.get(r["id"], []))
+        for k in sorted(set(new) - set(old)):
+            diffs.append(f"{r['id']}: gained {k[0]}/{k[1]}")
+        for k in sorted(set(old) - set(new)):
+            diffs.append(f"{r['id']}: lost {k[0]}/{k[1]}")
+        for k in sorted(set(old) & set(new)):
+            if abs(float(old[k].get("km") or 0) - new[k]) > 0.1:
+                diffs.append(f"{r['id']}: {k[0]}/{k[1]} measurement changed (a boundary or the track moved)")
+        tdir = os.path.join(root, r["id"])
+        if rec.get("places_track") and line_file_of(tdir) and track_hash(tdir) != rec["places_track"]:
+            diffs.append(f"{r['id']}: the track has changed since its places were measured")
+    new_counts = {k: len(h.trails) for k, h in p.per_place.items()}
+    for k in sorted(set(current_counts) | set(new_counts)):
+        was, now = current_counts.get(k, 0) >= 3, new_counts.get(k, 0) >= 3
+        if was != now:
+            diffs.append(f"{k[0]}/{k[1]}: crossed the 3-trail line "
+                         f"({'up to' if now else 'down to'} {new_counts.get(k, 0)} trails)")
+    for e in registry_entries(root):
+        v = versions.get(e.get("source"))
+        if v and e.get("source_version") and e["source_version"] != v:
+            diffs.append(f"{e.get('kind')}/{e.get('slug')}: source_version changed "
+                         f"from {e['source_version']} to {v}")
+    return diffs
+
+
+def _read_exclude(path):
+    out = set()
+    if path:
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                parts = line.split()
+                if len(parts) == 2 and "/" in parts[1]:
+                    kind, slug = parts[1].split("/", 1)
+                    out.add((parts[0], kind, slug))
+    return out
+
+
 def _out_dir(arg):
     if arg:
         return arg
@@ -700,6 +962,7 @@ def main(argv=None):
         outlines = catalogue(cache_dir(), allow)
         records = load_records()
         p = propose(records, outlines)
+        p.versions = source_versions(cache_dir())
         dest = os.path.join(_out_dir(_opt(argv, "--out")), "proposal.md")
         render_proposal(p, dest)
         print(f"wrote {dest}: {len(p.per_place)} places, "
@@ -715,7 +978,42 @@ def main(argv=None):
         render_candidates(found, dest)
         print(f"wrote {dest}: {len(found)} candidate ranges")
         return 0
-    print(f"place_trails.py: no subcommand {cmd!r} yet", file=sys.stderr)
+    if cmd == "apply":
+        if len(argv) < 2:
+            print("apply needs a proposal.json", file=sys.stderr)
+            return 2
+        written = apply(argv[1], ROOT, date.today().isoformat(),
+                        _read_exclude(_opt(argv, "--exclude")))
+        print(f"wrote {len(written)} records: {', '.join(written)}")
+        return 0
+    if cmd == "stated":
+        # stated <id> <kind> <slug> <source url> <quote>
+        if len(argv) < 6:
+            print("stated needs: id kind slug source-url quote", file=sys.stderr)
+            return 2
+        try:
+            add_stated(ROOT, argv[1], argv[2], argv[3], argv[4], argv[5], date.today().isoformat())
+        except ValueError as e:
+            print(f"stated: {e}", file=sys.stderr)
+            return 1
+        return 0
+    if cmd == "stamp":
+        if len(argv) < 2:
+            print("stamp needs a trail id", file=sys.stderr)
+            return 2
+        try:
+            stamp_none(ROOT, argv[1], date.today().isoformat())
+        except ValueError as e:
+            print(f"stamp: {e}", file=sys.stderr)
+            return 1
+        return 0
+    if cmd == "--check":
+        diffs = check(ROOT, cache_dir())
+        for d in diffs:
+            print(d)
+        print(f"{len(diffs)} difference(s)" if diffs else "no differences")
+        return 1 if diffs else 0
+    print(f"place_trails.py: no subcommand {cmd!r}", file=sys.stderr)
     return 2
 
 

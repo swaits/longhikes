@@ -172,5 +172,164 @@ class ProposalTest(unittest.TestCase):
         self.assertEqual(len(found[0]["trails"]), 3)
 
 
+import re as _re
+import tomllib as _tomllib
+
+
+def make_repo(root):
+    """Three tracked records and one trackless, minimal trail.toml files."""
+    for rid, line in (("aa", True), ("bb", True), ("cc", True), ("zz", False)):
+        d = os.path.join(root, rid)
+        os.makedirs(d)
+        with open(os.path.join(d, "trail.toml"), "w") as f:
+            f.write(f'id = "{rid}"\nname = "{rid} Trail"\nregions = ["WY"]\n\n'
+                    f'[source]\nline_file = "{"line.geojson" if line else ""}"\n\n'
+                    '[[history]]\ndate = "2026-01-01"\nchange = "The record was added."\n'
+                    'fields = ["record"]\nbasis = "The record\'s own source entry."\n'
+                    'asked_by = "the dataset\'s own check"\noutcome = "applied"\n')
+        if line:
+            write_track(d, "line.geojson", [[[-109.5, 43.2], [-109.5, 43.29]]])
+    with open(os.path.join(root, "places.toml"), "w") as f:
+        f.write("# The place registry (test).\n")
+
+
+def read_toml(path):
+    with open(path, "rb") as f:
+        return _tomllib.load(f)
+
+
+@unittest.skipUnless(HAVE, "shapely (the .venv-places venv) is not installed")
+class ApplyTest(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = self.tmp.name
+        make_repo(self.root)
+        self.park = outline("park", "P1", "Alpha Park",
+                            Polygon([(-110, 43), (-109, 43), (-109, 44), (-110, 44)]), hint=["WY"])
+        track = LineString([(-109.5, 43.2), (-109.5, 43.29)])
+        records = [rec("aa", ["WY"], track), rec("bb", ["WY"], track),
+                   rec("cc", ["WY"], track), rec("zz", ["WY"], None)]
+        self.p = P.propose(records, [self.park])
+        self.p.versions = {"nps": "2026-11-20"}
+        self.pdir = os.path.join(self.root, "out")
+        P.render_proposal(self.p, os.path.join(self.pdir, "proposal.md"))
+        self.pjson = os.path.join(self.pdir, "proposal.json")
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def trail_toml(self, rid):
+        return os.path.join(self.root, rid, "trail.toml")
+
+    def test_apply_adds_place_tables_stamp_and_hash_by_line_edits(self):
+        before = open(self.trail_toml("aa")).read()
+        written = P.apply(self.pjson, self.root, "2026-11-20")
+        self.assertIn("aa", written)
+        after = open(self.trail_toml("aa")).read()
+        data = read_toml(self.trail_toml("aa"))
+        self.assertEqual(data["places_checked"], "2026-11-20")
+        self.assertEqual(data["places_track"],
+                         C.track_hash(os.path.join(self.root, "aa", "line.geojson")))
+        self.assertEqual(data["place"][0]["slug"], "alpha-park")
+        # everything that was there before is still there, byte for byte, as lines
+        for line in before.splitlines():
+            if line.strip():
+                self.assertIn(line, after.splitlines(), line)
+
+    def test_apply_adds_one_history_entry_naming_place_with_no_distance_in_it(self):
+        P.apply(self.pjson, self.root, "2026-11-20")
+        data = read_toml(self.trail_toml("aa"))
+        self.assertEqual(len(data["history"]), 2)
+        e = data["history"][-1]
+        self.assertEqual(e["fields"], ["place"])
+        self.assertEqual(e["asked_by"], "the dataset's own check")
+        self.assertTrue(e["basis_url"].startswith("http"))
+        self.assertIsNone(_re.search(r"\d\s*(km|mi)", e["change"] + e["basis"]))
+
+    def test_a_rerun_that_only_changes_km_adds_no_history_and_keeps_the_stamp_date_rule(self):
+        P.apply(self.pjson, self.root, "2026-11-20")
+        data = json.load(open(self.pjson))
+        data["per_trail"]["aa"][0]["km"] += 1.25
+        data["per_place"]["park/alpha-park"]["trails"][0]["km"] += 1.25
+        p2 = os.path.join(self.pdir, "proposal2.json")
+        json.dump(data, open(p2, "w"))
+        P.apply(p2, self.root, "2026-12-01")
+        rec = read_toml(self.trail_toml("aa"))
+        self.assertEqual(len(rec["history"]), 2)  # no new entry
+        self.assertEqual(rec["places_checked"], "2026-12-01")
+        self.assertAlmostEqual(rec["place"][0]["km"], data["per_trail"]["aa"][0]["km"], delta=0.06)
+
+    def test_a_rerun_that_adds_or_removes_a_place_adds_history(self):
+        P.apply(self.pjson, self.root, "2026-11-20")
+        data = json.load(open(self.pjson))
+        data["per_trail"]["aa"] = []
+        p2 = os.path.join(self.pdir, "proposal2.json")
+        json.dump(data, open(p2, "w"))
+        P.apply(p2, self.root, "2026-12-01")
+        rec = read_toml(self.trail_toml("aa"))
+        self.assertEqual(len(rec["history"]), 3)
+        self.assertNotIn("place", rec)
+
+    def test_registry_lists_only_named_places_and_is_sorted(self):
+        P.apply(self.pjson, self.root, "2026-11-20")
+        reg = read_toml(os.path.join(self.root, "places.toml"))["place"]
+        self.assertEqual([e["slug"] for e in reg], ["alpha-park"])
+        self.assertEqual(reg[0]["source_version"], "2026-11-20")
+        self.assertEqual(reg[0]["box"], [-110.0, 43.0, -109.0, 44.0])
+
+    def test_stated_requires_an_http_source_a_quote_and_a_trackless_record(self):
+        P.apply(self.pjson, self.root, "2026-11-20")
+        with self.assertRaises(ValueError):
+            P.add_stated(self.root, "zz", "park", "alpha-park", "a book", "It says so.", "2026-11-20")
+        with self.assertRaises(ValueError):
+            P.add_stated(self.root, "zz", "park", "alpha-park", "https://example.org/", "", "2026-11-20")
+        with self.assertRaises(ValueError):
+            P.add_stated(self.root, "aa", "park", "alpha-park", "https://example.org/", "Q.", "2026-11-20")
+        P.add_stated(self.root, "zz", "park", "alpha-park", "https://example.org/t",
+                     "The trail crosses Alpha Park.", "2026-11-20")
+        rec = read_toml(self.trail_toml("zz"))
+        self.assertEqual(rec["place"][0]["basis"], "stated")
+        self.assertEqual(rec["places_checked"], "2026-11-20")
+        self.assertEqual(rec["history"][-1]["fields"], ["place"])
+
+    def test_stamp_none_sets_places_checked_with_no_place_tables_and_no_history(self):
+        P.stamp_none(self.root, "zz", "2026-11-20")
+        rec = read_toml(self.trail_toml("zz"))
+        self.assertEqual(rec["places_checked"], "2026-11-20")
+        self.assertNotIn("place", rec)
+        self.assertEqual(len(rec["history"]), 1)
+
+    def test_check_reports_a_place_gained_lost_a_moved_boundary_and_a_place_crossing_three_trails(self):
+        P.apply(self.pjson, self.root, "2026-11-20")
+        records = P.load_records(self.root)
+        moved = outline("park", "P1", "Alpha Park",
+                        Polygon([(-110, 43), (-109, 43), (-109, 43.25), (-110, 43.25)]), hint=["WY"])
+        diffs = P.check(self.root, None, outlines=[moved], versions={"nps": "2026-11-20"},
+                        records=records)
+        text = "\n".join(diffs)
+        self.assertIn("measurement changed", text)  # the moved boundary
+        gone = outline("park", "P9", "Elsewhere Park",
+                       Polygon([(-100, 43), (-99, 43), (-99, 44), (-100, 44)]), hint=["WY"])
+        diffs = P.check(self.root, None, outlines=[gone], versions={"nps": "2026-11-20"},
+                        records=records)
+        text = "\n".join(diffs)
+        self.assertIn("lost park/alpha-park", text)
+        self.assertIn("crossed the 3-trail line", text)
+
+    def test_check_exits_nonzero_with_differences_and_zero_without(self):
+        P.apply(self.pjson, self.root, "2026-11-20")
+        records = P.load_records(self.root)
+        self.assertEqual(P.check(self.root, None, outlines=[self.park],
+                                 versions={"nps": "2026-11-20"}, records=records), [])
+
+    def test_the_written_records_pass_check_places(self):
+        P.apply(self.pjson, self.root, "2026-11-20")
+        P.stamp_none(self.root, "zz", "2026-11-20")
+        trails = [read_toml(self.trail_toml(r)) for r in ("aa", "bb", "cc", "zz")]
+        errors = []
+        C.check(self.root, trails, errors)
+        self.assertEqual(errors, [])
+
+
 if __name__ == "__main__":
     unittest.main()

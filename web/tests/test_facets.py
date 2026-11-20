@@ -268,7 +268,9 @@ class BuiltVocabularyTest(unittest.TestCase):
 
     def browsing_pages(self):
         rels = ["index.html", "regions/index.html", "lists/index.html", "routes/index.html", "404.html"]
-        for d in ("regions", "lists"):
+        for d in ("regions", "lists", "parks", "ranges", "wilderness"):
+            if not os.path.isdir(os.path.join(OUT, d)):
+                continue
             for name in sorted(os.listdir(os.path.join(OUT, d))):
                 if os.path.isfile(os.path.join(OUT, d, name, "index.html")):
                     rels.append(f"{d}/{name}/index.html")

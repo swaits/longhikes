@@ -30,6 +30,7 @@ NAV = (
 # Pages with no header item of their own, and the item they sit under. A trail's page is part of
 # Trails; the dataset pages are part of About and are linked from the About hub and the footer.
 NAV_PARENT = {"/trails/": "/",
+              "/parks/": "/regions/", "/ranges/": "/regions/", "/wilderness/": "/regions/",
               "/sources/": "/about/", "/logos/": "/about/", "/data/": "/about/",
               "/left-out/": "/about/", "/method/": "/about/", "/glossary/": "/about/"}
 # Under Lists: the lists (Routes among them), the tables and rankings, the authors and the views of

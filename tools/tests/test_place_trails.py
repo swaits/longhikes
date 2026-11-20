@@ -260,6 +260,18 @@ class ProposalTest(unittest.TestCase):
         self.assertEqual(P._clean_cpcad_name("Killarney Lakelands And Headwaters Provincial Park"),
                          "Killarney Lakelands and Headwaters Provincial Park")
 
+    def test_a_grown_outline_reaches_a_track_just_outside_it_but_only_inside_its_clip(self):
+        # about 20 km east of the park's edge (-109.0): a track the source's outline missed
+        east = LineString([(-108.75, 43.2), (-108.75, 43.29)])
+        self.assertEqual(P.propose([rec("a", ["WY"], east)], [self.park]).per_trail["a"], [])
+        grown = P.grow_outline(self.park.geometry, 25)
+        self.assertGreater(grown.area, self.park.geometry.area)
+        self.assertTrue(grown.contains(east))
+        # a clip keeps the growth off ground the owner did not mean: nothing east of -108.9
+        clipped = P.grow_outline(self.park.geometry, 25, clip=[-111.0, 42.0, -108.9, 45.0])
+        self.assertFalse(clipped.intersects(east))
+        self.assertTrue(clipped.contains(self.park.geometry))
+
     def test_a_slug_collision_inside_a_kind_gets_the_state_code(self):
         a = outline("park", "P1", "Glacier", self.park.geometry, slug=None, hint=["MT"])
         b = outline("park", "P2", "Glacier", self.range.geometry, slug=None, hint=["BC"])

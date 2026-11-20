@@ -15,7 +15,8 @@
 # great system, where it has one: at most two kept levels apply to any one trail, a named
 # range and its system, so a range's within never names another named range), where
 # (optional state or province codes that replace the tool's own reading, which comes from
-# web/place-bounds.toml and overlaps along borders).
+# web/place-bounds.toml and overlaps along borders), grow_km and grow_clip (optional, see
+# the Adirondack Mountains).
 #
 # The `where` lines are set by hand where the boxes overlap a neighbour along a border.
 #
@@ -92,6 +93,11 @@ gmba_id = "12552"
 slug = "adirondack-mountains"
 name = "Adirondack Mountains"
 where = ["NY"]
+# GMBA draws the Adirondacks by relief, and its outline stops about 21 km east of Cranberry
+# Lake, which is inside the Adirondack Park. The outline is pushed out 25 km, clipped so it
+# does not run east of Lake Champlain into Vermont.
+grow_km = 25
+grow_clip = [-75.4, 43.0, -73.4, 45.0]
 
 [[range]]
 gmba_id = "12104"

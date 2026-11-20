@@ -498,6 +498,22 @@ def apply_denylist(outlines, deny=None):
             if (o.kind, o.source, str(o.source_id)) not in {(k, s, str(i)) for (k, s, i) in deny}]
 
 
+def grow_outline(geom, km, clip=None):
+    """The outline pushed out by `km` on every side (and clipped to the box [w, s, e, n]
+    where one is given); the original is always kept whole. For a range whose published
+    outline is tighter than the range as hikers know it. Each use is a reviewed entry in
+    the allow-list (grow_km, grow_clip) with its reason."""
+    import math
+    shapely = _need_shapely()
+    k = math.cos(math.radians(geom.centroid.y))
+    fwd = lambda c: c * [k, 1.0]
+    back = lambda c: c / [k, 1.0]
+    grown = shapely.transform(shapely.transform(geom, fwd).buffer(km / 111.32), back)
+    if clip:
+        grown = grown.intersection(shapely.geometry.box(*clip))
+    return _union_geoms([geom, grown])
+
+
 def merge_same_name(outlines):
     """One name within a kind and source is one place: the outlines are unioned and the
     place carries every id. The source lists some ranges twice under different ids."""
@@ -568,8 +584,11 @@ def catalogue(cache, allowlist=None):
         for g in gmba_ranges(cache):
             spec = wanted.get(g["gmba_id"])
             if spec:
+                geom = g["geometry"]
+                if spec.get("grow_km"):
+                    geom = grow_outline(geom, float(spec["grow_km"]), spec.get("grow_clip"))
                 out.append(Outline("range", "gmba-v2", g["gmba_id"],
-                                   spec.get("name") or g["name"], [], g["geometry"],
+                                   spec.get("name") or g["name"], [], geom,
                                    slug=spec.get("slug") or "",
                                    within=tuple(spec.get("within") or ()), path=g["path"],
                                    where_hand=tuple(spec.get("where") or ())))

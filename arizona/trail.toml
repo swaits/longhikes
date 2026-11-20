@@ -173,7 +173,7 @@ asked_by = "the dataset's own check"
 outcome = "applied"
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Grand Canyon National Park, Saguaro National Park, Mogollon Rim, Four Peaks Wilderness, Mazatzal Wilderness, Miller Peak Wilderness, Pusch Ridge Wilderness, Rincon Mountain Wilderness, Superstition Wilderness."
+change = "The trail was placed in 9 places (2 parks, 1 range and 6 wilderness areas), all listed in the record."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"

@@ -433,6 +433,30 @@ def read_toml(path):
 
 
 @unittest.skipUnless(HAVE, "shapely (the .venv-places venv) is not installed")
+class HistoryWordsTest(unittest.TestCase):
+    def test_a_few_places_are_named_and_many_are_counted(self):
+        self.assertEqual(P.place_list(["park", "range"], ["Alpha Park", "Beta Range"]),
+                         "Alpha Park and Beta Range")
+        kinds = ["park"] * 7 + ["range"] * 4 + ["wilderness"] * 42
+        text = P.place_list(kinds, [f"P{i}" for i in range(53)])
+        self.assertEqual(text, "53 places (7 parks, 4 ranges and 42 wilderness areas), "
+                               "all listed in the record")
+        self.assertEqual(P.place_list(["park"] * 9, [f"P{i}" for i in range(9)]),
+                         "9 parks, all listed in the record")
+        self.assertNotIn("P1,", text)
+
+    def test_the_limit_is_eight_names(self):
+        eight = [f"P{i}" for i in range(8)]
+        self.assertIn("P7", P.place_list(["park"] * 8, eight))
+        self.assertNotIn("P7", P.place_list(["park"] * 9, eight + ["P8"]))
+
+    def test_one_kind_has_no_and(self):
+        self.assertEqual(P.count_places(["wilderness"] * 9), "9 wilderness areas")
+        self.assertEqual(P.count_places(["park", "range", "range", "range", "range", "range",
+                                         "range", "range", "range"]), "1 park and 8 ranges")
+
+
+@unittest.skipUnless(HAVE, "shapely (the .venv-places venv) is not installed")
 class RefreshTest(unittest.TestCase):
     def test_fetch_keeps_a_cached_file_and_clear_cache_makes_the_next_fetch_download(self):
         with tempfile.TemporaryDirectory() as cache:

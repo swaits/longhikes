@@ -982,8 +982,43 @@ def _history_entry(today, change, basis, basis_url):
     return entry
 
 
+PLACE_LIST_MAX = 8
+_KIND_WORDS = {"park": ("park", "parks"), "range": ("range", "ranges"),
+               "wilderness": ("wilderness area", "wilderness areas")}
+
+
+def count_places(kinds):
+    """"7 parks, 4 ranges and 42 wilderness areas" for a list of place kinds."""
+    parts = []
+    for kind in ("park", "range", "wilderness"):
+        n = sum(1 for k in kinds if k == kind)
+        if n:
+            parts.append(f"{n} {_KIND_WORDS[kind][0 if n == 1 else 1]}")
+    return parts[0] if len(parts) == 1 else ", ".join(parts[:-1]) + " and " + parts[-1]
+
+
+def place_list(kinds, display):
+    """How a history entry names places: the names themselves, joined, for a few; for more
+    than PLACE_LIST_MAX the counts by kind, not a sentence listing dozens of names. `kinds`
+    is the kind of each place and `display` their names, in the same order."""
+    if len(display) <= PLACE_LIST_MAX:
+        return display_join(display)
+    counts = count_places(kinds)
+    what = counts if len(set(kinds)) == 1 else f"{len(display)} places ({counts})"
+    return f"{what}, all listed in the record"
+
+
+def display_join(display):
+    if len(display) <= 1:
+        return "".join(display)
+    return ", ".join(display[:-1]) + " and " + display[-1]
+
+
 def _place_names(keys, names):
-    return ", ".join(names.get(k, f"{k[0]}/{k[1]}") for k in keys)
+    shown = [names.get(k, f"{k[0]}/{k[1]}") for k in keys]
+    if len(shown) > PLACE_LIST_MAX:
+        return place_list([k[0] for k in keys], shown)
+    return ", ".join(shown)
 
 
 def write_registry(root, entries):
@@ -1162,10 +1197,7 @@ def add_stated_many(root, rid, items, today):
         doc.append_block("place", {"kind": it["kind"], "slug": it["slug"], "basis": "stated",
                                    "source": it["source"]})
     _set_top(doc, rec, "places_checked", today)
-    if len(names) == 1:
-        where = names[0]
-    else:
-        where = ", ".join(names[:-1]) + " and " + names[-1]
+    where = place_list([it["kind"] for it in items], names)
     groups = {}
     for it, name in zip(items, names):
         groups.setdefault((it["source"], it["quote"], bool(it.get("summary"))), []).append(name)
@@ -1175,7 +1207,8 @@ def add_stated_many(root, rid, items, today):
         tail = f" ({', '.join(who)})" if len(groups) > 1 else ""
         parts.append(f'{lead}: "{quote}"{tail}')
     doc.append_history(_history_entry(
-        today, f"The trail was placed in {where} from published pages, as it has no track to measure.",
+        today, f"The trail was placed in {where}{',' if len(names) > PLACE_LIST_MAX else ''} "
+               f"from published pages, as it has no track to measure.",
         " ".join(parts), items[0]["source"]))
     _save(doc, path)
 

@@ -199,7 +199,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in California Coast Ranges, Transverse Ranges, Dick Smith Wilderness, Garcia Wilderness, San Rafael Wilderness, Santa Lucia Wilderness, Sespe Wilderness, Silver Peak Wilderness and Ventana Wilderness from published pages, as it has no track to measure."
+change = "The trail was placed in 9 places (2 ranges and 7 wilderness areas), all listed in the record, from published pages, as it has no track to measure."
 fields = ["place"]
 basis = "The page says: \"The Condor Trail is a backpacking/hiking thru-trail that extends the length of the Los Padres Forest along the coastal mountains of Central California.\" (California Coast Ranges) The page says: \"The southern terminus is at Lake Piru along the border of Los Angeles and Ventura Counties.\" (Transverse Ranges) The page says: \"The Condor Trail spans the north to south extent of the Los Padres National Forest in Coastal Central California.\" (Dick Smith Wilderness, Garcia Wilderness, San Rafael Wilderness, Santa Lucia Wilderness, Sespe Wilderness, Silver Peak Wilderness, Ventana Wilderness)"
 basis_url = "http://www.condortrail.com/faqs/"

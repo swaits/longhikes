@@ -311,7 +311,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Glacier National Park, Rocky Mountain National Park, Yellowstone National Park, Absaroka Range, Bitterroot Range, Colorado Plateau, Front Range, San Juan Mountains, Sawatch Range, Wind River Range, Aldo Leopold Wilderness, Anaconda Pintler Wilderness, Bob Marshall Wilderness, Bridger Wilderness, Chama River Canyon Wilderness, Collegiate Peaks Wilderness, Gila Wilderness, Holy Cross Wilderness, Huston Park Wilderness, Indian Peaks Wilderness, James Peak Wilderness, La Garita Wilderness, Mount Massive Wilderness, Mount Zirkel Wilderness, Never Summer Wilderness, San Pedro Parks Wilderness, Scapegoat Wilderness, South San Juan Wilderness, Teton Wilderness, Vasquez Peak Wilderness, Weminuche Wilderness, West Malpais Wilderness."
+change = "The trail was placed in 32 places (3 parks, 7 ranges and 22 wilderness areas), all listed in the record."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"

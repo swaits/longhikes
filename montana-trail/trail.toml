@@ -202,7 +202,7 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Glacier National Park, Absaroka Range, Beartooth Mountains, Absaroka-Beartooth Wilderness, Bob Marshall Wilderness, Great Bear Wilderness, Lee Metcalf Wilderness, Scapegoat Wilderness and UL Bend Wilderness from published pages, as it has no track to measure."
+change = "The trail was placed in 9 places (1 park, 2 ranges and 6 wilderness areas), all listed in the record, from published pages, as it has no track to measure."
 fields = ["place"]
 basis = "The page says: \"The Montana Trail travels through Glacier National Park and passes very close to Yellowstone National Park.\" (Glacier National Park) The page says: \"Designated wilderness areas include Great Bear Wilderness, Bob Marshall Wilderness, Scapegoat Wilderness, Lee Metcalf Wilderness, Absaroka-Beartooth Wilderness, and UL Bend Wilderness.\" (Absaroka Range, Beartooth Mountains, Absaroka-Beartooth Wilderness, Bob Marshall Wilderness, Great Bear Wilderness, Lee Metcalf Wilderness, Scapegoat Wilderness, UL Bend Wilderness)"
 basis_url = "https://montanatrail.org/faq/"

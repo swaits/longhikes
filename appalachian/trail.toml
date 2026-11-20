@@ -319,7 +319,7 @@ asked_by = "the dataset's own check"
 outcome = "applied"
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Great Smoky Mountains National Park, Shenandoah National Park, Green Mountains, White Mountains, Big Branch Wilderness, Big Laurel Branch Wilderness, Blood Mountain Wilderness, Brush Mountain East Wilderness, Garden Mountain Wilderness, Glastenbury Wilderness, Great Gulf Wilderness, Hunting Camp Creek Wilderness, James River Face Wilderness, Lewis Fork Wilderness, Little Wilson Creek Wilderness, Lye Brook Wilderness, Mark Trail Wilderness, Mountain Lake Wilderness, Peru Peak Wilderness, Peters Mountain Wilderness, Pond Mountain Wilderness, Presidential Range-Dry River Wilderness, Priest Wilderness, Raccoon Branch Wilderness, Raven Cliffs Wilderness, Southern Nantahala Wilderness, Three Ridges Wilderness, Thunder Ridge Wilderness, Tray Mountain Wilderness."
+change = "The trail was placed in 29 places (2 parks, 2 ranges and 25 wilderness areas), all listed in the record."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"

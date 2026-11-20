@@ -39,7 +39,7 @@ def load(repo_root):
 
 
 def path(kind, slug):
-    """The page of a place: /parks/glacier/, /ranges/wind-river-range/, /wilderness/<slug>/."""
+    """The page of a place: /parks/glacier-national-park/, /ranges/wind-river-range/, /wilderness/<slug>/."""
     return f"/{KINDS[kind].segment}/{slug}/"
 
 

@@ -341,14 +341,14 @@ where = ["CA"]
 # Sequoia and Kings Canyon are one national park to hikers and one page here.
 [[park]]
 source_id = ["SEQU", "KICA"]
-slug = "sequoia-and-kings-canyon"
+slug = "sequoia-and-kings-canyon-national-parks"
 name = "Sequoia and Kings Canyon National Parks"
 
 # The two parks called Glacier (Montana and British Columbia) need different slugs; the
-# Montana one is the one hikers mean by /parks/glacier/.
+# Montana one is the one hikers mean by /parks/glacier-national-park/.
 [[park]]
 source_id = "GLAC"
-slug = "glacier"
+slug = "glacier-national-park"
 name = "Glacier National Park"
 
 # National Park Service units that are not national parks. A park page means any National

@@ -106,7 +106,7 @@ facts = ["season", "months", "days"]
 
 [[place]]
 kind = "park"
-slug = "sequoia-and-kings-canyon"
+slug = "sequoia-and-kings-canyon-national-parks"
 basis = "stated"
 source = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
 

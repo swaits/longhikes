@@ -117,7 +117,7 @@ facts = ["start_lonlat"]
 
 [[place]]
 kind = "park"
-slug = "glacier"
+slug = "glacier-national-park"
 basis = "track"
 km = 83.4
 

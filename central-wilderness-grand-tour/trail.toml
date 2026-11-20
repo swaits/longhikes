@@ -121,7 +121,7 @@ facts = ["permit"]
 
 [[place]]
 kind = "park"
-slug = "sequoia-and-kings-canyon"
+slug = "sequoia-and-kings-canyon-national-parks"
 basis = "stated"
 source = "https://www.fs.usda.gov/r05/sequoia/recreation/jerkey-meadow-trailhead"
 

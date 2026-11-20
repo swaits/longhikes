@@ -110,7 +110,7 @@ facts = ["end_lonlat"]
 
 [[place]]
 kind = "park"
-slug = "glacier"
+slug = "glacier-national-park"
 basis = "stated"
 source = "https://montanatrail.org/faq/"
 

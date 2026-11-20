@@ -114,7 +114,7 @@ facts = ["permit"]
 
 [[place]]
 kind = "park"
-slug = "sequoia-and-kings-canyon"
+slug = "sequoia-and-kings-canyon-national-parks"
 basis = "stated"
 source = "https://fastestknowntime.com/route/circle-solitude"
 

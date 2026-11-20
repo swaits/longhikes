@@ -96,7 +96,7 @@ facts = ["end_lonlat"]
 
 [[place]]
 kind = "park"
-slug = "sequoia-and-kings-canyon"
+slug = "sequoia-and-kings-canyon-national-parks"
 basis = "stated"
 source = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
 

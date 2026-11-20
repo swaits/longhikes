@@ -92,7 +92,7 @@ facts = ["shape"]
 
 [[place]]
 kind = "park"
-slug = "sequoia-and-kings-canyon"
+slug = "sequoia-and-kings-canyon-national-parks"
 basis = "stated"
 source = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
 

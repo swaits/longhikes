@@ -85,7 +85,7 @@ facts = ["summary", "official_url", "shape", "unfinished"]
 
 [[place]]
 kind = "park"
-slug = "glacier"
+slug = "glacier-national-park"
 basis = "stated"
 source = "https://www.nps.gov/noca/planyourvisit/pacific-northwest-trail.htm"
 

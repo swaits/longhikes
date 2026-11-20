@@ -115,7 +115,7 @@ facts = ["start_lonlat"]
 
 [[place]]
 kind = "park"
-slug = "glacier"
+slug = "glacier-national-park"
 basis = "stated"
 source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
 
@@ -139,7 +139,7 @@ source = "https://andrewskurka.com/adventures/great-western-loop/route-descripti
 
 [[place]]
 kind = "park"
-slug = "sequoia-and-kings-canyon"
+slug = "sequoia-and-kings-canyon-national-parks"
 basis = "stated"
 source = "https://andrewskurka.com/adventures/great-western-loop/route-description/"
 

@@ -123,7 +123,7 @@ source = "https://www.hellscanyon.org/_files/ugd/998edb_7376feee1007475eb1c92f8e
 
 [[place]]
 kind = "wilderness"
-slug = "hells-canyon-wilderness-id"
+slug = "hells-canyon-wilderness"
 basis = "stated"
 source = "https://www.hellscanyon.org/_files/ugd/998edb_7376feee1007475eb1c92f8e651796ba.pdf"
 

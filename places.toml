@@ -315,7 +315,7 @@ source_version = "2026-11-20"
 box = [-157.0, 66.65, -149.53, 68.66]
 
 [[place]]
-slug = "glacier"
+slug = "glacier-national-park"
 kind = "park"
 name = "Glacier National Park"
 where = ["MT"]
@@ -815,7 +815,7 @@ source_version = "2026-11-20"
 box = [-126.36, 50.14, -126.13, 50.23]
 
 [[place]]
-slug = "sequoia-and-kings-canyon"
+slug = "sequoia-and-kings-canyon-national-parks"
 kind = "park"
 name = "Sequoia and Kings Canyon National Parks"
 where = ["CA"]
@@ -2190,7 +2190,7 @@ source_version = "2026-11-20"
 box = [-107.87, 38.57, -107.76, 38.76]
 
 [[place]]
-slug = "hells-canyon-wilderness-id"
+slug = "hells-canyon-wilderness"
 kind = "wilderness"
 name = "Hells Canyon Wilderness"
 where = ["ID", "OR"]

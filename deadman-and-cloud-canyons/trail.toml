@@ -94,7 +94,7 @@ facts = ["start_lonlat"]
 
 [[place]]
 kind = "park"
-slug = "sequoia-and-kings-canyon"
+slug = "sequoia-and-kings-canyon-national-parks"
 basis = "stated"
 source = "https://shop.adventurewithkeen.com/product/sierra-south-2/"
 

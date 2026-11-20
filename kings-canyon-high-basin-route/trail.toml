@@ -116,7 +116,7 @@ facts = ["end_lonlat"]
 
 [[place]]
 kind = "park"
-slug = "sequoia-and-kings-canyon"
+slug = "sequoia-and-kings-canyon-national-parks"
 basis = "stated"
 source = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/"
 

@@ -207,6 +207,14 @@ class ProposalTest(unittest.TestCase):
         self.assertEqual([o.slug for o in P.merge_same_name([a, b])],
                          ["white-mountains", "white-mountains-arizona"])
 
+    def test_a_collision_suffixes_the_state_except_for_the_outline_that_keeps_the_plain_slug(self):
+        a = outline("wilderness", "239", "Hells Canyon Wilderness", self.park.geometry, slug="", hint=["ID"])
+        b = outline("wilderness", "240", "Hells Canyon Wilderness", self.range.geometry, slug="", hint=["OR"])
+        a.slug = b.slug = ""
+        a.source = b.source = "wilderness-connect"
+        P.assign_slugs([a, b])
+        self.assertEqual((a.slug, b.slug), ("hells-canyon-wilderness", "hells-canyon-wilderness-or"))
+
     def test_the_same_name_from_two_sources_or_kinds_is_not_merged(self):
         a = outline("park", "1", "Glacier", self.park.geometry, hint=["MT"])
         b = outline("park", "2", "Glacier", self.range.geometry, hint=["BC"])
@@ -401,7 +409,7 @@ class AllowlistTest(unittest.TestCase):
     def test_a_park_entry_carries_no_where_it_was_not_given(self):
         glacier = [p for p in self.al["park"] if p["source_id"] == "GLAC"][0]
         self.assertNotIn("where", glacier)  # the source's own state field says MT
-        self.assertEqual(glacier["slug"], "glacier")
+        self.assertEqual(glacier["slug"], "glacier-national-park")
 
     def test_every_range_has_its_states_where_a_hand_value_is_given_and_codes_are_known(self):
         known = set(P.state_boxes())

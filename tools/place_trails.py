@@ -485,8 +485,18 @@ def default_allowlist_path():
     return os.path.join(ROOT, "tools", "place_allowlist.toml")
 
 
+# A slug is the slug of the display name. Where two outlines of one name collide the tool
+# suffixes the state code; an entry here names the one that keeps the plain slug, by
+# (kind, source, source id), because the other has no trail and no page. Page addresses are
+# permanent, so this is a decision made once.
+SLUG_KEEPS_PLAIN = {
+    ("wilderness", "wilderness-connect", "239"),  # Hells Canyon Wilderness, Idaho and Oregon
+}
+
+
 def assign_slugs(outlines):
-    """Slugs from names, unique within a kind; a collision gets its state code."""
+    """Slugs from names, unique within a kind; a collision gets its state code, except
+    for the outline SLUG_KEEPS_PLAIN names, which keeps the plain slug."""
     by_kind = {}
     for o in outlines:
         if not o.slug:
@@ -495,6 +505,8 @@ def assign_slugs(outlines):
     for group in by_kind.values():
         if len(group) > 1:
             for o in group:
+                if (o.kind, o.source, str(o.source_id)) in SLUG_KEEPS_PLAIN:
+                    continue
                 hint = (o.state_codes_hint or ["x"])[0].lower()
                 o.slug = f"{o.slug}-{hint}"
     return outlines

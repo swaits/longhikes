@@ -239,16 +239,12 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
 
 
 # The filters ------------------------------------------------------------------
-# One bar and one set of panels, on the home page and on every other page that shows a set of at
-# least FILTER_MIN trails (listing()), and on every park, range and wilderness page whatever its
-# size (the owner's rule: every set of trails gets the bar). Everything is built from the page's own trails: a facet that
+# One bar and one set of panels, on the home page and on every other page that shows a set of
+# trails (listing()), whatever its size (the owner's rule: every set of trails gets the bar). Everything is built from the page's own trails: a facet that
 # cannot narrow them is left out, and an option none of them has is not written. The numbers written
 # here are for the whole set; app.js counts again from the rows on the page every time anything
 # changes, and hides an option that would show nothing (its counting is facetCounts(), which
 # web/tests/test_filter_counts.py runs under node against counts made here from the records).
-
-FILTER_MIN = 10
-
 
 def _length_options(steps, selected_any_last, unit="mi"):
     opts = [f'<option value="{step_value(n, unit)}">{step_label(n, unit)}</option>' for n in steps]
@@ -443,15 +439,13 @@ def finder_form(records, c=None, steps=None, where="all", bare_if_empty=False):
 </form>"""
 
 
-def listing(recs=None, *, where="all", groups=None, always=False, **kw):
-    """The rows of a page that shows a set of trails, with the filter bar over them when the set
-    has at least FILTER_MIN trails (else results() alone); with always, whatever its size (the
-    bar then holds only the filters that have something to offer). where: the Where filter's
-    scope (finder_form). The other arguments are results()'s."""
+def listing(recs=None, *, where="all", groups=None, **kw):
+    """The rows of a page that shows a set of trails, with the filter bar over them whatever the size
+    of the set (the bar holds only the filters that have something to offer, and the search box
+    alone where nothing can narrow the set). where: the Where filter's scope (finder_form). The
+    other arguments are results()'s."""
     trails = [r for g in groups for r in g[1]] if groups is not None else list(recs)
-    if len(trails) < FILTER_MIN and not always:
-        return results(recs, groups=groups, **kw)
-    return Markup(f"""<div class="finder__bar">{finder_form(trails, where=where, bare_if_empty=always)}</div>
+    return Markup(f"""<div class="finder__bar">{finder_form(trails, where=where, bare_if_empty=True)}</div>
   {results(recs, groups=groups, finder=True, **kw)}""")
 
 

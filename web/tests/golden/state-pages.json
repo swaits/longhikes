@@ -1,14 +1,14 @@
 {
  "/regions/": "e70a9608ef0ee6a97d0591ad582abff1b165371dee5111e3277df06a53a554e1",
- "/regions/atlantic-canada/": "6af5c4a79cac82eb0a4342297fd4f6755890e98597a98f219087c56432f06243",
- "/regions/ca-on/": "12b5726d800090233f082a572cf1472f152552cef8fa5019f49b83e32e337eef",
- "/regions/central-canada/": "fa6f8bbe466b5978f1edda22371b6aab8546efa567eee0d0405c717e278b8a3e",
- "/regions/mountain-west/": "c079eb93a55c2279f24083983230057940eb032cb034057c822c52230ce22e05",
- "/regions/north/": "fdfd201ae1e42b8fd17dd055815d4b06392a8ddb6ac3e72a06f15ec2b333fb56",
- "/regions/us-co/": "45cb1b92fd22ffc35f82a26fe2c71b66836b0624bf0e195f9c4926dfab6a8900",
- "/regions/us-co/loops/": "8883c9aac63f100196f9e853d6738a42b8199f1250c10ec34d1d0cfe8c998e7d",
- "/regions/us-co/with-gpx/": "abc3f7e44cbcbf8d6cce3b5d5065e6e7c085ec5a4033842af8909077f87e1e18",
+ "/regions/atlantic-canada/": "5146b4b9d1940a268cfd2345f1eee2263fd6c7e2dfd28adfdffc3fff0e698c93",
+ "/regions/ca-on/": "d4e543c6f163ba188a34444b42c494a3dbbd26c02f2b141339bbc230cd91f84e",
+ "/regions/central-canada/": "d7478ad682d715705770d35cc902c80c40d27719e7f9f5a1d99ec702d3f7a43e",
+ "/regions/mountain-west/": "6151f5a28d366fb48aab7027f08cea6da425201d0e7327780a01dd77cedc7bc7",
+ "/regions/north/": "85ba3ea850c2df690e311cf09257f2548ed888c07c319a01fd30d5e19cdf1fd4",
+ "/regions/us-co/": "97daaf3511578896b222570cba630da2d8ca0571504ce43b3685dbe532e40f56",
+ "/regions/us-co/loops/": "03896834b5369655f7b5f26634b6d23c834b17f1a25b0ec328d44934e20e2dfa",
+ "/regions/us-co/with-gpx/": "d82eace3d70eb9b1ef1346f5a3470199bd6a00e6e104fe661bfeb80199af96b8",
  "/regions/us-hi/": "1e5681ffbd50e382db7d69528fde602069006bf0cddad494d817369224bd96ad",
- "/regions/us-ut/": "065bcc01e14eb588dc1b118c466f44474fca0172c30037fb193d83a044624100",
- "/regions/western-canada/": "91b40d35dd3d1a093d38d01bbfcf1ef536221a69631fc58e46732da81d0582c3"
+ "/regions/us-ut/": "906db4153def35fa5418d0b86dba908fd27396bbc2098978ee169516e1b39785",
+ "/regions/western-canada/": "1b102ed9d47283869fdf8c8d54229d245f2113fd53c7e8ec2ecc118fd4da3b64"
 }

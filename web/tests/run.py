@@ -8,7 +8,7 @@ and fails when any of them fails, any module cannot be loaded or no test runs. W
 the site is built once, up front, into a directory it names to every module it starts
 (LONGHIKES_TEST_SITE, see builtsite.py), and the modules, which share no files that they write, run
 together, N at a time (the cores this process may use, at most 8, unless -j says). The tests that
-read no built page start at once, while the site is being built. Python 3 standard library only.
+need no build start at once, while the site is being built. Python 3 standard library only.
 """
 import argparse
 import concurrent.futures
@@ -45,8 +45,11 @@ def modules_under(only):
 
 
 def reads_the_site(module):
+    """True for a module that reads the shared site or builds the site itself (test_google_tag):
+    it starts when the shared build has finished, so its own builds find the store full."""
     with open(os.path.join(HERE, module + ".py"), encoding="utf-8") as f:
-        return "builtsite" in f.read()
+        text = f.read()
+    return "builtsite" in text or "start_build" in text
 
 
 def build_and_scan(site):

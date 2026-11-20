@@ -54,6 +54,9 @@ class List:
     note: Optional[Callable] = None
     # A larger least size than MIN_SIZE, where the list is thin by nature (a month's list).
     min_size: int = 0
+    # False for a list that is one of a fixed set, so none may go missing: a month's list, however
+    # many of the trails are walked in it, is not "nearly everything" but one of twelve.
+    capped: bool = True
 
     def search_title(self, n):
         return (self.page_title or f"{self.title}: {{n}} Trails").format(n=n)
@@ -118,7 +121,7 @@ def _month_list(m):
                 f"Trails normally hiked in {name}. Estimated seasons are marked.",
                 lambda r, m=m: m in facets.months(r),
                 page_title=f"Long Trails to Hike in {name}: {{n}} Trails", group="month", note=month_note(name),
-                min_size=MONTH_MIN)
+                min_size=MONTH_MIN, capped=False)
 
 
 def month_note(name):
@@ -270,10 +273,11 @@ def members(lst, records):
     return facets.sort_records([r for r in records if lst.test(r)], lst.sort)
 
 
-def is_shown(n, total, least=0):
+def is_shown(n, total, least=0, capped=True):
     """The threshold rule: a list is shown when it holds at least MIN_SIZE
-    trails (or `least`, where the list asks for more) and no more than MAX_SHARE of all of them."""
-    return n >= max(MIN_SIZE, least) and n <= MAX_SHARE * total
+    trails (or `least`, where the list asks for more) and no more than MAX_SHARE of all of them,
+    unless it is not capped (the twelve month lists)."""
+    return n >= max(MIN_SIZE, least) and (not capped or n <= MAX_SHARE * total)
 
 
 def shown(records):
@@ -281,7 +285,7 @@ def shown(records):
     out = []
     for lst in LISTS:
         recs = members(lst, records)
-        if is_shown(len(recs), len(records), lst.min_size):
+        if is_shown(len(recs), len(records), lst.min_size, lst.capped):
             out.append((lst, recs))
     return out
 

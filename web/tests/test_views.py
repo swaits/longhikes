@@ -169,6 +169,22 @@ class MonthListTest(unittest.TestCase):
             self.assertLessEqual(len(t), common.TITLE_LIMIT, t)
 
 
+class MonthListsAreASetOfTwelveTest(unittest.TestCase):
+    def test_a_month_in_nearly_every_trail_is_still_shown(self):
+        # every trail has a season now, so September holds far more than MAX_SHARE of them
+        recs = [fake(i, hike={"months": [9]}) for i in range(100)]
+        shown = {lst.key for lst, _ in browse.shown(recs)}
+        self.assertIn("hike-in-september", shown)
+        self.assertFalse(browse.is_shown(100, 100))   # an ordinary list over the cap still is not
+        self.assertTrue(browse.is_shown(100, 100, browse.by_key("hike-in-september").min_size, capped=False))
+
+    def test_all_twelve_month_pages_exist_on_the_real_data(self):
+        recs = records.load_records(ROOT)
+        shown = {lst.key for lst, _ in browse.shown(recs)}
+        for name in facets.MONTHS:
+            self.assertIn(f"hike-in-{name.lower()}", shown)
+
+
 class PlaceFacetTest(unittest.TestCase):
     def setUp(self):
         # Eight trails in Arizona: six under 100 miles, three of them loops; two in Utah.

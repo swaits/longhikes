@@ -178,7 +178,10 @@ class Source:
 
 
 def slugify(name):
+    import unicodedata
     s = re.sub(r"\([^)]*\)", "", name.lower())
+    s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode("ascii")
+    s = re.sub(r"['\u2019]", "", s)
     s = re.sub(r"[^a-z0-9]+", "-", s).strip("-")
     return re.sub(r"-+", "-", s)
 
@@ -296,7 +299,7 @@ def _clean_cpcad_name(name):
     name = re.sub(r"\s+Of Canada$", "", name, flags=re.I)
     if name.isupper():
         name = name.title()
-    name = re.sub(r"\s(And|Of|The|Du|De)\s", lambda m: m.group(0).lower(), name)
+    name = re.sub(r"(?<=\s)(And|Of|The|Du|De)(?=\s)", lambda m: m.group(0).lower(), name)
     return name.strip()
 
 

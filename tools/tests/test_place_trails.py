@@ -272,6 +272,17 @@ class ProposalTest(unittest.TestCase):
         self.assertFalse(clipped.intersects(east))
         self.assertTrue(clipped.contains(self.park.geometry))
 
+    def test_slugs_drop_accents_and_apostrophes_instead_of_leaving_hyphen_stumps(self):
+        self.assertEqual(P.slugify("Gaspésie National Park"), "gaspesie-national-park")
+        self.assertEqual(P.slugify("Lion's Head Provincial Park"), "lions-head-provincial-park")
+        self.assertEqual(P.slugify("Hautes-Gorges-de-la-Rivière-Malbaie National Park"),
+                         "hautes-gorges-de-la-riviere-malbaie-national-park")
+        self.assertEqual(P.slugify("Sierra Nevada (USA)"), "sierra-nevada")
+
+    def test_a_small_word_in_a_cpcad_name_is_lower_case_even_after_another(self):
+        self.assertEqual(P._clean_cpcad_name("Forks Of The Credit Provincial Park"),
+                         "Forks of the Credit Provincial Park")
+
     def test_a_slug_collision_inside_a_kind_gets_the_state_code(self):
         a = outline("park", "P1", "Glacier", self.park.geometry, slug=None, hint=["MT"])
         b = outline("park", "P2", "Glacier", self.range.geometry, slug=None, hint=["BC"])

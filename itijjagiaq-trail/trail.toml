@@ -52,6 +52,9 @@ end = "Kimmirut, Nunavut"
 end_lonlat = [-69.872, 62.847]
 shape = "point-to-point"
 checked = "2026-11-14"
+season = "July to August"
+months = [7, 8]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://nunavutparks.com/nunavut_parks/katannilik-territorial-park/"
@@ -62,6 +65,11 @@ facts = ["summary", "official_url", "start", "end", "shape"]
 url = "https://geogratis.gc.ca/services/geoname/en/geonames/OAUDP"
 publisher = "Natural Resources Canada (Canadian Geographical Names)"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://explore-mag.com/25-of-the-Best-Hikes-in-Canadas-North/"
+publisher = "Explore Magazine"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -80,5 +88,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://nunavutparks.com/nunavut_parks/katannilik-territorial-park/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: July to August."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from Explore Magazine's page: July to August."
+basis_url = "https://explore-mag.com/25-of-the-Best-Hikes-in-Canadas-North/"
 asked_by = "the dataset's own check"
 outcome = "applied"

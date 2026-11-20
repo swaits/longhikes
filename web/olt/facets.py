@@ -186,7 +186,7 @@ def season_text(rec):
 
 
 SEASON_BASIS_TEXT = {
-    "primary": "The season comes from the page of the body that manages the trail or, for a route, its author.",
+    "primary": "The season comes from the page of the body that manages the trail or the trail's own association or, for a route, its author.",
     "sources": "Two or more pages from different publishers agree on the season.",
     "source": "One page states the season. It is not the trail's own page.",
 }

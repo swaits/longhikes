@@ -59,6 +59,9 @@ shape = "point-to-point"
 terrain = ["forest", "prairie", "lakes"]
 travel = "trail-and-road"
 checked = "2026-11-13"
+season = "Spring, summer and fall"
+months = [3, 4, 5, 6, 7, 8, 9, 10, 11]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.nps.gov/noco/index.htm"
@@ -79,6 +82,11 @@ facts = ["travel"]
 url = "https://northcountrytrail.org/the-trail/trail-maps/"
 publisher = "North Country Trail Association"
 facts = ["terrain", "summary"]
+
+[[hike.source]]
+url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "North Country National Scenic Trail"
@@ -111,5 +119,14 @@ change = "The name hikers use, North Country Trail, was added as the common name
 fields = ["common_name"]
 basis = "The National Park Service page uses 'North Country Trail' in its captions and links, with the formal name in its title."
 basis_url = "https://www.nps.gov/noco/index.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Spring, summer and fall."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from The Trek's page: Spring, summer and fall."
+basis_url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
 asked_by = "the dataset's own check"
 outcome = "applied"

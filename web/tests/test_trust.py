@@ -195,7 +195,7 @@ class InBrief(unittest.TestCase):
 
     def test_trail_without_a_track_and_french_name(self):
         free = self.sentences(load("circle-of-solitude"))
-        self.assertTrue(free[-1].startswith("This site has no GPX for it"))
+        self.assertTrue(any("this site has no GPX for it" in x for x in free))
         fr = load("traversee-charlevoix")
         self.assertTrue(self.sentences(fr)[0].startswith("Traversée de Charlevoix is a "))
         self.assertIn('<span lang="fr">', str(trail.brief_sentences(fr)[0]))

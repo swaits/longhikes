@@ -76,11 +76,14 @@ travel = "some-cross-country"
 permit = "No permit is needed; some trailheads have sign-ins and Sand Flats Recreation Area charges a $2 day pass."
 caution = "The author advises against doing the route from June to early September, and camping is not allowed on a 16-mile stretch near Grand Junction."
 checked = "2026-11-14"
+season = "Start no earlier than mid-May; mid to late September preferred"
+months = [5, 9]
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://pmags.com/the-grand-moab-route"
 publisher = "Paul Mags, PMags.com (the route's author)"
-facts = ["official_url", "summary", "start", "end", "shape", "days", "high_point", "terrain", "travel", "permit", "caution"]
+facts = ["official_url", "summary", "start", "end", "shape", "days", "high_point", "terrain", "travel", "permit", "caution", "season", "months"]
 
 [[hike.source]]
 url = "https://www.wikidata.org/wiki/Q989903"
@@ -119,4 +122,13 @@ fields = ["route.line_policy"]
 basis = "The author's page says: \"I don’t have a GPX file to share.\""
 basis_url = "https://pmags.com/the-grand-moab-route"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Start no earlier than mid-May; mid to late September preferred."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from Paul Mags, PMags.com's page: Start no earlier than mid-May; mid to late September preferred."
+basis_url = "https://pmags.com/the-grand-moab-route"
+asked_by = "the dataset's own check"
 outcome = "applied"

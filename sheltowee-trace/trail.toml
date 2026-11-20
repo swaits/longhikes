@@ -60,6 +60,9 @@ travel = "trail"
 permit = "Backcountry camping in Daniel Boone National Forest is free and needs no permit, but Big South Fork National Recreation Area charges for backcountry camping permits."
 days = [21, 25]
 checked = "2026-11-13"
+season = "September to October (the best weather)"
+months = [9, 10]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://sheltoweetrace.org/trace"
@@ -75,6 +78,11 @@ facts = ["permit"]
 url = "https://sheltoweetrace.org/thru-hikers"
 publisher = "Sheltowee Trace Association"
 facts = ["days"]
+
+[[hike.source]]
+url = "https://gearjunkie.com/outdoor/backpacking/five-thru-hikes-southeast-not-at"
+publisher = "GearJunkie"
+facts = ["season", "months"]
 
 [[link]]
 title = "Sheltowee Trace"
@@ -116,5 +124,14 @@ change = "The length was changed from about 320 miles (515 km) to 343 miles (552
 fields = ["length_km", "length_note"]
 basis = "The association's thru-hikers page says: 'In 2025 the official distance is 343 miles.' Its page for the trail says: 'The trail runs 343 miles from the northern boundary of the Daniel Boone National Forest' to the southern boundary of the Big South Fork area."
 basis_url = "https://sheltoweetrace.org/thru-hikers"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: September to October (the best weather)."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from GearJunkie's page: September to October (the best weather)."
+basis_url = "https://gearjunkie.com/outdoor/backpacking/five-thru-hikes-southeast-not-at"
 asked_by = "the dataset's own check"
 outcome = "applied"

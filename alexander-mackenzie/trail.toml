@@ -59,6 +59,9 @@ days = [25, 30]
 travel = "trail"
 caution = "The trail is unmarked, and outside a few cleared sections in Tweedsmuir Park it has not been maintained."
 checked = "2026-11-13"
+season = "Late summer to early fall"
+months = [8, 9]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://apps.gov.bc.ca/pub/bcgnws/names/68161.html"
@@ -69,6 +72,11 @@ facts = ["summary", "start", "end", "shape", "travel"]
 url = "https://bcparks.ca/tweedsmuir-park/hiking/"
 publisher = "BC Parks"
 facts = ["official_url", "summary", "days", "caution"]
+
+[[hike.source]]
+url = "https://britishcolumbia.com/things-to-do-and-see/recreation/northern-bc-and-haida-gwaii/north-west-bc/hiking-backpacking/"
+publisher = "BritishColumbia.com"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -96,5 +104,14 @@ change = "The length note now says what the 420 kilometres is: the route from th
 fields = ["length_note"]
 basis = "BC Parks gives the length as 420 km with a suggested hiking time of 25 to 30 days, and the route on to Bella Coola."
 basis_url = "https://bcparks.ca/tweedsmuir-park/hiking/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Late summer to early fall."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from BritishColumbia.com's page: Late summer to early fall."
+basis_url = "https://britishcolumbia.com/things-to-do-and-see/recreation/northern-bc-and-haida-gwaii/north-west-bc/hiking-backpacking/"
 asked_by = "the dataset's own check"
 outcome = "applied"

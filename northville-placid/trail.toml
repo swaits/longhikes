@@ -60,6 +60,9 @@ terrain = ["forest", "lakes"]
 travel = "trail"
 permit = "A permit from a DEC Forest Ranger is needed to camp more than three consecutive nights in one place or in a group of ten or more."
 checked = "2026-11-19"
+season = "Late summer to early fall"
+months = [8, 9]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://albany.adk.org/about-our-chapter/northville-placid-trail/"
@@ -75,6 +78,11 @@ facts = ["summary"]
 url = "https://dec.ny.gov/nature/forests-trees/state-forests/rules-for-use"
 publisher = "NYS Department of Environmental Conservation"
 facts = ["permit"]
+
+[[hike.source]]
+url = "https://www.treelinereview.com/where-to-go/northville-placid-trail"
+publisher = "Treeline Review"
+facts = ["season", "months"]
 
 [[link]]
 title = "Northville Placid Trail"
@@ -107,5 +115,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of NYS Department of Environmental Conservation says: \"Camping for more than three consecutive nights or in a group of ten or more requires a permit from a DEC Forest Ranger.\""
 basis_url = "https://dec.ny.gov/nature/forests-trees/state-forests/rules-for-use"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Late summer to early fall."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from Treeline Review's page: Late summer to early fall."
+basis_url = "https://www.treelinereview.com/where-to-go/northville-placid-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

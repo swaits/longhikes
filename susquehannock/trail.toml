@@ -59,6 +59,9 @@ travel = "trail"
 permit = "No permit is needed to hike the Susquehannock Trail System."
 days = [7, 7]
 checked = "2026-11-19"
+season = "Late spring to early fall, mainly June to September"
+months = [6, 7, 8, 9]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://stc-hike.org/"
@@ -74,6 +77,11 @@ facts = ["permit"]
 url = "https://img1.wsimg.com/blobby/go/abd0f2cd-7530-4000-b744-4cabcde2a139/STS%20Publication%20Map%20r00v01.pdf"
 publisher = "Susquehannock Trail Club"
 facts = ["days"]
+
+[[hike.source]]
+url = "https://thetrek.co/susquehannock-trail-system-85-mile-escape-in-the-pennsylvania-wilds/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -101,5 +109,14 @@ change = "The usual time to walk the whole trail, 7 days, was added."
 fields = ["hike.days"]
 basis = "The page of Susquehannock Trail Club says: \"7 Day Circuit Hike Day 1 (14miles) Northern Gateway - Cherry Springs Tower ... Day 7 (13miles) Rock Ridge Road - Northern Gateway\""
 basis_url = "https://img1.wsimg.com/blobby/go/abd0f2cd-7530-4000-b744-4cabcde2a139/STS%20Publication%20Map%20r00v01.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Late spring to early fall, mainly June to September."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from The Trek's page: Late spring to early fall, mainly June to September."
+basis_url = "https://thetrek.co/susquehannock-trail-system-85-mile-escape-in-the-pennsylvania-wilds/"
 asked_by = "the dataset's own check"
 outcome = "applied"

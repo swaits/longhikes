@@ -73,6 +73,27 @@ class SeasonBasisTest(unittest.TestCase):
         errors = check(season_basis="source", source=[src("Guide A", facts=("days",))])
         self.assertTrue(errors)
 
+    def test_source_basis_needs_exactly_one_publisher(self):
+        two = [src("Park Service"), src("Blog", url="https://example.org/b")]
+        errors = check(season_basis="source", source=two)
+        self.assertTrue(any("exactly one publisher" in e for e in errors), errors)
+        same = [src("Park Service"), src("Park Service", url="https://example.org/b")]
+        self.assertEqual(check(season_basis="source", source=same), [])
+
+    def test_method_is_allowed_with_sources_only_besides_estimate(self):
+        two = [src("Park Service"), src("Blog", url="https://example.org/b")]
+        ok = check(season_basis="sources", source=two,
+                   season_method="The pages differ; set from both and the climate estimate.")
+        self.assertEqual(ok, [])
+        self.assertEqual(check(season_basis="sources", source=two), [])
+        for basis in ("primary", "source"):
+            errors = check(season_basis=basis, season_method="Some sentence.")
+            self.assertTrue(any("season_method" in e for e in errors), (basis, errors))
+        long = check(season_basis="sources", source=two, season_method="x" * 401)
+        self.assertTrue(any("400" in e for e in long), long)
+        blank = check(season_basis="sources", source=two, season_method=" ")
+        self.assertTrue(any("season_method" in e for e in blank), blank)
+
     def test_primary_needs_a_naming_source(self):
         errors = check(source=[src("Park Service", facts=("days",))])
         self.assertTrue(errors)

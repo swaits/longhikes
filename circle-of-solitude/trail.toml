@@ -80,6 +80,9 @@ start_lonlat = [-118.583, 36.795]
 shape = "loop"
 permit = "A Sequoia and Kings Canyon National Parks wilderness permit is needed for overnight travel on this loop."
 checked = "2026-11-20"
+season = "Mid-July to early October"
+months = [7, 8, 9]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=279697028"
@@ -89,7 +92,7 @@ facts = ["start_lonlat"]
 [[hike.source]]
 url = "https://fastestknowntime.com/route/circle-solitude"
 publisher = "fastestknowntime.com (its page for the route: a loop of about 68 miles that starts and ends at Road's End, by Avalanche Pass, Colby Pass and Forester Pass, named and described by Mike White in his Wilderness Press guide)"
-facts = ["summary", "start", "shape"]
+facts = ["summary", "start", "shape", "season", "months"]
 
 [[hike.source]]
 url = "https://www.spratt.us/COS2014/COS.html"
@@ -183,4 +186,13 @@ fields = ["guide", "route.note", "length_note", "hike.summary", "hike.source", "
 basis = "Two hikers' own accounts of 2014 walks name Mike White as the one who named the loop and the 2012 guide as the book (one says so in its own words), and agree on the order of places; the publisher's page gives the 2012 title, author, ISBN and price; Open Library's record says the 2012 book compiles the 2004 guides. No page read gives the trip's number or page."
 basis_url = "https://www.spratt.us/COS2014/COS.html"
 asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Mid-July to early October."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from fastestknowntime.com's page: Mid-July to early October."
+basis_url = "https://fastestknowntime.com/route/circle-solitude"
+asked_by = "the dataset's own check"
 outcome = "applied"

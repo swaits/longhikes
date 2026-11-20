@@ -148,7 +148,9 @@ def detail(rec):
         out.append(f"Its high point is {esc(name + ', ') if name else ''}{words.elevation(m)}.")
     season = facets.season_text(rec)
     if season:
-        out.append(f"Season: {esc(season)}.")
+        how = (", judged from pages that differ" if facets.season_pages_differ(rec)
+               else ", estimated from climate" if facets.season_estimated(rec) else "")
+        out.append(f"Season: {esc(season)}{how}.")
     rest = _rest_of_summary(rec)
     if rest:
         out.append(f'<span class="record-text">{esc(rest)}</span>')

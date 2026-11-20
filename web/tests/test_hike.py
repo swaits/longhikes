@@ -137,6 +137,29 @@ class TrailPageTest(unittest.TestCase):
         self.assertNotIn("The season comes from", trail.hike_sources_block(rec))
         self.assertEqual(facets.season_basis(rec), "")
 
+    def test_an_estimated_season_row_carries_the_note(self):
+        rec = sample_record("X Trail")
+        rec["hike"] = dict(FULL_HIKE, season="April to October", months=[4, 5, 6, 7, 8, 9, 10],
+                           season_basis="estimate",
+                           season_method="Judged from the climate at the trail's elevation and from similar "
+                                         "trails. Snow and mud last into March. Confidence: high.")
+        t = text(top_part(render(rec)))
+        self.assertIn("Season About April to October", t)
+        self.assertIn("No page states a season.", t)
+        self.assertIn("Confidence: high.", t)
+        self.assertIn("People do walk it outside these months.", t)
+        self.assertIn("No source gives a season; the climate suggests about April to October.", t)
+        self.assertNotIn("The usual season is", t)
+        block = html.unescape(trail.hike_sources_block(rec))
+        self.assertIn("Snow and mud last into March. Confidence: high. No page states a season.", block)
+
+    def test_a_stated_season_row_has_no_note(self):
+        rec = sample_record("X Trail")
+        rec["hike"] = dict(FULL_HIKE, season_basis="primary")
+        t = text(top_part(render(rec)))
+        self.assertIn("Season March to October", t)
+        self.assertNotIn("No page states a season", t)
+
     def test_partial_hike_table(self):
         rec = sample_record("X Trail")
         rec["hike"] = {"shape": "loop", "start": "Lake Camp", "days": [4, 6], "checked": "2026-11-13"}
@@ -144,7 +167,7 @@ class TrailPageTest(unittest.TestCase):
         t = text(top)
         self.assertIn("Shape Loop. Starts and ends at Lake Camp", t)
         self.assertIn("Time 4 to 6 days", t)
-        self.assertIn("Season, terrain, walking and permits are not on file for this trail yet.", t)
+        self.assertIn("Terrain, walking and permits are not on file for this trail yet.", t)
         for absent in ("Season March", "High point", "Terrain Alpine", "Permits", "Not finished", "Official site"):
             self.assertNotIn(absent, t, absent)
         # no summary: the lede is built from the record
@@ -175,7 +198,7 @@ class TrailPageTest(unittest.TestCase):
         self.assertIn("Where Arizona , United States", t)
         # every trail has a time: here estimated from its 100 km, and labelled so
         self.assertIn("Time About 4 to 5 days Estimated from the length, at 12 to 19 mi 20 to 30 km a day.", t)
-        self.assertIn("Season, terrain, walking and permits are not on file for this trail yet.", t)
+        self.assertIn("Terrain, walking and permits are not on file for this trail yet.", t)
         self.assertNotIn("Where the hiking facts come from", body)
         # no track: the page says so plainly and points at the source
         self.assertIn("No GPX here", t)

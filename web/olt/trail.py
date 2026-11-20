@@ -282,6 +282,7 @@ def _name_html(rec):
 
 
 MAX_BRIEF = 4  # sentences in the "In brief" paragraph
+PINNED = -1    # the priority of a sentence that is kept besides those (an estimated season)
 MONTH_WORDS = ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
 SEASON_WORDS = ("spring", "summer", "fall", "autumn", "winter", "late", "early", "mid", "from", "about")
 SENTENCE_VERBS = re.compile(r"\b(is|are|can|start|starts|hikes?|hiked|travelled|traveled|bring|brings|closed|best)\b", re.I)
@@ -292,6 +293,13 @@ def season_sentence(rec):
     seasons, ("sentence", "Northbound hikes start late February to early April") for one the record
     already words as a sentence, or None when the record has none or it is too long to say briefly.
     The caller adds the full stop. Only the record's own words are used."""
+    if facets.season_estimated(rec):
+        # Never worded as a fact, and never joined to the GPX clause with "and".
+        phrase = facets.season_phrase(rec).rstrip(". ")
+        phrase = phrase.lower() if phrase.lower() == "all year" else phrase
+        if facets.season_pages_differ(rec):
+            return ("estimate", f"The pages differ on the season; it is judged to be about {phrase}")
+        return ("estimate", f"No source gives a season; the climate suggests about {phrase}")
     text = facets.season_text(rec).strip().rstrip(". ")
     if not text:
         return None
@@ -431,19 +439,23 @@ def brief_sentences(rec):
     # When to walk it and whether this site has a GPX: one sentence where the season is a plain range.
     clause = gpx_clause(rec) or ("this site has no GPX for it" + _see_clause(rec))
     season = season_sentence(rec)
-    if season and not re.search(r"[,;]", season[1]):
+    if season and season[0] != "estimate" and not re.search(r"[,;]", season[1]):
         # "The usual season is May to July, and this page has a GPX of the track to download."
         items.append((3, 5, f"{esc(season[1])}, and {esc(clause)}."))
     else:
         if season:
-            items.append((3.5, 5, esc(season[1]) + "."))
+            # An estimated season is always said, so it is never left for a reader to take as a fact
+            # by omission: it is the one sentence that may stand beyond MAX_BRIEF.
+            items.append((PINNED if season[0] == "estimate" else 3.5, 5, esc(season[1]) + "."))
         items.append((3, 6, esc(clause[:1].upper() + clause[1:]) + "."))
     permit = permit_sentence(rec)
     if permit:
         items.append((6, 7, esc(permit)))
 
     # At most MAX_BRIEF sentences: the lowest priorities are kept, shown in reading order.
-    kept = sorted(sorted(items, key=lambda i: (i[0], i[1]))[:MAX_BRIEF], key=lambda i: i[1])
+    pinned = [i for i in items if i[0] == PINNED]
+    rest = sorted((i for i in items if i[0] != PINNED), key=lambda i: (i[0], i[1]))[:MAX_BRIEF]
+    kept = sorted(rest + pinned, key=lambda i: i[1])
     return [text for _, _, text in kept]
 
 
@@ -624,7 +636,7 @@ def glance(rec, records=None):
     rows.append(glance_row(facets.TIME, facets.time_text(rec), time_note(rec, records)))
     season = facets.season_text(rec)
     if season:
-        rows.append(glance_row(facets.SEASON, season))
+        rows.append(glance_row(facets.SEASON, season, facets.season_note(rec)))
     if facets.walking(rec):
         walking = facets.WALKING_VALUES[facets.walking(rec)]
         if facets.walking(rec) in facets.CROSS_COUNTRY:
@@ -692,7 +704,7 @@ def glance(rec, records=None):
     unfinished = ""
     if h.get("unfinished"):
         unfinished = f'<p class="glance__warn"><strong>Not finished.</strong> {common.rich(common.sentence(h["unfinished"]))}</p>'
-    missing = [name for name, have in ((facets.SEASON, season), (facets.TERRAIN, terrain),
+    missing = [name for name, have in ((facets.TERRAIN, terrain),
                                        (facets.WALKING, facets.walking(rec)),
                                        (PERMITS, h.get("permit"))) if not have]
     pending = ""

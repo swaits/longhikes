@@ -235,13 +235,13 @@ def rows_of(body):
         d = {k: html.unescape(v) for k, v in re.findall(r' data-([a-z]+)="([^"]*)"', attrs)}
         split = lambda v: [x for x in v.split(" ") if x]  # noqa: E731
         out.append({"id": d["id"], "search": [" " + t + " " for t in d["search"].split("|")], "where": split(d["where"]), "km": float(d["km"]),
-                    "time": d["time"], "months": split(d["months"]), "terrain": split(d["terrain"]),
+                    "time": d["time"], "months": split(d["months"]), "estimate": d.get("estimate") == "yes", "terrain": split(d["terrain"]),
                     "kind": d["kind"], "walking": d["walking"], "shape": d["shape"], "gpx": d["gpx"]})
     return out
 
 
 def state(**kw):
-    s = {"words": [], "where": "", "min": 0, "max": None, "month": "", "kind": "",
+    s = {"words": [], "where": "", "min": 0, "max": None, "month": "", "stated": False, "kind": "",
          "time": [], "terrain": [], "walking": [], "shape": [], "gpx": []}
     s.update(kw)
     return s
@@ -366,45 +366,75 @@ class PanelInTheFlowTest(unittest.TestCase):
         self.assertIn("if (window.location.hash === '#filters') showPanels(true);", js)
 
 
-class UnseasonedNoteTest(unittest.TestCase):
-    """A month filter says how many trails it leaves out for having no season on file."""
+class LeaveOutEstimatesTest(unittest.TestCase):
+    """The month filter can leave estimated seasons out, and says nothing about trails with no season."""
 
-    def test_a_finder_list_has_the_note_and_it_starts_hidden(self):
+    def test_the_month_field_has_the_checkbox_and_it_starts_disabled(self):
         recs = recordsmod.load_records(ROOT)
-        body = str(home.results(recs, finder=True))
-        self.assertIn('<p class="results-note" data-unseasoned hidden>', body)
-        self.assertIn('data-unseasoned-show>Show them</button>', body)
-        self.assertNotIn("data-unseasoned", str(home.results(recs)))
+        form = home.finder_form(recs)
+        field = form[form.index('data-facet="month"'):]
+        field = field[:field.index("</div>")]
+        self.assertIn('<input type="checkbox" name="stated" value="1" disabled>', field)
+        self.assertIn("Leave out estimated seasons", field)
 
-    def test_the_script_counts_it_over_the_rows_of_the_list_and_show_them_clears_the_month(self):
+    def test_there_is_no_checkbox_where_no_trail_has_an_estimated_season(self):
+        recs = [r for r in recordsmod.load_records(ROOT) if not facets.season_estimated(r)]
+        self.assertNotIn('name="stated"', home.finder_form(recs))
+
+    def test_the_results_have_no_unseasoned_note(self):
+        recs = recordsmod.load_records(ROOT)
+        for body in (str(home.results(recs, finder=True)), str(home.results(recs))):
+            self.assertNotIn("data-unseasoned", body)
+            self.assertNotIn("Show them", body)
+            self.assertNotIn("no season on file", body)
         js = read(WEB, "assets", "app.js")
-        self.assertIn("if (!d.months.length && FacetCount.passes(d, s, 'month')) noSeason++;", js)
-        self.assertIn("' trails with no season on file are not shown.'", js)
-        self.assertIn("el.month.value = '';", js)
+        self.assertNotIn("unseasoned", js.lower())
+        self.assertNotIn("no season on file", js)
+
+    def test_a_row_carries_whether_its_season_is_an_estimate(self):
+        est = next(r for r in recordsmod.load_records(ROOT) if facets.season_estimated(r))
+        stated = next(r for r in recordsmod.load_records(ROOT) if not facets.season_estimated(r))
+        self.assertIn('data-estimate="yes"', str(home.entry(est)))
+        self.assertNotIn("data-estimate", str(home.entry(stated)))
+
+    def test_the_script_reads_the_checkbox_and_writes_it_in_the_address(self):
+        js = read(WEB, "assets", "app.js")
+        self.assertIn("if (s.month && s.stated && d.estimate) return false;", js)
+        self.assertIn("if (s.month && s.stated) p.set('stated', '1');", js)
+        self.assertIn("estimate: d.estimate === 'yes'", js)
 
     @unittest.skipUnless(NODE, "node is not installed")
-    def test_the_number_is_the_trails_that_pass_everything_else_and_have_no_season(self):
-        recs = recordsmod.load_records(ROOT)
-        rows = rows_of(home.render(recs, SITE, ROOT))
+    def test_with_stated_on_estimated_rows_leave_the_month_and_the_counts_follow(self):
+        def row(i, months, estimate):
+            return {"id": f"t{i}", "search": ["  ", "  ", "  ", "  "], "where": [], "km": 100.0, "time": "week",
+                    "months": [str(m) for m in months], "estimate": estimate, "terrain": [], "kind": "trail", "walking": "",
+                    "shape": "", "gpx": "none"}
+        rows = [row(1, [7], True), row(2, [7], False), row(3, [7, 8], False), row(4, [8], True)]
+        off = run_counts(rows, state(month="7"))
+        on = run_counts(rows, state(month="7", stated=True))
+        self.assertEqual((off["total"], off["month"]["7"], off["month"]["8"]), (3, 3, 2))
+        self.assertEqual((on["total"], on["month"]["7"], on["month"]["8"]), (2, 2, 1))
+        # with no month chosen it does nothing
+        self.assertEqual(run_counts(rows, state(stated=True))["total"], 4)
+        # and the shown number is the rows that pass
         prog = facet_count_source() + """
 var input = JSON.parse(require('fs').readFileSync(0, 'utf8'));
 input.s.max = Infinity;
-var n = 0, shown = 0;
-input.rows.forEach(function (d) {
-  if (FacetCount.passes(d, input.s, '')) shown++;
-  else if (!d.months.length && FacetCount.passes(d, input.s, 'month')) n++;
-});
-process.stdout.write(JSON.stringify([shown, n]));
+process.stdout.write(JSON.stringify(input.rows.filter(function (d) { return FacetCount.passes(d, input.s, ''); }).length));
 """
-        for s in (state(month="8"), state(month="8", kind="route"), state(month="8", where="US-CA")):
-            out = subprocess.run([NODE, "-e", prog], input=json.dumps({"rows": rows, "s": s}),
-                                 capture_output=True, text=True, check=True)
-            shown, n = json.loads(out.stdout)
-            def base(r):
-                return ((not s["kind"] or facets.kind(r) == s["kind"])
-                        and (not s["where"] or s["where"] in facets.where_tokens(r)))
-            self.assertEqual(shown, sum(1 for r in recs if base(r) and 8 in facets.months(r)))
-            self.assertEqual(n, sum(1 for r in recs if base(r) and not facets.months(r)))
+        out = subprocess.run([NODE, "-e", prog], input=json.dumps({"rows": rows, "s": state(month="7", stated=True)}),
+                             capture_output=True, text=True, check=True)
+        self.assertEqual(json.loads(out.stdout), on["total"])
+
+    @unittest.skipUnless(NODE, "node is not installed")
+    def test_on_the_real_trails_the_counts_leave_out_exactly_the_estimates(self):
+        recs = recordsmod.load_records(ROOT)
+        rows = rows_of(home.render(recs, SITE, ROOT))
+        for month in (1, 7):
+            c = run_counts(rows, state(month=str(month), stated=True))
+            want = sum(1 for r in recs if month in facets.months(r) and not facets.season_estimated(r))
+            self.assertEqual(c["total"], want)
+            self.assertEqual(c["month"][str(month)], want)
 
 
 if __name__ == "__main__":

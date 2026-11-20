@@ -78,7 +78,7 @@ GROUPS = (
     ("walking", "By kind of walking", "Loops, high routes, walking with no trail, and trails not yet finished."),
     ("terrain", "By terrain", "The main kinds of country a trail crosses."),
     ("holder", "By who looks after it", "Trails whose designation names the holder."),
-    ("month", "By month", "Trails whose season on file includes the month. Only some trails have a season."),
+    ("month", "By month", "Trails normally hiked in the month. Estimated seasons are marked."),
     ("where", "By country and GPX", "Where a trail is, and whether its page has a track to download."),
 )
 
@@ -115,7 +115,7 @@ def time_note(recs, records):
 def _month_list(m):
     name = facets.MONTHS[m - 1]
     return List(f"hike-in-{name.lower()}", f"Hiking in {name}",
-                f"Trails whose season on file includes {name}.",
+                f"Trails normally hiked in {name}. Estimated seasons are marked.",
                 lambda r, m=m: m in facets.months(r),
                 page_title=f"Long Trails to Hike in {name}: {{n}} Trails", group="month", note=month_note(name),
                 min_size=MONTH_MIN)
@@ -123,9 +123,14 @@ def _month_list(m):
 
 def month_note(name):
     def note(recs, records):
-        have = sum(1 for r in records if facets.months(r))
-        return (f"Only {have} of the {len(records)} trails have a season on file, so this page covers those "
-                f"{have}. It is not every trail that can be walked in {name}.")
+        est = sum(1 for r in recs if facets.season_estimated(r))
+        stated = len(recs) - est
+        if not est:
+            return f"A source states the season for all {stated}."
+        if not stated:
+            return "No source states the season for these, so each is estimated from climate."
+        return (f"A source states the season for {stated} of these. For the other {est} it is "
+                f"estimated from climate, and marked.")
     return note
 
 

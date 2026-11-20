@@ -1247,6 +1247,11 @@ html.js .filters__panels:not([data-open]) { display: none; }
 .results-note { margin-block: calc(-1 * var(--space-1)) var(--space-3); color: var(--ink-2); font: 400 var(--step--1)/1.4 var(--font-sans); }
 .results-note[hidden] { display: none; }
 .results-note__show { padding: 0; border: 0; background: none; color: var(--link); font: inherit; text-decoration: underline; cursor: pointer; }
+/* A row's season: shown on a month's list, and while a month is chosen (app.js). */
+.entry__season { display: none; }
+[data-season-shown] .entry__season { display: block; }
+.field__check { display: block; margin-block-start: var(--space-1); color: var(--ink-2); font: 400 var(--step--1)/1.4 var(--font-sans); }
+.field__check[hidden] { display: none; }
 .key {
   display: flex;
   flex-wrap: wrap;

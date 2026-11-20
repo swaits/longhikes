@@ -1020,6 +1020,26 @@ def apply(proposal_path, root, today, exclude=frozenset()):
         if v.get("within"):
             entry["within"] = list(v["within"])
         entries.append(entry)
+    # a parent range (within) is in the registry though no record names it: records never
+    # store parents, and the build closes membership over within
+    todo = [("range", w) for x in entries for w in (x.get("within") or ())]
+    have = {(x["kind"], x["slug"]) for x in entries}
+    while todo:
+        k = todo.pop()
+        if k in have:
+            continue
+        v = per_place.get(f"{k[0]}/{k[1]}")
+        if v is None:
+            raise ValueError(f"{k[0]}/{k[1]} is the parent of a placed range but was not measured")
+        have.add(k)
+        entry = {"slug": v["slug"], "kind": v["kind"], "name": v["name"], "where": v["where"],
+                 "source": v["source"], "source_id": v["source_id"],
+                 "source_version": versions.get(v["source"], ""), "box": v["box"]}
+        if v.get("within"):
+            entry["within"] = list(v["within"])
+            todo.extend(("range", w) for w in v["within"])
+        entries.append(entry)
+    parent_keys = set(have)
     # keep registry entries a record still names (stated placements apply never
     # touches), and every within parent of a kept entry
     import build_index
@@ -1032,8 +1052,7 @@ def apply(proposal_path, root, today, exclude=frozenset()):
     for e in registry_entries(root):
         if (e.get("kind"), e.get("slug")) not in have:
             entries.append(e)
-    parents = {("range", s) for x in entries for s in (x.get("within") or [])}
-    entries = [e for e in entries if (e["kind"], e["slug"]) in still_named | parents]
+    entries = [e for e in entries if (e["kind"], e["slug"]) in still_named | parent_keys]
     write_registry(root, entries)
     return written
 

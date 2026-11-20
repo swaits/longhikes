@@ -479,6 +479,24 @@ class ApplyTest(unittest.TestCase):
         self.assertEqual(reg[0]["source_version"], "2026-11-20")
         self.assertEqual(reg[0]["box"], [-110.0, 43.0, -109.0, 44.0])
 
+    def test_the_registry_holds_the_parent_of_a_named_range_though_no_record_names_it(self):
+        big = outline("range", "R0", "Big Range", Polygon([(-111, 42), (-108, 42), (-108, 45), (-111, 45)]))
+        big.path = "World > Big Range"
+        small = outline("range", "R1", "Small Range", Polygon([(-110, 43), (-109, 43), (-109, 44), (-110, 44)]))
+        small.path = "World > Big Range > Small Range"
+        small.within = ("big-range",)
+        track = LineString([(-109.5, 43.2), (-109.5, 43.29)])
+        p = P.propose([rec("aa", ["WY"], track), rec("bb", ["WY"], track), rec("cc", ["WY"], track)],
+                      [big, small])
+        p.versions = {"nps": "2026-11-20"}
+        d = os.path.join(self.root, "out2")
+        P.render_proposal(p, os.path.join(d, "proposal.md"))
+        P.apply(os.path.join(d, "proposal.json"), self.root, "2026-11-20")
+        self.assertEqual([pl["slug"] for pl in read_toml(self.trail_toml("aa"))["place"]], ["small-range"])
+        reg = {e["slug"]: e for e in read_toml(os.path.join(self.root, "places.toml"))["place"]}
+        self.assertEqual(set(reg), {"big-range", "small-range"})
+        self.assertEqual(reg["small-range"]["within"], ["big-range"])
+
     def test_a_reviewed_where_in_the_registry_survives_a_rerun(self):
         P.apply(self.pjson, self.root, "2026-11-20")
         path = os.path.join(self.root, "places.toml")

@@ -6,14 +6,18 @@ sets it from a packet: the trail's location, elevation, monthly climate
 normals (tools/season_climate.py), the machine estimate of
 tools/estimate_season.py and the most similar sourced trails. The method
 was tested blind: the same reviewers estimated the trails whose season a
-page states, from identical packets with the season hidden, and the share
-they matched is in tools/season_blind_test.json, which the site reads.
+page states, from identical packets with the season hidden. The shares they
+matched are in tools/season_blind_test.json, which the site reads, by two
+measures that are always given together: the ends only (the first and last
+months within a month of the page's) and the strict one (also no wrong gap
+or missing window in the middle).
 docs/season-judging.md says how a reviewer works.
 
 Commands:
   packets    write one packet per trail, and the three part lists
   score      score reviewers' answer files against the sourced seasons
-             (--write records the figures in tools/season_blind_test.json)
+             (prints both measures; --write records them in
+             tools/season_blind_test.json)
   proposals  stage the judged seasons for the trails with no season, for
              python3 tools/refresh.py collect and apply
   inputs     record the machine estimate and the inputs of every estimate,
@@ -297,12 +301,16 @@ def read_answers(path, known):
 
 def score(answers, truth):
     """The blind result: for every trail whose season a page states (truth,
-    {id: months}) whether the reviewer's months match within a month at each
-    end, in all and by the reviewer's confidence. A trail with no answer is
+    {id: months}) whether the reviewer's months match, in all and by the
+    reviewer's confidence, by two measures: `matched`, the first and last
+    months within a month of the page's, and `strict_matched`, which also
+    needs every window of the season, and no other, to correspond (so a gap
+    the page does not have, or one it has and the reviewer lacks, is a miss).
+    A trail with no answer is
     tested and counts as missed; an answer for a trail not in truth is not
     scored."""
-    by = {c: {"tested": 0, "matched": 0} for c in CONFIDENCES}
-    tested = matched = unanswered = 0
+    by = {c: {"tested": 0, "matched": 0, "strict_matched": 0} for c in CONFIDENCES}
+    tested = matched = strict_matched = unanswered = 0
     for tid, months in sorted(truth.items()):
         tested += 1
         if tid not in answers:
@@ -310,28 +318,35 @@ def score(answers, truth):
             continue
         got, _phrase, conf, _why = answers[tid]
         hit = bool(M.score(got, months)[0])
+        strict = M.match_strict(got, months)
         matched += hit
+        strict_matched += strict
         by[conf]["tested"] += 1
         by[conf]["matched"] += hit
-    return {"tested": tested, "matched": matched, "unanswered": unanswered, "by_confidence": by}
+        by[conf]["strict_matched"] += strict
+    return {"tested": tested, "matched": matched, "strict_matched": strict_matched,
+            "unanswered": unanswered, "by_confidence": by}
 
 
 def _share(matched, tested):
     return round(matched / tested, 2) if tested else 0.0
 
 
+ENDS_MEASURE = ("the first and last months of the reviewer's season within a month of the season "
+                "a page states")
+STRICT_MEASURE = ("the ends as above, and every window of the season (such as a gap in the middle) "
+                  "also within a month of the page's, with no window added or missing")
+
+
 def write_blind_test(path, figures, date):
-    doc = {
-        "date": date,
-        "measure": "within one month at each end of the season a page states",
-        "tested": figures["tested"],
-        "matched": figures["matched"],
-        "share": _share(figures["matched"], figures["tested"]),
-        "by_confidence": {
-            c: {"tested": v["tested"], "matched": v["matched"],
-                "share": _share(v["matched"], v["tested"])}
-            for c, v in figures["by_confidence"].items()},
-    }
+    def part(v):
+        return {"tested": v["tested"], "matched": v["matched"],
+                "share": _share(v["matched"], v["tested"]),
+                "strict_matched": v["strict_matched"],
+                "strict_share": _share(v["strict_matched"], v["tested"])}
+    doc = {"date": date, "measure": ENDS_MEASURE, "strict_measure": STRICT_MEASURE}
+    doc.update(part(figures))
+    doc["by_confidence"] = {c: part(v) for c, v in figures["by_confidence"].items()}
     with open(path, "w", encoding="utf-8") as f:
         json.dump(doc, f, indent=1, sort_keys=False)
         f.write("\n")
@@ -343,22 +358,33 @@ def load_blind_test(path=BLIND_TEST):
 
 
 def check_blind_test(doc):
-    """Problems with the figure file: the parts must add up to the whole and
-    each share must be the matched count over the tested count."""
+    """Problems with the figure file: both measures must be present, the
+    parts must add up to the whole, each share must be the count over the
+    tested count, and the strict count may not exceed the ends-only count."""
     problems = []
     by = doc.get("by_confidence") or {}
     if sorted(by) != sorted(CONFIDENCES):
         problems.append("by_confidence must hold high, medium and low")
         return problems
-    if sum(v["tested"] for v in by.values()) != doc["tested"]:
-        problems.append("the confidence groups do not add up to the trails tested")
-    if sum(v["matched"] for v in by.values()) != doc["matched"]:
-        problems.append("the confidence groups do not add up to the trails matched")
-    for name, v in [("all", doc)] + list(by.items()):
-        if v["matched"] > v["tested"]:
+    parts = [("all", doc)] + list(by.items())
+    for name, v in parts:
+        for key in ("tested", "matched", "share", "strict_matched", "strict_share"):
+            if key not in v:
+                problems.append(f"{name}: {key} is missing")
+    if problems:
+        return problems
+    for key in ("tested", "matched", "strict_matched"):
+        if sum(v[key] for v in by.values()) != doc[key]:
+            problems.append(f"the confidence groups do not add up to the trails {key.replace('_', ' ')}")
+    for name, v in parts:
+        if v["matched"] > v["tested"] or v["strict_matched"] > v["tested"]:
             problems.append(f"{name}: more matched than tested")
+        elif v["strict_matched"] > v["matched"]:
+            problems.append(f"{name}: the strict measure cannot match more than the ends-only one")
         elif v["share"] != _share(v["matched"], v["tested"]):
             problems.append(f"{name}: the share is not matched over tested")
+        elif v["strict_share"] != _share(v["strict_matched"], v["tested"]):
+            problems.append(f"{name}: the strict share is not matched over tested")
     return problems
 
 
@@ -560,13 +586,15 @@ def cmd_score(args):
             print(f"{path} line {n}: {text}")
         answers.update(got)
     figures = score(answers, truth)
-    t, m = figures["tested"], figures["matched"]
-    print(f"owner's measure (within one month at each end): {m} of {t} = {100 * m / t:.1f}%"
+    t, m, s = figures["tested"], figures["matched"], figures["strict_matched"]
+    print(f"ends only (first and last months within a month of the page's): {m} of {t} = {100 * m / t:.1f}%"
           f" ({figures['unanswered']} unanswered)")
+    print(f"strict (also no wrong gap or missing window in the middle): {s} of {t} = {100 * s / t:.1f}%")
     for c in CONFIDENCES:
         v = figures["by_confidence"][c]
-        print(f"  {c:<7} {v['matched']:>3} of {v['tested']:<3} = "
-              f"{100 * v['matched'] / v['tested'] if v['tested'] else 0:.1f}%")
+        n = v["tested"] or 1
+        print(f"  {c:<7} ends only {v['matched']:>3} of {v['tested']:<3} = {100 * v['matched'] / n:.1f}%"
+              f"   strict {v['strict_matched']:>3} of {v['tested']:<3} = {100 * v['strict_matched'] / n:.1f}%")
     if args.write:
         write_blind_test(args.write, figures, args.date or datetime.date.today().isoformat())
         print(f"written to {args.write}")

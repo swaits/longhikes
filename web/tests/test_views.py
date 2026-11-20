@@ -673,10 +673,12 @@ class RealDataTest(unittest.TestCase):
         blind = datafiles.blind_test(ROOT)
         text = self.method_text()
         self.assertIn(f"the method was run blind on {blind['tested']} trails whose seasons a page does state", text)
-        self.assertIn(f"It matched {blind['matched']} of them ({round(blind['share'] * 100)} percent) within one month at "
-                      "each end", text)
+        self.assertIn(f"{blind['matched']} of {blind['tested']} ({round(blind['share'] * 100)} percent) had their first "
+                      f"and last months within a month of the page\u2019s; {blind['strict_matched']} "
+                      f"({round(blind['strict_share'] * 100)} percent) also had no wrong gap in the middle", text)
         for name, v in blind["by_confidence"].items():
-            self.assertIn(f"{name} {v['matched']} of {v['tested']} ({round(v['share'] * 100)} percent)", text)
+            self.assertIn(f"{name} {v['matched']} of {v['tested']} ({round(v['share'] * 100)} percent) and "
+                          f"{v['strict_matched']} ({round(v['strict_share'] * 100)} percent)", text)
         self.assertIn("not a promise for any one trail", text)
 
     def test_the_glossary_no_longer_says_only_some_records_state_a_season(self):

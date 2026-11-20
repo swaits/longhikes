@@ -719,7 +719,8 @@ def check(root, fetch):
     trail, or the sourced trails it is compared with), when the
     leave-one-out match share has fallen by more than 0.02 from
     tools/season_fit.json, or when the blind test of the judged method
-    (tools/season_blind_test.json) is missing or below the bar. A changed
+    (tools/season_blind_test.json) is missing, or is below the bar on its
+    ends-only measure (the strict measure is recorded beside it). A changed
     estimate is a flag for a person to look at, not a rewrite."""
     import season_judge
     try:
@@ -776,8 +777,9 @@ def check(root, fetch):
             lines += [f"tools/season_blind_test.json: {p}" for p in problems]
         elif blind["share"] < BAR["within1_min"]:
             ok = False
-            lines.append(f"the blind test matched {blind['share']:.2f}, under the bar of "
-                         f"{BAR['within1_min']:.2f}; estimates must not ship")
+            lines.append(f"the blind test matched {blind['share']:.2f} on the ends-only measure, under the "
+                         f"bar of {BAR['within1_min']:.2f} on that measure (the strict figure is "
+                         f"{blind['strict_share']:.2f}); estimates must not ship")
     except (OSError, ValueError, KeyError):
         ok = False
         lines.append("tools/season_blind_test.json is missing or unreadable")

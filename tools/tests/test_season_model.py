@@ -45,6 +45,30 @@ class MatchTest(unittest.TestCase):
         self.assertFalse(M.match([3, 4, 5], spring_fall))
         self.assertFalse(M.match([3, 4, 5, 7, 9, 10, 11], spring_fall))
 
+    def test_the_strict_measure_counts_a_wrong_gap_in_the_middle_as_a_miss(self):
+        # the ends-only measure passes March to May plus September to November
+        # against a continuous March to November; the strict one does not
+        gap = [3, 4, 5, 9, 10, 11]
+        whole = list(range(3, 12))
+        self.assertTrue(M.match(gap, whole))
+        self.assertFalse(M.match_strict(gap, whole))
+        self.assertFalse(M.match_strict(whole, gap))
+        self.assertTrue(M.match_strict(whole, whole))
+        self.assertTrue(M.match_strict([4, 5, 6, 7, 8, 9, 10], whole))
+        self.assertTrue(M.match_strict(gap, gap))
+        # a stray one-month window of the estimate has no partner in the truth
+        self.assertFalse(M.match_strict([3, 4, 5, 6, 7, 11], [3, 4, 5, 6, 7]))
+        self.assertTrue(M.match_strict(list(range(1, 11)), list(range(1, 13))))
+        self.assertFalse(M.match_strict([], whole))
+
+    def test_strict_never_matches_what_the_ends_only_measure_misses(self):
+        import itertools
+        seasons = [[3, 4, 5, 9, 10, 11], list(range(3, 12)), [6, 7, 8], [11, 12, 1, 2], [1, 2, 3, 7, 8],
+                   list(range(1, 13)), [5, 6, 7, 8, 9, 10]]
+        for est, src in itertools.product(seasons, seasons):
+            if M.match_strict(est, src):
+                self.assertTrue(M.match(est, src), (est, src))
+
     def test_masks_and_lists_agree(self):
         self.assertEqual(M.to_months(M.to_mask([3, 1, 12])), [1, 3, 12])
         self.assertEqual(M.match(M.to_mask([6, 7]), [6, 7]), True)

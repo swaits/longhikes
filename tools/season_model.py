@@ -137,6 +137,25 @@ def match(estimated, sourced):
     return season.grade(to_months(est), to_months(src)) != "worse"
 
 
+def match_strict(estimated, sourced):
+    """The stricter measure: match() and, besides, every window of the
+    estimate and of the sourced season must have a partner within a month at
+    both ends in the other. An estimate with a gap in the middle that the
+    sourced season does not have (or the other way round) is a miss, which
+    match() does not see when the sourced season is a single window. A
+    sourced season of eleven or twelve months is judged as match() judges
+    it."""
+    est = estimated if isinstance(estimated, int) else to_mask(estimated)
+    src = sourced if isinstance(sourced, int) else to_mask(sourced)
+    if not match(est, src):
+        return False
+    if bin(src).count("1") >= 11:
+        return True
+    est_runs, src_runs = _runs(est), _runs(src)
+    return (all(any(_near(a, c) and _near(b, d) for c, d in est_runs) for a, b in src_runs)
+            and all(any(_near(a, c) and _near(b, d) for c, d in src_runs) for a, b in est_runs))
+
+
 def score(estimated, sourced):
     """(match 1 or 0, share of the twelve months classified correctly,
     Jaccard overlap of the month sets)."""

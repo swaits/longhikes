@@ -116,9 +116,10 @@ def season_section(records, blind):
   {pagekit.table(["Where a trail's season comes from", "Trails"], rows, caption="Where the seasons come from", numeric=(1,))}"""]
     if blind:
         by = blind["by_confidence"]
-        conf = ", ".join(f"{name} {by[name]['matched']} of {by[name]['tested']} ({_pct(by[name]['share'])})"
+        conf = ", ".join(f"{name} {by[name]['matched']} of {by[name]['tested']} ({_pct(by[name]['share'])}) and "
+                         f"{by[name]['strict_matched']} ({_pct(by[name]['strict_share'])})"
                          for name in ("high", "medium", "low") if by[name]["tested"])
-        out.append(f"""<p>How the estimates were tested. On {esc(blind["date"])} the method was run blind on {blind["tested"]} trails whose seasons a page does state, with those seasons hidden. It matched {blind["matched"]} of them ({_pct(blind["share"])}) within one month at each end of the season the page states. By the confidence it gave each estimate: {esc(conf)}. This measures how the method did where the answer is known, not a promise for any one trail.</p>""")
+        out.append(f"""<p>How the estimates were tested. On {esc(blind["date"])} the method was run blind on {blind["tested"]} trails whose seasons a page does state, with those seasons hidden. Two measures are given together. {blind["matched"]} of {blind["tested"]} ({_pct(blind["share"])}) had their first and last months within a month of the page&rsquo;s; {blind["strict_matched"]} ({_pct(blind["strict_share"])}) also had no wrong gap in the middle, so the second measure counts a season with a gap that the page does not have, or without one that it has, as a miss. By the confidence it gave each estimate, first and last months and then also no wrong gap: {esc(conf)}. This measures how the method did where the answer is known, not a promise for any one trail.</p>""")
     return "\n  ".join(out)
 
 

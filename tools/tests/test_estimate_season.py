@@ -391,13 +391,14 @@ class ProposeCheckTest(unittest.TestCase):
 
     def blind_doc(self, root, share=0.77, tested=100):
         matched = int(round(share * tested))
-        doc = {"date": "2026-11-20", "tested": tested, "matched": matched,
-               "share": round(matched / tested, 2),
+        sh = round(matched / tested, 2)
+        doc = {"date": "2026-11-20", "tested": tested, "matched": matched, "share": sh,
+               "strict_matched": matched, "strict_share": sh,
                "by_confidence": {
-                   "high": {"tested": tested, "matched": matched,
-                            "share": round(matched / tested, 2)},
-                   "medium": {"tested": 0, "matched": 0, "share": 0.0},
-                   "low": {"tested": 0, "matched": 0, "share": 0.0}}}
+                   "high": {"tested": tested, "matched": matched, "share": sh,
+                            "strict_matched": matched, "strict_share": sh},
+                   "medium": {"tested": 0, "matched": 0, "share": 0.0, "strict_matched": 0, "strict_share": 0.0},
+                   "low": {"tested": 0, "matched": 0, "share": 0.0, "strict_matched": 0, "strict_share": 0.0}}}
         with open(os.path.join(root, "tools", "season_blind_test.json"), "w") as f:
             json.dump(doc, f)
 

@@ -158,26 +158,35 @@ class AnswersTest(unittest.TestCase):
 
 
 class ScoreTest(unittest.TestCase):
-    def test_matches_are_counted_within_a_month_at_each_end_by_confidence(self):
-        truth = {"a": [6, 7, 8, 9], "b": [6, 7, 8, 9], "c": [6, 7, 8, 9], "d": [1, 2, 3]}
+    def test_matches_are_counted_both_ways_by_confidence(self):
+        truth = {"a": [6, 7, 8, 9], "b": [6, 7, 8, 9], "c": [6, 7, 8, 9], "d": [1, 2, 3],
+                 "e": [3, 4, 5, 6, 7, 8, 9, 10, 11]}
         ans = {"a": ([6, 7, 8, 9], "", "high", ""),   # exact
                "b": ([7, 8, 9, 10], "", "medium", ""),  # one month at each end
                "c": ([1, 2, 3], "", "low", ""),       # wrong
+               "e": ([3, 4, 5, 9, 10, 11], "", "medium", ""),  # right ends, wrong gap
                "x": ([1], "", "high", "")}            # not a sourced trail: ignored
         got = J.score(ans, truth)
-        self.assertEqual(got["tested"], 4)
-        self.assertEqual(got["matched"], 2)
-        self.assertEqual(got["by_confidence"]["high"], {"tested": 1, "matched": 1})
-        self.assertEqual(got["by_confidence"]["medium"], {"tested": 1, "matched": 1})
-        self.assertEqual(got["by_confidence"]["low"], {"tested": 1, "matched": 0})
+        self.assertEqual(got["tested"], 5)
+        self.assertEqual(got["matched"], 3)
+        self.assertEqual(got["strict_matched"], 2)
+        self.assertEqual(got["by_confidence"]["high"], {"tested": 1, "matched": 1, "strict_matched": 1})
+        self.assertEqual(got["by_confidence"]["medium"], {"tested": 2, "matched": 2, "strict_matched": 1})
+        self.assertEqual(got["by_confidence"]["low"], {"tested": 1, "matched": 0, "strict_matched": 0})
         # d was never answered: it counts as tested and missed
         self.assertEqual(got["unanswered"], 1)
 
+    def test_the_trails_judged_from_pages_that_differ_are_not_scored_against_themselves(self):
+        truth = J._truth(J.ROOT)
+        self.assertEqual(len(truth), 148)
+        for tid in ("sierra-high-route", "cohos", "ouachita"):
+            self.assertNotIn(tid, truth)
+
     def test_the_figure_file_round_trips_and_shares_are_computed(self):
-        figures = {"tested": 148, "matched": 114, "unanswered": 0,
-                   "by_confidence": {"high": {"tested": 52, "matched": 48},
-                                     "medium": {"tested": 76, "matched": 55},
-                                     "low": {"tested": 20, "matched": 11}}}
+        figures = {"tested": 148, "matched": 114, "strict_matched": 105, "unanswered": 0,
+                   "by_confidence": {"high": {"tested": 52, "matched": 48, "strict_matched": 44},
+                                     "medium": {"tested": 76, "matched": 55, "strict_matched": 50},
+                                     "low": {"tested": 20, "matched": 11, "strict_matched": 11}}}
         d = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, d, True)
         path = os.path.join(d, "t.json")
@@ -187,15 +196,32 @@ class ScoreTest(unittest.TestCase):
         self.assertEqual(got["tested"], 148)
         self.assertEqual(got["matched"], 114)
         self.assertEqual(got["share"], 0.77)
+        self.assertEqual(got["strict_matched"], 105)
+        self.assertEqual(got["strict_share"], 0.71)
         self.assertEqual(got["by_confidence"]["high"]["share"], 0.92)
+        self.assertEqual(got["by_confidence"]["high"]["strict_share"], 0.85)
         self.assertEqual(got["by_confidence"]["low"]["share"], 0.55)
+        self.assertEqual(J.check_blind_test(got), [])
+        self.assertIn("first and last", got["measure"])
+        self.assertIn("gap", got["strict_measure"])
 
     def test_a_loaded_file_must_add_up(self):
         bad = {"date": "2026-11-20", "tested": 10, "matched": 5, "share": 0.5,
-               "by_confidence": {"high": {"tested": 4, "matched": 5, "share": 1.0},
-                                 "medium": {"tested": 3, "matched": 1, "share": 0.33},
-                                 "low": {"tested": 3, "matched": 1, "share": 0.33}}}
+               "strict_matched": 4, "strict_share": 0.4,
+               "by_confidence": {"high": {"tested": 4, "matched": 5, "share": 1.0, "strict_matched": 1, "strict_share": 0.25},
+                                 "medium": {"tested": 3, "matched": 1, "share": 0.33, "strict_matched": 1, "strict_share": 0.33},
+                                 "low": {"tested": 3, "matched": 1, "share": 0.33, "strict_matched": 1, "strict_share": 0.33}}}
         self.assertTrue(J.check_blind_test(bad))
+
+    def test_the_strict_figure_may_not_exceed_the_ends_figure_or_be_missing(self):
+        doc = {"date": "2026-11-20", "tested": 10, "matched": 5, "share": 0.5,
+               "strict_matched": 6, "strict_share": 0.6,
+               "by_confidence": {"high": {"tested": 10, "matched": 5, "share": 0.5, "strict_matched": 6, "strict_share": 0.6},
+                                 "medium": {"tested": 0, "matched": 0, "share": 0.0, "strict_matched": 0, "strict_share": 0.0},
+                                 "low": {"tested": 0, "matched": 0, "share": 0.0, "strict_matched": 0, "strict_share": 0.0}}}
+        self.assertTrue(J.check_blind_test(doc))
+        del doc["strict_matched"]
+        self.assertTrue(J.check_blind_test(doc))
 
 
 class CommittedFilesTest(unittest.TestCase):
@@ -203,6 +229,9 @@ class CommittedFilesTest(unittest.TestCase):
         got = J.load_blind_test(os.path.join(J.ROOT, "tools", "season_blind_test.json"))
         self.assertEqual(J.check_blind_test(got), [])
         self.assertGreaterEqual(got["share"], E.BAR["within1_min"])
+        # both measures are stored, and the strict one is the lower
+        self.assertEqual((got["tested"], got["matched"], got["strict_matched"]), (148, 114, 105))
+        self.assertLessEqual(got["strict_matched"], got["matched"])
 
     def test_every_judged_row_is_well_formed_and_matches_its_record(self):
         ids = R.trail_ids(J.ROOT)

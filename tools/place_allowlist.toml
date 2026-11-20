@@ -3,11 +3,336 @@
 # [[park]] entries name extra park units beyond the ones their source marks as national
 # parks, and joined pages: one entry whose source_id is a list joins those units into one
 # place (as Sequoia and Kings Canyon are joined). Fields: source_id (a string, or a list
-# to join units), slug, name.
+# to join units), slug, name, where (optional, see below).
 #
 # [[range]] entries are the mountain ranges that get measured at all. The GMBA inventory
-# nests ranges up to ten levels, so no single level holds the useful names; instead this
-# list starts from the ranges the owner named and every range that 3 or more tracks cross
-# (place_trails.py candidates prints those), and a person reviews it before records are
-# written. Fields: gmba_id (GMBA_V2_ID), slug, name (the display name, without the
-# inventory's country qualifier), within (parent range slugs from this list).
+# nests ranges up to ten levels, so no single level holds the useful names. This list was
+# reviewed by the owner's reviewer on 2026-11-20: the 25 ranges the first run's digest
+# kept (hiker-searchable names, no "Area", "Region" or "Group" names, no hyphen compounds),
+# plus the named ranges below whatever their tracked count, because trails with no track
+# will be added to them by hand. Fields: gmba_id (GMBA_V2_ID), slug, name (the display name
+# as a hiker writes it, without the inventory's qualifier such as "(USA)"), within (the
+# great system, where it has one: at most two kept levels apply to any one trail, a named
+# range and its system, so a range's within never names another named range), where
+# (optional state or province codes that replace the tool's own reading, which comes from
+# web/place-bounds.toml and overlaps along borders).
+#
+# The `where` lines are set by hand where the boxes overlap a neighbour along a border.
+#
+# Two ids with one name are one place (the source lists the Palisades twice).
+#
+# Named but not in the source: "Ozark Mountains". GMBA v2 has the Ozark Plateau (16920)
+# only, which is a plateau and not what hikers call the Ozark Mountains, so it is left out.
+
+[[range]]
+gmba_id = "12105"
+slug = "rocky-mountains"
+name = "Rocky Mountains"
+where = ["AB", "BC", "CO", "ID", "MT", "NM", "UT", "WY"]
+
+[[range]]
+gmba_id = "11134"
+slug = "appalachian-mountains"
+name = "Appalachian Mountains"
+where = ["AL", "CT", "GA", "MA", "MD", "ME", "NB", "NC", "NH", "NJ", "NL", "NS", "NY", "PA", "QC", "SC", "TN", "VA", "VT", "WV"]
+
+[[range]]
+gmba_id = "11202"
+slug = "cascade-range"
+name = "Cascade Range"
+where = ["BC", "CA", "OR", "WA"]
+
+[[range]]
+gmba_id = "11928"
+slug = "sierra-nevada"
+name = "Sierra Nevada"
+
+[[range]]
+gmba_id = "12340"
+slug = "blue-ridge-mountains"
+name = "Blue Ridge Mountains"
+within = ["appalachian-mountains"]
+where = ["GA", "MD", "NC", "PA", "SC", "TN", "VA", "WV"]
+
+[[range]]
+gmba_id = "15905"
+slug = "allegheny-plateau"
+name = "Allegheny Plateau"
+within = ["appalachian-mountains"]
+
+[[range]]
+gmba_id = "12337"
+slug = "allegheny-mountains"
+name = "Allegheny Mountains"
+within = ["appalachian-mountains"]
+where = ["MD", "PA", "VA", "WV"]
+
+[[range]]
+gmba_id = "12332"
+slug = "green-mountains"
+name = "Green Mountains"
+within = ["appalachian-mountains"]
+where = ["VT"]
+
+[[range]]
+gmba_id = "12330"
+slug = "longfellow-mountains"
+name = "Longfellow Mountains"
+within = ["appalachian-mountains"]
+where = ["ME"]
+
+[[range]]
+gmba_id = "15906"
+slug = "finger-lakes"
+name = "Finger Lakes"
+where = ["NY"]
+
+[[range]]
+gmba_id = "12552"
+slug = "adirondack-mountains"
+name = "Adirondack Mountains"
+where = ["NY"]
+
+[[range]]
+gmba_id = "12104"
+slug = "colorado-plateau"
+name = "Colorado Plateau"
+where = ["AZ", "CO", "NM", "UT"]
+
+[[range]]
+gmba_id = "11633"
+slug = "mogollon-rim"
+name = "Mogollon Rim"
+
+[[range]]
+gmba_id = "12445"
+slug = "transverse-ranges"
+name = "Transverse Ranges"
+
+[[range]]
+gmba_id = "12444"
+slug = "california-coast-ranges"
+name = "California Coast Ranges"
+
+[[range]]
+gmba_id = "12443"
+slug = "klamath-mountains"
+name = "Klamath Mountains"
+
+[[range]]
+gmba_id = "11234"
+slug = "coast-mountains"
+name = "Coast Mountains"
+where = ["AK", "BC", "YT"]
+
+[[range]]
+gmba_id = "15510"
+slug = "north-cascades"
+name = "North Cascades"
+within = ["cascade-range"]
+
+[[range]]
+gmba_id = "17002"
+slug = "oregon-cascades"
+name = "Oregon Cascades"
+within = ["cascade-range"]
+
+[[range]]
+gmba_id = "11818"
+slug = "sawatch-range"
+name = "Sawatch Range"
+within = ["rocky-mountains"]
+
+[[range]]
+gmba_id = "11337"
+slug = "front-range"
+name = "Front Range"
+within = ["rocky-mountains"]
+
+[[range]]
+gmba_id = "17612"
+slug = "mosquito-range"
+name = "Mosquito Range"
+within = ["rocky-mountains"]
+
+[[range]]
+gmba_id = "11356"
+slug = "gore-range"
+name = "Gore Range"
+within = ["rocky-mountains"]
+
+[[range]]
+gmba_id = "17222"
+slug = "palisades"
+name = "Palisades"
+within = ["sierra-nevada"]
+where = ["CA"]
+
+[[range]]
+gmba_id = "17240"
+slug = "great-western-divide"
+name = "Great Western Divide"
+within = ["sierra-nevada"]
+where = ["CA"]
+
+[[range]]
+gmba_id = "12060"
+slug = "wind-river-range"
+name = "Wind River Range"
+within = ["rocky-mountains"]
+
+[[range]]
+gmba_id = "11991"
+slug = "teton-range"
+name = "Teton Range"
+within = ["rocky-mountains"]
+where = ["ID", "WY"]
+
+[[range]]
+gmba_id = "12026"
+slug = "uinta-mountains"
+name = "Uinta Mountains"
+within = ["rocky-mountains"]
+
+[[range]]
+gmba_id = "12048"
+slug = "wasatch-range"
+name = "Wasatch Range"
+within = ["rocky-mountains"]
+
+[[range]]
+gmba_id = "11800"
+slug = "san-juan-mountains"
+name = "San Juan Mountains"
+within = ["rocky-mountains"]
+where = ["CO", "NM"]
+
+[[range]]
+gmba_id = "17606"
+slug = "sawtooth-range"
+name = "Sawtooth Range"
+within = ["rocky-mountains"]
+
+[[range]]
+gmba_id = "17502"
+slug = "beartooth-mountains"
+name = "Beartooth Mountains"
+within = ["rocky-mountains"]
+where = ["MT", "WY"]
+
+[[range]]
+gmba_id = "11102"
+slug = "absaroka-range"
+name = "Absaroka Range"
+within = ["rocky-mountains"]
+
+[[range]]
+gmba_id = "11174"
+slug = "bitterroot-range"
+name = "Bitterroot Range"
+within = ["rocky-mountains"]
+
+[[range]]
+gmba_id = "12342"
+slug = "great-smoky-mountains"
+name = "Great Smoky Mountains"
+within = ["appalachian-mountains"]
+
+[[range]]
+gmba_id = "12199"
+slug = "canadian-rockies"
+name = "Canadian Rockies"
+within = ["rocky-mountains"]
+
+[[range]]
+gmba_id = "11688"
+slug = "olympic-mountains"
+name = "Olympic Mountains"
+
+[[range]]
+gmba_id = "12331"
+slug = "white-mountains"
+name = "White Mountains"
+within = ["appalachian-mountains"]
+where = ["ME", "NH"]
+
+[[range]]
+gmba_id = "11169"
+slug = "bighorn-mountains"
+name = "Bighorn Mountains"
+within = ["rocky-mountains"]
+
+[[range]]
+gmba_id = "11803"
+slug = "sangre-de-cristo-mountains"
+name = "Sangre de Cristo Mountains"
+within = ["rocky-mountains"]
+where = ["CO", "NM"]
+
+[[range]]
+gmba_id = "12046"
+slug = "wallowa-mountains"
+name = "Wallowa Mountains"
+where = ["OR"]
+
+[[range]]
+gmba_id = "11782"
+slug = "ruby-mountains"
+name = "Ruby Mountains"
+where = ["NV"]
+
+[[range]]
+gmba_id = "12929"
+slug = "trinity-alps"
+name = "Trinity Alps"
+within = ["klamath-mountains"]
+
+[[range]]
+gmba_id = "11830"
+slug = "selkirk-mountains"
+name = "Selkirk Mountains"
+where = ["BC", "ID", "WA"]
+
+[[range]]
+gmba_id = "11191"
+slug = "brooks-range"
+name = "Brooks Range"
+
+[[range]]
+gmba_id = "11113"
+slug = "alaska-range"
+name = "Alaska Range"
+
+[[range]]
+gmba_id = "12560"
+slug = "ouachita-mountains"
+name = "Ouachita Mountains"
+where = ["AR", "OK"]
+
+[[range]]
+gmba_id = "15911"
+slug = "catskill-mountains"
+name = "Catskill Mountains"
+within = ["appalachian-mountains"]
+where = ["NY"]
+
+# The source lists the Palisades twice under two ids; they are one place (see merge_same_name).
+[[range]]
+gmba_id = "19588"
+slug = "palisades"
+name = "Palisades"
+within = ["sierra-nevada"]
+where = ["CA"]
+
+# Sequoia and Kings Canyon are one national park to hikers and one page here.
+[[park]]
+source_id = ["SEQU", "KICA"]
+slug = "sequoia-and-kings-canyon"
+name = "Sequoia and Kings Canyon National Parks"
+
+# The two parks called Glacier (Montana and British Columbia) need different slugs; the
+# Montana one is the one hikers mean by /parks/glacier/.
+[[park]]
+source_id = "GLAC"
+slug = "glacier"
+name = "Glacier National Park"

@@ -302,6 +302,53 @@ import re as _re
 import tomllib as _tomllib
 
 
+@unittest.skipUnless(HAVE, "shapely (the .venv-places venv) is not installed")
+class AllowlistTest(unittest.TestCase):
+    def setUp(self):
+        self.al = P.load_allowlist(P.default_allowlist_path())
+        self.by_slug = {}
+        for r in self.al["range"]:
+            self.by_slug.setdefault(r["slug"], []).append(r)
+
+    def test_the_reviewed_list_has_the_kept_and_the_named_ranges(self):
+        slugs = set(self.by_slug)
+        for must in ("rocky-mountains", "appalachian-mountains", "palisades", "great-western-divide",
+                     "wind-river-range", "teton-range", "uinta-mountains", "wasatch-range",
+                     "san-juan-mountains", "sawtooth-range", "beartooth-mountains", "absaroka-range",
+                     "bitterroot-range", "great-smoky-mountains", "canadian-rockies",
+                     "olympic-mountains", "white-mountains", "bighorn-mountains",
+                     "sangre-de-cristo-mountains", "wallowa-mountains", "ruby-mountains", "trinity-alps",
+                     "selkirk-mountains", "brooks-range", "alaska-range", "ouachita-mountains",
+                     "catskill-mountains"):
+            self.assertIn(must, slugs)
+        self.assertNotIn("ozark-mountains", slugs)  # the source has only the Ozark Plateau
+        self.assertEqual(self.by_slug["white-mountains"][0]["gmba_id"], "12331")
+
+    def test_at_most_two_kept_levels_apply_to_a_trail(self):
+        for r in self.al["range"]:
+            for parent in r.get("within") or []:
+                self.assertIn(parent, self.by_slug, f"{r['slug']} names an unknown parent")
+                for grand in self.by_slug[parent][0].get("within") or []:
+                    self.fail(f"{r['slug']} > {parent} > {grand} is three levels")
+
+    def test_a_slug_is_on_one_name_and_display_names_carry_no_source_qualifier(self):
+        for slug, rows in self.by_slug.items():
+            self.assertEqual(len({r["name"] for r in rows}), 1, slug)
+        for r in self.al["range"]:
+            self.assertNotIn("(", r["name"], r["slug"])
+
+    def test_a_park_entry_carries_no_where_it_was_not_given(self):
+        glacier = [p for p in self.al["park"] if p["source_id"] == "GLAC"][0]
+        self.assertNotIn("where", glacier)  # the source's own state field says MT
+        self.assertEqual(glacier["slug"], "glacier")
+
+    def test_every_range_has_its_states_where_a_hand_value_is_given_and_codes_are_known(self):
+        known = set(P.state_boxes())
+        for r in self.al["range"]:
+            for c in r.get("where") or []:
+                self.assertIn(c, known, r["slug"])
+
+
 def make_repo(root):
     """Three tracked records and one trackless, minimal trail.toml files."""
     for rid, line in (("aa", True), ("bb", True), ("cc", True), ("zz", False)):

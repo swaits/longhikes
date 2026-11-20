@@ -699,7 +699,7 @@ def propose(records, outlines):
     return p
 
 
-_NAME_FILLER = {"national", "park", "wilderness", "area", "preserve", "and", "the", "of"}
+_NAME_FILLER = {"national", "park", "parks", "wilderness", "area", "preserve", "and", "the", "of"}
 
 
 def _core_name(name):

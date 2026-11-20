@@ -10,3 +10,5 @@ web/.cache/
 
 # Agent worktrees
 .claude/worktrees/
+
+.venv-places/

@@ -147,6 +147,11 @@ NPS_QUERY = ("https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services
              "NPS_Land_Resources_Division_Boundary_and_Tract_Data_Service/FeatureServer/2/query")
 CPCAD_QUERY = "https://maps-cartes.ec.gc.ca/arcgis/rest/services/CWS_SCF/CPCAD/MapServer/0/query"
 NORTH_AMERICA = (-170.0, 14.0, -50.0, 76.0)
+# CPCAD's LOC code is the province or territory (1 and 2 were read from Peter Lougheed and
+# Garibaldi; the rest follow the service's alphabetical order and were checked on
+# Killarney and Algonquin, 9, and Frontenac National Park, 11).
+CPCAD_LOC = {1: "AB", 2: "BC", 3: "MB", 4: "NB", 5: "NL", 6: "NT", 7: "NS", 8: "NU",
+             9: "ON", 10: "PE", 11: "QC", 12: "SK", 13: "YT"}
 
 
 @dataclass
@@ -160,6 +165,7 @@ class Outline:
     slug: str = ""
     within: tuple = ()
     path: str = ""
+    where_hand: tuple = ()
 
 
 @dataclass
@@ -279,11 +285,16 @@ def _clean_cpcad_name(name):
 
 def _read_cpcad(path):
     groups = _geojson_groups(path, lambda p: str(p.get("PARENT_ID")) if p.get("PARENT_ID") is not None else None)
+    locs = {}
+    with open(path, encoding="utf-8") as f:
+        for feat in json.load(f).get("features", []):
+            p = feat.get("properties") or {}
+            if p.get("PARENT_ID") is not None and p.get("LOC") in CPCAD_LOC:
+                locs.setdefault(str(p["PARENT_ID"]), set()).add(CPCAD_LOC[p["LOC"]])
     out = []
     for pid, (p, geom) in groups.items():
-        hint = {1: "AB", 2: "BC"}.get(p.get("LOC"))
         out.append(Outline("park", "cpcad", pid, _clean_cpcad_name(p.get("NAME_E") or pid),
-                           [hint] if hint else [], geom, path=(p.get("TYPE_E") or "")))
+                           sorted(locs.get(pid, ())), geom, path=(p.get("TYPE_E") or "")))
     return out
 
 
@@ -378,6 +389,54 @@ SOURCES = {
         "CC BY 4.0", "GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv",
         "https://www.earthenv.org/mountains", "GMBA_Inventory_v2.0_standard.zip", _read_gmba),
 }
+# --- Where a place is -----------------------------------------------------------
+
+_BOXES = None
+
+
+def state_boxes():
+    """{"WY": [west, south, east, north]} from web/place-bounds.toml, keyed by the codes
+    records write for regions (the file's "US-WY" without the country)."""
+    global _BOXES
+    if _BOXES is None:
+        with open(os.path.join(ROOT, "web", "place-bounds.toml"), "rb") as f:
+            raw = tomllib.load(f).get("box") or {}
+        _BOXES = {k.split("-", 1)[1]: [float(v) for v in box] for k, box in raw.items()}
+    return _BOXES
+
+
+def where_of(outline, grid=24, share=0.2):
+    """The states or provinces the place itself lies in, as records write them.
+
+    A hand value (outline.where_hand, from the allow-list or the registry) wins. Next
+    comes the source's own state field (NPS and Wilderness Connect STATE, CPCAD LOC),
+    which is the publisher's word. Where a source has none (GMBA ranges), the outline is
+    sampled on a grid and a state counts when 20% or more of the samples fall in its box
+    in web/place-bounds.toml. The boxes overlap along borders, so a range beside a border
+    can pick up a neighbour: the allow-list's `where` corrects that."""
+    boxes = state_boxes()
+    if outline.where_hand:
+        return sorted(c for c in outline.where_hand)
+    hint = sorted({c for c in outline.state_codes_hint if c in boxes})
+    if hint:
+        return hint
+    shapely = _need_shapely()
+    geom = outline.geometry
+    west, south, east, north = geom.bounds
+    xs = [west + (east - west) * (i + 0.5) / grid for i in range(grid)]
+    ys = [south + (north - south) * (j + 0.5) / grid for j in range(grid)]
+    pts = [(x, y) for x in xs for y in ys if shapely.contains_xy(geom, x, y)]
+    if not pts:
+        rp = geom.representative_point()
+        pts = [(rp.x, rp.y)]
+    out = []
+    for code, (w, sth, e, n) in boxes.items():
+        k = sum(1 for x, y in pts if w <= x <= e and sth <= y <= n)
+        if k / len(pts) >= share:
+            out.append(code)
+    return sorted(out)
+
+
 # --- Allow-list and catalogue ------------------------------------------------
 
 def load_allowlist(path):
@@ -424,6 +483,7 @@ def catalogue(cache, allowlist=None):
             if extra:
                 o.slug = extra.get("slug") or o.slug
                 o.name = extra.get("name") or o.name
+                o.where_hand = tuple(extra.get("where") or ())
             out.append(o)
     for p in joined:
         parts = [o for o in SOURCES["nps"].read(path) if str(o.source_id) in [str(s) for s in p["source_id"]]]
@@ -432,7 +492,7 @@ def catalogue(cache, allowlist=None):
                                p.get("name") or parts[0].name,
                                sorted({h for o in parts for h in o.state_codes_hint}),
                                _union_geoms(o.geometry for o in parts),
-                               slug=p.get("slug") or ""))
+                               slug=p.get("slug") or "", where_hand=tuple(p.get("where") or ())))
     path, _ver = fetch(SOURCES["cpcad"], cache)
     out.extend(SOURCES["cpcad"].read(path))
     path, _ver = fetch(SOURCES["wilderness-connect"], cache)
@@ -445,7 +505,8 @@ def catalogue(cache, allowlist=None):
                 out.append(Outline("range", "gmba-v2", g["gmba_id"],
                                    spec.get("name") or g["name"], [], g["geometry"],
                                    slug=spec.get("slug") or "",
-                                   within=tuple(spec.get("within") or ()), path=g["path"]))
+                                   within=tuple(spec.get("within") or ()), path=g["path"],
+                                   where_hand=tuple(spec.get("where") or ())))
     return assign_slugs(out)
 
 
@@ -543,12 +604,7 @@ def propose(records, outlines):
     for hit in p.per_place.values():
         hit.trails.sort(key=lambda t: (-t[1], t[0]))
         hit.page = len(hit.trails) >= 3
-        counts = {}
-        for tid, _km in hit.trails:
-            for code in by_id[tid].get("regions") or []:
-                counts[code] = counts.get(code, 0) + 1
-        n = len(hit.trails)
-        hit.where = sorted(c for c, k in counts.items() if k * 2 >= n) or list(hit.outline.state_codes_hint)
+        hit.where = where_of(hit.outline)
     # Parents are never stored on a record (the build closes membership over within):
     # a range drops out of a trail's list when the trail is also in one of its
     # descendants, by the GMBA Path. Place counts stay as measured.
@@ -830,7 +886,11 @@ def apply(proposal_path, root, today, exclude=frozenset()):
         k = (v["kind"], v["slug"])
         if k not in named:
             continue
-        entry = {"slug": v["slug"], "kind": v["kind"], "name": v["name"], "where": v["where"],
+        old = next((x for x in registry_entries(root)
+                    if (x.get("kind"), x.get("slug")) == k), {})
+        # a reviewed where in the registry is kept: a re-run never rewrites it
+        entry = {"slug": v["slug"], "kind": v["kind"], "name": v["name"],
+                 "where": old.get("where") or v["where"],
                  "source": v["source"], "source_id": v["source_id"],
                  "source_version": versions.get(v["source"], ""), "box": v["box"]}
         if v.get("within"):

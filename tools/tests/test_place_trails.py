@@ -138,11 +138,37 @@ class ProposalTest(unittest.TestCase):
         self.assertEqual(p.near[0].trail, "a")
         self.assertTrue(any(abs(km - P.MIN_KM) <= 0.5 for _, km in p.per_trail["a"]))
 
-    def test_where_is_the_regions_most_trails_share(self):
+    def test_where_is_the_source_states_not_the_visiting_trails_states(self):
+        # trails from other states visit the place: where stays the place's own
         records = [rec("a", ["WY"], self.park_only), rec("b", ["WY", "CO"], self.park_only),
-                   rec("c", ["WY"], self.park_only), rec("d", ["UT"], self.park_only)]
+                   rec("c", ["OR", "WA"], self.park_only), rec("d", ["UT"], self.park_only)]
         p = P.propose(records, [self.park])
         self.assertEqual(p.per_place[("park", "alpha-park")].where, ["WY"])
+
+    def test_where_of_a_source_with_states_uses_them_and_drops_unknown_codes(self):
+        o = outline("park", "P9", "Edge Park", self.park.geometry, hint=["MT", "ID", "PR"])
+        self.assertEqual(P.where_of(o), ["ID", "MT"])
+
+    def test_where_of_a_range_is_found_from_the_state_boxes(self):
+        # wholly inside the Wyoming box, clear of every other state's box
+        o = outline("range", "R5", "Wyoming Range", self.park.geometry)
+        o.state_codes_hint = []
+        self.assertEqual(P.where_of(o), ["WY"])
+
+    def test_where_of_a_place_in_two_states_lists_both(self):
+        both = Polygon([(-112.0, 40.0), (-110.0, 40.0), (-110.0, 42.0), (-112.0, 42.0)])
+        o = outline("range", "R6", "Border Range", both)
+        self.assertEqual(P.where_of(o), ["UT", "WY"])
+
+    def test_a_hand_where_overrides_the_source_and_the_boxes(self):
+        o = outline("range", "R7", "Hand Range", self.park.geometry, hint=["WY"])
+        o.where_hand = ("WY", "MT")
+        self.assertEqual(P.where_of(o), ["MT", "WY"])
+
+    def test_yosemite_like_outline_is_california_only(self):
+        yose = Polygon([(-120.0, 37.5), (-119.2, 37.5), (-119.2, 38.2), (-120.0, 38.2)])
+        o = outline("park", "YOSE", "Yosemite National Park", yose, hint=["CA"])
+        self.assertEqual(P.where_of(o), ["CA"])
 
     def test_a_slug_collision_inside_a_kind_gets_the_state_code(self):
         a = outline("park", "P1", "Glacier", self.park.geometry, slug=None, hint=["MT"])
@@ -286,6 +312,15 @@ class ApplyTest(unittest.TestCase):
         self.assertEqual([e["slug"] for e in reg], ["alpha-park"])
         self.assertEqual(reg[0]["source_version"], "2026-11-20")
         self.assertEqual(reg[0]["box"], [-110.0, 43.0, -109.0, 44.0])
+
+    def test_a_reviewed_where_in_the_registry_survives_a_rerun(self):
+        P.apply(self.pjson, self.root, "2026-11-20")
+        path = os.path.join(self.root, "places.toml")
+        text = open(path).read()
+        self.assertIn('where = ["WY"]', text)
+        open(path, "w").write(text.replace('where = ["WY"]', 'where = ["MT", "WY"]'))
+        P.apply(self.pjson, self.root, "2026-12-01")
+        self.assertEqual(read_toml(path)["place"][0]["where"], ["MT", "WY"])
 
     def test_stated_requires_an_http_source_a_quote_and_a_trackless_record(self):
         P.apply(self.pjson, self.root, "2026-11-20")

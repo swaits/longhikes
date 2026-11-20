@@ -72,11 +72,19 @@ terrain = ["canyon", "alpine"]
 travel = "some-cross-country"
 caution = "The middle Deseret Hiking Route portion is completely unmarked and is not designated by any state or federal agency."
 checked = "2026-11-13"
+season = "Late March to mid-October (northbound from late March; southbound from July)"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.lbhikes.com/2019/12/dhr.html"
 publisher = "Kevin \"LarryBoy\" DeVries (LB Hikes)"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.trailgroove.com/blogs/entry/228-from-mexico-to-canada-thru-hiking-the-route-in-between/"
+publisher = "TrailGroove Magazine (posted by Kevin DeVries, the route's author)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -96,4 +104,13 @@ fields = ["route.line_policy", "source.line_absent_reason"]
 basis = "The author's guide page sends the maps, data book and GPX for the middle third only after proof of a day of trail work."
 basis_url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Late March to mid-October (northbound from late March; southbound from July)."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "The season is stated by TrailGroove Magazine as: Late March to mid-October (northbound from late March; southbound from July)."
+basis_url = "https://www.trailgroove.com/blogs/entry/228-from-mexico-to-canada-thru-hiking-the-route-in-between/"
+asked_by = "the dataset's own check"
 outcome = "applied"

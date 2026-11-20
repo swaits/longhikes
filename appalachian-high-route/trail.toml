@@ -67,11 +67,19 @@ terrain = ["forest"]
 travel = "trail"
 caution = "The Burnsville Connector is about 26 miles, of which about 18 are on paved secondary roads and sidewalks."
 checked = "2026-11-14"
+season = "Spring to fall"
+months = [3, 4, 5, 6, 7, 8, 9, 10, 11]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
 publisher = "Jennifer Pharr Davis (a creator of the route)"
 facts = ["official_url", "summary", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://thetrek.co/trail-profile-the-appalachian-high-route/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "Appalachian High Route"
@@ -105,4 +113,13 @@ fields = ["route.line_policy"]
 basis = "The authors' page gives basic maps as PDF and PNG images and no GPS file, and says finished maps will come later."
 basis_url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Spring to fall."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "The season is stated by The Trek as: Spring to fall."
+basis_url = "https://thetrek.co/trail-profile-the-appalachian-high-route/"
+asked_by = "the dataset's own check"
 outcome = "applied"

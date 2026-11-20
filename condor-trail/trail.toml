@@ -82,6 +82,9 @@ travel = "some-cross-country"
 unfinished = "The Association says the trail is not completed: the basic trail is laid out from Highway 101 at the Cuesta Grade to Lake Piru, and the other sections are still being worked out."
 caution = "The Association says parts of the route are poorly maintained or not maintained, and some cross private land where public access has been denied or is not known."
 checked = "2026-11-14"
+season = "Winter and spring"
+months = [12, 1, 2, 3, 4, 5]
+season_basis = "source"
 
 [[hike.source]]
 url = "http://www.condortrail.com/"
@@ -107,6 +110,11 @@ facts = ["start_lonlat"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/269976"
 publisher = "U.S. Geological Survey, Geographic Names Information System (Bottchers Gap)"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://www.nationalgeographic.com/travel/article/is-california-condor-trail-the-next-great-thru-hike"
+publisher = "National Geographic"
+facts = ["season", "months"]
 
 [[link]]
 title = "Condor Trail"
@@ -139,5 +147,14 @@ change = "The guidebook's link now goes to the Los Padres ForestWatch store page
 fields = ["guide"]
 basis = "The ForestWatch store page for the book says: \"by Brian Sarvis with Bryan Conant, 2021. Paperback, 198 pages.\" The association's own page recommends buying it on Amazon, so the link is to a bookseller."
 basis_url = "https://store.forestwatch.org/products/new-condor-trail-guide-hikers-guide-to-the-400-mile-condor-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Winter and spring."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "The season is stated by National Geographic as: Winter and spring."
+basis_url = "https://www.nationalgeographic.com/travel/article/is-california-condor-trail-the-next-great-thru-hike"
 asked_by = "the dataset's own check"
 outcome = "applied"

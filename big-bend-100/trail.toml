@@ -74,6 +74,9 @@ terrain = ["desert", "canyon"]
 travel = "some-cross-country"
 caution = "Harkey warns that the route has exceptional navigational challenges in rarely traveled parts of the parks, and that a hiker should never rely on desert water sources without a backup plan."
 checked = "2026-11-16"
+season = "November to February"
+months = [11, 12, 1, 2]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://tpwmagazine.com/adventure-recreation/the-big-bend-100-a-hike-across-two-west-texas-parks/"
@@ -84,6 +87,11 @@ facts = ["summary", "start", "end", "shape", "terrain", "travel", "caution"]
 url = "https://bigbendsentinel.com/2023/04/12/a-walk-on-the-wild-side-a-100-mile-hike-through-texas-best-idea/"
 publisher = "Big Bend Sentinel"
 facts = ["summary"]
+
+[[hike.source]]
+url = "https://www.gossamergear.com/blogs/our-blog/big-bend-100"
+publisher = "Gossamer Gear"
+facts = ["season", "months"]
 
 [[link]]
 title = "The Big Bend 100: The Newest Long-Distance Trail in Texas"
@@ -109,5 +117,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://tpwmagazine.com/adventure-recreation/the-big-bend-100-a-hike-across-two-west-texas-parks/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: November to February."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "The season is stated by Gossamer Gear as: November to February."
+basis_url = "https://www.gossamergear.com/blogs/our-blog/big-bend-100"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -70,11 +70,19 @@ terrain = ["desert"]
 travel = "some-cross-country"
 caution = "Water is scarce and far apart, and much of the route is unmarked, with cross-country sections."
 checked = "2026-11-13"
+season = "Spring and autumn (recommended starts)"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
 publisher = "Ryan Sylva (Dirtmonger), on the Gossamer Gear blog"
 facts = ["official_url", "summary", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.freedirtmonger.com/2020/06/gbt-guide-part-2.html"
+publisher = "Ryan \"Dirtmonger\" Sylva (route's author, freedirtmonger.com)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -93,5 +101,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhszFnWsLND5_P6voxPgOkO8lYn0E5Nn68uWgxZm7to_MIvK9HRh7-HwpnrKzOAZ_LvypddlETUVB7z5ZU-905vcq_cuN1OU51ofVFRccoEWQ_n3KkGTnXNxNFT7ZqOM-gJshWm7k2qfJA/s1600/Great+Basin+Trail+Logo.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Spring and autumn (recommended starts)."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "The season is stated by Ryan \"Dirtmonger\" Sylva as: Spring and autumn (recommended starts)."
+basis_url = "https://www.freedirtmonger.com/2020/06/gbt-guide-part-2.html"
 asked_by = "the dataset's own check"
 outcome = "applied"

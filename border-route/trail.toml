@@ -60,6 +60,9 @@ travel = "trail"
 permit = "A Boundary Waters Canoe Area Wilderness permit is required to enter."
 caution = "Sections of the trail can be obscured or blocked by downed trees, so carry a compass and map or GPS."
 checked = "2026-11-13"
+season = "Fall"
+months = [9, 10, 11]
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://borderroutetrail.org/"
@@ -75,6 +78,11 @@ facts = ["start", "end", "terrain"]
 url = "https://www.fs.usda.gov/r09/superior/recreation/trails/border-route-trail"
 publisher = "USDA Forest Service, Superior National Forest"
 facts = ["summary", "shape", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://static1.squarespace.com/static/62fd069e12d1b9766c22caaa/t/67e5989ecea0512be2548de7/1743100064722/Newsletter_2024_Q3.2.pdf"
+publisher = "Border Route Trail Association"
+facts = ["season", "months"]
 
 [[link]]
 title = "Border Route Trail"
@@ -98,5 +106,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://borderroutetrail.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Fall."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "The season is stated by Border Route Trail Association as: Fall."
+basis_url = "https://static1.squarespace.com/static/62fd069e12d1b9766c22caaa/t/67e5989ecea0512be2548de7/1743100064722/Newsletter_2024_Q3.2.pdf"
 asked_by = "the dataset's own check"
 outcome = "applied"

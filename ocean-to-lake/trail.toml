@@ -60,11 +60,19 @@ terrain = ["coast", "forest"]
 travel = "trail"
 caution = "Sections can be closed for hunting, prescribed burns or agency maintenance, and fees are charged for Jonathan Dickinson State Park and Corbett Wildlife Management Area."
 checked = "2026-11-14"
+season = "Late fall to early spring"
+months = [11, 12, 1, 2, 3]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.loxfltrail.org/Ocean2LakeHikingTrail.html"
 publisher = "Florida Trail Association, Loxahatchee Chapter"
 facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.treelinereview.com/where-to-go/oceans-to-lake-trail"
+publisher = "Treeline Review"
+facts = ["season", "months"]
 
 [[link]]
 title = "Ocean to Lake Trail"
@@ -88,5 +96,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source", "shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.loxfltrail.org/Ocean2LakeHikingTrail.html"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Late fall to early spring."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "The season is stated by Treeline Review as: Late fall to early spring."
+basis_url = "https://www.treelinereview.com/where-to-go/oceans-to-lake-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

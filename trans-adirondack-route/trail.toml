@@ -75,11 +75,19 @@ shape = "point-to-point"
 terrain = ["forest"]
 travel = "some-cross-country"
 checked = "2026-11-13"
+season = "May, and August to October"
+months = [5, 8, 9, 10]
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://erikschlimmer.com/tar-1"
 publisher = "Erik Schlimmer"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://thetrek.co/trans-adirondack-route-240-mile-walk-new-yorks-wild-side/"
+publisher = "Erik Schlimmer (route author), published in The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "Trans Adirondack Route"
@@ -112,5 +120,14 @@ change = "The guide's entry now names the publisher and the edition on sale, and
 fields = ["guide"]
 basis = "The author's page for his books lists Blue Line to Blue Line + Map Set as the second edition guidebook (222 pages, 2025) and the third edition map set, published by Beechwood Books."
 basis_url = "https://erikschlimmer.com/books-sale-/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: May, and August to October."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "The season is stated by Erik Schlimmer as: May, and August to October."
+basis_url = "https://thetrek.co/trans-adirondack-route-240-mile-walk-new-yorks-wild-side/"
 asked_by = "the dataset's own check"
 outcome = "applied"

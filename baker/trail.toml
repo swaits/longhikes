@@ -58,6 +58,9 @@ terrain = ["forest", "farmland"]
 travel = "trail-and-road"
 caution = "Most of the trail is on private land, and camping and fires are allowed only at the designated shelters."
 checked = "2026-11-13"
+season = "Spring to fall"
+months = [3, 4, 5, 6, 7, 8, 9, 10, 11]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://rachelcarsontrails.org/trails/baker-trail"
@@ -68,6 +71,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"
 url = "https://rachelcarsontrails.org/"
 publisher = "Rachel Carson Trails Conservancy"
 facts = ["summary"]
+
+[[hike.source]]
+url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "Baker Trail"
@@ -91,5 +99,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://rachelcarsontrails.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Spring to fall."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "The season is stated by The Trek as: Spring to fall."
+basis_url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
 asked_by = "the dataset's own check"
 outcome = "applied"

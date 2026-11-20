@@ -60,6 +60,9 @@ high_point_m = 3651
 permit = "The Park Service issues wilderness permits for overnight trips in Sequoia and Kings Canyon National Parks, limits the number of people starting each day by entry point, and takes reservations on Recreation.gov up to six months ahead; a recreation fee is required."
 caution = "The Park Service says hikers must carry portable bear-resistant canisters and that campfires are prohibited above 10,000 feet. Camping is limited to two nights in Paradise Valley, one night per lake at Rae Lakes and two nights at Charlotte Lake, and Bullfrog Lake is closed to camping. High water at stream crossings can be a problem in May and early June, and Glen Pass may be impassable to hikers until mid to late July. The South Fork Kings River bridge above Paradise Valley washed out in the winter of 2016-2017 and a replacement will not be started before 2027; the Park Service says crossing the river can be extremely hazardous, depending on conditions."
 checked = "2026-11-18"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
@@ -80,6 +83,11 @@ facts = ["permit"]
 url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/SEKI_ParkAtlas2_4_HikingandBackpacking_MASTER/FeatureServer/12"
 publisher = "National Park Service, Park Atlas (the Road's End end of the stem)"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.outboundcalifornia.com/destinations/rae-lakes-loop"
+publisher = "Outbound California"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -153,5 +161,14 @@ change = "The track is now built from the National Park Service's Park Atlas lay
 fields = ["source.line_file", "source.status", "source.publisher", "source.url", "source.discovery", "source.format", "source.licence", "source.licence_text", "source.attribution", "source.osm_only", "source.mainline", "source.source_checked", "source.line_source", "osm.note", "verification"]
 basis = "The Park Service's Rae Lakes Loop page gives the loop as 41.4 miles and a table of miles from Road's End, 1.9 miles to the Paradise and Bubbs Creek junction, which the loop reaches again before it returns to Road's End. The Park Service's Park Atlas layer for the Rae Lakes Loop holds 14 features that join into that loop and 2 for the stem from Road's End."
 basis_url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "The season is stated by Outbound California as: July to September."
+basis_url = "https://www.outboundcalifornia.com/destinations/rae-lakes-loop"
 asked_by = "the dataset's own check"
 outcome = "applied"

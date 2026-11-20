@@ -59,6 +59,9 @@ travel = "trail"
 permit = "Camping anywhere in the park outside the developed rim campgrounds needs a backcountry permit from the park, which takes reservations on Recreation.gov."
 caution = "Most of the trail has no reliable water, and the National Park Service warns against walking it in summer heat."
 checked = "2026-11-15"
+season = "November to April (the Boucher to South Bass segment)"
+months = [11, 12, 1, 2, 3, 4]
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.nps.gov/grca/planyourvisit/upload/Tonto_Hermit-Bright_Angel_to_Hermit.pdf"
@@ -80,6 +83,11 @@ url = "https://www.nps.gov/grca/planyourvisit/backcountry-permit.htm"
 publisher = "National Park Service, Grand Canyon National Park"
 facts = ["permit"]
 
+[[hike.source]]
+url = "https://npshistory.com/publications/grca/brochures/tonto-boucher-s-bass-2008.pdf"
+publisher = "Grand Canyon National Park (National Park Service), copy hosted by npshistory.com"
+facts = ["season", "months"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -88,5 +96,14 @@ date = "2026-11-15"
 change = "The record was added: Tonto Trail."
 fields = ["record"]
 basis = "The record's own source entry: National Park Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: November to April (the Boucher to South Bass segment)."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "The season is stated by Grand Canyon National Park as: November to April (the Boucher to South Bass segment)."
+basis_url = "https://npshistory.com/publications/grca/brochures/tonto-boucher-s-bass-2008.pdf"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -116,7 +116,7 @@ see = ["/lists/weekend/", "/lists/one-to-two-weeks/", "/lists/a-month-or-more/",
 [[term]]
 id = "season"
 term = "Season"
-definition = "The months in which the whole trail is usually walked. Where a page states them, that is shown. Otherwise they are estimated from the climate at the trail's elevation and from similar trails, and the page says so: an estimated season reads “About” with a note. It is not the dates a park or a hut is open."
+definition = "The months in which the whole trail is usually walked. Where a page states them, that is shown. Otherwise they are estimated from the climate at the trail's elevation and from similar trails or, where pages disagree and none is the trail's own, set by judgement from all of them, and the page says which: either reads “About” with a note. It is not the dates a park or a hut is open."
 see = ["/lists/"]
 
 [[term]]

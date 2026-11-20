@@ -239,6 +239,27 @@ def season_pages_differ(rec):
     return season_estimated(rec) and season_basis(rec) == "sources"
 
 
+SEASON_USUAL = "This is the usual window, not a closure."
+
+
+def _plural(n, one, many):
+    return f"{n} {one if n == 1 else many}"
+
+
+def season_unstated_clause(recs):
+    """What is true of the seasons among recs that no page states, kind by kind and counted exactly:
+    "2 are estimated from the climate and similar trails and 1 is set by judgement from pages that
+    differ"; "" when there are none."""
+    kinds = [season_kind(r) for r in recs]
+    est, judged = kinds.count("estimated"), kinds.count("judged")
+    parts = []
+    if est:
+        parts.append(f"{est} {'is' if est == 1 else 'are'} estimated from the climate and similar trails")
+    if judged:
+        parts.append(f"{judged} {'is' if judged == 1 else 'are'} set by judgement from pages that differ")
+    return " and ".join(parts)
+
+
 def season_note(rec):
     """Says an estimated season is not a page's statement, how it was worked out, what sets it
     there and how far to trust it; "" when a page states the season."""
@@ -247,6 +268,8 @@ def season_note(rec):
     reason = season_reason(rec)
     if season_pages_differ(rec):
         lead = "No one page states this season."
+    elif "estimated from the climate" in reason:
+        lead = "No page states a season."   # the method says how it was estimated; not said twice
     else:
         lead = ("No page states a season. This is estimated from the climate at the trail's "
                 "elevation and from similar trails.")
@@ -256,7 +279,7 @@ def season_note(rec):
     conf = season_confidence(rec)
     if conf:
         parts.append(f"Confidence: {conf}.")
-    parts.append("People do walk it outside these months.")
+    parts.append(SEASON_USUAL)
     return " ".join(parts)
 
 

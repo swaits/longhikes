@@ -110,9 +110,9 @@ def season_section(records, blind):
             ["Two or more pages from different publishers that agree", str(basis["sources"])],
             ["One page", str(basis["source"])],
             ["Pages that differ, so set by judgement from all of them", str(kinds["judged"])],
-            ["No page states one, so estimated from climate", str(kinds["estimated"])],
+            ["No page states one, so estimated from the climate and similar trails", str(kinds["estimated"])],
             ["All trails", str(n)]]
-    out = [f"""<p>Every trail has a season. Where a page states one, the season is that page&rsquo;s. Where the pages that state one differ and none is the trail&rsquo;s holder, its association or its route&rsquo;s author, the season is set by judgement from all of them and the climate, and the page says so. Where no page states one, the season is estimated from the climate at the trail&rsquo;s elevation and from similar trails: it reads &ldquo;About&rdquo; with a note, is marked in lists and is left out of the data search engines read. People do walk many trails outside their estimated months, and an estimate is replaced when a page that states a season is found.</p>
+    out = [f"""<p>Every trail has a season. Where a page states one, the season is that page&rsquo;s. Where the pages that state one differ and none is the trail&rsquo;s holder, its association or its route&rsquo;s author, the season is set by judgement from all of them and the climate, and the page says so. Where no page states one, the season is estimated from the climate at the trail&rsquo;s elevation and from similar trails: it reads &ldquo;About&rdquo; with a note, is marked in lists and is left out of the data search engines read. An estimated season is the usual window, not a closure, and an estimate is replaced when a page that states a season is found.</p>
   {pagekit.table(["Where a trail's season comes from", "Trails"], rows, caption="Where the seasons come from", numeric=(1,))}"""]
     if blind:
         by = blind["by_confidence"]
@@ -149,7 +149,7 @@ def method_page(records, site, repo_root):
     for label, fn in (("A usual time stated by a source", lambda r: not facets.time_days(r)[2]),
                       ("A season a page states", lambda r: facets.season_kind(r) == "stated"),
                       ("A season set from pages that differ", lambda r: facets.season_kind(r) == "judged"),
-                      ("A season estimated from climate", lambda r: facets.season_kind(r) == "estimated"), ("A high point", lambda r: bool(hike.table(r).get("high_point_m"))),
+                      ("A season estimated from the climate and similar trails", lambda r: facets.season_kind(r) == "estimated"), ("A high point", lambda r: bool(hike.table(r).get("high_point_m"))),
                       ("Terrain", lambda r: bool(facets.terrain(r))), ("What the walking is", lambda r: bool(facets.walking(r))),
                       ("A computed climb that covers the whole trail", lambda r: facets.row_climb_m(r) is not None),
                       ("A track included here", common.has_line)):

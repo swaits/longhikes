@@ -149,7 +149,7 @@ def detail(rec):
     season = facets.season_text(rec)
     if season:
         how = (", judged from pages that differ" if facets.season_pages_differ(rec)
-               else ", estimated from climate" if facets.season_estimated(rec) else "")
+               else ", estimated from the climate and similar trails" if facets.season_estimated(rec) else "")
         out.append(f"Season: {esc(season)}{how}.")
     rest = _rest_of_summary(rec)
     if rest:

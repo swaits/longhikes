@@ -435,7 +435,7 @@ The workflow: triggers `schedule` (monthly: `cron: "17 6 1 * *"`) and `workflow_
 - Test: `web/tests/test_facets.py` (add), `web/tests/test_hike.py`
 
 **Interfaces:**
-- Produces in `facets.py`: `season_estimated(rec) -> bool` (true when `hike.season_basis == "estimate"`); `season_text(rec)` returns `"About " + phrase` for an estimate (phrase left as it is after "About", so "About June to September"), unchanged for others; `season_note(rec) -> str` (`""` unless estimated; else "Estimated from climate at the trail's elevation. No source states a season. People do walk it outside these months."); `SEASON_STATED_NOTE` not needed.
+- Produces in `facets.py`: `season_estimated(rec) -> bool` (true when `hike.season_basis == "estimate"`); `season_text(rec)` returns `"About " + phrase` for an estimate (phrase left as it is after "About", so "About June to September"), unchanged for others; `season_note(rec) -> str` (`""` unless estimated; else "Estimated from climate at the trail's elevation. No source states a season. This is the usual window, not a closure."); `SEASON_STATED_NOTE` not needed.
 
 - [ ] **Step 1: Write failing tests** (fixtures built like `fake(...)` in `web/tests/test_views.py`): `test_an_estimated_season_reads_about_and_has_a_note`; `test_a_stated_season_is_unchanged_and_has_no_note`; `test_an_estimated_all_year_season_reads_about_all_year`; `test_season_estimated_is_false_without_a_basis`.
 - [ ] **Step 2: Run** `python3 -m unittest discover -s web/tests -p "test_facets.py" -v`. Expected: the new tests fail.

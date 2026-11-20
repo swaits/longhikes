@@ -189,9 +189,29 @@ class SeasonTextTest(unittest.TestCase):
         note = facets.season_note(rec)
         for want in ("No page states a season", "estimated from the climate at the trail's elevation and from "
                      "similar trails", "Snow keeps the high passes closed until June.", "Confidence: medium.",
-                     "People do walk it outside these months."):
+                     "This is the usual window, not a closure."):
             self.assertIn(want, note)
+        self.assertNotIn("walk it outside", note)
         self.assertNotIn("Judged from", note)  # the standard lead is said once, in the note's own words
+
+    def test_a_page_that_contradicts_itself_is_said_once_not_twice(self):
+        rec = fake(1, hike=est_hike(season_method=(
+            "A page was found but it contradicts itself, so no page is relied on. The season was estimated "
+            "from the climate and similar trails: snow lies until June. Confidence: medium.")))
+        note = facets.season_note(rec)
+        self.assertTrue(note.startswith("No page states a season. A page was found but it contradicts itself"), note)
+        self.assertEqual(note.count("estimated from the climate"), 1)
+        self.assertTrue(note.endswith("This is the usual window, not a closure."))
+
+    def test_a_season_judged_from_pages_is_not_called_estimated_from_climate(self):
+        judged = fake(1, hike=est_hike(season_basis="sources", season_method="The pages differ. Confidence: low."))
+        est = fake(2, hike=est_hike())
+        self.assertEqual(facets.season_unstated_clause([est, est, judged]),
+                         "2 are estimated from the climate and similar trails and 1 is set by judgement from "
+                         "pages that differ")
+        self.assertEqual(facets.season_unstated_clause([judged]), "1 is set by judgement from pages that differ")
+        self.assertEqual(facets.season_unstated_clause([est]), "1 is estimated from the climate and similar trails")
+        self.assertEqual(facets.season_unstated_clause([]), "")
 
     def test_a_stated_season_is_unchanged_and_has_no_note(self):
         rec = fake(1, hike={"season": "June to September", "months": [6, 7, 8, 9], "season_basis": "primary"})
@@ -365,9 +385,10 @@ class BuiltVocabularyTest(unittest.TestCase):
         for rec in est[:10]:
             doc = self.read(f"trails/{rec['id']}/index.html")
             self.assertIn(facets.season_text(rec), html.unescape(doc), rec["id"])
-            self.assertIn("People do walk it outside these months.", html.unescape(doc), rec["id"])
+            self.assertIn("This is the usual window, not a closure.", html.unescape(doc), rec["id"])
+            self.assertNotIn("outside these months", html.unescape(doc), rec["id"])
         for rec in stated[:10]:
-            self.assertNotIn("People do walk it outside these months.", html.unescape(self.read(f"trails/{rec['id']}/index.html")))
+            self.assertNotIn("This is the usual window", html.unescape(self.read(f"trails/{rec['id']}/index.html")))
 
     def test_navigation_has_four_sections_and_saved(self):
         doc = self.read("index.html")

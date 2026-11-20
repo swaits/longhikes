@@ -51,10 +51,11 @@ def season_cell(rec):
 def figures_note(recs):
     """What the times and climbs of these trails mean, with the caveats the records state."""
     est = sum(1 for r in recs if facets.time_days(r)[2])
-    unstated = sum(1 for r in recs if facets.season_estimated(r))
+    unstated = [r for r in recs if facets.season_estimated(r)]
     parts = [f"Times that start with “About” are estimated from the length ({est} of these). "
              "Otherwise a source states the time.",
-             f"Seasons that start with “About” are estimated from climate ({unstated} of these)." if unstated else "",
+             (f"Seasons that start with “About” are not stated by a page ({len(unstated)} of these): "
+              f"{facets.season_unstated_clause(unstated)}." if unstated else ""),
              climb_caveat(recs)]
     return " ".join(p for p in parts if p)
 

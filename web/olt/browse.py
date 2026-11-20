@@ -126,14 +126,21 @@ def _month_list(m):
 
 def month_note(name):
     def note(recs, records):
-        est = sum(1 for r in recs if facets.season_estimated(r))
+        unstated = [r for r in recs if facets.season_estimated(r)]
+        est = len(unstated)
         stated = len(recs) - est
         if not est:
             return f"A source states the season for all {stated}."
+        kinds = {facets.season_kind(r) for r in unstated}
+        one = ("estimated from the climate and similar trails" if kinds == {"estimated"}
+               else "set by judgement from pages that differ" if kinds == {"judged"} else "")
         if not stated:
-            return "No source states the season for these, so each is estimated from climate."
-        return (f"A source states the season for {stated} of these. For the other {est} it is "
-                f"estimated from climate, and marked.")
+            return (f"No source states the season for these, so each is {one}." if one
+                    else f"No source states the season for these: {facets.season_unstated_clause(unstated)}.")
+        if one:
+            return f"A source states the season for {stated} of these. For the other {est} it is {one}, and marked."
+        return (f"A source states the season for {stated} of these. For the other {est}, "
+                f"{facets.season_unstated_clause(unstated)}, and marked.")
     return note
 
 

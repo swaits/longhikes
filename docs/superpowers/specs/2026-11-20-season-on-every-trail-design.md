@@ -146,8 +146,8 @@ What the tool does:
 
 - Trail page: an estimated season reads "About June to September" with a
   note, as estimated time does today: "Estimated from climate at the trail's
-  elevation. No source states a season. People do walk it outside these
-  months." Sourced seasons show their basis in "About this data".
+  elevation. No source states a season. This is the usual window, not a
+  closure." Sourced seasons show their basis in "About this data".
 - Rows, summary lines and month lists include every trail. Estimated seasons
   are marked in the row.
 - The "By month" blurb becomes "Trails normally hiked in the month. Estimated
@@ -203,7 +203,7 @@ The plan above chose a rule over climate normals for Step 3. It was built and te
 - **An estimate is stricter.** `season_basis = "estimate"` means no page states a season. `season` is built from `months`; `season_method` is one or two plain sentences saying how it was set and what sets the season there, ending "Confidence: high.", "medium." or "low."; and its one `[[hike.source]]` names `season` and `months` and cites the climate data. The validator refuses an estimate with any ordinary page naming the season, or with no method, and requires a season on every trail.
 - **Pages that disagree.** Three trails (the Sierra High Route, the Cohos Trail and the Ouachita Trail) have pages from at least two different publishers that disagree, where none is the managing body, association or route author. Their season is set by judgement from all the pages and the estimate: basis `sources`, the pages cited as sources naming the season, and a `season_method` saying the pages differ and how it was settled, ending with a confidence; the validator requires two publishers and the confidence. Three more (the Finger Lakes Trail, whose one page contradicts itself, and the Ice Age Trail and the Ozark Trail, each with two pages from one publisher that differ) have no two publishers, so they are estimates: the pages are not cited as stating the season, and the method says a page was found but differs, so the season was estimated from the climate and similar trails. A season with a method is shown as an estimate (it reads "About" with a note), left out of structured data, and not counted among the seasons a page states.
 - **The monthly check** (`estimate_season.py check`) reruns the machine estimate for every estimate and flags any whose inputs have changed since `tools/season_inputs.json` recorded them. It does not rewrite anything. The audit (`docs/audit.md`) also searches afresh for a page for every estimate.
-- **On the site**, a trail's page reads "About April to October" with a note (no page states a season; estimated from the climate at the trail's elevation and from similar trails; what sets it there; the confidence; that people walk it outside these months). Rows, tables and month lists mark estimates, the month filter can leave them out, and the reference page and glossary give the counts and the blind-test result.
+- **On the site**, a trail's page reads "About April to October" with a note (no page states a season; estimated from the climate at the trail's elevation and from similar trails; what sets it there; the confidence; that these are the usual months, not a closure). Rows, tables and month lists mark estimates, the month filter can leave them out, and the reference page and glossary give the counts and the blind-test result.
 
 ## Open risks
 

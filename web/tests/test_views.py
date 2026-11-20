@@ -138,7 +138,20 @@ class MonthListTest(unittest.TestCase):
             + [self.est(20 + i) for i in range(5)]
         note = july.note(browse.members(july, recs), recs)
         self.assertEqual(note, "A source states the season for 10 of these. For the other 5 it is estimated "
-                               "from climate, and marked.")
+                               "from the climate and similar trails, and marked.")
+
+    def test_a_month_note_tells_estimated_from_judged_from_pages_that_differ(self):
+        july = browse.by_key("hike-in-july")
+        judged = fake(90, hike={"months": [7], "season": "July", "season_basis": "sources",
+                                "season_method": "The pages differ. Confidence: low."})
+        stated = fake(91, hike={"months": [7], "season": "July", "season_basis": "primary"})
+        recs = [stated, judged] + [self.est(20 + i) for i in range(3)]
+        self.assertEqual(july.note(browse.members(july, recs), recs),
+                         "A source states the season for 1 of these. For the other 4, 3 are estimated from the climate "
+                         "and similar trails and 1 is set by judgement from pages that differ, and marked.")
+        recs = [judged, judged]
+        self.assertEqual(july.note(browse.members(july, recs), recs),
+                         "No source states the season for these, so each is set by judgement from pages that differ.")
 
     def test_a_month_list_with_no_estimates_says_so(self):
         july = browse.by_key("hike-in-july")
@@ -146,7 +159,7 @@ class MonthListTest(unittest.TestCase):
         self.assertEqual(july.note(browse.members(july, recs), recs), "A source states the season for all 10.")
         recs = [self.est(i) for i in range(3)]
         self.assertEqual(july.note(browse.members(july, recs), recs),
-                         "No source states the season for these, so each is estimated from climate.")
+                         "No source states the season for these, so each is estimated from the climate and similar trails.")
 
     def test_the_month_blurb_no_longer_says_only_some_trails(self):
         group = {key: blurb for key, _title, blurb in browse.GROUPS}["month"]
@@ -681,7 +694,7 @@ class RealDataTest(unittest.TestCase):
         kinds = {k: sum(1 for r in self.records if facets.season_kind(r) == k) for k in ("stated", "judged", "estimated")}
         self.assertEqual(sum(kinds.values()), len(self.records))
         self.assertIn(f"A season a page states Records with it {kinds['stated']} Records without {len(self.records) - kinds['stated']}", text)
-        self.assertIn(f"A season estimated from climate Records with it {kinds['estimated']} Records without {len(self.records) - kinds['estimated']}", text)
+        self.assertIn(f"A season estimated from the climate and similar trails Records with it {kinds['estimated']} Records without {len(self.records) - kinds['estimated']}", text)
         self.assertIn(f"A season set from pages that differ Records with it {kinds['judged']} Records without {len(self.records) - kinds['judged']}", text)
         self.assertIn(f"All trails Trails {len(self.records)}", text)
 

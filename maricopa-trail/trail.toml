@@ -9,6 +9,8 @@ length_note = "More than 315 mi, as Maricopa County Parks and Recreation states 
 tier = "regional"
 designation = "Maricopa County Parks and Recreation; a loop around the Phoenix area linking the county's regional parks, largely completed in 2018. The Maricopa Trail and Park Foundation is its partner"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "ffa11053036009a7"
 
 [source]
 status = "osm-only"

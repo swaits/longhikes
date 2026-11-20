@@ -11,6 +11,8 @@ length_note = "about 700 mi"
 tier = "regional"
 designation = "Great Divide Trail Association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "2a87c6e6e9a1f738"
 
 [source]
 status = "osm-only"
@@ -98,6 +100,108 @@ title = "Great Divide Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Great_Divide_Trail"
 
+[[place]]
+kind = "park"
+slug = "banff-national-park"
+basis = "track"
+km = 108.2
+
+[[place]]
+kind = "park"
+slug = "castle-provincial-park"
+basis = "track"
+km = 31.7
+
+[[place]]
+kind = "park"
+slug = "castle-wildland-provincial-park"
+basis = "track"
+km = 33.1
+
+[[place]]
+kind = "park"
+slug = "don-getty-wildland-provincial-park"
+basis = "track"
+km = 16.7
+
+[[place]]
+kind = "park"
+slug = "elk-lakes-park"
+basis = "track"
+km = 5.4
+
+[[place]]
+kind = "park"
+slug = "height-of-the-rockies-park"
+basis = "track"
+km = 12.1
+
+[[place]]
+kind = "park"
+slug = "high-rock-wildland-provincial-park"
+basis = "track"
+km = 25.1
+
+[[place]]
+kind = "park"
+slug = "jasper-national-park"
+basis = "track"
+km = 230.8
+
+[[place]]
+kind = "park"
+slug = "kakwa-park"
+basis = "track"
+km = 38.1
+
+[[place]]
+kind = "park"
+slug = "kootenay-national-park"
+basis = "track"
+km = 55.0
+
+[[place]]
+kind = "park"
+slug = "mount-assiniboine-park"
+basis = "track"
+km = 23.7
+
+[[place]]
+kind = "park"
+slug = "mount-robson-park"
+basis = "track"
+km = 39.2
+
+[[place]]
+kind = "park"
+slug = "peter-lougheed-provincial-park"
+basis = "track"
+km = 27.2
+
+[[place]]
+kind = "park"
+slug = "waterton-lakes-national-park"
+basis = "track"
+km = 54.8
+
+[[place]]
+kind = "park"
+slug = "willmore-wilderness-park"
+basis = "track"
+km = 62.2
+
+[[place]]
+kind = "park"
+slug = "yoho-national-park"
+basis = "track"
+km = 70.2
+
+[[place]]
+kind = "range"
+slug = "canadian-rockies"
+basis = "track"
+km = 1014.4
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -115,5 +219,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://greatdividetrail.com/wp-content/uploads/2024/12/GDTLogo2017-1.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Banff National Park, Castle Provincial Park, Castle Wildland Provincial Park, Don Getty Wildland Provincial Park, Elk Lakes Park, Height of the Rockies Park, High Rock Wildland Provincial Park, Jasper National Park, Kakwa Park, Kootenay National Park, Mount Assiniboine Park, Mount Robson Park, Peter Lougheed Provincial Park, Waterton Lakes National Park, Willmore Wilderness Park, Yoho National Park, Canadian Rockies."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20), the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
 asked_by = "the dataset's own check"
 outcome = "applied"

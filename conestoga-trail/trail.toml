@@ -9,6 +9,8 @@ length_note = "64 mi, from the Lancaster Hiking Club page; the Keystone Trails A
 tier = "regional"
 designation = "Lancaster Hiking Club (Conestoga Trail System)"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "3dff9b0464643b0a"
 
 [source]
 status = "osm-only"

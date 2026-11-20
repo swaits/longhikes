@@ -9,6 +9,8 @@ length_note = "51 mi, the Length field of the National Recreation Trails databas
 tier = "regional"
 designation = "National Recreation Trail in the Angeles National Forest, from Chantry Flat to Vincent Gap; about 55% of it, from Three Points to Vincent Gap, is the Pacific Crest Trail, a longer listed trail"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "ec7e5df271fe983b"
 
 [source]
 status = "osm-only"
@@ -92,6 +94,24 @@ publisher = "Fastest Known Time"
 url = "https://fastestknowntime.com/route/silver-moccasin-trail-ca"
 note = "Gives the trail as 53 miles, with comments on the bypass of the closed stretch."
 
+[[place]]
+kind = "range"
+slug = "transverse-ranges"
+basis = "track"
+km = 81.7
+
+[[place]]
+kind = "wilderness"
+slug = "pleasant-view-ridge-wilderness"
+basis = "track"
+km = 13.0
+
+[[place]]
+kind = "wilderness"
+slug = "sheep-mountain-wilderness"
+basis = "track"
+km = 1.7
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -119,5 +139,14 @@ change = "The caution about the closure now says that it reports the Forest Serv
 fields = ["hike.caution"]
 basis = "The Forest Service's alert for the Williamson Rock closure, read on 2026-11-19, says it was last updated November 10, 2026, and that Forest Order 05-01-24-04 is in effect through December 31, 2026."
 basis_url = "https://www.fs.usda.gov/r05/angeles/alerts/williamson-rock-area-and-trail-closure"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Transverse Ranges, Pleasant View Ridge Wilderness, Sheep Mountain Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

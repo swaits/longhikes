@@ -10,6 +10,8 @@ tier = "short"
 designation = "USFS trail #600, Mount Hood National Forest"
 wave = 1
 short_reason = "Very well known and popular: Travel Oregon calls it a classic multiday backpacking circuit and says starting clockwise at Timberline Lodge is one of the most popular ways to hike it."
+places_checked = "2026-11-20"
+places_track = "ae04eaaaded546ba"
 
 [source]
 status = "osm-only"
@@ -78,6 +80,18 @@ url = "https://www.wikidata.org/wiki/Q1574090"
 publisher = "Wikidata"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "oregon-cascades"
+basis = "track"
+km = 64.5
+
+[[place]]
+kind = "wilderness"
+slug = "mount-hood-wilderness"
+basis = "track"
+km = 54.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -131,5 +145,14 @@ change = "The reason for listing the trail under the 50 mile floor now states it
 fields = ["short_reason"]
 basis = "Travel Oregon, the state tourism office, calls the Timberline Trail a classic multiday backpacking circuit and says that starting clockwise at Timberline Lodge is one of the most popular ways to hike it."
 basis_url = "https://traveloregon.com/things-to-do/outdoor-recreation/4-day-backpacking-trip-on-oregons-timberline-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Oregon Cascades, Mount Hood Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

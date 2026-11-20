@@ -9,6 +9,8 @@ length_note = "65 mi, from the Connecticut Forest and Park Association page"
 tier = "regional"
 designation = "Connecticut Forest and Park Association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "83926097db921550"
 
 [source]
 status = "osm-only"

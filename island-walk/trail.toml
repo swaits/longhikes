@@ -11,6 +11,8 @@ length_note = "700 km, from the Island Walk PEI page"
 tier = "regional"
 designation = "Island Walk PEI Inc."
 wave = 1
+places_checked = "2026-11-20"
+places_track = "8ba304be97491503"
 
 [source]
 status = "osm-only"
@@ -76,6 +78,12 @@ url = "https://theislandwalk.ca/partner/"
 publisher = "Island Walk PEI Inc."
 facts = ["season", "months"]
 
+[[place]]
+kind = "park"
+slug = "prince-edward-island-national-park"
+basis = "track"
+km = 21.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -93,5 +101,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://theislandwalk.ca/wp-content/uploads/2025/08/Island-Walk-logo-EN.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Prince Edward Island National Park."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -9,6 +9,8 @@ length_note = "about 170 mi"
 tier = "regional"
 designation = "Cohos Trail Association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "fe407e448e4aa702"
 
 [source]
 status = "osm-only"
@@ -80,6 +82,24 @@ title = "Cohos Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Cohos_Trail"
 
+[[place]]
+kind = "range"
+slug = "longfellow-mountains"
+basis = "track"
+km = 5.1
+
+[[place]]
+kind = "range"
+slug = "white-mountains"
+basis = "track"
+km = 169.6
+
+[[place]]
+kind = "wilderness"
+slug = "presidential-range-dry-river-wilderness"
+basis = "track"
+km = 22.8
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -97,5 +117,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.cohostrail.org/wp-content/uploads/2015/01/cohos-trail-logo.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Longfellow Mountains, White Mountains, Presidential Range-Dry River Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -11,6 +11,8 @@ length_note = "nearly 800 km, from the Vancouver Island Trail Association page"
 tier = "regional"
 designation = "Vancouver Island Trail Association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "bb3315e9bf0bc01d"
 
 [source]
 status = "osm-only"
@@ -87,6 +89,24 @@ title = "Vancouver Island Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Vancouver_Island_Trail"
 
+[[place]]
+kind = "park"
+slug = "cape-scott-park"
+basis = "track"
+km = 38.1
+
+[[place]]
+kind = "park"
+slug = "schoen-lake-park"
+basis = "track"
+km = 8.4
+
+[[place]]
+kind = "park"
+slug = "strathcona-park"
+basis = "track"
+km = 24.8
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -104,5 +124,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://vancouverislandtrail.ca/wp-content/uploads/2023/05/VIT-logos.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Cape Scott Park, Schoen Lake Park, Strathcona Park."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
 asked_by = "the dataset's own check"
 outcome = "applied"

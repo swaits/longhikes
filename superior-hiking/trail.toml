@@ -11,6 +11,8 @@ length_note = "310 mi published"
 tier = "regional"
 designation = "Superior Hiking Trail Association; also the North Country NST here"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "c412b15f07a63400"
 
 [source]
 status = "osm-only"

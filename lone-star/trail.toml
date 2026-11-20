@@ -11,6 +11,8 @@ length_note = "96 mi"
 tier = "regional"
 designation = "Lone Star Hiking Trail Club; Sam Houston National Forest"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "9d15c8e7b2174d3d"
 
 [source]
 status = "osm-only"
@@ -84,6 +86,12 @@ title = "Lone Star Hiking Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Lone_Star_Hiking_Trail"
 
+[[place]]
+kind = "wilderness"
+slug = "little-lake-creek-wilderness"
+basis = "track"
+km = 3.7
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -110,5 +118,14 @@ change = "The usual season was added, \"January to April\", with its months."
 fields = ["hike.season", "hike.months"]
 basis = "The page of The Trek says: \"The most ideal season to hike the LSHT is January – April.\""
 basis_url = "https://thetrek.co/trail-profile-how-to-hike-the-96-mile-lone-star-hiking-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Little Lake Creek Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://wilderness.net/visit-wilderness/gis-gps.php"
 asked_by = "the dataset's own check"
 outcome = "applied"

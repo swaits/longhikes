@@ -11,6 +11,8 @@ length_note = "112 mi, from the Blue Ridge Bartram Trail Conservancy page"
 tier = "regional"
 designation = "Blue Ridge Bartram Trail Conservancy; USDA Forest Service"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "4c001460a4cd7305"
 
 [source]
 status = "verified"
@@ -77,6 +79,12 @@ title = "Bartram Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Bartram_Trail"
 
+[[place]]
+kind = "range"
+slug = "blue-ridge-mountains"
+basis = "track"
+km = 146.5
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -104,4 +112,13 @@ fields = ["source.line_file", "source.status", "source.publisher", "source.url",
 basis = "The Forest Service's page for the Bartram Trail gives the trail as 112 miles from the Chattooga River in Georgia to Cheoah Bald, trail number TR67, and its layer of National Forest System trails holds the trail under the Bartram name in the Chattahoochee-Oconee and Nantahala National Forests, hiker use only, where the Forest Service itself says where its trail runs."
 basis_url = "https://www.fs.usda.gov/r08/northcarolina/recreation/trails/bartram-trail"
 asked_by = "the dataset's owner"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Blue Ridge Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
 outcome = "applied"

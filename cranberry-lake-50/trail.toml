@@ -11,6 +11,8 @@ length_note = "50 mi, from the Cranberry Lake 50 page"
 tier = "regional"
 designation = "Cranberry Lake 50 volunteer trail crew"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "8bfe494f1856c535"
 
 [source]
 status = "osm-only"
@@ -80,6 +82,12 @@ title = "Cranberry Lake 50"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Cranberry_Lake_50"
 
+[[place]]
+kind = "range"
+slug = "adirondack-mountains"
+basis = "track"
+km = 31.7
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -106,5 +114,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of Cranberry Lake 50 (Five Ponds Partners) says: \"groups of 10 or more, or groups camping in the same spot for more than 3 days, require a permit from the local forest ranger. The permits are free.\""
 basis_url = "https://cranberrylake50.org/plan-your-trip/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Adirondack Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

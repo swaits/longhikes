@@ -9,6 +9,8 @@ length_note = "55 mi, as the Forest Service's Tonto National Forest page states 
 tier = "regional"
 designation = "National Recreation Trail #31 (Forest Service, Tonto National Forest); part of it is a passage of the Arizona National Scenic Trail"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "16c1eff493a7451f"
 
 [source]
 status = "osm-only"
@@ -74,6 +76,12 @@ title = "Arizona Highline Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Arizona_Highline_Trail"
 
+[[place]]
+kind = "range"
+slug = "mogollon-rim"
+basis = "track"
+km = 93.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -119,4 +127,13 @@ fields = ["source.line_file", "source.status", "source.publisher", "source.publi
 basis = "The Forest Service layer (trail 31, HIGHLINE, 13 features) covers the whole route from Pine to the east end but holds only 71.5 km of it in 3 parts, with two gaps, against 93.2 km on the relation along the same route and 11.5% less than its own milepost span of 50.2 miles. It holds no other trail number or name for the Highline, so no missing stretch could be completed from it. The relation is one piece with the Forest Service named as operator."
 basis_url = "https://www.fs.usda.gov/r03/tonto/recreation/trails/highline"
 asked_by = "the dataset's owner"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Mogollon Rim."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
 outcome = "applied"

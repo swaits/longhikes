@@ -12,6 +12,8 @@ tier = "regional"
 designation = "Colorado Trail Foundation trail, most of it on National Forest System land"
 wave = 1
 wave_note = "USFS public domain for 727 km (95%) and OpenStreetMap (ODbL) for the 38 km the Forest Service does not publish, in 17 named stretches: Waterton Canyon (Denver Water), Chalk Creek, Monarch Pass, near Twin Lakes, near Rico, and the Durango end."
+places_checked = "2026-11-20"
+places_track = "bba000f274343f31"
 
 [source]
 status = "verified"
@@ -96,6 +98,72 @@ title = "Colorado Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Colorado_Trail"
 
+[[place]]
+kind = "range"
+slug = "front-range"
+basis = "track"
+km = 163.9
+
+[[place]]
+kind = "range"
+slug = "gore-range"
+basis = "track"
+km = 39.2
+
+[[place]]
+kind = "range"
+slug = "mosquito-range"
+basis = "track"
+km = 21.0
+
+[[place]]
+kind = "range"
+slug = "san-juan-mountains"
+basis = "track"
+km = 317.1
+
+[[place]]
+kind = "range"
+slug = "sawatch-range"
+basis = "track"
+km = 215.9
+
+[[place]]
+kind = "wilderness"
+slug = "collegiate-peaks-wilderness"
+basis = "track"
+km = 26.8
+
+[[place]]
+kind = "wilderness"
+slug = "holy-cross-wilderness"
+basis = "track"
+km = 8.9
+
+[[place]]
+kind = "wilderness"
+slug = "la-garita-wilderness"
+basis = "track"
+km = 32.2
+
+[[place]]
+kind = "wilderness"
+slug = "lost-creek-wilderness"
+basis = "track"
+km = 20.7
+
+[[place]]
+kind = "wilderness"
+slug = "mount-massive-wilderness"
+basis = "track"
+km = 14.3
+
+[[place]]
+kind = "wilderness"
+slug = "weminuche-wilderness"
+basis = "track"
+km = 23.9
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -113,5 +181,14 @@ change = "The track's licence is now the ODbL 1.0, in place of public domain, be
 fields = ["source.licence", "source.licence_text", "source.attribution"]
 basis = "The record's own verification note gives 727.2 km from the Forest Service and 38.4 km from OpenStreetMap in 17 stretches, and the OpenStreetMap copyright page states the ODbL terms. The two parts are also kept apart in line-usfs.geojson and line-osm.geojson."
 basis_url = "https://www.openstreetmap.org/copyright"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Front Range, Gore Range, Mosquito Range, San Juan Mountains, Sawatch Range, Collegiate Peaks Wilderness, Holy Cross Wilderness, La Garita Wilderness, Lost Creek Wilderness, Mount Massive Wilderness, Weminuche Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

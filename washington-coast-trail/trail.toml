@@ -10,6 +10,8 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Lauren Lake, 2022); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "d534dd0b7f82825d"
 
 [source]
 status = "verified"
@@ -100,6 +102,24 @@ url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6935845788"
 publisher = "Lauren Lake, PacificCoastalTrail blog (the author's GPX file, attached to the dataset's issue tracker)"
 facts = ["start_lonlat", "end_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "olympic-national-park"
+basis = "track"
+km = 98.5
+
+[[place]]
+kind = "range"
+slug = "olympic-mountains"
+basis = "track"
+km = 13.5
+
+[[place]]
+kind = "wilderness"
+slug = "daniel-j-evans-wilderness"
+basis = "track"
+km = 71.9
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -119,4 +139,13 @@ fields = ["hike.season", "hike.months", "hike.permit", "hike.caution"]
 basis = "The route's author replied on the dataset's public issue tracker that the hiking season is May to September, because of tides and creeks on the Olympic Wilderness Coast, that a permit is required for the Olympic Wilderness Coast in those months, and that the bays and the tribal lands that cannot be hiked all have bus options to bypass."
 basis_url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6958673541"
 asked_by = "the route's author"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Olympic National Park, Olympic Mountains, Daniel J. Evans Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
 outcome = "applied"

@@ -13,6 +13,8 @@ system_note = "both the northern and southern routes across the Midwest"
 tier = "regional"
 designation = "National Millennium Trail (2000); American Discovery Trail Society; not a National Scenic Trail"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "89a681bebecfd474"
 
 [source]
 status = "osm-only"
@@ -95,6 +97,156 @@ url = "https://discoverytrail.org/"
 publisher = "American Discovery Trail Society"
 facts = ["official_url"]
 
+[[place]]
+kind = "park"
+slug = "canyonlands-national-park"
+basis = "track"
+km = 33.6
+
+[[place]]
+kind = "park"
+slug = "capitol-reef-national-park"
+basis = "track"
+km = 9.0
+
+[[place]]
+kind = "range"
+slug = "allegheny-mountains"
+basis = "track"
+km = 61.0
+
+[[place]]
+kind = "range"
+slug = "california-coast-ranges"
+basis = "track"
+km = 119.0
+
+[[place]]
+kind = "range"
+slug = "colorado-plateau"
+basis = "track"
+km = 590.9
+
+[[place]]
+kind = "range"
+slug = "front-range"
+basis = "track"
+km = 302.3
+
+[[place]]
+kind = "range"
+slug = "gore-range"
+basis = "track"
+km = 39.4
+
+[[place]]
+kind = "range"
+slug = "mosquito-range"
+basis = "track"
+km = 21.0
+
+[[place]]
+kind = "range"
+slug = "sawatch-range"
+basis = "track"
+km = 114.2
+
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "track"
+km = 261.1
+
+[[place]]
+kind = "wilderness"
+slug = "alta-toquima-wilderness"
+basis = "track"
+km = 11.5
+
+[[place]]
+kind = "wilderness"
+slug = "arc-dome-wilderness"
+basis = "track"
+km = 27.7
+
+[[place]]
+kind = "wilderness"
+slug = "bald-knob-wilderness"
+basis = "track"
+km = 4.6
+
+[[place]]
+kind = "wilderness"
+slug = "clear-springs-wilderness"
+basis = "track"
+km = 7.7
+
+[[place]]
+kind = "wilderness"
+slug = "collegiate-peaks-wilderness"
+basis = "track"
+km = 9.6
+
+[[place]]
+kind = "wilderness"
+slug = "crab-orchard-wilderness"
+basis = "track"
+km = 3.1
+
+[[place]]
+kind = "wilderness"
+slug = "dolly-sods-wilderness"
+basis = "track"
+km = 7.4
+
+[[place]]
+kind = "wilderness"
+slug = "garden-of-the-gods-wilderness"
+basis = "track"
+km = 9.2
+
+[[place]]
+kind = "wilderness"
+slug = "granite-chief-wilderness"
+basis = "track"
+km = 20.0
+
+[[place]]
+kind = "wilderness"
+slug = "holy-cross-wilderness"
+basis = "track"
+km = 8.9
+
+[[place]]
+kind = "wilderness"
+slug = "lusk-creek-wilderness"
+basis = "track"
+km = 13.7
+
+[[place]]
+kind = "wilderness"
+slug = "mt-rose-wilderness"
+basis = "track"
+km = 11.5
+
+[[place]]
+kind = "wilderness"
+slug = "panther-den-wilderness"
+basis = "track"
+km = 5.2
+
+[[place]]
+kind = "wilderness"
+slug = "phillip-burton-wilderness"
+basis = "track"
+km = 10.6
+
+[[place]]
+kind = "wilderness"
+slug = "table-mountain-wilderness"
+basis = "track"
+km = 20.3
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -121,5 +273,14 @@ change = "The length was changed from about 6,800 miles (10,943 km), which count
 fields = ["length_km", "length_note", "system_km", "system_note"]
 basis = "The Society says: 'Coast-to-coast, the northern route is approximately 4,844 miles. The southern route is about 5,008 miles.'"
 basis_url = "https://discoverytrail.org/route"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Canyonlands National Park, Capitol Reef National Park, Allegheny Mountains, California Coast Ranges, Colorado Plateau, Front Range, Gore Range, Mosquito Range, Sawatch Range, Sierra Nevada, Alta Toquima Wilderness, Arc Dome Wilderness, Bald Knob Wilderness, Clear Springs Wilderness, Collegiate Peaks Wilderness, Crab Orchard Wilderness, Dolly Sods Wilderness, Garden of the Gods Wilderness, Granite Chief Wilderness, Holy Cross Wilderness, Lusk Creek Wilderness, Mt. Rose Wilderness, Panther Den Wilderness, Phillip Burton Wilderness, Table Mountain Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

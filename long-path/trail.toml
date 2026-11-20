@@ -11,6 +11,8 @@ length_note = "about 358 mi published by the New York-New Jersey Trail Conferenc
 tier = "regional"
 designation = "New York-New Jersey Trail Conference"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "502c33a479265d2e"
 
 [source]
 status = "osm-only"
@@ -79,6 +81,18 @@ title = "Long Path"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Long_Path"
 
+[[place]]
+kind = "range"
+slug = "adirondack-mountains"
+basis = "track"
+km = 51.8
+
+[[place]]
+kind = "range"
+slug = "catskill-mountains"
+basis = "track"
+km = 224.7
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -96,5 +110,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.nynjtc.org/wp-content/uploads/2024/12/Long_Path_logo-1.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Adirondack Mountains, Catskill Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

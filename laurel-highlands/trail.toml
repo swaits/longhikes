@@ -11,6 +11,8 @@ length_note = "70.1 mi, from the Keystone Trails Association page"
 tier = "regional"
 designation = "Keystone Trails Association; built and managed by the Pennsylvania Department of Conservation and Natural Resources"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "e740fca4f92e5bb0"
 
 [source]
 status = "osm-only"
@@ -91,6 +93,12 @@ title = "Laurel Highlands Hiking Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Laurel_Highlands_Hiking_Trail"
 
+[[place]]
+kind = "range"
+slug = "allegheny-mountains"
+basis = "track"
+km = 33.4
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -108,5 +116,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.pa.gov/agencies/dcnr/recreation/what-to-do/hiking/laurel-highlands-hiking-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Allegheny Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

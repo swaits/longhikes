@@ -9,6 +9,8 @@ length_note = "71 mi, from the National Recreation Trails database entry, which 
 tier = "regional"
 designation = "National Recreation Trail (2003), George Washington and Jefferson National Forests, Lee Ranger District"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "47deecc9a7c25bc1"
 
 [source]
 status = "osm-only"
@@ -74,6 +76,12 @@ title = "Massanutten Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Massanutten_Trail"
 
+[[place]]
+kind = "range"
+slug = "appalachian-mountains"
+basis = "track"
+km = 109.6
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -91,5 +99,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source", "shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://nrtapplication.org/trails/massanutten-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Appalachian Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

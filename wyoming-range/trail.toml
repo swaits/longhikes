@@ -9,6 +9,8 @@ length_note = "70 mi, as the Forest Service states it on its trail page. Friends
 tier = "regional"
 designation = "National Recreation Trail, Bridger-Teton National Forest Trail 48; open to hikers, horseback riders and mountain bikers, with one short section between Lake Creek and North Piney Creek open to trail bikes"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "5c93aa5928e0d24f"
 
 [source]
 status = "osm-only"
@@ -71,6 +73,12 @@ url = "https://www.btfriends.org/the-wyoming-range-national-recreation-trail"
 publisher = "Friends of the Bridger-Teton"
 facts = ["summary", "start", "end", "shape", "season", "months", "terrain", "travel", "caution"]
 
+[[place]]
+kind = "range"
+slug = "rocky-mountains"
+basis = "track"
+km = 123.3
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -89,5 +97,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/trails/wyoming-range-national-recreation-trail-48"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Rocky Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

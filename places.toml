@@ -3,3 +3,2627 @@
 # docs/schema.md, section "places.toml". Entries are written by tools/place_trails.py,
 # sorted by kind then slug, and checked by tools/validate.py. Only places that at least one
 # record names are listed here.
+
+[[place]]
+slug = "algonquin-provincial-park"
+kind = "park"
+name = "Algonquin Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350036900"
+source_version = "2026-11-20"
+box = [-79.12, 45.18, -77.53, 46.15]
+
+[[place]]
+slug = "banff-national-park"
+kind = "park"
+name = "Banff National Park"
+where = ["AB"]
+source = "cpcad"
+source_id = "710300000"
+source_version = "2026-11-20"
+box = [-117.32, 50.71, -115.16, 52.27]
+
+[[place]]
+slug = "bayview-escarpment-provincial-park"
+kind = "park"
+name = "Bayview Escarpment Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350038000"
+source_version = "2026-11-20"
+box = [-80.74, 44.62, -80.68, 44.65]
+
+[[place]]
+slug = "boyne-valley-provincial-park"
+kind = "park"
+name = "Boyne Valley Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350037400"
+source_version = "2026-11-20"
+box = [-80.15, 44.1, -80.1, 44.12]
+
+[[place]]
+slug = "bruce-peninsula-national-park"
+kind = "park"
+name = "Bruce Peninsula National Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "710800000"
+source_version = "2026-11-20"
+box = [-81.63, 45.07, -81.34, 45.25]
+
+[[place]]
+slug = "cabot-head-provincial-park"
+kind = "park"
+name = "Cabot Head Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350031600"
+source_version = "2026-11-20"
+box = [-81.52, 45.16, -81.28, 45.25]
+
+[[place]]
+slug = "canyonlands-national-park"
+kind = "park"
+name = "Canyonlands National Park"
+where = ["UT"]
+source = "nps"
+source_id = "CANY"
+source_version = "2026-11-20"
+box = [-110.24, 37.96, -109.66, 38.51]
+
+[[place]]
+slug = "cape-scott-park"
+kind = "park"
+name = "Cape Scott Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590000250"
+source_version = "2026-11-20"
+box = [-128.44, 50.65, -127.85, 50.88]
+
+[[place]]
+slug = "capitol-reef-national-park"
+kind = "park"
+name = "Capitol Reef National Park"
+where = ["UT"]
+source = "nps"
+source_id = "CARE"
+source_version = "2026-11-20"
+box = [-111.42, 37.6, -110.86, 38.53]
+
+[[place]]
+slug = "castle-provincial-park"
+kind = "park"
+name = "Castle Provincial Park"
+where = ["AB"]
+source = "cpcad"
+source_id = "480001158"
+source_version = "2026-11-20"
+box = [-114.55, 49.34, -114.27, 49.55]
+
+[[place]]
+slug = "castle-wildland-provincial-park"
+kind = "park"
+name = "Castle Wildland Provincial Park"
+where = ["AB"]
+source = "cpcad"
+source_id = "480001148"
+source_version = "2026-11-20"
+box = [-114.7, 49.16, -113.97, 49.63]
+
+[[place]]
+slug = "crater-lake-national-park"
+kind = "park"
+name = "Crater Lake National Park"
+where = ["OR"]
+source = "nps"
+source_id = "CRLA"
+source_version = "2026-11-20"
+box = [-122.88, 42.33, -121.97, 43.09]
+
+[[place]]
+slug = "cuyahoga-valley-national-park"
+kind = "park"
+name = "Cuyahoga Valley National Park"
+where = ["OH"]
+source = "nps"
+source_id = "CUVA"
+source_version = "2026-11-20"
+box = [-81.65, 41.09, -81.49, 41.42]
+
+[[place]]
+slug = "don-getty-wildland-provincial-park"
+kind = "park"
+name = "Don Getty Wildland Provincial Park"
+where = ["AB"]
+source = "cpcad"
+source_id = "480001114"
+source_version = "2026-11-20"
+box = [-115.54, 50.09, -114.34, 51.62]
+
+[[place]]
+slug = "duncan-escarpment-provincial-park"
+kind = "park"
+name = "Duncan Escarpment Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350053400"
+source_version = "2026-11-20"
+box = [-80.47, 44.41, -80.46, 44.43]
+
+[[place]]
+slug = "elk-lakes-park"
+kind = "park"
+name = "Elk Lakes Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590000253"
+source_version = "2026-11-20"
+box = [-115.21, 50.37, -114.99, 50.59]
+
+[[place]]
+slug = "forillon-national-park"
+kind = "park"
+name = "Forillon National Park"
+where = ["QC"]
+source = "cpcad"
+source_id = "712000000"
+source_version = "2026-11-20"
+box = [-64.52, 48.75, -64.16, 48.99]
+
+[[place]]
+slug = "forks-of-the-credit-provincial-park"
+kind = "park"
+name = "Forks of the Credit Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350039700"
+source_version = "2026-11-20"
+box = [-80.02, 43.8, -79.99, 43.83]
+
+[[place]]
+slug = "frontenac-provincial-park"
+kind = "park"
+name = "Frontenac Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350052100"
+source_version = "2026-11-20"
+box = [-76.56, 44.5, -76.46, 44.58]
+
+[[place]]
+slug = "gaspesie-national-park"
+kind = "park"
+name = "Gaspésie National Park"
+where = ["QC"]
+source = "cpcad"
+source_id = "240000123"
+source_version = "2026-11-20"
+box = [-66.69, 48.83, -65.84, 49.12]
+
+[[place]]
+slug = "glacier"
+kind = "park"
+name = "Glacier National Park"
+where = ["MT"]
+source = "nps"
+source_id = "GLAC"
+source_version = "2026-11-20"
+box = [-114.47, 48.23, -113.24, 49.0]
+
+[[place]]
+slug = "grand-canyon-national-park"
+kind = "park"
+name = "Grand Canyon National Park"
+where = ["AZ"]
+source = "nps"
+source_id = "GRCA"
+source_version = "2026-11-20"
+box = [-113.98, 35.75, -111.59, 36.87]
+
+[[place]]
+slug = "grand-teton-national-park"
+kind = "park"
+name = "Grand Teton National Park"
+where = ["WY"]
+source = "nps"
+source_id = "GRTE"
+source_version = "2026-11-20"
+box = [-110.95, 43.54, -110.42, 44.08]
+
+[[place]]
+slug = "great-smoky-mountains-national-park"
+kind = "park"
+name = "Great Smoky Mountains National Park"
+where = ["NC", "TN"]
+source = "nps"
+source_id = "GRSM"
+source_version = "2026-11-20"
+box = [-84.01, 35.43, -83.0, 35.84]
+
+[[place]]
+slug = "gros-morne-national-park"
+kind = "park"
+name = "Gros Morne National Park"
+where = ["NL"]
+source = "cpcad"
+source_id = "714100000"
+source_version = "2026-11-20"
+box = [-58.15, 49.3, -57.41, 49.97]
+
+[[place]]
+slug = "hautes-gorges-de-la-riviere-malbaie-national-park"
+kind = "park"
+name = "Hautes-Gorges-de-la-Rivière-Malbaie National Park"
+where = ["QC"]
+source = "cpcad"
+source_id = "240004751"
+source_version = "2026-11-20"
+box = [-70.68, 47.84, -70.35, 48.0]
+
+[[place]]
+slug = "height-of-the-rockies-park"
+kind = "park"
+name = "Height of the Rockies Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590009185"
+source_version = "2026-11-20"
+box = [-115.5, 50.24, -114.95, 50.73]
+
+[[place]]
+slug = "high-rock-wildland-provincial-park"
+kind = "park"
+name = "High Rock Wildland Provincial Park"
+where = ["AB"]
+source = "cpcad"
+source_id = "480001153"
+source_version = "2026-11-20"
+box = [-114.69, 49.65, -114.53, 50.0]
+
+[[place]]
+slug = "hockley-valley-provincial-park"
+kind = "park"
+name = "Hockley Valley Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350036800"
+source_version = "2026-11-20"
+box = [-80.08, 43.97, -80.05, 44.0]
+
+[[place]]
+slug = "hope-bay-forest-provincial-park"
+kind = "park"
+name = "Hope Bay Forest Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350057500"
+source_version = "2026-11-20"
+box = [-81.18, 44.91, -81.14, 44.94]
+
+[[place]]
+slug = "inland-lake-park"
+kind = "park"
+name = "Inland Lake Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590006197"
+source_version = "2026-11-20"
+box = [-124.53, 49.91, -124.44, 50.0]
+
+[[place]]
+slug = "jasper-national-park"
+kind = "park"
+name = "Jasper National Park"
+where = ["AB"]
+source = "cpcad"
+source_id = "714700000"
+source_version = "2026-11-20"
+box = [-119.55, 52.13, -116.8, 53.48]
+
+[[place]]
+slug = "kakwa-park"
+kind = "park"
+name = "Kakwa Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590000345"
+source_version = "2026-11-20"
+box = [-120.71, 53.79, -120.0, 54.3]
+
+[[place]]
+slug = "killarney-provincial-park"
+kind = "park"
+name = "Killarney Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350051800"
+source_version = "2026-11-20"
+box = [-81.63, 45.99, -81.18, 46.2]
+
+[[place]]
+slug = "kluskoil-lake-park"
+kind = "park"
+name = "Kluskoil Lake Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590007458"
+source_version = "2026-11-20"
+box = [-124.14, 53.12, -123.68, 53.25]
+
+[[place]]
+slug = "komoka-provincial-park"
+kind = "park"
+name = "Komoka Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350037500"
+source_version = "2026-11-20"
+box = [-81.42, 42.93, -81.38, 42.96]
+
+[[place]]
+slug = "kootenay-national-park"
+kind = "park"
+name = "Kootenay National Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "715200000"
+source_version = "2026-11-20"
+box = [-116.36, 50.58, -115.8, 51.31]
+
+[[place]]
+slug = "la-manche-provincial-park"
+kind = "park"
+name = "La Manche Provincial Park"
+where = ["NL"]
+source = "cpcad"
+source_id = "100001401"
+source_version = "2026-11-20"
+box = [-52.92, 47.16, -52.85, 47.2]
+
+[[place]]
+slug = "lassen-volcanic-national-park"
+kind = "park"
+name = "Lassen Volcanic National Park"
+where = ["CA"]
+source = "nps"
+source_id = "LAVO"
+source_version = "2026-11-20"
+box = [-121.62, 40.34, -121.25, 40.59]
+
+[[place]]
+slug = "lions-head-provincial-park"
+kind = "park"
+name = "Lion's Head Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350039500"
+source_version = "2026-11-20"
+box = [-81.24, 44.97, -81.19, 45.01]
+
+[[place]]
+slug = "malaspina-park"
+kind = "park"
+name = "Malaspina Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590006268"
+source_version = "2026-11-20"
+box = [-124.84, 50.01, -124.73, 50.06]
+
+[[place]]
+slug = "marine-drive-provincial-park"
+kind = "park"
+name = "Marine Drive Provincial Park"
+where = ["NL"]
+source = "cpcad"
+source_id = "100002601"
+source_version = "2026-11-20"
+box = [-52.83, 47.73, -52.79, 47.76]
+
+[[place]]
+slug = "mono-cliffs-provincial-park"
+kind = "park"
+name = "Mono Cliffs Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350060900"
+source_version = "2026-11-20"
+box = [-80.09, 44.03, -80.06, 44.07]
+
+[[place]]
+slug = "mount-assiniboine-park"
+kind = "park"
+name = "Mount Assiniboine Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590000005"
+source_version = "2026-11-20"
+box = [-115.92, 50.82, -115.56, 51.09]
+
+[[place]]
+slug = "mount-carleton-provincial-park"
+kind = "park"
+name = "Mount Carleton Provincial Park"
+where = ["NB"]
+source = "cpcad"
+source_id = "130001300"
+source_version = "2026-11-20"
+box = [-66.97, 47.35, -66.69, 47.46]
+
+[[place]]
+slug = "mount-rainier-national-park"
+kind = "park"
+name = "Mount Rainier National Park"
+where = ["WA"]
+source = "nps"
+source_id = "MORA"
+source_version = "2026-11-20"
+box = [-122.13, 46.71, -121.44, 47.1]
+
+[[place]]
+slug = "mount-robson-park"
+kind = "park"
+name = "Mount Robson Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590000002"
+source_version = "2026-11-20"
+box = [-119.43, 52.51, -118.27, 53.3]
+
+[[place]]
+slug = "murphys-point-provincial-park"
+kind = "park"
+name = "Murphys Point Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350052000"
+source_version = "2026-11-20"
+box = [-76.27, 44.75, -76.2, 44.79]
+
+[[place]]
+slug = "noisy-river-provincial-park"
+kind = "park"
+name = "Noisy River Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350049000"
+source_version = "2026-11-20"
+box = [-80.22, 44.26, -80.17, 44.28]
+
+[[place]]
+slug = "north-cascades-national-park"
+kind = "park"
+name = "North Cascades National Park"
+where = ["WA"]
+source = "nps"
+source_id = "NOCA"
+source_version = "2026-11-20"
+box = [-121.64, 48.37, -120.63, 49.0]
+
+[[place]]
+slug = "nottawasaga-lookout-provincial-park"
+kind = "park"
+name = "Nottawasaga Lookout Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350048500"
+source_version = "2026-11-20"
+box = [-80.27, 44.4, -80.24, 44.41]
+
+[[place]]
+slug = "olympic-national-park"
+kind = "park"
+name = "Olympic National Park"
+where = ["WA"]
+source = "nps"
+source_id = "OLYM"
+source_version = "2026-11-20"
+box = [-124.77, 47.47, -123.12, 48.38]
+
+[[place]]
+slug = "pacific-rim-national-park-reserve"
+kind = "park"
+name = "Pacific Rim National Park Reserve"
+where = ["BC"]
+source = "cpcad"
+source_id = "716500000"
+source_version = "2026-11-20"
+box = [-125.89, 48.54, -124.39, 49.12]
+
+[[place]]
+slug = "peter-lougheed-provincial-park"
+kind = "park"
+name = "Peter Lougheed Provincial Park"
+where = ["AB"]
+source = "cpcad"
+source_id = "480001041"
+source_version = "2026-11-20"
+box = [-115.4, 50.53, -114.92, 50.83]
+
+[[place]]
+slug = "pretty-river-valley-provincial-park"
+kind = "park"
+name = "Pretty River Valley Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350058400"
+source_version = "2026-11-20"
+box = [-80.32, 44.41, -80.27, 44.45]
+
+[[place]]
+slug = "prince-edward-island-national-park"
+kind = "park"
+name = "Prince Edward Island National Park"
+where = ["PE"]
+source = "cpcad"
+source_id = "717200000"
+source_version = "2026-11-20"
+box = [-63.5, 46.4, -62.65, 46.52]
+
+[[place]]
+slug = "queen-elizabeth-ii-wildlands-provincial-park"
+kind = "park"
+name = "Queen Elizabeth II Wildlands Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350057300"
+source_version = "2026-11-20"
+box = [-79.21, 44.72, -78.8, 44.93]
+
+[[place]]
+slug = "redwood-national-park"
+kind = "park"
+name = "Redwood National Park"
+where = ["CA"]
+source = "nps"
+source_id = "REDW"
+source_version = "2026-11-20"
+box = [-124.16, 41.08, -123.85, 41.84]
+
+[[place]]
+slug = "rocky-mountain-national-park"
+kind = "park"
+name = "Rocky Mountain National Park"
+where = ["CO"]
+source = "nps"
+source_id = "ROMO"
+source_version = "2026-11-20"
+box = [-105.91, 40.16, -105.49, 40.55]
+
+[[place]]
+slug = "saguaro-national-park"
+kind = "park"
+name = "Saguaro National Park"
+where = ["AZ"]
+source = "nps"
+source_id = "SAGU"
+source_version = "2026-11-20"
+box = [-111.24, 32.1, -110.5, 32.35]
+
+[[place]]
+slug = "schoen-lake-park"
+kind = "park"
+name = "Schoen Lake Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590000283"
+source_version = "2026-11-20"
+box = [-126.36, 50.14, -126.13, 50.23]
+
+[[place]]
+slug = "sequoia-and-kings-canyon"
+kind = "park"
+name = "Sequoia and Kings Canyon National Parks"
+where = ["CA"]
+source = "nps"
+source_id = ["SEQU", "KICA"]
+source_version = "2026-11-20"
+box = [-118.98, 36.29, -118.23, 37.24]
+
+[[place]]
+slug = "shenandoah-national-park"
+kind = "park"
+name = "Shenandoah National Park"
+where = ["VA"]
+source = "nps"
+source_id = "SHEN"
+source_version = "2026-11-20"
+box = [-78.86, 38.03, -78.15, 38.91]
+
+[[place]]
+slug = "short-hills-provincial-park"
+kind = "park"
+name = "Short Hills Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350059400"
+source_version = "2026-11-20"
+box = [-79.31, 43.08, -79.26, 43.12]
+
+[[place]]
+slug = "smokey-head-white-bluff-provincial-park"
+kind = "park"
+name = "Smokey Head-White Bluff Provincial Park"
+where = ["ON"]
+source = "cpcad"
+source_id = "350052600"
+source_version = "2026-11-20"
+box = [-81.29, 45.05, -81.26, 45.09]
+
+[[place]]
+slug = "stein-valley-nlakapamux-heritage-park"
+kind = "park"
+name = "Stein Valley Nlaka'Pamux Heritage Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590009458"
+source_version = "2026-11-20"
+box = [-122.32, 50.08, -121.63, 50.43]
+
+[[place]]
+slug = "strathcona-park"
+kind = "park"
+name = "Strathcona Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590000001"
+source_version = "2026-11-20"
+box = [-126.26, 49.38, -125.19, 50.02]
+
+[[place]]
+slug = "theodore-roosevelt-national-park"
+kind = "park"
+name = "Theodore Roosevelt National Park"
+where = ["ND"]
+source = "nps"
+source_id = "THRO"
+source_version = "2026-11-20"
+box = [-103.63, 46.89, -103.24, 47.63]
+
+[[place]]
+slug = "titetown-park"
+kind = "park"
+name = "Titetown Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590000592"
+source_version = "2026-11-20"
+box = [-123.78, 53.27, -123.7, 53.3]
+
+[[place]]
+slug = "tweedsmuir-park"
+kind = "park"
+name = "Tweedsmuir Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590000019"
+source_version = "2026-11-20"
+box = [-127.37, 51.89, -125.58, 53.82]
+
+[[place]]
+slug = "waterton-lakes-national-park"
+kind = "park"
+name = "Waterton Lakes National Park"
+where = ["AB"]
+source = "cpcad"
+source_id = "719600000"
+source_version = "2026-11-20"
+box = [-114.17, 49.0, -113.65, 49.2]
+
+[[place]]
+slug = "willmore-wilderness-park"
+kind = "park"
+name = "Willmore Wilderness Park"
+where = ["AB"]
+source = "cpcad"
+source_id = "480001104"
+source_version = "2026-11-20"
+box = [-120.0, 53.35, -118.15, 54.02]
+
+[[place]]
+slug = "wind-cave-national-park"
+kind = "park"
+name = "Wind Cave National Park"
+where = ["SD"]
+source = "nps"
+source_id = "WICA"
+source_version = "2026-11-20"
+box = [-103.55, 43.5, -103.34, 43.64]
+
+[[place]]
+slug = "yellowstone-national-park"
+kind = "park"
+name = "Yellowstone National Park"
+where = ["ID", "MT", "WY"]
+source = "nps"
+source_id = "YELL"
+source_version = "2026-11-20"
+box = [-111.16, 44.13, -109.82, 45.11]
+
+[[place]]
+slug = "yoho-national-park"
+kind = "park"
+name = "Yoho National Park"
+where = ["BC"]
+source = "cpcad"
+source_id = "719900000"
+source_version = "2026-11-20"
+box = [-116.79, 51.1, -116.26, 51.66]
+
+[[place]]
+slug = "yosemite-national-park"
+kind = "park"
+name = "Yosemite National Park"
+where = ["CA"]
+source = "nps"
+source_id = "YOSE"
+source_version = "2026-11-20"
+box = [-119.89, 37.49, -119.2, 38.19]
+
+[[place]]
+slug = "absaroka-range"
+kind = "range"
+name = "Absaroka Range"
+where = ["MT", "WY"]
+within = ["rocky-mountains"]
+source = "gmba-v2"
+source_id = "11102"
+source_version = "2026-11-20"
+box = [-110.9, 43.4, -108.16, 45.75]
+
+[[place]]
+slug = "adirondack-mountains"
+kind = "range"
+name = "Adirondack Mountains"
+where = ["NY"]
+source = "gmba-v2"
+source_id = "12552"
+source_version = "2026-11-20"
+box = [-74.95, 43.0, -73.4, 45.0]
+
+[[place]]
+slug = "allegheny-mountains"
+kind = "range"
+name = "Allegheny Mountains"
+where = ["MD", "PA", "VA", "WV"]
+within = ["appalachian-mountains"]
+source = "gmba-v2"
+source_id = "12337"
+source_version = "2026-11-20"
+box = [-82.17, 37.34, -77.67, 41.1]
+
+[[place]]
+slug = "allegheny-plateau"
+kind = "range"
+name = "Allegheny Plateau"
+where = ["NY", "PA"]
+within = ["appalachian-mountains"]
+source = "gmba-v2"
+source_id = "15905"
+source_version = "2026-11-20"
+box = [-78.32, 41.12, -75.48, 42.89]
+
+[[place]]
+slug = "appalachian-mountains"
+kind = "range"
+name = "Appalachian Mountains"
+where = ["AL", "CT", "GA", "MA", "MD", "ME", "NB", "NC", "NH", "NJ", "NL", "NS", "NY", "PA", "QC", "SC", "TN", "VA", "VT", "WV"]
+source = "gmba-v2"
+source_id = "11134"
+source_version = "2026-11-20"
+box = [-86.01, 33.38, -56.18, 50.89]
+
+[[place]]
+slug = "bighorn-mountains"
+kind = "range"
+name = "Bighorn Mountains"
+where = ["MT", "WY"]
+within = ["rocky-mountains"]
+source = "gmba-v2"
+source_id = "11169"
+source_version = "2026-11-20"
+box = [-108.74, 43.26, -106.74, 45.4]
+
+[[place]]
+slug = "bitterroot-range"
+kind = "range"
+name = "Bitterroot Range"
+where = ["ID", "MT"]
+within = ["rocky-mountains"]
+source = "gmba-v2"
+source_id = "11174"
+source_version = "2026-11-20"
+box = [-116.83, 44.02, -111.37, 48.15]
+
+[[place]]
+slug = "blue-ridge-mountains"
+kind = "range"
+name = "Blue Ridge Mountains"
+where = ["GA", "MD", "NC", "PA", "SC", "TN", "VA", "WV"]
+within = ["appalachian-mountains"]
+source = "gmba-v2"
+source_id = "12340"
+source_version = "2026-11-20"
+box = [-84.75, 34.43, -77.38, 40.05]
+
+[[place]]
+slug = "california-coast-ranges"
+kind = "range"
+name = "California Coast Ranges"
+where = ["CA"]
+source = "gmba-v2"
+source_id = "12444"
+source_version = "2026-11-20"
+box = [-124.41, 34.95, -119.42, 41.51]
+
+[[place]]
+slug = "canadian-rockies"
+kind = "range"
+name = "Canadian Rockies"
+where = ["AB", "BC"]
+within = ["rocky-mountains"]
+source = "gmba-v2"
+source_id = "12199"
+source_version = "2026-11-20"
+box = [-120.89, 49.2, -113.62, 54.46]
+
+[[place]]
+slug = "cascade-range"
+kind = "range"
+name = "Cascade Range"
+where = ["BC", "CA", "OR", "WA"]
+source = "gmba-v2"
+source_id = "11202"
+source_version = "2026-11-20"
+box = [-123.4, 40.02, -119.4, 50.43]
+
+[[place]]
+slug = "catskill-mountains"
+kind = "range"
+name = "Catskill Mountains"
+where = ["NY"]
+within = ["appalachian-mountains"]
+source = "gmba-v2"
+source_id = "15911"
+source_version = "2026-11-20"
+box = [-75.21, 41.63, -73.96, 42.68]
+
+[[place]]
+slug = "coast-mountains"
+kind = "range"
+name = "Coast Mountains"
+where = ["AK", "BC", "YT"]
+source = "gmba-v2"
+source_id = "11234"
+source_version = "2026-11-20"
+box = [-137.29, 48.54, -121.39, 60.86]
+
+[[place]]
+slug = "colorado-plateau"
+kind = "range"
+name = "Colorado Plateau"
+where = ["AZ", "CO", "NM", "UT"]
+source = "gmba-v2"
+source_id = "12104"
+source_version = "2026-11-20"
+box = [-113.95, 32.87, -106.16, 40.2]
+
+[[place]]
+slug = "finger-lakes"
+kind = "range"
+name = "Finger Lakes"
+where = ["NY"]
+source = "gmba-v2"
+source_id = "15906"
+source_version = "2026-11-20"
+box = [-77.57, 42.27, -76.12, 42.89]
+
+[[place]]
+slug = "front-range"
+kind = "range"
+name = "Front Range"
+where = ["CO"]
+within = ["rocky-mountains"]
+source = "gmba-v2"
+source_id = "11337"
+source_version = "2026-11-20"
+box = [-106.38, 38.36, -104.82, 40.71]
+
+[[place]]
+slug = "gore-range"
+kind = "range"
+name = "Gore Range"
+where = ["CO"]
+within = ["rocky-mountains"]
+source = "gmba-v2"
+source_id = "11356"
+source_version = "2026-11-20"
+box = [-106.94, 39.27, -106.08, 40.4]
+
+[[place]]
+slug = "great-smoky-mountains"
+kind = "range"
+name = "Great Smoky Mountains"
+where = ["NC", "TN"]
+within = ["appalachian-mountains"]
+source = "gmba-v2"
+source_id = "12342"
+source_version = "2026-11-20"
+box = [-84.09, 35.42, -82.99, 35.97]
+
+[[place]]
+slug = "great-western-divide"
+kind = "range"
+name = "Great Western Divide"
+where = ["CA"]
+within = ["sierra-nevada"]
+source = "gmba-v2"
+source_id = "17240"
+source_version = "2026-11-20"
+box = [-118.65, 36.14, -118.35, 36.8]
+
+[[place]]
+slug = "green-mountains"
+kind = "range"
+name = "Green Mountains"
+where = ["VT"]
+within = ["appalachian-mountains"]
+source = "gmba-v2"
+source_id = "12332"
+source_version = "2026-11-20"
+box = [-73.21, 42.61, -72.19, 45.37]
+
+[[place]]
+slug = "klamath-mountains"
+kind = "range"
+name = "Klamath Mountains"
+where = ["CA", "OR"]
+source = "gmba-v2"
+source_id = "12443"
+source_version = "2026-11-20"
+box = [-124.43, 40.5, -122.27, 42.72]
+
+[[place]]
+slug = "longfellow-mountains"
+kind = "range"
+name = "Longfellow Mountains"
+where = ["ME"]
+within = ["appalachian-mountains"]
+source = "gmba-v2"
+source_id = "12330"
+source_version = "2026-11-20"
+box = [-71.27, 44.47, -68.64, 46.15]
+
+[[place]]
+slug = "mogollon-rim"
+kind = "range"
+name = "Mogollon Rim"
+where = ["AZ"]
+source = "gmba-v2"
+source_id = "11633"
+source_version = "2026-11-20"
+box = [-111.79, 33.67, -110.22, 34.57]
+
+[[place]]
+slug = "mosquito-range"
+kind = "range"
+name = "Mosquito Range"
+where = ["CO"]
+within = ["rocky-mountains"]
+source = "gmba-v2"
+source_id = "17612"
+source_version = "2026-11-20"
+box = [-106.32, 38.8, -105.98, 39.65]
+
+[[place]]
+slug = "north-cascades"
+kind = "range"
+name = "North Cascades"
+where = ["BC", "WA"]
+within = ["cascade-range"]
+source = "gmba-v2"
+source_id = "15510"
+source_version = "2026-11-20"
+box = [-122.51, 47.46, -119.4, 50.43]
+
+[[place]]
+slug = "olympic-mountains"
+kind = "range"
+name = "Olympic Mountains"
+where = ["WA"]
+source = "gmba-v2"
+source_id = "11688"
+source_version = "2026-11-20"
+box = [-124.73, 47.28, -122.85, 48.4]
+
+[[place]]
+slug = "oregon-cascades"
+kind = "range"
+name = "Oregon Cascades"
+where = ["OR"]
+within = ["cascade-range"]
+source = "gmba-v2"
+source_id = "17002"
+source_version = "2026-11-20"
+box = [-123.4, 41.9, -120.83, 45.73]
+
+[[place]]
+slug = "ouachita-mountains"
+kind = "range"
+name = "Ouachita Mountains"
+where = ["AR", "OK"]
+source = "gmba-v2"
+source_id = "12560"
+source_version = "2026-11-20"
+box = [-95.23, 34.35, -93.22, 35.27]
+
+[[place]]
+slug = "palisades"
+kind = "range"
+name = "Palisades"
+where = ["CA"]
+within = ["sierra-nevada"]
+source = "gmba-v2"
+source_id = ["17222", "19588"]
+source_version = "2026-11-20"
+box = [-118.6, 36.95, -118.25, 37.34]
+
+[[place]]
+slug = "rocky-mountains"
+kind = "range"
+name = "Rocky Mountains"
+where = ["AB", "BC", "CO", "ID", "MT", "NM", "UT", "WY"]
+source = "gmba-v2"
+source_id = "12105"
+source_version = "2026-11-20"
+box = [-127.69, 35.29, -104.35, 59.79]
+
+[[place]]
+slug = "san-juan-mountains"
+kind = "range"
+name = "San Juan Mountains"
+where = ["CO", "NM"]
+within = ["rocky-mountains"]
+source = "gmba-v2"
+source_id = "11800"
+source_version = "2026-11-20"
+box = [-108.94, 36.22, -105.73, 38.78]
+
+[[place]]
+slug = "sawatch-range"
+kind = "range"
+name = "Sawatch Range"
+where = ["CO"]
+within = ["rocky-mountains"]
+source = "gmba-v2"
+source_id = "11818"
+source_version = "2026-11-20"
+box = [-107.33, 38.09, -105.96, 39.92]
+
+[[place]]
+slug = "selkirk-mountains"
+kind = "range"
+name = "Selkirk Mountains"
+where = ["BC", "ID", "WA"]
+source = "gmba-v2"
+source_id = "11830"
+source_version = "2026-11-20"
+box = [-118.68, 47.5, -116.38, 52.12]
+
+[[place]]
+slug = "sierra-nevada"
+kind = "range"
+name = "Sierra Nevada"
+where = ["CA", "NV"]
+source = "gmba-v2"
+source_id = "11928"
+source_version = "2026-11-20"
+box = [-121.95, 34.82, -117.86, 40.45]
+
+[[place]]
+slug = "teton-range"
+kind = "range"
+name = "Teton Range"
+where = ["ID", "WY"]
+within = ["rocky-mountains"]
+source = "gmba-v2"
+source_id = "11991"
+source_version = "2026-11-20"
+box = [-111.1, 43.49, -110.69, 44.15]
+
+[[place]]
+slug = "transverse-ranges"
+kind = "range"
+name = "Transverse Ranges"
+where = ["CA"]
+source = "gmba-v2"
+source_id = "12445"
+source_version = "2026-11-20"
+box = [-120.66, 32.81, -115.43, 35.12]
+
+[[place]]
+slug = "uinta-mountains"
+kind = "range"
+name = "Uinta Mountains"
+where = ["UT"]
+within = ["rocky-mountains"]
+source = "gmba-v2"
+source_id = "12026"
+source_version = "2026-11-20"
+box = [-111.48, 40.12, -108.32, 41.81]
+
+[[place]]
+slug = "white-mountains"
+kind = "range"
+name = "White Mountains"
+where = ["ME", "NH"]
+within = ["appalachian-mountains"]
+source = "gmba-v2"
+source_id = "12331"
+source_version = "2026-11-20"
+box = [-72.12, 43.75, -70.79, 45.04]
+
+[[place]]
+slug = "wind-river-range"
+kind = "range"
+name = "Wind River Range"
+where = ["WY"]
+within = ["rocky-mountains"]
+source = "gmba-v2"
+source_id = "12060"
+source_version = "2026-11-20"
+box = [-110.17, 42.42, -108.54, 43.77]
+
+[[place]]
+slug = "aldo-leopold-wilderness"
+kind = "wilderness"
+name = "Aldo Leopold Wilderness"
+where = ["NM"]
+source = "wilderness-connect"
+source_id = "4"
+source_version = "2026-11-20"
+box = [-108.06, 32.93, -107.7, 33.35]
+
+[[place]]
+slug = "alpine-lakes-wilderness"
+kind = "wilderness"
+name = "Alpine Lakes Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "8"
+source_version = "2026-11-20"
+box = [-121.65, 47.38, -120.68, 47.76]
+
+[[place]]
+slug = "alta-toquima-wilderness"
+kind = "wilderness"
+name = "Alta Toquima Wilderness"
+where = ["NV"]
+source = "wilderness-connect"
+source_id = "9"
+source_version = "2026-11-20"
+box = [-117.0, 38.73, -116.83, 38.86]
+
+[[place]]
+slug = "anaconda-pintler-wilderness"
+kind = "wilderness"
+name = "Anaconda Pintler Wilderness"
+where = ["MT"]
+source = "wilderness-connect"
+source_id = "10"
+source_version = "2026-11-20"
+box = [-113.78, 45.81, -113.18, 46.1]
+
+[[place]]
+slug = "ansel-adams-wilderness"
+kind = "wilderness"
+name = "Ansel Adams Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "12"
+source_version = "2026-11-20"
+box = [-119.44, 37.31, -118.95, 37.94]
+
+[[place]]
+slug = "arc-dome-wilderness"
+kind = "wilderness"
+name = "Arc Dome Wilderness"
+where = ["NV"]
+source = "wilderness-connect"
+source_id = "16"
+source_version = "2026-11-20"
+box = [-117.49, 38.67, -117.2, 38.95]
+
+[[place]]
+slug = "bald-knob-wilderness"
+kind = "wilderness"
+name = "Bald Knob Wilderness"
+where = ["IL"]
+source = "wilderness-connect"
+source_id = "25"
+source_version = "2026-11-20"
+box = [-89.4, 37.52, -89.34, 37.59]
+
+[[place]]
+slug = "beaver-basin-wilderness"
+kind = "wilderness"
+name = "Beaver Basin Wilderness"
+where = ["MI"]
+source = "wilderness-connect"
+source_id = "707"
+source_version = "2026-11-20"
+box = [-86.41, 46.52, -86.26, 46.62]
+
+[[place]]
+slug = "big-branch-wilderness"
+kind = "wilderness"
+name = "Big Branch Wilderness"
+where = ["VT"]
+source = "wilderness-connect"
+source_id = "37"
+source_version = "2026-11-20"
+box = [-72.99, 43.26, -72.93, 43.37]
+
+[[place]]
+slug = "big-frog-wilderness"
+kind = "wilderness"
+name = "Big Frog Wilderness"
+where = ["GA", "TN"]
+source = "wilderness-connect"
+source_id = "38"
+source_version = "2026-11-20"
+box = [-84.56, 34.98, -84.47, 35.05]
+
+[[place]]
+slug = "big-laurel-branch-wilderness"
+kind = "wilderness"
+name = "Big Laurel Branch Wilderness"
+where = ["TN"]
+source = "wilderness-connect"
+source_id = "43"
+source_version = "2026-11-20"
+box = [-82.13, 36.32, -81.99, 36.42]
+
+[[place]]
+slug = "black-elk-wilderness"
+kind = "wilderness"
+name = "Black Elk Wilderness"
+where = ["SD"]
+source = "wilderness-connect"
+source_id = "55"
+source_version = "2026-11-20"
+box = [-103.57, 43.82, -103.4, 43.9]
+
+[[place]]
+slug = "blood-mountain-wilderness"
+kind = "wilderness"
+name = "Blood Mountain Wilderness"
+where = ["GA"]
+source = "wilderness-connect"
+source_id = "62"
+source_version = "2026-11-20"
+box = [-84.0, 34.67, -83.92, 34.77]
+
+[[place]]
+slug = "bob-marshall-wilderness"
+kind = "wilderness"
+name = "Bob Marshall Wilderness"
+where = ["MT"]
+source = "wilderness-connect"
+source_id = "64"
+source_version = "2026-11-20"
+box = [-113.66, 47.23, -112.69, 48.16]
+
+[[place]]
+slug = "boundary-waters-canoe-area-wilderness"
+kind = "wilderness"
+name = "Boundary Waters Canoe Area Wilderness"
+where = ["MN"]
+source = "wilderness-connect"
+source_id = "70"
+source_version = "2026-11-20"
+box = [-92.46, 47.77, -90.02, 48.37]
+
+[[place]]
+slug = "bradwell-bay-wilderness"
+kind = "wilderness"
+name = "Bradwell Bay Wilderness"
+where = ["FL"]
+source = "wilderness-connect"
+source_id = "72"
+source_version = "2026-11-20"
+box = [-84.63, 30.11, -84.49, 30.23]
+
+[[place]]
+slug = "breadloaf-wilderness"
+kind = "wilderness"
+name = "Breadloaf Wilderness"
+where = ["VT"]
+source = "wilderness-connect"
+source_id = "74"
+source_version = "2026-11-20"
+box = [-72.97, 43.93, -72.83, 44.09]
+
+[[place]]
+slug = "bridger-wilderness"
+kind = "wilderness"
+name = "Bridger Wilderness"
+where = ["WY"]
+source = "wilderness-connect"
+source_id = "78"
+source_version = "2026-11-20"
+box = [-109.95, 42.59, -109.01, 43.39]
+
+[[place]]
+slug = "brush-mountain-east-wilderness"
+kind = "wilderness"
+name = "Brush Mountain East Wilderness"
+where = ["VA"]
+source = "wilderness-connect"
+source_id = "712"
+source_version = "2026-11-20"
+box = [-80.28, 37.34, -80.19, 37.39]
+
+[[place]]
+slug = "buckhorn-wilderness"
+kind = "wilderness"
+name = "Buckhorn Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "83"
+source_version = "2026-11-20"
+box = [-123.23, 47.73, -123.03, 47.97]
+
+[[place]]
+slug = "bucks-lake-wilderness"
+kind = "wilderness"
+name = "Bucks Lake Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "84"
+source_version = "2026-11-20"
+box = [-121.28, 39.89, -121.12, 40.01]
+
+[[place]]
+slug = "carson-iceberg-wilderness"
+kind = "wilderness"
+name = "Carson-Iceberg Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "102"
+source_version = "2026-11-20"
+box = [-120.01, 38.33, -119.54, 38.6]
+
+[[place]]
+slug = "castle-crags-wilderness"
+kind = "wilderness"
+name = "Castle Crags Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "103"
+source_version = "2026-11-20"
+box = [-122.45, 41.16, -122.31, 41.24]
+
+[[place]]
+slug = "chama-river-canyon-wilderness"
+kind = "wilderness"
+name = "Chama River Canyon Wilderness"
+where = ["NM"]
+source = "wilderness-connect"
+source_id = "109"
+source_version = "2026-11-20"
+box = [-106.79, 36.21, -106.54, 36.47]
+
+[[place]]
+slug = "cheaha-wilderness"
+kind = "wilderness"
+name = "Cheaha Wilderness"
+where = ["AL"]
+source = "wilderness-connect"
+source_id = "115"
+source_version = "2026-11-20"
+box = [-85.88, 33.37, -85.8, 33.46]
+
+[[place]]
+slug = "chimney-peak-wilderness"
+kind = "wilderness"
+name = "Chimney Peak Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "117"
+source_version = "2026-11-20"
+box = [-118.14, 35.81, -118.02, 35.9]
+
+[[place]]
+slug = "clear-springs-wilderness"
+kind = "wilderness"
+name = "Clear Springs Wilderness"
+where = ["IL"]
+source = "wilderness-connect"
+source_id = "124"
+source_version = "2026-11-20"
+box = [-89.44, 37.55, -89.39, 37.62]
+
+[[place]]
+slug = "clifty-wilderness"
+kind = "wilderness"
+name = "Clifty Wilderness"
+where = ["KY"]
+source = "wilderness-connect"
+source_id = "127"
+source_version = "2026-11-20"
+box = [-83.62, 37.77, -83.53, 37.91]
+
+[[place]]
+slug = "cloud-peak-wilderness"
+kind = "wilderness"
+name = "Cloud Peak Wilderness"
+where = ["WY"]
+source = "wilderness-connect"
+source_id = "129"
+source_version = "2026-11-20"
+box = [-107.48, 44.21, -106.98, 44.61]
+
+[[place]]
+slug = "cohutta-wilderness"
+kind = "wilderness"
+name = "Cohutta Wilderness"
+where = ["GA", "TN"]
+source = "wilderness-connect"
+source_id = "130"
+source_version = "2026-11-20"
+box = [-84.66, 34.84, -84.48, 35.01]
+
+[[place]]
+slug = "collegiate-peaks-wilderness"
+kind = "wilderness"
+name = "Collegiate Peaks Wilderness"
+where = ["CO"]
+source = "wilderness-connect"
+source_id = "131"
+source_version = "2026-11-20"
+box = [-106.8, 38.81, -106.24, 39.15]
+
+[[place]]
+slug = "crab-orchard-wilderness"
+kind = "wilderness"
+name = "Crab Orchard Wilderness"
+where = ["IL"]
+source = "wilderness-connect"
+source_id = "140"
+source_version = "2026-11-20"
+box = [-89.16, 37.59, -89.06, 37.63]
+
+[[place]]
+slug = "daniel-j-evans-wilderness"
+kind = "wilderness"
+name = "Daniel J. Evans Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "428"
+source_version = "2026-11-20"
+box = [-124.74, 47.47, -123.12, 48.27]
+
+[[place]]
+slug = "desolation-wilderness"
+kind = "wilderness"
+name = "Desolation Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "155"
+source_version = "2026-11-20"
+box = [-120.29, 38.82, -120.07, 39.02]
+
+[[place]]
+slug = "diamond-peak-wilderness"
+kind = "wilderness"
+name = "Diamond Peak Wilderness"
+where = ["OR"]
+source = "wilderness-connect"
+source_id = "157"
+source_version = "2026-11-20"
+box = [-122.22, 43.46, -121.96, 43.6]
+
+[[place]]
+slug = "dolly-sods-wilderness"
+kind = "wilderness"
+name = "Dolly Sods Wilderness"
+where = ["WV"]
+source = "wilderness-connect"
+source_id = "160"
+source_version = "2026-11-20"
+box = [-79.41, 38.96, -79.3, 39.08]
+
+[[place]]
+slug = "domeland-wilderness"
+kind = "wilderness"
+name = "Domeland Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "162"
+source_version = "2026-11-20"
+box = [-118.32, 35.69, -118.02, 36.03]
+
+[[place]]
+slug = "dugger-mountain-wilderness"
+kind = "wilderness"
+name = "Dugger Mountain Wilderness"
+where = ["AL"]
+source = "wilderness-connect"
+source_id = "166"
+source_version = "2026-11-20"
+box = [-85.65, 33.83, -85.55, 33.9]
+
+[[place]]
+slug = "emigrant-wilderness"
+kind = "wilderness"
+name = "Emigrant Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "177"
+source_version = "2026-11-20"
+box = [-119.92, 38.03, -119.6, 38.32]
+
+[[place]]
+slug = "flatside-wilderness"
+kind = "wilderness"
+name = "Flatside Wilderness"
+where = ["AR"]
+source = "wilderness-connect"
+source_id = "187"
+source_version = "2026-11-20"
+box = [-93.04, 34.83, -92.89, 34.88]
+
+[[place]]
+slug = "four-peaks-wilderness"
+kind = "wilderness"
+name = "Four Peaks Wilderness"
+where = ["AZ"]
+source = "wilderness-connect"
+source_id = "193"
+source_version = "2026-11-20"
+box = [-111.46, 33.55, -111.22, 33.72]
+
+[[place]]
+slug = "frank-church-river-of-no-return-wilderness"
+kind = "wilderness"
+name = "Frank Church-River of No Return Wilderness"
+where = ["ID"]
+source = "wilderness-connect"
+source_id = "194"
+source_version = "2026-11-20"
+box = [-115.95, 44.4, -114.35, 45.73]
+
+[[place]]
+slug = "garden-mountain-wilderness"
+kind = "wilderness"
+name = "Garden Mountain Wilderness"
+where = ["VA"]
+source = "wilderness-connect"
+source_id = "724"
+source_version = "2026-11-20"
+box = [-81.38, 37.04, -81.3, 37.08]
+
+[[place]]
+slug = "garden-of-the-gods-wilderness"
+kind = "wilderness"
+name = "Garden of the Gods Wilderness"
+where = ["IL"]
+source = "wilderness-connect"
+source_id = "198"
+source_version = "2026-11-20"
+box = [-88.43, 37.58, -88.37, 37.63]
+
+[[place]]
+slug = "gila-wilderness"
+kind = "wilderness"
+name = "Gila Wilderness"
+where = ["NM"]
+source = "wilderness-connect"
+source_id = "205"
+source_version = "2026-11-20"
+box = [-108.82, 33.01, -108.01, 33.42]
+
+[[place]]
+slug = "glacier-peak-wilderness"
+kind = "wilderness"
+name = "Glacier Peak Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "207"
+source_version = "2026-11-20"
+box = [-121.41, 47.88, -120.53, 48.48]
+
+[[place]]
+slug = "glastenbury-wilderness"
+kind = "wilderness"
+name = "Glastenbury Wilderness"
+where = ["VT"]
+source = "wilderness-connect"
+source_id = "688"
+source_version = "2026-11-20"
+box = [-73.16, 42.89, -73.01, 43.0]
+
+[[place]]
+slug = "goat-rocks-wilderness"
+kind = "wilderness"
+name = "Goat Rocks Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "209"
+source_version = "2026-11-20"
+box = [-121.61, 46.38, -121.26, 46.67]
+
+[[place]]
+slug = "golden-trout-wilderness"
+kind = "wilderness"
+name = "Golden Trout Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "210"
+source_version = "2026-11-20"
+box = [-118.68, 36.12, -118.04, 36.49]
+
+[[place]]
+slug = "gospel-hump-wilderness"
+kind = "wilderness"
+name = "Gospel-Hump Wilderness"
+where = ["ID"]
+source = "wilderness-connect"
+source_id = "212"
+source_version = "2026-11-20"
+box = [-116.02, 45.43, -115.53, 45.73]
+
+[[place]]
+slug = "granite-chief-wilderness"
+kind = "wilderness"
+name = "Granite Chief Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "214"
+source_version = "2026-11-20"
+box = [-120.38, 39.05, -120.23, 39.22]
+
+[[place]]
+slug = "great-gulf-wilderness"
+kind = "wilderness"
+name = "Great Gulf Wilderness"
+where = ["NH"]
+source = "wilderness-connect"
+source_id = "220"
+source_version = "2026-11-20"
+box = [-71.32, 44.28, -71.24, 44.33]
+
+[[place]]
+slug = "henry-m-jackson-wilderness"
+kind = "wilderness"
+name = "Henry M. Jackson Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "241"
+source_version = "2026-11-20"
+box = [-121.43, 47.75, -121.01, 48.09]
+
+[[place]]
+slug = "high-uintas-wilderness"
+kind = "wilderness"
+name = "High Uintas Wilderness"
+where = ["UT"]
+source = "wilderness-connect"
+source_id = "246"
+source_version = "2026-11-20"
+box = [-110.89, 40.56, -110.04, 40.93]
+
+[[place]]
+slug = "holy-cross-wilderness"
+kind = "wilderness"
+name = "Holy Cross Wilderness"
+where = ["CO"]
+source = "wilderness-connect"
+source_id = "248"
+source_version = "2026-11-20"
+box = [-106.65, 39.29, -106.37, 39.58]
+
+[[place]]
+slug = "hoover-wilderness"
+kind = "wilderness"
+name = "Hoover Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "249"
+source_version = "2026-11-20"
+box = [-119.63, 37.93, -119.15, 38.32]
+
+[[place]]
+slug = "hunting-camp-creek-wilderness"
+kind = "wilderness"
+name = "Hunting Camp Creek Wilderness"
+where = ["VA"]
+source = "wilderness-connect"
+source_id = "727"
+source_version = "2026-11-20"
+box = [-81.31, 37.06, -81.19, 37.13]
+
+[[place]]
+slug = "hurricane-creek-wilderness"
+kind = "wilderness"
+name = "Hurricane Creek Wilderness"
+where = ["AR"]
+source = "wilderness-connect"
+source_id = "254"
+source_version = "2026-11-20"
+box = [-93.24, 35.68, -93.14, 35.79]
+
+[[place]]
+slug = "huston-park-wilderness"
+kind = "wilderness"
+name = "Huston Park Wilderness"
+where = ["WY"]
+source = "wilderness-connect"
+source_id = "255"
+source_version = "2026-11-20"
+box = [-107.12, 41.04, -106.86, 41.15]
+
+[[place]]
+slug = "indian-heaven-wilderness"
+kind = "wilderness"
+name = "Indian Heaven Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "258"
+source_version = "2026-11-20"
+box = [-121.85, 45.93, -121.7, 46.08]
+
+[[place]]
+slug = "indian-peaks-wilderness"
+kind = "wilderness"
+name = "Indian Peaks Wilderness"
+where = ["CO"]
+source = "wilderness-connect"
+source_id = "261"
+source_version = "2026-11-20"
+box = [-105.84, 39.93, -105.54, 40.19]
+
+[[place]]
+slug = "james-peak-wilderness"
+kind = "wilderness"
+name = "James Peak Wilderness"
+where = ["CO"]
+source = "wilderness-connect"
+source_id = "272"
+source_version = "2026-11-20"
+box = [-105.77, 39.77, -105.61, 39.94]
+
+[[place]]
+slug = "james-river-face-wilderness"
+kind = "wilderness"
+name = "James River Face Wilderness"
+where = ["VA"]
+source = "wilderness-connect"
+source_id = "273"
+source_version = "2026-11-20"
+box = [-79.49, 37.56, -79.38, 37.62]
+
+[[place]]
+slug = "jedediah-smith-wilderness"
+kind = "wilderness"
+name = "Jedediah Smith Wilderness"
+where = ["WY"]
+source = "wilderness-connect"
+source_id = "275"
+source_version = "2026-11-20"
+box = [-111.05, 43.51, -110.79, 44.12]
+
+[[place]]
+slug = "john-muir-wilderness"
+kind = "wilderness"
+name = "John Muir Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "278"
+source_version = "2026-11-20"
+box = [-119.13, 36.46, -118.1, 37.61]
+
+[[place]]
+slug = "joseph-battell-wilderness"
+kind = "wilderness"
+name = "Joseph Battell Wilderness"
+where = ["VT"]
+source = "wilderness-connect"
+source_id = "689"
+source_version = "2026-11-20"
+box = [-72.99, 43.84, -72.87, 43.94]
+
+[[place]]
+slug = "joyce-kilmer-slickrock-wilderness"
+kind = "wilderness"
+name = "Joyce Kilmer-Slickrock Wilderness"
+where = ["NC", "TN"]
+source = "wilderness-connect"
+source_id = "280"
+source_version = "2026-11-20"
+box = [-84.04, 35.35, -83.92, 35.48]
+
+[[place]]
+slug = "juniper-prairie-wilderness"
+kind = "wilderness"
+name = "Juniper Prairie Wilderness"
+where = ["FL"]
+source = "wilderness-connect"
+source_id = "284"
+source_version = "2026-11-20"
+box = [-81.73, 29.17, -81.64, 29.26]
+
+[[place]]
+slug = "kiavah-wilderness"
+kind = "wilderness"
+name = "Kiavah Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "294"
+source_version = "2026-11-20"
+box = [-118.26, 35.51, -117.95, 35.74]
+
+[[place]]
+slug = "king-range-wilderness"
+kind = "wilderness"
+name = "King Range Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "687"
+source_version = "2026-11-20"
+box = [-124.36, 39.97, -123.98, 40.3]
+
+[[place]]
+slug = "la-garita-wilderness"
+kind = "wilderness"
+name = "La Garita Wilderness"
+where = ["CO"]
+source = "wilderness-connect"
+source_id = "303"
+source_version = "2026-11-20"
+box = [-107.17, 37.8, -106.69, 38.06]
+
+[[place]]
+slug = "lewis-fork-wilderness"
+kind = "wilderness"
+name = "Lewis Fork Wilderness"
+where = ["VA"]
+source = "wilderness-connect"
+source_id = "317"
+source_version = "2026-11-20"
+box = [-81.59, 36.63, -81.5, 36.69]
+
+[[place]]
+slug = "linville-gorge-wilderness"
+kind = "wilderness"
+name = "Linville Gorge Wilderness"
+where = ["NC"]
+source = "wilderness-connect"
+source_id = "319"
+source_version = "2026-11-20"
+box = [-81.93, 35.81, -81.87, 35.96]
+
+[[place]]
+slug = "little-frog-mountain-wilderness"
+kind = "wilderness"
+name = "Little Frog Mountain Wilderness"
+where = ["TN"]
+source = "wilderness-connect"
+source_id = "322"
+source_version = "2026-11-20"
+box = [-84.48, 35.04, -84.4, 35.11]
+
+[[place]]
+slug = "little-lake-creek-wilderness"
+kind = "wilderness"
+name = "Little Lake Creek Wilderness"
+where = ["TX"]
+source = "wilderness-connect"
+source_id = "324"
+source_version = "2026-11-20"
+box = [-95.76, 30.45, -95.69, 30.52]
+
+[[place]]
+slug = "little-wilson-creek-wilderness"
+kind = "wilderness"
+name = "Little Wilson Creek Wilderness"
+where = ["VA"]
+source = "wilderness-connect"
+source_id = "328"
+source_version = "2026-11-20"
+box = [-81.49, 36.63, -81.43, 36.7]
+
+[[place]]
+slug = "lost-creek-wilderness"
+kind = "wilderness"
+name = "Lost Creek Wilderness"
+where = ["CO"]
+source = "wilderness-connect"
+source_id = "331"
+source_version = "2026-11-20"
+box = [-105.72, 39.11, -105.33, 39.46]
+
+[[place]]
+slug = "lusk-creek-wilderness"
+kind = "wilderness"
+name = "Lusk Creek Wilderness"
+where = ["IL"]
+source = "wilderness-connect"
+source_id = "333"
+source_version = "2026-11-20"
+box = [-88.56, 37.5, -88.49, 37.56]
+
+[[place]]
+slug = "lye-brook-wilderness"
+kind = "wilderness"
+name = "Lye Brook Wilderness"
+where = ["VT"]
+source = "wilderness-connect"
+source_id = "334"
+source_version = "2026-11-20"
+box = [-73.1, 43.05, -72.94, 43.17]
+
+[[place]]
+slug = "marble-mountain-wilderness"
+kind = "wilderness"
+name = "Marble Mountain Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "340"
+source_version = "2026-11-20"
+box = [-123.44, 41.33, -123.02, 41.7]
+
+[[place]]
+slug = "mark-o-hatfield-wilderness"
+kind = "wilderness"
+name = "Mark O. Hatfield Wilderness"
+where = ["OR"]
+source = "wilderness-connect"
+source_id = "342"
+source_version = "2026-11-20"
+box = [-122.11, 45.52, -121.65, 45.7]
+
+[[place]]
+slug = "mark-trail-wilderness"
+kind = "wilderness"
+name = "Mark Trail Wilderness"
+where = ["GA"]
+source = "wilderness-connect"
+source_id = "343"
+source_version = "2026-11-20"
+box = [-83.85, 34.69, -83.74, 34.85]
+
+[[place]]
+slug = "mazatzal-wilderness"
+kind = "wilderness"
+name = "Mazatzal Wilderness"
+where = ["AZ"]
+source = "wilderness-connect"
+source_id = "347"
+source_version = "2026-11-20"
+box = [-111.75, 33.9, -111.42, 34.4]
+
+[[place]]
+slug = "mccormick-wilderness"
+kind = "wilderness"
+name = "McCormick Wilderness"
+where = ["MI"]
+source = "wilderness-connect"
+source_id = "348"
+source_version = "2026-11-20"
+box = [-88.05, 46.64, -87.93, 46.73]
+
+[[place]]
+slug = "middle-prong-wilderness"
+kind = "wilderness"
+name = "Middle Prong Wilderness"
+where = ["NC"]
+source = "wilderness-connect"
+source_id = "355"
+source_version = "2026-11-20"
+box = [-82.99, 35.3, -82.9, 35.37]
+
+[[place]]
+slug = "miller-peak-wilderness"
+kind = "wilderness"
+name = "Miller Peak Wilderness"
+where = ["AZ"]
+source = "wilderness-connect"
+source_id = "358"
+source_version = "2026-11-20"
+box = [-110.41, 31.36, -110.25, 31.46]
+
+[[place]]
+slug = "mokelumne-wilderness"
+kind = "wilderness"
+name = "Mokelumne Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "363"
+source_version = "2026-11-20"
+box = [-120.21, 38.48, -119.79, 38.7]
+
+[[place]]
+slug = "mount-adams-wilderness"
+kind = "wilderness"
+name = "Mount Adams Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "370"
+source_version = "2026-11-20"
+box = [-121.63, 46.12, -121.46, 46.31]
+
+[[place]]
+slug = "mount-baker-wilderness"
+kind = "wilderness"
+name = "Mount Baker Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "371"
+source_version = "2026-11-20"
+box = [-122.0, 48.64, -121.52, 49.0]
+
+[[place]]
+slug = "mount-hood-wilderness"
+kind = "wilderness"
+name = "Mount Hood Wilderness"
+where = ["OR"]
+source = "wilderness-connect"
+source_id = "374"
+source_version = "2026-11-20"
+box = [-121.93, 45.2, -121.59, 45.47]
+
+[[place]]
+slug = "mount-jefferson-wilderness"
+kind = "wilderness"
+name = "Mount Jefferson Wilderness"
+where = ["OR"]
+source = "wilderness-connect"
+source_id = "375"
+source_version = "2026-11-20"
+box = [-121.95, 44.43, -121.67, 44.81]
+
+[[place]]
+slug = "mount-massive-wilderness"
+kind = "wilderness"
+name = "Mount Massive Wilderness"
+where = ["CO"]
+source = "wilderness-connect"
+source_id = "377"
+source_version = "2026-11-20"
+box = [-106.56, 39.11, -106.4, 39.26]
+
+[[place]]
+slug = "mount-thielsen-wilderness"
+kind = "wilderness"
+name = "Mount Thielsen Wilderness"
+where = ["OR"]
+source = "wilderness-connect"
+source_id = "385"
+source_version = "2026-11-20"
+box = [-122.1, 43.1, -121.91, 43.33]
+
+[[place]]
+slug = "mount-washington-wilderness"
+kind = "wilderness"
+name = "Mount Washington Wilderness"
+where = ["OR"]
+source = "wilderness-connect"
+source_id = "389"
+source_version = "2026-11-20"
+box = [-121.99, 44.21, -121.76, 44.38]
+
+[[place]]
+slug = "mount-zirkel-wilderness"
+kind = "wilderness"
+name = "Mount Zirkel Wilderness"
+where = ["CO"]
+source = "wilderness-connect"
+source_id = "391"
+source_version = "2026-11-20"
+box = [-106.86, 40.55, -106.57, 40.99]
+
+[[place]]
+slug = "mountain-lake-wilderness"
+kind = "wilderness"
+name = "Mountain Lake Wilderness"
+where = ["VA", "WV"]
+source = "wilderness-connect"
+source_id = "392"
+source_version = "2026-11-20"
+box = [-80.53, 37.35, -80.39, 37.46]
+
+[[place]]
+slug = "mt-rose-wilderness"
+kind = "wilderness"
+name = "Mt. Rose Wilderness"
+where = ["NV"]
+source = "wilderness-connect"
+source_id = "396"
+source_version = "2026-11-20"
+box = [-120.0, 39.26, -119.86, 39.49]
+
+[[place]]
+slug = "never-summer-wilderness"
+kind = "wilderness"
+name = "Never Summer Wilderness"
+where = ["CO"]
+source = "wilderness-connect"
+source_id = "406"
+source_version = "2026-11-20"
+box = [-106.0, 40.31, -105.87, 40.47]
+
+[[place]]
+slug = "norse-peak-wilderness"
+kind = "wilderness"
+name = "Norse Peak Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "413"
+source_version = "2026-11-20"
+box = [-121.5, 46.91, -121.24, 47.08]
+
+[[place]]
+slug = "owens-peak-wilderness"
+kind = "wilderness"
+name = "Owens Peak Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "435"
+source_version = "2026-11-20"
+box = [-118.11, 35.6, -117.89, 35.87]
+
+[[place]]
+slug = "panther-den-wilderness"
+kind = "wilderness"
+name = "Panther Den Wilderness"
+where = ["IL"]
+source = "wilderness-connect"
+source_id = "443"
+source_version = "2026-11-20"
+box = [-89.1, 37.58, -89.06, 37.6]
+
+[[place]]
+slug = "pasayten-wilderness"
+kind = "wilderness"
+name = "Pasayten Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "445"
+source_version = "2026-11-20"
+box = [-121.02, 48.68, -119.87, 49.0]
+
+[[place]]
+slug = "peru-peak-wilderness"
+kind = "wilderness"
+name = "Peru Peak Wilderness"
+where = ["VT"]
+source = "wilderness-connect"
+source_id = "451"
+source_version = "2026-11-20"
+box = [-72.96, 43.25, -72.88, 43.36]
+
+[[place]]
+slug = "peters-mountain-wilderness"
+kind = "wilderness"
+name = "Peters Mountain Wilderness"
+where = ["VA"]
+source = "wilderness-connect"
+source_id = "452"
+source_version = "2026-11-20"
+box = [-80.68, 37.39, -80.58, 37.45]
+
+[[place]]
+slug = "phillip-burton-wilderness"
+kind = "wilderness"
+name = "Phillip Burton Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "455"
+source_version = "2026-11-20"
+box = [-123.03, 37.92, -122.71, 38.24]
+
+[[place]]
+slug = "pleasant-view-ridge-wilderness"
+kind = "wilderness"
+name = "Pleasant View Ridge Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "738"
+source_version = "2026-11-20"
+box = [-118.01, 34.34, -117.76, 34.44]
+
+[[place]]
+slug = "pond-mountain-wilderness"
+kind = "wilderness"
+name = "Pond Mountain Wilderness"
+where = ["TN"]
+source = "wilderness-connect"
+source_id = "468"
+source_version = "2026-11-20"
+box = [-82.15, 36.26, -82.06, 36.32]
+
+[[place]]
+slug = "porcupine-lake-wilderness"
+kind = "wilderness"
+name = "Porcupine Lake Wilderness"
+where = ["WI"]
+source = "wilderness-connect"
+source_id = "471"
+source_version = "2026-11-20"
+box = [-91.19, 46.28, -91.09, 46.31]
+
+[[place]]
+slug = "presidential-range-dry-river-wilderness"
+kind = "wilderness"
+name = "Presidential Range-Dry River Wilderness"
+where = ["NH"]
+source = "wilderness-connect"
+source_id = "474"
+source_version = "2026-11-20"
+box = [-71.39, 44.08, -71.26, 44.26]
+
+[[place]]
+slug = "priest-wilderness"
+kind = "wilderness"
+name = "Priest Wilderness"
+where = ["VA"]
+source = "wilderness-connect"
+source_id = "475"
+source_version = "2026-11-20"
+box = [-79.1, 37.79, -79.02, 37.86]
+
+[[place]]
+slug = "pusch-ridge-wilderness"
+kind = "wilderness"
+name = "Pusch Ridge Wilderness"
+where = ["AZ"]
+source = "wilderness-connect"
+source_id = "477"
+source_version = "2026-11-20"
+box = [-110.96, 32.31, -110.7, 32.44]
+
+[[place]]
+slug = "raccoon-branch-wilderness"
+kind = "wilderness"
+name = "Raccoon Branch Wilderness"
+where = ["VA"]
+source = "wilderness-connect"
+source_id = "740"
+source_version = "2026-11-20"
+box = [-81.5, 36.72, -81.42, 36.76]
+
+[[place]]
+slug = "rainbow-lake-wilderness"
+kind = "wilderness"
+name = "Rainbow Lake Wilderness"
+where = ["WI"]
+source = "wilderness-connect"
+source_id = "480"
+source_version = "2026-11-20"
+box = [-91.34, 46.38, -91.26, 46.45]
+
+[[place]]
+slug = "ramseys-draft-wilderness"
+kind = "wilderness"
+name = "Ramseys Draft Wilderness"
+where = ["VA"]
+source = "wilderness-connect"
+source_id = "482"
+source_version = "2026-11-20"
+box = [-79.37, 38.31, -79.3, 38.38]
+
+[[place]]
+slug = "raven-cliffs-wilderness"
+kind = "wilderness"
+name = "Raven Cliffs Wilderness"
+where = ["GA"]
+source = "wilderness-connect"
+source_id = "484"
+source_version = "2026-11-20"
+box = [-83.92, 34.67, -83.79, 34.74]
+
+[[place]]
+slug = "rincon-mountain-wilderness"
+kind = "wilderness"
+name = "Rincon Mountain Wilderness"
+where = ["AZ"]
+source = "wilderness-connect"
+source_id = "496"
+source_version = "2026-11-20"
+box = [-110.6, 32.05, -110.45, 32.28]
+
+[[place]]
+slug = "russian-wilderness"
+kind = "wilderness"
+name = "Russian Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "507"
+source_version = "2026-11-20"
+box = [-123.0, 41.26, -122.9, 41.37]
+
+[[place]]
+slug = "salmo-priest-wilderness"
+kind = "wilderness"
+name = "Salmo-Priest Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "515"
+source_version = "2026-11-20"
+box = [-117.28, 48.8, -117.03, 49.0]
+
+[[place]]
+slug = "san-gorgonio-wilderness"
+kind = "wilderness"
+name = "San Gorgonio Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "521"
+source_version = "2026-11-20"
+box = [-116.98, 33.96, -116.51, 34.16]
+
+[[place]]
+slug = "san-jacinto-wilderness"
+kind = "wilderness"
+name = "San Jacinto Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "522"
+source_version = "2026-11-20"
+box = [-116.77, 33.65, -116.61, 33.89]
+
+[[place]]
+slug = "san-pedro-parks-wilderness"
+kind = "wilderness"
+name = "San Pedro Parks Wilderness"
+where = ["NM"]
+source = "wilderness-connect"
+source_id = "525"
+source_version = "2026-11-20"
+box = [-106.89, 36.03, -106.76, 36.17]
+
+[[place]]
+slug = "scapegoat-wilderness"
+kind = "wilderness"
+name = "Scapegoat Wilderness"
+where = ["MT"]
+source = "wilderness-connect"
+source_id = "538"
+source_version = "2026-11-20"
+box = [-113.1, 47.07, -112.5, 47.53]
+
+[[place]]
+slug = "selway-bitterroot-wilderness"
+kind = "wilderness"
+name = "Selway-Bitterroot Wilderness"
+where = ["ID", "MT"]
+source = "wilderness-connect"
+source_id = "540"
+source_version = "2026-11-20"
+box = [-115.4, 45.62, -114.17, 46.69]
+
+[[place]]
+slug = "sheep-mountain-wilderness"
+kind = "wilderness"
+name = "Sheep Mountain Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "546"
+source_version = "2026-11-20"
+box = [-117.82, 34.23, -117.61, 34.38]
+
+[[place]]
+slug = "sky-lakes-wilderness"
+kind = "wilderness"
+name = "Sky Lakes Wilderness"
+where = ["OR"]
+source = "wilderness-connect"
+source_id = "558"
+source_version = "2026-11-20"
+box = [-122.37, 42.4, -122.1, 42.8]
+
+[[place]]
+slug = "soda-mountain-wilderness"
+kind = "wilderness"
+name = "Soda Mountain Wilderness"
+where = ["OR"]
+source = "wilderness-connect"
+source_id = "748"
+source_version = "2026-11-20"
+box = [-122.6, 42.01, -122.34, 42.08]
+
+[[place]]
+slug = "south-san-juan-wilderness"
+kind = "wilderness"
+name = "South San Juan Wilderness"
+where = ["CO"]
+source = "wilderness-connect"
+source_id = "568"
+source_version = "2026-11-20"
+box = [-106.88, 37.07, -106.41, 37.43]
+
+[[place]]
+slug = "south-sierra-wilderness"
+kind = "wilderness"
+name = "South Sierra Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "569"
+source_version = "2026-11-20"
+box = [-118.21, 36.02, -118.03, 36.27]
+
+[[place]]
+slug = "southern-nantahala-wilderness"
+kind = "wilderness"
+name = "Southern Nantahala Wilderness"
+where = ["GA", "NC"]
+source = "wilderness-connect"
+source_id = "571"
+source_version = "2026-11-20"
+box = [-83.7, 34.94, -83.45, 35.06]
+
+[[place]]
+slug = "st-marks-wilderness"
+kind = "wilderness"
+name = "St. Marks Wilderness"
+where = ["FL"]
+source = "wilderness-connect"
+source_id = "574"
+source_version = "2026-11-20"
+box = [-84.47, 29.97, -83.98, 30.16]
+
+[[place]]
+slug = "stephen-mather-wilderness"
+kind = "wilderness"
+name = "Stephen Mather Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "577"
+source_version = "2026-11-20"
+box = [-121.64, 48.25, -120.55, 49.0]
+
+[[place]]
+slug = "superstition-wilderness"
+kind = "wilderness"
+name = "Superstition Wilderness"
+where = ["AZ"]
+source = "wilderness-connect"
+source_id = "583"
+source_version = "2026-11-20"
+box = [-111.47, 33.37, -111.04, 33.61]
+
+[[place]]
+slug = "table-mountain-wilderness"
+kind = "wilderness"
+name = "Table Mountain Wilderness"
+where = ["NV"]
+source = "wilderness-connect"
+source_id = "590"
+source_version = "2026-11-20"
+box = [-116.72, 38.6, -116.51, 38.92]
+
+[[place]]
+slug = "teton-wilderness"
+kind = "wilderness"
+name = "Teton Wilderness"
+where = ["WY"]
+source = "wilderness-connect"
+source_id = "596"
+source_version = "2026-11-20"
+box = [-110.68, 43.76, -109.72, 44.32]
+
+[[place]]
+slug = "three-ridges-wilderness"
+kind = "wilderness"
+name = "Three Ridges Wilderness"
+where = ["VA"]
+source = "wilderness-connect"
+source_id = "601"
+source_version = "2026-11-20"
+box = [-79.02, 37.84, -78.96, 37.9]
+
+[[place]]
+slug = "three-sisters-wilderness"
+kind = "wilderness"
+name = "Three Sisters Wilderness"
+where = ["OR"]
+source = "wilderness-connect"
+source_id = "602"
+source_version = "2026-11-20"
+box = [-122.23, 43.8, -121.6, 44.3]
+
+[[place]]
+slug = "thunder-ridge-wilderness"
+kind = "wilderness"
+name = "Thunder Ridge Wilderness"
+where = ["VA"]
+source = "wilderness-connect"
+source_id = "603"
+source_version = "2026-11-20"
+box = [-79.52, 37.52, -79.45, 37.57]
+
+[[place]]
+slug = "tray-mountain-wilderness"
+kind = "wilderness"
+name = "Tray Mountain Wilderness"
+where = ["GA"]
+source = "wilderness-connect"
+source_id = "607"
+source_version = "2026-11-20"
+box = [-83.69, 34.76, -83.63, 34.87]
+
+[[place]]
+slug = "trinity-alps-wilderness"
+kind = "wilderness"
+name = "Trinity Alps Wilderness"
+where = ["CA"]
+source = "wilderness-connect"
+source_id = "611"
+source_version = "2026-11-20"
+box = [-123.55, 40.74, -122.65, 41.26]
+
+[[place]]
+slug = "upper-bald-river-wilderness"
+kind = "wilderness"
+name = "Upper Bald River Wilderness"
+where = ["TN"]
+source = "wilderness-connect"
+source_id = "766"
+source_version = "2026-11-20"
+box = [-84.22, 35.24, -84.11, 35.29]
+
+[[place]]
+slug = "upper-kiamichi-river-wilderness"
+kind = "wilderness"
+name = "Upper Kiamichi River Wilderness"
+where = ["OK"]
+source = "wilderness-connect"
+source_id = "623"
+source_version = "2026-11-20"
+box = [-94.61, 34.65, -94.46, 34.69]
+
+[[place]]
+slug = "vasquez-peak-wilderness"
+kind = "wilderness"
+name = "Vasquez Peak Wilderness"
+where = ["CO"]
+source = "wilderness-connect"
+source_id = "624"
+source_version = "2026-11-20"
+box = [-105.92, 39.78, -105.77, 39.87]
+
+[[place]]
+slug = "weminuche-wilderness"
+kind = "wilderness"
+name = "Weminuche Wilderness"
+where = ["CO"]
+source = "wilderness-connect"
+source_id = "637"
+source_version = "2026-11-20"
+box = [-107.79, 37.4, -106.79, 37.8]
+
+[[place]]
+slug = "west-malpais-wilderness"
+kind = "wilderness"
+name = "West Malpais Wilderness"
+where = ["NM"]
+source = "wilderness-connect"
+source_id = "642"
+source_version = "2026-11-20"
+box = [-108.2, 34.73, -107.96, 34.89]
+
+[[place]]
+slug = "william-o-douglas-wilderness"
+kind = "wilderness"
+name = "William O. Douglas Wilderness"
+where = ["WA"]
+source = "wilderness-connect"
+source_id = "652"
+source_version = "2026-11-20"
+box = [-121.51, 46.63, -121.09, 46.98]

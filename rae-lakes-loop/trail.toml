@@ -10,6 +10,8 @@ tier = "short"
 designation = "National Park Service trails in Kings Canyon National Park, walked as a loop from Road's End and described as one on the Park Service's Rae Lakes Loop page"
 wave = 1
 short_reason = "Very well known and popular: the Park Service limits the number of people starting each day by entry point and takes reservations up to six months ahead."
+places_checked = "2026-11-20"
+places_track = "45ce8347a4d34f01"
 
 [source]
 status = "verified"
@@ -80,6 +82,18 @@ facts = ["permit"]
 url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/SEKI_ParkAtlas2_4_HikingandBackpacking_MASTER/FeatureServer/12"
 publisher = "National Park Service, Park Atlas (the Road's End end of the stem)"
 facts = ["start_lonlat"]
+
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon"
+basis = "track"
+km = 57.3
+
+[[place]]
+kind = "range"
+slug = "great-western-divide"
+basis = "track"
+km = 13.3
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -153,5 +167,14 @@ change = "The track is now built from the National Park Service's Park Atlas lay
 fields = ["source.line_file", "source.status", "source.publisher", "source.url", "source.discovery", "source.format", "source.licence", "source.licence_text", "source.attribution", "source.osm_only", "source.mainline", "source.source_checked", "source.line_source", "osm.note", "verification"]
 basis = "The Park Service's Rae Lakes Loop page gives the loop as 41.4 miles and a table of miles from Road's End, 1.9 miles to the Paradise and Bubbs Creek junction, which the loop reaches again before it returns to Road's End. The Park Service's Park Atlas layer for the Rae Lakes Loop holds 14 features that join into that loop and 2 for the stem from Road's End."
 basis_url = "https://www.nps.gov/seki/planyourvisit/rae-lakes-loop.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sequoia and Kings Canyon National Parks, Great Western Divide."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

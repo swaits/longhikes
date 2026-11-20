@@ -11,6 +11,8 @@ length_note = "about 1,175 mi planned"
 tier = "regional"
 designation = "North Carolina State Trail; Friends of the Mountains-to-Sea Trail"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "7998ce6018fc36b9"
 
 [source]
 status = "osm-only"
@@ -86,6 +88,30 @@ title = "Mountains to Sea Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Mountains_to_Sea_Trail"
 
+[[place]]
+kind = "park"
+slug = "great-smoky-mountains-national-park"
+basis = "track"
+km = 45.5
+
+[[place]]
+kind = "range"
+slug = "great-smoky-mountains"
+basis = "track"
+km = 65.5
+
+[[place]]
+kind = "wilderness"
+slug = "linville-gorge-wilderness"
+basis = "track"
+km = 10.1
+
+[[place]]
+kind = "wilderness"
+slug = "middle-prong-wilderness"
+basis = "track"
+km = 8.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -112,5 +138,14 @@ change = "The main track no longer holds the Hunting Season Detour, the road rou
 fields = ["source.line_file", "source.mainline"]
 basis = "The Friends of the Mountains-to-Sea Trail's page for segment 7 says the privately owned stretches of the Sauratown Trail are closed for hunting season, November to early January, and that when it is closed hikers use the Sauratown Trail Hunting Season Detour. OpenStreetMap relation 16026135 is that detour; its note calls it the recommended road route for times when sections of the Sauratown Trail are closed."
 basis_url = "https://mountainstoseatrail.org/segment/7/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Great Smoky Mountains National Park, Great Smoky Mountains, Linville Gorge Wilderness, Middle Prong Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

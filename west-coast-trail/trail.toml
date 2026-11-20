@@ -12,6 +12,8 @@ tier = "short"
 designation = "Parks Canada, Pacific Rim National Park Reserve"
 wave = 1
 short_reason = "Parks Canada says most people take six to eight days, so it takes five or more days."
+places_checked = "2026-11-20"
+places_track = "b99f42d0654c66b5"
 
 [source]
 status = "osm-only"
@@ -81,6 +83,12 @@ url = "https://geogratis.gc.ca/services/geoname/en/geonames/JATLA"
 publisher = "Natural Resources Canada, Canadian Geographical Names Database"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "pacific-rim-national-park-reserve"
+basis = "track"
+km = 57.1
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -117,4 +125,13 @@ fields = ["short_reason"]
 basis = "The Parks Canada page for the trail says most people take six to eight days."
 basis_url = "https://parks.canada.ca/pn-np/bc/pacificrim/activ/sco-wct"
 asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Pacific Rim National Park Reserve."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
+asked_by = "the dataset's own check"
 outcome = "applied"

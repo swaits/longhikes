@@ -9,6 +9,8 @@ length_note = "about 1,400 mi loop"
 tier = "regional"
 designation = "Ohio's state-circling loop trail, Buckeye Trail Association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "647f68cd076b3522"
 
 [source]
 status = "osm-only"
@@ -77,6 +79,12 @@ title = "Buckeye Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Buckeye_Trail"
 
+[[place]]
+kind = "park"
+slug = "cuyahoga-valley-national-park"
+basis = "track"
+km = 61.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -103,5 +111,14 @@ change = "The usual time to walk the whole trail, 90 to 120 days, was added."
 fields = ["hike.days"]
 basis = "The page of Buckeye Trail Association says: \"A full thru-hike typically takes three to four months, depending on pace, route, and weather conditions.\""
 basis_url = "https://www.buckeyetrail.org/hike/backpacking"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Cuyahoga Valley National Park."
+fields = ["place"]
+basis = "Measured from the trail's main track against the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://irma.nps.gov/DataStore/Reference/Profile/2224545"
 asked_by = "the dataset's own check"
 outcome = "applied"

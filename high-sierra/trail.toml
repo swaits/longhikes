@@ -11,6 +11,8 @@ length_note = "72.2 mi (115.5 km) from Crescent Meadow to Whitney Portal, as the
 tier = "regional"
 designation = "National Park Service, Sequoia and Kings Canyon National Parks"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "757c4bb8c5b16e61"
 
 [source]
 status = "verified"
@@ -87,6 +89,24 @@ title = "High Sierra Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/High_Sierra_Trail"
 
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon"
+basis = "track"
+km = 92.9
+
+[[place]]
+kind = "range"
+slug = "great-western-divide"
+basis = "track"
+km = 46.2
+
+[[place]]
+kind = "wilderness"
+slug = "john-muir-wilderness"
+basis = "track"
+km = 11.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -123,4 +143,13 @@ fields = ["source.line_file", "source.status", "source.publisher", "source.url",
 basis = "The Park Service's page for the trail gives the route from Crescent Meadow to the junction with the John Muir Trail at Wallace Creek, 49 miles, then the John Muir Trail to Mount Whitney, and the descent to Whitney Portal; its table of distances ends at Whitney Portal at 72.2 miles (115.5 km) and says the distances include the 4.8-mile round trip to the summit. The Park Service's Park Atlas layer holds the trail within the parks and the Forest Service layer holds the Mount Whitney Trail to Whitney Portal."
 basis_url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
 asked_by = "the dataset's owner"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sequoia and Kings Canyon National Parks, Great Western Divide, John Muir Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
 outcome = "applied"

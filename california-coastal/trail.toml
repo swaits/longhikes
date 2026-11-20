@@ -13,6 +13,8 @@ tier = "regional"
 designation = "State of California trail (Coastal Commission, State Coastal Conservancy)"
 wave = "held"
 wave_note = "It is mostly road and sidewalk."
+places_checked = "2026-11-20"
+places_track = "eb1ea92c2db5e1c7"
 
 [source]
 status = "verified"
@@ -74,6 +76,42 @@ title = "California Coastal Trail (incomplete)"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/California_Coastal_Trail"
 
+[[place]]
+kind = "park"
+slug = "redwood-national-park"
+basis = "track"
+km = 67.4
+
+[[place]]
+kind = "range"
+slug = "california-coast-ranges"
+basis = "track"
+km = 456.9
+
+[[place]]
+kind = "range"
+slug = "klamath-mountains"
+basis = "track"
+km = 41.6
+
+[[place]]
+kind = "range"
+slug = "transverse-ranges"
+basis = "track"
+km = 102.3
+
+[[place]]
+kind = "wilderness"
+slug = "king-range-wilderness"
+basis = "track"
+km = 41.3
+
+[[place]]
+kind = "wilderness"
+slug = "phillip-burton-wilderness"
+basis = "track"
+km = 29.0
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -127,5 +165,14 @@ change = "The word \"Held:\" was taken off the start of the wave note, which now
 fields = ["wave_note"]
 basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6928214012"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Redwood National Park, California Coast Ranges, Klamath Mountains, Transverse Ranges, King Range Wilderness, Phillip Burton Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

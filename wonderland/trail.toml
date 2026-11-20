@@ -9,6 +9,8 @@ length_note = "93 mi published"
 tier = "regional"
 designation = "NPS trail, Mount Rainier National Park"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "f65eadd8ea3b3ddb"
 
 [source]
 status = "osm-only"
@@ -87,6 +89,18 @@ title = "Wonderland Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Wonderland_Trail"
 
+[[place]]
+kind = "park"
+slug = "mount-rainier-national-park"
+basis = "track"
+km = 139.2
+
+[[place]]
+kind = "range"
+slug = "cascade-range"
+basis = "track"
+km = 139.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -95,5 +109,14 @@ date = "2026-11-09"
 change = "The record was added: Wonderland Trail."
 fields = ["record"]
 basis = "The record's own source entry: National Park Service."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Mount Rainier National Park, Cascade Range."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

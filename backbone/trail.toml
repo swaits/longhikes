@@ -11,6 +11,8 @@ length_note = "67 mi published"
 tier = "regional"
 designation = "Santa Monica Mountains National Recreation Area trail"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "7280d601bc2a5141"
 
 [source]
 status = "osm-only"
@@ -85,6 +87,12 @@ title = "Backbone Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Backbone_Trail"
 
+[[place]]
+kind = "range"
+slug = "transverse-ranges"
+basis = "track"
+km = 107.3
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -111,5 +119,14 @@ change = "The track status is now \"osm-only\", in place of \"found\", which mea
 fields = ["source.status"]
 basis = "The record has a published track file and a measured length in its verification, and the record's only source is an OpenStreetMap relation."
 basis_url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Transverse Ranges."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

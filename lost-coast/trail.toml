@@ -9,6 +9,8 @@ length_note = "more than 50 mi from Usal Beach to the Mattole River, per Califor
 tier = "regional"
 designation = "Bureau of Land Management (King Range National Conservation Area) and California State Parks (Sinkyone Wilderness State Park); State Parks also calls its part the California Coastal Trail's most difficult section"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "9f7db111016a046c"
 
 [source]
 status = "osm-only"
@@ -70,6 +72,18 @@ url = "https://www.parks.ca.gov/?page_id=28158"
 publisher = "California State Parks"
 facts = ["summary", "start", "end", "shape", "terrain", "travel"]
 
+[[place]]
+kind = "range"
+slug = "california-coast-ranges"
+basis = "track"
+km = 85.2
+
+[[place]]
+kind = "wilderness"
+slug = "king-range-wilderness"
+basis = "track"
+km = 42.4
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -87,5 +101,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.blm.gov/visit/lost-coast-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in California Coast Ranges, King Range Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

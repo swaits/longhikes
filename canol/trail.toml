@@ -9,6 +9,8 @@ length_note = "371 km, from the Northwest Territories Parks page"
 tier = "regional"
 designation = "Northwest Territories Parks; becoming Doi T'oh Territorial Park"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "adfea49ae9991c3a"
 
 [source]
 status = "osm-only"

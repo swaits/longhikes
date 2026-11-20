@@ -13,6 +13,8 @@ tier = "national"
 designation = "National Scenic Trail (1968)"
 wave = 1
 inclusion = "nst-unconditional"
+places_checked = "2026-11-20"
+places_track = "9ce3582335395f9c"
 
 [source]
 status = "verified"
@@ -97,6 +99,192 @@ title = "Appalachian National Scenic Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Appalachian_National_Scenic_Trail"
 
+[[place]]
+kind = "park"
+slug = "great-smoky-mountains-national-park"
+basis = "track"
+km = 116.1
+
+[[place]]
+kind = "park"
+slug = "shenandoah-national-park"
+basis = "track"
+km = 156.9
+
+[[place]]
+kind = "range"
+slug = "great-smoky-mountains"
+basis = "track"
+km = 119.9
+
+[[place]]
+kind = "range"
+slug = "green-mountains"
+basis = "track"
+km = 198.5
+
+[[place]]
+kind = "range"
+slug = "longfellow-mountains"
+basis = "track"
+km = 232.8
+
+[[place]]
+kind = "range"
+slug = "white-mountains"
+basis = "track"
+km = 219.4
+
+[[place]]
+kind = "wilderness"
+slug = "big-branch-wilderness"
+basis = "track"
+km = 10.4
+
+[[place]]
+kind = "wilderness"
+slug = "big-laurel-branch-wilderness"
+basis = "track"
+km = 15.2
+
+[[place]]
+kind = "wilderness"
+slug = "blood-mountain-wilderness"
+basis = "track"
+km = 15.6
+
+[[place]]
+kind = "wilderness"
+slug = "brush-mountain-east-wilderness"
+basis = "track"
+km = 7.5
+
+[[place]]
+kind = "wilderness"
+slug = "garden-mountain-wilderness"
+basis = "track"
+km = 1.9
+
+[[place]]
+kind = "wilderness"
+slug = "glastenbury-wilderness"
+basis = "track"
+km = 10.0
+
+[[place]]
+kind = "wilderness"
+slug = "great-gulf-wilderness"
+basis = "track"
+km = 6.0
+
+[[place]]
+kind = "wilderness"
+slug = "hunting-camp-creek-wilderness"
+basis = "track"
+km = 11.2
+
+[[place]]
+kind = "wilderness"
+slug = "james-river-face-wilderness"
+basis = "track"
+km = 14.1
+
+[[place]]
+kind = "wilderness"
+slug = "lewis-fork-wilderness"
+basis = "track"
+km = 9.4
+
+[[place]]
+kind = "wilderness"
+slug = "little-wilson-creek-wilderness"
+basis = "track"
+km = 2.0
+
+[[place]]
+kind = "wilderness"
+slug = "lye-brook-wilderness"
+basis = "track"
+km = 7.9
+
+[[place]]
+kind = "wilderness"
+slug = "mark-trail-wilderness"
+basis = "track"
+km = 22.8
+
+[[place]]
+kind = "wilderness"
+slug = "mountain-lake-wilderness"
+basis = "track"
+km = 9.8
+
+[[place]]
+kind = "wilderness"
+slug = "peru-peak-wilderness"
+basis = "track"
+km = 6.4
+
+[[place]]
+kind = "wilderness"
+slug = "peters-mountain-wilderness"
+basis = "track"
+km = 6.3
+
+[[place]]
+kind = "wilderness"
+slug = "pond-mountain-wilderness"
+basis = "track"
+km = 13.0
+
+[[place]]
+kind = "wilderness"
+slug = "presidential-range-dry-river-wilderness"
+basis = "track"
+km = 2.1
+
+[[place]]
+kind = "wilderness"
+slug = "priest-wilderness"
+basis = "track"
+km = 9.1
+
+[[place]]
+kind = "wilderness"
+slug = "raccoon-branch-wilderness"
+basis = "track"
+km = 6.3
+
+[[place]]
+kind = "wilderness"
+slug = "raven-cliffs-wilderness"
+basis = "track"
+km = 10.4
+
+[[place]]
+kind = "wilderness"
+slug = "southern-nantahala-wilderness"
+basis = "track"
+km = 28.8
+
+[[place]]
+kind = "wilderness"
+slug = "three-ridges-wilderness"
+basis = "track"
+km = 13.9
+
+[[place]]
+kind = "wilderness"
+slug = "thunder-ridge-wilderness"
+basis = "track"
+km = 5.4
+
+[[place]]
+kind = "wilderness"
+slug = "tray-mountain-wilderness"
+basis = "track"
+km = 10.7
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -123,5 +311,14 @@ change = "The name hikers use, Appalachian Trail, was added as the common name. 
 fields = ["common_name"]
 basis = "The National Park Service page for the trail opens its description with 'The Appalachian Trail is a 2,190+ mile long public footpath' and also uses the formal name."
 basis_url = "https://www.nps.gov/appa/index.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Great Smoky Mountains National Park, Shenandoah National Park, Great Smoky Mountains, Green Mountains, Longfellow Mountains, White Mountains, Big Branch Wilderness, Big Laurel Branch Wilderness, Blood Mountain Wilderness, Brush Mountain East Wilderness, Garden Mountain Wilderness, Glastenbury Wilderness, Great Gulf Wilderness, Hunting Camp Creek Wilderness, James River Face Wilderness, Lewis Fork Wilderness, Little Wilson Creek Wilderness, Lye Brook Wilderness, Mark Trail Wilderness, Mountain Lake Wilderness, Peru Peak Wilderness, Peters Mountain Wilderness, Pond Mountain Wilderness, Presidential Range-Dry River Wilderness, Priest Wilderness, Raccoon Branch Wilderness, Raven Cliffs Wilderness, Southern Nantahala Wilderness, Three Ridges Wilderness, Thunder Ridge Wilderness, Tray Mountain Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

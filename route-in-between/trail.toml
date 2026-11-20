@@ -83,7 +83,7 @@ facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"
 
 [[hike.source]]
 url = "https://www.trailgroove.com/blogs/entry/228-from-mexico-to-canada-thru-hiking-the-route-in-between/"
-publisher = "TrailGroove Magazine (posted by Kevin DeVries, the route's author)"
+publisher = "Kevin \"LarryBoy\" DeVries, the route's author, in TrailGroove Magazine"
 facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
@@ -110,7 +110,7 @@ outcome = "applied"
 date = "2026-11-20"
 change = "The record now has a season: Late March to mid-October (northbound from late March; southbound from July)."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
-basis = "The season is stated by TrailGroove Magazine as: Late March to mid-October (northbound from late March; southbound from July)."
+basis = "Season added, read from Kevin DeVries's page in TrailGroove Magazine, where the route's author posted it: Late March to mid-October (northbound from late March; southbound from July)."
 basis_url = "https://www.trailgroove.com/blogs/entry/228-from-mexico-to-canada-thru-hiking-the-route-in-between/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -63,7 +63,7 @@ permit = "No fee, reservation or permit is required to hike the trail."
 unfinished = "The Pioneer section is still being built. It has about 5 miles of trail with about 9 more miles in development, and the rest is on remote county roads."
 caution = "Water is scarce along the southern Knobstone section, and July, August and September are the worst months to find it. The Hoosier Heritage Trail Association reported on 2026-03-28, in its article \"A Fond Farewell to the Pioneer Trail\", that after a dispute the easements along the Pioneer section were revoked and hikers are no longer allowed on most of the private land along it. The Knobstone Hiking Trail Association's site still lists the section."
 checked = "2026-11-16"
-season = "Spring"
+season = "Spring is the best time"
 months = [3, 4, 5]
 season_basis = "primary"
 
@@ -171,9 +171,9 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The record now has a season: Spring."
+change = "The record now has a season: Spring is the best time."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
-basis = "The season is stated by Knobstone Hiking Trail Association as: Spring."
+basis = "Season added, read from Knobstone Hiking Trail Association's page: Spring is the best time."
 basis_url = "https://www.knobstonehikingtrail.org/wp-content/uploads/2024/04/KT_Spring_2024_Final_Edits-240419.pdf"
 asked_by = "the dataset's own check"
 outcome = "applied"

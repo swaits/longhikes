@@ -2,7 +2,7 @@
 
 ## 2026-11-20 - Seasons for 39 more trails
 
-- 39 trails that had no season now have one, each read from a page and marked with where it came from. 10 of them are from the body that manages the trail, the trail's own association, or for a route its author; the other 29 are from other pages, and 3 of those rest on two pages from different publishers. Where a page gives only a start date, one segment or a word like "spring", the season says only that.
+- 39 trails that had no season now have one, each read from a page and marked with where it came from. 10 of them are from the body that manages the trail, the trail's own association, or for a route its author; the other 29 are from other pages, and 2 of those rest on two pages from different publishers. Where a page gives only a start date, one segment or a word like "spring", the season says only that.
 - 148 of the 223 trails now have a season. The other 75 have none yet. Each will get one estimated from climate, and it will be marked as an estimate wherever it appears. That is not in this change, and the "By month" lists still say which trails have none.
 - For contributors: when pages disagree and none is the managing body's, the trail association's or the route author's, the season is set by judgement from all the pages and the climate estimate. The record may then say how in `hike.season_method`, one sentence, with a basis of `sources`.
 

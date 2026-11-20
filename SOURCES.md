@@ -64,7 +64,7 @@ Page: the creator's or publisher's own page for the guide, given in each record'
 
 ## National Park Service park boundaries (public domain)
 
-Used for: the outlines behind the park pages. `tools/place_trails.py` measures each trail's track against the Land Resources Division boundary service and writes the trail's park membership to its record and to `places.toml`. The outlines themselves are not in this repository; they are downloaded to a cache outside it.
+Used for: the outlines behind the park pages, for the national parks and for the other Park Service units a trail is placed in (monuments, recreation areas, a parkway, an historic site; `tools/place_allowlist.toml` names them). `tools/place_trails.py` measures each trail's track against the Land Resources Division boundary service and writes the trail's park membership to its record and to `places.toml`. The outlines themselves are not in this repository; they are downloaded to a cache outside it.
 
 Quoted terms: "The data are in the public domain, and may be re-used without restriction."
 
@@ -80,7 +80,7 @@ Page: https://wilderness.net/visit-wilderness/gis-gps.php (read 2026-11-20). Fed
 
 ## Canadian Protected and Conserved Areas Database (Open Government Licence, Canada)
 
-Used for: the outlines of Canadian national parks and of British Columbia and Alberta provincial parks, measured by `tools/place_trails.py` and cached outside this repository.
+Used for: the outlines of Canadian national parks and of provincial parks, measured by `tools/place_trails.py` and cached outside this repository.
 
 Quoted terms: "Copy, modify, publish, translate, adapt, distribute or otherwise use the Information in any medium, mode or format for any lawful purpose."
 

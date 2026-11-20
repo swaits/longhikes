@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-20 - Pages for national parks, mountain ranges and wilderness areas
+
+- There are now 89 pages for named places: 21 national parks and other Park Service units (such as the Blue Ridge Parkway and Glen Canyon National Recreation Area), 43 mountain ranges and 25 wilderness areas, each with 3 or more trails. They answer searches such as "Wind River Range hikes" or "backpacking in Glacier National Park", and each has the same filter bar, trail rows and map as a state page. A place with fewer than 3 trails has no page: the Uinta Mountains have one.
+- The Places page lists them in three new sections. A state's page links to the parks, ranges and wilderness areas in it, and a trail's page links to each place it is in. A nested range also counts for the range around it, so a Teton Range trail is on the Rocky Mountains page too. Typing a place's name in search finds its trails.
+- A trail is in a place when at least a mile of its track lies inside the place's published outline. For the 124 trails that have a track this was measured against the outlines. For the 99 that have none it comes from a page that names the trail in the place: 93 of them are placed in this way, and 6 are in none. In all, 187 trails are in at least one place and 36 are in none.
+- Park outlines are from the National Park Service, Land Resources Division (public domain) and, for Canada, Environment and Climate Change Canada's CPCAD (Open Government Licence, Canada). Wilderness outlines are from Wilderness Connect, University of Montana (public domain). Range outlines are from the GMBA Mountain Inventory v2 (Snethlage et al. 2022, CC BY 4.0). `SOURCES.md` has the terms.
+- For contributors: every trail now carries its places, the date they were checked and, for a trail with a track, which track was measured (`places_checked`, `places_track` and `[[place]]` in the trail's file; `places.toml` holds the places). `tools/place_trails.py` measures and writes them, the validator fails a trail with no check date or with a track changed since, and a monthly workflow re-measures every track against the current outlines. `docs/audit.md` is the new checklist for the monthly audit, with a step to look again at each place that rests on a page.
+
 ## 2026-11-20 - Every season now says where it came from
 
 - The 109 trails that have a season now record where it came from: 86 are from the body that manages the trail or the trail's own association, or for a route its author, and 23 are from one page that is not the trail's own. None rests on several agreeing pages yet. A trail's "About this data" says which, in a sentence or two under the pages the facts were read on.

@@ -8,7 +8,6 @@ The fixture tests need no built site; BuiltVocabularyTest builds it (as test_pag
 import html
 import os
 import re
-import subprocess
 import sys
 import unittest
 
@@ -20,7 +19,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from olt import facets, home, records, trail, words  # noqa: E402
 from test_hike import GH, fake, text, top_part  # noqa: E402
 
-OUT = os.path.join(WEB, ".cache", "test-site")
+import builtsite  # noqa: E402
+
+OUT = builtsite.OUT
 
 
 def route(i=1, policy="sold", **kw):
@@ -258,9 +259,7 @@ def site_words(doc):
 class BuiltVocabularyTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        os.makedirs(os.path.dirname(OUT), exist_ok=True)
-        subprocess.run([sys.executable, os.path.join(WEB, "build.py"), "--out", OUT],
-                       check=True, stdout=subprocess.DEVNULL)
+        builtsite.ensure()
 
     def read(self, rel):
         with open(os.path.join(OUT, *rel.split("/")), encoding="utf-8") as f:

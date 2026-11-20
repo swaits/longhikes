@@ -4,7 +4,6 @@ import hashlib
 import os
 import re
 import shutil
-import subprocess
 import sys
 import tempfile
 import unittest
@@ -17,7 +16,9 @@ sys.path.insert(0, WEB)
 from olt import fingerprint, layout  # noqa: E402
 import serve  # noqa: E402
 
-OUT = os.path.join(WEB, ".cache", "test-site")
+import builtsite  # noqa: E402
+
+OUT = builtsite.OUT
 NAME = re.compile(r"^/immutable/[a-z0-9.-]+\.[0-9a-f]{10}\.[a-z0-9]+$")
 
 
@@ -135,9 +136,7 @@ class Refs(HTMLParser):
 class BuiltSiteTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        os.makedirs(os.path.dirname(OUT), exist_ok=True)
-        subprocess.run([sys.executable, os.path.join(WEB, "build.py"), "--out", OUT],
-                       check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        builtsite.ensure()
         cls.pages = []
         for base, _, names in os.walk(OUT):
             for n in names:
@@ -149,9 +148,7 @@ class BuiltSiteTest(unittest.TestCase):
         originals = set(fingerprint.FILES)
         used = 0
         for page in self.pages:
-            refs = Refs()
-            with open(page, encoding="utf-8") as f:
-                refs.feed(f.read())
+            refs = builtsite.feed(page, Refs())
             for key, url in refs.urls:
                 self.assertNotIn(url, originals, f"{page}: {url}")
                 if url.startswith("/immutable/"):

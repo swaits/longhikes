@@ -112,8 +112,11 @@ class BuiltSiteTest(unittest.TestCase):
                     target = resolve(OUT, url)
                     if target and not os.path.isfile(target):
                         missing.add((os.path.relpath(path, OUT), url))
+                    # The one external asset is the Google tag's loader (layout.GOOGLE_TAG).
                     self.assertFalse(url.startswith(("http://", "https://")) and tag in ("script", "link")
-                                     and a.get("rel") != "canonical", f"external asset {url} in {path}")
+                                     and a.get("rel") != "canonical"
+                                     and not url.startswith("https://www.googletagmanager.com/gtm.js?id="),
+                                     f"external asset {url} in {path}")
         self.assertEqual(sorted(missing)[:20], [])
 
     def test_no_inline_scripts(self):
@@ -121,7 +124,10 @@ class BuiltSiteTest(unittest.TestCase):
             for a, body in parse(path).scripts:
                 if a.get("type") in ("application/json", "application/ld+json"):
                     continue
-                self.assertTrue(a.get("src"), f"inline script in {path}")
+                if not a.get("src"):
+                    # The one inline script is the Google tag's data-layer setup, allowed by its hash.
+                    self.assertEqual(body.strip(), layout.GOOGLE_TAG_INLINE.strip(), f"inline script in {path}")
+                    continue
                 self.assertEqual(body.strip(), "", f"script with src and a body in {path}")
 
     def test_style_attributes_only_carry_custom_properties(self):

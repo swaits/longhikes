@@ -398,10 +398,13 @@ class HeadersTest(unittest.TestCase):
         csp = self.headers("/trails/john-muir/").get("content-security-policy", "")
         self.assertEqual(csp, self.headers("/").get("content-security-policy", ""))
         connect = re.search(r"connect-src ([^;]*)", csp).group(1).split()
+        # The Google tag (layout.GOOGLE_TAG) reports to Google Analytics; nothing else is added.
         self.assertEqual(connect, ["'self'", "https://tiles.openfreemap.org",
+                                   "https://*.google-analytics.com", "https://*.analytics.google.com",
+                                   "https://*.googletagmanager.com",
                                    "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/"])
         self.assertIn("worker-src 'self' blob:", csp)
-        self.assertIn("img-src 'self' data: blob:;", csp)
+        self.assertIn("img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com;", csp)
         with open(os.path.join(WEB, "assets", "map", "outdoor.json"), encoding="utf-8") as f:
             dem = json.load(f)["sources"]["olt-dem"]["tiles"][0]
         self.assertTrue(dem.startswith(connect[2]), dem)

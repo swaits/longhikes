@@ -60,7 +60,11 @@ terrain = ["forest"]
 travel = "trail"
 high_point = "Greenwood fire tower"
 high_point_m = 725
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "April to June and September to October"
+months = [4, 5, 6, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Humid, buggy summers and icy winters on the Pennsylvania ridges leave spring and fall as the usual window. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.standingstonetrail.org/"
@@ -71,6 +75,11 @@ facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"
 url = "https://www.standingstonetrail.org/about"
 publisher = "Standing Stone Trail Club"
 facts = ["high_point"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Standing Stone Trail"
@@ -94,5 +103,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://static.wixstatic.com/media/30a84d_b3362299a6fc4aa097db41e071b2789f.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to June and September to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

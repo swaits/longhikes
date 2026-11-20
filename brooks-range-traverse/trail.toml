@@ -71,7 +71,11 @@ shape = "point-to-point"
 terrain = ["tundra", "alpine"]
 travel = "mostly-cross-country"
 caution = "There is almost no trail, and much of the route is floated by packraft, so it needs packrafting skills as well as route-finding."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "June to September"
+months = [6, 7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Arctic tundra is frozen and snowbound most of the year, with river breakup in early June and freeze-up and snow by mid-September. Confidence: low."
 
 [[hike.source]]
 url = "https://thingstolucat.com/brooks-range-traverse/"
@@ -97,6 +101,11 @@ facts = ["start_lonlat"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1404349"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -125,4 +134,13 @@ fields = ["route.line_policy"]
 basis = "The trip reports give routes, maps and photos but no track file or GPX link."
 basis_url = "https://thingstolucat.com/brooks-range-traverse/"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: June to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+asked_by = "the dataset's own check"
 outcome = "applied"

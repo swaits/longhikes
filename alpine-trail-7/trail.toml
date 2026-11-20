@@ -56,7 +56,11 @@ shape = "point-to-point"
 terrain = ["alpine", "lakes"]
 travel = "trail"
 caution = "The Forest Service lists the trail as open to hiking, biking and motorcycle trail riding, with motorized use in specific stretches only and Jewel Basin Special Area rules to check."
-checked = "2026-11-16"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Heavy winter snow at 7,000 feet in the Swan Range melts out by mid-July, and snow returns in October. Confidence: high."
 
 [[hike.source]]
 url = "https://web.archive.org/web/20201201005308/https://www.fs.usda.gov/recarea/flathead/recreation/recarea/?recid=66288&actid=51"
@@ -72,6 +76,11 @@ facts = ["summary", "terrain"]
 url = "https://www.fs.usda.gov/r01/flathead/offices/swan-lake-ranger-station"
 publisher = "USDA Forest Service, Flathead National Forest"
 facts = ["summary"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -100,5 +109,14 @@ change = "The track status is now \"verified\", in place of \"found\", which mea
 fields = ["source.status"]
 basis = "The record has a published track file and a measured length in its verification, and its track was downloaded and measured."
 basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

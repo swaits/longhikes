@@ -56,7 +56,11 @@ end = "Ottawa, Ontario"
 shape = "point-to-point"
 caution = "Many parts of the trail network close during the Ontario fall hunting season, and overnight accommodation is sparse along much of the trail."
 days = [9, 16]
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Eastern Ontario is snowy and muddy over winter, and the trail can be walked from April until late fall. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.rideautrail.org/discover-the-trail/"
@@ -72,6 +76,11 @@ facts = ["summary", "caution"]
 url = "https://www.rideautrail.org/discover-the-trail/faq/"
 publisher = "Rideau Trail Association"
 facts = ["days"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Rideau Trail"
@@ -95,5 +104,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.rideautrail.org/wp-content/uploads/2022/06/RTA_icon.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -57,7 +57,11 @@ official_url = "https://www.coastal.ca.gov/coastal-trail/"
 terrain = ["coast"]
 travel = "trail-and-road"
 unfinished = "The state counts about 875 miles, about 70 percent, as built along a coastline of about 1,230 miles, and there is no official through route. A hiker reports having walked the whole coast from end to end, in eight section hikes, by connecting the built parts with their own choices."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The coast can be walked all year, but winter storms bring heavy rain in the north and leave some sections passable only at low tide, so a full walk suits the dry months. Confidence: low."
 
 [[hike.source]]
 url = "https://www.coastal.ca.gov/coastal-trail/"
@@ -68,6 +72,11 @@ facts = ["official_url", "summary", "terrain", "travel", "unfinished"]
 url = "https://github.com/swaits/longhikes/issues/1"
 publisher = "A hiker, on the dataset's public issue tracker"
 facts = ["unfinished"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "California Coastal Trail (incomplete)"
@@ -127,5 +136,14 @@ change = "The word \"Held:\" was taken off the start of the wave note, which now
 fields = ["wave_note"]
 basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6928214012"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

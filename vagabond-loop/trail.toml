@@ -66,12 +66,21 @@ official_url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-conn
 start = "Mexican border on the Arizona Trail, Arizona"
 shape = "loop"
 terrain = ["desert"]
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "March to October"
+months = [3, 4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A 3,500-mile circuit of Arizona, Utah, Colorado and New Mexico must start in the desert in early spring and cross the high Colorado Trail country in summer, before fall snow. Confidence: low."
 
 [[hike.source]]
 url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
 publisher = "Ryan \"Dirtmonger\" Sylva"
 facts = ["summary", "official_url", "start", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -100,4 +109,13 @@ fields = ["route.line_policy"]
 basis = "The author's page carried a description and no track, and its domain no longer resolves."
 basis_url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+asked_by = "the dataset's own check"
 outcome = "applied"

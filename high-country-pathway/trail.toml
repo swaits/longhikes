@@ -58,7 +58,11 @@ days = [7, 7]
 terrain = ["forest"]
 travel = "trail"
 caution = "Mountain bikers use the pathway as well as hikers."
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "May to October"
+months = [5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Northern Michigan forest is snowbound in winter and muddy in early spring, and walkable from May to October, with bugs the main summer complaint. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.michigan.org/property/high-country-pathway"
@@ -69,6 +73,11 @@ facts = ["summary", "official_url", "start", "shape", "days", "terrain", "travel
 url = "https://www.trailscouncil.org/high-country-pathway/"
 publisher = "Top of Michigan Trails Council"
 facts = ["summary", "start", "shape", "caution"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -87,5 +96,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.michigan.gov/recsearch/trails/high-country-pathway"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: May to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

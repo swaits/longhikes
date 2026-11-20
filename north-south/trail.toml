@@ -54,7 +54,11 @@ official_url = "https://www.rigis.org/datasets/north-south-trail"
 shape = "point-to-point"
 terrain = ["forest"]
 travel = "trail"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Rhode Island woods are humid and buggy in summer and cold in winter. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.rigis.org/datasets/north-south-trail"
@@ -65,6 +69,11 @@ facts = ["official_url", "summary", "shape", "travel"]
 url = "https://dem.ri.gov/sites/g/files/xkgbur861/files/programs/bnatres/fishwild/pdf/wrisum21.pdf"
 publisher = "Rhode Island Department of Environmental Management"
 facts = ["summary", "terrain"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "North-South Trail"
@@ -88,5 +97,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.rigis.org/datasets/north-south-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

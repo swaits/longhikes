@@ -59,12 +59,21 @@ shape = "point-to-point"
 terrain = ["forest"]
 travel = "trail"
 unfinished = "The Trail Conference calls the trail a work in progress: it is blazed to Mountain Rest Road near Mohonk Mountain House, and local roads lead on from there."
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A Hudson Valley ridge with humid, buggy summers and icy winters, so spring and fall are the most comfortable months. Confidence: medium."
 
 [[hike.source]]
 url = "https://secure.nynjtc.org/node/874"
 publisher = "New York-New Jersey Trail Conference"
 facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel", "unfinished"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -83,5 +92,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://secure.nynjtc.org/region/shawangunk-ridge-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

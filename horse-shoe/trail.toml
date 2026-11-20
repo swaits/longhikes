@@ -57,12 +57,21 @@ start = "Valley Forge National Historical Park, Pennsylvania"
 end = "the Appalachian Trail, Dauphin County, Pennsylvania"
 shape = "point-to-point"
 travel = "trail"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Southeast Pennsylvania has humid, buggy summers and icy winters, which leaves spring and fall. Confidence: medium."
 
 [[hike.source]]
 url = "https://cart.hstrail.org/"
 publisher = "Horse-Shoe Trail Conservancy"
 facts = ["official_url", "summary", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Horse-Shoe Trail"
@@ -86,5 +95,14 @@ change = "The logo record now names where an emblem was looked for and who holds
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
 basis_url = "https://cart.hstrail.org/wp-content/uploads/2019/10/horse-shoe_trail_header_1000_logo-1.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -75,7 +75,11 @@ days = [6, 10]
 terrain = ["alpine", "forest", "lakes"]
 travel = "some-cross-country"
 permit = "The Rocky Mountain National Park portion requires use of designated backcountry campsites, arranged through the park permit system described in the guide."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A Continental Divide crest route above 11,000 feet with off-trail passes needs the snow gone, which is from July until the first big September storms. Confidence: high."
 
 [[hike.source]]
 url = "https://andrewskurka.com/adventures/pfiffner-traverse-colorado-rockies/"
@@ -101,6 +105,11 @@ facts = ["start"]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=4527663577"
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Milner Pass, OpenStreetMap node 4527663577"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -137,5 +146,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Pfiffner Traverse Guide -- Download\"."
 basis_url = "https://andrewskurka.com/product/pfiffner-traverse-guide-maps/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

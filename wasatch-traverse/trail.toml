@@ -69,12 +69,21 @@ terrain = ["alpine", "forest"]
 travel = "some-cross-country"
 caution = "The off-trail sections range from straightforward scrambling to heavy bushwhacking, and detailed maps and a compass are essential."
 days = [11, 11]
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The high Wasatch ridges and off-trail sections hold snow until late June and get early autumn storms, so midsummer fits a whole traverse. Confidence: low."
 
 [[hike.source]]
 url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
 publisher = "Liz Thomas"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution", "days"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -94,4 +103,13 @@ fields = ["route.line_policy"]
 basis = "The route page lists the paper maps the author used and offers no track."
 basis_url = "https://www.eathomas.com/other-long-trails/wasatchoverview"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+asked_by = "the dataset's own check"
 outcome = "applied"

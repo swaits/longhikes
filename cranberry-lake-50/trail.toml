@@ -58,7 +58,11 @@ days = [3, 5]
 terrain = ["forest", "lakes"]
 travel = "trail"
 permit = "A free permit from the local forest ranger is needed for groups of ten or more, or to camp more than three days in one spot."
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "June to October"
+months = [6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Adirondack snow and mud in spring and black flies into June leave summer and fall as the usual window. Confidence: medium."
 
 [[hike.source]]
 url = "https://cranberrylake50.org/"
@@ -74,6 +78,11 @@ facts = ["days"]
 url = "https://cranberrylake50.org/plan-your-trip/"
 publisher = "Cranberry Lake 50 (Five Ponds Partners)"
 facts = ["permit"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Cranberry Lake 50"
@@ -106,5 +115,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of Cranberry Lake 50 (Five Ponds Partners) says: \"groups of 10 or more, or groups camping in the same spot for more than 3 days, require a permit from the local forest ranger. The permits are free.\""
 basis_url = "https://cranberrylake50.org/plan-your-trip/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: June to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

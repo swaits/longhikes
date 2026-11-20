@@ -57,7 +57,11 @@ shape = "point-to-point"
 terrain = ["forest", "farmland"]
 travel = "trail-and-road"
 caution = "Much of the route is on roads, because the chapter has relied on landowners' permission to secure the route."
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "June to October"
+months = [6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Northern Maine is snowbound and muddy until late May and frozen from November, and fall is best once the bugs fade. Confidence: medium."
 
 [[hike.source]]
 url = "https://maineiat.org/?p=412"
@@ -83,6 +87,11 @@ facts = ["start"]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=12949585422"
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Barnard Mountain Trailhead, OpenStreetMap node 12949585422"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "International Appalachian Trail"
@@ -115,5 +124,14 @@ change = "The start is now named as the Barnard Mountain Trailhead on the Katahd
 fields = ["hike.start", "hike.start_lonlat"]
 basis = "The National Park Service's page for the Barnard Mountain Trailhead says the International Appalachian Trail also starts from it, and OpenStreetMap contributors (ODbL) give the trailhead's position, OpenStreetMap node 12949585422."
 basis_url = "https://www.nps.gov/places/barnard-mountain-trailhead.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: June to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -58,12 +58,21 @@ terrain = ["alpine", "forest"]
 travel = "trail"
 permit = "Some trailheads that access this trail require a valid Recreation Pass, per the Forest Service."
 caution = "East of Bear Meadows the trail is open to motorcycles as well as hikers, horses and bicycles. The Forest Service states the trail is closed to ATV use."
-checked = "2026-11-16"
+checked = "2026-11-20"
+season = "July to October"
+months = [7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Cascade ridges around 5,000 feet hold snow until July, and heavy rain starts in late October. Confidence: high."
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r06/giffordpinchot/recreation/trails/trail-1-boundary"
 publisher = "USDA Forest Service, Gifford Pinchot National Forest"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -83,5 +92,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.fs.usda.gov/r06/giffordpinchot/recreation/trails/trail-1-boundary"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -54,6 +54,10 @@ class PhraseTest(unittest.TestCase):
         self.assertEqual(season.phrase_for([11, 12, 1, 2, 3]), "November to March")
         self.assertEqual(season.phrase_for([4, 5, 9, 10]),
                          "April to May and September to October")
+        self.assertEqual(season.phrase_for([3, 4, 5, 10, 11]),
+                         "March to May and October to November")
+        self.assertEqual(season.phrase_for([11, 12, 1, 2, 6, 7, 8]),
+                         "November to February and June to August")
         self.assertEqual(season.phrase_for([7]), "July")
         self.assertEqual(season.phrase_for(list(range(1, 13))), "All year")
 

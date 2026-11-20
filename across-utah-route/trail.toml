@@ -75,12 +75,21 @@ shape = "point-to-point"
 terrain = ["desert", "canyon", "alpine"]
 travel = "some-cross-country"
 caution = "The author says no part is technical, but the route involves exposure, deep pools, long dry stretches and a Colorado River crossing that needs a packraft or a ride from a river party."
-checked = "2026-11-15"
+checked = "2026-11-20"
+season = "April to June and September to October"
+months = [4, 5, 6, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Desert heat in summer and snow in the Henrys, La Sals and Bryce country in winter leave spring and fall. Confidence: medium."
 
 [[hike.source]]
 url = "http://www.acrossutah.com/wordpress/the_route/"
 publisher = "Jamal Green, Across Utah (the route's author)"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -99,5 +108,14 @@ change = "The logo record now names where an emblem was looked for and not found
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "http://www.acrossutah.com/wordpress/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to June and September to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

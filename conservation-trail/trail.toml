@@ -52,7 +52,11 @@ end = "Rainbow Bridge, Niagara Falls, New York"
 end_lonlat = [-79.067, 43.09]
 shape = "point-to-point"
 terrain = ["forest"]
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Low-elevation western New York is snowy in winter and muddy in March, and can be walked from April until late fall. Confidence: medium."
 
 [[hike.source]]
 url = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
@@ -68,6 +72,11 @@ url = "https://www.longtrailswiki.net/wiki/Conservation_Trail"
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=990979149"
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Rainbow Bridge, United States side, OpenStreetMap way 990979149"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -95,5 +104,14 @@ change = "The position of the end was added, so that the page can show a map of 
 fields = ["hike.end_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Rainbow Bridge, United States side, OpenStreetMap way 990979149."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=990979149"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

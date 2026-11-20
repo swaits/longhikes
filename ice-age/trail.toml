@@ -65,7 +65,11 @@ travel = "trail-and-road"
 unfinished = "The trail is about half complete: nearly 700 miles are yellow-blazed Ice Age Trail, and about 500 miles of unmarked connecting routes, mostly on quiet country roads, link the blazed segments."
 caution = "Primitive camping is not permitted on many segments, so overnight plans vary widely from night to night."
 permit = "No National Park Pass or fee is needed to use the trail."
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "May to October"
+months = [5, 6, 7, 8, 9, 10]
+season_basis = "sources"
+season_method = "The pages differ: one Trek page gives summer and fall and another gives summer only. It was set by judgement from both and from the climate, since snow and mud last through April and a hard freeze comes by November. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.iceagetrail.org/explore/explore-the-trail/ice-age-trail/"
@@ -86,6 +90,16 @@ facts = ["summary", "terrain"]
 url = "https://www.nps.gov/iatr/planyourvisit/fees.htm"
 publisher = "National Park Service"
 facts = ["permit"]
+
+[[hike.source]]
+url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+publisher = "The Trek"
+facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://thetrek.co/the-best-time-of-year-to-hike-these-23-popular-long-trails/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "Ice Age National Scenic Trail"
@@ -154,5 +168,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of National Park Service says: \"A National Park Pass is not required for the Ice Age National Scenic Trail. Using the Ice Age National Scenic Trail is free of charge.\""
 basis_url = "https://www.nps.gov/iatr/planyourvisit/fees.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was set from pages that differ: May to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "The pages that state a season differ and none is the managing body, association or route author, so it was set by judgement from all of them and the climate estimate."
+basis_url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
 asked_by = "the dataset's own check"
 outcome = "applied"

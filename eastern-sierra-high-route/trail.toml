@@ -75,7 +75,11 @@ terrain = ["alpine"]
 travel = "mostly-cross-country"
 permit = "A wilderness permit is required year round for overnight trips from the Duck Pass trailhead, and from May 1 through November 1 overnight visitors there are limited to 30 people per day."
 caution = "The author says the route is consistently difficult, with steep and sometimes loose talus, scree and sand."
-checked = "2026-11-15"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Cross-country passes above 10,500 feet need the snow to have melted, which is from mid-July through September. Confidence: high."
 
 [[hike.source]]
 url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
@@ -97,6 +101,11 @@ url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/267526"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
 
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -114,5 +123,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Eastern Sierra High Route Guide – Dan Stenziano\"."
 basis_url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

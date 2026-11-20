@@ -58,12 +58,21 @@ end = "Chadds Ford, Pennsylvania, on the Brandywine River"
 shape = "point-to-point"
 terrain = ["forest"]
 travel = "trail"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The low Susquehanna valley is hot and humid in summer, so the cool spring and fall months suit best. Confidence: medium."
 
 [[hike.source]]
 url = "https://masondixontrail.wixsite.com/mdts"
 publisher = "Mason-Dixon Trail System"
 facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Mason-Dixon Trail"
@@ -96,5 +105,14 @@ change = "The main track was re-cut to one walk (320 km): at four places where t
 fields = ["source.line_file", "source.mainline"]
 basis = "OpenStreetMap relation 1820324 names one way of each pair Mason-Dixon Trail, and at Pulaski Highway it holds both carriageways of one road. The relation gives no other roles."
 basis_url = "https://www.openstreetmap.org/relation/1820324"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

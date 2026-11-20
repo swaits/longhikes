@@ -60,7 +60,11 @@ shape = "point-to-point"
 travel = "trail"
 unfinished = "The trail is made of existing trails that are still being linked, and new trail is needed where gaps remain. Backpacker reported in 2022 that the association had completed over 70 percent since 2007, and that the first end-to-end thru-hike, by two hikers, was in 2013."
 days = [120, 180]
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A very long Appalachian walk, started in spring in Alabama and carried through summer humidity and into fall to avoid winter in the north. Confidence: low."
 
 [[hike.source]]
 url = "https://www.greateasterntrail.net/about-us/"
@@ -71,6 +75,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel", "unfinish
 url = "https://www.backpacker.com/trips/trips-by-state/pennsylvania-trails/the-great-eastern-trail-could-be-the-next-appalachian-trail-heres-how-to-hike-part-of-it-now/"
 publisher = "Backpacker"
 facts = ["unfinished", "days"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -143,5 +152,14 @@ change = "The Great Eastern Trail's track now holds 12 relation ways tagged with
 fields = ["source.line_file", "source.mainline", "source.length_gap_note", "verification.measured_km", "verification.difference_percent", "verification.parts", "verification.note"]
 basis = "OpenStreetMap's wiki page for route relations says the empty role should be used instead of the role route, which was used sometimes with the older public transport tagging. The 12 ways joined two parts of the main track end to end, so they carry the trail; the track tool had read the role as a side trail."
 basis_url = "https://wiki.openstreetmap.org/wiki/Relation:route"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

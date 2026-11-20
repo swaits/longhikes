@@ -56,7 +56,11 @@ shape = "point-to-point"
 days = [30, 30]
 travel = "trail"
 permit = "Parking reservations are needed at some parks, and camping is allowed only at designated sites, often by reservation."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The Niagara Escarpment is icy and muddy through winter and early spring, so end-to-end hikes run from the April thaw to the end of October. Confidence: medium."
 
 [[hike.source]]
 url = "https://brucetrail.org/explore-the-trail/"
@@ -67,6 +71,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel", "permit",
 url = "https://www.brucetrail.org/"
 publisher = "Bruce Trail Conservancy"
 facts = ["summary"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Bruce Trail"
@@ -90,5 +99,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://brucetrail.org/wp-content/uploads/2022/07/BTC_arrow-icon.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

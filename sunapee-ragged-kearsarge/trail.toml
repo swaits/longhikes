@@ -56,12 +56,21 @@ official_url = "https://www.srkg.org/"
 shape = "loop"
 terrain = ["forest", "lakes"]
 travel = "trail"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "June to October"
+months = [6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. New Hampshire snow and mud last into spring and black flies into early June, with foliage-season walking into early October. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.srkg.org/"
 publisher = "Sunapee-Ragged-Kearsarge Greenway Coalition"
 facts = ["summary", "official_url", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -80,5 +89,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.srkg.org/wp-content/uploads/2026/01/srkg-1024.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: June to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

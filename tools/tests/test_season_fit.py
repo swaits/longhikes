@@ -41,7 +41,10 @@ class SeasonFitFileTest(unittest.TestCase):
         self.assertEqual(fit["rule_version"], E.RULE_VERSION)
         self.assertEqual(fit["passes"], E.passes_bar(fit["loo"], fit["bar"]))
 
-    def test_estimates_only_with_a_passing_fit(self):
+    def test_estimates_only_over_the_bar_by_the_blind_test(self):
+        """The machine estimate on its own is under the bar and is never
+        written to a record. Estimated seasons are judged, and the judged
+        method must pass the bar in its blind test."""
         estimated = []
         for tid in refresh.trail_ids(V.ROOT):
             rec = refresh.load_toml(os.path.join(V.ROOT, tid, "trail.toml"))
@@ -49,12 +52,10 @@ class SeasonFitFileTest(unittest.TestCase):
                 estimated.append(tid)
         if not estimated:
             self.skipTest("no estimated seasons on file yet")
-        fit = load_fit()
-        self.assertTrue(fit["passes"], fit)
-        held = fit["loo"]
-        self.assertGreaterEqual(held["within1"] / held["n"],
-                                E.BAR["within1_min"])
-
+        import season_judge
+        blind = season_judge.load_blind_test()
+        self.assertEqual(season_judge.check_blind_test(blind), [])
+        self.assertGreaterEqual(blind["share"], E.BAR["within1_min"])
 
 if __name__ == "__main__":
     unittest.main()

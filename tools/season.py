@@ -204,7 +204,8 @@ def phrase_for(months):
 
     One run reads "June to September", a run over the year end reads
     "November to March", separate runs are joined with "and", one month
-    reads "July" and twelve read "All year".
+    reads "July" and twelve read "All year". Separate runs come in calendar
+    order, so spring and fall read "March to May and October to November".
     """
     got = _months(months)
     if len(got) == 12:
@@ -220,9 +221,8 @@ def phrase_for(months):
     runs.append((start, prev))
     if len(runs) > 1 and runs[0][0] == 1 and runs[-1][1] == 12:
         runs = [(runs[-1][0], runs[0][1])] + runs[1:-1]
-    first = span(got)[0]
-    while runs and runs[0][0] != first:
-        runs.append(runs.pop(0))
+    # calendar order, except that a run over the year end comes first
+    runs.sort(key=lambda run: (run[0] <= run[1], run[0]))
 
     def words(run):
         a, b = run

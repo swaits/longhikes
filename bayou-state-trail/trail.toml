@@ -54,7 +54,11 @@ end_lonlat = [-91.207, 29.699]
 shape = "point-to-point"
 terrain = ["forest"]
 caution = "The association does not say how much of the route is trail and how much is road or town walking. Its trails page, read on 2026-11-19, lists the Hwy 182 bridge over the Atchafalaya River, between Berwick and Morgan City, as closed, and gives a temporary southern end at the Berwick Branch Library, 3512 5th Street. The notice carries no date of its own and gives the reopening as fall 2026. Check with the association before going."
-checked = "2026-11-16"
+checked = "2026-11-20"
+season = "November to April"
+months = [1, 2, 3, 4, 11, 12]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Summer heat, humidity, mosquitoes and storms in Louisiana push hiking into the cool, dry winter and early spring. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.bayoustatetrail.com/"
@@ -85,6 +89,11 @@ facts = ["end_lonlat"]
 url = "https://services1.arcgis.com/fXHQyq63u0UsTeSM/ArcGIS/rest/services/LDWF_Boat_Launches/FeatureServer/0"
 publisher = "Louisiana Department of Wildlife and Fisheries, boat launches layer: Ivan Lake Boat Ramp on Ivan Lake Road, inside Ivan Lake Recreation Area; the point is the wildlife agency's boat ramp, not a surveyed trailhead"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -130,5 +139,14 @@ change = "The caution about the Hwy 182 bridge now says when the association's p
 fields = ["hike.caution"]
 basis = "The association's trails page, read on 2026-11-19, still lists the bridge closure and the temporary southern end at the Berwick Branch Library, and gives no date for the notice."
 basis_url = "https://www.bayoustatetrail.com/trails"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: November to April."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

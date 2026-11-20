@@ -58,7 +58,11 @@ terrain = ["coast"]
 travel = "trail"
 permit = "Overnight camping on the King Range sections needs a Backcountry Permit, booked through Recreation.gov; Sinkyone Wilderness State Park has its own rules for camping."
 caution = "On the northern section the BLM tells hikers to research the tides before booking a permit."
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "May to September"
+months = [5, 6, 7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Heavy winter rain, slides and high tides make parts of the coast impassable, so the dry months with workable low tides are used. Confidence: high."
 
 [[hike.source]]
 url = "https://www.blm.gov/visit/lost-coast-trail"
@@ -69,6 +73,11 @@ facts = ["official_url", "summary", "terrain", "travel", "permit", "caution"]
 url = "https://www.parks.ca.gov/?page_id=28158"
 publisher = "California State Parks"
 facts = ["summary", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -87,5 +96,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.blm.gov/visit/lost-coast-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: May to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

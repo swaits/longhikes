@@ -55,7 +55,11 @@ start = "Rocky Point, New York"
 end = "Montauk Point, New York"
 shape = "point-to-point"
 terrain = ["forest", "coast"]
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Long Island is humid and tick-heavy in summer, and the pine barrens are pleasant in the cool shoulder seasons. Confidence: medium."
 
 [[hike.source]]
 url = "https://southamptontrails.org/history/"
@@ -66,6 +70,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "terrain"]
 url = "https://www.ligreenbelt.org/about-greenbelt-trails"
 publisher = "Long Island Greenbelt Trail Conference"
 facts = ["summary", "terrain"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -84,5 +93,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://southamptontrails.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

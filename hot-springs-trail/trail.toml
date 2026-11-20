@@ -75,7 +75,11 @@ shape = "point-to-point"
 days = [110, 110]
 terrain = ["alpine", "lakes"]
 travel = "some-cross-country"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "April to September"
+months = [4, 5, 6, 7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A northbound route of about 110 days from coastal California to Idaho needs the Sierra and the northern mountains clear of snow, so it runs from spring to early fall. Confidence: low."
 
 [[hike.source]]
 url = "https://outsideways.com/routes/us/hot-springs-trail/"
@@ -86,6 +90,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "days", "terrain", 
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1661401"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Hot Springs Trail"
@@ -118,5 +127,14 @@ change = "The guide's entry now gives the ISBN, publisher and year. Its link sta
 fields = ["guide"]
 basis = "The Open Library record gives The Hot Springs Trail: Official Guidebook, Aria Zoner, CreateSpace, 2015, ISBN 9781505613926, which matches the ISBN-10 in the bookseller's address."
 basis_url = "https://www.amazon.com/Hot-Springs-Trail-Official-Guidebook/dp/1505613922"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

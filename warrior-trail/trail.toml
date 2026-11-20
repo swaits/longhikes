@@ -54,7 +54,11 @@ end_lonlat = [-80.743, 39.92]
 shape = "point-to-point"
 terrain = ["farmland"]
 caution = "The trail passes through private property, and walkers are asked to be courteous to the landowners and the volunteers who maintain it."
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Farmland ridges in southwestern Pennsylvania are overgrown, humid and buggy in summer and icy in winter. Confidence: medium."
 
 [[hike.source]]
 url = "https://visitgreene.org/?p=1265"
@@ -70,6 +74,11 @@ facts = ["summary", "terrain"]
 url = "https://www.usgs.gov/us-board-on-geographic-names/domestic-names"
 publisher = "U.S. Geological Survey, Geographic Names Information System (GNIS 1176170 Greensboro, PA; 1543607 Moundsville, WV)"
 facts = ["start_lonlat", "end_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -88,5 +97,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://visitgreene.org/?p=1265"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

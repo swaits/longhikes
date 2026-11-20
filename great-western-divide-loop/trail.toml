@@ -67,7 +67,11 @@ start = "Crescent Meadow, Sequoia National Park"
 start_lonlat = [-118.748, 36.559]
 shape = "loop"
 terrain = ["forest", "alpine"]
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Kaweah Gap and the Great Western Divide hold deep snow into early July, and autumn storms return by October. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
@@ -88,6 +92,11 @@ facts = ["start_lonlat"]
 url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
 publisher = "Brian Lucido"
 facts = ["shape"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -124,5 +133,14 @@ change = "The official site is now the route's author's own page for the loop. I
 fields = ["hike.official_url", "hike.source"]
 basis = "The record's own guide and source entries already cite the author's page for the Sequoia Great Western Divide Loop; the National Park Service page is about the High Sierra Trail. The author's page refused a plain request (403), so it could not be re-read."
 basis_url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

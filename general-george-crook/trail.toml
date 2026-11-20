@@ -56,7 +56,11 @@ official_url = "https://www.fs.usda.gov/r03/apache-sitgreaves/recreation/trails/
 shape = "point-to-point"
 travel = "trail"
 caution = "The Forest Service's National Recreation Trail record says the trail can be hard to find in some places."
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "April to June and September to October"
+months = [4, 5, 6, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Rim country is snowy in winter, and the July and August monsoon brings lightning and storms, leaving spring and fall. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r03/apache-sitgreaves/recreation/trails/general-crook-trail"
@@ -67,6 +71,11 @@ facts = ["official_url", "summary", "shape", "travel"]
 url = "https://www.nrtapplication.org/trails/general-george-crook"
 publisher = "National Recreation Trails database (nrtapplication.org), from the trail's 1979 application"
 facts = ["summary", "caution"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -121,5 +130,14 @@ change = "The word \"Held:\" was taken off the start of the wave note, which now
 fields = ["wave_note"]
 basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to June and September to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

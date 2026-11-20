@@ -75,12 +75,21 @@ summary = "The Sea-to-Sea Route is a network of existing long-distance hiking tr
 official_url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
 shape = "network"
 unfinished = "An 800-mile gap in North Dakota and Montana along the Missouri River and a 30-mile gap in Vermont interrupt the network."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A 7,775-mile coast-to-coast network across the northern prairie, the Rockies and the Cascades can only be walked from spring thaw to autumn snow. Confidence: low."
 
 [[hike.source]]
 url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
 publisher = "Andrew Skurka"
 facts = ["summary", "official_url", "shape", "unfinished"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -117,5 +126,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Great Western Loop and Sea-to-Sea Route Slideshows - Skurka Adventures\"."
 basis_url = "https://andrewskurka.com/product/slideshows-on-disk-great-western-loop-and-sea-to-sea-route/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

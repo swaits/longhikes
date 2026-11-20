@@ -55,7 +55,11 @@ terrain = ["forest"]
 travel = "trail"
 caution = "The 2018 guide states there is no GPS track for the trail and that its maps are bound to be wrong in places."
 permit = "Camping along the trail on public land is free, but camping on state land needs a Michigan DNR permit."
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "June to October"
+months = [6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Snow and mud last into April in northern Michigan, and the walk is comfortable from June through early fall. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
@@ -76,6 +80,11 @@ facts = ["summary", "caution"]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=R&osmid=134987"
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Mackinaw City, OpenStreetMap relation 134987"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -123,4 +132,13 @@ fields = ["source.line_absent_reason"]
 basis = "The record's own sources: the 2018 guide states there is no GPS track for the trail."
 basis_url = "https://www.fs.usda.gov/r09/huron-manistee/recreation/trails/midland-mackinaw-trail"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: June to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+asked_by = "the dataset's own check"
 outcome = "applied"

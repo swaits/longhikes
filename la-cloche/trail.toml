@@ -57,7 +57,11 @@ days = [7, 10]
 terrain = ["forest", "lakes"]
 travel = "trail"
 permit = "Backcountry campsites along the trail are reserved through Ontario Parks."
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "June to October"
+months = [6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Killarney is snowbound in winter and buggy in spring, so the warm months are the main window, with September and early October the best. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.ontarioparks.ca/park/killarney"
@@ -68,6 +72,11 @@ facts = ["official_url", "summary", "shape", "terrain", "travel", "permit"]
 url = "https://www.ontarioparks.ca/park/killarney/activities"
 publisher = "Ontario Parks"
 facts = ["start", "days"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -86,5 +95,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.ontarioparks.ca/park/killarney"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: June to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

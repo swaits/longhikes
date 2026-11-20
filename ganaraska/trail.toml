@@ -57,12 +57,21 @@ official_url = "https://www.ganaraska-hiking-trail.org/"
 start = "Port Hope, Ontario"
 end = "Bruce Trail, near Collingwood, Ontario"
 shape = "point-to-point"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Southern Ontario is snowy in winter and muddy in March, and the trail can be walked from April until late fall. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.ganaraska-hiking-trail.org/"
 publisher = "Ganaraska Hiking Trail Association"
 facts = ["official_url", "summary", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -117,5 +126,14 @@ change = "The word \"Held:\" was taken off the start of the wave note, which now
 fields = ["wave_note"]
 basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://www.ganaraska-hiking-trail.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

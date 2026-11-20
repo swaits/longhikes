@@ -70,7 +70,11 @@ terrain = ["alpine", "lakes"]
 travel = "mostly-cross-country"
 permit = "A free wilderness permit is obtained by self-registration at the trailhead, and there is no fee to access the Sawtooth Wilderness."
 caution = "The planned route was about 89 miles with over 50 miles off-trail; the hike its author recorded covered 67 miles."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Mostly cross-country passes near 9,000 feet and above need the snow gone, which is from mid-July through September. Confidence: high."
 
 [[hike.source]]
 url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
@@ -81,6 +85,11 @@ facts = ["summary", "official_url", "start", "shape", "terrain", "travel", "perm
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/388386"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -108,5 +117,14 @@ change = "The route's creator is now named as Eric Poulin, where the record had 
 fields = ["route.creator", "designation", "source.publisher", "guide.author", "shield.contact", "shield.logo_owner"]
 basis = "The author of Seeking Lost names himself as Eric Poulin in the description of his own Seeking Lost channel on YouTube and in a published interview, and this dataset already credits him by name for his other two routes on the same site, the Basin and Range Trail and the Mojave-Sonoran Trail."
 basis_url = "https://voyagedenver.com/interview/check-out-eric-poulins-story/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

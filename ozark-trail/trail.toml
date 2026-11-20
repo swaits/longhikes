@@ -59,7 +59,11 @@ end = "Western edge of the Mark Twain National Forest, Missouri"
 shape = "point-to-point"
 travel = "trail"
 unfinished = "The St. Louis to Arkansas border route is not complete; about 230 miles form the contiguous thru-hike backbone."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "sources"
+season_method = "The pages differ: one Trek page gives spring or fall and another adds winter. It was set by judgement from both and from the climate, since the heat, humidity and ticks of July and August make summer a poor choice. Confidence: medium."
 
 [[hike.source]]
 url = "https://ozarktrail.com/thru-hiking/"
@@ -75,6 +79,16 @@ facts = ["summary", "travel", "unfinished"]
 url = "https://www.fs.usda.gov/r09/marktwain/recreation/ozark-trail"
 publisher = "USDA Forest Service, Mark Twain National Forest"
 facts = ["start", "end"]
+
+[[hike.source]]
+url = "https://thetrek.co/the-best-time-of-year-to-hike-these-23-popular-long-trails/"
+publisher = "The Trek"
+facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "Ozark Trail"
@@ -116,5 +130,14 @@ change = "The main track was re-cut to one walk (362 km): in the Eleven Point se
 fields = ["source.line_file", "source.mainline"]
 basis = "OpenStreetMap relation 16710911 names the two ways Eleven Point Low Route and Eleven Point High Route and gives no roles. The Ozark Trail Association's thru-hiking page does not say, and its site refused the requests for its section pages. The more direct way was taken by default."
 basis_url = "https://www.openstreetmap.org/relation/16710911"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was set from pages that differ: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "The pages that state a season differ and none is the managing body, association or route author, so it was set by judgement from all of them and the climate estimate."
+basis_url = "https://thetrek.co/the-best-time-of-year-to-hike-these-23-popular-long-trails/"
 asked_by = "the dataset's own check"
 outcome = "applied"

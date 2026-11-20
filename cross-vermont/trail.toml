@@ -58,12 +58,21 @@ end = "Lake Champlain, Vermont"
 shape = "point-to-point"
 travel = "trail-and-road"
 unfinished = "About half the route is still on busier roads, and the association is building more trail toward a complete off-road route across the state."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "May to October"
+months = [5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A low-elevation route of mostly rail trail and quiet roads, where winter snow and mud season bracket a long snow-free stretch from May to October. Confidence: medium."
 
 [[hike.source]]
 url = "https://crossvermont.org/our_trail/index.php"
 publisher = "Cross Vermont Trail Association"
 facts = ["official_url", "summary", "start", "end", "shape", "travel", "unfinished"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -82,5 +91,14 @@ change = "The logo record now names where an emblem was looked for and who holds
 fields = ["shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
 basis_url = "https://crossvermont.org/our_trail/index.php"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: May to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -57,7 +57,11 @@ shape = "point-to-point"
 terrain = ["forest", "lakes"]
 travel = "trail"
 permit = "Each person aged 18 or older needs a Land Between the Lakes Backcountry Camping Permit."
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The forests of western Kentucky and Tennessee are hot, humid and tick-ridden in summer, so spring and fall are favoured. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.landbetweenthelakes.us/outdoors-recreation/trails-3/"
@@ -73,6 +77,11 @@ facts = ["summary", "start", "end"]
 url = "https://www.landbetweenthelakes.us/help-center/rules-and-regulations/"
 publisher = "USDA Forest Service, Land Between the Lakes NRA"
 facts = ["permit"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -101,5 +110,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of USDA Forest Service, Land Between the Lakes NRA says: \"Each person 18 and older must possess a Backcountry Camping Permit\""
 basis_url = "https://www.landbetweenthelakes.us/help-center/rules-and-regulations/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -54,12 +54,21 @@ official_url = "https://gvta.on.ca/Grand-Valley-Trails"
 start = "Belwood, Ontario"
 end = "Port Maitland, Ontario"
 shape = "point-to-point"
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A low-elevation southern Ontario footpath that can be walked in all but deep winter and the muddy early spring. Confidence: medium."
 
 [[hike.source]]
 url = "https://gvta.on.ca/Grand-Valley-Trails"
 publisher = "Grand Valley Trails Association"
 facts = ["summary", "official_url", "start", "end", "shape"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -78,5 +87,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://gvta.on.ca/resources/banner-option2D.jpg"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -57,7 +57,11 @@ terrain = ["alpine", "forest", "lakes"]
 travel = "trail"
 caution = "Part of the trail lies in a special regulation area where visitors must pack out all human waste, and uses allowed vary from segment to segment."
 permit = "A free self-issued Forest Service registration, signed and dated for each visit, is needed to enter Cloud Peak Wilderness, which the loop circles."
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Cloud Peak Wilderness at 9,000 to 11,000 feet holds snow into early July, and winter storms return in late September. Confidence: high."
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r02/bighorn/recreation/trails/solitude-loop-trail-038"
@@ -68,6 +72,11 @@ facts = ["summary", "official_url", "start", "shape", "terrain", "travel", "caut
 url = "https://www.fs.usda.gov/r02/bighorn/alerts/forest-special-order-02-02-26-01-cloud-peak-wilderness-regulations"
 publisher = "USDA Forest Service, Bighorn National Forest"
 facts = ["permit"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -105,5 +114,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of USDA Forest Service, Bighorn National Forest says: \"Entering or being in Cloud Peak Wilderness ... free self-issued registration, signed and dated by the person or groups for that visit\""
 basis_url = "https://www.fs.usda.gov/r02/bighorn/alerts/forest-special-order-02-02-26-01-cloud-peak-wilderness-regulations"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

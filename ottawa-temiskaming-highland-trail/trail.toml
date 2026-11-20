@@ -57,7 +57,11 @@ shape = "point-to-point"
 terrain = ["forest", "lakes"]
 travel = "trail"
 caution = "The trail planner calls it a rugged wilderness trail."
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "June to October"
+months = [6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Northeastern Ontario forest is snowbound and muddy until May, with black flies in early summer, and cold by November. Confidence: medium."
 
 [[hike.source]]
 url = "https://nastawgantrails.org/our-trails"
@@ -84,6 +88,11 @@ url = "https://geogratis.gc.ca/services/geoname/en/geonames/FDNSB"
 publisher = "Natural Resources Canada (Canadian Geographical Names)"
 facts = ["end_lonlat"]
 
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -101,5 +110,14 @@ change = "The logo record now names where an emblem was looked for and who holds
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
 basis_url = "https://nastawgantrails.org/our-trails"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: June to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

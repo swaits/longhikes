@@ -58,12 +58,21 @@ start = "Allegany State Park, New York"
 end = "Slide Mountain, Catskills, New York"
 shape = "network"
 travel = "trail"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "sources"
+season_method = "The pages differ: one Trek page gives winter, spring, summer and fall, and a table on the same page gives spring, summer and fall. It was set by judgement from both and from the climate, since snow lies from December to March and early spring is muddy. Confidence: medium."
 
 [[hike.source]]
 url = "https://fingerlakestrail.org/"
 publisher = "Finger Lakes Trail Conference"
 facts = ["official_url", "summary", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "Finger Lakes Trail"
@@ -87,5 +96,14 @@ change = "The length was changed from 590 miles (950 km), counted with branches,
 fields = ["length_km", "length_note"]
 basis = "The length was first checked against another site's list, then against the holder's own pages. The Finger Lakes Trail Conference's Fall 2022 newsletter gives 580 miles for the main trail, its end-to-end page says about 585 miles, and its home page puts the whole system, with branch, loop and spur trails, at over 1,000 miles."
 basis_url = "https://fingerlakestrail.org/wp-content/uploads/FLTC_Files/FLTNews/FLTNews2022-3.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was set from pages that differ: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "The pages that state a season differ and none is the managing body, association or route author, so it was set by judgement from all of them and the climate estimate."
+basis_url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -76,12 +76,21 @@ shape = "loop"
 terrain = ["forest"]
 travel = "trail"
 caution = "The Association describes the loop as the toughest hike in Georgia."
-checked = "2026-11-16"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The north Georgia mountains are hot, humid and stormy in summer and cold and icy on the ridges in winter. Confidence: medium."
 
 [[hike.source]]
 url = "https://bmta.org/backpacking-hikes/"
 publisher = "Benton MacKaye Trail Association"
 facts = ["summary", "official_url", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -110,5 +119,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Benton MacKaye Trail Guide – Georgia Section - Benton MacKaye Trail Association\"."
 basis_url = "https://bmta.org/product/benton-mackaye-trail-guide-ga/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

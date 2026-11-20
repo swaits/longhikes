@@ -1,28 +1,22 @@
 #!/usr/bin/env python3
 """Estimate a hiking season from climate, for trails no page gives one.
 
-Python 3 standard library only. The rule is a pure function over monthly
-normals (tools/season_climate.py does the downloading, cached outside
-the repository), so its tests run with no network. See
-docs/superpowers/specs/2026-11-20-season-on-every-trail-design.md.
+Python 3 standard library only. The estimator itself is a pure function
+over monthly climate normals (tools/season_model.py: thresholds on the
+track's high and low ground, blended with the seasons of the most
+similar sourced trails); this file finds a trail's sample points, reads
+their normals (tools/season_climate.py does the downloading, cached
+outside the repository) and runs the model, so its tests run with no
+network. See docs/superpowers/specs/2026-11-20-season-on-every-trail-design.md.
 
-A month is in season when the trail's high ground is normally free of
-deep snow and not bitterly cold, and its low ground is not dangerously
-hot: over the high-ground points (at or above the upper quartile of
-the sample elevations), the median mean daily high is at least
-cold_c_min and the median mean snow depth is at most snow_cm_max, and
-over the low-ground points (at or below the median elevation) the
-median mean daily high is at most heat_c_max. When no high-ground
-point has a snow measure the snow test is dropped and the cold test
-stands in for it. That gives alpine trails a summer season, desert
-trails a winter one that wraps the year end, and mild trails all
-twelve months. It cannot know that some trails are walked in snow by
-choice; the fit against sourced seasons says how often that matters.
+The model cannot know that some trails are walked in snow by choice, or
+that a page names only a thru-hike start window; the leave-one-out fit
+against sourced seasons says how often that matters.
 
-Commands: fit (tune and record the thresholds), trial (compare the
-climate candidates), propose (the review list), proposals (stage
-accepted estimates for the refresh pipeline) and check (rerun
-every estimate and the fit).
+Commands: fit (fit the model and record the leave-one-out figure), trial
+(compare the climate sources), warm (read every point's climate into the
+cache), propose (the review list), proposals (stage accepted estimates
+for the refresh pipeline) and check (rerun every estimate and the fit).
 """
 import sys
 
@@ -47,10 +41,11 @@ import refresh  # noqa: E402
 import season  # noqa: E402
 import season_batches  # noqa: E402
 import season_climate  # noqa: E402
+import season_model  # noqa: E402
 
 ROOT = os.path.dirname(HERE)
 
-RULE_VERSION = 1
+RULE_VERSION = 2
 
 
 @dataclass(frozen=True)
@@ -61,109 +56,9 @@ class SamplePoint:
     km: float = None
 
 
-@dataclass(frozen=True)
-class Params:
-    snow_cm_max: float
-    cold_c_min: float
-    heat_c_max: float
-
-
-def _usable(points):
-    """The points as a list, or None when any point lacks data. A trail
-    with a gap in its climate data is unestimable, never filled in."""
-    if not points:
-        return None
-    got = list(points)
-    for point in got:
-        if point is None or len(getattr(point, "tmax_c", ()) or ()) != 12:
-            return None
-        if point.snow_cm is not None and len(point.snow_cm) != 12:
-            return None
-    return got
-
-
-def _high_low(points):
-    """Split points into high ground (at or above the upper quartile of
-    the elevations, at least one point) and low ground (at or below
-    the median). A single point is both."""
-    elevs = sorted(p.elev_m for p in points)
-    if len(elevs) == 1:
-        return points, points
-    upper = statistics.quantiles(elevs, n=4, method="inclusive")[2]
-    median = statistics.median(elevs)
-    high = [p for p in points if p.elev_m >= upper]
-    low = [p for p in points if p.elev_m <= median]
-    if not high:
-        high = [max(points, key=lambda p: p.elev_m)]
-    if not low:
-        low = [min(points, key=lambda p: p.elev_m)]
-    return high, low
-
-
-def _median_at(points, month, attr):
-    values = [getattr(p, attr)[month] for p in points
-              if getattr(p, attr) is not None]
-    if not values:
-        return None
-    return round(statistics.median(values), 1)
-
-
-def _medians(points):
-    """Per-month medians the rule compares: (high-ground mean daily
-    high, high-ground snow depth, low-ground mean daily high), each a
-    tuple of twelve rounded to a tenth, snow entries None where no
-    high-ground point has a snow measure. None when a point lacks
-    data. Precomputing these once per trail is what makes the grid
-    search cheap."""
-    got = _usable(points)
-    if got is None:
-        return None
-    high, low = _high_low(got)
-    return (
-        tuple(_median_at(high, m, "tmax_c") for m in range(12)),
-        tuple(_median_at(high, m, "snow_cm") for m in range(12)),
-        tuple(_median_at(low, m, "tmax_c") for m in range(12)),
-    )
-
-
-def _months_from(medians, params):
-    high_tmax, high_snow, low_tmax = medians
-    out = []
-    for m in range(12):
-        if high_tmax[m] is None or high_tmax[m] < params.cold_c_min:
-            continue
-        if high_snow[m] is not None and high_snow[m] > params.snow_cm_max:
-            continue
-        if low_tmax[m] is None or low_tmax[m] > params.heat_c_max:
-            continue
-        out.append(m + 1)
-    return out
-
-
-def months_in_season(points, params):
-    """Sorted month numbers in season, or None. None means either some
-    point has no data or no month qualifies; why_not says which. An
-    empty list is never returned."""
-    medians = _medians(points)
-    if medians is None:
-        return None
-    return _months_from(medians, params) or None
-
-
-def why_not(points, params):
-    """Why months_in_season returned None, or "" when it did not."""
-    medians = _medians(points)
-    if medians is None:
-        return "no data for one of the sample points"
-    if _months_from(medians, params):
-        return ""
-    high_tmax, high_snow, low_tmax = medians
-    cold_ok = sum(1 for v in high_tmax if v is not None and v >= params.cold_c_min)
-    snow_ok = sum(1 for v in high_snow if v is None or v <= params.snow_cm_max)
-    heat_ok = sum(1 for v in low_tmax if v is not None and v <= params.heat_c_max)
-    return (f"no month passes the cold, snow and heat tests together "
-            f"(cold passes in {cold_ok} months, snow in {snow_ok}, "
-            f"heat in {heat_ok})")
+Params = season_model.Params
+Reference = season_model.Reference
+months_in_season = season_model.months_in_season
 
 
 # ---------------------------------------------------------------------------
@@ -422,33 +317,11 @@ def sample_points(root, rec):
 
 
 # ---------------------------------------------------------------------------
-# Fitting the three thresholds against the sourced seasons. The rule is
-# tuned on the sourced trails whose id hashes even and reported on the
-# ones that hash odd (held out), then the shipped numbers are refit on
-# all of them. Estimates may ship only over the owner's bar, held here
-# in one place.
+# Fitting the model against the sourced seasons, scored leave-one-out
+# (tools/season_model.py). Estimates may ship only over the owner's bar,
+# held here in one place.
 
 BAR = {"within1_min": 0.75, "coverage_min": 0.90}
-
-DEFAULT_GRID = {
-    "snow_cm_max": [float(v) for v in range(0, 65, 5)],
-    "cold_c_min": [float(v) for v in range(-5, 26)],
-    "heat_c_max": [float(v) for v in range(20, 46)],
-}
-
-SCORES = {"exact": 2, "within1": 1, "worse": 0}
-
-
-def held_out(tid):
-    """True when a stable hash of the id is odd. The split never
-    changes as records come and go, unlike a random one."""
-    return hashlib.sha256(str(tid).encode("utf-8")).digest()[-1] % 2 == 1
-
-
-def _grade_of(estimated, sourced_months):
-    if not estimated:
-        return "worse"
-    return season.grade(estimated, sourced_months)
 
 
 def season_kind(months):
@@ -471,71 +344,50 @@ def season_kind(months):
 KINDS = ("alpine", "cool-season", "year-round", "other")
 
 
-def fit_params(sourced, grid):
-    """Grid search the three thresholds for the best mean grade over
-    the estimable trails in sourced, a list of (id, normals, months)
-    with an optional fourth item ignored here. Grades score exact 2,
-    within one month 1, worse 0. Ties go to the first combination in
-    grid order, so the same input always gives the same numbers."""
-    prepared = []
-    for item in sourced:
-        medians = _medians(item[1])
-        if medians is not None:
-            prepared.append((medians, item[2]))
-    if not prepared:
-        raise ValueError("no estimable trails to fit on")
-    best, best_score = None, None
-    for snow in grid["snow_cm_max"]:
-        for cold in grid["cold_c_min"]:
-            for heat in grid["heat_c_max"]:
-                params = Params(snow_cm_max=float(snow), cold_c_min=float(cold),
-                                heat_c_max=float(heat))
-                total = sum(SCORES[_grade_of(_months_from(med, params), months)]
-                            for med, months in prepared)
-                score = total / len(prepared)
-                if best_score is None or score > best_score:
-                    best, best_score = params, score
-    return best
-
-
-def report(sourced, params):
-    """Counts of how the rule does on sourced trails: n, exact,
-    within1 (which counts exact too, so within1 + worse + no_data is
-    n), worse and no_data, plus the same per region group in by_group.
-    A trail whose points lack data is no_data; a trail with data but
-    no qualifying month grades worse."""
-    counts = {"n": 0, "exact": 0, "within1": 0, "worse": 0, "no_data": 0}
-    by_group = {}
-    by_kind = {k: dict(counts) for k in KINDS}
-    for item in sourced:
-        group = item[3] if len(item) > 3 else season_batches.OTHER
-        bucket = by_group.setdefault(
-            group, {"n": 0, "exact": 0, "within1": 0, "worse": 0, "no_data": 0})
-        kind_bucket = by_kind[season_kind(item[2])]
-        medians = _medians(item[1])
-        for target in (counts, bucket, kind_bucket):
-            target["n"] += 1
-        if medians is None:
-            for target in (counts, bucket, kind_bucket):
-                target["no_data"] += 1
+def report(sourced, loo):
+    """How the model did leave-one-out on sourced trails. sourced is
+    (id, medians or None, months, region group); loo maps id to
+    (estimated mask, score) from season_model.fit_model. n counts every
+    sourced trail; no_data those whose points lack climate data;
+    within1 those that match under the owner's measure (a match is
+    within one month at each end, window by window for two windows,
+    ten or more months for a year-round season). classified and
+    jaccard are means over the estimable trails, by kind and by region
+    group too."""
+    def empty():
+        return {"n": 0, "within1": 0, "no_data": 0, "worse": 0,
+                "classified": 0.0, "jaccard": 0.0}
+    total, by_group = empty(), {}
+    by_kind = {k: empty() for k in KINDS}
+    for tid, med, months, group in sourced:
+        buckets = (total, by_group.setdefault(group, empty()),
+                   by_kind[season_kind(months)])
+        for b in buckets:
+            b["n"] += 1
+        if med is None or tid not in loo:
+            for b in buckets:
+                b["no_data"] += 1
             continue
-        grade = _grade_of(_months_from(medians, params), item[2])
-        for target in (counts, bucket, kind_bucket):
-            if grade == "exact":
-                target["exact"] += 1
-                target["within1"] += 1
-            elif grade == "within1":
-                target["within1"] += 1
+        a, c_share, jac = loo[tid][1]
+        for b in buckets:
+            if a:
+                b["within1"] += 1
             else:
-                target["worse"] += 1
-    counts["by_group"] = by_group
-    counts["by_kind"] = by_kind
-    return counts
+                b["worse"] += 1
+            b["classified"] += c_share
+            b["jaccard"] += jac
+    for b in (total, *by_group.values(), *by_kind.values()):
+        est = b["n"] - b["no_data"]
+        b["classified"] = round(b["classified"] / est, 4) if est else 0.0
+        b["jaccard"] = round(b["jaccard"] / est, 4) if est else 0.0
+    total["by_group"] = by_group
+    total["by_kind"] = by_kind
+    return total
 
 
 def passes_bar(rep, bar=BAR):
-    """The owner's bar: at least 75 percent of held-out sourced trails
-    within one month at each end, and at least 90 percent estimable."""
+    """The owner's bar: at least 75 percent of sourced trails matched
+    leave-one-out, and at least 90 percent estimable."""
     n = rep.get("n") or 0
     if not n:
         return False
@@ -553,20 +405,20 @@ def normals_at(points, fetch):
 
 
 def sourced_trails(root, fetch, log=None):
-    """(id, normals, sourced months, region group) for every record
-    whose season comes from a page. Fetching goes through the climate
-    cache; a network failure aborts the run and a rerun resumes from
-    the cache, so no point is ever downloaded twice."""
+    """(id, medians or None, sourced months, region group) for every
+    record whose season comes from a page. Fetching goes through the
+    climate cache; a network failure aborts the run and a rerun
+    resumes from the cache, so no point is ever downloaded twice."""
     out = []
     for tid, rec in _records(root):
         hike = rec.get("hike") or {}
         if not hike.get("season") or hike.get("season_basis") == "estimate":
             continue
         points, kind = sample_points(root, rec)
-        normals = normals_at(points, fetch)
+        med = season_model.medians(normals_at(points, fetch))
         if log:
             log(f"{tid}: {kind}, {len(points)} points")
-        out.append((tid, normals, list(hike.get("months") or []),
+        out.append((tid, med, list(hike.get("months") or []),
                     season_batches.group_of(rec)))
     return out
 
@@ -578,48 +430,77 @@ def _fetch_with_cache(cache_dir):
         lat, lon, elev, cache=cache_dir)
 
 
+def fit_sourced(sourced):
+    """(params fitted on all, leave-one-out report) for sourced trails;
+    the estimable ones are fitted and the rest counted as no data."""
+    usable = [(t[0], t[1], t[2]) for t in sourced if t[1] is not None]
+    params, loo = season_model.fit_model(usable)
+    return params, report(sourced, loo), loo
+
+
+def confidence_cut(sourced, loo, params):
+    """The (close, decisive) limits of season_model.confidence that
+    make a "high" estimate the most reliable group of at least a
+    quarter of the sourced trails, by a leave-one-out look: for each
+    trail, its neighbours leave it out. Returns the pair and the
+    share of high and low estimates that matched."""
+    refs = [Reference(t[0], t[1], t[2]) for t in sourced if t[1] is not None]
+    rows = []
+    for tid, med, months, _g in sourced:
+        if med is None or tid not in loo:
+            continue
+        near = season_model.nearest(med, refs, params.k, exclude=tid)
+        _mask, scores, fell = season_model.blend(med, near, params)
+        rows.append((near, scores, fell, med, loo[tid][1][0]))
+    best = None
+    for close in (0.08, 0.1, 0.12, 0.15, 0.2, 0.3):
+        for decisive in (0.5, 0.6, 0.7, 0.8, 0.9):
+            hi = [r[4] for r in rows
+                  if season_model.confidence(r[3], r[0], r[1], r[2], close, decisive)[0] == "high"]
+            lo = [r[4] for r in rows
+                  if season_model.confidence(r[3], r[0], r[1], r[2], close, decisive)[0] == "low"]
+            if len(hi) < len(rows) / 4 or not lo:
+                continue
+            gap = sum(hi) / len(hi) - sum(lo) / len(lo)
+            if best is None or gap > best[0]:
+                best = (gap, close, decisive, sum(hi) / len(hi), sum(lo) / len(lo), len(hi))
+    return best
+
+
 def _params_doc(params):
-    return {"snow_cm_max": params.snow_cm_max, "cold_c_min": params.cold_c_min,
-            "heat_c_max": params.heat_c_max}
+    return params.as_dict()
 
 
 def cmd_fit(args):
     fetch = _fetch_with_cache(args.cache)
     sourced = sourced_trails(ROOT, fetch, log=lambda line: print(line, flush=True))
-    train = [s for s in sourced if not held_out(s[0])]
-    test = [s for s in sourced if held_out(s[0])]
-    train_params = fit_params(train, DEFAULT_GRID)
-    held = report(test, train_params)
-    shipped = fit_params(sourced, DEFAULT_GRID)
-    whole = report(sourced, shipped)
+    params, rep, loo = fit_sourced(sourced)
     doc = {
         "computed": datetime.date.today().isoformat(),
         "rule_version": RULE_VERSION,
         "dataset": season_climate.SOURCE["name"],
         "period": season_climate.SOURCE["period"],
-        "params": _params_doc(shipped),
-        "held_out_params": _params_doc(train_params),
-        "all": whole,
-        "held_out": held,
+        "params": _params_doc(params),
+        "loo": rep,
         "bar": BAR,
-        "passes": passes_bar(held),
+        "passes": passes_bar(rep),
+        "confidence": None,
     }
+    best = confidence_cut(sourced, loo, params)
+    if best:
+        doc["confidence"] = {"close": best[1], "decisive": best[2],
+                             "high_matched": round(best[3], 3),
+                             "low_matched": round(best[4], 3), "high_n": best[5]}
     path = os.path.join(ROOT, "tools", "season_fit.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(doc, f, indent=1, sort_keys=True)
         f.write("\n")
-    print(f"sourced {len(sourced)} (train {len(train)}, held out {len(test)})")
-    print(f"held out: within1 {held['within1']}/{held['n']}, "
-          f"exact {held['exact']}, worse {held['worse']}, "
-          f"no data {held['no_data']}, passes {doc['passes']}")
-    print(f"all: within1 {whole['within1']}/{whole['n']}, "
-          f"exact {whole['exact']}, worse {whole['worse']}, "
-          f"no data {whole['no_data']}")
-    print(f"shipped params {_params_doc(shipped)} "
-          f"(held-out fit {_params_doc(train_params)})")
+    print(f"sourced {rep['n']}: leave-one-out matched {rep['within1']}/{rep['n']}, "
+          f"classified {rep['classified']}, jaccard {rep['jaccard']}, "
+          f"no data {rep['no_data']}, passes {doc['passes']}")
+    print(f"params {_params_doc(params)}; confidence {doc['confidence']}")
     print(f"wrote {path}")
     return 0
-
 
 
 # ---------------------------------------------------------------------------
@@ -627,7 +508,7 @@ def cmd_fit(args):
 # reads, the staged proposals that write accepted estimates through the
 # refresh pipeline, and the check that reruns both.
 
-COARSE_PARAMS = Params(snow_cm_max=10.0, cold_c_min=5.0, heat_c_max=32.0)
+COARSE_PARAMS = Params(cold_c_min=5.0, heat_c_max=32.0)
 
 # The trial's twelve, by rule: akshayuk-pass is the far north trail;
 # great-divide-trail and west-coast-trail are in Canada; john-muir,
@@ -643,35 +524,7 @@ TRIAL_TRAILS = ["akshayuk-pass", "great-divide-trail", "west-coast-trail",
 FLAG_ORDER = ("no-track", "place-centre", "no-data", "no-month",
               "desert", "coast", "far-north", "few-points")
 
-_CENTRES = {}
-
-
-def _centre(points):
-    if not points:
-        return None
-    return (sum(p.lat for p in points) / len(points),
-            sum(p.lon for p in points) / len(points))
-
-
-def _sourced_centres(root):
-    """(id, centre lat, centre lon, season phrase) for sourced trails,
-    computed once per root per run: sampling every track again for
-    each estimate would make the review list take minutes."""
-    if root not in _CENTRES:
-        out = []
-        for tid, rec in _records(root):
-            hike = rec.get("hike") or {}
-            if not hike.get("season") or hike.get("season_basis") == "estimate":
-                continue
-            points, _kind = sample_points(root, rec)
-            centre = _centre(points)
-            if centre:
-                out.append((tid, centre[0], centre[1], str(hike.get("season"))))
-        _CENTRES[root] = out
-    return _CENTRES[root]
-
-
-def _flags(points, kind, normals, medians, params):
+def _flags(points, kind, normals, med, params, fell_back=False):
     found = set()
     if kind != "track":
         found.add("no-track")
@@ -681,49 +534,70 @@ def _flags(points, kind, normals, medians, params):
         found.add("few-points")
     if points and max(p.lat for p in points) > 60:
         found.add("far-north")
-    if medians is None:
+    if med is None:
         found.add("no-data")
     else:
         elevs = [n.elev_m for n in normals if n is not None]
         if elevs and max(elevs) <= 200:
             found.add("coast")
-        high_tmax, high_snow, low_tmax = medians
+        high, low = med
         for m in range(12):
-            cold_ok = high_tmax[m] is not None and high_tmax[m] >= params.cold_c_min
-            snow_ok = high_snow[m] is None or high_snow[m] <= params.snow_cm_max
-            heat_ok = low_tmax[m] is not None and low_tmax[m] <= params.heat_c_max
-            if cold_ok and snow_ok and not heat_ok:
+            if high[m] >= params.cold_c_min and low[m] > params.heat_c_max:
                 found.add("desert")
                 break
-        if not _months_from(medians, params):
+        if fell_back:
             found.add("no-month")
     return [name for name in FLAG_ORDER if name in found]
 
 
-def estimate(root, rec, params, fetch=season_climate.fetch_normals):
+_REFS = {}
+
+
+def references(root, fetch):
+    """The sourced trails as comparable-trail references, read once per
+    root per run (sampling and reading every sourced trail again for
+    each estimate would take minutes)."""
+    if root not in _REFS:
+        _REFS[root] = [Reference(t[0], t[1], t[2])
+                       for t in sourced_trails(root, fetch) if t[1] is not None]
+    return _REFS[root]
+
+
+def estimate(root, rec, params, fetch=season_climate.fetch_normals, refs=None):
     """One trail's estimated season and how much to trust it: months
     (None when unestimable, with the reason), the phrase and method
     sentence an accepted estimate would carry, how its points were got,
-    flags for hand review, and the nearest sourced trail to compare
-    it with. Fetch errors propagate; nothing here touches the network
-    except through fetch."""
+    flags for hand review, the comparable trails the estimate drew on
+    (nearest first, as (id, distance, sourced phrase)) and a confidence
+    ("high" or "low") with its reason. A trail's own sourced season is
+    never one of its comparable trails. refs defaults to the sourced
+    trails read through fetch. Fetch errors propagate; nothing here
+    touches the network except through fetch."""
     points, kind = sample_points(root, rec)
     normals = normals_at(points, fetch)
-    medians = _medians(normals)
-    months = _months_from(medians, params) if medians is not None else None
-    months = months or None
-    comparable, comparable_phrase = "", ""
-    centre = _centre(points)
-    if centre:
-        best = None
-        for tid, clat, clon, phrase in _sourced_centres(root):
-            if tid == rec.get("id"):
-                continue
-            dist = season_climate.haversine_km(centre[0], centre[1], clat, clon)
-            if best is None or dist < best[0]:
-                best = (dist, tid, phrase)
-        if best:
-            comparable, comparable_phrase = best[1], best[2]
+    med = season_model.medians(normals)
+    if refs is None:
+        refs = references(root, fetch)
+    months, near, fell_back, conf, why = None, [], False, "low", ""
+    if med is not None:
+        near = season_model.nearest(med, refs, params.k, exclude=rec.get("id"))
+        mask, scores, fell_back = season_model.blend(med, near, params)
+        months = season_model.to_months(mask)
+        limits = {"close": 0.12, "decisive": 0.7}
+        try:
+            limits = (load_fit(root).get("confidence") or limits)
+        except OSError:
+            pass
+        conf, why = season_model.confidence(
+            med, near, scores, fell_back, limits["close"], limits["decisive"])
+        if kind != "track" or len(points) < 3:
+            conf, why = "low", "the location is a fallback (" + (
+                "the trail's ends" if kind == "ends" else "the region's centre") + ")"
+    else:
+        why = "no data for one of the sample points"
+    phrases = _phrases(root)
+    comparable = [(r.id, round(d, 3), phrases.get(r.id, ""), season_model.to_months(r.mask))
+                  for d, r in near]
     return {
         "months": months,
         "phrase": season.phrase_for(months) if months else "",
@@ -731,13 +605,30 @@ def estimate(root, rec, params, fetch=season_climate.fetch_normals):
             season_climate.SOURCE["name"], season_climate.SOURCE["period"],
             len(points), kind, RULE_VERSION),
         "kind": kind,
-        "flags": _flags(points, kind, normals, medians, params),
-        "comparable": comparable,
-        "comparable_phrase": comparable_phrase,
-        "reason": "" if months else why_not(normals, params),
+        "flags": _flags(points, kind, normals, med, params, fell_back),
+        "comparable": comparable[0][0] if comparable else "",
+        "comparable_phrase": comparable[0][2] if comparable else "",
+        "neighbours": comparable,
+        "confidence": conf,
+        "confidence_reason": why,
+        "reason": "" if months else why,
         "points": points,
         "normals": normals,
     }
+
+
+def _phrases(root):
+    if root not in _PHRASES:
+        out = {}
+        for tid, rec in _records(root):
+            hike = rec.get("hike") or {}
+            if hike.get("season") and hike.get("season_basis") != "estimate":
+                out[tid] = str(hike.get("season"))
+        _PHRASES[root] = out
+    return _PHRASES[root]
+
+
+_PHRASES = {}
 
 
 def load_fit(root):
@@ -746,10 +637,7 @@ def load_fit(root):
 
 
 def load_params(root):
-    doc = load_fit(root)["params"]
-    return Params(snow_cm_max=float(doc["snow_cm_max"]),
-                  cold_c_min=float(doc["cold_c_min"]),
-                  heat_c_max=float(doc["heat_c_max"]))
+    return Params.from_dict(load_fit(root)["params"])
 
 
 def _with_cache(fetch_fn, cache_dir):
@@ -769,7 +657,7 @@ def propose(root, params, fetch, given_dir=None):
     for tid, rec in _records(root):
         if (rec.get("hike") or {}).get("season"):
             continue
-        est = estimate(root, rec, params, fetch)
+        est = estimate(root, dict(rec, id=tid), params, fetch)
         rows.append([tid, " ".join(str(m) for m in est["months"] or []),
                      est["phrase"], est["kind"], ";".join(est["flags"]),
                      est["comparable"], est["comparable_phrase"]])
@@ -883,10 +771,10 @@ def proposals(root, reviewed_csv, given_dir=None):
 
 
 def check(root, fetch):
-    """Rerun every estimated season and the held-out fit. Returns
+    """Rerun every estimated season and the leave-one-out fit. Returns
     (ok, lines): not ok when an estimate would now come out different,
-    when the held-out within-one-month share has fallen by more than
-    0.02 from season_fit.json, or when that file does not pass."""
+    when the leave-one-out match share has fallen by more than 0.02
+    from season_fit.json, or when that file does not pass."""
     try:
         fit = load_fit(root)
     except OSError:
@@ -894,12 +782,13 @@ def check(root, fetch):
                        "python3 tools/estimate_season.py fit"]
     params = load_params(root)
     ok, lines, checked = True, [], 0
+    refs = references(root, fetch)
     for tid, rec in _records(root):
         hike = rec.get("hike") or {}
         if hike.get("season_basis") != "estimate":
             continue
         checked += 1
-        est = estimate(root, rec, params, fetch)
+        est = estimate(root, dict(rec, id=tid), params, fetch, refs)
         old = sorted(int(m) for m in hike.get("months") or [])
         new = sorted(est["months"] or [])
         if new != old:
@@ -907,21 +796,16 @@ def check(root, fetch):
             detail = est["phrase"] or est["reason"]
             lines.append(f"{tid}: estimate was {old}, now {new} ({detail})")
     sourced = sourced_trails(root, fetch)
-    train = [s for s in sourced if not held_out(s[0])]
-    test = [s for s in sourced if held_out(s[0])]
-    if train and test:
-        try:
-            now = report(test, fit_params(train, DEFAULT_GRID))
-        except ValueError:
-            now = None
-        stored = fit.get("held_out") or {}
-        if now and stored.get("n"):
+    if any(s[1] is not None for s in sourced):
+        _p, now, _loo = fit_sourced(sourced)
+        stored = fit.get("loo") or {}
+        if stored.get("n"):
             was_share = stored["within1"] / stored["n"]
             now_share = now["within1"] / now["n"] if now["n"] else 0.0
             if was_share - now_share > 0.02:
                 ok = False
                 lines.append(
-                    f"fit got worse: held-out within one month "
+                    f"fit got worse: leave-one-out matches "
                     f"{now['within1']}/{now['n']} ({now_share:.2f}), "
                     f"was {stored['within1']}/{stored['n']} ({was_share:.2f})")
     if not fit.get("passes"):

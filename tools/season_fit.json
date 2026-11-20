@@ -1,225 +1,142 @@
 {
- "all": {
+ "bar": {
+  "coverage_min": 0.9,
+  "within1_min": 0.75
+ },
+ "computed": "2026-11-20",
+ "confidence": {
+  "close": 0.3,
+  "decisive": 0.6,
+  "high_matched": 0.868,
+  "high_n": 38,
+  "low_matched": 0.609
+ },
+ "dataset": "CHELSA V2.1 climatologies, with ETOPO 2022 elevation",
+ "loo": {
   "by_group": {
    "Canada east and north": {
-    "exact": 0,
-    "n": 8,
+    "classified": 0.7685,
+    "jaccard": 0.5546,
+    "n": 9,
     "no_data": 0,
     "within1": 5,
-    "worse": 3
+    "worse": 4
    },
    "Canada west": {
-    "exact": 1,
-    "n": 11,
+    "classified": 0.8512,
+    "jaccard": 0.6607,
+    "n": 14,
     "no_data": 0,
-    "within1": 7,
-    "worse": 4
+    "within1": 12,
+    "worse": 2
    },
    "Rockies": {
-    "exact": 2,
-    "n": 22,
+    "classified": 0.8913,
+    "jaccard": 0.6832,
+    "n": 23,
     "no_data": 0,
-    "within1": 15,
-    "worse": 7
+    "within1": 20,
+    "worse": 3
    },
    "interior west": {
-    "exact": 3,
-    "n": 10,
+    "classified": 0.7153,
+    "jaccard": 0.3855,
+    "n": 12,
     "no_data": 0,
     "within1": 6,
-    "worse": 4
+    "worse": 6
    },
    "northeast": {
-    "exact": 0,
-    "n": 6,
+    "classified": 0.7556,
+    "jaccard": 0.6198,
+    "n": 15,
     "no_data": 0,
-    "within1": 3,
+    "within1": 12,
     "worse": 3
    },
    "plains and midwest": {
-    "exact": 1,
-    "n": 3,
+    "classified": 0.6458,
+    "jaccard": 0.4722,
+    "n": 8,
     "no_data": 0,
-    "within1": 1,
-    "worse": 2
+    "within1": 3,
+    "worse": 5
    },
    "southeast": {
-    "exact": 3,
-    "n": 10,
-    "no_data": 0,
-    "within1": 4,
-    "worse": 6
-   },
-   "southwest": {
-    "exact": 3,
-    "n": 17,
+    "classified": 0.6667,
+    "jaccard": 0.4973,
+    "n": 13,
     "no_data": 0,
     "within1": 8,
-    "worse": 9
+    "worse": 5
    },
-   "west coast": {
-    "exact": 0,
+   "southwest": {
+    "classified": 0.6932,
+    "jaccard": 0.4759,
     "n": 22,
     "no_data": 0,
-    "within1": 12,
-    "worse": 10
+    "within1": 11,
+    "worse": 11
+   },
+   "west coast": {
+    "classified": 0.7995,
+    "jaccard": 0.5687,
+    "n": 32,
+    "no_data": 0,
+    "within1": 23,
+    "worse": 9
    }
   },
   "by_kind": {
    "alpine": {
-    "exact": 6,
-    "n": 63,
+    "classified": 0.8689,
+    "jaccard": 0.6547,
+    "n": 82,
     "no_data": 0,
-    "within1": 44,
-    "worse": 19
+    "within1": 67,
+    "worse": 15
    },
    "cool-season": {
-    "exact": 5,
-    "n": 30,
+    "classified": 0.7292,
+    "jaccard": 0.4613,
+    "n": 40,
     "no_data": 0,
-    "within1": 12,
+    "within1": 22,
     "worse": 18
    },
    "other": {
-    "exact": 2,
-    "n": 8,
+    "classified": 0.5926,
+    "jaccard": 0.4345,
+    "n": 18,
     "no_data": 0,
-    "within1": 5,
-    "worse": 3
+    "within1": 11,
+    "worse": 7
    },
    "year-round": {
-    "exact": 0,
+    "classified": 0.3542,
+    "jaccard": 0.3542,
     "n": 8,
     "no_data": 0,
     "within1": 0,
     "worse": 8
    }
   },
-  "exact": 13,
-  "n": 109,
+  "classified": 0.7697,
+  "jaccard": 0.5594,
+  "n": 148,
   "no_data": 0,
-  "within1": 61,
+  "within1": 100,
   "worse": 48
- },
- "bar": {
-  "coverage_min": 0.9,
-  "within1_min": 0.75
- },
- "computed": "2026-11-20",
- "dataset": "CHELSA V2.1 climatologies, with ETOPO 2022 elevation",
- "held_out": {
-  "by_group": {
-   "Canada east and north": {
-    "exact": 0,
-    "n": 2,
-    "no_data": 0,
-    "within1": 0,
-    "worse": 2
-   },
-   "Canada west": {
-    "exact": 0,
-    "n": 6,
-    "no_data": 0,
-    "within1": 1,
-    "worse": 5
-   },
-   "Rockies": {
-    "exact": 1,
-    "n": 9,
-    "no_data": 0,
-    "within1": 5,
-    "worse": 4
-   },
-   "interior west": {
-    "exact": 3,
-    "n": 3,
-    "no_data": 0,
-    "within1": 3,
-    "worse": 0
-   },
-   "northeast": {
-    "exact": 0,
-    "n": 2,
-    "no_data": 0,
-    "within1": 0,
-    "worse": 2
-   },
-   "plains and midwest": {
-    "exact": 0,
-    "n": 1,
-    "no_data": 0,
-    "within1": 0,
-    "worse": 1
-   },
-   "southeast": {
-    "exact": 0,
-    "n": 4,
-    "no_data": 0,
-    "within1": 0,
-    "worse": 4
-   },
-   "southwest": {
-    "exact": 0,
-    "n": 9,
-    "no_data": 0,
-    "within1": 2,
-    "worse": 7
-   },
-   "west coast": {
-    "exact": 0,
-    "n": 12,
-    "no_data": 0,
-    "within1": 5,
-    "worse": 7
-   }
-  },
-  "by_kind": {
-   "alpine": {
-    "exact": 4,
-    "n": 24,
-    "no_data": 0,
-    "within1": 12,
-    "worse": 12
-   },
-   "cool-season": {
-    "exact": 0,
-    "n": 15,
-    "no_data": 0,
-    "within1": 2,
-    "worse": 13
-   },
-   "other": {
-    "exact": 0,
-    "n": 4,
-    "no_data": 0,
-    "within1": 2,
-    "worse": 2
-   },
-   "year-round": {
-    "exact": 0,
-    "n": 5,
-    "no_data": 0,
-    "within1": 0,
-    "worse": 5
-   }
-  },
-  "exact": 4,
-  "n": 48,
-  "no_data": 0,
-  "within1": 16,
-  "worse": 32
- },
- "held_out_params": {
-  "cold_c_min": 14.0,
-  "heat_c_max": 31.0,
-  "snow_cm_max": 0.0
  },
  "params": {
   "cold_c_min": 12.0,
-  "heat_c_max": 28.0,
-  "snow_cm_max": 0.0
+  "cut": 0.65,
+  "heat_c_max": 25.0,
+  "k": 20,
+  "mix": 0.7,
+  "power": 1
  },
  "passes": false,
  "period": "1981-2010",
- "rule_version": 1
+ "rule_version": 2
 }

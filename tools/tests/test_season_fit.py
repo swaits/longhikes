@@ -27,19 +27,19 @@ class SeasonFitFileTest(unittest.TestCase):
     def test_the_committed_fit_has_the_fields_the_site_reads(self):
         fit = load_fit()
         for key in ("computed", "rule_version", "dataset", "period",
-                    "params", "all", "held_out", "bar", "passes"):
+                    "params", "loo", "bar", "passes", "confidence"):
             self.assertIn(key, fit)
-        for key in ("snow_cm_max", "cold_c_min", "heat_c_max"):
-            self.assertIn(key, fit["params"])
-        for part in ("all", "held_out"):
-            for key in ("n", "exact", "within1", "worse", "no_data", "by_group"):
+        self.assertEqual(sorted(fit["params"]), sorted(E.Params(0, 0).as_dict()))
+        for part in ("loo",):
+            for key in ("n", "within1", "worse", "no_data", "classified",
+                        "jaccard", "by_group", "by_kind"):
                 self.assertIn(key, fit[part], part)
             rep = fit[part]
             self.assertEqual(rep["within1"] + rep["worse"] + rep["no_data"],
                              rep["n"], part)
         self.assertEqual(fit["bar"], E.BAR)
         self.assertEqual(fit["rule_version"], E.RULE_VERSION)
-        self.assertEqual(fit["passes"], E.passes_bar(fit["held_out"], fit["bar"]))
+        self.assertEqual(fit["passes"], E.passes_bar(fit["loo"], fit["bar"]))
 
     def test_estimates_only_with_a_passing_fit(self):
         estimated = []
@@ -51,7 +51,7 @@ class SeasonFitFileTest(unittest.TestCase):
             self.skipTest("no estimated seasons on file yet")
         fit = load_fit()
         self.assertTrue(fit["passes"], fit)
-        held = fit["held_out"]
+        held = fit["loo"]
         self.assertGreaterEqual(held["within1"] / held["n"],
                                 E.BAR["within1_min"])
 

@@ -19,7 +19,7 @@ import estimate_season as E  # noqa: E402
 import test_refresh as TR  # noqa: E402
 import season_climate as C  # noqa: E402
 
-PARAMS = E.Params(snow_cm_max=10.0, cold_c_min=5.0, heat_c_max=32.0)
+PARAMS = E.Params(cold_c_min=5.0, heat_c_max=32.0)
 
 
 def normals(elev, tmax, snow=None):
@@ -30,61 +30,44 @@ def normals(elev, tmax, snow=None):
 
 
 class RuleTest(unittest.TestCase):
+    """The thresholds on their own: with no sourced trails to compare
+    with, the model is the cold and heat limits."""
+
     def test_a_cold_high_point_closes_the_winter(self):
-        point = normals(3000, [0, 1, 3, 6, 10, 15, 20, 20, 15, 10, 4, 1],
-                        snow=[0] * 12)
+        point = normals(3000, [0, 1, 3, 6, 10, 15, 20, 20, 15, 10, 4, 1])
         self.assertEqual(E.months_in_season([point], PARAMS),
                          [4, 5, 6, 7, 8, 9, 10])
-
-    def test_snow_over_the_limit_closes_a_month(self):
-        point = normals(3000, [10] * 12,
-                        snow=[50, 50, 50, 50, 50, 50, 0, 0, 0, 0, 0, 0])
-        self.assertEqual(E.months_in_season([point], PARAMS),
-                         [7, 8, 9, 10, 11, 12])
 
     def test_heat_at_the_low_ground_closes_a_summer_month(self):
-        desert = normals(400, [19, 22, 26, 31, 36, 42, 44, 43, 39, 32, 24, 19],
-                         snow=[0] * 12)
-        got = E.months_in_season([desert], PARAMS)
-        self.assertEqual(set(got), {10, 11, 12, 1, 2, 3, 4})
-        self.assertEqual(got, [1, 2, 3, 4, 10, 11, 12])
+        desert = normals(400, [19, 22, 26, 31, 36, 42, 44, 43, 39, 32, 24, 19])
+        self.assertEqual(E.months_in_season([desert], PARAMS),
+                         [1, 2, 3, 4, 10, 11, 12])
 
     def test_high_ground_is_the_upper_quartile_of_points(self):
-        low = [normals(e, [15] * 12, snow=[0] * 12) for e in (100, 200, 300)]
-        top_snow = [0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0]
-        high = normals(400, [15] * 12, snow=top_snow)
+        low = [normals(e, [15] * 12) for e in (100, 200, 300)]
+        high = normals(400, [15, 15, 15, 15, 15, 0, 15, 15, 15, 15, 15, 15])
         got = E.months_in_season(low + [high], PARAMS)
-        self.assertNotIn(6, got)  # only the highest point has June snow
+        self.assertNotIn(6, got)  # only the highest point is cold in June
         self.assertEqual(len(got), 11)
 
-    def test_no_snow_measure_uses_temperature_alone(self):
-        point = normals(3000, [0, 1, 3, 6, 10, 15, 20, 20, 15, 10, 4, 1],
-                        snow=None)
-        self.assertEqual(E.months_in_season([point], PARAMS),
-                         [4, 5, 6, 7, 8, 9, 10])
-
     def test_a_wrapped_season_is_returned_sorted(self):
-        point = normals(400, [15, 15, 15, 15, 15, 40, 40, 40, 40, 40, 15, 15],
-                        snow=[0] * 12)
+        point = normals(400, [15, 15, 15, 15, 15, 40, 40, 40, 40, 40, 15, 15])
         self.assertEqual(E.months_in_season([point], PARAMS),
                          [1, 2, 3, 4, 5, 11, 12])
 
-    def test_no_qualifying_month_is_none_with_a_reason(self):
-        arctic = normals(500, [-5] * 12, snow=[30] * 12)
-        self.assertIsNone(E.months_in_season([arctic], PARAMS))
-        self.assertIn("no month", E.why_not([arctic], PARAMS))
+    def test_a_trail_that_never_qualifies_still_gets_three_months(self):
+        arctic = normals(500, [-5, -4, -2, 0, 3, 4, 4, 3, 1, -1, -3, -5])
+        got = E.months_in_season([arctic], PARAMS)
+        self.assertEqual(got, [5, 6, 7])  # the three nearest the cold limit
 
     def test_all_twelve_months_is_allowed(self):
-        coast = normals(20, [15] * 12, snow=[0] * 12)
+        coast = normals(20, [15] * 12)
         self.assertEqual(E.months_in_season([coast], PARAMS), list(range(1, 13)))
-        self.assertEqual(E.why_not([coast], PARAMS), "")
 
     def test_a_point_with_missing_data_makes_the_trail_unestimable(self):
-        point = normals(20, [15] * 12, snow=[0] * 12)
+        point = normals(20, [15] * 12)
         self.assertIsNone(E.months_in_season([point, None], PARAMS))
-        self.assertIn("no data", E.why_not([point, None], PARAMS))
         self.assertIsNone(E.months_in_season([], PARAMS))
-        self.assertIn("no data", E.why_not([], PARAMS))
 
 
 class SamplePointsTest(unittest.TestCase):
@@ -205,86 +188,61 @@ class SamplePointsTest(unittest.TestCase):
         self.assertAlmostEqual(points[0].lat, 43.85)
 
 
-KNOWN = E.Params(snow_cm_max=10.0, cold_c_min=5.0, heat_c_max=30.0)
-GRID = {"snow_cm_max": [float(v) for v in range(0, 65, 5)],
-        "cold_c_min": [float(v) for v in range(0, 13)],
-        "heat_c_max": [float(v) for v in range(24, 41)]}
+class ReportTest(unittest.TestCase):
+    def loo(self, **kw):
+        """loo entries (mask, (match, classified, jaccard)) by id."""
+        return {tid: (0, v) for tid, v in kw.items()}
 
-
-def synthetic_sourced():
-    """Trails whose sourced months come from KNOWN, designed so each
-    threshold is pinned by months just either side of it."""
-    cases = [
-        ("cold-pin", normals(3000, [4, 4, 6, 6, 10, 15, 20, 20, 15, 10, 6, 4],
-                             snow=[0] * 12)),
-        ("snow-pin", normals(3000, [15] * 12,
-                             snow=[20, 20, 12, 8, 0, 0, 0, 0, 0, 0, 8, 12])),
-        ("heat-pin", normals(400, [20, 22, 26, 29, 31, 36, 38, 38, 36, 31, 28, 22],
-                             snow=[0] * 12)),
-        ("mild-all-year", normals(100, [15] * 12, snow=[0] * 12)),
-    ]
-    out = []
-    for tid, point in cases:
-        months = E.months_in_season([point], KNOWN)
-        assert months, tid
-        out.append((tid, [point], months))
-    return out
-
-
-class FitTest(unittest.TestCase):
-    def test_held_out_is_stable_and_splits_roughly_in_half(self):
-        ids = [f"trail-{i:04d}" for i in range(1000)]
-        again = [t for t in ids if E.held_out(t)]
-        self.assertEqual(again, [t for t in ids if E.held_out(t)])
-        share = len(again) / len(ids)
-        self.assertTrue(0.40 <= share <= 0.60, share)
-
-    def test_fit_recovers_known_params_from_synthetic_trails(self):
-        sourced = synthetic_sourced()
-        fitted = E.fit_params(sourced, GRID)
-        self.assertLessEqual(abs(fitted.snow_cm_max - KNOWN.snow_cm_max), 5)
-        self.assertLessEqual(abs(fitted.cold_c_min - KNOWN.cold_c_min), 1)
-        self.assertLessEqual(abs(fitted.heat_c_max - KNOWN.heat_c_max), 1)
-        self.assertEqual(E.report(sourced, fitted)["exact"], len(sourced))
-
-    def test_report_counts_grades_and_no_data(self):
-        params = E.Params(snow_cm_max=10.0, cold_c_min=5.0, heat_c_max=32.0)
-        mild = normals(100, [15] * 12, snow=[0] * 12)
-        alpine = normals(3000, [0, 1, 3, 6, 10, 15, 20, 20, 15, 10, 4, 1],
-                          snow=[0] * 12)
-        sourced = [
-            ("exact-1", [mild], list(range(1, 13))),
-            ("within-1", [alpine], [5, 6, 7, 8, 9]),  # rule gives 4 to 10
-            ("worse-1", [alpine], [1, 2]),
-            ("nodata-1", [None], [6, 7, 8]),
-        ]
-        rep = E.report(sourced, params)
-        self.assertEqual(rep["n"], 4)
-        self.assertEqual(rep["exact"], 1)
-        self.assertEqual(rep["within1"], 2)  # within1 counts exact too
-        self.assertEqual(rep["worse"], 1)
-        self.assertEqual(rep["no_data"], 1)
+    def test_report_counts_matches_and_no_data(self):
+        med = ((15.0,) * 12, (15.0,) * 12)
+        sourced = [("a", med, [7, 8], "g"), ("b", med, [7, 8], "g"),
+                   ("c", None, [6, 7, 8], "h")]
+        loo = self.loo(a=(1.0, 1.0, 1.0), b=(0.0, 0.5, 0.25))
+        rep = E.report(sourced, loo)
+        self.assertEqual((rep["n"], rep["within1"], rep["worse"], rep["no_data"]),
+                         (3, 1, 1, 1))
         self.assertEqual(rep["within1"] + rep["worse"] + rep["no_data"], rep["n"])
-        self.assertIn("by_group", rep)
+        self.assertEqual(rep["classified"], 0.75)
+        self.assertEqual(rep["jaccard"], 0.625)
+        self.assertEqual(rep["by_group"]["g"]["within1"], 1)
+        self.assertEqual(rep["by_group"]["h"]["no_data"], 1)
 
     def test_passes_is_false_below_the_bar_and_true_at_it(self):
         def rep(within1, no_data=0, n=100):
-            return {"n": n, "exact": 0, "within1": within1,
+            return {"n": n, "within1": within1,
                     "worse": n - within1 - no_data, "no_data": no_data}
         self.assertFalse(E.passes_bar(rep(74)))
         self.assertTrue(E.passes_bar(rep(75)))
         self.assertFalse(E.passes_bar(rep(90, no_data=11)))  # coverage 89%
 
-    def test_the_same_input_gives_the_same_report_twice(self):
-        sourced = synthetic_sourced()
-        self.assertEqual(E.report(sourced, KNOWN), E.report(sourced, KNOWN))
-        self.assertEqual(E.fit_params(sourced, GRID), E.fit_params(sourced, GRID))
+    def test_the_report_splits_by_kind(self):
+        med = ((20.0,) * 12, (20.0,) * 12)
+        sourced = [("a", med, list(range(1, 13)), "x")]
+        rep = E.report(sourced, self.loo(a=(1.0, 1.0, 1.0)))
+        self.assertEqual(rep["by_kind"]["year-round"]["n"], 1)
+        self.assertEqual(rep["by_kind"]["year-round"]["within1"], 1)
+        self.assertEqual(rep["by_kind"]["alpine"]["n"], 0)
+
+    def test_the_same_input_gives_the_same_fit_twice(self):
+        med = lambda v: (tuple([v] * 12), tuple([v] * 12))
+        sourced = [(f"t{i}", med(10.0 + i), [5, 6, 7, 8], "g") for i in range(6)]
+        first = E.fit_sourced(sourced)
+        second = E.fit_sourced(sourced)
+        self.assertEqual(first[0], second[0])
+        self.assertEqual(first[1], second[1])
 
 
 def mild_fetch(lat, lon, elev):
     return C.PointNormals(lat=float(lat), lon=float(lon),
                           elev_m=float(elev if elev is not None else 100.0),
-                          tmax_c=tuple([15.0] * 12), snow_cm=tuple([0.0] * 12))
+                          tmax_c=tuple([15.0] * 12))
+
+
+def warm_with_latitude(lat, lon, elev):
+    """Warmer to the south: five degrees a degree of latitude."""
+    return C.PointNormals(lat=float(lat), lon=float(lon),
+                          elev_m=float(elev if elev is not None else 100.0),
+                          tmax_c=tuple([15.0 + 5.0 * (43.0 - float(lat))] * 12))
 
 
 def none_fetch(lat, lon, elev):
@@ -340,7 +298,7 @@ class EstimateTest(unittest.TestCase):
             with self.assertRaises(AssertionError):
                 E.estimate(bounds_root(td), ends_rec(), PARAMS, fetch=raising)
 
-    def test_comparable_is_the_nearest_sourced_trail(self):
+    def test_comparable_trails_are_listed_nearest_first(self):
         import tempfile, shutil
         tmp = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, tmp, True)
@@ -363,25 +321,24 @@ class EstimateTest(unittest.TestCase):
         rec = R.load_toml(os.path.join(root, "target-one", "trail.toml"))
         # fixture records claim line_file "" so sampling uses the ends
         rec["source"]["line_file"] = "line.geojson"
-        est = E.estimate(root, rec, PARAMS, fetch=mild_fetch)
+        est = E.estimate(root, rec, PARAMS, fetch=warm_with_latitude)
         self.assertEqual(est["comparable"], "near-one")
         self.assertEqual(est["comparable_phrase"], "June to September")
+        self.assertEqual([n[0] for n in est["neighbours"]],
+                         ["near-one", "far-one"])
+        self.assertEqual(est["confidence"], "low")  # the location is a fallback
 
 
 class ProposeCheckTest(unittest.TestCase):
-    def fit_doc(self, root, passes=True, held_within1=3, held_n=4):
+    def fit_doc(self, root, passes=True, within1=3, n=4):
         os.makedirs(os.path.join(root, "tools"), exist_ok=True)
         doc = {"computed": "2026-11-20", "rule_version": E.RULE_VERSION,
                "dataset": "test", "period": "2011-2020",
-               "params": {"snow_cm_max": 10.0, "cold_c_min": 5.0,
-                          "heat_c_max": 32.0},
-               "held_out": {"n": held_n, "exact": 0, "within1": held_within1,
-                            "worse": held_n - held_within1, "no_data": 0,
-                            "by_group": {}},
-               "all": {"n": held_n, "exact": 0, "within1": held_within1,
-                       "worse": held_n - held_within1, "no_data": 0,
-                       "by_group": {}},
-               "bar": E.BAR, "passes": passes}
+               "params": E.Params(5.0, 32.0).as_dict(),
+               "loo": {"n": n, "within1": within1, "worse": n - within1,
+                       "no_data": 0, "classified": 0.8, "jaccard": 0.6,
+                       "by_group": {}, "by_kind": {}},
+               "confidence": None, "bar": E.BAR, "passes": passes}
         with open(os.path.join(root, "tools", "season_fit.json"), "w") as f:
             json.dump(doc, f)
 
@@ -418,7 +375,9 @@ class ProposeCheckTest(unittest.TestCase):
                   newline="") as f:
             rows = list(csv.DictReader(f))
         self.assertEqual([r["id"] for r in rows], ["aaa", "ccc"])
-        self.assertEqual(rows[0]["phrase"], "All year")
+        # the one sourced trail has the same climate, so its June to
+        # September carries the estimate
+        self.assertEqual(rows[0]["phrase"], "June to September")
 
     def est_repo(self, tmp, months_extra):
         return self.repo_with(tmp, [
@@ -456,16 +415,11 @@ class ProposeCheckTest(unittest.TestCase):
         import tempfile, shutil
         tmp = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, tmp, True)
-        # one train and one held-out sourced trail, both graded worse
-        # by mild all-year normals against a June-only season
-        ids = [f"trail-{i:03d}" for i in range(40)]
-        train_id = next(t for t in ids if not E.held_out(t))
-        test_id = next(t for t in ids if E.held_out(t))
+        # one sourced trail that mild all-year normals cannot match
         extra = ('season = "June"\nmonths = [6]\n'
                  'season_basis = "source"\n' + self.ENDS)
-        root = self.repo_with(tmp, [(train_id, "Train", {"extra_hike": extra}),
-                                    (test_id, "Test", {"extra_hike": extra})])
-        self.fit_doc(root, held_within1=4, held_n=4)
+        root = self.repo_with(tmp, [("only", "Only", {"extra_hike": extra})])
+        self.fit_doc(root, within1=4, n=4)
         ok, lines = E.check(root, mild_fetch)
         self.assertFalse(ok)
         self.assertTrue(any("fit got worse" in line for line in lines), lines)
@@ -500,15 +454,6 @@ class SeasonKindTest(unittest.TestCase):
         self.assertEqual(E.season_kind([7, 8, 9]), "alpine")
         self.assertEqual(E.season_kind([10, 11, 12, 1, 2, 3, 4]), "cool-season")
         self.assertEqual(E.season_kind([4, 5, 6, 7, 8, 9, 10]), "other")
-
-    def test_the_report_splits_by_kind(self):
-        def pn(v):
-            return C.PointNormals(40.0, -100.0, 1000.0, tuple([v] * 12))
-        sourced = [("a", [pn(20.0)], list(range(1, 13)), "x")]
-        rep = E.report(sourced, E.Params(10.0, 5.0, 40.0))
-        self.assertEqual(rep["by_kind"]["year-round"]["n"], 1)
-        self.assertEqual(rep["by_kind"]["year-round"]["exact"], 1)
-        self.assertEqual(rep["by_kind"]["alpine"]["n"], 0)
 
 
 if __name__ == "__main__":

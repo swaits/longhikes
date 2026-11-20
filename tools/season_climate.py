@@ -13,8 +13,13 @@ Source chosen
 =============
 ERA5-Land through the Open-Meteo Historical Weather API: daily maximum
 temperature and daily maximum snow depth, averaged by month over
-2011-2020, at the elevation asked for (the API adjusts both values to
-that elevation). SOURCE below names it for the record entries.
+2018-2020, at the elevation asked for (the API adjusts both values to
+that elevation). SOURCE below names it for the record entries. The
+three years are a limit of the free API, not a preference; see the
+licence note below. The trial tables at the end were run on 2011-2020
+means, before that limit was measured. The choice does not turn on
+the years: the losing sources lack snow depth, values at the asked
+elevation and the other country on any years.
 
 Licences, read on each publisher's own terms page (2026-11-20):
 
@@ -25,15 +30,20 @@ Licences, read on each publisher's own terms page (2026-11-20):
   purposes." and "Less than 10'000 API calls per day, 5'000 per hour
   and 600 per minute." This dataset is a public, non-commercial one, and
   the CC BY 4.0 data licence is met by the attribution in NOTICE.md and
-  the source entry on each estimated record. The rate limit is why the
-  period is the last ten years of the normals period and not all
-  thirty: one point for 1991-2020 costs about 156 of the 600 units
-  allowed per minute, so the roughly 900 sample points would need about
-  five hours of throttled requests; ten years cost about 52 units a
-  point. The rule's thresholds are fitted on the same ten years, so a
-  steady offset between the decade and the thirty year normals is
-  mostly absorbed by the fit. Widening the period later only refills
-  the cache.
+  the source entry on each estimated record. The binding limit in
+  practice is the hourly one the API reports on a refusal: 5000
+  weighted units an hour, where one point costs about 5 units per
+  year of daily data for the two measures. All thirty normals years
+  for the roughly 900 sample points would cost about 139000 units,
+  some 28 hours of throttled requests, and ten years about 9 hours,
+  so the period is three years (about 14000 units, under 3 hours from
+  an empty cache, and nothing once cached). The rule's thresholds are
+  fitted on the same three years, so a steady offset between those
+  years and the thirty year normals is mostly absorbed by the fit.
+  Widening the period later only refills the cache, which is keyed
+  by period so the two never mix. Requests that meet the hourly
+  limit wait as long as the API asks and then retry, so a long run
+  pauses instead of failing.
 - NOAA (US only), https://www.weather.gov/disclaimer: "The information
   on National Weather Service (NWS) Web pages are in the public domain,
   unless specifically noted otherwise, and may be used without charge
@@ -143,13 +153,13 @@ SOURCE = {
     "publisher": "Open-Meteo.com",
     "url": "https://open-meteo.com/en/docs/historical-weather-api",
     "licence": "CC BY 4.0",
-    "period": "2011-2020",
+    "period": "2018-2020",
 }
 
 USER_AGENT = "Mozilla/5.0"
 DELAY_S = 0.15
 LAPSE_C_PER_KM = 6.5
-ERA5_YEARS = (2011, 2020)
+ERA5_YEARS = (2018, 2020)
 NOAA_MAX_KM = 150.0
 ECCC_MAX_KM = 250.0
 
@@ -189,9 +199,17 @@ def _pace():
         time.sleep(wait)
 
 
+def _retry_after_s(exc):
+    headers = getattr(exc, "headers", None) or getattr(exc, "hdrs", None) or {}
+    try:
+        return max(5.0, min(float(headers.get("Retry-After")), 1200.0))
+    except (TypeError, ValueError):
+        return 65.0
+
+
 def _get_bytes(url, opener, timeout=180):
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    for attempt in range(4):
+    for attempt in range(20):
         _pace()
         try:
             with opener(req, timeout=timeout) as resp:
@@ -205,8 +223,12 @@ def _get_bytes(url, opener, timeout=180):
             return raw
         except urllib.error.HTTPError as exc:
             _LAST_AT[0] = time.time()
-            if exc.code == 429 and attempt < 3:
-                time.sleep(65)
+            if exc.code == 429 and attempt < 19:
+                # The hourly allowance refills as old requests age out.
+                # Wait as long as the API asks, then try the same
+                # request again; the point is fetched once either way.
+                _REMAINING[0] = None
+                time.sleep(_retry_after_s(exc) + 5)
                 continue
             raise
 
@@ -304,7 +326,10 @@ def parse_open_meteo(raw, lat, lon, elev_m):
 
 def fetch_open_meteo(lat, lon, elev_m, cache=CACHE_DIR, opener=urllib.request.urlopen):
     lat, lon = _rounded(lat, lon)
-    path = _cache_path(cache, "open-meteo", lat, lon, elev_m)
+    # The years are in the cache name so a widened period later never
+    # reads means computed over different years.
+    path = _cache_path(cache, f"open-meteo-{ERA5_YEARS[0]}-{ERA5_YEARS[1]}",
+                       lat, lon, elev_m)
     hit, got = _read_cache(path)
     if hit:
         return got

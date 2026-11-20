@@ -92,6 +92,26 @@ class OpenMeteoTest(unittest.TestCase):
                                   opener=FakeOpener("open_meteo_nodata.json"))
         self.assertIsNone(got)
 
+    def test_a_429_is_retried_after_a_pause(self):
+        import urllib.error
+        from unittest import mock
+        calls = []
+
+        def flaky(req, timeout=None):
+            calls.append(req.full_url)
+            if len(calls) == 1:
+                raise urllib.error.HTTPError(
+                    req.full_url, 429, "Too Many Requests",
+                    {"Retry-After": "0"}, None)
+            return FakeResponse(fixture_bytes("open_meteo_alpine.json"))
+
+        with tempfile.TemporaryDirectory() as cache:
+            with mock.patch.object(C.time, "sleep", lambda s: None):
+                got = C.fetch_normals(37.7, -119.5, 3400.0, cache=cache,
+                                      opener=flaky)
+        self.assertIsNotNone(got)
+        self.assertEqual(len(calls), 2)
+
     def test_the_desert_and_coast_fixtures_parse(self):
         with tempfile.TemporaryDirectory() as cache:
             desert = C.fetch_normals(32.2, -110.9, 800.0, cache=cache,

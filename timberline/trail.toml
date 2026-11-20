@@ -62,6 +62,7 @@ travel = "trail"
 permit = "Free, self-issued wilderness permits are required from May 15 to October 15 when provided at a portal, and some trailheads require a day use fee."
 caution = "The Forest Service says most hikers find the fast-moving river crossings the most challenging part of the trail, and several major crossings have no bridges."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r06/mthood/recreation/trails/timberline-trail-600"
@@ -131,5 +132,14 @@ change = "The reason for listing the trail under the 50 mile floor now states it
 fields = ["short_reason"]
 basis = "Travel Oregon, the state tourism office, calls the Timberline Trail a classic multiday backpacking circuit and says that starting clockwise at Timberline Lodge is one of the most popular ways to hike it."
 basis_url = "https://traveloregon.com/things-to-do/outdoor-recreation/4-day-backpacking-trip-on-oregons-timberline-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by USDA Forest Service, Mt. Hood National Forest as: July to October."
+basis_url = "https://www.fs.usda.gov/r06/mthood/recreation/trails/timberline-trail-600"
 asked_by = "the dataset's own check"
 outcome = "applied"

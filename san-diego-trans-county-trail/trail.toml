@@ -79,6 +79,7 @@ terrain = ["desert", "coast"]
 permit = "No permit is needed for the whole route; a Recreation.gov permit is recommended for Cedar Creek Falls and some alternates may need landowner permission."
 caution = "The guide says it is not enough for a hiker to travel the route safely, and that some alternates cross private land."
 checked = "2026-11-14"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
@@ -130,5 +131,14 @@ change = "The word \"Held:\" was taken off the start of the wave note, which now
 fields = ["wave_note"]
 basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/243761"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Liz Thomas, Treeline Review (author of the current guide) as: November to February."
+basis_url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

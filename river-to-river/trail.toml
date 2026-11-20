@@ -60,6 +60,7 @@ terrain = ["forest", "prairie"]
 season = "All year"
 months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r09/shawnee/recreation/trails/river-river-trail"
@@ -84,5 +85,14 @@ date = "2026-11-10"
 change = "The record was added: River to River Trail."
 fields = ["record"]
 basis = "The record's own source entry: River to River Trail Society."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by USDA Forest Service, Shawnee National Forest as: All year."
+basis_url = "https://www.fs.usda.gov/r09/shawnee/recreation/trails/river-river-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

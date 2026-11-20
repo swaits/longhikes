@@ -80,6 +80,7 @@ season = "August to mid-September"
 months = [8, 9]
 days = [7, 10]
 checked = "2026-11-19"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://andrewskurka.com/adventures/wind-river-high-route/"
@@ -164,5 +165,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Guide to the complete Wind River High Route - Andrew Skurka\"."
 basis_url = "https://andrewskurka.com/product/wind-river-high-route-guide/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Andrew Skurka as: August to mid-September."
+basis_url = "https://andrewskurka.com/adventures/wind-river-high-route/"
 asked_by = "the dataset's own check"
 outcome = "applied"

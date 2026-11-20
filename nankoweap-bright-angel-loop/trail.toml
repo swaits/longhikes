@@ -79,6 +79,7 @@ travel = "some-cross-country"
 permit = "A permit is required to camp within Grand Canyon National Park, as the book states."
 caution = "The book calls this a strenuous cross-country hike, says every member of the party should be fit and that the leader should have experience hiking cross-country in the Grand Canyon, and says most of the loop is seldom travelled and hikers are unlikely to meet anyone on its cross-country section. The author rates its difficulty 10 out of 10. The book warns that a rope belay may be needed in several places: a shale traverse when it is wet, a section of the Redwall where packs are passed or hauled, and two chockstones on the way into Vishnu Creek. Much of the loop is cross-country. The book lists water at Nankoweap Creek, Kwagunt Creek, the Colorado River and Unkar Creek, and only seasonally in Vishnu Creek, Clear Creek and Bright Angel Creek. Campfires are not allowed in the park's backcountry; along the North Kaibab Trail near the end of the loop, camping is allowed only in designated campgrounds. Pets are not allowed on trails or in the backcountry."
 checked = "2026-11-18"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
@@ -143,6 +144,15 @@ date = "2026-11-19"
 change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
 fields = ["guide", "route.note"]
 basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's pages 86-87 and the Featured Trips Summary Chart on page xiii of the 1st edition, 3rd printing, read from a printed copy as: Mid September to May."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 asked_by = "the dataset's own check"
 outcome = "applied"

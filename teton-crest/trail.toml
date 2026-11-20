@@ -66,6 +66,7 @@ days = [2, 4]
 season = "Summer to early fall"
 months = [7, 8, 9]
 checked = "2026-11-13"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.nps.gov/grte/planyourvisit/backcountryroutesandzones.htm"
@@ -136,5 +137,14 @@ change = "The note on OpenStreetMap relation 3895101 was corrected. It had said 
 fields = ["osm.note"]
 basis = "The OpenStreetMap API, read on 2026-11-19, gave 57.5 km in 49 ways, one continuous piece, version 21, last edited 2024-09-21."
 basis_url = "https://www.openstreetmap.org/relation/3895101"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Backpacking Routes as: Summer to early fall."
+basis_url = "https://backpackingroutes.com/teton-crest-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -78,6 +78,7 @@ permit = "The author says the route passes through Grand Teton National Park but
 season = "Mid-July to mid-August"
 months = [7, 8]
 checked = "2026-11-19"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://wildernessmindset.com/teton-crest-trail/"
@@ -153,5 +154,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Teton Crest Route Map Pack - Wilderness Mindset\"."
 basis_url = "https://wildernessmindset.com/product/teton-crest-route-map-pack/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Mindset (the route's author) as: Mid-July to mid-August."
+basis_url = "https://wildernessmindset.com/teton-crest-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

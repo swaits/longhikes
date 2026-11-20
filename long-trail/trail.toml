@@ -64,6 +64,7 @@ terrain = ["forest"]
 travel = "trail"
 permit = "Individual hikers need no permit, though some groups need a special-use permit from the Green Mountain National Forest or the Vermont Department of Forests, Parks and Recreation."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.greenmountainclub.org/the-long-trail/"
@@ -93,5 +94,14 @@ date = "2026-11-09"
 change = "The record was added: Long Trail (Vermont)."
 fields = ["record"]
 basis = "The record's own source entry: Green Mountain Club."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Green Mountain Club as: July to September."
+basis_url = "https://www.greenmountainclub.org/hiking/thru-hike-long-trail-vermont/"
 asked_by = "the dataset's own check"
 outcome = "applied"

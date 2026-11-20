@@ -66,6 +66,7 @@ terrain = ["forest"]
 travel = "trail-and-road"
 permit = "No fees or paid permits are required to use the trail; some overnight sites ask for a donation."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.nps.gov/neen/index.htm"
@@ -104,5 +105,14 @@ change = "The name hikers use, New England Trail, was added as the common name. 
 fields = ["common_name"]
 basis = "The National Park Service page says 'the New England Trail covers 235 miles' and uses it in its mailing address."
 basis_url = "https://www.nps.gov/neen/index.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by New England Trail as: Spring and fall; summers tend to be humid and buggy and winters cold and icy."
+basis_url = "https://newenglandtrail.org/thru-hiking/"
 asked_by = "the dataset's own check"
 outcome = "applied"

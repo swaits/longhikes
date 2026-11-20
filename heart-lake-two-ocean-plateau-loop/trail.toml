@@ -79,6 +79,7 @@ travel = "trail"
 permit = "A permit is required, as the book states. It advises reservations, especially for camps near Heart Lake, and names the Old Faithful Ranger Station as the nearest place to pick one up."
 caution = "The book says grizzly bears are common, that the trail has several potentially difficult river fords early in the season, and that there are many miles of shadeless burned areas and lots of mosquitoes in early summer. Camping permits near Heart Lake are hard to get. Access to Heart Lake is closed from April 1 to June 30, the Trail Creek Trail along the south shore of Yellowstone Lake is closed before July 14, and off-trail travel in the Two Ocean Plateau Bear Management Area needs a permit from July 15 to August 21 and is prohibited the rest of the hiking season. Fires are allowed only at specified camps and all food must be stored away from bears at all times. The author rates its difficulty 7 out of 10."
 checked = "2026-11-18"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
@@ -139,6 +140,15 @@ date = "2026-11-19"
 change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
 fields = ["guide", "route.note"]
 basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's pages 45-49 of the 1st edition (2010), read from a printed copy as: Usually open mid-July to October, best mid-August through September."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 asked_by = "the dataset's own check"
 outcome = "applied"

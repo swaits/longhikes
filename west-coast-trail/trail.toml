@@ -65,6 +65,7 @@ terrain = ["coast", "forest"]
 travel = "trail"
 permit = "A Parks Canada backcountry use permit with a reservation is needed, even for a day hike, along with a national park entry pass."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://parks.canada.ca/pn-np/bc/pacificrim/activ/sco-wct"
@@ -117,4 +118,13 @@ fields = ["short_reason"]
 basis = "The Parks Canada page for the trail says most people take six to eight days."
 basis_url = "https://parks.canada.ca/pn-np/bc/pacificrim/activ/sco-wct"
 asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Parks Canada as: May to September."
+basis_url = "https://parks.canada.ca/pn-np/bc/pacificrim/activ/sco-wct"
+asked_by = "the dataset's own check"
 outcome = "applied"

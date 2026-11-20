@@ -66,6 +66,7 @@ terrain = ["forest", "alpine"]
 travel = "trail"
 permit = "There is no permit for the whole trail; permits are needed only in Great Smoky Mountains National Park, Shenandoah National Park and Baxter State Park."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.nps.gov/appa/index.htm"
@@ -123,5 +124,14 @@ change = "The name hikers use, Appalachian Trail, was added as the common name. 
 fields = ["common_name"]
 basis = "The National Park Service page for the trail opens its description with 'The Appalachian Trail is a 2,190+ mile long public footpath' and also uses the formal name."
 basis_url = "https://www.nps.gov/appa/index.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Appalachian Trail Conservancy as: Northbound hikes start late February to early April."
+basis_url = "https://appalachiantrail.org/experience/hike-the-trail/at-basics/"
 asked_by = "the dataset's own check"
 outcome = "applied"

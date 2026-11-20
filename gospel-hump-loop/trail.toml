@@ -88,6 +88,7 @@ travel = "trail"
 permit = "None required, as the book states; groups are limited to 20 people and 20 stock animals."
 caution = "The book rates the difficulty 10 out of 10, its hardest rating, and says to take the hike only in top physical condition, with many steep ups and downs over extremely rugged terrain. Rattlesnakes are abundant and poison ivy grows in the Salmon River canyon, which is very hot in summer, and some trails are brushy and poorly maintained, including a faint one. About 5 miles near Jumbo Camp follow a primitive jeep road. The book mentions no cross-country, rope or climbing; its lookout side trips are on trail."
 checked = "2026-11-18"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
@@ -125,6 +126,15 @@ date = "2026-11-19"
 change = "The first guide now links to a library record for the 1st edition (March 2004) that the facts were read from, with the trip number and edition in their own fields; a second guide entry names the 2nd edition that the publisher now sells, where the trip may be numbered differently."
 fields = ["guide", "route.note"]
 basis = "The Open Library record gives Backpacking Idaho, From Alpine Peaks to Desert Canyons, Wilderness Press, March 2004, ISBN 0899973469. The publisher's page is headed 2nd Edition, by Douglas Lorain."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 9 of the 1st edition, March 2004, read from the owner's copy as: July to October, best in early to mid July or in September."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
 asked_by = "the dataset's own check"
 outcome = "applied"

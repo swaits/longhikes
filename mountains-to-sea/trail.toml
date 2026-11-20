@@ -65,6 +65,7 @@ travel = "trail-and-road"
 permit = "No permit is needed for walking; backcountry camping permits are required year-round in Great Smoky Mountains National Park and on weekends and holidays from May 1 to October 31 in the Linville Gorge Wilderness."
 caution = "About 700 miles of the route is on trail and the rest follows connecting back roads and bicycle routes, with optional paddle routes on the Yadkin and Neuse rivers."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://mountainstoseatrail.org/"
@@ -112,5 +113,14 @@ change = "The main track no longer holds the Hunting Season Detour, the road rou
 fields = ["source.line_file", "source.mainline"]
 basis = "The Friends of the Mountains-to-Sea Trail's page for segment 7 says the privately owned stretches of the Sauratown Trail are closed for hunting season, November to early January, and that when it is closed hikers use the Sauratown Trail Hunting Season Detour. OpenStreetMap relation 16026135 is that detour; its note calls it the recommended road route for times when sections of the Sauratown Trail are closed."
 basis_url = "https://mountainstoseatrail.org/segment/7/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Friends of the Mountains-to-Sea Trail as: Spring through fall: hikers starting early in the year walk west from the coast, and those starting in summer or fall walk east from Kuwohi."
+basis_url = "https://mountainstoseatrail.org/the-trail/faqs/"
 asked_by = "the dataset's own check"
 outcome = "applied"

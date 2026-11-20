@@ -78,6 +78,7 @@ travel = "some-cross-country"
 caution = "Parts of the route have no trail, and burned areas, snowfields and deep river fords are described on the author's page."
 permit = "No permit is needed for general travel in the Selway-Bitterroot Wilderness, where the route lies."
 checked = "2026-11-19"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://wildernessmindset.com/80-miles-in-the-selway-bitterroot-wilderness/"
@@ -152,5 +153,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Bitterroots 80-mile Route Map Pack - Wilderness Mindset\"."
 basis_url = "https://wildernessmindset.com/product/bitterroots-80-mile-route-map-pack/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Mindset (the route's author) as: Mid-July to early September."
+basis_url = "https://wildernessmindset.com/80-miles-in-the-selway-bitterroot-wilderness/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -65,6 +65,7 @@ terrain = ["desert", "forest"]
 travel = "trail"
 permit = "Permits are generally not required for a hike along the whole trail, but overnight camping needs a permit in some places, such as Saguaro and Grand Canyon National Parks."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://aztrail.org/passages"
@@ -103,5 +104,14 @@ change = "The name hikers use, Arizona Trail, was added as the common name. The 
 fields = ["common_name"]
 basis = "The Arizona Trail Association's page is headed 'Welcome to the Arizona Trail' and uses the formal name only in its introduction."
 basis_url = "https://aztrail.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by USDA Forest Service as: Northbound hikes start in February or March; southbound hikes start in mid-September or October."
+basis_url = "https://www.fs.usda.gov/trails/arizona-nst/about-trail/faqs"
 asked_by = "the dataset's own check"
 outcome = "applied"

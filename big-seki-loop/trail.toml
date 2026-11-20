@@ -80,6 +80,7 @@ terrain = ["alpine"]
 travel = "trail"
 permit = "One permit covers the whole trip and is issued for an entry date and trailhead; a clockwise start at Roads End uses a Copper Creek permit."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://doingmiles.com/route-big-seki-loop/"
@@ -99,5 +100,14 @@ date = "2026-11-10"
 change = "The record was added: Big SEKI Loop."
 fields = ["record"]
 basis = "The record's own source entry: Amy and James."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Amy and James (Doing Miles) as: Late August and September."
+basis_url = "https://doingmiles.com/route-big-seki-loop/"
 asked_by = "the dataset's own check"
 outcome = "applied"

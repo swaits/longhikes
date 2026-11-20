@@ -81,6 +81,7 @@ season = "Mid-July to mid-September"
 months = [7, 8, 9]
 days = [25, 45]
 checked = "2026-11-19"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
@@ -146,5 +147,14 @@ change = "The guide now says what its link points at (the publisher's page for t
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Just a moment...\"."
 basis_url = "https://www.mountaineers.org/books/books/sierra-grand-traverse-an-epic-route-across-the-range-of-light"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by John Chapman (the route's author) as: Mid-July to mid-September."
+basis_url = "https://www.john.chapman.name/pub-sierra.html"
 asked_by = "the dataset's own check"
 outcome = "applied"

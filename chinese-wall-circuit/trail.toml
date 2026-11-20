@@ -73,6 +73,7 @@ terrain = ["alpine"]
 travel = "some-cross-country"
 caution = "About 14 miles are off trail, and getting onto the top of the wall takes a bushwhack and careful navigation."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/"
@@ -111,4 +112,13 @@ fields = ["route.line_policy"]
 basis = "The route page gives a description and a map, and offers no GPX."
 basis_url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Mindset as: Late June to mid-September."
+basis_url = "https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/"
+asked_by = "the dataset's own check"
 outcome = "applied"

@@ -66,6 +66,7 @@ permit = "No permits, fees or reservations are needed for the trail association'
 season = "June to September"
 months = [6, 7, 8, 9]
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://superiorhiking.org/thru-hiking/"
@@ -100,5 +101,14 @@ date = "2026-11-09"
 change = "The record was added: Superior Hiking Trail."
 fields = ["record"]
 basis = "The record's own source entry: North Country Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Explore Minnesota; Superior Hiking Trail Association as: June to September."
+basis_url = "https://superiorhiking.org/plan-your-adventure/"
 asked_by = "the dataset's own check"
 outcome = "applied"

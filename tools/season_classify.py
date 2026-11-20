@@ -4,6 +4,7 @@
 Python 3 standard library only. Run from the repository root:
 
     python3 tools/season_classify.py table [--dir DIR]
+    python3 tools/season_classify.py proposals --reviewed PATH [--dir DIR]
 
 The suggestion is a starting point for a person's review, never written to a
 record by this tool. See docs/superpowers/plans/2026-11-20-season-on-every-trail.md.
@@ -14,6 +15,7 @@ sys.dont_write_bytecode = True
 
 import argparse
 import csv
+import datetime
 import os
 from urllib.parse import urlparse
 
@@ -119,13 +121,84 @@ def write_table(root, given_dir=None):
     return path, len(rows)
 
 
+BASIS_WORDS = {
+    "primary": "the page of the body that manages the trail or, for a route, its author",
+    "sources": "two or more pages from different publishers that agree",
+    "source": "one page that is not the trail's own",
+}
+
+
+def read_reviewed(path):
+    """The reviewed file: {id: basis}. Only the three sourced bases are allowed."""
+    out = {}
+    with open(path, newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            tid, basis = (row.get("id") or "").strip(), (row.get("basis") or "").strip()
+            if basis not in BASIS_WORDS:
+                raise ValueError(f"{tid}: basis {basis!r} must be one of {', '.join(BASIS_WORDS)}")
+            out[tid] = basis
+    return out
+
+
+def _toml_str(text):
+    return '"' + str(text).replace("\\", "\\\\").replace('"', '\\"') + '"'
+
+
+def proposals(root, reviewed_csv, given_dir=None):
+    """Stage one change proposal per reviewed row; return how many."""
+    bases = read_reviewed(reviewed_csv)
+    staging = refresh.staging_dir(root, given_dir, create=True)
+    out = os.path.join(staging, "staged", "season-classify")
+    today = datetime.date.today().isoformat()
+    report = []
+    for tid in refresh.trail_ids(root):
+        if tid not in bases:
+            continue
+        rec = refresh.load_toml(os.path.join(root, tid, "trail.toml"))
+        hike = rec.get("hike") or {}
+        naming = _naming_sources(rec)
+        if not hike.get("season") or not naming:
+            raise ValueError(f"{tid}: no season or no source naming it")
+        src = naming[0]
+        basis = bases[tid]
+        publishers = "; ".join(sorted({str(s.get("publisher", "")).strip()
+                                       for s in naming if str(s.get("publisher", "")).strip()}))
+        lines = [
+            "[[proposal]]", 'kind = "change"', f"id = {_toml_str(tid)}", f"date = {_toml_str(today)}",
+            f"summary = {_toml_str('Record where the season came from.')}", "",
+            "[[proposal.edit]]", 'field = "hike.season_basis"', f"new = {_toml_str(basis)}",
+            f"page = {_toml_str(src['url'])}", f"quote = {_toml_str(hike['season'])}", "",
+            "[proposal.history]",
+            f"change = {_toml_str('The season is recorded as coming from ' + BASIS_WORDS[basis] + '.')}",
+            f"basis = {_toml_str('The season is stated by ' + publishers + ' as: ' + hike['season'] + '.')}",
+            f"basis_url = {_toml_str(src['url'])}",
+            'asked_by = "the dataset\'s own check"', 'fields = ["hike.season_basis"]', "",
+        ]
+        d = os.path.join(out, tid)
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, "proposal.toml"), "w", encoding="utf-8") as f:
+            f.write("\n".join(lines))
+        report.append((tid, "changed", src["url"], f"season_basis {basis}"))
+    with open(os.path.join(out, "report.csv"), "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["id", "outcome", "pages", "remark"])
+        w.writerows(report)
+    return len(report)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="cmd", required=True)
     p_table = sub.add_parser("table", help="write the classification table")
     p_table.add_argument("--dir", default=None, help="staging directory")
+    p_prop = sub.add_parser("proposals", help="stage a proposal per reviewed row")
+    p_prop.add_argument("--reviewed", required=True)
+    p_prop.add_argument("--dir", default=None, help="staging directory")
     args = parser.parse_args(argv)
     root = os.path.dirname(HERE)
+    if args.cmd == "proposals":
+        print(f"{proposals(root, args.reviewed, args.dir)} proposals staged")
+        return 0
     if args.cmd == "table":
         path, n = write_table(root, args.dir)
         print(f"{n} rows written to {path}")

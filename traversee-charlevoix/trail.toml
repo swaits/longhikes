@@ -60,6 +60,7 @@ months = [6, 7, 8, 9, 10]
 travel = "trail"
 permit = "Booking in advance is mandatory, with check-in and registration at the visitor centre on route 381 before starting."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.traverseedecharlevoix.qc.ca/en/hiking/the-complete-crossing"
@@ -83,5 +84,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.traverseedecharlevoix.qc.ca/wp-content/uploads/Logo-La-Traversee-de-Charlevoix.svg"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by La Traversée de Charlevoix as: Late May to late October."
+basis_url = "https://www.traverseedecharlevoix.qc.ca/en/hiking/the-complete-crossing"
 asked_by = "the dataset's own check"
 outcome = "applied"

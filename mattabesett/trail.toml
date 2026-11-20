@@ -61,6 +61,7 @@ travel = "trail"
 caution = "Hunting is permitted in state forests and other properties the trail crosses; wear orange during hunting season."
 permit = "No paid permit or fee is needed to use the New England Trail, of which the Mattabesett Trail is a part."
 checked = "2026-11-19"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://ctwoodlands.org/trails/mattabesett-trail"
@@ -97,6 +98,15 @@ date = "2026-11-19"
 change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of New England Trail (the Mattabesett Trail is part of it) says: \"No fees or paid permits are required to use or access the NET.\""
+basis_url = "https://newenglandtrail.org/thru-hiking/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by New England Trail as: Spring and fall; summers tend to be humid and buggy and winters cold and icy."
 basis_url = "https://newenglandtrail.org/thru-hiking/"
 asked_by = "the dataset's own check"
 outcome = "applied"

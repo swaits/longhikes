@@ -64,6 +64,7 @@ travel = "trail"
 permit = "No permit is needed to hike the trail; only groups of 50 or more need one."
 caution = "Because overnight camping options are few and far apart, the National Park Service does not recommend through-hiking the trail in one go."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.nps.gov/samo/planyourvisit/backbonetrail.htm"
@@ -111,5 +112,14 @@ change = "The track status is now \"osm-only\", in place of \"found\", which mea
 fields = ["source.status"]
 basis = "The record has a published track file and a measured length in its verification, and the record's only source is an OpenStreetMap relation."
 basis_url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by National Park Service as: Late winter to early spring."
+basis_url = "https://www.nps.gov/samo/planyourvisit/bbt-faqs.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -79,6 +79,7 @@ travel = "trail"
 permit = "None required, as the book states."
 caution = "The book warns that the fords of the Yellowstone River and the North Buffalo Fork can be very difficult or impossible early in the summer and extremely difficult and dangerous until at least the middle of July. Even then the Yellowstone River may be almost waist deep, very swift and extremely cold, and the book says most hikers should not try it before late July, and that wading shoes with good traction and a sturdy walking stick are necessary. Grizzly bears are very common, there are miles of horse-pounded trails, and mosquitoes are thick in July. All food and odorous items must be stored away from bears, and livestock grazing is prohibited within 0.5 mile of Crater and Ferry lakes. The author rates its difficulty 7 out of 10."
 checked = "2026-11-18"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
@@ -134,6 +135,15 @@ date = "2026-11-19"
 change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
 fields = ["guide", "route.note"]
 basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's pages 95-99 of the 1st edition (2010), read from a printed copy as: Usually open mid-July to October, best late July to September."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 asked_by = "the dataset's own check"
 outcome = "applied"

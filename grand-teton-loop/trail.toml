@@ -80,6 +80,7 @@ travel = "trail"
 permit = "Required, as the book states, and reservations are strongly advised. The book says the backcountry office at the Moose Junction Visitors Center opens at 8 A.M. and that hikers without a reservation should arrive well before then to get in line."
 caution = "The book says black bears are common, the trails and camps are very popular and getting a permit is difficult. Camping is allowed only in designated camping zones or sites and fires only at specified camps, all food must be stored away from bears at all times, and since 2008 every backpacker must use a bear canister, on loan from the ranger stations at Moose Junction and Colter Bay. The book says snow can block Paintbrush Divide into late July or August, and suggests an ice axe may help. The author rates its difficulty 8 out of 10."
 checked = "2026-11-18"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
@@ -144,6 +145,15 @@ date = "2026-11-19"
 change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
 fields = ["guide", "route.note"]
 basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's pages 104-106 of the 1st edition (2010), read from a printed copy as: Usually open mid-July to mid-October, best late July and August."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 asked_by = "the dataset's own check"
 outcome = "applied"

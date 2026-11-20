@@ -85,6 +85,7 @@ season = "Spring through early fall: the deserts are crossed early, and the high
 months = [4, 5, 6, 7, 8, 9, 10]
 caution = "The route has no official termini and no published track; between the Grand Canyon and the Pacific Crest Trail each hiker must make their own route."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://andrewskurka.com/adventures/great-western-loop/overview/"
@@ -146,5 +147,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Great Western Loop and Sea-to-Sea Route Slideshows - Skurka Adventures\"."
 basis_url = "https://andrewskurka.com/product/slideshows-on-disk-great-western-loop-and-sea-to-sea-route/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Andrew Skurka as: Spring through early fall: the deserts are crossed early, and the high country must be entered as early as the snowpack allows and left before the first winter storms."
+basis_url = "https://andrewskurka.com/adventures/great-western-loop/itinerary-final/"
 asked_by = "the dataset's own check"
 outcome = "applied"

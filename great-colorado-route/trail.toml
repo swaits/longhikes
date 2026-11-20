@@ -76,6 +76,7 @@ travel = "some-cross-country"
 caution = "The route needs sustained route-finding, off-trail travel and scrambling."
 permit = "Several areas along the route require day-use fees or overnight permits."
 checked = "2026-11-19"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.greatcoloradoroute.com"
@@ -123,5 +124,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of Great Colorado Route (the route's author) says: \"require day-use fees, overnight permits\""
 basis_url = "https://www.greatcoloradoroute.com/resources"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Donovan Rice (Iceman) as: May to October, depending on the section."
+basis_url = "https://www.greatcoloradoroute.com"
 asked_by = "the dataset's own check"
 outcome = "applied"

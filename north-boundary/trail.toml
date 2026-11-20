@@ -60,6 +60,7 @@ travel = "trail"
 permit = "A backcountry camping permit, reserved through Parks Canada, is mandatory for all overnight trips."
 caution = "Many creeks and rivers are not bridged, and fords can be dangerous or impassable in high water; the trail may be overgrown and hard to find in places."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary"
@@ -102,5 +103,14 @@ change = "The position of the end was added, so that the page can show a map of 
 fields = ["hike.end_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): the end of the Berg Lake Trail at the Kinney Lake Road car park, OpenStreetMap node 281772999, matched to the Berg Lake trailhead that Parks Canada names as the end."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=281772999"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Parks Canada, Jasper National Park as: Best travelled in the later part of the summer, and it can be hiked into early October; the trail is closed from November 1 to May 15 for caribou conservation."
+basis_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary"
 asked_by = "the dataset's own check"
 outcome = "applied"

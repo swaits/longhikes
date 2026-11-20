@@ -60,6 +60,7 @@ terrain = ["farmland"]
 travel = "trail"
 caution = "Some of the trail is on floodplain, and flooding can be a hazard, especially in early spring and late fall."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://tvta.ca/hiking-information/trail-routes-and-maps/"
@@ -102,5 +103,14 @@ change = "The main track was re-cut to one walk (121.8 km): through the Fanshawe
 fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
 basis = "OpenStreetMap relation 3444520 gives no roles, and the Thames Valley Trail Association's pages read do not say which side of Fanshawe Lake the trail follows. The more direct way was taken by default."
 basis_url = "https://www.openstreetmap.org/relation/3444520"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Thames Valley Trail Association as: All year."
+basis_url = "https://tvta.ca/faq/"
 asked_by = "the dataset's own check"
 outcome = "applied"

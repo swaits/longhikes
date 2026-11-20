@@ -58,6 +58,7 @@ travel = "trail"
 permit = "A free Wilderness Use Permit is required for the Sawtooth Wilderness, self-registered at the trailhead or wilderness boundary; groups of eight or more must contact a Forest Service office."
 caution = "CleverHiker's guide warns of a lot of climbing, roughly 3,000 feet of gain or loss a day, several river fords and exposed high-elevation sections. The Sawtooth Association says creeks can be hard to cross early in the season, which can last through July, and that passes hold snow later than anywhere else. The Forest Service allows no ground campfires anywhere in the Sawtooth Wilderness."
 checked = "2026-11-18"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.cleverhiker.com/backpacking/a-complete-guide-to-hiking-the-grand-sawtooth-loop/"
@@ -107,5 +108,14 @@ change = "The classification text no longer says the opposite of itself: the des
 fields = ["designation", "length_note"]
 basis = "Backpacking Idaho, by Douglas Lorain (Wilderness Press, 1st edition, March 2004), Trip 15, gives 63 miles (65 with side trips) from Grandjean. The Sawtooth Association's page says the loop is not designated and gives a round trip of 70 +/- miles from various trailheads. No source for the 2025 trip report was in the record, so the claim was removed."
 basis_url = "https://discoversawtooth.org/grand-sawtooth-loop"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by CleverHiker as: Mid-July to mid-September."
+basis_url = "https://www.cleverhiker.com/backpacking/a-complete-guide-to-hiking-the-grand-sawtooth-loop/"
 asked_by = "the dataset's own check"
 outcome = "applied"

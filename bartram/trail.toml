@@ -61,6 +61,7 @@ season = "Spring and fall"
 months = [3, 4, 5, 9, 10, 11]
 travel = "trail"
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r08/northcarolina/recreation/trails/bartram-trail"
@@ -104,4 +105,13 @@ fields = ["source.line_file", "source.status", "source.publisher", "source.url",
 basis = "The Forest Service's page for the Bartram Trail gives the trail as 112 miles from the Chattooga River in Georgia to Cheoah Bald, trail number TR67, and its layer of National Forest System trails holds the trail under the Bartram name in the Chattahoochee-Oconee and Nantahala National Forests, hiker use only, where the Forest Service itself says where its trail runs."
 basis_url = "https://www.fs.usda.gov/r08/northcarolina/recreation/trails/bartram-trail"
 asked_by = "the dataset's owner"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Blue Ridge Bartram Trail Conservancy as: Spring and fall."
+basis_url = "https://blueridgebartram.org/"
+asked_by = "the dataset's own check"
 outcome = "applied"

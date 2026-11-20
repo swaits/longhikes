@@ -80,6 +80,7 @@ travel = "trail"
 permit = "The Forest Service says wilderness permit reservations for the Crown Valley trailhead are made at recreation.gov and that trailhead quotas apply year-round."
 caution = "The book says trails in this part of Sierra National Forest are infrequently traveled and seldom maintained, that a map, compass and GPS are absolute necessities for the first part, and that the tread disappears near Cow and Wet Meadows. It calls the junction for Hell-for-Sure Pass in Goddard Canyon faint, not signed and easily missed. It describes the 3,000 foot descent to Tehipite Valley as steep and unrelenting, and says that the lower Middle Fork canyon has a notorious reputation for rattlesnakes and poison oak lines the lower trail. The route has fords, including of the Middle Fork Kings River and Palisade Creek, which the book says may be dangerous at high water. A 2008 fire burned over 4,000 acres in Kings Canyon National Park along the Tehipite Valley trail. The book rates the technical difficulty 8 and the physical difficulty 9, each out of 10, describes the route as on trail, and mentions no rope or climbing."
 checked = "2026-11-19"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
@@ -104,6 +105,15 @@ date = "2026-11-20"
 change = "The record was added: Middle Fork Kings River, 82.6 miles (133 km), Trip 7, page 171 in Mike White and Douglas Lorain's guidebook Best Backpacking Trips in California and Nevada, with no track."
 fields = ["record"]
 basis = "Best Backpacking Trips in California and Nevada, by Mike White and Douglas Lorain (University of Nevada Press, 2015, no edition stated, ISBN 978-0-87417-971-2). Trip 7, page 171, gives the length, days, season and cautions; the Forest Service's page for the Crown/Rancheria Trailhead gives the permit reservation and quota. The route was ruled to belong in the dataset."
+basis_url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by University of Nevada Press (the publisher's page for the book); the facts are from the book's Trip 7, on page 171 of the 2015 printing (no edition is stated) as: Mid-July to early October, best late August to early September."
 basis_url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
 asked_by = "the dataset's own check"
 outcome = "applied"

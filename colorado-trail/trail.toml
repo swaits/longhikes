@@ -65,6 +65,7 @@ terrain = ["alpine"]
 travel = "trail"
 permit = "No permit is needed, except a free self-issued permit at the station where the trail enters each wilderness area."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.colorado.com/articles/hiking-colorado-trail"
@@ -113,5 +114,14 @@ change = "The track's licence is now the ODbL 1.0, in place of public domain, be
 fields = ["source.licence", "source.licence_text", "source.attribution"]
 basis = "The record's own verification note gives 727.2 km from the Forest Service and 38.4 km from OpenStreetMap in 17 stretches, and the OpenStreetMap copyright page states the ODbL terms. The two parts are also kept apart in line-usfs.geojson and line-osm.geojson."
 basis_url = "https://www.openstreetmap.org/copyright"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Colorado Trail Foundation as: July to September."
+basis_url = "https://coloradotrail.org/season-for-the-colorado-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

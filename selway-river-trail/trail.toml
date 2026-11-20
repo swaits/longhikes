@@ -64,6 +64,7 @@ travel = "trail"
 caution = "The Forest Service's news release of August 26, 2026 reported that Selway River Trail 4 was closed, because of the Cascade Fire, from its junction with Trail 607 at Cupboard Creek to its junction with Big Rock Trail 693. Lorain's book needs a shuttle of about 250 miles between the two ends."
 permit = "No permit is needed for general travel in the Selway-Bitterroot Wilderness, where the trail runs."
 checked = "2026-11-19"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r01/nezperce-clearwater/recreation/race-creek-campground"
@@ -108,5 +109,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of USDA Forest Service, Bitterroot National Forest says: \"No permits are required for general travel in the Selway-Bitterroot Wilderness.\""
 basis_url = "https://www.fs.usda.gov/r01/bitterroot/wilderness/selway-bitterroot-wilderness"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 5, 1st edition, 2004, which has no page numbers in the copy read as: May to early November."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-idaho/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -63,6 +63,7 @@ permit = "There is no permit for the whole trail; backcountry permits are needed
 season = "Mid-June to mid-September"
 months = [6, 7, 8, 9]
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.pnt.org/pnta/about-us/media-room/"
@@ -115,5 +116,14 @@ change = "The name hikers use, Pacific Northwest Trail, was added as the common 
 fields = ["common_name"]
 basis = "The Pacific Northwest Trail Association's page is titled 'Plan Your Trip on the Pacific Northwest Trail' and gives the formal name in its first paragraph."
 basis_url = "https://www.pnt.org/pnta/know-before-you-go/plan-your-trip/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Pacific Northwest Trail Association as: Mid-June to mid-September."
+basis_url = "https://www.pnt.org/pnta/know-before-you-go/plan-your-trip/climate-weather/"
 asked_by = "the dataset's own check"
 outcome = "applied"

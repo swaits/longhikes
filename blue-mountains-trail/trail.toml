@@ -76,6 +76,7 @@ terrain = ["forest", "canyon"]
 travel = "some-cross-country"
 caution = "The route is still being worked out and includes unmarked cross-country sections, one of them a long bushwhack, as well as stretches on gravel and 4x4 roads."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.hellscanyon.org/blue-mountains-trail"
@@ -124,5 +125,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://static.wixstatic.com/media/998edb_2aa9f8931add4884a948f5cbf8f2603e~mv2.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Greater Hells Canyon Council as: From mid-July, once the snow has melted."
+basis_url = "https://www.hellscanyon.org/blue-mountains-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

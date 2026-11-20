@@ -3,8 +3,11 @@
 Run from the repository root:
     python3 -m unittest discover tools/tests
 """
+import csv
 import os
+import shutil
 import sys
+import tempfile
 import unittest
 
 sys.dont_write_bytecode = True
@@ -14,6 +17,7 @@ import refresh  # noqa: E402
 import season  # noqa: E402
 import season_classify as C  # noqa: E402
 import validate as V  # noqa: E402
+import test_refresh as TR  # noqa: E402
 
 
 def rec(**kw):
@@ -100,6 +104,58 @@ class TableTest(unittest.TestCase):
         for row in C.table(V.ROOT):
             self.assertTrue(row["reason"], row["id"])
             self.assertTrue(row["season"], row["id"])
+
+
+class ProposalsTest(unittest.TestCase):
+    def test_a_proposal_collects_cleanly_and_applies(self):
+        tmp = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, tmp, True)
+        root = TR.make_repo(tmp)
+        path = os.path.join(root, "aaa", "trail.toml")
+        text = TR.read(root, "aaa/trail.toml")
+        text = text.replace('official_url = "https://example.org/aaa/"\n',
+                            'official_url = "https://example.org/aaa/"\n'
+                            'season = "June to September"\nmonths = [6, 7, 8, 9]\n', 1)
+        text += ('\n[[hike.source]]\nurl = "https://example.org/aaa/season"\n'
+                 'publisher = "Example Club"\nfacts = ["season", "months"]\n')
+        TR.write(path, text)
+        d = os.path.join(tmp, "stage")
+        os.makedirs(os.path.join(d, "season"))
+        reviewed = os.path.join(d, "season", "classification.reviewed.csv")
+        with open(reviewed, "w", newline="", encoding="utf-8") as f:
+            w = csv.writer(f)
+            w.writerow(["id", "basis", "note"])
+            w.writerow(["aaa", "primary", ""])
+        self.assertEqual(C.proposals(root, reviewed, d), 1)
+        code, out = TR.main(root, "--dir", d, "collect")
+        self.assertEqual(code, 0, out)
+        coll = refresh.load_toml(os.path.join(d, "collected.toml"))
+        props = coll["proposal"]
+        self.assertEqual(len(props), 1)
+        self.assertEqual(props[0]["status"], "proposed", out)
+        with open(os.path.join(d, "owner.csv"), "w", newline="", encoding="utf-8") as f:
+            w = csv.writer(f)
+            w.writerow(["pid", "digest", "decision", "note"])
+            w.writerow([props[0]["pid"], props[0]["digest"], "accept", ""])
+        code, out = TR.main(root, "--dir", d, "collect")
+        self.assertEqual(code, 0, out)
+        code, out = TR.main(root, "--dir", d, "apply")
+        self.assertEqual(code, 0, out)
+        rec_after = refresh.load_toml(path)
+        self.assertEqual(rec_after["hike"]["season_basis"], "primary")
+        last = rec_after["history"][-1]
+        self.assertEqual(last["fields"], ["hike.season_basis"])
+
+    def test_reviewed_rows_must_name_a_known_basis(self):
+        tmp = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, tmp, True)
+        reviewed = os.path.join(tmp, "r.csv")
+        with open(reviewed, "w", newline="", encoding="utf-8") as f:
+            w = csv.writer(f)
+            w.writerow(["id", "basis"])
+            w.writerow(["aaa", "estimate"])
+        with self.assertRaises(ValueError):
+            C.read_reviewed(reviewed)
 
 
 if __name__ == "__main__":

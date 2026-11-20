@@ -66,6 +66,7 @@ terrain = ["forest"]
 travel = "trail"
 permit = "Backcountry camping in Great Smoky Mountains National Park needs a permit and an advance reservation."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.bmta.org/"
@@ -104,5 +105,14 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://bmta.org/wp-content/uploads/2020/01/favicon.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Benton MacKaye Trail Association as: Spring or autumn."
+basis_url = "https://bmta.org/blog/thru-hiking-the-benton-mackaye-trail-embrace-the-wilderness"
 asked_by = "the dataset's own check"
 outcome = "applied"

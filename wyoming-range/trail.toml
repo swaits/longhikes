@@ -60,6 +60,7 @@ terrain = ["alpine", "forest"]
 travel = "trail"
 caution = "Friends of the Bridger-Teton says the trail is not always marked, that some sections see little use, and that there is little cell service along it."
 checked = "2026-11-16"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/trails/wyoming-range-national-recreation-trail-48"
@@ -89,5 +90,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/trails/wyoming-range-national-recreation-trail-48"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Friends of the Bridger-Teton as: July to September."
+basis_url = "https://www.btfriends.org/the-wyoming-range-national-recreation-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

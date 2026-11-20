@@ -31,7 +31,10 @@ SLOW_FIRST = ("test_thumbs", "test_google_tag", "test_pages", "test_saved", "tes
 
 
 def cores():
-    return getattr(os, "process_cpu_count", os.cpu_count)() or 1
+    try:
+        return len(os.sched_getaffinity(0)) or 1  # the cores this process may use
+    except AttributeError:
+        return os.cpu_count() or 1
 
 
 def modules_under(only):

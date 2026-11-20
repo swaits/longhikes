@@ -134,7 +134,7 @@ def warm(workers=None):
     if "fork" not in multiprocessing.get_all_start_methods():
         return
     os.makedirs(SCANS, exist_ok=True)
-    count = workers or min(getattr(os, "process_cpu_count", os.cpu_count)() or 1, 8)
+    count = workers or min(len(os.sched_getaffinity(0)) if hasattr(os, "sched_getaffinity") else (os.cpu_count() or 1), 8)
     with multiprocessing.get_context("fork").Pool(count) as pool:
         for _ in pool.imap_unordered(_scan_one, keys, chunksize=8):
             pass

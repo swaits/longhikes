@@ -9,6 +9,7 @@ import sys
 sys.dont_write_bytecode = True
 
 import argparse
+import concurrent.futures
 import hashlib
 import json
 import multiprocessing
@@ -676,13 +677,20 @@ PARALLEL_FROM = 16  # fewer trails than this: not worth the workers
 _JOB = None
 
 
+def usable_cores():
+    """The cores this process may run on (os.process_cpu_count is new in Python 3.13)."""
+    try:
+        return len(os.sched_getaffinity(0)) or 1
+    except AttributeError:
+        return os.cpu_count() or 1
+
+
 def job_count():
     """Worker processes: LONGHIKES_JOBS if set, else the cores this process may use (at most 8)."""
     env = os.environ.get("LONGHIKES_JOBS", "")
     if env.isdigit():
         return max(1, int(env))
-    cores = getattr(os, "process_cpu_count", os.cpu_count)() or 1
-    return min(cores, 8)
+    return min(usable_cores(), 8)
 
 
 def fork_context():
@@ -725,15 +733,23 @@ def build_trails(recs, out_dir, code_mtime, args, only, stats):
     _JOB = (recs, out_dir, code_mtime, args.force, only)
     results = [None] * len(recs)
     order = sorted(range(len(recs)), key=lambda i: -tree_size(recs[i]["id"]))  # biggest first
+    # A process pool, not multiprocessing.Pool: a worker that raises, or is killed, makes the
+    # build fail (BrokenProcessPool) where Pool would wait for it for ever.
     try:
-        with ctx.Pool(jobs) as pool:
-            for i, result, files, counts, warnings in pool.imap_unordered(_trail_job, order, chunksize=1):
-                recs[i]["derived"]["files"] = files
-                results[i] = result
-                for name, n in counts.items():
-                    setattr(stats, name, getattr(stats, name) + n)
-                for message in warnings:
-                    warn(message)
+        with concurrent.futures.ProcessPoolExecutor(jobs, mp_context=ctx) as pool:
+            try:
+                futures = [pool.submit(_trail_job, i) for i in order]
+                for done in concurrent.futures.as_completed(futures):
+                    i, result, files, counts, warnings = done.result()
+                    recs[i]["derived"]["files"] = files
+                    results[i] = result
+                    for name, n in counts.items():
+                        setattr(stats, name, getattr(stats, name) + n)
+                    for message in warnings:
+                        warn(message)
+            except BaseException:
+                pool.shutdown(wait=False, cancel_futures=True)
+                raise
     finally:
         _JOB = None
     return results
@@ -754,8 +770,8 @@ def start_archives(recs, out_dir, stats):
             build_archive(name, recs, out_dir, stats)
         return None
     _JOB = (recs, out_dir)
-    pool = ctx.Pool(min(len(ARCHIVES), job_count()))
-    return pool, [pool.apply_async(_archive_job, (name,)) for name in ARCHIVES]
+    pool = concurrent.futures.ProcessPoolExecutor(min(len(ARCHIVES), job_count()), mp_context=ctx)
+    return pool, [pool.submit(_archive_job, name) for name in ARCHIVES]
 
 
 def finish_archives(started, stats):
@@ -765,11 +781,10 @@ def finish_archives(started, stats):
     pool, pending = started
     try:
         for result in pending:
-            for name, n in result.get().items():
+            for name, n in result.result().items():
                 setattr(stats, name, getattr(stats, name) + n)
     finally:
-        pool.close()
-        pool.join()
+        pool.shutdown(wait=True, cancel_futures=True)
         _JOB = None
 
 

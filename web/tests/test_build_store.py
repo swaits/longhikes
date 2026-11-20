@@ -11,6 +11,7 @@ import random
 import shutil
 import sys
 import tempfile
+import time
 import unittest
 import zipfile
 from unittest import mock
@@ -161,6 +162,43 @@ class BuildShortcutsTest(unittest.TestCase):
                 os.remove(os.path.join(cache, name))
         self.build(again, cache, 1)                    # a new directory, filled from the store
         same_tree(self, first, again)
+
+    def test_the_worker_count_follows_the_cores_this_process_may_use_and_the_setting(self):
+        with mock.patch.dict(os.environ, {"LONGHIKES_JOBS": ""}):
+            with mock.patch.object(os, "sched_getaffinity", lambda pid: {0}):
+                self.assertEqual(build.job_count(), 1)
+            with mock.patch.object(os, "sched_getaffinity", lambda pid: set(range(32))):
+                self.assertEqual(build.job_count(), 8)
+        with mock.patch.dict(os.environ, {"LONGHIKES_JOBS": "1"}):
+            self.assertEqual(build.job_count(), 1)
+
+    def test_a_worker_that_raises_fails_the_build_and_leaves_no_site(self):
+        out, cache = self.dirs("raises")
+        real = build.compute_trail
+
+        def broken(rec, files, tdir, stats):
+            if rec["id"] == self.ids[3]:
+                raise RuntimeError("worker trouble")
+            return real(rec, files, tdir, stats)
+
+        for jobs in (1, 4):
+            with self.subTest(jobs=jobs), mock.patch.object(build, "compute_trail", broken):
+                with self.assertRaisesRegex(RuntimeError, "worker trouble"):
+                    self.build(out, cache + str(jobs), jobs)
+                self.assertFalse(os.path.exists(os.path.join(out, "index.html")))
+                self.assertFalse(os.path.exists(os.path.join(out, "data", "trails.json")))
+
+    def test_a_worker_that_dies_fails_the_build_instead_of_hanging(self):
+        out, cache = self.dirs("dies")
+
+        def dying(rec, files, tdir, stats):
+            os._exit(3)
+
+        with mock.patch.object(build, "compute_trail", dying):
+            started = time.time()
+            with self.assertRaises(Exception):
+                self.build(out, cache, 4)
+            self.assertLess(time.time() - started, 120)
 
     def test_a_changed_source_is_worked_out_again(self):
         out, cache = self.dirs("change")

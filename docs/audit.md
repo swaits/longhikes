@@ -17,11 +17,11 @@ down the list in order and stop at the first step that fails.
    `python3 -m unittest discover -s web/tests` must both pass.
 6. **Check the places.** `python3 tools/place_trails.py --check --refresh` downloads every outline again (without `--refresh` it reuses the files already in the cache, which are the ones first downloaded),
    measures every track again and prints each difference from the records, one per line:
-   - a place gained or lost by a trail: re-run `place_trails.py propose`, read the line, and
+   * a place gained or lost by a trail: re-run `place_trails.py propose`, read the line, and
      apply it only when the new outline is right;
-   - a boundary that moved (a new source version): the owner rules whether the new outline
+   * a boundary that moved (a new source version): the owner rules whether the new outline
      replaces the old one;
-   - a place that crossed the 3-trail line: its page appears or goes, so check its links and the
+   * a place that crossed the 3-trail line: its page appears or goes, so check its links and the
      counts that name it.
    The monthly workflow `.github/workflows/places.yml` runs this step by itself and fails with
    the list; this step is the one you run when it has failed, and before a release.

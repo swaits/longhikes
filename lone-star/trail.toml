@@ -124,18 +124,17 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Little Lake Creek Wilderness."
-fields = ["place"]
-basis = "Measured from the trail's main track against the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
-basis_url = "https://wilderness.net/visit-wilderness/gis-gps.php"
-asked_by = "the dataset's own check"
-outcome = "applied"
-
-[[history]]
-date = "2026-11-20"
 change = "The season is recorded as coming from one page that is not the trail's own."
 fields = ["hike.season_basis"]
 basis = "The season is stated by The Trek as: January to April."
 basis_url = "https://thetrek.co/trail-profile-how-to-hike-the-96-mile-lone-star-hiking-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Little Lake Creek Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://wilderness.net/visit-wilderness/gis-gps.php"
 asked_by = "the dataset's own check"
 outcome = "applied"

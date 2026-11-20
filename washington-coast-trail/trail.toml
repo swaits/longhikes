@@ -144,18 +144,17 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Olympic National Park, Olympic Mountains, Daniel J. Evans Wilderness."
-fields = ["place"]
-basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
-basis_url = "https://www.earthenv.org/mountains"
-asked_by = "the dataset's own check"
-outcome = "applied"
-
-[[history]]
-date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Lauren Lake, PacificCoastalTrail blog (said by the route's author on the dataset's issue tracker, 2026-11-17) as: May to September, because of the tides and creeks on the Olympic Wilderness Coast."
 basis_url = "https://github.com/swaits/longhikes/issues/1#issuecomment-6958673541"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Olympic National Park, Olympic Mountains, Daniel J. Evans Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -145,18 +145,17 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Transverse Ranges, Pleasant View Ridge Wilderness, Sheep Mountain Wilderness."
-fields = ["place"]
-basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
-basis_url = "https://www.earthenv.org/mountains"
-asked_by = "the dataset's own check"
-outcome = "applied"
-
-[[history]]
-date = "2026-11-20"
 change = "The season is recorded as coming from one page that is not the trail's own."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 12 (David Harris), on page 67 of the 3rd edition, 2020 as: May to November."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-california/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Transverse Ranges, Pleasant View Ridge Wilderness, Sheep Mountain Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

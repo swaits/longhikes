@@ -168,18 +168,17 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Glacier National Park, Rocky Mountains."
-fields = ["place"]
-basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
-basis_url = "https://www.earthenv.org/mountains"
-asked_by = "the dataset's own check"
-outcome = "applied"
-
-[[history]]
-date = "2026-11-20"
 change = "The season is recorded as coming from one page that is not the trail's own."
 fields = ["hike.season_basis"]
 basis = "The season is stated by National Park Service, Glacier National Park (trail status page, last updated 2026-08-28), as: Mid-July to late September. It is the Ptarmigan Tunnel's season, on which the loop depends. The tunnel doors generally open in mid-July and usually close by late September, so July, August and September each have half a month or more in season."
 basis_url = "https://www.nps.gov/glac/planyourvisit/trailstatusreports.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Glacier National Park, Rocky Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

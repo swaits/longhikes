@@ -225,18 +225,17 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Banff National Park, Castle Provincial Park, Castle Wildland Provincial Park, Don Getty Wildland Provincial Park, Elk Lakes Park, Height of the Rockies Park, High Rock Wildland Provincial Park, Jasper National Park, Kakwa Park, Kootenay National Park, Mount Assiniboine Park, Mount Robson Park, Peter Lougheed Provincial Park, Waterton Lakes National Park, Willmore Wilderness Park, Yoho National Park, Canadian Rockies."
-fields = ["place"]
-basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20), the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
-basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
-asked_by = "the dataset's own check"
-outcome = "applied"
-
-[[history]]
-date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Great Divide Trail Association as: July to mid-September."
 basis_url = "https://greatdividetrail.com/go-hiking/trip-planning-resources/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Banff National Park, Castle Provincial Park, Castle Wildland Provincial Park, Don Getty Wildland Provincial Park, Elk Lakes Park, Height of the Rockies Park, High Rock Wildland Provincial Park, Jasper National Park, Kakwa Park, Kootenay National Park, Mount Assiniboine Park, Mount Robson Park, Peter Lougheed Provincial Park, Waterton Lakes National Park, Willmore Wilderness Park, Yoho National Park, Canadian Rockies."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20), the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
 asked_by = "the dataset's own check"
 outcome = "applied"

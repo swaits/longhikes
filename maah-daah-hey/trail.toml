@@ -102,18 +102,17 @@ outcome = "applied"
 
 [[history]]
 date = "2026-11-20"
-change = "The trail was placed in Theodore Roosevelt National Park."
-fields = ["place"]
-basis = "Measured from the trail's main track against the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
-basis_url = "https://irma.nps.gov/DataStore/Reference/Profile/2224545"
-asked_by = "the dataset's own check"
-outcome = "applied"
-
-[[history]]
-date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by USDA Forest Service, Dakota Prairie Grasslands as: All year."
 basis_url = "https://www.fs.usda.gov/r01/dpg/recreation/trails/maah-daah-hey-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Theodore Roosevelt National Park."
+fields = ["place"]
+basis = "Measured from the trail's main track against the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://irma.nps.gov/DataStore/Reference/Profile/2224545"
 asked_by = "the dataset's own check"
 outcome = "applied"

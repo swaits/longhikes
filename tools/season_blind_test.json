@@ -1,0 +1,33 @@
+{
+ "date": "2026-11-20",
+ "measure": "the first and last months of the reviewer's season within a month of the season a page states",
+ "strict_measure": "the ends as above, and every window of the season (such as a gap in the middle) also within a month of the page's, with no window added or missing",
+ "tested": 148,
+ "matched": 114,
+ "share": 0.77,
+ "strict_matched": 105,
+ "strict_share": 0.71,
+ "by_confidence": {
+  "high": {
+   "tested": 52,
+   "matched": 48,
+   "share": 0.92,
+   "strict_matched": 48,
+   "strict_share": 0.92
+  },
+  "medium": {
+   "tested": 76,
+   "matched": 55,
+   "share": 0.72,
+   "strict_matched": 46,
+   "strict_share": 0.61
+  },
+  "low": {
+   "tested": 20,
+   "matched": 11,
+   "share": 0.55,
+   "strict_matched": 11,
+   "strict_share": 0.55
+  }
+ }
+}

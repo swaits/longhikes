@@ -67,7 +67,11 @@ travel = "trail-and-road"
 unfinished = "The trail is about half complete: nearly 700 miles are yellow-blazed Ice Age Trail, and about 500 miles of unmarked connecting routes, mostly on quiet country roads, link the blazed segments."
 caution = "Primitive camping is not permitted on many segments, so overnight plans vary widely from night to night."
 permit = "No National Park Pass or fee is needed to use the trail."
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "May to October"
+months = [5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "One publisher's two pages were found and they differ, one giving summer and fall and the other summer only, so no page is relied on. The season was estimated from the climate and similar trails: snow and mud last through April and a hard freeze comes by November. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.iceagetrail.org/explore/explore-the-trail/ice-age-trail/"
@@ -88,6 +92,11 @@ facts = ["summary", "terrain"]
 url = "https://www.nps.gov/iatr/planyourvisit/fees.htm"
 publisher = "National Park Service"
 facts = ["permit"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Ice Age National Scenic Trail"
@@ -156,5 +165,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of National Park Service says: \"A National Park Pass is not required for the Ice Age National Scenic Trail. Using the Ice Age National Scenic Trail is free of charge.\""
 basis_url = "https://www.nps.gov/iatr/planyourvisit/fees.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: May to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season: the two pages found are from one publisher and differ. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

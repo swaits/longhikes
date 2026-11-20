@@ -54,6 +54,9 @@ class List:
     note: Optional[Callable] = None
     # A larger least size than MIN_SIZE, where the list is thin by nature (a month's list).
     min_size: int = 0
+    # False for a list that is one of a fixed set, so none may go missing: a month's list, however
+    # many of the trails are walked in it, is not "nearly everything" but one of twelve.
+    capped: bool = True
 
     def search_title(self, n):
         return (self.page_title or f"{self.title}: {{n}} Trails").format(n=n)
@@ -78,7 +81,7 @@ GROUPS = (
     ("walking", "By kind of walking", "Loops, high routes, walking with no trail, and trails not yet finished."),
     ("terrain", "By terrain", "The main kinds of country a trail crosses."),
     ("holder", "By who looks after it", "Trails whose designation names the holder."),
-    ("month", "By month", "Trails whose season on file includes the month. Only some trails have a season."),
+    ("month", "By month", "Trails normally hiked in the month. Estimated seasons are marked."),
     ("where", "By country and GPX", "Where a trail is, and whether its page has a track to download."),
 )
 
@@ -115,17 +118,29 @@ def time_note(recs, records):
 def _month_list(m):
     name = facets.MONTHS[m - 1]
     return List(f"hike-in-{name.lower()}", f"Hiking in {name}",
-                f"Trails whose season on file includes {name}.",
+                f"Trails normally hiked in {name}. Estimated seasons are marked.",
                 lambda r, m=m: m in facets.months(r),
                 page_title=f"Long Trails to Hike in {name}: {{n}} Trails", group="month", note=month_note(name),
-                min_size=MONTH_MIN)
+                min_size=MONTH_MIN, capped=False)
 
 
 def month_note(name):
     def note(recs, records):
-        have = sum(1 for r in records if facets.months(r))
-        return (f"Only {have} of the {len(records)} trails have a season on file, so this page covers those "
-                f"{have}. It is not every trail that can be walked in {name}.")
+        unstated = [r for r in recs if facets.season_estimated(r)]
+        est = len(unstated)
+        stated = len(recs) - est
+        if not est:
+            return f"A source states the season for all {stated}."
+        kinds = {facets.season_kind(r) for r in unstated}
+        one = ("estimated from the climate and similar trails" if kinds == {"estimated"}
+               else "set by judgement from pages that differ" if kinds == {"judged"} else "")
+        if not stated:
+            return (f"No source states the season for these, so each is {one}." if one
+                    else f"No source states the season for these: {facets.season_unstated_clause(unstated)}.")
+        if one:
+            return f"A source states the season for {stated} of these. For the other {est} it is {one}, and marked."
+        return (f"A source states the season for {stated} of these. For the other {est}, "
+                f"{facets.season_unstated_clause(unstated)}, and marked.")
     return note
 
 
@@ -265,10 +280,11 @@ def members(lst, records):
     return facets.sort_records([r for r in records if lst.test(r)], lst.sort)
 
 
-def is_shown(n, total, least=0):
+def is_shown(n, total, least=0, capped=True):
     """The threshold rule: a list is shown when it holds at least MIN_SIZE
-    trails (or `least`, where the list asks for more) and no more than MAX_SHARE of all of them."""
-    return n >= max(MIN_SIZE, least) and n <= MAX_SHARE * total
+    trails (or `least`, where the list asks for more) and no more than MAX_SHARE of all of them,
+    unless it is not capped (the twelve month lists)."""
+    return n >= max(MIN_SIZE, least) and (not capped or n <= MAX_SHARE * total)
 
 
 def shown(records):
@@ -276,7 +292,7 @@ def shown(records):
     out = []
     for lst in LISTS:
         recs = members(lst, records)
-        if is_shown(len(recs), len(records), lst.min_size):
+        if is_shown(len(recs), len(records), lst.min_size, lst.capped):
             out.append((lst, recs))
     return out
 

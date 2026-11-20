@@ -312,7 +312,7 @@ def author_page(g, records, site, all_pages):
            + " · ".join(f'<a href="{esc(path(x))}">{esc(x["name"])}</a> ({len(x["routes"])})' for x in nav_items) + "</nav>") if nav_items else ""
     more = str(summary.facts(routes, records, by_authors=False)) if n >= 3 else ""
     briefs = "".join(f'<h3><a href="{esc(common.trail_path(r))}">{esc(common.plain_name(r))}</a></h3>\n{trail.brief(r)}\n' for r in routes)
-    listing = home.results(groups=[(None, routes, regions.route_guides)], routes_list=True, top=2,
+    listing = home.listing(groups=[(None, routes, regions.route_guides)], routes_list=True, top=2,
                            by=lambda r: with_html(g, r, by_name))
     route_title = "About the route" if n == 1 else "About each route"
     bio = about_html(g)

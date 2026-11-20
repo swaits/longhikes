@@ -70,7 +70,11 @@ shape = "point-to-point"
 travel = "trail-and-road"
 start_lonlat = [-85.863, 38.462]
 end_lonlat = [-86.477, 39.323]
-checked = "2026-11-16"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Indiana has hot, humid summers with ticks and thick vegetation, so spring and fall are the most comfortable months. Confidence: medium."
 
 [[hike.source]]
 url = "https://hoosierheritagetrail.org/"
@@ -91,6 +95,11 @@ facts = ["summary"]
 url = "https://github.com/swaits/longhikes/issues/2#issuecomment-6927004842"
 publisher = "Hoosier Heritage Trail Association (said by its president on the dataset's issue tracker, 2026-11-16)"
 facts = ["summary", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Knobstone Hiking Trail"
@@ -162,4 +171,13 @@ fields = ["guide"]
 basis = "The association's Downloads page offers the 2026 mapset, the address answers with a PDF of 32 pages, and the president points hikers to it for water, hunting season and other detail."
 basis_url = "https://hoosierheritagetrail.org/downloads/"
 asked_by = "the trail association's president"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+asked_by = "the dataset's own check"
 outcome = "applied"

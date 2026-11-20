@@ -58,12 +58,21 @@ end = "Appalachian Trail atop Blue Mountain near Duncannon, Pennsylvania"
 shape = "point-to-point"
 terrain = ["forest", "farmland"]
 travel = "trail-and-road"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The Ridge and Valley Appalachians are hot, humid and buggy in summer and icy in winter, so spring and fall are the comfortable months. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.patc.net/tuscarora-trail"
 publisher = "Potomac Appalachian Trail Club"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Tuscarora Trail"
@@ -108,5 +117,14 @@ change = "The trail was placed in Shenandoah National Park, Blue Ridge Mountains
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

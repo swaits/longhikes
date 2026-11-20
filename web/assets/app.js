@@ -1940,9 +1940,10 @@
   var OLD_POLICY = { open: 'free', sold: 'sold', withheld: 'unpublished', unclear: 'elsewhere' };
 
   /* facet-counts:begin — pure, with no page: web/tests/test_filter_counts.py runs this under node.
-     A row: {search: [name, author, places, summary], where: [], km, time, months: [], terrain: [], kind, walking, shape, gpx}.
-     A state: {words: [], where, min, max (km; max may be Infinity), month, kind, and a list for
-     each of time, terrain, walking, shape, gpx}. */
+     A row: {search: [name, author, places, summary], where: [], km, time, months: [], estimate, terrain: [], kind, walking, shape, gpx}.
+     A state: {words: [], where, min, max (km; max may be Infinity), month, stated, kind, and a list for
+     each of time, terrain, walking, shape, gpx}. stated: with a month chosen, leave out the rows whose
+     season is an estimate. */
   var FacetCount = (function () {
     var FACETS = ['where', 'length', 'time', 'month', 'terrain', 'kind', 'walking', 'shape', 'gpx'];
     function has(list, v) { return list.indexOf(v) !== -1; }
@@ -1991,6 +1992,9 @@
       if (skip !== 'length' && (d.km < s.min || d.km > s.max)) return false;
       if (skip !== 'time' && s.time.length && !has(s.time, d.time)) return false;
       if (skip !== 'month' && s.month && !has(d.months, s.month)) return false;
+      /* Leaving estimates out belongs to the month: it holds in counting each month too, so the
+         number beside a month is what choosing it, with estimates left out, shows. */
+      if (s.month && s.stated && d.estimate) return false;
       if (skip !== 'terrain' && s.terrain.length && !d.terrain.some(function (t) { return has(s.terrain, t); })) return false;
       if (skip !== 'kind' && s.kind && d.kind !== s.kind) return false;
       if (skip !== 'walking' && s.walking.length && !has(s.walking, d.walking)) return false;
@@ -2052,15 +2056,14 @@
     var rows = Array.prototype.map.call(resultsRoot.querySelectorAll('.entry[data-id]'), function (li) {
       var d = li.dataset;
       return { li: li, id: d.id, search: FacetCount.textsOf(d.search), where: split(d.where), km: Number(d.km), time: d.time || '',
-               months: split(d.months), terrain: split(d.terrain), kind: d.kind || '', walking: d.walking || '',
+               months: split(d.months), estimate: d.estimate === 'yes', terrain: split(d.terrain), kind: d.kind || '', walking: d.walking || '',
                shape: d.shape || '', gpx: d.gpx || '' };
     });
     var lists = Array.prototype.slice.call(resultsRoot.querySelectorAll('ol.entries'));
     var count = resultsRoot.querySelector('.results-count');
     var noun = (count && count.dataset.noun) || 'trails';
     var empty = resultsRoot.querySelector('.empty-state');
-    var unseasoned = resultsRoot.querySelector('[data-unseasoned]');
-    var unseasonedText = resultsRoot.querySelector('[data-unseasoned-text]');
+    var seasonAlways = resultsRoot.hasAttribute('data-season-shown');
     var active = form.querySelector('.filters__active');
     var lenHint = document.getElementById('len-hint');
     var listHead = resultsRoot.querySelector('.list-head');
@@ -2160,6 +2163,7 @@
         maxRaw: maxRaw,
         swapped: swapped,
         month: value(el.month),
+        stated: !!(el.stated && el.stated.checked && value(el.month)),
         kind: radio('kind')
       };
       MULTI.forEach(function (name) { s[name] = checked(name); });
@@ -2287,6 +2291,7 @@
       if (s.min) p.set('min', s.minRaw);
       if (s.max !== Infinity) p.set('max', s.maxRaw);
       if (s.month) p.set('month', s.month);
+      if (s.month && s.stated) p.set('stated', '1');
       if (s.kind) p.set('kind', s.kind);
       MULTI.forEach(function (name) { if (s[name].length) p.set(name, s[name].join(',')); });
       if (sort && sort.value !== defaultSort && sort.value !== 'nearest') p.set('sort', sort.value);
@@ -2332,6 +2337,7 @@
       if (el.month) {
         var month = p.get('month') || '';
         el.month.value = hasOption(el.month, month) ? month : '';
+        if (el.stated) el.stated.checked = !!el.month.value && p.get('stated') === '1';
       }
       var kind = p.get('kind') || '';
       if (kind === 'designated') kind = 'trail';
@@ -2460,16 +2466,19 @@
         count.appendChild(document.createTextNode(' ' + words));
       }
       if (empty) empty.hidden = shown.length > 0;
-      /* With a month chosen, say how many trails that pass everything else are left out for having no
-         season on file, counted over the same rows as the list. */
-      if (unseasoned && el.month) {
-        var noSeason = 0;
-        if (s.month) rows.forEach(function (d) { if (!d.months.length && FacetCount.passes(d, s, 'month')) noSeason++; });
-        unseasoned.hidden = noSeason === 0;
-        if (noSeason) {
-          unseasonedText.textContent = noSeason + (noSeason === 1 ? ' trail with no season on file is not shown.'
-                                                                   : ' trails with no season on file are not shown.');
+      /* A month's rows show their season, and the way to leave estimated seasons out is offered once a
+         month is chosen and some of the trails that pass everything else have an estimated season. */
+      if (!seasonAlways) resultsRoot.toggleAttribute('data-season-shown', !!s.month);
+      if (el.stated) {
+        var open = false;
+        if (s.month) {
+          var withEstimates = Object.assign({}, s, { stated: false });
+          open = rows.some(function (d) { return d.estimate && FacetCount.passes(d, withEstimates, ''); });
         }
+        el.stated.disabled = !s.month;
+        if (!s.month) el.stated.checked = false;
+        var box = el.stated.closest('label');
+        if (box) box.hidden = !open && !el.stated.checked;
       }
       if (listHead) listHead.hidden = shown.length === 0;
       relabel(s, c);
@@ -2499,14 +2508,6 @@
     form.addEventListener('change', function () { apply(true); });
     form.addEventListener('submit', function (e) { e.preventDefault(); });
     form.addEventListener('reset', function () { setTimeout(function () { apply(true); }, 0); });
-    resultsRoot.querySelectorAll('[data-unseasoned-show]').forEach(function (b) {
-      /* Showing them is clearing the month; the rest of the filters stay. */
-      b.addEventListener('click', function () {
-        if (!el.month) return;
-        el.month.value = '';
-        el.month.dispatchEvent(new Event('change', { bubbles: true }));
-      });
-    });
     resultsRoot.querySelectorAll('[data-reset]').forEach(function (b) {
       b.addEventListener('click', function () { form.reset(); el.q.focus(); });
     });

@@ -57,7 +57,11 @@ official_url = "https://www.fs.usda.gov/r06/umpqua/recreation/groups/north-umpqu
 shape = "point-to-point"
 terrain = ["forest"]
 travel = "trail"
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "June to October"
+months = [6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The upper Cascade sections near 6,000 feet hold snow into June and see heavy rain and snow from late October, though the river canyon can be walked earlier. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r06/umpqua/recreation/groups/north-umpqua-trail-1414"
@@ -73,6 +77,11 @@ facts = ["summary", "terrain", "travel"]
 url = "https://www.blm.gov/visit/north-umpqua-wild-and-scenic-river"
 publisher = "Bureau of Land Management"
 facts = ["summary", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "North Umpqua Trail"
@@ -126,5 +135,14 @@ change = "The trail was placed in Oregon Cascades, Mount Thielsen Wilderness."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: June to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

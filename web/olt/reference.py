@@ -96,6 +96,33 @@ def verified(records):
     return out
 
 
+def _pct(share):
+    return f"{share * 100:.0f} percent"
+
+
+def season_section(records, blind):
+    """The paragraphs and table saying where seasons come from, how many trails have each kind, and how
+    the estimates did in the blind test (read from tools/season_blind_test.json, never typed)."""
+    n = len(records)
+    kinds = collections.Counter(facets.season_kind(r) for r in records)
+    basis = collections.Counter(facets.season_basis(r) for r in records if facets.season_kind(r) == "stated")
+    rows = [["The body that manages the trail, its association, or for a route its author", str(basis["primary"])],
+            ["Two or more pages from different publishers that agree", str(basis["sources"])],
+            ["One page", str(basis["source"])],
+            ["Pages that differ, so set by judgement from all of them", str(kinds["judged"])],
+            ["No page states one, so estimated from the climate and similar trails", str(kinds["estimated"])],
+            ["All trails", str(n)]]
+    out = [f"""<p>Every trail has a season. Where a page states one, the season is that page&rsquo;s. Where the pages that state one differ and none is the trail&rsquo;s holder, its association or its route&rsquo;s author, the season is set by judgement from all of them and the climate, and the page says so. Where no page states one, the season is estimated from the climate at the trail&rsquo;s elevation and from similar trails: it reads &ldquo;About&rdquo; with a note, is marked in lists and is left out of the data search engines read. An estimated season is the usual window, not a closure, and an estimate is replaced when a page that states a season is found.</p>
+  {pagekit.table(["Where a trail's season comes from", "Trails"], rows, caption="Where the seasons come from", numeric=(1,))}"""]
+    if blind:
+        by = blind["by_confidence"]
+        conf = ", ".join(f"{name} {by[name]['matched']} of {by[name]['tested']} ({_pct(by[name]['share'])}) and "
+                         f"{by[name]['strict_matched']} ({_pct(by[name]['strict_share'])})"
+                         for name in ("high", "medium", "low") if by[name]["tested"])
+        out.append(f"""<p>How the estimates were tested. On {esc(blind["date"])} the method was run blind on {blind["tested"]} trails whose seasons a page does state, with those seasons hidden. Two measures are given together. {blind["matched"]} of {blind["tested"]} ({_pct(blind["share"])}) had their first and last months within a month of the page&rsquo;s; {blind["strict_matched"]} ({_pct(blind["strict_share"])}) also had no wrong gap in the middle, so the second measure counts a season with a gap that the page does not have, or without one that it has, as a miss. By the confidence it gave each estimate, first and last months and then also no wrong gap: {esc(conf)}. This measures how the method did where the answer is known, not a promise for any one trail.</p>""")
+    return "\n  ".join(out)
+
+
 def method_page(records, site, repo_root):
     """(title, description, body) for /method/."""
     meaning = schema_meanings(repo_root)
@@ -120,12 +147,15 @@ def method_page(records, site, repo_root):
     (a, b), (c, d_) = facets.PACE_KM, facets.PACE_KM_CROSS
     coverage = []
     for label, fn in (("A usual time stated by a source", lambda r: not facets.time_days(r)[2]),
-                      ("A season", lambda r: bool(facets.months(r))), ("A high point", lambda r: bool(hike.table(r).get("high_point_m"))),
+                      ("A season a page states", lambda r: facets.season_kind(r) == "stated"),
+                      ("A season set from pages that differ", lambda r: facets.season_kind(r) == "judged"),
+                      ("A season estimated from the climate and similar trails", lambda r: facets.season_kind(r) == "estimated"), ("A high point", lambda r: bool(hike.table(r).get("high_point_m"))),
                       ("Terrain", lambda r: bool(facets.terrain(r))), ("What the walking is", lambda r: bool(facets.walking(r))),
                       ("A computed climb that covers the whole trail", lambda r: facets.row_climb_m(r) is not None),
                       ("A track included here", common.has_line)):
         have = sum(1 for r in records if fn(r))
         coverage.append([label, str(have), str(n - have)])
+    season_html = season_section(records, datafiles.blind_test(repo_root))
     rows = [[label, str(k), f"{k / len(ver) * 100:.0f}%" if ver else ""] for label, k in bands]
     body = (pagekit.head("How the figures are measured", (
         f"What each figure on this site means, and how far to trust it. {len(ver)} of the {n} trails have a track whose "
@@ -145,7 +175,8 @@ def method_page(records, site, repo_root):
   <p>Climb is the total ascent along the track.{(" It uses " + esc(model) + ", sampled every " + words.fmt_int(spacing) + " metres, with " + esc(smoothing[:1].lower() + smoothing[1:]) + ".") if model and spacing else ""} {esc(limits_text)}</p>
   <p>A climb is ranked or shown in a list only where its track covers the whole trail: a track that covers part of the trail, or more than the trail, would mislead.</p>
   <h2>Season and high point</h2>
-  <p>{esc(_sentence(meaning.get("season", "")))} {esc(_sentence(meaning.get("high_point_m", "").split(" May be given")[0]))} Not every record has them, so a page built from them says how many records it covers.</p>
+  <p>{esc(_sentence(meaning.get("season", "")))} {esc(_sentence(meaning.get("high_point_m", "").split(" May be given")[0]))} </p>
+  {season_html}
   <h2>What the records have</h2>
   {pagekit.table(["Figure", "Records with it", "Records without"], coverage, caption="How many records carry each figure", numeric=(1, 2))}
   <p>Every fact is read on a page that the record names. See the <a href="/sources/">sources</a>, the <a href="/data/schema/">record schema</a> and <a href="{GLOSSARY}">the glossary</a>.</p>

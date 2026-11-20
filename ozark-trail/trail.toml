@@ -61,7 +61,11 @@ end = "Western edge of the Mark Twain National Forest, Missouri"
 shape = "point-to-point"
 travel = "trail"
 unfinished = "The St. Louis to Arkansas border route is not complete; about 230 miles form the contiguous thru-hike backbone."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "September to May"
+months = [1, 2, 3, 4, 5, 9, 10, 11, 12]
+season_basis = "estimate"
+season_method = "One publisher's two pages were found and they differ, one giving spring or fall and the other adding winter, so no page is relied on. The season was estimated from the climate and similar trails: it runs fall through spring, and the heat, humidity and ticks of summer set the gap. Confidence: medium."
 
 [[hike.source]]
 url = "https://ozarktrail.com/thru-hiking/"
@@ -77,6 +81,11 @@ facts = ["summary", "travel", "unfinished"]
 url = "https://www.fs.usda.gov/r09/marktwain/recreation/ozark-trail"
 publisher = "USDA Forest Service, Mark Twain National Forest"
 facts = ["start", "end"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Ozark Trail"
@@ -118,5 +127,14 @@ change = "The main track was re-cut to one walk (362 km): in the Eleven Point se
 fields = ["source.line_file", "source.mainline"]
 basis = "OpenStreetMap relation 16710911 names the two ways Eleven Point Low Route and Eleven Point High Route and gives no roles. The Ozark Trail Association's thru-hiking page does not say, and its site refused the requests for its section pages. The more direct way was taken by default."
 basis_url = "https://www.openstreetmap.org/relation/16710911"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: September to May."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season: the two pages found are from one publisher and differ. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

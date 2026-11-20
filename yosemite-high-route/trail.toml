@@ -76,7 +76,11 @@ days = [7, 14]
 terrain = ["alpine", "lakes", "forest"]
 travel = "mostly-cross-country"
 permit = "A Yosemite wilderness permit is required year-round for any overnight stay in the Yosemite Wilderness."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Mostly off-trail at 8,000 to 11,000 feet, so snowmelt, high stream crossings and early snow limit it to July through September. Confidence: high."
 
 [[hike.source]]
 url = "https://andrewskurka.com/adventures/yosemite-high-route/"
@@ -121,6 +125,11 @@ slug = "yosemite-wilderness"
 basis = "stated"
 source = "https://andrewskurka.com/adventures/yosemite-high-route/"
 
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -156,5 +165,14 @@ change = "The trail was placed in Yosemite National Park, Sierra Nevada and Yose
 fields = ["place"]
 basis = "The trail's own description says: \"The Yosemite High Route explores the upper headwaters of the Tuolumne and Merced Rivers in Yosemite National Park, California.\""
 basis_url = "https://andrewskurka.com/adventures/yosemite-high-route/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

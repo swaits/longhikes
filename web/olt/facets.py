@@ -172,8 +172,15 @@ def months(rec):
     return sorted({x for x in (m or []) if isinstance(x, int) and 1 <= x <= 12})
 
 
-def season_text(rec):
-    """The phrase on the trail page: [hike].season, else built from the months."""
+def season_estimated(rec):
+    """True when no page states the season: it was estimated (season_basis "estimate"), or set by
+    judgement from pages that differ (it carries a season_method). Such a season reads "About"."""
+    h = hike.table(rec)
+    return bool(h.get("season")) and (h.get("season_basis") == "estimate" or bool((h.get("season_method") or "").strip()))
+
+
+def season_phrase(rec):
+    """The phrase on the trail page as the record gives it: [hike].season, else built from the months."""
     phrase = (hike.table(rec).get("season") or "").strip()
     if phrase:
         return phrase[:1].upper() + phrase[1:]
@@ -183,6 +190,97 @@ def season_text(rec):
     if len(ms) == 12:
         return "All year"
     return words.join_names(MONTHS[m - 1] for m in ms)
+
+
+def season_text(rec):
+    """The season as a page shows it: the phrase, or "About ..." where it is estimated, so an
+    estimate never reads as a stated fact ("About June to September", "About all year")."""
+    phrase = season_phrase(rec)
+    if not phrase or not season_estimated(rec):
+        return phrase
+    if phrase.lower().startswith("about"):
+        return phrase
+    if phrase.lower() == "all year":
+        phrase = phrase.lower()
+    return "About " + phrase
+
+
+def season_kind(rec):
+    """How the season is known: "stated" (a page states it), "judged" (set by judgement from pages
+    that differ), "estimated" (no page states one), or "" when the trail has no season."""
+    if not hike.table(rec).get("season"):
+        return ""
+    if not season_estimated(rec):
+        return "stated"
+    return "judged" if season_basis(rec) == "sources" else "estimated"
+
+
+SEASON_CONFIDENCE = re.compile(r"\s*Confidence: (high|medium|low)\.\s*$")
+JUDGED_LEAD = "Judged from the climate at the trail's elevation and from similar trails."
+
+
+def season_confidence(rec):
+    """"high", "medium" or "low" from the end of the season's method; "" when it names none."""
+    found = SEASON_CONFIDENCE.search(hike.table(rec).get("season_method") or "")
+    return found.group(1) if found else ""
+
+
+def season_reason(rec):
+    """What the season's method says sets the season, without its standard first sentence and its
+    closing confidence."""
+    text = SEASON_CONFIDENCE.sub("", (hike.table(rec).get("season_method") or "").strip()).strip()
+    if text.startswith(JUDGED_LEAD):
+        text = text[len(JUDGED_LEAD):].strip()
+    return text
+
+
+def season_pages_differ(rec):
+    """True for a season set by judgement from pages that state different seasons."""
+    return season_estimated(rec) and season_basis(rec) == "sources"
+
+
+SEASON_USUAL = "This is the usual window, not a closure."
+
+
+def _plural(n, one, many):
+    return f"{n} {one if n == 1 else many}"
+
+
+def season_unstated_clause(recs):
+    """What is true of the seasons among recs that no page states, kind by kind and counted exactly:
+    "2 are estimated from the climate and similar trails and 1 is set by judgement from pages that
+    differ"; "" when there are none."""
+    kinds = [season_kind(r) for r in recs]
+    est, judged = kinds.count("estimated"), kinds.count("judged")
+    parts = []
+    if est:
+        parts.append(f"{est} {'is' if est == 1 else 'are'} estimated from the climate and similar trails")
+    if judged:
+        parts.append(f"{judged} {'is' if judged == 1 else 'are'} set by judgement from pages that differ")
+    return " and ".join(parts)
+
+
+def season_note(rec):
+    """Says an estimated season is not a page's statement, how it was worked out, what sets it
+    there and how far to trust it; "" when a page states the season."""
+    if not season_estimated(rec):
+        return ""
+    reason = season_reason(rec)
+    if season_pages_differ(rec):
+        lead = "No one page states this season."
+    elif "estimated from the climate" in reason:
+        lead = "No page states a season."   # the method says how it was estimated; not said twice
+    else:
+        lead = ("No page states a season. This is estimated from the climate at the trail's "
+                "elevation and from similar trails.")
+    parts = [lead]
+    if reason:
+        parts.append(reason)
+    conf = season_confidence(rec)
+    if conf:
+        parts.append(f"Confidence: {conf}.")
+    parts.append(SEASON_USUAL)
+    return " ".join(parts)
 
 
 SEASON_BASIS_TEXT = {
@@ -203,10 +301,12 @@ def season_basis(rec):
 def season_basis_line(rec):
     """One sentence for "About this data"; "" when the season has no recorded basis."""
     basis = season_basis(rec)
-    if basis == "estimate":
-        method = (hike.table(rec).get("season_method") or "").strip()
-        return (method + " No page states a season.").strip()
-    return SEASON_BASIS_TEXT.get(basis, "")
+    if not season_estimated(rec):
+        return SEASON_BASIS_TEXT.get(basis, "")
+    method = (hike.table(rec).get("season_method") or "").strip()
+    if season_pages_differ(rec):
+        return (method + " It is a judgement, not any one page's statement.").strip()
+    return (method + " No page states a season.").strip()
 
 
 # Terrain, Walking, Shape ----------------------------------------------------

@@ -62,7 +62,11 @@ shape = "point-to-point"
 travel = "trail"
 unfinished = "The trail is made of existing trails that are still being linked, and new trail is needed where gaps remain. Backpacker reported in 2022 that the association had completed over 70 percent since 2007, and that the first end-to-end thru-hike, by two hikers, was in 2013."
 days = [120, 180]
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A very long Appalachian walk, started in spring in Alabama and carried through summer humidity and into fall to avoid winter in the north. Confidence: low."
 
 [[hike.source]]
 url = "https://www.greateasterntrail.net/about-us/"
@@ -103,6 +107,11 @@ kind = "wilderness"
 slug = "ramseys-draft-wilderness"
 basis = "track"
 km = 3.8
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -184,5 +193,14 @@ change = "The trail was placed in Allegheny Mountains, Allegheny Plateau, Cheaha
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

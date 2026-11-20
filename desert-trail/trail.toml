@@ -72,7 +72,11 @@ shape = "point-to-point"
 terrain = ["desert"]
 travel = "mostly-cross-country"
 caution = "There is no trail on the ground and no signs: the route is found by map and experience, and water sources are few and far between."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "April to June and September to October"
+months = [4, 5, 6, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Waterless desert is too hot in summer and snowy in winter, so a full walk runs through spring and early fall. Confidence: low."
 
 [[hike.source]]
 url = "https://deserttrail.net"
@@ -90,6 +94,11 @@ kind = "park"
 slug = "joshua-tree-national-park"
 basis = "stated"
 source = "https://deserttrail.net/segments/"
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -117,5 +126,14 @@ change = "The trail was placed in Death Valley National Park and Joshua Tree Nat
 fields = ["place"]
 basis = "The page says: \"While the Desert Trail does pass through a few well-visited areas like Anza-Borrego and Death Valley, the vast majority passes through very remote areas that see no other hikers.\" (Death Valley National Park) The page says: \"(no quote: settled from the route's own segment files)\" (Joshua Tree National Park)"
 basis_url = "https://deserttrail.net"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to June and September to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

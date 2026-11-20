@@ -61,7 +61,11 @@ shape = "point-to-point"
 high_point = "Mount Wachusett"
 high_point_m = 611
 travel = "trail"
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "April to June and September to November"
+months = [4, 5, 6, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The gentle central Massachusetts hills are pleasant in spring and fall, with humid, buggy summers and cold, icy winters. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.midstatetrail.org/"
@@ -72,6 +76,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel"]
 url = "https://www.midstatetrail.org/about-the-midstate-trail/old-growth-forest/"
 publisher = "Midstate Trail Committee"
 facts = ["high_point"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -90,5 +99,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.midstatetrail.org/wp-content/uploads/2017/06/follow_triangle.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to June and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

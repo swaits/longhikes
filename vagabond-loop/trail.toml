@@ -67,7 +67,11 @@ official_url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-conn
 start = "Mexican border on the Arizona Trail, Arizona"
 shape = "loop"
 terrain = ["desert"]
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "March to October"
+months = [3, 4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A 3,500-mile circuit of Arizona, Utah, Colorado and New Mexico must start in the desert in early spring and cross the high Colorado Trail country in summer, before fall snow. Confidence: low."
 
 [[hike.source]]
 url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
@@ -152,6 +156,11 @@ slug = "weminuche-wilderness"
 basis = "stated"
 source = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
 
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -187,5 +196,14 @@ change = "The trail was placed in 13 places (8 parks, 3 ranges and 2 wilderness 
 fields = ["place"]
 basis = "The page says: \"Hayduke Trail: (844m) *Zion NP-Hack Canyon (70m) ... *Hack Canyon-North Rim (87m) ... *Moab-Arches NP (25m)\" (Arches National Park, Grand Canyon National Park, Zion National Park) The page says: \"Hayduke Trail (822m): :: From Zion :: From Arizona Strip :: From Grand Canyon :: From Bryce :: From Grand Staircase :: From Capital Reef :: From Canyonlands\" (Bryce Canyon National Park, Canyonlands National Park, Capitol Reef National Park) The page says: \"Encompassed in the route are Arches, Canyonlands, Capitol Reef, Bryce Canyon, Grand Canyon and Zion National Parks as well as Grand Staircase-Escalante National Monument, Glen Canyon National Recreation Area\" (Glen Canyon National Recreation Area) The page says: \"Passage 9 of the Arizona Trail runs through the Rincon Valley and Saguaro Wilderness Area.\" (Saguaro National Park, Saguaro Wilderness) The page says: \"Hayduke Trail (822m): :: From Zion ... From Canyonlands\" (Colorado Plateau) The page says: \"Moab to ABQ (643m): :: From Weminuche :: From South San Juans\" (San Juan Mountains) The page says: \"Moab to ABQ (643m): ... :: From Sangre de Cristos :: From Pecos\" (Sangre de Cristo Mountains) The page says: \"Moab to ABQ (643m): :: From Moab :: From Weminuche :: From South San Juans :: From Taos Plateau\" (Weminuche Wilderness)"
 basis_url = "https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

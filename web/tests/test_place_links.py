@@ -29,6 +29,31 @@ def infos(records):
     return places.collect(records, registry())
 
 
+class HomeWayInTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.records = wind_records(4) + yosemite_records(3)
+
+    def test_below_the_rows_a_line_links_each_kind_that_has_pages(self):
+        body = str(home.render(self.records, S, ROOT, place_kinds=["park", "range", "wilderness"]))
+        line = re.search(r'<p class="finder__foot finder__places">(.*?)</p>', body, re.S).group(1)
+        self.assertEqual(
+            re.sub(r"<[^>]+>", "", line),
+            "Browse by park, by mountain range or by wilderness area.")
+        for frag in ('href="/regions/#parks">park', 'href="/regions/#ranges">mountain range',
+                     'href="/regions/#wilderness">wilderness area'):
+            self.assertIn(frag, line)
+        # after the rows and the map, in the notes at the foot, never in the intro
+        self.assertGreater(body.index("finder__places"), body.rindex('<li class="entry"'))
+        self.assertGreater(body.index("finder__places"), body.index('id="browse-list"'))
+        self.assertLess(body.index("</section>"), body.index("finder__places"))
+
+    def test_only_the_kinds_with_pages_and_none_when_there_are_none(self):
+        line = re.search(r'finder__places">(.*?)</p>', str(home.render(self.records, S, ROOT, place_kinds=["range"])), re.S).group(1)
+        self.assertEqual(re.sub(r"<[^>]+>", "", line), "Browse by mountain range.")
+        self.assertNotIn("finder__places", str(home.render(self.records, S, ROOT)))
+
+
 class HubTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

@@ -867,8 +867,25 @@ def description(records):
     return common.cut_at_word(text, common.DESCRIPTION_LIMIT)
 
 
-def render(records, site, repo_root=""):
-    """The home page body (HTML). repo_root: where collections.toml names the lists the page shows."""
+# How the home page's line names each kind of place, and where on the Places hub it goes.
+PLACE_WAYS_IN = {"park": "park", "range": "mountain range", "wilderness": "wilderness area"}
+
+
+def places_line(place_kinds):
+    """The line below the rows that leads to the Places hub's sections: "Browse by park, by mountain
+    range or by wilderness area." for the kinds that have pages (place_kinds: kind keys), else ""."""
+    from . import places  # imported here: places.py is the registry, and loads datafiles like this module
+    links = [f'by <a href="/regions/#{places.KINDS[k].segment}">{PLACE_WAYS_IN[k]}</a>'
+             for k in places.KINDS if k in place_kinds]
+    if not links:
+        return ""
+    text = links[0] if len(links) == 1 else ", ".join(links[:-1]) + " or " + links[-1]
+    return f'<p class="finder__foot finder__places">Browse {text}.</p>'
+
+
+def render(records, site, repo_root="", place_kinds=()):
+    """The home page body (HTML). repo_root: where collections.toml names the lists the page shows.
+    place_kinds: the kinds of place (olt/places.py) that have pages; the page then ends with a line to them."""
     c = counts(records)
     recs = sorted(records, key=sort_name)
     total = c["total"]
@@ -894,6 +911,7 @@ def render(records, site, repo_root=""):
   {browse_view(listing, overview_map(records, "Map of the trails the filters leave", scope="all"))}
   <div class="finder__notes">
     <p class="finder__foot">Not for navigation: tracks vary in quality and some trails are unfinished. Check each trail&rsquo;s own maps before you go.</p>
+    {places_line(place_kinds)}
     {contribute}
   </div>
 </div>"""

@@ -153,6 +153,12 @@ class TrailPageTest(unittest.TestCase):
         block = html.unescape(trail.hike_sources_block(rec))
         self.assertIn("Snow and mud last into March. Confidence: high. No page states a season.", block)
 
+    def test_a_source_naming_season_and_months_says_season_once(self):
+        rec = sample_record("X Trail")
+        rec["hike"] = dict(FULL_HIKE, season_basis="primary")
+        block = html.unescape(trail.hike_sources_block(rec))
+        self.assertNotIn("season and season", block)
+
     def test_a_stated_season_row_has_no_note(self):
         rec = sample_record("X Trail")
         rec["hike"] = dict(FULL_HIKE, season_basis="primary")

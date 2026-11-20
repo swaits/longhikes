@@ -1567,7 +1567,7 @@ def hike_sources_block(rec):
     for src in hike.sources(rec):
         url = src.get("url", "")
         who = src.get("publisher") or (host(url) if url else "Source")
-        facts_ = [words.HIKE_FACTS.get(f, f) for f in src.get("facts", [])]
+        facts_ = list(dict.fromkeys(words.HIKE_FACTS.get(f, f) for f in src.get("facts", [])))  # season and months read alike
         what = ("For " + words.join_names(facts_)) if facts_ else ""
         link = ext_link(url, who) if url else esc(who)
         detail = " · ".join(x for x in (host(url) if url else "", what) if x)

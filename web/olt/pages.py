@@ -31,10 +31,16 @@ import os
 import shutil
 
 from .markup import esc
-from . import authors, browse, cards, datafiles, docs, facets, feed, home, layout, leftout, pagekit, placefacets, reference, regions, saved, seo, site as site_settings, sketch, standing, thumbs, trail, views
+from . import authors, browse, cards, datafiles, docs, facets, feed, home, layout, leftout, pagekit, placefacets, placepages, reference, regions, saved, seo, site as site_settings, sketch, standing, thumbs, trail, views
 
 WEB_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS_DIR = os.path.join(WEB_DIR, "assets")
+
+# Builders of further place pages, run after the state and group pages. Each takes
+# (records, site, repo_root) and returns pages as (path, title, description, body,
+# needs_map, recs); each page is added like a state page and reaches the sitemap
+# through region_paths.
+EXTRA_PAGE_BUILDERS = (placepages.build,)
 
 
 def copy_assets(out_dir, assets_dir=ASSETS_DIR):
@@ -159,6 +165,12 @@ def render_site(records, out_dir, repo_root, site=None):
             path = regions.group_path(g)
             region_paths.append(path)
             add(path, t, d, b, maps=needs_map, recs=recs)
+    # Further place pages (parks, ranges and wilderness areas, olt/placepages.py).
+    for builder in EXTRA_PAGE_BUILDERS:
+        for built in builder(records, site, repo_root):
+            region_paths.append(built.path)
+            add(built.path, built.title, built.description, built.body,
+                maps=built.needs_map, recs=built.recs)
     # Pages for one kind of trail in one place (olt/placefacets.py).
     for p in facet_plan:
         t, d, b, needs_map = placefacets.page(p, records, site, facet_plan)

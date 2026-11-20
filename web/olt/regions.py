@@ -261,7 +261,9 @@ class PageKind:
     that test (no keys: no whole-trail figure is given as the place's).
     title_options(info, recs, site) -> titles, fullest first, for common.fit_title.
     description(info, recs) -> str. box(info) -> [west, south, east, north] or None.
-    nav(info, records, recs, facet_pages) -> HTML after the rows and map."""
+    nav(info, records, recs, facet_pages) -> HTML after the rows and map.
+    in_name(info) -> str, where present: the name as it reads after "in" ("the Wind
+    River Range"); the plain name where the kind leaves it out."""
     kicker: object
     crumbs: object
     lede: object
@@ -272,6 +274,7 @@ class PageKind:
     description: object
     box: object
     nav: object
+    in_name: object = None
 
 
 def _state_kicker(info):
@@ -381,6 +384,7 @@ def place_page(info, records, site, kind, *, facet_pages=(), place_links=""):
     nav = kind.nav(info, records, recs, facet_pages)
     place = kind.facts_place(info)
     wholly = wholly_in(recs, place[1]) if kind.wholly else None
+    in_name = kind.in_name(info) if kind.in_name else info["name"]
     body = f"""<div class="page-head"><div class="container">
   <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{crumbs}<li aria-current="page">{esc(info["name"])}</li></ol></nav>
   <header class="titleblock"><div class="titleblock__text">
@@ -390,9 +394,9 @@ def place_page(info, records, site, kind, *, facet_pages=(), place_links=""):
   </div></header>
 </div></div>
 <div class="container section place">
-  {home.browse_view(home.listing(recs, top=2, where=kind.where, wholly=wholly), home.overview_map(recs, f"Map of the trails in {info['name']}", place=kind.box(info)),
+  {home.browse_view(home.listing(recs, top=2, where=kind.where, wholly=wholly), home.overview_map(recs, f"Map of the trails in {in_name}", place=kind.box(info)),
                about=f"{summary.facts(recs, records, place=place)}{summary.details(recs)}",
-               about_title=f"About the trails in {info['name']}")}
+               about_title=f"About the trails in {in_name}")}
   {nav}{place_links}
 </div>"""
     title = common.fit_title(kind.title_options(info, recs, site), site)

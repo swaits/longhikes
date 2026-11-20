@@ -295,15 +295,21 @@ def _read_vector(path, columns=None, bbox=None):
     from pyproj import Transformer
     from shapely import from_wkb
     from shapely.ops import transform
+    if str(path).endswith(".zip"):
+        import zipfile
+        with zipfile.ZipFile(path) as z:
+            shp = [n for n in z.namelist() if n.lower().endswith(".shp")]
+        if len(shp) == 1:
+            path = f"/vsizip/{path}/{shp[0]}"
     info = pyogrio.read_info(path)
-    fields, geoms, fids = pyogrio.raw.read(path, columns=columns, bbox=bbox)
+    meta, _fids, geoms, cols = pyogrio.raw.read(path, columns=columns, bbox=bbox)
     rows = []
-    crs = info.get("crs") or ""
+    crs = info.get("crs") or meta.get("crs") or ""
     transformer = None
     if crs and "4326" not in str(crs):
         transformer = Transformer.from_crs(crs, "EPSG:4326", always_xy=True)
-    names = [n for n in fields]
-    for values in zip(*[fields[n] for n in names]) if names else []:
+    names = [str(n) for n in (meta.get("fields") if meta.get("fields") is not None else [])]
+    for values in zip(*cols) if names else []:
         rows.append(dict(zip(names, values)))
     if not names:
         rows = [{} for _ in geoms]
@@ -329,10 +335,12 @@ def _read_wilderness(path):
     for row in rows:
         name = str(pick(row, ["Name", "WILD_NAME", "AREANAME", "AreaName"])).strip()
         wid = str(pick(row, ["WID", "ID", "AreaID", "OBJECTID"]) or name)
+        state = str(pick(row, ["STATE", "State"]) or "")
+        hint = [s for s in re.split(r"[,/ ]+", state) if len(s) == 2]
         if row.get("_geometry") is not None and name:
-            groups.setdefault(wid, (name, []))[1].append(row["_geometry"])
-    return [Outline("wilderness", "wilderness-connect", wid, name, [], _union_geoms(geoms))
-            for wid, (name, geoms) in groups.items()]
+            groups.setdefault(wid, (name, hint, []))[2].append(row["_geometry"])
+    return [Outline("wilderness", "wilderness-connect", wid, name, hint, _union_geoms(geoms))
+            for wid, (name, hint, geoms) in groups.items()]
 
 
 def _read_gmba(path):

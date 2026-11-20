@@ -7,7 +7,7 @@ The section is called Places; its pages keep their /regions/ URLs.
 import collections
 from dataclasses import dataclass
 
-from . import bounds, browse, common, facets, home, leftout, summary, words
+from . import bounds, browse, common, facets, home, leftout, places, summary, words
 from .markup import Markup, esc
 
 
@@ -147,9 +147,25 @@ def lists_here(recs, records):
     return parts
 
 
-def regions_index_page(records, site):
-    """(title, description, body) for /regions/: the Places hub."""
+def place_links_for(state_key, infos):
+    """The nav a state page carries to the parks, ranges and wilderness areas in it
+    that have a page, each with its exact count; empty when there are none. infos:
+    olt/places.py collect. state_key as in olt/facets.py ("US-CO")."""
+    here = places.in_state(infos, state_key)
+    if not here:
+        return Markup("")
+    name = facets.place_name(state_key)
+    links = " · ".join(f'<a href="{esc(i["path"])}">{esc(i["name"])}</a> ({len(i["records"])})'
+                       for i in here)
+    return Markup(f'<nav class="region-nav" aria-label="Parks, ranges and wilderness in {esc(name)}">'
+                  f'Parks, ranges and wilderness in {esc(name)}, and how many trails in each: {links}</nav>')
+
+
+def regions_index_page(records, site, infos=()):
+    """(title, description, body) for /regions/: the Places hub. infos: the places with
+    a page (olt/places.py collect); each kind that has any gets a section of its own."""
     by_slug, across = collect_regions(records)
+    place_infos = list(infos.values()) if isinstance(infos, dict) else list(infos or ())
     blocks = ""
     jump = []
     for g, name, keys in facets.PLACE_GROUPS:
@@ -176,6 +192,20 @@ def regions_index_page(records, site):
   <p class="places__sum">{_plural(len(across))} that {"crosses" if len(across) == 1 else "cross"} the whole country rather than one province: {links}.
   {"It is" if len(across) == 1 else "They are"} counted in every Canadian group, and on no single province&rsquo;s page.</p>
 </section>"""
+    for kind in places.KINDS.values():
+        mine = sorted((i for i in place_infos if i["kind"] == kind.key), key=lambda i: i["name"])
+        if not mine:
+            continue
+        rows = "".join(
+            f'<li><a href="{esc(i["path"])}">{esc(i["name"])}</a>'
+            f'<span class="places__n">{_plural(len(i["records"]))}</span></li>'
+            for i in mine)
+        blocks += f"""<section class="places__group" aria-labelledby="{esc(kind.segment)}">
+  <h2 id="{esc(kind.segment)}">{esc(kind.hub_title)}</h2>
+  <ul class="places__list">{rows}</ul>
+</section>"""
+    lede_more = (" Parks, mountain ranges and wilderness areas with three or more trails have pages too."
+                 if place_infos else "")
     none = empty_places(records)
     foot = ""
     if none:
@@ -186,7 +216,7 @@ def regions_index_page(records, site):
     body = f"""<div class="page-head"><div class="container"><header class="titleblock">
   <div class="titleblock__text"><h1>Places</h1>
   <p class="page-head__lede">The {len(records)} trails by state and province, grouped into parts of the
-  United States ({n_us}) and Canada ({n_ca}). A trail that crosses several states is on each one&rsquo;s page.</p>
+  United States ({n_us}) and Canada ({n_ca}). A trail that crosses several states is on each one&rsquo;s page.{lede_more}</p>
   </div></header>
   <nav class="lists-row" aria-label="Jump to a part of the country"><ul>{"".join(jump)}</ul></nav></div></div>
 <div class="container section places">{blocks}</div>{foot}"""

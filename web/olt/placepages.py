@@ -16,12 +16,7 @@ Built = namedtuple("Built", ("path", "title", "description", "body", "needs_map"
 
 
 def _in_name(info):
-    """The name as it reads after "in": a range or a wilderness area takes "the"
-    ("in the Wind River Range"), a park does not ("in Yosemite National Park")."""
-    name = info["name"]
-    if info["kind"] in ("range", "wilderness") and not name.lower().startswith("the "):
-        return f"the {name}"
-    return name
+    return places.in_name(info)
 
 
 def _title_place(info):

@@ -224,6 +224,16 @@ class BuiltPlacePagesTest(unittest.TestCase):
         self.assertEqual([i["name"] for i in crumbs["itemListElement"]],
                          ["Trails", "Places", "Wind River Range"])
 
+    def test_the_hub_state_and_trail_pages_of_the_same_build_link_here(self):
+        hub = self.read("regions", "index.html")
+        self.assertIn('<a href="/ranges/wind-river-range/">Wind River Range</a>', hub)
+        wyoming = self.read("regions", "us-wy", "index.html")
+        self.assertIn('aria-label="Parks, ranges and wilderness in Wyoming"', wyoming)
+        trail_page = self.read("trails", "t101", "index.html")
+        self.assertIn('<a href="/ranges/wind-river-range/">Wind River Range</a>', trail_page)
+        home_page = self.read("index.html")
+        self.assertIn("river range", home_page)  # the rows' search words
+
     def test_the_state_pages_of_the_same_build_are_unchanged_in_shape(self):
         # the golden test pins the exact bytes; here the same render still has them
         doc = self.read("regions", "us-wy", "index.html")

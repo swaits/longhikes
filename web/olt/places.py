@@ -99,6 +99,15 @@ def state_names(info):
     return [words.region_name(_state_key(c).split("-", 1)[-1]) for c in info.get("where") or []]
 
 
+def in_name(info):
+    """The name as it reads after "in": a range or a wilderness area takes "the"
+    ("in the Wind River Range"), a park does not ("in Yosemite National Park")."""
+    name = info["name"]
+    if info.get("kind") in ("range", "wilderness") and not name.lower().startswith("the "):
+        return f"the {name}"
+    return name
+
+
 def title_name(info):
     """The place as a page title names it: a park by its name alone; a range or a
     wilderness area in one state or province with that state spelled out

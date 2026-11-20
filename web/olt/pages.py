@@ -31,7 +31,7 @@ import os
 import shutil
 
 from .markup import esc
-from . import authors, browse, cards, datafiles, docs, facets, feed, home, layout, leftout, pagekit, placefacets, placepages, reference, regions, saved, seo, site as site_settings, sketch, standing, thumbs, trail, views
+from . import authors, browse, cards, datafiles, docs, facets, feed, home, layout, leftout, pagekit, placefacets, placepages, places, reference, regions, saved, searchtext, seo, site as site_settings, sketch, standing, thumbs, trail, views
 
 WEB_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS_DIR = os.path.join(WEB_DIR, "assets")
@@ -99,13 +99,24 @@ def render_site(records, out_dir, repo_root, site=None):
     everything = seo.newest(records)
     author_links = authors.link_map(records, repo_root)
     home.use_authors(author_links)
+    # The parks, ranges and wilderness areas (olt/places.py): which have a page, for
+    # the links on trail and state pages and the hub, and every trail's place names
+    # for search, a page or not.
+    registry = places.load(repo_root)
+    place_infos = places.collect(records, registry)
+    search_names = {}
+    for key, recs in places.membership(records, registry).items():
+        for r in recs:
+            search_names.setdefault(r["id"], []).append(registry[key].get("name", ""))
+    searchtext.use_place_names(search_names)
     for rec in records:
         # Read by common.name() wherever a page shows the record's name as text.
         rec["derived"]["name_lang"] = site.name_lang.get(rec["id"], "")
     for rec in records:
         copy_record_files(rec, out_dir, repo_root)
         thumbs.prepare(rec, out_dir, repo_root)
-        title, description, body, needs_map = trail.render(rec, site, records, author_links=author_links)
+        title, description, body, needs_map = trail.render(
+            rec, site, records, author_links=author_links, place_infos=place_infos)
         path = f"/trails/{rec['id']}/"
         card, card_alt = cards.prepare(rec, out_dir)
         layout.write_page(out_dir, path, layout.layout(
@@ -140,13 +151,15 @@ def render_site(records, out_dir, repo_root, site=None):
     shown = browse.shown(records)
     facet_plan = placefacets.plan(records)
     facets_of_place = placefacets.pages_by_place(facet_plan)
-    t, d, b = regions.regions_index_page(records, site)
+    t, d, b = regions.regions_index_page(records, site, infos=place_infos)
     add("/regions/", t, d, b)  # every trail is on it: the newest of them
     by_slug, _ = regions.collect_regions(records)
     region_paths = []
     for slug in sorted(by_slug):
         here = [(p["lst"].title, p["path"], len(p["recs"])) for p in facets_of_place.get(slug, [])]
-        t, d, b, needs_map = regions.region_page(slug, records, site, facet_pages=here)
+        t, d, b, needs_map = regions.region_page(
+            slug, records, site, facet_pages=here,
+            place_links=regions.place_links_for(by_slug[slug]["key"], place_infos))
         path = f"/regions/{slug}/"
         region_paths.append(path)
         add(path, t, d, b, maps=needs_map, recs=by_slug[slug]["records"])

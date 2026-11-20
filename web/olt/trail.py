@@ -9,7 +9,7 @@ import os
 import re
 import urllib.parse
 
-from . import browse, common, elevation, facets, hike, regions, related, seo, sketch, words
+from . import browse, common, elevation, facets, hike, places, regions, related, seo, sketch, words
 from .layout import OUTDOOR_STYLE
 from .markup import Markup, esc
 
@@ -81,6 +81,15 @@ def region_names(rec):
             Markup(f'<abbr title="{esc(name)}">{esc(key.split("-", 1)[1])}</abbr>')
         parts.append(f'<a href="{esc(facets.place_path(key))}">{text}</a>')
     return Markup((", " if len(keys) <= 3 else " ").join(parts))
+
+
+def place_links(rec, infos):
+    """One link per park, range or wilderness area of this trail that has a page
+    (olt/places.py collect), for the glance beside its states; "" when none has."""
+    mine = places.of_record(rec, infos)
+    if not mine:
+        return Markup("")
+    return Markup(", ".join(f'<a href="{esc(i["path"])}">{esc(i["name"])}</a>' for i in mine))
 
 
 _ORG_CUT = re.compile(r", who |, with | publishes |; (?=[a-z])| \((?=[a-z])| \((?=[^)]*geometry)")
@@ -611,11 +620,12 @@ def time_note(rec, records):
 PERMITS = "Permits"
 
 
-def glance(rec, records=None):
+def glance(rec, records=None, place_infos=()):
     """The hiker's facts at a glance, under the attribute names every page uses.
 
     records: every trail, so that terrain, shape, time and length link to the
-    lists they put the trail in (left out when None)."""
+    lists they put the trail in (left out when None). place_infos: the places with
+    a page (olt/places.py collect); the trail's own are linked in the Where row."""
     h = hike.table(rec)
     # The length leads, set large. A built or a whole-system figure under it is a line across the
     # whole panel, so the row is as wide as the panel.
@@ -671,7 +681,11 @@ def glance(rec, records=None):
     if h.get("permit"):
         rows.append(glance_row(PERMITS, common.sentence(h["permit"]), wide=True))
     country = " and ".join(words.COUNTRIES.get(c, c) for c in common.countries(rec))
-    rows.append(glance_row(facets.WHERE, Markup(f'{region_names(rec)}, {esc(country)}'), wide=True))
+    where_value = Markup(f'{region_names(rec)}, {esc(country)}')
+    links = place_links(rec, place_infos)
+    if links:
+        where_value = Markup(f"{where_value}<br>{links}")
+    rows.append(glance_row(facets.WHERE, where_value, wide=True))
     status = facets.gpx(rec)
     if facets.gpx_here(rec):
         text = facets.gpx_status_text(rec)
@@ -1789,11 +1803,12 @@ def nearest_length(rec, other):
 RELATED_WHY = {"name": "same name", "named": "named here", "names": "mentions this"}
 
 
-def onward(rec, records):
+def onward(rec, records, place_infos=()):
     """Ways onward at the foot of the page, all worked out from the records (olt/related.py):
     trails tied to this one by name or by what the descriptions say; other trails in the
-    same state or province (up to three of them), the closest in length first; trails like this one in length, terrain
-    and shape; and for a route, other routes by the same author."""
+    same state or province (up to three of them), the closest in length first; other trails
+    in the same park, range or wilderness area that has a page (place_infos); trails like
+    this one in length, terrain and shape; and for a route, other routes by the same author."""
     if not records:
         return ""
     others = [r for r in records if r["id"] != rec["id"]]
@@ -1813,6 +1828,16 @@ def onward(rec, records):
         more = (facets.place_path(key), f"All {len(here) + 1} trails in {name}") if len(here) > ONWARD_MAX else \
             (facets.place_path(key), f"{name} on the map")
         parts.append(_onward_list(f"More in {name}", here, more[0], more[1], f"onward-{key.lower()}"))
+    for info in places.of_record(rec, place_infos)[:3]:
+        here = sorted((r for r in info["records"] if r["id"] != rec["id"]),
+                      key=lambda r: nearest_length(rec, r))
+        if not here:
+            continue
+        where = places.in_name(info)
+        more = (info["path"], f"All {len(info['records'])} trails in {where}") if len(here) > ONWARD_MAX else \
+            (info["path"], f"{info['name']} on the map")
+        parts.append(_onward_list(f"More in {where}", here, more[0], more[1],
+                                  f"onward-{info['kind']}-{info['slug']}"))
     like = related.similar_to(rec, records)
     if like:
         def alike(r):
@@ -1830,9 +1855,11 @@ def onward(rec, records):
             f'<div class="onward__grid">{"".join(parts)}</div></nav>')
 
 
-def render(rec, site, records=None, author_links=None):
+def render(rec, site, records=None, author_links=None, place_infos=()):
     """Return (title, description, body HTML, needs_map) for one trail.
-    records: every trail, for the ways onward at the foot (left out when None)."""
+    records: every trail, for the ways onward at the foot (left out when None).
+    place_infos: the places with a page (olt/places.py collect), linked in the
+    glance and the ways onward."""
     has_track = common.has_line(rec)
     sketch_points = hike.sketch_points(rec) if not has_track else []
     has_map = has_track or bool(sketch_points)
@@ -1840,7 +1867,7 @@ def render(rec, site, records=None, author_links=None):
     aside_html = (f'<aside class="detail__aside" aria-label="{"Downloads" if has_track else "Where to get the route"}">'
                   f'{aside}</aside>') if aside else ""
     profile = elevation_figure(rec)
-    side = f'<div class="detail__side">{glance(rec, records)}{aside_html}{map_credit(rec)}</div>'
+    side = f'<div class="detail__side">{glance(rec, records, place_infos)}{aside_html}{map_credit(rec)}</div>'
     body = f"""{page_head(rec, author_links)}
 <div class="container detail{"" if aside else " detail--no-aside"}{"" if has_map else " detail--no-map"}{" detail--with-profile" if profile else ""}">
   {strip(rec)}
@@ -1850,7 +1877,7 @@ def render(rec, site, records=None, author_links=None):
   {profile}
 </div>
 <div class="container trail-more">
-  {onward(rec, records)}
+  {onward(rec, records, place_infos)}
   {page_foot(rec, site)}
   {about_data(rec, site, author_links)}
   {history_section(rec)}

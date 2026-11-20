@@ -16,7 +16,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, WEB)
 sys.path.insert(0, HERE)
 
-from olt import bounds, facets, placefacets, regions, site  # noqa: E402
+from olt import bounds, facets, home, placefacets, regions, searchtext, site  # noqa: E402
 from test_hike import fake  # noqa: E402
 
 GOLDEN = os.path.join(HERE, "golden", "state-pages.json")
@@ -93,6 +93,32 @@ def build_map():
     for p in pages:
         add(p["path"], placefacets.page(p, records, s, pages))
     return out
+
+
+class AllowedDifferencesTest(unittest.TestCase):
+    def test_state_pages_differ_only_in_data_search_and_the_new_block(self):
+        # data-search gains the place names, and nothing else about a row changes
+        rec = fixtures()[0]
+        plain = home.entry(rec)
+        searchtext.use_place_names({rec["id"]: ["Wind River Range"]})
+        try:
+            with_place = home.entry(rec)
+        finally:
+            searchtext.use_place_names({})
+        self.assertIn("wind river range", with_place)
+        self.assertNotEqual(plain, with_place)
+        self.assertEqual(normalise(plain), normalise(with_place))
+        # the place-links nav is the other allowed addition to a state page
+        records = fixtures()
+        s = site.Site("Long Hikes", "T", repo_url="https://github.com/o/r")
+        block = ('<nav class="region-nav" aria-label="Parks, ranges and wilderness in Colorado">'
+                 'Parks, ranges and wilderness in Colorado: <a href="/ranges/front-range/">Front Range</a> (3)</nav>')
+        plain_page = regions.region_page("us-co", records, s)
+        linked_page = regions.region_page("us-co", records, s, place_links=block)
+        self.assertNotEqual(str(plain_page[2]), str(linked_page[2]))
+        self.assertEqual(normalise(str(plain_page[2])), normalise(str(linked_page[2])))
+        self.assertEqual(plain_page[0], linked_page[0])
+        self.assertEqual(plain_page[1], linked_page[1])
 
 
 class StatePagesUnchangedTest(unittest.TestCase):

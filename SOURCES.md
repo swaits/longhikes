@@ -62,6 +62,38 @@ Terms found: none. No route creator's page read on 2026-11-10 states a licence f
 
 Page: the creator's or publisher's own page for the guide, given in each record's first `[[guide]]` and quoted in `route.creator_words_url` where the creator's words are quoted.
 
+## National Park Service park boundaries (public domain)
+
+Used for: the outlines behind the park pages. `tools/place_trails.py` measures each trail's track against the Land Resources Division boundary service and writes the trail's park membership to its record and to `places.toml`. The outlines themselves are not in this repository; they are downloaded to a cache outside it.
+
+Quoted terms: "The data are in the public domain, and may be re-used without restriction."
+
+Page: https://irma.nps.gov/DataStore/Reference/Profile/2224545 (read 2026-11-20). United States federal government work is public domain in the United States under 17 U.S.C. 105 (see "United States federal agencies" above). Credit: National Park Service, Land Resources Division.
+
+## Wilderness Connect wilderness boundaries (public domain)
+
+Used for: the outlines behind the wilderness area pages, all four federal agencies in one file. `tools/place_trails.py` measures each trail's track against them; the outlines are cached outside this repository.
+
+Quoted terms: "This data is available for public use of any kind. Crediting Wilderness Connect is requested."
+
+Page: https://wilderness.net/visit-wilderness/gis-gps.php (read 2026-11-20). Federal work, public domain. The credit the page requests is given here: Wilderness Connect, University of Montana (wilderness.net).
+
+## Canadian Protected and Conserved Areas Database (Open Government Licence, Canada)
+
+Used for: the outlines of Canadian national parks and of British Columbia and Alberta provincial parks, measured by `tools/place_trails.py` and cached outside this repository.
+
+Quoted terms: "Copy, modify, publish, translate, adapt, distribute or otherwise use the Information in any medium, mode or format for any lawful purpose."
+
+Page: https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c and the licence at https://open.canada.ca/en/open-government-licence-canada (read 2026-11-20). Credit: Environment and Climate Change Canada, CPCAD. Contains information licensed under the Open Government Licence – Canada.
+
+## GMBA Mountain Inventory v2 (CC BY 4.0)
+
+Used for: the outlines behind the mountain range pages, the allow-listed ranges only (`tools/place_allowlist.toml`), measured by `tools/place_trails.py` and cached outside this repository.
+
+Quoted terms: the inventory's licence reads "CC BY 4.0".
+
+Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t9k2-1407 (read 2026-11-20). Full text: LICENSES/CC-BY-4.0.txt. Credit required: GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv.
+
 ## Every record's source
 
 

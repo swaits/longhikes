@@ -277,7 +277,7 @@ def copy_sources(tid, files, tdir, stats):
 # own directory) decide them, so a change to any of them makes a new key. Kept by content, not by
 # modification time, so a store restored from a CI cache or made in another checkout is as good as one
 # made here.
-STORE_VERSION = "1"
+STORE_VERSION = "2"  # 2: archives have fixed member times
 _code_digest = None
 
 
@@ -569,6 +569,9 @@ def archive_readme(name):
             f"{resolution}")
 
 
+ARCHIVE_TIME = (1980, 1, 1, 0, 0, 0)  # the earliest time a zip can hold
+
+
 def build_archive(name, recs, out_dir, stats):
     """Write /data/<name> (zip, deflate) unless it already holds exactly these files
     and is newer than every one of them and than this script."""
@@ -606,12 +609,19 @@ def build_archive(name, recs, out_dir, stats):
             stats.skipped += 1
             return
         with zipfile.ZipFile(tmp, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-            info = zipfile.ZipInfo("README.txt", date_time=time.localtime(mtime(__file__))[:6])
+            # Every member gets the same fixed time and mode, so the same files always make the
+            # same bytes, whenever and wherever the archive is made (and so the store can hand
+            # one made elsewhere to a build here).
+            info = zipfile.ZipInfo("README.txt", date_time=ARCHIVE_TIME)
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
             zf.writestr(info, archive_readme(name))
             for arc, src in members:
-                zf.write(src, arc)
+                info = zipfile.ZipInfo(arc, date_time=ARCHIVE_TIME)
+                info.compress_type = zipfile.ZIP_DEFLATED
+                info.external_attr = 0o644 << 16
+                with open(src, "rb") as source, zf.open(info, "w") as member:
+                    shutil.copyfileobj(source, member, 1 << 20)
         try:
             os.makedirs(os.path.dirname(kept), exist_ok=True)
             for old in os.listdir(os.path.dirname(kept)):

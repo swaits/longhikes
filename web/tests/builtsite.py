@@ -32,7 +32,10 @@ _built = bool(PREBUILT)
 
 
 def build(out, *extra, env=None):
-    """Run the site build into out (a directory that need not exist). Raises when it fails."""
+    """Run the site build into out, a directory that is made new: whatever was there is removed first,
+    so nothing in it can be a page an earlier build (of another branch, say) wrote and this one
+    does not. Raises when the build fails."""
+    shutil.rmtree(out, ignore_errors=True)
     done = subprocess.run([sys.executable, os.path.join(WEB, "build.py"), "--out", out, *extra],
                           stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True, env=env)
     if done.returncode:

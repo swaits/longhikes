@@ -126,6 +126,19 @@ class TrailLinkTest(unittest.TestCase):
         self.assertNotIn("/parks/small/", body)
         self.assertIn("More in the Wind River Range", body)  # the ways onward
 
+    def test_the_place_links_are_also_on_the_page_for_a_phone_outside_the_glance(self):
+        body = str(trail.render(self.rec, S, self.records, place_infos=self.infos)[2])
+        foot = body[body.index('class="container trail-more"'):]
+        self.assertIn('<nav class="region-nav trail-places"', foot)
+        self.assertIn('<a href="/ranges/wind-river-range/">Wind River Range</a>',
+                      foot[:foot.index("</nav>")])
+        self.assertLess(foot.index("trail-places"), foot.index('class="onward"'))
+        css = open(os.path.join(WEB, "assets", "style.css"), encoding="utf-8").read()
+        narrow = css[css.index("@media (max-width: 63.99rem)", css.index(".trail-places")):]
+        self.assertIn("html.js .trail-places { display: block; }", narrow[:200])
+        plain = str(trail.render(self.rec, S, self.records)[2])
+        self.assertNotIn("trail-places", plain)
+
     def test_a_trail_with_no_place_page_is_unchanged(self):
         plain = str(trail.render(self.rec, S, self.records)[2])
         self.assertNotIn("/ranges/wind-river-range/", plain)

@@ -92,6 +92,18 @@ def place_links(rec, infos):
     return Markup(", ".join(f'<a href="{esc(i["path"])}">{esc(i["name"])}</a>' for i in mine))
 
 
+def places_nav(rec, infos):
+    """The same place links as the glance's Where row, as a line at the foot of the page. On a
+    phone the glance shows only its first facts until "All the facts" is tapped, and the Where
+    row is not among them; this line is shown there (style.css, .trail-places) so the links are
+    on the page without a tap. "" when the trail is in no place that has a page."""
+    links = place_links(rec, infos)
+    if not links:
+        return ""
+    return Markup(f'<nav class="region-nav trail-places" aria-label="Parks, ranges and wilderness areas">'
+                  f'Parks, ranges and wilderness areas: {links}</nav>')
+
+
 _ORG_CUT = re.compile(r", who |, with | publishes |; (?=[a-z])| \((?=[a-z])| \((?=[^)]*geometry)")
 
 
@@ -1879,6 +1891,7 @@ def render(rec, site, records=None, author_links=None, place_infos=()):
   {profile}
 </div>
 <div class="container trail-more">
+  {places_nav(rec, place_infos)}
   {onward(rec, records, place_infos)}
   {page_foot(rec, site)}
   {about_data(rec, site, author_links)}

@@ -20,6 +20,22 @@ def src(publisher, facts=("season", "months"), url="https://example.org/trail"):
     return {"url": url, "publisher": publisher, "facts": list(facts)}
 
 
+CLIMATE_URL = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+CLIMATE = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+METHOD = "Snow clears from the high ground in June. Confidence: medium."
+
+
+def climate_src(**kw):
+    return src(CLIMATE, url=CLIMATE_URL, **kw)
+
+
+def estimate(**fields):
+    fields.setdefault("season_basis", "estimate")
+    fields.setdefault("season_method", METHOD)
+    fields.setdefault("source", [climate_src()])
+    return check(**fields)
+
+
 def check(**fields):
     hike = {
         "season": "June to September",
@@ -98,42 +114,97 @@ class SeasonBasisTest(unittest.TestCase):
         errors = check(source=[src("Park Service", facts=("days",))])
         self.assertTrue(errors)
 
-    def test_estimate_needs_a_method_and_refuses_one_otherwise(self):
-        self.assertTrue(check(season_basis="estimate"))
+    def test_an_estimate_with_a_method_and_a_climate_source_passes(self):
+        self.assertEqual(estimate(), [])
+
+    def test_an_estimate_needs_a_method(self):
+        errors = estimate(season_method=None)
+        self.assertTrue(any("season_method" in e for e in errors), errors)
+        self.assertTrue(estimate(season_method=""))
+        self.assertTrue(estimate(season_method="x" * 401))
+
+    def test_an_estimate_method_ends_with_its_confidence(self):
+        for word in ("high", "medium", "low"):
+            self.assertEqual(estimate(season_method=f"Set by snow. Confidence: {word}."), [])
+        errors = estimate(season_method="Set by snow.")
+        self.assertTrue(any("Confidence" in e for e in errors), errors)
+        self.assertTrue(estimate(season_method="Set by snow. Confidence: certain."))
+
+    def test_a_method_without_an_estimate_is_still_an_error_on_a_primary(self):
+        self.assertTrue(check(season_method=METHOD))
+
+    def test_an_estimate_refuses_an_ordinary_page_naming_the_season(self):
+        two = [climate_src(), src("Park Service", url="https://example.org/p")]
+        errors = estimate(source=two)
+        self.assertTrue(errors)
+        only = [src("Park Service", url="https://example.org/p")]
+        errors = estimate(source=only)
+        self.assertTrue(any("climate" in e for e in errors), errors)
+
+    def test_an_estimate_with_no_naming_source_is_an_error(self):
+        self.assertTrue(estimate(source=[climate_src(facts=("days",))]))
+
+    def test_an_estimate_source_names_both_season_and_months(self):
+        errors = estimate(source=[climate_src(facts=("season",))])
+        self.assertTrue(any("months" in e for e in errors), errors)
+
+    def test_a_sourced_season_may_not_cite_the_climate_data(self):
+        errors = check(source=[climate_src()])
+        self.assertTrue(any("climate" in e for e in errors), errors)
+
+    def test_the_climate_host_is_the_one_the_estimator_reads(self):
+        import urllib.parse
+        import season_climate
         self.assertEqual(
-            check(season_basis="estimate", season_method="Estimated from climate normals."), [])
-        self.assertTrue(check(season_basis="estimate", season_method=""))
-        self.assertTrue(check(season_basis="estimate", season_method="x" * 401))
-        self.assertTrue(check(season_method="Estimated from climate normals."))
+            season.CLIMATE_HOSTS,
+            frozenset({urllib.parse.urlparse(season_climate.SOURCE["url"]).hostname}))
 
-    def test_estimate_with_two_naming_sources_is_an_error(self):
-        two = [src("Climate", url="https://c.example/1"), src("Other", url="https://o.example/1")]
-        errors = check(season_basis="estimate", season_method="Estimated from climate.", source=two)
+    def test_sources_judged_from_pages_that_differ_may_share_a_publisher(self):
+        two = [src("The Trek", url="https://t.example/1"), src("The Trek", url="https://t.example/2")]
+        errors = check(season_basis="sources", source=two)
+        self.assertTrue(errors)
+        self.assertEqual(
+            check(season_basis="sources", source=two,
+                  season_method="The pages differ. Confidence: low."), [])
+
+    def test_judged_from_pages_that_differ_needs_a_page(self):
+        errors = check(season_basis="sources", source=[src("The Trek", facts=("days",))],
+                       season_method="The pages differ. Confidence: low.")
         self.assertTrue(errors)
 
-    def test_estimate_with_no_naming_source_is_an_error(self):
-        errors = check(season_basis="estimate", season_method="Estimated from climate.",
-                       source=[src("Climate", facts=("days",))])
+    def test_a_season_read_from_a_page_has_no_method_and_no_estimate_basis(self):
+        self.assertTrue(season.read_from_a_page({"season": "x", "season_basis": "primary"}))
+        self.assertFalse(season.read_from_a_page({"season": "x", "season_basis": "estimate"}))
+        self.assertFalse(season.read_from_a_page(
+            {"season": "x", "season_basis": "sources", "season_method": "Judged."}))
+        self.assertFalse(season.read_from_a_page({"season_basis": "primary"}))
+
+    def test_the_confidence_is_read_from_the_method(self):
+        self.assertEqual(season.confidence_of("Set by snow. Confidence: low."), "low")
+        self.assertEqual(season.confidence_of("Set by snow."), "")
+
+    def test_a_hike_without_season_is_an_error(self):
+        errors = check(season=None, months=None, season_basis=None, source=None)
+        self.assertTrue(any("season" in e for e in errors), errors)
+
+    def test_a_record_with_no_hike_is_an_error(self):
+        errors = []
+        season.check_present("t", {}, errors)
         self.assertTrue(errors)
-
-    def test_a_hike_without_season_passes_until_required(self):
-        self.assertEqual(check(season=None, months=None, season_basis=None, source=None), [])
-
-    def test_required_flag_makes_it_an_error(self):
-        with mock.patch.object(season, "SEASON_REQUIRED", True):
-            errors = check(season=None, months=None, season_basis=None, source=None)
-            self.assertTrue(any("season" in e for e in errors), errors)
+        errors = []
+        season.check_present("t", {"hike": {"season": "x"}}, errors)
+        self.assertEqual(errors, [])
 
     def test_method_without_season_is_an_error(self):
         errors = check(season=None, months=None, season_basis=None, season_method="Some method.")
         self.assertTrue(errors)
 
-    def test_every_record_with_a_season_passes_the_validator(self):
+    def test_every_record_passes_the_validator(self):
         errors = []
         for tid in refresh.trail_ids(V.ROOT):
             rec = refresh.load_toml(os.path.join(V.ROOT, tid, "trail.toml"))
-            if (rec.get("hike") or {}).get("season"):
-                V.check_hike(tid, rec, errors)
+            V.check_hike(tid, rec, errors)
+            season.check_present(tid, rec, errors)
         self.assertEqual(errors, [])
 
     def test_provenance_keys_need_no_source_fact(self):

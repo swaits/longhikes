@@ -4,9 +4,41 @@ Python 3 standard library only. tools/validate.py imports this module; it
 must not import validate.py. The fields are documented in docs/schema.md.
 """
 
+import re
+import urllib.parse
+
 BASES = ("primary", "sources", "source", "estimate")
 PROVENANCE_KEYS = frozenset({"season_basis", "season_method"})
-SEASON_REQUIRED = False
+SEASON_REQUIRED = True
+# The host of the climate data an estimate cites (tools/season_climate.SOURCE).
+CLIMATE_HOSTS = frozenset({"www.chelsa-climate.org"})
+CONFIDENCES = ("high", "medium", "low")
+_CONFIDENCE_END = re.compile(r"Confidence: (high|medium|low)\.\s*$")
+
+
+def _is_climate(source):
+    host = urllib.parse.urlparse(str(source.get("url", ""))).hostname
+    return host in CLIMATE_HOSTS
+
+
+def confidence_of(method):
+    """"high", "medium" or "low" from the end of a season_method, else ""."""
+    found = _CONFIDENCE_END.search(str(method or ""))
+    return found.group(1) if found else ""
+
+
+def read_from_a_page(hike):
+    """True when a page states the season: one is present, its basis is not
+    "estimate", and no method records that it was worked out by judgement
+    (the seasons set from pages that disagree carry one)."""
+    return bool(hike.get("season")) and hike.get("season_basis") in (
+        "primary", "sources", "source") and not hike.get("season_method")
+
+
+def check_present(tid, rec, errors):
+    """Every record has a hike table (check_season then requires its season)."""
+    if not isinstance(rec.get("hike"), dict):
+        errors.append(f"{tid}: hike.season is required")
 
 
 def _naming(sources, fact):
@@ -51,10 +83,18 @@ def check_season(tid, hike, errors):
             errors.append(f"{tid}: hike.season_method must not be empty")
         elif len(method) >= 400:
             errors.append(f"{tid}: hike.season_method must be under 400 characters")
+        elif basis == "estimate" and not _CONFIDENCE_END.search(method):
+            errors.append(
+                f"{tid}: hike.season_method of an estimate must end with "
+                "\"Confidence: high.\", \"Confidence: medium.\" or \"Confidence: low.\"")
     elif basis == "estimate":
         errors.append(f"{tid}: hike.season_method is required with season_basis \"estimate\"")
 
     naming_season = _naming(sources, "season")
+    if basis != "estimate" and any(_is_climate(x) for x in naming_season):
+        errors.append(
+            f"{tid}: a source naming season may not cite climate data unless "
+            "hike.season_basis is \"estimate\"")
     if basis in ("primary", "source"):
         if not naming_season:
             errors.append(
@@ -69,16 +109,32 @@ def check_season(tid, hike, errors):
     elif basis == "sources":
         publishers = {str(s.get("publisher", "")).strip().casefold()
                       for s in naming_season if str(s.get("publisher", "")).strip()}
-        if len(publishers) < 2:
+        if not naming_season:
+            errors.append(
+                f"{tid}: hike.season_basis \"sources\" needs a [[hike.source]] naming season")
+        elif has_method:
+            pass  # set by judgement from pages that differ; they may share a publisher
+        elif len(publishers) < 2:
             errors.append(
                 f"{tid}: hike.season_basis \"sources\" needs two sources from different "
                 "publishers naming season")
     elif basis == "estimate":
-        naming = {id(s) for s in _naming(sources, "season") + _naming(sources, "months")}
+        naming = {id(x): x for x in _naming(sources, "season") + _naming(sources, "months")}
         if len(naming) != 1:
             errors.append(
                 f"{tid}: hike.season_basis \"estimate\" needs exactly one source naming "
-                "season or months")
+                "season or months, and it must cite the climate data (no page states a season)")
+        else:
+            only = next(iter(naming.values()))
+            facts = only.get("facts") or []
+            if not _is_climate(only):
+                errors.append(
+                    f"{tid}: hike.season_basis \"estimate\" needs its source to cite the "
+                    "climate data (CHELSA, with ETOPO); an ordinary page naming the season "
+                    "makes the basis wrong")
+            if "season" not in facts or "months" not in facts:
+                errors.append(
+                    f"{tid}: the climate source of an estimate must name both season and months")
 
 
 # ---------------------------------------------------------------------------

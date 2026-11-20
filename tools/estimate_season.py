@@ -412,7 +412,7 @@ def sourced_trails(root, fetch, log=None):
     out = []
     for tid, rec in _records(root):
         hike = rec.get("hike") or {}
-        if not hike.get("season") or hike.get("season_basis") == "estimate":
+        if not season.read_from_a_page(hike):
             continue
         points, kind = sample_points(root, rec)
         med = season_model.medians(normals_at(points, fetch))
@@ -622,7 +622,7 @@ def _phrases(root):
         out = {}
         for tid, rec in _records(root):
             hike = rec.get("hike") or {}
-            if hike.get("season") and hike.get("season_basis") != "estimate":
+            if season.read_from_a_page(hike):
                 out[tid] = str(hike.get("season"))
         _PHRASES[root] = out
     return _PHRASES[root]

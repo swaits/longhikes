@@ -43,6 +43,7 @@ def use(out_dir):
     global DATA_DIR
     DATA_DIR = out_dir or ""
     _cache.clear()
+    _JOINED.clear()
 
 
 def _read(*parts):
@@ -121,10 +122,22 @@ class Plane:
         return ((point[0] * RAD - self.x0) * self.k, (self.y1 - _merc(point[1])) * self.k)
 
 
+_JOINED = {}  # {ids of the parts: (the parts, them joined)}: the same track is drawn on many pages
+
+
+def _joined(parts):
+    """geo.join_parts(parts), kept for the same parts (by identity); many trails are thousands of short parts."""
+    key = tuple(id(p) for p in parts)
+    held = _JOINED.get(key)
+    if held is None or len(held[0]) != len(parts) or any(a is not b for a, b in zip(held[0], parts)):
+        held = _JOINED[key] = (list(parts), geo.join_parts(parts))
+    return held[1]
+
+
 def _path(plane, parts, tol=TOL):
     """One relative SVG path for the parts: whole-number steps, simplified to tol units."""
     out = []
-    for part in geo.simplify(geo.join_parts(parts), tol * plane.m_per_unit):
+    for part in geo.simplify(_joined(parts), tol * plane.m_per_unit):
         pts = []
         for p in part:
             x, y = plane.xy(p)

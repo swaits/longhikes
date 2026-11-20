@@ -1,0 +1,13 @@
+# The place allow-list for tools/place_trails.py.
+#
+# [[park]] entries name extra park units beyond the ones their source marks as national
+# parks, and joined pages: one entry whose source_id is a list joins those units into one
+# place (as Sequoia and Kings Canyon are joined). Fields: source_id (a string, or a list
+# to join units), slug, name.
+#
+# [[range]] entries are the mountain ranges that get measured at all. The GMBA inventory
+# nests ranges up to ten levels, so no single level holds the useful names; instead this
+# list starts from the ranges the owner named and every range that 3 or more tracks cross
+# (place_trails.py candidates prints those), and a person reviews it before records are
+# written. Fields: gmba_id (GMBA_V2_ID), slug, name (the display name, without the
+# inventory's country qualifier), within (parent range slugs from this list).

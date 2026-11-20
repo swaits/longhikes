@@ -40,6 +40,10 @@ contact_url = ""
 maintainer_name = "Stephen Waits"
 maintainer_url = "https://github.com/swaits"
 
+# Google tag container id. When set, every page loads the tag (web/olt/layout.py) to count visits;
+# the Content-Security-Policy in web/static/_headers allows it. Empty: no tag.
+google_tag = "GTM-WWLZSH6Q"
+
 # Language of record names that are not English, by record id (a BCP 47 tag).
 # Every place a page shows one of these names as text marks it with lang="..",
 # so screen readers pronounce it in that language.

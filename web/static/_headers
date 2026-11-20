@@ -13,7 +13,9 @@
 # Netlify applies all of them, so each header is set by one rule only
 # (web/tests/test_headers.py checks this against the built site).
 
-# Security headers for every response. No inline scripts or style elements:
+# Security headers for every response. The one inline script is the Google tag's data-layer
+# setup (allowed by its hash, GOOGLE_TAG_INLINE in web/olt/layout.py) and its loader comes from
+# www.googletagmanager.com. Otherwise no inline scripts or style elements:
 # pages load same-origin scripts and styles, MapLibre and the contour add-on
 # run from blob: workers, map images are self/data:/blob:, fonts are
 # self-hosted, and tiles, glyphs and sprites are fetched from OpenFreeMap
@@ -26,7 +28,7 @@
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; worker-src 'self' blob:; child-src 'self' blob:; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://tiles.openfreemap.org https://s3.amazonaws.com/elevation-tiles-prod/terrarium/; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://www.googletagmanager.com 'sha256-jYHg7tXSuuVUqjy+JeRT8vyG97+Spkw5IFHdQEBbmrw='; style-src 'self'; style-src-attr 'unsafe-inline'; worker-src 'self' blob:; child-src 'self' blob:; img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://tiles.openfreemap.org https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://s3.amazonaws.com/elevation-tiles-prod/terrarium/; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
 
 # Site data. Matched by file type, not /data/*, so the pages under /data/
 # (/data/, /data/schema/, /data/changelog/) revalidate like every other page.

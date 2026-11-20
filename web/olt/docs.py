@@ -302,7 +302,7 @@ def maintainer_section(site):
 <li>The records and the compiled index are public domain (CC0 1.0). Each track keeps the licence of its source.</li>
 <li>Every fact in a record names the page it was read on, and each record keeps a history of what changed and why.</li>
 <li>To correct a fact, suggest a trail or ask for a track or logo to be removed, {ask}. Every trail page has its own &ldquo;Report a problem&rdquo; link.</li>
-<li>The site has no ads, no accounts, no tracking and no analytics. Your theme, units and saved trails stay in your own browser. Maps load their tiles from OpenFreeMap.</li>
+<li>The site has no ads and no accounts. Your theme, units and saved trails stay in your own browser. Maps load their tiles from OpenFreeMap.</li>
 </ul>
 </section>
 """

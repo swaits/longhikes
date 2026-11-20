@@ -521,6 +521,30 @@ class ApplyTest(unittest.TestCase):
         self.assertEqual(rec["places_checked"], "2026-11-20")
         self.assertEqual(rec["history"][-1]["fields"], ["place"])
 
+    def test_a_second_apply_of_the_same_proposal_leaves_every_record_byte_identical(self):
+        P.apply(self.pjson, self.root, "2026-11-20")
+        before = {t: open(self.trail_toml(t)).read() for t in ("aa", "bb", "cc")}
+        self.assertEqual(P.apply(self.pjson, self.root, "2026-11-20"), [])
+        for t, text in before.items():
+            self.assertEqual(open(self.trail_toml(t)).read(), text)
+
+    def test_stated_many_writes_every_place_with_one_history_entry(self):
+        P.apply(self.pjson, self.root, "2026-11-20")
+        reg = P.registry_entries(self.root)
+        reg.append({"slug": "beta-range", "kind": "range", "name": "Beta Range", "where": ["WY"],
+                    "source": "gmba-v2", "source_id": "1", "source_version": "x", "box": [0, 0, 1, 1]})
+        P.write_registry(self.root, reg)
+        before = len(read_toml(self.trail_toml("zz"))["history"])
+        P.add_stated_many(self.root, "zz", [
+            {"kind": "park", "slug": "alpha-park", "source": "https://example.org/t", "quote": "Q one."},
+            {"kind": "range", "slug": "beta-range", "source": "https://example.org/t", "quote": "Q one."},
+        ], "2026-11-20")
+        rec = read_toml(self.trail_toml("zz"))
+        self.assertEqual([p["slug"] for p in rec["place"]], ["alpha-park", "beta-range"])
+        self.assertEqual(len(rec["history"]), before + 1)
+        self.assertIn("Alpha Park and Beta Range", rec["history"][-1]["change"])
+        self.assertEqual(rec["history"][-1]["fields"], ["place"])
+
     def test_stamp_none_sets_places_checked_with_no_place_tables_and_no_history(self):
         P.stamp_none(self.root, "zz", "2026-11-20")
         rec = read_toml(self.trail_toml("zz"))

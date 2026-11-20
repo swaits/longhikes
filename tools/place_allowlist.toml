@@ -342,3 +342,60 @@ name = "Sequoia and Kings Canyon National Parks"
 source_id = "GLAC"
 slug = "glacier"
 name = "Glacier National Park"
+
+# National Park Service units that are not national parks. A park page means any National
+# Park Service unit (monuments, recreation areas, parkways, preserves, historic sites), so a
+# unit goes in when a trail is placed in it by hand. Each is measured against every track too.
+# The unit's own name from the boundary service is kept, except where noted.
+[[park]]
+source_id = "BLRI"
+
+[[park]]
+source_id = "COLM"
+
+[[park]]
+source_id = "FOBO"
+
+# The boundary service lists the preserve and the park of this unit under one code, named for
+# the preserve; the unit is Gates of the Arctic National Park and Preserve.
+[[park]]
+source_id = "GAAR"
+slug = "gates-of-the-arctic-national-park-and-preserve"
+name = "Gates of the Arctic National Park and Preserve"
+
+[[park]]
+source_id = "GLCA"
+
+[[park]]
+source_id = "KAWW"
+
+[[park]]
+source_id = "LAKE"
+
+# Ranges not named by the owner that 3 or more trails reach once the trails with no track are
+# counted with the tracked ones (2026-11-20): tracked trails measured, the others placed by a
+# cited page.
+[[range]]
+gmba_id = "12004"
+slug = "toiyabe-range"
+name = "Toiyabe Range"
+where = ["NV"]
+
+[[range]]
+gmba_id = "11567"
+slug = "la-sal-mountains"
+name = "La Sal Mountains"
+within = ["colorado-plateau"]
+where = ["CO", "UT"]
+
+[[range]]
+gmba_id = "12446"
+slug = "peninsular-ranges"
+name = "Peninsular Ranges"
+where = ["CA"]
+
+[[range]]
+gmba_id = "12033"
+slug = "vancouver-island-ranges"
+name = "Vancouver Island Ranges"
+where = ["BC"]

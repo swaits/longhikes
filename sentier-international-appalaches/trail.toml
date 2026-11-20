@@ -99,6 +99,12 @@ km = 102.4
 
 [[place]]
 kind = "park"
+slug = "katahdin-woods-and-waters-national-monument"
+basis = "track"
+km = 46.7
+
+[[place]]
+kind = "park"
 slug = "mount-carleton-provincial-park"
 basis = "track"
 km = 6.2
@@ -160,6 +166,15 @@ date = "2026-11-20"
 change = "The trail was placed in Forillon National Park, Gaspésie National Park, Mount Carleton Provincial Park, Longfellow Mountains."
 fields = ["place"]
 basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20), the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Katahdin Woods and Waters National Monument."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20), the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
 asked_by = "the dataset's own check"
 outcome = "applied"

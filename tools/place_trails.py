@@ -901,6 +901,11 @@ def _remove_place_blocks(doc, rec):
         while lo > 0 and doc.lines[lo - 1].strip() == "":
             lo -= 1
             break
+        # the span runs to the next header; the blank lines and comment lines at its end
+        # belong to what follows (the history's heading comment), so they stay
+        while end > header + 1 and (doc.lines[end - 1].strip() == ""
+                                    or doc.lines[end - 1].lstrip().startswith("#")):
+            end -= 1
         del doc.lines[lo:end]
 
 
@@ -1059,27 +1064,56 @@ def apply(proposal_path, root, today, exclude=frozenset()):
 
 def add_stated(root, rid, kind, slug, source_url, quote, today):
     """Place a trackless trail from a cited source, with its history entry."""
-    if not str(source_url).startswith(("https://", "http://")):
-        raise ValueError("stated needs an http(s) source address")
-    if not str(quote).strip():
-        raise ValueError("stated needs the sentence that puts the trail in the place")
+    add_stated_many(root, rid, [{"kind": kind, "slug": slug, "source": source_url, "quote": quote}], today)
+
+
+def add_stated_many(root, rid, items, today):
+    """Place a trackless trail in every place of `items` from cited sources, with one
+    history entry for the record. An item is {kind, slug, source, quote}; with
+    "summary": True the quote is the sentence of the record's own summary and the source is
+    the page the summary was taken from, and the history says so."""
+    if not items:
+        raise ValueError("stated needs at least one place")
+    for it in items:
+        if not str(it["source"]).startswith(("https://", "http://")):
+            raise ValueError("stated needs an http(s) source address")
+        if not str(it["quote"]).strip():
+            raise ValueError("stated needs the sentence that puts the trail in the place")
     tdir = os.path.join(root, rid)
     if line_file_of(tdir):
         raise ValueError(f"{rid} has a track; stated is only for a trail with no track")
     registry = {(e.get("kind"), e.get("slug")): e for e in registry_entries(root)}
-    entry = registry.get((kind, slug))
-    if entry is None:
-        raise ValueError(f"{kind}/{slug} is not in places.toml; add its registry entry first")
     doc, path = _doc_of(root, rid)
     rec = doc.data()
-    if any((p.get("kind"), p.get("slug")) == (kind, slug) for p in rec.get("place") or []):
-        raise ValueError(f"{rid} already names {kind}/{slug}")
-    doc.append_block("place", {"kind": kind, "slug": slug, "basis": "stated", "source": source_url})
+    seen = {(p.get("kind"), p.get("slug")) for p in rec.get("place") or []}
+    names = []
+    for it in items:
+        key = (it["kind"], it["slug"])
+        if key not in registry:
+            raise ValueError(f"{it['kind']}/{it['slug']} is not in places.toml; add its registry entry first")
+        if key in seen:
+            raise ValueError(f"{rid} already names {it['kind']}/{it['slug']}")
+        seen.add(key)
+        names.append(registry[key].get("name") or it["slug"])
+    for it in items:
+        doc.append_block("place", {"kind": it["kind"], "slug": it["slug"], "basis": "stated",
+                                   "source": it["source"]})
     _set_top(doc, rec, "places_checked", today)
-    name = entry.get("name") or slug
+    if len(names) == 1:
+        where = names[0]
+    else:
+        where = ", ".join(names[:-1]) + " and " + names[-1]
+    groups = {}
+    for it, name in zip(items, names):
+        groups.setdefault((it["source"], it["quote"], bool(it.get("summary"))), []).append(name)
+    parts = []
+    for (source, quote, summary), who in groups.items():
+        lead = "The trail's own summary says" if summary else "The page says"
+        tail = f" ({', '.join(who)})" if len(groups) > 1 else ""
+        parts.append(f'{lead}: "{quote}"{tail}')
     doc.append_history(_history_entry(
-        today, f"The trail was placed in {name} from a published page, as it has no track to measure.",
-        f'The page says: "{quote}"', source_url))
+        today, f"The trail was placed in {where} from published pages, as it has no track to measure.",
+        " ".join(parts), items[0]["source"]))
     _save(doc, path)
 
 

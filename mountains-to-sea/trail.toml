@@ -91,6 +91,12 @@ url = "https://www.longtrailswiki.net/wiki/Mountains_to_Sea_Trail"
 
 [[place]]
 kind = "park"
+slug = "blue-ridge-parkway"
+basis = "track"
+km = 275.2
+
+[[place]]
+kind = "park"
 slug = "great-smoky-mountains-national-park"
 basis = "track"
 km = 45.5
@@ -153,6 +159,15 @@ outcome = "applied"
 [[history]]
 date = "2026-11-20"
 change = "The trail was placed in Great Smoky Mountains National Park, Great Smoky Mountains, Linville Gorge Wilderness, Middle Prong Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Blue Ridge Parkway."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"

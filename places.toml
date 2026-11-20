@@ -35,6 +35,16 @@ source_version = "2026-11-20"
 box = [-80.74, 44.62, -80.68, 44.65]
 
 [[place]]
+slug = "blue-ridge-parkway"
+kind = "park"
+name = "Blue Ridge Parkway"
+where = ["NC", "VA"]
+source = "nps"
+source_id = "BLRI"
+source_version = "2026-11-20"
+box = [-83.3, 35.28, -78.86, 38.03]
+
+[[place]]
 slug = "boyne-valley-provincial-park"
 kind = "park"
 name = "Boyne Valley Provincial Park"
@@ -113,6 +123,16 @@ source = "cpcad"
 source_id = "480001148"
 source_version = "2026-11-20"
 box = [-114.7, 49.16, -113.97, 49.63]
+
+[[place]]
+slug = "colorado-national-monument"
+kind = "park"
+name = "Colorado National Monument"
+where = ["CO"]
+source = "nps"
+source_id = "COLM"
+source_version = "2026-11-20"
+box = [-108.76, 38.98, -108.62, 39.12]
 
 [[place]]
 slug = "crater-lake-national-park"
@@ -213,6 +233,16 @@ source = "nps"
 source_id = "GLAC"
 source_version = "2026-11-20"
 box = [-114.47, 48.23, -113.24, 49.0]
+
+[[place]]
+slug = "glen-canyon-national-recreation-area"
+kind = "park"
+name = "Glen Canyon National Recreation Area"
+where = ["AZ", "UT"]
+source = "nps"
+source_id = "GLCA"
+source_version = "2026-11-20"
+box = [-111.66, 36.82, -109.95, 38.5]
 
 [[place]]
 slug = "grand-canyon-national-park"
@@ -333,6 +363,16 @@ source = "cpcad"
 source_id = "590000345"
 source_version = "2026-11-20"
 box = [-120.71, 53.79, -120.0, 54.3]
+
+[[place]]
+slug = "katahdin-woods-and-waters-national-monument"
+kind = "park"
+name = "Katahdin Woods and Waters National Monument"
+where = ["ME"]
+source = "nps"
+source_id = "KAWW"
+source_version = "2026-11-20"
+box = [-68.82, 45.83, -68.56, 46.13]
 
 [[place]]
 slug = "killarney-provincial-park"
@@ -988,6 +1028,17 @@ source_version = "2026-11-20"
 box = [-124.43, 40.5, -122.27, 42.72]
 
 [[place]]
+slug = "la-sal-mountains"
+kind = "range"
+name = "La Sal Mountains"
+where = ["CO", "UT"]
+within = ["colorado-plateau"]
+source = "gmba-v2"
+source_id = "11567"
+source_version = "2026-11-20"
+box = [-109.61, 38.05, -108.8, 38.81]
+
+[[place]]
 slug = "longfellow-mountains"
 kind = "range"
 name = "Longfellow Mountains"
@@ -1073,6 +1124,16 @@ source_version = "2026-11-20"
 box = [-118.6, 36.95, -118.25, 37.34]
 
 [[place]]
+slug = "peninsular-ranges"
+kind = "range"
+name = "Peninsular Ranges"
+where = ["CA"]
+source = "gmba-v2"
+source_id = "12446"
+source_version = "2026-11-20"
+box = [-117.81, 22.95, -109.46, 33.92]
+
+[[place]]
 slug = "rocky-mountains"
 kind = "range"
 name = "Rocky Mountains"
@@ -1136,6 +1197,16 @@ source_version = "2026-11-20"
 box = [-111.1, 43.49, -110.69, 44.15]
 
 [[place]]
+slug = "toiyabe-range"
+kind = "range"
+name = "Toiyabe Range"
+where = ["NV"]
+source = "gmba-v2"
+source_id = "12004"
+source_version = "2026-11-20"
+box = [-117.55, 38.47, -116.75, 39.98]
+
+[[place]]
 slug = "transverse-ranges"
 kind = "range"
 name = "Transverse Ranges"
@@ -1155,6 +1226,16 @@ source = "gmba-v2"
 source_id = "12026"
 source_version = "2026-11-20"
 box = [-111.48, 40.12, -108.32, 41.81]
+
+[[place]]
+slug = "vancouver-island-ranges"
+kind = "range"
+name = "Vancouver Island Ranges"
+where = ["BC"]
+source = "gmba-v2"
+source_id = "12033"
+source_version = "2026-11-20"
+box = [-128.33, 48.38, -123.44, 50.86]
 
 [[place]]
 slug = "white-mountains"

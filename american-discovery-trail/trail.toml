@@ -110,6 +110,18 @@ basis = "track"
 km = 9.0
 
 [[place]]
+kind = "park"
+slug = "colorado-national-monument"
+basis = "track"
+km = 24.7
+
+[[place]]
+kind = "park"
+slug = "glen-canyon-national-recreation-area"
+basis = "track"
+km = 26.3
+
+[[place]]
 kind = "range"
 slug = "allegheny-mountains"
 basis = "track"
@@ -123,12 +135,6 @@ km = 119.0
 
 [[place]]
 kind = "range"
-slug = "colorado-plateau"
-basis = "track"
-km = 590.9
-
-[[place]]
-kind = "range"
 slug = "front-range"
 basis = "track"
 km = 302.3
@@ -138,6 +144,12 @@ kind = "range"
 slug = "gore-range"
 basis = "track"
 km = 39.4
+
+[[place]]
+kind = "range"
+slug = "la-sal-mountains"
+basis = "track"
+km = 113.1
 
 [[place]]
 kind = "range"
@@ -156,6 +168,12 @@ kind = "range"
 slug = "sierra-nevada"
 basis = "track"
 km = 261.1
+
+[[place]]
+kind = "range"
+slug = "toiyabe-range"
+basis = "track"
+km = 45.9
 
 [[place]]
 kind = "wilderness"
@@ -279,6 +297,15 @@ outcome = "applied"
 [[history]]
 date = "2026-11-20"
 change = "The trail was placed in Canyonlands National Park, Capitol Reef National Park, Allegheny Mountains, California Coast Ranges, Colorado Plateau, Front Range, Gore Range, Mosquito Range, Sawatch Range, Sierra Nevada, Alta Toquima Wilderness, Arc Dome Wilderness, Bald Knob Wilderness, Clear Springs Wilderness, Collegiate Peaks Wilderness, Crab Orchard Wilderness, Dolly Sods Wilderness, Garden of the Gods Wilderness, Granite Chief Wilderness, Holy Cross Wilderness, Lusk Creek Wilderness, Mt. Rose Wilderness, Panther Den Wilderness, Phillip Burton Wilderness, Table Mountain Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Colorado National Monument, Glen Canyon National Recreation Area, La Sal Mountains, Toiyabe Range and no longer placed in Colorado Plateau."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"

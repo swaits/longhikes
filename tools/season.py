@@ -41,14 +41,18 @@ def check_season(tid, hike, errors):
         errors.append(
             f"{tid}: hike.season_basis must be one of {', '.join(BASES)}, not {basis!r}")
 
-    if basis == "estimate":
+    if has_method:
         method = hike.get("season_method")
-        if not isinstance(method, str) or not method.strip():
-            errors.append(f"{tid}: hike.season_method is required with season_basis \"estimate\"")
+        if basis not in ("estimate", "sources"):
+            errors.append(
+                f"{tid}: hike.season_method is only given with season_basis \"estimate\" "
+                "or \"sources\"")
+        elif not isinstance(method, str) or not method.strip():
+            errors.append(f"{tid}: hike.season_method must not be empty")
         elif len(method) >= 400:
             errors.append(f"{tid}: hike.season_method must be under 400 characters")
-    elif has_method:
-        errors.append(f"{tid}: hike.season_method is only given with season_basis \"estimate\"")
+    elif basis == "estimate":
+        errors.append(f"{tid}: hike.season_method is required with season_basis \"estimate\"")
 
     naming_season = _naming(sources, "season")
     if basis in ("primary", "source"):

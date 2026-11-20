@@ -58,11 +58,19 @@ shape = "loop"
 terrain = ["forest"]
 travel = "trail"
 checked = "2026-11-13"
+season = "May to October (the peak season)"
+months = [5, 6, 7, 8, 9, 10]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.kta-hike.org/quehanna-trail.html"
 publisher = "Keystone Trails Association"
 facts = ["summary", "official_url", "start", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://thetrek.co/the-quehanna-trail-finding-solitude-in-the-pennsylvania-wilds/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "Quehanna Trail"
@@ -86,5 +94,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.kta-hike.org/quehanna-trail.html"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: May to October (the peak season)."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from The Trek's page: May to October (the peak season)."
+basis_url = "https://thetrek.co/the-quehanna-trail-finding-solitude-in-the-pennsylvania-wilds/"
 asked_by = "the dataset's own check"
 outcome = "applied"

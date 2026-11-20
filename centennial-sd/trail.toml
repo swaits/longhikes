@@ -59,6 +59,9 @@ travel = "trail"
 permit = "Rules for backcountry camping, permits and overnight parking vary by agency, so check with each one."
 days = [5, 8]
 checked = "2026-11-19"
+season = "Spring through fall"
+months = [3, 4, 5, 6, 7, 8, 9, 10, 11]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r02/blackhills/recreation/centennial-trailheads-trail-89-central-hills"
@@ -73,7 +76,7 @@ facts = ["high_point"]
 [[hike.source]]
 url = "https://www.treelinereview.com/where-to-go/centennial-trail-south-dakota"
 publisher = "Treeline Review"
-facts = ["days"]
+facts = ["days", "season", "months"]
 
 [[link]]
 title = "South Dakota Centennial Trail"
@@ -105,6 +108,15 @@ date = "2026-11-19"
 change = "The usual time to walk the whole trail, 5 to 8 days, was added."
 fields = ["hike.days"]
 basis = "The page of Treeline Review says: \"Distance: 125 miles Days: 5-8\""
+basis_url = "https://www.treelinereview.com/where-to-go/centennial-trail-south-dakota"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Spring through fall."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from Treeline Review's page: Spring through fall."
 basis_url = "https://www.treelinereview.com/where-to-go/centennial-trail-south-dakota"
 asked_by = "the dataset's own check"
 outcome = "applied"

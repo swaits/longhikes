@@ -476,6 +476,57 @@ asked_by = "the dataset's own check"
 '''
 
 
+SEASON_PROPOSAL = '''
+[[proposal]]
+kind = "change"
+id = "aaa"
+date = "2026-11-30"
+summary = "A season from the club's page."
+
+[[proposal.edit]]
+field = "hike.season"
+new = "Late June to mid-September"
+page = "https://example.org/aaa/season"
+quote = "Hike it from late June through mid-September."
+
+[[proposal.edit]]
+field = "hike.months"
+new = [7, 8, 9]
+page = "https://example.org/aaa/season"
+quote = "Hike it from late June through mid-September."
+
+[[proposal.edit]]
+field = "hike.season_basis"
+new = "primary"
+page = "https://example.org/aaa/season"
+quote = "Hike it from late June through mid-September."
+
+[[proposal.edit]]
+field = "hike.checked"
+old = "2026-11-13"
+new = "2026-11-30"
+page = "https://example.org/aaa/season"
+quote = "Hike it from late June through mid-September."
+
+[[proposal.append]]
+table = "hike.source"
+page = "https://example.org/aaa/season"
+quote = "Hike it from late June through mid-September."
+
+[proposal.append.entry]
+url = "https://example.org/aaa/season"
+publisher = "Example Club"
+facts = ["season", "months"]
+
+[proposal.history]
+change = "The record gained a season."
+basis = "The club's page says: Hike it from late June through mid-September."
+basis_url = "https://example.org/aaa/season"
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+asked_by = "the dataset's own check"
+'''
+
+
 class CollectTest(Tmp):
     def collect(self):
         code, out = main(self.root, "--dir", self.d, "collect")
@@ -728,6 +779,22 @@ class ApplyTest(Tmp):
         self.assertEqual(entry["outcome"], "applied")
         self.assertEqual(entry["asked_by"], "the dataset's own check")
         errors = []
+        H.check_entries("aaa", rec, errors)
+        self.assertEqual(errors, [])
+
+    def test_a_researched_season_proposal_collects_and_applies(self):
+        import validate as V
+        propose(self.d, "season-01", "aaa", SEASON_PROPOSAL)
+        self.collect_accept_all()
+        code, out = self.apply()
+        self.assertEqual(code, 0, out)
+        rec = self.rec("aaa")
+        self.assertEqual(rec["hike"]["season"], "Late June to mid-September")
+        self.assertEqual(rec["hike"]["months"], [7, 8, 9])
+        self.assertEqual(rec["hike"]["season_basis"], "primary")
+        self.assertEqual(rec["hike"]["source"][-1]["facts"], ["season", "months"])
+        errors = []
+        V.season.check_season("aaa", rec["hike"], errors)
         H.check_entries("aaa", rec, errors)
         self.assertEqual(errors, [])
 

@@ -63,6 +63,9 @@ terrain = ["forest"]
 travel = "trail"
 caution = "Much of the trail crosses private land under revocable agreements; camping is allowed only at designated sites and no fires are permitted."
 checked = "2026-11-14"
+season = "June to September"
+months = [6, 7, 8, 9]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.msgtc.org/about/"
@@ -73,6 +76,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "days", "high_point
 url = "https://www.nhstateparks.org/NHStateParks/media/NHStateParks/PDFs/Maps/monadnock-hiking-map_info_3-2026-combined.pdf"
 publisher = "New Hampshire Division of Parks and Recreation"
 facts = ["high_point"]
+
+[[hike.source]]
+url = "https://www.treelinereview.com/where-to-go/monadnock-sunapee-greenway-backpacking-guide"
+publisher = "Treeline Review"
+facts = ["season", "months"]
 
 [[link]]
 title = "Monadnock-Sunapee Greenway"
@@ -96,5 +104,14 @@ change = "The logo record now names where an emblem was looked for and who holds
 fields = ["shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none offers usable artwork of the emblem."
 basis_url = "https://www.msgtc.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: June to September."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from Treeline Review's page: June to September."
+basis_url = "https://www.treelinereview.com/where-to-go/monadnock-sunapee-greenway-backpacking-guide"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -58,6 +58,9 @@ terrain = ["forest", "canyon"]
 travel = "trail"
 days = [4, 7]
 checked = "2026-11-19"
+season = "Spring and autumn (April-May, September-November)"
+months = [4, 5, 9, 10, 11]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r03/tonto/recreation/trails/highline"
@@ -68,6 +71,11 @@ facts = ["official_url", "summary", "start", "shape", "terrain", "travel"]
 url = "https://www.arizonahighways.com/archive/issues/chapter/Doc.825.Chapter.5"
 publisher = "Arizona Highways"
 facts = ["days"]
+
+[[hike.source]]
+url = "https://outdoorpilgrim.com/highline-overview/"
+publisher = "Outdoor Pilgrim"
+facts = ["season", "months"]
 
 [[link]]
 title = "Arizona Highline Trail"
@@ -119,4 +127,13 @@ fields = ["source.line_file", "source.status", "source.publisher", "source.publi
 basis = "The Forest Service layer (trail 31, HIGHLINE, 13 features) covers the whole route from Pine to the east end but holds only 71.5 km of it in 3 parts, with two gaps, against 93.2 km on the relation along the same route and 11.5% less than its own milepost span of 50.2 miles. It holds no other trail number or name for the Highline, so no missing stretch could be completed from it. The relation is one piece with the Forest Service named as operator."
 basis_url = "https://www.fs.usda.gov/r03/tonto/recreation/trails/highline"
 asked_by = "the dataset's owner"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Spring and autumn (April-May, September-November)."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from Outdoor Pilgrim's page: Spring and autumn (April-May, September-November)."
+basis_url = "https://outdoorpilgrim.com/highline-overview/"
+asked_by = "the dataset's own check"
 outcome = "applied"

@@ -958,10 +958,11 @@ def apply(proposal_path, root, today, exclude=frozenset()):
     names = {(v["kind"], v["slug"]): v["name"] for v in per_place.values()}
     written = []
     named = set()
+    trackless = set(data.get("no_track") or [])
     for tid in sorted(data.get("per_trail") or {}):
         tdir = os.path.join(root, tid)
-        if not os.path.isfile(os.path.join(tdir, "trail.toml")):
-            continue
+        if tid in trackless or not os.path.isfile(os.path.join(tdir, "trail.toml")):
+            continue  # a trail with no track is placed by a person (stated, stamp)
         doc, path = _doc_of(root, tid)
         rec = doc.data()
         new_places = [p for p in data["per_trail"][tid]

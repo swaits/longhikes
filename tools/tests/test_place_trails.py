@@ -421,6 +421,12 @@ class ApplyTest(unittest.TestCase):
             if line.strip():
                 self.assertIn(line, after.splitlines(), line)
 
+    def test_apply_leaves_a_trail_with_no_track_alone_for_a_person_to_place(self):
+        before = open(self.trail_toml("zz"), "rb").read()
+        written = P.apply(self.pjson, self.root, "2026-11-20")
+        self.assertNotIn("zz", written)
+        self.assertEqual(open(self.trail_toml("zz"), "rb").read(), before)
+
     def test_apply_adds_one_history_entry_naming_place_with_no_distance_in_it(self):
         P.apply(self.pjson, self.root, "2026-11-20")
         data = read_toml(self.trail_toml("aa"))

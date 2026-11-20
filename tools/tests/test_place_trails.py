@@ -197,6 +197,40 @@ class ProposalTest(unittest.TestCase):
         touching = outline("wilderness", "3", "Bear Wilderness", self.range.geometry, hint=["WY"])
         self.assertEqual(len(P.merge_same_name([a, touching])), 1)
 
+    def test_a_wilderness_with_a_parks_exact_trails_and_a_matching_name_is_not_listed(self):
+        wild = outline("wilderness", "W1", "Alpha Wilderness", self.park.geometry)
+        wild.source = "wilderness-connect"
+        records = [rec("a", ["WY"], self.park_only), rec("b", ["WY"], self.park_only),
+                   rec("c", ["WY"], self.park_only)]
+        p = P.propose(records, [self.park, wild])
+        self.assertIn(("park", "alpha-park"), p.per_place)
+        self.assertNotIn(("wilderness", "alpha-wilderness"), p.per_place)
+        self.assertTrue(all(k[0] != "wilderness" for k, _ in p.per_trail["a"]))
+        self.assertEqual([n for n in p.near if n.key[0] == "wilderness"], [])
+
+    def test_the_joined_park_and_its_hyphenated_wilderness_are_one_page(self):
+        sets = {("park", "sequoia-and-kings-canyon"): {"a", "b", "c"},
+                ("wilderness", "sequoia-kings-canyon-wilderness"): {"a", "b", "c"},
+                ("wilderness", "john-muir-wilderness"): {"a", "b", "c"}}
+        names = {("park", "sequoia-and-kings-canyon"): "Sequoia and Kings Canyon",
+                 ("wilderness", "sequoia-kings-canyon-wilderness"): "Sequoia-Kings Canyon Wilderness",
+                 ("wilderness", "john-muir-wilderness"): "John Muir Wilderness"}
+        self.assertEqual(P.doubled_places(sets, names), {("wilderness", "sequoia-kings-canyon-wilderness")})
+
+    def test_a_wilderness_with_more_or_fewer_trails_than_the_park_is_kept(self):
+        names = {("park", "alpha"): "Alpha National Park", ("wilderness", "alpha-wilderness"): "Alpha Wilderness"}
+        sets = {("park", "alpha"): {"a", "b"}, ("wilderness", "alpha-wilderness"): {"a"}}
+        self.assertEqual(P.doubled_places(sets, names), set())
+        sets[("wilderness", "alpha-wilderness")] = {"a", "b", "c"}
+        self.assertEqual(P.doubled_places(sets, names), set())
+
+    def test_a_check_counts_stated_trails_too_when_it_finds_a_doubled_page(self):
+        names = {("park", "alpha"): "Alpha National Park", ("wilderness", "alpha-wilderness"): "Alpha Wilderness"}
+        tracked = {("park", "alpha"): {"a", "b"}, ("wilderness", "alpha-wilderness"): {"a", "b"}}
+        self.assertEqual(len(P.doubled_places(tracked, names)), 1)
+        stated = {("park", "alpha"): {"a", "b", "z"}, ("wilderness", "alpha-wilderness"): {"a", "b"}}
+        self.assertEqual(P.doubled_places(stated, names), set())
+
     def test_a_slug_collision_inside_a_kind_gets_the_state_code(self):
         a = outline("park", "P1", "Glacier", self.park.geometry, slug=None, hint=["MT"])
         b = outline("park", "P2", "Glacier", self.range.geometry, slug=None, hint=["BC"])

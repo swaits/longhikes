@@ -639,6 +639,15 @@ def propose(records, outlines):
         hit.trails.sort(key=lambda t: (-t[1], t[0]))
         hit.page = len(hit.trails) >= 3
         hit.where = where_of(hit.outline)
+    sets = {k: {t for t, _km in h.trails} for k, h in p.per_place.items()}
+    names = {k: h.outline.name for k, h in p.per_place.items()}
+    gone = doubled_places(sets, names)
+    for k in gone:
+        del p.per_place[k]
+    if gone:
+        for tid in p.per_trail:
+            p.per_trail[tid] = [(k, km) for k, km in p.per_trail[tid] if k not in gone]
+        p.near = [n for n in p.near if n.key not in gone]
     # Parents are never stored on a record (the build closes membership over within):
     # a range drops out of a trail's list when the trail is also in one of its
     # descendants, by the GMBA Path. Place counts stay as measured.
@@ -656,6 +665,32 @@ def propose(records, outlines):
         lst.sort(key=lambda t: (-t[1], t[0]))
     p.near.sort(key=lambda x: (abs(x.km - MIN_KM), x.trail))
     return p
+
+
+_NAME_FILLER = {"national", "park", "wilderness", "area", "preserve", "and", "the", "of"}
+
+
+def _core_name(name):
+    return {w for w in re.split(r"[^a-z0-9]+", name.lower()) if w and w not in _NAME_FILLER}
+
+
+def doubled_places(sets, names):
+    """Wilderness areas that would be a second page for a park: same trails exactly, and
+    one name's words contain the other's (Sequoia-Kings Canyon Wilderness beside Sequoia
+    and Kings Canyon). The park is kept; the wilderness is returned. sets is
+    {(kind, slug): set of trail ids}, tracked and stated together; names {(kind, slug): name}."""
+    drop = set()
+    for wk, wset in sets.items():
+        if wk[0] != "wilderness" or not wset:
+            continue
+        wc = _core_name(names.get(wk, wk[1]))
+        for pk, pset in sets.items():
+            if pk[0] != "park" or pset != wset:
+                continue
+            pc = _core_name(names.get(pk, pk[1]))
+            if wc and pc and (wc <= pc or pc <= wc):
+                drop.add(wk)
+    return drop
 
 
 def range_candidates(records, all_ranges, allowlisted=()):
@@ -1022,6 +1057,15 @@ def check(root, cache, outlines=None, versions=None, records=None):
         if was != now:
             diffs.append(f"{k[0]}/{k[1]}: crossed the 3-trail line "
                          f"({'up to' if now else 'down to'} {new_counts.get(k, 0)} trails)")
+    final, shown = {}, {}
+    for e in registry_entries(root):
+        shown[(e.get("kind"), e.get("slug"))] = e.get("name") or e.get("slug")
+    for r in records:
+        for pl in (r.get("rec") or {}).get("place") or []:
+            final.setdefault((pl.get("kind"), pl.get("slug")), set()).add(r["id"])
+    for k in sorted(doubled_places(final, shown)):
+        diffs.append(f"{k[0]}/{k[1]}: holds exactly the trails of a park of the same name; "
+                     f"list the park only")
     for e in registry_entries(root):
         v = versions.get(e.get("source"))
         if v and e.get("source_version") and e["source_version"] != v:

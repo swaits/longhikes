@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Cam Honan, walked 2011); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -97,6 +98,18 @@ title = "Southeast Serpentine Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Southeast_Serpentine_Trail"
 
+[[place]]
+kind = "park"
+slug = "great-smoky-mountains-national-park"
+basis = "stated"
+source = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
+
+[[place]]
+kind = "range"
+slug = "blue-ridge-mountains"
+basis = "stated"
+source = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -131,6 +144,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Cam Honan, The Hiking Life (the route's author) as: All year."
+basis_url = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Great Smoky Mountains National Park and Blue Ridge Mountains from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"It joins the Foothills Trail, the Bartram Trail, the Appalachian Trail through the Great Smoky Mountains and the Benton MacKaye Trail.\""
 basis_url = "https://thehikinglife.com/2016/07/southeastern-serpentine-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

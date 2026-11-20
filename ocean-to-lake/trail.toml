@@ -11,6 +11,8 @@ length_note = "about 61.4 mi, from the Florida Trail Association Loxahatchee Cha
 tier = "regional"
 designation = "Florida Trail Association, Loxahatchee Chapter"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "e46c1143c8efb9e5"
 
 [source]
 status = "osm-only"

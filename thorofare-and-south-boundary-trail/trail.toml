@@ -9,6 +9,8 @@ length_note = "68 mi, as Frommer's gives it for the point-to-point hike on the T
 tier = "regional"
 designation = "Two National Park Service trails in Yellowstone National Park, the Thorofare Trail and the South Boundary Trail, walked end to end as one hike"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "7ed4833808b1c117"
 
 [source]
 status = "verified"
@@ -104,6 +106,24 @@ url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Pub
 publisher = "National Park Service (public Trails dataset: the ends of the track)"
 facts = ["start_lonlat", "end_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "yellowstone-national-park"
+basis = "track"
+km = 99.4
+
+[[place]]
+kind = "range"
+slug = "absaroka-range"
+basis = "track"
+km = 33.5
+
+[[place]]
+kind = "wilderness"
+slug = "teton-wilderness"
+basis = "track"
+km = 11.1
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -131,5 +151,13 @@ change = "The season is recorded as coming from one page that is not the trail's
 fields = ["hike.season_basis"]
 basis = "The season is stated by Frommer's as: Mid-July to early September."
 basis_url = "https://www.frommers.com/destinations/yellowstone-national-park/exploring-the-backcountry/hiking-trails"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Yellowstone National Park, Absaroka Range, Teton Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

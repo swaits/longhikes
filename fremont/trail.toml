@@ -9,6 +9,8 @@ length_note = "134 mi, from the Forest Service's National Recreation Trail appli
 tier = "regional"
 designation = "National Recreation Trail #160 (Forest Service, Fremont-Winema National Forest)"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "ffcbf207510a8005"
 
 [source]
 status = "verified"

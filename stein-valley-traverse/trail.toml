@@ -9,6 +9,8 @@ length_note = "80 km from the east park boundary to the west park boundary, from
 tier = "regional"
 designation = "BC Parks (Stein Valley Nlaka'pamux Heritage Park), co-managed with the Lytton First Nation"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "a80bdee2141886d1"
 
 [source]
 status = "osm-only"
@@ -79,6 +81,18 @@ url = "https://nrs.objectstore.gov.bc.ca/kuwyyf/stein_valley_brochure_d174525f71
 publisher = "BC Parks"
 facts = ["summary", "start", "end", "shape", "permit"]
 
+[[place]]
+kind = "park"
+slug = "stein-valley-nlakapamux-heritage-park"
+basis = "track"
+km = 65.6
+
+[[place]]
+kind = "range"
+slug = "coast-mountains"
+basis = "track"
+km = 89.0
+
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
@@ -102,6 +116,15 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://bcparks.ca/stein-valley-nlakapamux-heritage-park/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Stein Valley Nlaka'Pamux Heritage Park, Coast Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20), the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

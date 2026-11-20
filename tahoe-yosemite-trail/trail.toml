@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Thomas Winnett, 1970); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -107,6 +108,48 @@ title = "Tahoe-Yosemite Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Tahoe-Yosemite_Trail"
 
+[[place]]
+kind = "park"
+slug = "yosemite-national-park"
+basis = "stated"
+source = "https://shop.adventurewithkeen.com/wilderness-press/"
+
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "stated"
+source = "https://shop.adventurewithkeen.com/wilderness-press/"
+
+[[place]]
+kind = "wilderness"
+slug = "carson-iceberg-wilderness"
+basis = "stated"
+source = "https://en.wikipedia.org/wiki/Tahoe%E2%80%93Yosemite_Trail"
+
+[[place]]
+kind = "wilderness"
+slug = "desolation-wilderness"
+basis = "stated"
+source = "https://en.wikipedia.org/wiki/Tahoe%E2%80%93Yosemite_Trail"
+
+[[place]]
+kind = "wilderness"
+slug = "emigrant-wilderness"
+basis = "stated"
+source = "https://en.wikipedia.org/wiki/Tahoe%E2%80%93Yosemite_Trail"
+
+[[place]]
+kind = "wilderness"
+slug = "mokelumne-wilderness"
+basis = "stated"
+source = "https://en.wikipedia.org/wiki/Tahoe%E2%80%93Yosemite_Trail"
+
+[[place]]
+kind = "wilderness"
+slug = "yosemite-wilderness"
+basis = "stated"
+source = "https://shop.adventurewithkeen.com/wilderness-press/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -133,6 +176,15 @@ change = "The guide's link now goes to a library record for the 5th edition (198
 fields = ["guide", "hike.official_url", "hike.source"]
 basis = "The Open Library record gives The Tahoe-Yosemite Trail, Thomas Winnett, 5th edition, Wilderness Press, 1987, 130 pages, ISBN 0899970842."
 basis_url = "https://openlibrary.org/books/OL2377803M"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Yosemite National Park, Sierra Nevada, Carson-Iceberg Wilderness, Desolation Wilderness, Emigrant Wilderness, Mokelumne Wilderness and Yosemite Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Tahoe-Yosemite Trail is Thomas Winnett's route through California's Sierra Nevada from Meeks Bay at Lake Tahoe to Tuolumne Meadows in Yosemite National Park.\" (Yosemite National Park, Sierra Nevada, Yosemite Wilderness) The page says: \"The trail is a foot and equestrian path that passes through the Desolation, Mokelumne, Carson-Iceberg, Emigrant, and Yosemite Wilderness Areas\" (Carson-Iceberg Wilderness, Desolation Wilderness, Emigrant Wilderness, Mokelumne Wilderness)"
+basis_url = "https://shop.adventurewithkeen.com/wilderness-press/"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

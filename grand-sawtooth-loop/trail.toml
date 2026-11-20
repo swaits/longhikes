@@ -9,6 +9,7 @@ length_note = "70 mi, as the Sawtooth Association gives it: its page says \"roun
 tier = "regional"
 designation = "A named loop that joins designated Forest Service trails in the Sawtooth Wilderness, Idaho, and that the Sawtooth Association among others publishes under this name; the loop itself is not one designated trail"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -90,6 +91,18 @@ url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/Ma
 publisher = "USDA Forest Service, National Forest System trails (the start of the South Fork Payette River trail at Grandjean)"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "sawtooth-range"
+basis = "stated"
+source = "https://www.cleverhiker.com/backpacking/a-complete-guide-to-hiking-the-grand-sawtooth-loop/"
+
+[[place]]
+kind = "wilderness"
+slug = "sawtooth-wilderness"
+basis = "stated"
+source = "https://www.cleverhiker.com/backpacking/a-complete-guide-to-hiking-the-grand-sawtooth-loop/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -116,6 +129,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from one page that is not the trail's own."
 fields = ["hike.season_basis"]
 basis = "The season is stated by CleverHiker as: Mid-July to mid-September."
+basis_url = "https://www.cleverhiker.com/backpacking/a-complete-guide-to-hiking-the-grand-sawtooth-loop/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sawtooth Range and Sawtooth Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Grand Sawtooth Loop is a backpacking loop in the Sawtooth Wilderness of central Idaho\" (Sawtooth Range) The trail's own description says: \"The Grand Sawtooth Loop is a backpacking loop in the Sawtooth Wilderness of central Idaho, starting and ending at the Grandjean Campground Trailhead.\" (Sawtooth Wilderness)"
 basis_url = "https://www.cleverhiker.com/backpacking/a-complete-guide-to-hiking-the-grand-sawtooth-loop/"
 asked_by = "the dataset's own check"
 outcome = "applied"

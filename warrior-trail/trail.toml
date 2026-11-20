@@ -9,6 +9,7 @@ length_note = "67 mi, from the Greene County Tourist Promotion Agency page"
 tier = "regional"
 designation = "Warrior Trail Association (formed 1966)"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -75,6 +76,12 @@ url = "https://www.usgs.gov/us-board-on-geographic-names/domestic-names"
 publisher = "U.S. Geological Survey, Geographic Names Information System (GNIS 1176170 Greensboro, PA; 1543607 Moundsville, WV)"
 facts = ["start_lonlat", "end_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "allegheny-plateau"
+basis = "stated"
+source = "https://visitgreene.org/?p=1265"
+
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
@@ -96,6 +103,15 @@ date = "2026-11-16"
 change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://visitgreene.org/?p=1265"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Allegheny Plateau from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Warrior Trail crosses the ridges of Greene County in southwestern Pennsylvania and runs on into the northern panhandle of West Virginia.\""
 basis_url = "https://visitgreene.org/?p=1265"
 asked_by = "the dataset's own check"
 outcome = "applied"

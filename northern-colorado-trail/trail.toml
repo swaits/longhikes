@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Kevin Silvernale); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -110,6 +111,24 @@ url = "https://www.northerncoloradotrail.org/noco-trail-blog/when-is-the-best-ti
 publisher = "Northern Colorado Trail association"
 facts = ["season", "months"]
 
+[[place]]
+kind = "park"
+slug = "rocky-mountain-national-park"
+basis = "stated"
+source = "https://www.northerncoloradotrail.org/"
+
+[[place]]
+kind = "range"
+slug = "front-range"
+basis = "stated"
+source = "https://www.northerncoloradotrail.org/"
+
+[[place]]
+kind = "wilderness"
+slug = "flat-tops-wilderness"
+basis = "stated"
+source = "https://www.northerncoloradotrail.org/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -164,5 +183,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Northern Colorado Trail association as: Mid-June to late September."
 basis_url = "https://www.northerncoloradotrail.org/noco-trail-blog/when-is-the-best-time-to-hike-the-northern-colorado-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Rocky Mountain National Park, Front Range and Flat Tops Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Northern Colorado Trail crosses northern Colorado from Estes Park to Glenwood Springs. The author counts 304.4 miles in four segments through Rocky Mountain National Park and the Flat Tops Wilderness, with the towns of Walden, Steamboat Springs, Oak Creek and Yampa between the ends.\" (Rocky Mountain National Park, Flat Tops Wilderness) The trail's own description says: \"The Northern Colorado Trail crosses northern Colorado from Estes Park to Glenwood Springs.\" (Front Range)"
+basis_url = "https://www.northerncoloradotrail.org/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Eric Poulin, 2017); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -86,6 +87,18 @@ url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/388386"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "sawtooth-range"
+basis = "stated"
+source = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
+
+[[place]]
+kind = "wilderness"
+slug = "sawtooth-wilderness"
+basis = "stated"
+source = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
+
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
@@ -117,6 +130,15 @@ change = "The route's creator is now named as Eric Poulin, where the record had 
 fields = ["route.creator", "designation", "source.publisher", "guide.author", "shield.contact", "shield.logo_owner"]
 basis = "The author of Seeking Lost names himself as Eric Poulin in the description of his own Seeking Lost channel on YouTube and in a published interview, and this dataset already credits him by name for his other two routes on the same site, the Basin and Range Trail and the Mojave-Sonoran Trail."
 basis_url = "https://voyagedenver.com/interview/check-out-eric-poulins-story/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sawtooth Range and Sawtooth Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"This Sawtooth Wilderness high route loops from the Tin Cup Trailhead at Pettit Lake in Idaho, staying as high as possible among the range's lakes and passes.\""
+basis_url = "https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

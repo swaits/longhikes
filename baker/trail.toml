@@ -9,6 +9,8 @@ length_note = "134 mi, from the Keystone Trails Association page"
 tier = "regional"
 designation = "Rachel Carson Trails Conservancy"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "a6edb52baa390460"
 
 [source]
 status = "osm-only"

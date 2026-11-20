@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Alan Dixon and Don Wilson, 2014); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -96,6 +97,30 @@ url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/270626"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon-national-parks"
+basis = "stated"
+source = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
+
+[[place]]
+kind = "range"
+slug = "palisades"
+basis = "stated"
+source = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
+
+[[place]]
+kind = "wilderness"
+slug = "john-muir-wilderness"
+basis = "stated"
+source = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
+
+[[place]]
+kind = "wilderness"
+slug = "sequoia-kings-canyon-wilderness"
+basis = "stated"
+source = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -121,6 +146,15 @@ date = "2026-11-20"
 change = "The record now has a season: Early July to mid-September."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from Adventure Alan's page: Early July to mid-September."
+basis_url = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sequoia and Kings Canyon National Parks, Palisades, John Muir Wilderness and Sequoia-Kings Canyon Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"SoSHR vs. JMT — Basic stats from LeConte Canyon to Whitney Portal ... portions of the route that are most susceptible to holding late snow include Mather Pass, Grasshopper Pass, some parts of the Wallace Creek Valley\" (Sequoia and Kings Canyon National Parks) The page says: \"It starts high in the Palisades, the most rugged sub-range in the Sierra\" (Palisades) The page says: \"The route enters at Bishop Pass, joins the SHR in Dusy Basin, and then winds through lovely and complex Palisade Basin.\" (John Muir Wilderness) The page says: \"SoSHR vs. JMT — Basic stats from LeConte Canyon to Whitney Portal\" (Sequoia-Kings Canyon Wilderness)"
 basis_url = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
 asked_by = "the dataset's own check"
 outcome = "applied"

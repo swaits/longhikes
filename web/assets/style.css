@@ -2113,7 +2113,11 @@ td .linklist a { font-weight: 400; }
 /* Below the two-column page the panel shows its first facts, so the map is on the first screen;
    a button opens the rest. Without JavaScript every fact shows and the button is not offered. */
 .glance__toggle { display: none; }
+/* The place links also stand alone at the foot of the page on a narrow screen, where the glance
+   keeps the Where row behind its button; on a wide one the glance shows them. */
+.trail-places { display: none; margin-block-start: 0; margin-block-end: var(--space-6); }
 @media (max-width: 63.99rem) {
+  html.js .trail-places { display: block; }
   html.js .glance:not([data-all]) .glance__facts > div:nth-child(n+5),
   html.js .glance:not([data-all]) > .note { display: none; }
   html.js .glance__toggle {

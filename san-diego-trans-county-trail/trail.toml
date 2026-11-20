@@ -13,6 +13,7 @@ tier = "regional"
 designation = "Route built in the 2000s by the Sea to Sea Trail Foundation (since folded) with agencies; current guide by Liz Thomas, Treeline Review"
 wave = "held"
 wave_note = "No living holder or author is settled. The Sea to Sea Trail Foundation built it with the US Forest Service and the City of Poway and the Counties of San Diego, and has since folded. The Treeline Review guide (Liz Thomas, dated 2026-08-29) calls it a route and not a trail, and says its tracks and maps are kept by a Facebook group and are subject to change."
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -96,6 +97,12 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=R&osmid=71025
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Torrey Pines State Beach, OpenStreetMap relation 7102568"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "peninsular-ranges"
+basis = "stated"
+source = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -139,6 +146,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from one page that is not the trail's own."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Liz Thomas, Treeline Review (author of the current guide) as: November to February."
+basis_url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Peninsular Ranges from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"montane chaparral, pine, and cedar forests of the Peninsular range\""
 basis_url = "https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -9,6 +9,8 @@ length_note = "125 mi, from the Southampton Trails Preservation Society history 
 tier = "regional"
 designation = "Long Island volunteer trail groups: Long Island Greenbelt Trail Conference (Rocky Point to Hampton Bays) and Southampton Trails Preservation Society"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "798638e3c12c3920"
 
 [source]
 status = "osm-only"

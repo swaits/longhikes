@@ -11,6 +11,8 @@ length_note = "about 900 mi published"
 tier = "regional"
 designation = "State of Idaho trail"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "de76008f8f995eca"
 
 [source]
 status = "osm-only"
@@ -86,6 +88,30 @@ title = "Idaho Centennial Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Idaho_Centennial_Trail"
 
+[[place]]
+kind = "range"
+slug = "rocky-mountains"
+basis = "track"
+km = 277.4
+
+[[place]]
+kind = "range"
+slug = "selkirk-mountains"
+basis = "track"
+km = 15.2
+
+[[place]]
+kind = "wilderness"
+slug = "gospel-hump-wilderness"
+basis = "track"
+km = 20.1
+
+[[place]]
+kind = "wilderness"
+slug = "selway-bitterroot-wilderness"
+basis = "track"
+km = 14.4
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -121,5 +147,13 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Idaho Department of Parks and Recreation as: South-to-north hikes start in early June and finish by late September or early October."
 basis_url = "https://parksandrecreation.idaho.gov/wp-content/uploads/activities/hiking/Centennial-guide.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Rocky Mountains, Selkirk Mountains, Gospel-Hump Wilderness, Selway-Bitterroot Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

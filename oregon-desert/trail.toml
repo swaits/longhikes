@@ -12,6 +12,7 @@ tier = "regional"
 designation = "Oregon Natural Desert Association route; no formal designation"
 wave = "held"
 wave_note = "It is an association route with no formal designation."
+places_checked = "2026-11-20"
 
 [source]
 status = "osm-only"
@@ -102,6 +103,12 @@ title = "Oregon Desert Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Oregon_Desert_Trail"
 
+[[place]]
+kind = "wilderness"
+slug = "steens-mountain-wilderness"
+basis = "stated"
+source = "https://onda.org/regions/oregon-desert-trail/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -164,5 +171,14 @@ change = "The record now has a season: Spring starts from mid-May, fall starts f
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from the pages of Treeline Review and The Trek: Spring starts from mid-May, fall starts from mid-September."
 basis_url = "https://www.treelinereview.com/where-to-go/oregon-desert-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Steens Mountain Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Several existing trail systems provided the backbone of the ODT including the Fremont National Recreation Trail, Steens Mountain Wilderness trails, and the Desert Trail.\""
+basis_url = "https://onda.org/regions/oregon-desert-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

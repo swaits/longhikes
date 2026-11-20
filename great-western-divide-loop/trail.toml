@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Brian Lucido, 2013); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -93,6 +94,18 @@ url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
 publisher = "Brian Lucido"
 facts = ["shape"]
 
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon-national-parks"
+basis = "stated"
+source = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
+
+[[place]]
+kind = "wilderness"
+slug = "sequoia-kings-canyon-wilderness"
+basis = "stated"
+source = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
+
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
@@ -133,6 +146,15 @@ change = "The official site is now the route's author's own page for the loop. I
 fields = ["hike.official_url", "hike.source"]
 basis = "The record's own guide and source entries already cite the author's page for the Sequoia Great Western Divide Loop; the National Park Service page is about the High Sierra Trail. The author's page refused a plain request (403), so it could not be re-read."
 basis_url = "https://www.brianlucido.com/sequoia-great-western-divide-loop/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sequoia and Kings Canyon National Parks and Sequoia-Kings Canyon Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Sequoia Great Western Divide Loop is a backpacking loop from Crescent Meadow in Sequoia National Park that crosses the Great Western Divide at Kaweah Gap, past Precipice Lake and the Hamilton Lakes.\" (Sequoia and Kings Canyon National Parks) The page says: \"To hike the High Sierra Trail, please obtain a Wilderness permit for the High Sierra Trail.\" (Sequoia-Kings Canyon Wilderness)"
+basis_url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

@@ -13,6 +13,8 @@ system_note = "both the northern and southern routes across the Midwest"
 tier = "regional"
 designation = "National Millennium Trail (2000); American Discovery Trail Society; not a National Scenic Trail"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "89a681bebecfd474"
 
 [source]
 status = "osm-only"
@@ -103,6 +105,163 @@ url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
 publisher = "The Trek"
 facts = ["season", "months"]
 
+[[place]]
+kind = "park"
+slug = "canyonlands-national-park"
+basis = "track"
+km = 33.6
+
+[[place]]
+kind = "park"
+slug = "capitol-reef-national-park"
+basis = "track"
+km = 9.0
+
+[[place]]
+kind = "park"
+slug = "colorado-national-monument"
+basis = "track"
+km = 24.7
+
+[[place]]
+kind = "park"
+slug = "glen-canyon-national-recreation-area"
+basis = "track"
+km = 26.3
+
+[[place]]
+kind = "range"
+slug = "allegheny-mountains"
+basis = "track"
+km = 61.0
+
+[[place]]
+kind = "range"
+slug = "california-coast-ranges"
+basis = "track"
+km = 119.0
+
+[[place]]
+kind = "range"
+slug = "front-range"
+basis = "track"
+km = 302.3
+
+[[place]]
+kind = "range"
+slug = "la-sal-mountains"
+basis = "track"
+km = 113.1
+
+[[place]]
+kind = "range"
+slug = "sawatch-range"
+basis = "track"
+km = 114.2
+
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "track"
+km = 261.1
+
+[[place]]
+kind = "range"
+slug = "toiyabe-range"
+basis = "track"
+km = 45.9
+
+[[place]]
+kind = "wilderness"
+slug = "alta-toquima-wilderness"
+basis = "track"
+km = 11.5
+
+[[place]]
+kind = "wilderness"
+slug = "arc-dome-wilderness"
+basis = "track"
+km = 27.7
+
+[[place]]
+kind = "wilderness"
+slug = "bald-knob-wilderness"
+basis = "track"
+km = 4.6
+
+[[place]]
+kind = "wilderness"
+slug = "clear-springs-wilderness"
+basis = "track"
+km = 7.7
+
+[[place]]
+kind = "wilderness"
+slug = "collegiate-peaks-wilderness"
+basis = "track"
+km = 9.6
+
+[[place]]
+kind = "wilderness"
+slug = "crab-orchard-wilderness"
+basis = "track"
+km = 3.1
+
+[[place]]
+kind = "wilderness"
+slug = "dolly-sods-wilderness"
+basis = "track"
+km = 7.4
+
+[[place]]
+kind = "wilderness"
+slug = "garden-of-the-gods-wilderness"
+basis = "track"
+km = 9.2
+
+[[place]]
+kind = "wilderness"
+slug = "granite-chief-wilderness"
+basis = "track"
+km = 20.0
+
+[[place]]
+kind = "wilderness"
+slug = "holy-cross-wilderness"
+basis = "track"
+km = 8.9
+
+[[place]]
+kind = "wilderness"
+slug = "lusk-creek-wilderness"
+basis = "track"
+km = 13.7
+
+[[place]]
+kind = "wilderness"
+slug = "mt-rose-wilderness"
+basis = "track"
+km = 11.5
+
+[[place]]
+kind = "wilderness"
+slug = "panther-den-wilderness"
+basis = "track"
+km = 5.2
+
+[[place]]
+kind = "wilderness"
+slug = "phillip-burton-wilderness"
+basis = "track"
+km = 10.6
+
+[[place]]
+kind = "wilderness"
+slug = "table-mountain-wilderness"
+basis = "track"
+km = 20.3
+
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -138,5 +297,23 @@ change = "The record now has a season: Spring to fall."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from The Trek's page: Spring to fall."
 basis_url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in 23 places (2 parks, 6 ranges and 15 wilderness areas), all listed in the record."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Colorado National Monument, Glen Canyon National Recreation Area, La Sal Mountains, Toiyabe Range and no longer placed in Colorado Plateau."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

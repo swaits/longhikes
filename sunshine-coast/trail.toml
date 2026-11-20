@@ -11,6 +11,8 @@ length_note = "180 km published"
 tier = "regional"
 designation = "Powell River Sunshine Coast Trail Society (Recreation Sites and Trails BC)"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "4406d7615d696ffd"
 
 [source]
 status = "osm-only"
@@ -100,6 +102,24 @@ title = "Sunshine Coast Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Sunshine_Coast_Trail"
 
+[[place]]
+kind = "park"
+slug = "inland-lake-park"
+basis = "track"
+km = 18.1
+
+[[place]]
+kind = "park"
+slug = "malaspina-park"
+basis = "track"
+km = 12.3
+
+[[place]]
+kind = "range"
+slug = "coast-mountains"
+basis = "track"
+km = 145.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -144,5 +164,14 @@ change = "The record now has a season: Late May to early October."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from the pages of Explore Magazine and BritishColumbia.com: Late May to early October."
 basis_url = "https://explore-mag.com/thru-hiking-the-sunshine-coast-trail-in-beautiful-bc/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Inland Lake Park, Malaspina Park, Coast Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20), the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
 asked_by = "the dataset's own check"
 outcome = "applied"

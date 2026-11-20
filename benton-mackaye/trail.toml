@@ -11,6 +11,8 @@ length_note = "288 mi"
 tier = "regional"
 designation = "Benton MacKaye Trail Association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "ae87475de83cda4f"
 
 [source]
 status = "osm-only"
@@ -88,6 +90,42 @@ title = "Benton MacKaye Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Benton_MacKaye_Trail"
 
+[[place]]
+kind = "park"
+slug = "great-smoky-mountains-national-park"
+basis = "track"
+km = 147.1
+
+[[place]]
+kind = "wilderness"
+slug = "big-frog-wilderness"
+basis = "track"
+km = 8.9
+
+[[place]]
+kind = "wilderness"
+slug = "cohutta-wilderness"
+basis = "track"
+km = 11.2
+
+[[place]]
+kind = "wilderness"
+slug = "joyce-kilmer-slickrock-wilderness"
+basis = "track"
+km = 13.4
+
+[[place]]
+kind = "wilderness"
+slug = "little-frog-mountain-wilderness"
+basis = "track"
+km = 5.6
+
+[[place]]
+kind = "wilderness"
+slug = "upper-bald-river-wilderness"
+basis = "track"
+km = 16.9
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -114,5 +152,13 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Benton MacKaye Trail Association as: Spring or autumn."
 basis_url = "https://bmta.org/blog/thru-hiking-the-benton-mackaye-trail-embrace-the-wilderness"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Great Smoky Mountains National Park, Big Frog Wilderness, Cohutta Wilderness, Joyce Kilmer-Slickrock Wilderness, Little Frog Mountain Wilderness, Upper Bald River Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

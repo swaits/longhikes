@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Andrew Skurka); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -106,6 +107,30 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=45276
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Milner Pass, OpenStreetMap node 4527663577"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "rocky-mountain-national-park"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/pfiffner-traverse-colorado-rockies/"
+
+[[place]]
+kind = "range"
+slug = "front-range"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/pfiffner-traverse-colorado-rockies/"
+
+[[place]]
+kind = "wilderness"
+slug = "indian-peaks-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/pfiffner-traverse-colorado-rockies/"
+
+[[place]]
+kind = "wilderness"
+slug = "james-peak-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/pfiffner-traverse-colorado-rockies/"
+
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
@@ -146,6 +171,15 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Pfiffner Traverse Guide -- Download\"."
 basis_url = "https://andrewskurka.com/product/pfiffner-traverse-guide-maps/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Rocky Mountain National Park, Front Range, Indian Peaks Wilderness and James Peak Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"The Pfiffner Traverse is a 77-mile backpacking high route that follows the Continental Divide and the crest of Colorado's Front Range between Berthoud Pass and Trail Ridge Road, passing through the James Peak and Indian Peaks Wilderness Areas, and Rocky Mountain National Park.\""
+basis_url = "https://andrewskurka.com/adventures/pfiffner-traverse-colorado-rockies/"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

@@ -9,6 +9,8 @@ length_note = "54.7 mi published by the Forest Service on its Flathead National 
 tier = "regional"
 designation = "Flathead National Forest Trail 7, Swan Lake Ranger District; open to hiking, biking and motorcycle trail riding"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "aa2633fe5a6370f1"
 
 [source]
 status = "verified"
@@ -77,6 +79,12 @@ url = "https://www.fs.usda.gov/r01/flathead/offices/swan-lake-ranger-station"
 publisher = "USDA Forest Service, Flathead National Forest"
 facts = ["summary"]
 
+[[place]]
+kind = "range"
+slug = "rocky-mountains"
+basis = "track"
+km = 87.5
+
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
@@ -109,6 +117,15 @@ change = "The track status is now \"verified\", in place of \"found\", which mea
 fields = ["source.status"]
 basis = "The record has a published track file and a measured length in its verification, and its track was downloaded and measured."
 basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Rocky Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

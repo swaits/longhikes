@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Guidebook route (Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett, 2005, in Sierra North); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -100,6 +101,24 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=82823
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Glacier Point Trailhead, OpenStreetMap node 8282371290, at the start of the Panorama Trail"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "yosemite-national-park"
+basis = "stated"
+source = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "stated"
+source = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+
+[[place]]
+kind = "wilderness"
+slug = "yosemite-wilderness"
+basis = "stated"
+source = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -135,6 +154,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's Trip 72, pages 246-250 of the 9th edition, 2005, read from the owner's copy as: Mid to late season, about early July to early October."
+basis_url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Yosemite National Park, Sierra Nevada and Yosemite Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Rutherford Lake Loop is a 10 day backpacking loop in Yosemite National Park's South Boundary country, California, from the Glacier Point and Panorama trailhead.\""
 basis_url = "https://shop.adventurewithkeen.com/product/sierra-north-2/"
 asked_by = "the dataset's own check"
 outcome = "applied"

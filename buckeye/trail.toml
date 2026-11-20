@@ -9,6 +9,8 @@ length_note = "about 1,400 mi loop"
 tier = "regional"
 designation = "Ohio's state-circling loop trail, Buckeye Trail Association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "647f68cd076b3522"
 
 [source]
 status = "osm-only"
@@ -85,6 +87,12 @@ title = "Buckeye Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Buckeye_Trail"
 
+[[place]]
+kind = "park"
+slug = "cuyahoga-valley-national-park"
+basis = "track"
+km = 61.2
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -120,5 +128,14 @@ change = "The record now has a season: Spring, summer and fall."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from The Trek's page: Spring, summer and fall."
 basis_url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Cuyahoga Valley National Park."
+fields = ["place"]
+basis = "Measured from the trail's main track against the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://irma.nps.gov/DataStore/Reference/Profile/2224545"
 asked_by = "the dataset's own check"
 outcome = "applied"

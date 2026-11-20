@@ -9,6 +9,8 @@ length_note = "about 890 km main trail plus 400 km side trails"
 tier = "regional"
 designation = "Bruce Trail Conservancy; oldest and longest marked trail in Canada"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "903243f667c6f25d"
 
 [source]
 status = "osm-only"
@@ -82,6 +84,96 @@ title = "Bruce Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Bruce_Trail"
 
+[[place]]
+kind = "park"
+slug = "bayview-escarpment-provincial-park"
+basis = "track"
+km = 5.5
+
+[[place]]
+kind = "park"
+slug = "boyne-valley-provincial-park"
+basis = "track"
+km = 3.4
+
+[[place]]
+kind = "park"
+slug = "bruce-peninsula-national-park"
+basis = "track"
+km = 34.1
+
+[[place]]
+kind = "park"
+slug = "cabot-head-provincial-park"
+basis = "track"
+km = 16.4
+
+[[place]]
+kind = "park"
+slug = "duncan-escarpment-provincial-park"
+basis = "track"
+km = 2.1
+
+[[place]]
+kind = "park"
+slug = "forks-of-the-credit-provincial-park"
+basis = "track"
+km = 2.8
+
+[[place]]
+kind = "park"
+slug = "hockley-valley-provincial-park"
+basis = "track"
+km = 5.5
+
+[[place]]
+kind = "park"
+slug = "hope-bay-forest-provincial-park"
+basis = "track"
+km = 4.2
+
+[[place]]
+kind = "park"
+slug = "lions-head-provincial-park"
+basis = "track"
+km = 8.7
+
+[[place]]
+kind = "park"
+slug = "mono-cliffs-provincial-park"
+basis = "track"
+km = 6.1
+
+[[place]]
+kind = "park"
+slug = "noisy-river-provincial-park"
+basis = "track"
+km = 4.6
+
+[[place]]
+kind = "park"
+slug = "nottawasaga-lookout-provincial-park"
+basis = "track"
+km = 3.8
+
+[[place]]
+kind = "park"
+slug = "pretty-river-valley-provincial-park"
+basis = "track"
+km = 6.0
+
+[[place]]
+kind = "park"
+slug = "short-hills-provincial-park"
+basis = "track"
+km = 9.7
+
+[[place]]
+kind = "park"
+slug = "smokey-head-white-bluff-provincial-park"
+basis = "track"
+km = 4.0
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -99,6 +191,15 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://brucetrail.org/wp-content/uploads/2022/07/BTC_arrow-icon.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in 15 parks, all listed in the record."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Andrew Skurka); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -113,6 +114,24 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=27969
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Roads End Permit Station, OpenStreetMap way 279697028"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon-national-parks"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/"
+
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/"
+
+[[place]]
+kind = "wilderness"
+slug = "sequoia-kings-canyon-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -157,5 +176,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Andrew Skurka as: August and September are the most reliable months; June and July bring high water, lingering snowfields and mosquitoes."
 basis_url = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/scheduling-considerations/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sequoia and Kings Canyon National Parks, Sierra Nevada and Sequoia-Kings Canyon Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"It is encompassed entirely within Kings Canyon National Park, which was established in 1940 and which is jointly administered by the National Park Service as Sequoia-Kings Canyon National Park (SEKI).\" (Sequoia and Kings Canyon National Parks) The trail's own description says: \"The Kings Canyon High Basin Route wraps around the upper watershed of the Kings River in the High Sierra, entirely within Kings Canyon National Park.\" (Sierra Nevada) The page says: \"it remains immersed in some of the finest High Sierra wilderness and showcases off-the-charts aesthetics.\" (Sequoia-Kings Canyon Wilderness)"
+basis_url = "https://andrewskurka.com/adventures/kings-canyon-high-basin-route/"
 asked_by = "the dataset's own check"
 outcome = "applied"

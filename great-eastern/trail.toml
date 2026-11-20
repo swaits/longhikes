@@ -12,6 +12,8 @@ tier = "regional"
 designation = "Great Eastern Trail Association; links existing trails"
 wave = "held"
 wave_note = "It is a composite of existing trails, not one designated trail."
+places_checked = "2026-11-20"
+places_track = "b02e55d4b70f3dc2"
 
 [source]
 status = "osm-only"
@@ -75,6 +77,36 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel", "unfinish
 url = "https://www.backpacker.com/trips/trips-by-state/pennsylvania-trails/the-great-eastern-trail-could-be-the-next-appalachian-trail-heres-how-to-hike-part-of-it-now/"
 publisher = "Backpacker"
 facts = ["unfinished", "days"]
+
+[[place]]
+kind = "range"
+slug = "allegheny-mountains"
+basis = "track"
+km = 18.6
+
+[[place]]
+kind = "range"
+slug = "allegheny-plateau"
+basis = "track"
+km = 46.6
+
+[[place]]
+kind = "wilderness"
+slug = "cheaha-wilderness"
+basis = "track"
+km = 12.0
+
+[[place]]
+kind = "wilderness"
+slug = "dugger-mountain-wilderness"
+basis = "track"
+km = 13.3
+
+[[place]]
+kind = "wilderness"
+slug = "ramseys-draft-wilderness"
+basis = "track"
+km = 3.8
 
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
@@ -152,6 +184,15 @@ change = "The Great Eastern Trail's track now holds 12 relation ways tagged with
 fields = ["source.line_file", "source.mainline", "source.length_gap_note", "verification.measured_km", "verification.difference_percent", "verification.parts", "verification.note"]
 basis = "OpenStreetMap's wiki page for route relations says the empty role should be used instead of the role route, which was used sometimes with the older public transport tagging. The 12 ways joined two parts of the main track end to end, so they carry the trail; the track tool had read the role as a side trail."
 basis_url = "https://wiki.openstreetmap.org/wiki/Relation:route"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Allegheny Mountains, Allegheny Plateau, Cheaha Wilderness, Dugger Mountain Wilderness, Ramseys Draft Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

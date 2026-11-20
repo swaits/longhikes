@@ -9,6 +9,7 @@ length_note = "about 177 mi, from the Foothills Trail Club 'About the Trail' pag
 tier = "regional"
 designation = "Foothills Trail Club of Western New York; a branch trail of the Finger Lakes Trail System"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -73,6 +74,12 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=99097
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Rainbow Bridge, United States side, OpenStreetMap way 990979149"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "allegheny-plateau"
+basis = "stated"
+source = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
+
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
@@ -104,6 +111,15 @@ change = "The position of the end was added, so that the page can show a map of 
 fields = ["hike.end_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): Rainbow Bridge, United States side, OpenStreetMap way 990979149."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=990979149"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Allegheny Plateau from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Conservation Trail runs north through western New York from the Pennsylvania border in Allegany State Park to Niagara Falls, where it meets the Bruce Trail in Canada.\""
+basis_url = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Dan Stenziano); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -101,6 +102,18 @@ url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/267526"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "stated"
+source = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
+
+[[place]]
+kind = "wilderness"
+slug = "john-muir-wilderness"
+basis = "stated"
+source = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
+
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
@@ -122,6 +135,15 @@ date = "2026-11-19"
 change = "The guide now says what its link points at (the author's own page for this guide). The whole guide is this route, as its title says."
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Eastern Sierra High Route Guide – Dan Stenziano\"."
+basis_url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sierra Nevada and John Muir Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"The Eastern Sierra High Route is the premiere advanced backpacking adventure to be had in California's Sierra Nevada in about a week or less.\" (Sierra Nevada) The page says: \"It is 65-70 hard miles, 70-80% off-trail, from Mammoth (Duck Pass Trailhead) to Bishop (Bishop Pass Trailhead at South Lake), staying as close to the main Sierra crest as possible without becoming technical\" (John Muir Wilderness)"
 basis_url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -14,6 +14,8 @@ tier = "national"
 designation = "National Scenic Trail (1980)"
 wave = 1
 inclusion = "nst-unconditional"
+places_checked = "2026-11-20"
+places_track = "bd7d4101292338b1"
 
 [source]
 status = "osm-only"

@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Guidebook route (Suzanne Swedo, 2004, in Hiking California's Golden Trout Wilderness); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -118,6 +119,24 @@ url = "https://www.fs.usda.gov/r05/inyo/wilderness/golden-trout-wilderness"
 publisher = "USDA Forest Service, Inyo National Forest (the page for the Golden Trout Wilderness, last updated 2025-12-09)"
 facts = ["permit"]
 
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon-national-parks"
+basis = "stated"
+source = "https://www.fs.usda.gov/r05/sequoia/recreation/jerkey-meadow-trailhead"
+
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "stated"
+source = "https://www.fs.usda.gov/r05/sequoia/recreation/jerkey-meadow-trailhead"
+
+[[place]]
+kind = "wilderness"
+slug = "golden-trout-wilderness"
+basis = "stated"
+source = "https://www.fs.usda.gov/r05/sequoia/recreation/jerkey-meadow-trailhead"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -136,5 +155,14 @@ change = "The season is recorded as coming from one page that is not the trail's
 fields = ["hike.season_basis"]
 basis = "The season is stated by Open Library (the library record for the book); the facts are from the book's Trip 16 in the 1st edition, 2004 as: July through October."
 basis_url = "https://openlibrary.org/books/OL8034582M"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sequoia and Kings Canyon National Parks, Sierra Nevada and Golden Trout Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Central Wilderness Grand Tour is a backpacking loop of 79.1 miles in the Golden Trout Wilderness and Sequoia National Park, in the southern Sierra Nevada, California, from the Jerkey Meadow Trailhead at Lloyd Meadows.\""
+basis_url = "https://www.fs.usda.gov/r05/sequoia/recreation/jerkey-meadow-trailhead"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -9,6 +9,8 @@ length_note = "161 mi (259 km) is the current official length, as the associatio
 tier = "regional"
 designation = "Hoosier Heritage Trail Association, an Indiana non-profit; a trail it describes as the newest of Indiana's long backpacking trails"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "c103a4c1d512a7c7"
 
 [source]
 status = "verified"

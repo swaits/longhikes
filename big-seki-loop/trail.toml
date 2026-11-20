@@ -12,6 +12,8 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Amy and James of Doing Miles, 2013); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "d1c44af443853939"
 
 [source]
 status = "osm-only"
@@ -92,6 +94,18 @@ title = "Big SEKI Loop"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Big_SEKI_Loop"
 
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon-national-parks"
+basis = "track"
+km = 251.1
+
+[[place]]
+kind = "range"
+slug = "palisades"
+basis = "track"
+km = 31.9
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -109,5 +123,13 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Amy and James (Doing Miles) as: Late August and September."
 basis_url = "https://doingmiles.com/route-big-seki-loop/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sequoia and Kings Canyon National Parks, Palisades."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

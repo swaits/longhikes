@@ -9,6 +9,8 @@ length_note = "50 mi, from the trail map published by the Pinelands Preservation
 tier = "regional"
 designation = "Batona Hiking Club; New Jersey State Park Service"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "c32400a064848c42"
 
 [source]
 status = "osm-only"

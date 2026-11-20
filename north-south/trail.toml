@@ -9,6 +9,8 @@ length_note = "77 mi, from the Rhode Island DEM trail data"
 tier = "regional"
 designation = "Rhode Island Department of Environmental Management"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "9127b1a0cfb0088c"
 
 [source]
 status = "osm-only"

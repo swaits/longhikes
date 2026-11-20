@@ -15,6 +15,8 @@ tier = "national"
 designation = "National Scenic Trail (1983)"
 wave = 1
 inclusion = "nst-unconditional"
+places_checked = "2026-11-20"
+places_track = "7980ace3db467999"
 
 [source]
 status = "osm-only"
@@ -101,6 +103,24 @@ title = "Florida National Scenic Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Florida_National_Scenic_Trail"
 
+[[place]]
+kind = "wilderness"
+slug = "bradwell-bay-wilderness"
+basis = "track"
+km = 19.4
+
+[[place]]
+kind = "wilderness"
+slug = "juniper-prairie-wilderness"
+basis = "track"
+km = 13.3
+
+[[place]]
+kind = "wilderness"
+slug = "st-marks-wilderness"
+basis = "track"
+km = 5.9
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -154,5 +174,13 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Florida Trail Association as: Late October to April."
 basis_url = "https://floridatrail.org/faqs/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Bradwell Bay Wilderness, Juniper Prairie Wilderness, St. Marks Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://wilderness.net/visit-wilderness/gis-gps.php"
 asked_by = "the dataset's own check"
 outcome = "applied"

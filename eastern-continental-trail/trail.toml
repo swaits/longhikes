@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (M. J. Eberhart); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -109,6 +110,36 @@ title = "Eastern Continental Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Eastern_Continental_Trail"
 
+[[place]]
+kind = "park"
+slug = "great-smoky-mountains-national-park"
+basis = "stated"
+source = "https://nimblewillnomad.com/books/"
+
+[[place]]
+kind = "park"
+slug = "shenandoah-national-park"
+basis = "stated"
+source = "https://nimblewillnomad.com/books/"
+
+[[place]]
+kind = "range"
+slug = "blue-ridge-mountains"
+basis = "stated"
+source = "https://nimblewillnomad.com/books/"
+
+[[place]]
+kind = "range"
+slug = "green-mountains"
+basis = "stated"
+source = "https://nimblewillnomad.com/books/"
+
+[[place]]
+kind = "range"
+slug = "white-mountains"
+basis = "stated"
+source = "https://nimblewillnomad.com/books/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -153,6 +184,15 @@ change = "The guide's link now goes to a library record for the book, not the au
 fields = ["guide"]
 basis = "The Open Library record gives Ten Million Steps: Nimblewill Nomad's Epic 10-Month Trek from the Florida Keys to Quebec, Menasha Ridge Press, March 22, 2007, ISBN 9780897329798, 400 pages."
 basis_url = "https://openlibrary.org/books/OL8257206M"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Great Smoky Mountains National Park, Shenandoah National Park, Blue Ridge Mountains, Green Mountains and White Mountains from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"(record route note) on the International Appalachian Trail, the Appalachian Trail, the Benton MacKaye Trail and the Pinhoti Trail\""
+basis_url = "https://nimblewillnomad.com/books/"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

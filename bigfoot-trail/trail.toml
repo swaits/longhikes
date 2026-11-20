@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (proposed by Michael Kauffmann, 2009), promoted and maintained by the Bigfoot Trail Alliance; no agency designation"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -131,6 +132,49 @@ url = "https://thetrek.co/bigfoot-trail-a-358-mile-journey-through-the-wild-in-f
 publisher = "The Trek"
 facts = ["season", "months"]
 
+[[place]]
+kind = "park"
+slug = "redwood-national-park"
+basis = "stated"
+source = "https://www.bigfoottrail.org/"
+
+[[place]]
+kind = "range"
+slug = "trinity-alps"
+basis = "stated"
+source = "https://www.bigfoottrail.org/route/trail-regions/"
+
+[[place]]
+kind = "wilderness"
+slug = "marble-mountain-wilderness"
+basis = "stated"
+source = "https://www.bigfoottrail.org/route/trail-regions/"
+
+[[place]]
+kind = "wilderness"
+slug = "red-buttes-wilderness"
+basis = "stated"
+source = "https://www.bigfoottrail.org/route/trail-regions/"
+
+[[place]]
+kind = "wilderness"
+slug = "siskiyou-wilderness"
+basis = "stated"
+source = "https://www.bigfoottrail.org/route/trail-regions/"
+
+[[place]]
+kind = "wilderness"
+slug = "trinity-alps-wilderness"
+basis = "stated"
+source = "https://www.bigfoottrail.org/route/trail-regions/"
+
+[[place]]
+kind = "wilderness"
+slug = "yolla-bolly-middle-eel-wilderness"
+basis = "stated"
+source = "https://www.bigfoottrail.org/route/trail-regions/"
+
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -175,5 +219,14 @@ change = "The record now has a season: Summer through early fall."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from The Trek's page: Summer through early fall."
 basis_url = "https://thetrek.co/bigfoot-trail-a-358-mile-journey-through-the-wild-in-far-northern-california/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Redwood National Park, Trinity Alps, Marble Mountain Wilderness, Red Buttes Wilderness, Siskiyou Wilderness, Trinity Alps Wilderness and Yolla Bolly-Middle Eel Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"How many miles in Jed Smith and Redwood NP? 12 Miles\" (Redwood National Park) The page says: \"3: Trinity Alps Wilderness Region Junction City to Trail Creek Campground\" (Trinity Alps, Trinity Alps Wilderness) The page says: \"5: Marble Mountain Wilderness Region Idlewild Campground to Seiad Valley\" (Marble Mountain Wilderness) The page says: \"6: Red Buttes Wilderness Region Seiad Valley to Bigfoot Highway\" (Red Buttes Wilderness) The page says: \"7: Siskiyou Wilderness Region Bigfoot Highway to Smith River\" (Siskiyou Wilderness) The page says: \"1: Yolla Bolly-Middle Eel Wilderness Ides Cove to FS 30\" (Yolla Bolly-Middle Eel Wilderness)"
+basis_url = "https://www.bigfoottrail.org/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -9,6 +9,8 @@ length_note = "95 mi, as the National Park Service states it in its Tonto Trail 
 tier = "regional"
 designation = "Grand Canyon National Park, National Park Service"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "e6c72a7cfb8b621a"
 
 [source]
 status = "osm-only"
@@ -88,6 +90,19 @@ url = "https://npshistory.com/publications/grca/brochures/tonto-boucher-s-bass-2
 publisher = "Grand Canyon National Park (National Park Service), copy hosted by npshistory.com"
 facts = ["season", "months"]
 
+[[place]]
+kind = "park"
+slug = "grand-canyon-national-park"
+basis = "track"
+km = 147.1
+
+[[place]]
+kind = "range"
+slug = "colorado-plateau"
+basis = "track"
+km = 147.1
+
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -105,5 +120,14 @@ change = "The record now has a season: November to April (the Boucher to South B
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from Grand Canyon National Park's page: November to April (the Boucher to South Bass segment)."
 basis_url = "https://npshistory.com/publications/grca/brochures/tonto-boucher-s-bass-2008.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Grand Canyon National Park, Colorado Plateau."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

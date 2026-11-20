@@ -11,6 +11,8 @@ length_note = "65 mi"
 tier = "regional"
 designation = "Boundary Waters trail, Superior National Forest"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "9f74f5c4e42c0be3"
 
 [source]
 status = "osm-only"
@@ -89,6 +91,12 @@ title = "Border Route Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Border_Route_Trail"
 
+[[place]]
+kind = "wilderness"
+slug = "boundary-waters-canoe-area-wilderness"
+basis = "track"
+km = 58.8
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -115,5 +123,14 @@ change = "The record now has a season: Fall is the best time."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from Border Route Trail Association's page: Fall is the best time."
 basis_url = "https://static1.squarespace.com/static/62fd069e12d1b9766c22caaa/t/67e5989ecea0512be2548de7/1743100064722/Newsletter_2024_Q3.2.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Boundary Waters Canoe Area Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://wilderness.net/visit-wilderness/gis-gps.php"
 asked_by = "the dataset's own check"
 outcome = "applied"

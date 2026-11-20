@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Steve Roper); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -130,6 +131,48 @@ title = "Sierra High Route"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Sierra_High_Route"
 
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon-national-parks"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
+
+[[place]]
+kind = "park"
+slug = "yosemite-national-park"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
+
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
+
+[[place]]
+kind = "wilderness"
+slug = "ansel-adams-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/sierra-high-route/logistical-considerations/"
+
+[[place]]
+kind = "wilderness"
+slug = "john-muir-wilderness"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/sierra-high-route/logistical-considerations/"
+
+[[place]]
+kind = "wilderness"
+slug = "sequoia-kings-canyon-wilderness"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
+
+[[place]]
+kind = "wilderness"
+slug = "yosemite-wilderness"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -174,6 +217,15 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Sierra High Route Mapset & Databook - Skurka Adventures\"."
 basis_url = "https://andrewskurka.com/product/sierra-high-route-map-set-databook/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sequoia and Kings Canyon National Parks, Yosemite National Park, Sierra Nevada, Ansel Adams Wilderness, John Muir Wilderness, Sequoia-Kings Canyon Wilderness and Yosemite Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Sierra High Route is Steve Roper's timberline route through California's High Sierra from Kings Canyon National Park to northern Yosemite. (start: Road's End, Kings Canyon National Park)\" (Sequoia and Kings Canyon National Parks) The trail's own description says: \"The Sierra High Route is Steve Roper's timberline route through California's High Sierra from Kings Canyon National Park to northern Yosemite.\" (Yosemite National Park, Sierra Nevada, Sequoia-Kings Canyon Wilderness, Yosemite Wilderness) The page says: \"Depending on the time of year, Inyo National Forest—which manages the Ansel Adams and John Muir Wilderness Areas—requires overnight users to obtain a free wilderness permit.\" (Ansel Adams Wilderness, John Muir Wilderness)"
+basis_url = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

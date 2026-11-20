@@ -9,6 +9,8 @@ length_note = "55.2 mi, as the Forest Service states it on its Solitude Loop Tra
 tier = "regional"
 designation = "Bighorn National Forest Trail 038, Cloud Peak Wilderness. Allowed uses vary by segment: the Forest Service lists hiking and horseback riding, with 8 mi on the eastern side open to vehicles 50 inches or less in width, 3.2 mi of that limited to motorcycles."
 wave = 1
+places_checked = "2026-11-20"
+places_track = "85f3c2979d2b2f24"
 
 [source]
 status = "verified"
@@ -73,6 +75,18 @@ url = "https://www.fs.usda.gov/r02/bighorn/alerts/forest-special-order-02-02-26-
 publisher = "USDA Forest Service, Bighorn National Forest"
 facts = ["permit"]
 
+[[place]]
+kind = "range"
+slug = "bighorn-mountains"
+basis = "track"
+km = 91.3
+
+[[place]]
+kind = "wilderness"
+slug = "cloud-peak-wilderness"
+basis = "track"
+km = 67.9
+
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
@@ -114,6 +128,15 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of USDA Forest Service, Bighorn National Forest says: \"Entering or being in Cloud Peak Wilderness ... free self-issued registration, signed and dated by the person or groups for that visit\""
 basis_url = "https://www.fs.usda.gov/r02/bighorn/alerts/forest-special-order-02-02-26-01-cloud-peak-wilderness-regulations"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Bighorn Mountains, Cloud Peak Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

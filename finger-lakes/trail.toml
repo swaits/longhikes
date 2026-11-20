@@ -11,6 +11,8 @@ length_note = "580 mi for the main trail, as the Finger Lakes Trail Conference's
 tier = "regional"
 designation = "Finger Lakes Trail Conference; the North Country NST follows it in NY"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "3a0988d427c947da"
 
 [source]
 status = "osm-only"
@@ -79,6 +81,12 @@ title = "Finger Lakes Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Finger_Lakes_Trail"
 
+[[place]]
+kind = "range"
+slug = "catskill-mountains"
+basis = "track"
+km = 117.4
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -96,6 +104,15 @@ change = "The length was changed from 590 miles (950 km), counted with branches,
 fields = ["length_km", "length_note"]
 basis = "The length was first checked against another site's list, then against the holder's own pages. The Finger Lakes Trail Conference's Fall 2022 newsletter gives 580 miles for the main trail, its end-to-end page says about 585 miles, and its home page puts the whole system, with branch, loop and spur trails, at over 1,000 miles."
 basis_url = "https://fingerlakestrail.org/wp-content/uploads/FLTC_Files/FLTNews/FLTNews2022-3.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Catskill Mountains."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

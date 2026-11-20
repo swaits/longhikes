@@ -10,6 +10,8 @@ tier = "regional"
 designation = "Ganaraska Hiking Trail Association"
 wave = "held"
 wave_note = "The only track, OSM relation 3696751, covers the eastern half only (238.4 km, ending near Barrie) and does not reach Glen Huron. The Association sells a guidebook but publishes no open track. What would fix it: a track from the Ganaraska Hiking Trail Association, or complete OSM mapping of the western clubs sections."
+places_checked = "2026-11-20"
+places_track = "9b4796dfb5c38b93"
 
 [source]
 status = "osm-only"
@@ -67,6 +69,12 @@ season_method = "Judged from the climate at the trail's elevation and from simil
 url = "https://www.ganaraska-hiking-trail.org/"
 publisher = "Ganaraska Hiking Trail Association"
 facts = ["official_url", "summary", "start", "end", "shape"]
+
+[[place]]
+kind = "park"
+slug = "queen-elizabeth-ii-wildlands-provincial-park"
+basis = "track"
+km = 48.1
 
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
@@ -126,6 +134,15 @@ change = "The word \"Held:\" was taken off the start of the wave note, which now
 fields = ["wave_note"]
 basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://www.ganaraska-hiking-trail.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Queen Elizabeth II Wildlands Provincial Park."
+fields = ["place"]
+basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

@@ -9,6 +9,8 @@ length_note = "111 mi, from the Black Hills National Forest page"
 tier = "regional"
 designation = "USDA Forest Service, Black Hills National Forest"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "260339e78e5158c4"
 
 [source]
 status = "osm-only"
@@ -83,6 +85,18 @@ title = "South Dakota Centennial Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/South_Dakota_Centennial_Trail"
 
+[[place]]
+kind = "park"
+slug = "wind-cave-national-park"
+basis = "track"
+km = 9.4
+
+[[place]]
+kind = "wilderness"
+slug = "black-elk-wilderness"
+basis = "track"
+km = 12.9
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -118,5 +132,14 @@ change = "The record now has a season: Spring through fall."
 fields = ["hike.season", "hike.months", "hike.season_basis"]
 basis = "Season added, read from Treeline Review's page: Spring through fall."
 basis_url = "https://www.treelinereview.com/where-to-go/centennial-trail-south-dakota"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Wind Cave National Park, Black Elk Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://irma.nps.gov/DataStore/Reference/Profile/2224545"
 asked_by = "the dataset's own check"
 outcome = "applied"

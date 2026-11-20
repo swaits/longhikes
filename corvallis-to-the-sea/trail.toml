@@ -11,6 +11,8 @@ length_note = "60 mi, from the Corvallis-to-the-Sea Trail page"
 tier = "regional"
 designation = "Corvallis-to-the-Sea Trail"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "c12a1e4380563a2e"
 
 [source]
 status = "osm-only"

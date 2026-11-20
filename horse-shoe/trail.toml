@@ -11,6 +11,8 @@ length_note = "140 mi, from the Horse-Shoe Trail Conservancy page"
 tier = "regional"
 designation = "Horse-Shoe Trail Conservancy"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "79db73847559941d"
 
 [source]
 status = "osm-only"

@@ -12,6 +12,8 @@ tier = "short"
 designation = "Grand Teton National Park and Caribou-Targhee National Forest"
 wave = 1
 short_reason = "It is very popular: the Park Service says its camping zones fill almost every night from late July through early September."
+places_checked = "2026-11-20"
+places_track = "f2b9dd9d330e5cda"
 
 [source]
 status = "verified"
@@ -93,6 +95,24 @@ url = "https://backpackingroutes.com/teton-crest-trail/"
 publisher = "Backpacking Routes"
 facts = ["days", "season", "months"]
 
+[[place]]
+kind = "park"
+slug = "grand-teton-national-park"
+basis = "track"
+km = 41.9
+
+[[place]]
+kind = "range"
+slug = "teton-range"
+basis = "track"
+km = 57.3
+
+[[place]]
+kind = "wilderness"
+slug = "jedediah-smith-wilderness"
+basis = "track"
+km = 16.6
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -146,5 +166,13 @@ change = "The season is recorded as coming from one page that is not the trail's
 fields = ["hike.season_basis"]
 basis = "The season is stated by Backpacking Routes as: Summer to early fall."
 basis_url = "https://backpackingroutes.com/teton-crest-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Grand Teton National Park, Teton Range, Jedediah Smith Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

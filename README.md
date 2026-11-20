@@ -130,7 +130,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | mountains-to-sea | Mountains-to-Sea Trail | US | NC | 1890 | yes | ODbL-1.0 |
 | nepisiguit-migmaq-trail | Sentier Nepisiguit Mi'gmaq Trail | CA | NB | 150 | yes | ODbL-1.0 |
 | new-england | New England National Scenic Trail | US | CT, MA | 378 | yes | us-gov-public-domain |
-| north-boundary | North Boundary Trail | CA | AB | 159 | no | none-stated |
+| north-boundary | North Boundary Trail | CA | AB, BC | 159 | no | none-stated |
 | north-country | North Country National Scenic Trail | US | ND, MN, WI, MI, OH, PA, NY, VT | 7403 | yes | ODbL-1.0 |
 | north-south | North-South Trail | US | RI | 125 | yes | ODbL-1.0 |
 | north-south-lbl | North/South Trail (Land Between the Lakes) | US | KY, TN | 95 | yes | ODbL-1.0 |
@@ -235,7 +235,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | green-river-lakes-titcomb-basin-loop | Green River Lakes & Titcomb Basin Loop | US | WY | 114 | Douglas Lorain | sold | no | [Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) (purchase) |
 | hayduke-trail | Hayduke Trail | US | UT, AZ | 1287 | Joe Mitchell and Mike Coronella | sold | no | [The Hayduke Trail: A Guide to the Backcountry Hiking Trail on the Colorado Plateau](https://uofupress.com/books/the-hayduke-trail/) (purchase) |
 | heart-lake-two-ocean-plateau-loop | Heart Lake & Two Ocean Plateau Loop | US | WY | 99 | Douglas Lorain | sold | no | [Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) (purchase) |
-| hot-springs-trail | Hot Springs Trail | US | CA, OR, ID | 3896 | Aria Zoner | sold | no | [The Hot Springs Trail: Official Guidebook](https://www.amazon.com/Hot-Springs-Trail-Official-Guidebook/dp/1505613922) (purchase) |
+| hot-springs-trail | Hot Springs Trail | US | CA, NV, OR, ID | 3896 | Aria Zoner | sold | no | [The Hot Springs Trail: Official Guidebook](https://www.amazon.com/Hot-Springs-Trail-Official-Guidebook/dp/1505613922) (purchase) |
 | kanab-canyon-loop | Kanab Canyon Loop | US | AZ | 84 | Bruce Grubbs | sold | no | [Backpacking Arizona: From Deep Canyons to Sky Islands](https://shop.adventurewithkeen.com/product/backpacking-arizona/) (purchase) |
 | kings-canyon-high-basin-route | Kings Canyon High Basin Route | US | CA | 200 | Andrew Skurka | sold | no | [Kings Canyon High Basin Route Guide](https://andrewskurka.com/product/kings-canyon-high-basin-route-guide/) (purchase) |
 | lowest-to-highest-route | Lowest to Highest Route | US | CA | 209 | Brett Tucker ("Blisterfree") and partner, simBLISSity Ultralight Designs | open | no | [L2H Navigation Bundle](http://simblissity.net/L2H.shtml) (free) |

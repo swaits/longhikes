@@ -9,6 +9,8 @@ length_note = "240 km excluding side trails, from the Grand Valley Trails Associ
 tier = "regional"
 designation = "Grand Valley Trails Association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "4327bd334952f798"
 
 [source]
 status = "osm-only"

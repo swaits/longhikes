@@ -9,6 +9,8 @@ length_note = "53.7 mi published on the Forest Service trail page, whose first s
 tier = "regional"
 designation = "Gifford Pinchot National Forest Trail 1, Mount St. Helens east to Council Lake. Not the Boundary Trail (Trail 533) in the Pasayten Wilderness."
 wave = 1
+places_checked = "2026-11-20"
+places_track = "b84e4ad5fa7ce151"
 
 [source]
 status = "osm-only"
@@ -69,6 +71,12 @@ url = "https://www.fs.usda.gov/r06/giffordpinchot/recreation/trails/trail-1-boun
 publisher = "USDA Forest Service, Gifford Pinchot National Forest"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "permit", "caution"]
 
+[[place]]
+kind = "range"
+slug = "cascade-range"
+basis = "track"
+km = 91.7
+
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
@@ -92,6 +100,15 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status", "shield.logo_source"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://www.fs.usda.gov/r06/giffordpinchot/recreation/trails/trail-1-boundary"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Cascade Range."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

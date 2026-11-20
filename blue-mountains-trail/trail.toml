@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Greater Hells Canyon Council, 2021); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -108,6 +109,54 @@ title = "Blue Mountains Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Blue_Mountains_Trail"
 
+[[place]]
+kind = "range"
+slug = "wallowa-mountains"
+basis = "stated"
+source = "https://www.hellscanyon.org/_files/ugd/998edb_7376feee1007475eb1c92f8e651796ba.pdf"
+
+[[place]]
+kind = "wilderness"
+slug = "eagle-cap-wilderness"
+basis = "stated"
+source = "https://www.hellscanyon.org/_files/ugd/998edb_7376feee1007475eb1c92f8e651796ba.pdf"
+
+[[place]]
+kind = "wilderness"
+slug = "hells-canyon-wilderness"
+basis = "stated"
+source = "https://www.hellscanyon.org/_files/ugd/998edb_7376feee1007475eb1c92f8e651796ba.pdf"
+
+[[place]]
+kind = "wilderness"
+slug = "monument-rock-wilderness"
+basis = "stated"
+source = "https://www.hellscanyon.org/_files/ugd/998edb_7376feee1007475eb1c92f8e651796ba.pdf"
+
+[[place]]
+kind = "wilderness"
+slug = "north-fork-john-day-wilderness"
+basis = "stated"
+source = "https://www.hellscanyon.org/_files/ugd/998edb_7376feee1007475eb1c92f8e651796ba.pdf"
+
+[[place]]
+kind = "wilderness"
+slug = "north-fork-umatilla-wilderness"
+basis = "stated"
+source = "https://www.hellscanyon.org/_files/ugd/998edb_7376feee1007475eb1c92f8e651796ba.pdf"
+
+[[place]]
+kind = "wilderness"
+slug = "strawberry-mountain-wilderness"
+basis = "stated"
+source = "https://www.hellscanyon.org/_files/ugd/998edb_7376feee1007475eb1c92f8e651796ba.pdf"
+
+[[place]]
+kind = "wilderness"
+slug = "wenaha-tucannon-wilderness"
+basis = "stated"
+source = "https://www.hellscanyon.org/_files/ugd/998edb_7376feee1007475eb1c92f8e651796ba.pdf"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -134,5 +183,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Greater Hells Canyon Council as: From mid-July, once the snow has melted."
 basis_url = "https://www.hellscanyon.org/blue-mountains-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Wallowa Mountains, Eagle Cap Wilderness, Hells Canyon Wilderness, Monument Rock Wilderness, North Fork John Day Wilderness, North Fork Umatilla Wilderness, Strawberry Mountain Wilderness and Wenaha-Tucannon Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Hikers will cross summit ridges of the Wallowas, Elkhorns, Greenhorns, and Strawberries.\" (Wallowa Mountains) The page says: \"The revised route links all seven of Northeast Oregon’s wilderness areas\" (Eagle Cap Wilderness, Hells Canyon Wilderness, Monument Rock Wilderness, North Fork John Day Wilderness, North Fork Umatilla Wilderness, Strawberry Mountain Wilderness, Wenaha-Tucannon Wilderness)"
+basis_url = "https://www.hellscanyon.org/_files/ugd/998edb_7376feee1007475eb1c92f8e651796ba.pdf"
 asked_by = "the dataset's own check"
 outcome = "applied"

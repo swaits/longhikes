@@ -9,6 +9,8 @@ length_note = "approximately 270 km, from the Oak Ridges Trail Association page"
 tier = "regional"
 designation = "Oak Ridges Trail Association"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "48fda009d250aead"
 
 [source]
 status = "osm-only"

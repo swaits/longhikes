@@ -13,6 +13,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: python3 tools/validate.py
+      - run: python3 -m unittest discover tools/tests -p "test_places*.py"
 
   # A change to a fact needs a new [[history]] entry (docs/schema.md), and trail-numbers.txt may
   # only be appended to. The check compares the work with its base, so it needs the history of

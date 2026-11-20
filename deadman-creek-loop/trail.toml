@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Guidebook route (Bruce Grubbs, 2003, in Backpacking Arizona); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -91,6 +92,12 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=81827
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Verde River Sheep Bridge, at the trailhead, OpenStreetMap way 818277281"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "wilderness"
+slug = "mazatzal-wilderness"
+basis = "stated"
+source = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -153,6 +160,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's pages 156-157 and the Featured Trips Summary Chart on page xiii of the 1st edition, 3rd printing, read from a printed copy as: October to April."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Mazatzal Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Deadman Creek Loop is a seven day backpacking loop in the Mazatzal Wilderness of central Arizona, from the Sheep Bridge Trailhead in the Tonto National Forest.\""
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-arizona/"
 asked_by = "the dataset's own check"
 outcome = "applied"

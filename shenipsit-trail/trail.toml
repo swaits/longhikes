@@ -9,6 +9,8 @@ length_note = "50 mi published on the Connecticut Forest and Park Association tr
 tier = "regional"
 designation = "Connecticut Forest and Park Association; bicycles allowed only in specific areas"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "ad7096bd37f411f5"
 
 [source]
 status = "osm-only"

@@ -9,6 +9,7 @@ length_note = "approximately 63 mi, per Friends of the Peak; about 80 percent of
 tier = "regional"
 designation = "Friends of the Peak (trail association), with the Trails and Open Space Coalition and land agencies; no formal designation"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -63,6 +64,12 @@ url = "https://friendsofthepeak.org/ring-the-peak-2/"
 publisher = "Friends of the Peak"
 facts = ["official_url", "summary", "shape", "high_point", "travel", "unfinished", "caution"]
 
+[[place]]
+kind = "range"
+slug = "front-range"
+basis = "stated"
+source = "https://friendsofthepeak.org/ring-the-peak-2/"
+
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
@@ -84,6 +91,15 @@ date = "2026-11-16"
 change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
 fields = ["shield.status", "shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://friendsofthepeak.org/ring-the-peak-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Front Range from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Ring the Peak is a collection of trails and backcountry roads to circumnavigate Pikes Peak\""
 basis_url = "https://friendsofthepeak.org/ring-the-peak-2/"
 asked_by = "the dataset's own check"
 outcome = "applied"

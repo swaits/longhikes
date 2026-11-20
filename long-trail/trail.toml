@@ -9,6 +9,8 @@ length_note = "272 mi published"
 tier = "regional"
 designation = "Green Mountain Club; oldest long-distance trail in the US"
 wave = 1
+places_checked = "2026-11-20"
+places_track = "c6654051e4d7c54c"
 
 [source]
 status = "osm-only"
@@ -86,6 +88,48 @@ title = "Long Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Long_Trail"
 
+[[place]]
+kind = "range"
+slug = "green-mountains"
+basis = "track"
+km = 391.5
+
+[[place]]
+kind = "wilderness"
+slug = "big-branch-wilderness"
+basis = "track"
+km = 9.9
+
+[[place]]
+kind = "wilderness"
+slug = "breadloaf-wilderness"
+basis = "track"
+km = 26.1
+
+[[place]]
+kind = "wilderness"
+slug = "glastenbury-wilderness"
+basis = "track"
+km = 9.6
+
+[[place]]
+kind = "wilderness"
+slug = "joseph-battell-wilderness"
+basis = "track"
+km = 11.9
+
+[[place]]
+kind = "wilderness"
+slug = "lye-brook-wilderness"
+basis = "track"
+km = 7.5
+
+[[place]]
+kind = "wilderness"
+slug = "peru-peak-wilderness"
+basis = "track"
+km = 5.9
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -103,5 +147,13 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Green Mountain Club as: July to September."
 basis_url = "https://www.greenmountainclub.org/hiking/thru-hike-long-trail-vermont/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Green Mountains, Big Branch Wilderness, Breadloaf Wilderness, Glastenbury Wilderness, Joseph Battell Wilderness, Lye Brook Wilderness, Peru Peak Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Brett Tucker, 2011); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -98,6 +99,36 @@ title = "Sky Islands Traverse"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Sky_Islands_Traverse"
 
+[[place]]
+kind = "park"
+slug = "fort-bowie-national-historic-site"
+basis = "stated"
+source = "https://simblissity.net/skit.shtml"
+
+[[place]]
+kind = "park"
+slug = "saguaro-national-park"
+basis = "stated"
+source = "https://simblissity.net/skit.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "chiricahua-wilderness"
+basis = "stated"
+source = "https://simblissity.net/skit.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "dos-cabezas-mountains-wilderness"
+basis = "stated"
+source = "https://simblissity.net/skit.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "saguaro-wilderness"
+basis = "stated"
+source = "https://simblissity.net/skit.shtml"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -106,6 +137,15 @@ date = "2026-11-10"
 change = "The record was added: Sky Islands Traverse."
 fields = ["record"]
 basis = "The record's own source entry: Brett Tucker."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Fort Bowie National Historic Site, Saguaro National Park, Chiricahua Wilderness, Dos Cabezas Mountains Wilderness and Saguaro Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Farther along the SKIT reaches Fort Bowie National Historic Site , where it follows the historic Butterfield Stage Route for a time.\" (Fort Bowie National Historic Site) The page says: \"The east district of Saguaro National Park (which includes the Saguaro Wilderness)\" (Saguaro National Park, Saguaro Wilderness) The page says: \"passes the famed rock formations of Chiricahua National Monument and on into this range's high country wilderness\" (Chiricahua Wilderness) The page says: \"The Dos Cabezas Mountains Wilderness might be considered the heart of this untamed country.\" (Dos Cabezas Mountains Wilderness)"
+basis_url = "https://simblissity.net/skit.shtml"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

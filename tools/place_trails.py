@@ -549,6 +549,19 @@ def propose(records, outlines):
                 counts[code] = counts.get(code, 0) + 1
         n = len(hit.trails)
         hit.where = sorted(c for c, k in counts.items() if k * 2 >= n) or list(hit.outline.state_codes_hint)
+    # Parents are never stored on a record (the build closes membership over within):
+    # a range drops out of a trail's list when the trail is also in one of its
+    # descendants, by the GMBA Path. Place counts stay as measured.
+    paths = {}
+    for o in outlines:
+        if o.kind == "range" and o.path:
+            paths[(o.kind, o.slug or slugify(o.name))] = o.path
+    for tid, lst in p.per_trail.items():
+        here = {paths[k] for k, _km in lst if k in paths}
+        p.per_trail[tid] = [(k, km) for k, km in lst
+                            if k not in paths
+                            or not any(other != paths[k] and other.startswith(paths[k] + " > ")
+                                       for other in here)]
     for lst in p.per_trail.values():
         lst.sort(key=lambda t: (-t[1], t[0]))
     p.near.sort(key=lambda x: (abs(x.km - MIN_KM), x.trail))

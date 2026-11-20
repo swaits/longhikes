@@ -160,6 +160,16 @@ class ProposalTest(unittest.TestCase):
         self.assertIn("needs a person", text)
         self.assertIn("z", text)
 
+    def test_a_parent_range_is_not_stored_when_a_child_is(self):
+        big = outline("range", "R0", "Big Range",
+                      Polygon([(-111, 42), (-108, 42), (-108, 45), (-111, 45)]))
+        big.path = "Continent > Big Range"
+        self.range.path = "Continent > Big Range > Beta Range"
+        p = P.propose([rec("a", ["WY"], self.inside)], [big, self.range])
+        self.assertEqual({k for k, _ in p.per_trail["a"]}, {("range", "beta-range")})
+        # the parent's page count still holds the trail, as measured
+        self.assertEqual({t for t, _ in p.per_place[("range", "big-range")].trails}, {"a"})
+
     def test_one_gmba_id_outside_the_allow_list_is_not_proposed_but_is_listed_by_candidates(self):
         records = [rec(f"t{i}", ["WY"], self.inside) for i in range(3)]
         all_ranges = [dict(gmba_id="R1", name="Beta Range", path="Beta Range",

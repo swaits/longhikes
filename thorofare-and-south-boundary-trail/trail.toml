@@ -64,6 +64,7 @@ season = "Mid-July to early September"
 months = [7, 8, 9]
 caution = "The Park Service says the Thorofare Trail goes through or near three bear management areas and that a hiker should be prepared to ford creeks, and that the Snake River ford near the South Entrance can be dangerous and, even in low water, waist-deep. Grizzly and black bears live throughout the park, and food must be kept in a bear-resistant container or hung."
 checked = "2026-11-18"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.nps.gov/places/000/nine-mile-trailhead-5k5.htm"
@@ -150,5 +151,14 @@ change = "The trail was placed in Yellowstone National Park, Absaroka Range, Tet
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Frommer's as: Mid-July to early September."
+basis_url = "https://www.frommers.com/destinations/yellowstone-national-park/exploring-the-backcountry/hiking-trails"
 asked_by = "the dataset's own check"
 outcome = "applied"

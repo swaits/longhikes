@@ -63,6 +63,7 @@ months = [10, 11, 12, 1, 2, 3]
 terrain = ["forest"]
 permit = "No permit is needed to hike it."
 checked = "2026-11-13"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://foothillstrail.org/"
@@ -131,5 +132,14 @@ change = "The trail was placed in Blue Ridge Mountains."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Backpacking Routes as: Fall to early spring."
+basis_url = "https://backpackingroutes.com/5-southern-long-distance-backpacking-trails/"
 asked_by = "the dataset's own check"
 outcome = "applied"

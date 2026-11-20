@@ -67,6 +67,7 @@ terrain = ["forest"]
 travel = "trail"
 permit = "No permit is needed for day use; overnight hikers must reserve shelter areas in advance and pay a per-night fee."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.pa.gov/agencies/dcnr/recreation/what-to-do/hiking/laurel-highlands-hiking-trail"
@@ -125,5 +126,14 @@ change = "The trail was placed in Allegheny Mountains."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Pennsylvania Department of Conservation and Natural Resources as: All year."
+basis_url = "https://www.pa.gov/agencies/dcnr/recreation/what-to-do/hiking/laurel-highlands-hiking-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

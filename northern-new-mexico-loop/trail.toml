@@ -73,6 +73,7 @@ season = "Late spring to early summer, and again from early September into autum
 months = [5, 6, 9, 10]
 caution = "Two unbridged fords of the Rio Grande are required, except in times of high water, when the hiker must detour widely to avoid them."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://simblissity.net/northern-nm-loop-mapset.shtml"
@@ -120,5 +121,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Northern New Mexico Loop mapset | Simblissity\"."
 basis_url = "https://simblissity.net/northern-nm-loop-mapset.shtml"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Brett Tucker (Blisterfree) as: Late spring to early summer, and again from early September into autumn: clockwise from Santa Fe in spring, counter-clockwise in autumn."
+basis_url = "https://blisterfree.wordpress.com/2023/03/24/northern-new-mexico-loop-2023-edition/"
 asked_by = "the dataset's own check"
 outcome = "applied"

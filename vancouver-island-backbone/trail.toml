@@ -75,6 +75,7 @@ months = [7, 8, 9]
 terrain = ["alpine", "forest"]
 caution = "The route is not a complete trail: no trails were cut or marked beyond those that already existed, and the site says the guide is a little out of date."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.wildisle.ca/backbone/index.html"
@@ -132,4 +133,13 @@ fields = ["route.line_policy"]
 basis = "The author's guide holds the route as text and maps, and no GPS file was found."
 basis_url = "https://www.wildisle.ca/backbone/index.html"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Philip Stone, Alpine Pacific Images as: July to September."
+basis_url = "https://www.wildisle.ca/downloads/books/Van_Isle_Backbone_Guide.pdf"
+asked_by = "the dataset's own check"
 outcome = "applied"

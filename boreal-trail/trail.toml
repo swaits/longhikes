@@ -58,6 +58,7 @@ travel = "trail"
 permit = "Hikers camping along the trail need a Backcountry Permit, from the park office, any campground or entry gate, or online at parks.saskatchewan.ca."
 caution = "Mosquitoes, blackflies and horseflies are most numerous from early May to the end of June and from late August to the end of September."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://saskparks.tourismsaskatchewan.com/media/media-library/pdfs/park-downloads/meadow-lake/meadow-lake-all.pdf"
@@ -94,6 +95,15 @@ date = "2026-11-19"
 change = "The position of the start was added, at the Cold Lake Trailhead (BT 1) beside the Cold River Rustic Campground, so that the page can show a map of it."
 fields = ["hike.start_lonlat"]
 basis = "Saskatchewan Provincial Parks' guide to Meadow Lake Provincial Park gives the position of the Cold Lake Trailhead BT 1 and says the trail starts from the Cold River Rustic Campground."
+basis_url = "https://saskparks.tourismsaskatchewan.com/media/media-library/pdfs/park-downloads/meadow-lake/meadow-lake-all.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Saskatchewan Provincial Parks as: All year."
 basis_url = "https://saskparks.tourismsaskatchewan.com/media/media-library/pdfs/park-downloads/meadow-lake/meadow-lake-all.pdf"
 asked_by = "the dataset's own check"
 outcome = "applied"

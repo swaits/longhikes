@@ -66,6 +66,7 @@ terrain = ["forest"]
 travel = "trail"
 permit = "Individual hikers need no permit, though some groups need a special-use permit from the Green Mountain National Forest or the Vermont Department of Forests, Parks and Recreation."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.greenmountainclub.org/the-long-trail/"
@@ -146,5 +147,14 @@ change = "The trail was placed in Green Mountains, Big Branch Wilderness, Breadl
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Green Mountain Club as: July to September."
+basis_url = "https://www.greenmountainclub.org/hiking/thru-hike-long-trail-vermont/"
 asked_by = "the dataset's own check"
 outcome = "applied"

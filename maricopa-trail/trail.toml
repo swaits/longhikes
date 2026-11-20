@@ -61,6 +61,7 @@ travel = "trail-and-road"
 permit = "The county says no permit is needed to hike the segments on state land, and that camping is allowed only in designated areas such as developed campgrounds or approved backcountry sites in some parks."
 caution = "The county says many segments are remote with no water or restrooms, which are mostly at trailheads and parks, and it advises against hiking in extreme heat."
 checked = "2026-11-15"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.maricopacountyparks.net/park-locator/maricopa-trail/"
@@ -119,5 +120,14 @@ change = "The Maricopa Trail's track now holds 25 relation ways tagged with the 
 fields = ["source.line_file", "source.mainline", "osm.note", "verification.measured_km", "verification.difference_percent", "verification.parts", "verification.note"]
 basis = "OpenStreetMap's wiki page for route relations says the empty role should be used instead of the role route. The 25 ways joined parts of the main track end to end, so they carry the trail; the track tool had read the role as a side trail."
 basis_url = "https://wiki.openstreetmap.org/wiki/Relation:route"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Maricopa Trail + Park Foundation as: Fall to spring."
+basis_url = "https://mctpf.org/news/1151/want-to-hike-the-maricopa-trail-heres-a-good-starting-point-if-youre-new-to-the-route/"
 asked_by = "the dataset's own check"
 outcome = "applied"

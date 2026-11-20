@@ -75,6 +75,7 @@ travel = "some-cross-country"
 permit = "The Association names no permit for the route as a whole, but says Glacier National Park requires permits to camp within the park."
 caution = "Sections 21 to 25 are given in river miles, there is no trail along 149 miles of the Wild and Scenic River section, and about 10 percent of the route follows roads or motorized routes."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://montanatrail.org"
@@ -132,5 +133,14 @@ change = "The word \"Held:\" was taken off the start of the wave note, which now
 fields = ["wave_note"]
 basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://montanatrail.org/wp-content/uploads/2021/11/montana-trail-logo.webp"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Montana Trail 406 Association as: Mid-June to mid-September."
+basis_url = "https://montanatrail.org/faq/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -62,6 +62,7 @@ terrain = ["desert"]
 travel = "trail"
 permit = "No use fees or permits are needed for general visits; commercial, competitive or large group events may need a special recreation permit."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.blm.gov/visit/black-canyon-national-recreation-trail"
@@ -109,5 +110,14 @@ change = "The track status is now \"verified\", in place of \"found\", which mea
 fields = ["source.status"]
 basis = "The record has a published track file and a measured length in its verification, and its track was downloaded and measured."
 basis_url = "https://gis.blm.gov/arcgis/rest/services/transportation/BLM_Natl_GTLF_Public_Display/MapServer/7"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Bureau of Land Management; Bureau of Land Management, Hassayampa Field Office (trail handout) as: November to April."
+basis_url = "https://www.blm.gov/visit/black-canyon-national-recreation-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

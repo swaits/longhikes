@@ -80,6 +80,7 @@ travel = "some-cross-country"
 permit = "The author says the route needs a National Parks pass for Lake Mead National Recreation Area and an Arizona State Trust Land permit."
 caution = "The author says only about 16 miles are on a hiking trail and roughly 40 percent is cross-country, and he calls the route the driest he has hiked."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/"
@@ -94,5 +95,14 @@ date = "2026-11-14"
 change = "The record was added: Mojave-Sonoran Trail."
 fields = ["record"]
 basis = "The record's own source entry: Eric Poulin."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Eric Poulin (the route's author) as: November to March."
+basis_url = "https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/"
 asked_by = "the dataset's own check"
 outcome = "applied"

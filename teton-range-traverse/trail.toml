@@ -74,6 +74,7 @@ travel = "trail"
 permit = "Overnight camping needs permits in Grand Teton National Park and Yellowstone National Park."
 caution = "There is a cross-country stretch of about three miles between Lake Solitude and Granite Basin, and no resupply on the route."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://thehikinglife.com/2017/07/teton-range-traverse/"
@@ -126,4 +127,13 @@ fields = ["route.line_policy"]
 basis = "The author's page gives step-by-step directions and no GPX file."
 basis_url = "https://thehikinglife.com/2017/07/teton-range-traverse/"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Cam Honan, The Hiking Life (the route's author) as: Early fall."
+basis_url = "https://thehikinglife.com/2017/07/teton-range-traverse/"
+asked_by = "the dataset's own check"
 outcome = "applied"

@@ -81,6 +81,7 @@ terrain = ["desert"]
 travel = "some-cross-country"
 caution = "About 35 percent of the route is cross-country and 35 percent is on 4x4 roads, and no public transport serves Ely."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://seekinglost.com/basin-and-range-trail/"
@@ -123,5 +124,14 @@ change = "The guide's link now goes to the page for the planning kit itself, not
 fields = ["guide"]
 basis = "The page is titled \"Complete Basin and Range Trail Planning Kit: Guidebook, Maps\" on the trail's own site and names the kit at $55.00."
 basis_url = "https://basinandrangetrail.com/product/complete-basin-and-range-trail-planning-kit/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Eric Poulin (the route's author) as: May to July."
+basis_url = "https://seekinglost.com/basin-and-range-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

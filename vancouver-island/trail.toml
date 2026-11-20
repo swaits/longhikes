@@ -63,6 +63,7 @@ season = "Mid-June to October"
 months = [6, 7, 8, 9, 10]
 days = [30, 60]
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://vancouverislandtrail.ca/the-trail/about-the-vit/"
@@ -133,5 +134,14 @@ change = "The trail was placed in Cape Scott Park, Schoen Lake Park, Strathcona 
 fields = ["place"]
 basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Vancouver Island Trail Association as: Mid-June to October."
+basis_url = "https://vancouverislandtrail.ca/thru-hiking/"
 asked_by = "the dataset's own check"
 outcome = "applied"

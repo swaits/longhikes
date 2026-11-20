@@ -69,6 +69,7 @@ terrain = ["alpine", "forest"]
 travel = "some-cross-country"
 permit = "Backcountry permits and reservations are needed for the national park campgrounds (from Parks Canada), reservations for three provincial parks, and an Alberta Public Lands Camping Pass for random camping in parts of Alberta."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://greatdividetrail.com/"
@@ -228,5 +229,14 @@ change = "The trail was placed in Banff National Park, Castle Provincial Park, C
 fields = ["place"]
 basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20), the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Great Divide Trail Association as: July to mid-September."
+basis_url = "https://greatdividetrail.com/go-hiking/trip-planning-resources/"
 asked_by = "the dataset's own check"
 outcome = "applied"

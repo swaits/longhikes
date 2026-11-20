@@ -67,6 +67,7 @@ season = "October to early June"
 months = [10, 11, 12, 1, 2, 3, 4, 5]
 permit = "No permit is needed to hike or camp along the trail."
 checked = "2026-11-19"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://ozarkhighlandstrail.com/trail/"
@@ -165,5 +166,14 @@ change = "The trail was placed in Hurricane Creek Wilderness."
 fields = ["place"]
 basis = "Measured from the trail's main track against the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://wilderness.net/visit-wilderness/gis-gps.php"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Ozark Highlands Trail Association as: October to early June."
+basis_url = "https://ozarkhighlandstrail.com/faq/"
 asked_by = "the dataset's own check"
 outcome = "applied"

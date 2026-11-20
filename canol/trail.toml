@@ -64,6 +64,7 @@ travel = "some-cross-country"
 permit = "Backcountry camping on the trail needs no reservation."
 caution = "Overgrowth and washouts sometimes force hikers off the trail to find their way back to it, and four river crossings need a packraft."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.nwtparks.ca/find-a-park/canol-heritage-trail"
@@ -91,6 +92,15 @@ date = "2026-11-16"
 change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.nwtparks.ca/find-a-park/canol-heritage-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Northwest Territories Parks as: Mid-May to September."
 basis_url = "https://www.nwtparks.ca/find-a-park/canol-heritage-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -75,6 +75,7 @@ travel = "trail-and-road"
 unfinished = "The trail is still being established: the current route links existing trails and public back roads, and new trail is to be built on public lands over time."
 caution = "Public roads carry the route for large stretches, and much of the land beside them is private."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.greatplainstrail.org/about-the-trail/"
@@ -118,4 +119,13 @@ fields = ["route.line_policy", "source.line_absent_reason"]
 basis = "The alliance's map page shows the route as an online map and offers no GPX."
 basis_url = "https://www.greatplainstrail.org/gpt-map/"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Great Plains Trail Alliance as: Spring and fall."
+basis_url = "https://www.greatplainstrail.org/great-plains-trail-newsletter-for-july-2022/"
+asked_by = "the dataset's own check"
 outcome = "applied"

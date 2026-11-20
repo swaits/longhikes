@@ -63,6 +63,7 @@ terrain = ["forest"]
 season = "About nine months of the year, avoiding winter"
 months = [3, 4, 5, 6, 7, 8, 9, 10, 11]
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://hikethealleghenytrail.org/about"
@@ -143,5 +144,14 @@ change = "The trail was placed in Appalachian Mountains."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by West Virginia Scenic Trails Association as: About nine months of the year, avoiding winter."
+basis_url = "https://hikethealleghenytrail.org/hike/thru-hike/"
 asked_by = "the dataset's own check"
 outcome = "applied"

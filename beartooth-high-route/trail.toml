@@ -77,6 +77,7 @@ high_point_m = 3558
 terrain = ["alpine"]
 travel = "mostly-cross-country"
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://wildernessmindset.com/beartooth-high-route/"
@@ -105,5 +106,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Beartooth High Route Map Pack - Wilderness Mindset\"."
 basis_url = "https://wildernessmindset.com/product/beartooth-high-route-map-pack/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Mindset as: Late July through September."
+basis_url = "https://wildernessmindset.com/beartooth-high-route/"
 asked_by = "the dataset's own check"
 outcome = "applied"

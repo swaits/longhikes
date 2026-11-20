@@ -65,6 +65,7 @@ high_point = "Mount Monadnock"
 high_point_m = 965
 travel = "trail"
 checked = "2026-11-14"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://mmtrailnh.org/"
@@ -123,5 +124,14 @@ change = "The trail was placed in Appalachian Mountains."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by New England Trail as: Spring and fall; summers tend to be humid and buggy and winters cold and icy."
+basis_url = "https://newenglandtrail.org/thru-hiking/"
 asked_by = "the dataset's own check"
 outcome = "applied"

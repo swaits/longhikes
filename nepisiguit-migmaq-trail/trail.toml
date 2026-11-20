@@ -65,6 +65,7 @@ travel = "trail"
 permit = "Multi-day and thru hikers must register, which costs a fee, and carry their hiking pass; day hikers need not register."
 caution = "Most of the trail is remote wilderness without telephone or internet service, and open fires are not permitted."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://migmaqtrail.ca/mission-history.php"
@@ -124,5 +125,14 @@ change = "The trail was placed in Mount Carleton Provincial Park, Appalachian Mo
 fields = ["place"]
 basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20), the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Sentier Nepisiguit Mi'gmaq Trail Inc. as: June to October."
+basis_url = "https://migmaqtrail.ca/discover.php"
 asked_by = "the dataset's own check"
 outcome = "applied"

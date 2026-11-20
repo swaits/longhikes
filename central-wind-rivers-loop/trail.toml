@@ -79,6 +79,7 @@ travel = "some-cross-country"
 permit = "None required, as the book states; it says to sign in at the trailhead."
 caution = "The book calls this a long, rugged trip with several relatively long cross-country sections, most of them fairly easy, with sketchy use paths for much of the distance, and tells hikers to bring a good contour map and navigation skills. Thunderstorms are frequent and some stream crossings are involved, which the book calls relatively easy. It warns that the junction where the loop leaves the official trail near Bobs Lake is very hard to find if the loop is done in the opposite direction. Fires are prohibited above treeline, groups are limited to 15 people and 25 stock, and camping is prohibited within 100 feet of streams and 200 feet of lakes or trails. It describes one steep gully climb of about 300 feet. The author rates its difficulty 7 out of 10."
 checked = "2026-11-18"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
@@ -134,6 +135,15 @@ date = "2026-11-19"
 change = "The guide now carries the edition, the place of the route in the book and what its link points at (the publisher's page for this book) in their own fields; its format says only that it is a book."
 fields = ["guide", "route.note"]
 basis = "The guide's format text already gave the edition and where the route is in the book; they were moved into the new fields. The link is the publisher's page for the title, as the record already had it."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's pages 141-145 of the 1st edition (2010), read from a printed copy as: Usually open July to October, best mid-July through August."
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 asked_by = "the dataset's own check"
 outcome = "applied"

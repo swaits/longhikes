@@ -58,6 +58,7 @@ terrain = ["alpine"]
 travel = "trail"
 permit = "A Parks Canada backcountry camping permit is needed for any overnight trip on the loop, booked online or by phone."
 checked = "2026-11-19"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas"
@@ -105,5 +106,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of Parks Canada, Jasper National Park says: \"A backcountry camping permit is mandatory for all overnight trips and can be obtained online at reservation.pc.gc.ca or by calling 1-877-737-3783.\""
 basis_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/Brazeau"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Parks Canada, Jasper National Park as: Early July to mid-September, when the alpine trails are typically free of snow."
+basis_url = "https://pcweb2.azureedge.net/-/media/pn-np/ab/jasper/WET4/pdf/visit/depliants-brochures/ete-summer/Backcountry-Guide-ENG-2019.pdf"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -64,6 +64,7 @@ travel = "trail"
 permit = "A Wilderness Use Permit is required for overnight use in Guadalupe Mountains and Carlsbad Caverns National Parks, and a single recreation.gov itinerary can cover the whole trail."
 caution = "Water is scarce and not reliable in the Guadalupe Mountains, and the Park Service says planning where to find or cache water is one of the main factors on this trail."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.nps.gov/thingstodo/grt.htm"
@@ -106,6 +107,15 @@ date = "2026-11-16"
 change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.nps.gov/thingstodo/grt.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by National Park Service as: Spring and fall."
 basis_url = "https://www.nps.gov/thingstodo/grt.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

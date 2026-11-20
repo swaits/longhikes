@@ -59,6 +59,7 @@ caution = "Parks Canada says there is no designated trail to follow, and the mos
 season = "Mid-July to early September"
 months = [7, 8]
 checked = "2026-11-19"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking"
@@ -109,6 +110,15 @@ date = "2026-11-19"
 change = "The usual season was added, \"Mid-July to early September\", with its months."
 fields = ["hike.season", "hike.months"]
 basis = "The page of Parks Canada says: \"Mid-July/August/early September (summer) The fiords are normally ice-free. ... Hiking / Climbing season.\""
+basis_url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/visit/meteo-weather"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Parks Canada as: Mid-July to early September."
 basis_url = "https://www.parks.canada.ca/pn-np/nu/auyuittuq/visit/meteo-weather"
 asked_by = "the dataset's own check"
 outcome = "applied"

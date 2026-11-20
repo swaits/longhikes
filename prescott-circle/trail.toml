@@ -64,6 +64,7 @@ terrain = ["forest", "desert"]
 travel = "trail"
 permit = "No permit is needed to hike the trail; camping and some trailhead parking require fees."
 checked = "2026-11-19"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://prescott-az.gov/?p=25791"
@@ -106,5 +107,14 @@ change = "A note on permits was added."
 fields = ["hike.permit"]
 basis = "The page of Treeline Review says: \"A permit is not necessary to hike the trail, but camping, and sometimes parking, do require fees\""
 basis_url = "https://www.treelinereview.com/where-to-go/prescott-circle-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by City of Prescott as: Spring, summer and fall."
+basis_url = "https://prescott-az.gov/?p=25791"
 asked_by = "the dataset's own check"
 outcome = "applied"

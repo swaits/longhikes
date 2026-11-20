@@ -82,6 +82,7 @@ terrain = ["alpine"]
 travel = "trail"
 permit = "One permit covers the whole trip and is issued for an entry date and trailhead; a clockwise start at Roads End uses a Copper Creek permit."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://doingmiles.com/route-big-seki-loop/"
@@ -128,5 +129,14 @@ change = "The trail was placed in Sequoia and Kings Canyon National Parks, Great
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Amy and James (Doing Miles) as: Late August and September."
+basis_url = "https://doingmiles.com/route-big-seki-loop/"
 asked_by = "the dataset's own check"
 outcome = "applied"

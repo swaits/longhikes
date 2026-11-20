@@ -71,6 +71,19 @@ decided = "2026-11-14"
 was_listed = false
 
 [[trail]]
+id = "bomber-basin-ross-lakes-loop"
+name = "Bomber Basin & Ross Lakes Loop"
+country = "US"
+regions = ["WY"]
+length_mi = 22
+length_km = 35
+reason = "below-floor"
+note = "A trip report by the Compulsive Hiker says this loop from the Trail Lake trailhead south of Dubois, in the Fitzpatrick Wilderness of the Wind River Range, is route 42 in the second edition of Nancy Pallister's Beyond the Trails in the Wind River Mountains, which the post says gives it as 22 miles, most of it off trail. The author's party took 7 days. It is left out because 22 miles is far below the 50 mile floor, too far below to count as still reasonably long, even though most of it is cross-country travel. The book itself has not been read; the 22 miles is its figure as the post reports it."
+source_url = "https://compulsivehiker.com/2018/09/01/wind-river-range-a-bomber-basin-ross-lakes-loop/"
+decided = "2026-11-20"
+was_listed = false
+
+[[trail]]
 id = "bonneville-shoreline-trail"
 name = "Bonneville Shoreline Trail"
 country = "US"
@@ -519,6 +532,19 @@ note = "The National Park Service say the 330 mile route can be followed on a co
 source_url = "https://www.nps.gov/ovvi/index.htm"
 decided = "2026-11-14"
 was_listed = true
+
+[[trail]]
+id = "ozarks-keystone-trail"
+name = "Ozarks Keystone Trail"
+country = "US"
+regions = ["AR", "MO"]
+length_note = "About 85 miles planned along Norfork Lake"
+reason = "waiting"
+note = "The Compulsive Hiker's trail information page, a personal blog and not an official body, says the trail will run about 85 miles along Norfork Lake between Dawt, Missouri and the Norfork Lake dam near Norfork, Arkansas, when completed. It lists the built stretches separately and an unbuilt gap of about 18 miles in Arkansas between the CR 396 bridge at Panther Creek and CR 1028, and about 3 miles still to build near Dawt Mill, Missouri. It also lists about 6.25 and about 8 miles of incomplete trail in Missouri. A December 2024 post by the same author puts the unbuilt stretch north of the state line at about 18 to 20 miles. The trail cannot be walked from end to end today."
+source_url = "https://compulsivehiker.com/trail-information/arkansas-ozarks-trails/ozarks-keystone-trail/"
+decided = "2026-11-20"
+was_listed = false
+waiting_for = "The gaps are built and the trail can be walked from one end to the other."
 
 [[trail]]
 id = "palmetto"

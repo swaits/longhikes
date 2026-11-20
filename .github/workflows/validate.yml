@@ -43,6 +43,7 @@ jobs:
           python3 tools/check_history.py --base "$base"
       - run: python3 -m unittest discover tools/tests -p "test_history.py"
       - run: python3 -m unittest discover tools/tests -p "test_trail_numbers.py"
+      - run: python3 -m unittest discover tools/tests -p "test_season*.py"
 
   site:
     runs-on: ubuntu-latest

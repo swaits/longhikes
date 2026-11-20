@@ -72,6 +72,7 @@ terrain = ["alpine", "lakes"]
 travel = "trail"
 permit = "The Park Service requires a wilderness permit year round for overnight stays in the Yosemite Wilderness, and offers 60 percent of each trailhead's daily quota by lottery 24 weeks ahead."
 checked = "2026-11-19"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
@@ -107,5 +108,14 @@ change = "The record was added: the High Sierra Camp Loop, 48.2 miles (78 km) fr
 fields = ["record"]
 basis = "The Park Service's Tuolumne Meadows backpacking trails page names the High Sierra Camp Loop and gives 48.2 miles; Mike White and Douglas Lorain's Best Backpacking Trips in California and Nevada (University of Nevada Press, 2015, no edition stated, ISBN 978-0-87417-971-2) describes it as Trip 3, page 53, at 51.2 miles from the Soda Springs Trailhead over 5 to 8 days. The loop was ruled to belong in the dataset."
 basis_url = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by University of Nevada Press (the publisher's page for the book); the start, shape, days, season and months are from the book's Trip 3, on page 53 of the 2015 printing (no edition is stated) as: Mid-July to early October."
+basis_url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
 asked_by = "the dataset's own check"
 outcome = "applied"

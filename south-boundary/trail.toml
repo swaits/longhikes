@@ -60,6 +60,7 @@ travel = "trail"
 permit = "A Parks Canada backcountry camping permit is mandatory for all overnight trips."
 caution = "Parks Canada says the trail may be overgrown and difficult to find in places, most creeks and rivers are not bridged, and fords can be dangerous or impassable at high water."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/south-boundary"
@@ -107,5 +108,14 @@ change = "The position of the end was added, at the trailhead parking lot beyond
 fields = ["hike.end_lonlat"]
 basis = "Parks Canada's page for the trail puts the trailhead parking lot 1.7 km down the far side of Cardinal Divide, on the west side of the road; OpenStreetMap contributors (ODbL) map the one parking lot there, OpenStreetMap way 363050778."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=363050778"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Parks Canada, Jasper National Park as: The trail can be hiked late into the season, to early October; the Brazeau and Poboktan portions are closed from November 1 to May 15 for caribou conservation."
+basis_url = "https://pcweb2.azureedge.net/-/media/pn-np/ab/jasper/WET4/pdf/activ/guides-maps/backcountry-guide/south-boundary/South-boundary-backcountry-guide_Eng_2025.pdf"
 asked_by = "the dataset's own check"
 outcome = "applied"

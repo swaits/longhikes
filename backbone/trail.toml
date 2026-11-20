@@ -66,6 +66,7 @@ travel = "trail"
 permit = "No permit is needed to hike the trail; only groups of 50 or more need one."
 caution = "Because overnight camping options are few and far apart, the National Park Service does not recommend through-hiking the trail in one go."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.nps.gov/samo/planyourvisit/backbonetrail.htm"
@@ -128,5 +129,14 @@ change = "The trail was placed in Transverse Ranges."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by National Park Service as: Late winter to early spring."
+basis_url = "https://www.nps.gov/samo/planyourvisit/bbt-faqs.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

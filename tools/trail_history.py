@@ -29,7 +29,7 @@ _TABLES = {
     "shield": ("status", "logo_source", "contact", "note", "logo_file", "logo_owner"),
     "verification": ("verified", "date", "measured_km", "difference_percent", "parts", "note"),
     "hike": ("summary", "official_url", "start", "end", "start_lonlat", "end_lonlat", "shape",
-             "days", "season", "months", "high_point", "high_point_m", "terrain", "travel",
+             "days", "season", "months", "season_basis", "season_method", "high_point", "high_point_m", "terrain", "travel",
              "permit", "unfinished", "caution", "checked"),
     "hike.source": ("url", "publisher", "facts"),
     "route": ("creator", "year", "line_policy", "creator_words", "creator_words_url",
@@ -69,7 +69,7 @@ FACTS_TEXT = (
     "designation, inclusion; source.* (status, publisher, publisher_url, url, licence, licence_text, "
     "permission_*, attribution, osm_only, line_source, line_file, line_absent_reason, "
     "decision, decision_text, redistributable); osm.relation; shield.* except note; "
-    "hike.* except summary, checked and source (start, end, official_url, days, season, terrain, "
+    "hike.* except summary, checked and source (start, end, official_url, days, season, months, season_basis, season_method, terrain, "
     "travel, high_point, permit, unfinished, caution and the rest); route.* except note; "
     "guide.* except price; place.* except km (kind, slug, basis, source). "
     "A replaced track file counts as a change to source.line_file."

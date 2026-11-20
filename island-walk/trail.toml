@@ -62,6 +62,7 @@ months = [5, 6, 7, 8, 9, 10]
 terrain = ["coast"]
 travel = "trail-and-road"
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://theislandwalk.ca/come-back-different/about-the-island-walk/"
@@ -110,5 +111,14 @@ change = "The trail was placed in Prince Edward Island National Park."
 fields = ["place"]
 basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Island Walk PEI Inc. as: May to October."
+basis_url = "https://theislandwalk.ca/partner/"
 asked_by = "the dataset's own check"
 outcome = "applied"

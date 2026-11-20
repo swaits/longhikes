@@ -66,6 +66,7 @@ terrain = ["alpine", "lakes"]
 travel = "trail"
 permit = "One wilderness permit from Yosemite covers the whole hike; a daily exit quota of 45 hikers over Donohue Pass limits entry."
 checked = "2026-11-14"
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.nps.gov/yose/planyourvisit/jmt.htm"
@@ -138,5 +139,14 @@ change = "The trail was placed in Sequoia and Kings Canyon National Parks, Yosem
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from one page that is not the trail's own."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Cicerone Press as: July to September."
+basis_url = "https://www.cicerone.co.uk/products/hiking-the-john-muir-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

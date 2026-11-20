@@ -72,6 +72,7 @@ season = "December to February"
 months = [12, 1, 2]
 terrain = ["desert"]
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.simblissity.net/desert-wth-mapset.shtml"
@@ -94,6 +95,15 @@ date = "2026-11-16"
 change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
 fields = ["shield.status", "shield.logo_source", "shield.contact", "shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.simblissity.net/desert-wth-mapset.shtml"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by simBLISSity Ultralight Designs (the route's authors) as: December to February."
 basis_url = "https://www.simblissity.net/desert-wth-mapset.shtml"
 asked_by = "the dataset's own check"
 outcome = "applied"

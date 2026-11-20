@@ -67,6 +67,7 @@ terrain = ["alpine"]
 travel = "trail"
 permit = "No permit is needed, except a free self-issued permit at the station where the trail enters each wilderness area."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.colorado.com/articles/hiking-colorado-trail"
@@ -190,5 +191,14 @@ change = "The trail was placed in Front Range, Gore Range, Mosquito Range, San J
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Colorado Trail Foundation as: July to September."
+basis_url = "https://coloradotrail.org/season-for-the-colorado-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"

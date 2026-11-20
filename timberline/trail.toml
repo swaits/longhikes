@@ -64,6 +64,7 @@ travel = "trail"
 permit = "Free, self-issued wilderness permits are required from May 15 to October 15 when provided at a portal, and some trailheads require a day use fee."
 caution = "The Forest Service says most hikers find the fast-moving river crossings the most challenging part of the trail, and several major crossings have no bridges."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r06/mthood/recreation/trails/timberline-trail-600"
@@ -154,5 +155,14 @@ change = "The trail was placed in Oregon Cascades, Mount Hood Wilderness."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by USDA Forest Service, Mt. Hood National Forest as: July to October."
+basis_url = "https://www.fs.usda.gov/r06/mthood/recreation/trails/timberline-trail-600"
 asked_by = "the dataset's own check"
 outcome = "applied"

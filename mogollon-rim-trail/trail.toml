@@ -77,6 +77,7 @@ season = "Spring and fall: April to May before the country dries out, and Septem
 months = [4, 5, 9, 10]
 caution = "The route mixes trail, forest road and cross-country travel, and its author describes it as a hike for very experienced walkers."
 checked = "2026-11-13"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
@@ -138,5 +139,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Mogollon Rim Trail mapset | Simblissity\"."
 basis_url = "https://www.simblissity.net/mogollon-rim-trail-mapset.shtml"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Brett Tucker (Blisterfree) as: Spring and fall: April to May before the country dries out, and September to October after the monsoon and before winter returns."
+basis_url = "https://blisterfree.wordpress.com/2019/02/24/introducing-the-mogollon-rim-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

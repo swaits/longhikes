@@ -61,6 +61,7 @@ travel = "trail"
 permit = "Overnight trips need a Wilderness Permit and an approved bear-resistant food canister, both from the Visitor Centre in Haines Junction."
 caution = "There are few bridges, so hikers wade creeks, and Victoria Creek can be swift, deep and sometimes impassable."
 checked = "2026-11-14"
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/cottonwood"
@@ -103,5 +104,14 @@ change = "The position of the end was added, at the Haines Highway end of Mush L
 fields = ["hike.end_lonlat"]
 basis = "OpenStreetMap contributors, via Nominatim (ODbL): the junction of Mush Lake Road and the Haines Highway, OpenStreetMap node 2182047607, matched to the Mush Lake Road end that Parks Canada names."
 basis_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=2182047607"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
+fields = ["hike.season_basis"]
+basis = "The season is stated by Parks Canada as: June to early September."
+basis_url = "https://parks.canada.ca/pn-np/yt/kluane/activ/randonnee-hiking/cottonwood"
 asked_by = "the dataset's own check"
 outcome = "applied"

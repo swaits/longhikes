@@ -1,6 +1,6 @@
 # A season on every trail
 
-Design, 2026-11-20. Status: awaiting approval.
+Design, 2026-11-20. Status: built; the method changed after the climate model was tried (see "What changed in the method").
 
 ## Intent
 
@@ -193,6 +193,17 @@ What the tool does:
 - Wording of notes within the vocabulary rules and the banned-word test.
 - Tests: every record has season, months and basis; basis fits the sources;
   estimates have a method; no page says a season is missing.
+
+## What changed in the method
+
+The plan above chose a rule over climate normals for Step 3. It was built and tested (`tools/estimate_season.py`, `tools/season_model.py`; CHELSA V2.1 1981 to 2010 normals, CC0, with NOAA ETOPO 2022 elevation), and it matched only 67.6 percent of the sourced seasons within one month at each end, under the owner's bar of 75 percent. Its output is therefore not written to a record. What was decided instead:
+
+- **A reviewer judges each estimate.** For each of the 75 trails with no season, a reviewer set the months from a packet: the trail's location, elevation, monthly climate normals, the machine estimate, and the ten most similar sourced trails (`tools/season_judge.py packets`; the reviewer's instruction is `docs/season-judging.md`). The machine estimate stays in the repository as an input to the packets and as the monthly check.
+- **The method is tested blind.** The same reviewers estimated the 148 trails whose season a page states, from identical packets with the season hidden, and a trail's comparable trails never came from its own part of the split. They matched 114 of 148 (77.0 percent), by the reviewer's confidence 48 of 52 (high), 55 of 76 (medium) and 11 of 20 (low). The figures are in `tools/season_blind_test.json`, written by `season_judge.py score`, and the site reads them.
+- **An estimate is stricter.** `season_basis = "estimate"` means no page states a season. `season` is built from `months`; `season_method` is one or two plain sentences saying how it was set and what sets the season there, ending "Confidence: high.", "medium." or "low."; and its one `[[hike.source]]` names `season` and `months` and cites the climate data. The validator refuses an estimate with any ordinary page naming the season, or with no method, and requires a season on every trail.
+- **Pages that disagree.** Six trails have pages that disagree where none is the managing body, association or route author. Their season is set by judgement from all the pages and the estimate: basis `sources`, the pages cited as sources naming the season, and a `season_method` saying the pages differ and how it was settled. A season with a method is shown as an estimate (it reads "About" with a note), left out of structured data, and not counted among the seasons a page states.
+- **The monthly check** (`estimate_season.py check`) reruns the machine estimate for every estimate and flags any whose inputs have changed since `tools/season_inputs.json` recorded them. It does not rewrite anything. The audit (`docs/audit.md`) also searches afresh for a page for every estimate.
+- **On the site**, a trail's page reads "About April to October" with a note (no page states a season; estimated from the climate at the trail's elevation and from similar trails; what sets it there; the confidence; that people walk it outside these months). Rows, tables and month lists mark estimates, the month filter can leave them out, and the reference page and glossary give the counts and the blind-test result.
 
 ## Open risks
 

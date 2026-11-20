@@ -63,6 +63,11 @@ spec = importlib.util.spec_from_file_location(
 check_datafiles = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(check_datafiles)
 
+spec = importlib.util.spec_from_file_location(
+    "check_places", os.path.join(ROOT, "tools", "check_places.py"))
+check_places = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(check_places)
+
 
 def haversine_km(coords):
     total, R = 0.0, 6371.0088
@@ -933,6 +938,7 @@ def main():
 
     check_left_out(ROOT, trails, errors)
     check_datafiles.check_datafiles(ROOT, trails, errors)
+    check_places.check(ROOT, trails, errors)
     trail_numbers.check(ROOT, trail_ids, errors)
 
     for dirpath, dirnames, filenames in os.walk(ROOT):

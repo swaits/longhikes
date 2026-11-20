@@ -186,7 +186,13 @@ class _Crumbs(HTMLParser):
 def visible_breadcrumbs(body):
     """[(text, href)] of the breadcrumb a page body shows; the last item has no href."""
     parser = _Crumbs()
-    parser.feed(str(body))
+    text = str(body)
+    # The breadcrumb is near the top of a body: feed it in pieces and stop once its nav has
+    # closed, rather than parsing a whole page of rows.
+    for i in range(0, len(text), 8192):
+        parser.feed(text[i:i + 8192])
+        if parser._done:
+            break
     return parser.items
 
 

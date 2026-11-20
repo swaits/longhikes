@@ -15,6 +15,7 @@ A list with a `noun` also has a page for each state or province where at least
 MIN_SIZE of its trails are, and fewer than MAX_SHARE of that place's (olt/placefacets.py).
 A list belongs to a `group` (GROUPS), the heading it sits under on /lists/.
 """
+import contextlib
 import re
 from dataclasses import dataclass
 from typing import Callable, Optional
@@ -271,13 +272,35 @@ def is_shown(n, total, least=0):
     return n >= max(MIN_SIZE, least) and n <= MAX_SHARE * total
 
 
+_SHOWN_MEMO = None  # while a site is being rendered: {id(records): (records, shown)}
+
+
+@contextlib.contextmanager
+def remembering_shown():
+    """Within this block shown() works each list of records out once. A site render asks
+    for it from every state, place and list page; the records do not change meanwhile."""
+    global _SHOWN_MEMO
+    outer, _SHOWN_MEMO = _SHOWN_MEMO, {}
+    try:
+        yield
+    finally:
+        _SHOWN_MEMO = outer
+
+
 def shown(records):
     """[(list, its trails)] for every list that passes is_shown, in LISTS order."""
+    if _SHOWN_MEMO is not None:
+        held = _SHOWN_MEMO.get(id(records))
+        if held is not None and held[0] is records:
+            return list(held[1])
     out = []
     for lst in LISTS:
         recs = members(lst, records)
         if is_shown(len(recs), len(records), lst.min_size):
             out.append((lst, recs))
+    if _SHOWN_MEMO is not None:
+        _SHOWN_MEMO[id(records)] = (records, out)
+        return list(out)
     return out
 
 

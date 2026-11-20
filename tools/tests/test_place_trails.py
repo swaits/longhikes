@@ -111,6 +111,17 @@ class ProposalTest(unittest.TestCase):
         self.park_only = LineString([(-109.9, 43.2), (-109.9, 43.29)])
         self.outside = LineString([(-107.0, 43.2), (-107.0, 43.29)])
 
+    def test_a_place_outside_the_trails_regions_does_not_place_it(self):
+        p = P.propose([rec("a", ["NH"], self.inside)], [self.park, self.range])
+        self.assertEqual(p.per_trail["a"], [])
+        p = P.propose([rec("a", ["NH", "WY"], self.inside)], [self.park, self.range])
+        self.assertEqual({k for k, _km in p.per_trail["a"]}, {("park", "alpha-park"), ("range", "beta-range")})
+
+    def test_the_registrys_reviewed_where_wins(self):
+        p = P.propose([rec("a", ["NH"], self.inside)], [self.park],
+                      {("park", "alpha-park"): ["NH"]})
+        self.assertEqual([k for k, _km in p.per_trail["a"]], [("park", "alpha-park")])
+
     def test_propose_lists_per_trail_places_and_per_place_trails(self):
         records = [rec("a", ["WY"], self.inside), rec("b", ["WY"], self.park_only),
                    rec("c", ["WY"], self.inside)]
@@ -188,6 +199,13 @@ class ProposalTest(unittest.TestCase):
                                self.park.geometry.union(self.range.geometry).area)
         out = P.assign_slugs(out)
         self.assertEqual(out[0].slug, "palisades")  # no numeric suffix, no state code
+
+    def test_two_ranges_of_one_display_name_with_different_slugs_stay_two_places(self):
+        a = outline("range", "12331", "White Mountains", self.park.geometry, slug="white-mountains")
+        b = outline("range", "16575", "White Mountains", self.range.geometry,
+                    slug="white-mountains-arizona")
+        self.assertEqual([o.slug for o in P.merge_same_name([a, b])],
+                         ["white-mountains", "white-mountains-arizona"])
 
     def test_the_same_name_from_two_sources_or_kinds_is_not_merged(self):
         a = outline("park", "1", "Glacier", self.park.geometry, hint=["MT"])

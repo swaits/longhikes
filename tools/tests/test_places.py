@@ -183,3 +183,19 @@ class WholeRepoTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PlaceLiesInTheTrailsRegionsTest(unittest.TestCase):
+    def stated(self, **kw):
+        return record(regions=kw.pop("regions"), places_checked="2026-11-20",
+                      place=[{"kind": "range", "slug": "wind-river-range", "basis": "stated",
+                              "source": "https://example.org/x"}])
+
+    def test_a_place_in_one_of_the_trails_states_passes(self):
+        errs = record_errors(self.stated(regions=["ID", "WY"]))
+        self.assertEqual([e for e in errs if "lies in" in e], [])
+
+    def test_a_place_in_none_of_the_trails_states_fails(self):
+        errs = record_errors(self.stated(regions=["AZ", "NM"]))
+        self.assertTrue(any("range/wind-river-range lies in WY, none of the record's regions (AZ, NM)" in e
+                            for e in errs), errs)

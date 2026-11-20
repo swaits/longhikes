@@ -3,7 +3,7 @@
 id = "north-boundary"
 name = "North Boundary Trail"
 country = "CA"
-regions = ["AB"]
+regions = ["AB", "BC"]
 length_km = 159
 length_note = "159 km one way, from the Jasper National Park page"
 tier = "regional"
@@ -139,6 +139,15 @@ date = "2026-11-20"
 change = "The trail was placed in Jasper National Park, Mount Robson Park and Canadian Rockies from published pages, as it has no track to measure."
 fields = ["place"]
 basis = "The page says: \"At the first junction, follow the trail to Willow Creek and cross into Jasper National Park at km 5.\" (Jasper National Park) The page says: \"This pass marks the boundary between Jasper National Park and Mt. Robson Provincial Park in British Columbia.\" (Mount Robson Park) The trail's own description says: \"The North Boundary Trail is a remote wilderness route along the northern edge of Jasper National Park, from Rock Lake over Snake Indian Pass and down the Smoky River to Mount Robson Provincial Park in British Columbia.\" (Canadian Rockies)"
+basis_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "British Columbia is now listed with Alberta as a state or province the trail passes through, because the trail ends in Mount Robson Provincial Park."
+fields = ["regions"]
+basis = "The record's own end point is the Berg Lake trailhead in Mount Robson Provincial Park, British Columbia, and the Parks Canada page says Snake Indian Pass marks the boundary between Jasper National Park and Mt. Robson Provincial Park."
 basis_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/north-boundary"
 asked_by = "the dataset's own check"
 outcome = "applied"

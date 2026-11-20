@@ -262,6 +262,14 @@ name = "White Mountains"
 within = ["appalachian-mountains"]
 where = ["ME", "NH"]
 
+# The White Mountains of Arizona (GMBA 16575), not the ones of New Hampshire and Maine above.
+# The display name is the same; the slug says which.
+[[range]]
+gmba_id = "16575"
+slug = "white-mountains-arizona"
+name = "White Mountains"
+where = ["AZ"]
+
 [[range]]
 gmba_id = "11169"
 slug = "bighorn-mountains"

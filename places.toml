@@ -1514,6 +1514,16 @@ source_version = "2026-11-20"
 box = [-72.12, 43.75, -70.79, 45.04]
 
 [[place]]
+slug = "white-mountains-arizona"
+kind = "range"
+name = "White Mountains"
+where = ["AZ"]
+source = "gmba-v2"
+source_id = "16575"
+source_version = "2026-11-20"
+box = [-110.26, 32.96, -108.92, 34.29]
+
+[[place]]
 slug = "wind-river-range"
 kind = "range"
 name = "Wind River Range"

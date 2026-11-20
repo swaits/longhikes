@@ -151,6 +151,13 @@ def check_record(tid, rec, tdir, registry, errors):
             errors.append(f"{where} slug must be a non-empty string")
         elif kind in KINDS and (kind, slug) not in registry:
             errors.append(f"{where} {kind}/{slug} is not in places.toml")
+        if kind in KINDS and (kind, slug) in registry:
+            lies = [str(c) for c in registry[(kind, slug)].get("where") or []]
+            regions = [str(c) for c in rec.get("regions") or []]
+            if lies and regions and not set(lies) & set(regions):
+                errors.append(f"{where} {kind}/{slug} lies in {', '.join(lies)}, none of the "
+                              f"record's regions ({', '.join(regions)}); a place must lie in at "
+                              f"least one of the trail's states or provinces")
         if (kind, slug) in seen:
             errors.append(f"{where} lists {kind}/{slug} more than once; a place is listed once per record")
         seen.add((kind, slug))

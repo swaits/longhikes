@@ -536,7 +536,9 @@ def merge_same_name(outlines):
     place carries every id. The source lists some ranges twice under different ids."""
     merged, order = {}, []
     for o in outlines:
-        key = (o.kind, o.source, " ".join(o.name.lower().split()))
+        # An explicit slug tells two ranges of one display name apart (the White Mountains
+        # of New Hampshire and of Arizona); the two Palisades ids share a slug and merge.
+        key = (o.kind, o.source, " ".join(o.name.lower().split()), o.slug or "")
         # Two wilderness areas or parks of one name in different places are two places
         # (assign_slugs tells them apart by state); a range is one wherever its pieces lie.
         if key in merged and o.kind != "range" and not any(
@@ -686,7 +688,24 @@ def _measure(records, outlines):
     return hits
 
 
-def propose(records, outlines):
+def propose(records, outlines, reviewed_where=None):
+    """Measure every track against every outline. A place counts for a trail only when it
+    lies in at least one of the trail's states or provinces (the validator's rule): a track
+    that strays over a border, or a relation that carries a neighbour's section, does not
+    place the trail in the neighbour's park. reviewed_where is the registry's reviewed
+    `where` by (kind, slug); it wins over the outline's own."""
+    reviewed_where = reviewed_where or {}
+    lies_cache = {}
+
+    def lies(idx, regions):
+        if not regions:
+            return True
+        if idx not in lies_cache:
+            o = outlines[idx]
+            lies_cache[idx] = set(reviewed_where.get((o.kind, o.slug or slugify(o.name)))
+                                  or where_of(o))
+        return not lies_cache[idx] or bool(lies_cache[idx] & set(regions))
+
     p = Proposal(names={r["id"]: r.get("name") or r["id"] for r in records})
     p.no_track = [r["id"] for r in records if r.get("track") is None]
     for r in records:
@@ -696,6 +715,8 @@ def propose(records, outlines):
     for (tid, idx), (km, clipped) in sorted(hits.items()):
         o = outlines[idx]
         key = (o.kind, o.slug or slugify(o.name))
+        if not lies(idx, by_id[tid].get("regions")):
+            continue
         if abs(km - MIN_KM) <= 0.5:
             p.near.append(NearItem(tid, key, km, clipped))
         if km < MIN_KM:
@@ -1149,7 +1170,8 @@ def check(root, cache, outlines=None, versions=None, records=None):
         versions = source_versions(cache)
     if records is None:
         records = load_records(root)
-    p = propose(records, outlines)
+    p = propose(records, outlines, {(e.get("kind"), e.get("slug")): e.get("where")
+                                    for e in registry_entries(root)})
     diffs = []
     current_counts = {}
     for r in records:
@@ -1246,7 +1268,8 @@ def main(argv=None):
         allow = load_allowlist(_opt(argv, "--allowlist", default_allowlist_path()))
         outlines = catalogue(cache_dir(), allow)
         records = load_records()
-        p = propose(records, outlines)
+        p = propose(records, outlines, {(e.get("kind"), e.get("slug")): e.get("where")
+                                        for e in registry_entries(ROOT)})
         p.versions = source_versions(cache_dir())
         dest = os.path.join(_out_dir(_opt(argv, "--out")), "proposal.md")
         render_proposal(p, dest)

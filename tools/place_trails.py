@@ -265,12 +265,17 @@ def _geojson_groups(path, key_of):
             for k, feats in groups.items()}
 
 
+def state_codes(text):
+    """Two-letter state codes from a source's state field: "CA", "ID-MT-WY", "AR/OK", "FL 6/"."""
+    return [c for c in re.split(r"[,/\- ]+", text or "") if len(c) == 2 and c.isalpha()]
+
+
 def _read_nps(path):
     groups = _geojson_groups(path, lambda p: (p.get("UNIT_CODE") or "").strip() or None)
     out = []
     for code, (p, geom) in groups.items():
         out.append(Outline("park", "nps", code, (p.get("UNIT_NAME") or code).strip(),
-                           [s for s in re.split(r"[,/ ]+", p.get("STATE") or "") if len(s) == 2],
+                           state_codes(p.get("STATE")),
                            geom, path=(p.get("UNIT_TYPE") or "")))
     return out
 
@@ -347,7 +352,7 @@ def _read_wilderness(path):
         name = str(pick(row, ["Name", "WILD_NAME", "AREANAME", "AreaName"])).strip()
         wid = str(pick(row, ["WID", "ID", "AreaID", "OBJECTID"]) or name)
         state = str(pick(row, ["STATE", "State"]) or "")
-        hint = [s for s in re.split(r"[,/ ]+", state) if len(s) == 2]
+        hint = state_codes(state)
         if row.get("_geometry") is not None and name:
             groups.setdefault(wid, (name, hint, []))[2].append(row["_geometry"])
     return [Outline("wilderness", "wilderness-connect", wid, name, hint, _union_geoms(geoms))

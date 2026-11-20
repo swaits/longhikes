@@ -149,6 +149,13 @@ class ProposalTest(unittest.TestCase):
         o = outline("park", "P9", "Edge Park", self.park.geometry, hint=["MT", "ID", "PR"])
         self.assertEqual(P.where_of(o), ["ID", "MT"])
 
+    def test_state_codes_reads_the_separators_the_sources_use(self):
+        self.assertEqual(P.state_codes("ID-MT-WY"), ["ID", "MT", "WY"])
+        self.assertEqual(P.state_codes("AR/OK"), ["AR", "OK"])
+        self.assertEqual(P.state_codes("FL 6/"), ["FL"])
+        self.assertEqual(P.state_codes("SAMOA"), [])
+        self.assertEqual(P.state_codes(None), [])
+
     def test_where_of_a_range_is_found_from_the_state_boxes(self):
         # wholly inside the Wyoming box, clear of every other state's box
         o = outline("range", "R5", "Wyoming Range", self.park.geometry)

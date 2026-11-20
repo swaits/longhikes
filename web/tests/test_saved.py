@@ -128,10 +128,15 @@ class HeaderOnEveryPageTest(unittest.TestCase):
         for rel in self.files:
             doc = read_out(rel)
             self.assertNotIn("<style", doc, rel)
+            inline = 0
             for tag, a, _ in tree(doc).tags:
                 self.assertFalse([k for k in a if k.startswith("on")], f"{tag} in {rel}")
-                if tag == "script":
-                    self.assertTrue(a.get("src") or a.get("type") in ("application/json", "application/ld+json"), rel)
+                if tag == "script" and not (a.get("src") or a.get("type") in ("application/json", "application/ld+json")):
+                    inline += 1
+            # The one inline script is the Google tag's data-layer setup, allowed by its hash.
+            self.assertLessEqual(inline, 1, rel)
+            if inline:
+                self.assertIn("<script>" + layout.GOOGLE_TAG_INLINE + "</script>", doc, rel)
 
     def test_the_switches_name_what_they_do(self):
         prefs = layout.prefs()

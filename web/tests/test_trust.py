@@ -74,7 +74,7 @@ class MaintainerSettings(unittest.TestCase):
         self.assertIn(f'<a href="{SITE.issue_chooser_url}">open an issue on GitHub</a>', body)
         section = body[body.index('id="who-maintains"'):]
         section = section[:section.index("</section>")]
-        for claim in ("public domain", "names the page it was read on", "no ads, no accounts, no tracking and no analytics"):
+        for claim in ("public domain", "names the page it was read on", "no ads and no accounts"):
             self.assertIn(claim, section)
         self.assertNotRegex(section, r"[\w.]+@[\w.]+", "no email address")
 

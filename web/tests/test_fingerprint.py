@@ -223,7 +223,7 @@ class BuiltSiteTest(unittest.TestCase):
     def test_the_content_security_policy_stays_strict(self):
         csp = self.value("/index.html", "Content-Security-Policy")
         self.assertIn("default-src 'self'", csp)
-        self.assertIn("script-src 'self';", csp)
+        self.assertIn("script-src 'self' https://www.googletagmanager.com 'sha256-", csp)
         self.assertIn("style-src 'self';", csp)
         self.assertNotIn("unsafe-eval", csp)
         self.assertNotIn("script-src 'self' 'unsafe-inline'", csp)

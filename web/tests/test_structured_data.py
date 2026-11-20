@@ -170,7 +170,10 @@ class JsonLdTest(unittest.TestCase):
         rules = serve.parse_headers(os.path.join(OUT, "_headers"))
         csp = next(v for pat, hs in rules if pat.match("/") for k, v in hs if k.lower() == "content-security-policy")
         script_src = re.search(r"script-src ([^;]*)", csp).group(1).split()
-        self.assertEqual(script_src, ["'self'"])
+        # Besides 'self': the Google tag's loader and the hash of its one inline script.
+        self.assertEqual(script_src[:2], ["'self'", "https://www.googletagmanager.com"])
+        self.assertEqual(len(script_src), 3)
+        self.assertTrue(script_src[2].startswith("'sha256-"), script_src)
         self.assertNotIn("unsafe-inline", csp.replace("style-src-attr 'unsafe-inline'", ""))
         for path, doc in self.pages.items():
             self.assertNotRegex(doc, r'<script type="application/ld\+json"[^>]*\ssrc=', path)

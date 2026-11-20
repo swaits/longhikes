@@ -12,7 +12,7 @@ class Site:
     """The settings every page needs. Build one with load()."""
 
     def __init__(self, name, tagline, base_url="", repo_url="", repo_branch="main",
-                 contact_url="", name_lang=None, home_title="", maintainer_name="", maintainer_url=""):
+                 contact_url="", name_lang=None, home_title="", maintainer_name="", maintainer_url="", google_tag=""):
         if not name:
             raise ValueError("site.toml: name must not be empty")
         self.name = name
@@ -27,6 +27,8 @@ class Site:
         # named in the structured data. Both are public by the owner's choice.
         self.maintainer_name = maintainer_name.strip()
         self.maintainer_url = maintainer_url.strip()
+        # Google tag container id (GTM-XXXXXXX): when set, every page loads the tag; empty: none.
+        self.google_tag = google_tag.strip()
         # record id -> language tag of its name ("fr"), for names that are not English
         self.name_lang = dict(name_lang or {})
 
@@ -123,7 +125,8 @@ def from_file(path):
                 repo_branch=data.get("repo_branch", "main"),
                 contact_url=data.get("contact_url", ""), name_lang=data.get("name_lang", {}),
                 home_title=data.get("home_title", ""),
-                maintainer_name=data.get("maintainer_name", ""), maintainer_url=data.get("maintainer_url", ""))
+                maintainer_name=data.get("maintainer_name", ""), maintainer_url=data.get("maintainer_url", ""),
+                google_tag=data.get("google_tag", ""))
 
 
 @functools.cache

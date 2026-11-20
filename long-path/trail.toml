@@ -65,6 +65,9 @@ high_point = "Slide Mountain"
 high_point_m = 1274
 travel = "trail"
 checked = "2026-11-14"
+season = "Spring to fall"
+months = [3, 4, 5, 6, 7, 8, 9, 10, 11]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://nynjtc.org/long-path"
@@ -75,6 +78,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel"]
 url = "https://www.nynjtc.org/lp-section-18/"
 publisher = "New York-New Jersey Trail Conference"
 facts = ["high_point"]
+
+[[hike.source]]
+url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "Long Path"
@@ -110,6 +118,15 @@ change = "The logo file was replaced with the trail's own emblem, shown alone."
 fields = ["shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://www.nynjtc.org/wp-content/uploads/2024/12/Long_Path_logo-1.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Spring to fall."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from The Trek's page: Spring to fall."
+basis_url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

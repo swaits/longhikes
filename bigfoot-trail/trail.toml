@@ -93,6 +93,9 @@ terrain = ["forest"]
 travel = "trail-and-road"
 caution = "About 100 miles of the route are on seldom-used Forest Service roads, and some trail sections have gone unmaintained for years, so map and compass skills are needed."
 checked = "2026-11-14"
+season = "Summer through early fall"
+months = [6, 7, 8, 9]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.bigfoottrail.org/"
@@ -123,6 +126,11 @@ url = "https://www.longtrailswiki.net/wiki/Bigfoot_Trail"
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=93489630"
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Ides Cove Trailhead, OpenStreetMap node 93489630"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://thetrek.co/bigfoot-trail-a-358-mile-journey-through-the-wild-in-far-northern-california/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[place]]
 kind = "park"
@@ -166,6 +174,7 @@ slug = "yolla-bolly-middle-eel-wilderness"
 basis = "stated"
 source = "https://www.bigfoottrail.org/route/trail-regions/"
 
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -201,6 +210,15 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Bigfoot Trail Mapset: Digital - Bigfoot Trail\"."
 basis_url = "https://www.bigfoottrail.org/product/bigfoot-trail-mapset-digital/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Summer through early fall."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from The Trek's page: Summer through early fall."
+basis_url = "https://thetrek.co/bigfoot-trail-a-358-mile-journey-through-the-wild-in-far-northern-california/"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

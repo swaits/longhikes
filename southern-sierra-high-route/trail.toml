@@ -78,11 +78,14 @@ travel = "mostly-cross-country"
 permit = "A wilderness permit from the Inyo National Forest for the South Lake entry is required, with the option to travel through the Mount Whitney Zone selected."
 days = [5, 6]
 checked = "2026-11-13"
+season = "Early July to mid-September"
+months = [7, 8, 9]
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
 publisher = "Alan Dixon and Don Wilson (Adventure Alan)"
-facts = ["summary", "official_url", "start", "end", "shape", "high_point", "terrain", "travel", "permit", "days"]
+facts = ["summary", "official_url", "start", "end", "shape", "high_point", "terrain", "travel", "permit", "days", "season", "months"]
 
 [[hike.source]]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/267526"
@@ -134,6 +137,15 @@ date = "2026-11-16"
 change = "The logo record now names where an emblem was looked for and not found, and who holds the mark."
 fields = ["shield.logo_owner"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Early July to mid-September."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from Adventure Alan's page: Early July to mid-September."
 basis_url = "https://www.adventurealan.com/southern-sierra-high-route-soshr-guide/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -58,6 +58,9 @@ shape = "loop"
 terrain = ["forest", "farmland"]
 days = [90, 120]
 checked = "2026-11-19"
+season = "Spring, summer and fall"
+months = [3, 4, 5, 6, 7, 8, 9, 10, 11]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.buckeyetrail.org/"
@@ -73,6 +76,11 @@ facts = ["summary", "shape", "terrain"]
 url = "https://www.buckeyetrail.org/hike/backpacking"
 publisher = "Buckeye Trail Association"
 facts = ["days"]
+
+[[hike.source]]
+url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "Buckeye Trail"
@@ -111,6 +119,15 @@ change = "The usual time to walk the whole trail, 90 to 120 days, was added."
 fields = ["hike.days"]
 basis = "The page of Buckeye Trail Association says: \"A full thru-hike typically takes three to four months, depending on pace, route, and weather conditions.\""
 basis_url = "https://www.buckeyetrail.org/hike/backpacking"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Spring, summer and fall."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from The Trek's page: Spring, summer and fall."
+basis_url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

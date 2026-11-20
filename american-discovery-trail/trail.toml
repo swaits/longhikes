@@ -66,6 +66,9 @@ terrain = ["farmland", "prairie", "desert"]
 travel = "trail-and-road"
 caution = "The Society gives no overall share, but its regional pages describe much of the way as rail trails, canal paths, bike trails, sidewalks and rural roads, county and state roads in north-east Colorado, and dirt roads in Nevada, so it is not a footpath for most of its length."
 checked = "2026-11-14"
+season = "Spring to fall"
+months = [3, 4, 5, 6, 7, 8, 9, 10, 11]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://discoverytrail.org/our-history"
@@ -96,6 +99,11 @@ facts = ["end", "high_point", "terrain", "travel", "caution"]
 url = "https://discoverytrail.org/"
 publisher = "American Discovery Trail Society"
 facts = ["official_url"]
+
+[[hike.source]]
+url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[place]]
 kind = "park"
@@ -253,6 +261,7 @@ slug = "table-mountain-wilderness"
 basis = "track"
 km = 20.3
 
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -279,6 +288,15 @@ change = "The length was changed from about 6,800 miles (10,943 km), which count
 fields = ["length_km", "length_note", "system_km", "system_note"]
 basis = "The Society says: 'Coast-to-coast, the northern route is approximately 4,844 miles. The southern route is about 5,008 miles.'"
 basis_url = "https://discoverytrail.org/route"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Spring to fall."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from The Trek's page: Spring to fall."
+basis_url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

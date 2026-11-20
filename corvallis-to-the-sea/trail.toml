@@ -64,6 +64,9 @@ travel = "trail"
 permit = "A free permit from Starker Forests, got in person, is required for two road sections of the trail."
 caution = "The trail is described as very difficult, and drinking water is scarce all year."
 checked = "2026-11-13"
+season = "May to October"
+months = [5, 6, 7, 8, 9, 10]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://c2ctrail.org/"
@@ -79,6 +82,11 @@ facts = ["summary", "start", "end", "shape", "days", "travel", "caution"]
 url = "https://c2ctrail.org/hiking-the-trail/permits-rules-precautions/"
 publisher = "Corvallis-to-the-Sea Trail"
 facts = ["permit"]
+
+[[hike.source]]
+url = "https://www.treelinereview.com/where-to-go/c2c-thru-hiking-guide"
+publisher = "Treeline Review"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -97,5 +105,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://c2ctrail.org/wp-content/uploads/logo.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: May to October."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from Treeline Review's page: May to October."
+basis_url = "https://www.treelinereview.com/where-to-go/c2c-thru-hiking-guide"
 asked_by = "the dataset's own check"
 outcome = "applied"

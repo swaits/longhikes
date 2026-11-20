@@ -60,6 +60,9 @@ terrain = ["canyon", "forest"]
 travel = "trail"
 caution = "Within the Wild and Scenic River corridor everything, including human waste and ashes, must be packed out, and fires must be contained in a fire pan."
 checked = "2026-11-16"
+season = "May to October (for the Middle Fork Salmon River corridor)"
+months = [5, 6, 7, 8, 9, 10]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r04/salmon-challis/recreation/trails/middle-fork-trail-4001"
@@ -70,6 +73,11 @@ facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"
 url = "https://idahotrailsassociation.org/event/2026-middle-fork-salmon/"
 publisher = "Idaho Trails Association"
 facts = ["summary"]
+
+[[hike.source]]
+url = "https://www.westernrivers.org/discover/river-of-the-month/middle-fork-salmon-river"
+publisher = "Western Rivers Conservancy"
+facts = ["season", "months"]
 
 [[place]]
 kind = "range"
@@ -82,6 +90,7 @@ kind = "wilderness"
 slug = "frank-church-river-of-no-return-wilderness"
 basis = "track"
 km = 106.2
+
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -110,6 +119,15 @@ change = "The track status is now \"verified\", in place of \"found\", which mea
 fields = ["source.status"]
 basis = "The record has a published track file and a measured length in its verification, and its track was downloaded and measured."
 basis_url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: May to October (for the Middle Fork Salmon River corridor)."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from Western Rivers Conservancy's page: May to October (for the Middle Fork Salmon River corridor)."
+basis_url = "https://www.westernrivers.org/discover/river-of-the-month/middle-fork-salmon-river"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

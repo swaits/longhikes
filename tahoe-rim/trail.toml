@@ -64,6 +64,9 @@ terrain = ["alpine", "forest", "lakes"]
 travel = "trail"
 permit = "Only the Desolation Wilderness section needs a permit: a free day-use permit from the trailhead, or an overnight permit from recreation.gov."
 checked = "2026-11-13"
+season = "Late June to mid-September"
+months = [7, 8, 9]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://tahoerimtrail.org/"
@@ -84,6 +87,11 @@ facts = ["summary", "shape", "permit"]
 url = "https://tahoerimtrail.org/day-hiking/peaks-vistas/"
 publisher = "Tahoe Rim Trail Association"
 facts = ["terrain"]
+
+[[hike.source]]
+url = "https://www.greenbelly.co/pages/tahoe-rim-trail"
+publisher = "Greenbelly"
+facts = ["season", "months"]
 
 [[link]]
 title = "Tahoe Rim Trail"
@@ -116,6 +124,15 @@ date = "2026-11-09"
 change = "The record was added: Tahoe Rim Trail."
 fields = ["record"]
 basis = "The record's own source entry: Tahoe Rim Trail Association."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Late June to mid-September."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from Greenbelly's page: Late June to mid-September."
+basis_url = "https://www.greenbelly.co/pages/tahoe-rim-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

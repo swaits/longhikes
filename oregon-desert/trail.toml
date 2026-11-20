@@ -59,6 +59,9 @@ shape = "point-to-point"
 terrain = ["desert"]
 travel = "some-cross-country"
 checked = "2026-11-13"
+season = "Spring starts from mid-May, fall starts from mid-September"
+months = [5, 6, 9, 10]
+season_basis = "sources"
 
 [[hike.source]]
 url = "https://onda.org/regions/oregon-desert-trail/"
@@ -84,6 +87,16 @@ facts = ["start"]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=4707732733"
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Tumulus Trailhead, OpenStreetMap node 4707732733"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.treelinereview.com/where-to-go/oregon-desert-trail"
+publisher = "Treeline Review"
+facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "Oregon Desert Trail"
@@ -149,6 +162,15 @@ change = "The word \"Held:\" was taken off the start of the wave note, which now
 fields = ["wave_note"]
 basis = "The page quotes the note to visitors, and the prefix only repeated the record's held mark."
 basis_url = "https://onda.org/regions/oregon-desert-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Spring starts from mid-May, fall starts from mid-September."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from the pages of Treeline Review and The Trek: Spring starts from mid-May, fall starts from mid-September."
+basis_url = "https://www.treelinereview.com/where-to-go/oregon-desert-trail"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

@@ -64,6 +64,9 @@ terrain = ["forest"]
 travel = "trail"
 caution = "Several sections are closed to hikers during fall and winter hunting seasons; the association posts current closures in its section updates."
 checked = "2026-11-13"
+season = "Spring to fall"
+months = [3, 4, 5, 6, 7, 8, 9, 10, 11]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://hike-mst.org/index.php/the-trail"
@@ -74,6 +77,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "travel"]
 url = "https://hike-mst.org/"
 publisher = "Mid State Trail Association"
 facts = ["summary", "terrain", "caution"]
+
+[[hike.source]]
+url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "Pennsylvania Mid-State Trail"
@@ -112,6 +120,15 @@ change = "The main track was re-cut to one walk (505.6 km): at Arnot and at Ever
 fields = ["source.line_file", "source.mainline"]
 basis = "A way is named 'High Water Route (MST)'. The Mid-State Trail Association's Everett Region page describes two routes from downtown Everett onto the ridge, one fully blazed to the west and one partly roadwalk on the east, and says the trail is being moved through Everett's Tenley Park. The relation gives no roles. The blazed western route was taken as the trail."
 basis_url = "https://hike-mst.org/index.php/the-trail/everett-region"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Spring to fall."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from The Trek's page: Spring to fall."
+basis_url = "https://thetrek.co/a-list-of-long-distance-trails-in-the-us/"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

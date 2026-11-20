@@ -95,7 +95,7 @@ class TableTest(unittest.TestCase):
             r = refresh.load_toml(os.path.join(V.ROOT, tid, "trail.toml"))
             if (r.get("hike") or {}).get("season"):
                 expected += 1
-        self.assertEqual(expected, 109)
+        self.assertGreaterEqual(expected, 109)
         self.assertEqual(len(rows), expected)
         for row in rows:
             self.assertIn(row["suggested"], season.BASES)

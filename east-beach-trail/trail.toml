@@ -57,6 +57,9 @@ days = [4, 8]
 terrain = ["coast"]
 caution = "High tide can trap hikers against the sand cliffs between Cape Ball and the Oeanda River, rivers must be crossed at low tide, and rescue is difficult."
 checked = "2026-11-14"
+season = "May to September"
+months = [5, 6, 7, 8, 9]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://bcparks.ca/naikoon-park/"
@@ -78,11 +81,17 @@ url = "https://geogratis.gc.ca/services/geoname/en/geonames/JCKJA"
 publisher = "Natural Resources Canada (Canadian Geographical Names)"
 facts = ["end_lonlat"]
 
+[[hike.source]]
+url = "https://www.ehcanadatravel.com/parks-trails/4703-masset-bc-1.html"
+publisher = "EH Canada Travel"
+facts = ["season", "months"]
+
 [[place]]
 kind = "park"
 slug = "naikoon-park"
 basis = "stated"
 source = "https://bcparks.ca/naikoon-park/"
+
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -101,6 +110,15 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://bcparks.ca/naikoon-park/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: May to September."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from EH Canada Travel's page: May to September."
+basis_url = "https://www.ehcanadatravel.com/parks-trails/4703-masset-bc-1.html"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

@@ -65,6 +65,9 @@ terrain = ["desert", "alpine", "forest"]
 travel = "trail"
 permit = "Wilderness permits are needed in most of the wilderness areas the trail crosses, and the Pacific Crest Trail Association issues one permit for trips of 500 or more continuous miles."
 checked = "2026-11-13"
+season = "Mid-April to September (for thru-hikers; be off the trail by October)"
+months = [4, 5, 6, 7, 8, 9]
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/trails/pacific-crest-nst"
@@ -80,6 +83,16 @@ facts = ["summary", "permit", "travel"]
 url = "https://www.fs.usda.gov/trails/pacific-crest-nst/geographic-areas"
 publisher = "USDA Forest Service"
 facts = ["summary", "start", "end", "shape", "high_point", "terrain"]
+
+[[hike.source]]
+url = "https://www.pcta.org/discover-the-trail/thru-hiking-long-distance-hiking/thruhiker-faq/"
+publisher = "Pacific Crest Trail Association"
+facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://www.pcta.org/discover-the-trail/thru-hiking-long-distance-hiking/northbound-vs-southbound/"
+publisher = "Pacific Crest Trail Association"
+facts = ["season", "months"]
 
 [[link]]
 title = "Pacific Crest National Scenic Trail"
@@ -430,6 +443,15 @@ change = "The name hikers use, Pacific Crest Trail, was added as the common name
 fields = ["common_name"]
 basis = "The Forest Service page for the trail, which administers it, uses 'Pacific Crest Trail' in its alerts link ('Pacific Crest Trail Closures') beside the formal name."
 basis_url = "https://www.fs.usda.gov/trails/pacific-crest-nst"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Mid-April to September (for thru-hikers; be off the trail by October)."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from Pacific Crest Trail Association's page: Mid-April to September (for thru-hikers; be off the trail by October)."
+basis_url = "https://www.pcta.org/discover-the-trail/thru-hiking-long-distance-hiking/thruhiker-faq/"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

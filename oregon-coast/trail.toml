@@ -62,6 +62,9 @@ travel = "trail-and-road"
 caution = "Completing the trail takes planning: some sections need challenging scrambles, pre-planned supply drops and an understanding of tides."
 days = [21, 28]
 checked = "2026-11-19"
+season = "Late spring to early fall"
+months = [5, 6, 7, 8, 9]
+season_basis = "primary"
 
 [[hike.source]]
 url = "https://stateparks.oregon.gov/index.cfm?do=v.page&id=95"
@@ -76,7 +79,7 @@ facts = ["summary", "start", "end", "shape", "caution"]
 [[hike.source]]
 url = "https://www.oregoncoasttrail.org/hiking-basics"
 publisher = "Oregon Coast Trail Foundation"
-facts = ["days"]
+facts = ["days", "season", "months"]
 
 [[link]]
 title = "Oregon Coast Trail"
@@ -123,6 +126,15 @@ date = "2026-11-19"
 change = "The usual time to walk the whole trail, 21 to 28 days, was added."
 fields = ["hike.days"]
 basis = "The page of Oregon Coast Trail Foundation says: \"not everyone will have three to four week window necessary for thru-hiking the trail ... most will need four weeks to hike the full trail\""
+basis_url = "https://www.oregoncoasttrail.org/hiking-basics"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: Late spring to early fall."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from Oregon Coast Trail Foundation's page: Late spring to early fall."
 basis_url = "https://www.oregoncoasttrail.org/hiking-basics"
 asked_by = "the dataset's own check"
 outcome = "applied"

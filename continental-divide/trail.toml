@@ -67,6 +67,9 @@ travel = "trail"
 permit = "No single permit covers the whole trail; permits are needed area by area, for example in Glacier and Yellowstone National Parks and on Blackfeet land."
 unfinished = "About 160 miles of the trail are still incomplete."
 checked = "2026-11-13"
+season = "May to October"
+months = [5, 6, 7, 8, 9, 10]
+season_basis = "source"
 
 [[hike.source]]
 url = "https://cdtcoalition.org/"
@@ -82,6 +85,11 @@ facts = ["summary", "days", "permit", "travel"]
 url = "https://cdtcoalition.org/colorado-14ers-on-the-cdt/"
 publisher = "Continental Divide Trail Coalition"
 facts = ["high_point"]
+
+[[hike.source]]
+url = "https://www.treelinereview.com/where-to-go/continental-divide-trail-gear-list-and-strategy"
+publisher = "Treeline Review"
+facts = ["season", "months"]
 
 [[link]]
 title = "Continental Divide National Scenic Trail"
@@ -306,6 +314,15 @@ change = "The name hikers use, Continental Divide Trail, was added as the common
 fields = ["common_name"]
 basis = "The Continental Divide Trail Coalition's page says 'the Continental Divide Trail was designated nearly 50 years ago' and gives the formal name as well."
 basis_url = "https://cdtcoalition.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The record now has a season: May to October."
+fields = ["hike.season", "hike.months", "hike.season_basis"]
+basis = "Season added, read from Treeline Review's page: May to October."
+basis_url = "https://www.treelinereview.com/where-to-go/continental-divide-trail-gear-list-and-strategy"
 asked_by = "the dataset's own check"
 outcome = "applied"
 

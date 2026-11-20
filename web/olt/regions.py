@@ -5,6 +5,7 @@ Every page lists trails with home.results(), the same rows the home page shows.
 The section is called Places; its pages keep their /regions/ URLs.
 """
 import collections
+from dataclasses import dataclass
 
 from . import bounds, browse, common, facets, home, leftout, summary, words
 from .markup import Markup, esc
@@ -22,7 +23,8 @@ def collect_regions(records):
                 continue
             slug = key.lower()
             country, code = key.split("-", 1)
-            info = by_slug.setdefault(slug, {"key": key, "code": code, "country": country,
+            info = by_slug.setdefault(slug, {"kind": "state", "key": key, "code": code,
+                                             "country": country,
                                              "name": facets.place_name(key),
                                              "group": facets.GROUP_OF.get(key, ""), "records": []})
             if all(x["id"] != r["id"] for x in info["records"]):
@@ -244,64 +246,76 @@ def group_page(g, records, site):
     return title, desc, Markup(body), home.has_overview_map(recs), recs
 
 
-def region_page(slug, records, site, facet_pages=()):
-    """(title, description, body, needs_map) for /regions/<slug>/: the trails in one state or province.
+@dataclass(frozen=True)
+class PageKind:
+    """What one kind of place page needs that another does not: its kicker, crumbs and
+    lede, its title and description, the ground its map opens on, and its navs. The
+    page itself (place_page) is shared: a state, a park, a range and a wilderness
+    area are all a kind plus its info, and states are one kind (STATE below, the
+    park, range and wilderness kinds in olt/placepages.py).
 
-    facet_pages: [(label, path, how many)] for this place's pages of one kind of trail (olt/placefacets.py)."""
-    by_slug, _ = collect_regions(records)
-    info = by_slug[slug]
-    recs = info["records"]
-    key = info["key"]
-    group = info["group"]
-    group_name = facets.GROUP_NAME.get(group, "")
-    country = words.COUNTRIES[info["country"]]
-    n_gpx = _gpx_count(recs)
+    kicker(info) -> str: plain text. crumbs(info) -> HTML <li>s before this page.
+    lede(info, recs, n_gpx) -> HTML. where: the finder Where filter's scope
+    (home.finder_form; "" for none). wholly: open with the trails wholly in the
+    place first. facts_place(info) -> (name, state keys) for summary.facts and for
+    that test (no keys: no whole-trail figure is given as the place's).
+    title_options(info, recs, site) -> titles, fullest first, for common.fit_title.
+    description(info, recs) -> str. box(info) -> [west, south, east, north] or None.
+    nav(info, records, recs, facet_pages) -> HTML after the rows and map."""
+    kicker: object
+    crumbs: object
+    lede: object
+    where: str
+    wholly: bool
+    facts_place: object
+    title_options: object
+    description: object
+    box: object
+    nav: object
+
+
+def _state_kicker(info):
+    group_name = facets.GROUP_NAME.get(info["group"], "")
+    return (group_name + " · " if group_name else "") + words.COUNTRIES[info["country"]]
+
+
+def _state_crumbs(info):
     crumbs = '<li><a href="/regions/">Places</a></li>'
-    if group:
-        crumbs += f'<li><a href="{esc(group_path(group))}">{esc(group_name)}</a></li>'
-    siblings = []
-    if group:
-        _, _, keys = next(x for x in facets.PLACE_GROUPS if x[0] == group)
-        for k in sorted(keys, key=facets.place_name):
-            if k != key and k.lower() in by_slug:
-                siblings.append(f'<a href="{esc(facets.place_path(k))}">{esc(facets.place_name(k))}</a>')
-    nav = (f'<nav class="region-nav" aria-label="Elsewhere in {esc(group_name)}">Elsewhere in {esc(group_name)}: '
-           f'{" · ".join(siblings)}</nav>') if siblings else ""
-    held = lists_here(recs, records)
-    nav += (f'<nav class="region-nav" aria-label="Lists with trails in {esc(info["name"])}">'
-            f'Lists with trails in {esc(info["name"])}, and how many here: {" · ".join(held)}</nav>') if held else ""
-    if facet_pages:
-        nav += (f'<nav class="region-nav" aria-label="Kinds of trail in {esc(info["name"])}">'
-                f'More in {esc(info["name"])}: '
-                + " · ".join(f'<a href="{esc(path)}">{esc(label)}</a> ({n})' for label, path, n in facet_pages) + "</nav>")
-    body = f"""<div class="page-head"><div class="container">
-  <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{crumbs}<li aria-current="page">{esc(info["name"])}</li></ol></nav>
-  <header class="titleblock"><div class="titleblock__text">
-  <p class="kicker">{esc(group_name + " · " if group_name else "")}{esc(country)}</p>
-  <h1>{esc(info["name"])}</h1>
-  <p class="page-head__lede">{_plural(len(recs))} in {esc(info["name"])}, {n_gpx} with a GPX here.</p>
-  </div></header>
-</div></div>
-<div class="container section place">
-  {home.browse_view(home.listing(recs, top=2, where="", wholly=wholly_in(recs, [key])), home.overview_map(recs, f"Map of the trails in {info['name']}", place=bounds.place_box(key)),
-               about=f"{summary.facts(recs, records, place=(info['name'], [key]))}{summary.details(recs)}",
-               about_title=f"About the trails in {info['name']}")}
-  {nav}
-</div>"""
+    if info["group"]:
+        crumbs += (f'<li><a href="{esc(group_path(info["group"]))}">'
+                   f'{esc(facets.GROUP_NAME.get(info["group"], ""))}</a></li>')
+    return crumbs
+
+
+def _state_lede(info, recs, n_gpx):
+    return f"{_plural(len(recs))} in {esc(info['name'])}, {n_gpx} with a GPX here."
+
+
+def _state_facts_place(info):
+    return (info["name"], [info["key"]])
+
+
+def _state_title_options(info, recs, site):
     name = info["name"]
     routes = sum(1 for r in recs if common.is_route(r))
-    mixed = 0 < routes < len(recs)
     options = []
-    if mixed:
+    if 0 < routes < len(recs):
         options.append(f"Long Trails in {name}: {_plural(len(recs) - routes, 'Trail')} and {_plural(routes, 'Route')}")
         options.append(f"Long Trails in {name}: {len(recs)} Trails and Routes")
     else:
         options.append(f"Long Trails in {name}: {_plural(len(recs), 'Route' if routes else 'Trail')}")
     options.append(f"Long Trails in {name}")
-    title = common.fit_title(options, site)
+    return options
+
+
+def _state_description(info, recs):
+    name, key = info["name"], info["key"]
+    country = words.COUNTRIES[info["country"]]
+    n_gpx = _gpx_count(recs)
+    routes = sum(1 for r in recs if common.is_route(r))
     by_length = sorted(recs, key=lambda r: (r["length_km"], r["id"]))
     shortest, longest = by_length[0], by_length[-1]
-    what = _plural(len(recs), "trail") + (" and routes" if mixed else "")
+    what = _plural(len(recs), "trail") + (" and routes" if 0 < routes < len(recs) else "")
     if routes == len(recs):
         what = _plural(len(recs), "route")
     gpx = f" {_with_gpx(n_gpx, len(recs))[:1].upper()}{_with_gpx(n_gpx, len(recs))[1:]}." if n_gpx else ""
@@ -310,8 +324,87 @@ def region_page(slug, records, site, facet_pages=()):
     else:
         first = (f"{what[:1].upper() + what[1:]} in {name}, {country}, from {common.plain_name(shortest)}, {trail_miles(shortest, [key])}, "
                  f"to {common.plain_name(longest)}, {trail_miles(longest, [key])}.")
-    desc = _fit([first + gpx, first, f"{what[:1].upper() + what[1:]} in {name}, {country}.{gpx}"])
-    return title, desc, Markup(body), home.has_overview_map(recs)
+    return _fit([first + gpx, first, f"{what[:1].upper() + what[1:]} in {name}, {country}.{gpx}"])
+
+
+def _lists_nav(name, recs, records):
+    """The nav of ready-made lists holding some of these trails, shared by the kinds."""
+    held = lists_here(recs, records)
+    if not held:
+        return ""
+    return (f'<nav class="region-nav" aria-label="Lists with trails in {esc(name)}">'
+            f'Lists with trails in {esc(name)}, and how many here: {" · ".join(held)}</nav>')
+
+
+def _facet_nav(name, facet_pages):
+    """The nav of this place's pages of one kind of trail, shared by the kinds."""
+    if not facet_pages:
+        return ""
+    return (f'<nav class="region-nav" aria-label="Kinds of trail in {esc(name)}">'
+            f'More in {esc(name)}: '
+            + " · ".join(f'<a href="{esc(path)}">{esc(label)}</a> ({n})' for label, path, n in facet_pages)
+            + "</nav>")
+
+
+def _state_nav(info, records, recs, facet_pages):
+    key, group = info["key"], info["group"]
+    group_name = facets.GROUP_NAME.get(group, "")
+    by_slug, _ = collect_regions(records)
+    siblings = []
+    if group:
+        _, _, keys = next(x for x in facets.PLACE_GROUPS if x[0] == group)
+        for k in sorted(keys, key=facets.place_name):
+            if k != key and k.lower() in by_slug:
+                siblings.append(f'<a href="{esc(facets.place_path(k))}">{esc(facets.place_name(k))}</a>')
+    nav = (f'<nav class="region-nav" aria-label="Elsewhere in {esc(group_name)}">Elsewhere in {esc(group_name)}: '
+           f'{" · ".join(siblings)}</nav>') if siblings else ""
+    return nav + _lists_nav(info["name"], recs, records) + _facet_nav(info["name"], facet_pages)
+
+
+STATE = PageKind(kicker=_state_kicker, crumbs=_state_crumbs, lede=_state_lede, where="",
+                 wholly=True, facts_place=_state_facts_place, title_options=_state_title_options,
+                 description=_state_description, box=lambda info: bounds.place_box(info["key"]),
+                 nav=_state_nav)
+
+
+def place_page(info, records, site, kind, *, facet_pages=(), place_links=""):
+    """(title, description, body, needs_map) for the page of one place of one kind: a
+    state or province, a park, a mountain range or a wilderness area. info holds at
+    least name and records; kind (a PageKind) holds the rest.
+
+    facet_pages: [(label, path, how many)] for this place's pages of one kind of
+    trail (olt/placefacets.py). place_links: HTML put after the kind's navs (on a
+    state page, the parks, ranges and wilderness areas in the state)."""
+    recs = info["records"]
+    n_gpx = _gpx_count(recs)
+    crumbs = kind.crumbs(info)
+    nav = kind.nav(info, records, recs, facet_pages)
+    place = kind.facts_place(info)
+    wholly = wholly_in(recs, place[1]) if kind.wholly else None
+    body = f"""<div class="page-head"><div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{crumbs}<li aria-current="page">{esc(info["name"])}</li></ol></nav>
+  <header class="titleblock"><div class="titleblock__text">
+  <p class="kicker">{esc(kind.kicker(info))}</p>
+  <h1>{esc(info["name"])}</h1>
+  <p class="page-head__lede">{kind.lede(info, recs, n_gpx)}</p>
+  </div></header>
+</div></div>
+<div class="container section place">
+  {home.browse_view(home.listing(recs, top=2, where=kind.where, wholly=wholly), home.overview_map(recs, f"Map of the trails in {info['name']}", place=kind.box(info)),
+               about=f"{summary.facts(recs, records, place=place)}{summary.details(recs)}",
+               about_title=f"About the trails in {info['name']}")}
+  {nav}{place_links}
+</div>"""
+    title = common.fit_title(kind.title_options(info, recs, site), site)
+    return title, kind.description(info, recs), Markup(body), home.has_overview_map(recs)
+
+
+def region_page(slug, records, site, facet_pages=(), place_links=""):
+    """(title, description, body, needs_map) for /regions/<slug>/: the trails in one
+    state or province, built through place_page with the STATE kind."""
+    by_slug, _ = collect_regions(records)
+    return place_page(by_slug[slug], records, site, STATE,
+                      facet_pages=facet_pages, place_links=place_links)
 
 
 def route_guides(rec):

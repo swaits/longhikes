@@ -939,6 +939,7 @@ def main():
         check_guides(tid, guides, errors)
         check_links(tid, rec, errors)
         check_hike(tid, rec, errors)
+        season.check_present(tid, rec, errors)
         check_elevation(tid, tdir, rec, errors)
         trail_history.check_entries(tid, rec, errors)
 

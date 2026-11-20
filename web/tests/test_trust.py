@@ -16,7 +16,7 @@ WEB = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(WEB)
 sys.path.insert(0, WEB)
 
-from olt import common, docs, hike, records, seo, site, trail  # noqa: E402
+from olt import common, docs, facets, hike, records, seo, site, trail  # noqa: E402
 
 SITE = site.load()
 
@@ -160,6 +160,21 @@ class InBrief(unittest.TestCase):
                          ("range", "The usual season is spring and fall"))
         self.assertIsNone(season("Best travelled " + "in the later part of the summer " * 5))
 
+    def test_an_estimated_season_sentence_says_no_source_gives_one(self):
+        rec = sparse_record()
+        rec["hike"] = {"season": "June to September", "months": [6, 7, 8, 9], "season_basis": "estimate",
+                       "season_method": "Judged from the climate. Snow. Confidence: low."}
+        self.assertEqual(trail.season_sentence(rec),
+                         ("estimate", "No source gives a season; the climate suggests about June to September"))
+        rec["hike"]["season_basis"] = "sources"
+        self.assertEqual(trail.season_sentence(rec),
+                         ("estimate", "The pages differ on the season; it is judged to be about June to September"))
+        rec["hike"].update(season="All year", months=list(range(1, 13)), season_basis="estimate")
+        self.assertEqual(trail.season_sentence(rec)[1], "No source gives a season; the climate suggests about all year")
+        # the sentence stands alone: it is never joined to the GPX clause with "and"
+        paragraph = " ".join(trail.brief_sentences(rec))
+        self.assertIn("No source gives a season; the climate suggests about all year.", paragraph)
+
     def test_a_permit_is_said_only_when_it_is_short(self):
         short = sparse_record()
         short["hike"] = {"permit": "No permit is needed to hike it."}
@@ -217,7 +232,8 @@ class InBrief(unittest.TestCase):
             s = self.sentences(rec)
             paragraph = " ".join(s)
             self.assertGreaterEqual(len(s), 2, rec["id"])
-            self.assertLessEqual(len(s), 4, rec["id"])
+            # four sentences, and a fifth where the season is an estimate, which is always said
+            self.assertLessEqual(len(s), 4 + facets.season_estimated(rec), rec["id"])
             self.assertIn("GPX", paragraph, rec["id"])
             self.assertNotRegex(paragraph, r"\b(Season|Permits are noted)\b", rec["id"])
             for bad in ("None", "{", "}", "  ", " ,", " .", "unknown", "not known", "n/a"):
@@ -232,8 +248,13 @@ class InBrief(unittest.TestCase):
                 self.assertIn("usually takes", paragraph, rec["id"])
             else:
                 self.assertNotIn("usually takes", paragraph, rec["id"])
-            if not (h.get("season") or h.get("months")):
-                self.assertNotRegex(paragraph, r"usual season|walked all year|Northbound|season", rec["id"])
+            self.assertTrue(h.get("season"), rec["id"])
+            if facets.season_estimated(rec):
+                self.assertIn("No source gives a season" if not facets.season_pages_differ(rec)
+                              else "The pages differ on the season", paragraph, rec["id"])
+                self.assertNotIn("The usual season is", paragraph, rec["id"])
+            else:
+                self.assertNotIn("No source gives a season", paragraph, rec["id"])
             if "No permit" in paragraph or "permit" in paragraph.lower():
                 self.assertIn(common.sentence(h.get("permit", "")), paragraph, rec["id"])
             self.assertEqual("highest point" in paragraph,

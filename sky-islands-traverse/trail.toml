@@ -73,7 +73,11 @@ shape = "point-to-point"
 terrain = ["desert", "forest", "canyon"]
 travel = "some-cross-country"
 caution = "Since 2023 its author has withdrawn the detailed route information and does not encourage hiking the exact layout, saying fires and floods have reclaimed many miles of trail."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Summer heat and the July and August monsoon storms in southeastern Arizona push the walk into spring and fall. Confidence: low."
 
 [[hike.source]]
 url = "https://simblissity.net/skit.shtml"
@@ -84,6 +88,11 @@ facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel"
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/11334"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Sky Islands Traverse"
@@ -137,5 +146,14 @@ change = "The trail was placed in Fort Bowie National Historic Site, Saguaro Nat
 fields = ["place"]
 basis = "The page says: \"Farther along the SKIT reaches Fort Bowie National Historic Site , where it follows the historic Butterfield Stage Route for a time.\" (Fort Bowie National Historic Site) The page says: \"The east district of Saguaro National Park (which includes the Saguaro Wilderness)\" (Saguaro National Park, Saguaro Wilderness) The page says: \"passes the famed rock formations of Chiricahua National Monument and on into this range's high country wilderness\" (Chiricahua Wilderness) The page says: \"The Dos Cabezas Mountains Wilderness might be considered the heart of this untamed country.\" (Dos Cabezas Mountains Wilderness)"
 basis_url = "https://simblissity.net/skit.shtml"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

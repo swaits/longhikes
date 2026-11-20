@@ -72,7 +72,11 @@ shape = "point-to-point"
 terrain = ["alpine", "forest", "lakes"]
 travel = "some-cross-country"
 caution = "The route is unofficial; the Forest Service describes even its northernmost part at Meeks Bay as the unofficial Tahoe-Yosemite Trail."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. High Sierra passes up to about 10,000 feet hold snow until early July, and fall storms arrive in October. Confidence: high."
 
 [[hike.source]]
 url = "https://shop.adventurewithkeen.com/wilderness-press/"
@@ -93,6 +97,11 @@ facts = ["start_lonlat"]
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/255168"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Tahoe-Yosemite Trail"
@@ -176,5 +185,14 @@ change = "The trail was placed in Yosemite National Park, Sierra Nevada, Carson-
 fields = ["place"]
 basis = "The trail's own description says: \"The Tahoe-Yosemite Trail is Thomas Winnett's route through California's Sierra Nevada from Meeks Bay at Lake Tahoe to Tuolumne Meadows in Yosemite National Park.\" (Yosemite National Park, Sierra Nevada, Yosemite Wilderness) The page says: \"The trail is a foot and equestrian path that passes through the Desolation, Mokelumne, Carson-Iceberg, Emigrant, and Yosemite Wilderness Areas\" (Carson-Iceberg Wilderness, Desolation Wilderness, Emigrant Wilderness, Mokelumne Wilderness)"
 basis_url = "https://shop.adventurewithkeen.com/wilderness-press/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

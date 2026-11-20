@@ -73,7 +73,11 @@ shape = "point-to-point"
 terrain = ["canyon", "alpine"]
 travel = "trail-and-road"
 caution = "The route is unmarked and not designated by any state or federal agency, and about 40 percent of it is dirt road."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "May to October"
+months = [5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A route from southern Utah desert canyons to the Pioneer Mountains of Idaho needs the high ground clear of snow and the south not scorching. Confidence: low."
 
 [[hike.source]]
 url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
@@ -102,6 +106,11 @@ kind = "range"
 slug = "wasatch-range"
 basis = "stated"
 source = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -147,5 +156,14 @@ change = "The trail was placed in Bryce Canyon National Park, Sawtooth Range and
 fields = ["place"]
 basis = "The page says: \"Highlights: Paria Canyon Bryce Canyon National Park Wasatch Mountains Pioneer Mountains\" (Bryce Canyon National Park, Wasatch Range) The page says: \"It begins on the Utah/Arizona border and runs north through Utah and southern Idaho before terminating in the Sawtooth Mountains of central Idaho.\" (Sawtooth Range)"
 basis_url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: May to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

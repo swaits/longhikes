@@ -1,0 +1,24 @@
+{
+ "date": "2026-11-20",
+ "measure": "within one month at each end of the season a page states",
+ "tested": 148,
+ "matched": 114,
+ "share": 0.77,
+ "by_confidence": {
+  "high": {
+   "tested": 52,
+   "matched": 48,
+   "share": 0.92
+  },
+  "medium": {
+   "tested": 76,
+   "matched": 55,
+   "share": 0.72
+  },
+  "low": {
+   "tested": 20,
+   "matched": 11,
+   "share": 0.55
+  }
+ }
+}

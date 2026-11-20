@@ -193,6 +193,9 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
     if search:
         data["search"] = searchtext.attribute(rec)
     attrs = "".join(f' data-{k}="{esc(v)}"' for k, v in data.items())
+    estimated = facets.season_estimated(rec)
+    if estimated:
+        attrs += ' data-estimate="yes"'
     if common.line_differs(rec):
         attrs += ' data-partial="yes"'
     h = f"h{level}"
@@ -203,6 +206,9 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
     desc = entry_desc(rec)
     desc_html = f'\n    <p class="entry__desc">{esc(desc)}</p>' if desc else ""
     time_html = esc(facets.time_text(rec)) + (' <small class="entry__est">estimate</small>' if est else "")
+    season_html = (f'\n    <div class="entry__season"><dt>{facets.SEASON}</dt><dd>{esc(facets.season_text(rec))}'
+                   + ('<small class="entry__est">estimate</small>' if estimated else "") + "</dd></div>"
+                   if facets.months(rec) else "")
     climb_html = (f'\n    <div class="entry__climb"><dt>Climb</dt><dd>{words.elevation(climb_m, "stack")}'
                   f'<small class="entry__est">computed</small></dd></div>') if climb_m is not None else ""
     if hidden:
@@ -227,7 +233,7 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
   <dl class="entry__facts">{lead_html}
     <div class="entry__length"><dt>Length</dt><dd>{words.length(rec["length_km"], "stack", rec["derived"]["length_mi"])}<span class="loglen" style="--km: {rec["length_km"]}" aria-hidden="true"></span></dd></div>
     <div class="entry__time"><dt>Time</dt><dd>{time_html}</dd></div>
-    <div class="entry__line"><dt>GPX</dt><dd class="line line--{"yes" if facets.gpx_here(rec) else "no"}">{gpx_cell(rec)}</dd></div>{climb_html}{more_html}
+    <div class="entry__line"><dt>GPX</dt><dd class="line line--{"yes" if facets.gpx_here(rec) else "no"}">{gpx_cell(rec)}</dd></div>{season_html}{climb_html}{more_html}
   </dl>{extra}
 </li>"""
 
@@ -355,10 +361,14 @@ def finder_form(records, c=None, steps=None, where="all", bare_if_empty=False):
   </fieldset>""")
     if facets.offered(records, "season") and _narrows(c, "month", range(1, 13)):
         month_opts = "".join(_opt(str(i), m, c[f"month:{i}"]) for i, m in enumerate(facets.MONTHS, 1) if c[f"month:{i}"])
+        # A way to leave estimated seasons out, offered only where some of these trails have one.
+        stated_box = ('\n    <label class="field__check"><input type="checkbox" name="stated" value="1" disabled> '
+                      'Leave out estimated seasons</label>'
+                      if any(facets.season_estimated(r) for r in records) else "")
         first.append(f"""<div class="field" data-facet="month">
     <label class="field__label" for="month">{facets.SEASON}</label>
     <select class="select" id="month" name="month"><option value="">Any month</option>{month_opts}</select>
-    <p class="field__hint">Trails usually walked in that month.</p>
+    <p class="field__hint">Trails usually walked in that month. Estimated seasons are marked.</p>{stated_box}
     {_missing(records, "season")}
   </div>""")
     if _narrows(c, "kind", facets.KINDS):
@@ -549,7 +559,7 @@ def key(official=True):
 
 
 def results(recs=None, *, finder=False, groups=None, routes_list=False, default_sort="name", saved=False, top=3,
-            ranked="", lead=None, more=None, tools=True, by=None, every=False, wholly=None):
+            ranked="", lead=None, more=None, tools=True, by=None, every=False, wholly=None, season=False):
     """The list of trails, as every page shows it: div.results > head, key, list head, ol.entries.
 
     Every list carries the same "Sort by" control. The rows are written in
@@ -558,6 +568,7 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
 
     finder: a list driven by the filter bar over it (listing(): live count, empty state).
     every: the list holds every trail (the home page's).
+    season: show each row's season (a month's list), as app.js does when a month is chosen.
     groups: [(heading, trails, extra_fn)] to list the trails under headings (level `top`);
     sorting is within each group and the groups keep their order. A heading may be a pair
     (heading HTML, intro HTML): the intro is a sentence under the heading (an author's summary).
@@ -638,18 +649,14 @@ def results(recs=None, *, finder=False, groups=None, routes_list=False, default_
     tools = sort_select(default_sort, saved=saved, ranked=ranked, wholly=wholly)
     dflt = SAVED_ORDER[0] if saved else "rank" if ranked else HERE_ORDER if wholly else default_sort
     finder_attr = " data-finder" if finder else ""
-    # Under the count, while a month is chosen: how many trails are left out for having no season on
-    # file, and a way to see them (app.js fills it in from the rows, the same ones the list is).
-    unseasoned = ('\n      <p class="results-note" data-unseasoned hidden><span data-unseasoned-text></span> '
-                  '<button class="results-note__show" type="button" data-unseasoned-show>Show them</button></p>'
-                  if finder else "")
-    return Markup(f"""<div class="results"{finder_attr} data-sortable data-default-sort="{esc(dflt)}">
+    season_attr = " data-season-shown" if season else ""
+    return Markup(f"""<div class="results"{finder_attr}{season_attr} data-sortable data-default-sort="{esc(dflt)}">
       <div class="results-head">
         {count}
         <div class="results-tools">
           {tools}
         </div>
-      </div>{unseasoned}
+      </div>
       {key(official=not only_routes)}
       {list_head(default_sort)}{lists}{empty}
     </div>""")

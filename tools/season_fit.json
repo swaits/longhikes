@@ -1,0 +1,142 @@
+{
+ "bar": {
+  "coverage_min": 0.9,
+  "within1_min": 0.75
+ },
+ "computed": "2026-11-20",
+ "confidence": {
+  "close": 0.3,
+  "decisive": 0.6,
+  "high_matched": 0.868,
+  "high_n": 38,
+  "low_matched": 0.609
+ },
+ "dataset": "CHELSA V2.1 climatologies, with ETOPO 2022 elevation",
+ "loo": {
+  "by_group": {
+   "Canada east and north": {
+    "classified": 0.7685,
+    "jaccard": 0.5546,
+    "n": 9,
+    "no_data": 0,
+    "within1": 5,
+    "worse": 4
+   },
+   "Canada west": {
+    "classified": 0.8512,
+    "jaccard": 0.6607,
+    "n": 14,
+    "no_data": 0,
+    "within1": 12,
+    "worse": 2
+   },
+   "Rockies": {
+    "classified": 0.8913,
+    "jaccard": 0.6832,
+    "n": 23,
+    "no_data": 0,
+    "within1": 20,
+    "worse": 3
+   },
+   "interior west": {
+    "classified": 0.7153,
+    "jaccard": 0.3855,
+    "n": 12,
+    "no_data": 0,
+    "within1": 6,
+    "worse": 6
+   },
+   "northeast": {
+    "classified": 0.7556,
+    "jaccard": 0.6198,
+    "n": 15,
+    "no_data": 0,
+    "within1": 12,
+    "worse": 3
+   },
+   "plains and midwest": {
+    "classified": 0.6458,
+    "jaccard": 0.4722,
+    "n": 8,
+    "no_data": 0,
+    "within1": 3,
+    "worse": 5
+   },
+   "southeast": {
+    "classified": 0.6667,
+    "jaccard": 0.4973,
+    "n": 13,
+    "no_data": 0,
+    "within1": 8,
+    "worse": 5
+   },
+   "southwest": {
+    "classified": 0.6932,
+    "jaccard": 0.4759,
+    "n": 22,
+    "no_data": 0,
+    "within1": 11,
+    "worse": 11
+   },
+   "west coast": {
+    "classified": 0.7995,
+    "jaccard": 0.5687,
+    "n": 32,
+    "no_data": 0,
+    "within1": 23,
+    "worse": 9
+   }
+  },
+  "by_kind": {
+   "alpine": {
+    "classified": 0.8689,
+    "jaccard": 0.6547,
+    "n": 82,
+    "no_data": 0,
+    "within1": 67,
+    "worse": 15
+   },
+   "cool-season": {
+    "classified": 0.7292,
+    "jaccard": 0.4613,
+    "n": 40,
+    "no_data": 0,
+    "within1": 22,
+    "worse": 18
+   },
+   "other": {
+    "classified": 0.5926,
+    "jaccard": 0.4345,
+    "n": 18,
+    "no_data": 0,
+    "within1": 11,
+    "worse": 7
+   },
+   "year-round": {
+    "classified": 0.3542,
+    "jaccard": 0.3542,
+    "n": 8,
+    "no_data": 0,
+    "within1": 0,
+    "worse": 8
+   }
+  },
+  "classified": 0.7697,
+  "jaccard": 0.5594,
+  "n": 148,
+  "no_data": 0,
+  "within1": 100,
+  "worse": 48
+ },
+ "params": {
+  "cold_c_min": 12.0,
+  "cut": 0.65,
+  "heat_c_max": 25.0,
+  "k": 20,
+  "mix": 0.7,
+  "power": 1
+ },
+ "passes": false,
+ "period": "1981-2010",
+ "rule_version": 2
+}

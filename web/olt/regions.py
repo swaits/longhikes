@@ -526,7 +526,7 @@ def list_page(lst, recs, total, site, *, records=None, before="", after="", lead
   </div></header>
 </div></div>
 <div class="container section place">
-  {home.browse_view(home.listing(recs, default_sort=lst.sort, top=2, lead=lead),
+  {home.browse_view(home.listing(recs, default_sort=lst.sort, top=2, lead=lead, season=lst.group == "month"),
                home.overview_map(recs, f"Map of the trails in the list {lst.title}"),
                about=f"{about}{before}{f'<p>{esc(note.strip())}</p>' if note else ''}<p class=\"finder__foot\">{rule}</p>",
                about_title="About this list")}

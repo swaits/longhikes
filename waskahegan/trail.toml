@@ -52,7 +52,11 @@ shape = "loop"
 terrain = ["farmland", "prairie"]
 travel = "trail"
 caution = "Much of the trail is on private land; the agreement with landowners allows travel only on the marked trail, crossing fences by the stiles provided."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "May to October"
+months = [5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Edmonton-area farmland and parkland is snow-covered and muddy from November to April, and walked from late spring to early fall. Confidence: low."
 
 [[hike.source]]
 url = "https://waskahegantrail.ca/about-2/"
@@ -68,6 +72,11 @@ facts = ["summary", "terrain", "travel", "caution"]
 url = "https://explore-mag.com/The-10-Best-Hiking-Trails-Near-Edmonton/"
 publisher = "Explore magazine"
 facts = ["shape"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -95,5 +104,14 @@ change = "The trail is now recorded as a loop around Edmonton. No start or end i
 fields = ["hike.shape"]
 basis = "Explore magazine's list of hiking trails near Edmonton gives the Waskahegan Trail as a 309 km loop."
 basis_url = "https://explore-mag.com/The-10-Best-Hiking-Trails-Near-Edmonton/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: May to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

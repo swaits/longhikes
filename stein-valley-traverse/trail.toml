@@ -60,7 +60,11 @@ terrain = ["forest", "alpine", "lakes"]
 travel = "some-cross-country"
 permit = "BC Parks' park brochure says there is no hiker registration in the Stein Valley."
 caution = "BC Parks says solid route finding skills are a necessity, because sections of trail may be wet, steep or difficult to see, and the upper valley above treeline is a route marked in places with cairns."
-checked = "2026-11-16"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The traverse tops out around 7,000 feet, where snow lingers into July, and heavy rain starts in October. Confidence: medium."
 
 [[hike.source]]
 url = "https://bcparks.ca/stein-valley-nlakapamux-heritage-park/"
@@ -89,6 +93,11 @@ slug = "coast-mountains"
 basis = "track"
 km = 89.0
 
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -116,5 +125,14 @@ change = "The trail was placed in Stein Valley Nlaka'Pamux Heritage Park, Coast 
 fields = ["place"]
 basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20), the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

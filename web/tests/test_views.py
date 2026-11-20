@@ -8,6 +8,7 @@ These do not need the built site.
 """
 import os
 import re
+from html import unescape as html_unescape
 import shutil
 import tempfile
 import sys
@@ -117,7 +118,7 @@ class MonthListTest(unittest.TestCase):
         self.assertEqual(keys(recs, "hike-in-july"), ["t1"])
         self.assertEqual(keys(recs, "hike-in-august"), ["t2"])
 
-    def test_a_month_needs_eight_trails_and_says_how_many_have_a_season(self):
+    def test_a_month_needs_eight_trails(self):
         july = browse.by_key("hike-in-july")
         self.assertEqual(july.min_size, 8)
         self.assertFalse(browse.is_shown(7, 100, july.min_size))
@@ -126,8 +127,35 @@ class MonthListTest(unittest.TestCase):
         shown = {lst.key for lst, _ in browse.shown(recs)}
         self.assertIn("hike-in-july", shown)
         self.assertNotIn("hike-in-august", shown)
+
+    def est(self, i, months=(7,)):
+        return fake(i, hike={"months": list(months), "season": "July", "season_basis": "estimate",
+                             "season_method": "Judged. Confidence: low."})
+
+    def test_a_month_note_counts_stated_and_estimated_exactly(self):
+        july = browse.by_key("hike-in-july")
+        recs = [fake(i, hike={"months": [7], "season": "July", "season_basis": "primary"}) for i in range(10)] \
+            + [self.est(20 + i) for i in range(5)]
         note = july.note(browse.members(july, recs), recs)
-        self.assertIn("Only 10 of the 20 trails have a season on file", note)
+        self.assertEqual(note, "A source states the season for 10 of these. For the other 5 it is estimated "
+                               "from climate, and marked.")
+
+    def test_a_month_list_with_no_estimates_says_so(self):
+        july = browse.by_key("hike-in-july")
+        recs = [fake(i, hike={"months": [7], "season": "July", "season_basis": "primary"}) for i in range(10)]
+        self.assertEqual(july.note(browse.members(july, recs), recs), "A source states the season for all 10.")
+        recs = [self.est(i) for i in range(3)]
+        self.assertEqual(july.note(browse.members(july, recs), recs),
+                         "No source states the season for these, so each is estimated from climate.")
+
+    def test_the_month_blurb_no_longer_says_only_some_trails(self):
+        group = {key: blurb for key, _title, blurb in browse.GROUPS}["month"]
+        self.assertEqual(group, "Trails normally hiked in the month. Estimated seasons are marked.")
+        self.assertEqual(browse.by_key("hike-in-july").blurb,
+                         "Trails normally hiked in July. Estimated seasons are marked.")
+        for lst in browse.LISTS:
+            self.assertNotIn("Only some trails", lst.blurb)
+            self.assertNotIn("season on file", lst.blurb)
 
     def test_every_list_has_a_group_and_every_group_a_heading(self):
         headings = {k for k, _, _ in browse.GROUPS}
@@ -627,6 +655,34 @@ class RealDataTest(unittest.TestCase):
         title, desc, body = reference.method_page(self.records, SITE, ROOT)
         n_ver = len(reference.verified(self.records))
         self.assertIn(f"{n_ver} of the {len(self.records)} trails have a track", str(body))
+
+    def method_text(self):
+        title, desc, body = reference.method_page(self.records, SITE, ROOT)
+        return re.sub(r"\s+", " ", html_unescape(re.sub(r"<[^>]+>", " ", str(body))))
+
+    def test_the_reference_page_counts_stated_and_estimated_seasons(self):
+        text = self.method_text()
+        kinds = {k: sum(1 for r in self.records if facets.season_kind(r) == k) for k in ("stated", "judged", "estimated")}
+        self.assertEqual(sum(kinds.values()), len(self.records))
+        self.assertIn(f"A season a page states Records with it {kinds['stated']} Records without {len(self.records) - kinds['stated']}", text)
+        self.assertIn(f"A season estimated from climate Records with it {kinds['estimated']} Records without {len(self.records) - kinds['estimated']}", text)
+        self.assertIn(f"A season set from pages that differ Records with it {kinds['judged']} Records without {len(self.records) - kinds['judged']}", text)
+        self.assertIn(f"All trails Trails {len(self.records)}", text)
+
+    def test_the_reference_page_gives_the_blind_test_from_its_file(self):
+        blind = datafiles.blind_test(ROOT)
+        text = self.method_text()
+        self.assertIn(f"the method was run blind on {blind['tested']} trails whose seasons a page does state", text)
+        self.assertIn(f"It matched {blind['matched']} of them ({round(blind['share'] * 100)} percent) within one month at "
+                      "each end", text)
+        for name, v in blind["by_confidence"].items():
+            self.assertIn(f"{name} {v['matched']} of {v['tested']} ({round(v['share'] * 100)} percent)", text)
+        self.assertIn("not a promise for any one trail", text)
+
+    def test_the_glossary_no_longer_says_only_some_records_state_a_season(self):
+        season = next(t for t in reference.terms(ROOT) if t["id"] == "season")
+        self.assertNotIn("Only some", season["definition"])
+        self.assertIn("estimated", season["definition"])
 
     def test_every_place_page_has_a_summary_paragraph(self):
         by_slug, _ = regions.collect_regions(self.records)

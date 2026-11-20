@@ -1,0 +1,621 @@
+{
+ "across-utah-route": {
+  "digest": "1582bd31f8f00ced",
+  "machine": [
+   5,
+   6,
+   9,
+   10
+  ]
+ },
+ "alpine-trail-7": {
+  "digest": "efd5e277fbf3b6c1",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "avon": {
+  "digest": "a9120a59a9a1907d",
+  "machine": [
+   4,
+   5,
+   6,
+   8,
+   9,
+   10
+  ]
+ },
+ "batona": {
+  "digest": "3dbdb3e8b17d2b98",
+  "machine": [
+   4,
+   5,
+   9,
+   10,
+   11
+  ]
+ },
+ "bay-circuit": {
+  "digest": "bdb128943b1900ae",
+  "machine": [
+   4,
+   5,
+   6,
+   8,
+   9,
+   10
+  ]
+ },
+ "bayou-state-trail": {
+  "digest": "c7c4147060628fa7",
+  "machine": [
+   1,
+   2,
+   3,
+   4,
+   11,
+   12
+  ]
+ },
+ "boundary-trail-mount-st-helens": {
+  "digest": "01312d045fd17c20",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "boundary-trail-pasayten": {
+  "digest": "e97c07b0f68a15a9",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "bristol-hills-trail": {
+  "digest": "a5fa7af7ebab8d67",
+  "machine": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ]
+ },
+ "brooks-range-traverse": {
+  "digest": "8a3c5ef0f30bc7f8",
+  "machine": [
+   8
+  ]
+ },
+ "bruce-trail": {
+  "digest": "ed62c99709c54267",
+  "machine": [
+   7,
+   8,
+   9,
+   10
+  ]
+ },
+ "california-coastal": {
+  "digest": "5c7fa4913f78b36c",
+  "machine": [
+   5,
+   7,
+   8,
+   9,
+   10
+  ]
+ },
+ "conestoga-trail": {
+  "digest": "31f1d48bf322e3a7",
+  "machine": [
+   4,
+   5,
+   9,
+   10
+  ]
+ },
+ "conservation-trail": {
+  "digest": "21bfcf5403bcbfdf",
+  "machine": [
+   5,
+   6,
+   8,
+   9,
+   10
+  ]
+ },
+ "cranberry-lake-50": {
+  "digest": "87772fc46ebb73ca",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "cross-vermont": {
+  "digest": "de8f9f0acea8bd21",
+  "machine": [
+   5,
+   6,
+   9,
+   10
+  ]
+ },
+ "deseret-hiking-route": {
+  "digest": "191f5e4f5cc698cb",
+  "machine": [
+   3,
+   4,
+   5,
+   10,
+   11
+  ]
+ },
+ "desert-trail": {
+  "digest": "132108d83a002b0d",
+  "machine": [
+   7,
+   8,
+   9,
+   10
+  ]
+ },
+ "donut-hole": {
+  "digest": "dcc41463939e95a7",
+  "machine": [
+   4,
+   5,
+   6,
+   9,
+   10
+  ]
+ },
+ "eastern-continental-trail": {
+  "digest": "d40390952a719154",
+  "machine": [
+   5,
+   7,
+   8,
+   9,
+   10
+  ]
+ },
+ "eastern-sierra-high-route": {
+  "digest": "34c0558ddeedd3f2",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "ganaraska": {
+  "digest": "b414a50c65a31b82",
+  "machine": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ]
+ },
+ "general-george-crook": {
+  "digest": "f2896d5fe13e417f",
+  "machine": [
+   4,
+   5,
+   9,
+   10
+  ]
+ },
+ "georgia-loop": {
+  "digest": "35f1d5133569d0c0",
+  "machine": [
+   1,
+   2,
+   3,
+   4,
+   10,
+   11,
+   12
+  ]
+ },
+ "gila-centennial-loop": {
+  "digest": "08f4ed745b5d2560",
+  "machine": [
+   3,
+   4,
+   5,
+   9,
+   10,
+   11
+  ]
+ },
+ "grand-valley-trail": {
+  "digest": "5f4505a160f8f245",
+  "machine": [
+   5,
+   6,
+   9,
+   10
+  ]
+ },
+ "great-eastern": {
+  "digest": "b77ec5d870bbcc88",
+  "machine": [
+   4,
+   5,
+   10
+  ]
+ },
+ "great-western-divide-loop": {
+  "digest": "dd7b6f503f72081b",
+  "machine": [
+   7,
+   8,
+   9,
+   10
+  ]
+ },
+ "high-country-pathway": {
+  "digest": "b59fdbbf3b1ac6f8",
+  "machine": [
+   5,
+   6,
+   8,
+   9,
+   10
+  ]
+ },
+ "highlands": {
+  "digest": "8212eeadd24218c3",
+  "machine": [
+   4,
+   5,
+   9,
+   10
+  ]
+ },
+ "hoosier-heritage-trail": {
+  "digest": "f550667eab910362",
+  "machine": [
+   3,
+   4,
+   5,
+   10,
+   11
+  ]
+ },
+ "horse-shoe": {
+  "digest": "aeff26cf6c7e0143",
+  "machine": [
+   4,
+   5,
+   9,
+   10
+  ]
+ },
+ "hot-springs-trail": {
+  "digest": "fc73ad4cf711d615",
+  "machine": [
+   2,
+   3,
+   4,
+   5,
+   10,
+   11
+  ]
+ },
+ "iat-newfoundland-labrador": {
+  "digest": "91eadce2b4ef4c7f",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "international-appalachian-trail-maine": {
+  "digest": "8f488d4dc2b03636",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "koroc-palmer-loop": {
+  "digest": "e18e82c08b6dfd5d",
+  "machine": [
+   8
+  ]
+ },
+ "la-cloche": {
+  "digest": "61ce29ac5892d1b8",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "lost-coast": {
+  "digest": "971c47b8714b706f",
+  "machine": [
+   5,
+   7,
+   8,
+   9,
+   10
+  ]
+ },
+ "loyalsock": {
+  "digest": "7e8067a31ec5da6c",
+  "machine": [
+   4,
+   5,
+   6,
+   9,
+   10
+  ]
+ },
+ "mason-dixon": {
+  "digest": "54cad0c500a1e861",
+  "machine": [
+   4,
+   5,
+   9,
+   10
+  ]
+ },
+ "midland-to-mackinac-trail": {
+  "digest": "c5ed1765cac4534f",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "midstate-ma": {
+  "digest": "edc133c6ae5007c7",
+  "machine": [
+   5,
+   6,
+   9,
+   10
+  ]
+ },
+ "north-south": {
+  "digest": "86641545fa67fd0c",
+  "machine": [
+   4,
+   5,
+   6,
+   9,
+   10
+  ]
+ },
+ "north-south-lbl": {
+  "digest": "25b3d5d788753ae6",
+  "machine": [
+   3,
+   4,
+   5,
+   10,
+   11
+  ]
+ },
+ "north-umpqua": {
+  "digest": "14231792880f7042",
+  "machine": [
+   5,
+   10
+  ]
+ },
+ "oak-ridges": {
+  "digest": "0646d355131c000c",
+  "machine": [
+   5,
+   6,
+   8,
+   9,
+   10
+  ]
+ },
+ "ottawa-temiskaming-highland-trail": {
+  "digest": "77fbbe8137415f41",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "paumanok-path": {
+  "digest": "588eea3017f04c4c",
+  "machine": [
+   7,
+   8,
+   9,
+   10
+  ]
+ },
+ "pfiffner-traverse": {
+  "digest": "61965112f0b75445",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "rideau-trail": {
+  "digest": "55d2219b607959d1",
+  "machine": [
+   5,
+   6,
+   8,
+   9,
+   10
+  ]
+ },
+ "ring-the-peak": {
+  "digest": "858d219cc4ecd8f6",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "sawtooth-wilderness-high-route": {
+  "digest": "0f4f2e2bf5e9bc6e",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "sea-to-sea-route": {
+  "digest": "eb6dbcb347f7a83d",
+  "machine": [
+   6,
+   9,
+   10
+  ]
+ },
+ "shawangunk-ridge-trail": {
+  "digest": "d3b38e00538fd900",
+  "machine": [
+   4,
+   5,
+   6,
+   9,
+   10
+  ]
+ },
+ "shenipsit-trail": {
+  "digest": "a713c4e4a679b6fa",
+  "machine": [
+   4,
+   5,
+   9,
+   10
+  ]
+ },
+ "siskiyou-peaks-trail": {
+  "digest": "2b4dff26c8e71b80",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "sky-islands-traverse": {
+  "digest": "eed4f15ecdf6114d",
+  "machine": [
+   3,
+   4,
+   5,
+   9,
+   10,
+   11
+  ]
+ },
+ "solitude-loop": {
+  "digest": "c091a7bb7336deb5",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "standing-stone": {
+  "digest": "cdc4f7ed39a2c205",
+  "machine": [
+   4,
+   5,
+   9,
+   10
+  ]
+ },
+ "stein-valley-traverse": {
+  "digest": "59cd7e9a35c5c732",
+  "machine": [
+   6,
+   9
+  ]
+ },
+ "sunapee-ragged-kearsarge": {
+  "digest": "f5d7131d547be861",
+  "machine": [
+   8,
+   9
+  ]
+ },
+ "tahoe-yosemite-trail": {
+  "digest": "23aa94cfbefd3f86",
+  "machine": [
+   8,
+   9
+  ]
+ },
+ "tuscarora": {
+  "digest": "606d9fe137a8347d",
+  "machine": [
+   4,
+   5,
+   9,
+   10
+  ]
+ },
+ "vagabond-loop": {
+  "digest": "33378ec42f73f8d5",
+  "machine": [
+   4,
+   10
+  ]
+ },
+ "warrior-trail": {
+  "digest": "cecd19f5c7ba6ae4",
+  "machine": [
+   4,
+   5,
+   9,
+   10
+  ]
+ },
+ "wasatch-traverse": {
+  "digest": "1582bd31f8f00ced",
+  "machine": [
+   5,
+   6,
+   9,
+   10
+  ]
+ },
+ "waskahegan": {
+  "digest": "d7993fbe810051fd",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "western-uplands": {
+  "digest": "464d6cd6bfe3257c",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ },
+ "yosemite-high-route": {
+  "digest": "eee24b0c39473ab0",
+  "machine": [
+   7,
+   8,
+   9
+  ]
+ }
+}

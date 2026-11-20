@@ -27,3 +27,7 @@ The files `elevation.json` in the trail directories are computed from each trail
 - ArcticDEM terrain data DEM(s) were created from DigitalGlobe, Inc., imagery and funded under National Science Foundation awards 1043681, 1559691, and 1542736.
 - Global ETOPO1 terrain data U.S. National Oceanic and Atmospheric Administration.
 - Terrain Tiles was accessed from https://registry.opendata.aws/terrain-tiles.
+
+## Climate
+
+A season marked as estimated is worked out from monthly climate at the trail's elevation. The climate values are monthly means of daily maximum temperature for 1981 to 2010 from CHELSA V2.1 (https://www.chelsa-climate.org/datasets/chelsa_climatologies, released under CC0 1.0), read by `tools/season_climate.py`, with grid elevation from NOAA's ETOPO 2022 relief model (unrestricted version, https://www.ncei.noaa.gov/products/etopo-global-relief-model). CHELSA asks for this citation: Karger, D. N., Conrad, O., Boehner, J., Kawohl, T., Kreft, H., Soria-Auza, R. W., Zimmermann, N. E., Linder, H. P., Kessler, M. (2017). Climatologies at high resolution for the earth's land surface areas. Scientific Data 4, 170122, https://doi.org/10.1038/sdata.2017.122. Only the estimated seasons derive from it. Each estimated record names it in its sources, and the estimates themselves say they are estimates wherever they are shown.

@@ -90,7 +90,11 @@ terrain = ["alpine", "lakes"]
 travel = "mostly-cross-country"
 days = [14, 21]
 permit = "A permit is needed from the agency that manages the trailhead where you start."
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "sources"
+season_method = "The pages differ: Backpacking Routes gives late July to mid-September, and Skurka warns the route is off-limits to all but expert mountaineers from November through May. It was set by judgement from both and from the climate at the passes, which are near 12,000 feet. Confidence: high."
 
 [[hike.source]]
 url = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
@@ -115,7 +119,12 @@ facts = ["end_lonlat"]
 [[hike.source]]
 url = "https://andrewskurka.com/adventures/sierra-high-route/logistical-considerations/"
 publisher = "Andrew Skurka (the route's author)"
-facts = ["permit"]
+facts = ["permit", "season", "months"]
+
+[[hike.source]]
+url = "https://backpackingroutes.com/sierra-high-route/"
+publisher = "Backpacking Routes"
+facts = ["season", "months"]
 
 [[link]]
 title = "Sierra High Route"
@@ -217,5 +226,14 @@ change = "The trail was placed in Sequoia and Kings Canyon National Parks, Yosem
 fields = ["place"]
 basis = "The trail's own description says: \"The Sierra High Route is Steve Roper's timberline route through California's High Sierra from Kings Canyon National Park to northern Yosemite. (start: Road's End, Kings Canyon National Park)\" (Sequoia and Kings Canyon National Parks) The trail's own description says: \"The Sierra High Route is Steve Roper's timberline route through California's High Sierra from Kings Canyon National Park to northern Yosemite.\" (Yosemite National Park, Sierra Nevada, Sequoia-Kings Canyon Wilderness, Yosemite Wilderness) The page says: \"Depending on the time of year, Inyo National Forest—which manages the Ansel Adams and John Muir Wilderness Areas—requires overnight users to obtain a free wilderness permit.\" (Ansel Adams Wilderness, John Muir Wilderness)"
 basis_url = "https://www.mountaineers.org/books/books/sierra-high-route-2nd-edition-traversing-timberline-country"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was set from pages that differ: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "The pages that state a season differ and none is the managing body, association or route author, so it was set by judgement from all of them and the climate estimate."
+basis_url = "https://andrewskurka.com/adventures/sierra-high-route/logistical-considerations/"
 asked_by = "the dataset's own check"
 outcome = "applied"

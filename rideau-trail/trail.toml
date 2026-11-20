@@ -58,7 +58,11 @@ end = "Ottawa, Ontario"
 shape = "point-to-point"
 caution = "Many parts of the trail network close during the Ontario fall hunting season, and overnight accommodation is sparse along much of the trail."
 days = [9, 16]
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Eastern Ontario is snowy and muddy over winter, and the trail can be walked from April until late fall. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.rideautrail.org/discover-the-trail/"
@@ -74,6 +78,11 @@ facts = ["summary", "caution"]
 url = "https://www.rideautrail.org/discover-the-trail/faq/"
 publisher = "Rideau Trail Association"
 facts = ["days"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Rideau Trail"
@@ -118,5 +127,14 @@ change = "The trail was placed in Frontenac Provincial Park, Murphys Point Provi
 fields = ["place"]
 basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

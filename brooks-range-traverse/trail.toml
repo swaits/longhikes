@@ -72,7 +72,11 @@ shape = "point-to-point"
 terrain = ["tundra", "alpine"]
 travel = "mostly-cross-country"
 caution = "There is almost no trail, and much of the route is floated by packraft, so it needs packrafting skills as well as route-finding."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "June to September"
+months = [6, 7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Arctic tundra is frozen and snowbound most of the year, with river breakup in early June and freeze-up and snow by mid-September. Confidence: low."
 
 [[hike.source]]
 url = "https://thingstolucat.com/brooks-range-traverse/"
@@ -123,6 +127,11 @@ slug = "mollie-beattie-wilderness"
 basis = "stated"
 source = "https://thingstolucat.com/arctic-refuge-traverse/"
 
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -158,5 +167,14 @@ change = "The trail was placed in Gates of the Arctic National Park and Preserve
 fields = ["place"]
 basis = "The page says: \"In June of 2017 Sarah and I hiked and floated through the Arctic National Wildlife Refuge, the second leg (of three?) of our Brooks Range Traverse (2016: Gates of the Arctic National Park).\" (Gates of the Arctic National Park and Preserve) The page says: \"The Brooks Range, from Kivalina to Kaktovik, in three parts.\" (Brooks Range) The page says: \"fly to Anaktuvuk, float southwest on the John River, hike west to the Alatna River, float southeast on the Alatna to access the Arrigetch, cross the Arrigetch, float northwest on the Noatak River, hike southwest to the Ambler River, and float west to Ambler.\" (Gates of the Arctic Wilderness) The page says: \"As soon as we crossed the Wilderness boundary, we saw a lone Muskox.\" (Mollie Beattie Wilderness)"
 basis_url = "https://thingstolucat.com/arctic-refuge-traverse/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: June to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

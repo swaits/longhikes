@@ -74,7 +74,11 @@ end_lonlat = [-64.164, 48.752]
 shape = "point-to-point"
 days = [300, 300]
 travel = "trail-and-road"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "January to October"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A thru-hike of about 300 days starts in the Florida winter and has to finish in the Gaspe before the November snows. Confidence: low."
 
 [[hike.source]]
 url = "https://nimblewillnomad.com/books/"
@@ -95,6 +99,11 @@ facts = ["start_lonlat"]
 url = "https://geogratis.gc.ca/services/geoname/en/geonames/EGLSG"
 publisher = "Natural Resources Canada, Canadian Geographical Names Database"
 facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Eastern Continental Trail"
@@ -184,5 +193,14 @@ change = "The trail was placed in Great Smoky Mountains National Park, Shenandoa
 fields = ["place"]
 basis = "The trail's own description says: \"(record route note) on the International Appalachian Trail, the Appalachian Trail, the Benton MacKaye Trail and the Pinhoti Trail\""
 basis_url = "https://nimblewillnomad.com/books/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: January to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

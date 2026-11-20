@@ -59,7 +59,11 @@ end = "Conestogo, Ontario"
 shape = "point-to-point"
 terrain = ["farmland"]
 travel = "trail"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Winter snow and early-spring mud on Ontario farmland end with the thaw, and the walk runs until late fall. Confidence: medium."
 
 [[hike.source]]
 url = "https://avontrail.ca/"
@@ -70,6 +74,11 @@ facts = ["official_url", "start", "end", "shape"]
 url = "https://avontrail.ca/about/"
 publisher = "Avon Trail Association"
 facts = ["summary", "start", "end", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -97,5 +106,14 @@ change = "The main track was re-cut to one walk (152 km): near Wildwood Lake, wh
 fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
 basis = "OpenStreetMap relation 3442182 gives no roles, and the Avon Trail Association's pages read do not say which of the two ways is the trail. The more direct way was taken by default."
 basis_url = "https://www.openstreetmap.org/relation/3442182"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

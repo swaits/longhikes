@@ -53,7 +53,11 @@ terrain = ["canyon"]
 travel = "trail"
 permit = "Individual hikers need no pass or permit; organised groups need a permit from the Forest Service."
 caution = "The Forest Service says the stretch of West Fork Trail 151 along Cooper Canyon to Turkeyfeather Pass is not passable, so check the loop map there. A local trail group reported in November 2024 that the Forest Service crew had cleared the last impassable part of the loop, and that walkers found rough tread in places, such as Trail 159 above Turkey Creek and Trail 101 near private land at Double Spring. The Forest Service says West Fork Trail 151 has many river crossings per mile, and that water in the Gila can be unreliable and must be treated."
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Gila canyons at 6,000 feet are hot from June to August, with monsoon storms and flash floods, and cold in winter. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.fs.usda.gov/r03/gila/recreation/gila-wilderness-area"
@@ -74,6 +78,11 @@ facts = ["caution", "terrain", "travel"]
 url = "https://myemail.constantcontact.com/Gila-Trails-News.html?soid=1140320514802&aid=afNx6JmU3qM"
 publisher = "Gila Trails News (Gila Back Country Horsemen and Gila Trails Info), November 2024 update"
 facts = ["caution"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[guide]]
 title = "Gila Wilderness Centennial Loop Trail Map - 24K"
@@ -109,5 +118,14 @@ change = "The trail was placed in Gila Wilderness from published pages, as it ha
 fields = ["place"]
 basis = "The trail's own description says: \"The Gila Wilderness Centennial Loop is a 100-mile loop through the Gila Wilderness of southwestern New Mexico.\""
 basis_url = "https://www.fs.usda.gov/r03/gila/recreation/gila-wilderness-area"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

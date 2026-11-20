@@ -166,8 +166,9 @@ def regions_index_page(records, site, infos=()):
     a page (olt/places.py collect); each kind that has any gets a section of its own."""
     by_slug, across = collect_regions(records)
     place_infos = list(infos.values()) if isinstance(infos, dict) else list(infos or ())
-    blocks = ""
+    blocks = '<span id="states-and-provinces"></span>'
     jump = []
+    kinds = []
     for g, name, keys in facets.PLACE_GROUPS:
         infos = sorted((by_slug[k.lower()] for k in keys if k.lower() in by_slug), key=lambda i: i["name"])
         if not infos:
@@ -200,7 +201,7 @@ def regions_index_page(records, site, infos=()):
             f'<li><a href="{esc(i["path"])}">{esc(i["name"])}</a>'
             f'<span class="places__n">{_plural(len(i["records"]))}</span></li>'
             for i in mine)
-        jump.append(f'<li><a href="#{esc(kind.segment)}">{esc(kind.hub_title)}<span class="lists-row__n">{len(mine)}</span></a></li>')
+        kinds.append(f'<li><a href="#{esc(kind.segment)}">{esc(kind.hub_title)} <span class="places-jump__n">{len(mine)}</span></a></li>')
         blocks += f"""<section class="places__group" aria-labelledby="{esc(kind.segment)}">
   <h2 id="{esc(kind.segment)}">{esc(kind.hub_title)}</h2>
   <ul class="places__list">{rows}</ul>
@@ -214,12 +215,17 @@ def regions_index_page(records, site, infos=()):
         foot = f'\n<div class="container"><p class="places__sum">Places with no listed trail: {links}.</p></div>'
     n_us = sum(1 for r in records if "US" in common.countries(r))
     n_ca = sum(1 for r in records if "CA" in common.countries(r))
-    body = f"""<div class="page-head"><div class="container"><header class="titleblock">
+    # One compact row at the very top, whatever the screen: the states and provinces and each kind of
+    # place that has pages, each with its exact number of pages.
+    row = (f'<nav class="places-jump" aria-label="Jump to a kind of place"><ul>'
+           f'<li><a href="#states-and-provinces">States and provinces <span class="places-jump__n">{len(by_slug)}</span></a></li>'
+           f'{"".join(kinds)}</ul></nav>') if kinds else ""
+    body = f"""<div class="page-head"><div class="container">{row}<header class="titleblock">
   <div class="titleblock__text"><h1>Places</h1>
   <p class="page-head__lede">The {len(records)} trails by state and province, grouped into parts of the
   United States ({n_us}) and Canada ({n_ca}). A trail that crosses several states is on each one&rsquo;s page.{lede_more}</p>
   </div></header>
-  <nav class="lists-row" aria-label="Jump to a part of the country{" or a kind of place" if place_infos else ""}"><ul>{"".join(jump)}</ul></nav></div></div>
+  <nav class="lists-row" aria-label="Jump to a part of the country"><ul>{"".join(jump)}</ul></nav></div></div>
 <div class="container section places">{blocks}</div>{foot}"""
     description = (f"Where the {len(records)} long trails and routes are: {n_us} in the United States and {n_ca} in Canada, "
                    f"by state and province, with the number in each.")

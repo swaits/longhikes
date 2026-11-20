@@ -117,6 +117,11 @@ class SeasonBasisTest(unittest.TestCase):
     def test_an_estimate_with_a_method_and_a_climate_source_passes(self):
         self.assertEqual(estimate(), [])
 
+    def test_an_estimate_phrase_is_built_from_its_months(self):
+        errors = estimate(season="Summer")
+        self.assertTrue(any("built from" in e for e in errors), errors)
+        self.assertEqual(check(season="Summer"), [])  # a page's own words stand
+
     def test_an_estimate_needs_a_method(self):
         errors = estimate(season_method=None)
         self.assertTrue(any("season_method" in e for e in errors), errors)

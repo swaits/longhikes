@@ -90,6 +90,14 @@ def check_season(tid, hike, errors):
     elif basis == "estimate":
         errors.append(f"{tid}: hike.season_method is required with season_basis \"estimate\"")
 
+    if basis == "estimate" and has_months and isinstance(hike.get("months"), list):
+        try:
+            if hike.get("season") != phrase_for(hike["months"]):
+                errors.append(f"{tid}: the season phrase of an estimate must be built from its "
+                              f"months: {phrase_for(hike['months'])!r}")
+        except (ValueError, TypeError):
+            errors.append(f"{tid}: hike.months must be month numbers 1 to 12")
+
     naming_season = _naming(sources, "season")
     if basis != "estimate" and any(_is_climate(x) for x in naming_season):
         errors.append(

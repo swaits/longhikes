@@ -292,8 +292,10 @@ class PageKind:
     title_options(info, recs, site) -> titles, fullest first, for common.fit_title.
     description(info, recs) -> str. box(info) -> [west, south, east, north] or None.
     nav(info, records, recs, facet_pages) -> HTML after the rows and map.
-    in_name(info) -> str, where present: the name as it reads after "in" ("the Wind
-    River Range"); the plain name where the kind leaves it out."""
+    in_name(info) -> str, where present: the name as it reads after a verb ("the Wind
+    River Range"); the plain name where the kind leaves it out. phrase(info) -> str,
+    where present: the preposition and the name ("on the Colorado Plateau"); where the
+    kind leaves it out, "in" and in_name."""
     kicker: object
     crumbs: object
     lede: object
@@ -305,6 +307,7 @@ class PageKind:
     box: object
     nav: object
     in_name: object = None
+    phrase: object = None
 
 
 def _state_kicker(info):
@@ -360,21 +363,24 @@ def _state_description(info, recs):
     return _fit([first + gpx, first, f"{what[:1].upper() + what[1:]} in {name}, {country}.{gpx}"])
 
 
-def _lists_nav(name, recs, records):
-    """The nav of ready-made lists holding some of these trails, shared by the kinds."""
+def _lists_nav(name, recs, records, phrase=None):
+    """The nav of ready-made lists holding some of these trails, shared by the kinds.
+    phrase is "in <name>" unless the place has its own preposition."""
     held = lists_here(recs, records)
     if not held:
         return ""
-    return (f'<nav class="region-nav" aria-label="Lists with trails in {esc(name)}">'
-            f'Lists with trails in {esc(name)}, and how many here: {" · ".join(held)}</nav>')
+    phrase = phrase or f"in {name}"
+    return (f'<nav class="region-nav" aria-label="Lists with trails {esc(phrase)}">'
+            f'Lists with trails {esc(phrase)}, and how many here: {" · ".join(held)}</nav>')
 
 
-def _facet_nav(name, facet_pages):
+def _facet_nav(name, facet_pages, phrase=None):
     """The nav of this place's pages of one kind of trail, shared by the kinds."""
     if not facet_pages:
         return ""
-    return (f'<nav class="region-nav" aria-label="Kinds of trail in {esc(name)}">'
-            f'More in {esc(name)}: '
+    phrase = phrase or f"in {name}"
+    return (f'<nav class="region-nav" aria-label="Kinds of trail {esc(phrase)}">'
+            f'More {esc(phrase)}: '
             + " · ".join(f'<a href="{esc(path)}">{esc(label)}</a> ({n})' for label, path, n in facet_pages)
             + "</nav>")
 
@@ -415,6 +421,7 @@ def place_page(info, records, site, kind, *, facet_pages=(), place_links=""):
     place = kind.facts_place(info)
     wholly = wholly_in(recs, place[1]) if kind.wholly else None
     in_name = kind.in_name(info) if kind.in_name else info["name"]
+    phrase = kind.phrase(info) if kind.phrase else f"in {in_name}"
     body = f"""<div class="page-head"><div class="container">
   <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{crumbs}<li aria-current="page">{esc(info["name"])}</li></ol></nav>
   <header class="titleblock"><div class="titleblock__text">
@@ -424,9 +431,9 @@ def place_page(info, records, site, kind, *, facet_pages=(), place_links=""):
   </div></header>
 </div></div>
 <div class="container section place">
-  {home.browse_view(home.listing(recs, top=2, where=kind.where, wholly=wholly), home.overview_map(recs, f"Map of the trails in {in_name}", place=kind.box(info)),
+  {home.browse_view(home.listing(recs, top=2, where=kind.where, wholly=wholly), home.overview_map(recs, f"Map of the trails {phrase}", place=kind.box(info)),
                about=f"{summary.facts(recs, records, place=place)}{summary.details(recs)}",
-               about_title=f"About the trails in {in_name}")}
+               about_title=f"About the trails {phrase}")}
   {nav}{place_links}
 </div>"""
     title = common.fit_title(kind.title_options(info, recs, site), site)

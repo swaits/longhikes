@@ -1050,8 +1050,8 @@ def write_registry(root, entries):
         lines.pop()
     for e in sorted(entries, key=lambda e: (_KIND_ORDER.get(e["kind"], 9), e["slug"])):
         lines += ["", "[[place]]"]
-        for key in ("slug", "kind", "name", "where", "within", "source", "source_id",
-                    "source_version", "box"):
+        for key in ("slug", "kind", "name", "label", "prep", "where", "within", "source",
+                    "source_id", "source_version", "box"):
             if key in e and e[key] not in (None, [], ()):
                 lines.append(f"{key} = {refresh._scalar(e[key])}")
     with open(path, "w", encoding="utf-8") as f:
@@ -1132,6 +1132,10 @@ def apply(proposal_path, root, today, exclude=frozenset()):
                  "where": old.get("where") or v["where"],
                  "source": v["source"], "source_id": v["source_id"],
                  "source_version": versions.get(v["source"], ""), "box": v["box"]}
+        # a reviewed label and preposition ("Plateau", "on the") are kept too
+        for kept in ("label", "prep"):
+            if old.get(kept):
+                entry[kept] = old[kept]
         if v.get("within"):
             entry["within"] = list(v["within"])
         entries.append(entry)

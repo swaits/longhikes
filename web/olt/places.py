@@ -99,24 +99,48 @@ def state_names(info):
     return [words.region_name(_state_key(c).split("-", 1)[-1]) for c in info.get("where") or []]
 
 
+DEFAULT_PREP = {"park": "in", "range": "in the", "wilderness": "in the"}
+
+
+def label_of(entry_or_info):
+    """The page's kind word, from the registry's `label` or else the kind's own."""
+    return entry_or_info.get("label") or KINDS[entry_or_info["kind"]].noun
+
+
+def prep_of(entry_or_info):
+    """The preposition a title or lede uses, from the registry's `prep` or else the kind's own:
+    "in the" for a range or a wilderness area, "in" for a park; "on the Colorado Plateau",
+    "along the Mogollon Rim" where the registry says so."""
+    return entry_or_info.get("prep") or DEFAULT_PREP[entry_or_info["kind"]]
+
+
 def in_name(info):
-    """The name as it reads after "in": a range or a wilderness area takes "the"
-    ("in the Wind River Range"), a park does not ("in Yosemite National Park")."""
+    """The name as it reads after a verb or "through" ("the Wind River Range"): with "the"
+    when the place's preposition has one, as the plain name where it has not."""
     name = info["name"]
-    if info.get("kind") in ("range", "wilderness") and not name.lower().startswith("the "):
+    if prep_of(info).endswith(" the") and not name.lower().startswith("the "):
         return f"the {name}"
     return name
 
 
+def in_phrase(info):
+    """The preposition and the name, as a title or a lede has it: "in the Wind River Range",
+    "on the Colorado Plateau", "along the Mogollon Rim", "in Yosemite National Park"."""
+    return f"{prep_of(info)} {info['name']}"
+
+
 def title_name(info):
-    """The place as a page title names it: a park by its name alone; a range or a
-    wilderness area in one state or province with that state spelled out
-    ("Wind River Range, Wyoming"), and with no state when it spans several."""
+    """The place as a page title names it: a park by its name alone; a range or a wilderness
+    area in one state or province with that state spelled out ("Wind River Range, Wyoming"),
+    with no state when it spans several or when the name already holds it ("Oregon Cascades",
+    "California Coast Ranges")."""
     name = info["name"]
     if info.get("kind") == "park":
         return name
     names = state_names(info)
-    return f"{name}, {names[0]}" if len(names) == 1 else name
+    if len(names) == 1 and names[0].lower() not in name.lower():
+        return f"{name}, {names[0]}"
+    return name
 
 
 _NAME_ENDS = (" national park", " provincial park", " wilderness area", " park", " wilderness")
@@ -162,8 +186,8 @@ def _same_stem(park_name, range_name):
 def collect(records, registry):
     """(kind, slug) -> info for every place with a page: PAGE_MIN or more trails.
 
-    An info holds kind, slug, key ("<kind>/<slug>"), name, where, box, records, path
-    and title_name. A wilderness area or a mountain range that holds exactly the
+    An info holds kind, slug, key ("<kind>/<slug>"), name, label, prep, where, box,
+    records, path and title_name. A wilderness area or a mountain range that holds exactly the
     trails of a park of much the same name gets no page: one page for the one set, under
     the park. The registry normally already leaves such a place out; the builder stays safe."""
     mem = membership(records, registry)
@@ -173,6 +197,7 @@ def collect(records, registry):
             continue
         e = registry[(kind, slug)]
         info = {"kind": kind, "slug": slug, "key": f"{kind}/{slug}", "name": e.get("name", slug),
+                "label": label_of(e), "prep": prep_of(e),
                 "where": list(e.get("where") or []), "box": e.get("box"), "records": recs,
                 "path": path(kind, slug)}
         info["title_name"] = title_name(info)

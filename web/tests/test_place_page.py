@@ -39,7 +39,8 @@ def write_registry(root, entries=REGISTRY):
         box = ", ".join(str(v) for v in e["box"])
         where = ", ".join(f'"{c}"' for c in e["where"])
         within = f'\nwithin = [{", ".join(chr(34) + s + chr(34) for s in e["within"])}]' if e.get("within") else ""
-        lines.append(f'[[place]]\nslug = "{e["slug"]}"\nkind = "{e["kind"]}"\nname = "{e["name"]}"\n'
+        extra = "".join(f'{k} = "{e[k]}"\n' for k in ("label", "prep") if e.get(k))
+        lines.append(f'[[place]]\nslug = "{e["slug"]}"\nkind = "{e["kind"]}"\nname = "{e["name"]}"\n{extra}'
                      f'where = [{where}]{within}\nsource = "{e["source"]}"\nsource_id = "{e["source_id"]}"\n'
                      f'source_version = "{e["source_version"]}"\nbox = [{box}]\n')
     with open(os.path.join(root, "places.toml"), "w", encoding="utf-8") as f:
@@ -83,6 +84,70 @@ def build(records):
 
 def text(fragment):
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", str(fragment))))
+
+
+def entry_of(kind, slug, name, where, **kw):
+    return dict({"kind": kind, "slug": slug, "name": name, "where": where, "source": "gmba-v2",
+                 "source_id": "1", "source_version": "2026-11-20", "box": BOX}, **kw)
+
+
+def built_with(entries, n=3, regs=("WY",)):
+    records = [rec(300 + i, f"Place Trail {chr(64 + i)}", [(e["kind"], e["slug"]) for e in entries],
+                   regs=regs) for i in range(1, n + 1)]
+    with tempfile.TemporaryDirectory() as d:
+        write_registry(d, entries)
+        return {b.path: b for b in placepages.build(records, S, d)}
+
+
+class LabelPrepositionAndTitleTest(unittest.TestCase):
+    def test_a_plateau_is_not_a_mountain_range_and_is_on_not_in(self):
+        built = built_with([entry_of("range", "colorado-plateau", "Colorado Plateau", ["UT"],
+                                     label="Plateau", prep="on the")], regs=("UT",))
+        b = built["/ranges/colorado-plateau/"]
+        body = str(b.body)
+        self.assertEqual(b.title, "Long Hikes on the Colorado Plateau, Utah: 3 Trails")
+        self.assertIn('<p class="kicker">Plateau · Utah</p>', body)
+        self.assertNotIn("Mountain range", body)
+        self.assertIn("3 trails on the Colorado Plateau", text(body))
+        self.assertIn("on the Colorado Plateau", b.description)
+        self.assertNotIn("in the Colorado Plateau", body)
+
+    def test_the_rim_is_along_and_a_range_with_no_label_keeps_the_defaults(self):
+        built = built_with([entry_of("range", "mogollon-rim", "Mogollon Rim", ["AZ"],
+                                     label="Escarpment", prep="along the"),
+                            entry_of("range", "wind-river-range", "Wind River Range", ["WY"])],
+                           regs=("AZ", "WY"))
+        self.assertIn("3 trails along the Mogollon Rim", text(built["/ranges/mogollon-rim/"].body))
+        wind = built["/ranges/wind-river-range/"]
+        self.assertIn('<p class="kicker">Mountain range · Wyoming</p>', str(wind.body))
+        self.assertIn("3 trails in the Wind River Range", text(wind.body))
+
+    def test_a_park_has_its_own_label_and_no_the(self):
+        built = built_with([entry_of("park", "blue-ridge-parkway", "Blue Ridge Parkway", ["NC", "VA"],
+                                     label="Parkway", prep="along the")], regs=("NC",))
+        b = built["/parks/blue-ridge-parkway/"]
+        self.assertIn('<p class="kicker">Parkway · North Carolina and Virginia</p>', str(b.body))
+        self.assertEqual(b.title, "Long Hikes along the Blue Ridge Parkway: 3 Trails")
+
+    def test_a_state_already_in_the_name_is_not_repeated(self):
+        built = built_with([entry_of("range", "oregon-cascades", "Oregon Cascades", ["OR"]),
+                            entry_of("range", "california-coast-ranges", "California Coast Ranges", ["CA"])],
+                           regs=("OR", "CA"))
+        self.assertEqual(built["/ranges/oregon-cascades/"].title, "Long Hikes in the Oregon Cascades: 3 Trails")
+        self.assertEqual(built["/ranges/california-coast-ranges/"].title,
+                         "Long Hikes in the California Coast Ranges: 3 Trails")
+
+    def test_every_place_title_keeps_its_count_even_with_a_long_name(self):
+        built = built_with([entry_of("range", "vancouver-island-ranges", "Vancouver Island Ranges", ["BC"]),
+                            entry_of("park", "sequoia", "Sequoia and Kings Canyon National Parks", ["CA"]),
+                            entry_of("wilderness", "sk", "Sequoia-Kings Canyon Wilderness", ["CA"])],
+                           n=18, regs=("BC", "CA"))
+        for b in built.values():
+            self.assertTrue(b.title.endswith(": 18 Trails"), b.title)
+            self.assertTrue(b.title.startswith("Long Hikes in "), b.title)
+        # the state goes first, then nothing else: no "Long Hikes in" is shortened
+        self.assertEqual(built["/ranges/vancouver-island-ranges/"].title,
+                         "Long Hikes in the Vancouver Island Ranges: 18 Trails")
 
 
 class PlacePageTest(unittest.TestCase):

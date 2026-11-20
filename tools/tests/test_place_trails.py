@@ -605,6 +605,16 @@ class ApplyTest(unittest.TestCase):
         P.apply(self.pjson, self.root, "2026-12-01")
         self.assertEqual(read_toml(path)["place"][0]["where"], ["MT", "WY"])
 
+    def test_a_reviewed_label_and_preposition_survive_a_rerun(self):
+        P.apply(self.pjson, self.root, "2026-11-20")
+        path = os.path.join(self.root, "places.toml")
+        text = open(path).read()
+        open(path, "w").write(text.replace('name = "Alpha Park"',
+                                           'name = "Alpha Park"\nlabel = "National park"\nprep = "along the"'))
+        P.apply(self.pjson, self.root, "2026-12-01")
+        entry = read_toml(path)["place"][0]
+        self.assertEqual((entry["label"], entry["prep"]), ("National park", "along the"))
+
     def test_stated_requires_an_http_source_a_quote_and_a_trackless_record(self):
         P.apply(self.pjson, self.root, "2026-11-20")
         with self.assertRaises(ValueError):

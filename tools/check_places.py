@@ -15,11 +15,12 @@ import tomllib
 
 KINDS = ("park", "range", "wilderness")
 SOURCES = ("nps", "wilderness-connect", "cpcad", "gmba-v2")
-REGISTRY_KEYS = {"slug", "kind", "name", "where", "within", "source", "source_id",
-                 "source_version", "box"}
+REGISTRY_KEYS = {"slug", "kind", "name", "label", "prep", "where", "within", "source",
+                 "source_id", "source_version", "box"}
 REGISTRY_REQUIRED = ("slug", "kind", "name", "where", "source", "source_id",
                      "source_version", "box")
 PLACE_KEYS = {"kind", "slug", "basis", "km", "source"}
+PREP_RE = re.compile(r"(in|on|at|along|across|near)( the)?")
 ID_RE = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
 HASH_RE = re.compile(r"[0-9a-f]{16}")
@@ -81,6 +82,11 @@ def check_registry(entries, errors):
             errors.append(f"{where} kind must be park, range or wilderness, not {kind!r}")
         if "name" in e:
             _text(e, "name", where, errors)
+        if "label" in e:
+            _text(e, "label", where, errors)
+        if "prep" in e and not (isinstance(e["prep"], str) and PREP_RE.fullmatch(e["prep"])):
+            errors.append(f"{where} prep must be a preposition such as \"in the\", \"on the\" "
+                          f"or \"along the\", not {e['prep']!r}")
         where_codes = e.get("where")
         if "where" in e and (not isinstance(where_codes, list) or not where_codes
                              or not all(isinstance(c, str) and c for c in where_codes)):

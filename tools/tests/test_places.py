@@ -86,6 +86,45 @@ class RegistryTest(unittest.TestCase):
             self.assertTrue(any("box" in m for m in registry_errors([entry(box=bad)])), bad)
 
 
+class LabelAndPrepositionTest(unittest.TestCase):
+    def test_a_label_and_a_preposition_are_allowed_and_checked(self):
+        self.assertEqual(registry_errors([entry(label="Plateau", prep="on the")]), [])
+        self.assertEqual(registry_errors([entry(label="Parkway", prep="along the", kind="park")]), [])
+        self.assertTrue(any("label" in m for m in registry_errors([entry(label="")])))
+        self.assertTrue(any("label" in m for m in registry_errors([entry(label=3)])))
+        self.assertTrue(any("prep" in m for m in registry_errors([entry(prep="over the hills")])))
+        self.assertTrue(any("prep" in m for m in registry_errors([entry(prep="")])))
+
+    def test_every_place_that_is_not_a_mountain_range_names_its_own_label(self):
+        with open(os.path.join(ROOT, "places.toml"), "rb") as f:
+            import tomllib
+            reg = tomllib.load(f)["place"]
+        for e in reg:
+            if e["kind"] == "park":
+                self.assertTrue(e.get("label"), f"{e['slug']} needs a label")
+        by = {e["slug"]: e for e in reg if e["kind"] == "range"}
+        for slug in ("colorado-plateau", "allegheny-plateau"):
+            self.assertEqual((by[slug]["label"], by[slug]["prep"]), ("Plateau", "on the"))
+        self.assertEqual(by["mogollon-rim"]["prep"], "along the")
+        self.assertNotEqual(by["mogollon-rim"].get("label"), "Mountain range")
+
+
+class SlugTest(unittest.TestCase):
+    EXCEPTIONS = {("range", "white-mountains-arizona"): "the White Mountains of Arizona share a "
+                  "display name with the ones of New Hampshire and Maine"}
+
+    def test_every_slug_is_the_slugified_display_name(self):
+        import tomllib
+        import place_trails
+        with open(os.path.join(ROOT, "places.toml"), "rb") as f:
+            reg = tomllib.load(f)["place"]
+        bad = [f"{e['kind']}/{e['slug']} (name {e['name']!r})" for e in reg
+               if (e["kind"], e["slug"]) not in self.EXCEPTIONS
+               and e["slug"] != place_trails.slugify(e["name"])]
+        self.assertEqual(bad, [])
+        self.assertEqual(len(self.EXCEPTIONS), 1)
+
+
 class RecordTest(unittest.TestCase):
     def test_record_place_must_be_in_the_registry(self):
         rec = record(place=[{"kind": "range", "slug": "no-such", "basis": "stated",

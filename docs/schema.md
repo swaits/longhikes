@@ -422,7 +422,9 @@ One file at the top level, one `[[place]]` entry per place that at least one rec
 | --- | --- | --- | --- |
 | `slug` | string | The place's slug, unique within its kind. | `"wind-river-range"` |
 | `kind` | string | `park`, `range` or `wilderness`. | `"range"` |
-| `name` | string | The display name. | `"Wind River Range"` |
+| `name` | string | The display name. The slug is the slug of this name (`white-mountains-arizona` is the one stated exception, as the other White Mountains have the plain slug). | `"Wind River Range"` |
+| `label` | string, where present | What kind of place it is, for the page's kicker. Defaults to the kind's own: `Park`, `Mountain range`, `Wilderness area`. Set it where that is wrong: `Plateau` for the Colorado Plateau, `National monument` for a national monument. | `"Plateau"` |
+| `prep` | string, where present | The preposition a title or lede uses for the place: `in the` (the default for a range or a wilderness area), `in` (the default for a park), `on the`, `along the`. | `"on the"` |
 | `where` | array of strings | The state or province codes the place is in, as records write them (`"WY"`, `"ON"`). Proposed by the tool from the `regions` codes shared by at least half of the place's measured trails, and confirmed by a reviewer. | `["WY"]` |
 | `within` | array of strings, where present | The slugs of parent places, ranges within ranges. Each names an existing `range` entry, and the chains never circle. A trail in a nested range is also in every parent; records never store the parents. | `["rocky-mountains"]` |
 | `source` | string | Which published outline set the boundary came from: `nps`, `wilderness-connect`, `cpcad` or `gmba-v2`. | `"gmba-v2"` |

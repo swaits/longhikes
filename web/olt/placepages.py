@@ -19,19 +19,15 @@ def _in_name(info):
     return places.in_name(info)
 
 
-def _title_place(info):
-    """The name in a page's title: _in_name with its one state spelled out for a
-    range or wilderness area (places.title_name), "the Wind River Range, Wyoming"."""
-    text = places.title_name(info)
-    if info["kind"] in ("range", "wilderness") and not text.lower().startswith("the "):
-        return f"the {text}"
-    return text
+def _phrase(info):
+    """"in the Wind River Range", "on the Colorado Plateau", "along the Mogollon Rim"."""
+    return places.in_phrase(info)
 
 
 def _kicker(info):
-    noun = places.KINDS[info["kind"]].noun
+    label = info.get("label") or places.label_of(info)
     names = places.state_names(info)
-    return f"{noun} · {words.join_names(names)}" if names else noun
+    return f"{label} · {words.join_names(names)}" if names else label
 
 
 def _crumbs(info):
@@ -39,12 +35,17 @@ def _crumbs(info):
 
 
 def _lede(info, recs, n_gpx):
-    return f"{regions._plural(len(recs))} in {esc(_in_name(info))}, {n_gpx} with a GPX here."
+    return f"{regions._plural(len(recs))} {esc(_phrase(info))}, {n_gpx} with a GPX here."
 
 
 def _title_options(info, recs, site):
-    base = f"Long Hikes in {_title_place(info)}"
-    return [f"{base}: {regions._plural(len(recs), 'Trail')}", base]
+    """Every title keeps the count of trails. The state goes first when the title is too long
+    (and is never there when the name already holds it); a title that is still over the cap
+    keeps its count rather than lose it. "Long Hikes" and the preposition are never cut."""
+    count = regions._plural(len(recs), "Trail")
+    prep = places.prep_of(info)
+    return [f"Long Hikes {prep} {info['title_name']}: {count}",
+            f"Long Hikes {prep} {info['name']}: {count}"]
 
 
 def _description(info, recs):
@@ -58,15 +59,15 @@ def _description(info, recs):
            if n_gpx else "")
     by_length = sorted(recs, key=lambda r: (r["length_km"], r["id"]))
     # No state keys: a trail that runs on out of the place is never sized as the place's.
-    first = (f"{what} in {_title_place(info)}, from {common.plain_name(by_length[0])}, "
+    first = (f"{what} {places.prep_of(info)} {info['title_name']}, from {common.plain_name(by_length[0])}, "
              f"{regions.trail_miles(by_length[0], ())}, to {common.plain_name(by_length[-1])}, "
              f"{regions.trail_miles(by_length[-1], ())}.")
-    return regions._fit([first + gpx, first, f"{what} in {_title_place(info)}.{gpx}"])
+    return regions._fit([first + gpx, first, f"{what} {places.prep_of(info)} {info['title_name']}.{gpx}"])
 
 
 def _nav(info, records, recs, facet_pages):
-    return (regions._lists_nav(_in_name(info), recs, records)
-            + regions._facet_nav(_in_name(info), facet_pages))
+    return (regions._lists_nav(_in_name(info), recs, records, _phrase(info))
+            + regions._facet_nav(_in_name(info), facet_pages, _phrase(info)))
 
 
 def _kind():
@@ -74,7 +75,7 @@ def _kind():
         kicker=_kicker, crumbs=_crumbs, lede=_lede, where="all", wholly=False,
         facts_place=lambda info: (_in_name(info), ()), title_options=_title_options,
         description=_description, box=lambda info: info.get("box"), nav=_nav,
-        in_name=_in_name)
+        in_name=_in_name, phrase=_phrase)
 
 
 PARK = _kind()

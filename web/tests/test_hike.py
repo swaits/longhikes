@@ -130,7 +130,7 @@ class TrailPageTest(unittest.TestCase):
         rec = sample_record("X Trail")
         rec["hike"] = dict(FULL_HIKE, season_basis="primary")
         block = trail.hike_sources_block(rec)
-        self.assertIn("The season comes from the page of the body that manages the trail or, for a route, its author.",
+        self.assertIn("The season comes from the page of the body that manages the trail or the trail's own association or, for a route, its author.",
                       html.unescape(block))
         self.assertEqual(facets.season_basis(rec), "primary")
         rec["hike"] = {k: v for k, v in FULL_HIKE.items() if k not in ("season", "months")}

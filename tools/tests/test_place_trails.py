@@ -245,6 +245,21 @@ class ProposalTest(unittest.TestCase):
         self.assertTrue(all(reason.strip() for reason in P.DENY.values()))
         self.assertIn(("park", "nps", "JEFF"), P.DENY)
 
+    def test_the_cpcad_query_asks_for_ontario_and_quebec_parks_and_escapes_quotes(self):
+        where = P.cpcad_where()
+        self.assertNotIn("LOC IN", where)  # no province is left out by a filter on location
+        self.assertIn("'Provincial Park'", where)  # Ontario's type
+        self.assertIn("'Quebec''s national park'", where)  # Quebec's type, quote doubled
+        self.assertIn("'A - Park'", where)  # British Columbia's
+
+    def test_cpcad_names_are_cleaned_for_a_hiker(self):
+        self.assertEqual(P._clean_cpcad_name("Algonquin Provincial Park (Natural Environment Class)"),
+                         "Algonquin Provincial Park")
+        self.assertEqual(P._clean_cpcad_name("Frontenac National Park (Québec)"),
+                         "Frontenac National Park")
+        self.assertEqual(P._clean_cpcad_name("Killarney Lakelands And Headwaters Provincial Park"),
+                         "Killarney Lakelands and Headwaters Provincial Park")
+
     def test_a_slug_collision_inside_a_kind_gets_the_state_code(self):
         a = outline("park", "P1", "Glacier", self.park.geometry, slug=None, hint=["MT"])
         b = outline("park", "P2", "Glacier", self.range.geometry, slug=None, hint=["BC"])

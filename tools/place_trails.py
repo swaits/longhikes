@@ -125,12 +125,10 @@ def box_of(outline):
 #   from its GIS downloads page; crediting Wilderness Connect is requested. Federal work,
 #   public domain. Field names are read from the file itself (see _read_wilderness).
 # cpcad: Environment and Climate Change Canada's CPCAD service (MapServer layer 0, not a
-#   FeatureServer). Fields: NAME_E, TYPE_E, LOC (province code: 1 Alberta, 2 British
-#   Columbia, confirmed against Peter Lougheed and Garibaldi), PARENT_ID (the id features
-#   of one park share, our source_id), BIOME ("T" terrestrial). JUR_ID is not a readable
-#   jurisdiction (the plan guessed it was); LOC is. Types: national parks are
-#   "National Park"; BC parks are "A - Park", "B - Park", "C - Park"; Alberta parks are
-#   "Provincial Park". Open Government Licence, Canada.
+#   FeatureServer). Fields: NAME_E, TYPE_E, LOC (province code, see CPCAD_LOC), PARENT_ID
+#   (the id features of one park share, our source_id), BIOME ("T" terrestrial). JUR_ID is not
+#   a readable jurisdiction (the plan guessed it was); LOC is. Types: see CPCAD_PARK_TYPES.
+#   Open Government Licence, Canada.
 # gmba-v2: GMBA Mountain Inventory v2.0, standard extent, one stacked shapefile of every
 #   hierarchy level from EarthEnv's data host (the EarthEnv page itself sits behind a bot
 #   challenge; the data host does not). Fields: GMBA_V2_ID, DBaseName (qualified, such as
@@ -225,6 +223,21 @@ def _arcgis_geojson(query_url, where, out_fields, dest):
         json.dump({"type": "FeatureCollection", "features": features}, f)
 
 
+# The park designations CPCAD uses for national and provincial parks. The first run asked for
+# provincial parks of Alberta and British Columbia only (LOC IN (1,2)), which left Ontario
+# (LOC 9, "Provincial Park") and Quebec (LOC 11, "Quebec's national park") out entirely: a
+# bug in the query, not a gap in the data. Territorial parks, conservation reserves, municipal
+# and private areas are not asked for.
+CPCAD_PARK_TYPES = ("National Park", "National Park Reserve", "Quebec's national park",
+                    "Quebec's national park reserve", "Provincial Park", "Wildland Provincial Park",
+                    "Wilderness Park", "A - Park", "B - Park", "C - Park")
+
+
+def cpcad_where():
+    types = ", ".join("'" + t.replace("'", "''") + "'" for t in CPCAD_PARK_TYPES)
+    return f"BIOME='T' AND TYPE_E IN ({types})"
+
+
 def fetch(source, cache):
     """(path, source_version) for a source's cached file; never re-downloads a cached file."""
     dest = os.path.join(cache, source.filename)
@@ -233,9 +246,7 @@ def fetch(source, cache):
     if source.key == "nps":
         _arcgis_geojson(NPS_QUERY, "1=1", "UNIT_CODE,UNIT_NAME,UNIT_TYPE,STATE", dest)
     elif source.key == "cpcad":
-        where = ("BIOME='T' AND (TYPE_E='National Park' OR (LOC IN (1,2) AND "
-                 "TYPE_E IN ('A - Park','B - Park','C - Park','Provincial Park')))")
-        _arcgis_geojson(CPCAD_QUERY, where, "NAME_E,TYPE_E,LOC,PARENT_ID", dest)
+        _arcgis_geojson(CPCAD_QUERY, cpcad_where(), "NAME_E,TYPE_E,LOC,PARENT_ID", dest)
     else:
         _download(source.url, dest)
     return dest, date.today().isoformat()
@@ -284,7 +295,8 @@ def _clean_cpcad_name(name):
     name = re.sub(r"\s*\([^)]*\)\s*$", "", name.strip())
     name = re.sub(r"\s+Of Canada$", "", name, flags=re.I)
     if name.isupper():
-        name = name.title().replace(" Park", " Park")
+        name = name.title()
+    name = re.sub(r"\s(And|Of|The|Du|De)\s", lambda m: m.group(0).lower(), name)
     return name.strip()
 
 
@@ -388,7 +400,7 @@ SOURCES = {
     "cpcad": Source("cpcad", CPCAD_QUERY, "Open Government Licence, Canada",
                     "Environment and Climate Change Canada, CPCAD",
                     "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c",
-                    "cpcad-parks.geojson", _read_cpcad),
+                    "cpcad-parks-2.geojson", _read_cpcad),
     "gmba-v2": Source(
         "gmba-v2", "https://data.earthenv.org/mountains/standard/GMBA_Inventory_v2.0_standard.zip",
         "CC BY 4.0", "GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv",

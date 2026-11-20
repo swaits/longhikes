@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-20 - The search box and filters on every page, and ways in to the places
+
+- Every page that lists trails now has the search box and the filters, however few trails it holds. Until now the 48 state and province pages with fewer than ten trails, the small lists and each route author's page showed the rows alone. The filters shown are the ones that have something to offer: a page with two trails offers the choices those two trails differ on, with the number that each choice leaves, and a page with one trail has the search box alone. Nothing is offered that would show no trails.
+- The Places page now begins with one row of links, visible at every screen size: States and provinces, Parks, Mountain ranges and Wilderness areas, each with its number of pages. They go to the parts of the page that were at the bottom, below sixty states and provinces.
+- The home page ends with a line under the rows and the map: Browse by park, by mountain range or by wilderness area, each going to its part of the Places page. The first screen is as it was.
+
 ## 2026-11-20 - Pages for national parks, mountain ranges and wilderness areas
 
 - There are now 81 pages for named places: 21 national parks and other Park Service units (such as the Blue Ridge Parkway and Glen Canyon National Recreation Area), 36 mountain ranges and other named landforms (the Colorado Plateau and the Mogollon Rim are labelled and worded as what they are, "on the Colorado Plateau") and 24 wilderness areas, each with 3 or more trails. Every page has the search box and the filters that have something to offer, however few trails it holds, and every title keeps its count of trails. They answer searches such as "Wind River Range hikes" or "backpacking in Glacier National Park", and each has the same filter bar, trail rows and map as a state page. A place with fewer than 3 trails has no page: the Uinta Mountains have one. A range or wilderness area that holds exactly the trails of the park of the same name (Great Smoky Mountains, Olympic Mountains) has no page of its own either, and six places that were only another name for trails already on a neighbour's page are left out: the Longfellow Mountains, Finger Lakes, Gore Range, Mosquito Range, Great Western Divide and Russian Wilderness.

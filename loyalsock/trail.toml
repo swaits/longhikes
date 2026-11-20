@@ -63,7 +63,11 @@ terrain = ["forest"]
 travel = "trail"
 caution = "Fires are banned along parts of the trail and during the spring fire season, and the club advises hikers to stay off the trail during bear and deer season, which runs about three weeks from the Monday before Thanksgiving."
 permit = "No permit is needed to camp one night at a site; a free Loyalsock State Forest camping permit is needed to stay more than one night at one location."
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "April to June and September to October"
+months = [4, 5, 6, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Rocky, wet terrain in northern Pennsylvania is best in the cool shoulder seasons, before the humid, buggy summer. Confidence: medium."
 
 [[hike.source]]
 url = "https://alpineclubofwilliamsport.com/loyalsock-trail-information/"
@@ -79,6 +83,11 @@ facts = ["high_point"]
 url = "https://alpineclubofwilliamsport.com/faqs/"
 publisher = "Alpine Club of Williamsport"
 facts = ["permit"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Loyalsock Trail"
@@ -126,5 +135,14 @@ change = "The trail was placed in Allegheny Plateau."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to June and September to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

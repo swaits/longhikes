@@ -80,7 +80,11 @@ terrain = ["alpine", "lakes"]
 travel = "some-cross-country"
 permit = "The Forest Service requires a free wilderness permit to enter the Mount Shasta Wilderness, and a Summit Pass above 10,000 feet on the mountain."
 caution = "The route's last summit is Mt Shasta, a glaciated volcano that the Forest Service says has no trail to its top. Booksellers' copies of the guidebook's description disagree (read 2026-11-19): one says no advanced mountaineering equipment or specialty training is required in summer, though basic rock scrambling and navigation skills are, and another says advanced mountaineering equipment and specialty training may be required."
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The summits and cirque lakes are snowbound until late June, and Shasta is climbed in summer. Confidence: medium."
 
 [[hike.source]]
 url = "https://outsideways.com/routes/us/siskiyou-peaks-trail/"
@@ -149,6 +153,11 @@ slug = "trinity-alps-wilderness"
 basis = "stated"
 source = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
 
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -176,5 +185,14 @@ change = "The trail was placed in Trinity Alps, Castle Crags Wilderness, Marble 
 fields = ["place"]
 basis = "The page says: \"Wilderness areas high-pointed on this trail include: - Red Buttes Wilderness - Siskiyou Wilderness - Marble Mountain Wilderness - Russian Wilderness - Trinity Alps Wilderness - Castle Crags Wilderness - Mt Shasta Wilderness\""
 basis_url = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

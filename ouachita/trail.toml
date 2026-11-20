@@ -64,7 +64,11 @@ terrain = ["forest"]
 travel = "trail"
 days = [14, 21]
 permit = "No permits are required for the trail."
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "October to May"
+months = [1, 2, 3, 4, 5, 10, 11, 12]
+season_basis = "sources"
+season_method = "The pages differ: one gives April to November, one gives late October to late March, and one gives all year. It was set by judgement from all three and the climate: a classic cool-season trail, since summers are hot, humid and full of ticks. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.friendsoftheouachita.org/about-the-ot"
@@ -80,6 +84,21 @@ facts = ["high_point"]
 url = "https://www.treelinereview.com/where-to-go/ouachita-trail"
 publisher = "Treeline Review"
 facts = ["days", "permit"]
+
+[[hike.source]]
+url = "https://thehikinglife.com/2014/07/ouachita-trail/"
+publisher = "The Hiking Life"
+facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://backpackingroutes.com/ouachita-trail/"
+publisher = "Backpacking Routes"
+facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://thetrek.co/10-trails-can-find-long-distance-solitude-2020/"
+publisher = "The Trek"
+facts = ["season", "months"]
 
 [[link]]
 title = "Ouachita Trail"
@@ -148,5 +167,14 @@ change = "The trail was placed in Ouachita Mountains, Flatside Wilderness, Upper
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was set from pages that differ: October to May."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "The pages that state a season differ and none is the managing body, association or route author, so it was set by judgement from all of them and the climate estimate."
+basis_url = "https://thehikinglife.com/2014/07/ouachita-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

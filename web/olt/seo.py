@@ -290,7 +290,8 @@ def _properties(rec):
         props.append(_pv("Shape", facets.SHAPES[shape]))
     props.append(_pv("Start", h.get("start", "")) if h.get("start") else None)
     props.append(_pv("End", h.get("end", "")) if h.get("end") else None)
-    props.append(_pv("Usual season", h["season"]) if h.get("season") else None)
+    # Only a season a page states: an estimate is not a fact about the trail to hand to a search engine.
+    props.append(_pv("Usual season", h["season"]) if h.get("season") and not facets.season_estimated(rec) else None)
     if common.is_route(rec):
         route = rec.get("route", {})
         props.append(_pv("Route author", route["creator"]) if route.get("creator") else None)

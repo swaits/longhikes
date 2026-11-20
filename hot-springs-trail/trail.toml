@@ -76,7 +76,11 @@ shape = "point-to-point"
 days = [110, 110]
 terrain = ["alpine", "lakes"]
 travel = "some-cross-country"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "April to September"
+months = [4, 5, 6, 7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A northbound route of about 110 days from coastal California to Idaho needs the Sierra and the northern mountains clear of snow, so it runs from spring to early fall. Confidence: low."
 
 [[hike.source]]
 url = "https://outsideways.com/routes/us/hot-springs-trail/"
@@ -87,6 +91,11 @@ facts = ["official_url", "summary", "start", "end", "shape", "days", "terrain", 
 url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1661401"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Hot Springs Trail"
@@ -161,5 +170,14 @@ change = "Nevada is now listed among the states the route passes through, becaus
 fields = ["regions"]
 basis = "The route page says: \"These are undoubtedly some of the most striking miles of the trail as they overlook the Ruby Lakes basin and the Ruby Mountains, which are traversed during the next section.\" and \"the trail follows singletrack into the East Humboldt Wilderness.\""
 basis_url = "https://outsideways.com/routes/us/hot-springs-trail/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

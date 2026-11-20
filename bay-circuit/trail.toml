@@ -61,7 +61,11 @@ end = "Kingston Bay, Massachusetts"
 shape = "point-to-point"
 travel = "trail"
 unfinished = "More than 230 miles are dedicated across 37 cooperating towns, and the final gaps are still being closed."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "March to May and September to November"
+months = [3, 4, 5, 9, 10, 11]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Humid, buggy summers and icy winters in low-lying eastern Massachusetts leave spring and fall, though it can be walked all year. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.baycircuit.org/"
@@ -72,6 +76,11 @@ facts = ["official_url", "summary", "travel"]
 url = "https://www.baycircuit.org/about/"
 publisher = "Bay Circuit Alliance"
 facts = ["summary", "start", "end", "shape", "unfinished"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Bay Circuit Trail"
@@ -104,5 +113,14 @@ change = "The main track was re-cut to one walk (293 km): at Boxford, where the 
 fields = ["source.line_file", "source.mainline", "source.length_gap_note"]
 basis = "OpenStreetMap relation 12779888 gives no roles. The Bay Circuit Alliance's maps page offers a hike map and a bike map for each section, and the trail way is named BCT."
 basis_url = "https://www.baycircuit.org/maps-guides/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: March to May and September to November."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

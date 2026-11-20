@@ -53,7 +53,11 @@ end = "Rainbow Bridge, Niagara Falls, New York"
 end_lonlat = [-79.067, 43.09]
 shape = "point-to-point"
 terrain = ["forest"]
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Low-elevation western New York is snowy in winter and muddy in March, and can be walked from April until late fall. Confidence: medium."
 
 [[hike.source]]
 url = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
@@ -75,6 +79,11 @@ kind = "range"
 slug = "allegheny-plateau"
 basis = "stated"
 source = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -111,5 +120,14 @@ change = "The trail was placed in Allegheny Plateau from published pages, as it 
 fields = ["place"]
 basis = "The trail's own description says: \"The Conservation Trail runs north through western New York from the Pennsylvania border in Allegany State Park to Niagara Falls, where it meets the Bruce Trail in Canada.\""
 basis_url = "https://sites.google.com/view/foothillstrailclub/about-the-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

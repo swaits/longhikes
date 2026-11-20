@@ -60,7 +60,11 @@ end = "Lake Champlain, Vermont"
 shape = "point-to-point"
 travel = "trail-and-road"
 unfinished = "About half the route is still on busier roads, and the association is building more trail toward a complete off-road route across the state."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "May to October"
+months = [5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A low-elevation route of mostly rail trail and quiet roads, where winter snow and mud season bracket a long snow-free stretch from May to October. Confidence: medium."
 
 [[hike.source]]
 url = "https://crossvermont.org/our_trail/index.php"
@@ -72,6 +76,11 @@ kind = "range"
 slug = "green-mountains"
 basis = "track"
 km = 29.1
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -99,5 +108,14 @@ change = "The trail was placed in Green Mountains."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: May to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

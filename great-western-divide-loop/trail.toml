@@ -68,7 +68,11 @@ start = "Crescent Meadow, Sequoia National Park"
 start_lonlat = [-118.748, 36.559]
 shape = "loop"
 terrain = ["forest", "alpine"]
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Kaweah Gap and the Great Western Divide hold deep snow into early July, and autumn storms return by October. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
@@ -101,6 +105,11 @@ kind = "wilderness"
 slug = "sequoia-kings-canyon-wilderness"
 basis = "stated"
 source = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -146,5 +155,14 @@ change = "The trail was placed in Sequoia and Kings Canyon National Parks and Se
 fields = ["place"]
 basis = "The trail's own description says: \"The Sequoia Great Western Divide Loop is a backpacking loop from Crescent Meadow in Sequoia National Park that crosses the Great Western Divide at Kaweah Gap, past Precipice Lake and the Hamilton Lakes.\" (Sequoia and Kings Canyon National Parks) The page says: \"To hike the High Sierra Trail, please obtain a Wilderness permit for the High Sierra Trail.\" (Sequoia-Kings Canyon Wilderness)"
 basis_url = "https://www.nps.gov/seki/planyourvisit/high-sierra-trail.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

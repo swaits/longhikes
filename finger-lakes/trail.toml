@@ -60,12 +60,21 @@ start = "Allegany State Park, New York"
 end = "Slide Mountain, Catskills, New York"
 shape = "network"
 travel = "trail"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "A page was found but it contradicts itself, giving winter, spring, summer and fall in one place and spring, summer and fall in another, so no page is relied on. The season was estimated from the climate and similar trails: snow lies from December to March and early spring is muddy. Confidence: medium."
 
 [[hike.source]]
 url = "https://fingerlakestrail.org/"
 publisher = "Finger Lakes Trail Conference"
 facts = ["official_url", "summary", "start", "end", "shape", "travel"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "Finger Lakes Trail"
@@ -104,5 +113,14 @@ change = "The trail was placed in Catskill Mountains."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season: the one page found contradicts itself. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

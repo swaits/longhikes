@@ -76,7 +76,11 @@ terrain = ["alpine"]
 travel = "mostly-cross-country"
 permit = "A wilderness permit is required year round for overnight trips from the Duck Pass trailhead, and from May 1 through November 1 overnight visitors there are limited to 30 people per day."
 caution = "The author says the route is consistently difficult, with steep and sometimes loose talus, scree and sand."
-checked = "2026-11-15"
+checked = "2026-11-20"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Cross-country passes above 10,500 feet need the snow to have melted, which is from mid-July through September. Confidence: high."
 
 [[hike.source]]
 url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
@@ -110,6 +114,11 @@ slug = "john-muir-wilderness"
 basis = "stated"
 source = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
 
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -136,5 +145,14 @@ change = "The trail was placed in Sierra Nevada and John Muir Wilderness from pu
 fields = ["place"]
 basis = "The page says: \"The Eastern Sierra High Route is the premiere advanced backpacking adventure to be had in California's Sierra Nevada in about a week or less.\" (Sierra Nevada) The page says: \"It is 65-70 hard miles, 70-80% off-trail, from Mammoth (Duck Pass Trailhead) to Bishop (Bishop Pass Trailhead at South Lake), staying as close to the main Sierra crest as possible without becoming technical\" (John Muir Wilderness)"
 basis_url = "https://danstenziano.com/products/eastern-sierra-high-route-guide"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

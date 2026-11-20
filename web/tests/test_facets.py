@@ -174,6 +174,79 @@ class PlaceTest(unittest.TestCase):
         self.assertIn('<a href="/regions/us-co/">Colorado</a>', crumbs)
 
 
+def est_hike(**kw):
+    h = {"season": "June to September", "months": [6, 7, 8, 9], "season_basis": "estimate",
+         "season_method": "Judged from the climate at the trail's elevation and from similar trails. "
+                          "Snow keeps the high passes closed until June. Confidence: medium."}
+    h.update(kw)
+    return h
+
+
+class SeasonTextTest(unittest.TestCase):
+    def test_an_estimated_season_reads_about_and_has_a_note(self):
+        rec = fake(1, hike=est_hike())
+        self.assertTrue(facets.season_estimated(rec))
+        self.assertEqual(facets.season_text(rec), "About June to September")
+        note = facets.season_note(rec)
+        for want in ("No page states a season", "estimated from the climate at the trail's elevation and from "
+                     "similar trails", "Snow keeps the high passes closed until June.", "Confidence: medium.",
+                     "This is the usual window, not a closure."):
+            self.assertIn(want, note)
+        self.assertNotIn("walk it outside", note)
+        self.assertNotIn("Judged from", note)  # the standard lead is said once, in the note's own words
+
+    def test_a_page_that_contradicts_itself_is_said_once_not_twice(self):
+        rec = fake(1, hike=est_hike(season_method=(
+            "A page was found but it contradicts itself, so no page is relied on. The season was estimated "
+            "from the climate and similar trails: snow lies until June. Confidence: medium.")))
+        note = facets.season_note(rec)
+        self.assertTrue(note.startswith("No page states a season. A page was found but it contradicts itself"), note)
+        self.assertEqual(note.count("estimated from the climate"), 1)
+        self.assertTrue(note.endswith("This is the usual window, not a closure."))
+
+    def test_a_season_judged_from_pages_is_not_called_estimated_from_climate(self):
+        judged = fake(1, hike=est_hike(season_basis="sources", season_method="The pages differ. Confidence: low."))
+        est = fake(2, hike=est_hike())
+        self.assertEqual(facets.season_unstated_clause([est, est, judged]),
+                         "2 are estimated from the climate and similar trails and 1 is set by judgement from "
+                         "pages that differ")
+        self.assertEqual(facets.season_unstated_clause([judged]), "1 is set by judgement from pages that differ")
+        self.assertEqual(facets.season_unstated_clause([est]), "1 is estimated from the climate and similar trails")
+        self.assertEqual(facets.season_unstated_clause([]), "")
+
+    def test_a_stated_season_is_unchanged_and_has_no_note(self):
+        rec = fake(1, hike={"season": "June to September", "months": [6, 7, 8, 9], "season_basis": "primary"})
+        self.assertFalse(facets.season_estimated(rec))
+        self.assertEqual(facets.season_text(rec), "June to September")
+        self.assertEqual(facets.season_note(rec), "")
+
+    def test_an_estimated_all_year_season_reads_about_all_year(self):
+        rec = fake(1, hike=est_hike(season="All year", months=list(range(1, 13))))
+        self.assertEqual(facets.season_text(rec), "About all year")
+
+    def test_it_is_not_estimated_without_a_basis_or_a_method(self):
+        self.assertFalse(facets.season_estimated(fake(1, hike={"season": "May", "months": [5]})))
+        self.assertFalse(facets.season_estimated(fake(1)))
+        self.assertEqual(facets.season_kind(fake(1)), "")
+
+    def test_a_season_judged_from_pages_that_differ_says_so(self):
+        rec = fake(1, hike=est_hike(season_basis="sources", season_method=(
+            "The pages differ: one gives May to October and one gives June to November. It was set by "
+            "judgement from both and from the climate. Confidence: medium.")))
+        self.assertTrue(facets.season_estimated(rec))
+        self.assertEqual(facets.season_kind(rec), "judged")
+        self.assertEqual(facets.season_text(rec), "About June to September")
+        note = facets.season_note(rec)
+        self.assertIn("No one page states this season.", note)
+        self.assertIn("The pages differ", note)
+        self.assertNotIn("estimated from the climate at the trail's elevation", note)
+        self.assertIn("It is a judgement", facets.season_basis_line(rec))
+
+    def test_the_basis_line_gives_the_method_for_an_estimate(self):
+        line = facets.season_basis_line(fake(1, hike=est_hike()))
+        self.assertTrue(line.endswith("Confidence: medium. No page states a season."), line)
+
+
 class MissingValuesTest(unittest.TestCase):
     def recs(self, n_with, n_without):
         return ([fake(i, hike={"months": [7, 8], "season": "July and August", "terrain": ["alpine"]})
@@ -190,21 +263,23 @@ class MissingValuesTest(unittest.TestCase):
         self.assertIn('name="terrain"', form)
 
     def test_missing_count_is_said(self):
+        # the generic mechanism, shown with terrain: no real trail lacks a season any more
         form = home.finder_form(self.recs(10, 12))
-        self.assertIn('data-missing="season" hidden>12 trails have no season on file.', form)
         self.assertIn('data-missing="terrain" hidden>12 trails have no terrain on file.', form)
-        self.assertEqual(facets.missing_text(1, "season"), "1 trail has no season on file.")
-        self.assertEqual(facets.missing_text(0, "season"), "")
+        self.assertEqual(facets.missing_text(1, "terrain"), "1 trail has no terrain on file.")
+        self.assertEqual(facets.missing_text(0, "terrain"), "")
         # full coverage: no note
-        self.assertNotIn('data-missing="season"', home.finder_form(self.recs(5, 0)))
+        self.assertNotIn('data-missing="terrain"', home.finder_form(self.recs(5, 0)))
 
     def test_rows_without_a_value_carry_none(self):
-        # the script leaves out a row whose data-months is empty while a month is chosen
         row = home.entry(fake(1))
-        self.assertIn('data-months=""', row)
         self.assertIn('data-terrain=""', row)
         row = home.entry(fake(1, hike={"months": [7, 8, 9]}))
         self.assertIn('data-months="7 8 9"', row)
+
+    def test_every_real_trail_has_months(self):
+        for rec in records.load_records(ROOT):
+            self.assertTrue(facets.months(rec), rec["id"])
 
     def test_script_leaves_out_missing_values(self):
         with open(os.path.join(WEB, "assets", "app.js"), encoding="utf-8") as f:
@@ -287,6 +362,32 @@ class BuiltVocabularyTest(unittest.TestCase):
                     bad.append((rel, m.group(0), words_[max(0, m.start() - 40):m.end() + 40]))
         self.maxDiff = None
         self.assertEqual(bad[:40], [])
+
+    def test_no_page_says_only_some_trails_have_a_season(self):
+        found = []
+        for dirpath, _dirs, files in os.walk(OUT):
+            for name in files:
+                if name.endswith(".html") and "changelog" not in dirpath:  # its old entries say what was
+                    path = os.path.join(dirpath, name)
+                    with open(path, encoding="utf-8") as f:
+                        doc = f.read()
+                    for phrase in ("Only some trails have a season", "season on file", "Not on file</td>",
+                                   "data-unseasoned", "Show them"):
+                        if phrase in doc:
+                            found.append((os.path.relpath(path, OUT), phrase))
+        self.assertEqual(found[:10], [])
+
+    def test_an_estimated_season_reads_about_on_its_page_and_a_stated_one_does_not(self):
+        est = [r for r in records.load_records(ROOT) if facets.season_estimated(r)]
+        stated = [r for r in records.load_records(ROOT) if not facets.season_estimated(r)]
+        self.assertEqual(len(est) + len(stated), 223)
+        for rec in est[:10]:
+            doc = self.read(f"trails/{rec['id']}/index.html")
+            self.assertIn(facets.season_text(rec), html.unescape(doc), rec["id"])
+            self.assertIn("This is the usual window, not a closure.", html.unescape(doc), rec["id"])
+            self.assertNotIn("outside these months", html.unescape(doc), rec["id"])
+        for rec in stated[:10]:
+            self.assertNotIn("This is the usual window", html.unescape(self.read(f"trails/{rec['id']}/index.html")))
 
     def test_navigation_has_four_sections_and_saved(self):
         doc = self.read("index.html")

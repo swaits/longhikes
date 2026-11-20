@@ -59,7 +59,11 @@ official_url = "https://www.coastal.ca.gov/coastal-trail/"
 terrain = ["coast"]
 travel = "trail-and-road"
 unfinished = "The state counts about 875 miles, about 70 percent, as built along a coastline of about 1,230 miles, and there is no official through route. A hiker reports having walked the whole coast from end to end, in eight section hikes, by connecting the built parts with their own choices."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "All year"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The coast is walked all year, and the southern sections are at their best in winter. Confidence: low."
 
 [[hike.source]]
 url = "https://www.coastal.ca.gov/coastal-trail/"
@@ -70,6 +74,11 @@ facts = ["official_url", "summary", "terrain", "travel", "unfinished"]
 url = "https://github.com/swaits/longhikes/issues/1"
 publisher = "A hiker, on the dataset's public issue tracker"
 facts = ["unfinished"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "California Coastal Trail (incomplete)"
@@ -189,5 +198,14 @@ change = "The trail was placed in Peninsular Ranges."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the National Park Service, Land Resources Division outlines (nps, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: All year."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

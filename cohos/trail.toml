@@ -60,7 +60,11 @@ high_point_m = 1917
 days = [9, 14]
 terrain = ["forest", "alpine"]
 travel = "trail"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "June to October"
+months = [6, 7, 8, 9, 10]
+season_basis = "sources"
+season_method = "The pages differ: The Trek gives May to October and Backpacking Routes gives June to November. It was set by judgement from both and from the climate, since snow and mud last into late May and cold sets in by late October. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.cohostrail.org/"
@@ -76,6 +80,16 @@ facts = ["summary", "start", "end", "days"]
 url = "https://www.cohostrail.org/the-trail/"
 publisher = "Cohos Trail Association"
 facts = ["summary", "high_point", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://thetrek.co/10-trails-can-find-long-distance-solitude-2020/"
+publisher = "The Trek"
+facts = ["season", "months"]
+
+[[hike.source]]
+url = "https://backpackingroutes.com/cohos-trail/"
+publisher = "Backpacking Routes"
+facts = ["season", "months"]
 
 [[link]]
 title = "Cohos Trail"
@@ -120,5 +134,14 @@ change = "The trail was placed in White Mountains, Presidential Range-Dry River 
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was set from pages that differ: June to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "The pages that state a season differ and none is the managing body, association or route author, so it was set by judgement from all of them and the climate estimate."
+basis_url = "https://thetrek.co/10-trails-can-find-long-distance-solitude-2020/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -130,7 +130,7 @@ def _render_site(records, out_dir, repo_root, site=None):
             image=card, image_alt=card_alt))
         dates[path] = seo.modified(rec)
         pages += 1
-    body = home.render(records, site, repo_root)
+    body = home.render(records, site, repo_root, place_kinds={i["kind"] for i in place_infos.values()})
     layout.write_page(out_dir, "/", layout.layout("", body, path="/", maps=True, site=site,
                                                   description=home.description(records),
                                                   jsonld=seo.home_jsonld(site)))

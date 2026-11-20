@@ -59,7 +59,11 @@ shape = "point-to-point"
 high_point = "Apple Pie Hill"
 terrain = ["forest"]
 travel = "trail"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "October to April"
+months = [1, 2, 3, 4, 10, 11, 12]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Flat Pine Barrens walking has no high ground to wait out, so the cool months are the season; summer brings heat, ticks and biting flies. Confidence: medium."
 
 [[hike.source]]
 url = "https://batona.wildapricot.org/"
@@ -81,6 +85,11 @@ url = "https://dep.nj.gov/wp-content/uploads/parksandforests/docs/sps/batona-map
 publisher = "New Jersey State Park Service"
 facts = ["high_point"]
 
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -98,5 +107,14 @@ change = "The logo record now says the trail has no emblem of its own, after the
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
 basis_url = "https://batona.wildapricot.org/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: October to April."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -29,6 +29,31 @@ def infos(records):
     return places.collect(records, registry())
 
 
+class HomeWayInTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.records = wind_records(4) + yosemite_records(3)
+
+    def test_below_the_rows_a_line_links_each_kind_that_has_pages(self):
+        body = str(home.render(self.records, S, ROOT, place_kinds=["park", "range", "wilderness"]))
+        line = re.search(r'<p class="finder__foot finder__places">(.*?)</p>', body, re.S).group(1)
+        self.assertEqual(
+            re.sub(r"<[^>]+>", "", line),
+            "Browse by park, by mountain range or by wilderness area.")
+        for frag in ('href="/regions/#parks">park', 'href="/regions/#ranges">mountain range',
+                     'href="/regions/#wilderness">wilderness area'):
+            self.assertIn(frag, line)
+        # after the rows and the map, in the notes at the foot, never in the intro
+        self.assertGreater(body.index("finder__places"), body.rindex('<li class="entry"'))
+        self.assertGreater(body.index("finder__places"), body.index('id="browse-list"'))
+        self.assertLess(body.index("</section>"), body.index("finder__places"))
+
+    def test_only_the_kinds_with_pages_and_none_when_there_are_none(self):
+        line = re.search(r'finder__places">(.*?)</p>', str(home.render(self.records, S, ROOT, place_kinds=["range"])), re.S).group(1)
+        self.assertEqual(re.sub(r"<[^>]+>", "", line), "Browse by mountain range.")
+        self.assertNotIn("finder__places", str(home.render(self.records, S, ROOT)))
+
+
 class HubTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -48,18 +73,24 @@ class HubTest(unittest.TestCase):
         self.assertIn("Parks, mountain ranges and wilderness areas with three or more "
                       "trails have pages too.", re.sub(r"\s+", " ", body))
 
-    def test_the_shortcut_strip_links_each_kind_that_has_pages(self):
+    def test_a_jump_row_tops_the_hub_with_exact_counts_of_pages(self):
         _, _, body = regions.regions_index_page(self.records, S, infos=self.infos)
-        strip = str(body)[str(body).index('<nav class="lists-row"'):]
-        strip = strip[:strip.index("</nav>")]
-        self.assertIn('<a href="#parks">Parks<span class="lists-row__n">1</span></a>', strip)
-        self.assertIn('<a href="#ranges">Mountain ranges<span class="lists-row__n">1</span></a>', strip)
-        self.assertNotIn("#wilderness", strip)  # no wilderness page here: no shortcut
-        # the regional groups are still there, before the kinds
-        self.assertLess(strip.index('href="#west-coast"') if 'href="#west-coast"' in strip
-                        else strip.index("<li>"), strip.index('href="#parks"'))
+        body = str(body)
+        by_slug, _ = regions.collect_regions(self.records)
+        row = body[body.index('<nav class="places-jump"'):]
+        row = row[:row.index("</nav>")]
+        self.assertLess(body.index('<nav class="places-jump"'), body.index("<h1>"))
+        self.assertIn(f'<a href="#states-and-provinces">States and provinces <span class="places-jump__n">{len(by_slug)}</span></a>', row)
+        self.assertIn('<a href="#parks">Parks <span class="places-jump__n">1</span></a>', row)
+        self.assertIn('<a href="#ranges">Mountain ranges <span class="places-jump__n">1</span></a>', row)
+        self.assertNotIn("#wilderness", row)  # no wilderness page here: no link
+        self.assertLess(row.index("#states-and-provinces"), row.index("#parks"))
+        self.assertIn('id="states-and-provinces"', body)
+        # the kinds are in the one row, not also in the strip of regional groups
+        strip = body[body.index('<nav class="lists-row"'):]
+        self.assertNotIn("#parks", strip[:strip.index("</nav>")])
         _, _, plain = regions.regions_index_page(self.records, S)
-        self.assertNotIn('href="#parks"', str(plain))
+        self.assertNotIn('class="places-jump"', str(plain))
 
     def test_the_hub_still_lists_every_state_group_as_before(self):
         _, _, plain = regions.regions_index_page(self.records, S)
@@ -67,7 +98,7 @@ class HubTest(unittest.TestCase):
         stripped = re.sub(r'<section class="places__group" aria-labelledby="(?:parks|ranges|wilderness)">.*?</section>',
                           "", str(with_places), flags=re.S)
         stripped = stripped.replace(" or a kind of place", "")
-        stripped = re.sub(r'<li><a href="#(?:parks|ranges|wilderness)">.*?</li>', "", stripped)
+        stripped = re.sub(r'<nav class="places-jump".*?</nav>\s*', "", stripped, flags=re.S)
         stripped = stripped.replace(
             " Parks, mountain ranges and wilderness areas with three or more trails have pages too.", "")
         self.assertEqual(stripped, str(plain))

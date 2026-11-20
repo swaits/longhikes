@@ -58,7 +58,11 @@ official_url = "https://www.srkg.org/"
 shape = "loop"
 terrain = ["forest", "lakes"]
 travel = "trail"
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "June to October"
+months = [6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. New Hampshire snow and mud last into spring and black flies into early June, with foliage-season walking into early October. Confidence: medium."
 
 [[hike.source]]
 url = "https://www.srkg.org/"
@@ -70,6 +74,11 @@ kind = "range"
 slug = "appalachian-mountains"
 basis = "track"
 km = 44.1
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -97,5 +106,14 @@ change = "The trail was placed in Appalachian Mountains."
 fields = ["place"]
 basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: June to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

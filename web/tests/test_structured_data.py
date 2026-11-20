@@ -203,6 +203,17 @@ class JsonLdTest(unittest.TestCase):
             count += 1
         self.assertEqual(count, len(self.records))
 
+    def test_no_estimated_season_appears_in_structured_data(self):
+        seen = 0
+        for rec in self.records:
+            h = rec.get("hike", {})
+            if not (h.get("season_basis") == "estimate" or h.get("season_method")):
+                continue
+            seen += 1
+            page = self.pages[f"trails/{rec['id']}/index.html"]
+            self.assertNotIn("Usual season", page, rec["id"])
+        self.assertGreater(seen, 0)
+
     def test_a_trail_states_only_what_its_record_holds(self):
         built_derived = {r["id"]: r["derived"] for r in json.loads(read("data/trails.json"))}
         for rec in self.records:
@@ -213,7 +224,9 @@ class JsonLdTest(unittest.TestCase):
             self.assertEqual(props[("Published length", "KMT")]["value"], rec["length_km"], rec["id"])
             h = rec.get("hike", {})
             self.assertEqual(("Start", None) in props, bool(h.get("start")), rec["id"])
-            self.assertEqual(("Usual season", None) in props, bool(h.get("season")), rec["id"])
+            self.assertEqual(("Usual season", None) in props,
+                             bool(h.get("season") and h.get("season_basis") != "estimate" and not h.get("season_method")),
+                             rec["id"])
             self.assertEqual(any(k[0] == "Highest point" for k in props),
                              bool(h.get("high_point_m") or h.get("high_point")), rec["id"])
             if h.get("official_url"):

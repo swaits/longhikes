@@ -75,7 +75,7 @@ def _kind():
         kicker=_kicker, crumbs=_crumbs, lede=_lede, where="all", wholly=False,
         facts_place=lambda info: (_in_name(info), ()), title_options=_title_options,
         description=_description, box=lambda info: info.get("box"), nav=_nav,
-        in_name=_in_name, phrase=_phrase, always_filters=True)
+        in_name=_in_name, phrase=_phrase)
 
 
 PARK = _kind()

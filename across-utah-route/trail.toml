@@ -76,7 +76,11 @@ shape = "point-to-point"
 terrain = ["desert", "canyon", "alpine"]
 travel = "some-cross-country"
 caution = "The author says no part is technical, but the route involves exposure, deep pools, long dry stretches and a Colorado River crossing that needs a packraft or a ride from a river party."
-checked = "2026-11-15"
+checked = "2026-11-20"
+season = "April to June and September to October"
+months = [4, 5, 6, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Desert heat in summer and snow in the Henrys, La Sals and Bryce country in winter leave spring and fall. Confidence: medium."
 
 [[hike.source]]
 url = "http://www.acrossutah.com/wordpress/the_route/"
@@ -125,6 +129,11 @@ slug = "pine-valley-mountain-wilderness"
 basis = "stated"
 source = "http://www.acrossutah.com/wordpress/the_route/"
 
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -151,5 +160,14 @@ change = "The trail was placed in Bryce Canyon National Park, Canyonlands Nation
 fields = ["place"]
 basis = "The page says: \"and then follows the Grandview Trail through the pines and all the way to Bryce Canyon National Park to Rainbow Point.\" (Bryce Canyon National Park) The page says: \"The route continues through this unspoiled canyon system and into Canyonlands National Park near the Hans Flat Ranger Station.\" (Canyonlands National Park) The page says: \"then to a tough cross-country stretch to connect to Lower Muley Twist in Capitol Reef.\" (Capitol Reef National Park) The page says: \"The second section of the journey takes hikers through much of Zion National Park.\" (Zion National Park) The page says: \"The final section climbs up and over the highest peaks in southern Utah — the La Sal Mountains.\" (La Sal Mountains) The page says: \"a rockfall in 2019 indefinitely closed the route to the East Rim. Thus, the Canaan Mountain alternate is now the preferred route.\" (Canaan Mountain Wilderness) The page says: \"Leaving the Nevada/Utah state line, the route travels into Dixie National Forest as it winds its way up through the Pine Valley Mountains.\" (Pine Valley Mountain Wilderness)"
 basis_url = "http://www.acrossutah.com/wordpress/the_route/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: April to June and September to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

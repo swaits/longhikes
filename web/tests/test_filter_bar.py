@@ -1,7 +1,7 @@
 """The filter bar on every page that shows a set of trails, and the numbers beside its choices.
 
 The bar (olt/home.py listing(), finder_form()) is the home page's, on each list, place and the Routes
-page whose set has at least home.FILTER_MIN trails, built from that page's own trails. app.js counts
+page, whatever the number of trails, built from that page's own trails. app.js counts
 the choices again from the rows on the page every time anything changes (FacetCount, between the
 facet-counts markers); this file runs that counting under node, on the rows the home page writes,
 and checks it against counts made here straight from the records. Pages are rendered one at a time;
@@ -68,22 +68,36 @@ class WhichPagesHaveTheBarTest(unittest.TestCase):
         lst = browse.by_key(key)
         return regions.list_page(lst, self.shown[key], len(self.records), SITE, records=self.records)[2]
 
-    def test_a_list_page_a_place_page_a_part_of_the_country_and_routes_have_it(self):
-        self.assertGreaterEqual(len(self.shown["loops"]), home.FILTER_MIN)
-        self.assertTrue(form_of(self.list_body("loops")))
+        def test_a_list_page_a_place_page_a_part_of_the_country_and_routes_have_it(self):
+                self.assertTrue(form_of(self.list_body("loops")))
         by_slug, _ = regions.collect_regions(self.records)
-        self.assertGreaterEqual(len(by_slug["ca-on"]["records"]), home.FILTER_MIN)
         self.assertTrue(form_of(regions.region_page("ca-on", self.records, SITE)[2]))
         self.assertTrue(form_of(regions.group_page("central-canada", self.records, SITE)[2]))
         self.assertTrue(form_of(regions.routes_page(self.records, SITE)[2]))
 
-    def test_a_set_under_the_threshold_has_the_plain_rows(self):
-        small = [k for k, recs in self.shown.items() if len(recs) < home.FILTER_MIN and k != "routes"]
-        self.assertTrue(small)
+    def test_every_state_province_and_list_page_has_the_bar_however_few_trails(self):
+        by_slug, _ = regions.collect_regions(self.records)
+        small = [k for k, v in by_slug.items() if len(v["records"]) < 10]
+        self.assertGreater(len(small), 40)
         for key in small:
-            body = self.list_body(key)
-            self.assertFalse(form_of(body), key)
-            self.assertNotIn("data-finder", str(body), key)
+            body = regions.region_page(key, self.records, SITE)[2]
+            self.assertIn('id="finder-form"', str(body), key)
+            self.assertIn("data-finder", str(body), key)
+        small_lists = [k for k, recs in self.shown.items() if len(recs) < 10 and k != "routes"]
+        self.assertTrue(small_lists)
+        for key in small_lists:
+            self.assertTrue(form_of(self.list_body(key)), key)
+
+    def test_a_two_trail_page_offers_only_filters_that_narrow_it(self):
+        by_slug, _ = regions.collect_regions(self.records)
+        two = [k for k, v in by_slug.items() if len(v["records"]) == 2]
+        self.assertTrue(two)
+        for key in two:
+            form = form_of(regions.region_page(key, self.records, SITE)[2])
+            self.assertIn('name="q"', form, key)
+            for sel in re.findall(r"<select[^>]*>(.*?)</select>", form, re.S):
+                self.assertNotIn("<select></select>", sel)
+                self.assertGreater(len(re.findall(r"<option", sel)), 1, key)
 
     def test_the_tables_rankings_newest_authors_and_left_out_pages_do_not(self):
         bodies = {}
@@ -102,13 +116,21 @@ class WhichPagesHaveTheBarTest(unittest.TestCase):
         from olt import authors
         groups = authors.author_pages(self.records, ROOT)
         bodies["authors"] = authors.index_page(self.records, SITE, ROOT)[2]
-        big = max(groups, key=lambda g: len(g["routes"]))
-        bodies["author"] = authors.author_page(big, self.records, SITE, groups)[2]
         bodies["left-out"] = leftout.left_out_page(leftout.load_entries(ROOT), SITE, ROOT)[2]
         self.assertGreater(len(bodies), 4)
         for name, body in bodies.items():
             self.assertNotIn('id="finder-form"', str(body), name)
             self.assertNotIn("data-finder", str(body), name)
+
+    def test_an_authors_own_page_has_the_bar_however_few_routes(self):
+        from olt import authors
+        groups = authors.author_pages(self.records, ROOT)
+        for g in (min(groups, key=lambda g: len(g["routes"])), max(groups, key=lambda g: len(g["routes"]))):
+            body = authors.author_page(g, self.records, SITE, groups)[2]
+            self.assertIn('id="finder-form"', str(body), g["name"])
+
+    def test_a_set_with_no_trails_still_builds(self):
+        self.assertIn("<form", str(home.finder_form([])))
 
     def test_the_saved_page_has_no_bar(self):
         from olt import saved
@@ -235,13 +257,13 @@ def rows_of(body):
         d = {k: html.unescape(v) for k, v in re.findall(r' data-([a-z]+)="([^"]*)"', attrs)}
         split = lambda v: [x for x in v.split(" ") if x]  # noqa: E731
         out.append({"id": d["id"], "search": [" " + t + " " for t in d["search"].split("|")], "where": split(d["where"]), "km": float(d["km"]),
-                    "time": d["time"], "months": split(d["months"]), "terrain": split(d["terrain"]),
+                    "time": d["time"], "months": split(d["months"]), "estimate": d.get("estimate") == "yes", "terrain": split(d["terrain"]),
                     "kind": d["kind"], "walking": d["walking"], "shape": d["shape"], "gpx": d["gpx"]})
     return out
 
 
 def state(**kw):
-    s = {"words": [], "where": "", "min": 0, "max": None, "month": "", "kind": "",
+    s = {"words": [], "where": "", "min": 0, "max": None, "month": "", "stated": False, "kind": "",
          "time": [], "terrain": [], "walking": [], "shape": [], "gpx": []}
     s.update(kw)
     return s
@@ -366,45 +388,75 @@ class PanelInTheFlowTest(unittest.TestCase):
         self.assertIn("if (window.location.hash === '#filters') showPanels(true);", js)
 
 
-class UnseasonedNoteTest(unittest.TestCase):
-    """A month filter says how many trails it leaves out for having no season on file."""
+class LeaveOutEstimatesTest(unittest.TestCase):
+    """The month filter can leave estimated seasons out, and says nothing about trails with no season."""
 
-    def test_a_finder_list_has_the_note_and_it_starts_hidden(self):
+    def test_the_month_field_has_the_checkbox_and_it_starts_disabled(self):
         recs = recordsmod.load_records(ROOT)
-        body = str(home.results(recs, finder=True))
-        self.assertIn('<p class="results-note" data-unseasoned hidden>', body)
-        self.assertIn('data-unseasoned-show>Show them</button>', body)
-        self.assertNotIn("data-unseasoned", str(home.results(recs)))
+        form = home.finder_form(recs)
+        field = form[form.index('data-facet="month"'):]
+        field = field[:field.index("</div>")]
+        self.assertIn('<input type="checkbox" name="stated" value="1" disabled>', field)
+        self.assertIn("Leave out estimated seasons", field)
 
-    def test_the_script_counts_it_over_the_rows_of_the_list_and_show_them_clears_the_month(self):
+    def test_there_is_no_checkbox_where_no_trail_has_an_estimated_season(self):
+        recs = [r for r in recordsmod.load_records(ROOT) if not facets.season_estimated(r)]
+        self.assertNotIn('name="stated"', home.finder_form(recs))
+
+    def test_the_results_have_no_unseasoned_note(self):
+        recs = recordsmod.load_records(ROOT)
+        for body in (str(home.results(recs, finder=True)), str(home.results(recs))):
+            self.assertNotIn("data-unseasoned", body)
+            self.assertNotIn("Show them", body)
+            self.assertNotIn("no season on file", body)
         js = read(WEB, "assets", "app.js")
-        self.assertIn("if (!d.months.length && FacetCount.passes(d, s, 'month')) noSeason++;", js)
-        self.assertIn("' trails with no season on file are not shown.'", js)
-        self.assertIn("el.month.value = '';", js)
+        self.assertNotIn("unseasoned", js.lower())
+        self.assertNotIn("no season on file", js)
+
+    def test_a_row_carries_whether_its_season_is_an_estimate(self):
+        est = next(r for r in recordsmod.load_records(ROOT) if facets.season_estimated(r))
+        stated = next(r for r in recordsmod.load_records(ROOT) if not facets.season_estimated(r))
+        self.assertIn('data-estimate="yes"', str(home.entry(est)))
+        self.assertNotIn("data-estimate", str(home.entry(stated)))
+
+    def test_the_script_reads_the_checkbox_and_writes_it_in_the_address(self):
+        js = read(WEB, "assets", "app.js")
+        self.assertIn("if (s.month && s.stated && d.estimate) return false;", js)
+        self.assertIn("if (s.month && s.stated) p.set('stated', '1');", js)
+        self.assertIn("estimate: d.estimate === 'yes'", js)
 
     @unittest.skipUnless(NODE, "node is not installed")
-    def test_the_number_is_the_trails_that_pass_everything_else_and_have_no_season(self):
-        recs = recordsmod.load_records(ROOT)
-        rows = rows_of(home.render(recs, SITE, ROOT))
+    def test_with_stated_on_estimated_rows_leave_the_month_and_the_counts_follow(self):
+        def row(i, months, estimate):
+            return {"id": f"t{i}", "search": ["  ", "  ", "  ", "  "], "where": [], "km": 100.0, "time": "week",
+                    "months": [str(m) for m in months], "estimate": estimate, "terrain": [], "kind": "trail", "walking": "",
+                    "shape": "", "gpx": "none"}
+        rows = [row(1, [7], True), row(2, [7], False), row(3, [7, 8], False), row(4, [8], True)]
+        off = run_counts(rows, state(month="7"))
+        on = run_counts(rows, state(month="7", stated=True))
+        self.assertEqual((off["total"], off["month"]["7"], off["month"]["8"]), (3, 3, 2))
+        self.assertEqual((on["total"], on["month"]["7"], on["month"]["8"]), (2, 2, 1))
+        # with no month chosen it does nothing
+        self.assertEqual(run_counts(rows, state(stated=True))["total"], 4)
+        # and the shown number is the rows that pass
         prog = facet_count_source() + """
 var input = JSON.parse(require('fs').readFileSync(0, 'utf8'));
 input.s.max = Infinity;
-var n = 0, shown = 0;
-input.rows.forEach(function (d) {
-  if (FacetCount.passes(d, input.s, '')) shown++;
-  else if (!d.months.length && FacetCount.passes(d, input.s, 'month')) n++;
-});
-process.stdout.write(JSON.stringify([shown, n]));
+process.stdout.write(JSON.stringify(input.rows.filter(function (d) { return FacetCount.passes(d, input.s, ''); }).length));
 """
-        for s in (state(month="8"), state(month="8", kind="route"), state(month="8", where="US-CA")):
-            out = subprocess.run([NODE, "-e", prog], input=json.dumps({"rows": rows, "s": s}),
-                                 capture_output=True, text=True, check=True)
-            shown, n = json.loads(out.stdout)
-            def base(r):
-                return ((not s["kind"] or facets.kind(r) == s["kind"])
-                        and (not s["where"] or s["where"] in facets.where_tokens(r)))
-            self.assertEqual(shown, sum(1 for r in recs if base(r) and 8 in facets.months(r)))
-            self.assertEqual(n, sum(1 for r in recs if base(r) and not facets.months(r)))
+        out = subprocess.run([NODE, "-e", prog], input=json.dumps({"rows": rows, "s": state(month="7", stated=True)}),
+                             capture_output=True, text=True, check=True)
+        self.assertEqual(json.loads(out.stdout), on["total"])
+
+    @unittest.skipUnless(NODE, "node is not installed")
+    def test_on_the_real_trails_the_counts_leave_out_exactly_the_estimates(self):
+        recs = recordsmod.load_records(ROOT)
+        rows = rows_of(home.render(recs, SITE, ROOT))
+        for month in (1, 7):
+            c = run_counts(rows, state(month=str(month), stated=True))
+            want = sum(1 for r in recs if month in facets.months(r) and not facets.season_estimated(r))
+            self.assertEqual(c["total"], want)
+            self.assertEqual(c["month"][str(month)], want)
 
 
 if __name__ == "__main__":

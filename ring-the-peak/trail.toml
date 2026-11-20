@@ -53,7 +53,11 @@ high_point_m = 3444
 travel = "trail-and-road"
 unfinished = "About 80 percent of the route is complete, and evaluation and planning continue for the remaining 20 percent."
 caution = "Many of the trails are covered by snow in winter."
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "June to October"
+months = [6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A loop around Pikes Peak that mixes stretches near 11,000 feet with lower trails, and is snow-free from about June to October. Confidence: low."
 
 [[hike.source]]
 url = "https://friendsofthepeak.org/ring-the-peak-2/"
@@ -65,6 +69,11 @@ kind = "range"
 slug = "front-range"
 basis = "stated"
 source = "https://friendsofthepeak.org/ring-the-peak-2/"
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -92,5 +101,14 @@ change = "The trail was placed in Front Range from published pages, as it has no
 fields = ["place"]
 basis = "The page says: \"Ring the Peak is a collection of trails and backcountry roads to circumnavigate Pikes Peak\""
 basis_url = "https://friendsofthepeak.org/ring-the-peak-2/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: June to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -58,7 +58,11 @@ shape = "point-to-point"
 terrain = ["forest", "farmland"]
 travel = "trail-and-road"
 caution = "Much of the route is on roads, because the chapter has relied on landowners' permission to secure the route."
-checked = "2026-11-14"
+checked = "2026-11-20"
+season = "June to October"
+months = [6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Northern Maine is snowbound and muddy until late May and frozen from November, and fall is best once the bugs fade. Confidence: medium."
 
 [[hike.source]]
 url = "https://maineiat.org/?p=412"
@@ -84,6 +88,11 @@ facts = ["start"]
 url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=12949585422"
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Barnard Mountain Trailhead, OpenStreetMap node 12949585422"
 facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "International Appalachian Trail"
@@ -137,5 +146,14 @@ change = "The trail was placed in Katahdin Woods and Waters National Monument an
 fields = ["place"]
 basis = "The trail's own description says: \"The Maine section of the International Appalachian Trail starts in Katahdin Woods and Waters National Monument, east of Baxter State Park, and runs north and east to Fort Fairfield on the Canadian border.\" (Katahdin Woods and Waters National Monument) The page says: \"The trail follows the ancient Appalachian Mountains, now separated by the North Atlantic Ocean.\" (Appalachian Mountains)"
 basis_url = "https://maineiat.org/?p=412"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: June to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

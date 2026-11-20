@@ -76,7 +76,11 @@ summary = "The Sea-to-Sea Route is a network of existing long-distance hiking tr
 official_url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
 shape = "network"
 unfinished = "An 800-mile gap in North Dakota and Montana along the Missouri River and a 30-mile gap in Vermont interrupt the network."
-checked = "2026-11-13"
+checked = "2026-11-20"
+season = "All year"
+months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. A transcontinental route of about 7,775 miles takes about a year to walk, so no single window fits and it is listed for all twelve months. Confidence: low."
 
 [[hike.source]]
 url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
@@ -131,6 +135,11 @@ slug = "stephen-mather-wilderness"
 basis = "stated"
 source = "https://www.nps.gov/noca/planyourvisit/pacific-northwest-trail.htm"
 
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -175,5 +184,14 @@ change = "The trail was placed in Glacier National Park, North Cascades National
 fields = ["place"]
 basis = "The page says: \"The Pacific Northwest Trail (PNT) travels 1,200 miles through Montana, Idaho, and Washington from near the Continental Divide in Glacier National Park to the Pacific Ocean on Washington's Olympic Peninsula.\" (Glacier National Park, Olympic National Park, Rocky Mountains) The page says: \"About 63 miles of the trail passes through North Cascades National Park Service Complex, which includes both the National Park and Ross Lake National Recreation Area.\" (North Cascades National Park, North Cascades) The page says: \"Gear List – Appalachians\" (Appalachian Mountains) The page says: \"Westbound thru-hikers re-supplying in Oroville, WA, email noca_wilderness@nps.gov to request a permit for entering the National Park from the Pasayten Wilderness.\" (Pasayten Wilderness) The page says: \"the management goal of protecting wilderness character in the 94% of the National Park Complex that is designated wilderness\" (Stephen Mather Wilderness)"
 basis_url = "https://www.nps.gov/noca/planyourvisit/pacific-northwest-trail.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: All year."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

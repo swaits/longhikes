@@ -57,7 +57,11 @@ terrain = ["alpine", "tundra"]
 travel = "mostly-cross-country"
 permit = "Hikers must register before the trip with both Torngat Mountains National Park and Parc national Kuururjuaq, and de-register after leaving the parks."
 caution = "Stream crossings on the Koroc River and its tributaries can be fast and very cold, and they grow harder after heavy rain."
-checked = "2026-11-16"
+checked = "2026-11-20"
+season = "July to August"
+months = [7, 8]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The Torngat Mountains in the Arctic are snowbound until late June and freeze again by September, leaving a short July and August window. Confidence: medium."
 
 [[hike.source]]
 url = "https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc"
@@ -74,6 +78,11 @@ kind = "park"
 slug = "torngat-mountains-national-park"
 basis = "stated"
 source = "https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc"
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
@@ -102,5 +111,14 @@ change = "The trail was placed in Torngat Mountains National Park from published
 fields = ["place"]
 basis = "The page says: \"Hiking parties who are interested in tackling this hiking route will need to register (before their visit) with Torngat Mountains National Park (Parks Canada) as well as Parc national Kuururjuaq (Nunavik Parks) since the route passes through both parks.\""
 basis_url = "https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: July to August."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

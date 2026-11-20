@@ -63,7 +63,11 @@ shape = "point-to-point"
 travel = "trail-and-road"
 unfinished = "The chapter's stated goal is a 750 km extension of the trail; as of 2023 it is made of T'Railway sections, gravel logging roads, backcountry trails and routes, and secondary highways."
 days = [35, 50]
-checked = "2026-11-19"
+checked = "2026-11-20"
+season = "June to September"
+months = [6, 7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. Western Newfoundland is cold, snowy and boggy until June, and storms and snow return in October. Confidence: medium."
 
 [[hike.source]]
 url = "https://iatnl.org/thru-hikers/"
@@ -84,6 +88,11 @@ facts = ["start_lonlat"]
 url = "https://iatnl.org/services/thru-hiker-route-details-directions/"
 publisher = "International Appalachian Trail Newfoundland and Labrador"
 facts = ["days"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
 
 [[link]]
 title = "International Appalachian Trail"
@@ -155,5 +164,14 @@ change = "The trail was placed in Gros Morne National Park, Appalachian Mountain
 fields = ["place"]
 basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20), the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "A season was estimated: June to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
 outcome = "applied"

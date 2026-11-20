@@ -21,6 +21,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from olt import (authors, browse, common, datafiles, facets, placefacets, records, reference, regions, site, standing,  # noqa: E402
                  summary, views, words)
+import builtsite  # noqa: E402
 from test_hike import fake  # noqa: E402
 
 SITE = site.Site("Long Hikes", "T", repo_url="https://github.com/o/r")
@@ -718,8 +719,9 @@ class RealDataTest(unittest.TestCase):
     def test_every_place_page_has_a_summary_paragraph(self):
         by_slug, _ = regions.collect_regions(self.records)
         for slug in by_slug:
-            _, _, body, _ = regions.region_page(slug, self.records, SITE)
-            self.assertIn('class="browse-about"', str(body))
+            with open(os.path.join(builtsite.ensure(), "regions", slug, "index.html"), encoding="utf-8") as f:
+                body = f.read()
+            self.assertIn('class="browse-about"', body)
             if len(by_slug[slug]["records"]) > 1:
                 # "The longest is" where every trail is wholly in the place, else "passes through" (olt/summary.py)
                 self.assertTrue("The longest is" in str(body) or "The longest trail that passes through" in str(body))

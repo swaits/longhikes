@@ -54,6 +54,9 @@ others, and the site says which.
   how much it is trusted.
 - Climate data may be used to estimate, with the known weakness that people do
   hike in snow and cold.
+- When pages disagree and none is the managing body, association or route
+  author, the season is set by judgement from all the pages and the climate
+  estimate, and the record says how.
 
 ## Design (designer's calls, for the owner to correct)
 

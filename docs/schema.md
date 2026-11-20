@@ -50,6 +50,8 @@ line_file = "line.geojson"
 | `wave_note` | string, where present | Why a held trail is held. | `"Held: no usable whole track exists."` |
 | `inclusion` | string, where present | `nst-unconditional` for every National Scenic Trail that is listed; `candidate-decision-pending` for a candidate. Absent otherwise. | `"nst-unconditional"` |
 | `short_reason` | string, with `length_km` under 80 | One plain sentence saying why a trail under the 50 mile (80 km) floor is listed, by the owner's test: it has real cross-country travel, it genuinely takes five or more days, or it is very well known and popular. It rests on what the record already says. Required on every record with `length_km` under 80, and refused on any other. A trail whose record can give none of the three reasons is not listed. | `"The book gives it five to eight days."` |
+| `places_checked` | string (date) | The day the record's `[[place]]` tables were last measured against the published outlines, or reviewed by hand where the trail has no track. Present once the record's places have been settled, including when the answer is no park, range or wilderness at all. Not a fact: changing it alone needs no `[[history]]` entry. | `"2026-11-20"` |
+| `places_track` | string | The first 16 hex digits of the SHA-256 of the record's `line.geojson` bytes, as they were when the places were measured. Present on every record with a track once its places are settled, and refused on a record with no track. The validator fails a record whose track has changed since, so a new track cannot ship unmeasured. Not a fact. | `"0123456789abcdef"` |
 
 ### What `length_km` counts
 
@@ -203,6 +205,18 @@ The trail's own page belongs in `hike.official_url`, not here, and the publisher
 | `url` | string | The page's address, `http` or `https`. No two links in a record share one. | `"https://www.longtrailswiki.net/wiki/Appalachian_Trail"` |
 | `note` | string, where needed | One short plain sentence on what the page offers, where that is not obvious. | `"Trip reports and resupply notes."` |
 
+## `[[place]]`: the parks, ranges and wilderness areas the trail is in
+
+Optional: an array of tables, one per place, written by `tools/place_trails.py` or, for a trail with no track, entered by hand from a cited source. Every entry names a place in `places.toml` by `kind` and `slug` together (slugs are unique within a kind, not across kinds). A trail is in a place when at least 1 mile (1.6 km) of its main track lies inside the published outline; alternates do not count. A record never names a parent place from `within`: the site works out parent membership itself. Adding or removing a `[[place]]` entry is a fact change and needs a `[[history]]` entry naming `place`; the measured `km` is not a fact, and it is never shown anywhere, including in history text.
+
+| Field | Type | Meaning | Example |
+| --- | --- | --- | --- |
+| `kind` | string | `park`, `range` or `wilderness`. | `"range"` |
+| `slug` | string | The place's slug in `places.toml`, within its kind. | `"wind-river-range"` |
+| `basis` | string | `track`: measured from the track against the outline; only on a record with a track. `stated`: the trail has no track and a cited source puts it in the place. A trail later given a track must be re-measured, which the `places_track` check forces. | `"track"` |
+| `km` | number, with `basis` `track` | The measured length of the main track inside the outline, in kilometres. Recorded so the 1 mile threshold can be audited; never shown anywhere. Required with `track` and refused with `stated`. Not a fact. | `142.3` |
+| `source` | string, with `basis` `stated` | The address of the page that puts this trail in this place. Required with `stated` and refused with `track`. | `"https://example.org/trail"` |
+
 ## `[[history]]`: who asked for what, and on what evidence
 
 Required: every record has at least one entry. An array of tables, oldest first, added to and never rewritten. Git keeps the diffs. The history keeps what git does not: the reason for each change, who asked for it, and the requests that were turned down, so that a later request that conflicts with an earlier one is easy to notice and settle.
@@ -233,9 +247,9 @@ Settling a conflict:
 - fails when an entry that was already there was changed or removed;
 - prints, for each changed fact, the earlier entries about the same field, and prints `!!` lines where an earlier entry was `declined`, or was asked for by someone other than the dataset's own check. That is where two requests may conflict: read the entry before you change the field again.
 
-**Facts**, which need an entry when they change: `name`, `common_name`, `short_name`, `short_name_url`, `country`, `regions`, `length_km`, `length_note`, `system_km`, `system_note`, `built_km`, `kind`, `tier`, `designation`, `inclusion`; everything in `[source]` except the fields below, which includes the track's source, licence and permission; `osm.relation`; everything in `[shield]` except `note` (the logo); everything in `[hike]` except `summary`, `checked` and the sources (the ends, official page, days, season, terrain, travel, high point, permit, unfinished and caution); `[route]` except `note` (the author and the track policy); `[[guide]]` except the price. A replaced track file counts as a change to `source.line_file`.
+**Facts**, which need an entry when they change: `name`, `common_name`, `short_name`, `short_name_url`, `country`, `regions`, `length_km`, `length_note`, `system_km`, `system_note`, `built_km`, `kind`, `tier`, `designation`, `inclusion`; everything in `[source]` except the fields below, which includes the track's source, licence and permission; `osm.relation`; everything in `[shield]` except `note` (the logo); everything in `[hike]` except `summary`, `checked` and the sources (the ends, official page, days, season, terrain, travel, high point, permit, unfinished and caution); `[route]` except `note` (the author and the track policy); `[[guide]]` except the price; `[[place]]` except the measured `km`. A replaced track file counts as a change to `source.line_file`.
 
-**Not facts**, which need none: `[[history]]` itself; all of `[verification]`, which the tools refresh; `source.source_checked`, `source.discovery`, `source.format`, `source.crs`, `source.mainline` and `source.length_gap_note`; `hike.summary` (our wording), `hike.checked` and `[[hike.source]]`; `guide.price` and `guide.price_checked`; the notes `osm.note`, `shield.note` and `route.note`; `[[link]]`; `wave` and `wave_note`. A field that is in neither list is a fact. The lists are `FACTS_TEXT` and `NOT_FACTS` in `tools/trail_history.py`, and `python3 tools/check_history.py --facts` prints them.
+**Not facts**, which need none: `[[history]]` itself; all of `[verification]`, which the tools refresh; `source.source_checked`, `source.discovery`, `source.format`, `source.crs`, `source.mainline` and `source.length_gap_note`; `hike.summary` (our wording), `hike.checked` and `[[hike.source]]`; `guide.price` and `guide.price_checked`; the notes `osm.note`, `shield.note` and `route.note`; `[[link]]`; `wave` and `wave_note`; `places_checked`, `places_track` and the measured `place.km`, which `tools/place_trails.py` refreshes. A field that is in neither list is a fact. The lists are `FACTS_TEXT` and `NOT_FACTS` in `tools/trail_history.py`, and `python3 tools/check_history.py --facts` prints them.
 
 The site shows the history of each record under "History of this record".
 
@@ -397,6 +411,22 @@ An author's page opens with the name, the `summary` as its one sentence (or, wit
 | `[[author.source]]` | tables, with `summary` or `bio` | The pages the summary and bio were read on, each with `url` (`http(s)`) and `publisher` (who publishes the page). At least one is required with either; refused without; no page twice. | `url = "https://andrewskurka.com/about/"`, `publisher = "Andrew Skurka"` |
 
 On an `organisation`, `summary`, `bio`, `checked` and `[[author.source]]` are refused; it may carry `url`. An unknown field is refused anywhere in an entry or a source. `tools/validate.py` runs these checks (`tools/check_datafiles.py`).
+
+## `places.toml`: the parks, ranges and wilderness areas
+
+One file at the top level, one `[[place]]` entry per place that at least one record names. It is the one spot where a place's display name, kind and source live. Entries are written by `tools/place_trails.py`, sorted by kind then slug, and checked by `tools/validate.py` (`tools/check_places.py`). Slugs are unique within a kind, not across kinds: a park and a wilderness area may share a slug. A page that joins two units, as Sequoia and Kings Canyon are joined, is one entry with two `source_id`s.
+
+| Field | Type | Meaning | Example |
+| --- | --- | --- | --- |
+| `slug` | string | The place's slug, unique within its kind. | `"wind-river-range"` |
+| `kind` | string | `park`, `range` or `wilderness`. | `"range"` |
+| `name` | string | The display name. | `"Wind River Range"` |
+| `where` | array of strings | The state or province codes the place is in, as records write them (`"WY"`, `"ON"`). Proposed by the tool from the `regions` codes shared by at least half of the place's measured trails, and confirmed by a reviewer. | `["WY"]` |
+| `within` | array of strings, where present | The slugs of parent places, ranges within ranges. Each names an existing `range` entry, and the chains never circle. A trail in a nested range is also in every parent; records never store the parents. | `["rocky-mountains"]` |
+| `source` | string | Which published outline set the boundary came from: `nps`, `wilderness-connect`, `cpcad` or `gmba-v2`. | `"gmba-v2"` |
+| `source_id` | string, or array of strings | The publisher's own id for the outline (an array where one page joins units). | `"1234"` |
+| `source_version` | string | The source's version, or the date the outline was downloaded, so a measurement can be re-derived from the same outline. | `"2026-11-20"` |
+| `box` | array of numbers | The outline's bounding box as `[west, south, east, north]` in longitude and latitude, rounded to 2 decimals. A measurement, like `km`: the tool refreshes it, and the place's map opens on it. | `[-110.0, 42.5, -108.5, 43.5]` |
 
 ## `trail-numbers.txt`: a permanent number for every trail
 

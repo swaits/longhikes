@@ -1,0 +1,5 @@
+# The place registry: every national park, mountain range and wilderness area that a record
+# names in a [[place]] table. One [[place]] entry per place; fields are documented in
+# docs/schema.md, section "places.toml". Entries are written by tools/place_trails.py,
+# sorted by kind then slug, and checked by tools/validate.py. Only places that at least one
+# record names are listed here.

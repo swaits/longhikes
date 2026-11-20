@@ -19,7 +19,7 @@ URL_RE = re.compile(r"^https?://[^\s/]+\S*$")
 # names these. A table name on its own ("source", "hike.source") names every field in it.
 _TABLES = {
     "": ("id", "name", "common_name", "short_name", "short_name_url", "country", "regions", "length_km",
-         "length_note", "system_km", "system_note", "built_km", "kind", "tier", "designation", "wave", "wave_note", "inclusion", "short_reason"),
+         "length_note", "system_km", "system_note", "built_km", "kind", "tier", "designation", "wave", "wave_note", "inclusion", "short_reason", "places_checked", "places_track"),
     "source": ("status", "publisher", "publisher_url", "url", "discovery", "format", "crs",
                "licence", "licence_text", "permission_quote", "permission_by",
                "permission_date", "permission_url", "attribution", "osm_only", "mainline",
@@ -37,6 +37,7 @@ _TABLES = {
     "guide": ("title", "author", "access", "url", "format", "price", "price_checked",
               "publisher", "isbn"),
     "link": ("title", "publisher", "url", "note"),
+    "place": ("kind", "slug", "basis", "km", "source"),
 }
 SCHEMA_FIELDS = set()
 for _table, _names in _TABLES.items():
@@ -60,6 +61,8 @@ NOT_FACTS = (
     "guide.price", "guide.price_checked",   # a price read on a date, and refreshed
     "osm.note", "shield.note", "route.note", "link",  # notes and other pages about the trail
     "wave", "wave_note",    # the dataset's own bookkeeping
+    "places_checked", "places_track",  # when the places were last measured, and of which track
+    "place.km",             # a measurement of the track inside a place, refreshed by the tool
 )
 FACTS_TEXT = (
     "name, common_name, short_name, short_name_url, country, regions, length_km, length_note, system_km, system_note, built_km, kind, tier, "
@@ -68,12 +71,14 @@ FACTS_TEXT = (
     "decision, decision_text, redistributable); osm.relation; shield.* except note; "
     "hike.* except summary, checked and source (start, end, official_url, days, season, terrain, "
     "travel, high_point, permit, unfinished, caution and the rest); route.* except note; "
-    "guide.* except price. A replaced track file counts as a change to source.line_file."
+    "guide.* except price; place.* except km (kind, slug, basis, source). "
+    "A replaced track file counts as a change to source.line_file."
 )
 NOT_FACTS_TEXT = (
     "history; verification.*; source.source_checked, discovery, format, crs, mainline, "
     "length_gap_note; hike.summary, hike.checked, hike.source; guide.price, "
-    "guide.price_checked; osm.note, shield.note, route.note; link; wave, wave_note."
+    "guide.price_checked; osm.note, shield.note, route.note; link; wave, wave_note; "
+    "places_checked, places_track, place.km."
 )
 TRACK_FIELD = "source.line_file"
 

@@ -336,7 +336,7 @@ def finder_form(records, c=None, steps=None, where="all", bare_if_empty=False):
     <label class="field__label" for="where">{facets.WHERE}</label>
     <select class="select" id="where" name="where">{opts}</select>
   </div>""")
-    kms = [r["length_km"] for r in records]
+    kms = [r["length_km"] for r in records] or [0]
     if any(min(kms) < n * words.KM_PER_MI <= max(kms) for n in steps):
         first.append(f"""<fieldset class="field" data-facet="length">
     <legend>{facets.LENGTH}</legend>

@@ -129,6 +129,9 @@ class WhichPagesHaveTheBarTest(unittest.TestCase):
             body = authors.author_page(g, self.records, SITE, groups)[2]
             self.assertIn('id="finder-form"', str(body), g["name"])
 
+    def test_a_set_with_no_trails_still_builds(self):
+        self.assertIn("<form", str(home.finder_form([])))
+
     def test_the_saved_page_has_no_bar(self):
         from olt import saved
         self.assertNotIn('id="finder-form"', str(saved.saved_page(self.records, SITE)[2]))

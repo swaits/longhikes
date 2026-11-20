@@ -466,6 +466,40 @@ def assign_slugs(outlines):
     return outlines
 
 
+def merge_same_name(outlines):
+    """One name within a kind and source is one place: the outlines are unioned and the
+    place carries every id. The source lists some ranges twice under different ids."""
+    merged, order = {}, []
+    for o in outlines:
+        key = (o.kind, o.source, " ".join(o.name.lower().split()))
+        # Two wilderness areas or parks of one name in different places are two places
+        # (assign_slugs tells them apart by state); a range is one wherever its pieces lie.
+        if key in merged and o.kind != "range" and not any(
+                o.geometry.intersects(m.geometry) for m in merged[key]):
+            key = key + (str(o.source_id),)
+        if key not in merged:
+            merged[key] = [o]
+            order.append(key)
+        else:
+            merged[key].append(o)
+    out = []
+    for key in order:
+        group = merged[key]
+        if len(group) == 1:
+            out.append(group[0])
+            continue
+        first = group[0]
+        ids = sorted({str(i) for o in group
+                      for i in (o.source_id if isinstance(o.source_id, list) else [o.source_id])})
+        first.source_id = ids
+        first.geometry = _union_geoms(o.geometry for o in group)
+        first.within = tuple(sorted({w for o in group for w in o.within}))
+        first.state_codes_hint = sorted({h for o in group for h in o.state_codes_hint})
+        first.where_hand = first.where_hand or next((o.where_hand for o in group if o.where_hand), ())
+        out.append(first)
+    return out
+
+
 def catalogue(cache, allowlist=None):
     """The outlines to measure: parks whole, wilderness whole, ranges allow-listed only."""
     allowlist = allowlist if allowlist is not None else load_allowlist(default_allowlist_path())
@@ -507,7 +541,7 @@ def catalogue(cache, allowlist=None):
                                    slug=spec.get("slug") or "",
                                    within=tuple(spec.get("within") or ()), path=g["path"],
                                    where_hand=tuple(spec.get("where") or ())))
-    return assign_slugs(out)
+    return assign_slugs(merge_same_name(out))
 
 
 _GMBA_CACHE = {}

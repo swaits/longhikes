@@ -170,6 +170,33 @@ class ProposalTest(unittest.TestCase):
         o = outline("park", "YOSE", "Yosemite National Park", yose, hint=["CA"])
         self.assertEqual(P.where_of(o), ["CA"])
 
+    def test_one_name_in_a_kind_and_source_is_one_place_with_both_ids(self):
+        a = outline("range", "17222", "Palisades", self.park.geometry)
+        b = outline("range", "19588", "Palisades", self.range.geometry)
+        c = outline("range", "5", "Other Range", self.range.geometry)
+        out = P.merge_same_name([a, b, c])
+        self.assertEqual([o.name for o in out], ["Palisades", "Other Range"])
+        self.assertEqual(out[0].source_id, ["17222", "19588"])
+        self.assertAlmostEqual(out[0].geometry.area,
+                               self.park.geometry.union(self.range.geometry).area)
+        out = P.assign_slugs(out)
+        self.assertEqual(out[0].slug, "palisades")  # no numeric suffix, no state code
+
+    def test_the_same_name_from_two_sources_or_kinds_is_not_merged(self):
+        a = outline("park", "1", "Glacier", self.park.geometry, hint=["MT"])
+        b = outline("park", "2", "Glacier", self.range.geometry, hint=["BC"])
+        b.source = "cpcad"
+        w = outline("wilderness", "3", "Glacier", self.range.geometry)
+        self.assertEqual(len(P.merge_same_name([a, b, w])), 3)
+
+    def test_two_far_apart_wilderness_areas_of_one_name_stay_two_places(self):
+        far = Polygon([(-80, 35), (-79, 35), (-79, 36), (-80, 36)])
+        a = outline("wilderness", "1", "Bear Wilderness", self.park.geometry, hint=["WY"])
+        b = outline("wilderness", "2", "Bear Wilderness", far, hint=["NC"])
+        self.assertEqual(len(P.merge_same_name([a, b])), 2)
+        touching = outline("wilderness", "3", "Bear Wilderness", self.range.geometry, hint=["WY"])
+        self.assertEqual(len(P.merge_same_name([a, touching])), 1)
+
     def test_a_slug_collision_inside_a_kind_gets_the_state_code(self):
         a = outline("park", "P1", "Glacier", self.park.geometry, slug=None, hint=["MT"])
         b = outline("park", "P2", "Glacier", self.range.geometry, slug=None, hint=["BC"])

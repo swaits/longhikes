@@ -73,6 +73,13 @@ class SeasonBasisTest(unittest.TestCase):
         errors = check(season_basis="source", source=[src("Guide A", facts=("days",))])
         self.assertTrue(errors)
 
+    def test_source_basis_needs_exactly_one_publisher(self):
+        two = [src("Park Service"), src("Blog", url="https://example.org/b")]
+        errors = check(season_basis="source", source=two)
+        self.assertTrue(any("exactly one publisher" in e for e in errors), errors)
+        same = [src("Park Service"), src("Park Service", url="https://example.org/b")]
+        self.assertEqual(check(season_basis="source", source=same), [])
+
     def test_primary_needs_a_naming_source(self):
         errors = check(source=[src("Park Service", facts=("days",))])
         self.assertTrue(errors)

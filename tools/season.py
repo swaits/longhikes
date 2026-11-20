@@ -55,6 +55,13 @@ def check_season(tid, hike, errors):
         if not naming_season:
             errors.append(
                 f"{tid}: hike.season_basis \"{basis}\" needs a [[hike.source]] naming season")
+        elif basis == "source":
+            publishers = {str(s.get("publisher", "")).strip().casefold()
+                          for s in naming_season}
+            if len(publishers) != 1:
+                errors.append(
+                    f"{tid}: hike.season_basis \"source\" needs exactly one publisher "
+                    "naming season (two or more is \"sources\")")
     elif basis == "sources":
         publishers = {str(s.get("publisher", "")).strip().casefold()
                       for s in naming_season if str(s.get("publisher", "")).strip()}

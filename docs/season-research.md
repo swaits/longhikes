@@ -1,6 +1,6 @@
 # Season research brief
 
-For a worker with nothing else to go on. You do this task yourself and start no subagents. Read `.claude/skills/refresh-trails/rules.md` and `.claude/skills/refresh-trails/proposal-format.md` first; this brief adds to them and does not replace them. The audit uses the same brief when it looks for a source for a season that is still an estimate (see `docs/audit.md`).
+For a worker with nothing else to go on. You do this task yourself and start no subagents. Read `.claude/skills/refresh-trails/rules.md` and `.claude/skills/refresh-trails/proposal-format.md` first; this brief adds to them and does not replace them. The audit will use the same brief when it looks for a source for a season that is still an estimate.
 
 ## Goal
 

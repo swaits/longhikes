@@ -395,6 +395,35 @@ def read_toml(path):
 
 
 @unittest.skipUnless(HAVE, "shapely (the .venv-places venv) is not installed")
+class RefreshTest(unittest.TestCase):
+    def test_fetch_keeps_a_cached_file_and_clear_cache_makes_the_next_fetch_download(self):
+        with tempfile.TemporaryDirectory() as cache:
+            src = P.SOURCES["gmba-v2"]
+            dest = os.path.join(cache, src.filename)
+            with open(dest, "w") as f:
+                f.write("old")
+            calls = []
+            real = P._download
+            P._download = lambda url, d: (calls.append(url), open(d, "w").write("new"))
+            try:
+                P.fetch(src, cache)
+                self.assertEqual(calls, [])
+                self.assertEqual(P.clear_cache(cache), [src.filename])
+                P.fetch(src, cache)
+            finally:
+                P._download = real
+            self.assertEqual(len(calls), 1)
+            with open(dest) as f:
+                self.assertEqual(f.read(), "new")
+
+    def test_the_monthly_workflow_checks_against_fresh_outlines(self):
+        with open(os.path.join(ROOT, ".github", "workflows", "places.yml")) as f:
+            text = f.read()
+        self.assertIn("place_trails.py --check --refresh", text)
+        self.assertNotIn("actions/cache", text)
+
+
+@unittest.skipUnless(HAVE, "shapely (the .venv-places venv) is not installed")
 class ApplyTest(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()

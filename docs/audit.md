@@ -15,7 +15,7 @@ down the list in order and stop at the first step that fails.
    `OK history`. A changed fact needs a new history entry.
 5. **Run both test suites.** `python3 -m unittest discover tools/tests` and
    `python3 -m unittest discover -s web/tests` must both pass.
-6. **Check the places.** `python3 tools/place_trails.py --check` downloads the current outlines,
+6. **Check the places.** `python3 tools/place_trails.py --check --refresh` downloads every outline again (without `--refresh` it reuses the files already in the cache, which are the ones first downloaded),
    measures every track again and prints each difference from the records, one per line:
    - a place gained or lost by a trail: re-run `place_trails.py propose`, read the line, and
      apply it only when the new outline is right;

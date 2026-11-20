@@ -255,6 +255,20 @@ def fetch(source, cache):
     return dest, date.today().isoformat()
 
 
+def clear_cache(cache):
+    """Delete every cached source file so the next fetch downloads it again. fetch() keeps
+    a cached file for good; --refresh is how the monthly check measures against the outlines
+    as published today, not the ones first downloaded."""
+    gone = []
+    for src in SOURCES.values():
+        dest = os.path.join(cache, src.filename)
+        if os.path.isfile(dest):
+            os.remove(dest)
+            gone.append(src.filename)
+    _GMBA_CACHE.clear()
+    return gone
+
+
 def _union_geoms(geoms):
     shapely = _need_shapely()
     g = shapely.union_all(list(geoms))
@@ -1206,7 +1220,9 @@ Subcommands:
     candidates [--out DIR] [--allowlist FILE]  GMBA ranges 3+ tracks cross, not allow-listed
     apply PROPOSAL.json [--exclude FILE]       write the records and places.toml
     stated ... / stamp ...                     hand placements for trackless trails
-    --check                                    re-measure and list every difference
+    --check [--refresh]                        re-measure and list every difference;
+                                               --refresh downloads every outline again first
+                                               (the monthly workflow always passes it)
 Cache: $PLACES_CACHE, default $XDG_CACHE_HOME/longhikes-places.
 """
 
@@ -1224,6 +1240,8 @@ def main(argv=None):
         return 0
     _need_shapely()
     cmd = argv[0]
+    if "--refresh" in argv:
+        clear_cache(cache_dir())
     if cmd == "propose":
         allow = load_allowlist(_opt(argv, "--allowlist", default_allowlist_path()))
         outlines = catalogue(cache_dir(), allow)

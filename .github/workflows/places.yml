@@ -1,7 +1,7 @@
 name: Places
 
 # The monthly check that every record's places still match the published outlines. It downloads
-# the current outlines, measures every track again and fails with the list of differences.
+# every outline again (no cache is kept between runs, and --refresh clears any there is), measures every track again and fails with the list of differences.
 on:
   schedule:
     - cron: "0 6 1 * *"
@@ -15,11 +15,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/longhikes-places
-          key: places-outlines-${{ github.run_id }}
-          restore-keys: |
-            places-outlines-
       - run: pip install -r tools/place_trails.requirements.txt
-      - run: python tools/place_trails.py --check
+      - run: python tools/place_trails.py --check --refresh

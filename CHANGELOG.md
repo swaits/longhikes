@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-20 - Every trail now has a season
+
+- All 223 trails now have a season. 148 come from a page that states one. 6 were set by judgement from pages that disagree, none of them the trail's own, its association's or its route author's. The other 69 are estimates, because no page states a season for them.
+- An estimate never reads as a fact. A trail's page shows it as "About April to October", with a short note: no page states a season, it was estimated from the climate at the trail's elevation and from similar trails, what sets the season there, how confident the estimate is, and that people do walk the trail outside those months. Lists and tables mark an estimate, and it is left out of the data that search engines read. The 6 set from pages that disagree read the same way, and their note says the pages differ.
+- How an estimate is made: a reviewer is given the trail's location and elevation, its monthly climate (CHELSA, public domain, with NOAA elevation), a climate model's own estimate, and the ten most similar trails whose season a page states, and sets the months. The climate model alone matched 67.6 percent of the known seasons within a month at each end, under the 75 percent the owner asked for, so it is one input and not the answer.
+- How it was tested: the same reviewers estimated the 148 trails whose season a page does state, from packets with that season hidden. They matched 114 of them (77.0 percent) within a month at each end: 48 of 52 where they were highly confident, 55 of 76 at medium confidence, and 11 of 20 at low. The reference page and the glossary give these figures, read from a data file.
+- The "By month" lists now include every trail and mark the estimated seasons, and the note that only some trails have a season is gone. The month filter has a box to leave estimated seasons out.
+- An estimate is replaced when a page that states a season is found. The monthly audit searches again for every one, and a monthly check reruns the climate model for each estimate and flags any whose inputs have changed.
+- For contributors: `hike.season_basis` may now be `estimate`, with a `hike.season_method` that ends "Confidence: high.", "Confidence: medium." or "Confidence: low." and one source that cites the climate data; a season is required on every trail, and the validator refuses an estimate that cites an ordinary page. The packet builder and the blind scorer are `tools/season_judge.py`, the reviewers' instruction is `docs/season-judging.md`, and the audit steps are in `docs/audit.md`.
+
 ## 2026-11-20 - Seasons for 39 more trails
 
 - 39 trails that had no season now have one, each read from a page and marked with where it came from. 10 of them are from the body that manages the trail, the trail's own association, or for a route its author; the other 29 are from other pages, and 2 of those rest on two pages from different publishers. Where a page gives only a start date, one segment or a word like "spring", the season says only that.

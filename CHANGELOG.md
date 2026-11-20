@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-20 - A Google tag to count visits
+
+- Every page now loads a Google tag, so that visits can be counted with Google Analytics. The About page no longer says the site has no tracking or analytics.
+
 ## 2026-11-20 - Pages for national parks, mountain ranges and wilderness areas
 
 - There are now 81 pages for named places: 21 national parks and other Park Service units (such as the Blue Ridge Parkway and Glen Canyon National Recreation Area), 36 mountain ranges and other named landforms (the Colorado Plateau and the Mogollon Rim are labelled and worded as what they are, "on the Colorado Plateau") and 24 wilderness areas, each with 3 or more trails. Every page has the search box and the filters that have something to offer, however few trails it holds, and every title keeps its count of trails. They answer searches such as "Wind River Range hikes" or "backpacking in Glacier National Park", and each has the same filter bar, trail rows and map as a state page. A place with fewer than 3 trails has no page: the Uinta Mountains have one. A range or wilderness area that holds exactly the trails of the park of the same name (Great Smoky Mountains, Olympic Mountains) has no page of its own either, and six places that were only another name for trails already on a neighbour's page are left out: the Longfellow Mountains, Finger Lakes, Gore Range, Mosquito Range, Great Western Divide and Russian Wilderness.

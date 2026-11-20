@@ -216,6 +216,17 @@ def skip_links(body):
     return out
 
 
+# The owner's Google tag, as given; only the container id comes from site.toml (google_tag).
+# The inline script's hash is in the Content-Security-Policy (web/static/_headers); a test keeps them equal.
+GOOGLE_TAG_INLINE = """
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+"""
+GOOGLE_TAG = ('<script async src="https://www.googletagmanager.com/gtm.js?id={id}"></script>\n'
+              '<script>' + GOOGLE_TAG_INLINE + '</script>')
+
+
 def layout(title, body, *, path, description="", maps=False, outdoor=False, scripts=(), data=None, site=None,
            jsonld=None, og_type="website", noindex=False, image="", image_alt="", alternates=()):
     """Return a complete HTML document.
@@ -262,6 +273,8 @@ def layout(title, body, *, path, description="", maps=False, outdoor=False, scri
         f"<title>{esc(tag)}</title>",
         f'<meta name="description" content="{esc(description)}">',
     ]
+    if site.google_tag:
+        head.append(GOOGLE_TAG.replace("{id}", esc(site.google_tag)))
     if noindex:
         head.append('<meta name="robots" content="noindex">')
     if canonical:

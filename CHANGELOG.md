@@ -10,6 +10,12 @@
 - An estimate is replaced when a page that states a season is found. The monthly audit searches again for every one, and a monthly check, which works offline and downloads nothing, flags any estimate whose trail's track or location has changed since the season was set.
 - For contributors: `hike.season_basis` may now be `estimate`, with a `hike.season_method` that ends "Confidence: high.", "Confidence: medium." or "Confidence: low." and one source that cites the climate data; a season is required on every trail, and the validator refuses an estimate that cites an ordinary page. The packet builder and the blind scorer are `tools/season_judge.py`, the reviewers' instruction is `docs/season-judging.md`, and the audit steps are in `docs/audit.md`.
 
+## 2026-11-20 - The search box and filters on every page, and ways in to the places
+
+- Every page that lists trails now has the search box and the filters, however few trails it holds. Until now the 48 state and province pages with fewer than ten trails, the small lists and each route author's page showed the rows alone. The filters shown are the ones that have something to offer: a page with two trails offers the choices those two trails differ on, with the number that each choice leaves, and a page with one trail has the search box alone. Nothing is offered that would show no trails.
+- The Places page now begins with one row of links, visible at every screen size: States and provinces, Parks, Mountain ranges and Wilderness areas, each with its number of pages. They go to the parts of the page that were at the bottom, below sixty states and provinces.
+- The home page ends with a line under the rows and the map: Browse by park, by mountain range or by wilderness area, each going to its part of the Places page. The first screen is as it was.
+
 ## 2026-11-20 - A Google tag to count visits
 
 - Every page now loads a Google tag, so that visits can be counted with Google Analytics. The About page no longer says the site has no tracking or analytics.

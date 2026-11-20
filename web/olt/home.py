@@ -239,16 +239,12 @@ def entry(rec, *, level=3, extra="", routes_list=False, hidden=False, eager=Fals
 
 
 # The filters ------------------------------------------------------------------
-# One bar and one set of panels, on the home page and on every other page that shows a set of at
-# least FILTER_MIN trails (listing()), and on every park, range and wilderness page whatever its
-# size (the owner's rule: every set of trails gets the bar). Everything is built from the page's own trails: a facet that
+# One bar and one set of panels, on the home page and on every other page that shows a set of
+# trails (listing()), whatever its size (the owner's rule: every set of trails gets the bar). Everything is built from the page's own trails: a facet that
 # cannot narrow them is left out, and an option none of them has is not written. The numbers written
 # here are for the whole set; app.js counts again from the rows on the page every time anything
 # changes, and hides an option that would show nothing (its counting is facetCounts(), which
 # web/tests/test_filter_counts.py runs under node against counts made here from the records).
-
-FILTER_MIN = 10
-
 
 def _length_options(steps, selected_any_last, unit="mi"):
     opts = [f'<option value="{step_value(n, unit)}">{step_label(n, unit)}</option>' for n in steps]
@@ -340,7 +336,7 @@ def finder_form(records, c=None, steps=None, where="all", bare_if_empty=False):
     <label class="field__label" for="where">{facets.WHERE}</label>
     <select class="select" id="where" name="where">{opts}</select>
   </div>""")
-    kms = [r["length_km"] for r in records]
+    kms = [r["length_km"] for r in records] or [0]
     if any(min(kms) < n * words.KM_PER_MI <= max(kms) for n in steps):
         first.append(f"""<fieldset class="field" data-facet="length">
     <legend>{facets.LENGTH}</legend>
@@ -443,15 +439,13 @@ def finder_form(records, c=None, steps=None, where="all", bare_if_empty=False):
 </form>"""
 
 
-def listing(recs=None, *, where="all", groups=None, always=False, **kw):
-    """The rows of a page that shows a set of trails, with the filter bar over them when the set
-    has at least FILTER_MIN trails (else results() alone); with always, whatever its size (the
-    bar then holds only the filters that have something to offer). where: the Where filter's
-    scope (finder_form). The other arguments are results()'s."""
+def listing(recs=None, *, where="all", groups=None, **kw):
+    """The rows of a page that shows a set of trails, with the filter bar over them whatever the size
+    of the set (the bar holds only the filters that have something to offer, and the search box
+    alone where nothing can narrow the set). where: the Where filter's scope (finder_form). The
+    other arguments are results()'s."""
     trails = [r for g in groups for r in g[1]] if groups is not None else list(recs)
-    if len(trails) < FILTER_MIN and not always:
-        return results(recs, groups=groups, **kw)
-    return Markup(f"""<div class="finder__bar">{finder_form(trails, where=where, bare_if_empty=always)}</div>
+    return Markup(f"""<div class="finder__bar">{finder_form(trails, where=where, bare_if_empty=True)}</div>
   {results(recs, groups=groups, finder=True, **kw)}""")
 
 
@@ -873,8 +867,25 @@ def description(records):
     return common.cut_at_word(text, common.DESCRIPTION_LIMIT)
 
 
-def render(records, site, repo_root=""):
-    """The home page body (HTML). repo_root: where collections.toml names the lists the page shows."""
+# How the home page's line names each kind of place, and where on the Places hub it goes.
+PLACE_WAYS_IN = {"park": "park", "range": "mountain range", "wilderness": "wilderness area"}
+
+
+def places_line(place_kinds):
+    """The line below the rows that leads to the Places hub's sections: "Browse by park, by mountain
+    range or by wilderness area." for the kinds that have pages (place_kinds: kind keys), else ""."""
+    from . import places  # imported here: places.py is the registry, and loads datafiles like this module
+    links = [f'by <a href="/regions/#{places.KINDS[k].segment}">{PLACE_WAYS_IN[k]}</a>'
+             for k in places.KINDS if k in place_kinds]
+    if not links:
+        return ""
+    text = links[0] if len(links) == 1 else ", ".join(links[:-1]) + " or " + links[-1]
+    return f'<p class="finder__foot finder__places">Browse {text}.</p>'
+
+
+def render(records, site, repo_root="", place_kinds=()):
+    """The home page body (HTML). repo_root: where collections.toml names the lists the page shows.
+    place_kinds: the kinds of place (olt/places.py) that have pages; the page then ends with a line to them."""
     c = counts(records)
     recs = sorted(records, key=sort_name)
     total = c["total"]
@@ -900,6 +911,7 @@ def render(records, site, repo_root=""):
   {browse_view(listing, overview_map(records, "Map of the trails the filters leave", scope="all"))}
   <div class="finder__notes">
     <p class="finder__foot">Not for navigation: tracks vary in quality and some trails are unfinished. Check each trail&rsquo;s own maps before you go.</p>
+    {places_line(place_kinds)}
     {contribute}
   </div>
 </div>"""

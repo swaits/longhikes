@@ -1,7 +1,7 @@
 """The filter bar on every page that shows a set of trails, and the numbers beside its choices.
 
 The bar (olt/home.py listing(), finder_form()) is the home page's, on each list, place and the Routes
-page whose set has at least home.FILTER_MIN trails, built from that page's own trails. app.js counts
+page, whatever the number of trails, built from that page's own trails. app.js counts
 the choices again from the rows on the page every time anything changes (FacetCount, between the
 facet-counts markers); this file runs that counting under node, on the rows the home page writes,
 and checks it against counts made here straight from the records. Pages are rendered one at a time;
@@ -68,22 +68,36 @@ class WhichPagesHaveTheBarTest(unittest.TestCase):
         lst = browse.by_key(key)
         return regions.list_page(lst, self.shown[key], len(self.records), SITE, records=self.records)[2]
 
-    def test_a_list_page_a_place_page_a_part_of_the_country_and_routes_have_it(self):
-        self.assertGreaterEqual(len(self.shown["loops"]), home.FILTER_MIN)
-        self.assertTrue(form_of(self.list_body("loops")))
+        def test_a_list_page_a_place_page_a_part_of_the_country_and_routes_have_it(self):
+                self.assertTrue(form_of(self.list_body("loops")))
         by_slug, _ = regions.collect_regions(self.records)
-        self.assertGreaterEqual(len(by_slug["ca-on"]["records"]), home.FILTER_MIN)
         self.assertTrue(form_of(regions.region_page("ca-on", self.records, SITE)[2]))
         self.assertTrue(form_of(regions.group_page("central-canada", self.records, SITE)[2]))
         self.assertTrue(form_of(regions.routes_page(self.records, SITE)[2]))
 
-    def test_a_set_under_the_threshold_has_the_plain_rows(self):
-        small = [k for k, recs in self.shown.items() if len(recs) < home.FILTER_MIN and k != "routes"]
-        self.assertTrue(small)
+    def test_every_state_province_and_list_page_has_the_bar_however_few_trails(self):
+        by_slug, _ = regions.collect_regions(self.records)
+        small = [k for k, v in by_slug.items() if len(v["records"]) < 10]
+        self.assertGreater(len(small), 40)
         for key in small:
-            body = self.list_body(key)
-            self.assertFalse(form_of(body), key)
-            self.assertNotIn("data-finder", str(body), key)
+            body = regions.region_page(key, self.records, SITE)[2]
+            self.assertIn('id="finder-form"', str(body), key)
+            self.assertIn("data-finder", str(body), key)
+        small_lists = [k for k, recs in self.shown.items() if len(recs) < 10 and k != "routes"]
+        self.assertTrue(small_lists)
+        for key in small_lists:
+            self.assertTrue(form_of(self.list_body(key)), key)
+
+    def test_a_two_trail_page_offers_only_filters_that_narrow_it(self):
+        by_slug, _ = regions.collect_regions(self.records)
+        two = [k for k, v in by_slug.items() if len(v["records"]) == 2]
+        self.assertTrue(two)
+        for key in two:
+            form = form_of(regions.region_page(key, self.records, SITE)[2])
+            self.assertIn('name="q"', form, key)
+            for sel in re.findall(r"<select[^>]*>(.*?)</select>", form, re.S):
+                self.assertNotIn("<select></select>", sel)
+                self.assertGreater(len(re.findall(r"<option", sel)), 1, key)
 
     def test_the_tables_rankings_newest_authors_and_left_out_pages_do_not(self):
         bodies = {}
@@ -102,13 +116,21 @@ class WhichPagesHaveTheBarTest(unittest.TestCase):
         from olt import authors
         groups = authors.author_pages(self.records, ROOT)
         bodies["authors"] = authors.index_page(self.records, SITE, ROOT)[2]
-        big = max(groups, key=lambda g: len(g["routes"]))
-        bodies["author"] = authors.author_page(big, self.records, SITE, groups)[2]
         bodies["left-out"] = leftout.left_out_page(leftout.load_entries(ROOT), SITE, ROOT)[2]
         self.assertGreater(len(bodies), 4)
         for name, body in bodies.items():
             self.assertNotIn('id="finder-form"', str(body), name)
             self.assertNotIn("data-finder", str(body), name)
+
+    def test_an_authors_own_page_has_the_bar_however_few_routes(self):
+        from olt import authors
+        groups = authors.author_pages(self.records, ROOT)
+        for g in (min(groups, key=lambda g: len(g["routes"])), max(groups, key=lambda g: len(g["routes"]))):
+            body = authors.author_page(g, self.records, SITE, groups)[2]
+            self.assertIn('id="finder-form"', str(body), g["name"])
+
+    def test_a_set_with_no_trails_still_builds(self):
+        self.assertIn("<form", str(home.finder_form([])))
 
     def test_the_saved_page_has_no_bar(self):
         from olt import saved

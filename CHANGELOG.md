@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-20 - Faster builds and tests, and reproducible downloads
+
+- The site builds in about a quarter of the time on a warm cache and the whole test suite runs in about a quarter of its former time. The pages are unchanged: every file of a build matches a build of the previous version except the two bulk downloads (all GPX, all GeoJSON).
+- The two bulk downloads (`all-gpx.zip`, `all-geojson.zip`) now carry a fixed time on every member and are the same bytes whenever they are made from the same files. Their contents are unchanged; the bytes change once, with this release.
+- For contributors: `python3 web/tests/run.py` runs the same tests as `python3 -m unittest discover -s web/tests`, side by side. `LONGHIKES_JOBS=1` makes the build use one process. A build worker that fails now stops the build with its error.
+
 ## 2026-11-20 - Every trail now has a season
 
 - All 223 trails now have a season. 148 come from a page that states one. 3 were set by judgement from pages of at least two publishers that disagree, none of them the trail's own, its association's or its route author's. The other 72 are estimates, because no page states a season for them; three of those (the Finger Lakes Trail, the Ice Age Trail and the Ozark Trail) have a page that contradicts itself or two pages from one publisher that differ, and the note says so.

@@ -15,8 +15,12 @@ against sourced seasons says how often that matters.
 
 Commands: fit (fit the model and record the leave-one-out figure), trial
 (compare the climate sources), warm (read every point's climate into the
-cache), propose (the review list), proposals (stage accepted estimates
-for the refresh pipeline) and check (rerun every estimate and the fit).
+cache), propose (the review list), estimates (the trails whose season is an
+estimate) and check (rerun the machine estimate for every estimate and
+flag any whose inputs changed, and the fit). The seasons themselves are
+set by judgement from the packets of tools/season_judge.py, which also
+stages them for the refresh pipeline; the machine estimate is one input
+to that judgement and is not written to a record on its own.
 """
 import sys
 
@@ -680,101 +684,44 @@ def _toml_str(text):
     return '"' + str(text).replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 
-def _parse_months(text):
-    months = []
-    for piece in (text or "").replace(",", " ").replace(";", " ").split():
-        months.append(int(piece))
-    return sorted(set(months))
+def inputs_signature(est):
+    """What an estimate rests on, as a small comparable record: the machine
+    estimate's months and a digest of the climate at the high and low
+    ground and of the sourced trails it was compared with."""
+    normals = est["normals"]
+    med = season_model.medians(normals) if all(n is not None for n in normals) else None
+    material = json.dumps({"med": med, "near": [n[0] for n in est["neighbours"]]},
+                          sort_keys=True)
+    return {"machine": sorted(est["months"] or []),
+            "digest": hashlib.sha256(material.encode()).hexdigest()[:16]}
 
 
-def proposals(root, reviewed_csv, given_dir=None):
-    """Stage one change proposal per accepted reviewed row (a row with
-    months). A row with a note was adjusted by hand, and its method
-    sentence says so. Returns how many proposals were staged."""
-    with open(reviewed_csv, newline="", encoding="utf-8") as f:
-        reviewed = list(csv.DictReader(f))
-    staging = refresh.staging_dir(root, given_dir, create=True)
-    out = os.path.join(staging, "staged", "season-estimate")
-    today = datetime.date.today().isoformat()
-    source = season_climate.SOURCE
-    report = []
-    for row in reviewed:
-        tid = (row.get("id") or "").strip()
-        try:
-            months = _parse_months(row.get("proposed_months"))
-        except ValueError:
-            raise ValueError(f"{tid}: proposed_months {row.get('proposed_months')!r} "
-                             "is not a list of month numbers")
-        if not tid or not months:
-            continue
-        rec = refresh.load_toml(os.path.join(root, tid, "trail.toml"))
-        hike = rec.get("hike") or {}
-        if hike.get("season"):
-            raise ValueError(f"{tid}: already has a season")
-        points, kind = sample_points(root, rec)
-        phrase = season.phrase_for(months)
-        method = season.method_sentence(source["name"], source["period"],
-                                         len(points), kind, RULE_VERSION)
-        note = (row.get("note") or "").strip()
-        comparable = (row.get("comparable") or "").strip()
-        if note and comparable:
-            method = method[:-1] + f", and adjusted by hand against {comparable}."
-        quote = (f"Monthly climate ({source['period']}) from {source['name']} "
-                 f"gives {phrase} at the trail elevation.")
-        page = source["url"]
-        lines = ["[[proposal]]", 'kind = "change"', f"id = {_toml_str(tid)}",
-                 f"date = {_toml_str(today)}",
-                 f"summary = {_toml_str('Add an estimated season: ' + phrase + '.')}", ""]
+def load_inputs(root):
+    path = os.path.join(root, "tools", "season_inputs.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except OSError:
+        return {}
 
-        def edit(field, new_toml, old_toml=None):
-            lines.append("[[proposal.edit]]")
-            lines.append(f"field = {_toml_str(field)}")
-            if old_toml is not None:
-                lines.append(f"old = {old_toml}")
-            lines.append(f"new = {new_toml}")
-            lines.append(f"page = {_toml_str(page)}")
-            lines.append(f"quote = {_toml_str(quote)}")
-            lines.append("")
 
-        edit("hike.season", _toml_str(phrase))
-        edit("hike.months", "[" + ", ".join(str(m) for m in months) + "]")
-        edit("hike.season_basis", _toml_str("estimate"))
-        edit("hike.season_method", _toml_str(method))
-        checked_old = hike.get("checked")
-        edit("hike.checked", _toml_str(today),
-             _toml_str(checked_old) if checked_old else None)
-        lines += ["[[proposal.append]]", 'table = "hike.source"',
-                  f"page = {_toml_str(page)}", f"quote = {_toml_str(quote)}", "",
-                  "[proposal.append.entry]",
-                  f"url = {_toml_str(page)}",
-                  f"publisher = {_toml_str(source['publisher'])}",
-                  'facts = ["season", "months"]', "",
-                  "[proposal.history]",
-                  f"change = {_toml_str('A season was estimated from climate: ' + phrase + '.')}",
-                  f"basis = {_toml_str('No page states a season; it is estimated from climate (rule version ' + str(RULE_VERSION) + ').')}",
-                  f"basis_url = {_toml_str(page)}",
-                  'asked_by = "the dataset\'s own check"',
-                  'fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]',
-                  ""]
-        d = os.path.join(out, tid)
-        os.makedirs(d, exist_ok=True)
-        with open(os.path.join(d, "proposal.toml"), "w", encoding="utf-8") as f:
-            f.write("\n".join(lines))
-        remark = f"estimated season {phrase}" + (f"; note: {note}" if note else "")
-        report.append((tid, "changed", page, remark))
-    os.makedirs(out, exist_ok=True)
-    with open(os.path.join(out, "report.csv"), "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(["id", "outcome", "pages", "remark"])
-        writer.writerows(report)
-    return len(report)
+def estimates(root):
+    """The ids of the records whose season is an estimate, in order."""
+    return [tid for tid, rec in _records(root)
+            if (rec.get("hike") or {}).get("season_basis") == "estimate"]
 
 
 def check(root, fetch):
-    """Rerun every estimated season and the leave-one-out fit. Returns
-    (ok, lines): not ok when an estimate would now come out different,
-    when the leave-one-out match share has fallen by more than 0.02
-    from season_fit.json, or when that file does not pass."""
+    """Rerun the machine estimate for every estimated season and the
+    leave-one-out fit. Returns (ok, lines): not ok when an estimate's
+    inputs have changed since they were recorded in
+    tools/season_inputs.json (the machine estimate, the climate at the
+    trail, or the sourced trails it is compared with), when the
+    leave-one-out match share has fallen by more than 0.02 from
+    tools/season_fit.json, or when the blind test of the judged method
+    (tools/season_blind_test.json) is missing or below the bar. A changed
+    estimate is a flag for a person to look at, not a rewrite."""
+    import season_judge
     try:
         fit = load_fit(root)
     except OSError:
@@ -783,18 +730,31 @@ def check(root, fetch):
     params = load_params(root)
     ok, lines, checked = True, [], 0
     refs = references(root, fetch)
+    recorded = load_inputs(root)
     for tid, rec in _records(root):
         hike = rec.get("hike") or {}
         if hike.get("season_basis") != "estimate":
             continue
         checked += 1
-        est = estimate(root, dict(rec, id=tid), params, fetch, refs)
-        old = sorted(int(m) for m in hike.get("months") or [])
-        new = sorted(est["months"] or [])
-        if new != old:
+        sig = inputs_signature(estimate(root, dict(rec, id=tid), params, fetch, refs))
+        then = recorded.get(tid)
+        if then is None:
             ok = False
-            detail = est["phrase"] or est["reason"]
-            lines.append(f"{tid}: estimate was {old}, now {new} ({detail})")
+            lines.append(f"{tid}: no inputs are recorded for this estimate: run "
+                         "python3 tools/season_judge.py inputs")
+        elif sig["machine"] != then["machine"]:
+            ok = False
+            lines.append(f"{tid}: inputs changed: the machine estimate was {then['machine']}, "
+                         f"now {sig['machine']}; the season is {sorted(hike.get('months') or [])}")
+        elif sig["digest"] != then["digest"]:
+            ok = False
+            lines.append(f"{tid}: inputs changed: the climate or the similar sourced trails differ "
+                         f"(machine estimate still {sig['machine']}); the season is "
+                         f"{sorted(hike.get('months') or [])}")
+    for tid in sorted(set(recorded) - set(estimates(root))):
+        ok = False
+        lines.append(f"{tid}: has recorded inputs but is no longer an estimate: remove it "
+                     "from tools/season_inputs.json")
     sourced = sourced_trails(root, fetch)
     if any(s[1] is not None for s in sourced):
         _p, now, _loo = fit_sourced(sourced)
@@ -808,12 +768,21 @@ def check(root, fetch):
                     f"fit got worse: leave-one-out matches "
                     f"{now['within1']}/{now['n']} ({now_share:.2f}), "
                     f"was {stored['within1']}/{stored['n']} ({was_share:.2f})")
-    if not fit.get("passes"):
+    try:
+        blind = season_judge.load_blind_test(os.path.join(root, "tools", "season_blind_test.json"))
+        problems = season_judge.check_blind_test(blind)
+        if problems:
+            ok = False
+            lines += [f"tools/season_blind_test.json: {p}" for p in problems]
+        elif blind["share"] < BAR["within1_min"]:
+            ok = False
+            lines.append(f"the blind test matched {blind['share']:.2f}, under the bar of "
+                         f"{BAR['within1_min']:.2f}; estimates must not ship")
+    except (OSError, ValueError, KeyError):
         ok = False
-        lines.append("tools/season_fit.json does not pass the bar; "
-                     "estimates must not ship")
+        lines.append("tools/season_blind_test.json is missing or unreadable")
     if ok:
-        lines.append(f"check passed: {checked} estimated seasons unchanged")
+        lines.append(f"check passed: {checked} estimated seasons rest on the same inputs")
     return ok, lines
 
 
@@ -892,9 +861,9 @@ def cmd_propose(args):
     return 0
 
 
-def cmd_proposals(args):
-    count = proposals(ROOT, args.reviewed, args.dir)
-    print(f"{count} proposals staged")
+def cmd_estimates(args):
+    for tid in estimates(ROOT):
+        print(tid)
     return 0
 
 
@@ -932,13 +901,9 @@ def main(argv=None):
     propose_parser.add_argument("--cache", default=None,
                                 help="climate cache directory")
     propose_parser.set_defaults(func=cmd_propose)
-    proposals_parser = sub.add_parser(
-        "proposals", help="stage proposals from a reviewed list")
-    proposals_parser.add_argument("--reviewed", required=True,
-                                  help="reviewed estimates CSV")
-    proposals_parser.add_argument("--dir", default=None,
-                                  help="staging directory")
-    proposals_parser.set_defaults(func=cmd_proposals)
+    estimates_parser = sub.add_parser(
+        "estimates", help="list the trails whose season is an estimate")
+    estimates_parser.set_defaults(func=cmd_estimates)
     check_parser = sub.add_parser(
         "check", help="rerun every estimate and the fit")
     check_parser.add_argument("--cache", default=None,

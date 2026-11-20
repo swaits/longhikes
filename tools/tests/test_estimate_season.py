@@ -384,35 +384,88 @@ class ProposeCheckTest(unittest.TestCase):
             ("aaa", "Aaa", {"extra_hike": months_extra + self.ENDS}),
         ])
 
+    EST = ('season = "All year"\n'
+           'months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]\n'
+           'season_basis = "estimate"\n'
+           'season_method = "Judged from climate. Confidence: low."\n')
+
+    def blind_doc(self, root, share=0.77, tested=100):
+        matched = int(round(share * tested))
+        doc = {"date": "2026-11-20", "tested": tested, "matched": matched,
+               "share": round(matched / tested, 2),
+               "by_confidence": {
+                   "high": {"tested": tested, "matched": matched,
+                            "share": round(matched / tested, 2)},
+                   "medium": {"tested": 0, "matched": 0, "share": 0.0},
+                   "low": {"tested": 0, "matched": 0, "share": 0.0}}}
+        with open(os.path.join(root, "tools", "season_blind_test.json"), "w") as f:
+            json.dump(doc, f)
+
+    def record_inputs(self, root, tid="aaa", **change):
+        params = E.load_params(root)
+        rec = E.refresh.load_toml(os.path.join(root, tid, "trail.toml"))
+        sig = E.inputs_signature(E.estimate(root, dict(rec, id=tid), params, mild_fetch,
+                                            E.references(root, mild_fetch)))
+        sig.update(change)
+        with open(os.path.join(root, "tools", "season_inputs.json"), "w") as f:
+            json.dump({tid: sig}, f)
+
+    def checked_repo(self, tmp, **kw):
+        root = self.est_repo(tmp, self.EST)
+        self.fit_doc(root)
+        self.blind_doc(root, **kw)
+        return root
+
     def test_check_passes_when_nothing_changed(self):
-        import tempfile, shutil
         tmp = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, tmp, True)
-        root = self.est_repo(
-            tmp,
-            'season = "All year"\n'
-            'months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]\n'
-            'season_basis = "estimate"\nseason_method = "Estimated."\n')
-        self.fit_doc(root)
+        root = self.checked_repo(tmp)
+        E._REFS.clear()
+        self.record_inputs(root)
         ok, lines = E.check(root, mild_fetch)
         self.assertTrue(ok, lines)
 
-    def test_check_names_the_trail_whose_estimate_changed(self):
-        import tempfile, shutil
+    def test_check_flags_an_estimate_whose_machine_estimate_changed(self):
         tmp = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, tmp, True)
-        root = self.est_repo(
-            tmp,
-            'season = "June to July"\nmonths = [6, 7]\n'
-            'season_basis = "estimate"\nseason_method = "Estimated."\n')
-        self.fit_doc(root)
+        root = self.checked_repo(tmp)
+        E._REFS.clear()
+        self.record_inputs(root, machine=[6, 7])
         ok, lines = E.check(root, mild_fetch)
         self.assertFalse(ok)
-        self.assertTrue(any("aaa" in line and "[6, 7]" in line
+        self.assertTrue(any("aaa" in line and "inputs changed" in line and "[6, 7]" in line
                             for line in lines), lines)
 
+    def test_check_flags_an_estimate_whose_climate_digest_changed(self):
+        tmp = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, tmp, True)
+        root = self.checked_repo(tmp)
+        E._REFS.clear()
+        self.record_inputs(root, digest="0" * 16)
+        ok, lines = E.check(root, mild_fetch)
+        self.assertFalse(ok)
+        self.assertTrue(any("aaa" in line and "inputs changed" in line for line in lines), lines)
+
+    def test_check_flags_an_estimate_with_no_recorded_inputs(self):
+        tmp = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, tmp, True)
+        root = self.checked_repo(tmp)
+        E._REFS.clear()
+        ok, lines = E.check(root, mild_fetch)
+        self.assertFalse(ok)
+        self.assertTrue(any("aaa" in line and "no inputs are recorded" in line for line in lines), lines)
+
+    def test_check_fails_when_the_blind_test_is_under_the_bar(self):
+        tmp = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, tmp, True)
+        root = self.checked_repo(tmp, share=0.6)
+        E._REFS.clear()
+        self.record_inputs(root)
+        ok, lines = E.check(root, mild_fetch)
+        self.assertFalse(ok)
+        self.assertTrue(any("blind test" in line for line in lines), lines)
+
     def test_check_fails_when_the_fit_got_worse(self):
-        import tempfile, shutil
         tmp = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, tmp, True)
         # one sourced trail that mild all-year normals cannot match
@@ -420,32 +473,31 @@ class ProposeCheckTest(unittest.TestCase):
                  'season_basis = "source"\n' + self.ENDS)
         root = self.repo_with(tmp, [("only", "Only", {"extra_hike": extra})])
         self.fit_doc(root, within1=4, n=4)
+        self.blind_doc(root)
+        E._REFS.clear()
         ok, lines = E.check(root, mild_fetch)
         self.assertFalse(ok)
         self.assertTrue(any("fit got worse" in line for line in lines), lines)
 
-    def test_proposals_collect_cleanly(self):
-        import tempfile, shutil, csv
+    def test_the_estimates_command_lists_only_estimates(self):
         tmp = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, tmp, True)
-        root = self.repo_with(tmp, [("aaa", "Aaa", {"extra_hike": self.ENDS})])
-        stage = os.path.join(tmp, "stage")
-        os.makedirs(os.path.join(stage, "season"))
-        reviewed = os.path.join(stage, "season", "estimates.reviewed.csv")
-        with open(reviewed, "w", newline="") as f:
-            w = csv.writer(f)
-            w.writerow(["id", "proposed_months", "phrase", "kind", "flags",
-                        "comparable", "comparable_phrase", "note"])
-            w.writerow(["aaa", "6 7 8 9", "June to September", "ends",
-                        "no-track", "", "", ""])
-        self.assertEqual(E.proposals(root, reviewed, stage), 1)
-        code, out = TR.main(root, "--dir", stage, "collect")
-        self.assertEqual(code, 0, out)
-        import refresh as R
-        coll = R.load_toml(os.path.join(stage, "collected.toml"))
-        props = coll["proposal"]
-        self.assertEqual(len(props), 1)
-        self.assertEqual(props[0]["status"], "proposed", out)
+        root = self.repo_with(tmp, [
+            ("aaa", "Aaa", {"extra_hike": self.EST + self.ENDS}),
+            ("bbb", "Bbb", {"extra_hike": 'season = "June"\nmonths = [6]\n'
+                                          'season_basis = "source"\n' + self.ENDS}),
+        ])
+        self.assertEqual(E.estimates(root), ["aaa"])
+
+    def test_a_season_with_a_method_is_not_a_sourced_season(self):
+        tmp = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, tmp, True)
+        root = self.repo_with(tmp, [
+            ("aaa", "Aaa", {"extra_hike": 'season = "June"\nmonths = [6]\nseason_basis = "sources"\n'
+                                          'season_method = "The pages differ. Confidence: low."\n' + self.ENDS}),
+        ])
+        E._PHRASES.clear()
+        self.assertEqual(E._phrases(root), {})
 
 
 class SeasonKindTest(unittest.TestCase):

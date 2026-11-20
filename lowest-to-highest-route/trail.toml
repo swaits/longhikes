@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Brett Tucker and partner, simBLISSity Ultralight Designs); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -102,6 +103,36 @@ title = "Lowest to Highest"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Lowest_to_Highest"
 
+[[place]]
+kind = "park"
+slug = "death-valley-national-park"
+basis = "stated"
+source = "http://simblissity.net/L2H.shtml"
+
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon"
+basis = "stated"
+source = "http://simblissity.net/L2H.shtml"
+
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "stated"
+source = "http://simblissity.net/L2H.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "darwin-falls-wilderness"
+basis = "stated"
+source = "http://simblissity.net/L2H.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "john-muir-wilderness"
+basis = "stated"
+source = "http://simblissity.net/L2H.shtml"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -127,6 +158,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by simBLISSity Ultralight Designs (the route's authors) as: September and October."
+basis_url = "http://simblissity.net/L2H.shtml"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Death Valley National Park, Sequoia and Kings Canyon National Parks, Sierra Nevada, Darwin Falls Wilderness and John Muir Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"Badwater, Death Valley National Park, California\" (Death Valley National Park) The page says: \"In its final 8 miles the L2H ascends Mount Whitney via the main Mt. Whitney Trail and John Muir Trail.\" (Sequoia and Kings Canyon National Parks, John Muir Wilderness) The trail's own description says: \"It crosses the Panamint Range, the Inyo Mountains and the Sierra Nevada.\" (Sierra Nevada) The page says: \"Scenic, perrenial Darwin Falls and China Garden Spring lie southwest of Panamint Springs, which the L2H approaches before proceeding cross-country on rocky, volcanic slopes through the untracked Darwin Falls Wilderness [4th camp] to a junction with the Highway 190 \"race route\" (4800'), then north via Saline Valley Rd toward Lee Flat joshua tree forest (5500').\" (Darwin Falls Wilderness)"
 basis_url = "http://simblissity.net/L2H.shtml"
 asked_by = "the dataset's own check"
 outcome = "applied"

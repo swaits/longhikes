@@ -9,6 +9,7 @@ length_note = "90 km, from the BC Parks Naikoon page; the BC Parks trail map giv
 tier = "regional"
 designation = "BC Parks (Naikoon Provincial Park)"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -77,6 +78,12 @@ url = "https://geogratis.gc.ca/services/geoname/en/geonames/JCKJA"
 publisher = "Natural Resources Canada (Canadian Geographical Names)"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "naikoon-park"
+basis = "stated"
+source = "https://bcparks.ca/naikoon-park/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -93,6 +100,15 @@ date = "2026-11-16"
 change = "The logo record now says the trail has no emblem of its own, after the pages that would show one were searched."
 fields = ["shield.status"]
 basis = "The pages named in the logo note were searched, and none shows an emblem that stands for the trail itself."
+basis_url = "https://bcparks.ca/naikoon-park/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Naikoon Park from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The East Beach Trail follows the remote east coast of Naikoon Provincial Park, mostly along the beach.\""
 basis_url = "https://bcparks.ca/naikoon-park/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Wilderness Mindset); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -89,6 +90,18 @@ url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/789313"
 publisher = "U.S. Geological Survey, Geographic Names Information System"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "beartooth-mountains"
+basis = "stated"
+source = "https://wildernessmindset.com/beartooth-high-route/"
+
+[[place]]
+kind = "wilderness"
+slug = "absaroka-beartooth-wilderness"
+basis = "stated"
+source = "https://wildernessmindset.com/beartooth-high-route/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -114,6 +127,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Wilderness Mindset as: Late July through September."
+basis_url = "https://wildernessmindset.com/beartooth-high-route/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Beartooth Mountains and Absaroka-Beartooth Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"This 90-mile route traverses the entire Beartooth Mountain Range while staying as high as reasonably possible.\" (Beartooth Mountains) The page says: \"The goal when creating this route was to stay as high as possible on the Beartooth Plateau, while balancing hikability and safety.\" (Absaroka-Beartooth Wilderness)"
 basis_url = "https://wildernessmindset.com/beartooth-high-route/"
 asked_by = "the dataset's own check"
 outcome = "applied"

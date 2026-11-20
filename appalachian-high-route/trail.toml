@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Jake Blood and Jennifer Pharr Davis); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -78,6 +79,30 @@ title = "Appalachian High Route"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Appalachian_High_Route"
 
+[[place]]
+kind = "park"
+slug = "blue-ridge-parkway"
+basis = "stated"
+source = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
+
+[[place]]
+kind = "park"
+slug = "great-smoky-mountains-national-park"
+basis = "stated"
+source = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
+
+[[place]]
+kind = "range"
+slug = "blue-ridge-mountains"
+basis = "stated"
+source = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
+
+[[place]]
+kind = "range"
+slug = "great-smoky-mountains"
+basis = "stated"
+source = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -105,4 +130,13 @@ fields = ["route.line_policy"]
 basis = "The authors' page gives basic maps as PDF and PNG images and no GPS file, and says finished maps will come later."
 basis_url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Blue Ridge Parkway, Great Smoky Mountains National Park, Blue Ridge Mountains and Great Smoky Mountains from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"The Appalachian High Route follows the M.S.T. between Clingmans Dome and the summit of Mount Mitchell.\" (Blue Ridge Parkway, Blue Ridge Mountains) The page says: \"The Appalachian High Route follows the A.T. between Clingmans Dome in the Smokies to Flat Top Road (FS 278) just north of Spivey Gap.\" (Great Smoky Mountains National Park, Great Smoky Mountains)"
+basis_url = "https://jenniferpharrdavis.com/blog/hiking-appalachian-high-route"
+asked_by = "the dataset's own check"
 outcome = "applied"

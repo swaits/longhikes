@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Eric Poulin, hiked 2021); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -87,6 +88,18 @@ url = "https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route
 publisher = "Eric Poulin (the route's author)"
 facts = ["summary", "official_url", "start", "end", "start_lonlat", "end_lonlat", "shape", "days", "season", "months", "high_point", "terrain", "travel", "permit", "caution"]
 
+[[place]]
+kind = "park"
+slug = "lake-mead-national-recreation-area"
+basis = "stated"
+source = "https://seekinglost.com/new-675-mile-thru-hike-mojave-sonoran-trail/"
+
+[[place]]
+kind = "wilderness"
+slug = "kofa-wilderness"
+basis = "stated"
+source = "https://seekinglost.com/new-675-mile-thru-hike-mojave-sonoran-trail/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -104,5 +117,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Eric Poulin (the route's author) as: November to March."
 basis_url = "https://seekinglost.com/thru-hikes/mojave-sonoran-trail-thru-hiking-route/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Lake Mead National Recreation Area and Kofa Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"The first 250 miles or so are almost entirely within the Lake Mead National Recreation Area, which encapsulates 12 wilderness areas on its own!\" (Lake Mead National Recreation Area) The page says: \"The hike ends with a 150+ mile route through the New Water Mountains and the 500,000 acre Kofa Wilderness.\" (Kofa Wilderness)"
+basis_url = "https://seekinglost.com/new-675-mile-thru-hike-mojave-sonoran-trail/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Ron Strickland, 1996); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -82,6 +83,60 @@ url = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
 publisher = "Andrew Skurka"
 facts = ["summary", "official_url", "shape", "unfinished"]
 
+[[place]]
+kind = "park"
+slug = "glacier"
+basis = "stated"
+source = "https://www.nps.gov/noca/planyourvisit/pacific-northwest-trail.htm"
+
+[[place]]
+kind = "park"
+slug = "north-cascades-national-park"
+basis = "stated"
+source = "https://www.nps.gov/noca/planyourvisit/pacific-northwest-trail.htm"
+
+[[place]]
+kind = "park"
+slug = "olympic-national-park"
+basis = "stated"
+source = "https://www.nps.gov/noca/planyourvisit/pacific-northwest-trail.htm"
+
+[[place]]
+kind = "range"
+slug = "appalachian-mountains"
+basis = "stated"
+source = "https://andrewskurka.com/adventures/sea-to-sea-route/overview/"
+
+[[place]]
+kind = "range"
+slug = "north-cascades"
+basis = "stated"
+source = "https://www.nps.gov/noca/planyourvisit/pacific-northwest-trail.htm"
+
+[[place]]
+kind = "range"
+slug = "olympic-mountains"
+basis = "stated"
+source = "https://www.nps.gov/noca/planyourvisit/pacific-northwest-trail.htm"
+
+[[place]]
+kind = "range"
+slug = "rocky-mountains"
+basis = "stated"
+source = "https://www.nps.gov/noca/planyourvisit/pacific-northwest-trail.htm"
+
+[[place]]
+kind = "wilderness"
+slug = "pasayten-wilderness"
+basis = "stated"
+source = "https://www.nps.gov/noca/planyourvisit/pacific-northwest-trail.htm"
+
+[[place]]
+kind = "wilderness"
+slug = "stephen-mather-wilderness"
+basis = "stated"
+source = "https://www.nps.gov/noca/planyourvisit/pacific-northwest-trail.htm"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -117,5 +172,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Great Western Loop and Sea-to-Sea Route Slideshows - Skurka Adventures\"."
 basis_url = "https://andrewskurka.com/product/slideshows-on-disk-great-western-loop-and-sea-to-sea-route/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Glacier National Park, North Cascades National Park, Olympic National Park, Appalachian Mountains, North Cascades, Olympic Mountains, Rocky Mountains, Pasayten Wilderness and Stephen Mather Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"The Pacific Northwest Trail (PNT) travels 1,200 miles through Montana, Idaho, and Washington from near the Continental Divide in Glacier National Park to the Pacific Ocean on Washington's Olympic Peninsula.\" (Glacier National Park, Olympic National Park, Olympic Mountains, Rocky Mountains) The page says: \"About 63 miles of the trail passes through North Cascades National Park Service Complex, which includes both the National Park and Ross Lake National Recreation Area.\" (North Cascades National Park, North Cascades) The page says: \"Gear List – Appalachians\" (Appalachian Mountains) The page says: \"Westbound thru-hikers re-supplying in Oroville, WA, email noca_wilderness@nps.gov to request a permit for entering the National Park from the Pasayten Wilderness.\" (Pasayten Wilderness) The page says: \"the management goal of protecting wilderness character in the 94% of the National Park Complex that is designated wilderness\" (Stephen Mather Wilderness)"
+basis_url = "https://www.nps.gov/noca/planyourvisit/pacific-northwest-trail.htm"
 asked_by = "the dataset's own check"
 outcome = "applied"

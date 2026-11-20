@@ -9,6 +9,7 @@ length_note = "100 mi, as the Forest Service's Gila Wilderness page and its two 
 tier = "regional"
 designation = "Loop designated by the Forest Service in 2024 for the centennial of the Gila Wilderness, Gila National Forest"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -84,6 +85,12 @@ price = "0.00"
 price_checked = "2026-11-19"
 publisher = "US Forest Service R3"
 
+[[place]]
+kind = "wilderness"
+slug = "gila-wilderness"
+basis = "stated"
+source = "https://www.fs.usda.gov/r03/gila/recreation/gila-wilderness-area"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -92,6 +99,15 @@ date = "2026-11-19"
 change = "The record was added: the Gila Wilderness Centennial Loop, 100 miles (161 km), designated by the Forest Service in 2024, with no track, and no start, because the Forest Service names none."
 fields = ["record"]
 basis = "The Forest Service's Gila Wilderness page says the 100-mile Centennial Loop was designated in 2024, and its two loop maps give the length as 100 miles. The loop has its own name and its own published length. The Forest Service names no starting trailhead for the loop, so the record gives none. No track is included because no page that could be opened lists the trails the loop uses."
+basis_url = "https://www.fs.usda.gov/r03/gila/recreation/gila-wilderness-area"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Gila Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Gila Wilderness Centennial Loop is a 100-mile loop through the Gila Wilderness of southwestern New Mexico.\""
 basis_url = "https://www.fs.usda.gov/r03/gila/recreation/gila-wilderness-area"
 asked_by = "the dataset's own check"
 outcome = "applied"

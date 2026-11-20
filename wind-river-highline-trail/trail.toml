@@ -9,6 +9,7 @@ length_note = "64 mi, the minimum figure in White and Lorain's Best Backpacking 
 tier = "regional"
 designation = "The Highline Trail and the Fremont Trail (numbers 7094 and 7096 in the Forest Service's trail data), Bridger Wilderness, Bridger-Teton National Forest, from Green River Lakes to Big Sandy; the Forest Service names the ends but gives no length for the whole. Nearly all of it is the Continental Divide National Scenic Trail, a longer listed trail"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -87,6 +88,18 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=10421
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Big Sandy Trailhead, OpenStreetMap node 1042137527"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "wind-river-range"
+basis = "stated"
+source = "https://www.fs.usda.gov/r04/bridger-teton/recreation/pinedale-ranger-district"
+
+[[place]]
+kind = "wilderness"
+slug = "bridger-wilderness"
+basis = "stated"
+source = "https://www.fs.usda.gov/r04/bridger-teton/recreation/pinedale-ranger-district"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -105,5 +118,14 @@ change = "The season is recorded as coming from one page that is not the trail's
 fields = ["hike.season_basis"]
 basis = "The season is stated by University Press of Colorado (the publisher's page for the book); the facts are from the book's Trip 9, pages 184-216, 2019 as: July to October."
 basis_url = "https://upcolorado.com/university-press-of-colorado/best-backpacking-trips-in-montana-wyoming-and-colorado"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Wind River Range and Bridger Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Wind River Highline Trail runs the length of the Bridger Wilderness in Wyoming, from Green River Lakes south to Big Sandy, along a bench on the west side of the Wind River Range.\""
+basis_url = "https://www.fs.usda.gov/r04/bridger-teton/recreation/pinedale-ranger-district"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Mike White); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -111,6 +112,18 @@ url = "https://www.nps.gov/seki/planyourvisit/trailcond.htm"
 publisher = "National Park Service, Sequoia & Kings Canyon National Parks"
 facts = ["permit"]
 
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon"
+basis = "stated"
+source = "https://fastestknowntime.com/route/circle-solitude"
+
+[[place]]
+kind = "range"
+slug = "great-western-divide"
+basis = "stated"
+source = "https://fastestknowntime.com/route/circle-solitude"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -183,4 +196,13 @@ fields = ["guide", "route.note", "length_note", "hike.summary", "hike.source", "
 basis = "Two hikers' own accounts of 2014 walks name Mike White as the one who named the loop and the 2012 guide as the book (one says so in its own words), and agree on the order of places; the publisher's page gives the 2012 title, author, ISBN and price; Open Library's record says the 2012 book compiles the 2004 guides. No page read gives the trip's number or page."
 basis_url = "https://www.spratt.us/COS2014/COS.html"
 asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sequoia and Kings Canyon National Parks and Great Western Divide from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Circle of Solitude is a loop of about 68 miles in Kings Canyon and Sequoia National Parks, California, from Road's End.\" (Sequoia and Kings Canyon National Parks) The trail's own description says: \"Colby Pass (record: 'follows the Roaring River and Cloud Canyon to Colby Pass, then the Kern-Kaweah River')\" (Great Western Divide)"
+basis_url = "https://fastestknowntime.com/route/circle-solitude"
+asked_by = "the dataset's own check"
 outcome = "applied"

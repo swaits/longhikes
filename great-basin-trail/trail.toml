@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Ryan \"Dirtmonger\" Sylva, 2019); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -76,6 +77,102 @@ url = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
 publisher = "Ryan Sylva (Dirtmonger), on the Gossamer Gear blog"
 facts = ["official_url", "summary", "shape", "terrain", "travel", "caution"]
 
+[[place]]
+kind = "park"
+slug = "great-basin-national-park"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "range"
+slug = "ruby-mountains"
+basis = "stated"
+source = "https://www.gossamergear.com/blogs/our-blog/great-basin-trail"
+
+[[place]]
+kind = "wilderness"
+slug = "alta-toquima-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "wilderness"
+slug = "arc-dome-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "wilderness"
+slug = "becky-peak-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "wilderness"
+slug = "east-humboldts-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "wilderness"
+slug = "fortification-range-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "wilderness"
+slug = "high-schells-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "wilderness"
+slug = "highland-ridge-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "wilderness"
+slug = "mt-moriah-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "wilderness"
+slug = "parsnip-peak-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "wilderness"
+slug = "quinn-canyon-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "wilderness"
+slug = "ruby-mountains-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "wilderness"
+slug = "south-pahroc-range-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "wilderness"
+slug = "table-mountain-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
+[[place]]
+kind = "wilderness"
+slug = "worthington-mountains-wilderness"
+basis = "stated"
+source = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -93,5 +190,14 @@ change = "The trail's own emblem was added as the logo file, shown alone."
 fields = ["shield.status", "shield.logo_source", "shield.logo_file"]
 basis = "The emblem is shown by its holder or by the managing agency on the page given, and the file was taken from there."
 basis_url = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhszFnWsLND5_P6voxPgOkO8lYn0E5Nn68uWgxZm7to_MIvK9HRh7-HwpnrKzOAZ_LvypddlETUVB7z5ZU-905vcq_cuN1OU51ofVFRccoEWQ_n3KkGTnXNxNFT7ZqOM-gJshWm7k2qfJA/s1600/Great+Basin+Trail+Logo.png"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Great Basin National Park, Ruby Mountains, Alta Toquima Wilderness, Arc Dome Wilderness, Becky Peak Wilderness, East Humboldts Wilderness, Fortification Range Wilderness, High Schells Wilderness, Highland Ridge Wilderness, Mt. Moriah Wilderness, Parsnip Peak Wilderness, Quinn Canyon Wilderness, Ruby Mountains Wilderness, South Pahroc Range Wilderness, Table Mountain Wilderness and Worthington Mountains Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"The Great Basin Trail spends most of its route on BLM land, wends its way through occasional Forest Service land, dips in and out of state land, and traverses across the Great Basin National Park and Basin and Range National Monument, which are managed by the National Park Service.\" (Great Basin National Park) The page says: \"Anchored in the west by the lengthy Toiyabe Crest and Alta Toquima, the northern portion highlighted by the Diamond Range and the Ruby Crest, the east flanked by the High Schells and the tall Snake Range\" (Ruby Mountains) The page says: \"17 Wilderness: Fortification, Parsnip Peak, South Pahroc, Worthington, Quinn Canyon, Palisade Mesa, Arc Dome, Alta Toquima, Table Mountain, Antelope, Ruby, East Humboldt, South Pequop, Becky Peak, High Schells, Mt. Moriah, Highland Ridge\" (Alta Toquima Wilderness, Arc Dome Wilderness, Becky Peak Wilderness, East Humboldts Wilderness, Fortification Range Wilderness, High Schells Wilderness, Highland Ridge Wilderness, Mt. Moriah Wilderness, Parsnip Peak Wilderness, Quinn Canyon Wilderness, Ruby Mountains Wilderness, South Pahroc Range Wilderness, Table Mountain Wilderness, Worthington Mountains Wilderness)"
+basis_url = "https://www.freedirtmonger.com/2020/06/gbt-introduction.html"
 asked_by = "the dataset's own check"
 outcome = "applied"

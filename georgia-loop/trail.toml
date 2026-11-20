@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Route of linked existing trails in Georgia, published as a backpacking hike by the Benton MacKaye Trail Association; no single author is named"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -83,6 +84,18 @@ url = "https://bmta.org/backpacking-hikes/"
 publisher = "Benton MacKaye Trail Association"
 facts = ["summary", "official_url", "shape", "terrain", "travel", "caution"]
 
+[[place]]
+kind = "range"
+slug = "blue-ridge-mountains"
+basis = "stated"
+source = "https://bmta.org/backpacking-hikes/"
+
+[[place]]
+kind = "wilderness"
+slug = "blood-mountain-wilderness"
+basis = "stated"
+source = "https://bmta.org/backpacking-hikes/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -110,5 +123,14 @@ change = "The guide now says what its link points at (the author's own page for 
 fields = ["guide"]
 basis = "The page the guide links to is titled \"Benton MacKaye Trail Guide – Georgia Section - Benton MacKaye Trail Association\"."
 basis_url = "https://bmta.org/product/benton-mackaye-trail-guide-ga/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Blue Ridge Mountains and Blood Mountain Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"This loop is the triangle formed by the Benton MacKaye Trail, Duncan Ridge Trail and the Appalachian Trail.\" (Blue Ridge Mountains) The page says: \"Trailheads include Three Forks on FS 58, Skeenah Creek on GA 60 and Woody Gap on GA 60.\" (Blood Mountain Wilderness)"
+basis_url = "https://bmta.org/backpacking-hikes/"
 asked_by = "the dataset's own check"
 outcome = "applied"

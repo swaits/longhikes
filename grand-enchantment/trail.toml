@@ -14,6 +14,7 @@ designation = "Person-defined route (Brett Tucker, simBLISSity Ultralight Design
 wave = "held"
 wave_note = "Candidate: an author's route, sold as a mapset with GPS tracks; no track is included, and inclusion is undecided."
 inclusion = "candidate-decision-pending"
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -113,6 +114,66 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid=13748
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): First Water Trailhead, OpenStreetMap way 137483519"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "wilderness"
+slug = "aldo-leopold-wilderness"
+basis = "stated"
+source = "http://www.simblissity.net/get-about.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "apache-kid-wilderness"
+basis = "stated"
+source = "http://www.simblissity.net/get-about.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "aravaipa-canyon-wilderness"
+basis = "stated"
+source = "http://www.simblissity.net/get-about.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "gila-wilderness"
+basis = "stated"
+source = "http://www.simblissity.net/get-about.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "manzano-mountain-wilderness"
+basis = "stated"
+source = "http://www.simblissity.net/get_route_description.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "sandia-mountain-wilderness"
+basis = "stated"
+source = "http://www.simblissity.net/get-about.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "santa-teresa-wilderness"
+basis = "stated"
+source = "http://www.simblissity.net/get_route_description.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "superstition-wilderness"
+basis = "stated"
+source = "http://www.simblissity.net/get-about.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "white-canyon-wilderness"
+basis = "stated"
+source = "http://www.simblissity.net/get-about.shtml"
+
+[[place]]
+kind = "wilderness"
+slug = "withington-wilderness"
+basis = "stated"
+source = "http://www.simblissity.net/get_route_description.shtml"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -166,5 +227,14 @@ change = "The season is recorded as coming from the page of the body that manage
 fields = ["hike.season_basis"]
 basis = "The season is stated by Brett Tucker (simBLISSity Ultralight Designs) as: Spring or autumn."
 basis_url = "http://www.simblissity.net/get_faq.shtml"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Aldo Leopold Wilderness, Apache Kid Wilderness, Aravaipa Canyon Wilderness, Gila Wilderness, Manzano Mountain Wilderness, Sandia Mountain Wilderness, Santa Teresa Wilderness, Superstition Wilderness, White Canyon Wilderness and Withington Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"WILDERNESS AREAS (with managing agency) Arizona New Mexico Superstition (USFS) Gila (USFS) White Canyon (BLM) Aldo Leopold (USFS) Aravaipa Canyon (BLM) Apache Kid (USFS) Santa Teresa (USFS) Withington (USFS) Gila Box NCA (BLM) Manzano Mountain (USFS) Blue Range P.A. (USFS) Sandia Mountain (USFS)\" (Aldo Leopold Wilderness, Apache Kid Wilderness, Aravaipa Canyon Wilderness, Sandia Mountain Wilderness, Superstition Wilderness, White Canyon Wilderness) The trail's own description says: \"It crosses desert, volcanic ranges, canyons and forested sky-island mountains, and passes through the Gila Wilderness.\" (Gila Wilderness) The page says: \"Finally our route descends eastward, leaving the Manzano Wilderness\" (Manzano Mountain Wilderness) The page says: \"before our route turns northeast to climb into the extreme rugged terrain of the Santa Teresa Wilderness (Coronado National Forest).\" (Santa Teresa Wilderness) The page says: \"joining the adjacent Withington Wilderness to explore a pair of fire lookouts, including Mt Withington's (10,100')\" (Withington Wilderness)"
+basis_url = "http://www.simblissity.net/get-about.shtml"
 asked_by = "the dataset's own check"
 outcome = "applied"

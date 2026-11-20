@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Guidebook route (Mike White and Douglas Lorain, 2015, in Best Backpacking Trips in California and Nevada); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -97,6 +98,30 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=60911
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Maxson Trailhead, OpenStreetMap node 6091197564"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "sequoia-and-kings-canyon"
+basis = "stated"
+source = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
+
+[[place]]
+kind = "range"
+slug = "sierra-nevada"
+basis = "stated"
+source = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
+
+[[place]]
+kind = "wilderness"
+slug = "john-muir-wilderness"
+basis = "stated"
+source = "https://www.fs.usda.gov/r05/sierra/recreation/trails/j52-crown-rancheria-trailhead"
+
+[[place]]
+kind = "wilderness"
+slug = "sequoia-kings-canyon-wilderness"
+basis = "stated"
+source = "https://www.fs.usda.gov/r05/sierra/recreation/trails/j52-crown-rancheria-trailhead"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -114,6 +139,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by University of Nevada Press (the publisher's page for the book); the facts are from the book's Trip 7, on page 171 of the 2015 printing (no edition is stated) as: Mid-July to early October, best late August to early September."
+basis_url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Sequoia and Kings Canyon National Parks, Sierra Nevada, John Muir Wilderness and Sequoia-Kings Canyon Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Middle Fork Kings River is a point-to-point backpacking trip of 8 to 12 days in Sierra National Forest and Kings Canyon National Park, California, from the Crown Valley Trailhead near Wishon Reservoir to the Maxson Trailhead near Courtright Reservoir.\" (Sequoia and Kings Canyon National Parks) The trail's own description says: \"The Middle Fork Kings River is a point-to-point backpacking trip of 8 to 12 days in Sierra National Forest and Kings Canyon National Park, California\" (Sierra Nevada) The page says: \"John Muir Wilderness regulations apply.\" (John Muir Wilderness) The page says: \"Kings Canyon Wilderness regulations apply if entering the National Park.\" (Sequoia-Kings Canyon Wilderness)"
 basis_url = "https://www.unpress.nevada.edu/9780874179712/best-backpacking-trips-in-california-and-nevada/"
 asked_by = "the dataset's own check"
 outcome = "applied"

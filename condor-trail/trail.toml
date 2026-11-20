@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Route of linked existing trails through the Los Padres National Forest, planned and promoted by the Condor Trail Association (a non-profit formed in 1996); no agency designation"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -113,6 +114,60 @@ title = "Condor Trail"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Condor_Trail"
 
+[[place]]
+kind = "range"
+slug = "california-coast-ranges"
+basis = "stated"
+source = "http://www.condortrail.com/faqs/"
+
+[[place]]
+kind = "range"
+slug = "transverse-ranges"
+basis = "stated"
+source = "http://www.condortrail.com/faqs/"
+
+[[place]]
+kind = "wilderness"
+slug = "dick-smith-wilderness"
+basis = "stated"
+source = "http://www.condortrail.com/maps-trail-descriptions/"
+
+[[place]]
+kind = "wilderness"
+slug = "garcia-wilderness"
+basis = "stated"
+source = "http://www.condortrail.com/maps-trail-descriptions/"
+
+[[place]]
+kind = "wilderness"
+slug = "san-rafael-wilderness"
+basis = "stated"
+source = "http://www.condortrail.com/maps-trail-descriptions/"
+
+[[place]]
+kind = "wilderness"
+slug = "santa-lucia-wilderness"
+basis = "stated"
+source = "http://www.condortrail.com/maps-trail-descriptions/"
+
+[[place]]
+kind = "wilderness"
+slug = "sespe-wilderness"
+basis = "stated"
+source = "http://www.condortrail.com/maps-trail-descriptions/"
+
+[[place]]
+kind = "wilderness"
+slug = "silver-peak-wilderness"
+basis = "stated"
+source = "http://www.condortrail.com/maps-trail-descriptions/"
+
+[[place]]
+kind = "wilderness"
+slug = "ventana-wilderness"
+basis = "stated"
+source = "http://www.condortrail.com/maps-trail-descriptions/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -139,5 +194,14 @@ change = "The guidebook's link now goes to the Los Padres ForestWatch store page
 fields = ["guide"]
 basis = "The ForestWatch store page for the book says: \"by Brian Sarvis with Bryan Conant, 2021. Paperback, 198 pages.\" The association's own page recommends buying it on Amazon, so the link is to a bookseller."
 basis_url = "https://store.forestwatch.org/products/new-condor-trail-guide-hikers-guide-to-the-400-mile-condor-trail"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in California Coast Ranges, Transverse Ranges, Dick Smith Wilderness, Garcia Wilderness, San Rafael Wilderness, Santa Lucia Wilderness, Sespe Wilderness, Silver Peak Wilderness and Ventana Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"The Condor Trail is a backpacking/hiking thru-trail that extends the length of the Los Padres Forest along the coastal mountains of Central California.\" (California Coast Ranges) The page says: \"The southern terminus is at Lake Piru along the border of Los Angeles and Ventura Counties.\" (Transverse Ranges) The page says: \"The Condor Trail spans the north to south extent of the Los Padres National Forest in Coastal Central California.\" (Dick Smith Wilderness, Garcia Wilderness, San Rafael Wilderness, Santa Lucia Wilderness, Sespe Wilderness, Silver Peak Wilderness, Ventana Wilderness)"
+basis_url = "http://www.condortrail.com/faqs/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Aria Zoner, 2013); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -106,6 +107,54 @@ url = "https://nominatim.openstreetmap.org/lookup?osm_ids=R186688,R12859263&form
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): the town boundaries of Ashland (relation 186688) and Mount Shasta (relation 12859263), at their centres"
 facts = ["start_lonlat", "end_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "trinity-alps"
+basis = "stated"
+source = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
+
+[[place]]
+kind = "wilderness"
+slug = "castle-crags-wilderness"
+basis = "stated"
+source = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
+
+[[place]]
+kind = "wilderness"
+slug = "marble-mountain-wilderness"
+basis = "stated"
+source = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
+
+[[place]]
+kind = "wilderness"
+slug = "mt-shasta-wilderness"
+basis = "stated"
+source = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
+
+[[place]]
+kind = "wilderness"
+slug = "red-buttes-wilderness"
+basis = "stated"
+source = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
+
+[[place]]
+kind = "wilderness"
+slug = "russian-wilderness"
+basis = "stated"
+source = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
+
+[[place]]
+kind = "wilderness"
+slug = "siskiyou-wilderness"
+basis = "stated"
+source = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
+
+[[place]]
+kind = "wilderness"
+slug = "trinity-alps-wilderness"
+basis = "stated"
+source = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -124,5 +173,14 @@ change = "The guide now says its edition (the 2017 paperback), where the route i
 fields = ["guide"]
 basis = "The AbeBooks listing gives the 2017 CreateSpace paperback with ISBN 9781983447525, and the book's whole subject is this route. The address the record already holds is that bookseller's listing, so the link is marked as a seller's page."
 basis_url = "https://www.abebooks.com/9781983447525/Siskiyou-Peaks-Trail-Ashland-Shasta-1983447528/plp"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Trinity Alps, Castle Crags Wilderness, Marble Mountain Wilderness, Mt. Shasta Wilderness, Red Buttes Wilderness, Russian Wilderness, Siskiyou Wilderness and Trinity Alps Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Wilderness areas high-pointed on this trail include: - Red Buttes Wilderness - Siskiyou Wilderness - Marble Mountain Wilderness - Russian Wilderness - Trinity Alps Wilderness - Castle Crags Wilderness - Mt Shasta Wilderness\""
+basis_url = "https://www.booktopia.com.au/the-siskiyou-peaks-trail-aria-zoner/book/9781983447525.html"
 asked_by = "the dataset's own check"
 outcome = "applied"

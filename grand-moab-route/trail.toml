@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Paul Mags of PMags.com, hiked 2022); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -92,6 +93,18 @@ url = "https://www.wikidata.org/wiki/Q130134"
 publisher = "Wikidata (CC0)"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "la-sal-mountains"
+basis = "stated"
+source = "https://pmags.com/the-grand-moab-route"
+
+[[place]]
+kind = "wilderness"
+slug = "dominguez-canyon-wilderness"
+basis = "stated"
+source = "https://pmags.com/the-grand-moab-route"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -119,4 +132,13 @@ fields = ["route.line_policy"]
 basis = "The author's page says: \"I don’t have a GPX file to share.\""
 basis_url = "https://pmags.com/the-grand-moab-route"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in La Sal Mountains and Dominguez Canyon Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Grand-Moab Route links Grand Junction, Colorado, and Moab, Utah, in about 140 miles over the Uncompahgre Plateau, Dominguez Canyon and the La Sal Mountains.\" (La Sal Mountains) The page says: \"The general route and highlights include: The confluence, as mentioned earlier, of the Gunnison and Colorado Rivers Bluffs above the Gunnison River The Tabeguache Trail Dominguez Canyon the Uncompahgre Plateau\" (Dominguez Canyon Wilderness)"
+basis_url = "https://pmags.com/the-grand-moab-route"
+asked_by = "the dataset's own check"
 outcome = "applied"

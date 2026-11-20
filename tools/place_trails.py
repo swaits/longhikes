@@ -1070,8 +1070,8 @@ def add_stated(root, rid, kind, slug, source_url, quote, today):
 def add_stated_many(root, rid, items, today):
     """Place a trackless trail in every place of `items` from cited sources, with one
     history entry for the record. An item is {kind, slug, source, quote}; with
-    "summary": True the quote is the sentence of the record's own summary and the source is
-    the page the summary was taken from, and the history says so."""
+    "summary": True the quote is the sentence of the record's own description and the source is
+    the page that description was taken from, and the history says so."""
     if not items:
         raise ValueError("stated needs at least one place")
     for it in items:
@@ -1108,7 +1108,7 @@ def add_stated_many(root, rid, items, today):
         groups.setdefault((it["source"], it["quote"], bool(it.get("summary"))), []).append(name)
     parts = []
     for (source, quote, summary), who in groups.items():
-        lead = "The trail's own summary says" if summary else "The page says"
+        lead = "The trail's own description says" if summary else "The page says"
         tail = f" ({', '.join(who)})" if len(groups) > 1 else ""
         parts.append(f'{lead}: "{quote}"{tail}')
     doc.append_history(_history_entry(

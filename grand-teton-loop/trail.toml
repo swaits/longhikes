@@ -11,6 +11,7 @@ tier = "short"
 designation = "Guidebook route (Douglas Lorain, 2010, in Backpacking Wyoming); no agency or association"
 wave = 1
 short_reason = "The book gives it five to eight days and describes optional cross-country scrambles."
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -92,6 +93,24 @@ url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=13122
 publisher = "OpenStreetMap contributors, via Nominatim (ODbL): Lupine Meadows Trailhead, OpenStreetMap node 13122765355"
 facts = ["start_lonlat"]
 
+[[place]]
+kind = "park"
+slug = "grand-teton-national-park"
+basis = "stated"
+source = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+
+[[place]]
+kind = "range"
+slug = "teton-range"
+basis = "stated"
+source = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+
+[[place]]
+kind = "wilderness"
+slug = "jedediah-smith-wilderness"
+basis = "stated"
+source = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -154,6 +173,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Wilderness Press (the publisher's page for the book); the facts are from the book's pages 104-106 of the 1st edition (2010), read from a printed copy as: Usually open mid-July to mid-October, best late July and August."
+basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Grand Teton National Park, Teton Range and Jedediah Smith Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Grand Teton Loop is a backpacking loop of five to eight days in Grand Teton National Park, Wyoming, from the Lupine Meadows Trailhead.\" (Grand Teton National Park) The trail's own description says: \"The Grand Teton Loop is a backpacking loop of five to eight days in Grand Teton National Park, Wyoming\" (Teton Range) The trail's own description says: \"then passes Lake Solitude, goes up South Fork Cascade Canyon, crosses Hurricane Pass, and runs through Alaska Basin and along Death Canyon Shelf to Fox Creek Pass\" (Jedediah Smith Wilderness)"
 basis_url = "https://shop.adventurewithkeen.com/product/backpacking-wyoming/"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -10,6 +10,7 @@ kind = "route"
 tier = "regional"
 designation = "Guidebook route (Eli Boschetto, 2026, in Backpacking Oregon); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -98,6 +99,18 @@ url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_RecreationOpportuniti
 publisher = "USDA Forest Service, Recreation Opportunities layer (public domain): Bowman-Francis Lake Trailhead, Wallowa-Whitman National Forest"
 facts = ["end_lonlat"]
 
+[[place]]
+kind = "range"
+slug = "wallowa-mountains"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+
+[[place]]
+kind = "wilderness"
+slug = "eagle-cap-wilderness"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -142,6 +155,15 @@ date = "2026-11-20"
 change = "The season is recorded as coming from the page of the body that manages the trail or, for a route, its author."
 fields = ["hike.season_basis"]
 basis = "The season is stated by Mountaineers Books (the publisher's page for the book); the facts are from the book's Trip 48, pages 218-224 of the 1st edition, 2026, read from the owner's copy as: July to October."
+basis_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Wallowa Mountains and Eagle Cap Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The trail's own description says: \"The Eagle Cap Traverse is a six day one way backpacking route through the Eagle Cap Wilderness in the Wallowa Mountains of Oregon, from the Tenderfoot Trailhead to the Bowman-Francis Trailhead.\""
 basis_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
 asked_by = "the dataset's own check"
 outcome = "applied"

@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Kevin \"LarryBoy\" DeVries, 2019); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -78,6 +79,48 @@ url = "https://www.lbhikes.com/2019/12/dhr.html"
 publisher = "Kevin \"LarryBoy\" DeVries (LB Hikes)"
 facts = ["summary", "official_url", "start", "end", "shape", "terrain", "travel", "caution"]
 
+[[place]]
+kind = "park"
+slug = "bryce-canyon-national-park"
+basis = "stated"
+source = "http://www.lbhikes.com/2019/12/dhr.html"
+
+[[place]]
+kind = "park"
+slug = "grand-canyon-national-park"
+basis = "stated"
+source = "https://aztrail.org/see-the-full-beauty-of-arizona-on-the-arizona-national-scenic-trail/"
+
+[[place]]
+kind = "park"
+slug = "saguaro-national-park"
+basis = "stated"
+source = "https://www.nps.gov/sagu/planyourvisit/rincon-valley-area.htm"
+
+[[place]]
+kind = "range"
+slug = "colorado-plateau"
+basis = "stated"
+source = "http://www.lbhikes.com/2019/12/dhr.html"
+
+[[place]]
+kind = "range"
+slug = "wasatch-range"
+basis = "stated"
+source = "http://www.lbhikes.com/2019/12/dhr.html"
+
+[[place]]
+kind = "wilderness"
+slug = "paria-canyon-vermilion-cliffs-wilderness"
+basis = "stated"
+source = "http://www.lbhikes.com/2019/12/dhr.html"
+
+[[place]]
+kind = "wilderness"
+slug = "saguaro-wilderness"
+basis = "stated"
+source = "https://www.nps.gov/sagu/planyourvisit/rincon-valley-area.htm"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -96,4 +139,13 @@ fields = ["route.line_policy", "source.line_absent_reason"]
 basis = "The author's guide page sends the maps, data book and GPX for the middle third only after proof of a day of trail work."
 basis_url = "http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html"
 asked_by = "a reviewer"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Bryce Canyon National Park, Grand Canyon National Park, Saguaro National Park, Colorado Plateau, Wasatch Range, Paria Canyon-Vermilion Cliffs Wilderness and Saguaro Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Highlights: Paria Canyon Bryce Canyon National Park Wasatch Mountains Pioneer Mountains\" (Bryce Canyon National Park, Colorado Plateau, Wasatch Range, Paria Canyon-Vermilion Cliffs Wilderness) The page says: \"The trail runs through Saguaro National Park, the Catalina Mountains, Tonto National Forest, Mormon Lake, Flagstaff, and the Grand Canyon National Park.\" (Grand Canyon National Park) The page says: \"Passage 9 of the Arizona Trail runs through the Rincon Valley and Saguaro Wilderness Area.\" (Saguaro National Park, Saguaro Wilderness)"
+basis_url = "http://www.lbhikes.com/2019/12/dhr.html"
+asked_by = "the dataset's own check"
 outcome = "applied"

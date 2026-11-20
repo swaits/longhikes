@@ -12,6 +12,7 @@ kind = "route"
 tier = "regional"
 designation = "Person-defined route (Erik Schlimmer, 2010); no agency or association"
 wave = 1
+places_checked = "2026-11-20"
 
 [source]
 status = "none"
@@ -86,6 +87,12 @@ title = "Trans Adirondack Route"
 publisher = "LongTrailsWiki"
 url = "https://www.longtrailswiki.net/wiki/Trans_Adirondack_Route"
 
+[[place]]
+kind = "range"
+slug = "adirondack-mountains"
+basis = "stated"
+source = "https://erikschlimmer.com/tar-1"
+
 # History of this record, oldest first. Add to it; never rewrite it.
 # See docs/schema.md, section [[history]].
 
@@ -112,5 +119,14 @@ change = "The guide's entry now names the publisher and the edition on sale, and
 fields = ["guide"]
 basis = "The author's page for his books lists Blue Line to Blue Line + Map Set as the second edition guidebook (222 pages, 2025) and the third edition map set, published by Beechwood Books."
 basis_url = "https://erikschlimmer.com/books-sale-/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-20"
+change = "The trail was placed in Adirondack Mountains from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"to cross the six-million-acre Adirondack Park\""
+basis_url = "https://erikschlimmer.com/tar-1"
 asked_by = "the dataset's own check"
 outcome = "applied"

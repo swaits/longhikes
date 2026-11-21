@@ -3,6 +3,7 @@ import contextlib
 import io
 import os
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -198,7 +199,14 @@ class BuiltPagesTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             again = os.path.join(tmp, "site")
             shutil.copytree(OUT, again)
-            builtsite.build(again)
+            gone = os.path.join(again, "trails", self.png[0], thumbs.THUMB_NAME)
+            os.remove(gone)                              # one the second build must put back
+            # build.py itself, on the copy as it stands: builtsite.build removes its target first
+            done = subprocess.run([sys.executable, os.path.join(builtsite.WEB, "build.py"), "--out", again],
+                                  stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            self.assertEqual(done.returncode, 0, done.stderr[-2000:])
+            self.assertIn("trails processed 0,", done.stdout)  # it was a second build, not a first
+            self.assertTrue(os.path.isfile(gone))
             for tid in self.png:
                 self.assertTrue(os.path.isfile(os.path.join(again, "trails", tid, thumbs.THUMB_NAME)), tid)
 

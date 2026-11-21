@@ -35,7 +35,11 @@ CODE_FILES = [os.path.join(HERE, "build.py"),
               # what those import (a test, test_build.py, keeps this list closed under imports)
               os.path.join(HERE, "olt", "words.py"),
               os.path.join(HERE, "olt", "elevation.py"),
-              os.path.join(HERE, "olt", "markup.py")]
+              os.path.join(HERE, "olt", "markup.py"),
+              # and what build.py itself imports (the pages step, olt.pages, is not trail code)
+              os.path.join(HERE, "olt", "fingerprint.py"),
+              os.path.join(HERE, "olt", "redirects.py"),
+              os.path.join(HERE, "olt", "site.py")]
 # Incremental-build cache, deliberately outside the publish directory.
 CACHE_DIR = os.path.join(HERE, ".cache")
 # Files copied verbatim into the root of the publish directory (_headers, ...).

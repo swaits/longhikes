@@ -56,23 +56,49 @@ class SimplifyTogetherTest(unittest.TestCase):
         self.assertLess(geo.point_count(b), geo.point_count(a))
 
 
+def olt_imports(path):
+    """The olt modules a file imports, by any statement anywhere in it (inside a function too):
+    `from . import x`, `from .x import y`, `from olt import x`, `from olt.x import y`, `import olt.x`."""
+    with open(path, encoding="utf-8") as f:
+        tree = ast.parse(f.read())
+    found = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.ImportFrom):
+            if node.level == 1:
+                found.update([node.module] if node.module else [a.name for a in node.names])
+            elif node.level == 0 and node.module == "olt":
+                found.update(a.name for a in node.names)
+            elif node.level == 0 and (node.module or "").startswith("olt."):
+                found.add(node.module.split(".")[1])
+        elif isinstance(node, ast.Import):
+            found.update(a.name.split(".")[1] for a in node.names if a.name.startswith("olt."))
+    return found
+
+
 class CodeFilesTest(unittest.TestCase):
+    # Not part of a trail's derived files: pages renders the site's pages from the finished records.
+    NOT_TRAIL_CODE = {"pages"}
+
     def test_the_files_a_trail_is_built_from_are_closed_under_their_imports(self):
         # The store's key is made of these files: one that is missing would let a change to it
         # leave stale files in the store.
         olt = os.path.join(build.HERE, "olt")
         listed = {os.path.abspath(p) for p in build.CODE_FILES}
+        self.assertIn(os.path.abspath(build.__file__), listed)
         for path in sorted(listed):
-            if os.path.dirname(path) != olt:
+            if os.path.dirname(path) != olt and os.path.basename(path) != "build.py":
                 continue
-            with open(path, encoding="utf-8") as f:
-                tree = ast.parse(f.read())
-            for node in ast.walk(tree):
-                if isinstance(node, ast.ImportFrom) and node.level == 1:
-                    names = [node.module] if node.module else [a.name for a in node.names]
-                    for name in names:
-                        self.assertIn(os.path.join(olt, name + ".py"), listed,
-                                      f"{os.path.basename(path)} imports olt.{name}, which the build's key does not cover")
+            for name in sorted(olt_imports(path) - self.NOT_TRAIL_CODE):
+                self.assertIn(os.path.join(olt, name + ".py"), listed,
+                              f"{os.path.basename(path)} imports olt.{name}, which the build's key does not cover")
+
+    def test_the_scan_sees_every_kind_of_import(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "m.py")
+            with open(path, "w", encoding="utf-8") as f:
+                f.write("from . import a\nfrom .b import x\nfrom olt import c, d\nfrom olt.e import y\n"
+                        "import olt.f\nimport os\n\ndef g():\n    from olt import h\n")
+            self.assertEqual(olt_imports(path), set("abcdefh"))
 
 
 def tree_files(root):

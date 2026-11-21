@@ -90,6 +90,51 @@ class PlanTest(unittest.TestCase):
         self.assertIn("Loops", before)
 
 
+class VeryLongTrailsTest(unittest.TestCase):
+    """A trail of 1,000 miles or more is shown on a place's list page but does not count to its 3."""
+    LONG_KM = 1700
+
+    def world_of(self, normal, long, kind="range", slug="wind-river-range", entries=(RANGE,), km=150):
+        recs = [in_place(100 + i, kind, slug, loop=True, km=km) for i in range(normal)]
+        recs += [in_place(150 + i, kind, slug, loop=True, km=self.LONG_KM) for i in range(long)]
+        recs += [in_place(200 + i, kind, slug, loop=False, km=150) for i in range(8)]
+        recs += [fake(300 + i, km=500, regions=["NY"], hike={"shape": "loop"}) for i in range(4)]
+        recs += [fake(400 + i, km=900, regions=["NY"]) for i in range(30)]
+        return recs
+
+    def loops(self, recs, **kw):
+        _, plan = plan_for(recs, **kw)
+        return next((p for p in plan if p["lst"].key == "loops"), None)
+
+    def test_two_ordinary_trails_and_a_very_long_one_make_no_page(self):
+        self.assertIsNone(self.loops(self.world_of(2, 1)))
+        self.assertIsNone(self.loops(self.world_of(0, 3)))
+
+    def test_three_ordinary_trails_make_a_page_that_also_shows_the_very_long_one(self):
+        p = self.loops(self.world_of(3, 1))
+        self.assertIsNotNone(p)
+        self.assertEqual(len(p["recs"]), 4)
+
+    def test_the_state_plan_still_counts_every_trail(self):
+        plan = placefacets.plan(self.world_of(2, 1))
+        self.assertTrue(all(len(p["recs"]) >= browse.MIN_SIZE for p in plan))
+
+    def test_a_park_or_wilderness_gets_no_page_for_the_500_to_1000_mile_band(self):
+        for kind in ("park", "wilderness"):
+            entry = entry_of(kind, "somewhere", "Somewhere", ["WY"])
+            recs = self.world_of(4, 0, kind, "somewhere", (entry,), km=1000)
+            _, plan = plan_for(recs, (entry,))
+            self.assertNotIn("500-to-1000-miles", self.keys(plan), kind)
+
+    def test_a_range_keeps_the_500_to_1000_mile_band(self):
+        recs = self.world_of(4, 0, km=1000)
+        _, plan = plan_for(recs)
+        self.assertIn("500-to-1000-miles", self.keys(plan))
+
+    def keys(self, plan):
+        return {p["lst"].key for p in plan}
+
+
 def page_of(infos, plan, key):
     p = next(p for p in plan if p["lst"].key == key)
     return placefacets.page(p, [r for i in infos.values() for r in i["records"]], S, plan)

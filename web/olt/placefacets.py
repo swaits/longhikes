@@ -21,21 +21,30 @@ PLACE_MIN = 3    # a park, range or wilderness area's list page needs this many 
 # A list that is itself a place or a holder has no noun, so none is crossed.
 PLACE_LISTS_OUT = frozenset()
 
+# A trail this long crosses a place and is not "in" it: it is shown on a place's list page but does
+# not count toward the PLACE_MIN needed to build one.
+VERY_LONG_KM = browse.LONG_KM
+# Length bands of 500 miles or more are not crossed with a park or a wilderness area: no trail that
+# long lies inside one. A range may keep them.
+OUT_BY_KIND = {"park": frozenset({"500-to-1000-miles"}), "wilderness": frozenset({"500-to-1000-miles"})}
 
-def _plan(units, records, min_size, path_of, lists, max_share):
+
+def _plan(units, records, min_size, path_of, lists, max_share, count_long=True):
     """[{slug, info, lst, recs, path, kind}]: for each unit (slug, info) and each list, a page when the
     place has min_size trails in the list, no more than max_share of the place's trails are in it,
-    and its trails are not nearly the same set as another page of the same place."""
+    and its trails are not nearly the same set as another page of the same place. With count_long False
+    a trail of VERY_LONG_KM or more is shown but not counted toward min_size."""
     shown = {lst.key for lst, _ in browse.shown(records)}
     out = []
     for slug, info in units:
         here = info["records"]
         kept = []
         for lst in lists:
-            if lst.key not in shown:
+            if lst.key not in shown or lst.key in OUT_BY_KIND.get(info["kind"], ()):
                 continue
             recs = browse.members(lst, here)
-            if len(recs) < min_size or len(recs) > max_share * len(here) or len(recs) >= len(here):
+            counted = len(recs) if count_long else sum(1 for r in recs if r["length_km"] < VERY_LONG_KM)
+            if counted < min_size or len(recs) > max_share * len(here) or len(recs) >= len(here):
                 continue
             ids = {r["id"] for r in recs}
             if any(_jaccard(ids, other) >= SAME_SET for other in kept):
@@ -59,7 +68,8 @@ def plan_places(infos, records, max_share=browse.MAX_SHARE):
     units = [(i["slug"], i) for i in sorted(infos.values() if isinstance(infos, dict) else infos,
                                             key=lambda i: (places_mod.KIND_ORDER[i["kind"]], i["name"].lower()))]
     lists = [lst for lst in browse.facet_lists() if lst.key not in PLACE_LISTS_OUT]
-    return _plan(units, records, PLACE_MIN, lambda slug, info, lst: f"{info['path']}{lst.key}/", lists, max_share)
+    return _plan(units, records, PLACE_MIN, lambda slug, info, lst: f"{info['path']}{lst.key}/", lists, max_share,
+                 count_long=False)
 
 
 def key_of(p):

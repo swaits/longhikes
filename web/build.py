@@ -17,6 +17,7 @@ import os
 import shutil
 import time
 import zipfile
+import zlib
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -599,8 +600,8 @@ def build_archive(name, recs, out_dir, stats):
         try:
             shutil.copyfile(kept, tmp)
             with zipfile.ZipFile(tmp) as zf:
-                restored = zf.namelist() == expected
-        except (OSError, zipfile.BadZipFile):
+                restored = zf.namelist() == expected and zf.testzip() is None  # whole, not just named right
+        except (OSError, zipfile.BadZipFile, zlib.error, EOFError, NotImplementedError):
             restored = False
         if restored:
             os.replace(tmp, path)
@@ -612,12 +613,12 @@ def build_archive(name, recs, out_dir, stats):
             # one made elsewhere to a build here).
             info = zipfile.ZipInfo("README.txt", date_time=ARCHIVE_TIME)
             info.compress_type = zipfile.ZIP_DEFLATED
-            info.external_attr = 0o644 << 16
+            info.external_attr = 0o100644 << 16
             zf.writestr(info, archive_readme(name))
             for arc, src in members:
                 info = zipfile.ZipInfo(arc, date_time=ARCHIVE_TIME)
                 info.compress_type = zipfile.ZIP_DEFLATED
-                info.external_attr = 0o644 << 16
+                info.external_attr = 0o100644 << 16
                 with open(src, "rb") as source, zf.open(info, "w") as member:
                     shutil.copyfileobj(source, member, 1 << 20)
         try:

@@ -154,7 +154,7 @@ def _render_site(records, out_dir, repo_root, site=None):
         pages += 1
 
     shown = browse.shown(records)
-    facet_plan = placefacets.plan(records)
+    facet_plan = placefacets.plan(records) + placefacets.plan_places(place_infos, records)
     facets_of_place = placefacets.pages_by_place(facet_plan)
     t, d, b = regions.regions_index_page(records, site, infos=place_infos)
     add("/regions/", t, d, b)  # every trail is on it: the newest of them
@@ -185,7 +185,7 @@ def _render_site(records, out_dir, repo_root, site=None):
             add(path, t, d, b, maps=needs_map, recs=recs)
     # Further place pages (parks, ranges and wilderness areas, olt/placepages.py).
     for builder in EXTRA_PAGE_BUILDERS:
-        for built in builder(records, site, repo_root):
+        for built in builder(records, site, repo_root, facet_pages=facets_of_place):
             region_paths.append(built.path)
             add(built.path, built.title, built.description, built.body,
                 maps=built.needs_map, recs=built.recs)

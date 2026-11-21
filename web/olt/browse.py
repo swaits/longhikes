@@ -50,9 +50,14 @@ class List:
     # The words for this kind of trail in a place page's title: "Loop Hiking Trails" gives
     # "Loop Hiking Trails in Colorado: 6 Trails". Empty: no page for each place.
     noun: str = ""
+    # A shorter noun for the same title where the place's name is long; empty: the noun.
+    short: str = ""
     # (list's trails, all trails) -> a plain sentence or two that says what the list covers
     # where that is not every trail: how many have the fact the list is built on.
     note: Optional[Callable] = None
+    # list's trails -> a first sentence for the list's page that answers the question the list is
+    # asked as (the longest trail and its length), put before the blurb.
+    lede: Optional[Callable] = None
     # A larger least size than MIN_SIZE, where the list is thin by nature (a month's list).
     min_size: int = 0
     # False for a list that is one of a fixed set, so none may go missing: a month's list, however
@@ -65,6 +70,14 @@ class List:
 
 def _km(mi):
     return words.fmt_int(mi * words.KM_PER_MI)
+
+
+def longest_lede(recs):
+    """The longest hiking trail of the list, by name and length, in the words the question is asked in."""
+    top = max(recs, key=lambda r: (r["length_km"], r["id"]))
+    where = "in the US" if "US" in common.countries(top) else "here"
+    mi = words.fmt_int(top["derived"]["length_mi"])
+    return f"The longest hiking trail {where} is {common.plain_name(top)}, {mi} miles ({words.fmt_int(top['length_km'])} km)."
 
 
 def _band(key):
@@ -174,66 +187,74 @@ LISTS = (
          page_title="National Recreation Trails: {n} Long Hiking Trails", group="standing"),
     List("routes", "Routes", facets.ROUTE_DEFINITION,
          lambda r: facets.kind(r) == "route", page_title="Long Hiking Routes by Author: {n} Routes",
-         group="standing", noun="Long Hiking Routes"),
+         group="standing", noun="Long Hiking Routes",
+         short="Routes"),
     List("high-routes", "High routes",
          "Routes whose own name says High Route: through high country, often off the trail.",
          _high_route, page_title="High Routes: {n} Long Hiking Routes", group="walking"),
-    List("longest", "The longest",
+    List("longest", "The longest hiking trails",
          f"Trails of {LONG_MI:,} miles ({_km(LONG_MI)} km) or more.",
          lambda r: r["length_km"] >= LONG_KM, sort="length-desc",
-         page_title=f"Longest Hiking Trails: {{n}} Trails of {LONG_MI:,}+ Miles", group="length"),
+         page_title=f"Longest Hiking Trails in the US and Canada: {{n}} Trails", group="length",
+         lede=longest_lede),
     List("500-to-1000-miles", f"{HALF_MI} to {LONG_MI:,} miles",
          f"Trails of {HALF_MI} miles ({_km(HALF_MI)} km) or more and shorter than {LONG_MI:,} miles ({_km(LONG_MI)} km).",
          _length_band(HALF_MI, LONG_MI), sort="length-desc",
          page_title=f"Hiking Trails of {HALF_MI} to {LONG_MI:,} Miles: {{n}} Long Trails", group="length",
-         noun=f"Hiking Trails of {HALF_MI} to {LONG_MI:,} Miles"),
+         noun=f"Hiking Trails of {HALF_MI} to {LONG_MI:,} Miles",
+         short=f"{HALF_MI} to {LONG_MI:,} Mile Trails"),
     List("200-to-500-miles", f"{MID_MI} to {HALF_MI} miles",
          f"Trails of {MID_MI} miles ({_km(MID_MI)} km) or more and shorter than {HALF_MI} miles ({_km(HALF_MI)} km).",
          _length_band(MID_MI, HALF_MI), sort="length-desc",
          page_title=f"Hiking Trails of {MID_MI} to {HALF_MI} Miles: {{n}} Long Trails", group="length",
-         noun=f"Hiking Trails of {MID_MI} to {HALF_MI} Miles"),
+         noun=f"Hiking Trails of {MID_MI} to {HALF_MI} Miles",
+         short=f"{MID_MI} to {HALF_MI} Mile Trails"),
     List("100-to-200-miles", f"{SHORT_MI} to {MID_MI} miles",
          f"Trails of {SHORT_MI} miles ({_km(SHORT_MI)} km) or more and shorter than {MID_MI} miles ({_km(MID_MI)} km).",
          _length_band(SHORT_MI, MID_MI), sort="length-desc",
          page_title=f"Hiking Trails of {SHORT_MI} to {MID_MI} Miles: {{n}} Long Trails", group="length",
-         noun=f"Hiking Trails of {SHORT_MI} to {MID_MI} Miles"),
+         noun=f"Hiking Trails of {SHORT_MI} to {MID_MI} Miles",
+         short=f"{SHORT_MI} to {MID_MI} Mile Trails"),
     List("under-100-miles", f"Under {SHORT_MI} miles",
-         f"Trails shorter than {SHORT_MI} miles ({_km(SHORT_MI)} km).",
+         f"Short thru-hikes and loops: trails shorter than {SHORT_MI} miles ({_km(SHORT_MI)} km).",
          lambda r: r["length_km"] < SHORT_KM, sort="length-asc",
-         page_title=f"Hiking Trails Under {SHORT_MI} Miles: {{n}} Long Trails", group="length",
-         noun=f"Hiking Trails Under {SHORT_MI} Miles"),
+         page_title=f"Short Thru-Hikes and Loops Under {SHORT_MI} Miles: {{n}} Trails", group="length",
+         noun=f"Long Hikes Under {SHORT_MI} Miles",
+         short=f"Trails Under {SHORT_MI} Miles"),
     List("under-200-miles", f"Under {MID_MI} miles",
-         f"Trails shorter than {MID_MI} miles ({_km(MID_MI)} km): the two shortest bands together.",
+         f"Short thru-hikes and loops: trails shorter than {MID_MI} miles ({_km(MID_MI)} km), the two shortest bands together.",
          lambda r: r["length_km"] < MID_KM, sort="length-asc",
-         page_title=f"Thru-Hikes Under {MID_MI} Miles: {{n}} Long Trails", group="length"),
+         page_title=f"Thru-Hikes and Loops Under {MID_MI} Miles: {{n}} Trails", group="length"),
     List("weekend", "A weekend or long weekend",
-         f"Trails that take {WEEKEND_DAYS} days or fewer to walk whole.",
+         f"Backpacking trips of {WEEKEND_DAYS} days or fewer: trails that take that long to walk whole.",
          lambda r: _mid_days(r) <= WEEKEND_DAYS, sort="time-asc",
-         page_title="Long Trails to Hike in a Weekend: {n} Trails", group="time", note=time_note),
+         page_title="Long-Weekend Backpacking Trips: {n} Long Trails", group="time", note=time_note),
     List("a-week-or-less", "A week or less",
-         "Trails most people walk in a week or less, as a source states it or as estimated from the length.",
-         _band("week"), sort="time-asc", page_title="Long Trails to Hike in a Week or Less: {n} Trails",
-         group="time", note=time_note),
+         "Backpacking trips of a week or less: trails most people walk in a week or less, as a source states it or as estimated from the length.",
+         _band("week"), sort="time-asc", page_title="Backpacking Trips of a Week or Less: {n} Long Trails",
+         group="time", note=time_note, noun="Backpacking Trips of a Week or Less", short="Trips of a Week or Less"),
     List("one-to-two-weeks", "One to two weeks",
-         "Trails that take one to two weeks, as a source states it or as estimated from the length.",
-         _band("two-weeks"), sort="time-asc", page_title="Long Trails to Hike in One to Two Weeks: {n} Trails",
+         "Backpacking trips of one to two weeks, as a source states it or as estimated from the length.",
+         _band("two-weeks"), sort="time-asc", page_title="One-to-Two-Week Backpacking Trips: {n} Long Trails",
          group="time", note=time_note),
     List("two-to-four-weeks", "Two weeks to a month",
-         "Trails that take two to four weeks to walk whole.",
-         _band("month"), sort="time-asc", page_title="Long Trails to Hike in 2 to 4 Weeks: {n} Trails",
+         "Backpacking trips of two to four weeks: trails that take that long to walk whole.",
+         _band("month"), sort="time-asc", page_title="Backpacking Trips of 2 to 4 Weeks: {n} Long Trails",
          group="time", note=time_note),
     List("a-month-or-more", "A month or more",
-         "Trails that take more than four weeks to walk whole.",
+         "Month-long backpacking trips and longer: trails that take more than four weeks to walk whole.",
          lambda r: facets.time_band(r) in ("months", "long"), sort="time-asc",
-         page_title="Long Trails That Take a Month or More: {n} Trails", group="time", note=time_note),
-    List("loops", "Loops", "Trails that finish where they start.",
-         lambda r: facets.shape(r) == "loop", page_title="Loop Hiking Trails: {n} Long Trail Loops",
-         group="walking", noun="Loop Hiking Trails"),
+         page_title="Month-Long Backpacking Trips and Longer: {n} Trails", group="time", note=time_note),
+    List("loops", "Loops", "Backpacking loops: trails that finish where they start.",
+         lambda r: facets.shape(r) == "loop", page_title="Backpacking Loops: {n} Long Trail Loops",
+         group="walking", noun="Backpacking Loops",
+         short="Loops"),
     List("off-trail", "Cross-country",
          "Trails with stretches of walking where there is no trail.",
          lambda r: facets.walking(r) in facets.CROSS_COUNTRY,
-         page_title="Cross-Country Hiking: {n} Long Trails and Routes", group="walking",
-         noun="Cross-Country Hiking"),
+         page_title="Long Trails with Cross-Country Stretches: {n} Trails", group="walking",
+         noun="Cross-Country Hiking",
+         short="Cross-Country Hikes"),
     List("mostly-cross-country", "Mostly cross-country",
          "Trails where there is no trail for most of the way.",
          lambda r: facets.walking(r) == "mostly-cross-country",
@@ -261,7 +282,8 @@ LISTS = (
     List("with-gpx", "With a GPX to download",
          "Trails with a GPX file of the track on their page.",
          facets.gpx_here, page_title="Long Trails with a GPX to Download: {n} Trails", group="where",
-         noun="Hiking Trails with a GPX"),
+         noun="Hiking Trails with a GPX",
+         short="Trails with a GPX"),
     List("canada", "In Canada", "Trails in Canada, or crossing into it.",
          lambda r: "CA" in common.countries(r), page_title="Hiking Trails in Canada: {n} Long Trails",
          group="where"),
@@ -272,7 +294,7 @@ LISTS = (
     List(f"terrain-{t}", label, f"Trails with {t} among their main terrain.",
          lambda r, t=t: t in facets.terrain(r),
          page_title=f"{TERRAIN_ADJECTIVE.get(t, label)} Hiking Trails: {{n}} Long Trails", group="terrain",
-         noun=f"{TERRAIN_ADJECTIVE.get(t, label)} Hiking Trails")
+         noun=f"{TERRAIN_ADJECTIVE.get(t, label)} Hiking Trails", short=f"{TERRAIN_ADJECTIVE.get(t, label)} Trails")
     for t, label in words.TERRAIN.items()
 ) + tuple(_month_list(m) for m in range(1, 13))
 

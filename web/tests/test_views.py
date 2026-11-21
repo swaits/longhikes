@@ -55,7 +55,7 @@ class LengthBandTest(unittest.TestCase):
     def test_under_200_is_the_two_short_bands(self):
         recs = [fake(1, km=mi(50)), fake(2, km=mi(150)), fake(3, km=mi(250))]
         self.assertEqual(sorted(keys(recs, "under-200-miles")), ["t1", "t2"])
-        self.assertTrue(browse.by_key("under-200-miles").search_title(9).startswith("Thru-Hikes Under 200 Miles"))
+        self.assertTrue(browse.by_key("under-200-miles").search_title(9).startswith("Thru-Hikes and Loops Under 200 Miles"))
 
 
 class TimeListTest(unittest.TestCase):

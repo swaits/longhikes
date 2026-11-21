@@ -227,7 +227,7 @@ class BuildTreeTest(unittest.TestCase):
             build.main(["--out", self.out])
         self.assertIn("trails processed 0", out.getvalue())
 
-    def test_archives_rebuilt_only_when_an_input_is_newer(self):
+    def test_archives_rebuilt_only_when_an_input_changes_in_content(self):
         self.build()
         gpx, geojson = self.path("data", "all-gpx.zip"), self.path("data", "all-geojson.zip")
         with zipfile.ZipFile(gpx) as zf:
@@ -253,12 +253,26 @@ class BuildTreeTest(unittest.TestCase):
         stamps = (os.path.getmtime(gpx), os.path.getmtime(geojson))
         self.build()
         self.assertEqual((os.path.getmtime(gpx), os.path.getmtime(geojson)), stamps)
-        # a newer input (here a release.txt) rebuilds both archives
+        # a release.txt touched to a later time, with the same content, is not a change
         later = max(stamps) + 10
-        os.utime(os.path.join(self.root, "avon", "release.txt"), (later, later))
+        release = os.path.join(self.root, "avon", "release.txt")
+        os.utime(release, (later, later))
         self.build()
-        self.assertNotEqual(os.path.getmtime(gpx), stamps[0])
-        self.assertNotEqual(os.path.getmtime(geojson), stamps[1])
+        self.assertEqual((os.path.getmtime(gpx), os.path.getmtime(geojson)), stamps)
+        # nor is an archive older than every input (put back to an old time)
+        os.utime(gpx, (1000, 1000))
+        os.utime(geojson, (1000, 1000))
+        self.build()
+        self.assertEqual((os.path.getmtime(gpx), os.path.getmtime(geojson)), (1000, 1000))
+        # but a release.txt with other content rebuilds both archives, with the new content in them
+        with open(release, "a", encoding="utf-8") as f:
+            f.write("\nChanged.\n")
+        os.utime(release, (1, 1))                    # and with an old time: the content decides
+        self.build()
+        self.assertNotEqual(os.path.getmtime(gpx), 1000)
+        self.assertNotEqual(os.path.getmtime(geojson), 1000)
+        with zipfile.ZipFile(gpx) as zf:
+            self.assertIn("Changed.", zf.read("avon/release.txt").decode("utf-8"))
 
     def test_archive_members_are_regular_files_with_the_usual_mode(self):
         self.build()

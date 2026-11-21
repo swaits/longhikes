@@ -188,13 +188,13 @@ class PlaceAndListTitleTest(unittest.TestCase):
             title = lst.search_title(999)
             self.assertLessEqual(len(title), ROOM, title)
             self.assertIn("999", title)
-        self.assertEqual(browse.by_key("loops").search_title(32), "Loop Hiking Trails: 32 Long Trail Loops")
+        self.assertEqual(browse.by_key("loops").search_title(32), "Backpacking Loops: 32 Long Trail Loops")
 
     def test_list_description_adds_to_the_title(self):
         lst = browse.by_key("under-100-miles")
         members = browse.members(lst, [fake(i, km=100) for i in range(1, 5)])
         title, desc = regions.list_page(lst, members, 20, S)[:2]
-        self.assertTrue(title.startswith("Hiking Trails Under 100 Miles: 4"))
+        self.assertTrue(title.startswith("Short Thru-Hikes and Loops Under 100 Miles: 4"))
         self.assertLessEqual(len(desc), common.DESCRIPTION_LIMIT)
         self.assertTrue(desc.startswith(lst.blurb))
         self.assertIn("4 trails", desc)

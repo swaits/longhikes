@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-11-20 - The bulk downloads follow content, not file times
+
+- For contributors: the build now decides whether `all-gpx.zip` and `all-geojson.zip` are up to date by what goes into them, as it does for the rest of the pages, and no longer by the modification times of their files. A file touched with no change leaves them alone, and a changed file with an old time rebuilds them. Nothing a visitor sees changes.
+
+## 2026-11-20 - List titles in the words people search with
+
+- The longest list now opens with the answer: "Longest Hiking Trails in the US and Canada: 25 Trails", and its first line names the longest trail and its length (the Sea-to-Sea Route, 7,775 miles). Two of the 25 cross into Canada, so the title says so. The line is worked out from the trails, so it follows them.
+- The length bands: "Hiking Trails Under 100 Miles" is now "Short Thru-Hikes and Loops Under 100 Miles: 102 Trails" and "Thru-Hikes Under 200 Miles" is now "Thru-Hikes and Loops Under 200 Miles: 143 Trails", because 38 of the 102 trails under 100 miles and 43 of the 143 under 200 are loops, not thru-hikes. Their first lines say "short thru-hikes and loops".
+- The time bands: "Long Trails to Hike in a Week or Less" is now "Backpacking Trips of a Week or Less: 82 Long Trails", "One to Two Weeks" is "One-to-Two-Week Backpacking Trips: 60 Long Trails", "2 to 4 Weeks" is "Backpacking Trips of 2 to 4 Weeks: 27 Long Trails" and "a Month or More" is "Month-Long Backpacking Trips and Longer: 54 Trails". "in a Weekend" is now "Long-Weekend Backpacking Trips: 17 Long Trails", because every trail in it takes 3 or 4 days to walk.
+- Loops: "Loop Hiking Trails" is now "Backpacking Loops: 52 Long Trail Loops". The cross-country list is now "Long Trails with Cross-Country Stretches: 54 Trails", because 38 of its 54 trails have only some cross-country walking and 16 have no trail for most of the way.
+- The same words carry into the pages of a state: "Backpacking Loops in Arizona: 9 Trails", "Long Hikes Under 100 Miles in Arizona: 9 Trails", and a new kind, "Backpacking Trips of a Week or Less", which adds 3 state pages (Arizona, California and Wyoming). No address changed.
+
+## 2026-11-20 - Lists inside parks, mountain ranges and wilderness areas
+
+- 84 new pages show one kind of trail in one park, mountain range or wilderness area: 21 for parks, 49 for ranges and 14 for wilderness areas. Examples: "Trails Under 100 Miles in the Wind River Range: 5 Trails", "Routes in Yosemite National Park: 6 Routes", "Lake Trails in Yosemite National Park: 6 Trails". They answer searches such as "short hikes in the Wind River Range", and each has the same filter bar, trail rows and map as the place's own page, with the count in its title.
+- A page exists only when the place has 3 or more trails of that kind, not counting any of 1,000 miles or more: those cross a place without being in it. They are shown on the page when there are 3 others. Trails of 500 miles or more are not crossed with a park or a wilderness area at all, since none lies inside one. A page is not built when its trails are more than three in four of the place's trails (it would repeat the place's own page), when they are nearly the same as another page of the same place, or when a park, a range or a wilderness area holds exactly the same trails for the same list: then one page is built, the park's first, then the range's, then the wilderness area's. The kinds crossed with a place are the ones already crossed with a state: routes, the length bands, a week or less, loops, cross-country, trails with a GPX to download and the main kinds of terrain.
+- Each place's page links to its lists with how many trails are in each, and each list page links to the place, to the place's other lists, and to the same list in other places of the same kind (a park to parks, a range to ranges).
+- Every title follows one pattern, the same words in the title and the page heading: a fixed short name for the kind of trail, the place's "in" or "in the" and its name, then the count ("Trails Under 100 Miles in the Wind River Range: 5 Trails"; the routes list says "Routes"). A place in one state has the state added when the title stays within the usual length. The 19 pages whose place name alone is long (Sequoia and Kings Canyon National Parks, the Sequoia-Kings Canyon Wilderness, the Appalachian Mountains) run past 60 characters rather than lose their count.
+- For contributors: `placefacets.plan_places` builds these pages with the same rule code as the state pages (`placefacets._plan`); the state pages are byte for byte as before apart from the reworded list titles above.
+
 ## 2026-11-20 - Faster builds and tests, and reproducible downloads
 
 - The site builds in about a quarter of the time on a warm cache and the whole test suite runs in about a quarter of its former time. The pages are unchanged: every file of a build matches a build of the previous version except the two bulk downloads (all GPX, all GeoJSON).

@@ -228,5 +228,31 @@ class BuildShortcutsTest(unittest.TestCase):
         self.assertEqual(self.key(tid), key_before)
 
 
+    def test_a_rebuild_into_the_same_directory_follows_content_not_modification_times(self):
+        out, cache = self.dirs("same")
+        self.build(out, cache, 1)
+        tid = next(t for t in self.ids if os.path.isfile(os.path.join(self.root, t, "line.geojson")))
+        line = os.path.join(self.root, tid, "line.geojson")
+        with open(line, encoding="utf-8") as f:
+            original = f.read()
+        stat = os.stat(line)
+        try:
+            moved = [[[c[0] + 0.5, *c[1:]] for c in part] for part in geo.parts_from_geojson(json.loads(original))]
+            with open(line, "w", encoding="utf-8") as f:
+                json.dump({"type": "Feature", "properties": {},
+                           "geometry": {"type": "MultiLineString", "coordinates": moved}}, f)
+            long_ago = time.mktime((2020, 1, 1, 0, 0, 0, 0, 0, -1))
+            os.utime(line, (long_ago, long_ago))
+            os.utime(os.path.join(self.root, tid), (long_ago, long_ago))
+            self.build(out, cache, 1)                  # the same directory, the same cache
+            fresh, empty = self.dirs("same-fresh")
+            self.build(fresh, empty, 1)
+            same_tree(self, out, fresh)
+        finally:
+            with open(line, "w", encoding="utf-8") as f:
+                f.write(original)
+            os.utime(line, ns=(stat.st_atime_ns, stat.st_mtime_ns))
+
+
 if __name__ == "__main__":
     unittest.main()

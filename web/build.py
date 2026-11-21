@@ -85,12 +85,6 @@ def mtime(path):
     return os.path.getmtime(path)
 
 
-def dir_mtime(path):
-    """Newest mtime of the files directly inside a directory."""
-    return max(mtime(os.path.join(path, n)) for n in os.listdir(path)
-               if os.path.isfile(os.path.join(path, n)))
-
-
 _WARNINGS = None  # in a worker process: the warnings it raised, which the parent prints
 
 
@@ -178,22 +172,21 @@ def read_cache(cache_path):
     return cache if isinstance(cache, dict) else None
 
 
-def up_to_date(rec, files, tdir, cache_path, code_mtime):
-    """True when the outputs are complete, newer than the sources, and the cache
-    records exactly the set of outputs this record now calls for."""
+def up_to_date(rec, files, tdir, cache_path, key):
+    """True when the outputs are complete, were made from the trail's content as it is now (the
+    key the cache entry holds is the trail's current key: modification times are not consulted,
+    so a file put back to an older time is still seen), and the cache records exactly the set of
+    outputs this record now calls for."""
     names = trail_outputs(rec["id"], files, rec)
     cache = read_cache(cache_path)
-    if cache is None or cache.get("outputs") != sorted(names):
+    if cache is None or cache.get("outputs") != sorted(names) or cache.get("key") != key:
         return False
     if cache.get("creator") != gpx_creator():  # the site was renamed: the GPX creator is stale
         return False
     if "line" in files and "bbox" not in cache:
         return False
     paths = [os.path.join(tdir, n) for n in names] + [cache_path]
-    if not all(os.path.isfile(p) for p in paths):
-        return False
-    newest_in = max(code_mtime, dir_mtime(os.path.join(ROOT, rec["id"])))
-    return all(mtime(p) >= newest_in for p in paths)
+    return all(os.path.isfile(p) for p in paths)
 
 
 def download(tdir, name, role, note, fmt):
@@ -355,11 +348,11 @@ def save_to_store(tid, key, tdir, names, files, cache, warnings):
         shutil.rmtree(tmp, ignore_errors=True)
 
 
-def build_trail(rec, out_dir, code_mtime, force, stats):
+def build_trail(rec, out_dir, force, stats):
     """Write one trail's files. Returns (downloads, cache). The record's
     derived.files is replaced by the files that actually produced output.
 
-    A trail whose outputs are already in out_dir and newer than its sources is left alone;
+    A trail whose outputs are already in out_dir and were made from its present content is left alone;
     one whose sources and code are unchanged since the store (CACHE_DIR/store) last saw them
     has its derived outputs copied from there; any other is computed."""
     global _WARNINGS
@@ -378,7 +371,7 @@ def build_trail(rec, out_dir, code_mtime, force, stats):
 
     if not names:
         pass  # record only: nothing to write
-    elif not force and up_to_date(rec, files, tdir, cache_path, code_mtime):
+    elif not force and up_to_date(rec, files, tdir, cache_path, trail_key(tid)):
         stats.skipped_trails += 1
         stats.skipped += len(names)
         cache = read_cache(cache_path)
@@ -403,10 +396,10 @@ def build_trail(rec, out_dir, code_mtime, force, stats):
                 warn(message)
             copy_sources(tid, files, tdir, stats)
         names = trail_outputs(tid, files, rec)
-        cache = dict(cache, outputs=sorted(names), creator=gpx_creator())
+        cache = dict(cache, outputs=sorted(names), creator=gpx_creator(), key=key)
         if meta is None and names:
             save_to_store(tid, key, tdir, names, files,
-                          {k: v for k, v in cache.items() if k not in ("outputs", "creator")}, raised)
+                          {k: v for k, v in cache.items() if k not in ("outputs", "creator", "key")}, raised)
         if names:
             with open(cache_path, "w", encoding="utf-8") as f:
                 json.dump(cache, f)
@@ -699,9 +692,9 @@ def fork_context():
     return None
 
 
-def build_one(rec, out_dir, code_mtime, force, stats):
+def build_one(rec, out_dir, force, stats):
     """build_trail, and the trail's line for the overview map when it has one."""
-    downloads, cache = build_trail(rec, out_dir, code_mtime, force, stats)
+    downloads, cache = build_trail(rec, out_dir, force, stats)
     parts = None
     if "line" in rec["derived"]["files"]:
         parts = overview_parts(os.path.join(out_dir, "trails", rec["id"]))
@@ -710,11 +703,11 @@ def build_one(rec, out_dir, code_mtime, force, stats):
 
 def _trail_job(i):
     global _WARNINGS
-    recs, out_dir, code_mtime, force_all, only = _JOB
+    recs, out_dir, force_all, only = _JOB
     rec = recs[i]
     _WARNINGS = []
     stats = Stats()
-    result = build_one(rec, out_dir, code_mtime, force_all or rec["id"] in only, stats)
+    result = build_one(rec, out_dir, force_all or rec["id"] in only, stats)
     return i, result, rec["derived"]["files"], vars(stats), _WARNINGS
 
 
@@ -722,15 +715,15 @@ def tree_size(tid):
     return sum(e.stat().st_size for e in os.scandir(os.path.join(ROOT, tid)) if e.is_file())
 
 
-def build_trails(recs, out_dir, code_mtime, args, only, stats):
+def build_trails(recs, out_dir, args, only, stats):
     """[(downloads, cache, overview parts)] for every record, in record order."""
     ctx = fork_context()
     jobs = min(job_count(), len(recs))
     if ctx is None or jobs < 2 or len(recs) < PARALLEL_FROM:
-        return [build_one(rec, out_dir, code_mtime, args.force or rec["id"] in only, stats)
+        return [build_one(rec, out_dir, args.force or rec["id"] in only, stats)
                 for rec in recs]
     global _JOB
-    _JOB = (recs, out_dir, code_mtime, args.force, only)
+    _JOB = (recs, out_dir, args.force, only)
     results = [None] * len(recs)
     order = sorted(range(len(recs)), key=lambda i: -tree_size(recs[i]["id"]))  # biggest first
     # A process pool, not multiprocessing.Pool: a worker that raises, or is killed, makes the
@@ -804,7 +797,6 @@ def main(argv=None):
     if unknown:
         raise SystemExit(f"unknown trail id(s): {', '.join(sorted(unknown))}")
 
-    code_mtime = max(mtime(p) for p in CODE_FILES)
     stats = Stats()
     os.makedirs(os.path.join(out_dir, "data"), exist_ok=True)
     # Older builds kept the cache in the publish directory; it must never ship.
@@ -816,7 +808,7 @@ def main(argv=None):
     # --only forces a rebuild of the chosen trails; the rest are rebuilt only
     # when stale or missing from the cache.
     overview = {}
-    for rec, (downloads, cache, parts) in zip(recs, build_trails(recs, out_dir, code_mtime, args, only, stats)):
+    for rec, (downloads, cache, parts) in zip(recs, build_trails(recs, out_dir, args, only, stats)):
         d = rec["derived"]
         d["downloads"] = downloads
         if parts is not None:

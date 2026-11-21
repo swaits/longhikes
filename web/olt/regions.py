@@ -528,7 +528,7 @@ def list_page(lst, recs, total, site, *, records=None, before="", after="", lead
   <header class="titleblock"><div class="titleblock__text">
   <p class="kicker">A list</p>
   <h1>{esc(lst.title)}</h1>
-  <p class="page-head__lede">{esc(lst.blurb)} {_plural(len(recs))}, {n_gpx} with a GPX here.</p>
+  <p class="page-head__lede">{esc(lst.lede(recs) + " " if lst.lede else "")}{esc(lst.blurb)} {_plural(len(recs))}, {n_gpx} with a GPX here.</p>
   </div></header>
 </div></div>
 <div class="container section place">
@@ -543,7 +543,8 @@ def list_page(lst, recs, total, site, *, records=None, before="", after="", lead
     stats = [f" {_plural(len(recs))}, from {common.plain_name(by_length[0])}, {_miles(by_length[0])} miles, "
              f"to {common.plain_name(by_length[-1])}, {_miles(by_length[-1])} miles; {_with_gpx(n_gpx, len(recs)) or 'none with a GPX here'}.",
              f" {_plural(len(recs))}, {_with_gpx(n_gpx, len(recs)) or 'none with a GPX here'}.", f" {_plural(len(recs))}."]
-    desc = _fit([lst.blurb + s for s in stats] + [lst.blurb])
+    first = f"{lst.lede(recs)} " if lst.lede else ""
+    desc = _fit([first + lst.blurb + s for s in stats] + [first + lst.blurb, lst.blurb])
     return lst.search_title(len(recs)), desc, Markup(body), home.has_overview_map(recs)
 
 

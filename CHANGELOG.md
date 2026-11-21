@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-20 - List titles in the words people search with
+
+- The longest list now opens with the answer: "Longest Hiking Trails in the US: 25 Trails of 1,000+ Miles", and its first line names the longest trail and its length (the Sea-to-Sea Route, 7,775 miles). The line is worked out from the trails, so it follows them.
+- The length bands: "Hiking Trails Under 100 Miles" is now "Short Thru-Hikes and Loops Under 100 Miles" and "Thru-Hikes Under 200 Miles" is now "Thru-Hikes and Loops Under 200 Miles", because 38 of the 102 trails under 100 miles are loops and are not thru-hikes. Their first lines say "short thru-hikes and loops".
+- The time bands: "Long Trails to Hike in a Week or Less" is now "Week-Long Backpacking Trips", "One to Two Weeks" is "One-to-Two-Week Backpacking Trips", "2 to 4 Weeks" is "Backpacking Trips of 2 to 4 Weeks", "a Month or More" is "Month-Long Backpacking Trips and Longer" and "in a Weekend" is "Weekend Backpacking Trips".
+- Loops: "Loop Hiking Trails" is now "Backpacking Loops", and "Cross-Country Hiking: 9 Long Trails and Routes" is now "Cross-Country Hiking: 9 Long Trails".
+- The same words carry into the pages of a state, park, range or wilderness area: "Backpacking Loops in Colorado", "Long Hikes Under 100 Miles in Jasper National Park", and a new kind, "Week-Long Backpacking Trips", which adds 3 state pages and 7 park, range and wilderness pages. No address changed.
+
 ## 2026-11-20 - Lists inside parks, mountain ranges and wilderness areas
 
 - 131 new pages show one kind of trail in one park, mountain range or wilderness area: 39 for parks, 71 for ranges and 21 for wilderness areas. Examples: the trails under 100 miles in the Wind River Range, the loops in the Sangre de Cristo Mountains, the routes in Grand Canyon National Park. They answer searches such as "backpacking loops in the Adirondacks" or "short hikes in Yosemite", and each has the same filter bar, trail rows and map as the place's own page, with the count in its title.

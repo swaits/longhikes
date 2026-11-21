@@ -3,7 +3,10 @@
 For every place and every list that has a `noun` (olt/browse.py), the page exists when the place has at
 least MIN_SIZE trails in the list, no more than MAX_SHARE of the place's trails are in it (else it
 would repeat the place page), and its trails are not nearly the same set as another such page of
-the same place. A new trail or a corrected record moves pages in and out with no change here.
+the same place. For a park, range or wilderness area, a trail of 1,000 miles or more is shown but does
+not count toward the 3 needed, and pages of different places for one list that hold exactly the same
+trails are one page (the park's, else the range's, else the wilderness area's). A new trail or a
+corrected record moves pages in and out with no change here.
 """
 from . import bounds, browse, common, facets, home, places as places_mod, regions, summary
 from .markup import Markup, esc
@@ -68,8 +71,23 @@ def plan_places(infos, records, max_share=browse.MAX_SHARE):
     units = [(i["slug"], i) for i in sorted(infos.values() if isinstance(infos, dict) else infos,
                                             key=lambda i: (places_mod.KIND_ORDER[i["kind"]], i["name"].lower()))]
     lists = [lst for lst in browse.facet_lists() if lst.key not in PLACE_LISTS_OUT]
-    return _plan(units, records, PLACE_MIN, lambda slug, info, lst: f"{info['path']}{lst.key}/", lists, max_share,
-                 count_long=False)
+    return _one_page_per_set(_plan(units, records, PLACE_MIN, lambda slug, info, lst: f"{info['path']}{lst.key}/",
+                                   lists, max_share, count_long=False))
+
+
+def _one_page_per_set(pages):
+    """Of the place pages of one list that hold exactly the same trails, keep one: the park's, else
+    the range's, else the wilderness area's; of two of a kind, the place with fewer trails (the more
+    specific), then the name. The others are dropped, and nothing links to them."""
+    rank = {"park": 0, "range": 1, "wilderness": 2}
+    best = {}
+    for p in pages:
+        k = (p["lst"].key, frozenset(r["id"] for r in p["recs"]))
+        mine = (rank[p["kind"]], len(p["info"]["records"]), p["info"]["name"].lower())
+        if k not in best or mine < best[k][0]:
+            best[k] = (mine, p)
+    keep = {id(v[1]) for v in best.values()}
+    return [p for p in pages if id(p) in keep]
 
 
 def key_of(p):

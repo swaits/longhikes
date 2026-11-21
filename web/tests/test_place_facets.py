@@ -135,6 +135,61 @@ class VeryLongTrailsTest(unittest.TestCase):
         return {p["lst"].key for p in plan}
 
 
+def shared_world(places, loops=3):
+    """places: [(entry, how many other trails it has)]. All of them share the same `loops` loops;
+    each has its own other trails; and enough loops and long trails elsewhere for the list to be shown."""
+    every = [(e["kind"], e["slug"]) for e, _ in places]
+    recs = [rec(100 + i, f"Shared loop {i}", every, km=150) for i in range(loops)]
+    for r in recs:
+        r["hike"] = dict(r["hike"], shape="loop")
+    for n, (e, others) in enumerate(places):
+        recs += [rec(1000 * (n + 1) + i, f"Own {n} {i}", [(e["kind"], e["slug"])], km=150) for i in range(others)]
+    recs += [fake(300 + i, km=500, regions=["NY"], hike={"shape": "loop"}) for i in range(4)]
+    recs += [fake(400 + i, km=900, regions=["NY"]) for i in range(30)]
+    return recs
+
+
+class ShareAndSameSetTest(unittest.TestCase):
+    def paths(self, places, loops=3):
+        entries = [e for e, _ in places]
+        _, plan = plan_for(shared_world(places, loops), entries)
+        return sorted(p["path"] for p in plan if p["lst"].key == "loops")
+
+    def test_a_page_holding_more_than_three_quarters_of_its_place_is_not_built(self):
+        self.assertEqual(self.paths([(RANGE, 1)], loops=3), ["/ranges/wind-river-range/loops/"])    # 3 of 4
+        self.assertEqual(self.paths([(RANGE, 1)], loops=4), [])                                       # 4 of 5
+
+    def test_one_set_in_a_park_a_range_and_a_wilderness_is_one_page_under_the_park(self):
+        park = entry_of("park", "grand-test", "Grand Test National Park", ["WY"])
+        rng = entry_of("range", "test-range", "Test Range", ["WY"])
+        wild = entry_of("wilderness", "test-wild", "Test Wilderness", ["WY"])
+        self.assertEqual(self.paths([(wild, 3), (rng, 4), (park, 5)]), ["/parks/grand-test/loops/"])
+        self.assertEqual(self.paths([(wild, 3), (rng, 4)]), ["/ranges/test-range/loops/"])
+
+    def test_of_two_of_one_kind_the_more_specific_place_wins_then_the_name(self):
+        a = entry_of("range", "a-range", "A Range", ["WY"])
+        b = entry_of("range", "b-range", "B Range", ["WY"])
+        self.assertEqual(self.paths([(a, 6), (b, 3)]), ["/ranges/b-range/loops/"])
+        self.assertEqual(self.paths([(b, 4), (a, 4)]), ["/ranges/a-range/loops/"])
+
+    def test_different_sets_keep_a_page_each(self):
+        a = entry_of("range", "a-range", "A Range", ["WY"])
+        b = entry_of("range", "b-range", "B Range", ["WY"])
+        recs = shared_world([(a, 4), (b, 4)])
+        for r in recs:
+            if r["name"] == "Own 1 0":
+                r["hike"] = dict(r["hike"], shape="loop")     # b has a loop of its own
+        _, plan = plan_for(recs, [a, b])
+        self.assertEqual(sorted(p["path"] for p in plan if p["lst"].key == "loops"),
+                         ["/ranges/a-range/loops/", "/ranges/b-range/loops/"])
+
+    def test_the_place_left_without_a_page_links_to_nothing_for_the_list(self):
+        park = entry_of("park", "grand-test", "Grand Test National Park", ["WY"])
+        rng = entry_of("range", "test-range", "Test Range", ["WY"])
+        _, plan = plan_for(shared_world([(rng, 4), (park, 5)]), [rng, park])
+        self.assertEqual({k for p in plan if p["kind"] == "range" for k in [p["lst"].key]} & {"loops"}, set())
+
+
 def page_of(infos, plan, key):
     p = next(p for p in plan if p["lst"].key == key)
     return placefacets.page(p, [r for i in infos.values() for r in i["records"]], S, plan)

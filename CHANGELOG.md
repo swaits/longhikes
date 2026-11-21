@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-20 - The bulk downloads follow content, not file times
+
+- For contributors: the build now decides whether `all-gpx.zip` and `all-geojson.zip` are up to date by what goes into them, as it does for the rest of the pages, and no longer by the modification times of their files. A file touched with no change leaves them alone, and a changed file with an old time rebuilds them. Nothing a visitor sees changes.
+
 ## 2026-11-20 - List titles in the words people search with
 
 - The longest list now opens with the answer: "Longest Hiking Trails in the US: 25 Trails of 1,000+ Miles", and its first line names the longest trail and its length (the Sea-to-Sea Route, 7,775 miles). The line is worked out from the trails, so it follows them.

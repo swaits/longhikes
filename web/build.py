@@ -10,6 +10,7 @@ sys.dont_write_bytecode = True
 
 import argparse
 import concurrent.futures
+import filecmp
 import hashlib
 import json
 import multiprocessing
@@ -572,21 +573,14 @@ ARCHIVE_TIME = (1980, 1, 1, 0, 0, 0)  # the earliest time a zip can hold
 
 
 def build_archive(name, recs, out_dir, stats):
-    """Write /data/<name> (zip, deflate) unless it already holds exactly these files
-    and is newer than every one of them and than this script."""
+    """Write /data/<name> (zip, deflate) unless the archive there is already the one these files
+    make. What goes in is decided by content (the files' bytes, this build's code and the README),
+    never by file times: the store holds the archive made from exactly that, and the one in the
+    output is up to date when it is the same bytes."""
     path = os.path.join(out_dir, "data", name)
     members = archive_members(name, recs, out_dir, ROOT)
     members = [(arc, src) for arc, src in members if os.path.isfile(src)]
     expected = ["README.txt"] + [arc for arc, _ in members]
-    newest = max([mtime(__file__)] + [mtime(src) for _, src in members])
-    if os.path.isfile(path) and mtime(path) >= newest:
-        try:
-            with zipfile.ZipFile(path) as zf:
-                if zf.namelist() == expected:
-                    stats.skipped += 1
-                    return
-        except (OSError, zipfile.BadZipFile):
-            pass
     # The store keeps an archive by what goes into it, so one whose files have not changed (in
     # content: it does not matter when they were written) is copied, not compressed again.
     digest = hashlib.sha256(code_digest().encode() + archive_readme(name).encode())
@@ -595,6 +589,14 @@ def build_archive(name, recs, out_dir, stats):
         with open(src, "rb") as f:
             digest.update(hashlib.sha256(f.read()).digest())
     kept = os.path.join(store_dir(), "archives", f"{name}.{digest.hexdigest()}")
+    if os.path.isfile(path) and os.path.isfile(kept) and filecmp.cmp(path, kept, shallow=False):
+        try:
+            with zipfile.ZipFile(path) as zf:
+                if zf.namelist() == expected:
+                    stats.skipped += 1
+                    return
+        except (OSError, zipfile.BadZipFile):
+            pass
     tmp = path + ".tmp"  # written beside, then moved over: never a half-written archive
     try:
         try:

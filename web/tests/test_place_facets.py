@@ -212,9 +212,8 @@ class PageTest(unittest.TestCase):
         self.text = text(self.body)
 
     def test_title_h1_and_lede_use_the_list_noun_and_the_places_own_words(self):
-        noun = self.p["lst"].noun
-        self.assertRegex(self.title, rf"^{noun} in the Wind River Range(, Wyoming)?: 3 Trails$")
-        self.assertIn(f"<h1>{noun} in the Wind River Range</h1>", str(self.body))
+        self.assertRegex(self.title, r"^Loops in the Wind River Range(, Wyoming)?: 3 Trails$")
+        self.assertIn(f"<h1>{self.title}</h1>", str(self.body))
         self.assertIn("3 of the 7 trails in the Wind River Range", self.text)
         self.assertLessEqual(len(self.title), common.TITLE_LIMIT)
 
@@ -279,19 +278,34 @@ class RealDataTest(unittest.TestCase):
     def test_the_number_of_pages_stays_reasonable(self):
         self.assertLess(len(self.plan), 250)
 
-    def test_every_title_fits_and_keeps_its_count_and_is_unique(self):
-        titles, over = set(), []
+    def test_every_title_follows_the_one_pattern_and_the_heading_has_the_same_words(self):
+        titles = set()
         for p in self.plan:
-            t = placefacets.page(p, self.records, S, self.plan)[0]
-            self.assertRegex(t, r": \d+ (Trails|Routes)$", t)
-            titles.add(t)
-            if len(t) > common.TITLE_LIMIT:
-                over.append(t)
+            title, _, body, _ = placefacets.page(p, self.records, S, self.plan)
+            info = p["info"]
+            noun = placefacets.place_noun(p["lst"])
+            count = f"{len(p['recs'])} {'Routes' if p['lst'].key == 'routes' else 'Trails'}"
+            prep = places.prep_of(info)
+            with_state = f"{noun} {prep} {info['title_name']}: {count}"
+            without = f"{noun} {prep} {info['name']}: {count}"
+            expect = with_state if len(with_state) <= common.title_room(S) else without
+            self.assertEqual(title, expect, p["path"])
+            self.assertIn(f"<h1>{title}</h1>", str(body), p["path"])
+            titles.add(title)
         self.assertEqual(len(titles), len(self.plan))
-        # only a long place name pushes a title over, and then the shortest noun still keeps the count
-        self.assertLess(len(over), 25, over)
-        for t in over:
-            self.assertGreaterEqual(len(t.rsplit(": ", 1)[0].split(" in ", 1)[-1].split(" on ", 1)[-1]), 25, t)
+
+    def test_the_nouns_are_the_fixed_short_ones(self):
+        got = {p["lst"].key: placefacets.place_noun(p["lst"]) for p in self.plan}
+        want = {"under-100-miles": "Trails Under 100 Miles", "100-to-200-miles": "100 to 200 Mile Trails",
+                "200-to-500-miles": "200 to 500 Mile Trails", "500-to-1000-miles": "500 to 1,000 Mile Trails",
+                "loops": "Loops", "routes": "Routes", "a-week-or-less": "Trips of a Week or Less",
+                "off-trail": "Cross-Country Hikes", "with-gpx": "Trails with a GPX"}
+        for key, noun in want.items():
+            if key in got:
+                self.assertEqual(got[key], noun)
+        for key, noun in got.items():
+            if key.startswith("terrain-"):
+                self.assertTrue(noun.endswith(" Trails"), noun)
 
 
 if __name__ == "__main__":

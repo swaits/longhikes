@@ -95,6 +95,15 @@ def key_of(p):
     return p["slug"] if p["kind"] == "state" else (p["kind"], p["slug"])
 
 
+# The short noun a place page's title and heading use for each list, the same whatever the place's name:
+# the list's own short noun, but for these.
+PLACE_NOUN = {"a-week-or-less": "Trips of a Week or Less"}
+
+
+def place_noun(lst):
+    return PLACE_NOUN.get(lst.key) or lst.short or lst.noun
+
+
 def label(lst):
     """A short name for the page in a list of links."""
     return lst.title
@@ -148,15 +157,25 @@ def page(p, records, site, all_pages):
     phrase = kind.phrase(info) if kind.phrase else f"in {in_name}"
     title_name = name if state else info["title_name"]
     prep = "in" if state else places_mod.prep_of(info)
-    only_routes = all(facets.kind(r) == "route" for r in recs)
-    count = f"{len(recs)} {'Routes' if only_routes else 'Trails'}"
-    short = lst.short or lst.noun
-    # The state goes first, then the long noun; the count is never dropped (a title that still
-    # does not fit, where the place's own name is long, keeps its count and goes over).
-    ladder = [f"{lst.noun} {prep} {title_name}: {count}", f"{lst.noun} {prep} {name}: {count}",
-              f"{short} {prep} {title_name}: {count}", f"{short} {prep} {name}: {count}"]
+    if state:
+        only_routes = all(facets.kind(r) == "route" for r in recs)
+        count = f"{len(recs)} {'Routes' if only_routes else 'Trails'}"
+        short = lst.short or lst.noun
+        # The state goes first, then the long noun; the count is never dropped (a title that still
+        # does not fit, where the place's own name is long, keeps its count and goes over).
+        ladder = [f"{lst.noun} {prep} {title_name}: {count}", f"{lst.noun} {prep} {name}: {count}",
+                  f"{short} {prep} {title_name}: {count}", f"{short} {prep} {name}: {count}"]
+        h1 = f"{lst.noun} {phrase}"
+    else:
+        # One fixed pattern: <short noun> <the place's preposition and name>: <N> Trails (Routes for
+        # the routes list). The state follows a place in one state when the title still fits; a long
+        # place name runs long and keeps its count. The heading is the title.
+        count = f"{len(recs)} {'Routes' if lst.key == 'routes' else 'Trails'}"
+        noun = place_noun(lst)
+        ladder = [f"{noun} {prep} {title_name}: {count}", f"{noun} {prep} {name}: {count}"]
     title = common.fit_title(ladder, site)
-    h1 = f"{lst.noun} {phrase}"
+    if not state:
+        h1 = title
     n_gpx = sum(1 for r in recs if facets.gpx_here(r))
     gpx = f", {n_gpx} with a GPX here" if n_gpx else ""
     lede = (f"{esc(lst.blurb)} {len(recs)} of the {len(here)} trails {esc(phrase)}{gpx}. "

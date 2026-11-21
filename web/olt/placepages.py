@@ -84,14 +84,17 @@ WILDERNESS = _kind()
 PAGE_KINDS = {"park": PARK, "range": RANGE, "wilderness": WILDERNESS}
 
 
-def build(records, site, repo_root):
+def build(records, site, repo_root, facet_pages=None):
     """[Built] for every place with a page, parks then ranges then wilderness areas,
-    each A to Z. The plug-in point's shape (olt/pages.py EXTRA_PAGE_BUILDERS)."""
+    each A to Z. The plug-in point's shape (olt/pages.py EXTRA_PAGE_BUILDERS).
+    facet_pages: {(kind, slug): [page]} of the place-plus-list pages (olt/placefacets.py), linked from each."""
     infos = places.collect(records, places.load(repo_root))
     out = []
     for info in sorted(infos.values(),
                        key=lambda i: (places.KIND_ORDER[i["kind"]], i["name"].lower())):
+        here = [(q["lst"].title, q["path"], len(q["recs"]))
+                for q in (facet_pages or {}).get((info["kind"], info["slug"]), [])]
         title, description, body, needs_map = regions.place_page(
-            info, records, site, PAGE_KINDS[info["kind"]])
+            info, records, site, PAGE_KINDS[info["kind"]], facet_pages=here)
         out.append(Built(info["path"], title, description, body, needs_map, info["records"]))
     return out

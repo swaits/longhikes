@@ -5,7 +5,7 @@ least MIN_SIZE trails in the list, no more than MAX_SHARE of the place's trails 
 would repeat the place page), and its trails are not nearly the same set as another such page of
 the same place. A new trail or a corrected record moves pages in and out with no change here.
 """
-from . import bounds, browse, common, facets, home, regions, summary
+from . import bounds, browse, common, facets, home, places as places_mod, regions, summary
 from .markup import Markup, esc
 
 SAME_SET = 0.8   # two pages of one place whose trails overlap by this share (of the smaller union) are one page
@@ -15,28 +15,56 @@ def _jaccard(a, b):
     return len(a & b) / len(a | b)
 
 
-def plan(records):
-    """[{slug, info, lst, recs, path}] for every page, in place then list order."""
+PLACE_MIN = 3    # a park, range or wilderness area's list page needs this many trails
+
+# Lists crossed with a park, range or wilderness area: those that cross a state, less any named here.
+# A list that is itself a place or a holder has no noun, so none is crossed.
+PLACE_LISTS_OUT = frozenset()
+
+
+def _plan(units, records, min_size, path_of, lists, max_share):
+    """[{slug, info, lst, recs, path, kind}]: for each unit (slug, info) and each list, a page when the
+    place has min_size trails in the list, no more than max_share of the place's trails are in it,
+    and its trails are not nearly the same set as another page of the same place."""
     shown = {lst.key for lst, _ in browse.shown(records)}
-    by_slug, _ = regions.collect_regions(records)
     out = []
-    for slug in sorted(by_slug):
-        info = by_slug[slug]
+    for slug, info in units:
         here = info["records"]
         kept = []
-        for lst in browse.facet_lists():
+        for lst in lists:
             if lst.key not in shown:
                 continue
             recs = browse.members(lst, here)
-            if len(recs) < browse.MIN_SIZE or len(recs) > browse.MAX_SHARE * len(here):
+            if len(recs) < min_size or len(recs) > max_share * len(here) or len(recs) >= len(here):
                 continue
             ids = {r["id"] for r in recs}
             if any(_jaccard(ids, other) >= SAME_SET for other in kept):
                 continue
             kept.append(ids)
             out.append({"slug": slug, "info": info, "lst": lst, "recs": recs,
-                        "path": f"/regions/{slug}/{lst.key}/"})
+                        "path": path_of(slug, info, lst), "kind": info["kind"]})
     return out
+
+
+def plan(records):
+    """[{slug, info, lst, recs, path, kind}] for every state page, in place then list order."""
+    by_slug, _ = regions.collect_regions(records)
+    return _plan([(slug, by_slug[slug]) for slug in sorted(by_slug)], records, browse.MIN_SIZE,
+                 lambda slug, info, lst: f"/regions/{slug}/{lst.key}/", browse.facet_lists(), browse.MAX_SHARE)
+
+
+def plan_places(infos, records, max_share=browse.MAX_SHARE):
+    """The same for parks, ranges and wilderness areas: infos as olt/places.py collect gives them.
+    The path is the place's own with the list's key after it."""
+    units = [(i["slug"], i) for i in sorted(infos.values() if isinstance(infos, dict) else infos,
+                                            key=lambda i: (places_mod.KIND_ORDER[i["kind"]], i["name"].lower()))]
+    lists = [lst for lst in browse.facet_lists() if lst.key not in PLACE_LISTS_OUT]
+    return _plan(units, records, PLACE_MIN, lambda slug, info, lst: f"{info['path']}{lst.key}/", lists, max_share)
+
+
+def key_of(p):
+    """What pages_by_place keys a page by: (kind, slug) for a place, the slug for a state."""
+    return p["slug"] if p["kind"] == "state" else (p["kind"], p["slug"])
 
 
 def label(lst):
@@ -45,10 +73,10 @@ def label(lst):
 
 
 def pages_by_place(pages):
-    """slug -> [page], in plan order."""
+    """slug (a state) or (kind, slug) (a park, range or wilderness area) -> [page], in plan order."""
     out = {}
     for p in pages:
-        out.setdefault(p["slug"], []).append(p)
+        out.setdefault(key_of(p), []).append(p)
     return out
 
 
@@ -61,7 +89,7 @@ def pages_by_list(pages):
 
 def places_nav(lst, pages):
     """HTML for a list's page: the places that have a page of their own for it."""
-    here = pages_by_list(pages).get(lst.key, [])
+    here = [p for p in pages_by_list(pages).get(lst.key, []) if p["kind"] == "state"]
     if not here:
         return ""
     links = " · ".join(f'<a href="{esc(p["path"])}">{esc(p["info"]["name"])}</a> ({len(p["recs"])})'
@@ -70,32 +98,55 @@ def places_nav(lst, pages):
             f'{esc(lst.title)} in a state or province, and how many there: {links}</nav>')
 
 
+def _kind(info):
+    """The PageKind of the place's own page: its where-filter, its map box and how it is named."""
+    from . import placepages
+    return regions.STATE if info["kind"] == "state" else placepages.PAGE_KINDS[info["kind"]]
+
+
+def _own_path(info):
+    return facets.place_path(info["key"]) if info["kind"] == "state" else info["path"]
+
+
 def page(p, records, site, all_pages):
-    """(title, description, body, needs_map) for one place-and-list page."""
+    """(title, description, body, needs_map) for one place-and-list page, of a state or of a park,
+    range or wilderness area. Every string that depends on the kind of place comes from the place."""
     lst, info, recs = p["lst"], p["info"], p["recs"]
+    kind = _kind(info)
     here = info["records"]
     name = info["name"]
+    state = info["kind"] == "state"
+    in_name = kind.in_name(info) if kind.in_name else name
+    phrase = kind.phrase(info) if kind.phrase else f"in {in_name}"
+    title_name = name if state else info["title_name"]
+    prep = "in" if state else places_mod.prep_of(info)
     only_routes = all(facets.kind(r) == "route" for r in recs)
     count = f"{len(recs)} {'Routes' if only_routes else 'Trails'}"
-    title = common.fit_title([f"{lst.noun} in {name}: {count}", f"{lst.noun} in {name}"], site)
-    h1 = f"{lst.noun} in {name}"
+    short = lst.short or lst.noun
+    # The state goes first, then the long noun; the count is never dropped (a title that still
+    # does not fit, where the place's own name is long, keeps its count and goes over).
+    ladder = [f"{lst.noun} {prep} {title_name}: {count}", f"{lst.noun} {prep} {name}: {count}",
+              f"{short} {prep} {title_name}: {count}", f"{short} {prep} {name}: {count}"]
+    title = common.fit_title(ladder, site)
+    h1 = f"{lst.noun} {phrase}"
     n_gpx = sum(1 for r in recs if facets.gpx_here(r))
     gpx = f", {n_gpx} with a GPX here" if n_gpx else ""
-    lede = (f"{esc(lst.blurb)} {len(recs)} of the {len(here)} trails in {esc(name)}{gpx}. "
-            f'<a href="{esc(facets.place_path(info["key"]))}">All the trails in {esc(name)}</a>.')
-    siblings = [q for q in pages_by_place(all_pages)[p["slug"]] if q is not p]
-    others = [q for q in pages_by_list(all_pages)[lst.key] if q is not p]
+    lede = (f"{esc(lst.blurb)} {len(recs)} of the {len(here)} trails {esc(phrase)}{gpx}. "
+            f'<a href="{esc(_own_path(info))}">All the trails {esc(phrase)}</a>.')
+    siblings = [q for q in pages_by_place(all_pages)[key_of(p)] if q is not p]
+    others = [q for q in pages_by_list(all_pages)[lst.key] if q is not p and q["kind"] == p["kind"]]
     nav = ""
     if siblings:
-        nav += (f'<nav class="region-nav" aria-label="More in {esc(name)}">More in {esc(name)}: '
+        nav += (f'<nav class="region-nav" aria-label="More {esc(phrase)}">More {esc(phrase)}: '
                 + " · ".join(f'<a href="{esc(q["path"])}">{esc(q["lst"].title)}</a> ({len(q["recs"])})' for q in siblings)
                 + "</nav>")
     if others:
         nav += (f'<nav class="region-nav" aria-label="{esc(lst.title)} elsewhere">{esc(lst.title)} elsewhere: '
                 + " · ".join(f'<a href="{esc(q["path"])}">{esc(q["info"]["name"])}</a> ({len(q["recs"])})'
                              for q in sorted(others, key=lambda q: q["info"]["name"])) + "</nav>")
-    crumbs = (f'<li><a href="/">Trails</a></li><li><a href="/regions/">Places</a></li>'
-              f'<li><a href="{esc(facets.place_path(info["key"]))}">{esc(name)}</a></li>')
+    crumbs = ('<li><a href="/">Trails</a></li><li><a href="/regions/">Places</a></li>'
+              f'<li><a href="{esc(_own_path(info))}">{esc(name)}</a></li>')
+    place = kind.facts_place(info)
     body = f"""<div class="page-head"><div class="container">
   <nav class="breadcrumb" aria-label="Breadcrumb"><ol>{crumbs}<li aria-current="page">{esc(lst.title)}</li></ol></nav>
   <header class="titleblock"><div class="titleblock__text">
@@ -105,13 +156,15 @@ def page(p, records, site, all_pages):
   </div></header>
 </div></div>
 <div class="container section place">
-  {home.browse_view(home.listing(recs, default_sort=lst.sort, top=2, where="", season=lst.group == "month"), home.overview_map(recs, f"Map of the trails in {name}: {lst.title}", place=bounds.place_box(info["key"])),
-               about=summary.facts(recs, records, place=(name, [info["key"]])), about_title=f"About these trails in {name}")}
+  {home.browse_view(home.listing(recs, default_sort=lst.sort, top=2, where="" if state else kind.where, season=lst.group == "month"), home.overview_map(recs, f"Map of the trails {phrase}: {lst.title}", place=kind.box(info)),
+               about=summary.facts(recs, records, place=place), about_title=f"About these trails {phrase}")}
   <nav class="region-nav" aria-label="Lists"><a href="{esc(browse.path(lst))}">{esc(lst.title)} everywhere</a> · <a href="/lists/">All lists</a></nav>
   {nav}
 </div>"""
     by_length = sorted(recs, key=lambda r: (r["length_km"], r["id"]))
-    first = (f"{count} in {name}, from {common.plain_name(by_length[0])}, {regions.trail_miles(by_length[0], [info["key"]])}, "
-             f"to {common.plain_name(by_length[-1])}, {regions.trail_miles(by_length[-1], [info["key"]])}.")
-    desc = regions._fit([f"{lst.blurb} {first}", f"{lst.noun} in {name}: {first}"])
+    keys = place[1]
+    first = (f"{count} {phrase}, from {common.plain_name(by_length[0])}, {regions.trail_miles(by_length[0], keys)}, "
+             f"to {common.plain_name(by_length[-1])}, {regions.trail_miles(by_length[-1], keys)}.")
+    desc = regions._fit([f"{lst.blurb} {first}", f"{lst.noun} {phrase}: {first}"] if state
+                        else [f"{lst.blurb} {first}", first])
     return title, desc, Markup(body), home.has_overview_map(recs)

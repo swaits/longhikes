@@ -50,6 +50,8 @@ class List:
     # The words for this kind of trail in a place page's title: "Loop Hiking Trails" gives
     # "Loop Hiking Trails in Colorado: 6 Trails". Empty: no page for each place.
     noun: str = ""
+    # A shorter noun for the same title where the place's name is long; empty: the noun.
+    short: str = ""
     # (list's trails, all trails) -> a plain sentence or two that says what the list covers
     # where that is not every trail: how many have the fact the list is built on.
     note: Optional[Callable] = None
@@ -174,7 +176,8 @@ LISTS = (
          page_title="National Recreation Trails: {n} Long Hiking Trails", group="standing"),
     List("routes", "Routes", facets.ROUTE_DEFINITION,
          lambda r: facets.kind(r) == "route", page_title="Long Hiking Routes by Author: {n} Routes",
-         group="standing", noun="Long Hiking Routes"),
+         group="standing", noun="Long Hiking Routes",
+         short="Routes"),
     List("high-routes", "High routes",
          "Routes whose own name says High Route: through high country, often off the trail.",
          _high_route, page_title="High Routes: {n} Long Hiking Routes", group="walking"),
@@ -186,22 +189,26 @@ LISTS = (
          f"Trails of {HALF_MI} miles ({_km(HALF_MI)} km) or more and shorter than {LONG_MI:,} miles ({_km(LONG_MI)} km).",
          _length_band(HALF_MI, LONG_MI), sort="length-desc",
          page_title=f"Hiking Trails of {HALF_MI} to {LONG_MI:,} Miles: {{n}} Long Trails", group="length",
-         noun=f"Hiking Trails of {HALF_MI} to {LONG_MI:,} Miles"),
+         noun=f"Hiking Trails of {HALF_MI} to {LONG_MI:,} Miles",
+         short=f"{HALF_MI} to {LONG_MI:,} Mile Trails"),
     List("200-to-500-miles", f"{MID_MI} to {HALF_MI} miles",
          f"Trails of {MID_MI} miles ({_km(MID_MI)} km) or more and shorter than {HALF_MI} miles ({_km(HALF_MI)} km).",
          _length_band(MID_MI, HALF_MI), sort="length-desc",
          page_title=f"Hiking Trails of {MID_MI} to {HALF_MI} Miles: {{n}} Long Trails", group="length",
-         noun=f"Hiking Trails of {MID_MI} to {HALF_MI} Miles"),
+         noun=f"Hiking Trails of {MID_MI} to {HALF_MI} Miles",
+         short=f"{MID_MI} to {HALF_MI} Mile Trails"),
     List("100-to-200-miles", f"{SHORT_MI} to {MID_MI} miles",
          f"Trails of {SHORT_MI} miles ({_km(SHORT_MI)} km) or more and shorter than {MID_MI} miles ({_km(MID_MI)} km).",
          _length_band(SHORT_MI, MID_MI), sort="length-desc",
          page_title=f"Hiking Trails of {SHORT_MI} to {MID_MI} Miles: {{n}} Long Trails", group="length",
-         noun=f"Hiking Trails of {SHORT_MI} to {MID_MI} Miles"),
+         noun=f"Hiking Trails of {SHORT_MI} to {MID_MI} Miles",
+         short=f"{SHORT_MI} to {MID_MI} Mile Trails"),
     List("under-100-miles", f"Under {SHORT_MI} miles",
          f"Trails shorter than {SHORT_MI} miles ({_km(SHORT_MI)} km).",
          lambda r: r["length_km"] < SHORT_KM, sort="length-asc",
          page_title=f"Hiking Trails Under {SHORT_MI} Miles: {{n}} Long Trails", group="length",
-         noun=f"Hiking Trails Under {SHORT_MI} Miles"),
+         noun=f"Hiking Trails Under {SHORT_MI} Miles",
+         short=f"Trails Under {SHORT_MI} Miles"),
     List("under-200-miles", f"Under {MID_MI} miles",
          f"Trails shorter than {MID_MI} miles ({_km(MID_MI)} km): the two shortest bands together.",
          lambda r: r["length_km"] < MID_KM, sort="length-asc",
@@ -228,12 +235,14 @@ LISTS = (
          page_title="Long Trails That Take a Month or More: {n} Trails", group="time", note=time_note),
     List("loops", "Loops", "Trails that finish where they start.",
          lambda r: facets.shape(r) == "loop", page_title="Loop Hiking Trails: {n} Long Trail Loops",
-         group="walking", noun="Loop Hiking Trails"),
+         group="walking", noun="Loop Hiking Trails",
+         short="Loops"),
     List("off-trail", "Cross-country",
          "Trails with stretches of walking where there is no trail.",
          lambda r: facets.walking(r) in facets.CROSS_COUNTRY,
          page_title="Cross-Country Hiking: {n} Long Trails and Routes", group="walking",
-         noun="Cross-Country Hiking"),
+         noun="Cross-Country Hiking",
+         short="Cross-Country Hikes"),
     List("mostly-cross-country", "Mostly cross-country",
          "Trails where there is no trail for most of the way.",
          lambda r: facets.walking(r) == "mostly-cross-country",
@@ -261,7 +270,8 @@ LISTS = (
     List("with-gpx", "With a GPX to download",
          "Trails with a GPX file of the track on their page.",
          facets.gpx_here, page_title="Long Trails with a GPX to Download: {n} Trails", group="where",
-         noun="Hiking Trails with a GPX"),
+         noun="Hiking Trails with a GPX",
+         short="Trails with a GPX"),
     List("canada", "In Canada", "Trails in Canada, or crossing into it.",
          lambda r: "CA" in common.countries(r), page_title="Hiking Trails in Canada: {n} Long Trails",
          group="where"),
@@ -272,7 +282,7 @@ LISTS = (
     List(f"terrain-{t}", label, f"Trails with {t} among their main terrain.",
          lambda r, t=t: t in facets.terrain(r),
          page_title=f"{TERRAIN_ADJECTIVE.get(t, label)} Hiking Trails: {{n}} Long Trails", group="terrain",
-         noun=f"{TERRAIN_ADJECTIVE.get(t, label)} Hiking Trails")
+         noun=f"{TERRAIN_ADJECTIVE.get(t, label)} Hiking Trails", short=f"{TERRAIN_ADJECTIVE.get(t, label)} Trails")
     for t, label in words.TERRAIN.items()
 ) + tuple(_month_list(m) for m in range(1, 13))
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-20 - Lists inside parks, mountain ranges and wilderness areas
+
+- 131 new pages show one kind of trail in one park, mountain range or wilderness area: 39 for parks, 71 for ranges and 21 for wilderness areas. Examples: the trails under 100 miles in the Wind River Range, the loops in the Sangre de Cristo Mountains, the routes in Grand Canyon National Park. They answer searches such as "backpacking loops in the Adirondacks" or "short hikes in Yosemite", and each has the same filter bar, trail rows and map as the place's own page, with the count in its title.
+- A page exists only when the place has 3 or more trails of that kind and they are not nearly all the trails of the place (more than three in four would repeat the place's own page). The kinds crossed with a place are the ones already crossed with a state: routes, the length bands, loops, cross-country, trails with a GPX to download and the main kinds of terrain.
+- Each place's page links to its lists with how many trails are in each, and each list page links back to the place, to the place's other lists, and to the same list in the other places.
+- A title keeps its count of trails and says "in" or "in the" as the place's own page does; where the full words would not fit in a title, a shorter name for the kind of trail is used ("Loops", "Trails Under 100 Miles"). The 19 pages whose place name alone is long (Sequoia and Kings Canyon National Parks, the Sequoia-Kings Canyon Wilderness) go a few characters over the usual length rather than lose their count.
+- For contributors: `placefacets.plan_places` builds these pages with the same rule code as the state pages (`placefacets._plan`); the state pages are byte for byte as before.
+
 ## 2026-11-20 - Faster builds and tests, and reproducible downloads
 
 - The site builds in about a quarter of the time on a warm cache and the whole test suite runs in about a quarter of its former time. The pages are unchanged: every file of a build matches a build of the previous version except the two bulk downloads (all GPX, all GeoJSON).

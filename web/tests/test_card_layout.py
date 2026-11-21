@@ -23,7 +23,9 @@ except Exception:  # Pillow, fontTools or brotli missing
 
 from olt import cards, records, site  # noqa: E402
 
-SITE = os.path.join(WEB, ".cache", "test-site")
+import builtsite  # noqa: E402
+
+SITE = builtsite.OUT
 GAP = 6          # px of clear space between two lines of text
 TRACK_GAP = 24   # px between the text column and the track
 EDGE = 40        # px between the track and the card's edges
@@ -47,6 +49,7 @@ def track_parts(tid):
 class CardLayout(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
+        builtsite.ensure()
         cls.tmp = tempfile.TemporaryDirectory()
         cls.fonts = make_cards.load_fonts(cls.tmp.name)
         cls.measure = make_cards.Measure(cls.fonts)

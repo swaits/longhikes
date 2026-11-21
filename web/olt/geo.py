@@ -150,8 +150,14 @@ def join_parts(parts, gap_m=100.0):
     return out
 
 
-def simplify_part(coords, tol_m):
-    """Douglas-Peucker with an explicit stack; tol_m is in metres.
+def simplify_part_multi(coords, tols_m):
+    """Douglas-Peucker with an explicit stack, for several tolerances at once (metres).
+
+    Returns one simplified part per tolerance, in the order given, each exactly what a run with
+    that tolerance alone would give. The point a segment splits at does not depend on the
+    tolerance, only whether it splits does, and a larger tolerance splits a subset of what a
+    smaller one splits; so one walk of the smallest tolerance's tree, noting at each split which
+    of the tolerances it clears, serves them all.
 
     Distances are measured on a local equirectangular plane for the segment
     being tested, scaled by the mean cosine at its two ends. A single scale for
@@ -174,19 +180,21 @@ def simplify_part(coords, tol_m):
     """
     n = len(coords)
     if n < 3:
-        return list(coords)
+        return [list(coords) for _ in tols_m]
     k = math.pi / 180.0 * EARTH_R
     lons = [c[0] for c in coords]
     lats = [c[1] for c in coords]
     # Metres per degree of longitude (ck) and metres north (ys), per point.
     ck = [math.cos(math.radians(lat)) * k for lat in lats]
     ys = [lat * k for lat in lats]
-    tol2 = tol_m * tol_m
-    keep = bytearray(n)
-    keep[0] = keep[n - 1] = 1
-    stack = [(0, n - 1)]
+    order = sorted(range(len(tols_m)), key=lambda j: tols_m[j])  # ascending tolerance
+    tol2 = [tols_m[j] * tols_m[j] for j in order]
+    keeps = [bytearray(n) for _ in tol2]
+    for keep in keeps:
+        keep[0] = keep[n - 1] = 1
+    stack = [(0, n - 1, len(tol2))]  # (first, last, how many tolerances still reach this segment)
     while stack:
-        a, b = stack.pop()
+        a, b, live = stack.pop()
         if b - a < 2:
             continue
         la, lb = lons[a], lons[b]
@@ -221,11 +229,28 @@ def simplify_part(coords, tol_m):
                     d2 = cross * cross / len2
             if d2 > best:
                 best, idx = d2, i
-        if best > tol2:
-            keep[idx] = 1
-            stack.append((a, idx))
-            stack.append((idx, b))
-    return [c for c, k_ in zip(coords, keep) if k_]
+        reach = 0
+        while reach < live and best > tol2[reach]:
+            keeps[reach][idx] = 1
+            reach += 1
+        if reach:
+            stack.append((a, idx, reach))
+            stack.append((idx, b, reach))
+    out = [None] * len(tols_m)
+    for pos, j in enumerate(order):
+        out[j] = [c for c, k_ in zip(coords, keeps[pos]) if k_]
+    return out
+
+
+def simplify_part(coords, tol_m):
+    """Douglas-Peucker for one tolerance; see simplify_part_multi."""
+    return simplify_part_multi(coords, [tol_m])[0]
+
+
+def simplify_multi(parts, tols_m):
+    """One simplified line per tolerance (a list of lists of parts), for a line's parts."""
+    per_part = [simplify_part_multi(p, tols_m) for p in parts]
+    return [[pp[j] for pp in per_part] for j in range(len(tols_m))]
 
 
 def simplify(parts, tol_m):

@@ -9,7 +9,6 @@ indexed and is not in the sitemap; nothing is inline. The behaviour itself
 import html
 import os
 import re
-import subprocess
 import sys
 import unittest
 from html.parser import HTMLParser
@@ -20,13 +19,13 @@ sys.path.insert(0, WEB)
 
 from olt import common, home, layout, records, saved, seo, site  # noqa: E402
 
-OUT = os.path.join(WEB, ".cache", "test-site")
+import builtsite  # noqa: E402
+
+OUT = builtsite.OUT
 
 
 def setUpModule():
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    subprocess.run([sys.executable, os.path.join(WEB, "build.py"), "--out", OUT],
-                   check=True, stdout=subprocess.DEVNULL)
+    builtsite.ensure()
 
 
 def read_out(relpath):
@@ -129,7 +128,7 @@ class HeaderOnEveryPageTest(unittest.TestCase):
             doc = read_out(rel)
             self.assertNotIn("<style", doc, rel)
             inline = 0
-            for tag, a, _ in tree(doc).tags:
+            for tag, a, _ in builtsite.feed(os.path.join(OUT, *rel.split("/")), Tree()).tags:
                 self.assertFalse([k for k in a if k.startswith("on")], f"{tag} in {rel}")
                 if tag == "script" and not (a.get("src") or a.get("type") in ("application/json", "application/ld+json")):
                     inline += 1

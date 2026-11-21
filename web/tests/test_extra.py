@@ -4,7 +4,6 @@ import html
 import json
 import os
 import re
-import subprocess
 import sys
 import unittest
 import zipfile
@@ -16,13 +15,13 @@ sys.path.insert(0, WEB)
 import serve  # noqa: E402
 from olt import common, docs, facets, home, records, regions as regions_mod, seo, site, words  # noqa: E402
 
-OUT = os.path.join(WEB, ".cache", "test-site")
+import builtsite  # noqa: E402
+
+OUT = builtsite.OUT
 
 
 def setUpModule():
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    subprocess.run([sys.executable, os.path.join(WEB, "build.py"), "--out", OUT],
-                   check=True, stdout=subprocess.DEVNULL)
+    builtsite.ensure()
 
 
 def read_out(relpath):

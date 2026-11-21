@@ -5,7 +5,6 @@ import ast
 import json
 import os
 import re
-import subprocess
 import sys
 import unittest
 
@@ -15,16 +14,16 @@ sys.path.insert(0, WEB)
 
 from olt import common, layout, records  # noqa: E402
 
-OUT = os.path.join(WEB, ".cache", "test-site")
+import builtsite  # noqa: E402
+
+OUT = builtsite.OUT
 STYLE = os.path.join(WEB, "assets", "map", "outdoor.json")
 VENDOR = os.path.join(WEB, "assets", "vendor")
 MAP_FONTS = {"Noto Sans Regular", "Noto Sans Italic", "Noto Sans Bold"}  # served by OpenFreeMap
 
 
 def setUpModule():
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    subprocess.run([sys.executable, os.path.join(WEB, "build.py"), "--out", OUT],
-                   check=True, stdout=subprocess.DEVNULL)
+    builtsite.ensure()
 
 
 def read(*parts):

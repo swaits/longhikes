@@ -90,6 +90,11 @@ def not_found_page(site):
 
 def render_site(records, out_dir, repo_root, site=None):
     """Write every HTML page for the given records. Returns the number of pages written."""
+    with browse.remembering_shown():
+        return _render_site(records, out_dir, repo_root, site)
+
+
+def _render_site(records, out_dir, repo_root, site=None):
     site = site or site_settings.load()
     copy_assets(out_dir)
     sketch.use(out_dir)  # the maps' static drawings are read from the track files written here

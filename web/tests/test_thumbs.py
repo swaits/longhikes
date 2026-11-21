@@ -15,7 +15,9 @@ sys.path.insert(0, WEB)
 
 from olt import records, thumbs  # noqa: E402
 
-OUT = os.path.join(WEB, ".cache", "test-site")
+import builtsite  # noqa: E402
+
+OUT = builtsite.OUT
 MAX_SIDE = 256
 
 
@@ -29,11 +31,15 @@ class Imgs(HTMLParser):
             self.imgs.append(dict(attrs))
 
 
+_imgs = {}
+
+
 def page_imgs(path):
-    p = Imgs()
-    with open(path, encoding="utf-8") as f:
-        p.feed(f.read())
-    return p.imgs
+    """The <img> tags of a page, read once per run (the tests only look at the result)."""
+    stamp = (os.path.abspath(path), os.stat(path).st_mtime_ns)
+    if stamp not in _imgs:
+        _imgs[stamp] = builtsite.feed(path, Imgs()).imgs
+    return _imgs[stamp]
 
 
 def html_files(out):
@@ -61,11 +67,6 @@ def repository_logos():
         if not name.startswith((".", "_")) and name not in found and os.path.isfile(path):
             found[name] = path
     return found
-
-
-def build():
-    subprocess.run([sys.executable, os.path.join(WEB, "build.py"), "--out", OUT],
-                   check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
 class ThumbFilesTest(unittest.TestCase):
@@ -147,8 +148,7 @@ class ThumbFilesTest(unittest.TestCase):
 class BuiltPagesTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        os.makedirs(os.path.dirname(OUT), exist_ok=True)
-        build()
+        builtsite.ensure()
         cls.records = records.load_records(ROOT)
         cls.png = [r["id"] for r in cls.records
                    if r["derived"]["files"].get("shield", "").endswith(".png")]
@@ -195,9 +195,20 @@ class BuiltPagesTest(unittest.TestCase):
                 self.assertEqual(img.get("loading"), "lazy")
 
     def test_thumbnails_survive_a_second_build(self):
-        build()
-        for tid in self.png:
-            self.assertTrue(os.path.isfile(os.path.join(OUT, "trails", tid, thumbs.THUMB_NAME)), tid)
+        # A build over a site that is already built, on a copy: the shared one is never written to.
+        with tempfile.TemporaryDirectory() as tmp:
+            again = os.path.join(tmp, "site")
+            shutil.copytree(OUT, again)
+            gone = os.path.join(again, "trails", self.png[0], thumbs.THUMB_NAME)
+            os.remove(gone)                              # one the second build must put back
+            # build.py itself, on the copy as it stands: builtsite.build removes its target first
+            done = subprocess.run([sys.executable, os.path.join(builtsite.WEB, "build.py"), "--out", again],
+                                  stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            self.assertEqual(done.returncode, 0, done.stderr[-2000:])
+            self.assertIn("trails processed 0,", done.stdout)  # it was a second build, not a first
+            self.assertTrue(os.path.isfile(gone))
+            for tid in self.png:
+                self.assertTrue(os.path.isfile(os.path.join(again, "trails", tid, thumbs.THUMB_NAME)), tid)
 
 
 if __name__ == "__main__":

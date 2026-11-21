@@ -22,6 +22,7 @@ ROOT = os.path.dirname(WEB)
 sys.path.insert(0, WEB)
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 
+import builtsite  # noqa: E402
 from olt import browse, facets, home, layout, leftout, regions, site, standing, views, words  # noqa: E402
 from olt import records as recordsmod  # noqa: E402
 
@@ -31,6 +32,11 @@ SITE = site.load()
 def read(*parts):
     with open(os.path.join(*parts), encoding="utf-8") as f:
         return f.read()
+
+
+def built_page(*parts):
+    """A page of the shared site build (builtsite.py), as text."""
+    return read(builtsite.ensure(), *parts, "index.html")
 
 
 def form_of(body):
@@ -80,7 +86,7 @@ class WhichPagesHaveTheBarTest(unittest.TestCase):
         small = [k for k, v in by_slug.items() if len(v["records"]) < 10]
         self.assertGreater(len(small), 40)
         for key in small:
-            body = regions.region_page(key, self.records, SITE)[2]
+            body = built_page("regions", key)
             self.assertIn('id="finder-form"', str(body), key)
             self.assertIn("data-finder", str(body), key)
         small_lists = [k for k, recs in self.shown.items() if len(recs) < 10 and k != "routes"]
@@ -93,7 +99,7 @@ class WhichPagesHaveTheBarTest(unittest.TestCase):
         two = [k for k, v in by_slug.items() if len(v["records"]) == 2]
         self.assertTrue(two)
         for key in two:
-            form = form_of(regions.region_page(key, self.records, SITE)[2])
+            form = form_of(built_page("regions", key))
             self.assertIn('name="q"', form, key)
             for sel in re.findall(r"<select[^>]*>(.*?)</select>", form, re.S):
                 self.assertNotIn("<select></select>", sel)

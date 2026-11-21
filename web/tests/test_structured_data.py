@@ -3,13 +3,12 @@ robots headers, the 404, the Atom feed, llms.txt and the favicon.
 
 The JSON-LD is checked against the properties schema.org and Google Search Central document
 for each type (REQUIRED below, read 2026-11); Google's Rich Results Test itself cannot be run
-here. The site is built into web/.cache/test-site, as the other page tests do.
+here. The site is the one built once per run by builtsite.py, as for the other page tests.
 """
 import html
 import json
 import os
 import re
-import subprocess
 import sys
 import unittest
 import xml.etree.ElementTree as ET
@@ -21,7 +20,9 @@ sys.path.insert(0, WEB)
 import serve  # noqa: E402
 from olt import browse, cards, common, docs, feed, records, regions, seo, site, thumbs  # noqa: E402
 
-OUT = os.path.join(WEB, ".cache", "test-site")
+import builtsite  # noqa: E402
+
+OUT = builtsite.OUT
 SITE = site.load()
 BASE = SITE.base_url
 
@@ -120,9 +121,7 @@ def visible_crumbs(doc):
 
 
 def setUpModule():
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    subprocess.run([sys.executable, os.path.join(WEB, "build.py"), "--out", OUT],
-                   check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    builtsite.ensure()
 
 
 class RequiredPropertiesTest(unittest.TestCase):

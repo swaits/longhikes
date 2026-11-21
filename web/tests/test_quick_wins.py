@@ -3,7 +3,6 @@ files, description endings, guessable-address redirects, the print rules, the ex
 list-size logo thumbnails."""
 import os
 import re
-import subprocess
 import sys
 import unittest
 
@@ -14,14 +13,13 @@ sys.path.insert(0, WEB)
 import serve  # noqa: E402
 from olt import common, records, redirects, thumbs  # noqa: E402
 
-OUT = os.path.join(WEB, ".cache", "test-site")
+import builtsite  # noqa: E402
+
+OUT = builtsite.OUT
 
 
 def setUpModule():
-    if not os.path.isfile(os.path.join(OUT, "_redirects")):
-        os.makedirs(os.path.dirname(OUT), exist_ok=True)
-        subprocess.run([sys.executable, os.path.join(WEB, "build.py"), "--out", OUT],
-                       check=True, stdout=subprocess.DEVNULL)
+    builtsite.ensure()
 
 
 def read(relpath):

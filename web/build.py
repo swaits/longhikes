@@ -9,11 +9,15 @@ import sys
 sys.dont_write_bytecode = True
 
 import argparse
+import concurrent.futures
+import hashlib
 import json
+import multiprocessing
 import os
 import shutil
 import time
 import zipfile
+import zlib
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -28,7 +32,15 @@ OVERVIEW_TOL_M = 750.0
 CODE_FILES = [os.path.join(HERE, "build.py"),
               os.path.join(HERE, "olt", "geo.py"),
               os.path.join(HERE, "olt", "hike.py"),
-              os.path.join(HERE, "olt", "records.py")]
+              os.path.join(HERE, "olt", "records.py"),
+              # what those import (a test, test_build.py, keeps this list closed under imports)
+              os.path.join(HERE, "olt", "words.py"),
+              os.path.join(HERE, "olt", "elevation.py"),
+              os.path.join(HERE, "olt", "markup.py"),
+              # and what build.py itself imports (the pages step, olt.pages, is not trail code)
+              os.path.join(HERE, "olt", "fingerprint.py"),
+              os.path.join(HERE, "olt", "redirects.py"),
+              os.path.join(HERE, "olt", "site.py")]
 # Incremental-build cache, deliberately outside the publish directory.
 CACHE_DIR = os.path.join(HERE, ".cache")
 # Files copied verbatim into the root of the publish directory (_headers, ...).
@@ -78,13 +90,13 @@ def mtime(path):
     return os.path.getmtime(path)
 
 
-def dir_mtime(path):
-    """Newest mtime of the files directly inside a directory."""
-    return max(mtime(os.path.join(path, n)) for n in os.listdir(path)
-               if os.path.isfile(os.path.join(path, n)))
+_WARNINGS = None  # in a worker process: the warnings it raised, which the parent prints
 
 
 def warn(message):
+    if _WARNINGS is not None:
+        _WARNINGS.append(message)
+        return
     print(f"warning: {message}", file=sys.stderr)
 
 
@@ -165,22 +177,21 @@ def read_cache(cache_path):
     return cache if isinstance(cache, dict) else None
 
 
-def up_to_date(rec, files, tdir, cache_path, code_mtime):
-    """True when the outputs are complete, newer than the sources, and the cache
-    records exactly the set of outputs this record now calls for."""
+def up_to_date(rec, files, tdir, cache_path, key):
+    """True when the outputs are complete, were made from the trail's content as it is now (the
+    key the cache entry holds is the trail's current key: modification times are not consulted,
+    so a file put back to an older time is still seen), and the cache records exactly the set of
+    outputs this record now calls for."""
     names = trail_outputs(rec["id"], files, rec)
     cache = read_cache(cache_path)
-    if cache is None or cache.get("outputs") != sorted(names):
+    if cache is None or cache.get("outputs") != sorted(names) or cache.get("key") != key:
         return False
     if cache.get("creator") != gpx_creator():  # the site was renamed: the GPX creator is stale
         return False
     if "line" in files and "bbox" not in cache:
         return False
     paths = [os.path.join(tdir, n) for n in names] + [cache_path]
-    if not all(os.path.isfile(p) for p in paths):
-        return False
-    newest_in = max(code_mtime, dir_mtime(os.path.join(ROOT, rec["id"])))
-    return all(mtime(p) >= newest_in for p in paths)
+    return all(os.path.isfile(p) for p in paths)
 
 
 def download(tdir, name, role, note, fmt):
@@ -192,8 +203,9 @@ def build_set(tid, key, path, stem, gpx_name, tdir, gpx_args, stats):
     """Write one line file's outputs. Returns (parts, map parts), or None when
     the file has no line (or nothing is left of it after rounding)."""
     parts = geo.read_parts(path)
-    simple = geo.round_coords(geo.simplify(parts, GPX_TOL_M), 6)
-    small = geo.round_coords(geo.simplify(parts, MAP_TOL_M), 5)
+    fine, coarse = geo.simplify_multi(parts, [GPX_TOL_M, MAP_TOL_M])  # one walk serves both
+    simple = geo.round_coords(fine, 6)
+    small = geo.round_coords(coarse, 5)
     if not parts or not simple or not small:
         warn(f"{tid}: the {key} file {os.path.relpath(path, ROOT)} has no line; "
              f"treated as having no {key}")
@@ -204,9 +216,151 @@ def build_set(tid, key, path, stem, gpx_name, tdir, gpx_args, stats):
     return parts, small
 
 
-def build_trail(rec, out_dir, code_mtime, force, stats):
+def compute_trail(rec, files, tdir, stats):
+    """Write the outputs of one trail from its source files. Returns (files, cache): the files
+    that produced output, and what the pages need of the line (bbox, point count, elevation)."""
+    tid = rec["id"]
+    src = rec.get("source", {})
+    cache = {}
+    gpx_args = dict(url=src.get("url", ""), attribution=src.get("attribution", ""),
+                    licence=src.get("licence", ""), licence_text=src.get("licence_text", ""),
+                    creator=gpx_creator(),
+                    permission=({k: src[k] for k in ("permission_quote", "permission_by", "permission_date", "permission_url")
+                                 if k in src} if src.get("licence") == "stated-permission" else None))
+    maps = []
+    if "line" in files:
+        built = build_set(tid, "line", os.path.join(ROOT, files["line"]), tid,
+                          rec["name"], tdir, gpx_args, stats)
+        if built is None:
+            del files["line"]
+        else:
+            parts, small = built
+            maps.append(multiline_feature(small, {"role": "main"}))
+            cache = {"bbox": geo.bbox(parts), "points": geo.point_count(parts),
+                     "elevation": geo.has_elevation(parts)}
+    if "alternates" in files:
+        built = build_set(tid, "alternates", os.path.join(ROOT, files["alternates"]),
+                          f"{tid}-alternates", rec["name"] + " (alternates)",
+                          tdir, gpx_args, stats)
+        if built is None:
+            del files["alternates"]
+        else:
+            maps.append(multiline_feature(built[1], {"role": "alternate"}))
+    if maps:
+        # The bbox covers the coordinates as published (rounded), not the source's.
+        box = geo.merge_bbox([geo.bbox(m["geometry"]["coordinates"]) for m in maps])
+        fc = {"type": "FeatureCollection", "bbox": box, "features": maps}
+        write_json(os.path.join(tdir, "map.json"), fc, stats)
+    sketches = termini_features(rec) if "line" not in files else []
+    if sketches:
+        box = hike.sketch_bbox(hike.sketch_points(rec), pad=True)
+        write_json(os.path.join(tdir, "sketch.json"),
+                   {"type": "FeatureCollection", "bbox": box, "features": sketches}, stats)
+    return files, cache
+
+
+def copy_sources(tid, files, tdir, stats):
+    """Copy the trail's files that are published as they are (the full-resolution GeoJSON,
+    the extracts and the logo) from the repository."""
+    for key, stem in (("line", tid), ("alternates", f"{tid}-alternates")):
+        if key in files:
+            copy_file(os.path.join(ROOT, files[key]), os.path.join(tdir, f"{stem}.geojson"), stats)
+    for source, rel in files.get("extracts", {}).items():
+        copy_file(os.path.join(ROOT, rel), os.path.join(tdir, f"{tid}-{source}.geojson"), stats)
+    if "shield" in files:
+        name = os.path.basename(files["shield"])
+        copy_file(os.path.join(ROOT, files["shield"]), os.path.join(tdir, name), stats)
+
+
+# What the trail's derived outputs are made from: these files' contents (and those of the trail's
+# own directory) decide them, so a change to any of them makes a new key. Kept by content, not by
+# modification time, so a store restored from a CI cache or made in another checkout is as good as one
+# made here.
+STORE_VERSION = "2"  # 2: archives have fixed member times
+_code_digest = None
+
+
+def code_digest():
+    global _code_digest
+    if _code_digest is None:
+        h = hashlib.sha256(STORE_VERSION.encode())
+        for path in CODE_FILES:
+            with open(path, "rb") as f:
+                h.update(hashlib.sha256(f.read()).digest())
+        _code_digest = h.hexdigest()
+    return _code_digest
+
+
+def trail_key(tid):
+    """Hash of everything the trail's derived outputs depend on."""
+    h = hashlib.sha256(code_digest().encode())
+    h.update(gpx_creator().encode())
+    d = os.path.join(ROOT, tid)
+    for name in sorted(os.listdir(d)):
+        path = os.path.join(d, name)
+        if os.path.isfile(path):
+            h.update(name.encode() + b"\0")
+            with open(path, "rb") as f:
+                h.update(hashlib.sha256(f.read()).digest())
+    return h.hexdigest()
+
+
+def store_dir():
+    return os.path.join(CACHE_DIR, "store")
+
+
+def derived_names(names):
+    """The outputs that are computed (the rest are copies of repository files)."""
+    return [n for n in names if n.endswith(".gpx") or n in ("map.json", "sketch.json")]
+
+
+def restore_from_store(tid, key, tdir):
+    """Copy the trail's stored derived outputs into tdir. Returns the stored meta
+    {"files", "cache", "warnings"}, or None when there is no entry for this key."""
+    entry = os.path.join(store_dir(), tid, key)
+    try:
+        with open(os.path.join(entry, "meta.json"), encoding="utf-8") as f:
+            meta = json.load(f)
+        for name in meta["derived"]:
+            shutil.copyfile(os.path.join(entry, name), os.path.join(tdir, name))
+    except (OSError, ValueError, KeyError):
+        return None
+    return meta
+
+
+def save_to_store(tid, key, tdir, names, files, cache, warnings):
+    """Keep the trail's derived outputs under their key; older keys of the trail are dropped.
+    Written beside and moved into place, so a half-written entry is never read."""
+    base = os.path.join(store_dir(), tid)
+    tmp = os.path.join(base, f".tmp-{os.getpid()}")
+    try:
+        shutil.rmtree(tmp, ignore_errors=True)
+        os.makedirs(tmp)
+        derived = derived_names(names)
+        for name in derived:
+            shutil.copyfile(os.path.join(tdir, name), os.path.join(tmp, name))
+        with open(os.path.join(tmp, "meta.json"), "w", encoding="utf-8") as f:
+            json.dump({"derived": derived, "files": files, "cache": cache, "warnings": warnings}, f)
+        final = os.path.join(base, key)
+        if not os.path.isdir(final):
+            os.rename(tmp, final)
+        for name in os.listdir(base):
+            if name != key and not name.startswith(".tmp-"):
+                shutil.rmtree(os.path.join(base, name), ignore_errors=True)
+    except OSError:
+        pass  # the store is only a shortcut
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def build_trail(rec, out_dir, force, stats):
     """Write one trail's files. Returns (downloads, cache). The record's
-    derived.files is replaced by the files that actually produced output."""
+    derived.files is replaced by the files that actually produced output.
+
+    A trail whose outputs are already in out_dir and were made from its present content is left alone;
+    one whose sources and code are unchanged since the store (CACHE_DIR/store) last saw them
+    has its derived outputs copied from there; any other is computed."""
+    global _WARNINGS
     tid = rec["id"]
     files = dict(rec["derived"]["files"])
     src = rec.get("source", {})
@@ -222,53 +376,35 @@ def build_trail(rec, out_dir, code_mtime, force, stats):
 
     if not names:
         pass  # record only: nothing to write
-    elif not force and up_to_date(rec, files, tdir, cache_path, code_mtime):
+    elif not force and up_to_date(rec, files, tdir, cache_path, trail_key(tid)):
         stats.skipped_trails += 1
         stats.skipped += len(names)
         cache = read_cache(cache_path)
     else:
-        stats.processed += 1
-        gpx_args = dict(url=src.get("url", ""), attribution=src.get("attribution", ""),
-                        licence=src.get("licence", ""), licence_text=src.get("licence_text", ""),
-                        creator=gpx_creator(),
-                        permission=({k: src[k] for k in ("permission_quote", "permission_by", "permission_date", "permission_url")
-                                     if k in src} if src.get("licence") == "stated-permission" else None))
-        maps = []
-        if "line" in files:
-            built = build_set(tid, "line", os.path.join(ROOT, files["line"]), tid,
-                              rec["name"], tdir, gpx_args, stats)
-            if built is None:
-                del files["line"]
-            else:
-                parts, small = built
-                maps.append(multiline_feature(small, {"role": "main"}))
-                cache = {"bbox": geo.bbox(parts), "points": geo.point_count(parts),
-                         "elevation": geo.has_elevation(parts)}
-        if "alternates" in files:
-            built = build_set(tid, "alternates", os.path.join(ROOT, files["alternates"]),
-                              f"{tid}-alternates", rec["name"] + " (alternates)",
-                              tdir, gpx_args, stats)
-            if built is None:
-                del files["alternates"]
-            else:
-                maps.append(multiline_feature(built[1], {"role": "alternate"}))
-        for source, rel in files.get("extracts", {}).items():
-            copy_file(os.path.join(ROOT, rel), os.path.join(tdir, f"{tid}-{source}.geojson"), stats)
-        if maps:
-            # The bbox covers the coordinates as published (rounded), not the source's.
-            box = geo.merge_bbox([geo.bbox(m["geometry"]["coordinates"]) for m in maps])
-            fc = {"type": "FeatureCollection", "bbox": box, "features": maps}
-            write_json(os.path.join(tdir, "map.json"), fc, stats)
-        sketches = termini_features(rec) if "line" not in files else []
-        if sketches:
-            box = hike.sketch_bbox(hike.sketch_points(rec), pad=True)
-            write_json(os.path.join(tdir, "sketch.json"),
-                       {"type": "FeatureCollection", "bbox": box, "features": sketches}, stats)
-        if "shield" in files:
-            name = os.path.basename(files["shield"])
-            copy_file(os.path.join(ROOT, files["shield"]), os.path.join(tdir, name), stats)
+        key = trail_key(tid)
+        meta = None if force else restore_from_store(tid, key, tdir)
+        if meta is not None:
+            stats.skipped_trails += 1
+            files, cache = meta["files"], meta["cache"]
+            for message in meta["warnings"]:
+                warn(message)
+            copy_sources(tid, files, tdir, stats)
+        else:
+            stats.processed += 1
+            outer, _WARNINGS = _WARNINGS, []
+            try:
+                files, cache = compute_trail(rec, files, tdir, stats)
+                raised = _WARNINGS
+            finally:
+                _WARNINGS = outer
+            for message in raised:
+                warn(message)
+            copy_sources(tid, files, tdir, stats)
         names = trail_outputs(tid, files, rec)
-        cache = dict(cache, outputs=sorted(names), creator=gpx_creator())
+        cache = dict(cache, outputs=sorted(names), creator=gpx_creator(), key=key)
+        if meta is None and names:
+            save_to_store(tid, key, tdir, names, files,
+                          {k: v for k, v in cache.items() if k not in ("outputs", "creator", "key")}, raised)
         if names:
             with open(cache_path, "w", encoding="utf-8") as f:
                 json.dump(cache, f)
@@ -299,29 +435,55 @@ def build_trail(rec, out_dir, code_mtime, force, stats):
     return downloads, cache or {}
 
 
-def read_main_map_parts(tdir):
+def overview_parts(tdir):
+    """A trail's line for the overview map: its 30 m map line, joined, simplified to 750 m.
+    Kept in the store by the content of the map file, which is all it comes from."""
     try:
-        with open(os.path.join(tdir, "map.json"), encoding="utf-8") as f:
-            fc = json.load(f)
+        with open(os.path.join(tdir, "map.json"), "rb") as f:
+            raw = f.read()
     except OSError:
         return []
-    for feat in fc["features"]:
+    tid = os.path.basename(tdir)
+    kept = os.path.join(store_dir(), "overview", f"{tid}.{hashlib.sha256(code_digest().encode() + raw).hexdigest()}.json")
+    try:
+        with open(kept, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        pass
+    parts = []
+    for feat in json.loads(raw)["features"]:
         if feat["properties"].get("role") == "main":
-            return feat["geometry"]["coordinates"]
-    return []
+            parts = feat["geometry"]["coordinates"]
+            break
+    parts = geo.join_parts(parts)  # many trails are thousands of short parts
+    parts = geo.round_coords(geo.simplify(parts, OVERVIEW_TOL_M), 4)
+    try:
+        folder = os.path.dirname(kept)
+        os.makedirs(folder, exist_ok=True)
+        for old in os.listdir(folder):
+            if old.startswith(tid + ".") and old.count(".") == 2:
+                os.remove(os.path.join(folder, old))
+        with open(kept + f".{os.getpid()}", "w", encoding="utf-8") as f:
+            json.dump(parts, f)
+        os.replace(kept + f".{os.getpid()}", kept)
+    except OSError:
+        pass  # the store is only a shortcut
+    return parts
 
 
-def overview_geojson(recs, out_dir):
+def overview_geojson(recs, out_dir, parts_of=None):
     """One MultiLineString per included trail, simplified from the 30 m map line.
-    A trail with no track but a known start or end appears as sketch features."""
+    A trail with no track but a known start or end appears as sketch features.
+    parts_of: {id: overview_parts(...)} already worked out (in a worker process)."""
     features = []
     for rec in recs:
         if "line" not in rec["derived"]["files"]:
             features.extend(sketch_features(rec))
             continue
-        parts = read_main_map_parts(os.path.join(out_dir, "trails", rec["id"]))
-        parts = geo.join_parts(parts)  # many trails are thousands of short parts
-        parts = geo.round_coords(geo.simplify(parts, OVERVIEW_TOL_M), 4)
+        if parts_of is not None and rec["id"] in parts_of:
+            parts = parts_of[rec["id"]]
+        else:
+            parts = overview_parts(os.path.join(out_dir, "trails", rec["id"]))
         if not parts:
             continue
         props = {"id": rec["id"], "name": rec["name"], "kind": rec["derived"]["kind"],
@@ -406,6 +568,9 @@ def archive_readme(name):
             f"{resolution}")
 
 
+ARCHIVE_TIME = (1980, 1, 1, 0, 0, 0)  # the earliest time a zip can hold
+
+
 def build_archive(name, recs, out_dir, stats):
     """Write /data/<name> (zip, deflate) unless it already holds exactly these files
     and is newer than every one of them and than this script."""
@@ -422,15 +587,49 @@ def build_archive(name, recs, out_dir, stats):
                     return
         except (OSError, zipfile.BadZipFile):
             pass
+    # The store keeps an archive by what goes into it, so one whose files have not changed (in
+    # content: it does not matter when they were written) is copied, not compressed again.
+    digest = hashlib.sha256(code_digest().encode() + archive_readme(name).encode())
+    for arc, src in members:
+        digest.update(arc.encode() + b"\0")
+        with open(src, "rb") as f:
+            digest.update(hashlib.sha256(f.read()).digest())
+    kept = os.path.join(store_dir(), "archives", f"{name}.{digest.hexdigest()}")
     tmp = path + ".tmp"  # written beside, then moved over: never a half-written archive
     try:
+        try:
+            shutil.copyfile(kept, tmp)
+            with zipfile.ZipFile(tmp) as zf:
+                restored = zf.namelist() == expected and zf.testzip() is None  # whole, not just named right
+        except (OSError, zipfile.BadZipFile, zlib.error, EOFError, NotImplementedError):
+            restored = False
+        if restored:
+            os.replace(tmp, path)
+            stats.skipped += 1
+            return
         with zipfile.ZipFile(tmp, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-            info = zipfile.ZipInfo("README.txt", date_time=time.localtime(mtime(__file__))[:6])
+            # Every member gets the same fixed time and mode, so the same files always make the
+            # same bytes, whenever and wherever the archive is made (and so the store can hand
+            # one made elsewhere to a build here).
+            info = zipfile.ZipInfo("README.txt", date_time=ARCHIVE_TIME)
             info.compress_type = zipfile.ZIP_DEFLATED
-            info.external_attr = 0o644 << 16
+            info.external_attr = 0o100644 << 16
             zf.writestr(info, archive_readme(name))
             for arc, src in members:
-                zf.write(src, arc)
+                info = zipfile.ZipInfo(arc, date_time=ARCHIVE_TIME)
+                info.compress_type = zipfile.ZIP_DEFLATED
+                info.external_attr = 0o100644 << 16
+                with open(src, "rb") as source, zf.open(info, "w") as member:
+                    shutil.copyfileobj(source, member, 1 << 20)
+        try:
+            os.makedirs(os.path.dirname(kept), exist_ok=True)
+            for old in os.listdir(os.path.dirname(kept)):
+                if old.startswith(name + "."):
+                    os.remove(os.path.join(os.path.dirname(kept), old))
+            shutil.copyfile(tmp, kept + ".tmp")
+            os.replace(kept + ".tmp", kept)
+        except OSError:
+            pass  # the store is only a shortcut
         os.replace(tmp, path)
     finally:
         if os.path.exists(tmp):
@@ -466,6 +665,127 @@ def describe_site():
     return f"the {name} site" if name else "the static site"
 
 
+# Several trails at once ---------------------------------------------------------------------
+# The work on a trail (reading its track, simplifying it twice, writing GPX) is the bulk of a
+# cold build, and trails do not depend on one another, so they are spread over worker processes.
+# The workers are forked, so they share the loaded records; a result is what the parent needs
+# back, and the parent applies it in record order, so the output is the same as one process's.
+
+PARALLEL_FROM = 16  # fewer trails than this: not worth the workers
+_JOB = None
+
+
+def usable_cores():
+    """The cores this process may run on (os.process_cpu_count is new in Python 3.13)."""
+    try:
+        return len(os.sched_getaffinity(0)) or 1
+    except AttributeError:
+        return os.cpu_count() or 1
+
+
+def job_count():
+    """Worker processes: LONGHIKES_JOBS if set, else the cores this process may use (at most 8)."""
+    env = os.environ.get("LONGHIKES_JOBS", "")
+    if env.isdigit():
+        return max(1, int(env))
+    return min(usable_cores(), 8)
+
+
+def fork_context():
+    if "fork" in multiprocessing.get_all_start_methods():
+        return multiprocessing.get_context("fork")
+    return None
+
+
+def build_one(rec, out_dir, force, stats):
+    """build_trail, and the trail's line for the overview map when it has one."""
+    downloads, cache = build_trail(rec, out_dir, force, stats)
+    parts = None
+    if "line" in rec["derived"]["files"]:
+        parts = overview_parts(os.path.join(out_dir, "trails", rec["id"]))
+    return downloads, cache, parts
+
+
+def _trail_job(i):
+    global _WARNINGS
+    recs, out_dir, force_all, only = _JOB
+    rec = recs[i]
+    _WARNINGS = []
+    stats = Stats()
+    result = build_one(rec, out_dir, force_all or rec["id"] in only, stats)
+    return i, result, rec["derived"]["files"], vars(stats), _WARNINGS
+
+
+def tree_size(tid):
+    return sum(e.stat().st_size for e in os.scandir(os.path.join(ROOT, tid)) if e.is_file())
+
+
+def build_trails(recs, out_dir, args, only, stats):
+    """[(downloads, cache, overview parts)] for every record, in record order."""
+    ctx = fork_context()
+    jobs = min(job_count(), len(recs))
+    if ctx is None or jobs < 2 or len(recs) < PARALLEL_FROM:
+        return [build_one(rec, out_dir, args.force or rec["id"] in only, stats)
+                for rec in recs]
+    global _JOB
+    _JOB = (recs, out_dir, args.force, only)
+    results = [None] * len(recs)
+    order = sorted(range(len(recs)), key=lambda i: -tree_size(recs[i]["id"]))  # biggest first
+    # A process pool, not multiprocessing.Pool: a worker that raises, or is killed, makes the
+    # build fail (BrokenProcessPool) where Pool would wait for it for ever.
+    try:
+        with concurrent.futures.ProcessPoolExecutor(jobs, mp_context=ctx) as pool:
+            try:
+                futures = [pool.submit(_trail_job, i) for i in order]
+                for done in concurrent.futures.as_completed(futures):
+                    i, result, files, counts, warnings = done.result()
+                    recs[i]["derived"]["files"] = files
+                    results[i] = result
+                    for name, n in counts.items():
+                        setattr(stats, name, getattr(stats, name) + n)
+                    for message in warnings:
+                        warn(message)
+            except BaseException:
+                pool.shutdown(wait=False, cancel_futures=True)
+                raise
+    finally:
+        _JOB = None
+    return results
+
+
+def _archive_job(name):
+    stats = Stats()
+    build_archive(name, _JOB[0], _JOB[1], stats)
+    return vars(stats)
+
+
+def start_archives(recs, out_dir, stats):
+    """Build the bulk archives, in worker processes when they can be. Returns what finish_archives needs."""
+    global _JOB
+    ctx = fork_context()
+    if ctx is None or job_count() < 2:
+        for name in ARCHIVES:
+            build_archive(name, recs, out_dir, stats)
+        return None
+    _JOB = (recs, out_dir)
+    pool = concurrent.futures.ProcessPoolExecutor(min(len(ARCHIVES), job_count()), mp_context=ctx)
+    return pool, [pool.submit(_archive_job, name) for name in ARCHIVES]
+
+
+def finish_archives(started, stats):
+    global _JOB
+    if started is None:
+        return
+    pool, pending = started
+    try:
+        for result in pending:
+            for name, n in result.result().items():
+                setattr(stats, name, getattr(stats, name) + n)
+    finally:
+        pool.shutdown(wait=True, cancel_futures=True)
+        _JOB = None
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=f"Build the data and pages for {describe_site()}.")
     ap.add_argument("--out", default="_site", help="output directory (default _site)")
@@ -482,7 +802,6 @@ def main(argv=None):
     if unknown:
         raise SystemExit(f"unknown trail id(s): {', '.join(sorted(unknown))}")
 
-    code_mtime = max(mtime(p) for p in CODE_FILES)
     stats = Stats()
     os.makedirs(os.path.join(out_dir, "data"), exist_ok=True)
     # Older builds kept the cache in the publish directory; it must never ship.
@@ -493,11 +812,12 @@ def main(argv=None):
     # Every trail goes through build_trail so the site-wide files are complete.
     # --only forces a rebuild of the chosen trails; the rest are rebuilt only
     # when stale or missing from the cache.
-    for rec in recs:
-        force = args.force or rec["id"] in only
-        downloads, cache = build_trail(rec, out_dir, code_mtime, force, stats)
+    overview = {}
+    for rec, (downloads, cache, parts) in zip(recs, build_trails(recs, out_dir, args, only, stats)):
         d = rec["derived"]
         d["downloads"] = downloads
+        if parts is not None:
+            overview[rec["id"]] = parts
         if cache.get("bbox"):
             box = cache["bbox"]
             d["bbox"] = box
@@ -508,12 +828,12 @@ def main(argv=None):
         prune_removed_trails(out_dir, {r["id"] for r in recs})
 
     write_json(os.path.join(out_dir, "data", "overview.geojson"),
-               overview_geojson(recs, out_dir), stats)
+               overview_geojson(recs, out_dir, overview), stats)
     write_json(os.path.join(out_dir, "data", "trails.json"), recs, stats)
     for name in ("trails.csv", "index.geojson"):
         copy_file(os.path.join(ROOT, name), os.path.join(out_dir, "data", name), stats)
-    for name in ARCHIVES:
-        build_archive(name, recs, out_dir, stats)
+    # The archives need only the trails' files, which are all written: they are made alongside the pages.
+    archives = start_archives(recs, out_dir, stats)
 
     copy_static(STATIC_DIR, out_dir, stats)
     # The guessable trail addresses (/trails/pacific-crest-trail/) follow the fixed ones in _redirects.
@@ -528,6 +848,7 @@ def main(argv=None):
         # (olt/fingerprint.py); this writes those files, under /immutable/.
         fingerprint.publish(out_dir)
 
+    finish_archives(archives, stats)
     total = 0
     for base, _, names in os.walk(out_dir):
         total += sum(os.path.getsize(os.path.join(base, n)) for n in names)

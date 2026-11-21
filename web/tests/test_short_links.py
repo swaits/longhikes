@@ -24,7 +24,9 @@ import trail_numbers  # noqa: E402
 from olt import records, saved  # noqa: E402
 
 NODE = shutil.which("node")
-OUT = os.path.join(WEB, ".cache", "test-site")
+import builtsite  # noqa: E402
+
+OUT = builtsite.OUT
 
 # The owner's own list of 49 trails, in the order saved: a real fixture.
 OWNER = ("eastern-sierra-high-route,sierra-high-route,southern-sierra-high-route,uinta-highline,grand-moab-route,"
@@ -130,9 +132,7 @@ class CodeTest(unittest.TestCase):
 class NumbersOnThePageTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        os.makedirs(os.path.dirname(OUT), exist_ok=True)
-        subprocess.run([sys.executable, os.path.join(WEB, "build.py"), "--out", OUT],
-                       check=True, stdout=subprocess.DEVNULL)
+        builtsite.ensure()
         with open(os.path.join(OUT, "saved", "index.html"), encoding="utf-8") as f:
             cls.page = f.read()
 

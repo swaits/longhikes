@@ -2,7 +2,6 @@
 and the logos of the first screen are not lazy-loaded while the rest are."""
 import os
 import re
-import subprocess
 import sys
 import tempfile
 import unittest
@@ -14,7 +13,9 @@ sys.path.insert(0, WEB)
 
 from olt import home, thumbs  # noqa: E402
 
-OUT = os.path.join(WEB, ".cache", "test-site")
+import builtsite  # noqa: E402
+
+OUT = builtsite.OUT
 
 
 class Imgs(HTMLParser):
@@ -32,11 +33,15 @@ class Imgs(HTMLParser):
             self.imgs.append(a)
 
 
+_imgs = {}
+
+
 def page_imgs(path):
-    p = Imgs()
-    with open(path, encoding="utf-8") as f:
-        p.feed(f.read())
-    return p.imgs
+    """The <img> tags of a page, read once per run (the tests only look at the result)."""
+    stamp = (os.path.abspath(path), os.stat(path).st_mtime_ns)
+    if stamp not in _imgs:
+        _imgs[stamp] = builtsite.feed(path, Imgs()).imgs
+    return _imgs[stamp]
 
 
 class SvgSizeTest(unittest.TestCase):
@@ -63,9 +68,7 @@ class SvgSizeTest(unittest.TestCase):
 class BuiltSiteTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        os.makedirs(os.path.dirname(OUT), exist_ok=True)
-        subprocess.run([sys.executable, os.path.join(WEB, "build.py"), "--out", OUT],
-                       check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        builtsite.ensure()
         cls.pages = []
         for base, _, names in os.walk(OUT):
             for n in names:

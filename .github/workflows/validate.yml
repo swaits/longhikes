@@ -55,7 +55,22 @@ jobs:
       # Standard library only: no packages to install, and no ImageMagick.
       # web/tools/make_thumbs.py and make_cards.py are manual tools; web/thumbs/ and
       # web/cards/ are committed and the build only copies them (web/olt/thumbs.py, cards.py).
-      - run: python3 -m unittest discover -s web/tests
+      #
+      # The build's store (web/build.py) keeps each trail's derived files under a hash of
+      # everything they are made from, so a restored store can only ever save work: an entry is
+      # used when its hash is the hash of the files now in the checkout, and is otherwise ignored
+      # and replaced. The cache key follows the trails' files and the build's code, so a change
+      # to either makes a new cache from the nearest old one.
+      - uses: actions/cache@v4
+        with:
+          path: web/.cache/store
+          key: site-store-${{ hashFiles('*/trail.toml', '*/*.geojson', '*/shield.*', '*/elevation.json', 'web/build.py', 'web/olt/geo.py', 'web/olt/hike.py', 'web/olt/records.py', 'web/olt/words.py', 'web/olt/elevation.py', 'web/olt/markup.py', 'web/site.toml') }}
+          restore-keys: site-store-
+      # The same tests as `python3 -m unittest discover -s web/tests`, with the modules run side
+      # by side and the site built once for all of them (web/tests/run.py).
+      - run: python3 web/tests/run.py
+      # The plain build, as Netlify runs it: this is the second build of the job, so the store the
+      # tests filled makes it quick.
       - run: python3 web/build.py --out _site
 
   # Netlify builds the site from this repository when asked to. Asking only

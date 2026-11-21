@@ -1,12 +1,10 @@
 """Tests for the generated HTML pages (web/olt/pages.py and friends).
 
-The first run builds the whole site into web/.cache/test-site (about a minute:
-every line is simplified); later runs are incremental and take seconds.
+The whole site is built once per run, by builtsite.py, and read from there.
 """
 import html
 import os
 import re
-import subprocess
 import sys
 import tempfile
 import tomllib
@@ -19,7 +17,9 @@ sys.path.insert(0, WEB)
 
 from olt import home, layout, pages, records, regions, site, trail, words  # noqa: E402
 
-OUT = os.path.join(WEB, ".cache", "test-site")
+import builtsite  # noqa: E402
+
+OUT = builtsite.OUT
 
 # Linked from the shared navigation and footer; written by other page modules.
 # Remove a path from this set once its page exists.
@@ -51,11 +51,15 @@ class Tags(HTMLParser):
             self._in_script = None
 
 
+_parsed = {}
+
+
 def parse(path):
-    p = Tags()
-    with open(path, encoding="utf-8") as f:
-        p.feed(f.read())
-    return p
+    """The tags and scripts of a page, read once per run (the tests only look at the result)."""
+    stamp = (os.path.abspath(path), os.stat(path).st_mtime_ns)
+    if stamp not in _parsed:
+        _parsed[stamp] = builtsite.feed(path, Tags())
+    return _parsed[stamp]
 
 
 def html_files(out):
@@ -78,9 +82,7 @@ def resolve(out, url):
 class BuiltSiteTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        os.makedirs(os.path.dirname(OUT), exist_ok=True)
-        subprocess.run([sys.executable, os.path.join(WEB, "build.py"), "--out", OUT],
-                       check=True, stdout=subprocess.DEVNULL)
+        builtsite.ensure()
         cls.records = records.load_records(ROOT)
         cls.pages = {}
         for rec in cls.records:

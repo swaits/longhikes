@@ -24,7 +24,8 @@ def html_files(root):
                 yield os.path.join(base, n)
 
 
-def build(out, tag):
+def start_build(out, tag):
+    """Start a build of the site into out with this tag in site.toml (none when tag is empty)."""
     cfg = os.path.join(os.path.dirname(out), "site.toml")
     with open(os.path.join(WEB, "site.toml"), encoding="utf-8") as f:
         text = re.sub(r'(?m)^google_tag = .*\n', "", f.read())
@@ -33,17 +34,20 @@ def build(out, tag):
     code = ("import sys; sys.path.insert(0, %r); from olt import site; "
             "site.SITE_TOML = %r; site.load.cache_clear(); import build; build.main(['--out', %r])"
             % (WEB, cfg, out))
-    subprocess.run([sys.executable, "-c", code], check=True, cwd=WEB,
-                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    return subprocess.Popen([sys.executable, "-c", code], cwd=WEB,
+                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
 class GoogleTagTest(unittest.TestCase):
     def test_every_built_page_has_the_tag_once_and_none_without_the_setting(self):
         with tempfile.TemporaryDirectory() as tmp:
             on, off = os.path.join(tmp, "on", "site"), os.path.join(tmp, "off", "site")
+            started = []
             for out, tag in ((on, TAG_ID), (off, "")):
                 os.makedirs(os.path.dirname(out))
-                build(out, tag)
+                started.append(start_build(out, tag))  # both at once: they share nothing
+            for proc in started:
+                self.assertEqual(proc.wait(), 0)
             pages_on = list(html_files(on))
             self.assertGreater(len(pages_on), 200)
             for name in ("404.html", os.path.join("saved", "index.html"), "index.html"):

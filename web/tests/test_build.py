@@ -260,6 +260,33 @@ class BuildTreeTest(unittest.TestCase):
         self.assertNotEqual(os.path.getmtime(gpx), stamps[0])
         self.assertNotEqual(os.path.getmtime(geojson), stamps[1])
 
+    def test_archive_members_are_regular_files_with_the_usual_mode(self):
+        self.build()
+        for name in ("all-gpx.zip", "all-geojson.zip"):
+            with zipfile.ZipFile(self.path("data", name)) as zf:
+                for info in zf.infolist():
+                    self.assertEqual(info.external_attr >> 16, 0o100644, f"{name}: {info.filename}")
+
+    def test_a_damaged_stored_archive_is_not_restored(self):
+        self.build()
+        gpx = self.path("data", "all-gpx.zip")
+        with open(gpx, "rb") as f:
+            good = f.read()
+        kept = os.path.join(build.CACHE_DIR, "store", "archives")
+        stored = [os.path.join(kept, n) for n in os.listdir(kept) if n.startswith("all-gpx.zip.")]
+        self.assertEqual(len(stored), 1)
+        with open(stored[0], "rb") as f:
+            damaged = bytearray(f.read())
+        damaged[len("README.txt") + 30 + 4] ^= 0xFF  # inside the first member's data; the names stay
+        with open(stored[0], "wb") as f:
+            f.write(damaged)
+        os.remove(gpx)                                # so the store is where the archive comes from
+        self.build()
+        with zipfile.ZipFile(gpx) as zf:
+            self.assertIsNone(zf.testzip())
+        with open(gpx, "rb") as f:
+            self.assertEqual(f.read(), good)
+
     def test_missing_declared_line_warns(self):
         os.remove(os.path.join(self.root, "avon", "line.geojson"))
         warnings = self.build()

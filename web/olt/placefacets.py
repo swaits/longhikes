@@ -95,13 +95,9 @@ def key_of(p):
     return p["slug"] if p["kind"] == "state" else (p["kind"], p["slug"])
 
 
-# The short noun a place page's title and heading use for each list, the same whatever the place's name:
-# the list's own short noun, but for these.
-PLACE_NOUN = {"a-week-or-less": "Trips of a Week or Less"}
-
-
 def place_noun(lst):
-    return PLACE_NOUN.get(lst.key) or lst.short or lst.noun
+    """The short noun a place page's title and heading use for the list, the same whatever the name."""
+    return lst.short or lst.noun
 
 
 def label(lst):

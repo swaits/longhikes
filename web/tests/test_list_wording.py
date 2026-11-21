@@ -23,10 +23,12 @@ class ListWordingTest(unittest.TestCase):
 
     def test_the_reworded_lists_have_the_new_page_titles(self):
         want = {
-            "longest": "Longest Hiking Trails in the US: 7 Trails of 1,000+ Miles",
+            "longest": "Longest Hiking Trails in the US and Canada: 7 Trails",
             "under-100-miles": "Short Thru-Hikes and Loops Under 100 Miles: 7 Trails",
             "under-200-miles": "Thru-Hikes and Loops Under 200 Miles: 7 Trails",
-            "a-week-or-less": "Week-Long Backpacking Trips: 7 Long Trails",
+            "a-week-or-less": "Backpacking Trips of a Week or Less: 7 Long Trails",
+            "weekend": "Long-Weekend Backpacking Trips: 7 Long Trails",
+            "off-trail": "Long Trails with Cross-Country Stretches: 7 Trails",
             "loops": "Backpacking Loops: 7 Long Trail Loops",
         }
         for key, title in want.items():
@@ -39,7 +41,7 @@ class ListWordingTest(unittest.TestCase):
         self.assertNotIn("thru", browse.by_key("loops").page_title.lower())
 
     def test_the_week_band_has_a_noun_and_loops_say_backpacking(self):
-        self.assertEqual(browse.by_key("a-week-or-less").noun, "Week-Long Backpacking Trips")
+        self.assertEqual(browse.by_key("a-week-or-less").noun, "Backpacking Trips of a Week or Less")
         self.assertEqual(browse.by_key("loops").noun, "Backpacking Loops")
 
     def test_no_banned_word_and_no_best_in_any_list_wording(self):

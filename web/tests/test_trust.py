@@ -52,8 +52,8 @@ def sparse_record():
 
 class MaintainerSettings(unittest.TestCase):
     def test_site_toml_names_the_maintainer_and_nothing_personal(self):
-        self.assertEqual(SITE.maintainer_name, "Stephen Waits")
-        self.assertEqual(SITE.maintainer_url, "https://github.com/swaits")
+        self.assertEqual(SITE.maintainer_name, "swaits")
+        self.assertEqual(SITE.maintainer_url, "https://swaits.com")
         with open(site.SITE_TOML, encoding="utf-8") as f:
             text = f.read()
         self.assertNotIn("@", re.sub(r"#.*", "", text), "no email address in the settings")

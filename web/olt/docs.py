@@ -267,7 +267,7 @@ BREAD = Markup('<nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href=
 
 ABOUT_PARTS = (
     # (anchor or path, title, what it is)
-    ("#what-this-is", "What this is", "A guide to the long trails, built from an open dataset"),
+    ("#what-this-is", "What this is", "A place to find long trails, including ones you have not heard of"),
     ("#how-trails-are-chosen", "How trails are chosen", "The rule, and what held, deferred and candidate mean"),
     ("#when-a-gpx-is-included", "When a GPX is included", "Whose tracks may be passed on, and routes' authors' terms"),
     ("/data/", "Data and downloads", "Every trail and track in bulk, the per-trail files and the licences"),
@@ -359,12 +359,10 @@ def about_page(records, site, repo_root):
 </div></div>
 <div class="container section"><div class="prose doc">
 <section aria-labelledby="what-this-is"><h2 id="what-this-is">What this is</h2>
-<p>{esc(site.name)} lists {n} long-distance trails in the United States and Canada: where each one goes,
-how long it is and takes, when to walk it, and where to get its track. It is built, page by page, from an
-open dataset of one text file per trail. Everything a page says about a trail comes from that file.
-{f'The dataset is kept in a <a href="{esc(site.repo_url)}">public repository</a>, where anyone can propose a change.' if site.repo_url else ""}</p>
-<p>The dataset calls each trail a <em>record</em>, and the pages under About use its terms. The rest of the
-site calls them trails.</p>
+<p>{esc(site.name)} is a place to find long trails. It gathers {n} long-distance trails and routes in the United States and Canada in one place, from the famous ones to many you have probably never heard of. Each has its own page with where it goes, how long it is, how long it takes, when to walk it, and links to the people who look after it or wrote it up.</p>
+<p>The point is discovery. Browse by <a href="/regions/">state or province</a>, by national park, mountain range or wilderness area, or by <a href="/lists/">lists</a> such as loops, trails under 100 miles and trails for each month. Every list can be searched and filtered by length, time, season and more, so you can narrow them down to the few that fit the trip you have in mind, and find ones you did not know to look for.</p>
+<p>It is free, with no ads and no accounts. It is not a planning tool: when a trail catches your eye, its page sends you to the official sources, and to a GPX track where one may be shared.</p>
+<p><strong>How it is made.</strong> The site is built from an open dataset of one text file per trail, {f'kept in a <a href="{esc(site.repo_url)}">public repository</a>' if site.repo_url else 'kept in a public repository'} where anyone can propose a change. Everything a page says about a trail comes from that file. The dataset calls each trail a <em>record</em>, and the pages under About use its terms. The rest of the site calls them trails.</p>
 {what}
 </section>
 

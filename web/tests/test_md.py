@@ -5,7 +5,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from olt import md  # noqa: E402
+from olt import md, records  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 DOCS = ["README.md", "SOURCES.md", "NOTICE.md",
@@ -394,7 +394,9 @@ class RealDocumentsTest(unittest.TestCase):
         counter = TableCounter()
         counter.feed(md.render(read_doc("README.md")))
         counter.close()
-        self.assertEqual(counter.counts, [146, 78])
+        recs = records.load_records()
+        routes = sum(r["derived"]["kind"] == "route" for r in recs)
+        self.assertEqual(counter.counts, [len(recs) - routes, routes])
 
     def test_readme_num_class_present(self):
         self.assertIn('class="num"', md.render(read_doc("README.md")))

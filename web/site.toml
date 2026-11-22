@@ -37,8 +37,8 @@ contact_url = ""
 # page's "Who maintains this" and for the home page's Organization and the Dataset in the
 # structured data. Both empty: the About page has no such section and the markup names no
 # person. No email address and no other personal detail belongs here.
-maintainer_name = "Stephen Waits"
-maintainer_url = "https://github.com/swaits"
+maintainer_name = "swaits"
+maintainer_url = "https://swaits.com"
 
 # Google tag container id. When set, every page loads the tag (web/olt/layout.py) to count visits;
 # the Content-Security-Policy in web/static/_headers allows it. Empty: no tag.

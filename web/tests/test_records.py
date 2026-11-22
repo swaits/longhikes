@@ -13,10 +13,13 @@ class RecordsTest(unittest.TestCase):
         cls.recs = records.load_records()
 
     def test_counts(self):
-        self.assertEqual(len(self.recs), 224)
-        self.assertEqual(sum(r["derived"]["kind"] == "route" for r in self.recs), 78)
-        self.assertEqual(sum(r["derived"]["kind"] == "designated" for r in self.recs), 146)
-        self.assertEqual(sum(r["derived"]["has_line"] for r in self.recs), 124)
+        dirs = [d for d in os.listdir(records.ROOT) if os.path.isfile(os.path.join(records.ROOT, d, "trail.toml"))]
+        self.assertEqual(len(self.recs), len(dirs))
+        routes = sum(r["derived"]["kind"] == "route" for r in self.recs)
+        designated = sum(r["derived"]["kind"] == "designated" for r in self.recs)
+        self.assertEqual(routes + designated, len(self.recs))
+        self.assertGreater(routes, 0)
+        self.assertGreater(sum(r["derived"]["has_line"] for r in self.recs), 0)
 
     def test_sorted_by_id(self):
         ids = [r["id"] for r in self.recs]

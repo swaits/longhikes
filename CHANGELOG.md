@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-22 - An About page that speaks to hikers, and the maintainer's name
+
+- The "What this is" part of the About page is rewritten for hikers. It says the site is a place to find long trails, gives the trail count (read from the data at build time), says the point is discovery by place and by list with every list searchable and filterable, says the site is free with no ads or accounts and is not a planning tool, and moves how it is made (the open dataset, one text file per trail, in a public repository) into its own short paragraph. The links under About say the same in their summary.
+- The maintainer is now named by the handle swaits, linking to swaits.com, on the About page and in the site's structured data.
+- For readers of the Sources page: the "Used by" lines in SOURCES.md no longer state counts of trails typed by hand, since the counts by licence and by track source above them are computed from the records. Every count a page shows is now computed from the data at build time.
+- For contributors: the tests no longer pin the number of trails, routes or tracks, so adding a trail needs no test change.
+
 ## 2026-11-21 - The Three Sisters Loop from Eli Boschetto's Backpacking Oregon
 
 - One route is new: the Three Sisters Loop (46 miles, 7,440 feet of elevation gain, July to October), a trip on page 138 of Eli Boschetto's guidebook Backpacking Oregon: Overnight and Multiday Routes (Mountaineers Books, 1st edition 2026, ISBN 978-1-68051-626-5). It is under the 50 mile floor and is listed as an exception because it is very well known and popular.

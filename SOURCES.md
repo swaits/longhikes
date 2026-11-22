@@ -6,7 +6,7 @@ A track is included in this repository only when its source's terms allow redist
 
 ## OpenStreetMap (ODbL-1.0)
 
-Used by: 105 trails with an included track, among them the Colorado Trail, whose track is also about 95% United States Forest Service data and is labelled ODbL as a whole. Also named as the recorded source for 1 record-only trail, where no track was downloaded or none was usable. One of the person-defined routes has a track from OpenStreetMap (the Big SEKI Loop, relation 11628437); the other 72 name no source licence for a track.
+Used by: the trails with an included track from this source, among them the Colorado Trail, whose track is also about 95% United States Forest Service data and is labelled ODbL as a whole. Also named as the recorded source for a record-only trail where no track was downloaded or none was usable. One of the person-defined routes has a track from OpenStreetMap (the Big SEKI Loop, relation 11628437); the other person-defined routes name no source licence for a track.
 
 Quoted terms: "You are free to copy, distribute, transmit and adapt our data, as long as you credit OpenStreetMap and its contributors."
 
@@ -14,7 +14,7 @@ Page: https://www.openstreetmap.org/copyright (read 2026-11-09). Full text: LICE
 
 ## United States federal agencies (public domain)
 
-Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: 17 trails with an included track and the Colorado Trail in part (Alpine Trail #7, Appalachian, Bartram, Black Canyon, Colorado Trail in part, Fremont, General George Crook, High Sierra Trail, Middle Fork Trail, New England, North Umpqua, Pacific Northwest, Rae Lakes Loop, Selway River Trail, Solitude Loop, Teton Crest Trail, Thorofare and South Boundary Trail, Toiyabe Crest).
+Publishers: National Park Service, USDA Forest Service and Bureau of Land Management services named in each record. Used by: these trails with an included track, and the Colorado Trail in part (Alpine Trail #7, Appalachian, Bartram, Black Canyon, Colorado Trail in part, Fremont, General George Crook, High Sierra Trail, Middle Fork Trail, New England, North Umpqua, Pacific Northwest, Rae Lakes Loop, Selway River Trail, Solitude Loop, Teton Crest Trail, Thorofare and South Boundary Trail, Toiyabe Crest).
 
 Quoted terms: "Data and content created by government employees within the scope of their employment are not subject to domestic copyright protection under 17 U.S.C. 105."
 
@@ -22,7 +22,7 @@ Page: https://irma.nps.gov/DataStore/Reference/Profile/2311077 (read 2026-11-09)
 
 ## Pacific Crest Trail Association (CC-BY-4.0)
 
-Used by: 1 trail (Pacific Crest).
+Used by: the Pacific Crest Trail.
 
 Quoted terms: "All of the data accessed through this page are licensed under the Creative Commons Attribution 4.0 International License."
 
@@ -30,7 +30,7 @@ Page: https://www.pcta.org/discover-the-trail/maps/pct-data/ (read 2026-11-09). 
 
 ## Continental Divide Trail Coalition (CC-BY, version not stated)
 
-Used by: 1 trail (Continental Divide).
+Used by: the Continental Divide Trail.
 
 Quoted terms: the source item's licence field reads "CC BY" (no version stated).
 
@@ -38,7 +38,7 @@ Page: https://services8.arcgis.com/WyuHwdftppQLa5KO/arcgis/rest/services/Contine
 
 ## A hiker who shares a track under CC BY 4.0 (CC-BY-4.0)
 
-Used by: 2 trails (California Coastal Trail, Washington Coast Trail). The hiker's own GPX files, attached to this dataset's issue 1 on 2026-11-17, one of a walk of the whole California coast in eight section hikes and one of the Washington coast route the hiker worked out.
+Used by: the California Coastal Trail and the Washington Coast Trail. The hiker's own GPX files, attached to this dataset's issue 1 on 2026-11-17, one of a walk of the whole California coast in eight section hikes and one of the Washington coast route the hiker worked out.
 
 Quoted terms: for California, "CC BY 4.0 sounds good, and your idea for the source and link work for me." (https://github.com/swaits/longhikes/issues/1#issuecomment-6928214012, 2026-11-16); for Washington, "CC BY 4.0 is fine for this as well." (https://github.com/swaits/longhikes/issues/1#issuecomment-6935950983, 2026-11-17).
 
@@ -46,7 +46,7 @@ Credit required: Lauren Lake, PacificCoastalTrail blog (https://pacificcoastaltr
 
 ## Holders who state permission in writing (stated-permission)
 
-Used by: 1 trail with an included track (Hoosier Heritage Trail). The holder of the trail, the route's author or the person who recorded the track has stated in writing that the track may be shared, without naming a licence. Each record gives the statement in `source.permission_quote`, who made it by role in `source.permission_by`, when in `source.permission_date` and where in `source.permission_url`; the trail page shows them as a quotation with a link. This is not public domain and not a Creative Commons licence.
+Used by: the Hoosier Heritage Trail, with an included track. The holder of the trail, the route's author or the person who recorded the track has stated in writing that the track may be shared, without naming a licence. Each record gives the statement in `source.permission_quote`, who made it by role in `source.permission_by`, when in `source.permission_date` and where in `source.permission_url`; the trail page shows them as a quotation with a link. This is not public domain and not a Creative Commons licence.
 
 ## Publishers with no stated licence (no track included)
 

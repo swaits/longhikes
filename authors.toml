@@ -753,9 +753,9 @@ publisher = "Wilderness Press (AdventureKEEN)"
 name = "Eli Boschetto"
 credits = ["Eli Boschetto"]
 kind = "person"
-summary = "Eli Boschetto is a hiker, writer and photographer whose Mountaineers Books titles include Hiking the Pacific Crest Trail: Oregon and Backpacking Oregon."
-bio = "Eli Boschetto is a professional hiker, writer and author who has hiked more than 6,000 miles in the mountains and wilderness areas of the western United States and Canada. He wrote Hiking the Pacific Crest Trail: Oregon and Urban Trails Portland, both published by Mountaineers Books, and is an outdoor photographer. He has worked as a Northwest correspondent for Backpacker magazine and as editor of Washington Trails magazine. Mountaineers Books published his Backpacking Oregon in 2026."
-checked = "2026-11-18"
+summary = "Eli Boschetto is a hiker, writer and photographer from Portland whose Backpacking Oregon describes 70 overnight and multiday routes."
+bio = "Eli Boschetto is a professional hiker, writer and author who has hiked more than 6,000 miles in the mountains and wilderness areas of the western United States and Canada. He lives in Portland. His books include Hiking the Pacific Crest Trail: Oregon, 100 Classic Hikes: Oregon, Day Hiking Mount Hood and Urban Trails: Portland, and he is an outdoor photographer. He has worked as a Northwest correspondent for Backpacker magazine and as editor of Washington Trails magazine. His Backpacking Oregon: Overnight and Multiday Routes, published by Mountaineers Books in 2026, describes 70 overnight and multiday routes."
+checked = "2026-11-22"
 
 [[author.source]]
 url = "https://www.mountaineers.org/members/eli-boschetto-1"
@@ -763,4 +763,4 @@ publisher = "Mountaineers Books"
 
 [[author.source]]
 url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
-publisher = "Mountaineers Books"
+publisher = "Mountaineers Books (the publisher's page for the book); the Portland home, the book titles and the 70 routes are from the book's back cover, 1st edition (2026), ISBN 978-1-68051-626-5, read from a printed copy by the owner of the dataset on 2026-11-22"

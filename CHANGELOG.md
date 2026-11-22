@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-21 - The Three Sisters Loop from Eli Boschetto's Backpacking Oregon
+
+- One route is new: the Three Sisters Loop (46 miles, 7,440 feet of elevation gain, July to October), a trip on page 138 of Eli Boschetto's guidebook Backpacking Oregon: Overnight and Multiday Routes (Mountaineers Books, 1st edition 2026, ISBN 978-1-68051-626-5). It is under the 50 mile floor and is listed as an exception because it is very well known and popular.
+- It is a guidebook route with no track. The way is shown on the book's maps, which are not copied here, and no track from any source is included. The record gives only what the book's page and the Forest Service's pages say: the length, the climbing, the season and the Central Cascades Wilderness Permit that overnight stays in the Three Sisters Wilderness need from June 15 to October 15. The loop starts at the Devils Lake Trailhead, as the book says. The days and the high point are left out because no page we may cite gives them.
+- The home page, the lists and the pages for Oregon, the Oregon Cascades and the Three Sisters Wilderness each count one more trail.
+
 ## 2026-11-20 - The bulk downloads follow content, not file times
 
 - For contributors: the build now decides whether `all-gpx.zip` and `all-geojson.zip` are up to date by what goes into them, as it does for the rest of the pages, and no longer by the modification times of their files. A file touched with no change leaves them alone, and a changed file with an old time rebuilds them. Nothing a visitor sees changes.

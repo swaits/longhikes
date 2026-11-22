@@ -92,7 +92,7 @@ class BuiltSiteTest(unittest.TestCase):
     def test_one_detail_page_per_record(self):
         found = [d for d in os.listdir(os.path.join(OUT, "trails"))
                  if os.path.isfile(os.path.join(OUT, "trails", d, "index.html"))]
-        self.assertEqual(len(self.records), 223)
+        self.assertEqual(len(self.records), 224)
         self.assertEqual(sorted(found), sorted(r["id"] for r in self.records))
         self.assertTrue(os.path.isfile(os.path.join(OUT, "index.html")))
 

@@ -13,8 +13,8 @@ class RecordsTest(unittest.TestCase):
         cls.recs = records.load_records()
 
     def test_counts(self):
-        self.assertEqual(len(self.recs), 223)
-        self.assertEqual(sum(r["derived"]["kind"] == "route" for r in self.recs), 77)
+        self.assertEqual(len(self.recs), 224)
+        self.assertEqual(sum(r["derived"]["kind"] == "route" for r in self.recs), 78)
         self.assertEqual(sum(r["derived"]["kind"] == "designated" for r in self.recs), 146)
         self.assertEqual(sum(r["derived"]["has_line"] for r in self.recs), 124)
 

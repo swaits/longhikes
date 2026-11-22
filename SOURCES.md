@@ -295,6 +295,7 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | teton-wilderness-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) | none-stated | record only |
 | thames-valley-trail | Thames Valley Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3444520) | ODbL-1.0 | track |
 | thorofare-and-south-boundary-trail | National Park Service (public Trails dataset) | [source page](https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0) | us-gov-public-domain | track |
+| three-sisters-loop | Mountaineers Books (publishes the route in the guidebook) | [source page](https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes) | none-stated | record only |
 | timberline | USDA Forest Service, Mount Hood National Forest | [source page](https://www.openstreetmap.org/relation/7641482) | ODbL-1.0 | track |
 | toiyabe-crest | USDA Forest Service, National Forest System trails | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | tonto-trail | National Park Service, Grand Canyon National Park (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2836546) | ODbL-1.0 | track |

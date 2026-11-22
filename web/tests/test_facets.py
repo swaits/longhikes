@@ -380,7 +380,7 @@ class BuiltVocabularyTest(unittest.TestCase):
     def test_an_estimated_season_reads_about_on_its_page_and_a_stated_one_does_not(self):
         est = [r for r in records.load_records(ROOT) if facets.season_estimated(r)]
         stated = [r for r in records.load_records(ROOT) if not facets.season_estimated(r)]
-        self.assertEqual(len(est) + len(stated), 223)
+        self.assertEqual(len(est) + len(stated), 224)
         for rec in est[:10]:
             doc = self.read(f"trails/{rec['id']}/index.html")
             self.assertIn(facets.season_text(rec), html.unescape(doc), rec["id"])

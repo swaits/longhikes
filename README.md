@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-223 trails, 124 with a track and 99 with no track included. Of these, 77 are routes: 2 with a track and 75 without.
+224 trails, 124 with a track and 100 with no track included. Of these, 78 are routes: 2 with a track and 76 without.
 
 <!-- END COUNTS -->
 
@@ -268,6 +268,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | teton-crest-route | Teton Crest Route | US | WY | 95 | Wilderness Mindset | sold | no | [Teton Crest Route Map Pack](https://wildernessmindset.com/product/teton-crest-route-map-pack/) (purchase) |
 | teton-range-traverse | Teton Range Traverse | US | WY | 171 | Cam Honan | unclear | no | [Teton Range Traverse](https://thehikinglife.com/2017/07/teton-range-traverse/) (free) |
 | teton-wilderness-loop | Teton Wilderness Loop | US | WY | 97 | Douglas Lorain | sold | no | [Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) (purchase) |
+| three-sisters-loop | Three Sisters Loop | US | OR | 74 | Eli Boschetto | sold | no | [Backpacking Oregon: Overnight and Multiday Routes](https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes) (purchase) |
 | trans-adirondack-route | Trans Adirondack Route | US | NY | 391 | Erik Schlimmer | sold | no | [Blue Line to Blue Line, with a map set](https://erikschlimmer.com/books-sale-/) (purchase) |
 | vagabond-loop | Vagabond Loop | US | AZ, UT, CO, NM | 5632 | Ryan "Dirtmonger" Sylva | unclear | no | [Vagabond Loop route description](https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html) (free) |
 | vancouver-island-backbone | Vancouver Island Backbone | CA | BC | 300 | Philip Stone | unclear | no | [Hiking Guide to the Vancouver Island Backbone](https://www.wildisle.ca/backbone/index.html) (free) |

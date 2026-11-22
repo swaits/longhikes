@@ -1,0 +1,117 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "three-sisters-loop"
+name = "Three Sisters Loop"
+country = "US"
+regions = ["OR"]
+length_km = 74
+length_note = "46 mi, as the book gives it for the Three Sisters Loop trip (page 138), with 7,440 ft of elevation gain. The figures are the book's own and are not measured from a track. This is under the 50 mile floor; it is listed because it is very well known and popular."
+kind = "route"
+tier = "short"
+designation = "Guidebook route (Eli Boschetto, 2026, in Backpacking Oregon: Overnight and Multiday Routes); no agency or association"
+wave = 1
+short_reason = "Very well known and popular: the Forest Service limits overnight entry to the Three Sisters Wilderness with a reserved permit through the season."
+places_checked = "2026-11-21"
+
+[source]
+status = "none"
+publisher = "Mountaineers Books (publishes the route in the guidebook)"
+publisher_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on: the book's page 138, read from a printed copy of the 1st edition (2026) by the owner of the dataset on 2026-11-21. The publisher's page for the book is https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the track is the book's maps."
+source_checked = "2026-11-21"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is described in a guidebook for sale, and no track from its author was found. No track is included from any source. Get the route from the book Backpacking Oregon."
+
+[osm]
+relation = 0
+note = "Not recorded: the route is a guidebook route and no track is included."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Eli Boschetto"
+note = "No emblem of its own was found: this is a guidebook route over national forest and wilderness land that keeps its own marking."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Eli Boschetto"
+year = 2026
+line_policy = "sold"
+note = "A loop from the Devils Lake Trailhead in the Three Sisters Wilderness, Oregon, of 46 miles in the book, with 7,440 feet of elevation gain. The book's maps are the track; none is copied here."
+
+[[guide]]
+title = "Backpacking Oregon: Overnight and Multiday Routes"
+author = "Eli Boschetto"
+access = "purchase"
+url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+format = "book"
+publisher = "Mountaineers Books"
+isbn = "978-1-68051-626-5"
+edition = "1st edition, 2026"
+where = "Page 138"
+link_is = "publisher"
+
+[hike]
+summary = "The Three Sisters Loop is a backpacking loop of 46 miles in the Three Sisters Wilderness, Oregon, from the Devils Lake Trailhead, with 7,440 feet of elevation gain. Eli Boschetto describes it in Backpacking Oregon (page 138), at 46 miles under the 50 mile floor, and it is listed as an exception because it is very well known and popular."
+official_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+start = "Devils Lake Trailhead, Three Sisters Wilderness, Oregon"
+start_lonlat = [-121.764, 44.037]
+shape = "loop"
+season = "July to October"
+months = [7, 8, 9, 10]
+permit = "A Central Cascades Wilderness Permit is required for all overnight stays in the Three Sisters Wilderness from June 15 to October 15, and permits are reserved through Recreation.gov; the Forest Service does not issue them at its offices."
+checked = "2026-11-21"
+season_basis = "primary"
+
+[[hike.source]]
+url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+publisher = "Mountaineers Books (the publisher's page for the book); the facts are from the book's page 138 of the 1st edition (2026), read from a printed copy by the owner of the dataset"
+facts = ["summary", "official_url", "start", "shape", "season", "months"]
+
+[[hike.source]]
+url = "https://fs.usda.gov/r06/willamette/permits/central-cascades-wilderness-permits"
+publisher = "USDA Forest Service, Willamette National Forest (Central Cascades Wilderness Permits)"
+facts = ["permit"]
+
+[[hike.source]]
+url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=N&osmid=14356593878"
+publisher = "OpenStreetMap contributors, via Nominatim (ODbL): the parking for the Devils Lake trailhead, OpenStreetMap node 14356593878"
+facts = ["start_lonlat"]
+
+[[place]]
+kind = "range"
+slug = "oregon-cascades"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+
+[[place]]
+kind = "wilderness"
+slug = "three-sisters-wilderness"
+basis = "stated"
+source = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-21"
+change = "The record was added: Three Sisters Loop, 46 miles (74 km), in Eli Boschetto's guidebook Backpacking Oregon, listed as an exception under the 50 mile floor because it is very well known and popular, with no track."
+fields = ["record"]
+basis = "Backpacking Oregon: Overnight and Multiday Routes, by Eli Boschetto (Mountaineers Books, 1st edition 2026, ISBN 978-1-68051-626-5), page 138, gives the start (the Devils Lake Trailhead), length, elevation gain and season. The owner of the dataset has the book and ruled that the route belongs in it as an exception under the 50 mile floor."
+basis_url = "https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes"
+asked_by = "the owner of the dataset"
+outcome = "applied"

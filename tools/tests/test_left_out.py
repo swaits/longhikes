@@ -63,6 +63,12 @@ class LeftOutTest(unittest.TestCase):
         errors = check([dict(GOOD, reason="too-short")])
         self.assertTrue(any("reason" in e for e in errors))
 
+    def test_outside_us_canada(self):
+        ok = dict(GOOD, reason="outside-us-canada", country="DM", regions=["Dominica"])
+        self.assertEqual(check([ok]), [])
+        self.assertTrue(any("country" in e for e in check([dict(ok, country="US")])))
+        self.assertTrue(any("country" in e for e in check([dict(ok, country="Dominica")])))
+
     def test_bad_country_and_region(self):
         self.assertTrue(any("country" in e for e in check([dict(GOOD, country="MX")])))
         self.assertTrue(any("region" in e for e in check([dict(GOOD, regions=["XX"])])))

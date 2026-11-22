@@ -811,6 +811,19 @@ decided = "2026-11-16"
 was_listed = true
 
 [[trail]]
+id = "waitukubuli-national-trail"
+name = "Waitukubuli National Trail"
+country = "DM"
+regions = ["Dominica"]
+length_mi = 115
+length_km = 185
+reason = "outside-us-canada"
+note = "Left out because it is in Dominica, and this list covers only the United States and Canada for now; the entry keeps what is known in case that widens. Dominica's Forestry, Wildlife and Parks Division manages it (its Trail Management Unit runs the trail's own site, waitukubulitrail.dm). That site's FAQ gives 184 km (115 miles) in fourteen segments from Scott's Head in the south to the Cabrits National Park in the north: 1 Scott's Head to Soufriere Estate, 2 Soufriere Estate to Bellevue Chopin, 3 Bellevue Chopin to Wotten Waven, 4 Wotten Waven to Pont Casse, 5 Pont Casse to Castle Bruce, 6 Castle Bruce to Hatten Garden (Pagua Bay), 7 Hatten Garden to First Camp Heights, 8 First Camp to Petite Macoucherie Heights, 9 Petite Macoucherie to Colihaut Heights, 10 Colihaut Heights to Syndicate, 11 Syndicate to Borne, 12 Borne to Penville, 13 Penville to Capuchin, 14 Capuchin to Cabrits. Kate Siber's 100 Hikes of a Lifetime (National Geographic, 2020, ISBN 978-1-4262-2095-1, page 70, read from a printed copy) gives 115 miles (185 km) point to point, 10 to 14 days, best in spring, summer and winter, expert-only, well signed, opened in 2013 and built partly to bring visitors to small interior communities, running from the Scotts Head peninsula north along the east side of the island, then northwest to Cabrits National Park; the two sources differ by 1 km in length and agree on the 2013 opening, which the FAQ gives as the trail's declaration as an eco-tourism site on May 10, 2013. Visitors and non-residents need a Waitukubuli National Trail Pass from July 1, 2013: a day pass for one or more segments (US$12.00), a special pass for organised tours (US$10.00) and a fifteen day pass for all fourteen segments (US$40.00), as the FAQ states; hikers are also asked to register beforehand. The trail's site lists a document of locations and GPS coordinates; no page read states terms for a track file, and no track is included here. No OpenStreetMap route relation was found for it, only separate ways named for its segments."
+source_url = "https://waitukubulitrail.dm/resources/faq/"
+decided = "2026-11-22"
+was_listed = false
+
+[[trail]]
 id = "xtexas-trail"
 name = "xTexas Trail"
 country = "US"

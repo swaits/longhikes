@@ -42,6 +42,8 @@ REASONS = {
                           "Nothing harder than Class 3 may be required, apart from a few short Class 4 scrambles. A route that needs a rope, a belay or rock-climbing skill is not listed, unless that section is optional."),
     "not-published-as-route": ("Not published as a route by its author",
                                "A route is listed when its author has published it as a route, with a stated length."),
+    "outside-us-canada": ("Outside the United States and Canada",
+                          "This list covers the United States and Canada only for now. A trail elsewhere is recorded here with what is known about it, so that the data is ready if the area widens."),
     "waiting": ("Waiting",
                 "Not left out for good. Each entry says what would change the decision."),
 }

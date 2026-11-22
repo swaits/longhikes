@@ -36,7 +36,7 @@ line_file = "line.geojson"
 | `common_name` | string, where present | The name hikers use, where it differs from `name`: `"Appalachian Trail"` for `"Appalachian National Scenic Trail"`. Only where the trail's holder or author (or the agency that manages it) uses that name on a page; the page goes in the `basis_url` of the `[[history]]` entry that adds it. Never made up, and never the same as `name`. The site puts it in the page title, the heading and the search; `name` stays on the page. | `"Appalachian Trail"` |
 | `short_name` | string, where present | Abbreviation the trail's holder or author uses for it, or, failing that, one in established use among hikers. Never made up: a trail nobody abbreviates has none. Written without full stops (`"AT"`, not `"A.T."`); hyphens and digits stay as the holder writes them. Two trails may truthfully share one, and both show it. | `"LT"` |
 | `short_name_url` | string, with `short_name` | The page where the abbreviation was seen in use. Required when `short_name` is present; an error without it. An http(s) address. | `"https://www.greenmountainclub.org/"` |
-| `country` | string | `US` or `CA`. | `"US"` |
+| `country` | string | `US` or `CA`; for reason `outside-us-canada`, the trail's own two letter country code. | `"US"` |
 | `regions` | array of strings | State, province or territory codes crossed. | `["VT"]` |
 | `length_km` | integer | The end-to-end length of the trail's canonical path, in kilometres, as the trail's holder or author states it. A check value, not measured from the track. See "What `length_km` counts" below. | `438` |
 | `length_note` | string | Where the length was read, and any disagreement between pages. | `"272 mi published"` |
@@ -353,6 +353,7 @@ The `reason` values mirror the inclusion rule:
 | `mostly-unbuilt` | Mostly unbuilt or still proposed. |
 | `requires-climbing` | Requires roped or technical climbing: a route that needs a rope, a belay or rock-climbing skill, beyond a few short Class 4 scrambles, unless that section is optional. |
 | `not-published-as-route` | A route its author has not published as a route, with a stated length, for others to follow (a route with no published length is left out under this reason); or a walk no land manager publishes as a named trail with a length. |
+| `outside-us-canada` | A trail outside the United States and Canada, which this list does not yet cover. The entry holds what is known about it so the data is ready if the area widens. `country` is then its own two letter code (not `US` or `CA`) and `regions` name its places in plain words. |
 | `waiting` | Not left out for good. `waiting_for` says what would change the decision. |
 
 ## `glossary.toml`: the words this site uses

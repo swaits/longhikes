@@ -7,6 +7,7 @@
 - For readers of the Sources page: the "Used by" lines in SOURCES.md no longer state counts of trails typed by hand, since the counts by licence and by track source above them are computed from the records. Every count a page shows is now computed from the data at build time.
 - For contributors: the tests no longer pin the number of trails, routes or tracks, so adding a trail needs no test change.
 - Eli Boschetto's author page (/authors/eli-boschetto/) now also says, from the back cover of Backpacking Oregon (Mountaineers Books, 1st edition 2026, ISBN 978-1-68051-626-5, read from a printed copy), that he lives in Portland, wrote 100 Classic Hikes: Oregon and Day Hiking Mount Hood as well as his other guides, and that the book describes 70 overnight and multiday routes. The ISBN is confirmed by the cover's barcode and the publisher's page for the book is confirmed to open.
+- The Waitukubuli National Trail in Dominica (115 miles, 185 km, 14 segments, 10 to 14 days) is added to the "Considered and left out" page under a new reason, "Outside the United States and Canada", because this list covers those two countries only for now. Its entry keeps what the trail's own site and Kate Siber's 100 Hikes of a Lifetime (page 70) say, so the data is ready if the area widens. For contributors: left-out.toml accepts that reason with the trail's own two letter country code and plain-word places.
 
 ## 2026-11-21 - The Three Sisters Loop from Eli Boschetto's Backpacking Oregon
 

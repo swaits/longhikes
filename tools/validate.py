@@ -640,7 +640,7 @@ LEFT_OUT_FILE = "left-out.toml"
 LEFT_OUT_REASONS = {
     "below-floor", "rail-trail-or-towpath", "driving-route", "not-mainly-walking",
     "network", "cannot-be-walked-through", "mostly-unbuilt", "requires-climbing",
-    "not-published-as-route", "waiting",
+    "not-published-as-route", "outside-us-canada", "waiting",
 }
 LEFT_OUT_KEYS = {
     "id", "name", "country", "regions", "length_mi", "length_km", "length_note",
@@ -709,7 +709,15 @@ def check_left_out_entries(entries, trails, errors, where=LEFT_OUT_FILE):
             seen_names.add(key)
             if key in listed_names:
                 errors.append(f"{where}: {ename} matches a trail that is listed in the dataset")
-        if "country" in e and e.get("country") not in ("US", "CA"):
+        outside = e.get("reason") == "outside-us-canada"
+        if outside:
+            country = e.get("country")
+            if not (isinstance(country, str) and re.fullmatch(r"[A-Z]{2}", country)
+                    and country not in ("US", "CA")):
+                errors.append(
+                    f"{where}: {who} country must be a two letter code other than US or CA "
+                    "when reason is outside-us-canada")
+        elif "country" in e and e.get("country") not in ("US", "CA"):
             errors.append(f"{where}: {who} country must be US or CA")
         regions = e.get("regions")
         if "regions" in e and regions not in ("", None, []):
@@ -717,7 +725,10 @@ def check_left_out_entries(entries, trails, errors, where=LEFT_OUT_FILE):
                 errors.append(f"{where}: {who} regions must be a non-empty list of region codes")
             else:
                 for code in regions:
-                    if code not in LEFT_OUT_REGIONS:
+                    if outside:
+                        if not isinstance(code, str) or not code.strip():
+                            errors.append(f"{where}: {who} regions must name places as plain words")
+                    elif code not in LEFT_OUT_REGIONS:
                         errors.append(f"{where}: {who} region {code!r} is not a known state or province code")
                 if len(set(map(str, regions))) != len(regions):
                     errors.append(f"{where}: {who} regions repeats a code")

@@ -11,7 +11,7 @@ length_note = "75 km published"
 tier = "short"
 designation = "Parks Canada, Pacific Rim National Park Reserve"
 wave = 1
-short_reason = "Parks Canada says most people take six to eight days, so it takes five or more days."
+short_reason = "Parks Canada calls it one of British Columbia's most challenging hikes, with more than 100 ladder systems, deep mud, fast-flowing river crossings and cable cars, and it limits the number of overnight hikers each day."
 places_checked = "2026-11-20"
 places_track = "b99f42d0654c66b5"
 
@@ -158,4 +158,13 @@ fields = ["place"]
 basis = "Measured from the trail's main track against the Environment and Climate Change Canada, CPCAD outlines (cpcad, 2026-11-20), the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20) by tools/place_trails.py."
 basis_url = "https://open.canada.ca/data/dataset/6c343726-1e92-451a-876a-76e17d398a1c"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The reason this trail under the 50 mile floor is listed no longer rests on the days Parks Canada gives."
+fields = ["short_reason"]
+basis = "The Parks Canada page for the trail calls it one of British Columbia's most challenging hiking routes, with more than 100 ladder systems, deep mud, fast-flowing river crossings and cable cars, and says Parks Canada limits the number of overnight hikers each day. The six to eight days it gives are the usual time, and the days alone are not a reason."
+basis_url = "https://parks.canada.ca/pn-np/bc/pacificrim/activ/sco-wct"
+asked_by = "the owner of the dataset"
 outcome = "applied"

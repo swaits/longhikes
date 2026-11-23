@@ -37,7 +37,7 @@ HIKE_TERRAIN = {"alpine", "forest", "desert", "coast", "prairie", "canyon", "tun
 HIKE_FACTS = {"summary", "official_url", "start", "end", "shape", "days", "season",
               "high_point", "high_point_m", "terrain", "permit", "unfinished", "caution",
               "months", "travel", "start_lonlat", "end_lonlat"}
-LONLAT_BOUNDS = (-180.0, -50.0, 24.0, 75.0)  # lon min, lon max, lat min, lat max
+LONLAT_BOUNDS = (-180.0, -50.0, 24.0, 84.0)  # lon min, lon max, lat min, lat max; 84 N covers Ellesmere Island, Canada's land reaches 83.1 N
 HIKE_TRAVEL = {"trail", "trail-and-road", "some-cross-country", "mostly-cross-country"}
 HIKE_KEYS = HIKE_FACTS | {"checked"} | season.PROVENANCE_KEYS
 ELEVATION_KEYS = {"highest", "lowest", "ascent_m", "descent_m", "track_km", "published_km",

@@ -100,6 +100,7 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | Trail | Publisher | Page | Licence | Included |
 | --- | --- | --- | --- | --- |
 | across-utah-route | Jamal Green, Across Utah (publishes the route) | [source page](http://www.acrossutah.com/wordpress/master-map/) | none-stated | record only |
+| air-force-glacier-loop | Parks Canada, Quttinirpaaq National Park (publishes the trail) | [source page](https://pcweb2.azureedge.net/-/media/pn-np/nu/quttinirpaaq/WET4/pdf/tanquary-randonnee-hiking-2025-en.pdf) | none-stated | record only |
 | akshayuk-pass | Parks Canada (Auyuittuq National Park) (publishes the trail) | [source page](https://www.parks.canada.ca/pn-np/nu/auyuittuq/activ/randonnee-hiking) | none-stated | record only |
 | alexander-mackenzie | Province of British Columbia (BC Geographical Names record; no open geometry found) | [source page](https://www.openstreetmap.org/relation/2654551) | ODbL-1.0 | track |
 | allegheny-trail | West Virginia Scenic Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1772789) | ODbL-1.0 | track |
@@ -140,6 +141,7 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | chinese-wall-circuit | Wilderness Mindset (publishes the route) | [source page](https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/) | none-stated | record only |
 | circle-of-solitude | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/wilderness-press/) | none-stated | record only |
 | cohos | Cohos Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/14765821) | ODbL-1.0 | track |
+| collegiate-loop | Colorado Trail Foundation (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/19469029) | ODbL-1.0 | track |
 | colorado-trail | USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | ODbL-1.0 | track |
 | condor-trail | Condor Trail Association (publishes the route) | [source page](http://www.condortrail.com/maps-trail-descriptions/) | none-stated | record only |
 | conestoga-trail | Lancaster Hiking Club (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/6827091) | ODbL-1.0 | track |
@@ -178,6 +180,7 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | great-colorado-route | Donovan "Iceman" Rice, who publishes the route | [source page](https://www.greatcoloradoroute.com/route) | none-stated | record only |
 | great-divide-trail | Great Divide Trail Association (account 'GreatDivideTrail', public map) | [source page](https://www.openstreetmap.org/relation/8139599) | ODbL-1.0 | track |
 | great-eastern | Great Eastern Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1024490) | ODbL-1.0 | track |
+| great-north-cascades-traverse | National Park Service, North Cascades National Park (publishes the trail) | [source page](https://www.nps.gov/noca/planyourvisit/long-distance-backcountry-trip-sampler.htm) | none-stated | record only |
 | great-plains-trail | Steve Myers, Great Plains Trail Alliance (publishes the route) | [source page](https://www.greatplainstrail.org/gpt-map/) | none-stated | record only |
 | great-western-divide-loop | Brian Lucido (publishes the route) | [source page](https://www.brianlucido.com/sequoia-great-western-divide-loop/) | none-stated | record only |
 | great-western-loop | Andrew Skurka and Ryan Jordan (publish the route) | [source page](https://andrewskurka.com/adventures/great-western-loop/route-description/) | none-stated | record only |
@@ -204,6 +207,7 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | knobstone | Indiana Department of Natural Resources (publishes the southern Knobstone section; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4644135) | ODbL-1.0 | track |
 | koroc-palmer-loop | Parks Canada (Torngat Mountains National Park) (publishes the trail) | [source page](https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/koroc) | none-stated | record only |
 | la-cloche | Ontario Parks (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/14141941) | ODbL-1.0 | track |
+| la-grande-traversee | Sépaq, Parc national de la Gaspésie (publishes the trail) | [source page](https://www.sepaq.com/en/destinations/national-parks/gaspesie/activities/backpacking-stay) | none-stated | record only |
 | laurel-highlands | Keystone Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7192246) | ODbL-1.0 | track |
 | lone-star | Lone Star Hiking Trail Club (publishes the trail; no open track found) | [source page](https://www.openstreetmap.org/relation/7014936) | ODbL-1.0 | track |
 | long-path | New York-New Jersey Trail Conference (an ArcGIS item 'Long Path' under an ArcGIS account, 2025; provenance not confirmed) | [source page](https://www.openstreetmap.org/relation/919642) | ODbL-1.0 | track |
@@ -237,6 +241,7 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | north-umpqua | USDA Forest Service (National Forest System trails) and Bureau of Land Management (Ground Transportation Linear Features) | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | northern-colorado-trail | Kevin Silvernale, Northern Colorado Trail (publishes the route) | [source page](https://www.northerncoloradotrail.org/noco-trail-guides) | restricted | record only |
 | northern-new-mexico-loop | Brett Tucker ("Blisterfree"), who publishes the route | [source page](https://simblissity.net/northern-nm-loop-mapset.shtml) | none-stated | record only |
+| northern-yosemite-loop | National Park Service, Yosemite National Park (publishes the trail) | [source page](https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm) | none-stated | record only |
 | northville-placid | Adirondack Mountain Club; NY DEC (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4286650) | ODbL-1.0 | track |
 | oak-ridges | Oak Ridges Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/4287243) | ODbL-1.0 | track |
 | ocean-to-lake | Florida Trail Association, Loxahatchee Chapter (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7037710) | ODbL-1.0 | track |
@@ -277,6 +282,7 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | sky-islands-traverse | Brett Tucker ("Blisterfree"), who publishes the route | [source page](http://simblissity.net/skit.shtml) | none-stated | record only |
 | solitude-loop | USDA Forest Service (National Forest System Trails, Enterprise Data Warehouse) | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |
 | south-boundary | Parks Canada, Jasper National Park (publishes the trail; no open geometry found) | [source page](https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/south-boundary) | none-stated | record only |
+| south-district-highlights | National Park Service, Shenandoah National Park (publishes the trail) | [source page](https://www.nps.gov/shen/planyourvisit/backcountry-trips.htm) | none-stated | record only |
 | south-lake-to-north-lake | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/sierra-south-2/) | none-stated | record only |
 | southeastern-serpentine-trail | Cam Honan, The Hiking Life (publishes the route) | [source page](https://thehikinglife.com/2016/07/southeastern-serpentine-trail/) | none-stated | record only |
 | southern-sierra-high-route | Alan Dixon and Don Wilson (publish the route) | [source page](http://www.adventurealan.com/southern-sierra-high-route-soshr-guide/) | none-stated | record only |

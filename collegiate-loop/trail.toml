@@ -1,0 +1,119 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "collegiate-loop"
+name = "Collegiate Loop"
+country = "US"
+regions = ["CO"]
+length_km = 257
+length_note = "160 mi, as the Colorado Trail Foundation gives it: 'the CT Collegiate Loop, a 160-mile circuit'. The same page gives the two halves as Collegiate West, 84.8 mi in five segments, and Collegiate East, 78.3 mi, which add to 163.1 mi; the published 160 mi is used. The page says loop hikers can start and end at any access point along either route."
+tier = "regional"
+designation = "Colorado Trail Foundation: the Collegiate East and Collegiate West routes of the Colorado Trail, which together make the Collegiate Loop"
+wave = 1
+places_checked = "2026-11-23"
+places_track = "8f5a1a3140290f47"
+
+[source]
+status = "osm-only"
+publisher = "Colorado Trail Foundation (publishes the trail); OpenStreetMap contributors (the track)"
+publisher_url = "https://coloradotrail.org/traveling-the-ct/collegiate-east-west/"
+url = "https://www.openstreetmap.org/relation/19469029"
+discovery = "osm-relation-version: relation 19469029 was version 1, timestamp 2025-08-16T18:37:35Z, when read on 2026-11-23."
+format = "OpenStreetMap route relation, read through Overpass: 2 sub-relations (Collegiate East and Collegiate West) and 105 ways"
+crs = "EPSG:4326"
+licence = "ODbL-1.0"
+licence_text = "OpenStreetMap contributors, Open Database License 1.0 (https://www.openstreetmap.org/copyright), read 2026-11-23. The Colorado Trail Foundation's own page for the loop was read for the facts only; no track was taken from it."
+attribution = "OpenStreetMap contributors (ODbL)"
+osm_only = true
+mainline = "One relation, Collegiate Loop, holds the Collegiate East and Collegiate West relations; every way is main and there are no alternates."
+source_checked = "2026-11-23"
+redistributable = true
+line_source = "OpenStreetMap"
+line_file = "line.geojson"
+
+[osm]
+relation = 19469029
+note = "Relation 19469029, Collegiate Loop (hiking, network rwn, Wikidata Q135842384), version 1, 2025-08-16. It holds two sub-relations and 105 ways and measures 252.3 km in one part."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Colorado Trail Foundation"
+note = "No emblem of the loop was found. The Foundation's page for the loop (https://coloradotrail.org/traveling-the-ct/collegiate-east-west/) was read as text on 2026-11-23: it names the loop and its two routes and shows no mark for the loop. The Colorado Trail's own marker is the Foundation's, not the loop's."
+logo_file = ""
+logo_owner = "Colorado Trail Foundation"
+
+[verification]
+verified = true
+date = "2026-11-23"
+measured_km = 252.3
+difference_percent = -1.8
+parts = 1
+note = "OSM relation 19469029: 105 main ways in 1 part, 252.3 km (156.8 mi), 1.8% under the 257 km (160 mi) the Foundation gives."
+
+[hike]
+summary = "The Collegiate Loop is a 160-mile circuit around the Collegiate Peaks of the Sawatch Range in Colorado, made of the Colorado Trail's Collegiate East route and its Collegiate West route. Its northern point is at Twin Lakes Reservoir, southwest of Leadville, and its southern point is south of Monarch Pass. Hikers can start and end at any access point on it, which removes the need for a car shuttle."
+official_url = "https://coloradotrail.org/traveling-the-ct/collegiate-east-west/"
+start = "Twin Lakes, Colorado"
+start_lonlat = [-106.382, 39.083]
+shape = "loop"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "primary"
+terrain = ["alpine"]
+travel = "trail"
+permit = "The Foundation says no permit is needed to hike the Colorado Trail except at the self-service station where it enters a wilderness area, where a free permit is filled in, and that a State Wildlife Area permit may be needed for a small part of Segment 12 on Collegiate East."
+caution = "The Foundation says snow lingers into July and that the Collegiate West segments melt out last, with CW02 in mid-July, and advises finishing by late September. It calls the Collegiate West higher than the East route and sometimes more exposed."
+checked = "2026-11-23"
+
+[[hike.source]]
+url = "https://coloradotrail.org/traveling-the-ct/collegiate-east-west/"
+publisher = "Colorado Trail Foundation"
+facts = ["official_url", "summary", "start", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://coloradotrail.org/traveling-the-ct/snowpack/"
+publisher = "Colorado Trail Foundation"
+facts = ["season", "months", "caution"]
+
+[[hike.source]]
+url = "https://coloradotrail.org/traveling-the-ct/faq/"
+publisher = "Colorado Trail Foundation"
+facts = ["season", "months", "permit"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/180384"
+publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Twin Lakes, Colorado, feature 180384"
+facts = ["start_lonlat"]
+
+[[place]]
+kind = "range"
+slug = "sawatch-range"
+basis = "track"
+km = 252.4
+
+[[place]]
+kind = "wilderness"
+slug = "collegiate-peaks-wilderness"
+basis = "track"
+km = 36.5
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-23"
+change = "The record was added: the Collegiate Loop, 160 miles (257 km), the Colorado Trail Foundation's circuit of the Collegiate East and Collegiate West routes, with a track from OpenStreetMap."
+fields = ["record"]
+basis = "The Foundation's page for the Collegiate East and West routes says: \"Together, the Collegiate East and Collegiate West routes create what is now known as the CT Collegiate Loop, a 160-mile circuit\". The loop has its own name and published length and lies on the Colorado Trail, as the John Muir Trail lies on the Pacific Crest Trail."
+basis_url = "https://coloradotrail.org/traveling-the-ct/collegiate-east-west/"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The trail was placed in Sawatch Range, Collegiate Peaks Wilderness."
+fields = ["place"]
+basis = "Measured from the trail's main track against the GMBA Mountain Inventory v2 (Snethlage et al. 2022), via EarthEnv outlines (gmba-v2, 2026-11-20), the Wilderness Connect, University of Montana (wilderness.net) outlines (wilderness-connect, 2026-11-20) by tools/place_trails.py."
+basis_url = "https://www.earthenv.org/mountains"
+asked_by = "the dataset's own check"
+outcome = "applied"

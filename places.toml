@@ -853,6 +853,17 @@ source_version = "2026-11-20"
 box = [-79.21, 44.72, -78.8, 44.93]
 
 [[place]]
+slug = "quttinirpaaq-national-park"
+kind = "park"
+name = "Quttinirpaaq National Park"
+label = "National park"
+where = ["NU"]
+source = "cpcad"
+source_id = "717600000"
+source_version = "2026-11-20"
+box = [-79.04, 81.17, -62.51, 83.14]
+
+[[place]]
 slug = "redwood-national-park"
 kind = "park"
 name = "Redwood National Park"

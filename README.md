@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-225 trails, 124 with a track and 101 with no track included. Of these, 78 are routes: 2 with a track and 76 without.
+231 trails, 125 with a track and 106 with no track included. Of these, 78 are routes: 2 with a track and 76 without.
 
 <!-- END COUNTS -->
 
@@ -42,6 +42,7 @@ A trail may be listed with no track included, when no track for it may be shared
 
 | ID | Trail | Country | States / provinces | Length (km) | Track | Licence |
 | --- | --- | --- | --- | ---: | --- | --- |
+| air-force-glacier-loop | Air Force Glacier Loop | CA | NU | 120 | no | none-stated |
 | akshayuk-pass | Akshayuk Pass | CA | NU | 97 | no | none-stated |
 | alexander-mackenzie | Alexander MacKenzie Heritage Trail | CA | BC | 420 | yes | ODbL-1.0 |
 | allegheny-trail | Allegheny Trail | US | WV | 509 | yes | ODbL-1.0 |
@@ -70,6 +71,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | canol | Canol Heritage Trail | CA | NT | 371 | yes | ODbL-1.0 |
 | centennial-sd | Centennial Trail | US | SD | 179 | yes | ODbL-1.0 |
 | cohos | Cohos Trail | US | NH | 270 | yes | ODbL-1.0 |
+| collegiate-loop | Collegiate Loop | US | CO | 257 | yes | ODbL-1.0 |
 | colorado-trail | Colorado Trail | US | CO | 782 | yes | ODbL-1.0 |
 | conestoga-trail | Conestoga Trail | US | PA | 103 | yes | ODbL-1.0 |
 | conservation-trail | Conservation Trail | US | NY | 285 | no | none-stated |
@@ -93,6 +95,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | grand-valley-trail | Grand Valley Trail | CA | ON | 240 | yes | ODbL-1.0 |
 | great-divide-trail | Great Divide Trail | CA | AB, BC | 1130 | yes | ODbL-1.0 |
 | great-eastern | Great Eastern Trail | US | AL, GA, TN, KY, VA, WV, MD, PA, NY | 2897 | yes | ODbL-1.0 |
+| great-north-cascades-traverse | Great North Cascades Traverse | US | WA | 169 | no | none-stated |
 | guadalupe-ridge-trail | Guadalupe Ridge Trail | US | TX, NM | 161 | no | none-stated |
 | high-country-pathway | High Country Pathway | US | MI | 132 | yes | ODbL-1.0 |
 | high-sierra | High Sierra Trail | US | CA | 116 | yes | us-gov-public-domain |
@@ -110,6 +113,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | knobstone | Knobstone Hiking Trail | US | IN | 257 | yes | ODbL-1.0 |
 | koroc-palmer-loop | Koroc River and Palmer River Loop (Boucle des rivières Koroc et Palmer) | CA | QC, NL | 90 | no | none-stated |
 | la-cloche | La Cloche Silhouette Trail | CA | ON | 80 | yes | ODbL-1.0 |
+| la-grande-traversee | La Grande traversée (Parc national de la Gaspésie) | CA | QC | 103 | no | none-stated |
 | laurel-highlands | Laurel Highlands Hiking Trail | US | PA | 113 | yes | ODbL-1.0 |
 | lone-star | Lone Star Hiking Trail | US | TX | 155 | yes | ODbL-1.0 |
 | long-path | Long Path | US | NJ, NY | 576 | yes | ODbL-1.0 |
@@ -135,6 +139,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | north-south | North-South Trail | US | RI | 125 | yes | ODbL-1.0 |
 | north-south-lbl | North/South Trail (Land Between the Lakes) | US | KY, TN | 95 | yes | ODbL-1.0 |
 | north-umpqua | North Umpqua Trail | US | OR | 127 | yes | us-gov-public-domain |
+| northern-yosemite-loop | Northern Yosemite Loop | US | CA | 123 | no | none-stated |
 | northville-placid | Northville-Placid Trail | US | NY | 220 | yes | ODbL-1.0 |
 | oak-ridges | Oak Ridges Trail | CA | ON | 270 | yes | ODbL-1.0 |
 | ocean-to-lake | Ocean to Lake Hiking Trail | US | FL | 99 | yes | ODbL-1.0 |
@@ -164,6 +169,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | silver-moccasin-trail | Silver Moccasin Trail | US | CA | 82 | yes | ODbL-1.0 |
 | solitude-loop | Solitude Loop Trail | US | WY | 89 | yes | us-gov-public-domain |
 | south-boundary | South Boundary Trail | CA | AB | 121 | no | none-stated |
+| south-district-highlights | South District Highlights (Shenandoah National Park) | US | VA | 111 | no | none-stated |
 | standing-stone | Standing Stone Trail | US | PA | 137 | yes | ODbL-1.0 |
 | stein-valley-traverse | Stein Valley Traverse | CA | BC | 80 | yes | ODbL-1.0 |
 | sunapee-ragged-kearsarge | Sunapee-Ragged-Kearsarge Greenway | US | NH | 121 | yes | ODbL-1.0 |

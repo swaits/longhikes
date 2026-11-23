@@ -1,0 +1,118 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "great-north-cascades-traverse"
+name = "Great North Cascades Traverse"
+country = "US"
+regions = ["WA"]
+length_km = 169
+length_note = "105 mi / 169 km, as the National Park Service prints it on its Long Distance Backcountry Trip Sampler page for North Cascades National Park, from the Hannegan trailhead to the Stehekin Shuttle stop at High Bridge. The page ends the walk at the shuttle stop and lists the Stehekin Shuttle among the trails included, so the last stretch to Stehekin is by that shuttle. The page also gives an alternate that follows the Bridge Creek Trail and adds the McAlester Lake, Rainbow Creek, Boulder Creek and Purple Creek trails, for a total of 141 mi / 227 km, and optional additions of the Copper Ridge Trail (4.1 mi / 6.6 km) and the Chelan Lakeshore Trail (19 mi / 30.6 km); the 105 mi figure is the one used."
+tier = "regional"
+designation = "National Park Service, North Cascades National Park: a long-distance backcountry trip it publishes by name"
+wave = 1
+places_checked = "2026-11-23"
+
+[source]
+status = "none"
+publisher = "National Park Service, North Cascades National Park (publishes the trail)"
+publisher_url = "https://www.nps.gov/noca/planyourvisit/long-distance-backcountry-trip-sampler.htm"
+url = "https://www.nps.gov/noca/planyourvisit/long-distance-backcountry-trip-sampler.htm"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://www.nps.gov/noca/planyourvisit/long-distance-backcountry-trip-sampler.htm, read 2026-11-23; the page says it was last updated August 7, 2017)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "OpenStreetMap has a relation named The Great North Cascades Traverse (4815933, tagged distance 169), but on 2026-11-23 it held only ways of the Thunder Creek, Park Creek, Panther Creek, Fourth of July, Happy Panther, Upper Stehekin Valley and Cascade Pass trails and of the North Cascades Highway, 83.6 km in one part. It lacks the Hannegan, Chilliwack, Little Beaver and Big Beaver trails and includes a highway and the Cascade Pass Trail, which the Park Service's list for the traverse does not."
+source_checked = "2026-11-23"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. The Park Service names the trails the traverse follows but publishes no line for it on this page, and the Park Service's public data service held no North Cascades trail layer on 2026-11-23. The only OpenStreetMap relation for it is incomplete (83.6 km of 169 km) and holds a highway and a trail the Park Service's list leaves out, so it is not used. A line made by joining other agencies' trail data by hand was not attempted."
+
+[osm]
+relation = 4815933
+note = "Relation 4815933, The Great North Cascades Traverse (hiking, tagged distance 169, website the Park Service page), version 14, 2026-08-07, is incomplete: 31 ways in one part, 83.6 km, with the North Cascades Highway among them. Not used as the track."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "National Park Service, North Cascades National Park"
+note = "No trail emblem found. The Park Service page (https://www.nps.gov/noca/planyourvisit/long-distance-backcountry-trip-sampler.htm) was read as text on 2026-11-23 and gives the traverse a description and a distance only; the Service's arrowhead is the agency's own."
+logo_file = ""
+logo_owner = "National Park Service, North Cascades National Park"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Great North Cascades Traverse is a 105 mile backcountry route across North Cascades National Park in Washington, from the Hannegan trailhead near Mount Baker to the Stehekin Shuttle stop at High Bridge, with a shuttle ride on to Stehekin at the head of Lake Chelan. The Park Service says it crosses five mountain passes (Hannegan, Whatcom, Beaver, Fourth of July and Park Creek) and links the temperate rainforests of western Washington with the dry interior of the east. It is one of the long-distance trips the park suggests for people who plan three or more nights in the backcountry."
+official_url = "https://www.nps.gov/noca/planyourvisit/long-distance-backcountry-trip-sampler.htm"
+start = "Hannegan trailhead, near Hannegan Pass, Washington"
+start_lonlat = [-121.533, 48.884]
+end = "Stehekin Shuttle stop at High Bridge, near Stehekin, Washington"
+end_lonlat = [-120.657, 48.309]
+shape = "point-to-point"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Snow keeps the high passes (Hannegan, Whatcom, Park Creek) closed until July and returns in October, which leaves July to September. Confidence: medium."
+terrain = ["alpine", "forest"]
+travel = "trail"
+checked = "2026-11-23"
+
+[[hike.source]]
+url = "https://www.nps.gov/noca/planyourvisit/long-distance-backcountry-trip-sampler.htm"
+publisher = "National Park Service, North Cascades National Park"
+facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1520512"
+publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Hannegan Pass, feature 1520512, the named place nearest the Hannegan trailhead"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1526531"
+publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Stehekin, feature 1526531, the named place nearest the High Bridge shuttle stop"
+facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
+[[place]]
+kind = "park"
+slug = "north-cascades-national-park"
+basis = "stated"
+source = "https://www.nps.gov/noca/planyourvisit/long-distance-backcountry-trip-sampler.htm"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-23"
+change = "The record was added: the Great North Cascades Traverse, 105 miles (169 km) from the Hannegan trailhead to the Stehekin Shuttle stop at High Bridge in North Cascades National Park, as the National Park Service publishes it. No track is included."
+fields = ["record"]
+basis = "The Park Service's Long Distance Backcountry Trip Sampler page names The Great North Cascades Traverse, lists the trails it follows and gives: \"105 mi / 169 km (Hannegan trailhead to Stehekin Shuttle stop at High Bridge)\"."
+basis_url = "https://www.nps.gov/noca/planyourvisit/long-distance-backcountry-trip-sampler.htm"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The trail was placed in North Cascades National Park from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Long Distance Backcountry Trip Sampler - North Cascades National Park\""
+basis_url = "https://www.nps.gov/noca/planyourvisit/long-distance-backcountry-trip-sampler.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+asked_by = "the dataset's own check"
+outcome = "applied"

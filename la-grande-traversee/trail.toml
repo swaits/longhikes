@@ -1,0 +1,105 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "la-grande-traversee"
+name = "La Grande traversée (Parc national de la Gaspésie)"
+country = "CA"
+regions = ["QC"]
+length_km = 103
+length_note = "103 km, as Sépaq gives it on its Backpacking stay page for Parc national de la Gaspésie: \"From Mont Logan to Mont Jacques-Cartier. Duration: 8 days and 7 nights. Total distance: 103 km\". The first day starts with a shuttle from the Discovery and Visitors Centre to La Croisée hut and climbs Mont Logan and returns to a night stop, and the last day ends at the Mont-Jacques-Cartier campground with a shuttle back to the centre; the stage distances add to 106 km by the hut route and 105 km by the camping platforms. The published 103 km is used."
+tier = "regional"
+designation = "Sépaq, Parc national de la Gaspésie: a long-distance hiking circuit it publishes by name"
+wave = 1
+places_checked = "2026-11-23"
+
+[source]
+status = "none"
+publisher = "Sépaq, Parc national de la Gaspésie (publishes the trail)"
+publisher_url = "https://www.sepaq.com/en/destinations/national-parks/gaspesie/activities/backpacking-stay"
+url = "https://www.sepaq.com/en/destinations/national-parks/gaspesie/activities/backpacking-stay"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://www.sepaq.com/en/destinations/national-parks/gaspesie/activities/backpacking-stay, read 2026-11-23)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "OpenStreetMap relation 1638854, Sentier de la Grande Traversée (route=trail, version 12, 2022-02-03), lies in the park but measures 8.0 km in 4 parts, a small fraction of the 103 km, and was not named for this circuit, so it was not used. No other route relation for the circuit was found on 2026-11-23."
+source_checked = "2026-11-23"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. Sépaq describes the circuit as eight stages between huts and camping platforms with shuttles at both ends and publishes no line on this page; its maps are PDFs in French only that were not used for a track. No OpenStreetMap relation for the circuit was found; the one trail relation in the park is 8.0 km. The page shows both ends on the map and no line between them."
+
+[osm]
+relation = 0
+note = "No route relation for the 103 km circuit was found on 2026-11-23. Relation 1638854, Sentier de la Grande Traversée (route=trail, version 12, 2022-02-03), is 28 ways in 4 parts and 8.0 km inside the park; it is not the circuit and is not used."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Sépaq"
+note = "No trail emblem found. Sépaq's Backpacking stay page (https://www.sepaq.com/en/destinations/national-parks/gaspesie/activities/backpacking-stay) was read as text on 2026-11-23 and gives the circuit a name, a distance and eight stages only; the Sépaq mark is the agency's own."
+logo_file = ""
+logo_owner = "Sépaq"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "La Grande traversée is a 103 km backpacking circuit in Parc national de la Gaspésie, Quebec, from Mont Logan in the west to Mont Jacques-Cartier in the east, in 8 days and 7 nights. Sépaq runs it between huts or rustic camping platforms, with a shuttle from the park's Discovery and Visitors Centre at each end. It is open from July 1 to September 30."
+official_url = "https://www.sepaq.com/en/destinations/national-parks/gaspesie/activities/backpacking-stay"
+start = "Mont Logan, Parc national de la Gaspésie, Quebec"
+start_lonlat = [-66.639, 48.890]
+end = "Mont-Jacques-Cartier campground, Parc national de la Gaspésie, Quebec"
+end_lonlat = [-65.882, 49.025]
+shape = "point-to-point"
+days = [8, 8]
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "primary"
+terrain = ["alpine", "forest"]
+travel = "trail"
+permit = "Sépaq says a reservation is required for the backpacking stay, which covers the huts and the rustic camping platforms."
+checked = "2026-11-23"
+
+[[hike.source]]
+url = "https://www.sepaq.com/en/destinations/national-parks/gaspesie/activities/backpacking-stay"
+publisher = "Sépaq"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "permit"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/EHAKN"
+publisher = "Natural Resources Canada (Canadian Geographical Names): Mont Logan"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/EQXEY"
+publisher = "Natural Resources Canada (Canadian Geographical Names): Camping du Mont-Jacques-Cartier"
+facts = ["end_lonlat"]
+
+[[place]]
+kind = "park"
+slug = "gaspesie-national-park"
+basis = "stated"
+source = "https://www.sepaq.com/en/destinations/national-parks/gaspesie/activities/backpacking-stay"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-23"
+change = "The record was added: La Grande traversée, 103 km, Sépaq's 8 day backpacking circuit from Mont Logan to Mont Jacques-Cartier in Parc national de la Gaspésie, Quebec. No track is included."
+fields = ["record"]
+basis = "Sépaq's Backpacking stay page for Parc national de la Gaspésie lists La Grande traversée: \"From Mont Logan to Mont Jacques-Cartier. Duration: 8 days and 7 nights. Total distance: 103 km\". The circuit has its own name and published length."
+basis_url = "https://www.sepaq.com/en/destinations/national-parks/gaspesie/activities/backpacking-stay"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The trail was placed in Gaspésie National Park from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Parc national de la Gaspésie is a gem for backpacking.\""
+basis_url = "https://www.sepaq.com/en/destinations/national-parks/gaspesie/activities/backpacking-stay"
+asked_by = "the dataset's own check"
+outcome = "applied"

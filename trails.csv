@@ -1,5 +1,6 @@
 id,name,country,regions,length_km,status,line_source,licence,kind,line_policy
 across-utah-route,Across Utah Route,US,UT,1127,record-only,none (no line included),none-stated,route,unclear
+air-force-glacier-loop,Air Force Glacier Loop,CA,NU,120,record-only,none (no line included),none-stated,designated,
 akshayuk-pass,Akshayuk Pass,CA,NU,97,record-only,none (no line included),none-stated,designated,
 alexander-mackenzie,Alexander MacKenzie Heritage Trail,CA,BC,420,included,OpenStreetMap,ODbL-1.0,designated,
 allegheny-trail,Allegheny Trail,US,WV,509,included,OpenStreetMap,ODbL-1.0,designated,
@@ -41,6 +42,7 @@ central-wind-rivers-loop,Central Wind Rivers Loop,US,WY,99,record-only,none (no 
 chinese-wall-circuit,The Chinese Wall Circuit,US,MT,127,record-only,none (no line included),none-stated,route,unclear
 circle-of-solitude,Circle of Solitude,US,CA,109,record-only,none (no line included),none-stated,route,unclear
 cohos,Cohos Trail,US,NH,270,included,OpenStreetMap,ODbL-1.0,designated,
+collegiate-loop,Collegiate Loop,US,CO,257,included,OpenStreetMap,ODbL-1.0,designated,
 colorado-trail,Colorado Trail,US,CO,782,included,"USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment",ODbL-1.0,designated,
 condor-trail,Condor Trail,US,CA,644,record-only,none (no line included),none-stated,route,open
 conestoga-trail,Conestoga Trail,US,PA,103,included,OpenStreetMap,ODbL-1.0,designated,
@@ -80,6 +82,7 @@ great-basin-trail,Great Basin Trail,US,NV,1931,record-only,none (no line include
 great-colorado-route,Great Colorado Route,US,CO,3219,record-only,none (no line included),none-stated,route,open
 great-divide-trail,Great Divide Trail,CA,AB;BC,1130,included,OpenStreetMap,ODbL-1.0,designated,
 great-eastern,Great Eastern Trail,US,AL;GA;TN;KY;VA;WV;MD;PA;NY,2897,included,OpenStreetMap,ODbL-1.0,designated,
+great-north-cascades-traverse,Great North Cascades Traverse,US,WA,169,record-only,none (no line included),none-stated,designated,
 great-plains-trail,Great Plains Trail,US,SK;ND;SD;NE;TX,3540,record-only,none (no line included),none-stated,route,unclear
 great-western-divide-loop,Sequoia Great Western Divide Loop,US,CA,93,record-only,none (no line included),none-stated,route,open
 great-western-loop,Great Western Loop,US,AZ;NM;CO;WY;ID;MT;CA;OR;WA,11064,record-only,none (no line included),none-stated,route,withheld
@@ -106,6 +109,7 @@ kings-canyon-high-basin-route,Kings Canyon High Basin Route,US,CA,200,record-onl
 knobstone,Knobstone Hiking Trail,US,IN,257,included,OpenStreetMap,ODbL-1.0,designated,
 koroc-palmer-loop,Koroc River and Palmer River Loop (Boucle des rivières Koroc et Palmer),CA,QC;NL,90,record-only,none (no track included),none-stated,designated,
 la-cloche,La Cloche Silhouette Trail,CA,ON,80,included,OpenStreetMap,ODbL-1.0,designated,
+la-grande-traversee,La Grande traversée (Parc national de la Gaspésie),CA,QC,103,record-only,none (no line included),none-stated,designated,
 laurel-highlands,Laurel Highlands Hiking Trail,US,PA,113,included,OpenStreetMap,ODbL-1.0,designated,
 lone-star,Lone Star Hiking Trail,US,TX,155,included,OpenStreetMap,ODbL-1.0,designated,
 long-path,Long Path,US,NJ;NY,576,included,OpenStreetMap,ODbL-1.0,designated,
@@ -140,6 +144,7 @@ north-south-lbl,North/South Trail (Land Between the Lakes),US,KY;TN,95,included,
 north-umpqua,North Umpqua Trail,US,OR,127,included,USDA Forest Service (EDW National Forest System trails) and Bureau of Land Management (GTLF),us-gov-public-domain,designated,
 northern-colorado-trail,Northern Colorado Trail,US,CO,490,record-only,none (no line included),restricted,route,open
 northern-new-mexico-loop,Northern New Mexico Loop,US,NM,805,record-only,none (no line included),none-stated,route,sold
+northern-yosemite-loop,Northern Yosemite Loop,US,CA,123,record-only,none (no line included),none-stated,designated,
 northville-placid,Northville-Placid Trail,US,NY,220,included,OpenStreetMap,ODbL-1.0,designated,
 oak-ridges,Oak Ridges Trail,CA,ON,270,included,OpenStreetMap,ODbL-1.0,designated,
 ocean-to-lake,Ocean to Lake Hiking Trail,US,FL,99,included,OpenStreetMap,ODbL-1.0,designated,
@@ -181,6 +186,7 @@ siskiyou-peaks-trail,Siskiyou Peaks Trail,US,OR;CA,721,record-only,none (no line
 sky-islands-traverse,Sky Islands Traverse,US,AZ,837,record-only,none (no line included),none-stated,route,withheld
 solitude-loop,Solitude Loop Trail,US,WY,89,included,USDA Forest Service (National Forest System Trails),us-gov-public-domain,designated,
 south-boundary,South Boundary Trail,CA,AB,121,record-only,none (no line included),none-stated,designated,
+south-district-highlights,South District Highlights (Shenandoah National Park),US,VA,111,record-only,none (no line included),none-stated,designated,
 south-lake-to-north-lake,South Lake to North Lake,US,CA,89,record-only,none (no line included),none-stated,route,sold
 southeastern-serpentine-trail,Southeastern Serpentine Trail,US,SC;NC;GA;TN,938,record-only,none (no line included),none-stated,route,unclear
 southern-sierra-high-route,Southern Sierra High Route,US,CA,161,record-only,none (no line included),none-stated,route,open

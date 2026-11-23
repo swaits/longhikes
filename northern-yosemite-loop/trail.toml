@@ -1,0 +1,110 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "northern-yosemite-loop"
+name = "Northern Yosemite Loop"
+country = "US"
+regions = ["CA"]
+length_km = 123
+length_note = "76.4 miles / 123 km, as the National Park Service prints it for the Northern Yosemite Loop on its Tuolumne Meadows Backpacking Trails page for Yosemite National Park, with an elevation gain of 13,300 feet (4,055 m). The page names no legs for it: it gives the trailhead as Glen Aulin and says there are numerous one-way trips and loops of varying mileages that hikers can create in the north country. The figure is the Park Service's own and is not measured from a track."
+tier = "regional"
+designation = "National Park Service, Yosemite National Park: a backpacking loop it lists by name"
+wave = 1
+places_checked = "2026-11-23"
+
+[source]
+status = "none"
+publisher = "National Park Service, Yosemite National Park (publishes the trail)"
+publisher_url = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
+url = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm, read 2026-11-23; the page says it was last updated January 27, 2022)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation named Northern Yosemite Loop was found on 2026-11-23."
+source_checked = "2026-11-23"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. The Park Service's page gives the loop a length, a climb and a trailhead but does not say which trails it follows, so no line can be drawn from the holder's own description without guessing the legs. OpenStreetMap has no route relation for it. The page shows only its start, Glen Aulin."
+
+[osm]
+relation = 0
+note = "No route relation named Northern Yosemite Loop was found in a name search on 2026-11-23."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "National Park Service, Yosemite National Park"
+note = "No trail emblem found. The Park Service page (https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm) was read as text on 2026-11-23 and gives the loop a name, a distance and a short description only; the Service's arrowhead is the agency's own."
+logo_file = ""
+logo_owner = "National Park Service, Yosemite National Park"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Northern Yosemite Loop is a 76 mile backpacking loop through the north country of Yosemite National Park, California, which the Park Service describes as remote and rugged, with long distances, few people and creek crossings. It starts at the Glen Aulin trailhead near Tuolumne Meadows and climbs 13,300 feet in all. The Park Service's page does not name the trails it follows."
+official_url = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
+start = "Glen Aulin Trailhead, Tuolumne Meadows, Yosemite National Park, California"
+start_lonlat = [-119.359, 37.879]
+shape = "loop"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Snow keeps the high country of northern Yosemite closed until late June or July and returns in October, which leaves July to September. Confidence: medium."
+terrain = ["alpine"]
+checked = "2026-11-23"
+
+[[hike.source]]
+url = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
+publisher = "National Park Service, Yosemite National Park"
+facts = ["official_url", "summary", "start", "shape", "terrain"]
+
+[[hike.source]]
+url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/YOSE_POI_Trailheads/FeatureServer/0"
+publisher = "National Park Service, Yosemite National Park (Trailheads layer, public domain; the Glen Aulin Trailhead point)"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
+[[place]]
+kind = "park"
+slug = "yosemite-national-park"
+basis = "stated"
+source = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-23"
+change = "The record was added: the Northern Yosemite Loop, 76.4 miles (123 km), listed by the National Park Service among the backpacking trails of Tuolumne Meadows in Yosemite National Park. No track is included."
+fields = ["record"]
+basis = "The Park Service's Tuolumne Meadows Backpacking Trails page lists the Northern Yosemite Loop with: \"Distance: 76.4 miles / 123 km\", \"Elevation Gain: 13,300 feet (4,055 m)\" and \"Trailhead: Glen Aulin (pass-through)\"."
+basis_url = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The trail was placed in Yosemite National Park from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Yosemite’s north country is remote and rugged.\""
+basis_url = "https://www.nps.gov/yose/planyourvisit/tuolumne-meadows-backpacking-trails.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+asked_by = "the dataset's own check"
+outcome = "applied"

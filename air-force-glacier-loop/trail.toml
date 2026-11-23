@@ -1,0 +1,119 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "air-force-glacier-loop"
+name = "Air Force Glacier Loop"
+country = "CA"
+regions = ["NU"]
+length_km = 120
+length_note = "120 km, as Parks Canada gives it in its Tanquary Fiord Hiking Guide: \"DISTANCE: 120 km (40 km of the Air Force Return Hike one way plus an additional 80 km)\", 6 to 12 days. The loop starts and ends at Tanquary Fiord Camp. The guide's Air Force Glacier Return Hike (80 km return, 3 to 5 days) is the first 40 km of it; the loop's published figure is the one used."
+tier = "regional"
+designation = "Parks Canada, Quttinirpaaq National Park: a hiking route it publishes by name"
+wave = 1
+places_checked = "2026-11-23"
+
+[source]
+status = "none"
+publisher = "Parks Canada, Quttinirpaaq National Park (publishes the trail)"
+publisher_url = "https://parks.canada.ca/pn-np/nu/quttinirpaaq/activ/randonnees-hiking"
+url = "https://pcweb2.azureedge.net/-/media/pn-np/nu/quttinirpaaq/WET4/pdf/tanquary-randonnee-hiking-2025-en.pdf"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the pages its facts were read on (the Tanquary Fiord Hiking Guide PDF linked from https://parks.canada.ca/pn-np/nu/quttinirpaaq/activ/randonnees-hiking, read 2026-11-23)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation named Air Force Glacier Loop was found on 2026-11-23."
+source_checked = "2026-11-23"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. Parks Canada says there are no established trails in the park and describes the route in words only, with no line. OpenStreetMap has no route relation for it. The page shows its start on the map and no line."
+
+[osm]
+relation = 0
+note = "No route relation named Air Force Glacier Loop was found in a name search on 2026-11-23."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Parks Canada"
+note = "No trail emblem found. Parks Canada's hiking page (https://parks.canada.ca/pn-np/nu/quttinirpaaq/activ/randonnees-hiking) and the Tanquary Fiord Hiking Guide were read as text on 2026-11-23 and give the route a name, a distance and directions only; the Parks Canada mark is the agency's own."
+logo_file = ""
+logo_owner = "Parks Canada"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Air Force Glacier Loop is a 120 km hiking loop in Quttinirpaaq National Park, Nunavut, from Tanquary Fiord up the Air Force River past Air Force Glacier to Ekblaw Lake, then south and back down the Lewis, Very, Lupus and Macdonald river valleys. Parks Canada calls it the longest hike in the park and gives it 6 to 12 days. There are no established trails in the park, so hikers choose their own way and cross rivers."
+official_url = "https://parks.canada.ca/pn-np/nu/quttinirpaaq/activ/randonnees-hiking"
+start = "Tanquary Fiord, Quttinirpaaq National Park, Nunavut"
+start_lonlat = [-79.75, 81.083]
+shape = "loop"
+days = [6, 12]
+season = "June to August"
+months = [6, 7, 8]
+season_basis = "estimate"
+season_method = "At 81 degrees north the ground is snow-free only for a short summer, and rivers are highest in the warmest weeks and lowest at night; June to August is the window in which the park is visited. Confidence: low."
+terrain = ["tundra", "alpine"]
+travel = "mostly-cross-country"
+permit = "Parks Canada says it is mandatory for all visitors to register and take part in an orientation session on arrival in the national park, and to de-register before leaving."
+caution = "Parks Canada says there are no established trails in the park, that hikers must be experienced in wilderness travel and map reading and capable of self-rescue, as rescue could take a week or more, and that the Macdonald River can be impossible to cross for extended periods. Its guide describes the loop along moraine and the Lupus River and does not ask hikers to cross a glacier: it says \"Do not cross the glaciers without glacier training and self rescue equipment\" and has hikers climb about 50 metres to bypass the Lupus Glacier. Its general glacier warning says to travel on glaciers only with avalanche and crevasse self-rescue training and gear."
+checked = "2026-11-23"
+
+[[hike.source]]
+url = "https://pcweb2.azureedge.net/-/media/pn-np/nu/quttinirpaaq/WET4/pdf/tanquary-randonnee-hiking-2025-en.pdf"
+publisher = "Parks Canada, Quttinirpaaq National Park (Tanquary Fiord Hiking Guide)"
+facts = ["summary", "start", "shape", "days", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/nu/quttinirpaaq/activ/randonnees-hiking"
+publisher = "Parks Canada, Quttinirpaaq National Park"
+facts = ["official_url", "summary", "travel", "caution"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/OAQDL"
+publisher = "Natural Resources Canada (Canadian Geographical Names): Tanquary Fiord"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
+[[place]]
+kind = "park"
+slug = "quttinirpaaq-national-park"
+basis = "stated"
+source = "https://pcweb2.azureedge.net/-/media/pn-np/nu/quttinirpaaq/WET4/pdf/tanquary-randonnee-hiking-2025-en.pdf"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-23"
+change = "The record was added: the Air Force Glacier Loop, 120 km, in Quttinirpaaq National Park, Nunavut, as Parks Canada publishes it in its Tanquary Fiord Hiking Guide. No track is included."
+fields = ["record"]
+basis = "Parks Canada's Tanquary Fiord Hiking Guide names the Air Force Glacier Loop and gives: \"DISTANCE: 120 km (40 km of the Air Force Return Hike one way plus an additional 80 km)\" and \"TIME: 6–12 days\". Its route text says: \"Do not cross the glaciers without glacier training and self rescue equipment.\" and has the route bypass the Lupus Glacier, so the loop does not require roped glacier travel."
+basis_url = "https://pcweb2.azureedge.net/-/media/pn-np/nu/quttinirpaaq/WET4/pdf/tanquary-randonnee-hiking-2025-en.pdf"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The trail was placed in Quttinirpaaq National Park from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Take the challenge and complete the longest hike in Quttinirpaaq National Park.\""
+basis_url = "https://pcweb2.azureedge.net/-/media/pn-np/nu/quttinirpaaq/WET4/pdf/tanquary-randonnee-hiking-2025-en.pdf"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "A season was estimated: June to August."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+asked_by = "the dataset's own check"
+outcome = "applied"

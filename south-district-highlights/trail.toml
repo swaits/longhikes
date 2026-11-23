@@ -1,0 +1,118 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "south-district-highlights"
+name = "South District Highlights (Shenandoah National Park)"
+country = "US"
+regions = ["VA"]
+length_km = 111
+length_note = "59.1 to 69.2 mi, as the National Park Service gives it in its backcountry trip guides for South District Highlights (\"Total Length: 59.1 to 69.2 miles\"; the 7, 8 and 9 day versions and the 8 day version with a short first day all give the same range): the length depends on where the hiker camps each night and on the options taken. The upper figure, 69.2 mi (111 km), is used; the lower figure is also over the 50 mile floor. The guides say it is a loop that starts and ends at the same place, the Big Run Overlook and Doyles River parking at Skyline Drive mile 81."
+tier = "regional"
+designation = "National Park Service, Shenandoah National Park: a suggested backcountry trip it publishes by name"
+wave = 1
+places_checked = "2026-11-23"
+
+[source]
+status = "none"
+publisher = "National Park Service, Shenandoah National Park (publishes the trail)"
+publisher_url = "https://www.nps.gov/shen/planyourvisit/backcountry-trips.htm"
+url = "https://www.nps.gov/shen/planyourvisit/backcountry-trips.htm"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the pages its facts were read on (https://www.nps.gov/shen/planyourvisit/backcountry-trips.htm, last updated March 25, 2026, and the trip guide PDFs it links, read 2026-11-23)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation named South District Highlights was found on 2026-11-23."
+source_checked = "2026-11-23"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. The Park Service describes the trip as a day-by-day list of trails, with campsites left to the hiker, a stretch of gravel road outside the park boundary and an off-trail walk to a camp, in four versions that differ by night. It publishes no one line, and OpenStreetMap has no route relation for it. The page shows only its start."
+
+[osm]
+relation = 0
+note = "No route relation named South District Highlights was found in a name search on 2026-11-23."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "National Park Service, Shenandoah National Park"
+note = "No trail emblem found. The Park Service's trip list (https://www.nps.gov/shen/planyourvisit/backcountry-trips.htm) and its South District Highlights trip guide were read as text on 2026-11-23 and give a name, distances and day-by-day directions only; the Service's arrowhead is the agency's own."
+logo_file = ""
+logo_owner = "National Park Service, Shenandoah National Park"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "South District Highlights is a backcountry loop in the south of Shenandoah National Park, Virginia, that the Park Service describes as having great views, waterfalls, swimming holes and wilderness areas. It starts and ends at the Big Run Overlook and Doyles River parking on Skyline Drive and is given as a 7, 8 or 9 day trip with 6 to 8 nights camped, and 59.1 to 69.2 miles depending on the campsites chosen. The Park Service rates it for advanced backcountry campers."
+official_url = "https://www.nps.gov/shen/planyourvisit/backcountry-trips.htm"
+start = "Big Run Overlook and Doyles River parking, Skyline Drive mile 81, Shenandoah National Park, Virginia"
+start_lonlat = [-78.683, 38.254]
+shape = "loop"
+days = [7, 9]
+season = "April to October"
+months = [4, 5, 6, 7, 8, 9, 10]
+season_basis = "estimate"
+season_method = "Shenandoah's trails are low (under about 4,000 feet) and snow-free from spring to fall; winter ice and cold, and the heat and storms of midsummer, make April to October the usual window. Confidence: low."
+terrain = ["forest"]
+travel = "trail"
+caution = "The Park Service says this trip is for advanced backcountry campers skilled in navigation and finding pristine campsites, and that the multiple stream crossings on Big Run Portal and North Fork Moormans River can be knee to waist high when the water is up, so hikers should beware in spring and after heavy rain. The guide's first two days use the North Fork Moormans River Road, which is gravel and leaves and re-enters the park, and the South Fork Moormans River Road, and its second camp is found by following a stream off trail."
+checked = "2026-11-23"
+
+[[hike.source]]
+url = "https://www.nps.gov/shen/planyourvisit/backcountry-trips.htm"
+publisher = "National Park Service, Shenandoah National Park"
+facts = ["official_url", "summary", "start", "shape", "days", "terrain", "travel"]
+
+[[hike.source]]
+url = "https://www.nps.gov/shen/planyourvisit/upload/SHEN_BCTrip-South_District_Highlights_in_7_days_A003-508.pdf"
+publisher = "National Park Service, Shenandoah National Park (trip guide: South District Highlights in 7 days)"
+facts = ["summary", "start", "shape", "days", "travel", "caution"]
+
+[[hike.source]]
+url = "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/SHEN_TRANS_Parking_pt/FeatureServer/27"
+publisher = "National Park Service, Shenandoah National Park (Parking layer, public domain; the Doyles River parking area point, milepost 81.1)"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
+[[place]]
+kind = "park"
+slug = "shenandoah-national-park"
+basis = "stated"
+source = "https://www.nps.gov/shen/planyourvisit/backcountry-trips.htm"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-23"
+change = "The record was added: South District Highlights, 59.1 to 69.2 miles (up to 111 km), a suggested backcountry loop in Shenandoah National Park that the Park Service publishes in 7, 8 and 9 day versions. The upper figure is used as the length. No track is included."
+fields = ["record"]
+basis = "The Park Service's backcountry trips page lists South District Highlights in 7, 8 and 9 days with a mileage of 59.1 to 69.2, and the 7 day trip guide says: \"Total Length: 59.1 to 69.2 miles\", with entry and exit at the same place, \"81 MP - Big Run OL/Doyles River Pkg\"."
+basis_url = "https://www.nps.gov/shen/planyourvisit/backcountry-trips.htm"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The trail was placed in Shenandoah National Park from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"With over 500 miles of trails in Shenandoah National Park, it can seem like a daunting task to choose the right backpacking trip for you.\""
+basis_url = "https://www.nps.gov/shen/planyourvisit/backcountry-trips.htm"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "A season was estimated: April to October."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+asked_by = "the dataset's own check"
+outcome = "applied"

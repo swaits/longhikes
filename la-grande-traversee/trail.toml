@@ -22,7 +22,7 @@ licence = "none-stated"
 licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://www.sepaq.com/en/destinations/national-parks/gaspesie/activities/backpacking-stay, read 2026-11-23)."
 attribution = "none (no line included)"
 osm_only = false
-mainline = "OpenStreetMap relation 1638854, Sentier de la Grande Traversée (route=trail, version 12, 2022-02-03), lies in the park but measures 8.0 km in 4 parts, a small fraction of the 103 km, and was not named for this circuit, so it was not used. No other route relation for the circuit was found on 2026-11-23."
+mainline = "OpenStreetMap relation 1638854, Sentier de la Grande Traversée (route=trail, version 12, 2022-02-03), lies in the park but measures 8.0 km in 4 parts, a small fraction of the 103 km, so it is not the circuit and was not used. No other route relation for the circuit was found on 2026-11-23."
 source_checked = "2026-11-23"
 redistributable = true
 line_source = "none (no line included)"
@@ -31,7 +31,7 @@ line_absent_reason = "No track is included. Sépaq describes the circuit as eigh
 
 [osm]
 relation = 0
-note = "No route relation for the 103 km circuit was found on 2026-11-23. Relation 1638854, Sentier de la Grande Traversée (route=trail, version 12, 2022-02-03), is 28 ways in 4 parts and 8.0 km inside the park; it is not the circuit and is not used."
+note = "No route relation for the 103 km circuit was found on 2026-11-23. Relation 1638854, Sentier de la Grande Traversée (route=trail, version 12, 2022-02-03), is 28 ways in 4 parts and 8.0 km inside the park. At about 8 km it is not the 103 km circuit and is not used."
 
 [shield]
 status = "no-logo-exists"

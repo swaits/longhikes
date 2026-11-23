@@ -80,7 +80,8 @@ class EveryTrailHasASeasonTest(unittest.TestCase):
             if hike.get("season_method"):
                 changed = [e for e in RECORDS[tid]["history"]
                            if "hike.season_method" in (e.get("fields") or [])]
-                self.assertEqual(len(changed), 1, tid)
+                # at least one: a later correction to the method's wording is a second entry
+                self.assertGreaterEqual(len(changed), 1, tid)
 
 
 if __name__ == "__main__":

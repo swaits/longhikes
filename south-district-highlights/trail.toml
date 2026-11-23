@@ -55,7 +55,7 @@ days = [7, 9]
 season = "April to October"
 months = [4, 5, 6, 7, 8, 9, 10]
 season_basis = "estimate"
-season_method = "Shenandoah's trails are low (under about 4,000 feet) and snow-free from spring to fall; winter ice and cold, and the heat and storms of midsummer, make April to October the usual window. Confidence: low."
+season_method = "Shenandoah's trails are low (under about 4,000 feet) and mostly snow-free from spring to fall; winter ice and cold close the window, and the Park Service's guide warns that the stream crossings can be knee to waist high in spring and after heavy rain, so the window is set at April to October. Confidence: low."
 terrain = ["forest"]
 travel = "trail"
 caution = "The Park Service says this trip is for advanced backcountry campers skilled in navigation and finding pristine campsites, and that the multiple stream crossings on Big Run Portal and North Fork Moormans River can be knee to waist high when the water is up, so hikers should beware in spring and after heavy rain. The guide's first two days use the North Fork Moormans River Road, which is gravel and leaves and re-enters the park, and the South Fork Moormans River Road, and its second camp is found by following a stream off trail."
@@ -115,4 +115,13 @@ fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method
 basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
 basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The wording of the season method was corrected. It named the heat and storms of midsummer as a limit on a window that includes midsummer. It now rests on the low elevation, the winter ice and cold, and the Park Service's warning about high water at the stream crossings in spring. The season itself, April to October, is unchanged."
+fields = ["hike.season_method"]
+basis = "The guide says: \"The multiple stream crossings on Big Run Portal and NFMR can be knee to waist high when the water is up. Beware in the spring and after heavy rains.\""
+basis_url = "https://www.nps.gov/shen/planyourvisit/upload/SHEN_BCTrip-South_District_Highlights_in_7_days_A003-508.pdf"
+asked_by = "an independent reviewer"
 outcome = "applied"

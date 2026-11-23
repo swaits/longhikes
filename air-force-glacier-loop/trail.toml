@@ -46,10 +46,10 @@ verified = false
 note = "No line to measure."
 
 [hike]
-summary = "The Air Force Glacier Loop is a 120 km hiking loop in Quttinirpaaq National Park, Nunavut, from Tanquary Fiord up the Air Force River past Air Force Glacier to Ekblaw Lake, then south and back down the Lewis, Very, Lupus and Macdonald river valleys. Parks Canada calls it the longest hike in the park and gives it 6 to 12 days. There are no established trails in the park, so hikers choose their own way and cross rivers."
+summary = "The Air Force Glacier Loop is a 120 km hiking loop in Quttinirpaaq National Park, Nunavut, that starts and ends at Tanquary Fiord Camp. It follows the guide's Air Force Glacier Return Hike up the Air Force River to Ekblaw Lake, then goes south along the Lewis River, up the Very River and down the Lupus River, and crosses the Macdonald River back to the camp. Parks Canada calls it the longest hike in the park and gives it 6 to 12 days. There are no established trails in the park, so hikers choose their own way and cross rivers."
 official_url = "https://parks.canada.ca/pn-np/nu/quttinirpaaq/activ/randonnees-hiking"
-start = "Tanquary Fiord, Quttinirpaaq National Park, Nunavut"
-start_lonlat = [-79.75, 81.083]
+start = "Tanquary Fiord Camp, Quttinirpaaq National Park, Nunavut"
+start_lonlat = [-76.9, 81.4]
 shape = "loop"
 days = [6, 12]
 season = "June to August"
@@ -59,7 +59,7 @@ season_method = "At 81 degrees north the ground is snow-free only for a short su
 terrain = ["tundra", "alpine"]
 travel = "mostly-cross-country"
 permit = "Parks Canada says it is mandatory for all visitors to register and take part in an orientation session on arrival in the national park, and to de-register before leaving."
-caution = "Parks Canada says there are no established trails in the park, that hikers must be experienced in wilderness travel and map reading and capable of self-rescue, as rescue could take a week or more, and that the Macdonald River can be impossible to cross for extended periods. Its guide describes the loop along moraine and the Lupus River and does not ask hikers to cross a glacier: it says \"Do not cross the glaciers without glacier training and self rescue equipment\" and has hikers climb about 50 metres to bypass the Lupus Glacier. Its general glacier warning says to travel on glaciers only with avalanche and crevasse self-rescue training and gear."
+caution = "Parks Canada says there are no established trails in the park, that hikers should be experienced in wilderness travel and proficient with topographical maps, and must also be self-sufficient and capable of self-rescue, as rescue capabilities are limited and could take a week or more, and that the Macdonald River can be impossible to cross for extended periods. Its guide describes the loop along moraine and the Lupus River and does not ask hikers to cross a glacier: it says \"Do not cross the glaciers without glacier training and self rescue equipment\" and has hikers climb about 50 metres to bypass the Lupus Glacier. Its general glacier warning says to travel on glaciers only with avalanche and crevasse self-rescue training and gear."
 checked = "2026-11-23"
 
 [[hike.source]]
@@ -73,8 +73,8 @@ publisher = "Parks Canada, Quttinirpaaq National Park"
 facts = ["official_url", "summary", "travel", "caution"]
 
 [[hike.source]]
-url = "https://geogratis.gc.ca/services/geoname/en/geonames/OAQDL"
-publisher = "Natural Resources Canada (Canadian Geographical Names): Tanquary Fiord"
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/OAQDK"
+publisher = "Natural Resources Canada (Canadian Geographical Names): Tanquary Camp, key OAQDK, the camp the guide starts and ends the loop at"
 facts = ["start_lonlat"]
 
 [[hike.source]]
@@ -116,4 +116,13 @@ fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method
 basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
 basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The start was moved from Tanquary Fiord, the bay, to Tanquary Fiord Camp, about 60 km away, where the guide starts and ends the loop. The summary now follows the guide's route, and the caution gives the guide's wording: hikers should be experienced and proficient with maps, and must be self-sufficient and capable of self-rescue."
+fields = ["hike.start", "hike.start_lonlat", "hike.caution"]
+basis = "The guide has the loop follow the Air Force Glacier Return Hike to Ekblaw Lake, then \"Follow the Very River upstream to the west\", and ends: \"Once across the Macdonald River head back to Tanquary Fiord Camp.\" Parks Canada's hiking page says: \"Hikers should be experienced in wilderness travel and proficient in using topographical maps to select and follow routes. Hikers must also be self-sufficient and capable of self-rescue\". Natural Resources Canada's place names give Tanquary Camp (OAQDK) at 81.4 N, 76.9 W."
+basis_url = "https://pcweb2.azureedge.net/-/media/pn-np/nu/quttinirpaaq/WET4/pdf/tanquary-randonnee-hiking-2025-en.pdf"
+asked_by = "an independent reviewer"
 outcome = "applied"

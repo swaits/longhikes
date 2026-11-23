@@ -142,7 +142,7 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | chinese-wall-circuit | Wilderness Mindset (publishes the route) | [source page](https://wildernessmindset.com/bob-marshall-wilderness-chinese-wall-circuit/) | none-stated | record only |
 | circle-of-solitude | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/wilderness-press/) | none-stated | record only |
 | cohos | Cohos Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/14765821) | ODbL-1.0 | track |
-| collegiate-loop | Colorado Trail Foundation (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/19469029) | ODbL-1.0 | track |
+| collegiate-loop | Colorado Trail Foundation (publishes the trail); OpenStreetMap contributors (the track) | [source page](https://www.openstreetmap.org/relation/19469029) | ODbL-1.0 | track |
 | colorado-trail | USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | ODbL-1.0 | track |
 | combined-northern-and-long-range-traverse | Parks Canada, Gros Morne National Park (publishes the trail) | [source page](https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry) | none-stated | record only |
 | condor-trail | Condor Trail Association (publishes the route) | [source page](http://www.condortrail.com/maps-trail-descriptions/) | none-stated | record only |

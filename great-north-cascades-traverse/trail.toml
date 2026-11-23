@@ -49,9 +49,9 @@ note = "No line to measure."
 summary = "The Great North Cascades Traverse is a 105 mile backcountry route across North Cascades National Park in Washington, from the Hannegan trailhead near Mount Baker to the Stehekin Shuttle stop at High Bridge, with a shuttle ride on to Stehekin at the head of Lake Chelan. The Park Service says it crosses five mountain passes (Hannegan, Whatcom, Beaver, Fourth of July and Park Creek) and links the temperate rainforests of western Washington with the dry interior of the east. It is one of the long-distance trips the park suggests for people who plan three or more nights in the backcountry."
 official_url = "https://www.nps.gov/noca/planyourvisit/long-distance-backcountry-trip-sampler.htm"
 start = "Hannegan trailhead, near Hannegan Pass, Washington"
-start_lonlat = [-121.533, 48.884]
-end = "Stehekin Shuttle stop at High Bridge, near Stehekin, Washington"
-end_lonlat = [-120.657, 48.309]
+start_lonlat = [-121.592, 48.910]
+end = "Stehekin Shuttle stop at High Bridge, in the Stehekin Valley, Washington"
+end_lonlat = [-120.838, 48.380]
 shape = "point-to-point"
 season = "July to September"
 months = [7, 8, 9]
@@ -67,13 +67,13 @@ publisher = "National Park Service, North Cascades National Park"
 facts = ["official_url", "summary", "start", "end", "shape", "terrain", "travel"]
 
 [[hike.source]]
-url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1520512"
-publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Hannegan Pass, feature 1520512, the named place nearest the Hannegan trailhead"
+url = "https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_RecreationOpportunities_01/MapServer/0"
+publisher = "USDA Forest Service, Mt. Baker-Snoqualmie National Forest, Recreation Opportunities layer (public domain): Hannegan Trailhead"
 facts = ["start_lonlat"]
 
 [[hike.source]]
-url = "https://edits.nationalmap.gov/apps/gaz-domestic/public/summary/1526531"
-publisher = "U.S. Geological Survey, Geographic Names Information System (public domain): Stehekin, feature 1526531, the named place nearest the High Bridge shuttle stop"
+url = "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0"
+publisher = "National Park Service, Points of Interest layer (public domain): High Bridge Ranger Station, the Park Service's point for High Bridge"
 facts = ["end_lonlat"]
 
 [[hike.source]]
@@ -115,4 +115,13 @@ fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method
 basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
 basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The start and end points were moved to the places the record names. The start was the pass above the Hannegan trailhead, about 5 km away; it is now the Forest Service's point for the Hannegan Trailhead. The end was the village of Stehekin, about 11 road miles from the High Bridge shuttle stop; it is now the Park Service's point for High Bridge, and the end text says the stop is in the Stehekin Valley rather than near the village."
+fields = ["hike.start_lonlat", "hike.end", "hike.end_lonlat"]
+basis = "The Park Service page ends the walk at the \"Stehekin Shuttle stop at High Bridge\". The Forest Service's recreation layer has a Hannegan Trailhead point, and the Park Service's points layer has a High Bridge Ranger Station point; both are federal data in the public domain."
+basis_url = "https://www.nps.gov/noca/planyourvisit/long-distance-backcountry-trip-sampler.htm"
+asked_by = "an independent reviewer"
 outcome = "applied"

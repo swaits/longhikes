@@ -796,6 +796,19 @@ decided = "2026-11-23"
 was_listed = false
 
 [[trail]]
+id = "sangre-de-cristo-traverse"
+name = "Sangre de Cristo Traverse"
+country = "US"
+regions = ["CO"]
+length_mi = 120
+length_km = 193
+reason = "not-published-as-route"
+note = "Cam Honan's page is his account of an eight day traverse of Colorado's Sangre de Cristo Range in September 2016, from the town of Salida to the informal trailhead for Blanca Peak. He gives it as about 120 miles, largely cross country, with lots of exposed scrambling on a knife-edged crest, and states no climbing class. It is a trip report, not a route published for others to follow with a stated line, and it does not say whether the scrambling stays within the rule's limit of Class 3. Re-read 2026-11-23."
+source_url = "https://thehikinglife.com/2016/09/sangre-de-cristo-traverse/"
+decided = "2026-11-23"
+was_listed = false
+
+[[trail]]
 id = "santa-ynez-traverse"
 name = "Santa Ynez Traverse"
 country = "US"

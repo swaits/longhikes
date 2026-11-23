@@ -121,6 +121,19 @@ decided = "2026-11-16"
 was_listed = true
 
 [[trail]]
+id = "chilkoot-trail"
+name = "Chilkoot Trail"
+country = "CA"
+regions = ["AK", "BC"]
+length_mi = 33
+length_km = 53
+reason = "below-floor"
+note = "Parks Canada call it a 53 km / 33 mile hike. That is below the 50 mile floor."
+source_url = "https://parks.canada.ca/lhn-nhs/yt/chilkoot/culture"
+decided = "2026-11-23"
+was_listed = false
+
+[[trail]]
 id = "chuck-keiper"
 name = "Chuck Keiper Trail"
 country = "US"
@@ -170,6 +183,32 @@ note = "The Friends of the Cumberland Trail say that once completed the trail wi
 source_url = "https://friendsofthecumberlandtrail.org/land-culture-and-history-of-the-cumberland-trail/"
 decided = "2026-11-16"
 was_listed = true
+
+[[trail]]
+id = "dark-canyon-wilderness-loop"
+name = "Dark Canyon Wilderness Loop"
+country = "US"
+regions = ["UT"]
+length_mi = 40
+length_km = 64
+reason = "below-floor"
+note = "The Forest Service say a full loop of Woodenshoe and Dark Canyons is about 40 map miles, for trips of five to seven days, and that the loop includes hiking along several Forest Service roads. That is below the 50 mile floor, and the days printed are for a loop that partly follows roads, so they do not qualify it."
+source_url = "https://www.fs.usda.gov/r04/manti-lasal/recreation/dark-canyon-wilderness-loop"
+decided = "2026-11-23"
+was_listed = false
+
+[[trail]]
+id = "earl-grey-pass-trail"
+name = "Earl Grey Pass Trail"
+country = "CA"
+regions = ["BC"]
+length_mi = 39.1
+length_km = 63
+reason = "below-floor"
+note = "BC Parks say the trail extends approximately 63 kilometres from Argenta to Toby Creek, in Purcell Wilderness Conservancy Park. That is below the 80 km floor. The five days the page gives as an average are a general pace, not the time a fit, experienced party needs, which walkers' accounts put at about four to five days."
+source_url = "https://bcparks.ca/purcell-wilderness-conservancy-park/trails/"
+decided = "2026-11-23"
+was_listed = false
 
 [[trail]]
 id = "escalante-overland-route"
@@ -300,6 +339,19 @@ decided = "2026-11-14"
 was_listed = false
 
 [[trail]]
+id = "hbc-1849-heritage-trail"
+name = "HBC (1849) Heritage Trail"
+country = "CA"
+regions = ["BC"]
+length_mi = 46.6
+length_km = 75
+reason = "below-floor"
+note = "Hope Mountain Centre call it a 75 km trail between Hope and Tulameen, taken by some as a 5 to 8 day backpacking trip. That is below the 80 km floor, and the days printed are for a walk on a trail that is maintained each year, so they do not qualify it."
+source_url = "https://www.hopemountain.org/hbc-1849-heritage-trail"
+decided = "2026-11-23"
+was_listed = false
+
+[[trail]]
 id = "high-rockies-trail"
 name = "High Rockies Trail"
 country = "CA"
@@ -367,6 +419,31 @@ decided = "2026-11-16"
 was_listed = true
 
 [[trail]]
+id = "iron-mountain-and-appalachian-trail-loop"
+name = "Iron Mountain and Appalachian Trail Loop (Cherokee National Forest)"
+country = "US"
+regions = ["TN", "VA"]
+length_note = "50+ miles, as the Forest Service suggest"
+reason = "not-published-as-route"
+note = "The Forest Service suggest a multi-day, 50+ mile backpacking journey as a loop of the Iron Mountain Trail and the Cross Mountain to Damascus section of the Appalachian Trail. It gives the loop no name and no length of its own."
+source_url = "https://www.fs.usda.gov/r08/cherokee/recreation/iron-mountain"
+decided = "2026-11-23"
+was_listed = false
+
+[[trail]]
+id = "john-muir-trail-rock-creek-west-entrance"
+name = "John Muir Trail-Rock Creek-West Entrance"
+country = "US"
+regions = ["TN", "KY"]
+length_mi = 54.7
+length_km = 88
+reason = "not-published-as-route"
+note = "The Big South Fork National River and Recreation Area lists this only by name and as 54.7 miles, under maps of its popular overnight trails, with no start, end or description of it as one walk. Its name strings together trail and place names, and the park's own trail list shows most of its John Muir Trail shared with the Sheltowee Trace, which is already listed."
+source_url = "https://www.nps.gov/biso/planyourvisit/popular-overnight-hiking-trails.htm"
+decided = "2026-11-23"
+was_listed = false
+
+[[trail]]
 id = "katy-trail"
 name = "Katy Trail"
 country = "US"
@@ -387,7 +464,7 @@ regions = ["MN"]
 length_mi = 46
 length_km = 74
 reason = "below-floor"
-note = "The Forest Service's pages for the Kekekabic Trail in the Superior National Forest give it as a 46 mile trail. That is under 50 miles, and it meets none of the conditions for a shorter trail: it has no cross-country travel, it is not five or more days as its managing body gives it, and it is not among the very widely known."
+note = "The Forest Service's pages for the Kekekabic Trail in the Superior National Forest give it as a 46 mile trail. That is under 50 miles, and it meets none of the conditions for a shorter trail: it has no cross-country travel, it does not take five or more days because the ground is hard, and it is not among the very widely known."
 source_url = "https://www.fs.usda.gov/r09/superior/recreation/trails/kekekabic-trail-west"
 decided = "2026-11-19"
 was_listed = true
@@ -403,6 +480,19 @@ reason = "rail-trail-or-towpath"
 note = "The City of Penticton visitor page describes 660 km from Hope to Castlegar as a decommissioned railway converted into a recreational rail trail. Rail trails are left out by the rule."
 source_url = "https://visitpenticton.com/experience/kettle-valley-rail-trail/"
 decided = "2026-11-14"
+was_listed = false
+
+[[trail]]
+id = "la-traversee-des-chic-chocs"
+name = "La Traversée des Chic-Chocs"
+country = "CA"
+regions = ["QC"]
+length_mi = 49.1
+length_km = 79
+reason = "below-floor"
+note = "Sépaq gives the western sector of the long-distance hiking circuits in Parc national de la Gaspésie as 79 km, in six days and five nights, walked in daily stages of 9 to 20 km between huts or camping platforms. That is below the 80 km floor, and the six days are those stages on a circuit with huts, not hard ground, so they do not qualify it."
+source_url = "https://www.sepaq.com/en/destinations/national-parks/gaspesie/activities/backpacking-stay"
+decided = "2026-11-23"
 was_listed = false
 
 [[trail]]
@@ -468,6 +558,19 @@ reason = "not-mainly-walking"
 note = "This 120 mile Deschutes National Forest trail was built mainly as a long distance horse trail, served by horse camps along the way. Hikers and mountain bikers may use it, but it was not built mainly as a walking trail."
 source_url = "https://www.nrtapplication.org/trails/metolius-windigo-trail"
 decided = "2026-11-16"
+was_listed = false
+
+[[trail]]
+id = "moose-river-route"
+name = "Moose River Route"
+country = "CA"
+regions = ["BC", "AB"]
+length_mi = 41
+length_km = 66
+reason = "below-floor"
+note = "BC Parks give the route in Mount Robson Provincial Park as a 66 km hike from the trailhead to Berg Lake Campground, through a section of Jasper National Park, as a multi-day hike of five to seven days. That is below the 80 km floor. The page says there is a visible trail for much of the way, and the days printed are a general pace, not the time a fit, experienced party needs, which is about four to five days."
+source_url = "https://bcparks.ca/mount-robson-park/east-end-wilderness-trails/"
+decided = "2026-11-23"
 was_listed = false
 
 [[trail]]
@@ -608,7 +711,7 @@ regions = ["ON"]
 length_mi = 37.3
 length_km = 60
 reason = "below-floor"
-note = "Parks Canada gives the Coastal Hiking Trail in Pukaskwa National Park as 60 kilometres (about 37 miles). That is under 50 miles, and it meets none of the conditions for a shorter trail: it has no cross-country travel, it is not five or more days as its managing body gives it, and it is not among the very widely known."
+note = "Parks Canada gives the Coastal Hiking Trail in Pukaskwa National Park as 60 kilometres (about 37 miles). That is under 50 miles, and it meets none of the conditions for a shorter trail: it has no cross-country travel, it does not take five or more days because the ground is hard, and it is not among the very widely known."
 source_url = "https://parks.canada.ca/pn-np/on/pukaskwa/activ/experience/arriere-back"
 decided = "2026-11-19"
 was_listed = true
@@ -680,6 +783,44 @@ decided = "2026-11-18"
 was_listed = false
 
 [[trail]]
+id = "sanford-uplands"
+name = "Sanford Uplands"
+country = "US"
+regions = ["AK"]
+length_mi = 42
+length_km = 68
+reason = "below-floor"
+note = "The National Park Service gives this route in Wrangell-St. Elias National Park and Preserve as approximately 42 miles, from the Copper Glacier to the Sanford Glacier airstrip, with an air taxi at both ends. That is below the 50 mile floor. The page says most route variations entail glacier and glacial moraine crossings."
+source_url = "https://www.nps.gov/wrst/planyourvisit/backpacking.htm"
+decided = "2026-11-23"
+was_listed = false
+
+[[trail]]
+id = "santa-ynez-traverse"
+name = "Santa Ynez Traverse"
+country = "US"
+regions = ["CA"]
+length_note = "almost 80 miles, as the hiker gives it"
+reason = "not-published-as-route"
+note = "The page is one hiker's account of a trip along the Santa Ynez Mountains from Gaviota to Ojai, almost 80 miles in 3.5 days, and says most of the hike was on dirt and paved roads. It is not a route published for others to follow with a stated line and length."
+source_url = "https://santabarbarahikes.com/blog/santa-ynez-traverse"
+decided = "2026-11-23"
+was_listed = false
+
+[[trail]]
+id = "sawback-trail"
+name = "Sawback Trail"
+country = "CA"
+regions = ["AB"]
+length_mi = 46
+length_km = 74
+reason = "below-floor"
+note = "Parks Canada gives the Sawback Trail in Banff National Park as 74 km, with a suggested seven-day itinerary. That is below the 80 km floor. It is a built trail, and the seven days are an itinerary that spreads it over campgrounds at an easy pace, so they do not qualify it. It was listed on 2026-11-23 and removed the same day, when the five day rule was made clear."
+source_url = "https://parks.canada.ca/pn-np/ab/banff/activ/arrierepays-backcountry"
+decided = "2026-11-23"
+was_listed = true
+
+[[trail]]
 id = "sea-to-sky-trail"
 name = "Sea to Sky Trail"
 country = "CA"
@@ -718,6 +859,31 @@ decided = "2026-11-14"
 was_listed = false
 
 [[trail]]
+id = "shawnee-backpack-trail"
+name = "Shawnee Backpack Trail"
+country = "US"
+regions = ["OH"]
+length_note = "40+ miles on the park map; 50 miles in the State Forest Guide"
+reason = "network"
+note = "Ohio DNR's figures differ. Its State Forest Guide says 50 miles with seven walk-in camp areas, and its Shawnee State Park map says 40+ miles, with a 40 mile main loop and shorter 23 mile North Loop and 17 mile South Loop. It is a set of linked loops, not one trail walked end to end."
+source_url = "https://dam.assets.ohio.gov/image/upload/ohiodnr.gov/documents/parks/parkmaps/shawneeparkmap.pdf"
+decided = "2026-11-23"
+was_listed = false
+
+[[trail]]
+id = "skyline-trail-jasper-national-park"
+name = "Skyline Trail (Jasper National Park)"
+country = "CA"
+regions = ["AB"]
+length_mi = 27.4
+length_km = 44.1
+reason = "below-floor"
+note = "Parks Canada give it as 44.1 km one way, for 2 to 3 days. That is below the 80 km floor."
+source_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/skyline"
+decided = "2026-11-23"
+was_listed = false
+
+[[trail]]
 id = "skyline-trail-pecos-wilderness"
 name = "Skyline Trail (Pecos Wilderness)"
 country = "US"
@@ -731,6 +897,45 @@ source_url = "https://www.fs.usda.gov/r03/santafe/recreation/trails/sky-line-tra
 decided = "2026-11-18"
 was_listed = false
 waiting_for = "The closed stretch south of the Lost Lake Trail junction reopens."
+
+[[trail]]
+id = "steens-range-traverse"
+name = "Steens Range Traverse"
+country = "US"
+regions = ["OR"]
+length_mi = 75
+length_km = 121
+reason = "waiting"
+note = "Christof Teuscher gives this route along the rim of the Steens Range fault block as approximately 75 miles, 100% off trail, with no track published and each hiker picking a line. The page says there are several tricky technical sections and states no climbing class."
+source_url = "https://christofteuscher.com/steens-traverse/"
+decided = "2026-11-23"
+was_listed = false
+waiting_for = "Its author states what climbing the route requires, so that it can be shown to need nothing harder than Class 3."
+
+[[trail]]
+id = "telaquana-route"
+name = "Telaquana Route"
+country = "US"
+regions = ["AK"]
+length_note = "roughly 50 miles, on a Park Service page about the corridor; the route page prints no length"
+reason = "not-published-as-route"
+note = "The National Park Service page for this route in Lake Clark National Park and Preserve gives 5 to 7 days of trail-less hiking and prints no length. Another Park Service page says the corridor from Lake Clark to Telaquana Lake is roughly 50 miles and is not a defined trail."
+source_url = "https://www.nps.gov/articles/wayfinding-telaquana-corridor.htm"
+decided = "2026-11-23"
+was_listed = false
+
+[[trail]]
+id = "the-rockwall"
+name = "The Rockwall"
+country = "CA"
+regions = ["BC"]
+length_mi = 33.6
+length_km = 54.1
+reason = "below-floor"
+note = "Parks Canada give it as 54.1 km for 3 to 5 days in Kootenay National Park. That is below the 80 km floor."
+source_url = "https://parks.canada.ca/pn-np/bc/kootenay/activ/arrierepays-backcountry"
+decided = "2026-11-23"
+was_listed = false
 
 [[trail]]
 id = "theodore-solomons-trail"
@@ -798,6 +1003,18 @@ decided = "2026-11-14"
 was_listed = false
 
 [[trail]]
+id = "vallecito-reservoir-loop"
+name = "Vallecito Reservoir Loop"
+country = "US"
+regions = ["CO"]
+length_note = "55 to 65 miles, as its author gives it"
+reason = "not-published-as-route"
+note = "CleverHiker's guide gives this loop in the Weminuche Wilderness only as a range of 55 to 65 miles, depending on which alternates are taken, and names it the Vallecito Reservoir Loop \"for lack of a better name\". It has no single stated length, and its trailheads are apart and need a shuttle."
+source_url = "https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/"
+decided = "2026-11-23"
+was_listed = false
+
+[[trail]]
 id = "voyageur"
 name = "Voyageur Trail"
 country = "CA"
@@ -821,6 +1038,19 @@ reason = "outside-us-canada"
 note = "Left out because it is in Dominica, and this list covers only the United States and Canada for now; the entry keeps what is known in case that widens. Dominica's Forestry, Wildlife and Parks Division manages it (its Trail Management Unit runs the trail's own site, waitukubulitrail.dm). That site's FAQ gives 184 km (115 miles) in fourteen segments from Scott's Head in the south to the Cabrits National Park in the north: 1 Scott's Head to Soufriere Estate, 2 Soufriere Estate to Bellevue Chopin, 3 Bellevue Chopin to Wotten Waven, 4 Wotten Waven to Pont Casse, 5 Pont Casse to Castle Bruce, 6 Castle Bruce to Hatten Garden (Pagua Bay), 7 Hatten Garden to First Camp Heights, 8 First Camp to Petite Macoucherie Heights, 9 Petite Macoucherie to Colihaut Heights, 10 Colihaut Heights to Syndicate, 11 Syndicate to Borne, 12 Borne to Penville, 13 Penville to Capuchin, 14 Capuchin to Cabrits. Kate Siber's 100 Hikes of a Lifetime (National Geographic, 2020, ISBN 978-1-4262-2095-1, page 70, read from a printed copy) gives 115 miles (185 km) point to point, 10 to 14 days, best in spring, summer and winter, expert-only, well signed, opened in 2013 and built partly to bring visitors to small interior communities, running from the Scotts Head peninsula north along the east side of the island, then northwest to Cabrits National Park; the two sources differ by 1 km in length and agree on the 2013 opening, which the FAQ gives as the trail's declaration as an eco-tourism site on May 10, 2013. Visitors and non-residents need a Waitukubuli National Trail Pass from July 1, 2013: a day pass for one or more segments (US$12.00), a special pass for organised tours (US$10.00) and a fifteen day pass for all fourteen segments (US$40.00), as the FAQ states; hikers are also asked to register beforehand. The trail's site lists a document of locations and GPS coordinates; no page read states terms for a track file, and no track is included here. No OpenStreetMap route relation was found for it, only separate ways named for its segments."
 source_url = "https://waitukubulitrail.dm/resources/faq/"
 decided = "2026-11-22"
+was_listed = false
+
+[[trail]]
+id = "wokkpash-valley-macdonald-creek-loop-trail"
+name = "Wokkpash Valley–MacDonald Creek Loop Trail"
+country = "CA"
+regions = ["BC"]
+length_mi = 43.5
+length_km = 70
+reason = "below-floor"
+note = "BC Parks give this loop in Stone Mountain Provincial Park as 70 km in total, for five to seven days. That is below the 80 km floor. The days printed are a general pace, not the time a fit, experienced party needs, which walkers' accounts put at about four to five days."
+source_url = "https://bcparks.ca/stone-mountain-park/"
+decided = "2026-11-23"
 was_listed = false
 
 [[trail]]

@@ -20,7 +20,8 @@ REAL_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fi
 REASONS = {
     "below-floor": ("Below the 50 mile floor",
                     "The floor for this list is 50 miles (80 km). A trail or route under 50 miles is listed only when it is still reasonably long and at least one of these is true: it has real cross-country travel; "
-                    "it genuinely takes five or more days to walk, as its author or managing body gives the trip (a guidebook spreading an ordinary trail trip over five days does not count); "
+                    "it genuinely takes a fit, experienced party five or more days because the ground is hard: there is no trail, or the going is rough, unmaintained or needs route finding, with fords or thick brush "
+                    "(the number of days a managing body, an author or a guidebook prints does not decide this, and an itinerary that spreads a walk on ordinary built trail over five or more days at an easy pace does not count); "
                     "or it is very well known and popular, as the Rae Lakes Loop is. Being close to 50 miles is never a reason. "
                     "The floor is tested on the length with nothing counted twice, so an out-and-back is judged one way. "
                     "A trail with its own name and its own published length is listed even where it lies on a longer listed trail; a guidebook's cut of a longer trail is not. "

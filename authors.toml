@@ -354,6 +354,22 @@ url = "https://sierramountaincenter.com/meet-the-smc-staff/"
 publisher = "Sierra Mountain Center"
 
 [[author]]
+name = "Dave Collins"
+credits = ["Dave Collins"]
+url = "https://www.cleverhiker.com/"
+summary = "Dave Collins is a backpacker who founded CleverHiker in 2012 after a thru-hike of the Pacific Crest Trail, and who published the Vallecito Reservoir Loop."
+bio = "Collins is a lifelong backpacker who founded CleverHiker in 2012, soon after he completed a thru-hike of the Pacific Crest Trail, to share what he had learned with other hikers. The site began with two series of tutorial videos and grew to include in-depth gear reviews and trip guides. Collins is its founder, chief executive and editor in chief, and he oversees its content, gear testing, photography and web design. In 2025 he published a trip guide to the Vallecito Reservoir Loop in Colorado."
+checked = "2026-11-23"
+
+[[author.source]]
+url = "https://www.cleverhiker.com/about/"
+publisher = "CleverHiker"
+
+[[author.source]]
+url = "https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/"
+publisher = "CleverHiker"
+
+[[author]]
 name = "Eric Poulin"
 credits = ["Eric Poulin"]
 url = "https://seekinglost.com/"

@@ -5,9 +5,9 @@ name = "Little Heaven – Upper Blue Creek"
 country = "CA"
 regions = ["AB"]
 length_km = 64
-length_note = "64 km, as Parks Canada prints it on its page for the route: \"64 km one way\", for trails 153, 150, 154 and 155, 7 to 10 days. The page says the trip begins and ends at Rock Lake, in Alberta outside the park, and does not say which stretch the 64 km covers. Its description has the first 23 km run from Rock Lake along the North Boundary trail to the Glacier Pass / Little Heaven junction, the 14 km McLaren Pass route beyond Little Heaven, and \"the 39 km back to the Rock Lake trailhead\" from Blue Creek Campground. The stretches are the page's own figures and are not added together here."
+length_note = "64 km, as Parks Canada prints it on its page for the route: \"64 km one way\", for trails 153, 150, 154 and 155, 7 to 10 days. The page says the trip begins and ends at Rock Lake, in Alberta outside the park, and does not say what the 64 km covers. Its own distances for the way out are 23 km from Rock Lake to the Glacier Pass / Little Heaven junction, the 14 km McLaren Pass route, and 15.5 km from the McLaren Pass junction up the Upper Blue Creek valley to the Natural Arch campground, with the viewpoint 1.5 km beyond. With the stretch from the km 23 junction to Little Heaven, which the route's backcountry guide map labels as 8.2 km and 0.7 km, they add to about 63 km, close to the 64 km: the figure reads as Rock Lake to the Natural Arch viewpoint one way, not the whole trip back to Rock Lake. The page gives \"the 39 km back to the Rock Lake trailhead\" from Blue Creek Campground, which the guide's map labels 3.5 km from the end of the McLaren Pass route. The stretch from Rock Lake to the km 23 junction is walked out and back, and the Upper Blue Creek valley is a side trip walked out and back from the McLaren Pass route. Added from those distances, the trip from Rock Lake and back to Rock Lake is about 88 km without the Upper Blue Creek side trip and about 122 km with it as far as the viewpoint. The 8.2, 0.7 and 3.5 km figures are map labels read from the guide PDF's text and are not in the page's words, and none of the sums is measured from a track."
 tier = "short"
-short_reason = "Parks Canada says there is little or no maintenance, that creeks and rivers are not bridged and fords can be dangerous or impassable, that route finding is necessary, and gives it seven to ten days."
+short_reason = "Parks Canada says there is little or no maintenance on the route, that many creeks and rivers are not bridged and fords can be dangerous or impassable, that some sections are overgrown and make route finding necessary, and that the McLaren Pass route is unmaintained."
 designation = "Parks Canada, Jasper National Park: a backcountry route it publishes by name"
 wave = 1
 places_checked = "2026-11-23"
@@ -47,7 +47,7 @@ verified = false
 note = "No line to measure."
 
 [hike]
-summary = "Little Heaven – Upper Blue Creek is a remote wilderness route in the northern backcountry of Jasper National Park, Alberta, that begins and ends at the Rock Lake trailhead in the Willmore Wilderness outside the park. It follows the North Boundary trail to Little Heaven, crosses McLaren Pass on an unmaintained route to Blue Creek and goes up the Upper Blue Creek valley toward the Ancient Wall. Parks Canada gives it 64 km and 7 to 10 days, and recommends it only for users with solid backcountry skills and experience."
+summary = "Little Heaven – Upper Blue Creek is a remote wilderness route in the northern backcountry of Jasper National Park, Alberta, that begins and ends at the Rock Lake trailhead in the Willmore Wilderness outside the park. It follows the North Boundary trail to a junction at km 23, climbs by the Glacier Pass trail to Little Heaven, crosses McLaren Pass on an unmaintained route to Blue Creek and returns by the North Boundary trail, with a side trip up the Upper Blue Creek valley toward the Ancient Wall. Parks Canada gives it as 64 km one way and 7 to 10 days, and recommends it for users with solid backcountry skills and experience."
 official_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/littleheaven"
 start = "Rock Lake trailhead, Willmore Wilderness, Alberta"
 start_lonlat = [-118.263, 53.46]
@@ -60,13 +60,18 @@ season_method = "No page states a season. Rivers can be impassable in high water
 terrain = ["alpine", "forest"]
 travel = "trail"
 permit = "Parks Canada says a backcountry camping permit is mandatory for all overnight trips, and that it can be had online or by phone."
-caution = "Parks Canada says there is little or no maintenance on the route, that some sections are overgrown and make route finding necessary, that many creeks and rivers are not bridged, and that fords can be dangerous or impassable and travel is not recommended in high water. The McLaren Pass route is unmaintained, and the page says route finding skills are essential in the Upper Blue Creek valley."
+caution = "Parks Canada says there is little or no maintenance on the route, that some sections are overgrown and make route finding necessary, that many creeks and rivers are not bridged, and that fords can be dangerous or impassable and travel is not recommended in high water. The McLaren Pass route is unmaintained, and the page says route finding skills are essential for the several old routes in the Upper Blue Creek valley."
 checked = "2026-11-23"
 
 [[hike.source]]
 url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/littleheaven"
 publisher = "Parks Canada, Jasper National Park"
 facts = ["official_url", "summary", "start", "shape", "days", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://pcweb2.azureedge.net/-/media/pn-np/ab/jasper/WET4/pdf/activ/guides-maps/backcountry-guide/little-heaven/Little-Heaven-backcountry-guide_EN.pdf"
+publisher = "Parks Canada, Jasper National Park (Little Heaven backcountry guide: its map labels the stretch distances)"
+facts = ["shape"]
 
 [[hike.source]]
 url = "https://geogratis.gc.ca/services/geoname/en/geonames/IAFNS"
@@ -112,4 +117,13 @@ fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method
 basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
 basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The length note now says what the page's 64 km is: its own distances add to about 63 km from Rock Lake to the Natural Arch viewpoint one way, and the trip from Rock Lake and back is longer. The short reason now rests on the ground alone and restores \"many creeks and rivers\", and the caution says the route finding skills the page calls essential are for the old routes in the Upper Blue Creek valley. The length stays 64 km, as Parks Canada prints it."
+fields = ["length_note", "short_reason", "hike.caution"]
+basis = "The page says: \"64 km one way\", \"Many creeks and rivers are not bridged.\", \"There are several old routes in the Upper Blue Creek valley that make for fascinating exploration. Route finding skills are essential.\" and \"Along the 39 km back to the Rock Lake trailhead\". The guide's map labels the stretches."
+basis_url = "https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/littleheaven"
+asked_by = "an independent reviewer"
 outcome = "applied"

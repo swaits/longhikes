@@ -7,7 +7,7 @@ regions = ["BC"]
 length_km = 70
 length_note = "Approximately 70 km, as BC Parks gives it on its hiking page for Mount Edziza Park: \"The route will vary in length as you choose your route across the plateaus, but is approximately 70 km long from Buckley Lake to Mowdade Lake.\" BC Parks recommends a minimum of 7 days."
 tier = "short"
-short_reason = "BC Parks marks most of the route only with cairns, has hikers find the way from cairn to cairn across the plateaus, and recommends a minimum of seven days."
+short_reason = "BC Parks says most of the route is marked by cairns, that hikers find the way from cairn to cairn across the plateaus with binoculars recommended, that there are no cairns after Chakima Pass, and that creek crossings may need scouting and can be difficult in high water."
 designation = "BC Parks, Mount Edziza Park: a hiking route it publishes by name"
 wave = 1
 places_checked = "2026-11-23"
@@ -118,4 +118,13 @@ fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method
 basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
 basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The short reason now follows the page: most of the route is marked by cairns, not marked only by cairns, and it rests on the ground rather than on the days BC Parks recommends."
+fields = ["short_reason"]
+basis = "BC Parks says: \"Most of the route is marked by cairns — respect these trail markings and do not build unnecessary cairns. Binoculars are recommended for route-finding cairn to cairn.\" and \"There are no cairns after Chakima Pass, but the route is clearly visible.\""
+basis_url = "https://bcparks.ca/mount-edziza-park/hiking/"
+asked_by = "an independent reviewer"
 outcome = "applied"

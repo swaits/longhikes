@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-234 trails, 125 with a track and 109 with no track included. Of these, 78 are routes: 2 with a track and 76 without.
+235 trails, 125 with a track and 110 with no track included. Of these, 79 are routes: 2 with a track and 77 without.
 
 <!-- END COUNTS -->
 
@@ -281,6 +281,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | three-sisters-loop | Three Sisters Loop | US | OR | 74 | Eli Boschetto | sold | no | [Backpacking Oregon: Overnight and Multiday Routes](https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes) (purchase) |
 | trans-adirondack-route | Trans Adirondack Route | US | NY | 391 | Erik Schlimmer | sold | no | [Blue Line to Blue Line, with a map set](https://erikschlimmer.com/books-sale-/) (purchase) |
 | vagabond-loop | Vagabond Loop | US | AZ, UT, CO, NM | 5632 | Ryan "Dirtmonger" Sylva | unclear | no | [Vagabond Loop route description](https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html) (free) |
+| vallecito-reservoir-loop | Vallecito Reservoir Loop | US | CO | 105 | Dave Collins | open | no | [San Juan Mountains-Vallecito Reservoir Loop](https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/) (free) |
 | vancouver-island-backbone | Vancouver Island Backbone | CA | BC | 300 | Philip Stone | unclear | no | [Hiking Guide to the Vancouver Island Backbone](https://www.wildisle.ca/backbone/index.html) (free) |
 | wasatch-traverse | Wasatch Traverse | US | UT | 455 | Liz Thomas | unclear | no | [Wasatch Traverse overview](https://www.eathomas.com/other-long-trails/wasatchoverview) (free) |
 | washington-coast-trail | Washington Coast Trail | US | WA | 290 | Lauren Lake (PacificCoastalTrail blog) | open | yes | [Itinerary: Washington Coast](https://pacificcoastaltrail.wordpress.com/2022/03/23/itinerary-washington-coast/) (free) |

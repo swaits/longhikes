@@ -1,0 +1,128 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "vallecito-reservoir-loop"
+name = "Vallecito Reservoir Loop"
+country = "US"
+regions = ["CO"]
+length_km = 105
+length_note = "65 miles, as the author gives the full loop he walked: his route options say \"Full Loop (our trip): ... (~65 miles, ~14,000 ft gain)\" and his account says \"covering about 65 miles\". His Quick Facts give a range, \"Distance: 55-65 miles (with alternate loop and out-and-back options of varying lengths)\", and his introduction calls it a 60-mile loop. The record uses the full loop, 65 miles. The page says the start and finish trailheads differ and a shuttle is required. The figures are the author's own and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Dave Collins, 2025); no agency or association"
+wave = 1
+places_checked = "2026-11-23"
+
+[source]
+status = "none"
+publisher = "Dave Collins (CleverHiker) (publishes the route)"
+publisher_url = "https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/"
+url = "https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the author and the page its facts were read on (https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/, read 2026-11-23)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation named for the Vallecito Reservoir Loop was found on 2026-11-23, and the author's terms for passing the track on are not stated."
+source_checked = "2026-11-23"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The author publishes the track for download from his page; no licence that allows passing it on is stated, and the site's terms of use say the content of the site is owned by the company and subject to copyright. Get it from the author's page."
+
+[osm]
+relation = 0
+note = "No route relation for the loop was found in a name search of hiking route relations on 2026-11-23."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Dave Collins"
+note = "No emblem of the route exists at an allowed source. The author's page was read as text on 2026-11-23: it carries the CleverHiker site name and photographs, and no crest, badge or mark for the route. The site's own name stands for the site, not the route."
+logo_file = ""
+logo_owner = "Dave Collins"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Dave Collins"
+year = 2025
+line_policy = "open"
+creator_words = "A GPS track is absolutely essential here. (We provide one below to download.)"
+creator_words_url = "https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/"
+note = "A loop in the Weminuche Wilderness that its author names the Vallecito Reservoir Loop \"for lack of a better name\". He walked it in mid-September in four days and three nights, and the page was published on 14 October 2025."
+
+[[guide]]
+title = "San Juan Mountains-Vallecito Reservoir Loop"
+author = "Dave Collins"
+access = "free"
+url = "https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/"
+format = "web trip guide with a downloadable GPX track"
+
+[hike]
+summary = "The Vallecito Reservoir Loop is a loop of about 65 miles through the Weminuche Wilderness in the San Juan Mountains of southern Colorado, as its author describes it. It starts on the east side of Vallecito Reservoir, climbs the Pine River drainage past Emerald Lake, links alpine lakes and the Continental Divide Trail deep in the wilderness, and comes back by Columbine Pass, Silver Mesa and Endlich Mesa. The author walked it in four days and says most hikers will want five to seven."
+official_url = "https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/"
+start = "Pine River Trailhead, east side of Vallecito Reservoir, Colorado"
+start_lonlat = [-107.505, 37.447]
+end = "Freeman Creek Trail at Highway 501, near the Vallecito Event Center, Colorado"
+end_lonlat = [-107.557, 37.434]
+shape = "point-to-point"
+days = [4, 7]
+season = "Mid-July to mid-September"
+months = [7, 8, 9]
+season_basis = "primary"
+terrain = ["alpine"]
+travel = "trail"
+permit = "The author says no permit is required and there are no fees for parking or camping."
+caution = "The author says the start and finish trailheads are apart, so a shuttle is required, and that the end is not a formal trailhead and permission to park should be confirmed. He says the descent from Miller Mountain on the Endlich Mesa Trail is faint, overgrown and full of blowdowns, that the stretch of Silver Mesa after Trimble Pass needs cairn-to-cairn navigation, and that there is no reliable water for about 15 miles across Endlich Mesa. He calls a GPS track absolutely essential there."
+checked = "2026-11-23"
+
+[[hike.source]]
+url = "https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/"
+publisher = "Dave Collins, the route's author (CleverHiker)"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://www.openstreetmap.org/node/1833667521"
+publisher = "OpenStreetMap contributors (ODbL): the Pine River Trailhead"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.openstreetmap.org/way/618606896"
+publisher = "OpenStreetMap contributors (ODbL): County Road 501 where the road to Freeman Park leaves it; the author names no formal trailhead for the end, so the point is approximate"
+facts = ["end_lonlat"]
+
+[[place]]
+kind = "wilderness"
+slug = "weminuche-wilderness"
+basis = "stated"
+source = "https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/"
+
+[[place]]
+kind = "range"
+slug = "san-juan-mountains"
+basis = "stated"
+source = "https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-23"
+change = "The record was added: the Vallecito Reservoir Loop, 65 miles (105 km), a route by Dave Collins in the Weminuche Wilderness, Colorado, as his page for it gives it. The author publishes the track for download; no track is included, as no terms for passing it on are stated."
+fields = ["record"]
+basis = "The author's page says: \"Distance: 55-65 miles\", \"Full Loop (our trip): ... (~65 miles, ~14,000 ft gain)\", \"The Vallecito Reservoir Loop (for lack of a better name)\" and \"Start: Pine River Trailhead\", \"Shuttle: Required\"."
+basis_url = "https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The trail was placed in the Weminuche Wilderness and the San Juan Mountains from the author's page, as it has no track to measure."
+fields = ["place"]
+basis = "The page says: \"Location: San Juan National Forest/Weminuche Wilderness near Durango, CO\", and the route is the page's \"San Juan Mountains-Vallecito Reservoir Loop\"."
+basis_url = "https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/"
+asked_by = "the dataset's own check"
+outcome = "applied"

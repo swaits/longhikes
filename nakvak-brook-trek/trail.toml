@@ -5,9 +5,9 @@ name = "Nakvak Brook Trek"
 country = "CA"
 regions = ["NL", "QC"]
 length_km = 68
-length_note = "Approximately 68 km / 42 miles, as Parks Canada gives it on its page for the Nakvak Brook Trek (\"Allow 5 to 6 days\"). The page says all distances are straight line distances and that actual travel distances will vary with the route taken. The trek runs from the mouth of Nakvak Brook in Saglek Fiord up the brook to its headwaters beside the Québec/Nunavik border; the page says it can also be hiked in the opposite direction."
+length_note = "Approximately 68 km / 42 miles, as Parks Canada gives it on its page for the Nakvak Brook Trek (\"Allow 5 to 6 days\"). The page says all distances are \"straight line\" distances and that actual travel distances will vary depending on the exact route, so the distance walked is more than 68 km. The trek runs from the mouth of Nakvak Brook in Saglek Fiord up the brook to its headwaters beside the Québec/Nunavik border; the page says it can also be hiked in the opposite direction."
 tier = "short"
-short_reason = "Parks Canada says there are no trails in the park, the route follows caribou trails through thickets and needs a hard river crossing, and it tells hikers to allow five to six days."
+short_reason = "Parks Canada says there are no roads, trails or signs in the park, that the route follows caribou trails that often seem to end and forces a way through thick alder, birch and willow, and that the brook crossing is challenging; it rates the trek a moderate multi-day hike and calls the last section some of the easiest hiking in the Torngat Mountains."
 designation = "Parks Canada, Torngat Mountains National Park: a hiking route it publishes by name"
 wave = 1
 places_checked = "2026-11-23"
@@ -47,7 +47,7 @@ verified = false
 note = "No line to measure. The ends in this record are converted from the UTM figures on the Parks Canada page (20V 482855 E 6484218 N for the start, 20V 435258 E 6497533 N for the border at KM 68)."
 
 [hike]
-summary = "The Nakvak Brook Trek is a route of about 68 km through the Torngat Mountains, from the mouth of Nakvak Brook in Saglek Fiord, Newfoundland and Labrador, up the brook and past Nakvak Lake to its headwaters beside the Québec/Nunavik border. Parks Canada says caribou trails thread through alder and birch thickets and often seem to end, and that the brook is too big to cross until two or three days in. It is reached by boat or helicopter."
+summary = "The Nakvak Brook Trek is a route of about 68 km through the Torngat Mountains, from the mouth of Nakvak Brook in Saglek Fiord, Newfoundland and Labrador, up the brook and past Nakvak Lake to its headwaters beside the Québec/Nunavik border. Parks Canada rates it a moderate multi-day hike with 335 metres of elevation gain, says caribou trails thread through alder and birch thickets and often seem to end, and says the brook is likely too big to cross until two or three days in. Its last section, from Nakvak Lake to the border, is described as some of the easiest hiking in the Torngat Mountains. It is reached by boat or helicopter."
 official_url = "https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/nakvak"
 start = "Mouth of Nakvak Brook (Pitukkik), Saglek Fiord, Newfoundland and Labrador"
 start_lonlat = [-63.294, 58.498]
@@ -59,10 +59,10 @@ season = "July to August"
 months = [7, 8]
 season_basis = "estimate"
 season_method = "Judged from the climate at the trail's elevation and from similar trails. The Torngat Mountains in the Arctic are snowbound until late June and freeze again by September, leaving a short July and August window. Confidence: medium."
-terrain = ["tundra", "alpine"]
+terrain = ["tundra"]
 travel = "mostly-cross-country"
 permit = "Hikers must register before the trip with both Torngat Mountains National Park and Parc national Kuururjuaq, and de-register after leaving the parks."
-caution = "Parks Canada says there are no roads, trails or signs in the park, that the main brook crossing is challenging and cannot be made until two or three days in, that creeks flowing in from the north run through deep canyons, and that polar bears and black bears are present. Access is by boat or helicopter."
+caution = "Parks Canada says there are no roads, trails or signs in the park, that the main brook crossing is challenging and, on the route up the brook, will likely not be possible until two or three days in, and that on the north side some of the creeks flowing in are deeply cut canyons that are dangerous to descend. Polar bears and black bears are present. Access is by boat or helicopter."
 checked = "2026-11-23"
 
 [[hike.source]]
@@ -114,4 +114,13 @@ fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method
 basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
 basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The record now says what the page says of the difficulty: a moderate multi-day hike, with the last section some of the easiest hiking in the Torngat Mountains. The caution is worded as the page words it (likely not able to cross until two or three days in; some creeks on the north side are deeply cut canyons), the length note says the walked distance is more than the straight-line 68 km, and the terrain is tundra only, as the page describes a valley route with 335 metres of gain and alpine traverses only as side trips."
+fields = ["short_reason", "length_note", "hike.caution", "hike.terrain"]
+basis = "The page says: \"Type of hike: Moderate multi-day hike\", \"Elevation gain: 335 metres (1000 feet)\", \"This section features some of the easiest hiking in the Torngat Mountains.\", \"you will likely not be able to cross the river until you are two or three days into your hike\" and \"Some of these creeks are deeply cut canyons that are dangerous to descend.\""
+basis_url = "https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/nakvak"
+asked_by = "an independent reviewer"
 outcome = "applied"

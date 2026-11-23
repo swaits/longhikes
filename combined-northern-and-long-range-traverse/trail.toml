@@ -5,7 +5,7 @@ name = "Combined Northern and Long Range Traverse"
 country = "CA"
 regions = ["NL"]
 length_km = 60
-length_note = "60 km, as Parks Canada gives it in its list of the Long Range routes: \"Combined Northern and Long Range Traverse (5-7 days, 60 km)\" on its web page, and \"(5-7 nights, 60 km)\" in its Hiking in the Long Range Mountains preparation guide. The two parts are listed separately as the Northern Traverse (27 km) and the Long Range Traverse (35 km). Parks Canada does not name the combined route's finish; the record gives the finish of the Long Range Traverse, the Gros Morne Mountain trail head, because the page has the combined route follow the routes \"east and south towards Gros Morne Mountain\"."
+length_note = "60 km, as Parks Canada gives it in its list of the Long Range routes: \"Combined Northern and Long Range Traverse (5-7 days, 60 km)\" on its web page, and \"(5-7 nights, 60 km)\" in its Hiking in the Long Range Mountains preparation guide. The two parts are listed separately as the Northern Traverse (27 km) and the Long Range Traverse (35 km). Parks Canada does not name the combined route's start or finish. The preparation guide says the combined route \"is accessed by the Western Brook Pond trail and Snug Harbour route\", so the record gives the head of the Western Brook Pond trail as the start. It gives the finish of the Long Range Traverse, the Gros Morne Mountain trail head, because the page has the combined route follow the routes \"east and south towards Gros Morne Mountain\". The guide gives the Northern Traverse as 33 km and the Long Range Traverse as 36 km, against 27 and 35 km on the web page, and the combined trip in nights where the web page says days."
 tier = "short"
 short_reason = "Parks Canada says there are no built trails on the Long Range, that the routes are unmarked and need wilderness navigation, and it gives the combined traverse five to seven days."
 designation = "Parks Canada, Gros Morne National Park: a backcountry route it publishes by name"
@@ -47,7 +47,7 @@ verified = false
 note = "No line to measure. The ends are the trail heads of the Long Range Traverse, taken from OpenStreetMap (ODbL) ways and relation named in the hike sources."
 
 [hike]
-summary = "The Combined Northern and Long Range Traverse is a 60 km backpacking route on the Long Range Mountains of Gros Morne National Park, Newfoundland and Labrador. Parks Canada joins its Northern Traverse and Long Range Traverse into one longer trip that climbs onto the plateau by Western Brook Pond and Snug Harbour and then follows the routes east and south toward Gros Morne Mountain. It gives 5 to 7 days, and says there are no built trails and that hikers must navigate by map, compass and GPS."
+summary = "The Combined Northern and Long Range Traverse is a 60 km backpacking route on the Long Range Mountains of Gros Morne National Park, Newfoundland and Labrador. Parks Canada joins its Northern Traverse and Long Range Traverse into one longer trip. It is reached on foot, by the Western Brook Pond trail and the Snug Harbour route, and the trip then follows the routes east and south toward Gros Morne Mountain. Parks Canada gives it 5 to 7 days on its web page (5 to 7 nights in its guide), and says there are no built trails and that hikers must navigate by map, compass and GPS."
 official_url = "https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry"
 start = "Western Brook Pond trail head, Gros Morne National Park, Newfoundland and Labrador"
 start_lonlat = [-57.873, 49.788]
@@ -55,13 +55,13 @@ end = "Gros Morne Mountain trail head, Gros Morne National Park, Newfoundland an
 end_lonlat = [-57.832, 49.566]
 shape = "point-to-point"
 days = [5, 7]
-season = "July to September"
+season = "Late June to September"
 months = [7, 8, 9]
 season_basis = "primary"
 terrain = ["alpine"]
 travel = "mostly-cross-country"
 permit = "Parks Canada says reservations are required and the daily number of groups is limited, and that hikers must report to the Gros Morne National Park Visitor Centre the day before departure for a safety briefing and a backcountry permit."
-caution = "Parks Canada says the routes are not marked with signs or maintained, that the Long Range is remote, strenuous and potentially hazardous, and that low cloud can make route finding harder. The start is by the Western Brook Pond boat tour, and the routes require fording Western Brook, which can be up to 1 metre deep in June and late September."
+caution = "Parks Canada says the routes are not marked with signs or maintained, that the Long Range is remote, strenuous and potentially hazardous, and that low cloud can make route finding harder. The combined route is reached on foot, by the Western Brook Pond trail and the Snug Harbour route, and Parks Canada says these routes require fording Western Brook, where hikers can expect deep (up to 1 metre) and cold water in June and later in September."
 checked = "2026-11-23"
 
 [[hike.source]]
@@ -72,12 +72,12 @@ facts = ["official_url", "summary", "shape", "days", "terrain", "travel", "permi
 [[hike.source]]
 url = "https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry/longrange"
 publisher = "Parks Canada, Gros Morne National Park (Long Range Traverse page: start and finish, operating season June 28 to September 30)"
-facts = ["start", "end", "season", "months", "permit", "caution"]
+facts = ["end", "season", "months", "permit"]
 
 [[hike.source]]
 url = "https://pcweb2.azureedge.net/-/media/pn-np/nl/grosmorne/pdf/hiker-preparation-guide-english.pdf"
 publisher = "Parks Canada, Gros Morne National Park (Hiking in the Long Range Mountains preparation guide)"
-facts = ["summary", "days", "travel", "permit", "caution"]
+facts = ["summary", "start", "days", "travel", "permit", "caution"]
 
 [[hike.source]]
 url = "https://www.openstreetmap.org/way/1449912000"
@@ -114,4 +114,13 @@ fields = ["place"]
 basis = "The page is Parks Canada's page for backcountry hiking in the Long Range Mountains of Gros Morne National Park and lists the route among those within the park."
 basis_url = "https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry"
 asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The caution no longer says the start is by the Western Brook Pond boat tour: Parks Canada's guide says the combined route is reached on foot by the Western Brook Pond trail and the Snug Harbour route, with a ford of Western Brook. The length note says what the guide gives for the start and the section lengths, and the season is worded as late June to September."
+fields = ["length_note", "hike.start", "hike.caution", "hike.season"]
+basis = "The guide says: \"Snug Harbour to North Rim and the combined Northern and Long Range traverse is accessed by the Western Brook Pond trail and Snug Harbour route. These routes will require fording Western Brook.\" and \"Hiking season – June 28 to September 30\"."
+basis_url = "https://pcweb2.azureedge.net/-/media/pn-np/nl/grosmorne/pdf/hiker-preparation-guide-english.pdf"
+asked_by = "an independent reviewer"
 outcome = "applied"

@@ -103,6 +103,16 @@ class StructuredDataTest(unittest.TestCase):
     def props(self, rec):
         return {(p["name"], p.get("unitCode")): p for p in seo.place_node(rec, GH)["additionalProperty"]}
 
+    def test_one_day_figure_is_never_written_as_a_range(self):
+        rec = florida()
+        rec["hike"] = dict(rec.get("hike") or {}, days=[7, 7])
+        one = self.props(rec)[("Usual time to walk it all", "DAY")]
+        self.assertEqual(one["value"], 7)
+        self.assertNotIn("minValue", one)
+        rec["hike"]["days"] = [5, 8]
+        span = self.props(rec)[("Usual time to walk it all", "DAY")]
+        self.assertEqual((span["value"], span["minValue"], span["maxValue"]), ("5 to 8 days", 5, 8))
+
     def test_the_length_stays_canonical_and_the_system_figure_is_labelled(self):
         props = self.props(florida())
         self.assertEqual(props[("Published length", "KMT")]["value"], 1818)

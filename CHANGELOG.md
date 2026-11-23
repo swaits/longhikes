@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-23 - A single day figure is no longer written as a range
+
+- The data each trail page gives to search engines wrote a trail with one stated time as a range, for example "7 to 7 days". It now gives the one figure, 7 days. A range is still written as a range, such as 5 to 8 days. The page a visitor reads already said it correctly.
+
 ## 2026-11-23 - A clearer rule for trails under 50 miles, 18 more entries on the left-out page, and the Vallecito Reservoir Loop added
 
 - The rule for a trail under 50 miles (80 km) is stated more plainly. It is listed only when it is still reasonably long and at least one of three things is true: it has real cross-country travel; it genuinely takes a fit, experienced party five or more days because the ground is hard; or it is very well known and popular, as the Rae Lakes Loop is. The five-day reason is about the ground: there is no trail, or the going is rough or unmaintained and needs route finding, with fords or thick brush. The number of days a managing body, an author or a guidebook prints does not decide it, and a walk on ordinary built trail spread over five or more days at an easy pace does not count. Being close to 50 miles is never a reason. The rule is in the "Inclusion rule" section of README.md, in CONTRIBUTING.md and in docs/schema.md.

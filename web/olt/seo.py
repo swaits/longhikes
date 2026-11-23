@@ -277,8 +277,12 @@ def _properties(rec):
         props.append(_pv("Built length", rec["built_km"], "KMT", "kilometres"))
     days = h.get("days")
     if isinstance(days, list) and len(days) == 2:
-        props.append(_pv("Usual time to walk it all", f"{days[0]} to {days[1]} days", "DAY", "days",
-                         minValue=days[0], maxValue=days[1]))
+        lo, hi = min(days), max(days)
+        if lo == hi:  # one figure, not a range: "7 days", never "7 to 7 days"
+            props.append(_pv("Usual time to walk it all", lo, "DAY", "day" if lo == 1 else "days"))
+        else:
+            props.append(_pv("Usual time to walk it all", f"{lo} to {hi} days", "DAY", "days",
+                             minValue=lo, maxValue=hi))
     elif isinstance(days, int):
         props.append(_pv("Usual time to walk it all", days, "DAY", "days"))
     if h.get("high_point_m"):

@@ -34,6 +34,7 @@ bristol-hills-trail,Bristol Hills Trail,US,NY,89,included,OpenStreetMap,ODbL-1.0
 brooks-range-traverse,Brooks Range Traverse,US,AK,1609,record-only,none (no line included),none-stated,route,unclear
 bruce-trail,Bruce Trail,CA,ON,890,included,OpenStreetMap,ODbL-1.0,designated,
 buckeye,Buckeye Trail,US,OH,2250,included,OpenStreetMap,ODbL-1.0,designated,
+buckley-lake-to-mowdade-lake-route,Buckley Lake to Mowdade Lake Route,CA,BC,70,record-only,none (no line included),none-stated,designated,
 california-coastal,California Coastal Trail,US,CA,1931,included,A hiker's own walk of the coast (GPX file attached to the dataset's issue 1),CC-BY-4.0,designated,
 canol,Canol Heritage Trail,CA,NT,371,included,OpenStreetMap,ODbL-1.0,designated,
 centennial-sd,Centennial Trail,US,SD,179,included,OpenStreetMap,ODbL-1.0,designated,
@@ -44,6 +45,7 @@ circle-of-solitude,Circle of Solitude,US,CA,109,record-only,none (no line includ
 cohos,Cohos Trail,US,NH,270,included,OpenStreetMap,ODbL-1.0,designated,
 collegiate-loop,Collegiate Loop,US,CO,257,included,OpenStreetMap,ODbL-1.0,designated,
 colorado-trail,Colorado Trail,US,CO,782,included,"USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment",ODbL-1.0,designated,
+combined-northern-and-long-range-traverse,Combined Northern and Long Range Traverse,CA,NL,60,record-only,none (no line included),none-stated,designated,
 condor-trail,Condor Trail,US,CA,644,record-only,none (no line included),none-stated,route,open
 conestoga-trail,Conestoga Trail,US,PA,103,included,OpenStreetMap,ODbL-1.0,designated,
 conservation-trail,Conservation Trail,US,NY,285,record-only,none (no line included),none-stated,designated,
@@ -111,6 +113,7 @@ koroc-palmer-loop,Koroc River and Palmer River Loop (Boucle des rivières Koroc 
 la-cloche,La Cloche Silhouette Trail,CA,ON,80,included,OpenStreetMap,ODbL-1.0,designated,
 la-grande-traversee,La Grande traversée (Parc national de la Gaspésie),CA,QC,103,record-only,none (no line included),none-stated,designated,
 laurel-highlands,Laurel Highlands Hiking Trail,US,PA,113,included,OpenStreetMap,ODbL-1.0,designated,
+little-heaven-upper-blue-creek,Little Heaven – Upper Blue Creek,CA,AB,64,record-only,none (no line included),none-stated,designated,
 lone-star,Lone Star Hiking Trail,US,TX,155,included,OpenStreetMap,ODbL-1.0,designated,
 long-path,Long Path,US,NJ;NY,576,included,OpenStreetMap,ODbL-1.0,designated,
 long-trail,Long Trail (Vermont),US,VT,438,included,OpenStreetMap,ODbL-1.0,designated,
@@ -134,6 +137,7 @@ mojave-sonoran-trail,Mojave-Sonoran Trail,US,NV;CA;AZ,1006,record-only,none (no 
 monadnock-sunapee,Monadnock-Sunapee Greenway,US,NH,80,included,OpenStreetMap,ODbL-1.0,designated,
 montana-trail,Montana Trail 406,US,MT,2934,record-only,none (no line included),none-stated,route,open
 mountains-to-sea,Mountains-to-Sea Trail,US,NC,1890,included,OpenStreetMap,ODbL-1.0,designated,
+nakvak-brook-trek,Nakvak Brook Trek,CA,NL;QC,68,record-only,none (no line included),none-stated,designated,
 nankoweap-bright-angel-loop,Nankoweap–Bright Angel Loop,US,AZ,132,record-only,none (no line included),none-stated,route,sold
 nepisiguit-migmaq-trail,Sentier Nepisiguit Mi'gmaq Trail,CA,NB,150,included,OpenStreetMap,ODbL-1.0,designated,
 new-england,New England National Scenic Trail,US,CT;MA,378,included,National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club,us-gov-public-domain,designated,
@@ -171,7 +175,6 @@ route-in-between,Route In Between,US,AZ;UT;ID,4344,record-only,none (no line inc
 rutherford-lake-loop,Rutherford Lake Loop,US,CA,115,record-only,none (no line included),none-stated,route,sold
 san-diego-trans-county-trail,San Diego Trans County Trail,US,CA,249,record-only,none (no line included),none-stated,route,unclear
 santa-fe-to-taos,Santa Fe to Taos Thru-Hike,US,NM,212,record-only,none (no line included),none-stated,route,sold
-sawback-trail,Sawback Trail,CA,AB,74,record-only,none (no line included),none-stated,designated,
 sawtooth-wilderness-high-route,Sawtooth Wilderness High Route,US,ID,143,record-only,none (no line included),none-stated,route,open
 sea-to-sea-route,Sea-to-Sea Route,US,ND;MN;WI;MI;OH;PA;NY;VT;MT;ID;WA,12513,record-only,none (no line included),none-stated,route,unclear
 selway-river-trail,Selway River Trail,US,ID,80,included,USDA Forest Service (National Forest System Trails),us-gov-public-domain,designated,

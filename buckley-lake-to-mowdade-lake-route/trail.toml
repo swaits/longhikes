@@ -1,0 +1,121 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "buckley-lake-to-mowdade-lake-route"
+name = "Buckley Lake to Mowdade Lake Route"
+country = "CA"
+regions = ["BC"]
+length_km = 70
+length_note = "Approximately 70 km, as BC Parks gives it on its hiking page for Mount Edziza Park: \"The route will vary in length as you choose your route across the plateaus, but is approximately 70 km long from Buckley Lake to Mowdade Lake.\" BC Parks recommends a minimum of 7 days."
+tier = "short"
+short_reason = "BC Parks marks most of the route only with cairns, has hikers find the way from cairn to cairn across the plateaus, and recommends a minimum of seven days."
+designation = "BC Parks, Mount Edziza Park: a hiking route it publishes by name"
+wave = 1
+places_checked = "2026-11-23"
+
+[source]
+status = "none"
+publisher = "BC Parks, Mount Edziza Park (publishes the trail)"
+publisher_url = "https://bcparks.ca/mount-edziza-park/hiking/"
+url = "https://bcparks.ca/mount-edziza-park/hiking/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the page its facts were read on (https://bcparks.ca/mount-edziza-park/hiking/, read 2026-11-23)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation named Buckley Lake to Mowdade Lake Route, or for the Mount Edziza plateau route, was found on 2026-11-23."
+source_checked = "2026-11-23"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. BC Parks describes the route in words and by cairns and publishes no line for it, and OpenStreetMap has no route relation for it. The page shows both ends on the map and no line between them."
+
+[osm]
+relation = 0
+note = "No route relation for the Buckley Lake to Mowdade Lake Route was found in a name search on 2026-11-23."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "BC Parks"
+note = "No trail emblem found. BC Parks' hiking page for Mount Edziza Park (https://bcparks.ca/mount-edziza-park/hiking/) was read as text on 2026-11-23 and gives the route a name, a length and a description only."
+logo_file = ""
+logo_owner = "BC Parks"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[hike]
+summary = "The Buckley Lake to Mowdade Lake Route is a route of about 70 km across the volcanic plateaus of Mount Edziza Park in northwestern British Columbia, from Buckley Lake at the north end of the park south to Mowdade Lake. BC Parks says most of it is marked by cairns, that hikers find the way from cairn to cairn, and that it recommends a minimum of 7 days."
+official_url = "https://bcparks.ca/mount-edziza-park/hiking/"
+start = "Buckley Lake, Mount Edziza Park, British Columbia"
+start_lonlat = [-130.778, 57.906]
+end = "Mowdade Lake, Mount Edziza Park, British Columbia"
+end_lonlat = [-130.429, 57.554]
+shape = "point-to-point"
+days = [7, 7]
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "No page states a season. The plateaus sit above treeline and are snowbound into early summer, and weather turns by September, so July to September was set by judgement from the climate and from similar trails. Confidence: medium."
+terrain = ["alpine"]
+travel = "mostly-cross-country"
+caution = "BC Parks says weather can change extremely fast on the alpine plateaus, that water is scarce in places, that creek crossings may need scouting and can be difficult in high water, and that the high pass beyond Taweh Creek should not be crossed in severe weather. It lists the air charter companies permitted to fly to Buckley Lake or Mowdade Lake."
+checked = "2026-11-23"
+
+[[hike.source]]
+url = "https://bcparks.ca/mount-edziza-park/hiking/"
+publisher = "BC Parks, Mount Edziza Park"
+facts = ["official_url", "summary", "start", "end", "shape", "days", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/JADBY"
+publisher = "Natural Resources Canada, Canadian Geographical Names Database: Buckley Lake"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://geogratis.gc.ca/services/geoname/en/geonames/JAOOJ"
+publisher = "Natural Resources Canada, Canadian Geographical Names Database: Mowdade Lake"
+facts = ["end_lonlat"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
+[[place]]
+kind = "park"
+slug = "mount-edziza-park"
+basis = "stated"
+source = "https://bcparks.ca/mount-edziza-park/hiking/"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-23"
+change = "The record was added: the Buckley Lake to Mowdade Lake Route, about 70 km, in Mount Edziza Park, British Columbia, as BC Parks publishes it on its hiking page. It is listed under the 50 mile floor for hard ground. No track is included."
+fields = ["record"]
+basis = "BC Parks' page says: \"The route will vary in length as you choose your route across the plateaus, but is approximately 70 km long from Buckley Lake to Mowdade Lake. We recommend a minimum of 7 days to hike this route\" and \"Most of the route is marked by cairns\" and \"Binoculars are recommended for route-finding cairn to cairn.\""
+basis_url = "https://bcparks.ca/mount-edziza-park/hiking/"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The trail was placed in Mount Edziza Park from a published page, as it has no track to measure."
+fields = ["place"]
+basis = "The page is BC Parks' hiking page for Mount Edziza Park and describes the route from Buckley Lake to Mowdade Lake inside the park."
+basis_url = "https://bcparks.ca/mount-edziza-park/hiking/"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+asked_by = "the dataset's own check"
+outcome = "applied"

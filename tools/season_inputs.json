@@ -119,6 +119,15 @@
   ],
   "points": "e6e985acbfb0c18a"
  },
+ "buckley-lake-to-mowdade-lake-route": {
+  "digest": "99f51ac372086c51",
+  "machine": [
+   7,
+   8,
+   9
+  ],
+  "points": "126dabd05308afd3"
+ },
  "california-coastal": {
   "digest": "5c7fa4913f78b36c",
   "machine": [
@@ -400,6 +409,15 @@
   ],
   "points": "32195bb88992a86c"
  },
+ "little-heaven-upper-blue-creek": {
+  "digest": "5058a35b12695cd2",
+  "machine": [
+   7,
+   8,
+   9
+  ],
+  "points": "43e5866ab220b4f5"
+ },
  "lost-coast": {
   "digest": "971c47b8714b706f",
   "machine": [
@@ -450,6 +468,14 @@
    10
   ],
   "points": "99a2fcf36b45e796"
+ },
+ "nakvak-brook-trek": {
+  "digest": "095233d3888c492e",
+  "machine": [
+   7,
+   8
+  ],
+  "points": "4b56e37d362b5c25"
  },
  "north-south": {
   "digest": "86641545fa67fd0c",

@@ -1,0 +1,117 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "combined-northern-and-long-range-traverse"
+name = "Combined Northern and Long Range Traverse"
+country = "CA"
+regions = ["NL"]
+length_km = 60
+length_note = "60 km, as Parks Canada gives it in its list of the Long Range routes: \"Combined Northern and Long Range Traverse (5-7 days, 60 km)\" on its web page, and \"(5-7 nights, 60 km)\" in its Hiking in the Long Range Mountains preparation guide. The two parts are listed separately as the Northern Traverse (27 km) and the Long Range Traverse (35 km). Parks Canada does not name the combined route's finish; the record gives the finish of the Long Range Traverse, the Gros Morne Mountain trail head, because the page has the combined route follow the routes \"east and south towards Gros Morne Mountain\"."
+tier = "short"
+short_reason = "Parks Canada says there are no built trails on the Long Range, that the routes are unmarked and need wilderness navigation, and it gives the combined traverse five to seven days."
+designation = "Parks Canada, Gros Morne National Park: a backcountry route it publishes by name"
+wave = 1
+places_checked = "2026-11-23"
+
+[source]
+status = "none"
+publisher = "Parks Canada, Gros Morne National Park (publishes the trail)"
+publisher_url = "https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry"
+url = "https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the publisher and the pages its facts were read on (https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry, its page for the Long Range Traverse and the Hiking in the Long Range Mountains preparation guide, read 2026-11-23)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for the combined route was found on 2026-11-23. OpenStreetMap has separate relations for the Long Range Traverse Trail and the Northern Traverse Trail, which are the two parts, not the combined route."
+source_checked = "2026-11-23"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "No track is included. Parks Canada offers a GPX file of the Northern Rim and Long Range Traverse on its page for the Long Range Traverse with no licence for reuse, and OpenStreetMap has no relation for the combined route. The page shows both ends on the map and no line between them."
+
+[osm]
+relation = 0
+note = "No route relation for the combined route was found on 2026-11-23. Relations 19672459 (Long Range Traverse Trail) and 19672496 (Northern Traverse Trail) are its two parts and are not used as a track for it."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Parks Canada"
+note = "No trail emblem found. Parks Canada's pages for the Long Range routes were read as text on 2026-11-23 and give the route a name, a length, a time and directions only; the Parks Canada mark is the agency's own."
+logo_file = ""
+logo_owner = "Parks Canada"
+
+[verification]
+verified = false
+note = "No line to measure. The ends are the trail heads of the Long Range Traverse, taken from OpenStreetMap (ODbL) ways and relation named in the hike sources."
+
+[hike]
+summary = "The Combined Northern and Long Range Traverse is a 60 km backpacking route on the Long Range Mountains of Gros Morne National Park, Newfoundland and Labrador. Parks Canada joins its Northern Traverse and Long Range Traverse into one longer trip that climbs onto the plateau by Western Brook Pond and Snug Harbour and then follows the routes east and south toward Gros Morne Mountain. It gives 5 to 7 days, and says there are no built trails and that hikers must navigate by map, compass and GPS."
+official_url = "https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry"
+start = "Western Brook Pond trail head, Gros Morne National Park, Newfoundland and Labrador"
+start_lonlat = [-57.873, 49.788]
+end = "Gros Morne Mountain trail head, Gros Morne National Park, Newfoundland and Labrador"
+end_lonlat = [-57.832, 49.566]
+shape = "point-to-point"
+days = [5, 7]
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "primary"
+terrain = ["alpine"]
+travel = "mostly-cross-country"
+permit = "Parks Canada says reservations are required and the daily number of groups is limited, and that hikers must report to the Gros Morne National Park Visitor Centre the day before departure for a safety briefing and a backcountry permit."
+caution = "Parks Canada says the routes are not marked with signs or maintained, that the Long Range is remote, strenuous and potentially hazardous, and that low cloud can make route finding harder. The start is by the Western Brook Pond boat tour, and the routes require fording Western Brook, which can be up to 1 metre deep in June and late September."
+checked = "2026-11-23"
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry"
+publisher = "Parks Canada, Gros Morne National Park"
+facts = ["official_url", "summary", "shape", "days", "terrain", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry/longrange"
+publisher = "Parks Canada, Gros Morne National Park (Long Range Traverse page: start and finish, operating season June 28 to September 30)"
+facts = ["start", "end", "season", "months", "permit", "caution"]
+
+[[hike.source]]
+url = "https://pcweb2.azureedge.net/-/media/pn-np/nl/grosmorne/pdf/hiker-preparation-guide-english.pdf"
+publisher = "Parks Canada, Gros Morne National Park (Hiking in the Long Range Mountains preparation guide)"
+facts = ["summary", "days", "travel", "permit", "caution"]
+
+[[hike.source]]
+url = "https://www.openstreetmap.org/way/1449912000"
+publisher = "OpenStreetMap contributors (ODbL): the Western Brook Pond Trail, where it leaves the road"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.openstreetmap.org/relation/15976460"
+publisher = "OpenStreetMap contributors (ODbL): the Gros Morne Mountain Trail, where it leaves Highway 430"
+facts = ["end_lonlat"]
+
+[[place]]
+kind = "park"
+slug = "gros-morne-national-park"
+basis = "stated"
+source = "https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-23"
+change = "The record was added: the Combined Northern and Long Range Traverse, 60 km, in Gros Morne National Park, Newfoundland and Labrador, as Parks Canada lists it among the Long Range routes. It is listed under the 50 mile floor for hard ground. No track is included."
+fields = ["record"]
+basis = "Parks Canada's page says: \"Combined Northern and Long Range Traverse (5-7 days, 60 km)\" and \"There are no built trails on the Long Range although there are a number of backcountry routes. These routes are not marked with signs or maintained in any manner.\""
+basis_url = "https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The trail was placed in Gros Morne National Park from a published page, as it has no track to measure."
+fields = ["place"]
+basis = "The page is Parks Canada's page for backcountry hiking in the Long Range Mountains of Gros Morne National Park and lists the route among those within the park."
+basis_url = "https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry"
+asked_by = "the dataset's own check"
+outcome = "applied"

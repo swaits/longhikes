@@ -710,6 +710,17 @@ source_version = "2026-11-20"
 box = [-66.97, 47.35, -66.69, 47.46]
 
 [[place]]
+slug = "mount-edziza-park"
+kind = "park"
+name = "Mount Edziza Park"
+label = "Provincial park"
+where = ["BC"]
+source = "cpcad"
+source_id = "590000238"
+source_version = "2026-11-20"
+box = [-131.52, 57.2, -129.94, 58.12]
+
+[[place]]
 slug = "mount-rainier-national-park"
 kind = "park"
 name = "Mount Rainier National Park"

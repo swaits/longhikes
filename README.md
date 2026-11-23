@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-231 trails, 125 with a track and 106 with no track included. Of these, 78 are routes: 2 with a track and 76 without.
+234 trails, 125 with a track and 109 with no track included. Of these, 78 are routes: 2 with a track and 76 without.
 
 <!-- END COUNTS -->
 
@@ -67,12 +67,14 @@ A trail may be listed with no track included, when no track for it may be shared
 | bristol-hills-trail | Bristol Hills Trail | US | NY | 89 | yes | ODbL-1.0 |
 | bruce-trail | Bruce Trail | CA | ON | 890 | yes | ODbL-1.0 |
 | buckeye | Buckeye Trail | US | OH | 2250 | yes | ODbL-1.0 |
+| buckley-lake-to-mowdade-lake-route | Buckley Lake to Mowdade Lake Route | CA | BC | 70 | no | none-stated |
 | california-coastal | California Coastal Trail | US | CA | 1931 | yes | CC-BY-4.0 |
 | canol | Canol Heritage Trail | CA | NT | 371 | yes | ODbL-1.0 |
 | centennial-sd | Centennial Trail | US | SD | 179 | yes | ODbL-1.0 |
 | cohos | Cohos Trail | US | NH | 270 | yes | ODbL-1.0 |
 | collegiate-loop | Collegiate Loop | US | CO | 257 | yes | ODbL-1.0 |
 | colorado-trail | Colorado Trail | US | CO | 782 | yes | ODbL-1.0 |
+| combined-northern-and-long-range-traverse | Combined Northern and Long Range Traverse | CA | NL | 60 | no | none-stated |
 | conestoga-trail | Conestoga Trail | US | PA | 103 | yes | ODbL-1.0 |
 | conservation-trail | Conservation Trail | US | NY | 285 | no | none-stated |
 | continental-divide | Continental Divide National Scenic Trail | US | NM, CO, WY, ID, MT | 4989 | yes | CC-BY |
@@ -115,6 +117,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | la-cloche | La Cloche Silhouette Trail | CA | ON | 80 | yes | ODbL-1.0 |
 | la-grande-traversee | La Grande traversée (Parc national de la Gaspésie) | CA | QC | 103 | no | none-stated |
 | laurel-highlands | Laurel Highlands Hiking Trail | US | PA | 113 | yes | ODbL-1.0 |
+| little-heaven-upper-blue-creek | Little Heaven – Upper Blue Creek | CA | AB | 64 | no | none-stated |
 | lone-star | Lone Star Hiking Trail | US | TX | 155 | yes | ODbL-1.0 |
 | long-path | Long Path | US | NJ, NY | 576 | yes | ODbL-1.0 |
 | long-trail | Long Trail (Vermont) | US | VT | 438 | yes | ODbL-1.0 |
@@ -132,6 +135,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | midstate-ma | Midstate Trail (Massachusetts) | US | MA | 148 | yes | ODbL-1.0 |
 | monadnock-sunapee | Monadnock-Sunapee Greenway | US | NH | 80 | yes | ODbL-1.0 |
 | mountains-to-sea | Mountains-to-Sea Trail | US | NC | 1890 | yes | ODbL-1.0 |
+| nakvak-brook-trek | Nakvak Brook Trek | CA | NL, QC | 68 | no | none-stated |
 | nepisiguit-migmaq-trail | Sentier Nepisiguit Mi'gmaq Trail | CA | NB | 150 | yes | ODbL-1.0 |
 | new-england | New England National Scenic Trail | US | CT, MA | 378 | yes | us-gov-public-domain |
 | north-boundary | North Boundary Trail | CA | AB, BC | 159 | no | none-stated |
@@ -160,7 +164,6 @@ A trail may be listed with no track included, when no track for it may be shared
 | rideau-trail | Rideau Trail | CA | ON | 387 | yes | ODbL-1.0 |
 | ring-the-peak | Ring the Peak Trail | US | CO | 101 | no | none-stated |
 | river-to-river | River to River Trail | US | IL | 257 | yes | ODbL-1.0 |
-| sawback-trail | Sawback Trail | CA | AB | 74 | no | none-stated |
 | selway-river-trail | Selway River Trail | US | ID | 80 | yes | us-gov-public-domain |
 | sentier-international-appalaches | Sentier international des Appalaches (International Appalachian Trail, Quebec and New Brunswick) | CA | QC, NB | 1177 | yes | ODbL-1.0 |
 | shawangunk-ridge-trail | Shawangunk Ridge Trail | US | NJ, NY | 114 | yes | ODbL-1.0 |

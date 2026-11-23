@@ -134,6 +134,7 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | brooks-range-traverse | Luc Mehl (publishes the route) | [source page](https://thingstolucat.com/brooks-range-traverse/) | none-stated | record only |
 | bruce-trail | Bruce Trail Conservancy (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3375262) | ODbL-1.0 | track |
 | buckeye | Buckeye Trail Association (publishes the loop); the Ohio DNR MapServer requires a token | [source page](https://www.openstreetmap.org/relation/1738661) | ODbL-1.0 | track |
+| buckley-lake-to-mowdade-lake-route | BC Parks, Mount Edziza Park (publishes the trail) | [source page](https://bcparks.ca/mount-edziza-park/hiking/) | none-stated | record only |
 | california-coastal | California Coastal Commission; Coastal Trails Alliance (the track is a hiker's own, not theirs) | [source page](https://services9.arcgis.com/wwVnNW92ZHUIr0V0/arcgis/rest/services/California_Coastal_Trail_April_2021/FeatureServer) | CC-BY-4.0 | track |
 | canol | Northwest Territories Parks (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13591414) | ODbL-1.0 | track |
 | centennial-sd | USDA Forest Service, Black Hills National Forest (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7330792) | ODbL-1.0 | track |
@@ -143,6 +144,7 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | cohos | Cohos Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/14765821) | ODbL-1.0 | track |
 | collegiate-loop | Colorado Trail Foundation (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/19469029) | ODbL-1.0 | track |
 | colorado-trail | USDA Forest Service (EDW National Forest System trails), with OpenStreetMap where the Forest Service publishes no segment | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | ODbL-1.0 | track |
+| combined-northern-and-long-range-traverse | Parks Canada, Gros Morne National Park (publishes the trail) | [source page](https://parks.canada.ca/pn-np/nl/grosmorne/activ/experiences/arriere-pays-backcountry) | none-stated | record only |
 | condor-trail | Condor Trail Association (publishes the route) | [source page](http://www.condortrail.com/maps-trail-descriptions/) | none-stated | record only |
 | conestoga-trail | Lancaster Hiking Club (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/6827091) | ODbL-1.0 | track |
 | conservation-trail | Foothills Trail Club of Western New York (built and maintains the trail) | [source page](https://sites.google.com/view/foothillstrailclub/about-the-trail) | none-stated | record only |
@@ -209,6 +211,7 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | la-cloche | Ontario Parks (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/14141941) | ODbL-1.0 | track |
 | la-grande-traversee | Sépaq, Parc national de la Gaspésie (publishes the trail) | [source page](https://www.sepaq.com/en/destinations/national-parks/gaspesie/activities/backpacking-stay) | none-stated | record only |
 | laurel-highlands | Keystone Trails Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/7192246) | ODbL-1.0 | track |
+| little-heaven-upper-blue-creek | Parks Canada, Jasper National Park (publishes the trail) | [source page](https://parks.canada.ca/pn-np/ab/jasper/activ/passez-stay/arrierepays-backcountry/sugg-sentiers_trip-ideas/littleheaven) | none-stated | record only |
 | lone-star | Lone Star Hiking Trail Club (publishes the trail; no open track found) | [source page](https://www.openstreetmap.org/relation/7014936) | ODbL-1.0 | track |
 | long-path | New York-New Jersey Trail Conference (an ArcGIS item 'Long Path' under an ArcGIS account, 2025; provenance not confirmed) | [source page](https://www.openstreetmap.org/relation/919642) | ODbL-1.0 | track |
 | long-trail | Green Mountain Club (publishes the trail); its ArcGIS 'TRAIL_MASTER' track is restricted | [source page](https://www.openstreetmap.org/relation/391736) | ODbL-1.0 | track |
@@ -231,6 +234,7 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | monadnock-sunapee | Monadnock-Sunapee Greenway Trail Club (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/3888871) | ODbL-1.0 | track |
 | montana-trail | Montana Trail 406 Association (publishes the route) | [source page](https://montanatrail.org/montana-trail-hike-sections/) | none-stated | record only |
 | mountains-to-sea | North Carolina Division of Parks and Recreation; Friends of the Mountains-to-Sea Trail (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/1395404) | ODbL-1.0 | track |
+| nakvak-brook-trek | Parks Canada (Torngat Mountains National Park) (publishes the trail) | [source page](https://parks.canada.ca/pn-np/nl/torngats/activ/randonee-hiking1/nakvak) | none-stated | record only |
 | nankoweap-bright-angel-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/backpacking-arizona/) | none-stated | record only |
 | nepisiguit-migmaq-trail | Sentier Nepisiguit Mi'gmaq Trail Inc. (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13656926) | ODbL-1.0 | track |
 | new-england | National Park Service with the Connecticut Forest & Park Association and the Appalachian Mountain Club | [source page](https://services1.arcgis.com/fBc8EJBxQRMcHlei/ArcGIS/rest/services/NEEN_BND_NationalScenicTrailCenterline_ln/FeatureServer/0) | us-gov-public-domain | track |
@@ -268,7 +272,6 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | rutherford-lake-loop | Wilderness Press (publishes the route in the guidebook) | [source page](https://shop.adventurewithkeen.com/product/sierra-north-2/) | none-stated | record only |
 | san-diego-trans-county-trail | Sea to Sea Trail Foundation (folded); current guide by Liz Thomas, Treeline Review | [source page](https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail) | none-stated | record only |
 | santa-fe-to-taos | Pam Neely and the Santa Fe to Taos Trail non-profit (publish the route) | [source page](https://santafetotaos.org/route/) | none-stated | record only |
-| sawback-trail | Parks Canada, Banff National Park (publishes the trail) | [source page](https://parks.canada.ca/pn-np/ab/banff/activ/arrierepays-backcountry) | none-stated | record only |
 | sawtooth-wilderness-high-route | Eric Poulin, who publishes the route | [source page](https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/) | none-stated | record only |
 | sea-to-sea-route | Ron Strickland, with the overview published by Andrew Skurka | [source page](https://andrewskurka.com/adventures/sea-to-sea-route/overview/) | none-stated | record only |
 | selway-river-trail | USDA Forest Service (National Forest System Trails, Enterprise Data Warehouse) | [source page](https://apps.fs.usda.gov/arcx/rest/services/EDW/EDW_TrailNFSPublish_01/MapServer/0) | us-gov-public-domain | track |

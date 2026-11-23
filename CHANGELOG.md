@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-23 - The Sangre de Cristo Range High Route added, replacing this morning's left-out entry
+
+- The Sangre de Cristo Range High Route is new: 121.3 miles (195 km) across Colorado's Sangre de Cristo Range, from the Lake Como Road near Blanca in the south to County Road 107 at U.S. Highway 50 near Salida in the north. It is a route by Justin Simoni, who publishes it free on his site, "The Sangre de Cristo Range Traverse and High Route". He describes it as a more backpacking-friendly line that goes around much of the scrambling and technical climbing, keeping the whole route at most Class 3 in a few cruxy areas, and names three crux descents: Ellingwood Point's C2 couloir, "Spread Eagle Peak" and Cottonwood Peak. He says it still has about 50,000 feet of gain, little free water on the ridge and a long way to bail.
+- The Sangre de Cristo Traverse was left out earlier today because the only page read was Cam Honan's account of one eight day trip, not a route published for others to follow, and it did not say whether the scrambling stayed within the rule. This guide publishes the route, so that entry is removed from the "Considered and left out" page.
+- Only the High Route is listed. The same guide also describes the Ridge Traverse, which stays on the main ridge, and its author calls it "a long-distance mountaineering objective" with Class 5 climbing, for which he names a rope, harness, climbing protection and rock shoes. That is past the rule's limit of Class 3, with a few short Class 4 scrambles, so it is not listed, and the High Route's record says it is a separate line.
+- The length is the one on the High Route's own page. The guide's front page prints the same elevation profile as "21.3 miles", which drops the first digit; the record's length note gives both and says why the page's figure is used.
+- No track is included. The author shares the route as a map whose tracks can be exported as GPX, but no page states terms for passing the track on, and OpenStreetMap has no relation for it. Season is July to September, from the author's page, which says early to mid July may be best and trips have been done into September. Justin Simoni is a new author page, written from the guide's own About the Author text, and the Sangre de Cristo Mountains and the Sangre de Cristo Wilderness gain the route.
+
 ## 2026-11-23 - A single day figure is no longer written as a range
 
 - The data each trail page gives to search engines wrote a trail with one stated time as a range, for example "7 to 7 days". It now gives the one figure, 7 days. A range is still written as a range, such as 5 to 8 days. The page a visitor reads already said it correctly.

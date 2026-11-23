@@ -1,0 +1,138 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "sangre-de-cristo-range-high-route"
+name = "Sangre de Cristo Range High Route"
+country = "US"
+regions = ["CO"]
+length_km = 195
+length_note = "121.3 miles, as the High Route's own page gives it: \"Sangre de Cristo High Route Elevation Profile: 121.3 miles, 49,473′ gain, 50,043′ loss\". The guide's front page prints the same profile as \"21.3 miles\", with the same gain and loss; that figure cannot be right for a route across the whole range, and the record uses the route's own page. The five segment lengths on the route's page (25.08, 22.11, 14.85, 35.14 and 28.3 miles) add up to about 125 miles, and the page says the High Route \"is roughly the same distance as the ridge traverse\". The figures are the author's own and are not measured from a track."
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Justin Simoni); no agency or association"
+wave = 1
+places_checked = "2026-11-23"
+
+[source]
+status = "none"
+publisher = "Justin Simoni (Long May You Range) (publishes the route)"
+publisher_url = "https://sangrestraverse.longmayyourange.com/"
+url = "https://sangrestraverse.longmayyourange.com/high-route/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the author and the pages its facts were read on (https://sangrestraverse.longmayyourange.com/, https://sangrestraverse.longmayyourange.com/high-route/ and https://sangrestraverse.longmayyourange.com/caltopo-map/, read 2026-11-23)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No OpenStreetMap route relation for the High Route was found on 2026-11-23, and the author's terms for passing the track on are not stated."
+source_checked = "2026-11-23"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The author publishes the route as a map on his site and says its tracks can be exported as GPX; none of the pages read states terms that allow passing the track on. Get it from the author's pages."
+
+[osm]
+relation = 0
+note = "No route relation for the High Route was found in a name search of hiking route relations in the range on 2026-11-23."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Justin Simoni"
+note = "No emblem of the route exists at an allowed source. The guide's pages were read as text on 2026-11-23: the site carries a site picture and photographs, and no crest, badge or mark for the route."
+logo_file = ""
+logo_owner = "Justin Simoni"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Justin Simoni"
+line_policy = "open"
+creator_words = "Or, export the tracks in GPX to view them on a GPS device of your choosing."
+creator_words_url = "https://sangrestraverse.longmayyourange.com/caltopo-map/"
+note = "The guide describes two lines across the range from Lake Como to Salida, and this record is the High Route. The author calls the other, the Ridge Traverse, \"a long-distance mountaineering objective\" with Class 5 climbing, for which he names a rope, harness, climbing protection and rock shoes; it is a separate, technical line and is not what is listed here. He calls the High Route \"a more backpacking-friendly route\" that \"eschews much of the scrambling and technical climbing\", and says it \"allows you to stay up high, without requiring anything harder than a few Class 3 cruxes\". The two lines share ground: the author says segment 2 of both is the same, and they meet and part in other places. The route's page describes it from south to north."
+
+[[guide]]
+title = "The Sangre de Cristo Range High Route"
+author = "Justin Simoni"
+access = "free"
+url = "https://sangrestraverse.longmayyourange.com/high-route/"
+format = "web guide with a map whose tracks can be exported as GPX"
+where = "the High Route page; the front page and the Ridge Traverse pages cover the shared ground"
+
+[hike]
+summary = "The Sangre de Cristo Range High Route is a route of about 121 miles across Colorado's Sangre de Cristo Range, from the Lake Como Road near Blanca in the south to Highway 50 near Salida in the north. Its author describes it as a backpacking route that stays up high but goes around much of the scrambling and technical climbing of the main ridge, keeping the whole route at most Class 3 in a few cruxy areas. He calls it still a very advanced route, with about 50,000 feet of gain and much travel off trail."
+official_url = "https://sangrestraverse.longmayyourange.com/high-route/"
+start = "Lake Como Road at Colorado Highway 150, near Blanca, Colorado"
+start_lonlat = [-105.602, 37.522]
+end = "County Road 107 at U.S. Highway 50, near Salida, Colorado"
+end_lonlat = [-105.997, 38.524]
+shape = "point-to-point"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "primary"
+high_point = "Ellingwood Point"
+high_point_m = 4280
+terrain = ["alpine"]
+travel = "some-cross-country"
+caution = "The author says one still needs to be comfortable scrambling at Class 3 with a loaded pack, and names as main cruxes the descent of Ellingwood Point's C2 couloir, the descent of \"Spread Eagle Peak\" and the descent of Cottonwood Peak. He says free water on the ridge is very rare, that there is no water in the second segment until Medano Pass, that much of the route is above treeline and exposed to lightning, that blowdown is one of the main problems below treeline, and that any bail could become a multi-day affair. He says there is no public transport to the start at Lake Como, so a walker must be dropped off, hitch or call a taxi."
+checked = "2026-11-23"
+
+[[hike.source]]
+url = "https://sangrestraverse.longmayyourange.com/high-route/"
+publisher = "Justin Simoni, the route's author (Long May You Range)"
+facts = ["official_url", "summary", "start", "end", "shape", "high_point", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://sangrestraverse.longmayyourange.com/"
+publisher = "Justin Simoni, the route's author (Long May You Range)"
+facts = ["summary", "season", "months", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://sangrestraverse.longmayyourange.com/ridge-traverse/segment-1-lake-como-road-to-mosca-pass/"
+publisher = "Justin Simoni, the route's author (Long May You Range): the height of Ellingwood Point"
+facts = ["high_point"]
+
+[[hike.source]]
+url = "https://www.openstreetmap.org/way/17004120"
+publisher = "OpenStreetMap contributors (ODbL): the start of the road the guide calls Lake Como Road, mapped as Mount Blanca Road, at Colorado Highway 150"
+facts = ["start_lonlat"]
+
+[[hike.source]]
+url = "https://www.openstreetmap.org/way/844282023"
+publisher = "OpenStreetMap contributors (ODbL): the end of County Road 107 at U.S. Highway 50"
+facts = ["end_lonlat"]
+
+[[place]]
+kind = "range"
+slug = "sangre-de-cristo-mountains"
+basis = "stated"
+source = "https://sangrestraverse.longmayyourange.com/"
+
+[[place]]
+kind = "wilderness"
+slug = "sangre-de-cristo-wilderness"
+basis = "stated"
+source = "https://sangrestraverse.longmayyourange.com/"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-23"
+change = "The record was added: the Sangre de Cristo Range High Route, 121.3 miles (195 km), a route by Justin Simoni across Colorado's Sangre de Cristo Range, as its own page gives it. The author's Ridge Traverse, which needs Class 4 and Class 5 climbing, is a separate line and is not listed. The author publishes the map and says its tracks can be exported; no track is included, as no terms for passing it on are stated."
+fields = ["record"]
+basis = "The High Route page says: \"Sangre de Cristo High Route Elevation Profile: 121.3 miles, 49,473′ gain, 50,043′ loss\" and the guide's front page says the High Route keeps \"the entire route at most Class 3 in a few cruxy areas\", and \"The Ridge Traverse will give more precedence to guiding you on staying on the ridge, while the High Route allows you to stay up high, without requiring anything harder than a few Class 3 cruxes.\""
+basis_url = "https://sangrestraverse.longmayyourange.com/high-route/"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-23"
+change = "The trail was placed in the Sangre de Cristo Mountains and the Sangre de Cristo Wilderness from the author's pages, as it has no track to measure."
+fields = ["place"]
+basis = "The front page says: \"The Sangre de Cristo Range is a subrange of the greater Sangre de Cristo Mountains\" and \"Between these two passes lies an incredible expanse of mountainous Wilderness terrain\", and captions a photograph \"Summit of Marble Mountain, Sangre de Cristo Wilderness\"."
+basis_url = "https://sangrestraverse.longmayyourange.com/"
+asked_by = "the dataset's own check"
+outcome = "applied"

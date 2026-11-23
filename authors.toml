@@ -418,6 +418,18 @@ url = "https://doingmiles.com/2017-04-across-utah/"
 publisher = "Doing Miles"
 
 [[author]]
+name = "Justin Simoni"
+credits = ["Justin Simoni"]
+url = "https://justinsimoni.com/"
+summary = "Justin Simoni is a Colorado backpacker who wrote a guide to the Sangre de Cristo Range Traverse and its High Route."
+bio = "Simoni says he has completed the Sangre de Cristo Range Traverse twice, once from each direction, including a trip from north to south in 2023, and he wrote his notes up as a guide to the Traverse and its High Route on his Long May You Range site. By his own account, before his first traverse he was comfortable soloing 5.6 in the Flatirons near his home in Boulder, had completed the Colorado 14ers twice, had raced a mountain bike on the Tour Divide, the Colorado Trail and the Arizona Trail, and had helped guide backpacking trips in the Brooks Range, the Sierra and Rocky Mountain National Park."
+checked = "2026-11-23"
+
+[[author.source]]
+url = "https://sangrestraverse.longmayyourange.com/"
+publisher = "Long May You Range"
+
+[[author]]
 name = "Kevin Silvernale"
 credits = ["Kevin Silvernale"]
 url = "https://www.northerncoloradotrail.org/"

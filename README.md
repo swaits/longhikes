@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-235 trails, 125 with a track and 110 with no track included. Of these, 79 are routes: 2 with a track and 77 without.
+236 trails, 125 with a track and 111 with no track included. Of these, 80 are routes: 2 with a track and 78 without.
 
 <!-- END COUNTS -->
 
@@ -262,6 +262,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | route-in-between | Route In Between | US | AZ, UT, ID | 4344 | Kevin "LarryBoy" DeVries | withheld | no | [A Complete Guide to the Deseret Hiking Route](http://www.lbhikes.com/p/a-complete-guide-to-deseret-hiking-route.html) (free) |
 | rutherford-lake-loop | Rutherford Lake Loop | US | CA | 115 | Kathy Morey and Mike White, with Stacy Corless and Thomas Winnett | sold | no | [Sierra North: Backcountry Trips in California's Sierra Nevada](https://openlibrary.org/books/OL8277252M) (purchase) |
 | san-diego-trans-county-trail | San Diego Trans County Trail | US | CA | 249 | Sea to Sea Trail Foundation (folded); guide by Liz Thomas | unclear | no | [San Diego Trans County Trail](https://www.treelinereview.com/where-to-go/san-diego-trans-county-trail) (free) |
+| sangre-de-cristo-range-high-route | Sangre de Cristo Range High Route | US | CO | 195 | Justin Simoni | open | no | [The Sangre de Cristo Range High Route](https://sangrestraverse.longmayyourange.com/high-route/) (free) |
 | santa-fe-to-taos | Santa Fe to Taos Thru-Hike | US | NM | 212 | Pam Neely | sold | no | [The Santa Fe to Taos Thru-Hike Guidebook](https://santafetotaos.org/guidebook/) (purchase) |
 | sawtooth-wilderness-high-route | Sawtooth Wilderness High Route | US | ID | 143 | Eric Poulin | open | no | [Sawtooth Wilderness High Route trip report and GPX](https://seekinglost.com/sawtooth-wilderness-high-route-8-day-solo-hike-aug-2017/) (free) |
 | sea-to-sea-route | Sea-to-Sea Route | US | ND, MN, WI, MI, OH, PA, NY, VT, MT, ID, WA | 12513 | Ron Strickland | unclear | no | [Sea-to-Sea Route overview and route description](https://andrewskurka.com/adventures/sea-to-sea-route/overview/) (free) |

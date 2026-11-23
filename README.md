@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-224 trails, 124 with a track and 100 with no track included. Of these, 78 are routes: 2 with a track and 76 without.
+225 trails, 124 with a track and 101 with no track included. Of these, 78 are routes: 2 with a track and 76 without.
 
 <!-- END COUNTS -->
 
@@ -155,6 +155,7 @@ A trail may be listed with no track included, when no track for it may be shared
 | rideau-trail | Rideau Trail | CA | ON | 387 | yes | ODbL-1.0 |
 | ring-the-peak | Ring the Peak Trail | US | CO | 101 | no | none-stated |
 | river-to-river | River to River Trail | US | IL | 257 | yes | ODbL-1.0 |
+| sawback-trail | Sawback Trail | CA | AB | 74 | no | none-stated |
 | selway-river-trail | Selway River Trail | US | ID | 80 | yes | us-gov-public-domain |
 | sentier-international-appalaches | Sentier international des Appalaches (International Appalachian Trail, Quebec and New Brunswick) | CA | QC, NB | 1177 | yes | ODbL-1.0 |
 | shawangunk-ridge-trail | Shawangunk Ridge Trail | US | NJ, NY | 114 | yes | ODbL-1.0 |

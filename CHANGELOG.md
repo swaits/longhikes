@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-23 - The Sawback Trail in Banff National Park
+
+- One trail is new: the Sawback Trail in Banff National Park, Alberta (46 miles, 74 km, as Parks Canada gives it on its backcountry camping page for the park). It links the Mount Norquay ski area near the Town of Banff with the Fish Creek trailhead near the Lake Louise ski area. It is under the 50 mile floor and is listed as an exception because Parks Canada gives a suggested seven-day itinerary for it, with six nights in backcountry campgrounds, so it takes five or more days.
+- No track is included. OpenStreetMap has no route relation for the trail, and Parks Canada's open Trails layer holds only separate named segments under the Open Government Licence - Canada, which this dataset does not yet accept for track files. The page says various routes are possible, so no one line follows from the itinerary. The page shows both ends on the map, and no line between them.
+- The record gives the length, the days, the permit and the two ends from Parks Canada's page and open Trails layer. The season, July to September, is read from the same page, which says many passes are snowbound until late June, that July and August are the prime months and that September brings a greater chance of snowfall. The high point is left out because no page we may cite gives it.
+- The home page, the lists (including the week or less, under 100 miles, Parks Canada and alpine lists), the Alberta and Western Canada pages and the lists for July, August and September each gain this trail. Counts are read from the data at build time.
+
 ## 2026-11-22 - An About page that speaks to hikers, and the maintainer's name
 
 - The "What this is" part of the About page is rewritten for hikers. It says the site is a place to find long trails, gives the trail count (read from the data at build time), says the point is discovery by place and by list with every list searchable and filterable, says the site is free with no ads or accounts and is not a planning tool, and moves how it is made (the open dataset, one text file per trail, in a public repository) into its own short paragraph. The links under About say the same in their summary.

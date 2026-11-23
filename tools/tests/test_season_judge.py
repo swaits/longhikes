@@ -178,7 +178,7 @@ class ScoreTest(unittest.TestCase):
 
     def test_the_trails_judged_from_pages_that_differ_are_not_scored_against_themselves(self):
         truth = J._truth(J.ROOT)
-        self.assertEqual(len(truth), 149)
+        self.assertEqual(len(truth), 150)
         for tid in ("sierra-high-route", "cohos", "ouachita"):
             self.assertNotIn(tid, truth)
 

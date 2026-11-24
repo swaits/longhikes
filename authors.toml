@@ -524,6 +524,22 @@ url = "https://osupress.oregonstate.edu/author/ron-strickland"
 publisher = "Oregon State University Press"
 
 [[author]]
+name = "Steve Allen"
+credits = ["Steve Allen"]
+url = "https://uofupress.com/books/canyoneering-3/"
+summary = "Steve Allen is a canyoneering guidebook author who described the Overland Route in Canyoneering 3: Loop Hikes in Utah's Escalante."
+bio = "Allen wrote Canyoneering 3: Loop Hikes in Utah's Escalante, published by the University of Utah Press in 1997. The book ends with a short description of the Overland Route, a rim route above the Escalante River canyon that Alan Dixon later hiked and extended. He has explored the canyons of southern Utah for over twenty-five years, has guided trips for the Sierra Club and teaches for the Four Corners School of Outdoor Education."
+checked = "2026-11-18"
+
+[[author.source]]
+url = "https://uofupress.com/books/canyoneering-3/"
+publisher = "University of Utah Press"
+
+[[author.source]]
+url = "https://www.adventurealan.com/escalante-overland-route/"
+publisher = "Adventure Alan & Co"
+
+[[author]]
 name = "Steve Roper"
 credits = ["Steve Roper"]
 summary = "Steve Roper is a climbing writer who first published the Sierra High Route in 1982, in the guide Timberline Country: Sierra High Route."

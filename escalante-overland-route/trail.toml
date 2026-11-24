@@ -1,0 +1,125 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "escalante-overland-route"
+name = "Escalante Overland Route"
+country = "US"
+regions = ["UT"]
+length_km = 129
+length_note = "80 miles is Alan Dixon's figure for Steve Allen's traditional route, and it is the length shown; Allen's 1997 guidebook prints no total mileage. Dixon gives 100 miles for his own version starting from the town of Escalante. Katie Gerber reports about 95 miles for the trip she walked with Eric Volk in May 2024."
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Steve Allen); no agency or association"
+wave = 1
+places_checked = "2026-11-24"
+
+[source]
+status = "none"
+publisher = "Steve Allen (publishes the route)"
+publisher_url = "https://uofupress.com/books/canyoneering-3/"
+url = "https://www.adventurealan.com/escalante-overland-route/"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "none-stated"
+licence_text = "No track is included, so no source licence applies to a track. This record names the creator and the page its facts were read on (https://www.adventurealan.com/escalante-overland-route/, read 2026-11-24)."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the route is described in the author's guidebook."
+source_checked = "2026-11-24"
+redistributable = true
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The route is published as a description in the author's guidebook, and no track from the author is published. Get the route from Canyoneering 3: Loop Hikes in Utah's Escalante."
+
+[osm]
+relation = 0
+note = "Not recorded: the route's author does not publish a track."
+
+[shield]
+status = "no-logo-exists"
+logo_source = "https://www.adventurealan.com/escalante-overland-route/"
+contact = "Steve Allen"
+note = "Looked at https://www.adventurealan.com/escalante-overland-route/ and the University of Utah Press page for the guidebook. They show photos and the book's details only; no emblem for the route."
+logo_file = ""
+logo_owner = "Steve Allen"
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Steve Allen"
+year = 1997
+line_policy = "sold"
+note = "Described as the Overland Route in a few short paragraphs at the end of the guidebook Canyoneering 3: Loop Hikes in Utah's Escalante (University of Utah Press, 1997), which starts on page 306 as Alan Dixon reports it. Dixon's page is a trip report on the route; it does not give a track."
+
+[[guide]]
+title = "Canyoneering 3: Loop Hikes in Utah's Escalante"
+author = "Steve Allen"
+access = "purchase"
+url = "https://uofupress.com/books/canyoneering-3/"
+format = "book"
+publisher = "University of Utah Press"
+isbn = "9780874805451"
+
+[[link]]
+title = "Overland Route"
+publisher = "Katie Gerber"
+url = "https://katiegerber.com/overland-route/"
+note = "Trip report of the route walked with Eric Volk in May 2024."
+
+[[link]]
+title = "Livestream: The Overland Route, Steve Allen's definitive tour of the Escalante"
+publisher = "Skurka Adventures (Andrew Skurka)"
+url = "https://andrewskurka.com/livestream-the-overland-route-steve-allens-definitive-tour-of-the-escalante/"
+note = "Announcement of the 27 February 2025 live stream with Katie Gerber and Eric Volk."
+
+[[link]]
+title = "The Overland Route live stream with Katie Gerber and Eric Volk"
+publisher = "Andrew Skurka (YouTube)"
+url = "https://www.youtube.com/watch?v=SKUTYnUJPfU"
+note = "Recording of Andrew Skurka's 27 February 2025 live stream with Katie Gerber and Eric Volk."
+
+[hike]
+summary = "The Escalante Overland Route follows the rim above the Escalante River canyon in southern Utah, from Utah Highway 12 near Calf Creek Falls to where the route leaves the canyon just before Lake Powell. It has no trails and needs unroped climbing of Class 4 to low Class 5 on slickrock, usually going down, where a fall could cause serious injury or death. Navigation is very hard and water is scarce above the river; Alan Dixon calls it semi-technical, for experienced canyoneers who are also rock climbers."
+official_url = "https://www.adventurealan.com/escalante-overland-route/"
+start = "Utah Highway 12 near Calf Creek Falls, Utah"
+end = "Escalante River canyon just before Lake Powell, Utah"
+shape = "point-to-point"
+days = [6, 10]
+season = "April to mid-May, and mid-September to mid-November"
+months = [4, 5, 9, 10, 11]
+season_basis = "source"
+terrain = ["desert", "canyon"]
+travel = "mostly-cross-country"
+caution = "Several places need unroped climbing of Class 4 to low Class 5 on slickrock, usually going down, where a fall could cause serious injury or death. Alan Dixon says these unprotected climbs cannot be avoided, advises carrying a climbing rope, harness, hardware and webbing, and reports that his party lowered packs by rope once so they could down-climb a Class 5 section without them. Navigation is exceptionally hard and water is scarce above the Escalante River. This route is listed as an exception to this site's climbing limit. Strong off-trail hikers who are not climbers have completed it without using a rope (Katie Gerber and Eric Volk, May 2024, who carried 30 feet of webbing and did not use it)."
+checked = "2026-11-24"
+
+[[hike.source]]
+url = "https://www.adventurealan.com/escalante-overland-route/"
+publisher = "Adventure Alan & Co (a trip report by Alan Dixon)"
+facts = ["summary", "official_url", "start", "end", "shape", "days", "season", "months", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://katiegerber.com/overland-route/"
+publisher = "Katie Gerber (a trip report on her own site)"
+facts = ["caution"]
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-18"
+change = "The record was added: Escalante Overland Route."
+fields = ["record"]
+basis = "The record's own source entry: Steve Allen."
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-24"
+change = "The record was listed again as a single stated exception to the climbing limit. It had been removed on 2026-11-18 as requiring climbing. The caution, the summary and the length note now say plainly that several places need unroped Class 4 to low Class 5 climbing, usually going down, where a fall could cause serious injury or death, and that navigation is very hard and water is scarce."
+fields = ["length_note", "hike.summary", "hike.season_basis", "hike.caution"]
+basis = "Alan Dixon's page says: \"There are sections where somebody is going to need to climb class 4+ or low 5th class slick-rock without protection. This is usually down climbing which is less pleasant. The navigation is exceptionally hard.\" and \"We only used our rope once, and that that was to lower packs so we could do a 5th class down climb without them\"."
+basis_url = "https://www.adventurealan.com/escalante-overland-route/"
+asked_by = "the owner of the dataset"
+outcome = "applied"

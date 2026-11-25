@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-25 - Two Sierra candidates left out
+
+- A seven-day trip from the Taboose Pass Trailhead over Cartridge Pass, Dumbbell Pass and Mather Pass is on the left-out list: it is one hiker's video series with no route name and no published length, and the loop with nothing counted twice is about 36 to 39 miles.
+- The Redline Traverse along the Sierra crest is on the left-out list: it is published as a ski tour with no fixed line, and not as a walking route with a length for others to follow.
+
 ## 2026-11-25 - Utah Thirteeners added, and single-push routes clarified in the inclusion rule
 
 - The Utah Thirteeners traverse in Utah's High Uintas Wilderness is new: a point-to-point route of about 60 miles (97 km) from the West Fork Blacks Fork Trailhead to Swift Creek Campground, climbing about 22,300 to 23,000 feet across all 21 summits in David M. Rose's book Utah Thirteeners, including Kings Peak (4,123 m). First linked end to end by Jason Dorais and Tom Goth in September 2015, David Ayala writes that nothing is harder than Class 3 except Class 4 on the ascent and descent of East Lovenia.

@@ -729,6 +729,18 @@ decided = "2026-11-16"
 was_listed = false
 
 [[trail]]
+id = "redline-traverse"
+name = "Redline Traverse"
+country = "US"
+regions = ["CA"]
+length_note = "125 to 160 miles, as three ski parties measured their own lines"
+reason = "not-published-as-route"
+note = "Powder magazine published it in November 1983 as an account of a ski tour along the Sierra crest from Mount Langley to Mammoth, which Ski magazine calls an idea with history but no fixed route. The parties who have skied it since, in 2017 and 2023, each drew their own line of 125 to 160 miles, and it is not published as a walking route with a line and a length for others to follow."
+source_url = "https://www.skimag.com/adventure/backcountry/redline-traverse"
+decided = "2026-11-25"
+was_listed = false
+
+[[trail]]
 id = "rogue-river-trail"
 name = "Rogue River Trail"
 country = "US"
@@ -899,6 +911,18 @@ source_url = "https://christofteuscher.com/steens-traverse/"
 decided = "2026-11-23"
 was_listed = false
 waiting_for = "Its author states what climbing the route requires, so that it can be shown to need nothing harder than Class 3."
+
+[[trail]]
+id = "taboose-cartridge-dumbbell-mather-loop"
+name = "Taboose Pass, Cartridge Pass, Dumbbell Lakes and Mather Pass Loop"
+country = "US"
+regions = ["CA"]
+length_note = "68 miles in the video description, which the hiker says cannot be used as a reference; it counts the Taboose Pass stem twice, side trips and detours for filming"
+reason = "not-published-as-route"
+note = "This is a seven-part video series of one hiker's trip in August 2024 from the Taboose Pass Trailhead into Kings Canyon National Park, with no route name of its own and no published route length. Every video description says the recorded mileage cannot be considered a reference, because of detours for filming and photography. Measured from Forest Service and Park Service trail lengths plus the off-trail passes, the loop with nothing counted twice is about 36 to 39 miles, which is also below the 50 mile floor. Its off-trail middle, over Cartridge Pass and Dumbbell Pass, is on the Kings Canyon High Basin Route, which is listed."
+source_url = "https://www.youtube.com/watch?v=O0iSWfIfNLg"
+decided = "2026-11-25"
+was_listed = false
 
 [[trail]]
 id = "telaquana-route"

@@ -219,6 +219,7 @@ trans-adirondack-route,Trans Adirondack Route,US,NY,391,record-only,none (no lin
 traversee-charlevoix,Traversée de Charlevoix,CA,QC,105,included,OpenStreetMap,ODbL-1.0,designated,
 tuscarora,Tuscarora Trail,US,PA;MD;VA;WV,406,included,OpenStreetMap,ODbL-1.0,designated,
 uinta-highline,Uinta Highline Trail,US,UT,167,included,OpenStreetMap,ODbL-1.0,designated,
+utah-thirteeners,Utah Thirteeners,US,UT,97,record-only,none (no line included),restricted,route,open
 vagabond-loop,Vagabond Loop,US,AZ;UT;CO;NM,5632,record-only,none (no line included),none-stated,route,unclear
 vallecito-reservoir-loop,Vallecito Reservoir Loop,US,CO,105,record-only,none (no line included),none-stated,route,open
 vancouver-island,Vancouver Island Trail,CA,BC,800,included,OpenStreetMap,ODbL-1.0,designated,

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-25 - Utah Thirteeners added, and single-push routes clarified in the inclusion rule
+
+- The Utah Thirteeners traverse in Utah's High Uintas Wilderness is new: a point-to-point route of about 60 miles (97 km) from the West Fork Blacks Fork Trailhead to the Swift Creek Trailhead, climbing about 22,300 to 23,000 feet across all 21 summits in David M. Rose's book Utah Thirteeners, including Kings Peak (4,123 m). First linked end to end by Jason Dorais and Tom Goth in September 2015, the route requires sustained Class 3 scrambling and a short Class 4 section on East Lovenia, with no rope or climbing gear.
+- The route is listed under a ruling that a route of 50 miles or more that meets the climbing rule is listed even when every documented end-to-end completion is a single-push speed record and no multi-day walk of the whole line is published. The record carries no speed records and says plainly how the route has been done; the inclusion rule in README.md and its copies in CONTRIBUTING.md, docs/schema.md and the refresh runbook note this.
+- No track is included because the fastestknowntime.com GPX is under Outside Inc. terms that forbid redistribution and the CalTopo map has no licence; the page shows both trailheads on the map with the no-track notice. No days are recorded, and the season is estimated from climate and similar trails.
+
 ## 2026-11-24 - The Escalante Overland Route listed again, as the single exception to the climbing limit
 
 - The Escalante Overland Route in Utah, removed from the list on 2026-11-18 under the climbing limit, is listed again, and the "Considered and left out" page no longer has its entry. The rule is unchanged: nothing harder than Class 3 may be required, apart from a few short Class 4 scrambles. This is the one stated exception, recorded in the climbing rule paragraph of README.md. It is kept because it is a well-known, defining long route of the Escalante, because strong off-trail hikers who are not climbers report getting through without a rope, and because several walkers say Steve Allen's printed grades run hard.

@@ -10,7 +10,7 @@ The counts at this release:
 
 <!-- BEGIN COUNTS -->
 
-237 trails, 125 with a track and 112 with no track included. Of these, 81 are routes: 2 with a track and 79 without.
+238 trails, 125 with a track and 113 with no track included. Of these, 82 are routes: 2 with a track and 80 without.
 
 <!-- END COUNTS -->
 
@@ -26,7 +26,7 @@ Not listed: paths made mainly for cycling, such as gravel rail trails and canal 
 
 A United States National Scenic Trail is listed when it can be walked from one end to the other. The Natchez Trace and the Potomac Heritage National Scenic Trails cannot be, and are in `left-out.toml`. Other trails are listed when they meet the rule above.
 
-Routes are listed too, at the same 50-mile floor. A route is a trail that a hiker worked out and published: a high route, a traverse, or a loop of linked trails. Its record names the author and says where the route is got from: the guidebook, map set or page, and whether it is free or sold. Whether a track is included follows the author's choice:
+Routes are listed too, at the same 50-mile floor. A route is a trail that a hiker worked out and published: a high route, a traverse, or a loop of linked trails. A route of 50 miles or more that meets the climbing rule is listed even when every documented end-to-end completion is a single-push speed record and no multi-day walk of the whole line is published, without speed records and saying plainly how it has been done. Its record names the author and says where the route is got from: the guidebook, map set or page, and whether it is free or sold. Whether a track is included follows the author's choice:
 
 - The author sells the route, or chooses not to publish a track: the record has no track. No track is included from any source, OpenStreetMap included.
 - The author publishes the track freely: a track is included only where the author's terms allow passing it on, or where OpenStreetMap carries the route as a route relation. Otherwise the record points to the author's own download.
@@ -282,6 +282,7 @@ A route is a trail that a hiker worked out and published. The record names the a
 | teton-wilderness-loop | Teton Wilderness Loop | US | WY | 97 | Douglas Lorain | sold | no | [Backpacking Wyoming: From Towering Granite Peaks to Steaming Geyser Basins](https://shop.adventurewithkeen.com/product/backpacking-wyoming/) (purchase) |
 | three-sisters-loop | Three Sisters Loop | US | OR | 74 | Eli Boschetto | sold | no | [Backpacking Oregon: Overnight and Multiday Routes](https://www.mountaineers.org/books/books/backpacking-oregon-overnight-and-multiday-routes) (purchase) |
 | trans-adirondack-route | Trans Adirondack Route | US | NY | 391 | Erik Schlimmer | sold | no | [Blue Line to Blue Line, with a map set](https://erikschlimmer.com/books-sale-/) (purchase) |
+| utah-thirteeners | Utah Thirteeners | US | UT | 97 | Jason Dorais and Tom Goth | open | no | [Utah Thirteeners (UT) route page](https://fastestknowntime.com/route/utah-thirteeners-ut) (free) |
 | vagabond-loop | Vagabond Loop | US | AZ, UT, CO, NM | 5632 | Ryan "Dirtmonger" Sylva | unclear | no | [Vagabond Loop route description](https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html) (free) |
 | vallecito-reservoir-loop | Vallecito Reservoir Loop | US | CO | 105 | Dave Collins | open | no | [San Juan Mountains-Vallecito Reservoir Loop](https://www.cleverhiker.com/backpacking/backpacking-trip-guides/san-juan-mountains-vallecito-reservoir-loop/) (free) |
 | vancouver-island-backbone | Vancouver Island Backbone | CA | BC | 300 | Philip Stone | unclear | no | [Hiking Guide to the Vancouver Island Backbone](https://www.wildisle.ca/backbone/index.html) (free) |

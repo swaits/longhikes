@@ -313,6 +313,7 @@ Page: https://www.earthenv.org/mountains and https://doi.org/10.48601/earthenv-t
 | traversee-charlevoix | Traversée de Charlevoix (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/8082269) | ODbL-1.0 | track |
 | tuscarora | Potomac Appalachian Trail Club (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/10449263) | ODbL-1.0 | track |
 | uinta-highline | USDA Forest Service (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/13716825) | ODbL-1.0 | track |
+| utah-thirteeners | fastestknowntime.com (publishes the route page) | [source page](https://fastestknowntime.com/route/utah-thirteeners-ut) | restricted | record only |
 | vagabond-loop | Ryan "Dirtmonger" Sylva, who publishes the route | [source page](https://www.freedirtmonger.com/p/vagabond-loop-four-corners-connection-1.html) | none-stated | record only |
 | vancouver-island | Vancouver Island Trail Association (publishes the trail; no open geometry found) | [source page](https://www.openstreetmap.org/relation/12038457) | ODbL-1.0 | track |
 | vancouver-island-backbone | Philip Stone, Alpine Pacific Images (publishes the route) | [source page](https://www.wildisle.ca/backbone/index.html) | none-stated | record only |

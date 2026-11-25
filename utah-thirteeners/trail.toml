@@ -1,0 +1,176 @@
+# Long-trail record. Field meanings: docs/schema.md in this repository.
+
+id = "utah-thirteeners"
+name = "Utah Thirteeners"
+country = "US"
+regions = ["UT"]
+length_km = 97
+length_note = "About 60 miles (97 km): Tom Goth's description on the fastestknowntime.com route page gives \"approximately 60 miles\", Goth's trip report gives \"Roughly 60 miles\", Jason Dorais's trip report gives \"60ish miles\", Trail Runner Magazine gives \"approximately 60 miles\", and David Ayala's write-up gives \"about 60 miles\". Other figures differ: the fastestknowntime.com route page header gives \"Distance 57 mi\", Jared Campbell's report on that page gives \"~62 miles\", and the track shown on that page measures 61.45 miles."
+kind = "route"
+tier = "regional"
+designation = "Person-defined route (Jason Dorais and Tom Goth, 2015); no agency or association"
+wave = 1
+places_checked = "2026-11-25"
+
+[source]
+status = "none"
+publisher = "fastestknowntime.com (publishes the route page)"
+publisher_url = "https://fastestknowntime.com/route/utah-thirteeners-ut"
+url = "https://fastestknowntime.com/route/utah-thirteeners-ut"
+format = "No line included"
+crs = "EPSG:4326"
+licence = "restricted"
+licence_text = "No track is included. The GPX file on the fastestknowntime.com route page (https://fastestknowntime.com/route/utah-thirteeners-ut) is under Outside Inc. terms (personal, non-commercial, no redistribution), and the CalTopo map has no licence allowing redistribution."
+attribution = "none (no line included)"
+osm_only = false
+mainline = "No track is included; the GPX on fastestknowntime.com is under Outside Inc. terms that forbid redistribution, and the CalTopo map states no licence."
+source_checked = "2026-11-25"
+redistributable = false
+line_source = "none (no line included)"
+line_file = ""
+line_absent_reason = "The fastestknowntime.com route page offers a GPX file under Outside Inc. terms (personal, non-commercial, no redistribution), and the CalTopo map states no licence, so no track may be passed on here. Get the route from the fastestknowntime.com route page or David Ayala's write-up."
+
+[osm]
+relation = 0
+note = "Not recorded: no track is included because the published GPX is under terms that forbid redistribution."
+
+[shield]
+status = "no-logo-exists"
+logo_source = ""
+contact = "Jason Dorais and Tom Goth"
+note = "No emblem of the route exists at an allowed source. The fastestknowntime.com route page (https://fastestknowntime.com/route/utah-thirteeners-ut) and David Ayala's route page (https://math.montana.edu/dayala/ut13ers.html) carry photographs and text only, with no crest, badge or mark for the route."
+logo_file = ""
+logo_owner = ""
+
+[verification]
+verified = false
+note = "No line to measure."
+
+[route]
+creator = "Jason Dorais and Tom Goth"
+year = 2015
+line_policy = "open"
+note = "Also called the Utah 13ers, and called Utah's Uinta Traverse by Trail Runner Magazine. First linked end to end by Jason Dorais and Tom Goth on September 9 and 10, 2015; Dorais credits the idea to Craig Lloyd. The route crosses all 21 summits in David M. Rose's book Utah Thirteeners (19 with at least 200 ft of prominence and 17 with at least 300 ft), climbing about 22,300 to 23,000 ft. From Mount Powell, the settled line drops into the Henrys Fork basin and climbs Gilbert Peak from the north. Every documented end-to-end completion (2015, 2017, 2021, 2024) has been a single unsupported push, with no multi-day walk of the whole line published; this record lists no speed records."
+
+[[guide]]
+title = "Utah Thirteeners (UT) route page"
+author = "fastestknowntime.com (route description by Tom Goth)"
+access = "free"
+url = "https://fastestknowntime.com/route/utah-thirteeners-ut"
+format = "web route page with description, CalTopo map link and personal-use GPX"
+
+[[guide]]
+title = "UT13ers (2024 Measurables and Methods)"
+author = "David Ayala"
+access = "free"
+url = "https://math.montana.edu/dayala/ut13ers.html"
+format = "web page linking a 6-page PDF route write-up"
+
+[[guide]]
+title = "Utah Thirteeners: A Guide to Climbing the 13,000-Foot Peaks of the High Uintas"
+author = "David M. Rose"
+access = "purchase"
+url = "https://uofupress.com/books/utah-thirteeners/"
+format = "book"
+publisher = "University of Utah Press"
+isbn = "9780874807943"
+edition = "2004"
+where = "Peak-by-peak routes for all 21 summits"
+link_is = "publisher"
+
+[hike]
+summary = "The Utah Thirteeners traverse links all 21 of Utah's 13,000-foot peaks across the High Uintas Wilderness in a point-to-point route of about 60 miles from the West Fork Blacks Fork Trailhead to the Swift Creek Trailhead. Also called the Utah 13ers or Utah's Uinta Traverse, most of the way is off-trail travel above treeline across loose talus and boulders, climbing about 22,300 to 23,000 feet and crossing Kings Peak, the highest point in Utah. No rope or rock-climbing gear is required, though the traverse includes sustained Class 3 scrambling and a short Class 4 section on East Lovenia."
+official_url = "https://fastestknowntime.com/route/utah-thirteeners-ut"
+start = "West Fork Blacks Fork Trailhead, Utah"
+start_lonlat = [-110.667, 40.868]
+end = "Swift Creek Trailhead, Ashley National Forest, Utah"
+end_lonlat = [-110.348, 40.601]
+shape = "point-to-point"
+season = "July to September"
+months = [7, 8, 9]
+season_basis = "estimate"
+season_method = "Judged from the climate at the trail's elevation and from similar trails. The high Uinta crest sits above 13,000 feet and holds snow into early summer, while mean daily highs at high ground drop to 31 F in October, leaving July to September. Confidence: medium."
+high_point = "Kings Peak"
+high_point_m = 4123
+terrain = ["alpine"]
+travel = "mostly-cross-country"
+permit = "No permit is needed in the High Uintas Wilderness."
+caution = "Nearly the whole route is off-trail travel over loose talus and boulders above treeline, with roughly 50 miles of boulder-hopping and about 22,300 to 23,000 feet of climbing. The hardest ground is Class 3 scrambling with a short Class 4 section on East Lovenia (called Quandary in David M. Rose's book). Every documented end-to-end completion has been a single unsupported push; no multi-day walk of the whole line has been published, and there is no marked or maintained way between the summits."
+checked = "2026-11-25"
+
+[[hike.source]]
+url = "https://fastestknowntime.com/route/utah-thirteeners-ut"
+publisher = "fastestknowntime.com"
+facts = ["official_url", "summary", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://math.montana.edu/dayala/documents/UT13ers.pdf"
+publisher = "David Ayala, Montana State University"
+facts = ["summary", "caution"]
+
+[[hike.source]]
+url = "https://uofupress.com/books/utah-thirteeners/"
+publisher = "University of Utah Press (David M. Rose, Utah Thirteeners, 2004)"
+facts = ["summary", "high_point", "caution"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r04/uinta-wasatch-cache/recreation/trails/west-fork-blacks-fork-trail-101"
+publisher = "USDA Forest Service, Uinta-Wasatch-Cache National Forest (Forest Service EDW trails service, Trail #4101 northern end)"
+facts = ["start", "start_lonlat"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r04/ashley/recreation/swift-creek-campground"
+publisher = "USDA Forest Service, Ashley National Forest"
+facts = ["end", "end_lonlat"]
+
+[[hike.source]]
+url = "https://www.fs.usda.gov/r04/ashley/recreation/high-uintas-wilderness"
+publisher = "USDA Forest Service, Ashley National Forest"
+facts = ["permit", "high_point"]
+
+[[hike.source]]
+url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+publisher = "WSL (CHELSA) and NOAA NCEI (ETOPO)"
+facts = ["season", "months"]
+
+[[place]]
+kind = "range"
+slug = "uinta-mountains"
+basis = "stated"
+source = "https://www.fs.usda.gov/r04/ashley/recreation/high-uintas-wilderness"
+
+[[place]]
+kind = "wilderness"
+slug = "high-uintas-wilderness"
+basis = "stated"
+source = "https://fastestknowntime.com/route/utah-thirteeners-ut"
+
+# History of this record, oldest first. Add to it; never rewrite it.
+# See docs/schema.md, section [[history]].
+
+[[history]]
+date = "2026-11-25"
+change = "The record was added: Utah Thirteeners, about 60 miles (97 km) across Utah's High Uintas Wilderness from the West Fork Blacks Fork Trailhead to the Swift Creek Trailhead, first linked end to end by Jason Dorais and Tom Goth in 2015, with no track."
+fields = ["record"]
+basis = "Listed by the owner's ruling of 2026-11-25: a route of 50 miles or more that meets the climbing rule is listed even when every documented completion is a single-push speed record and no multi-day walk of the whole line is published, without speed records and saying how it has been done. Facts read from fastestknowntime.com's route page, David Ayala's write-up, David M. Rose's book, and Forest Service pages."
+basis_url = "https://fastestknowntime.com/route/utah-thirteeners-ut"
+asked_by = "the owner of the dataset"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-25"
+change = "The trail was placed in Uinta Mountains and High Uintas Wilderness from published pages, as it has no track to measure."
+fields = ["place"]
+basis = "The fastestknowntime.com route page says: \"The Utah Thirteeners are all located in the High Uintas Wilderness.\" The Forest Service High Uintas Wilderness page says: \"The High Uintas Wilderness, located in northeastern Utah, comprises the wild core of the massive Uinta Mountains.\""
+basis_url = "https://fastestknowntime.com/route/utah-thirteeners-ut"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-25"
+change = "A season was estimated: July to September."
+fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
+basis = "No page states a season for the traverse. It was set by judgement from the climate at the trail's elevation and from similar trails."
+basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+asked_by = "the dataset's own check"
+outcome = "applied"

@@ -73,7 +73,7 @@ Maintainers only: the site never renders this file, and no record or page states
 
 ## What belongs
 
-The inclusion rule is in `README.md` (section "Inclusion rule") and `CONTRIBUTING.md` (section "Add a trail"). A route of 50 miles or more that meets the climbing rule is listed even when every documented end-to-end completion is a single-push speed record and no multi-day walk of the whole line is published, without speed records. The trails already decided against, with reasons, are in `left-out.toml`; read it before proposing anything. Decisions about what belongs are the owner's. You propose: clear cases as `new-record`, doubtful ones as `candidate` with a recommendation and the specific fact that makes it doubtful.
+The inclusion rule is in `README.md` (section "Inclusion rule") and `CONTRIBUTING.md` (section "Add a trail"). A route of 50 miles or more that meets the climbing rule is listed even when every documented end-to-end completion is a single-push speed record and no multi-day walk of the whole line is published, without speed records and saying plainly how it has been done. The trails already decided against, with reasons, are in `left-out.toml`; read it before proposing anything. Decisions about what belongs are the owner's. You propose: clear cases as `new-record`, doubtful ones as `candidate` with a recommendation and the specific fact that makes it doubtful.
 
 ## Time and the report
 

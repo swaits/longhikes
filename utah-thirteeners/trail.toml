@@ -5,7 +5,7 @@ name = "Utah Thirteeners"
 country = "US"
 regions = ["UT"]
 length_km = 97
-length_note = "About 60 miles (97 km): Tom Goth's description on the fastestknowntime.com route page gives \"approximately 60 miles\", Goth's trip report gives \"Roughly 60 miles\", Jason Dorais's trip report gives \"60ish miles\", Trail Runner Magazine gives \"approximately 60 miles\", and David Ayala's write-up gives \"about 60 miles\". Other figures differ: the fastestknowntime.com route page header gives \"Distance 57 mi\", Jared Campbell's report on that page gives \"~62 miles\", and the track shown on that page measures 61.45 miles."
+length_note = "About 60 miles (97 km): Tom Goth's description on the fastestknowntime.com route page gives \"approximately 60 miles\", Goth's trip report gives \"Roughly 60 miles\", and Jason Dorais's trip report gives \"60ish miles\". David Ayala's write-up of his 2024 completion gives \"about 60 miles\". Other figures differ: the fastestknowntime.com route page header gives \"Distance 57 mi\", Jared Campbell's report on the fastestknowntime.com page for the 2017 completion gives \"~62 miles\", and the GPX file on the route page measures 61.45 miles."
 kind = "route"
 tier = "regional"
 designation = "Person-defined route (Jason Dorais and Tom Goth, 2015); no agency or association"
@@ -50,7 +50,7 @@ note = "No line to measure."
 creator = "Jason Dorais and Tom Goth"
 year = 2015
 line_policy = "open"
-note = "Also called the Utah 13ers, and called Utah's Uinta Traverse by Trail Runner Magazine. First linked end to end by Jason Dorais and Tom Goth on September 9 and 10, 2015; Dorais credits the idea to Craig Lloyd. The route crosses all 21 summits in David M. Rose's book Utah Thirteeners (19 with at least 200 ft of prominence and 17 with at least 300 ft), climbing about 22,300 to 23,000 ft. From Mount Powell, the settled line drops into the Henrys Fork basin and climbs Gilbert Peak from the north. Every documented end-to-end completion (2015, 2017, 2021, 2024) has been a single unsupported push, with no multi-day walk of the whole line published; this record lists no speed records."
+note = "Also called the Utah 13ers. First linked end to end by Jason Dorais and Tom Goth on September 9 and 10, 2015; Dorais credits the idea to Craig Lloyd. The route crosses all 21 summits in David M. Rose's book Utah Thirteeners (19 with at least 200 ft of prominence and 17 with at least 300 ft), climbing about 22,300 to 23,000 ft. From Mount Powell, the 2015 link-up dropped into the Henrys Fork basin before Gilbert Peak; the 2017 pair chose a long out-and-back from Gunsight to Gilbert instead, and said they would take the 2015 line if they did it again. Every documented end-to-end completion (2015, 2017, 2021, 2024) has been a single unsupported push, with no multi-day walk of the whole line published; this record lists no speed records."
 
 [[guide]]
 title = "Utah Thirteeners (UT) route page"
@@ -79,11 +79,11 @@ where = "Peak-by-peak routes for all 21 summits"
 link_is = "publisher"
 
 [hike]
-summary = "The Utah Thirteeners traverse links all 21 of Utah's 13,000-foot peaks across the High Uintas Wilderness in a point-to-point route of about 60 miles from the West Fork Blacks Fork Trailhead to the Swift Creek Trailhead. Also called the Utah 13ers or Utah's Uinta Traverse, most of the way is off-trail travel above treeline across loose talus and boulders, climbing about 22,300 to 23,000 feet and crossing Kings Peak, the highest point in Utah. No rope or rock-climbing gear is required, though the traverse includes sustained Class 3 scrambling and a short Class 4 section on East Lovenia."
+summary = "The Utah Thirteeners, also called the Utah 13ers, link all 21 of Utah's 13,000-foot peaks in the High Uintas Wilderness. It is a point-to-point route of about 60 miles from the West Fork Blacks Fork Trailhead to Swift Creek Campground. Most of the way is off-trail travel above treeline across loose talus and boulders, with about 22,300 to 23,000 feet of climbing, and it crosses Kings Peak, the highest point in Utah. By David Ayala's account nothing is harder than Class 3 except Class 4 on the ascent and descent of East Lovenia."
 official_url = "https://fastestknowntime.com/route/utah-thirteeners-ut"
 start = "West Fork Blacks Fork Trailhead, Utah"
 start_lonlat = [-110.667, 40.868]
-end = "Swift Creek Trailhead, Ashley National Forest, Utah"
+end = "Swift Creek Campground, Ashley National Forest, Utah"
 end_lonlat = [-110.348, 40.601]
 shape = "point-to-point"
 season = "July to September"
@@ -94,14 +94,18 @@ high_point = "Kings Peak"
 high_point_m = 4123
 terrain = ["alpine"]
 travel = "mostly-cross-country"
-permit = "No permit is needed in the High Uintas Wilderness."
-caution = "Nearly the whole route is off-trail travel over loose talus and boulders above treeline, with roughly 50 miles of boulder-hopping and about 22,300 to 23,000 feet of climbing. The hardest ground is Class 3 scrambling with a short Class 4 section on East Lovenia (called Quandary in David M. Rose's book). Every documented end-to-end completion has been a single unsupported push; no multi-day walk of the whole line has been published, and there is no marked or maintained way between the summits."
+caution = "Most of the route is off-trail travel over loose talus and boulders above treeline, with about 50 of its roughly 62 miles being boulder-hopping on loose talus, by Jared Campbell's account, and about 22,300 to 23,000 feet of climbing. David Ayala writes that the most technical ground is the ascent and descent of East Lovenia (called Quandary Peak in David M. Rose's book), at Class 4, and that the rest does not exceed Class 3. Every documented end-to-end completion has been a single unsupported push, and no multi-day walk of the whole line has been published."
 checked = "2026-11-25"
 
 [[hike.source]]
 url = "https://fastestknowntime.com/route/utah-thirteeners-ut"
 publisher = "fastestknowntime.com"
 facts = ["official_url", "summary", "shape", "terrain", "travel", "caution"]
+
+[[hike.source]]
+url = "https://fastestknowntime.com/fkt/luke-nelson-jared-campbell-utah-thirteeners-ut-2017-07-08"
+publisher = "fastestknowntime.com (Jared Campbell's report)"
+facts = ["caution"]
 
 [[hike.source]]
 url = "https://math.montana.edu/dayala/documents/UT13ers.pdf"
@@ -126,7 +130,7 @@ facts = ["end", "end_lonlat"]
 [[hike.source]]
 url = "https://www.fs.usda.gov/r04/ashley/recreation/high-uintas-wilderness"
 publisher = "USDA Forest Service, Ashley National Forest"
-facts = ["permit", "high_point"]
+facts = ["high_point"]
 
 [[hike.source]]
 url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
@@ -172,5 +176,14 @@ change = "A season was estimated: July to September."
 fields = ["hike.season", "hike.months", "hike.season_basis", "hike.season_method"]
 basis = "No page states a season for the traverse. It was set by judgement from the climate at the trail's elevation and from similar trails."
 basis_url = "https://www.chelsa-climate.org/datasets/chelsa_climatologies"
+asked_by = "the dataset's own check"
+outcome = "applied"
+
+[[history]]
+date = "2026-11-25"
+change = "Corrected after review against the pages cited: the end is named Swift Creek Campground, as the Forest Service page and David Ayala's write-up name it; the length note no longer quotes a Trail Runner Magazine figure that could not be read, and says which fastestknowntime.com page carries Jared Campbell's \"~62 miles\"; the caution gives the Class 3 and Class 4 limits as David Ayala's account and the boulder-hopping figure as Jared Campbell's, and the permit sentence is removed because the Forest Service page it cited says nothing about permits."
+fields = ["length_note", "hike.end", "hike.caution", "hike.permit"]
+basis = "David Ayala's write-up says: \"the most technical terrain (4th class) is the ascent and descent of Quandry; otherwise the route does not exceed 3rd class travel.\" Jared Campbell's report on the fastestknowntime.com page for the 2017 completion says: \"Of the ~62 miles about 50 of them are legitimate boulder-hopping on loose talus\". The Forest Service Swift Creek Campground page gives latitude 40.601109 and longitude -110.347741 for the campground at the end of the route."
+basis_url = "https://fastestknowntime.com/fkt/luke-nelson-jared-campbell-utah-thirteeners-ut-2017-07-08"
 asked_by = "the dataset's own check"
 outcome = "applied"

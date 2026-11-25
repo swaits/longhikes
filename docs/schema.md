@@ -352,7 +352,7 @@ The `reason` values mirror the inclusion rule:
 | `cannot-be-walked-through` | Published in separate pieces, or blocked, so it cannot be walked through as one walk. |
 | `mostly-unbuilt` | Mostly unbuilt or still proposed. |
 | `requires-climbing` | Requires roped or technical climbing: a route that needs a rope, a belay or rock-climbing skill, beyond a few short Class 4 scrambles, unless that section is optional. |
-| `not-published-as-route` | A route its author has not published as a route, with a stated length, for others to follow (a route with no published length is left out under this reason); or a walk no land manager publishes as a named trail with a length. A published route of 50 miles or more that meets the climbing rule is listed even when every documented end-to-end completion is a single-push speed record, without speed records. |
+| `not-published-as-route` | A route its author has not published as a route, with a stated length, for others to follow (a route with no published length is left out under this reason); or a walk no land manager publishes as a named trail with a length. A published route of 50 miles or more that meets the climbing rule is listed even when every documented end-to-end completion is a single-push speed record and no multi-day walk of the whole line is published, without speed records and saying plainly how it has been done. |
 | `outside-us-canada` | A trail outside the United States and Canada, which this list does not yet cover. The entry holds what is known about it so the data is ready if the area widens. `country` is then its own two letter code (not `US` or `CA`) and `regions` name its places in plain words. |
 | `waiting` | Not left out for good. `waiting_for` says what would change the decision. |
 
